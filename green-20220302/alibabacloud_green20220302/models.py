@@ -203,6 +203,7 @@ class DescribeFileModerationResultResponseBodyDataPageResultTextResult(TeaModel)
     def __init__(
         self,
         description: str = None,
+        descriptions: str = None,
         labels: str = None,
         risk_level: str = None,
         risk_tips: str = None,
@@ -213,6 +214,7 @@ class DescribeFileModerationResultResponseBodyDataPageResultTextResult(TeaModel)
     ):
         # The description.
         self.description = description
+        self.descriptions = descriptions
         # The details of the labels.
         self.labels = labels
         # Risk Level
@@ -239,6 +241,8 @@ class DescribeFileModerationResultResponseBodyDataPageResultTextResult(TeaModel)
         result = dict()
         if self.description is not None:
             result['Description'] = self.description
+        if self.descriptions is not None:
+            result['Descriptions'] = self.descriptions
         if self.labels is not None:
             result['Labels'] = self.labels
         if self.risk_level is not None:
@@ -259,6 +263,8 @@ class DescribeFileModerationResultResponseBodyDataPageResultTextResult(TeaModel)
         m = m or dict()
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Descriptions') is not None:
+            self.descriptions = m.get('Descriptions')
         if m.get('Labels') is not None:
             self.labels = m.get('Labels')
         if m.get('RiskLevel') is not None:
@@ -437,9 +443,11 @@ class DescribeFileModerationResultResponseBodyDataPageSummaryImageSummary(TeaMod
 class DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabels(TeaModel):
     def __init__(
         self,
+        description: str = None,
         label: str = None,
         label_sum: int = None,
     ):
+        self.description = description
         # The details of the labels.
         self.label = label
         # The number of times that the label is matched.
@@ -454,6 +462,8 @@ class DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabe
             return _map
 
         result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
         if self.label is not None:
             result['Label'] = self.label
         if self.label_sum is not None:
@@ -462,6 +472,8 @@ class DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabe
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('Label') is not None:
             self.label = m.get('Label')
         if m.get('LabelSum') is not None:
@@ -4403,6 +4415,501 @@ class ImageModerationResponse(TeaModel):
         return self
 
 
+class ManualCallbackRequest(TeaModel):
+    def __init__(
+        self,
+        channel: str = None,
+        checksum: str = None,
+        code: str = None,
+        data: str = None,
+        msg: str = None,
+        req_id: str = None,
+    ):
+        self.channel = channel
+        self.checksum = checksum
+        self.code = code
+        self.data = data
+        self.msg = msg
+        self.req_id = req_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel is not None:
+            result['Channel'] = self.channel
+        if self.checksum is not None:
+            result['Checksum'] = self.checksum
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.req_id is not None:
+            result['ReqId'] = self.req_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Channel') is not None:
+            self.channel = m.get('Channel')
+        if m.get('Checksum') is not None:
+            self.checksum = m.get('Checksum')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('ReqId') is not None:
+            self.req_id = m.get('ReqId')
+        return self
+
+
+class ManualCallbackResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ManualCallbackResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ManualCallbackResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ManualCallbackResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ManualModerationRequest(TeaModel):
+    def __init__(
+        self,
+        service: str = None,
+        service_parameters: str = None,
+    ):
+        self.service = service
+        self.service_parameters = service_parameters
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.service is not None:
+            result['Service'] = self.service
+        if self.service_parameters is not None:
+            result['ServiceParameters'] = self.service_parameters
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Service') is not None:
+            self.service = m.get('Service')
+        if m.get('ServiceParameters') is not None:
+            self.service_parameters = m.get('ServiceParameters')
+        return self
+
+
+class ManualModerationResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        data_id: str = None,
+        task_id: str = None,
+    ):
+        self.data_id = data_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class ManualModerationResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: ManualModerationResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ManualModerationResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ManualModerationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ManualModerationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ManualModerationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ManualModerationResultRequest(TeaModel):
+    def __init__(
+        self,
+        service_parameters: str = None,
+    ):
+        self.service_parameters = service_parameters
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.service_parameters is not None:
+            result['ServiceParameters'] = self.service_parameters
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ServiceParameters') is not None:
+            self.service_parameters = m.get('ServiceParameters')
+        return self
+
+
+class ManualModerationResultResponseBodyDataResult(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        label: str = None,
+    ):
+        self.description = description
+        self.label = label
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.label is not None:
+            result['Label'] = self.label
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        return self
+
+
+class ManualModerationResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        data_id: str = None,
+        result: List[ManualModerationResultResponseBodyDataResult] = None,
+        risk_level: str = None,
+        task_id: str = None,
+    ):
+        self.data_id = data_id
+        self.result = result
+        self.risk_level = risk_level
+        self.task_id = task_id
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = ManualModerationResultResponseBodyDataResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class ManualModerationResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: ManualModerationResultResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ManualModerationResultResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ManualModerationResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ManualModerationResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ManualModerationResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class TextModerationRequest(TeaModel):
     def __init__(
         self,
@@ -5426,9 +5933,11 @@ class VideoModerationResultRequest(TeaModel):
 class VideoModerationResultResponseBodyDataAudioResultAudioSummarys(TeaModel):
     def __init__(
         self,
+        description: str = None,
         label: str = None,
         label_sum: int = None,
     ):
+        self.description = description
         # The voice label.
         self.label = label
         # The number of times that the label is matched.
@@ -5443,6 +5952,8 @@ class VideoModerationResultResponseBodyDataAudioResultAudioSummarys(TeaModel):
             return _map
 
         result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
         if self.label is not None:
             result['Label'] = self.label
         if self.label_sum is not None:
@@ -5451,6 +5962,8 @@ class VideoModerationResultResponseBodyDataAudioResultAudioSummarys(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('Label') is not None:
             self.label = m.get('Label')
         if m.get('LabelSum') is not None:
@@ -5461,6 +5974,7 @@ class VideoModerationResultResponseBodyDataAudioResultAudioSummarys(TeaModel):
 class VideoModerationResultResponseBodyDataAudioResultSliceDetails(TeaModel):
     def __init__(
         self,
+        descriptions: str = None,
         end_time: int = None,
         end_timestamp: int = None,
         extend: str = None,
@@ -5474,6 +5988,7 @@ class VideoModerationResultResponseBodyDataAudioResultSliceDetails(TeaModel):
         text: str = None,
         url: str = None,
     ):
+        self.descriptions = descriptions
         # The end time of the text after voice-to-text conversion. Unit: seconds.
         self.end_time = end_time
         # The end timestamp of the segment. Unit: milliseconds.
@@ -5508,6 +6023,8 @@ class VideoModerationResultResponseBodyDataAudioResultSliceDetails(TeaModel):
             return _map
 
         result = dict()
+        if self.descriptions is not None:
+            result['Descriptions'] = self.descriptions
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.end_timestamp is not None:
@@ -5536,6 +6053,8 @@ class VideoModerationResultResponseBodyDataAudioResultSliceDetails(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Descriptions') is not None:
+            self.descriptions = m.get('Descriptions')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('EndTimestamp') is not None:
@@ -6461,6 +6980,7 @@ class VoiceModerationResultRequest(TeaModel):
 class VoiceModerationResultResponseBodyDataSliceDetails(TeaModel):
     def __init__(
         self,
+        descriptions: str = None,
         end_time: int = None,
         end_timestamp: int = None,
         extend: str = None,
@@ -6475,6 +6995,7 @@ class VoiceModerationResultResponseBodyDataSliceDetails(TeaModel):
         text: str = None,
         url: str = None,
     ):
+        self.descriptions = descriptions
         # The end time of the audio segment in seconds.
         self.end_time = end_time
         # The end timestamp of the segment. Unit: milliseconds.
@@ -6511,6 +7032,8 @@ class VoiceModerationResultResponseBodyDataSliceDetails(TeaModel):
             return _map
 
         result = dict()
+        if self.descriptions is not None:
+            result['Descriptions'] = self.descriptions
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.end_timestamp is not None:
@@ -6541,6 +7064,8 @@ class VoiceModerationResultResponseBodyDataSliceDetails(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Descriptions') is not None:
+            self.descriptions = m.get('Descriptions')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('EndTimestamp') is not None:

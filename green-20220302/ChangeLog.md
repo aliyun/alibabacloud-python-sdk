@@ -1,3 +1,12 @@
+2025-02-18 Version: 2.20.0
+- Support API ManualCallback.
+- Support API ManualModeration.
+- Support API ManualModerationResult.
+- Update API DescribeFileModerationResult: update response param.
+- Update API VideoModerationResult: update response param.
+- Update API VoiceModerationResult: update response param.
+
+
 2025-01-06 Version: 2.19.2
 - Update API TextModeration: update response param.
 - Update API TextModerationPlus: update response param.
