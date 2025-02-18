@@ -130,6 +130,7 @@ class ScorePageItem(TeaModel):
         publish_time: int = None,
         score: float = None,
         site_label: str = None,
+        snippet: str = None,
         title: str = None,
     ):
         # This parameter is required.
@@ -153,6 +154,7 @@ class ScorePageItem(TeaModel):
         self.publish_time = publish_time
         self.score = score
         self.site_label = site_label
+        self.snippet = snippet
         # This parameter is required.
         self.title = title
 
@@ -200,6 +202,8 @@ class ScorePageItem(TeaModel):
             result['score'] = self.score
         if self.site_label is not None:
             result['siteLabel'] = self.site_label
+        if self.snippet is not None:
+            result['snippet'] = self.snippet
         if self.title is not None:
             result['title'] = self.title
         return result
@@ -239,6 +243,8 @@ class ScorePageItem(TeaModel):
             self.score = m.get('score')
         if m.get('siteLabel') is not None:
             self.site_label = m.get('siteLabel')
+        if m.get('snippet') is not None:
+            self.snippet = m.get('snippet')
         if m.get('title') is not None:
             self.title = m.get('title')
         return self
