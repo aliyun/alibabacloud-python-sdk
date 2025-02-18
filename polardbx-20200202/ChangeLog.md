@@ -1,3 +1,8 @@
+2025-02-18 Version: 2.2.2
+- Update API DescribeGdnInstances: update response param.
+- Update API SwitchGdnMemberRole: add param TaskTimeout.
+
+
 2025-01-09 Version: 2.2.1
 - Generated python 2020-02-02 for polardbx.
 

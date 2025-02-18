@@ -8871,6 +8871,7 @@ class DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList(TeaModel):
         secondary_zone: str = None,
         seconds_behind_master: str = None,
         status: str = None,
+        task_status: str = None,
         tertiary_zone: str = None,
         zone_id: str = None,
     ):
@@ -8890,6 +8891,7 @@ class DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList(TeaModel):
         self.secondary_zone = secondary_zone
         self.seconds_behind_master = seconds_behind_master
         self.status = status
+        self.task_status = task_status
         self.tertiary_zone = tertiary_zone
         self.zone_id = zone_id
 
@@ -8934,6 +8936,8 @@ class DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList(TeaModel):
             result['SecondsBehindMaster'] = self.seconds_behind_master
         if self.status is not None:
             result['Status'] = self.status
+        if self.task_status is not None:
+            result['TaskStatus'] = self.task_status
         if self.tertiary_zone is not None:
             result['TertiaryZone'] = self.tertiary_zone
         if self.zone_id is not None:
@@ -8974,6 +8978,8 @@ class DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList(TeaModel):
             self.seconds_behind_master = m.get('SecondsBehindMaster')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('TaskStatus') is not None:
+            self.task_status = m.get('TaskStatus')
         if m.get('TertiaryZone') is not None:
             self.tertiary_zone = m.get('TertiaryZone')
         if m.get('ZoneId') is not None:
@@ -13946,6 +13952,7 @@ class SwitchGdnMemberRoleRequest(TeaModel):
         dbinstance_name: str = None,
         region_id: str = None,
         switch_mode: str = None,
+        task_timeout: int = None,
     ):
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
@@ -13953,6 +13960,7 @@ class SwitchGdnMemberRoleRequest(TeaModel):
         self.region_id = region_id
         # This parameter is required.
         self.switch_mode = switch_mode
+        self.task_timeout = task_timeout
 
     def validate(self):
         pass
@@ -13969,6 +13977,8 @@ class SwitchGdnMemberRoleRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.switch_mode is not None:
             result['SwitchMode'] = self.switch_mode
+        if self.task_timeout is not None:
+            result['TaskTimeout'] = self.task_timeout
         return result
 
     def from_map(self, m: dict = None):
@@ -13979,6 +13989,8 @@ class SwitchGdnMemberRoleRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('SwitchMode') is not None:
             self.switch_mode = m.get('SwitchMode')
+        if m.get('TaskTimeout') is not None:
+            self.task_timeout = m.get('TaskTimeout')
         return self
 
 
