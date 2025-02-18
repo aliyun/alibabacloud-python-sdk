@@ -1,3 +1,15 @@
+2025-02-18 Version: 6.0.2
+- Update API ExecuteAdhocWorkflowInstance: update param EnvType.
+- Update API GetDIJobLog: add param NodeType.
+- Update API GetDIJobLog: add param PageNumber.
+- Update API GetNode: update response param.
+- Update API GetWorkflowDefinition: add param IncludeScriptContent.
+- Update API GetWorkflowDefinition: update response param.
+- Update API ImportWorkflowDefinition: update param RegionId.
+- Update API ListResourceGroups: update param Statuses.
+- Update API ListResourceGroups: update response param.
+
+
 2025-01-23 Version: 6.0.1
 - Update API ListRoutes: add param ResourceGroupId.
 - Update API ListRoutes: update param NetworkId.

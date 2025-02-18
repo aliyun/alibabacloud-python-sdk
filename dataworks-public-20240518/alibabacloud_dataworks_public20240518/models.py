@@ -1924,7 +1924,9 @@ class SuccessInfoValue(TeaModel):
         success: bool = None,
         message: str = None,
     ):
+        # Indicates whether the request was successful.
         self.success = success
+        # The error message.
         self.message = message
 
     def validate(self):
@@ -2193,10 +2195,16 @@ class AttachDataQualityRulesToEvaluationTaskRequest(TeaModel):
         data_quality_rule_ids: List[int] = None,
         project_id: int = None,
     ):
+        # The ID of the data quality monitoring task that is associated with the rule.
+        # 
         # This parameter is required.
         self.data_quality_evaluation_task_id = data_quality_evaluation_task_id
+        # The IDs of the monitoring rules.
+        # 
         # This parameter is required.
         self.data_quality_rule_ids = data_quality_rule_ids
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID. You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -2235,10 +2243,16 @@ class AttachDataQualityRulesToEvaluationTaskShrinkRequest(TeaModel):
         data_quality_rule_ids_shrink: str = None,
         project_id: int = None,
     ):
+        # The ID of the data quality monitoring task that is associated with the rule.
+        # 
         # This parameter is required.
         self.data_quality_evaluation_task_id = data_quality_evaluation_task_id
+        # The IDs of the monitoring rules.
+        # 
         # This parameter is required.
         self.data_quality_rule_ids_shrink = data_quality_rule_ids_shrink
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID. You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -2278,6 +2292,9 @@ class AttachDataQualityRulesToEvaluationTaskResponseBody(TeaModel):
     ):
         # Id of the request
         self.request_id = request_id
+        # The value of the association is as follows:
+        # - true: The call is successful.
+        # - false: the call failed.
         self.success = success
 
     def validate(self):
@@ -2350,6 +2367,7 @@ class BatchUpdateTasksRequestTasksDataSource(TeaModel):
         self,
         name: str = None,
     ):
+        # The name of the data source.
         self.name = name
 
     def validate(self):
@@ -2379,8 +2397,11 @@ class BatchUpdateTasksRequestTasksRuntimeResource(TeaModel):
         image: str = None,
         resource_group_id: str = None,
     ):
+        # The default number of compute units (CUs) configured for task running.
         self.cu = cu
+        # The ID of the image configured for task running.
         self.image = image
+        # The ID of the resource group for scheduling configured for task running.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -2417,8 +2438,11 @@ class BatchUpdateTasksRequestTasksTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
+        # 
         # This parameter is required.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -2454,10 +2478,22 @@ class BatchUpdateTasksRequestTasksTrigger(TeaModel):
         start_time: str = None,
         type: str = None,
     ):
+        # The CRON expression of the task. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.cron = cron
+        # The end time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.end_time = end_time
+        # The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
+        # 
+        # *   Pause
+        # *   Skip
+        # *   Normal
         self.recurrence = recurrence
+        # The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.start_time = start_time
+        # The trigger type. Valid values:
+        # 
+        # *   Scheduler: periodic scheduling
+        # *   Manual: manual scheduling
         self.type = type
 
     def validate(self):
@@ -2513,19 +2549,40 @@ class BatchUpdateTasksRequestTasks(TeaModel):
         timeout: int = None,
         trigger: BatchUpdateTasksRequestTasksTrigger = None,
     ):
+        # The information about the associated data source.
         self.data_source = data_source
+        # The description of the task.
         self.description = description
+        # The environment of the workspace. Valid values:
+        # 
+        # *   Prod: production environment
+        # *   Dev: development environment
         self.env_type = env_type
+        # The task ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The name of the task.
         self.name = name
+        # The account ID of the task owner.
         self.owner = owner
+        # The rerun interval. Unit: seconds.
         self.rerun_interval = rerun_interval
+        # The rerun mode. Valid values:
+        # 
+        # *   AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
+        # *   FailureAllowed: The task can be rerun only after it fails to run.
+        # *   AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
         self.rerun_mode = rerun_mode
+        # The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
         self.rerun_times = rerun_times
+        # The configurations of the runtime environment, such as the resource group information.
         self.runtime_resource = runtime_resource
+        # The tags.
         self.tags = tags
+        # The timeout period of task running. Unit: seconds.
         self.timeout = timeout
+        # The trigger method.
         self.trigger = trigger
 
     def validate(self):
@@ -2619,7 +2676,9 @@ class BatchUpdateTasksRequest(TeaModel):
         comment: str = None,
         tasks: List[BatchUpdateTasksRequestTasks] = None,
     ):
+        # The remarks.
         self.comment = comment
+        # The tasks.
         self.tasks = tasks
 
     def validate(self):
@@ -2660,7 +2719,9 @@ class BatchUpdateTasksShrinkRequest(TeaModel):
         comment: str = None,
         tasks_shrink: str = None,
     ):
+        # The remarks.
         self.comment = comment
+        # The tasks.
         self.tasks_shrink = tasks_shrink
 
     def validate(self):
@@ -2693,7 +2754,9 @@ class BatchUpdateTasksResponseBody(TeaModel):
         request_id: str = None,
         success_info: Dict[str, SuccessInfoValue] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The result of the batch operation, which is in the MAP structure. The task ID serves as a key, and the result serves as a value.
         self.success_info = success_info
 
     def validate(self):
@@ -2816,6 +2879,7 @@ class CloneDataSourceResponseBody(TeaModel):
     ):
         # The ID of the cloned data source.
         self.id = id
+        # The ID of the request. It is used to locate logs and troubleshoot problems.
         self.request_id = request_id
 
     def validate(self):
@@ -3086,6 +3150,7 @@ class CreateAlertRuleRequestTriggerConditionExtensionError(TeaModel):
         auto_rerun_alert_enabled: bool = None,
         stream_task_ids: List[int] = None,
     ):
+        # Specifies whether to trigger an alert if a batch synchronization task is automatically rerun upon a failure.
         self.auto_rerun_alert_enabled = auto_rerun_alert_enabled
         # The IDs of the real-time computing tasks. This parameter is required when you monitor real-time computing tasks.
         self.stream_task_ids = stream_task_ids
@@ -3482,7 +3547,7 @@ class CreateAlertRuleRequest(TeaModel):
         self.name = name
         # The configuration for the alert notification.
         self.notification = notification
-        # The ID of the Alibaba Cloud account used by the creator of the rule.
+        # The ID of the Alibaba Cloud account used by the owner of the rule.
         # 
         # This parameter is required.
         self.owner = owner
@@ -3551,7 +3616,7 @@ class CreateAlertRuleShrinkRequest(TeaModel):
         self.name = name
         # The configuration for the alert notification.
         self.notification_shrink = notification_shrink
-        # The ID of the Alibaba Cloud account used by the creator of the rule.
+        # The ID of the Alibaba Cloud account used by the owner of the rule.
         # 
         # This parameter is required.
         self.owner = owner
@@ -4196,9 +4261,9 @@ class CreateDIJobRequestJobSettingsColumnDataTypeSettings(TeaModel):
         destination_data_type: str = None,
         source_data_type: str = None,
     ):
-        # The data type of the destination field.
+        # The data type of the destination field. Valid values: bigint, boolean, string, text, datetime, timestamp, decimal, and binary. Different types of data sources support different data types.
         self.destination_data_type = destination_data_type
-        # The data type of the source field.
+        # The data type of the source field. Valid values: Valid values: bigint, boolean, string, text, datetime, timestamp, decimal, and binary. Different types of data sources support different data types.
         self.source_data_type = source_data_type
 
     def validate(self):
@@ -4318,14 +4383,14 @@ class CreateDIJobRequestJobSettingsRuntimeSettings(TeaModel):
     ):
         # The name of the configuration item. Valid values:
         # 
-        # *   runtime.offline.speed.limit.mb: specifies the maximum transmission rate that is allowed for a batch synchronization task. This configuration item takes effect only when runtime.offline.speed.limit.enable is set to true.
-        # *   runtime.offline.speed.limit.enable: specifies whether throttling is enabled for a batch synchronization task.
-        # *   dst.offline.connection.max: specifies the maximum number of connections that are allowed for writing data to the destination of a batch synchronization task.
-        # *   runtime.offline.concurrent: specifies the maximum number of parallel threads that are allowed for a batch synchronization task.
-        # *   dst.realtime.connection.max: specifies the maximum number of connections that are allowed for writing data to the destination of a real-time synchronization task.
-        # *   runtime.enable.auto.create.schema: specifies whether schemas are automatically created in the destination of a synchronization task.
         # *   src.offline.datasource.max.connection: specifies the maximum number of connections that are allowed for reading data from the source of a batch synchronization task.
+        # *   dst.offline.truncate: specifies whether to clear the destination table before data writing.
+        # *   runtime.offline.speed.limit.enable: specifies whether throttling is enabled for a batch synchronization task.
+        # *   runtime.offline.concurrent: specifies the maximum number of parallel threads that are allowed for a batch synchronization task.
+        # *   runtime.enable.auto.create.schema: specifies whether schemas are automatically created in the destination of a synchronization task.
         # *   runtime.realtime.concurrent: specifies the maximum number of parallel threads that are allowed for a real-time synchronization task.
+        # *   runtime.realtime.failover.minute.dataxcdc: The maximum waiting duration before a synchronization task retries the next restart if the previous restart fails after failover occurs. Unit: minutes.
+        # *   runtime.realtime.failover.times.dataxcdc: The maximum number of failures that are allowed for restarting a synchronization task after failovers occur.
         self.name = name
         # The value of the configuration item.
         self.value = value
@@ -4363,13 +4428,31 @@ class CreateDIJobRequestJobSettings(TeaModel):
         ddl_handling_settings: List[CreateDIJobRequestJobSettingsDdlHandlingSettings] = None,
         runtime_settings: List[CreateDIJobRequestJobSettingsRuntimeSettings] = None,
     ):
-        # The channel control settings for the synchronization task. The value of this parameter must be a JSON string.
+        # The channel control settings for the synchronization task. You can configure special channel control settings for the following synchronization links: data synchronization between Hologres data sources and data synchronization from Hologres to Kafka.
+        # 
+        # 1.  Data synchronization from Hologres to Kafka
+        # 
+        # *   Example: {"destinationChannelSettings":{"kafkaClientProperties":[{"key":"linger.ms","value":"100"}],"keyColumns":["col3"],"writeMode":"canal"}}
+        # *   kafkaClientProperties: the parameters related to a Kafka producer, which are used when you write data to a Kafka data source.
+        # *   keyColumns: the names of Kafka columns to which you want to write data.
+        # *   writeMode: the writing format. Valid values: json and canal.
+        # 
+        # 2.  Data synchronization between Hologres data sources
+        # 
+        # *   Example: {"destinationChannelSettings":{"conflictMode":"replace","dynamicColumnAction":"replay","writeMode":"replay"}}
+        # *   conflictMode: the policy used to handle a conflict that occurs during data writing to Hologres. Valid values: replace and ignore.
+        # *   writeMode: the mode in which you want to write data to Hologres. Valid values: replay and insert.
+        # *   dynamicColumnAction: the method used to write data to dynamic columns in a Hologres table. Valid values: replay, insert, and ignore.
         self.channel_settings = channel_settings
         # The data type mappings between source fields and destination fields.
+        # 
+        # >  "ColumnDataTypeSettings":[ { "SourceDataType":"Bigint", "DestinationDataType":"Text" } ]
         self.column_data_type_settings = column_data_type_settings
         # The settings for periodic scheduling.
         self.cycle_schedule_settings = cycle_schedule_settings
         # The processing settings for DDL messages.
+        # 
+        # >  "DDLHandlingSettings":[ { "Type":"Insert", "Action":"Normal" } ]
         self.ddl_handling_settings = ddl_handling_settings
         # The runtime settings.
         self.runtime_settings = runtime_settings
@@ -4683,6 +4766,7 @@ class CreateDIJobRequestTableMappingsSourceObjectSelectionRules(TeaModel):
         # The object type. Valid values:
         # 
         # *   Table
+        # *   Schema
         # *   Database
         self.object_type = object_type
 
@@ -4742,6 +4826,7 @@ class CreateDIJobRequestTableMappingsTransformationRules(TeaModel):
         # 
         # *   Table
         # *   Schema
+        # *   Database
         self.rule_target_type = rule_target_type
 
     def validate(self):
@@ -4778,7 +4863,7 @@ class CreateDIJobRequestTableMappings(TeaModel):
         source_object_selection_rules: List[CreateDIJobRequestTableMappingsSourceObjectSelectionRules] = None,
         transformation_rules: List[CreateDIJobRequestTableMappingsTransformationRules] = None,
     ):
-        # The list of rules used to select synchronization objects in the source. The objects can be databases or tables.
+        # The list of rules used to select synchronization objects in the source.
         self.source_object_selection_rules = source_object_selection_rules
         # The list of transformation rules that you want to apply to the synchronization objects selected from the source. Each entry in the list defines a transformation rule.
         self.transformation_rules = transformation_rules
@@ -4840,35 +4925,52 @@ class CreateDIJobRequestTransformationRules(TeaModel):
         # *   HandleDml
         # *   DefineIncrementalCondition
         # *   DefineCycleScheduleSettings
-        # *   DefineRuntimeSettings
         # *   DefinePartitionKey
         self.rule_action_type = rule_action_type
         # The expression of the rule. The expression must be a JSON string.
         # 
-        # Example of a renaming rule: {"expression":"${srcDatasourceName}_${srcDatabaseName}_0922","variables":[{"variableName":"srcDatabaseName","variableRules":[{"from":"fromdb","to":"todb"}]}]}
+        # 1.  Example of a renaming rule
         # 
+        # *   Example: {"expression":"${srcDatasourceName}_${srcDatabaseName}_0922" }
         # *   expression: the expression of the renaming rule. You can use the following variables in an expression: ${srcDatasourceName}, ${srcDatabaseName}, and ${srcTableName}. ${srcDatasourceName} specifies the name of the source. ${srcDatabaseName} specifies the name of a source database. ${srcTableName} specifies the name of a source table.
-        # *   variables: the generation rule for a variable used in the expression of the renaming rule. The default value of the specified variable is the original value of the object indicated by the variable. You can define a group of string replacement rules to change the original values based on your business requirements. variableName: the name of the variable. The variable name cannot be enclosed in ${}. variableRules: the string replacement rules for variables. The system runs the string replacement rules in sequence. from specifies the original string. to specifies the new string.
         # 
-        # Example of a rule used to add a specific field to the destination and assign a value to the field: {"columns":[{"columnName":"my_add_column","columnValueType":"Constant","columnValue":"123"}]}
+        # 2.  Example of a column addition rule
         # 
+        # *   Example: {"columns":[{"columnName":"my_add_column","columnValueType":"Constant","columnValue":"123"}]}
         # *   If you do not configure such a rule, no fields are added to the destination and no values are assigned by default.
-        # *   columnName: the name of the field that you want to add.
+        # *   columnName: the name of the field that is added.
         # *   columnValueType: the value type of the field. Valid values: Constant and Variable.
-        # *   columnValue: the value of the field. If you set the valueType parameter to Constant, set the columnValue parameter to a custom constant of the STRING type. If you set the valueType parameter to Variable, set the columnValue to a built-in variable. The following built-in variables are supported: EXECUTE_TIME (LONG data type), DB_NAME_SRC (STRING data type), DATASOURCE_NAME_SRC (STRING data type), TABLE_NAME_SRC (STRING data type), DB_NAME_DEST (STRING data type), DATASOURCE_NAME_DEST (STRING data type), TABLE_NAME_DEST (STRING data type), and DB_NAME_SRC_TRANSED (STRING data type). EXECUTE_TIME specifies the execution time. DB_NAME_SRC specifies the name of a source database. DATASOURCE_NAME_SRC specifies the name of the source. TABLE_NAME_SRC specifies the name of a source table. DB_NAME_DEST specifies the name of a destination database. DATASOURCE_NAME_DEST specifies the name of the destination. TABLE_NAME_DEST specifies the name of a destination table. DB_NAME_SRC_TRANSED specifies the database name obtained after a transformation.
+        # *   columnValue: the value of the field. If the columnValueType parameter is set to Constant, set the columnValue parameter to a constant of the STRING data type. If the columnValueType parameter is set to Variable, set the columnValue parameter to a built-in variable. The following built-in variables are supported: EXECUTE_TIME (LONG data type), DB_NAME_SRC (STRING data type), DATASOURCE_NAME_SRC (STRING data type), TABLE_NAME_SRC (STRING data type), DB_NAME_DEST (STRING data type), DATASOURCE_NAME_DEST (STRING data type), TABLE_NAME_DEST (STRING data type), and DB_NAME_SRC_TRANSED (STRING data type). EXECUTE_TIME specifies the execution time. DB_NAME_SRC specifies the name of a source database. DATASOURCE_NAME_SRC specifies the name of the source. TABLE_NAME_SRC specifies the name of a source table. DB_NAME_DEST specifies the name of a destination database. DATASOURCE_NAME_DEST specifies the name of the destination. TABLE_NAME_DEST specifies the name of a destination table. DB_NAME_SRC_TRANSED specifies the database name obtained after a transformation.
         # 
-        # Example of a rule used to specify primary key fields for a destination table: {"columns":["ukcolumn1","ukcolumn2"]}
+        # 3.  Example of a rule used to specify primary key fields for a destination table
         # 
+        # *   Example: {"columns":["ukcolumn1","ukcolumn2"]}
         # *   If you do not configure such a rule, the primary key fields in the mapped source table are used for the destination table by default.
         # *   If the destination table is an existing table, Data Integration does not modify the schema of the destination table. If the specified primary key fields do not exist in the destination table, an error is reported when the synchronization task starts to run.
         # *   If the destination table is automatically created by the system, Data Integration automatically creates the schema of the destination table. The schema contains the primary key fields that you specify. If the specified primary key fields do not exist in the destination table, an error is reported when the synchronization task starts to run.
         # 
-        # Example of a rule used to process DML messages: {"dmlPolicies":[{"dmlType":"Delete","dmlAction":"Filter","filterCondition":"id > 1"}]}
+        # 4.  Example of a rule used to process DML messages
         # 
+        # *   Example: {"dmlPolicies":[{"dmlType":"Delete","dmlAction":"Filter","filterCondition":"id > 1"}]}
         # *   If you do not configure such a rule, the default processing policy for messages generated for insert, update, and delete operations is Normal.
         # *   dmlType: the DML operation. Valid values: Insert, Update, and Delete.
         # *   dmlAction: the processing policy for DML messages. Valid values: Normal, Ignore, Filter, and LogicalDelete. Filter indicates conditional processing. You can set the dmlAction parameter to Filter only when the dmlType parameter is set to Update or Delete.
         # *   filterCondition: the condition used to filter DML messages. This parameter is required only when the dmlAction parameter is set to Filter.
+        # 
+        # 5.  Example of a rule used to perform incremental synchronization
+        # 
+        # *   Example: {"where":"id > 0"}
+        # *   You can configure such a rule to perform incremental synchronization.
+        # 
+        # 6.  Example of a rule used to configure scheduling parameters for an auto triggered task
+        # 
+        # *   Example: {"cronExpress":" \\* \\* \\* \\* \\* \\*", "cycleType":"1"}
+        # *   You can configure such a rule to configure scheduling parameters for an auto triggered task.
+        # 
+        # 7.  Example of a rule used to specify a partition key
+        # 
+        # *   Example: {"columns":["id"]}
+        # *   You can configure such a rule to specify a partition key.
         self.rule_expression = rule_expression
         # The name of the rule. If the values of the RuleActionType parameter and the RuleTargetType parameter are the same for multiple transformation rules, you must make sure that the transformation rule names are unique.
         self.rule_name = rule_name
@@ -4876,6 +4978,7 @@ class CreateDIJobRequestTransformationRules(TeaModel):
         # 
         # *   Table
         # *   Schema
+        # *   Database
         self.rule_target_type = rule_target_type
 
     def validate(self):
@@ -4933,7 +5036,7 @@ class CreateDIJobRequest(TeaModel):
         # 
         # This parameter is required.
         self.destination_data_source_settings = destination_data_source_settings
-        # The destination type. Valid values: Hologres and Hive.
+        # The destination type. Valid values: Hologres, OSS-HDFS, OSS, MaxCompute, LogHub, StarRocks, DataHub, AnalyticDB for MySQL, Kafka, and Hive.
         # 
         # This parameter is required.
         self.destination_data_source_type = destination_data_source_type
@@ -4965,15 +5068,19 @@ class CreateDIJobRequest(TeaModel):
         # 
         # This parameter is required.
         self.source_data_source_settings = source_data_source_settings
-        # The source type. Set this parameter to MySQL.
+        # The source type. Valid values: PolarDB, MySQL, Kafka, LogHub, Hologres, Oracle, OceanBase, MongoDB, Redshift, Hive, SQL Server, Doris, and ClickHouse.
         # 
         # This parameter is required.
         self.source_data_source_type = source_data_source_type
         # The list of mappings between rules used to select synchronization objects in the source and transformation rules applied to the selected synchronization objects. Each entry in the list displays a mapping between a rule used to select synchronization objects and a transformation rule applied to the selected synchronization objects.
         # 
+        # >  [ { "SourceObjectSelectionRules":[ { "ObjectType":"Database", "Action":"Include", "ExpressionType":"Exact", "Expression":"biz_db" }, { "ObjectType":"Schema", "Action":"Include", "ExpressionType":"Exact", "Expression":"s1" }, { "ObjectType":"Table", "Action":"Include", "ExpressionType":"Exact", "Expression":"table1" } ], "TransformationRuleNames":[ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema" } ] } ]
+        # 
         # This parameter is required.
         self.table_mappings = table_mappings
-        # The list of transformation rules for objects involved in the synchronization task. Each entry in the list defines a transformation rule.
+        # The list of transformation rules for objects involved in the synchronization task.
+        # 
+        # >  [ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema", "RuleExpression":"{"expression":"${srcDatasoureName}_${srcDatabaseName}"}" } ]
         self.transformation_rules = transformation_rules
 
     def validate(self):
@@ -5108,7 +5215,7 @@ class CreateDIJobShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.destination_data_source_settings_shrink = destination_data_source_settings_shrink
-        # The destination type. Valid values: Hologres and Hive.
+        # The destination type. Valid values: Hologres, OSS-HDFS, OSS, MaxCompute, LogHub, StarRocks, DataHub, AnalyticDB for MySQL, Kafka, and Hive.
         # 
         # This parameter is required.
         self.destination_data_source_type = destination_data_source_type
@@ -5140,15 +5247,19 @@ class CreateDIJobShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.source_data_source_settings_shrink = source_data_source_settings_shrink
-        # The source type. Set this parameter to MySQL.
+        # The source type. Valid values: PolarDB, MySQL, Kafka, LogHub, Hologres, Oracle, OceanBase, MongoDB, Redshift, Hive, SQL Server, Doris, and ClickHouse.
         # 
         # This parameter is required.
         self.source_data_source_type = source_data_source_type
         # The list of mappings between rules used to select synchronization objects in the source and transformation rules applied to the selected synchronization objects. Each entry in the list displays a mapping between a rule used to select synchronization objects and a transformation rule applied to the selected synchronization objects.
         # 
+        # >  [ { "SourceObjectSelectionRules":[ { "ObjectType":"Database", "Action":"Include", "ExpressionType":"Exact", "Expression":"biz_db" }, { "ObjectType":"Schema", "Action":"Include", "ExpressionType":"Exact", "Expression":"s1" }, { "ObjectType":"Table", "Action":"Include", "ExpressionType":"Exact", "Expression":"table1" } ], "TransformationRuleNames":[ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema" } ] } ]
+        # 
         # This parameter is required.
         self.table_mappings_shrink = table_mappings_shrink
-        # The list of transformation rules for objects involved in the synchronization task. Each entry in the list defines a transformation rule.
+        # The list of transformation rules for objects involved in the synchronization task.
+        # 
+        # >  [ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema", "RuleExpression":"{"expression":"${srcDatasoureName}_${srcDatabaseName}"}" } ]
         self.transformation_rules_shrink = transformation_rules_shrink
 
     def validate(self):
@@ -5311,11 +5422,22 @@ class CreateDataAssetTagRequest(TeaModel):
         value_type: str = None,
         values: List[str] = None,
     ):
+        # The description of the tag.
         self.description = description
+        # The tag key.
+        # 
         # This parameter is required.
         self.key = key
+        # The tag administrators.
         self.managers = managers
+        # The type of the tag value. Valid values:
+        # 
+        # *   Boolean
+        # *   Int
+        # *   String
+        # *   Double
         self.value_type = value_type
+        # The tag values.
         self.values = values
 
     def validate(self):
@@ -5363,11 +5485,22 @@ class CreateDataAssetTagShrinkRequest(TeaModel):
         value_type: str = None,
         values_shrink: str = None,
     ):
+        # The description of the tag.
         self.description = description
+        # The tag key.
+        # 
         # This parameter is required.
         self.key = key
+        # The tag administrators.
         self.managers_shrink = managers_shrink
+        # The type of the tag value. Valid values:
+        # 
+        # *   Boolean
+        # *   Int
+        # *   String
+        # *   Double
         self.value_type = value_type
+        # The tag values.
         self.values_shrink = values_shrink
 
     def validate(self):
@@ -5412,8 +5545,9 @@ class CreateDataAssetTagResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -5488,6 +5622,15 @@ class CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresh
         operator: str = None,
         value: str = None,
     ):
+        # 阈值表达式。
+        # 
+        # 波动率类型规则必须使用表达式方式表示波动阈值。如：
+        # 
+        # - 波动上升大于0.01： $checkValue > 0.01 
+        # - 波动下降大于0.01：$checkValue < -0.01 
+        # - 波动率绝对值：abs($checkValue) > 0.01
+        # 
+        # 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
         self.expression = expression
         # The comparison operator. Valid values:
         # 
@@ -5536,6 +5679,15 @@ class CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresh
         operator: str = None,
         value: str = None,
     ):
+        # 阈值表达式。
+        # 
+        # 波动率类型规则必须使用表达式方式表示波动阈值。如：
+        # 
+        # - 波动上升大于0.01： $checkValue > 0.01 
+        # - 波动下降大于0.01：$checkValue < -0.01 
+        # - 波动率绝对值：abs($checkValue) > 0.01
+        # 
+        # 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
         self.expression = expression
         # The comparison operator. Valid values:
         # 
@@ -5584,6 +5736,15 @@ class CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresh
         operator: str = None,
         value: str = None,
     ):
+        # 阈值表达式。
+        # 
+        # 波动率类型规则必须使用表达式方式表示波动阈值。如：
+        # 
+        # - 波动上升大于0.01： $checkValue > 0.01 
+        # - 波动下降大于0.01：$checkValue < -0.01 
+        # - 波动率绝对值：abs($checkValue) > 0.01
+        # 
+        # 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
         self.expression = expression
         # The comparison operator. Valid values:
         # 
@@ -5689,8 +5850,8 @@ class CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig(TeaMo
         # The threshold calculation method. Valid values:
         # 
         # *   Fixed
-        # *   Fluctuation
-        # *   FluctuationDiscreate
+        # *   Fluctation
+        # *   FluctationDiscreate
         # *   Auto
         # *   Average
         self.type = type
@@ -5846,7 +6007,7 @@ class CreateDataQualityEvaluationTaskRequestDataQualityRules(TeaModel):
         self.description = description
         # Specifies whether to enable the monitoring rule.
         self.enabled = enabled
-        # The operations that you can perform after the rule-based check.
+        # The operations that you can perform after the rule-based check fails.
         self.error_handlers = error_handlers
         # The rule ID.
         self.id = id
@@ -5973,7 +6134,7 @@ class CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificati
         self,
         channels: List[str] = None,
     ):
-        # The alert notification method.
+        # The alert notification methods.
         self.channels = channels
 
     def validate(self):
@@ -6007,9 +6168,7 @@ class CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificati
         # 
         # *   atAll: specifies that all members in a group are mentioned when alerts are sent by using DingTalk. This parameter is valid only if you set ReceiverType to DingdingUrl.
         self.extension = extension
-        # The type of the alert recipient.
-        # 
-        # Valid values:
+        # The type of the alert recipient. Valid values:
         # 
         # *   WebhookUrl
         # *   FeishuUrl
@@ -6054,7 +6213,7 @@ class CreateDataQualityEvaluationTaskRequestNotificationsNotifications(TeaModel)
         notification_channels: List[CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationChannels] = None,
         notification_receivers: List[CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers] = None,
     ):
-        # The alert notification method.
+        # The alert notification methods.
         self.notification_channels = notification_channels
         # The configurations of alert recipients.
         self.notification_receivers = notification_receivers
@@ -6152,9 +6311,17 @@ class CreateDataQualityEvaluationTaskRequestTarget(TeaModel):
         partition_spec: str = None,
         table_guid: str = None,
     ):
-        # The type of the database to which the table belongs.
+        # The type of the database to which the table belongs. Valid values:
+        # 
+        # *   maxcompute
+        # *   hologres
+        # *   cdh
+        # *   analyticdb_for_mysql
+        # *   starrocks
+        # *   emr
+        # *   analyticdb_for_postgresql
         self.database_type = database_type
-        # The partition configuration of the partitioned table.
+        # The configuration of the partitioned table.
         self.partition_spec = partition_spec
         # The ID of the table in Data Map.
         self.table_guid = table_guid
@@ -6537,7 +6704,9 @@ class CreateDataQualityEvaluationTaskInstanceRequestRuntimeResource(TeaModel):
         cu: float = None,
         resource_group_id: str = None,
     ):
+        # The task runs to configure CU consumption. If Serverless resource groups are used, you must specify this parameter.
         self.cu = cu
+        # The identifier of the scheduling resource group configured for running the task.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -6572,12 +6741,22 @@ class CreateDataQualityEvaluationTaskInstanceRequest(TeaModel):
         project_id: int = None,
         runtime_resource: CreateDataQualityEvaluationTaskInstanceRequestRuntimeResource = None,
     ):
+        # The ID of the data quality monitoring task.
+        # 
         # This parameter is required.
         self.data_quality_evaluation_task_id = data_quality_evaluation_task_id
+        # Data quality verification execution parameters in JSON format. The available keys are as follows:
+        # - triggerTime: the millisecond timestamp of the trigger time. The baseline time of the $[yyyymmdd] expression in the data range of data quality monitoring. Required.
+        # 
         # This parameter is required.
         self.parameters = parameters
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace management page to obtain the ID.
+        # 
+        # This parameter is used to determine the DataWorks workspaces used for this API call.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # Resource Group information, which must be filled in when running non-MaxCompute data quality verification.
         self.runtime_resource = runtime_resource
 
     def validate(self):
@@ -6622,12 +6801,22 @@ class CreateDataQualityEvaluationTaskInstanceShrinkRequest(TeaModel):
         project_id: int = None,
         runtime_resource_shrink: str = None,
     ):
+        # The ID of the data quality monitoring task.
+        # 
         # This parameter is required.
         self.data_quality_evaluation_task_id = data_quality_evaluation_task_id
+        # Data quality verification execution parameters in JSON format. The available keys are as follows:
+        # - triggerTime: the millisecond timestamp of the trigger time. The baseline time of the $[yyyymmdd] expression in the data range of data quality monitoring. Required.
+        # 
         # This parameter is required.
         self.parameters = parameters
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace management page to obtain the ID.
+        # 
+        # This parameter is used to determine the DataWorks workspaces used for this API call.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # Resource Group information, which must be filled in when running non-MaxCompute data quality verification.
         self.runtime_resource_shrink = runtime_resource_shrink
 
     def validate(self):
@@ -6668,6 +6857,7 @@ class CreateDataQualityEvaluationTaskInstanceResponseBody(TeaModel):
         id: int = None,
         request_id: str = None,
     ):
+        # The ID of the data quality monitoring instance.
         self.id = id
         # Id of the request
         self.request_id = request_id
@@ -6744,6 +6934,15 @@ class CreateDataQualityRuleRequestCheckingConfigThresholdsCritical(TeaModel):
         operator: str = None,
         value: str = None,
     ):
+        # The threshold expression.
+        # 
+        # If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Example:
+        # 
+        # *   $checkValue > 0.01
+        # *   $checkValue < -0.01
+        # *   abs($checkValue) > 0.01
+        # 
+        # If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
         self.expression = expression
         # The comparison operator. Valid values:
         # 
@@ -6792,6 +6991,15 @@ class CreateDataQualityRuleRequestCheckingConfigThresholdsExpected(TeaModel):
         operator: str = None,
         value: str = None,
     ):
+        # The threshold expression.
+        # 
+        # If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Example:
+        # 
+        # *   $checkValue > 0.01
+        # *   $checkValue < -0.01
+        # *   abs($checkValue) > 0.01
+        # 
+        # If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
         self.expression = expression
         # The comparison operator. Valid values:
         # 
@@ -6840,6 +7048,15 @@ class CreateDataQualityRuleRequestCheckingConfigThresholdsWarned(TeaModel):
         operator: str = None,
         value: str = None,
     ):
+        # The threshold expression.
+        # 
+        # If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Example:
+        # 
+        # *   $checkValue > 0.01
+        # *   $checkValue < -0.01
+        # *   abs($checkValue) > 0.01
+        # 
+        # If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
         self.expression = expression
         # The comparison operator. Valid values:
         # 
@@ -6938,7 +7155,7 @@ class CreateDataQualityRuleRequestCheckingConfig(TeaModel):
         thresholds: CreateDataQualityRuleRequestCheckingConfigThresholds = None,
         type: str = None,
     ):
-        # The method that is used to query the referenced samples. To obtain some types of thresholds, you need to query reference values. In this example, an expression is used to specify the query method of referenced samples.
+        # The method that is used to query the referenced samples. To obtain some types of thresholds, you need to query reference samples and perform aggregate operations on the reference values. In this example, an expression is used to specify the query method of referenced samples.
         self.referenced_samples_filter = referenced_samples_filter
         # The threshold settings.
         self.thresholds = thresholds
@@ -6988,7 +7205,7 @@ class CreateDataQualityRuleRequestErrorHandlers(TeaModel):
         error_data_filter: str = None,
         type: str = None,
     ):
-        # The SQL statement that is used to filter failed tasks. If the rule is defined by custom SQL statements, you must specify an SQL statement to filter failed tasks.
+        # The SQL statement that is used to filter failed tasks. If you define the rule by using custom SQL statements, you must specify an SQL statement to filter failed tasks.
         self.error_data_filter = error_data_filter
         # The type of the operation. Valid values:
         # 
@@ -7027,7 +7244,7 @@ class CreateDataQualityRuleRequestSamplingConfig(TeaModel):
         sampling_filter: str = None,
         setting_config: str = None,
     ):
-        # The metrics used for sampling. Valid values:
+        # The metrics used for sampling. You can leave this parameter empty if you use a rule template. Valid values:
         # 
         # *   Count: the number of rows in the table.
         # *   Min: the minimum value of the field.
@@ -7043,7 +7260,7 @@ class CreateDataQualityRuleRequestSamplingConfig(TeaModel):
         # *   GroupCount: the field value and the number of rows for each field value.
         # *   CountNotIn: the number of rows in which the field values are different from the referenced values that you specified in the rule.
         # *   CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
-        # *   UserDefinedSql: indicates that data is sampled by executing custom SQL statements.
+        # *   UserDefinedSql: specifies that data is sampled by executing custom SQL statements.
         self.metric = metric
         # The parameters required for sampling.
         self.metric_parameters = metric_parameters
@@ -7177,7 +7394,7 @@ class CreateDataQualityRuleRequest(TeaModel):
         self.project_id = project_id
         # The sampling settings.
         self.sampling_config = sampling_config
-        # The strength of the rule.
+        # The strength of the monitoring rule. Valid values:
         # 
         # *   Normal
         # *   High
@@ -7292,7 +7509,7 @@ class CreateDataQualityRuleShrinkRequest(TeaModel):
         self.project_id = project_id
         # The sampling settings.
         self.sampling_config_shrink = sampling_config_shrink
-        # The strength of the rule.
+        # The strength of the monitoring rule. Valid values:
         # 
         # *   Normal
         # *   High
@@ -7364,6 +7581,7 @@ class CreateDataQualityRuleResponseBody(TeaModel):
         id: int = None,
         request_id: str = None,
     ):
+        # The ID of the rule.
         self.id = id
         # The request ID.
         self.request_id = request_id
@@ -7684,6 +7902,7 @@ class CreateDataQualityRuleTemplateResponseBody(TeaModel):
         code: str = None,
         request_id: str = None,
     ):
+        # The Code of the rule template.
         self.code = code
         # The request ID.
         self.request_id = request_id
@@ -7785,6 +8004,10 @@ class CreateDataSourceRequest(TeaModel):
         # 
         # This parameter is required.
         self.name = name
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/overview) and go to the workspace management page to obtain the ID.
+        # 
+        # This parameter is used to determine the DataWorks workspaces used for this API call.
+        # 
         # This parameter is required.
         self.project_id = project_id
         # The type of the data source. More than 70 types of data sources are supported in DataWorks.
@@ -7840,6 +8063,7 @@ class CreateDataSourceResponseBody(TeaModel):
     ):
         # The data source ID.
         self.id = id
+        # The request ID. You can locate logs and troubleshoot issues based on the ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7919,6 +8143,10 @@ class CreateDataSourceSharedRuleRequest(TeaModel):
         # 
         # This parameter is required.
         self.data_source_id = data_source_id
+        # Share data sources to the target project environment, including
+        # - Dev (Development Environment)
+        # - Prod (production environment)
+        # 
         # This parameter is required.
         self.env_type = env_type
         # The user with which you want to share the data source. If you do not configure this parameter, the data source is shared to an entire workspace.
@@ -7968,6 +8196,7 @@ class CreateDataSourceSharedRuleResponseBody(TeaModel):
     ):
         # The sharing rule ID.
         self.id = id
+        # The ID of the request. It is used to locate logs and troubleshoot problems.
         self.request_id = request_id
 
     def validate(self):
@@ -8282,7 +8511,7 @@ class CreateFunctionResponseBody(TeaModel):
     ):
         # The ID of the UDF.
         self.id = id
-        # The request ID.
+        # The request ID. You can locate logs and troubleshoot issues based on the ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8358,12 +8587,20 @@ class CreateNetworkRequest(TeaModel):
         vpc_id: str = None,
         vswitch_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
         # This parameter is required.
         self.client_token = client_token
+        # The ID of the serverless resource group.
+        # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
+        # The ID of the virtual private cloud (VPC).
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
+        # The VSwitch ID.
+        # 
         # This parameter is required.
         self.vswitch_id = vswitch_id
 
@@ -8406,8 +8643,11 @@ class CreateNetworkResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The network ID.
         self.id = id
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -8497,13 +8737,13 @@ class CreateNodeRequest(TeaModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The scene of the node. This parameter determines the location (the DataStudio pane or the Manual pane) of the node. You can set this parameter to DATAWORKS_MANUAL_WORKFLOW only if the ContainerId parameter is configured and the container specified by ContainerId is a manually triggered workflow.
+        # The scene of the node. This parameter determines the location (the DataStudio pane or the Manual pane) of the node. You can set this parameter to DataworksManualWorkflow only if the ContainerId parameter is configured and the container specified by ContainerId is a manually triggered workflow.
         # 
         # Valid values:
         # 
-        # *   DATAWORKS_PROJECT
-        # *   DATAWORKS_MANUAL_WORKFLOW
-        # *   DATAWORKS_MANUAL_TASK
+        # *   DataworksProject
+        # *   DataworksManualWorkflow
+        # *   DataworksManualTask
         # 
         # This parameter is required.
         self.scene = scene
@@ -8669,7 +8909,7 @@ class CreateProjectRequest(TeaModel):
     ):
         # The ID of the Alibaba Cloud resource group to which the workspace belongs. You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) and go to the Resource Group page to query the ID.
         # 
-        # You can configure this parameter to specify an Alibaba Cloud resource group that you want to use to manage the workspace.
+        # You must configure this parameter to specify an Alibaba Cloud resource group for the workspace that you want to create.
         self.aliyun_resource_group_id = aliyun_resource_group_id
         # The tags.
         self.aliyun_resource_tags = aliyun_resource_tags
@@ -8690,6 +8930,12 @@ class CreateProjectRequest(TeaModel):
         # This parameter is required.
         self.display_name = display_name
         # The name of the workspace.
+        # 
+        # Limits:
+        # 
+        # *   The workspace name must be unqiue in a region.
+        # *   The workspace name can contain letters, digits, and underscores (_), and must start with a letter.
+        # *   The workspace name must be 3 to 28 characters in length.
         # 
         # This parameter is required.
         self.name = name
@@ -8769,7 +9015,7 @@ class CreateProjectShrinkRequest(TeaModel):
     ):
         # The ID of the Alibaba Cloud resource group to which the workspace belongs. You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) and go to the Resource Group page to query the ID.
         # 
-        # You can configure this parameter to specify an Alibaba Cloud resource group that you want to use to manage the workspace.
+        # You must configure this parameter to specify an Alibaba Cloud resource group for the workspace that you want to create.
         self.aliyun_resource_group_id = aliyun_resource_group_id
         # The tags.
         self.aliyun_resource_tags_shrink = aliyun_resource_tags_shrink
@@ -8790,6 +9036,12 @@ class CreateProjectShrinkRequest(TeaModel):
         # This parameter is required.
         self.display_name = display_name
         # The name of the workspace.
+        # 
+        # Limits:
+        # 
+        # *   The workspace name must be unqiue in a region.
+        # *   The workspace name can contain letters, digits, and underscores (_), and must start with a letter.
+        # *   The workspace name must be 3 to 28 characters in length.
         # 
         # This parameter is required.
         self.name = name
@@ -8854,8 +9106,9 @@ class CreateProjectResponseBody(TeaModel):
         project_id: int = None,
         request_id: str = None,
     ):
-        self.id = id
         # The workspace ID.
+        self.id = id
+        # The workspace ID. Note: This parameter is deprecated and is replaced by the Id parameter.
         self.project_id = project_id
         # The request ID.
         self.request_id = request_id
@@ -9149,7 +9402,7 @@ class CreateResourceResponseBody(TeaModel):
     ):
         # The ID of the file resource.
         self.id = id
-        # The request ID.
+        # A5B97987-66EA-5563-9599-A2752292XXXX
         self.request_id = request_id
 
     def validate(self):
@@ -9223,7 +9476,9 @@ class CreateResourceGroupRequestAliyunResourceTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -9266,22 +9521,38 @@ class CreateResourceGroupRequest(TeaModel):
         vpc_id: str = None,
         vswitch_id: str = None,
     ):
+        # The ID of the resource group.
         self.aliyun_resource_group_id = aliyun_resource_group_id
+        # The tags.
         self.aliyun_resource_tags = aliyun_resource_tags
+        # Specifies whether to enable auto-renewal.
         self.auto_renew_enabled = auto_renew_enabled
+        # The idempotent identifier of the client is used to ensure idempotent operation of creating a common resource group.
+        # 
         # This parameter is required.
         self.client_token = client_token
+        # The name of a common resource group. It must start with a letter and can contain letters, numbers, and underscores (_). It can be up to 128 characters in length.
+        # 
         # This parameter is required.
         self.name = name
+        # The duration of the payment.
         self.payment_duration = payment_duration
+        # The unit of the subscription duration. Valid values: Month and Year.
         self.payment_duration_unit = payment_duration_unit
+        # The billing method of the serverless resource group. Valid values: PrePaid and PostPaid. The value PrePaid indicates the subscription billing method, and the value PostPaid indicates the pay-as-you-go billing method.
+        # 
         # This parameter is required.
         self.payment_type = payment_type
+        # Note for creating a common resource group, which can contain letters, Chinese characters, numbers, underscores (_), and a maximum of 128 characters.
         self.remark = remark
         # The specifications of the resource group. Unit: compute unit (CU). This parameter is required only when you set the PaymentType parameter to PrePaid.
         self.spec = spec
+        # The ID of the virtual private cloud (VPC) with which the serverless resource group is associated by default.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
+        # The ID of the vSwitch with which the serverless resource group is associated by default.
+        # 
         # This parameter is required.
         self.vswitch_id = vswitch_id
 
@@ -9373,22 +9644,38 @@ class CreateResourceGroupShrinkRequest(TeaModel):
         vpc_id: str = None,
         vswitch_id: str = None,
     ):
+        # The ID of the resource group.
         self.aliyun_resource_group_id = aliyun_resource_group_id
+        # The tags.
         self.aliyun_resource_tags_shrink = aliyun_resource_tags_shrink
+        # Specifies whether to enable auto-renewal.
         self.auto_renew_enabled = auto_renew_enabled
+        # The idempotent identifier of the client is used to ensure idempotent operation of creating a common resource group.
+        # 
         # This parameter is required.
         self.client_token = client_token
+        # The name of a common resource group. It must start with a letter and can contain letters, numbers, and underscores (_). It can be up to 128 characters in length.
+        # 
         # This parameter is required.
         self.name = name
+        # The duration of the payment.
         self.payment_duration = payment_duration
+        # The unit of the subscription duration. Valid values: Month and Year.
         self.payment_duration_unit = payment_duration_unit
+        # The billing method of the serverless resource group. Valid values: PrePaid and PostPaid. The value PrePaid indicates the subscription billing method, and the value PostPaid indicates the pay-as-you-go billing method.
+        # 
         # This parameter is required.
         self.payment_type = payment_type
+        # Note for creating a common resource group, which can contain letters, Chinese characters, numbers, underscores (_), and a maximum of 128 characters.
         self.remark = remark
         # The specifications of the resource group. Unit: compute unit (CU). This parameter is required only when you set the PaymentType parameter to PrePaid.
         self.spec = spec
+        # The ID of the virtual private cloud (VPC) with which the serverless resource group is associated by default.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
+        # The ID of the vSwitch with which the serverless resource group is associated by default.
+        # 
         # This parameter is required.
         self.vswitch_id = vswitch_id
 
@@ -9463,8 +9750,11 @@ class CreateResourceGroupResponseBodyResourceGroupOrder(TeaModel):
         order_id: int = None,
         order_instance_id: str = None,
     ):
+        # The unique identifier of the serverless resource group.
         self.id = id
+        # The ID of the order to create a serverless resource group.
         self.order_id = order_id
+        # The ID of the order instance that created the serverless resource group.
         self.order_instance_id = order_instance_id
 
     def validate(self):
@@ -9502,8 +9792,11 @@ class CreateResourceGroupResponseBody(TeaModel):
         resource_group_order: CreateResourceGroupResponseBodyResourceGroupOrder = None,
         success: bool = None,
     ):
+        # The ID of the request. It is used to locate logs and troubleshoot problems.
         self.request_id = request_id
+        # The order information for creating a serverless resource group.
         self.resource_group_order = resource_group_order
+        # Whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -9583,8 +9876,12 @@ class CreateRouteRequest(TeaModel):
         destination_cidr: str = None,
         network_id: int = None,
     ):
+        # The CIDR blocks of the destination-based route.
+        # 
         # This parameter is required.
         self.destination_cidr = destination_cidr
+        # The network ID.
+        # 
         # This parameter is required.
         self.network_id = network_id
 
@@ -9619,7 +9916,9 @@ class CreateRouteResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The route ID.
         self.id = id
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -9814,7 +10113,15 @@ class CreateWorkflowInstancesRequestDefaultRunPropertiesAlert(TeaModel):
         notice_type: str = None,
         type: str = None,
     ):
+        # The notification method.
+        # - Sms: Sms only
+        # - Mail: Mail only
+        # - SmsMail: SMS and email.
         self.notice_type = notice_type
+        # The alert policy.
+        # - Success: successful alert
+        # - Failure: failed alarm
+        # - SuccessFailure: alerts for both success and failure
         self.type = type
 
     def validate(self):
@@ -9847,8 +10154,12 @@ class CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis(TeaModel):
         blocked: bool = None,
         enabled: bool = None,
     ):
+        # Whether to block the operation if the analysis fails.
+        # 
         # This parameter is required.
         self.blocked = blocked
+        # Whether to enable analysis.
+        # 
         # This parameter is required.
         self.enabled = enabled
 
@@ -9884,9 +10195,15 @@ class CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy(TeaModel):
         start_time: str = None,
         type: str = None,
     ):
+        # The end runtime. This field is required if the policy is set.
         self.end_time = end_time
+        # The default value is false.
         self.immediately = immediately
+        # The start time. This field is required if the policy is set.
         self.start_time = start_time
+        # The type of the time period. This field is required if the policy is set.
+        # - Daily: every day
+        # - Weekend: Weekends only
         self.type = type
 
     def validate(self):
@@ -9937,19 +10254,39 @@ class CreateWorkflowInstancesRequestDefaultRunProperties(TeaModel):
         run_policy: CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy = None,
         runtime_resource: str = None,
     ):
+        # Alarm configuration.
         self.alert = alert
+        # Analyze the configuration.
+        # 
         # This parameter is required.
         self.analysis = analysis
+        # The list of project IDs that do not need to be run.
         self.exclude_project_ids = exclude_project_ids
+        # The list of task IDs that you do not want to run.
         self.exclude_task_ids = exclude_task_ids
+        # The list of project IDs to be run.
         self.include_project_ids = include_project_ids
+        # The list of task IDs to be run.
         self.include_task_ids = include_task_ids
+        # The data replenishment mode. The default value is ManualSelection.
+        # - General: In normal mode, only one \\"roottaskkids\\" can be filled in, and \\"IncludeTaskIds\\" is optional. If not, the content in \\"roottaskkids\\" will be included by default.
+        # - ManualSelection: manually select, \\"roottaskkids\\" can be filled in multiple, \\"IncludeTaskIds\\" optional, if not, the content in \\"roottaskkids\\" will be included by default.
+        # - Chain: the link, \\"roottaskkids\\" is empty, and \\"IncludeTaskIds\\" is filled with two IDs, which are the start and end tasks respectively.
+        # - AllDownstream: all downstream, \\"roottaskkids\\" can only be filled in one
         self.mode = mode
+        # The running sequence. Default value: Asc.
+        # - Asc: ascending order by business date.
+        # - Desc: descending order by business date.
         self.order = order
+        # The number of rows that the task has. Values from 2 to 10 are parallelism and 1 is serial.
+        # 
         # This parameter is required.
         self.parallelism = parallelism
+        # The ID list of the root task.
         self.root_task_ids = root_task_ids
+        # Run the policy. If this field is empty, the task configuration is followed.
         self.run_policy = run_policy
+        # The identifier of the custom scheduling Resource Group. If this field is empty, the task configuration is followed.
         self.runtime_resource = runtime_resource
 
     def validate(self):
@@ -10030,8 +10367,12 @@ class CreateWorkflowInstancesRequestPeriodsBizDates(TeaModel):
         end_biz_date: str = None,
         start_biz_date: str = None,
     ):
+        # The end date of the business.
+        # 
         # This parameter is required.
         self.end_biz_date = end_biz_date
+        # The start business date.
+        # 
         # This parameter is required.
         self.start_biz_date = start_biz_date
 
@@ -10066,9 +10407,17 @@ class CreateWorkflowInstancesRequestPeriods(TeaModel):
         end_time: str = None,
         start_time: str = None,
     ):
+        # The list of business dates. You can specify a multi-segment business date (up to 7 segments).
+        # 
         # This parameter is required.
         self.biz_dates = biz_dates
+        # Specifies the end cycle time. Default value: 23:59:59.
+        # 
+        # If you enter this field, StartTime and EndTime must be filled in at the same time.
         self.end_time = end_time
+        # Specifies the start cycle time. Default value: 00:00:00.
+        # 
+        # If you enter this field, StartTime and EndTime must be filled in at the same time.
         self.start_time = start_time
 
     def validate(self):
@@ -10122,20 +10471,40 @@ class CreateWorkflowInstancesRequest(TeaModel):
         workflow_id: int = None,
         workflow_parameters: str = None,
     ):
+        # The default value is true.
         self.auto_start_enabled = auto_start_enabled
+        # The reason for the creation.
         self.comment = comment
+        # Runtime configuration.
         self.default_run_properties = default_run_properties
+        # The project environment.
+        # - Prod (production)
+        # - Dev
         self.env_type = env_type
+        # The name.
+        # 
         # This parameter is required.
         self.name = name
+        # Make up the data cycle settings.
         self.periods = periods
+        # The project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # Task parameters. Set parameters for a specific task. In JSON format, the key is the Task ID. For more information about the value format, see Task Script parameters (Task.Script. GetTask of the Parameter interface).
         self.task_parameters = task_parameters
+        # The type of the workflow instance.
+        # 
+        # - SupplementData: Retroactive data
+        # - ManualWorkflow: manual workflow
+        # 
         # This parameter is required.
         self.type = type
+        # The ID of the workflow to which the workflow belongs. The default value of WorkflowId for retroactive data is 1.
+        # 
         # This parameter is required.
         self.workflow_id = workflow_id
+        # Workflow parameters. The priority is higher than the task parameters. JSON format.
         self.workflow_parameters = workflow_parameters
 
     def validate(self):
@@ -10218,20 +10587,40 @@ class CreateWorkflowInstancesShrinkRequest(TeaModel):
         workflow_id: int = None,
         workflow_parameters: str = None,
     ):
+        # The default value is true.
         self.auto_start_enabled = auto_start_enabled
+        # The reason for the creation.
         self.comment = comment
+        # Runtime configuration.
         self.default_run_properties_shrink = default_run_properties_shrink
+        # The project environment.
+        # - Prod (production)
+        # - Dev
         self.env_type = env_type
+        # The name.
+        # 
         # This parameter is required.
         self.name = name
+        # Make up the data cycle settings.
         self.periods_shrink = periods_shrink
+        # The project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # Task parameters. Set parameters for a specific task. In JSON format, the key is the Task ID. For more information about the value format, see Task Script parameters (Task.Script. GetTask of the Parameter interface).
         self.task_parameters = task_parameters
+        # The type of the workflow instance.
+        # 
+        # - SupplementData: Retroactive data
+        # - ManualWorkflow: manual workflow
+        # 
         # This parameter is required.
         self.type = type
+        # The ID of the workflow to which the workflow belongs. The default value of WorkflowId for retroactive data is 1.
+        # 
         # This parameter is required.
         self.workflow_id = workflow_id
+        # Workflow parameters. The priority is higher than the task parameters. JSON format.
         self.workflow_parameters = workflow_parameters
 
     def validate(self):
@@ -10300,7 +10689,9 @@ class CreateWorkflowInstancesResponseBody(TeaModel):
         operation_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the operation. You can use this field to query the results of the creation operation through the GetCreateWorkflowInstancesResult interface.
         self.operation_id = operation_id
+        # The ID of the request. It is used to locate logs and troubleshoot problems.
         self.request_id = request_id
 
     def validate(self):
@@ -10717,8 +11108,11 @@ class DeleteDataAssetTagRequest(TeaModel):
         key: str = None,
         values: List[str] = None,
     ):
+        # The tag key.
+        # 
         # This parameter is required.
         self.key = key
+        # The tag values.
         self.values = values
 
     def validate(self):
@@ -10751,8 +11145,11 @@ class DeleteDataAssetTagShrinkRequest(TeaModel):
         key: str = None,
         values_shrink: str = None,
     ):
+        # The tag key.
+        # 
         # This parameter is required.
         self.key = key
+        # The tag values.
         self.values_shrink = values_shrink
 
     def validate(self):
@@ -10785,8 +11182,9 @@ class DeleteDataAssetTagResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -10860,7 +11258,11 @@ class DeleteDataQualityEvaluationTaskRequest(TeaModel):
         id: int = None,
         project_id: int = None,
     ):
+        # The ID of the data quality monitor.
         self.id = id
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace management page to obtain the ID.
+        # 
+        # This parameter is used to determine the DataWorks workspaces used for this API call.
         self.project_id = project_id
 
     def validate(self):
@@ -10895,6 +11297,9 @@ class DeleteDataQualityEvaluationTaskResponseBody(TeaModel):
     ):
         # Id of the request
         self.request_id = request_id
+        # Whether the deletion is successful.
+        # - true: Successful
+        # - false: Failed
         self.success = success
 
     def validate(self):
@@ -11224,8 +11629,11 @@ class DeleteDataSourceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request ID.
+        # The request ID. You can locate logs and troubleshoot issues based on the ID.
         self.request_id = request_id
+        # Whether the call is successful.
+        # - true: Successful
+        # - false: Failed
         self.success = success
 
     def validate(self):
@@ -11329,7 +11737,11 @@ class DeleteDataSourceSharedRuleResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID. You can locate logs and troubleshoot issues based on the ID.
         self.request_id = request_id
+        # Whether the data source sharing rule is deleted successfully. The value is as follows:
+        # -true: The request is successful.
+        # -false: The request failed.
         self.success = success
 
     def validate(self):
@@ -11520,6 +11932,8 @@ class DeleteNetworkRequest(TeaModel):
         self,
         id: int = None,
     ):
+        # The ID of the network that you want to delete.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -11549,6 +11963,7 @@ class DeleteNetworkResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -12176,6 +12591,8 @@ class DeleteRouteRequest(TeaModel):
         self,
         id: int = None,
     ):
+        # The route ID.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -12205,6 +12622,7 @@ class DeleteRouteResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -12399,8 +12817,15 @@ class DeleteWorkflowRequest(TeaModel):
         env_type: str = None,
         id: int = None,
     ):
+        # The unique code of the client. This parameter is used to create a workflow asynchronously and implement the idempotence of the workflow. If you do not specify this parameter when you create the workflow, the system automatically generates a unique code. The unique code is uniquely associated with the workflow ID. If you specify this parameter when you update or delete the workflow, the value of this parameter must be the unique code that is used to create the workflow.
         self.client_unique_code = client_unique_code
+        # The environment of the workspace. Valid values:
+        # 
+        # *   Prod: production environment
+        # *   Dev: development environment
         self.env_type = env_type
+        # The workflow ID.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -12438,7 +12863,9 @@ class DeleteWorkflowResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -12631,10 +13058,16 @@ class DetachDataQualityRulesFromEvaluationTaskRequest(TeaModel):
         data_quality_rule_ids: List[int] = None,
         project_id: int = None,
     ):
+        # The ID of the data quality monitoring task that is associated with the rule.
+        # 
         # This parameter is required.
         self.data_quality_evaluation_task_id = data_quality_evaluation_task_id
+        # The IDs of the monitoring rules.
+        # 
         # This parameter is required.
         self.data_quality_rule_ids = data_quality_rule_ids
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to obtain the workspace ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -12673,10 +13106,16 @@ class DetachDataQualityRulesFromEvaluationTaskShrinkRequest(TeaModel):
         data_quality_rule_ids_shrink: str = None,
         project_id: int = None,
     ):
+        # The ID of the data quality monitoring task that is associated with the rule.
+        # 
         # This parameter is required.
         self.data_quality_evaluation_task_id = data_quality_evaluation_task_id
+        # The IDs of the monitoring rules.
+        # 
         # This parameter is required.
         self.data_quality_rule_ids_shrink = data_quality_rule_ids_shrink
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to obtain the workspace ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -12716,6 +13155,9 @@ class DetachDataQualityRulesFromEvaluationTaskResponseBody(TeaModel):
     ):
         # Id of the request
         self.request_id = request_id
+        # Whether the call is successful. The values are as follows:
+        # - true: The call is successful.
+        # - false: the call failed.
         self.success = success
 
     def validate(self):
@@ -13037,6 +13479,7 @@ class ExecuteAdhocWorkflowInstanceRequestTasksDataSource(TeaModel):
         self,
         name: str = None,
     ):
+        # The name of the data source.
         self.name = name
 
     def validate(self):
@@ -13064,6 +13507,7 @@ class ExecuteAdhocWorkflowInstanceRequestTasksDependencies(TeaModel):
         self,
         upstream_output: str = None,
     ):
+        # The identifier of the output of the ancestor task.
         self.upstream_output = upstream_output
 
     def validate(self):
@@ -13092,7 +13536,9 @@ class ExecuteAdhocWorkflowInstanceRequestTasksInputsVariables(TeaModel):
         name: str = None,
         value: str = None,
     ):
+        # The name of the variable.
         self.name = name
+        # The value of the variable.
         self.value = value
 
     def validate(self):
@@ -13124,6 +13570,7 @@ class ExecuteAdhocWorkflowInstanceRequestTasksInputs(TeaModel):
         self,
         variables: List[ExecuteAdhocWorkflowInstanceRequestTasksInputsVariables] = None,
     ):
+        # The variables.
         self.variables = variables
 
     def validate(self):
@@ -13159,6 +13606,7 @@ class ExecuteAdhocWorkflowInstanceRequestTasksOutputsTaskOutputs(TeaModel):
         self,
         output: str = None,
     ):
+        # The identifier of the output.
         self.output = output
 
     def validate(self):
@@ -13188,8 +13636,16 @@ class ExecuteAdhocWorkflowInstanceRequestTasksOutputsVariables(TeaModel):
         type: str = None,
         value: str = None,
     ):
+        # The name of the variable.
         self.name = name
+        # The type of the variable. Valid values:
+        # 
+        # *   System
+        # *   Constant
+        # *   NodeOutput
+        # *   PassThrough
         self.type = type
+        # The value of the variable.
         self.value = value
 
     def validate(self):
@@ -13226,7 +13682,9 @@ class ExecuteAdhocWorkflowInstanceRequestTasksOutputs(TeaModel):
         task_outputs: List[ExecuteAdhocWorkflowInstanceRequestTasksOutputsTaskOutputs] = None,
         variables: List[ExecuteAdhocWorkflowInstanceRequestTasksOutputsVariables] = None,
     ):
+        # The task outputs.
         self.task_outputs = task_outputs
+        # The variables.
         self.variables = variables
 
     def validate(self):
@@ -13277,8 +13735,12 @@ class ExecuteAdhocWorkflowInstanceRequestTasksRuntimeResource(TeaModel):
         image: str = None,
         resource_group_id: str = None,
     ):
+        # The default number of compute units (CUs) configured for task running.
         self.cu = cu
+        # The ID of the image configured for task running.
         self.image = image
+        # The ID of the resource group for scheduling configured for task running.
+        # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
 
@@ -13316,7 +13778,9 @@ class ExecuteAdhocWorkflowInstanceRequestTasksScript(TeaModel):
         content: str = None,
         parameters: str = None,
     ):
+        # The script content.
         self.content = content
+        # The script parameters.
         self.parameters = parameters
 
     def validate(self):
@@ -13358,20 +13822,36 @@ class ExecuteAdhocWorkflowInstanceRequestTasks(TeaModel):
         timeout: int = None,
         type: str = None,
     ):
+        # The unique code of the client. This code uniquely identifies a task.
+        # 
         # This parameter is required.
         self.client_unique_code = client_unique_code
+        # The information about the associated data source.
         self.data_source = data_source
+        # The dependency information.
         self.dependencies = dependencies
+        # The input information.
         self.inputs = inputs
+        # The name of the task.
+        # 
         # This parameter is required.
         self.name = name
+        # The output information.
         self.outputs = outputs
+        # The account ID of the owner.
+        # 
         # This parameter is required.
         self.owner = owner
+        # The configurations of the runtime environment, such as the resource group information.
+        # 
         # This parameter is required.
         self.runtime_resource = runtime_resource
+        # The script information.
         self.script = script
+        # The timeout period of task running. Unit: seconds.
         self.timeout = timeout
+        # The type of the task.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -13468,15 +13948,29 @@ class ExecuteAdhocWorkflowInstanceRequest(TeaModel):
         project_id: int = None,
         tasks: List[ExecuteAdhocWorkflowInstanceRequestTasks] = None,
     ):
+        # 业务日期。
+        # 
         # This parameter is required.
         self.biz_date = biz_date
+        # The environment of the workspace. Valid values:
+        # 
+        # *   Prod: production environment
+        # *   Dev: development environment
         self.env_type = env_type
+        # The name of the workflow instance.
+        # 
         # This parameter is required.
         self.name = name
+        # The account ID of the owner.
+        # 
         # This parameter is required.
         self.owner = owner
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The tasks.
+        # 
         # This parameter is required.
         self.tasks = tasks
 
@@ -13538,15 +14032,29 @@ class ExecuteAdhocWorkflowInstanceShrinkRequest(TeaModel):
         project_id: int = None,
         tasks_shrink: str = None,
     ):
+        # 业务日期。
+        # 
         # This parameter is required.
         self.biz_date = biz_date
+        # The environment of the workspace. Valid values:
+        # 
+        # *   Prod: production environment
+        # *   Dev: development environment
         self.env_type = env_type
+        # The name of the workflow instance.
+        # 
         # This parameter is required.
         self.name = name
+        # The account ID of the owner.
+        # 
         # This parameter is required.
         self.owner = owner
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The tasks.
+        # 
         # This parameter is required.
         self.tasks_shrink = tasks_shrink
 
@@ -13596,7 +14104,9 @@ class ExecuteAdhocWorkflowInstanceResponseBody(TeaModel):
         request_id: str = None,
         workflow_instance_id: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The workflow instance ID.
         self.workflow_instance_id = workflow_instance_id
 
     def validate(self):
@@ -13891,6 +14401,7 @@ class GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionError(TeaModel):
         auto_rerun_alert_enabled: bool = None,
         stream_task_ids: List[int] = None,
     ):
+        # Indicates whether an alert is triggered if a batch synchronization task is automatically rerun upon a failure.
         self.auto_rerun_alert_enabled = auto_rerun_alert_enabled
         # The IDs of the real-time computing tasks. This parameter is required when you monitor real-time computing tasks.
         self.stream_task_ids = stream_task_ids
@@ -14175,7 +14686,7 @@ class GetAlertRuleResponseBodyAlertRuleTriggerConditionTarget(TeaModel):
         # 
         # *   Task: node
         # *   Baseline: baseline
-        # *   Project: workspace
+        # *   project: workspace
         # *   BizProcess: workflow
         self.type = type
 
@@ -14419,6 +14930,8 @@ class GetCreateWorkflowInstancesResultRequest(TeaModel):
         self,
         operation_id: str = None,
     ):
+        # The operation ID. This parameter is used to query the result of asynchronously creating a workflow instance. You can call the CreateWorkflowInstances operation to query the ID.
+        # 
         # This parameter is required.
         self.operation_id = operation_id
 
@@ -14449,8 +14962,15 @@ class GetCreateWorkflowInstancesResultResponseBodyResult(TeaModel):
         status: str = None,
         workflow_instance_ids: List[int] = None,
     ):
+        # The error message. This parameter is returned only if the creation fails.
         self.failure_message = failure_message
+        # The creation status. Valid values:
+        # 
+        # *   Creating
+        # *   Created
+        # *   CreateFailure
         self.status = status
+        # The workflow instance IDs. This parameter is returned only if the creation is successful.
         self.workflow_instance_ids = workflow_instance_ids
 
     def validate(self):
@@ -14487,7 +15007,9 @@ class GetCreateWorkflowInstancesResultResponseBody(TeaModel):
         request_id: str = None,
         result: GetCreateWorkflowInstancesResultResponseBodyResult = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The result of asynchronously creating a workflow instance.
         self.result = result
 
     def validate(self):
@@ -14642,9 +15164,9 @@ class GetDIJobResponseBodyPagingInfoJobSettingsColumnDataTypeSettings(TeaModel):
         destination_data_type: str = None,
         source_data_type: str = None,
     ):
-        # The data type of the destination field.
+        # The data type of the destination field. Valid values: bigint, boolean, string, text, datetime, timestamp, decimal, and binary. Different types of data sources support different data types.
         self.destination_data_type = destination_data_type
-        # The data type of the source field.
+        # The data type of the source field. Valid values: bigint, boolean, string, text, datetime, timestamp, decimal, and binary. Different types of data sources support different data types.
         self.source_data_type = source_data_type
 
     def validate(self):
@@ -14762,14 +15284,14 @@ class GetDIJobResponseBodyPagingInfoJobSettingsRuntimeSettings(TeaModel):
     ):
         # The name of the configuration item. Valid values:
         # 
-        # *   runtime.offline.speed.limit.mb: indicates the maximum transmission rate that is allowed for a batch synchronization task. This configuration item takes effect only when runtime.offline.speed.limit.enable is set to true.
-        # *   runtime.offline.speed.limit.enable: indicates whether throttling is enabled for a batch synchronization task.
-        # *   dst.offline.connection.max: indicates the maximum number of connections that are allowed for writing data to the destination of a batch synchronization task.
-        # *   runtime.offline.concurrent: indicates the maximum number of parallel threads that are allowed for a batch synchronization task.
-        # *   dst.realtime.connection.max: indicates the maximum number of connections that are allowed for writing data to the destination of a real-time synchronization task.
-        # *   runtime.enable.auto.create.schema: indicates whether schemas are automatically created in the destination of a synchronization task.
         # *   src.offline.datasource.max.connection: indicates the maximum number of connections that are allowed for reading data from the source of a batch synchronization task.
+        # *   dst.offline.truncate: indicates whether to clear the destination table before data writing.
+        # *   runtime.offline.speed.limit.enable: indicates whether throttling is enabled for a batch synchronization task.
+        # *   runtime.offline.concurrent: indicates the maximum number of parallel threads that are allowed for a batch synchronization task.
+        # *   runtime.enable.auto.create.schema: indicates whether schemas are automatically created in the destination of a synchronization task.
         # *   runtime.realtime.concurrent: indicates the maximum number of parallel threads that are allowed for a real-time synchronization task.
+        # *   runtime.realtime.failover.minute.dataxcdc: indicates the maximum waiting duration before a synchronization task retries the next restart if the previous restart fails after failover occurs. Unit: minutes.
+        # *   runtime.realtime.failover.times.dataxcdc: indicates the maximum number of failures that are allowed for restarting a synchronization task after failovers occur.
         self.name = name
         # The value of the configuration item.
         self.value = value
@@ -14807,7 +15329,21 @@ class GetDIJobResponseBodyPagingInfoJobSettings(TeaModel):
         ddl_handling_settings: List[GetDIJobResponseBodyPagingInfoJobSettingsDdlHandlingSettings] = None,
         runtime_settings: List[GetDIJobResponseBodyPagingInfoJobSettingsRuntimeSettings] = None,
     ):
-        # The channel control settings for the synchronization task. The value of this parameter is a JSON string.
+        # The channel control settings for the synchronization task. You can configure special channel control settings for the following synchronization links: data synchronization between Hologres data sources and data synchronization from Hologres to Kafka.
+        # 
+        # 1.  Holo2Kafka
+        # 
+        # *   Example: {"destinationChannelSettings":{"kafkaClientProperties":[{"key":"linger.ms","value":"100"}],"keyColumns":["col3"],"writeMode":"canal"}}
+        # *   kafkaClientProperties: the parameters related to a Kafka producer, which are used when you write data to a Kafka data source.
+        # *   keyColumns: the names of Kafka columns to which data is written.
+        # *   writeMode: the writing format. Valid values: json and canal.
+        # 
+        # 2.  Holo2Holo
+        # 
+        # *   Example: {"destinationChannelSettings":{"conflictMode":"replace","dynamicColumnAction":"replay","writeMode":"replay"}}
+        # *   conflictMode: the policy used to handle a conflict that occurs during data writing to Hologres. Valid values: replace and ignore.
+        # *   writeMode: the mode in which data is written to Hologres. Valid values: replay and insert.
+        # *   dynamicColumnAction: the mode in which data is written to dynamic columns in a Hologres table. Valid values: replay, insert, and ignore.
         self.channel_settings = channel_settings
         # The data type mappings between source fields and destination fields.
         self.column_data_type_settings = column_data_type_settings
@@ -15135,6 +15671,7 @@ class GetDIJobResponseBodyPagingInfoTableMappingsSourceObjectSelectionRules(TeaM
         # The object type. Valid values:
         # 
         # *   Table
+        # *   Schema
         # *   Database
         self.object_type = object_type
 
@@ -15190,6 +15727,7 @@ class GetDIJobResponseBodyPagingInfoTableMappingsTransformationRules(TeaModel):
         # 
         # *   Table
         # *   Schema
+        # *   Database
         self.rule_target_type = rule_target_type
 
     def validate(self):
@@ -15226,7 +15764,7 @@ class GetDIJobResponseBodyPagingInfoTableMappings(TeaModel):
         source_object_selection_rules: List[GetDIJobResponseBodyPagingInfoTableMappingsSourceObjectSelectionRules] = None,
         transformation_rules: List[GetDIJobResponseBodyPagingInfoTableMappingsTransformationRules] = None,
     ):
-        # The list of rules used to select synchronization objects in the source. The objects can be databases or tables.
+        # The list of rules used to select synchronization objects in the source.
         self.source_object_selection_rules = source_object_selection_rules
         # The list of transformation rules that are applied to the synchronization objects selected from the source. Each entry in the list defines a transformation rule.
         self.transformation_rules = transformation_rules
@@ -15288,20 +15826,52 @@ class GetDIJobResponseBodyPagingInfoTransformationRules(TeaModel):
         # *   HandleDml
         # *   DefineIncrementalCondition
         # *   DefineCycleScheduleSettings
-        # *   DefineRuntimeSettings
         # *   DefinePartitionKey
         self.rule_action_type = rule_action_type
         # The expression of the rule. The expression is a JSON string.
         # 
-        # Example of a renaming rule: {"expression":"${srcDatasourceName}_${srcDatabaseName}_0922","variables":[{"variableName":"srcDatabaseName","variableRules":[{"from":"fromdb","to":"todb"}]}]}.
+        # 1.  Example of a renaming rule
         # 
-        # expression: the expression of the renaming rule. The expression may contain the following variables: ${srcDatasourceName}, ${srcDatabaseName}, and ${srcTableName}. ${srcDatasourceName} indicates the name of the source. ${srcDatabaseName} indicates the name of a source database. ${srcTableName} indicates the name of a source table. variables: the generation rule for a variable used in the expression of the renaming rule. The default value of the specified variable is the original value of the object indicated by the variable. You can define a group of string replacement rules to change the original values based on your business requirements. variableName: the name of the variable. The variable name is not enclosed in ${}. variableRules: the string replacement rules for variables. The system runs the string replacement rules in sequence. from indicates the original string. to indicates the new string. Example of a rule used to add a specific field to the destination and assign a value to the field: {"columns":[{"columnName":"my_add_column","columnValueType":"Constant","columnValue":"123"}]}.
+        # *   Example: {"expression":"${srcDatasourceName}_${srcDatabaseName}_0922" }
+        # *   expression: the expression of the renaming rule. You can use the following variables in an expression: ${srcDatasourceName}, ${srcDatabaseName}, and ${srcTableName}. ${srcDatasourceName} indicates the name of the source. ${srcDatabaseName} indicates the name of a source database. ${srcTableName} indicates the name of a source table.
         # 
-        # If no rule of this type is configured, no fields are added to the destination and no values are assigned by default. columnName: the name of the field that is added. columnValueType: the value type of the field. Valid values: Constant and Variable. columnValue: the value of the field. If the value of the columnValueType parameter is Constant, the value of the columnValue parameter is a constant of the STRING data type. If the value of the columnValueType parameter is Variable, the value of the columnValue parameter is a built-in variable. The following built-in variables are supported: EXECUTE_TIME (LONG data type), DB_NAME_SRC (STRING data type), DATASOURCE_NAME_SRC (STRING data type), TABLE_NAME_SRC (STRING data type), DB_NAME_DEST (STRING data type), DATASOURCE_NAME_DEST (STRING data type), TABLE_NAME_DEST (STRING data type), and DB_NAME_SRC_TRANSED (STRING data type). EXECUTE_TIME indicates the execution time. DB_NAME_SRC indicates the name of a source database. DATASOURCE_NAME_SRC indicates the name of the source. TABLE_NAME_SRC indicates the name of a source table. DB_NAME_DEST indicates the name of a destination database. DATASOURCE_NAME_DEST indicates the name of the destination. TABLE_NAME_DEST indicates the name of a destination table. DB_NAME_SRC_TRANSED indicates the database name obtained after a transformation. Example of a rule used to specify primary key fields for a destination table: {"columns":["ukcolumn1","ukcolumn2"]}.
+        # 2.  Example of a column addition rule
         # 
-        # If no rule of this type is configured, the primary key fields in the mapped source table are used for the destination table by default. If the destination table is an existing table, Data Integration does not modify the schema of the destination table. If the specified primary key fields do not exist in the destination table, an error is reported when the synchronization task starts to run. If the destination table is automatically created by the system, Data Integration automatically creates the schema of the destination table. The schema contains the primary key fields that you specify. If the specified primary key fields do not exist in the destination table, an error is reported when the synchronization task starts to run. Example of a rule used to process DML messages: {"dmlPolicies":[{"dmlType":"Delete","dmlAction":"Filter","filterCondition":"id > 1"}]}.
+        # *   Example: {"columns":[{"columnName":"my_add_column","columnValueType":"Constant","columnValue":"123"}]}
+        # *   If no rule of this type is configured, no fields are added to the destination and no values are assigned by default.
+        # *   columnName: the name of the field that is added.
+        # *   columnValueType: the value type of the field. Valid values: Constant and Variable.
+        # *   columnValue: the value of the field. If the columnValueType parameter is set to Constant, the value of the columnValue parameter is a constant of the STRING data type. If the columnValueType parameter is set to Variable, the value of the columnValue parameter is a built-in variable. The following built-in variables are supported: EXECUTE_TIME (LONG data type), DB_NAME_SRC (STRING data type), DATASOURCE_NAME_SRC (STRING data type), TABLE_NAME_SRC (STRING data type), DB_NAME_DEST (STRING data type), DATASOURCE_NAME_DEST (STRING data type), TABLE_NAME_DEST (STRING data type), and DB_NAME_SRC_TRANSED (STRING data type). EXECUTE_TIME indicates the execution time. DB_NAME_SRC indicates the name of a source database. DATASOURCE_NAME_SRC indicates the name of the source. TABLE_NAME_SRC indicates the name of a source table. DB_NAME_DEST indicates the name of a destination database. DATASOURCE_NAME_DEST indicates the name of the destination. TABLE_NAME_DEST indicates the name of a destination table. DB_NAME_SRC_TRANSED indicates the database name obtained after a transformation.
         # 
-        # If no rule of this type is configured, the default processing policy for messages generated for insert, update, and delete operations is Normal. dmlType: the DML operation. Valid values: Insert, Update, and Delete. dmlAction: the processing policy for DML messages. Valid values: Normal, Ignore, Filter, and LogicalDelete. Filter indicates conditional processing. The value Filter is returned for the dmlAction parameter only when the value of the dmlType parameter is Update or Delete. filterCondition: the condition used to filter DML messages. This parameter is returned only when the value of the dmlAction parameter is Filter.
+        # 3.  Example of a rule used to specify primary key fields for a destination table
+        # 
+        # *   Example: {"columns":["ukcolumn1","ukcolumn2"]}
+        # *   If no rule of this type is configured, the primary key fields in the mapped source table are used for the destination table by default.
+        # *   If the destination table is an existing table, Data Integration does not modify the schema of the destination table. If the specified primary key fields do not exist in the destination table, an error is reported when the synchronization task starts to run.
+        # *   If the destination table is automatically created by the system, Data Integration automatically creates the schema of the destination table. The schema contains the primary key fields that you specify. If the specified primary key fields do not exist in the destination table, an error is reported when the synchronization task starts to run.
+        # 
+        # 4.  Example of a rule used to process DML messages
+        # 
+        # *   Example: {"dmlPolicies":[{"dmlType":"Delete","dmlAction":"Filter","filterCondition":"id > 1"}]}
+        # *   If no rule of this type is configured, the default processing policy for messages generated for insert, update, and delete operations is Normal.
+        # *   dmlType: the DML operation. Valid values: Insert, Update, and Delete.
+        # *   dmlAction: the processing policy for DML messages. Valid values: Normal, Ignore, Filter, and LogicalDelete. Filter indicates conditional processing. The value Filter is returned for the dmlAction parameter only when the value of the dmlType parameter is Update or Delete.
+        # *   filterCondition: the condition used to filter DML messages. This parameter is returned only when the value of the dmlAction parameter is Filter.
+        # 
+        # 5.  Example of a rule used to perform incremental synchronization
+        # 
+        # *   Example: {"where":"id > 0"}
+        # *   The rule used to perform incremental synchronization is returned.
+        # 
+        # 6.  Example of a rule used to configure scheduling parameters for an auto triggered task
+        # 
+        # *   Example: {"cronExpress":" \\* \\* \\* \\* \\* \\*", "cycleType":"1"}
+        # *   The rule used to configure scheduling parameters for an auto triggered task is returned.
+        # 
+        # 7.  Example of a rule used to specify a partition key
+        # 
+        # *   Example: {"columns":["id"]}
+        # *   The rule used to specify a partition key is returned.
         self.rule_expression = rule_expression
         # The name of the rule. If the values of the RuleActionType parameter and the RuleTargetType parameter are the same for multiple transformation rules, you must make sure that the transformation rule names are unique.
         self.rule_name = rule_name
@@ -15309,6 +15879,7 @@ class GetDIJobResponseBodyPagingInfoTransformationRules(TeaModel):
         # 
         # *   Table
         # *   Schema
+        # *   Database
         self.rule_target_type = rule_target_type
 
     def validate(self):
@@ -15368,7 +15939,7 @@ class GetDIJobResponseBodyPagingInfo(TeaModel):
         self.description = description
         # The properties of the destination.
         self.destination_data_source_settings = destination_data_source_settings
-        # The destination type. The value Hologres is returned.
+        # The destination type. Valid values: Hologres, OSS-HDFS, OSS, MaxCompute, Loghub, STARROCKS, Datahub, ANALYTICDB_FOR_MYSQL, Kafka, and Hive.
         self.destination_data_source_type = destination_data_source_type
         # The ID of the synchronization task.
         self.id = id
@@ -15394,11 +15965,15 @@ class GetDIJobResponseBodyPagingInfo(TeaModel):
         self.resource_settings = resource_settings
         # The settings of the source. Only a single source is supported.
         self.source_data_source_settings = source_data_source_settings
-        # The source type. The value MySQL is returned.
+        # The source type. Valid values: PolarDB, MySQL, Kafka, Loghub, Hologres, Oracle, OceanBase, MongoDB, RedShift, Hive, SqlServer, Doris, and ClickHouse.
         self.source_data_source_type = source_data_source_type
         # The list of mappings between rules used to select synchronization objects in the source and transformation rules applied to the selected synchronization objects. Each entry in the list displays a mapping between a rule used to select synchronization objects and a transformation rule applied to the selected synchronization objects.
+        # 
+        # >  [ { "SourceObjectSelectionRules":[ { "ObjectType":"Database", "Action":"Include", "ExpressionType":"Exact", "Expression":"biz_db" }, { "ObjectType":"Schema", "Action":"Include", "ExpressionType":"Exact", "Expression":"s1" }, { "ObjectType":"Table", "Action":"Include", "ExpressionType":"Exact", "Expression":"table1" } ], "TransformationRuleNames":[ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema" } ] } ]
         self.table_mappings = table_mappings
-        # The list of transformation rules that are applied to the synchronization objects selected from the source. Each entry in the list defines a transformation rule.
+        # The list of transformation rules that are applied to the synchronization objects selected from the source.
+        # 
+        # >  [ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema", "RuleExpression":"{"expression":"${srcDatasoureName}_${srcDatabaseName}"}" } ]
         self.transformation_rules = transformation_rules
 
     def validate(self):
@@ -15603,6 +16178,8 @@ class GetDIJobLogRequest(TeaModel):
         failover_id: int = None,
         id: int = None,
         instance_id: int = None,
+        node_type: str = None,
+        page_number: int = None,
     ):
         # This parameter is deprecated. Use the Id parameter instead.
         self.dijob_id = dijob_id
@@ -15612,6 +16189,8 @@ class GetDIJobLogRequest(TeaModel):
         self.id = id
         # The instance ID.
         self.instance_id = instance_id
+        self.node_type = node_type
+        self.page_number = page_number
 
     def validate(self):
         pass
@@ -15630,6 +16209,10 @@ class GetDIJobLogRequest(TeaModel):
             result['Id'] = self.id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.node_type is not None:
+            result['NodeType'] = self.node_type
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
         return result
 
     def from_map(self, m: dict = None):
@@ -15642,6 +16225,10 @@ class GetDIJobLogRequest(TeaModel):
             self.id = m.get('Id')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('NodeType') is not None:
+            self.node_type = m.get('NodeType')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
         return self
 
 
@@ -15726,6 +16313,7 @@ class GetDataQualityEvaluationTaskRequest(TeaModel):
         self,
         id: int = None,
     ):
+        # The ID of the data quality monitor.
         self.id = id
 
     def validate(self):
@@ -15754,13 +16342,12 @@ class GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskHooks(Tea
         condition: str = None,
         type: str = None,
     ):
-        # Hook触发条件
+        # Hook trigger condition. When this condition is met, hook action is triggered. Currently, only two conditional expressions are supported:
+        # 
+        # - Specify only one set of rule severity types AND rule verification status, such as `${severity} = = "High" AND ${status} = = "Critical"`, which indicates that in the executed rule, if the rule verification result of severity High is Critical, the condition is met.
+        # - Specify multiple sets of rule severity types AND rule verification status, such as `(${severity} = = "High" AND ${status} = "Critical") OR (${severity} = "Normal" AND ${status} = "Critical") OR (${severity} = "Normal" AND ${status} = "Error")`, if the rule verification result of severity High is Critical, the rule verification result of severity Normal is Critical, or the rule verification result of severity Normal is Error, the enumeration that satisfies the condition expression severity is consistent with the enumeration DataQualityRule in severity, and the enumeration of status is consistent with the status in DataQualityResult.
         self.condition = condition
         # The hook type. Only one hook type is supported.
-        # 
-        # *\
-        # 
-        # Valid values:
         # 
         # *   BlockTaskInstance: Blocks the running of scheduling tasks. A monitor is triggered by scheduling tasks. After a monitor finishes running, the monitor determines whether to block the running of scheduling tasks based on the hook condition.
         self.type = type
@@ -15794,7 +16381,7 @@ class GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificat
         self,
         channels: List[str] = None,
     ):
-        # The alert notification method.
+        # The alert notification methods.
         self.channels = channels
 
     def validate(self):
@@ -15824,7 +16411,7 @@ class GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificat
         receiver_type: str = None,
         receiver_values: List[str] = None,
     ):
-        # 扩展信息，格式为 json，例如钉钉机器人支持 at 所有人
+        # The extended information.
         self.extension = extension
         # The additional parameters that are required when alerts are sent. The parameters are JSON-formatted strings. The following keys are supported:
         # 
@@ -15838,7 +16425,7 @@ class GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificat
         # *   WeixinUrl
         # *   AliUid
         self.receiver_type = receiver_type
-        # 告警接收人
+        # The alert recipients.
         self.receiver_values = receiver_values
 
     def validate(self):
@@ -15875,7 +16462,7 @@ class GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificat
         notification_channels: List[GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationChannels] = None,
         notification_receivers: List[GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers] = None,
     ):
-        # The alert notification method.
+        # The alert notification methods.
         self.notification_channels = notification_channels
         # The configurations of alert recipients.
         self.notification_receivers = notification_receivers
@@ -15927,9 +16514,12 @@ class GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificat
         condition: str = None,
         notifications: List[GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotifications] = None,
     ):
-        # 通知触发条件
+        # The notification trigger condition. When this condition is met, a message notification is triggered. Currently, only two conditional expressions are supported:
+        # 
+        # - Specify only one set of rule severity types AND rule verification status, such as `${severity} = = "High" AND ${status} = = "Critical"`, which indicates that in the executed rule, if the rule verification result of severity High is Critical, the condition is met.
+        # - Specify multiple sets of rule severity types AND rule verification status, such as `(${severity} = = "High" AND ${status} = "Critical") OR (${severity} = "Normal" AND ${status} = "Critical") OR (${severity} = "Normal" AND ${status} = "Error")`, if the rule verification result of severity High is Critical, the rule verification result of severity Normal is Critical, or the rule verification result of severity Normal is Error, the enumeration that satisfies the condition expression severity is consistent with the enumeration DataQualityRule in severity, and the enumeration of status is consistent with the status in DataQualityResult.
         self.condition = condition
-        # The configurations of the alert notification.
+        # The configurations of alert notifications.
         self.notifications = notifications
 
     def validate(self):
@@ -15972,9 +16562,7 @@ class GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTarget(Te
         table_guid: str = None,
         type: str = None,
     ):
-        # The type of the database to which the table belongs.
-        # 
-        # Valid values:
+        # The type of the database to which the table belongs. Valid values:
         # 
         # *   maxcompute
         # *   hologres
@@ -15984,10 +16572,13 @@ class GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTarget(Te
         # *   emr
         # *   analyticdb_for_postgresql
         self.database_type = database_type
+        # Data quality monitoring partition range settings.
         self.partition_spec = partition_spec
-        # 表在数据地图中的唯一ID
+        # The ID of the table in Data Map.
         self.table_guid = table_guid
-        # 监控对象类型
+        # The type of the monitoring object.
+        # 
+        # - Table: Table.
         self.type = type
 
     def validate(self):
@@ -16028,16 +16619,11 @@ class GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTrigger(T
         task_ids: List[int] = None,
         type: str = None,
     ):
-        # 具体指明哪些调度节点的实例执行成功后可以触发
+        # The IDs of scheduling tasks. This parameter is valid only if you set Type to ByScheduledTaskInstance.
         self.task_ids = task_ids
-        # The trigger type of the monitor.
+        # The trigger type of the monitor. Valid values:
         # 
-        # *\
-        # *\
-        # 
-        # Valid values:
-        # 
-        # *   ByManual (default): The monitor is manually triggered.
+        # *   ByManual: The monitor is manually triggered.
         # *   ByScheduledTaskInstance: The monitor is triggered by associated scheduling tasks.
         # *   ByQualityNode: The monitor is triggered by created data quality monitoring nodes.
         self.type = type
@@ -16080,22 +16666,28 @@ class GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask(TeaModel
         target: GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTarget = None,
         trigger: GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTrigger = None,
     ):
+        # The ID of the data source used for the monitor.
         self.data_source_id = data_source_id
-        # 质量监控任务描述
+        # The description of the monitor.
         self.description = description
         # The hook.
         self.hooks = hooks
-        # 代表资源一级ID的资源属性字段
+        # The ID of the data quality monitor.
         self.id = id
-        # 质量监控任务名称
+        # The name of the monitor.
         # 
         # This parameter is required.
         self.name = name
         # The configurations of alert notifications.
         self.notifications = notifications
-        # 项目空间Id
+        # The workspace ID.
         self.project_id = project_id
-        # 使用数据源时的一些设置，目前只支持指定EMR的yarn队列、采集EMR表时把SQL引擎指定为SPARK-SQL
+        # Extended configuration, JSON-formatted string, takes effect only for EMR-type data quality monitoring.
+        # 
+        # - queue: the yarn queue used when performing EMR data quality verification. The default queue is the queue configured for this project.
+        # - sqlEngine: SQL engine used when performing EMR data verification
+        #     - HIVE_ SQL
+        #     - SPARK_ SQL
         self.runtime_conf = runtime_conf
         # The monitored object of the monitor.
         self.target = target
@@ -16258,6 +16850,8 @@ class GetDataQualityEvaluationTaskInstanceRequest(TeaModel):
         self,
         id: int = None,
     ):
+        # The ID of the data quality monitoring instance.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -16287,7 +16881,14 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         condition: str = None,
         type: str = None,
     ):
+        # Hook trigger condition. When this condition is met, hook action is triggered. Currently, only two conditional expressions are supported:
+        # 
+        # - Specify only one set of rule severity types AND rule verification status, such as `${severity} = = "High" AND ${status} = = "Critical"`, which indicates that in the executed rule, if the rule verification result of severity High is Critical, the condition is met.
+        # - Specify multiple sets of rule severity types AND rule verification status, such as `(${severity} = = "High" AND ${status} = "Critical") OR (${severity} = "Normal" AND ${status} = "Critical") OR (${severity} = "Normal" AND ${status} = "Error")`, if the rule verification result of severity High is Critical, the rule verification result of severity Normal is Critical, or the rule verification result of severity Normal is Error, the enumeration that satisfies the condition expression severity is consistent with the enumeration DataQualityRule in severity, and the enumeration of status is consistent with the status in DataQualityResult.
         self.condition = condition
+        # Hook type. Currently, only one type is supported:
+        # 
+        # - BlockTaskInstance: the blocking scheduling task continues to run. Data quality monitoring is triggered by the scheduling task. After the data quality monitoring is completed, the Hook.Condition is used to determine whether the blocking scheduling task continues to run.
         self.type = type
 
     def validate(self):
@@ -16319,6 +16920,7 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         self,
         channels: List[str] = None,
     ):
+        # The notification method.
         self.channels = channels
 
     def validate(self):
@@ -16348,8 +16950,13 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         receiver_type: str = None,
         receiver_values: List[str] = None,
     ):
+        # Additional parameter settings for sending alerts in json format. The supported keys are as follows:
+        # 
+        # - atAll: when sending DingTalk alerts, do you need to @ everyone in the group. It takes effect when ReceiverType is DingdingUrl.
         self.extension = extension
+        # The type of alert recipient.
         self.receiver_type = receiver_type
+        # The recipient of the alert.
         self.receiver_values = receiver_values
 
     def validate(self):
@@ -16386,7 +16993,9 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         notification_channels: List[GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationChannels] = None,
         notification_receivers: List[GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers] = None,
     ):
+        # The notification method.
         self.notification_channels = notification_channels
+        # The value of the receiver.
         self.notification_receivers = notification_receivers
 
     def validate(self):
@@ -16436,7 +17045,12 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         condition: str = None,
         notifications: List[GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotifications] = None,
     ):
+        # The notification trigger condition. When this condition is met, a message notification is triggered. Currently, only two conditional expressions are supported:
+        # 
+        # - Specify only one set of rule severity types AND rule verification status, such as `${severity} = = "High" AND ${status} = = "Critical"`, which indicates that in the executed rule, if the rule verification result of severity High is Critical, the condition is met.
+        # - Specify multiple sets of rule severity types AND rule verification status, such as `(${severity} = = "High" AND ${status} = "Critical") OR (${severity} = "Normal" AND ${status} = "Critical") OR (${severity} = "Normal" AND ${status} = "Error")`, if the rule verification result of severity High is Critical, the rule verification result of severity Normal is Critical, or the rule verification result of severity Normal is Error, the enumeration that satisfies the condition expression severity is consistent with the enumeration DataQualityRule in severity, and the enumeration of status is consistent with the status in DataQualityResult.
         self.condition = condition
+        # The alert notification methods.
         self.notifications = notifications
 
     def validate(self):
@@ -16479,9 +17093,14 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         table_guid: str = None,
         type: str = None,
     ):
+        # The type of the database to which the table belongs.
         self.database_type = database_type
+        # The partition range monitored.
         self.partition_spec = partition_spec
+        # The unique ID of the table in the data map.
         self.table_guid = table_guid
+        # The type of the monitoring object.
+        # - Table: Table
         self.type = type
 
     def validate(self):
@@ -16522,7 +17141,12 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         task_ids: List[int] = None,
         type: str = None,
     ):
+        # The Id list of the scheduled task, which is valid when the Type is ByScheduledTaskInstance.
         self.task_ids = task_ids
+        # Quality Monitoring trigger type:
+        # 
+        # - ByManual: manually triggered. Default value
+        # - ByScheduledTaskInstance: triggered by associated scheduling tasks
         self.type = type
 
     def validate(self):
@@ -16562,14 +17186,28 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         target: GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTarget = None,
         trigger: GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTrigger = None,
     ):
+        # The description of the monitor.
         self.description = description
+        # Callback settings.
         self.hooks = hooks
+        # The ID of the data quality monitor.
         self.id = id
+        # The name of the monitor.
         self.name = name
+        # The configurations of alert notifications.
         self.notifications = notifications
+        # The ID of the workspace.
         self.project_id = project_id
+        # Extended configuration, JSON-formatted string, takes effect only for EMR-type data quality monitoring.
+        # 
+        # - queue: the yarn queue used when performing EMR data quality verification. The default queue is the queue configured for this project.
+        # - sqlEngine: SQL engine used when performing EMR data verification
+        #   - HIVE_ SQL
+        #   - SPARK_ SQL
         self.runtime_conf = runtime_conf
+        # For more information, see DataQualityTarget monitoring objects for the sample data quality verification task. For more information, see DataQualityTarget.
         self.target = target
+        # The trigger configuration of the data quality verification task.
         self.trigger = trigger
 
     def validate(self):
@@ -16653,13 +17291,29 @@ class GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskI
         task: GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTask = None,
         trigger_context: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The end time of the instance.
         self.finish_time = finish_time
+        # The ID of the data quality monitoring instance.
         self.id = id
+        # Data quality verification execution parameters in JSON format. The available keys are as follows:
+        # - triggerTime: the millisecond timestamp of the trigger time. The baseline time of the $[yyyymmdd] expression in the data range of data quality monitoring. Required.
         self.parameters = parameters
+        # The ID of the workspace.
         self.project_id = project_id
+        # The status of the data quality monitoring instance.
+        # - Running: Verifying
+        # - Error: A rule verification Error occurred.
+        # - Passed: all rules are verified
+        # - Warned: normal alarm threshold triggered by rules
+        # - Critical: Threshold for serious alerts triggered by rules
         self.status = status
+        # The monitor.
         self.task = task
+        # The context information when the instance is triggered, in JSON format. The possible keys are as follows:
+        # - TriggerClient: the trigger source of the data quality monitoring instance, such as CWF2 (scheduling system), may be added later.
+        # - TriggerClientId: associated with a specific business resource in the source system. For example, if TriggerClient is CWF2, the ID of the scheduling task is recorded here.
         self.trigger_context = trigger_context
 
     def validate(self):
@@ -16718,7 +17372,9 @@ class GetDataQualityEvaluationTaskInstanceResponseBody(TeaModel):
         data_quality_evaluation_task_instance: GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance = None,
         request_id: str = None,
     ):
+        # The details of the monitor instance.
         self.data_quality_evaluation_task_instance = data_quality_evaluation_task_instance
+        # The request ID. You can locate logs and troubleshoot issues based on the ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16793,6 +17449,8 @@ class GetDataQualityRuleRequest(TeaModel):
         self,
         id: int = None,
     ):
+        # The rule ID.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -16825,7 +17483,15 @@ class GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsCriti
     ):
         # The threshold expression.
         self.expression = expression
+        # Comparison character:
+        # - \\>
+        # - % =\
+        # - <
+        # - <=\
+        # - ! =\
+        # - =\
         self.operator = operator
+        # The threshold value.
         self.value = value
 
     def validate(self):
@@ -16865,7 +17531,15 @@ class GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsExpec
     ):
         # The threshold expression.
         self.expression = expression
+        # Comparison character:
+        # - \\>
+        # - % =\
+        # - <
+        # - <=\
+        # - ! =\
+        # - =\
         self.operator = operator
+        # The threshold value.
         self.value = value
 
     def validate(self):
@@ -16905,7 +17579,15 @@ class GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsWarne
     ):
         # The threshold expression.
         self.expression = expression
+        # Comparison character:
+        # - \\>
+        # - % =\
+        # - <
+        # - <=\
+        # - ! =\
+        # - =\
         self.operator = operator
+        # The threshold value.
         self.value = value
 
     def validate(self):
@@ -16993,9 +17675,17 @@ class GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfig(TeaModel):
         thresholds: GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholds = None,
         type: str = None,
     ):
+        # Some types of thresholds need to query some reference samples, and then summarize the values of the reference samples to obtain the threshold for comparison. Here, an expression is used to represent the query method of the reference samples.
         self.referenced_samples_filter = referenced_samples_filter
         # The threshold settings.
         self.thresholds = thresholds
+        # Threshold Calculation method:
+        # - Fixed
+        # - Fluctation
+        # - FluctationDiscreate
+        # - Auto
+        # - Average
+        # - Variance
         self.type = type
 
     def validate(self):
@@ -17034,7 +17724,10 @@ class GetDataQualityRuleResponseBodyDataQualityRuleErrorHandlers(TeaModel):
         error_data_filter: str = None,
         type: str = None,
     ):
+        # For custom SQL rules, you must specify SQL to filter problem data.
         self.error_data_filter = error_data_filter
+        # Processor type:
+        # - SaveErrorData
         self.type = type
 
     def validate(self):
@@ -17069,9 +17762,28 @@ class GetDataQualityRuleResponseBodyDataQualityRuleSamplingConfig(TeaModel):
         sampling_filter: str = None,
         setting_config: str = None,
     ):
+        # The name of the sampled metric:
+        # - Count: number of table rows
+        # - Min: minimum value of the field
+        # - Max: The maximum value of the field.
+        # - Avg: field mean
+        # - DistinctCount: number of unique field values
+        # - DistinctPercent: the ratio of the number of unique field values to the number of data rows.
+        # - DuplicatedCount: number of duplicate field values
+        # - DuplicatedPercent: the ratio of the number of duplicate field values to the number of data rows.
+        # - TableSize: table size
+        # - NullValueCount: number of rows with empty fields
+        # - NullValuePercent: the proportion of fields that are empty.
+        # - GroupCount: aggregate each value by field value and the corresponding number of data rows
+        # - CountNotIn: the enumerated value does not match the number of rows.
+        # - CountDistinctNotIn: the number of unique values that the enumerated values do not match.
+        # - UserDefinedSql: use custom SQL to collect samples
         self.metric = metric
+        # Parameters required for sample collection.
         self.metric_parameters = metric_parameters
+        # The condition for secondary filtering of data that is not concerned during sampling, which can be up to 16777215 characters in length.
         self.sampling_filter = sampling_filter
+        # Before executing the sample statement, insert some runtime parameter setting statements, which can be up to 1000 characters in length. Currently, only MaxCompute is supported.
         self.setting_config = setting_config
 
     def validate(self):
@@ -17114,9 +17826,22 @@ class GetDataQualityRuleResponseBodyDataQualityRuleTarget(TeaModel):
         table_guid: str = None,
         type: str = None,
     ):
+        # The dataset of the table type. The database type to which the table belongs.
+        # - maxcompute
+        # - emr
+        # - cdh
+        # - hologres
+        # - analyticdb_for_postgresql
+        # - analyticdb_for_mysql
+        # - starrocks
         self.database_type = database_type
+        # Partition settings for partitioned tables.
         self.partition_spec = partition_spec
+        # The unique ID of the table used by the rule in the data map.
         self.table_guid = table_guid
+        # Monitoring object type
+        # 
+        # - Table
         self.type = type
 
     def validate(self):
@@ -17168,15 +17893,27 @@ class GetDataQualityRuleResponseBodyDataQualityRule(TeaModel):
     ):
         # The check settings for sample data.
         self.checking_config = checking_config
+        # The description of the rule. It can be up to 500 characters in length.
         self.description = description
+        # Whether the rule is enabled.
         self.enabled = enabled
+        # The list of quality rule verification problem processors.
         self.error_handlers = error_handlers
+        # The ID of the rule.
         self.id = id
+        # The name of the rule.
         self.name = name
+        # The ID of the DataWorks workspace.
         self.project_id = project_id
+        # The settings required for sample collection.
         self.sampling_config = sampling_config
+        # Rule for the business level (corresponding to the strong and weak rules on the page), optional enumeration value:
+        # - Normal
+        # - High
         self.severity = severity
+        # The object monitored by the rule.
         self.target = target
+        # The ID of the template used by the rule.
         self.template_code = template_code
 
     def validate(self):
@@ -17264,6 +18001,7 @@ class GetDataQualityRuleResponseBody(TeaModel):
     ):
         # The information about the rule.
         self.data_quality_rule = data_quality_rule
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17369,7 +18107,15 @@ class GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateCheckingConfi
         referenced_samples_filter: str = None,
         type: str = None,
     ):
+        # Some types of thresholds need to query some reference samples, and then summarize the values of the reference samples to obtain the threshold for comparison. Here, an expression is used to represent the query method of the reference samples.
         self.referenced_samples_filter = referenced_samples_filter
+        # Threshold Calculation method:
+        # - Fixed
+        # - Fluctation
+        # - FluctationDiscreate
+        # - Auto
+        # - Average
+        # - Variance
         self.type = type
 
     def validate(self):
@@ -17403,8 +18149,26 @@ class GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateSamplingConfi
         metric_parameters: str = None,
         setting_config: str = None,
     ):
+        # The name of the sampled metric.
+        # - Count: number of table rows
+        # - Min: minimum value of the field
+        # - Max: The maximum value of the field.
+        # - Avg: field mean
+        # - DistinctCount: number of unique field values
+        # - DistinctPercent: the ratio of the number of unique field values to the number of data rows.
+        # - DuplicatedCount: number of duplicate field values
+        # - DuplicatedPercent: the ratio of the number of duplicate field values to the number of data rows.
+        # - TableSize: table size
+        # - NullValueCount: number of rows with empty fields
+        # - NullValuePercent: the proportion of fields that are empty.
+        # - GroupCount: aggregate each value by field value and the corresponding number of data rows
+        # - CountNotIn: the enumerated value does not match the number of rows.
+        # - CountDistinctNotIn: the number of unique values that the enumerated values do not match.
+        # - UserDefinedSql: use custom SQL to collect samples.
         self.metric = metric
+        # Parameters required for sample collection.
         self.metric_parameters = metric_parameters
+        # Before executing the sample statement, insert some runtime parameter setting statements, which can be up to 1000 characters in length. Currently, only MaxCompute is supported.
         self.setting_config = setting_config
 
     def validate(self):
@@ -17446,12 +18210,21 @@ class GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate(TeaModel):
         sampling_config: GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateSamplingConfig = None,
         visible_scope: str = None,
     ):
+        # Sample verification settings.
         self.checking_config = checking_config
+        # The Code of the rule template.
         self.code = code
+        # The category directory where the custom template is stored, separated by slashes. Each level name can be up to 1024 characters in length and cannot contain white space characters or slashes.
         self.directory_path = directory_path
+        # The name of the rule template. It can contain up to 512 characters in length, including numbers, letters, Chinese characters, and half-width punctuation marks.
         self.name = name
+        # The ID of the DataWorks workspace.
         self.project_id = project_id
+        # The settings required for sample collection.
         self.sampling_config = sampling_config
+        # Available range of templates:
+        # - Tenant: all tenants are available
+        # - Project: only available in the current Project
         self.visible_scope = visible_scope
 
     def validate(self):
@@ -17511,6 +18284,7 @@ class GetDataQualityRuleTemplateResponseBody(TeaModel):
     ):
         # The information about the template.
         self.data_quality_rule_template = data_quality_rule_template
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -18481,6 +19255,8 @@ class GetNetworkRequest(TeaModel):
         self,
         id: int = None,
     ):
+        # The network ID.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -18516,10 +19292,15 @@ class GetNetworkResponseBodyNetwork(TeaModel):
         vpc_id: str = None,
         vswitch_id: str = None,
     ):
+        # The time when the network resource was created. The value is a 64-bit timestamp.
         self.create_time = create_time
+        # The ID of the user who creates the network resource.
         self.create_user = create_user
+        # The network ID.
         self.id = id
+        # The ID of the serverless resource group.
         self.resource_group_id = resource_group_id
+        # The security group ID.
         self.security_group_id = security_group_id
         # The status of the network resource. Valid values:
         # 
@@ -18529,7 +19310,9 @@ class GetNetworkResponseBodyNetwork(TeaModel):
         # *   Deleting: The network resource is being deleted.
         # *   Deleted: The network resource is deleted.
         self.status = status
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
+        # The VSwitch ID.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -18589,6 +19372,7 @@ class GetNetworkResponseBody(TeaModel):
     ):
         # The information about the network resource.
         self.network = network
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -18674,7 +19458,7 @@ class GetNodeRequest(TeaModel):
         # 
         # This parameter is required.
         self.id = id
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the workspace ID.
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
         # 
         # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
         self.project_id = project_id
@@ -18713,6 +19497,7 @@ class GetNodeResponseBodyNode(TeaModel):
         owner: str = None,
         project_id: int = None,
         spec: str = None,
+        task_id: int = None,
     ):
         # The time when the node was created. This value is a UNIX timestamp.
         self.create_time = create_time
@@ -18728,6 +19513,7 @@ class GetNodeResponseBodyNode(TeaModel):
         self.project_id = project_id
         # The FlowSpec field information about this node. For more information, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow).
         self.spec = spec
+        self.task_id = task_id
 
     def validate(self):
         pass
@@ -18752,6 +19538,8 @@ class GetNodeResponseBodyNode(TeaModel):
             result['ProjectId'] = self.project_id
         if self.spec is not None:
             result['Spec'] = self.spec
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
         return result
 
     def from_map(self, m: dict = None):
@@ -18770,6 +19558,8 @@ class GetNodeResponseBodyNode(TeaModel):
             self.project_id = m.get('ProjectId')
         if m.get('Spec') is not None:
             self.spec = m.get('Spec')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
         return self
 
 
@@ -19051,7 +19841,7 @@ class GetProjectResponseBody(TeaModel):
     ):
         # The information about the workspace.
         self.project = project
-        # The request ID.
+        # The request ID. You can locate logs and troubleshoot issues based on the ID.
         self.request_id = request_id
 
     def validate(self):
@@ -19362,9 +20152,7 @@ class GetProjectRoleRequest(TeaModel):
         code: str = None,
         project_id: int = None,
     ):
-        # The code of the role in the DataWorks workspace.
-        # 
-        # Valid values:
+        # The code of the role in the DataWorks workspace. Valid values:
         # 
         # *   role_project_admin: workspace administrator
         # *   role_project_dev: developer
@@ -19417,27 +20205,12 @@ class GetProjectRoleResponseBodyProjectRole(TeaModel):
         type: str = None,
     ):
         # The code of the role in the DataWorks workspace.
-        # 
-        # Valid values:
-        # 
-        # *   role_project_admin: workspace administrator
-        # *   role_project_dev: developer
-        # *   role_project_dg_admin: data governance administrator
-        # *   role_project_guest: visitor
-        # *   role_project_security: security administrator
-        # *   role_project_deploy: deployer
-        # *   role_project_owner: workspace owner
-        # *   role_project_data_analyst: data analyst
-        # *   role_project_pe: O\\&M engineer
-        # *   role_project_erd: model designer
         self.code = code
         # The name of the role in the DataWorks workspace.
         self.name = name
         # The DataWorks workspace ID.
         self.project_id = project_id
-        # The type of the role in the DataWorks workspace.
-        # 
-        # Valid values:
+        # The type of the role in the DataWorks workspace. Valid values:
         # 
         # *   UserCustom: user-defined role
         # *   System: system role
@@ -19745,6 +20518,8 @@ class GetResourceGroupRequest(TeaModel):
         self,
         id: str = None,
     ):
+        # Unique identifier of a common resource group.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -19774,7 +20549,9 @@ class GetResourceGroupResponseBodyResourceGroupAliyunResourceTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -19809,6 +20586,7 @@ class GetResourceGroupResponseBodyResourceGroupSpec(TeaModel):
     ):
         # The number of resources in the resource group.
         self.amount = amount
+        # Specification details.
         self.standard = standard
 
     def validate(self):
@@ -19853,18 +20631,29 @@ class GetResourceGroupResponseBodyResourceGroup(TeaModel):
         spec: GetResourceGroupResponseBodyResourceGroupSpec = None,
         status: str = None,
     ):
+        # The ID of the Alibaba Cloud resource group.
         self.aliyun_resource_group_id = aliyun_resource_group_id
+        # The tags.
         self.aliyun_resource_tags = aliyun_resource_tags
+        # The creation time, which is a 64-bit timestamp.
         self.create_time = create_time
+        # The ID of the user who created the resource group.
         self.create_user = create_user
+        # The default VPC ID bound to the common resource group.
         self.default_vpc_id = default_vpc_id
+        # The default switch ID bound to the common resource group.
         self.default_vswitch_id = default_vswitch_id
+        # The unique identifier of the resource group.
         self.id = id
+        # The name of the resource group.
         self.name = name
+        # The ID of the order instance of the resource group.
         self.order_instance_id = order_instance_id
+        # The billing method of the resource group. Valid values: PrePaid and PostPaid. The value PrePaid indicates the subscription billing method, and the value PostPaid indicates the pay-as-you-go billing method.
         self.payment_type = payment_type
+        # The description of the resource group.
         self.remark = remark
-        # The type the resource group. Valid values:
+        # The type of the resource group. Valid values:
         # 
         # *   CommonV2: serverless resource group
         # *   ExclusiveDataIntegration: exclusive resource group for Data Integration
@@ -19878,13 +20667,15 @@ class GetResourceGroupResponseBodyResourceGroup(TeaModel):
         # *   Normal: The resource group is running or in use.
         # *   Stop: The resource group is expired.
         # *   Deleted: The resource group is released or destroyed.
-        # *   Creating: The resource group is being started.
-        # *   CreateFailed: The resource group fails to be started.
+        # *   Creating: The resource group is being created.
+        # *   CreateFailed: The resource group fails to be created.
         # *   Updating: The resource group is being scaled in or out, or the configurations of the resource group are being changed.
         # *   UpdateFailed: The resource group fails to be scaled out or upgraded.
         # *   Deleting: The resource group is being released or destroyed.
         # *   DeleteFailed: The resource group fails to be released or destroyed.
         # *   Timeout: The operations that are performed on the resource group time out.
+        # *   Freezed: The resource group is frozen.
+        # *   Starting: The resource group is being started.
         self.status = status
 
     def validate(self):
@@ -19977,9 +20768,11 @@ class GetResourceGroupResponseBody(TeaModel):
         resource_group: GetResourceGroupResponseBodyResourceGroup = None,
         success: bool = None,
     ):
+        # The ID of the request. It is used to locate logs and troubleshoot problems.
         self.request_id = request_id
         # The details about the resource group.
         self.resource_group = resource_group
+        # Whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -20058,6 +20851,8 @@ class GetRouteRequest(TeaModel):
         self,
         id: int = None,
     ):
+        # The route ID.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -20091,12 +20886,17 @@ class GetRouteResponseBodyRoute(TeaModel):
         resource_group_id: str = None,
         resource_id: str = None,
     ):
+        # The time when the route was created. The value is a 64-bit timestamp.
         self.create_time = create_time
+        # The CIDR block of the destination-based route.
         self.destination_cidr = destination_cidr
+        # The route ID.
         self.id = id
         # The network ID.
         self.network_id = network_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The network resource ID.
         self.resource_id = resource_id
 
     def validate(self):
@@ -20146,6 +20946,7 @@ class GetRouteResponseBody(TeaModel):
         route: GetRouteResponseBodyRoute = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
         # The information about the route.
         self.route = route
@@ -20233,9 +21034,7 @@ class GetTaskRequest(TeaModel):
         # 
         # This parameter is required.
         self.id = id
-        # The environment of the workspace.
-        # 
-        # Valid values:
+        # The environment of the workspace. Valid values:
         # 
         # *   Prod: production environment
         # *   Dev: development environment
@@ -20300,18 +21099,16 @@ class GetTaskResponseBodyTaskDependencies(TeaModel):
         upstream_output: str = None,
         upstream_task_id: str = None,
     ):
-        # The dependency type.
+        # The dependency type. Valid values:
         # 
-        # Valid values:
-        # 
-        # *   CrossCycleDependsOnChildren: cross-cycle dependency on the level-1 descendant nodes of a node
+        # *   CrossCycleDependsOnChildren: cross-cycle dependency on level-1 descendant nodes
         # *   CrossCycleDependsOnSelf: cross-cycle dependency on the current node
         # *   CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
-        # *   Normal: same-cycle dependency
+        # *   Normal: same-cycle scheduling dependency
         self.type = type
-        # 上游任务的输出标识符。（`同周期依赖`返回此字段）
+        # The identifier of the output of the ancestor task. This parameter is returned only if `same-cycle scheduling dependencies` and the node input are configured.
         self.upstream_output = upstream_output
-        # 上游任务的Id。（`跨周期依赖其他节点`依赖返回此字段，其他跨周期依赖类型不返回）
+        # The ancestor task ID. This parameter is returned only if `cross-cycle scheduling dependencies` or `same-cycle scheduling dependencies` and the node input are not configured.
         self.upstream_task_id = upstream_task_id
 
     def validate(self):
@@ -20351,12 +21148,10 @@ class GetTaskResponseBodyTaskInputsVariables(TeaModel):
     ):
         # The name of the variable.
         self.name = name
-        # The type.
-        # 
-        # Valid values:
+        # The type. Valid values:
         # 
         # *   Constant: constant
-        # *   PassThrough: parameter pass-through
+        # *   PassThrough: node output
         # *   System: variable
         # *   NodeOutput: script output
         self.type = type
@@ -20464,13 +21259,11 @@ class GetTaskResponseBodyTaskOutputsVariables(TeaModel):
     ):
         # The name of the variable.
         self.name = name
-        # The type.
-        # 
-        # Valid values:
+        # The type. Valid values:
         # 
         # *   Constant: constant
-        # *   PassThrough: parameter pass-through
-        # *   System: system variable
+        # *   PassThrough: node output
+        # *   System: variable
         # *   NodeOutput: script output
         self.type = type
         # The value of the variable.
@@ -20716,9 +21509,7 @@ class GetTaskResponseBodyTaskSubTasksSubTasksTrigger(TeaModel):
         self.cron = cron
         # The end time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.end_time = end_time
-        # The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler.
-        # 
-        # Valid values:
+        # The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
         # 
         # *   Pause
         # *   Skip
@@ -20726,12 +21517,10 @@ class GetTaskResponseBodyTaskSubTasksSubTasksTrigger(TeaModel):
         self.recurrence = recurrence
         # The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.start_time = start_time
-        # The trigger type.
+        # The trigger type. Valid values:
         # 
-        # Valid values:
-        # 
-        # *   Scheduler: scheduling cycle-based trigger
-        # *   Manual: manual trigger
+        # *   Scheduler: periodic scheduling
+        # *   Manual: manual scheduling
         self.type = type
 
     def validate(self):
@@ -20806,6 +21595,10 @@ class GetTaskResponseBodyTaskSubTasksSubTasks(TeaModel):
         self.data_source = data_source
         # The description of the task.
         self.description = description
+        # The environment of the workspace. Valid values:
+        # 
+        # *   Prod: production environment
+        # *   Dev: development environment
         self.env_type = env_type
         # The task ID.
         self.id = id
@@ -20819,9 +21612,7 @@ class GetTaskResponseBodyTaskSubTasksSubTasks(TeaModel):
         self.owner = owner
         # The priority of the task. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
         self.priority = priority
-        # The environment of the workspace.
-        # 
-        # Valid values:
+        # The environment of the workspace. This parameter is deprecated and replaced by the EnvType parameter. Valid values:
         # 
         # *   Prod: production environment
         # *   Dev: development environment
@@ -20830,13 +21621,11 @@ class GetTaskResponseBodyTaskSubTasksSubTasks(TeaModel):
         self.project_id = project_id
         # The rerun interval. Unit: seconds.
         self.rerun_interval = rerun_interval
-        # The rerun mode.
+        # The rerun mode. Valid values:
         # 
-        # Valid values:
-        # 
-        # *   AllDenied: The task cannot be rerun regardless of whether it is successfully run or fails to run.
-        # *   FailureAllowed: The task can be rerun only after it fails to run.
-        # *   AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
+        # *   AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to be run.
+        # *   FailureAllowed: The task can be rerun only after it fails to be run.
+        # *   AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to be run.
         self.rerun_mode = rerun_mode
         # The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
         self.rerun_times = rerun_times
@@ -20971,9 +21760,7 @@ class GetTaskResponseBodyTaskSubTasks(TeaModel):
     ):
         # The subtasks.
         self.sub_tasks = sub_tasks
-        # The type of the subtask.
-        # 
-        # Valid values:
+        # The type of the subtask. Valid values:
         # 
         # *   DoWhile: do-while node
         # *   Combined: node group
@@ -21060,9 +21847,7 @@ class GetTaskResponseBodyTaskTrigger(TeaModel):
         self.cron = cron
         # The end time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.end_time = end_time
-        # The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler.
-        # 
-        # Valid values:
+        # The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
         # 
         # *   Pause
         # *   Skip
@@ -21070,12 +21855,10 @@ class GetTaskResponseBodyTaskTrigger(TeaModel):
         self.recurrence = recurrence
         # The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.start_time = start_time
-        # The trigger type.
+        # The trigger type. Valid values:
         # 
-        # Valid values:
-        # 
-        # *   Scheduler: scheduling cycle-based trigger
-        # *   Manual: manual trigger
+        # *   Scheduler: periodic scheduling
+        # *   Manual: manual scheduling
         self.type = type
 
     def validate(self):
@@ -21159,16 +21942,19 @@ class GetTaskResponseBodyTask(TeaModel):
         self.dependencies = dependencies
         # The description of the task.
         self.description = description
+        # The environment of the workspace. Valid values:
+        # 
+        # *   Prod: production environment
+        # *   Dev: development environment
         self.env_type = env_type
         # The instance ID.
         self.id = id
         # The input information.
         self.inputs = inputs
-        # 实例生成模式。
+        # The instance generation mode. Valid values:
         # 
-        # T+1（第二天生成）
-        # 
-        # Immediately（立即生成）
+        # *   T+1
+        # *   Immediately
         self.instance_mode = instance_mode
         # The modification time.
         self.modify_time = modify_time
@@ -21182,9 +21968,7 @@ class GetTaskResponseBodyTask(TeaModel):
         self.owner = owner
         # The priority of the task. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
         self.priority = priority
-        # The environment of the workspace.
-        # 
-        # Valid values:
+        # The environment of the workspace. This parameter is deprecated and replaced by the EnvType parameter. Valid values:
         # 
         # *   Prod: production environment
         # *   Dev: development environment
@@ -21193,13 +21977,11 @@ class GetTaskResponseBodyTask(TeaModel):
         self.project_id = project_id
         # The rerun interval. Unit: seconds.
         self.rerun_interval = rerun_interval
-        # The rerun mode.
+        # The rerun mode. Valid values:
         # 
-        # Valid values:
-        # 
-        # *   AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
-        # *   FailureAllowed: The task can be rerun only after it fails to run.
-        # *   AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
+        # *   AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to be run.
+        # *   FailureAllowed: The task can be rerun only after it fails to be run.
+        # *   AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to be run.
         self.rerun_mode = rerun_mode
         # The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
         self.rerun_times = rerun_times
@@ -22411,7 +23193,13 @@ class GetWorkflowRequest(TeaModel):
         env_type: str = None,
         id: int = None,
     ):
+        # The environment of the workspace. Valid values:
+        # 
+        # *   Prod: production environment
+        # *   Dev: development environment
         self.env_type = env_type
+        # The workflow ID.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -22446,8 +23234,16 @@ class GetWorkflowResponseBodyWorkflowDependencies(TeaModel):
         upstream_output: str = None,
         upstream_task_id: int = None,
     ):
+        # The scheduling dependency type. Valid values:
+        # 
+        # *   CrossCycleDependsOnChildren: cross-cycle dependency on the level-1 descendant nodes of a node
+        # *   CrossCycleDependsOnSelf: cross-cycle dependency on the current node
+        # *   CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
+        # *   Normal: same-cycle scheduling dependency
         self.type = type
+        # The identifier of the output of the ancestor task. This parameter is returned only if `same-cycle scheduling dependencies` and the node input are configured.
         self.upstream_output = upstream_output
+        # The ancestor task ID. This parameter is returned only if `cross-cycle scheduling dependencies` or `same-cycle scheduling dependencies` and the node input are not configured.
         self.upstream_task_id = upstream_task_id
 
     def validate(self):
@@ -22483,6 +23279,7 @@ class GetWorkflowResponseBodyWorkflowOutputsTaskOutputs(TeaModel):
         self,
         output: str = None,
     ):
+        # The identifier of the output.
         self.output = output
 
     def validate(self):
@@ -22510,6 +23307,7 @@ class GetWorkflowResponseBodyWorkflowOutputs(TeaModel):
         self,
         task_outputs: List[GetWorkflowResponseBodyWorkflowOutputsTaskOutputs] = None,
     ):
+        # The task outputs.
         self.task_outputs = task_outputs
 
     def validate(self):
@@ -22546,7 +23344,9 @@ class GetWorkflowResponseBodyWorkflowTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -22578,6 +23378,7 @@ class GetWorkflowResponseBodyWorkflowTasksDataSource(TeaModel):
         self,
         name: str = None,
     ):
+        # The name of the data source.
         self.name = name
 
     def validate(self):
@@ -22607,8 +23408,11 @@ class GetWorkflowResponseBodyWorkflowTasksRuntimeResource(TeaModel):
         image: str = None,
         resource_group_id: str = None,
     ):
+        # The default number of compute units (CUs) configured for task running.
         self.cu = cu
+        # The ID of the image configured for task running.
         self.image = image
+        # The ID of the resource group for scheduling configured for task running.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -22665,27 +23469,60 @@ class GetWorkflowResponseBodyWorkflowTasks(TeaModel):
         type: str = None,
         workflow_id: int = None,
     ):
+        # The baseline ID.
         self.baseline_id = baseline_id
+        # The unique code of the client. This parameter is used to create a task asynchronously and implement the idempotence of the task. If you do not specify this parameter when you create the task, the system automatically generates a unique code. The unique code is uniquely associated with the task ID. If you specify this parameter when you update or delete the task, the value of this parameter must be the unique code that is used to create the task.
         self.client_unique_code = client_unique_code
+        # The creation time.
         self.create_time = create_time
+        # The account ID of the creator.
         self.create_user = create_user
+        # The information about the associated data source.
         self.data_source = data_source
+        # The description of the task.
         self.description = description
+        # The environment of the workspace. Valid values:
+        # 
+        # *   Prod: production environment
+        # *   Dev: development environment
         self.env_type = env_type
+        # The task ID.
         self.id = id
+        # The modification time.
         self.modify_time = modify_time
+        # The account ID of the modifier.
         self.modify_user = modify_user
+        # The name of the task.
         self.name = name
+        # The account ID of the task owner.
         self.owner = owner
+        # The priority of the task. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
         self.priority = priority
+        # The workspace ID.
         self.project_id = project_id
+        # The rerun interval. Unit: seconds.
         self.rerun_interval = rerun_interval
+        # The rerun mode. Valid values:
+        # 
+        # *   AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
+        # *   FailureAllowed: The task can be rerun only after it fails to run.
+        # *   AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
         self.rerun_mode = rerun_mode
+        # The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
         self.rerun_times = rerun_times
+        # The configurations of the runtime environment, such as the resource group information.
         self.runtime_resource = runtime_resource
+        # The timeout period of task running. Unit: seconds.
         self.timeout = timeout
+        # The running mode of the task after it is triggered. Valid values:
+        # 
+        # *   Pause
+        # *   Skip
+        # *   Normal
         self.trigger_recurrence = trigger_recurrence
+        # The type of the task.
         self.type = type
+        # The ID of the workflow to which the task belongs.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -22806,10 +23643,22 @@ class GetWorkflowResponseBodyWorkflowTrigger(TeaModel):
         start_time: str = None,
         type: str = None,
     ):
+        # The CRON expression. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.cron = cron
+        # The end time of the time range during which the workflow is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.end_time = end_time
+        # The running mode of the workflow after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
+        # 
+        # *   Pause
+        # *   Skip
+        # *   Normal
         self.recurrence = recurrence
+        # The start time of the time range during which the workflow is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.start_time = start_time
+        # The trigger type. Valid values:
+        # 
+        # *   Scheduler: scheduling cycle-based trigger
+        # *   Manual: manual trigger
         self.type = type
 
     def validate(self):
@@ -22869,22 +23718,42 @@ class GetWorkflowResponseBodyWorkflow(TeaModel):
         tasks: List[GetWorkflowResponseBodyWorkflowTasks] = None,
         trigger: GetWorkflowResponseBodyWorkflowTrigger = None,
     ):
+        # The unique code of the client. This parameter is used to create a workflow asynchronously and implement the idempotence of the workflow. If you do not specify this parameter when you create the workflow, the system automatically generates a unique code. The unique code is uniquely associated with the workflow ID. If you specify this parameter when you update or delete the workflow, the value of this parameter must be the unique code that is used to create the workflow.
         self.client_unique_code = client_unique_code
+        # The creation time.
         self.create_time = create_time
+        # The account ID of the creator.
         self.create_user = create_user
+        # The dependency information.
         self.dependencies = dependencies
+        # The description of the workflow.
         self.description = description
+        # The environment of the workspace. Valid values:
+        # 
+        # *   Prod: production environment
+        # *   Dev: development environment
         self.env_type = env_type
+        # The workflow ID.
         self.id = id
+        # The modification time.
         self.modify_time = modify_time
+        # The account ID of the modifier.
         self.modify_user = modify_user
+        # The name of the workflow.
         self.name = name
+        # The output information.
         self.outputs = outputs
+        # The account ID of the workflow owner.
         self.owner = owner
+        # The parameters.
         self.parameters = parameters
+        # The workspace ID.
         self.project_id = project_id
+        # The tags.
         self.tags = tags
+        # The tasks.
         self.tasks = tasks
+        # The trigger method.
         self.trigger = trigger
 
     def validate(self):
@@ -23009,7 +23878,9 @@ class GetWorkflowResponseBody(TeaModel):
         request_id: str = None,
         workflow: GetWorkflowResponseBodyWorkflow = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The information about the workflow.
         self.workflow = workflow
 
     def validate(self):
@@ -23083,12 +23954,14 @@ class GetWorkflowDefinitionRequest(TeaModel):
     def __init__(
         self,
         id: int = None,
+        include_script_content: bool = None,
         project_id: int = None,
     ):
         # The ID of the workflow.
         # 
         # This parameter is required.
         self.id = id
+        self.include_script_content = include_script_content
         # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
         # 
         # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
@@ -23105,6 +23978,8 @@ class GetWorkflowDefinitionRequest(TeaModel):
         result = dict()
         if self.id is not None:
             result['Id'] = self.id
+        if self.include_script_content is not None:
+            result['IncludeScriptContent'] = self.include_script_content
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         return result
@@ -23113,6 +23988,8 @@ class GetWorkflowDefinitionRequest(TeaModel):
         m = m or dict()
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('IncludeScriptContent') is not None:
+            self.include_script_content = m.get('IncludeScriptContent')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         return self
@@ -23128,6 +24005,7 @@ class GetWorkflowDefinitionResponseBodyWorkflowDefinition(TeaModel):
         owner: str = None,
         project_id: int = None,
         spec: str = None,
+        workflow_id: int = None,
     ):
         # The time when the workflow was created. This value is a UNIX timestamp.
         self.create_time = create_time
@@ -23143,6 +24021,7 @@ class GetWorkflowDefinitionResponseBodyWorkflowDefinition(TeaModel):
         self.project_id = project_id
         # The FlowSpec field information about the workflow. For more information, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow/).
         self.spec = spec
+        self.workflow_id = workflow_id
 
     def validate(self):
         pass
@@ -23167,6 +24046,8 @@ class GetWorkflowDefinitionResponseBodyWorkflowDefinition(TeaModel):
             result['ProjectId'] = self.project_id
         if self.spec is not None:
             result['Spec'] = self.spec
+        if self.workflow_id is not None:
+            result['WorkflowId'] = self.workflow_id
         return result
 
     def from_map(self, m: dict = None):
@@ -23185,6 +24066,8 @@ class GetWorkflowDefinitionResponseBodyWorkflowDefinition(TeaModel):
             self.project_id = m.get('ProjectId')
         if m.get('Spec') is not None:
             self.spec = m.get('Spec')
+        if m.get('WorkflowId') is not None:
+            self.workflow_id = m.get('WorkflowId')
         return self
 
 
@@ -23314,6 +24197,7 @@ class GetWorkflowInstanceResponseBodyWorkflowInstance(TeaModel):
         type: str = None,
         workflow_id: int = None,
     ):
+        # The data timestamp.
         self.biz_date = biz_date
         # The creation time.
         self.create_time = create_time
@@ -23349,7 +24233,13 @@ class GetWorkflowInstanceResponseBodyWorkflowInstance(TeaModel):
         # *   Success: The instance is successfully run.
         # *   Checking: Data quality is being checked for the instance.
         self.status = status
-        # 工作流类型
+        # The type of the workflow instance. Valid values:
+        # 
+        # *   Normal
+        # *   Manual
+        # *   SmokeTest
+        # *   SupplementData
+        # *   ManualWorkflow
         self.type = type
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
@@ -24108,6 +24998,7 @@ class ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionErr
         auto_rerun_alert_enabled: bool = None,
         stream_task_ids: List[int] = None,
     ):
+        # Indicates whether an alert is triggered if a batch synchronization task is automatically rerun upon a failure.
         self.auto_rerun_alert_enabled = auto_rerun_alert_enabled
         # The IDs of the real-time computing tasks. This parameter is required when you monitor real-time computing tasks.
         self.stream_task_ids = stream_task_ids
@@ -24392,7 +25283,7 @@ class ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionTarget(TeaMo
         # 
         # *   Task: node
         # *   Baseline: baseline
-        # *   Projec: workspace
+        # *   Project: workspace
         # *   BizProcess: workflow
         self.type = type
 
@@ -24811,7 +25702,7 @@ class ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettings(
         notification_channels: List[ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettingsNotificationChannels] = None,
         notification_receivers: List[ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettingsNotificationReceivers] = None,
     ):
-        # The duration of the alert suppression interval. Unit: minutes.
+        # This parameter is deprecated and replaced by the MuteInterval parameter.
         self.inhibition_interval = inhibition_interval
         # The duration of the alert suppression interval. Unit: minutes.
         self.mute_interval = mute_interval
@@ -24878,7 +25769,7 @@ class ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesTriggerConditions(Tea
         severity: str = None,
         threshold: int = None,
     ):
-        # The types of DDL operations for which the alert rule takes effect. This parameter is returned only if the MetricType parameter is set to DdlReport.
+        # This parameter is deprecated and replaced by the DdlTypes parameter.
         self.ddl_report_tags = ddl_report_tags
         # The types of DDL operations for which the alert rule takes effect. This parameter is returned only if the MetricType parameter is set to DdlReport.
         self.ddl_types = ddl_types
@@ -26157,7 +27048,7 @@ class ListDIJobsRequest(TeaModel):
         project_id: int = None,
         source_data_source_type: str = None,
     ):
-        # The destination type. If you do not configure this parameter, no limits are imposed on the tasks.
+        # The destination type. Valid values: Hologres, OSS-HDFS, OSS, MaxCompute, Loghub, STARROCKS, Datahub, ANALYTICDB_FOR_MYSQL, Kafka, and Hive. If you do not configure this parameter, the API operation queries synchronization tasks that use all type of destinations.
         self.destination_data_source_type = destination_data_source_type
         # The synchronization type. Valid values:
         # 
@@ -26179,7 +27070,7 @@ class ListDIJobsRequest(TeaModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The source type. If you do not configure this parameter, no limits are imposed on the tasks.
+        # The source type. Valid values: PolarDB, MySQL, Kafka, Loghub, Hologres, Oracle, OceanBase, MongoDB, RedShift, Hive, SqlServer, Doris, and ClickHouse. If you do not configure this parameter, the API operation queries synchronization tasks that use all types of sources.
         self.source_data_source_type = source_data_source_type
 
     def validate(self):
@@ -26240,7 +27131,7 @@ class ListDIJobsResponseBodyPagingInfoDIJobs(TeaModel):
     ):
         # This parameter is deprecated. Use the Id parameter instead.
         self.dijob_id = dijob_id
-        # The destination type. Valid values: Hologres and Hive.
+        # The destination type. Valid values: Hologres, OSS-HDFS, OSS, MaxCompute, Loghub, STARROCKS, Datahub, ANALYTICDB_FOR_MYSQL, Kafka, and Hive. If you do not configure this parameter, the API operation returns synchronization tasks that use all type of destinations.
         self.destination_data_source_type = destination_data_source_type
         # The ID of the synchronization task.
         self.id = id
@@ -26265,7 +27156,7 @@ class ListDIJobsResponseBodyPagingInfoDIJobs(TeaModel):
         self.migration_type = migration_type
         # The ID of the DataWorks workspace to which the synchronization task belongs.
         self.project_id = project_id
-        # The source type. The value MySQL is returned.
+        # The source type. Valid values: PolarDB, MySQL, Kafka, Loghub, Hologres, Oracle, OceanBase, MongoDB, RedShift, Hive, SqlServer, Doris, and ClickHouse. If you do not configure this parameter, the API operation returns synchronization tasks that use all types of sources.
         self.source_data_source_type = source_data_source_type
 
     def validate(self):
@@ -26459,9 +27350,18 @@ class ListDataAssetTagsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The type of the tag.
+        # 
+        # Valid values:
+        # 
+        # *   Normal
+        # *   System
         self.category = category
+        # The tag key.
         self.key = key
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
 
     def validate(self):
@@ -26510,15 +27410,30 @@ class ListDataAssetTagsResponseBodyPagingInfoDataAssetTags(TeaModel):
         value_type: str = None,
         values: List[str] = None,
     ):
+        # The type of the tag.
+        # 
+        # Valid values:
+        # 
+        # *   Normal
+        # *   System
         self.category = category
+        # The time when the tag was created.
         self.create_time = create_time
+        # The creator of the tag.
         self.create_user = create_user
+        # The description of the tag.
         self.description = description
+        # The tag key.
         self.key = key
+        # The tag administrators.
         self.managers = managers
+        # The time when the tag was last modified.
         self.modify_time = modify_time
+        # The user who last modified the tag.
         self.modify_user = modify_user
+        # The type of the tag value.
         self.value_type = value_type
+        # The tag values.
         self.values = values
 
     def validate(self):
@@ -26585,9 +27500,13 @@ class ListDataAssetTagsResponseBodyPagingInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The tags.
         self.data_asset_tags = data_asset_tags
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -26636,8 +27555,9 @@ class ListDataAssetTagsResponseBody(TeaModel):
         paging_info: ListDataAssetTagsResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.paging_info = paging_info
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -26713,8 +27633,13 @@ class ListDataAssetsRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
+        # 
+        # The tag key can be up to 64 characters in length and can contain letters, digits, and the following characters: `-@#*<>|[]()+=&%$!~`. It cannot start with `dw:`.
+        # 
         # This parameter is required.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -26752,12 +27677,29 @@ class ListDataAssetsRequest(TeaModel):
         project_id: int = None,
         tags: List[ListDataAssetsRequestTags] = None,
     ):
+        # The data asset IDs.
         self.data_asset_ids = data_asset_ids
+        # The type of the data asset. Valid values:
+        # 
+        # *   ACS::DataWorks::Table
+        # *   ACS::DataWorks::Task
         self.data_asset_type = data_asset_type
+        # The environment of the workspace to which the data asset belongs. Valid values:
+        # 
+        # *   Dev: development environment
+        # *   Prod: production environment
         self.env_type = env_type
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
+        # The DataWorks workspace ID.
         self.project_id = project_id
+        # The tags that are added to data assets. This parameter specifies a filter condition.
+        # 
+        # *   You can specify multiple tags, which are in the logical OR relation. For example, you can query the data assets that contain one of the following tags: `["key1:v1", "key2:v1", "key3:v1"]`.
+        # *   If you do not configure this parameter, tag-based filtering is not performed.
+        # 
         # This parameter is required.
         self.tags = tags
 
@@ -26824,12 +27766,29 @@ class ListDataAssetsShrinkRequest(TeaModel):
         project_id: int = None,
         tags_shrink: str = None,
     ):
+        # The data asset IDs.
         self.data_asset_ids_shrink = data_asset_ids_shrink
+        # The type of the data asset. Valid values:
+        # 
+        # *   ACS::DataWorks::Table
+        # *   ACS::DataWorks::Task
         self.data_asset_type = data_asset_type
+        # The environment of the workspace to which the data asset belongs. Valid values:
+        # 
+        # *   Dev: development environment
+        # *   Prod: production environment
         self.env_type = env_type
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
+        # The DataWorks workspace ID.
         self.project_id = project_id
+        # The tags that are added to data assets. This parameter specifies a filter condition.
+        # 
+        # *   You can specify multiple tags, which are in the logical OR relation. For example, you can query the data assets that contain one of the following tags: `["key1:v1", "key2:v1", "key3:v1"]`.
+        # *   If you do not configure this parameter, tag-based filtering is not performed.
+        # 
         # This parameter is required.
         self.tags_shrink = tags_shrink
 
@@ -26887,11 +27846,20 @@ class ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings(TeaMode
         tag_source: str = None,
         value: str = None,
     ):
+        # Indicates whether the lineage-based automatic backtrack feature is enabled for the mapping.
         self.auto_trace_enabled = auto_trace_enabled
+        # The creator of the mapping between the data asset and the tag.
         self.creator = creator
+        # The data asset ID.
         self.data_asset_id = data_asset_id
+        # The tag key.
         self.key = key
+        # The way in which the mapping between the data asset and the tag is created. Valid values:
+        # 
+        # *   System
+        # *   UserDefined
         self.tag_source = tag_source
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -26944,11 +27912,23 @@ class ListDataAssetsResponseBodyPagingInfoDataAssets(TeaModel):
         project_id: int = None,
         type: str = None,
     ):
+        # The mappings between data assets and tags.
         self.data_asset_tag_mappings = data_asset_tag_mappings
+        # The environment of the workspace to which the data asset belongs. Valid values:
+        # 
+        # *   Dev: development environment
+        # *   Prod: production environment
         self.env_type = env_type
+        # The data asset ID.
         self.id = id
+        # The name of the data asset.
         self.name = name
+        # The DataWorks workspace ID.
         self.project_id = project_id
+        # The type of the data asset. Valid values:
+        # 
+        # *   ACS::DataWorks::Table
+        # *   ACS::DataWorks::Task
         self.type = type
 
     def validate(self):
@@ -27007,9 +27987,13 @@ class ListDataAssetsResponseBodyPagingInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The data assets.
         self.data_assets = data_assets
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -27058,8 +28042,9 @@ class ListDataAssetsResponseBody(TeaModel):
         paging_info: ListDataAssetsResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.paging_info = paging_info
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -27550,7 +28535,7 @@ class ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEva
         self.hooks = hooks
         # The task ID.
         self.id = id
-        # The name of the task.
+        # The name of the monitor.
         # 
         # This parameter is required.
         self.name = name
@@ -28468,10 +29453,15 @@ class ListDataQualityResultsRequest(TeaModel):
         self.bizdate_from = bizdate_from
         # The end of the time range to query.
         self.bizdate_to = bizdate_to
+        # The earliest time when data quality verification results are generated.
         self.create_time_from = create_time_from
+        # The latest generation time of data quality verification results.
         self.create_time_to = create_time_to
+        # The ID of the data quality verification task.
         self.data_quality_evaluation_task_id = data_quality_evaluation_task_id
+        # The ID of the data quality verification task instance.
         self.data_quality_evaluation_task_instance_id = data_quality_evaluation_task_instance_id
+        # The ID of the data quality rule.
         self.data_quality_rule_id = data_quality_rule_id
         # The page number. Default value: 1.
         self.page_number = page_number
@@ -28543,7 +29533,9 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsDetails(TeaM
         referenced_value: str = None,
         status: str = None,
     ):
+        # The value used to compare with the threshold.
         self.checked_value = checked_value
+        # Use the referenced sample to participate in the CheckedValue calculation of the benchmark value.
         self.referenced_value = referenced_value
         # The comparison result between the value of CheckedValue and the threshold. Valid values:
         # 
@@ -28588,6 +29580,15 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleChecking
         operator: str = None,
         value: str = None,
     ):
+        # The threshold expression.
+        # 
+        # The volatility type rule must use an expression to represent the volatility threshold. For example:
+        # 
+        # - Fluctuation rise greater than 0.01: $checkValue > 0.01
+        # - Fluctuation drop greater than 0.01:$checkValue < -0.01
+        # - Absolute volatility: abs($checkValue) > 0.01
+        # 
+        # You can also use expressions to configure thresholds for fixed-Value rules. If you configure them at the same time, the expression priority is higher than Operator and Value.
         self.expression = expression
         # *   \\>
         # *   \\>=\
@@ -28596,6 +29597,7 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleChecking
         # *   !=\
         # *   \\=\
         self.operator = operator
+        # The threshold value.
         self.value = value
 
     def validate(self):
@@ -28633,6 +29635,15 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleChecking
         operator: str = None,
         value: str = None,
     ):
+        # The threshold expression.
+        # 
+        # The volatility type rule must use an expression to represent the volatility threshold. For example:
+        # 
+        # - Fluctuation rise greater than 0.01: $checkValue > 0.01
+        # - Fluctuation drop greater than 0.01:$checkValue < -0.01
+        # - Absolute volatility: abs($checkValue) > 0.01
+        # 
+        # You can also use expressions to configure thresholds for fixed-Value rules. If you configure them at the same time, the expression priority is higher than Operator and Value.
         self.expression = expression
         # *   \\>
         # *   \\>=\
@@ -28641,6 +29652,7 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleChecking
         # *   !=\
         # *   \\=\
         self.operator = operator
+        # The threshold value.
         self.value = value
 
     def validate(self):
@@ -28678,6 +29690,15 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleChecking
         operator: str = None,
         value: str = None,
     ):
+        # The threshold expression.
+        # 
+        # The volatility type rule must use an expression to represent the volatility threshold. For example:
+        # 
+        # - Fluctuation rise greater than 0.01: $checkValue > 0.01
+        # - Fluctuation drop greater than 0.01:$checkValue < -0.01
+        # - Absolute volatility: abs($checkValue) > 0.01
+        # 
+        # You can also use expressions to configure thresholds for fixed-Value rules. If you configure them at the same time, the expression priority is higher than Operator and Value.
         self.expression = expression
         # *   \\>
         # *   \\>=\
@@ -28686,6 +29707,7 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleChecking
         # *   !=\
         # *   \\=\
         self.operator = operator
+        # The threshold value.
         self.value = value
 
     def validate(self):
@@ -28773,6 +29795,7 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleChecking
         thresholds: ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholds = None,
         type: str = None,
     ):
+        # Some types of thresholds need to query some reference samples, and then summarize the values of the reference samples to obtain the threshold for comparison. Here, an expression is used to represent the query method of the reference samples.
         self.referenced_samples_filter = referenced_samples_filter
         # The threshold settings.
         self.thresholds = thresholds
@@ -28822,6 +29845,7 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleErrorHan
         error_data_filter: str = None,
         type: str = None,
     ):
+        # For custom SQL rules, you must specify SQL to filter problem data.
         self.error_data_filter = error_data_filter
         # The type of the operation. Valid values:
         # 
@@ -28878,8 +29902,11 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleSampling
         # *   CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
         # *   UserDefinedSql: indicates that data is sampled by executing custom SQL statements.
         self.metric = metric
+        # Parameters required for sample collection.
         self.metric_parameters = metric_parameters
+        # The condition for secondary filtering of data that is not concerned during sampling, which can be up to 16777215 characters in length.
         self.sampling_filter = sampling_filter
+        # Before executing the sample statement, insert some runtime parameter setting statements, which can be up to 1000 characters in length. Currently, only MaxCompute is supported.
         self.setting_config = setting_config
 
     def validate(self):
@@ -28931,6 +29958,7 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget(T
         # *   analyticdb_for_mysql
         # *   starrocks
         self.database_type = database_type
+        # The unique ID of the table in the data map.
         self.table_guid = table_guid
         # The type of the monitored object. Valid values:
         # 
@@ -28982,12 +30010,17 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule(TeaMode
     ):
         # The check settings for sample data.
         self.checking_config = checking_config
+        # The description of the rule. It can be up to 500 characters in length.
         self.description = description
+        # Whether the rule is enabled.
         self.enabled = enabled
         # The operations that you can perform after the rule-based check fails.
         self.error_handlers = error_handlers
+        # The ID of the rule.
         self.id = id
+        # The rule name, a combination of numbers, English letters, Chinese characters, and half-width punctuation marks, can be up to 255 characters in length.
         self.name = name
+        # DataWorks the ID of the project.
         self.project_id = project_id
         # The sampling settings.
         self.sampling_config = sampling_config
@@ -29089,12 +30122,15 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResults(TeaModel):
         status: str = None,
         task_instance_id: int = None,
     ):
+        # The time when the verification result was generated.
         self.create_time = create_time
         # The check details.
         self.details = details
+        # The ID of the verification result.
         self.id = id
         # The snapshot of the rule configuration when the check starts.
         self.rule = rule
+        # The sample value used for this verification.
         self.sample = sample
         # The status of the check result. Valid values:
         # 
@@ -29104,6 +30140,7 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResults(TeaModel):
         # *   Warned
         # *   Critical
         self.status = status
+        # The ID of the verification task instance.
         self.task_instance_id = task_instance_id
 
     def validate(self):
@@ -29171,8 +30208,11 @@ class ListDataQualityResultsResponseBodyPagingInfo(TeaModel):
     ):
         # The data quality check results.
         self.data_quality_results = data_quality_results
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -29303,13 +30343,20 @@ class ListDataQualityRuleTemplatesRequest(TeaModel):
         page_size: int = None,
         project_id: int = None,
     ):
+        # The source of the rule template. Required.
+        # - System: System Template
+        # - UserDefined: user-defined Template
         self.creation_source = creation_source
+        # The category directory where the custom template is stored, slash/divider level. Each level name can be up to 1024 characters in length and cannot contain white space characters or backslashes.
         self.directory_path = directory_path
+        # Fuzzy matching of template rule names. If it is a system template, the internationalized name of the system template will be fuzzy matching based on the language.
         self.name = name
         # The number of entries per page. Default value: 10.
         self.page_number = page_number
         # The page number. Default value: 1.
         self.page_size = page_size
+        # DataWorks workspace ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -29359,7 +30406,15 @@ class ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates
         referenced_samples_filter: str = None,
         type: str = None,
     ):
+        # Some types of thresholds need to query some reference samples, and then summarize the values of the reference samples to obtain the threshold for comparison. Here, an expression is used to represent the query method of the reference samples.
         self.referenced_samples_filter = referenced_samples_filter
+        # Threshold Calculation method
+        # - Fixed
+        # - Fluctation
+        # - FluctationDiscreate
+        # - Auto
+        # - Average
+        # - Variance
         self.type = type
 
     def validate(self):
@@ -29393,8 +30448,26 @@ class ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates
         metric_parameters: str = None,
         setting_config: str = None,
     ):
+        # The name of the sampled metric.
+        # - Count: number of table rows
+        # - Min: minimum value of the field
+        # - Max: The maximum value of the field.
+        # - Avg: field mean
+        # - DistinctCount: number of unique field values
+        # - DistinctPercent: the ratio of the number of unique field values to the number of data rows.
+        # - DuplicatedCount: number of duplicate field values
+        # - DuplicatedPercent: the ratio of the number of duplicate field values to the number of data rows.
+        # - TableSize: table size
+        # - NullValueCount: number of rows with empty fields
+        # - NullValuePercent: the proportion of fields that are empty.
+        # - GroupCount: aggregate each value by field value and the corresponding number of data rows
+        # - CountNotIn: the enumerated value does not match the number of rows.
+        # - CountDistinctNotIn: the number of unique values that the enumerated values do not match.
+        # - UserDefinedSql: use custom SQL to collect samples
         self.metric = metric
+        # Parameters required for sample collection
         self.metric_parameters = metric_parameters
+        # Before executing the sample statement, insert some runtime parameter setting statements, which can be up to 1000 characters in length. Currently, only MaxCompute are supported.
         self.setting_config = setting_config
 
     def validate(self):
@@ -29436,12 +30509,21 @@ class ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates
         sampling_config: ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig = None,
         visible_scope: str = None,
     ):
+        # Sample verification settings
         self.checking_config = checking_config
+        # Rule template Code
         self.code = code
+        # The category directory where the custom template is stored, separated by slashes. Each level name can be up to 1024 characters in length and cannot contain white space characters or slashes.
         self.directory_path = directory_path
+        # Rule template name, a combination of numbers, English letters, Chinese characters, and half-width punctuation marks, up to 512 characters in length
         self.name = name
+        # DataWorks workspace ID
         self.project_id = project_id
+        # Settings required for sample collection
         self.sampling_config = sampling_config
+        # Available range of templates:
+        # - Tenant: all tenants are available
+        # - Project: only available in the current Project
         self.visible_scope = visible_scope
 
     def validate(self):
@@ -29501,9 +30583,13 @@ class ListDataQualityRuleTemplatesResponseBodyPagingInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # Rule template list
         self.data_quality_rule_templates = data_quality_rule_templates
+        # Page number
         self.page_number = page_number
+        # Page size
         self.page_size = page_size
+        # Total number of entries
         self.total_count = total_count
 
     def validate(self):
@@ -29552,7 +30638,9 @@ class ListDataQualityRuleTemplatesResponseBody(TeaModel):
         paging_info: ListDataQualityRuleTemplatesResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
+        # Quality Rule template pagination query results
         self.paging_info = paging_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -29692,6 +30780,15 @@ class ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigTh
         operator: str = None,
         value: str = None,
     ):
+        # The threshold expression.
+        # 
+        # The volatility type rule must use an expression to represent the volatility threshold. For example:
+        # 
+        # - Fluctuation rise greater than 0.01: $checkValue > 0.01
+        # - Fluctuation drop greater than 0.01:$checkValue < -0.01
+        # - Absolute volatility: abs($checkValue) > 0.01
+        # 
+        # You can also use expressions to configure thresholds for fixed-Value rules. If you configure them at the same time, the expression priority is higher than Operator and Value.
         self.expression = expression
         # The comparison operator. Valid values:
         # 
@@ -29740,6 +30837,15 @@ class ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigTh
         operator: str = None,
         value: str = None,
     ):
+        # The threshold expression.
+        # 
+        # The volatility type rule must use an expression to represent the volatility threshold. For example:
+        # 
+        # - Fluctuation rise greater than 0.01: $checkValue > 0.01
+        # - Fluctuation drop greater than 0.01:$checkValue < -0.01
+        # - Absolute volatility: abs($checkValue) > 0.01
+        # 
+        # You can also use expressions to configure thresholds for fixed-Value rules. If you configure them at the same time, the expression priority is higher than Operator and Value.
         self.expression = expression
         # The comparison operator. Valid values:
         # 
@@ -29788,6 +30894,15 @@ class ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigTh
         operator: str = None,
         value: str = None,
     ):
+        # The threshold expression.
+        # 
+        # The volatility type rule must use an expression to represent the volatility threshold. For example:
+        # 
+        # - Fluctuation rise greater than 0.01: $checkValue > 0.01
+        # - Fluctuation drop greater than 0.01:$checkValue < -0.01
+        # - Absolute volatility: abs($checkValue) > 0.01
+        # 
+        # You can also use expressions to configure thresholds for fixed-Value rules. If you configure them at the same time, the expression priority is higher than Operator and Value.
         self.expression = expression
         # The comparison operator. Valid values:
         # 
@@ -30393,6 +31508,9 @@ class ListDataSourceSharedRulesResponseBodyDataSourceSharedRules(TeaModel):
         self.create_user = create_user
         # The data source ID. You can call the [ListDataSources](https://help.aliyun.com/document_detail/211431.html) operation to query the ID.
         self.data_source_id = data_source_id
+        # The environment to which the target data source belongs. The values are as follows:
+        # - Dev: the development environment.
+        # - Prod: the production environment.
         self.env_type = env_type
         # The rule ID.
         self.id = id
@@ -31050,12 +32168,12 @@ class ListDeploymentsRequest(TeaModel):
         # 
         # Valid values:
         # 
-        # *   INIT
-        # *   RUNNING
-        # *   SUCCESS
-        # *   FAIL
-        # *   TERMINATION
-        # *   CANCEL
+        # *   Init
+        # *   Running
+        # *   Success
+        # *   Fail
+        # *   Termination
+        # *   Cancel
         self.status = status
 
     def validate(self):
@@ -31290,7 +32408,7 @@ class ListDeploymentsResponseBodyPagingInfo(TeaModel):
         page_size: str = None,
         total_count: str = None,
     ):
-        # The deployment processes.
+        # The processes.
         self.deployments = deployments
         # The page number.
         self.page_number = page_number
@@ -31466,6 +32584,7 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTa
         self,
         name: str = None,
     ):
+        # The name of the data source.
         self.name = name
 
     def validate(self):
@@ -31494,7 +32613,9 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTa
         gateway: str = None,
         process_id: str = None,
     ):
+        # The host for running.
         self.gateway = gateway
+        # The instance run ID.
         self.process_id = process_id
 
     def validate(self):
@@ -31528,8 +32649,11 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTa
         image: str = None,
         resource_group_id: str = None,
     ):
+        # The default number of compute units (CUs) configured for task running.
         self.cu = cu
+        # The ID of the image configured for task running.
         self.image = image
+        # The ID of the resource group for scheduling configured for task running.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -31596,40 +32720,97 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTa
         workflow_instance_type: str = None,
         workflow_name: str = None,
     ):
+        # The baseline ID.
         self.baseline_id = baseline_id
+        # The data timestamp.
         self.bizdate = bizdate
+        # The creation time.
         self.create_time = create_time
+        # The account ID of the creator.
         self.create_user = create_user
+        # The information about the associated data source.
         self.data_source = data_source
+        # The description.
         self.description = description
+        # The environment in which the data source is used. Valid values:
+        # 
+        # *   Dev
+        # *   Prod
         self.env_type = env_type
+        # The time when the instance finished running.
         self.finished_time = finished_time
+        # The instance ID.
         self.id = id
+        # The modification time.
         self.modify_time = modify_time
+        # The account ID of the modifier.
         self.modify_user = modify_user
+        # The account ID of the task owner.
         self.owner = owner
+        # The sequence number of the cycle. This parameter indicates the cycle of the task instance on the current day.
         self.period_number = period_number
+        # The priority of the task. Minimum value: 1. Maximum value: 8. A larger value indicates a higher priority. Default value: 1.
         self.priority = priority
+        # The workspace ID.
         self.project_id = project_id
         # The rerun mode.
         self.rerun_mode = rerun_mode
+        # The number of times the instance is run. By default, the value starts from 1.
         self.run_number = run_number
+        # The runtime information about the instance.
         self.runtime = runtime
+        # The configurations of the runtime environment, such as the resource group information.
         self.runtime_resource = runtime_resource
+        # The time when the instance started to run.
         self.started_time = started_time
-        # The status of the instance.
+        # The status of the instance. Valid values:
+        # 
+        # *   NotRun: The instance is not run.
+        # *   Running: The instance is running.
+        # *   WaitTime: The instance is waiting for the scheduling time to arrive.
+        # *   CheckingCondition: Branch conditions are being checked for the instance.
+        # *   WaitResource: The instance is waiting for resources.
+        # *   Failure: The instance fails to be run.
+        # *   Success: The instance is successfully run.
+        # *   Checking: Data quality is being checked for the instance.
+        # *   WaitTrigger: The instance is waiting to be triggered by external scheduling systems.
         self.status = status
+        # The ID of the task for which the instance is generated.
         self.task_id = task_id
+        # The name of the task for which the instance is generated.
         self.task_name = task_name
-        # The task type.
+        # The type of the task for which the instance is generated.
         self.task_type = task_type
+        # The timeout period of task running. Unit: seconds.
+        # 
+        # Note: The value of this parameter is rounded up by hour.
         self.timeout = timeout
+        # The running mode of the instance after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler. Valid values:
+        # 
+        # *   Pause
+        # *   Skip
+        # *   Normal
         self.trigger_recurrence = trigger_recurrence
+        # The scheduling time.
         self.trigger_time = trigger_time
+        # The trigger type. Valid values:
+        # 
+        # *   Scheduler: scheduling cycle-based trigger
+        # *   Manual: manual trigger
         self.trigger_type = trigger_type
+        # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
+        # The workflow instance ID.
         self.workflow_instance_id = workflow_instance_id
+        # The type of the workflow instance. Valid values:
+        # 
+        # *   Normal
+        # *   Manual
+        # *   SmokeTest
+        # *   SupplementData
+        # *   ManualWorkflow
         self.workflow_instance_type = workflow_instance_type
+        # The name of the workflow to which the instance belongs.
         self.workflow_name = workflow_name
 
     def validate(self):
@@ -31790,7 +32971,10 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstances(T
         dependency_type: str = None,
         task_instance: ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance = None,
     ):
-        # The dependency type.
+        # The scheduling dependency type. Valid values:
+        # 
+        # *   Normal: same-cycle scheduling dependency
+        # *   CrossCycle: cross-cycle scheduling dependency
         self.dependency_type = dependency_type
         # The information about a task instance.
         self.task_instance = task_instance
@@ -31976,6 +33160,10 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances(TeaModel):
         self.data_source = data_source
         # The description.
         self.description = description
+        # The environment in which the data source is used. Valid values:
+        # 
+        # *   Dev
+        # *   Prod
         self.env_type = env_type
         # The time when the instance finished running.
         self.finished_time = finished_time
@@ -31991,9 +33179,7 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances(TeaModel):
         self.period_number = period_number
         # The priority of the task. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
         self.priority = priority
-        # The environment of the workspace.
-        # 
-        # Valid values:
+        # The environment of the workspace. This parameter is deprecated and replaced by the EnvType parameter. Valid values:
         # 
         # *   Prod: production environment
         # *   Dev: development environment
@@ -32016,9 +33202,7 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances(TeaModel):
         self.runtime_resource = runtime_resource
         # The time when the instance started to run.
         self.started_time = started_time
-        # The status of the instance.
-        # 
-        # Valid values:
+        # The status of the instance. Valid values:
         # 
         # *   NotRun: The instance is not run.
         # *   Running: The instance is running.
@@ -32028,8 +33212,12 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances(TeaModel):
         # *   Failure: The instance fails to be run.
         # *   Success: The instance is successfully run.
         # *   Checking: Data quality is being checked for the instance.
+        # *   WaitTrigger: The instance is waiting to be triggered by external scheduling systems.
         self.status = status
-        # The dependency type.
+        # The scheduling dependency type. Valid values:
+        # 
+        # *   Normal: same-cycle scheduling dependency
+        # *   CrossCycle: cross-cycle scheduling dependency
         self.step_type = step_type
         # The ID of the task for which the instance is generated.
         self.task_id = task_id
@@ -32245,12 +33433,13 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfo(TeaModel):
         task_instances: List[ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances] = None,
         total_count: int = None,
     ):
+        # The descendant instances.
         self.downstream_task_instances = downstream_task_instances
         # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The instances.
+        # The instances. This parameter is deprecated and replaced by the DownstreamTaskInstances parameter.
         self.task_instances = task_instances
         # The total number of entries returned.
         self.total_count = total_count
@@ -32447,6 +33636,7 @@ class ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskDataSource(Tea
         self,
         name: str = None,
     ):
+        # The name of the data source.
         self.name = name
 
     def validate(self):
@@ -32476,8 +33666,11 @@ class ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskRuntimeResourc
         image: str = None,
         resource_group_id: str = None,
     ):
+        # The default number of compute units (CUs) configured for task running.
         self.cu = cu
+        # The ID of the image configured for task running.
         self.image = image
+        # The ID of the resource group for scheduling configured for task running.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -32518,11 +33711,24 @@ class ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskTrigger(TeaMod
         timezone: str = None,
         type: str = None,
     ):
+        # The CRON expression. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.cron = cron
+        # The end time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.end_time = end_time
+        # The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
+        # 
+        # *   Pause
+        # *   Skip
+        # *   Normal
         self.recurrence = recurrence
+        # The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.start_time = start_time
+        # The time zone.
         self.timezone = timezone
+        # The trigger type. Valid values:
+        # 
+        # *   Scheduler: scheduling cycle-based trigger
+        # *   Manual: manual trigger
         self.type = type
 
     def validate(self):
@@ -32591,37 +33797,59 @@ class ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask(TeaModel):
         type: str = None,
         workflow_id: int = None,
     ):
-        # The ID of the baseline.
+        # The baseline ID.
         self.baseline_id = baseline_id
+        # The creation time.
         self.create_time = create_time
+        # The account ID of the creator.
         self.create_user = create_user
-        # The information about the data source.
+        # The information about the associated data source.
         self.data_source = data_source
+        # The description.
         self.description = description
+        # The environment of the workspace. Valid values:
+        # 
+        # *   Prod
+        # *   Dev
         self.env_type = env_type
+        # The task ID.
         self.id = id
+        # The instance generation mode. Valid values:
+        # 
+        # *   T+1
+        # *   Immediately
         self.instance_mode = instance_mode
+        # The modification time.
         self.modify_time = modify_time
+        # The account ID of the modifier.
         self.modify_user = modify_user
+        # The name of the task.
         self.name = name
+        # The account ID of the task owner.
         self.owner = owner
         # The priority of the task. Valid values: 1 to 8.
         self.priority = priority
+        # The workspace ID.
         self.project_id = project_id
-        # The interval between two consecutive reruns. Unit: seconds.
+        # The rerun interval. Unit: seconds.
         self.rerun_interval = rerun_interval
-        # The rerun mode.
+        # The rerun mode. Valid values:
+        # 
+        # *   AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
+        # *   FailureAllowed: The task can be rerun only after it fails to run.
+        # *   AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
         self.rerun_mode = rerun_mode
-        # The number of reruns.
+        # The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
         self.rerun_times = rerun_times
         # The configurations of the runtime environment, such as the resource group information.
         self.runtime_resource = runtime_resource
         # The timeout period of task running. Unit: seconds.
         self.timeout = timeout
-        # The method to trigger the running of the task.
+        # The trigger method.
         self.trigger = trigger
         # The type of the task.
         self.type = type
+        # The ID of the workflow to which the task belongs.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -32742,8 +33970,12 @@ class ListDownstreamTasksResponseBodyPagingInfoDownstreamTasks(TeaModel):
         dependency_type: str = None,
         task: ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask = None,
     ):
-        # The dependency type.
+        # The scheduling dependency type. Valid values:
+        # 
+        # *   Normal: same-cycle scheduling dependency
+        # *   CrossCycle: cross-cycle scheduling dependency
         self.dependency_type = dependency_type
+        # The information about the task.
         self.task = task
 
     def validate(self):
@@ -32954,9 +34186,17 @@ class ListDownstreamTasksResponseBodyPagingInfoTasks(TeaModel):
         self.data_source = data_source
         # The description of the task.
         self.description = description
+        # The environment of the workspace. Valid values:
+        # 
+        # *   Prod
+        # *   Dev
         self.env_type = env_type
         # The task ID.
         self.id = id
+        # The instance generation mode. Valid values:
+        # 
+        # *   T+1
+        # *   Immediately
         self.instance_mode = instance_mode
         # The modification time.
         self.modify_time = modify_time
@@ -32968,12 +34208,12 @@ class ListDownstreamTasksResponseBodyPagingInfoTasks(TeaModel):
         self.owner = owner
         # The priority of the task. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
         self.priority = priority
-        # The environment of the workspace.
+        # The environment of the workspace. This parameter is deprecated and replaced by the EnvType parameter.
         # 
         # Valid values:
         # 
-        # *   Prod: production environment
-        # *   Dev: development environment
+        # *   Prod
+        # *   Dev
         self.project_env = project_env
         # The workspace ID.
         self.project_id = project_id
@@ -32991,6 +34231,10 @@ class ListDownstreamTasksResponseBodyPagingInfoTasks(TeaModel):
         self.rerun_times = rerun_times
         # The configurations of the runtime environment, such as the resource group information.
         self.runtime_resource = runtime_resource
+        # The scheduling dependency type. Valid values:
+        # 
+        # *   Normal: same-cycle scheduling dependency
+        # *   CrossCycle: cross-cycle scheduling dependency
         self.step_type = step_type
         # The timeout period of task running. Unit: seconds.
         self.timeout = timeout
@@ -33130,12 +34374,13 @@ class ListDownstreamTasksResponseBodyPagingInfo(TeaModel):
         tasks: List[ListDownstreamTasksResponseBodyPagingInfoTasks] = None,
         total_count: int = None,
     ):
+        # The descendant tasks.
         self.downstream_tasks = downstream_tasks
         # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The tasks.
+        # The tasks. This parameter is deprecated and replaced by the DownstreamTasks parameter.
         self.tasks = tasks
         # The total number of entries returned.
         self.total_count = total_count
@@ -33292,16 +34537,16 @@ class ListFunctionsRequest(TeaModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The UDF type. This parameter specifies a filter condition.
+        # The user-defined function (UDF) type. This parameter specifies a filter condition.
         # 
         # Valid values:
         # 
-        # *   MATH: mathematical operation function
-        # *   AGGREGATE: aggregate function
-        # *   STRING: string processing function
-        # *   DATE: date function
-        # *   ANALYTIC: window function
-        # *   OTHER: others
+        # *   Math: mathematical operation function
+        # *   Aggregate: aggregate function
+        # *   String: string processing function
+        # *   Date: date function
+        # *   Analytic: window function
+        # *   Other: other functions
         self.type = type
 
     def validate(self):
@@ -33823,10 +35068,22 @@ class ListNetworksRequest(TeaModel):
         resource_group_id: str = None,
         sort_by: str = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # Unique identifier of a Serverless resource group
+        # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
+        # The fields used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
+        # 
+        # *   Id (Desc/Asc): the network ID
+        # *   Status (Desc/Asc): the network status
+        # *   CreateUser (Desc/Asc): the user who created the network
+        # *   CreateTime (Desc/Asc): the time when the network was created
+        # 
+        # Default value: CreateTime Asc.
         self.sort_by = sort_by
 
     def validate(self):
@@ -33873,13 +35130,21 @@ class ListNetworksResponseBodyPagingInfoNetworkList(TeaModel):
         vpc_id: str = None,
         vswitch_id: str = None,
     ):
+        # The time when the network resource was created. The value is a 64-bit timestamp.
         self.create_time = create_time
+        # The ID of the user who creates the network resource.
         self.create_user = create_user
+        # The network ID.
         self.id = id
+        # The ID of the serverless resource group.
         self.resource_group_id = resource_group_id
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The status of the network resource. Valid values: Pending, Creating, Running, Deleting, and Deleted.
         self.status = status
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
+        # The VSwitch ID.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -33938,9 +35203,13 @@ class ListNetworksResponseBodyPagingInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The network resources of the serverless resource group.
         self.network_list = network_list
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -33990,8 +35259,11 @@ class ListNetworksResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The pagination information.
         self.paging_info = paging_info
+        # The ID of the request. It is used to locate logs and troubleshoot problems.
         self.request_id = request_id
+        # Whether the request is successful
         self.success = success
 
     def validate(self):
@@ -34258,18 +35530,14 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables(TeaModel):
         self.name = name
         # The node to which the variable belongs.
         self.node = node
-        # The scope of the variable.
-        # 
-        # Valid values:
+        # The scope of the variable. Valid values:
         # 
         # *   NodeParameter
         # *   NodeContext
         # *   Workflow
         # *   Workspace
         self.scope = scope
-        # The type of the variable.
-        # 
-        # Valid values:
+        # The type of the variable. Valid values:
         # 
         # *   NoKvVariableExpression
         # *   Constant
@@ -34497,18 +35765,14 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables(TeaModel):
         self.name = name
         # The node to which the variable belongs.
         self.node = node
-        # The scope of the variable.
-        # 
-        # Valid values:
+        # The scope of the variable. Valid values:
         # 
         # *   NodeParameter
         # *   NodeContext
         # *   Workflow
         # *   Workspace
         self.scope = scope
-        # The type of the variable.
-        # 
-        # Valid values:
+        # The type of the variable. Valid values:
         # 
         # *   NoKvVariableExpression
         # *   Constant
@@ -34742,11 +36006,18 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesStrategy(TeaModel):
         rerun_times: int = None,
         timeout: int = None,
     ):
-        # The instance generation mode.
+        # The instance generation mode. Valid values:
+        # 
+        # *   T+1
+        # *   Immediately
         self.instance_mode = instance_mode
         # The rerun interval after a failure. Unit: milliseconds.
         self.rerun_interval = rerun_interval
-        # The rerun mode.
+        # The rerun mode. Valid values:
+        # 
+        # *   Allowed
+        # *   Denied
+        # *   FailureAllowed
         self.rerun_mode = rerun_mode
         # The number of reruns after a failure.
         self.rerun_times = rerun_times
@@ -34797,7 +36068,7 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesTags(TeaModel):
     ):
         # The tag key.
         self.key = key
-        # The tag value
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -34938,9 +36209,9 @@ class ListNodeDependenciesResponseBodyPagingInfoNodes(TeaModel):
         # 
         # Valid values:
         # 
-        # *   Normal: The node is scheduled as expected.
-        # *   Pause: The node is paused, and the running of its descendant nodes is blocked.
-        # *   Skip: The node is dry run. The system does not actually run the node but directly prompts that the node is successfully run. The running duration of the node is 0 seconds. In addition, the node does not occupy resources or block the running of its descendant nodes.
+        # *   Normal: Nodes are scheduled as expected.
+        # *   Pause: Nodes are paused, and the running of their descendant nodes is blocked.
+        # *   Skip: Nodes are dry run. The system does not actually run the nodes but directly prompts that the nodes are successfully run. The running duration of the nodes is 0 seconds. In addition, the nodes do not occupy resources or block the running of their descendant nodes.
         self.recurrence = recurrence
         # The information about the resource group.
         self.runtime_resource = runtime_resource
@@ -35224,6 +36495,13 @@ class ListNodesRequest(TeaModel):
         # 
         # This parameter is required.
         self.project_id = project_id
+        # The scheduling type. This parameter specifies a filter condition.
+        # 
+        # Valid values:
+        # 
+        # *   Normal: Nodes are scheduled as expected.
+        # *   Pause: Nodes are paused, and the running of their descendant nodes is blocked.
+        # *   Skip: Nodes are dry run. The system does not actually run the nodes but directly prompts that the nodes are successfully run. The running duration of the nodes is 0 seconds. In addition, the nodes do not occupy resources or block the running of their descendant nodes.
         self.recurrence = recurrence
         # The rerun mode. Valid values:
         # 
@@ -35231,13 +36509,13 @@ class ListNodesRequest(TeaModel):
         # *   FailureAllowed: The nodes can be rerun only after they fail to run.
         # *   Denied: The nodes cannot be rerun regardless of whether they are successfully run or fail to run.
         self.rerun_mode = rerun_mode
-        # The scene of nodes. This parameter specifies a filter condition.
+        # The scene of the node. This parameter determines the location of the node.
         # 
         # Valid values:
         # 
-        # *   DATAWORKS_PROJECT
-        # *   MANUAL_WORKFLOW
-        # *   MANUAL_NODE
+        # *   DataworksProject
+        # *   DataworksManualWorkflow
+        # *   DataworksManualTask
         self.scene = scene
 
     def validate(self):
@@ -35422,18 +36700,14 @@ class ListNodesResponseBodyPagingInfoNodesInputsVariables(TeaModel):
         self.name = name
         # The node to which the variable belongs.
         self.node = node
-        # The scope of the variable.
-        # 
-        # Valid values:
+        # The scope of the variable. Valid values:
         # 
         # *   WorkSpace
         # *   NodeParameter
         # *   NodeContext
         # *   Workflow
         self.scope = scope
-        # The type of the variable.
-        # 
-        # Valid values:
+        # The type of the variable. Valid values:
         # 
         # *   NoKvVariableExpression
         # *   Constant
@@ -35661,18 +36935,14 @@ class ListNodesResponseBodyPagingInfoNodesOutputsVariables(TeaModel):
         self.name = name
         # The node to which the variable belongs.
         self.node = node
-        # The scope of the variable.
-        # 
-        # Valid values:
+        # The scope of the variable. Valid value:
         # 
         # *   NodeParameter
         # *   NodeContext
         # *   Workflow
         # *   Workspace
         self.scope = scope
-        # The type of the variable.
-        # 
-        # Valid values:
+        # The type of the variable. Valid value:
         # 
         # *   NoKvVariableExpression
         # *   Constant
@@ -35906,11 +37176,18 @@ class ListNodesResponseBodyPagingInfoNodesStrategy(TeaModel):
         rerun_times: int = None,
         timeout: int = None,
     ):
-        # The instance generation mode.
+        # The instance generation mode. Valid values:
+        # 
+        # *   T+1
+        # *   Immediately
         self.instance_mode = instance_mode
         # The rerun interval. Unit: milliseconds.
         self.rerun_interval = rerun_interval
-        # The rerun mode.
+        # The rerun mode. Valid values:
+        # 
+        # *   Allowed
+        # *   Denied
+        # *   FailureAllowed
         self.rerun_mode = rerun_mode
         # The number of reruns.
         self.rerun_times = rerun_times
@@ -36015,12 +37292,6 @@ class ListNodesResponseBodyPagingInfoNodesTrigger(TeaModel):
         # *   Scheduler
         # *   Manual
         # *   Steaming
-        # 
-        # <!---->
-        # 
-        # *\
-        # *\
-        # *\
         self.type = type
 
     def validate(self):
@@ -36757,9 +38028,7 @@ class ListProjectRolesRequest(TeaModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The type of the role in the DataWorks workspace.
-        # 
-        # Valid values:
+        # The type of the role. Valid values:
         # 
         # *   UserCustom: user-defined role
         # *   System: system role
@@ -36829,9 +38098,7 @@ class ListProjectRolesShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The type of the role in the DataWorks workspace.
-        # 
-        # Valid values:
+        # The type of the role. Valid values:
         # 
         # *   UserCustom: user-defined role
         # *   System: system role
@@ -36887,7 +38154,7 @@ class ListProjectRolesResponseBodyPagingInfoProjectRoles(TeaModel):
     ):
         # The code of the role in the DataWorks workspace.
         self.code = code
-        # The name of the role in the DataWorks workspace.
+        # The name of the role.
         self.name = name
         # The DataWorks workspace ID.
         self.project_id = project_id
@@ -37111,6 +38378,8 @@ class ListProjectsRequest(TeaModel):
         status: str = None,
     ):
         # The ID of the Alibaba Cloud resource group to which the workspaces belong. You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) and go to the Resource Group page to query the ID.
+        # 
+        # This parameter is used to query the information about workspaces that belong to a specific resource group.
         self.aliyun_resource_group_id = aliyun_resource_group_id
         # The tags.
         self.aliyun_resource_tags = aliyun_resource_tags
@@ -37241,6 +38510,8 @@ class ListProjectsShrinkRequest(TeaModel):
         status: str = None,
     ):
         # The ID of the Alibaba Cloud resource group to which the workspaces belong. You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) and go to the Resource Group page to query the ID.
+        # 
+        # This parameter is used to query the information about workspaces that belong to a specific resource group.
         self.aliyun_resource_group_id = aliyun_resource_group_id
         # The tags.
         self.aliyun_resource_tags_shrink = aliyun_resource_tags_shrink
@@ -37649,7 +38920,9 @@ class ListResourceGroupsRequestAliyunResourceTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Tag Key
         self.key = key
+        # Tag Value
         self.value = value
 
     def validate(self):
@@ -37690,7 +38963,9 @@ class ListResourceGroupsRequest(TeaModel):
         sort_by: str = None,
         statuses: List[str] = None,
     ):
+        # Alibaba Cloud Resource Group ID
         self.aliyun_resource_group_id = aliyun_resource_group_id
+        # Alibaba Cloud tag list
         self.aliyun_resource_tags = aliyun_resource_tags
         # The name of a resource group, which is used for fuzzy match.
         self.name = name
@@ -37707,16 +38982,16 @@ class ListResourceGroupsRequest(TeaModel):
         self.project_id = project_id
         # The types of resource groups to query. If you do not configure this parameter, only serverless resource groups are returned by default.
         self.resource_group_types = resource_group_types
-        # The fields used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
+        # The list of fields used for sorting. Fields such as TriggerTime and StartedTime are supported. You must configure this parameter in the Sorting field + Sort by (Desc/Asc). By default, results are sorted in ascending order. Valid values:
         # 
-        # *   Id (Desc/Asc): the resource group ID
-        # *   Name (Desc/Asc): the name of the resource group
-        # *   Remark (Desc/Asc): the remarks of the resource group
-        # *   Type (Desc/Asc): the type of the resource group
-        # *   Status (Desc/Asc): the status of the resource group
-        # *   Spec (Desc/Asc): the specifications of the resource group
-        # *   CreateUser (Desc/Asc): the creator of the resource group
-        # *   CreateTime (Desc/Asc): the time when the route is created
+        # *   Id (Desc/Asc): resource group ID
+        # *   Name (Desc/Asc): resource group name
+        # *   Remark (Desc/Asc): resource group remarks
+        # *   Type (Desc/Asc): resource group type
+        # *   Status (Desc/Asc): status of resources in a resource group
+        # *   Spec (Desc/Asc): resource group specifications
+        # *   CreateUser (Desc/Asc): creator
+        # *   CreateTime (Desc/Asc): creation time
         # 
         # Default value: CreateTime Asc
         self.sort_by = sort_by
@@ -37801,7 +39076,9 @@ class ListResourceGroupsShrinkRequest(TeaModel):
         sort_by: str = None,
         statuses_shrink: str = None,
     ):
+        # Alibaba Cloud Resource Group ID
         self.aliyun_resource_group_id = aliyun_resource_group_id
+        # Alibaba Cloud tag list
         self.aliyun_resource_tags_shrink = aliyun_resource_tags_shrink
         # The name of a resource group, which is used for fuzzy match.
         self.name = name
@@ -37818,16 +39095,16 @@ class ListResourceGroupsShrinkRequest(TeaModel):
         self.project_id = project_id
         # The types of resource groups to query. If you do not configure this parameter, only serverless resource groups are returned by default.
         self.resource_group_types_shrink = resource_group_types_shrink
-        # The fields used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
+        # The list of fields used for sorting. Fields such as TriggerTime and StartedTime are supported. You must configure this parameter in the Sorting field + Sort by (Desc/Asc). By default, results are sorted in ascending order. Valid values:
         # 
-        # *   Id (Desc/Asc): the resource group ID
-        # *   Name (Desc/Asc): the name of the resource group
-        # *   Remark (Desc/Asc): the remarks of the resource group
-        # *   Type (Desc/Asc): the type of the resource group
-        # *   Status (Desc/Asc): the status of the resource group
-        # *   Spec (Desc/Asc): the specifications of the resource group
-        # *   CreateUser (Desc/Asc): the creator of the resource group
-        # *   CreateTime (Desc/Asc): the time when the route is created
+        # *   Id (Desc/Asc): resource group ID
+        # *   Name (Desc/Asc): resource group name
+        # *   Remark (Desc/Asc): resource group remarks
+        # *   Type (Desc/Asc): resource group type
+        # *   Status (Desc/Asc): status of resources in a resource group
+        # *   Spec (Desc/Asc): resource group specifications
+        # *   CreateUser (Desc/Asc): creator
+        # *   CreateTime (Desc/Asc): creation time
         # 
         # Default value: CreateTime Asc
         self.sort_by = sort_by
@@ -37896,7 +39173,9 @@ class ListResourceGroupsResponseBodyPagingInfoResourceGroupListSpec(TeaModel):
         amount: int = None,
         standard: str = None,
     ):
+        # Quantity
         self.amount = amount
+        # Specification details
         self.standard = standard
 
     def validate(self):
@@ -37940,24 +39219,34 @@ class ListResourceGroupsResponseBodyPagingInfoResourceGroupList(TeaModel):
         spec: ListResourceGroupsResponseBodyPagingInfoResourceGroupListSpec = None,
         status: str = None,
     ):
+        # Alibaba Cloud Resource Group ID
         self.aliyun_resource_group_id = aliyun_resource_group_id
+        # The creation time, which is a 64-bit timestamp.
         self.create_time = create_time
+        # The ID of the user who created the resource group.
         self.create_user = create_user
+        # Default VPC ID bound to a common resource group
         self.default_vpc_id = default_vpc_id
+        # The default switch ID bound to the common resource group.
         self.default_vswicth_id = default_vswicth_id
+        # Unique identifier of a resource group
         self.id = id
+        # The name of the resource group.
         self.name = name
+        # The order instance ID of the resource group.
         self.order_instance_id = order_instance_id
         # The billing method of the resource group. Valid values: PrePaid and PostPaid. The value PrePaid indicates the subscription billing method, and the value PostPaid indicates the pay-as-you-go billing method.
         self.payment_type = payment_type
+        # Remarks for resource groups
         self.remark = remark
-        # The type of the resource group. Valid values:
+        # The type of resource group. Valid values:
         # 
         # *   CommonV2: serverless resource group
         # *   ExclusiveDataIntegration: exclusive resource group for Data Integration
         # *   ExclusiveScheduler: exclusive resource group for scheduling
         # *   ExclusiveDataService: exclusive resource group for DataService Studio
         self.resource_group_type = resource_group_type
+        # Resource Group specifications
         self.spec = spec
         # The status of the resource group. Valid values:
         # 
@@ -38057,6 +39346,7 @@ class ListResourceGroupsResponseBodyPagingInfo(TeaModel):
         self.page_size = page_size
         # The resource groups returned.
         self.resource_group_list = resource_group_list
+        # All data entries
         self.total_count = total_count
 
     def validate(self):
@@ -38108,7 +39398,7 @@ class ListResourceGroupsResponseBody(TeaModel):
     ):
         # The pagination information.
         self.paging_info = paging_info
-        # The request ID.
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values: true and false.
         self.success = success
@@ -38637,11 +39927,23 @@ class ListRoutesRequest(TeaModel):
         resource_group_id: str = None,
         sort_by: str = None,
     ):
+        # The network ID.
         self.network_id = network_id
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the resource group.
+        # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
+        # The fields used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
+        # 
+        # *   Id (Desc/Asc): the route ID
+        # *   DestinationCidr (Desc/Asc): the destination CIDR block of the route
+        # *   CreateTime (Desc/Asc): the time when the route is created
+        # 
+        # Default value: CreateTime Asc.
         self.sort_by = sort_by
 
     def validate(self):
@@ -38690,11 +39992,17 @@ class ListRoutesResponseBodyPagingInfoRouteList(TeaModel):
         resource_group_id: str = None,
         resource_id: str = None,
     ):
+        # The creation time, which is a 64-bit timestamp.
         self.create_time = create_time
+        # Route destination CIDR
         self.destination_cidr = destination_cidr
+        # Route ID
         self.id = id
+        # Network Resource ID
         self.network_id = network_id
+        # Unique identifier of the resource group to which it belongs
         self.resource_group_id = resource_group_id
+        # Unique identifier of network resource
         self.resource_id = resource_id
 
     def validate(self):
@@ -38745,9 +40053,13 @@ class ListRoutesResponseBodyPagingInfo(TeaModel):
         route_list: List[ListRoutesResponseBodyPagingInfoRouteList] = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The list of network resource routing information obtained.
         self.route_list = route_list
+        # All data entries
         self.total_count = total_count
 
     def validate(self):
@@ -38797,7 +40109,9 @@ class ListRoutesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The pagination information.
         self.paging_info = paging_info
+        # The ID of the request. It is used to locate logs and troubleshoot problems.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -39045,7 +40359,7 @@ class ListTaskInstanceOperationLogsResponseBody(TeaModel):
     ):
         # The pagination information.
         self.paging_info = paging_info
-        # The request ID.
+        # The request ID. You can locate logs and troubleshoot issues based on the ID.
         self.request_id = request_id
 
     def validate(self):
@@ -39191,7 +40505,7 @@ class ListTaskInstancesRequest(TeaModel):
         # *   Skip
         # *   Normal
         self.trigger_recurrence = trigger_recurrence
-        # The trigger type. Valid values:
+        # The trigger type.
         # 
         # *   Scheduler: scheduling cycle-based trigger
         # *   Manual: manual trigger
@@ -39377,7 +40691,7 @@ class ListTaskInstancesShrinkRequest(TeaModel):
         # *   Skip
         # *   Normal
         self.trigger_recurrence = trigger_recurrence
-        # The trigger type. Valid values:
+        # The trigger type.
         # 
         # *   Scheduler: scheduling cycle-based trigger
         # *   Manual: manual trigger
@@ -40043,9 +41357,7 @@ class ListTaskOperationLogsRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # The environment of the workspace.
-        # 
-        # Valid values:
+        # The environment of the workspace. Valid values:
         # 
         # *   Prod: production environment
         # *   Dev: development environment
@@ -40295,6 +41607,7 @@ class ListTasksRequest(TeaModel):
         trigger_type: str = None,
         workflow_id: int = None,
     ):
+        # The ID of the task.
         self.ids = ids
         # The name of the task. Fuzzy match is supported.
         self.name = name
@@ -40432,6 +41745,7 @@ class ListTasksShrinkRequest(TeaModel):
         trigger_type: str = None,
         workflow_id: int = None,
     ):
+        # The ID of the task.
         self.ids_shrink = ids_shrink
         # The name of the task. Fuzzy match is supported.
         self.name = name
@@ -40728,6 +42042,10 @@ class ListTasksResponseBodyPagingInfoTasks(TeaModel):
         self.description = description
         # The task ID.
         self.id = id
+        # The instance generation mode. Valid values:
+        # 
+        # *   T+1
+        # *   Immediately
         self.instance_mode = instance_mode
         # The modification time.
         self.modify_time = modify_time
@@ -40762,6 +42080,7 @@ class ListTasksResponseBodyPagingInfoTasks(TeaModel):
         self.rerun_times = rerun_times
         # The configurations of the runtime environment, such as the resource group information.
         self.runtime_resource = runtime_resource
+        # The list of script parameters.
         self.script_parameters = script_parameters
         # The timeout period of task running. Unit: seconds.
         self.timeout = timeout
@@ -41222,6 +42541,10 @@ class ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances(TeaModel):
         self.data_source = data_source
         # The description.
         self.description = description
+        # The environment of the workspace. Valid values:
+        # 
+        # *   Prod: production environment
+        # *   Dev: development environment
         self.env_type = env_type
         # The time when the instance finished running.
         self.finished_time = finished_time
@@ -41233,6 +42556,7 @@ class ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances(TeaModel):
         self.modify_user = modify_user
         # The account ID of the task owner.
         self.owner = owner
+        # The sequence number of the period. Indicates which cycle of the day the task instance is in.
         self.period_number = period_number
         # The priority of the task. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
         self.priority = priority
@@ -41257,7 +42581,7 @@ class ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances(TeaModel):
         self.run_number = run_number
         # The runtime information about the instance.
         self.runtime = runtime
-        # The information about the resource group with which the instance is associated.
+        # The configurations of the runtime environment, such as the resource group information.
         self.runtime_resource = runtime_resource
         # The time when the instance started to run.
         self.started_time = started_time
@@ -41274,7 +42598,10 @@ class ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances(TeaModel):
         # *   Success: The instance is successfully run.
         # *   Checking: Data quality is being checked for the instance.
         self.status = status
-        # The dependency type.
+        # The scheduling dependency type. Valid values:
+        # 
+        # *   Normal: same-cycle scheduling dependency
+        # *   CrossCycle: cross-cycle scheduling dependency
         self.step_type = step_type
         # The ID of the task for which the instance is generated.
         self.task_id = task_id
@@ -41484,6 +42811,7 @@ class ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskIn
         self,
         name: str = None,
     ):
+        # The name of the data source.
         self.name = name
 
     def validate(self):
@@ -41512,7 +42840,9 @@ class ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskIn
         gateway: str = None,
         process_id: str = None,
     ):
+        # The host for running.
         self.gateway = gateway
+        # The instance run ID.
         self.process_id = process_id
 
     def validate(self):
@@ -41546,8 +42876,11 @@ class ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskIn
         image: str = None,
         resource_group_id: str = None,
     ):
+        # The default number of compute units (CUs) configured for task running.
         self.cu = cu
+        # The ID of the image configured for task running.
         self.image = image
+        # The ID of the resource group for scheduling configured for task running.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -41614,40 +42947,97 @@ class ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskIn
         workflow_instance_type: str = None,
         workflow_name: str = None,
     ):
+        # The baseline ID.
         self.baseline_id = baseline_id
+        # The data timestamp.
         self.bizdate = bizdate
+        # The creation time.
         self.create_time = create_time
+        # The account ID of the creator.
         self.create_user = create_user
+        # The information about the associated data source.
         self.data_source = data_source
+        # The description.
         self.description = description
+        # The environment in which the data source is used. Valid values:
+        # 
+        # *   Dev
+        # *   Prod
         self.env_type = env_type
+        # The time when the instance finished running.
         self.finished_time = finished_time
+        # The instance ID.
         self.id = id
+        # The modification time.
         self.modify_time = modify_time
+        # The account ID of the modifier.
         self.modify_user = modify_user
+        # The account ID of the task owner.
         self.owner = owner
+        # The sequence number of the cycle. This parameter indicates the cycle of the task instance on the current day.
         self.period_number = period_number
+        # The priority of the task. Minimum value: 1. Maximum value: 8. A larger value indicates a higher priority. Default value: 1.
         self.priority = priority
+        # The workspace ID.
         self.project_id = project_id
         # The rerun mode.
         self.rerun_mode = rerun_mode
+        # The number of times the instance is run. By default, the value starts from 1.
         self.run_number = run_number
+        # The runtime information about the instance.
         self.runtime = runtime
+        # The configurations of the runtime environment, such as the resource group information.
         self.runtime_resource = runtime_resource
+        # The time when the instance started to run.
         self.started_time = started_time
-        # The status of the instance.
+        # The status of the instance. Valid values:
+        # 
+        # *   NotRun: The instance is not run.
+        # *   Running: The instance is running.
+        # *   WaitTime: The instance is waiting for the scheduling time to arrive.
+        # *   CheckingCondition: Branch conditions are being checked for the instance.
+        # *   WaitResource: The instance is waiting for resources.
+        # *   Failure: The instance fails to be run.
+        # *   Success: The instance is successfully run.
+        # *   Checking: Data quality is being checked for the instance.
+        # *   WaitTrigger: The instance is waiting to be triggered by external scheduling systems.
         self.status = status
+        # The ID of the task for which the instance is generated.
         self.task_id = task_id
+        # The name of the task for which the instance is generated.
         self.task_name = task_name
-        # The task type.
+        # The type of the task for which the instance is generated.
         self.task_type = task_type
+        # The timeout period of task running. Unit: seconds.
+        # 
+        # Note: The value of this parameter is rounded up by hour.
         self.timeout = timeout
+        # The running mode of the instance after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler. Valid values:
+        # 
+        # *   Pause
+        # *   Skip
+        # *   Normal
         self.trigger_recurrence = trigger_recurrence
+        # The scheduling time.
         self.trigger_time = trigger_time
+        # The trigger type. Valid values:
+        # 
+        # *   Scheduler: scheduling cycle-based trigger
+        # *   Manual: manual trigger
         self.trigger_type = trigger_type
+        # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
+        # The workflow instance ID.
         self.workflow_instance_id = workflow_instance_id
+        # The type of the workflow instance. Valid values:
+        # 
+        # *   Normal
+        # *   Manual
+        # *   SmokeTest
+        # *   SupplementData
+        # *   ManualWorkflow
         self.workflow_instance_type = workflow_instance_type
+        # The name of the workflow to which the instance belongs.
         self.workflow_name = workflow_name
 
     def validate(self):
@@ -41808,7 +43198,10 @@ class ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstances(TeaMo
         dependency_type: str = None,
         task_instance: ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance = None,
     ):
-        # The dependency type.
+        # The scheduling dependency type. Valid values:
+        # 
+        # *   Normal
+        # *   CrossCycle
         self.dependency_type = dependency_type
         # The information about a task instance.
         self.task_instance = task_instance
@@ -41852,10 +43245,11 @@ class ListUpstreamTaskInstancesResponseBodyPagingInfo(TeaModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The instances.
+        # The instances. This parameter is deprecated and replaced by the UpstreamTaskInstances parameter.
         self.task_instances = task_instances
         # The total number of entries returned.
         self.total_count = total_count
+        # The ancestor instances.
         self.upstream_task_instances = upstream_task_instances
 
     def validate(self):
@@ -42227,6 +43621,10 @@ class ListUpstreamTasksResponseBodyPagingInfoTasks(TeaModel):
         self.data_source = data_source
         # The description of the task.
         self.description = description
+        # The environment of the workspace. Valid values:
+        # 
+        # *   Prod
+        # *   Dev
         self.env_type = env_type
         # The task ID.
         self.id = id
@@ -42246,12 +43644,12 @@ class ListUpstreamTasksResponseBodyPagingInfoTasks(TeaModel):
         self.owner = owner
         # The priority of the task. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
         self.priority = priority
-        # The environment of the workspace.
+        # The environment of the workspace. This parameter is deprecated and replaced by the EnvType parameter.
         # 
         # Valid values:
         # 
-        # *   Prod: production environment
-        # *   Dev: development environment
+        # *   Prod
+        # *   Dev
         self.project_env = project_env
         # The workspace ID.
         self.project_id = project_id
@@ -42409,6 +43807,7 @@ class ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskDataSource(TeaMode
         self,
         name: str = None,
     ):
+        # The name of the data source.
         self.name = name
 
     def validate(self):
@@ -42438,8 +43837,11 @@ class ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskRuntimeResource(Te
         image: str = None,
         resource_group_id: str = None,
     ):
+        # The default number of compute units (CUs) configured for task running.
         self.cu = cu
+        # The ID of the image configured for task running.
         self.image = image
+        # The ID of the resource group for scheduling configured for task running.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -42480,11 +43882,24 @@ class ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTaskTrigger(TeaModel):
         timezone: str = None,
         type: str = None,
     ):
+        # The CRON expression. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.cron = cron
+        # The end time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.end_time = end_time
+        # The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
+        # 
+        # *   Pause
+        # *   Skip
+        # *   Normal
         self.recurrence = recurrence
+        # The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.start_time = start_time
+        # The time zone.
         self.timezone = timezone
+        # The trigger type. Valid values:
+        # 
+        # *   Scheduler: scheduling cycle-based trigger
+        # *   Manual: manual trigger
         self.type = type
 
     def validate(self):
@@ -42553,37 +43968,59 @@ class ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask(TeaModel):
         type: str = None,
         workflow_id: int = None,
     ):
-        # The ID of the baseline.
+        # The baseline ID.
         self.baseline_id = baseline_id
+        # The creation time.
         self.create_time = create_time
+        # The account ID of the creator.
         self.create_user = create_user
-        # The information about the data source.
+        # The information about the associated data source.
         self.data_source = data_source
+        # The description of the task.
         self.description = description
+        # The environment of the workspace. Valid values:
+        # 
+        # *   Prod
+        # *   Dev
         self.env_type = env_type
+        # The task ID.
         self.id = id
+        # The instance generation mode. Valid values:
+        # 
+        # *   T+1
+        # *   Immediately
         self.instance_mode = instance_mode
+        # The modification time.
         self.modify_time = modify_time
+        # The account ID of the modifier.
         self.modify_user = modify_user
+        # The name of the task.
         self.name = name
+        # The account ID of the task owner.
         self.owner = owner
         # The priority of the task. Valid values: 1 to 8.
         self.priority = priority
+        # The workspace ID.
         self.project_id = project_id
-        # The interval between two consecutive reruns. Unit: seconds.
+        # The rerun interval. Unit: seconds.
         self.rerun_interval = rerun_interval
-        # The rerun mode.
+        # The rerun mode. Valid values:
+        # 
+        # *   AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
+        # *   FailureAllowed: The task can be rerun only after it fails to run.
+        # *   AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
         self.rerun_mode = rerun_mode
-        # The number of reruns.
+        # The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
         self.rerun_times = rerun_times
         # The configurations of the runtime environment, such as the resource group information.
         self.runtime_resource = runtime_resource
         # The timeout period of task running. Unit: seconds.
         self.timeout = timeout
-        # The method to trigger the running of the task.
+        # The trigger method.
         self.trigger = trigger
         # The type of the task.
         self.type = type
+        # The ID of the workflow to which the task belongs.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -42704,8 +44141,12 @@ class ListUpstreamTasksResponseBodyPagingInfoUpstreamTasks(TeaModel):
         dependency_type: str = None,
         task: ListUpstreamTasksResponseBodyPagingInfoUpstreamTasksTask = None,
     ):
-        # The dependency type.
+        # The scheduling dependency type. Valid values:
+        # 
+        # *   Normal: same-cycle scheduling dependency
+        # *   CrossCycle: cross-cycle scheduling dependency
         self.dependency_type = dependency_type
+        # The information about the task.
         self.task = task
 
     def validate(self):
@@ -42747,10 +44188,11 @@ class ListUpstreamTasksResponseBodyPagingInfo(TeaModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The tasks.
+        # The tasks. This parameter is deprecated and replaced by the UpstreamTasks parameter.
         self.tasks = tasks
         # The total number of entries returned.
         self.total_count = total_count
+        # The ancestor tasks.
         self.upstream_tasks = upstream_tasks
 
     def validate(self):
@@ -43263,17 +44705,42 @@ class ListWorkflowInstancesRequest(TeaModel):
         type: str = None,
         workflow_id: int = None,
     ):
+        # 业务日期。
+        # 
         # This parameter is required.
         self.biz_date = biz_date
+        # The IDs of the workflow instances. You can query multiple instances at a time by instance ID.
         self.ids = ids
+        # The instance name. Fuzzy match is supported.
         self.name = name
+        # The account ID of the workflow instance owner.
         self.owner = owner
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The fields used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
+        # 
+        # *   TriggerTime (Desc/Asc)
+        # *   StartedTime (Desc/Asc)
+        # *   FinishedTime (Desc/Asc)
+        # *   CreateTime (Desc/Asc)
+        # *   Id (Desc/Asc)
+        # 
+        # Default value: Id Desc.
         self.sort_by = sort_by
+        # 工作流实例的类型。
+        # - Normal：周期调度
+        # - Manual：手动任务
+        # - SmokeTest：测试
+        # - SupplementData：补数据
+        # - ManualWorkflow：手动工作流
         self.type = type
+        # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -43346,17 +44813,42 @@ class ListWorkflowInstancesShrinkRequest(TeaModel):
         type: str = None,
         workflow_id: int = None,
     ):
+        # 业务日期。
+        # 
         # This parameter is required.
         self.biz_date = biz_date
+        # The IDs of the workflow instances. You can query multiple instances at a time by instance ID.
         self.ids_shrink = ids_shrink
+        # The instance name. Fuzzy match is supported.
         self.name = name
+        # The account ID of the workflow instance owner.
         self.owner = owner
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The fields used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
+        # 
+        # *   TriggerTime (Desc/Asc)
+        # *   StartedTime (Desc/Asc)
+        # *   FinishedTime (Desc/Asc)
+        # *   CreateTime (Desc/Asc)
+        # *   Id (Desc/Asc)
+        # 
+        # Default value: Id Desc.
         self.sort_by = sort_by
+        # 工作流实例的类型。
+        # - Normal：周期调度
+        # - Manual：手动任务
+        # - SmokeTest：测试
+        # - SupplementData：补数据
+        # - ManualWorkflow：手动工作流
         self.type = type
+        # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -43433,19 +44925,50 @@ class ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances(TeaModel):
         type: str = None,
         workflow_id: int = None,
     ):
+        # 业务日期。
         self.biz_date = biz_date
+        # The creation time.
         self.create_time = create_time
+        # The account ID of the creator.
         self.create_user = create_user
+        # The environment of the workspace. Valid values:
+        # 
+        # *   Prod
+        # *   Dev
         self.env_type = env_type
+        # The time when the instance finished running.
         self.finished_time = finished_time
+        # The workflow instance ID.
         self.id = id
+        # The modification time.
         self.modify_time = modify_time
+        # The account ID of the modifier.
         self.modify_user = modify_user
+        # The name of the workflow instance.
         self.name = name
+        # The workspace ID.
         self.project_id = project_id
+        # The time when the instance started to run.
         self.started_time = started_time
+        # The status of the workflow instance. Valid values:
+        # 
+        # *   NotRun: The instance is not run.
+        # *   Running: The instance is running.
+        # *   WaitTime: The instance is waiting for the scheduling time to arrive.
+        # *   CheckingCondition: Branch conditions are being checked for the instance.
+        # *   WaitResource: The instance is waiting for resources.
+        # *   Failure: The instance fails to be run.
+        # *   Success: The instance is successfully run.
+        # *   Checking: Data quality is being checked for the instance.
         self.status = status
+        # 工作流实例的类型。
+        # - Normal：周期调度
+        # - Manual：手动任务
+        # - SmokeTest：测试
+        # - SupplementData：补数据
+        # - ManualWorkflow：手动工作流
         self.type = type
+        # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -43528,9 +45051,13 @@ class ListWorkflowInstancesResponseBodyPagingInfo(TeaModel):
         total_count: int = None,
         workflow_instances: List[ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances] = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
+        # The workflow instances.
         self.workflow_instances = workflow_instances
 
     def validate(self):
@@ -43579,7 +45106,9 @@ class ListWorkflowInstancesResponseBody(TeaModel):
         paging_info: ListWorkflowInstancesResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.paging_info = paging_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -43662,15 +45191,37 @@ class ListWorkflowsRequest(TeaModel):
         sort_by: str = None,
         trigger_type: str = None,
     ):
+        # The environment of the workspace. Valid values:
+        # 
+        # *   Prod: production environment
+        # *   Dev: development environment
         self.env_type = env_type
+        # The IDs of the workflows. You can query multiple workflows at a time by workflow ID.
         self.ids = ids
+        # The name of the workflow. Fuzzy match is supported.
         self.name = name
+        # The account ID of the workflow owner.
         self.owner = owner
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The field used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
+        # 
+        # *   ModifyTime (Desc/Asc)
+        # *   CreateTime (Desc/Asc)
+        # *   Id (Desc/Asc)
+        # 
+        # Default value: Id Desc.
         self.sort_by = sort_by
+        # The trigger type. Valid values:
+        # 
+        # *   Scheduler: scheduling cycle-based trigger
+        # *   Manual: manual trigger
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -43738,15 +45289,37 @@ class ListWorkflowsShrinkRequest(TeaModel):
         sort_by: str = None,
         trigger_type: str = None,
     ):
+        # The environment of the workspace. Valid values:
+        # 
+        # *   Prod: production environment
+        # *   Dev: development environment
         self.env_type = env_type
+        # The IDs of the workflows. You can query multiple workflows at a time by workflow ID.
         self.ids_shrink = ids_shrink
+        # The name of the workflow. Fuzzy match is supported.
         self.name = name
+        # The account ID of the workflow owner.
         self.owner = owner
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The field used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
+        # 
+        # *   ModifyTime (Desc/Asc)
+        # *   CreateTime (Desc/Asc)
+        # *   Id (Desc/Asc)
+        # 
+        # Default value: Id Desc.
         self.sort_by = sort_by
+        # The trigger type. Valid values:
+        # 
+        # *   Scheduler: scheduling cycle-based trigger
+        # *   Manual: manual trigger
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -43810,10 +45383,22 @@ class ListWorkflowsResponseBodyPagingInfoWorkflowsTrigger(TeaModel):
         start_time: str = None,
         type: str = None,
     ):
+        # The CRON expression. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.cron = cron
+        # The end time of the time range during which the workflow is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.end_time = end_time
+        # The running mode of the workflow after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
+        # 
+        # *   Pause
+        # *   Skip
+        # *   Normal
         self.recurrence = recurrence
+        # The start time of the time range during which the workflow is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.start_time = start_time
+        # The trigger type. Valid values:
+        # 
+        # *   Scheduler: scheduling cycle-based trigger
+        # *   Manual: manual trigger
         self.type = type
 
     def validate(self):
@@ -43869,18 +45454,34 @@ class ListWorkflowsResponseBodyPagingInfoWorkflows(TeaModel):
         project_id: int = None,
         trigger: ListWorkflowsResponseBodyPagingInfoWorkflowsTrigger = None,
     ):
+        # The unique code of the client. This parameter is used to create a workflow asynchronously and implement the idempotence of the workflow. If you do not specify this parameter when you create the workflow, the system automatically generates a unique code. The unique code is uniquely associated with the workflow ID. If you specify this parameter when you update or delete the workflow, the value of this parameter must be the unique code that is used to create the workflow.
         self.client_unique_code = client_unique_code
+        # The creation time.
         self.create_time = create_time
+        # The account ID of the creator.
         self.create_user = create_user
+        # The description.
         self.description = description
+        # The environment of the workspace. Valid values:
+        # 
+        # *   Prod
+        # *   Dev
         self.env_type = env_type
+        # The workflow ID.
         self.id = id
+        # The modification time.
         self.modify_time = modify_time
+        # The account ID of the modifier.
         self.modify_user = modify_user
+        # The name.
         self.name = name
+        # The account ID of the owner.
         self.owner = owner
+        # The parameters.
         self.parameters = parameters
+        # The workspace ID.
         self.project_id = project_id
+        # The trigger method.
         self.trigger = trigger
 
     def validate(self):
@@ -43961,9 +45562,13 @@ class ListWorkflowsResponseBodyPagingInfo(TeaModel):
         total_count: int = None,
         workflows: List[ListWorkflowsResponseBodyPagingInfoWorkflows] = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
+        # The workflows.
         self.workflows = workflows
 
     def validate(self):
@@ -44012,7 +45617,9 @@ class ListWorkflowsResponseBody(TeaModel):
         paging_info: ListWorkflowsResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.paging_info = paging_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -45158,7 +46765,7 @@ class RenameWorkflowDefinitionRequest(TeaModel):
         name: str = None,
         project_id: int = None,
     ):
-        # The unique identifier of the workflow.
+        # The ID of the workflow.
         # 
         # This parameter is required.
         self.id = id
@@ -45166,7 +46773,7 @@ class RenameWorkflowDefinitionRequest(TeaModel):
         # 
         # This parameter is required.
         self.name = name
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the ID. You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID. You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
         # 
         # This parameter is required.
         self.project_id = project_id
@@ -45284,7 +46891,9 @@ class RerunTaskInstancesRequest(TeaModel):
         comment: str = None,
         ids: List[int] = None,
     ):
+        # Remarks.
         self.comment = comment
+        # The ID list of the task instance.
         self.ids = ids
 
     def validate(self):
@@ -45317,7 +46926,9 @@ class RerunTaskInstancesShrinkRequest(TeaModel):
         comment: str = None,
         ids_shrink: str = None,
     ):
+        # Remarks.
         self.comment = comment
+        # The ID list of the task instance.
         self.ids_shrink = ids_shrink
 
     def validate(self):
@@ -45350,6 +46961,7 @@ class RerunTaskInstancesResponseBody(TeaModel):
         request_id: str = None,
         success_info: Dict[str, SuccessInfoValue] = None,
     ):
+        # The request ID. You can locate logs and troubleshoot issues based on the ID.
         self.request_id = request_id
         # The result of the batch operation, which is in the MAP structure. The instance ID serves as a key, and the result serves as a value.
         self.success_info = success_info
@@ -45433,7 +47045,9 @@ class ResumeTaskInstancesRequest(TeaModel):
         comment: str = None,
         ids: List[int] = None,
     ):
+        # Remarks.
         self.comment = comment
+        # The ID list of the task instance.
         self.ids = ids
 
     def validate(self):
@@ -45466,7 +47080,9 @@ class ResumeTaskInstancesShrinkRequest(TeaModel):
         comment: str = None,
         ids_shrink: str = None,
     ):
+        # Remarks.
         self.comment = comment
+        # The ID list of the task instance.
         self.ids_shrink = ids_shrink
 
     def validate(self):
@@ -45499,6 +47115,7 @@ class ResumeTaskInstancesResponseBody(TeaModel):
         request_id: str = None,
         success_info: Dict[str, SuccessInfoValue] = None,
     ):
+        # The request ID. You can locate logs and troubleshoot issues based on the ID.
         self.request_id = request_id
         # The result of the batch operation, which is in the MAP structure. The instance ID serves as a key, and the result serves as a value.
         self.success_info = success_info
@@ -45751,7 +47368,9 @@ class SetSuccessTaskInstancesRequest(TeaModel):
         comment: str = None,
         ids: List[int] = None,
     ):
+        # Remarks.
         self.comment = comment
+        # The ID list of the task instance.
         self.ids = ids
 
     def validate(self):
@@ -45784,7 +47403,9 @@ class SetSuccessTaskInstancesShrinkRequest(TeaModel):
         comment: str = None,
         ids_shrink: str = None,
     ):
+        # Remarks.
         self.comment = comment
+        # The ID list of the task instance.
         self.ids_shrink = ids_shrink
 
     def validate(self):
@@ -45817,6 +47438,7 @@ class SetSuccessTaskInstancesResponseBody(TeaModel):
         request_id: str = None,
         success_info: Dict[str, SuccessInfoValue] = None,
     ):
+        # The request ID. You can locate logs and troubleshoot issues based on the ID.
         self.request_id = request_id
         # The result of the batch operation, which is in the MAP structure. The instance ID serves as a key, and the result serves as a value.
         self.success_info = success_info
@@ -46430,7 +48052,9 @@ class StopTaskInstancesRequest(TeaModel):
         comment: str = None,
         ids: List[int] = None,
     ):
+        # Remarks.
         self.comment = comment
+        # The ID list of the task instance.
         self.ids = ids
 
     def validate(self):
@@ -46463,7 +48087,9 @@ class StopTaskInstancesShrinkRequest(TeaModel):
         comment: str = None,
         ids_shrink: str = None,
     ):
+        # Remarks.
         self.comment = comment
+        # The ID list of the task instance.
         self.ids_shrink = ids_shrink
 
     def validate(self):
@@ -46496,6 +48122,7 @@ class StopTaskInstancesResponseBody(TeaModel):
         request_id: str = None,
         success_info: Dict[str, SuccessInfoValue] = None,
     ):
+        # The request ID. You can locate logs and troubleshoot issues based on the ID.
         self.request_id = request_id
         # The result of the batch operation, which is in the MAP structure. The instance ID serves as a key, and the result serves as a value.
         self.success_info = success_info
@@ -46579,7 +48206,10 @@ class StopWorkflowInstancesRequest(TeaModel):
         comment: str = None,
         ids: List[int] = None,
     ):
+        # The remarks.
         self.comment = comment
+        # The workflow instance IDs.
+        # 
         # This parameter is required.
         self.ids = ids
 
@@ -46613,7 +48243,10 @@ class StopWorkflowInstancesShrinkRequest(TeaModel):
         comment: str = None,
         ids_shrink: str = None,
     ):
+        # The remarks.
         self.comment = comment
+        # The workflow instance IDs.
+        # 
         # This parameter is required.
         self.ids_shrink = ids_shrink
 
@@ -46647,7 +48280,9 @@ class StopWorkflowInstancesResponseBody(TeaModel):
         request_id: str = None,
         success_info: Dict[str, SuccessInfoValue] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The result of the batch operation, which is in the MAP structure. The workflow instance ID serves as a key, and the result serves as a value.
         self.success_info = success_info
 
     def validate(self):
@@ -46729,7 +48364,9 @@ class SuspendTaskInstancesRequest(TeaModel):
         comment: str = None,
         ids: List[int] = None,
     ):
+        # Remarks.
         self.comment = comment
+        # The ID list of the task instance.
         self.ids = ids
 
     def validate(self):
@@ -46762,7 +48399,9 @@ class SuspendTaskInstancesShrinkRequest(TeaModel):
         comment: str = None,
         ids_shrink: str = None,
     ):
+        # Remarks.
         self.comment = comment
+        # The ID list of the task instance.
         self.ids_shrink = ids_shrink
 
     def validate(self):
@@ -46795,6 +48434,7 @@ class SuspendTaskInstancesResponseBody(TeaModel):
         request_id: str = None,
         success_info: Dict[str, SuccessInfoValue] = None,
     ):
+        # The request ID. You can locate logs and troubleshoot issues based on the ID.
         self.request_id = request_id
         # The result of the batch operation, which is in the MAP structure. The instance ID serves as a key, and the result serves as a value.
         self.success_info = success_info
@@ -46878,8 +48518,11 @@ class TagDataAssetsRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
+        # 
         # This parameter is required.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -46916,13 +48559,28 @@ class TagDataAssetsRequest(TeaModel):
         project_id: int = None,
         tags: List[TagDataAssetsRequestTags] = None,
     ):
+        # Specifies whether to enable lineage-based automatic backtracking.
         self.auto_trace_enabled = auto_trace_enabled
+        # The data asset IDs.
+        # 
         # This parameter is required.
         self.data_asset_ids = data_asset_ids
+        # The type of the data asset. Valid values:
+        # 
+        # *   ACS::DataWorks::Table
+        # *   ACS::DataWorks::Task
+        # 
         # This parameter is required.
         self.data_asset_type = data_asset_type
+        # The environment of the workspace to which the data asset belongs. Valid values:
+        # 
+        # *   Dev: development environment
+        # *   Prod: production environment
         self.env_type = env_type
+        # The DataWorks workspace ID.
         self.project_id = project_id
+        # The tags that you want to add to data assets.
+        # 
         # This parameter is required.
         self.tags = tags
 
@@ -46984,13 +48642,28 @@ class TagDataAssetsShrinkRequest(TeaModel):
         project_id: int = None,
         tags_shrink: str = None,
     ):
+        # Specifies whether to enable lineage-based automatic backtracking.
         self.auto_trace_enabled = auto_trace_enabled
+        # The data asset IDs.
+        # 
         # This parameter is required.
         self.data_asset_ids_shrink = data_asset_ids_shrink
+        # The type of the data asset. Valid values:
+        # 
+        # *   ACS::DataWorks::Table
+        # *   ACS::DataWorks::Task
+        # 
         # This parameter is required.
         self.data_asset_type = data_asset_type
+        # The environment of the workspace to which the data asset belongs. Valid values:
+        # 
+        # *   Dev: development environment
+        # *   Prod: production environment
         self.env_type = env_type
+        # The DataWorks workspace ID.
         self.project_id = project_id
+        # The tags that you want to add to data assets.
+        # 
         # This parameter is required.
         self.tags_shrink = tags_shrink
 
@@ -47040,8 +48713,12 @@ class TagDataAssetsResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -47240,8 +48917,11 @@ class UnTagDataAssetsRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
+        # 
         # This parameter is required.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -47277,12 +48957,26 @@ class UnTagDataAssetsRequest(TeaModel):
         project_id: int = None,
         tags: List[UnTagDataAssetsRequestTags] = None,
     ):
+        # The data asset IDs.
+        # 
         # This parameter is required.
         self.data_asset_ids = data_asset_ids
+        # The type of the data asset. Valid values:
+        # 
+        # *   ACS::DataWorks::Table
+        # *   ACS::DataWorks::Task
+        # 
         # This parameter is required.
         self.data_asset_type = data_asset_type
+        # The environment of the workspace to which the data asset belongs. Valid values:
+        # 
+        # *   Dev: development environment
+        # *   Prod: production environment
         self.env_type = env_type
+        # The DataWorks workspace ID.
         self.project_id = project_id
+        # The tags that you want to remove.
+        # 
         # This parameter is required.
         self.tags = tags
 
@@ -47339,12 +49033,26 @@ class UnTagDataAssetsShrinkRequest(TeaModel):
         project_id: int = None,
         tags_shrink: str = None,
     ):
+        # The data asset IDs.
+        # 
         # This parameter is required.
         self.data_asset_ids_shrink = data_asset_ids_shrink
+        # The type of the data asset. Valid values:
+        # 
+        # *   ACS::DataWorks::Table
+        # *   ACS::DataWorks::Task
+        # 
         # This parameter is required.
         self.data_asset_type = data_asset_type
+        # The environment of the workspace to which the data asset belongs. Valid values:
+        # 
+        # *   Dev: development environment
+        # *   Prod: production environment
         self.env_type = env_type
+        # The DataWorks workspace ID.
         self.project_id = project_id
+        # The tags that you want to remove.
+        # 
         # This parameter is required.
         self.tags_shrink = tags_shrink
 
@@ -47390,8 +49098,12 @@ class UnTagDataAssetsResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -49606,10 +51318,15 @@ class UpdateDataAssetTagRequest(TeaModel):
         managers: List[str] = None,
         values: List[str] = None,
     ):
+        # The description of the tag.
         self.description = description
+        # The tag key.
+        # 
         # This parameter is required.
         self.key = key
+        # The tag administrators.
         self.managers = managers
+        # The tag values.
         self.values = values
 
     def validate(self):
@@ -49652,10 +51369,15 @@ class UpdateDataAssetTagShrinkRequest(TeaModel):
         managers_shrink: str = None,
         values_shrink: str = None,
     ):
+        # The description of the tag.
         self.description = description
+        # The tag key.
+        # 
         # This parameter is required.
         self.key = key
+        # The tag administrators.
         self.managers_shrink = managers_shrink
+        # The tag values.
         self.values_shrink = values_shrink
 
     def validate(self):
@@ -49696,8 +51418,9 @@ class UpdateDataAssetTagResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -49772,24 +51495,24 @@ class UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresh
         operator: str = None,
         value: str = None,
     ):
+        # 阈值表达式。
+        # 
+        # 波动率类型规则必须使用表达式方式表示波动阈值。如：
+        # 
+        # - 波动上升大于0.01： $checkValue > 0.01 
+        # - 波动下降大于0.01：$checkValue < -0.01 
+        # - 波动率绝对值：abs($checkValue) > 0.01
+        # 
+        # 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
         self.expression = expression
         # The comparison operator. Valid values:
         # 
-        # *\
-        # *\
-        # *\
-        # *\
-        # *\
-        # *\
-        # 
-        # Valid values:
-        # 
-        # *   <=\
-        # *   <
-        # *   ! =\
-        # *   \\=\
         # *   \\>
         # *   \\>=\
+        # *   <
+        # *   <=\
+        # *   !=\
+        # *   \\=\
         self.operator = operator
         # The threshold value.
         self.value = value
@@ -49829,24 +51552,24 @@ class UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresh
         operator: str = None,
         value: str = None,
     ):
+        # 阈值表达式。
+        # 
+        # 波动率类型规则必须使用表达式方式表示波动阈值。如：
+        # 
+        # - 波动上升大于0.01： $checkValue > 0.01 
+        # - 波动下降大于0.01：$checkValue < -0.01 
+        # - 波动率绝对值：abs($checkValue) > 0.01
+        # 
+        # 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
         self.expression = expression
         # The comparison operator. Valid values:
         # 
-        # *\
-        # *\
-        # *\
+        # *   \\>
+        # *   \\>=\
+        # *   <
         # *   <=\
         # *   !=\
         # *   \\=\
-        # 
-        # Valid values:
-        # 
-        # *   <=\
-        # *   <
-        # *   ! =\
-        # *   \\=\
-        # *   \\>
-        # *   \\>=\
         self.operator = operator
         # The threshold value.
         self.value = value
@@ -49886,24 +51609,24 @@ class UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresh
         operator: str = None,
         value: str = None,
     ):
+        # 阈值表达式。
+        # 
+        # 波动率类型规则必须使用表达式方式表示波动阈值。如：
+        # 
+        # - 波动上升大于0.01： $checkValue > 0.01 
+        # - 波动下降大于0.01：$checkValue < -0.01 
+        # - 波动率绝对值：abs($checkValue) > 0.01
+        # 
+        # 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
         self.expression = expression
         # The comparison operator. Valid values:
         # 
-        # *\
-        # *\
-        # *\
-        # *\
-        # *\
-        # *\
-        # 
-        # Valid values:
-        # 
-        # *   <=\
-        # *   <
-        # *   ! =\
-        # *   \\=\
         # *   \\>
         # *   \\>=\
+        # *   <
+        # *   <=\
+        # *   !=\
+        # *   \\=\
         self.operator = operator
         # The threshold value.
         self.value = value
@@ -49997,15 +51720,7 @@ class UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig(TeaMo
         self.referenced_samples_filter = referenced_samples_filter
         # The threshold settings.
         self.thresholds = thresholds
-        # The threshold calculation method.
-        # 
-        # *\
-        # *\
-        # *\
-        # *\
-        # *\
-        # 
-        # Valid values:
+        # The threshold calculation method. Valid values:
         # 
         # *   Fluctuation
         # *   Auto
@@ -50052,11 +51767,7 @@ class UpdateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers(TeaMod
     ):
         # The SQL statement that is used to filter failed tasks. If you define the rule by using custom SQL statements, you must specify an SQL statement to filter failed tasks.
         self.error_data_filter = error_data_filter
-        # The type of the operation.
-        # 
-        # *\
-        # 
-        # Valid values:
+        # The type of the operation. Valid values:
         # 
         # *   SaveErrorData
         self.type = type
@@ -50094,23 +51805,6 @@ class UpdateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig(TeaMo
         setting_config: str = None,
     ):
         # The metrics used for sampling.
-        # 
-        # *\
-        # *\
-        # *\
-        # *\
-        # *\
-        # *\
-        # *\
-        # *\
-        # *\
-        # *\
-        # *\
-        # *\
-        # *\
-        # *\
-        # *\
-        # 
         # Valid values:
         # 
         # *   DuplicatedPercent: the proportion of the number of duplicated values of the field to the number of rows in the table.
@@ -50195,15 +51889,10 @@ class UpdateDataQualityEvaluationTaskRequestDataQualityRules(TeaModel):
         self.name = name
         # The parameters required for sampling.
         self.sampling_config = sampling_config
-        # The strength of the rule.
+        # The strength of the rule. Valid values:
         # 
-        # *\
-        # *\
-        # 
-        # Valid values:
-        # 
-        # *   High
         # *   Normal
+        # *   High
         self.severity = severity
         # The ID of the template used by the rule.
         self.template_code = template_code
@@ -50319,7 +52008,7 @@ class UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificati
         self,
         channels: List[str] = None,
     ):
-        # The alert notification method.
+        # The alert notification methods.
         self.channels = channels
 
     def validate(self):
@@ -50400,7 +52089,7 @@ class UpdateDataQualityEvaluationTaskRequestNotificationsNotifications(TeaModel)
         notification_channels: List[UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationChannels] = None,
         notification_receivers: List[UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers] = None,
     ):
-        # The alert notification method.
+        # The alert notification methods.
         self.notification_channels = notification_channels
         # The configurations of alert recipients.
         self.notification_receivers = notification_receivers
@@ -50499,9 +52188,7 @@ class UpdateDataQualityEvaluationTaskRequestTarget(TeaModel):
         partition_spec: str = None,
         table_guid: str = None,
     ):
-        # The type of the database to which the table belongs.
-        # 
-        # Valid values:
+        # The type of the database to which the table belongs. Valid values:
         # 
         # *   maxcompute
         # *   hologres
@@ -50552,12 +52239,7 @@ class UpdateDataQualityEvaluationTaskRequestTrigger(TeaModel):
     ):
         # The IDs of scheduling tasks. This parameter is valid only if you set Type to ByScheduledTaskInstance.
         self.task_ids = task_ids
-        # The trigger type of the monitor.
-        # 
-        # *\
-        # *\
-        # 
-        # Valid values:
+        # The trigger type of the monitor. Valid values:
         # 
         # *   ByScheduledTaskInstance: The monitor is triggered by the associated scheduling tasks.
         # *   ByManual: The monitor is manually triggered.
@@ -50914,6 +52596,15 @@ class UpdateDataQualityRuleRequestCheckingConfigThresholdsCritical(TeaModel):
         operator: str = None,
         value: str = None,
     ):
+        # The threshold expression.
+        # 
+        # The volatility type rule must use an expression to represent the volatility threshold. For example:
+        # 
+        # - Fluctuation rise greater than 0.01: $checkValue > 0.01
+        # - Fluctuation drop greater than 0.01:$checkValue < -0.01
+        # - Absolute volatility: abs($checkValue) > 0.01
+        # 
+        # You can also use expressions to configure thresholds for fixed-Value rules. If you configure them at the same time, the expression priority is higher than Operator and Value.
         self.expression = expression
         # The comparison operator. Valid values:
         # 
@@ -50962,6 +52653,15 @@ class UpdateDataQualityRuleRequestCheckingConfigThresholdsExpected(TeaModel):
         operator: str = None,
         value: str = None,
     ):
+        # The threshold expression.
+        # 
+        # The volatility type rule must use an expression to represent the volatility threshold. For example:
+        # 
+        # - Fluctuation rise greater than 0.01: $checkValue > 0.01
+        # - Fluctuation drop greater than 0.01:$checkValue < -0.01
+        # - Absolute volatility: abs($checkValue) > 0.01
+        # 
+        # You can also use expressions to configure thresholds for fixed-Value rules. If you configure them at the same time, the expression priority is higher than Operator and Value.
         self.expression = expression
         # The comparison operator. Valid values:
         # 
@@ -51010,6 +52710,15 @@ class UpdateDataQualityRuleRequestCheckingConfigThresholdsWarned(TeaModel):
         operator: str = None,
         value: str = None,
     ):
+        # The threshold expression.
+        # 
+        # The volatility type rule must use an expression to represent the volatility threshold. For example:
+        # 
+        # - Fluctuation rise greater than 0.01: $checkValue > 0.01
+        # - Fluctuation drop greater than 0.01:$checkValue < -0.01
+        # - Absolute volatility: abs($checkValue) > 0.01
+        # 
+        # You can also use expressions to configure thresholds for fixed-Value rules. If you configure them at the same time, the expression priority is higher than Operator and Value.
         self.expression = expression
         # The comparison operator. Valid values:
         # 
@@ -51772,7 +53481,7 @@ class UpdateDataQualityRuleTemplateResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -51921,6 +53630,10 @@ class UpdateDataSourceResponseBody(TeaModel):
     ):
         # The request ID.
         self.request_id = request_id
+        # Whether the data source has been modified:
+        # 
+        # - true: Yes
+        # - false: no
         self.success = success
 
     def validate(self):
@@ -52042,7 +53755,7 @@ class UpdateFunctionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request ID.
+        # The request ID. You can troubleshoot issues based on the ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
@@ -52170,7 +53883,7 @@ class UpdateNodeResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request ID.
+        # The request ID. You can troubleshoot issues based on the ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
@@ -52270,6 +53983,10 @@ class UpdateProjectRequest(TeaModel):
         self.dev_role_disabled = dev_role_disabled
         # The display name of the workspace.
         self.display_name = display_name
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/workspace/list) and go to the workspace management page to obtain the ID.
+        # 
+        # This parameter is used to determine the DataWorks workspaces used for this API call.
+        # 
         # This parameter is required.
         self.id = id
         # Specifies whether to enable scheduling of Platform for AI (PAI) tasks. Valid values:
@@ -52332,6 +54049,7 @@ class UpdateProjectResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request. It is used to locate logs and troubleshoot problems.
         self.request_id = request_id
 
     def validate(self):
@@ -52449,7 +54167,7 @@ class UpdateResourceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request ID.
+        # The request ID. You can troubleshoot issues based on the ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
@@ -52530,7 +54248,7 @@ class UpdateResourceGroupRequest(TeaModel):
         name: str = None,
         remark: str = None,
     ):
-        # The ID of the resource group.
+        # The ID of the new Alibaba Cloud resource group.
         self.aliyun_resource_group_id = aliyun_resource_group_id
         # The ID of the resource group.
         # 
@@ -52579,7 +54297,7 @@ class UpdateResourceGroupResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request ID. You can use the ID to locate logs and troubleshoot issues.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -52659,6 +54377,8 @@ class UpdateRouteRequest(TeaModel):
         # 
         # This parameter is required.
         self.destination_cidr = destination_cidr
+        # The route ID of the network resource.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -52692,6 +54412,7 @@ class UpdateRouteResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID. You can locate logs and troubleshoot issues based on the ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -52766,6 +54487,7 @@ class UpdateTaskRequestDataSource(TeaModel):
         self,
         name: str = None,
     ):
+        # The name of the data source.
         self.name = name
 
     def validate(self):
@@ -52795,9 +54517,17 @@ class UpdateTaskRequestDependencies(TeaModel):
         upstream_output: str = None,
         upstream_task_id: int = None,
     ):
+        # The type of the dependency.
+        # - CrossCycleDependsOnChildren: cross-cycle dependency level-1 child nodes
+        # - CrossCycleDependsOnSelf: cross-cycle dependency
+        # - CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
+        # - Normal: same-cycle dependency
+        # 
         # This parameter is required.
         self.type = type
+        # The output identifier of the upstream task. (This field is returned when the input content is set depending on the same cycle)
         self.upstream_output = upstream_output
+        # The Id of the upstream task. (This field is returned when the input content is not set for cross-cycle dependencies on other nodes and same-cycle dependencies.
         self.upstream_task_id = upstream_task_id
 
     def validate(self):
@@ -52835,9 +54565,17 @@ class UpdateTaskRequestInputsVariables(TeaModel):
         type: str = None,
         value: str = None,
     ):
+        # The name of the variable.
         self.name = name
+        # Type.
+        # - Constant: Constant
+        # - PassThrough: parameter node output
+        # - System: variable
+        # - NodeOutput: script output
+        # 
         # This parameter is required.
         self.type = type
+        # The value of the variable.
         self.value = value
 
     def validate(self):
@@ -52873,6 +54611,7 @@ class UpdateTaskRequestInputs(TeaModel):
         self,
         variables: List[UpdateTaskRequestInputsVariables] = None,
     ):
+        # The list of variable definitions.
         self.variables = variables
 
     def validate(self):
@@ -52908,6 +54647,7 @@ class UpdateTaskRequestOutputsTaskOutputs(TeaModel):
         self,
         output: str = None,
     ):
+        # The output identifier.
         self.output = output
 
     def validate(self):
@@ -52937,9 +54677,17 @@ class UpdateTaskRequestOutputsVariables(TeaModel):
         type: str = None,
         value: str = None,
     ):
+        # The name of the variable.
         self.name = name
+        # Type.
+        # - Constant: Constant
+        # - PassThrough: parameter node output
+        # - System: variable
+        # - NodeOutput: script output
+        # 
         # This parameter is required.
         self.type = type
+        # The value of the variable.
         self.value = value
 
     def validate(self):
@@ -52976,7 +54724,9 @@ class UpdateTaskRequestOutputs(TeaModel):
         task_outputs: List[UpdateTaskRequestOutputsTaskOutputs] = None,
         variables: List[UpdateTaskRequestOutputsVariables] = None,
     ):
+        # The list of task output definitions.
         self.task_outputs = task_outputs
+        # The list of variable definitions.
         self.variables = variables
 
     def validate(self):
@@ -53027,8 +54777,12 @@ class UpdateTaskRequestRuntimeResource(TeaModel):
         image: str = None,
         resource_group_id: str = None,
     ):
+        # Configure CU consumption for task running.
         self.cu = cu
+        # The ID of the image configured for the task.
         self.image = image
+        # The identifier of the scheduling resource group configured for running the task.
+        # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
 
@@ -53066,7 +54820,9 @@ class UpdateTaskRequestScript(TeaModel):
         content: str = None,
         parameters: str = None,
     ):
+        # The script content.
         self.content = content
+        # The list of script parameters.
         self.parameters = parameters
 
     def validate(self):
@@ -53099,8 +54855,11 @@ class UpdateTaskRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
+        # 
         # This parameter is required.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -53136,10 +54895,21 @@ class UpdateTaskRequestTrigger(TeaModel):
         start_time: str = None,
         type: str = None,
     ):
+        # Cron expression, which takes effect when type = Scheduler.
         self.cron = cron
+        # The expiration time of the periodic trigger, which takes effect when type = Scheduler.
         self.end_time = end_time
+        # The operation mode when the trigger is triggered. It takes effect when type = Scheduler.
+        # - Pause: Pause
+        # - Skip: empty run
+        # - Normal: Normal operation
         self.recurrence = recurrence
+        # The time when the cycle trigger takes effect. It takes effect when type = Scheduler.
         self.start_time = start_time
+        # The type of the trigger method.
+        # - Scheduler: the scheduling cycle is triggered.
+        # - Manual: manually triggered
+        # 
         # This parameter is required.
         self.type = type
 
@@ -53202,29 +54972,61 @@ class UpdateTaskRequest(TeaModel):
         timeout: int = None,
         trigger: UpdateTaskRequestTrigger = None,
     ):
+        # The client unique code of the task, which uniquely identifies a task. It is used to implement asynchronous and idempotent functions. If it is not specified during creation, the system will automatically generate the code, which will be uniquely bound to the resource ID. If you specify this parameter when updating and deleting resources, it should be consistent with the client unique code when creating resources.
         self.client_unique_code = client_unique_code
+        # The associated data source information.
         self.data_source = data_source
+        # Dependency information.
         self.dependencies = dependencies
+        # The description.
         self.description = description
+        # The project environment.
+        # - Prod: Production
+        # - Dev: Development
         self.env_type = env_type
+        # The ID of the task.
+        # 
         # This parameter is required.
         self.id = id
+        # Enter information.
         self.inputs = inputs
+        # The instance generation mode.
+        # - T +1 (second born)
+        # - Immediately (generate now)
         self.instance_mode = instance_mode
+        # The name.
+        # 
         # This parameter is required.
         self.name = name
+        # The output information.
         self.outputs = outputs
+        # The account ID of the owner of the task.
+        # 
         # This parameter is required.
         self.owner = owner
+        # The retry interval, in seconds.
         self.rerun_interval = rerun_interval
+        # The configuration of whether the task is allowed to rerun.
+        # - AllDenied: failure or success cannot be rerun.
+        # - FailureAllowed: only failures can be rerun
+        # - AllAllowed: you can run again if you fail or succeed.
+        # 
         # This parameter is required.
         self.rerun_mode = rerun_mode
+        # The number of retries that take effect when the task is set to rerun.
         self.rerun_times = rerun_times
+        # Configuration of the runtime environment, such as resource group information.
+        # 
         # This parameter is required.
         self.runtime_resource = runtime_resource
+        # Run the script information.
         self.script = script
+        # The list of task tags.
         self.tags = tags
+        # The timeout period of the task execution, in seconds.
         self.timeout = timeout
+        # The trigger method of the task.
+        # 
         # This parameter is required.
         self.trigger = trigger
 
@@ -53378,29 +55180,61 @@ class UpdateTaskShrinkRequest(TeaModel):
         timeout: int = None,
         trigger_shrink: str = None,
     ):
+        # The client unique code of the task, which uniquely identifies a task. It is used to implement asynchronous and idempotent functions. If it is not specified during creation, the system will automatically generate the code, which will be uniquely bound to the resource ID. If you specify this parameter when updating and deleting resources, it should be consistent with the client unique code when creating resources.
         self.client_unique_code = client_unique_code
+        # The associated data source information.
         self.data_source_shrink = data_source_shrink
+        # Dependency information.
         self.dependencies_shrink = dependencies_shrink
+        # The description.
         self.description = description
+        # The project environment.
+        # - Prod: Production
+        # - Dev: Development
         self.env_type = env_type
+        # The ID of the task.
+        # 
         # This parameter is required.
         self.id = id
+        # Enter information.
         self.inputs_shrink = inputs_shrink
+        # The instance generation mode.
+        # - T +1 (second born)
+        # - Immediately (generate now)
         self.instance_mode = instance_mode
+        # The name.
+        # 
         # This parameter is required.
         self.name = name
+        # The output information.
         self.outputs_shrink = outputs_shrink
+        # The account ID of the owner of the task.
+        # 
         # This parameter is required.
         self.owner = owner
+        # The retry interval, in seconds.
         self.rerun_interval = rerun_interval
+        # The configuration of whether the task is allowed to rerun.
+        # - AllDenied: failure or success cannot be rerun.
+        # - FailureAllowed: only failures can be rerun
+        # - AllAllowed: you can run again if you fail or succeed.
+        # 
         # This parameter is required.
         self.rerun_mode = rerun_mode
+        # The number of retries that take effect when the task is set to rerun.
         self.rerun_times = rerun_times
+        # Configuration of the runtime environment, such as resource group information.
+        # 
         # This parameter is required.
         self.runtime_resource_shrink = runtime_resource_shrink
+        # Run the script information.
         self.script_shrink = script_shrink
+        # The list of task tags.
         self.tags_shrink = tags_shrink
+        # The timeout period of the task execution, in seconds.
         self.timeout = timeout
+        # The trigger method of the task.
+        # 
         # This parameter is required.
         self.trigger_shrink = trigger_shrink
 
@@ -53502,7 +55336,9 @@ class UpdateTaskResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the request. It is used to locate logs and troubleshoot problems.
         self.request_id = request_id
+        # Whether the operation is successful.
         self.success = success
 
     def validate(self):
@@ -53822,9 +55658,17 @@ class UpdateWorkflowRequestDependencies(TeaModel):
         upstream_output: str = None,
         upstream_task_id: int = None,
     ):
+        # The type of the dependency.
+        # - CrossCycleDependsOnChildren: cross-cycle dependency level-1 child nodes
+        # - CrossCycleDependsOnSelf: cross-cycle dependency
+        # - CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
+        # - Normal: same-cycle dependency
+        # 
         # This parameter is required.
         self.type = type
+        # The output identifier of the upstream task. (This field is returned when `same cycle dependence` and input content is set)
         self.upstream_output = upstream_output
+        # The Id of the upstream task. (This field is returned when the input content is not set for `cross-cycle dependency other nodes` and `same-cycle dependency `, otherwise it is not returned)
         self.upstream_task_id = upstream_task_id
 
     def validate(self):
@@ -53860,6 +55704,7 @@ class UpdateWorkflowRequestOutputsTaskOutputs(TeaModel):
         self,
         output: str = None,
     ):
+        # The output identifier.
         self.output = output
 
     def validate(self):
@@ -53887,6 +55732,7 @@ class UpdateWorkflowRequestOutputs(TeaModel):
         self,
         task_outputs: List[UpdateWorkflowRequestOutputsTaskOutputs] = None,
     ):
+        # The list of workflow task output definitions.
         self.task_outputs = task_outputs
 
     def validate(self):
@@ -53923,8 +55769,11 @@ class UpdateWorkflowRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
+        # 
         # This parameter is required.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -53956,6 +55805,7 @@ class UpdateWorkflowRequestTasksDataSource(TeaModel):
         self,
         name: str = None,
     ):
+        # The name of the data source.
         self.name = name
 
     def validate(self):
@@ -53985,9 +55835,17 @@ class UpdateWorkflowRequestTasksDependencies(TeaModel):
         upstream_output: str = None,
         upstream_task_id: int = None,
     ):
+        # The type of the dependency.
+        # - CrossCycleDependsOnChildren: cross-cycle dependency level-1 child nodes
+        # - CrossCycleDependsOnSelf: cross-cycle dependency
+        # - CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
+        # - Normal: same-cycle dependency
+        # 
         # This parameter is required.
         self.type = type
+        # The output identifier of the upstream task. (This field is returned when the input content is set depending on the same cycle)
         self.upstream_output = upstream_output
+        # The Id of the upstream task. (This field is returned when the input content is not set for cross-cycle dependencies on other nodes and same-cycle dependencies.
         self.upstream_task_id = upstream_task_id
 
     def validate(self):
@@ -54025,9 +55883,17 @@ class UpdateWorkflowRequestTasksInputsVariables(TeaModel):
         type: str = None,
         value: str = None,
     ):
+        # The name of the variable.
         self.name = name
+        # Type.
+        # - Constant: Constant
+        # - PassThrough: parameter node output
+        # - System: variable
+        # - NodeOutput: script output
+        # 
         # This parameter is required.
         self.type = type
+        # The value of the variable.
         self.value = value
 
     def validate(self):
@@ -54063,6 +55929,7 @@ class UpdateWorkflowRequestTasksInputs(TeaModel):
         self,
         variables: List[UpdateWorkflowRequestTasksInputsVariables] = None,
     ):
+        # The list of variable definitions.
         self.variables = variables
 
     def validate(self):
@@ -54098,6 +55965,7 @@ class UpdateWorkflowRequestTasksOutputsTaskOutputs(TeaModel):
         self,
         output: str = None,
     ):
+        # The output identifier.
         self.output = output
 
     def validate(self):
@@ -54127,9 +55995,17 @@ class UpdateWorkflowRequestTasksOutputsVariables(TeaModel):
         type: str = None,
         value: str = None,
     ):
+        # The name of the variable.
         self.name = name
+        # Type.
+        # - Constant: Constant
+        # - PassThrough: parameter node output
+        # - System: variable
+        # - NodeOutput: script output
+        # 
         # This parameter is required.
         self.type = type
+        # The value of the variable.
         self.value = value
 
     def validate(self):
@@ -54166,7 +56042,9 @@ class UpdateWorkflowRequestTasksOutputs(TeaModel):
         task_outputs: List[UpdateWorkflowRequestTasksOutputsTaskOutputs] = None,
         variables: List[UpdateWorkflowRequestTasksOutputsVariables] = None,
     ):
+        # The list of task output definitions.
         self.task_outputs = task_outputs
+        # The list of variable definitions.
         self.variables = variables
 
     def validate(self):
@@ -54217,8 +56095,12 @@ class UpdateWorkflowRequestTasksRuntimeResource(TeaModel):
         image: str = None,
         resource_group_id: str = None,
     ):
+        # Configure CU consumption for task running.
         self.cu = cu
+        # The ID of the image configured for the task.
         self.image = image
+        # The identifier of the scheduling resource group configured for running the task.
+        # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
 
@@ -54256,7 +56138,9 @@ class UpdateWorkflowRequestTasksScript(TeaModel):
         content: str = None,
         parameters: str = None,
     ):
+        # The script content.
         self.content = content
+        # The list of script parameters.
         self.parameters = parameters
 
     def validate(self):
@@ -54289,8 +56173,11 @@ class UpdateWorkflowRequestTasksTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
+        # 
         # This parameter is required.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -54323,8 +56210,16 @@ class UpdateWorkflowRequestTasksTrigger(TeaModel):
         recurrence: str = None,
         type: str = None,
     ):
+        # The operation mode when the trigger is triggered. It takes effect when type = Scheduler.
+        # - Pause: Pause
+        # - Skip: empty run
+        # - Normal: Normal operation
+        # 
         # This parameter is required.
         self.recurrence = recurrence
+        # The type of the trigger method.
+        # - Scheduler: the scheduling cycle is triggered.
+        # - Manual: manually triggered
         self.type = type
 
     def validate(self):
@@ -54375,31 +56270,63 @@ class UpdateWorkflowRequestTasks(TeaModel):
         trigger: UpdateWorkflowRequestTasksTrigger = None,
         type: str = None,
     ):
+        # The baseline ID.
         self.base_line_id = base_line_id
+        # The client-side unique code of the task, which is used to implement asynchronous and idempotent functions. If not specified during creation, the system will automatically generate the code, which will be uniquely bound to the resource ID. If you specify this parameter when updating and deleting resources, it should be consistent with the client unique code when creating resources.
         self.client_unique_code = client_unique_code
+        # The associated data source information.
         self.data_source = data_source
+        # Dependency information.
         self.dependencies = dependencies
+        # The description.
         self.description = description
+        # The project environment.
+        # - Prod: Production
+        # - Dev: Development
         self.env_type = env_type
+        # The ID of the task. If you enter this field, a full update is performed on the corresponding task. If you do not enter this field, a new task is created.
+        # 
         # This parameter is required.
         self.id = id
+        # Enter information.
         self.inputs = inputs
+        # The name of the task.
+        # 
         # This parameter is required.
         self.name = name
+        # The output information.
         self.outputs = outputs
+        # The account ID of the owner.
+        # 
         # This parameter is required.
         self.owner = owner
+        # The retry interval, in seconds.
         self.rerun_interval = rerun_interval
+        # The configuration of whether the task is allowed to rerun.
+        # - AllDenied (failure or success cannot be rerun)
+        # - FailureAllowed (only failures can be rerun)
+        # - AllAllowed (run again if failed or successful)
+        # 
         # This parameter is required.
         self.rerun_mode = rerun_mode
+        # The number of retries that take effect when the task is set to rerun.
         self.rerun_times = rerun_times
+        # Configuration of the runtime environment, such as resource group information.
+        # 
         # This parameter is required.
         self.runtime_resource = runtime_resource
+        # Run the script information.
         self.script = script
+        # The list of task tags.
         self.tags = tags
+        # The timeout period of the task execution, in seconds.
         self.timeout = timeout
+        # The trigger method of the task.
+        # 
         # This parameter is required.
         self.trigger = trigger
+        # The type of the task.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -54542,9 +56469,16 @@ class UpdateWorkflowRequestTrigger(TeaModel):
         start_time: str = None,
         type: str = None,
     ):
+        # Cron expression, which takes effect when type = Scheduler.
         self.cron = cron
+        # The expiration time of the periodic trigger, which takes effect when type = Scheduler.
         self.end_time = end_time
+        # The time when the cycle trigger takes effect. It takes effect when type = Scheduler.
         self.start_time = start_time
+        # The type of the trigger method.
+        # - Scheduler: the scheduling cycle is triggered.
+        # - Manual: manually triggered
+        # 
         # This parameter is required.
         self.type = type
 
@@ -54596,20 +56530,39 @@ class UpdateWorkflowRequest(TeaModel):
         tasks: List[UpdateWorkflowRequestTasks] = None,
         trigger: UpdateWorkflowRequestTrigger = None,
     ):
+        # The client-side unique code of the workflow for asynchronous and idempotent implementation. If not specified during creation, the system will automatically generate the code, which will be uniquely bound to the resource ID. If you specify this parameter when updating and deleting resources, it should be consistent with the client unique code when creating resources.
         self.client_unique_code = client_unique_code
+        # Dependency information.
         self.dependencies = dependencies
+        # The description.
         self.description = description
+        # The project environment.
+        # 
+        # - Prod: Production
+        # - Dev: Development
         self.env_type = env_type
+        # The ID of the workflow.
+        # 
         # This parameter is required.
         self.id = id
+        # The name.
+        # 
         # This parameter is required.
         self.name = name
+        # The output information.
         self.outputs = outputs
+        # The account ID of the owner.
+        # 
         # This parameter is required.
         self.owner = owner
+        # The list of parameters.
         self.parameters = parameters
+        # The list of workflow tags.
         self.tags = tags
+        # The list of tasks.
         self.tasks = tasks
+        # The trigger method.
+        # 
         # This parameter is required.
         self.trigger = trigger
 
@@ -54725,20 +56678,39 @@ class UpdateWorkflowShrinkRequest(TeaModel):
         tasks_shrink: str = None,
         trigger_shrink: str = None,
     ):
+        # The client-side unique code of the workflow for asynchronous and idempotent implementation. If not specified during creation, the system will automatically generate the code, which will be uniquely bound to the resource ID. If you specify this parameter when updating and deleting resources, it should be consistent with the client unique code when creating resources.
         self.client_unique_code = client_unique_code
+        # Dependency information.
         self.dependencies_shrink = dependencies_shrink
+        # The description.
         self.description = description
+        # The project environment.
+        # 
+        # - Prod: Production
+        # - Dev: Development
         self.env_type = env_type
+        # The ID of the workflow.
+        # 
         # This parameter is required.
         self.id = id
+        # The name.
+        # 
         # This parameter is required.
         self.name = name
+        # The output information.
         self.outputs_shrink = outputs_shrink
+        # The account ID of the owner.
+        # 
         # This parameter is required.
         self.owner = owner
+        # The list of parameters.
         self.parameters = parameters
+        # The list of workflow tags.
         self.tags_shrink = tags_shrink
+        # The list of tasks.
         self.tasks_shrink = tasks_shrink
+        # The trigger method.
+        # 
         # This parameter is required.
         self.trigger_shrink = trigger_shrink
 
@@ -54812,7 +56784,9 @@ class UpdateWorkflowResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the request. It is used to locate logs and troubleshoot problems.
         self.request_id = request_id
+        # Whether the operation is successful.
         self.success = success
 
     def validate(self):
@@ -54934,7 +56908,7 @@ class UpdateWorkflowDefinitionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request ID.
+        # The request ID. You can locate logs and troubleshoot issues based on the ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 

@@ -313,7 +313,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskResponse:
         """
-        @summary 把数据质量规则关联到数据质量校验任务上
+        @summary Associates monitoring rules with a monitor
         
         @param tmp_req: AttachDataQualityRulesToEvaluationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -362,7 +362,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskResponse:
         """
-        @summary 把数据质量规则关联到数据质量校验任务上
+        @summary Associates monitoring rules with a monitor
         
         @param tmp_req: AttachDataQualityRulesToEvaluationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -410,7 +410,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskRequest,
     ) -> dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskResponse:
         """
-        @summary 把数据质量规则关联到数据质量校验任务上
+        @summary Associates monitoring rules with a monitor
         
         @param request: AttachDataQualityRulesToEvaluationTaskRequest
         @return: AttachDataQualityRulesToEvaluationTaskResponse
@@ -423,7 +423,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskRequest,
     ) -> dataworks_public_20240518_models.AttachDataQualityRulesToEvaluationTaskResponse:
         """
-        @summary 把数据质量规则关联到数据质量校验任务上
+        @summary Associates monitoring rules with a monitor
         
         @param request: AttachDataQualityRulesToEvaluationTaskRequest
         @return: AttachDataQualityRulesToEvaluationTaskResponse
@@ -437,6 +437,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.BatchUpdateTasksResponse:
         """
+        @summary Performs incremental updates on multiple tasks at a time.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: BatchUpdateTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: BatchUpdateTasksResponse
@@ -482,6 +486,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.BatchUpdateTasksResponse:
         """
+        @summary Performs incremental updates on multiple tasks at a time.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: BatchUpdateTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: BatchUpdateTasksResponse
@@ -526,6 +534,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.BatchUpdateTasksRequest,
     ) -> dataworks_public_20240518_models.BatchUpdateTasksResponse:
         """
+        @summary Performs incremental updates on multiple tasks at a time.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: BatchUpdateTasksRequest
         @return: BatchUpdateTasksResponse
         """
@@ -537,6 +549,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.BatchUpdateTasksRequest,
     ) -> dataworks_public_20240518_models.BatchUpdateTasksResponse:
         """
+        @summary Performs incremental updates on multiple tasks at a time.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: BatchUpdateTasksRequest
         @return: BatchUpdateTasksResponse
         """
@@ -931,7 +947,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a new-version synchronization task.
         
-        @description This API operation is available for all DataWorks editions.
+        @description    This API operation is available for all DataWorks editions.
+        You can call this API operation to create a synchronization task. When you call this API operation, you must configure parameters such as SourceDataSourceSettings, DestinationDataSourceSettings, MigrationType, TransformationRules, TableMappings, and JobSettings. The SourceDataSourceSettings parameter defines the settings related to the source. The DestinationDataSourceSettings parameter defines the settings related to the destination. The MigrationType parameter defines the synchronization task type. The TransformationRules parameter defines the transformation rules for objects involved in the synchronization task. The TableMappings parameter defines the mappings between rules used to select synchronization objects in the source and transformation rules applied to the selected synchronization objects. The JobSettings parameter defines the settings for the dimension of the synchronization task, including policies for data type mappings between source fields and destination fields and settings for periodic scheduling.
         
         @param tmp_req: CreateDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -986,7 +1003,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a new-version synchronization task.
         
-        @description This API operation is available for all DataWorks editions.
+        @description    This API operation is available for all DataWorks editions.
+        You can call this API operation to create a synchronization task. When you call this API operation, you must configure parameters such as SourceDataSourceSettings, DestinationDataSourceSettings, MigrationType, TransformationRules, TableMappings, and JobSettings. The SourceDataSourceSettings parameter defines the settings related to the source. The DestinationDataSourceSettings parameter defines the settings related to the destination. The MigrationType parameter defines the synchronization task type. The TransformationRules parameter defines the transformation rules for objects involved in the synchronization task. The TableMappings parameter defines the mappings between rules used to select synchronization objects in the source and transformation rules applied to the selected synchronization objects. The JobSettings parameter defines the settings for the dimension of the synchronization task, including policies for data type mappings between source fields and destination fields and settings for periodic scheduling.
         
         @param tmp_req: CreateDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1040,7 +1058,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a new-version synchronization task.
         
-        @description This API operation is available for all DataWorks editions.
+        @description    This API operation is available for all DataWorks editions.
+        You can call this API operation to create a synchronization task. When you call this API operation, you must configure parameters such as SourceDataSourceSettings, DestinationDataSourceSettings, MigrationType, TransformationRules, TableMappings, and JobSettings. The SourceDataSourceSettings parameter defines the settings related to the source. The DestinationDataSourceSettings parameter defines the settings related to the destination. The MigrationType parameter defines the synchronization task type. The TransformationRules parameter defines the transformation rules for objects involved in the synchronization task. The TableMappings parameter defines the mappings between rules used to select synchronization objects in the source and transformation rules applied to the selected synchronization objects. The JobSettings parameter defines the settings for the dimension of the synchronization task, including policies for data type mappings between source fields and destination fields and settings for periodic scheduling.
         
         @param request: CreateDIJobRequest
         @return: CreateDIJobResponse
@@ -1055,7 +1074,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a new-version synchronization task.
         
-        @description This API operation is available for all DataWorks editions.
+        @description    This API operation is available for all DataWorks editions.
+        You can call this API operation to create a synchronization task. When you call this API operation, you must configure parameters such as SourceDataSourceSettings, DestinationDataSourceSettings, MigrationType, TransformationRules, TableMappings, and JobSettings. The SourceDataSourceSettings parameter defines the settings related to the source. The DestinationDataSourceSettings parameter defines the settings related to the destination. The MigrationType parameter defines the synchronization task type. The TransformationRules parameter defines the transformation rules for objects involved in the synchronization task. The TableMappings parameter defines the mappings between rules used to select synchronization objects in the source and transformation rules applied to the selected synchronization objects. The JobSettings parameter defines the settings for the dimension of the synchronization task, including policies for data type mappings between source fields and destination fields and settings for periodic scheduling.
         
         @param request: CreateDIJobRequest
         @return: CreateDIJobResponse
@@ -1069,7 +1089,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateDataAssetTagResponse:
         """
-        @summary 创建标签
+        @summary Creates a tag.
+        
+        @description This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
         
         @param tmp_req: CreateDataAssetTagRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1124,7 +1146,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateDataAssetTagResponse:
         """
-        @summary 创建标签
+        @summary Creates a tag.
+        
+        @description This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
         
         @param tmp_req: CreateDataAssetTagRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1178,7 +1202,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateDataAssetTagRequest,
     ) -> dataworks_public_20240518_models.CreateDataAssetTagResponse:
         """
-        @summary 创建标签
+        @summary Creates a tag.
+        
+        @description This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
         
         @param request: CreateDataAssetTagRequest
         @return: CreateDataAssetTagResponse
@@ -1191,7 +1217,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateDataAssetTagRequest,
     ) -> dataworks_public_20240518_models.CreateDataAssetTagResponse:
         """
-        @summary 创建标签
+        @summary Creates a tag.
+        
+        @description This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
         
         @param request: CreateDataAssetTagRequest
         @return: CreateDataAssetTagResponse
@@ -1381,7 +1409,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceResponse:
         """
-        @summary 创建数据质量校验任务实例
+        @summary Creates a monitor instance
         
         @param tmp_req: CreateDataQualityEvaluationTaskInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1432,7 +1460,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceResponse:
         """
-        @summary 创建数据质量校验任务实例
+        @summary Creates a monitor instance
         
         @param tmp_req: CreateDataQualityEvaluationTaskInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1482,7 +1510,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceRequest,
     ) -> dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceResponse:
         """
-        @summary 创建数据质量校验任务实例
+        @summary Creates a monitor instance
         
         @param request: CreateDataQualityEvaluationTaskInstanceRequest
         @return: CreateDataQualityEvaluationTaskInstanceResponse
@@ -1495,7 +1523,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceRequest,
     ) -> dataworks_public_20240518_models.CreateDataQualityEvaluationTaskInstanceResponse:
         """
-        @summary 创建数据质量校验任务实例
+        @summary Creates a monitor instance
         
         @param request: CreateDataQualityEvaluationTaskInstanceRequest
         @return: CreateDataQualityEvaluationTaskInstanceResponse
@@ -2881,9 +2909,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateResourceResponse:
         """
-        @summary Creates a file resource in DataStudio. The information about the file resource is described by using FlowSpec.
+        @summary >  You cannot use this API operation to create multiple file resources at a time. If you specify multiple file resources by using FlowSpec, the system creates only the first specified resource.
         
-        @description >  You cannot use this API operation to create multiple file resources at a time. If you specify multiple file resources by using FlowSpec, the system creates only the first specified resource.
+        @description Private
         
         @param request: CreateResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2926,9 +2954,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateResourceResponse:
         """
-        @summary Creates a file resource in DataStudio. The information about the file resource is described by using FlowSpec.
+        @summary >  You cannot use this API operation to create multiple file resources at a time. If you specify multiple file resources by using FlowSpec, the system creates only the first specified resource.
         
-        @description >  You cannot use this API operation to create multiple file resources at a time. If you specify multiple file resources by using FlowSpec, the system creates only the first specified resource.
+        @description Private
         
         @param request: CreateResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2970,9 +2998,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateResourceRequest,
     ) -> dataworks_public_20240518_models.CreateResourceResponse:
         """
-        @summary Creates a file resource in DataStudio. The information about the file resource is described by using FlowSpec.
+        @summary >  You cannot use this API operation to create multiple file resources at a time. If you specify multiple file resources by using FlowSpec, the system creates only the first specified resource.
         
-        @description >  You cannot use this API operation to create multiple file resources at a time. If you specify multiple file resources by using FlowSpec, the system creates only the first specified resource.
+        @description Private
         
         @param request: CreateResourceRequest
         @return: CreateResourceResponse
@@ -2985,9 +3013,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateResourceRequest,
     ) -> dataworks_public_20240518_models.CreateResourceResponse:
         """
-        @summary Creates a file resource in DataStudio. The information about the file resource is described by using FlowSpec.
+        @summary >  You cannot use this API operation to create multiple file resources at a time. If you specify multiple file resources by using FlowSpec, the system creates only the first specified resource.
         
-        @description >  You cannot use this API operation to create multiple file resources at a time. If you specify multiple file resources by using FlowSpec, the system creates only the first specified resource.
+        @description Private
         
         @param request: CreateResourceRequest
         @return: CreateResourceResponse
@@ -3889,7 +3917,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteDataAssetTagResponse:
         """
-        @summary 删除标签
+        @summary Deletes a tag.
+        
+        @description This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
         
         @param tmp_req: DeleteDataAssetTagRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3936,7 +3966,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteDataAssetTagResponse:
         """
-        @summary 删除标签
+        @summary Deletes a tag.
+        
+        @description This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
         
         @param tmp_req: DeleteDataAssetTagRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3982,7 +4014,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteDataAssetTagRequest,
     ) -> dataworks_public_20240518_models.DeleteDataAssetTagResponse:
         """
-        @summary 删除标签
+        @summary Deletes a tag.
+        
+        @description This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
         
         @param request: DeleteDataAssetTagRequest
         @return: DeleteDataAssetTagResponse
@@ -3995,7 +4029,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteDataAssetTagRequest,
     ) -> dataworks_public_20240518_models.DeleteDataAssetTagResponse:
         """
-        @summary 删除标签
+        @summary Deletes a tag.
+        
+        @description This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
         
         @param request: DeleteDataAssetTagRequest
         @return: DeleteDataAssetTagResponse
@@ -4009,7 +4045,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteDataQualityEvaluationTaskResponse:
         """
-        @summary 删除数据质量校验任务
+        @summary Deletes a data quality monitoring task.
         
         @param request: DeleteDataQualityEvaluationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4052,7 +4088,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteDataQualityEvaluationTaskResponse:
         """
-        @summary 删除数据质量校验任务
+        @summary Deletes a data quality monitoring task.
         
         @param request: DeleteDataQualityEvaluationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4094,7 +4130,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteDataQualityEvaluationTaskRequest,
     ) -> dataworks_public_20240518_models.DeleteDataQualityEvaluationTaskResponse:
         """
-        @summary 删除数据质量校验任务
+        @summary Deletes a data quality monitoring task.
         
         @param request: DeleteDataQualityEvaluationTaskRequest
         @return: DeleteDataQualityEvaluationTaskResponse
@@ -4107,7 +4143,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteDataQualityEvaluationTaskRequest,
     ) -> dataworks_public_20240518_models.DeleteDataQualityEvaluationTaskResponse:
         """
-        @summary 删除数据质量校验任务
+        @summary Deletes a data quality monitoring task.
         
         @param request: DeleteDataQualityEvaluationTaskRequest
         @return: DeleteDataQualityEvaluationTaskResponse
@@ -5657,6 +5693,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteWorkflowResponse:
         """
+        @summary Deletes a workflow.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: DeleteWorkflowRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteWorkflowResponse
@@ -5702,6 +5742,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteWorkflowResponse:
         """
+        @summary Deletes a workflow.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: DeleteWorkflowRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteWorkflowResponse
@@ -5746,6 +5790,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteWorkflowRequest,
     ) -> dataworks_public_20240518_models.DeleteWorkflowResponse:
         """
+        @summary Deletes a workflow.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: DeleteWorkflowRequest
         @return: DeleteWorkflowResponse
         """
@@ -5757,6 +5805,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteWorkflowRequest,
     ) -> dataworks_public_20240518_models.DeleteWorkflowResponse:
         """
+        @summary Deletes a workflow.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: DeleteWorkflowRequest
         @return: DeleteWorkflowResponse
         """
@@ -5889,7 +5941,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskResponse:
         """
-        @summary 取消数据质量规则和数据质量校验任务的关联
+        @summary Disassociates monitoring rules from a monitor
         
         @param tmp_req: DetachDataQualityRulesFromEvaluationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5938,7 +5990,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskResponse:
         """
-        @summary 取消数据质量规则和数据质量校验任务的关联
+        @summary Disassociates monitoring rules from a monitor
         
         @param tmp_req: DetachDataQualityRulesFromEvaluationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5986,7 +6038,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskRequest,
     ) -> dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskResponse:
         """
-        @summary 取消数据质量规则和数据质量校验任务的关联
+        @summary Disassociates monitoring rules from a monitor
         
         @param request: DetachDataQualityRulesFromEvaluationTaskRequest
         @return: DetachDataQualityRulesFromEvaluationTaskResponse
@@ -5999,7 +6051,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskRequest,
     ) -> dataworks_public_20240518_models.DetachDataQualityRulesFromEvaluationTaskResponse:
         """
-        @summary 取消数据质量规则和数据质量校验任务的关联
+        @summary Disassociates monitoring rules from a monitor
         
         @param request: DetachDataQualityRulesFromEvaluationTaskRequest
         @return: DetachDataQualityRulesFromEvaluationTaskResponse
@@ -6273,6 +6325,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ExecuteAdhocWorkflowInstanceResponse:
         """
+        @summary Create a temporary workflow instance based on configurations.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: ExecuteAdhocWorkflowInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ExecuteAdhocWorkflowInstanceResponse
@@ -6326,6 +6382,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ExecuteAdhocWorkflowInstanceResponse:
         """
+        @summary Create a temporary workflow instance based on configurations.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: ExecuteAdhocWorkflowInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ExecuteAdhocWorkflowInstanceResponse
@@ -6378,6 +6438,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ExecuteAdhocWorkflowInstanceRequest,
     ) -> dataworks_public_20240518_models.ExecuteAdhocWorkflowInstanceResponse:
         """
+        @summary Create a temporary workflow instance based on configurations.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ExecuteAdhocWorkflowInstanceRequest
         @return: ExecuteAdhocWorkflowInstanceResponse
         """
@@ -6389,6 +6453,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ExecuteAdhocWorkflowInstanceRequest,
     ) -> dataworks_public_20240518_models.ExecuteAdhocWorkflowInstanceResponse:
         """
+        @summary Create a temporary workflow instance based on configurations.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ExecuteAdhocWorkflowInstanceRequest
         @return: ExecuteAdhocWorkflowInstanceResponse
         """
@@ -6505,7 +6573,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetCreateWorkflowInstancesResultResponse:
         """
-        @summary 查询异步创建工作流实例的结果
+        @summary Queries the result of asynchronously creating a workflow instance.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetCreateWorkflowInstancesResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6544,7 +6614,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetCreateWorkflowInstancesResultResponse:
         """
-        @summary 查询异步创建工作流实例的结果
+        @summary Queries the result of asynchronously creating a workflow instance.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetCreateWorkflowInstancesResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6582,7 +6654,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetCreateWorkflowInstancesResultRequest,
     ) -> dataworks_public_20240518_models.GetCreateWorkflowInstancesResultResponse:
         """
-        @summary 查询异步创建工作流实例的结果
+        @summary Queries the result of asynchronously creating a workflow instance.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetCreateWorkflowInstancesResultRequest
         @return: GetCreateWorkflowInstancesResultResponse
@@ -6595,7 +6669,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetCreateWorkflowInstancesResultRequest,
     ) -> dataworks_public_20240518_models.GetCreateWorkflowInstancesResultResponse:
         """
-        @summary 查询异步创建工作流实例的结果
+        @summary Queries the result of asynchronously creating a workflow instance.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetCreateWorkflowInstancesResultRequest
         @return: GetCreateWorkflowInstancesResultResponse
@@ -6833,7 +6909,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetDataQualityEvaluationTaskResponse:
         """
-        @summary 查询数据质量校验任务详情
+        @summary Queries the details of a monitor.
         
         @param request: GetDataQualityEvaluationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6872,7 +6948,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetDataQualityEvaluationTaskResponse:
         """
-        @summary 查询数据质量校验任务详情
+        @summary Queries the details of a monitor.
         
         @param request: GetDataQualityEvaluationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6910,7 +6986,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetDataQualityEvaluationTaskRequest,
     ) -> dataworks_public_20240518_models.GetDataQualityEvaluationTaskResponse:
         """
-        @summary 查询数据质量校验任务详情
+        @summary Queries the details of a monitor.
         
         @param request: GetDataQualityEvaluationTaskRequest
         @return: GetDataQualityEvaluationTaskResponse
@@ -6923,7 +6999,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetDataQualityEvaluationTaskRequest,
     ) -> dataworks_public_20240518_models.GetDataQualityEvaluationTaskResponse:
         """
-        @summary 查询数据质量校验任务详情
+        @summary Queries the details of a monitor.
         
         @param request: GetDataQualityEvaluationTaskRequest
         @return: GetDataQualityEvaluationTaskResponse
@@ -6937,7 +7013,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetDataQualityEvaluationTaskInstanceResponse:
         """
-        @summary 获取数据质量校验任务实例详情
+        @summary Queries the details of a monitor instance.
         
         @param request: GetDataQualityEvaluationTaskInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6976,7 +7052,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetDataQualityEvaluationTaskInstanceResponse:
         """
-        @summary 获取数据质量校验任务实例详情
+        @summary Queries the details of a monitor instance.
         
         @param request: GetDataQualityEvaluationTaskInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7014,7 +7090,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetDataQualityEvaluationTaskInstanceRequest,
     ) -> dataworks_public_20240518_models.GetDataQualityEvaluationTaskInstanceResponse:
         """
-        @summary 获取数据质量校验任务实例详情
+        @summary Queries the details of a monitor instance.
         
         @param request: GetDataQualityEvaluationTaskInstanceRequest
         @return: GetDataQualityEvaluationTaskInstanceResponse
@@ -7027,7 +7103,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetDataQualityEvaluationTaskInstanceRequest,
     ) -> dataworks_public_20240518_models.GetDataQualityEvaluationTaskInstanceResponse:
         """
-        @summary 获取数据质量校验任务实例详情
+        @summary Queries the details of a monitor instance.
         
         @param request: GetDataQualityEvaluationTaskInstanceRequest
         @return: GetDataQualityEvaluationTaskInstanceResponse
@@ -7041,7 +7117,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetDataQualityRuleResponse:
         """
-        @summary 查询质量规则详情
+        @summary Queries the information about a data quality monitoring rule.
         
         @description This API operation is available for all DataWorks editions.
         
@@ -7082,7 +7158,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetDataQualityRuleResponse:
         """
-        @summary 查询质量规则详情
+        @summary Queries the information about a data quality monitoring rule.
         
         @description This API operation is available for all DataWorks editions.
         
@@ -7122,7 +7198,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetDataQualityRuleRequest,
     ) -> dataworks_public_20240518_models.GetDataQualityRuleResponse:
         """
-        @summary 查询质量规则详情
+        @summary Queries the information about a data quality monitoring rule.
         
         @description This API operation is available for all DataWorks editions.
         
@@ -7137,7 +7213,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetDataQualityRuleRequest,
     ) -> dataworks_public_20240518_models.GetDataQualityRuleResponse:
         """
-        @summary 查询质量规则详情
+        @summary Queries the information about a data quality monitoring rule.
         
         @description This API operation is available for all DataWorks editions.
         
@@ -8369,7 +8445,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetResourceGroupResponse:
         """
-        @summary 根据id获取指定资源组。
+        @summary Queries the information about a resource group based on its ID.
         
         @description You can use this API operation only in DataWorks Basic Edition or an advanced edition.
         
@@ -8410,7 +8486,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetResourceGroupResponse:
         """
-        @summary 根据id获取指定资源组。
+        @summary Queries the information about a resource group based on its ID.
         
         @description You can use this API operation only in DataWorks Basic Edition or an advanced edition.
         
@@ -8450,7 +8526,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetResourceGroupRequest,
     ) -> dataworks_public_20240518_models.GetResourceGroupResponse:
         """
-        @summary 根据id获取指定资源组。
+        @summary Queries the information about a resource group based on its ID.
         
         @description You can use this API operation only in DataWorks Basic Edition or an advanced edition.
         
@@ -8465,7 +8541,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetResourceGroupRequest,
     ) -> dataworks_public_20240518_models.GetResourceGroupResponse:
         """
-        @summary 根据id获取指定资源组。
+        @summary Queries the information about a resource group based on its ID.
         
         @description You can use this API operation only in DataWorks Basic Edition or an advanced edition.
         
@@ -8921,6 +8997,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetWorkflowResponse:
         """
+        @summary Queries the information about a workflow.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: GetWorkflowRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetWorkflowResponse
@@ -8958,6 +9038,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetWorkflowResponse:
         """
+        @summary Queries the information about a workflow.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: GetWorkflowRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetWorkflowResponse
@@ -8994,6 +9078,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetWorkflowRequest,
     ) -> dataworks_public_20240518_models.GetWorkflowResponse:
         """
+        @summary Queries the information about a workflow.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: GetWorkflowRequest
         @return: GetWorkflowResponse
         """
@@ -9005,6 +9093,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetWorkflowRequest,
     ) -> dataworks_public_20240518_models.GetWorkflowResponse:
         """
+        @summary Queries the information about a workflow.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: GetWorkflowRequest
         @return: GetWorkflowResponse
         """
@@ -9367,8 +9459,9 @@ class Client(OpenApiClient):
         """
         @summary Imports a workflow and its child nodes that are specified by the FlowSpec field to DataStudio.
         
-        @description > You cannot use this API operation to import multiple workflows at a time. If you specify multiple workflows by using FlowSpec, the system imports only the first specified workflow.
-        >  ImportWorkflowDefinition is an asynchronous operation. After you send a request, an asynchronous task is generated, and the system returns the ID of the asynchronous task. You can call the GetJobStatus operation to query the status of the asynchronous task.
+        @description >
+        You cannot use this API operation to import multiple workflows at a time. If you specify multiple workflows by using FlowSpec, the system imports only the first specified workflow.
+        ImportWorkflowDefinition is an asynchronous operation. After you send a request, an asynchronous task is generated, and the system returns the ID of the asynchronous task. You can call the GetJobStatus operation to query the status of the asynchronous task.
         
         @param request: ImportWorkflowDefinitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9413,8 +9506,9 @@ class Client(OpenApiClient):
         """
         @summary Imports a workflow and its child nodes that are specified by the FlowSpec field to DataStudio.
         
-        @description > You cannot use this API operation to import multiple workflows at a time. If you specify multiple workflows by using FlowSpec, the system imports only the first specified workflow.
-        >  ImportWorkflowDefinition is an asynchronous operation. After you send a request, an asynchronous task is generated, and the system returns the ID of the asynchronous task. You can call the GetJobStatus operation to query the status of the asynchronous task.
+        @description >
+        You cannot use this API operation to import multiple workflows at a time. If you specify multiple workflows by using FlowSpec, the system imports only the first specified workflow.
+        ImportWorkflowDefinition is an asynchronous operation. After you send a request, an asynchronous task is generated, and the system returns the ID of the asynchronous task. You can call the GetJobStatus operation to query the status of the asynchronous task.
         
         @param request: ImportWorkflowDefinitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9458,8 +9552,9 @@ class Client(OpenApiClient):
         """
         @summary Imports a workflow and its child nodes that are specified by the FlowSpec field to DataStudio.
         
-        @description > You cannot use this API operation to import multiple workflows at a time. If you specify multiple workflows by using FlowSpec, the system imports only the first specified workflow.
-        >  ImportWorkflowDefinition is an asynchronous operation. After you send a request, an asynchronous task is generated, and the system returns the ID of the asynchronous task. You can call the GetJobStatus operation to query the status of the asynchronous task.
+        @description >
+        You cannot use this API operation to import multiple workflows at a time. If you specify multiple workflows by using FlowSpec, the system imports only the first specified workflow.
+        ImportWorkflowDefinition is an asynchronous operation. After you send a request, an asynchronous task is generated, and the system returns the ID of the asynchronous task. You can call the GetJobStatus operation to query the status of the asynchronous task.
         
         @param request: ImportWorkflowDefinitionRequest
         @return: ImportWorkflowDefinitionResponse
@@ -9474,8 +9569,9 @@ class Client(OpenApiClient):
         """
         @summary Imports a workflow and its child nodes that are specified by the FlowSpec field to DataStudio.
         
-        @description > You cannot use this API operation to import multiple workflows at a time. If you specify multiple workflows by using FlowSpec, the system imports only the first specified workflow.
-        >  ImportWorkflowDefinition is an asynchronous operation. After you send a request, an asynchronous task is generated, and the system returns the ID of the asynchronous task. You can call the GetJobStatus operation to query the status of the asynchronous task.
+        @description >
+        You cannot use this API operation to import multiple workflows at a time. If you specify multiple workflows by using FlowSpec, the system imports only the first specified workflow.
+        ImportWorkflowDefinition is an asynchronous operation. After you send a request, an asynchronous task is generated, and the system returns the ID of the asynchronous task. You can call the GetJobStatus operation to query the status of the asynchronous task.
         
         @param request: ImportWorkflowDefinitionRequest
         @return: ImportWorkflowDefinitionResponse
@@ -10193,7 +10289,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDataAssetTagsResponse:
         """
-        @summary 查询标签列表
+        @summary Queries a list of tags.
+        
+        @description This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
         
         @param request: ListDataAssetTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10232,7 +10330,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDataAssetTagsResponse:
         """
-        @summary 查询标签列表
+        @summary Queries a list of tags.
+        
+        @description This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
         
         @param request: ListDataAssetTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10270,7 +10370,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDataAssetTagsRequest,
     ) -> dataworks_public_20240518_models.ListDataAssetTagsResponse:
         """
-        @summary 查询标签列表
+        @summary Queries a list of tags.
+        
+        @description This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
         
         @param request: ListDataAssetTagsRequest
         @return: ListDataAssetTagsResponse
@@ -10283,7 +10385,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDataAssetTagsRequest,
     ) -> dataworks_public_20240518_models.ListDataAssetTagsResponse:
         """
-        @summary 查询标签列表
+        @summary Queries a list of tags.
+        
+        @description This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
         
         @param request: ListDataAssetTagsRequest
         @return: ListDataAssetTagsResponse
@@ -10297,7 +10401,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDataAssetsResponse:
         """
-        @summary ListDataAssets
+        @summary Queries the information about DataWorks data assets to which tags are added by page.
+        
+        @description This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
         
         @param tmp_req: ListDataAssetsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10342,7 +10448,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDataAssetsResponse:
         """
-        @summary ListDataAssets
+        @summary Queries the information about DataWorks data assets to which tags are added by page.
+        
+        @description This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
         
         @param tmp_req: ListDataAssetsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10386,7 +10494,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDataAssetsRequest,
     ) -> dataworks_public_20240518_models.ListDataAssetsResponse:
         """
-        @summary ListDataAssets
+        @summary Queries the information about DataWorks data assets to which tags are added by page.
+        
+        @description This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
         
         @param request: ListDataAssetsRequest
         @return: ListDataAssetsResponse
@@ -10399,7 +10509,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDataAssetsRequest,
     ) -> dataworks_public_20240518_models.ListDataAssetsResponse:
         """
-        @summary ListDataAssets
+        @summary Queries the information about DataWorks data assets to which tags are added by page.
+        
+        @description This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
         
         @param request: ListDataAssetsRequest
         @return: ListDataAssetsResponse
@@ -10741,7 +10853,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDataQualityRuleTemplatesResponse:
         """
-        @summary 查询质量规则模版列表
+        @summary Queries a list of data quality monitoring rule templates.
         
         @param request: ListDataQualityRuleTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10780,7 +10892,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDataQualityRuleTemplatesResponse:
         """
-        @summary 查询质量规则模版列表
+        @summary Queries a list of data quality monitoring rule templates.
         
         @param request: ListDataQualityRuleTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10818,7 +10930,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDataQualityRuleTemplatesRequest,
     ) -> dataworks_public_20240518_models.ListDataQualityRuleTemplatesResponse:
         """
-        @summary 查询质量规则模版列表
+        @summary Queries a list of data quality monitoring rule templates.
         
         @param request: ListDataQualityRuleTemplatesRequest
         @return: ListDataQualityRuleTemplatesResponse
@@ -10831,7 +10943,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDataQualityRuleTemplatesRequest,
     ) -> dataworks_public_20240518_models.ListDataQualityRuleTemplatesResponse:
         """
-        @summary 查询质量规则模版列表
+        @summary Queries a list of data quality monitoring rule templates.
         
         @param request: ListDataQualityRuleTemplatesRequest
         @return: ListDataQualityRuleTemplatesResponse
@@ -12625,7 +12737,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListRoutesResponse:
         """
-        @summary 获取网络资源的路由列表。
+        @summary Queries a list of routes of a network resource.
         
         @description This API operation is available for all DataWorks editions.
         
@@ -12666,7 +12778,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListRoutesResponse:
         """
-        @summary 获取网络资源的路由列表。
+        @summary Queries a list of routes of a network resource.
         
         @description This API operation is available for all DataWorks editions.
         
@@ -12706,7 +12818,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListRoutesRequest,
     ) -> dataworks_public_20240518_models.ListRoutesResponse:
         """
-        @summary 获取网络资源的路由列表。
+        @summary Queries a list of routes of a network resource.
         
         @description This API operation is available for all DataWorks editions.
         
@@ -12721,7 +12833,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListRoutesRequest,
     ) -> dataworks_public_20240518_models.ListRoutesResponse:
         """
-        @summary 获取网络资源的路由列表。
+        @summary Queries a list of routes of a network resource.
         
         @description This API operation is available for all DataWorks editions.
         
@@ -13653,6 +13765,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListWorkflowInstancesResponse:
         """
+        @summary Queries a list of workflow instances by page. You can also specify filter conditions to query workflow instances.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: ListWorkflowInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListWorkflowInstancesResponse
@@ -13714,6 +13830,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListWorkflowInstancesResponse:
         """
+        @summary Queries a list of workflow instances by page. You can also specify filter conditions to query workflow instances.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: ListWorkflowInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListWorkflowInstancesResponse
@@ -13774,6 +13894,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListWorkflowInstancesRequest,
     ) -> dataworks_public_20240518_models.ListWorkflowInstancesResponse:
         """
+        @summary Queries a list of workflow instances by page. You can also specify filter conditions to query workflow instances.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListWorkflowInstancesRequest
         @return: ListWorkflowInstancesResponse
         """
@@ -13785,6 +13909,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListWorkflowInstancesRequest,
     ) -> dataworks_public_20240518_models.ListWorkflowInstancesResponse:
         """
+        @summary Queries a list of workflow instances by page. You can also specify filter conditions to query workflow instances.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListWorkflowInstancesRequest
         @return: ListWorkflowInstancesResponse
         """
@@ -13797,6 +13925,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListWorkflowsResponse:
         """
+        @summary Queries a list of workflows by page. You can also specify filter conditions to query workflows.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: ListWorkflowsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListWorkflowsResponse
@@ -13856,6 +13988,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListWorkflowsResponse:
         """
+        @summary Queries a list of workflows by page. You can also specify filter conditions to query workflows.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: ListWorkflowsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListWorkflowsResponse
@@ -13914,6 +14050,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListWorkflowsRequest,
     ) -> dataworks_public_20240518_models.ListWorkflowsResponse:
         """
+        @summary Queries a list of workflows by page. You can also specify filter conditions to query workflows.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListWorkflowsRequest
         @return: ListWorkflowsResponse
         """
@@ -13925,6 +14065,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListWorkflowsRequest,
     ) -> dataworks_public_20240518_models.ListWorkflowsResponse:
         """
+        @summary Queries a list of workflows by page. You can also specify filter conditions to query workflows.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListWorkflowsRequest
         @return: ListWorkflowsResponse
         """
@@ -15001,6 +15145,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.RerunTaskInstancesResponse:
         """
+        @summary Reruns multiple instances at a time.
+        
         @description This API operation is available for all DataWorks editions.
         
         @param tmp_req: RerunTaskInstancesRequest
@@ -15048,6 +15194,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.RerunTaskInstancesResponse:
         """
+        @summary Reruns multiple instances at a time.
+        
         @description This API operation is available for all DataWorks editions.
         
         @param tmp_req: RerunTaskInstancesRequest
@@ -15094,6 +15242,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.RerunTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.RerunTaskInstancesResponse:
         """
+        @summary Reruns multiple instances at a time.
+        
         @description This API operation is available for all DataWorks editions.
         
         @param request: RerunTaskInstancesRequest
@@ -15107,6 +15257,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.RerunTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.RerunTaskInstancesResponse:
         """
+        @summary Reruns multiple instances at a time.
+        
         @description This API operation is available for all DataWorks editions.
         
         @param request: RerunTaskInstancesRequest
@@ -15121,6 +15273,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ResumeTaskInstancesResponse:
         """
+        @summary Resumes multiple suspended instances at a time.
+        
         @description This API operation is available for all DataWorks editions.
         
         @param tmp_req: ResumeTaskInstancesRequest
@@ -15168,6 +15322,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ResumeTaskInstancesResponse:
         """
+        @summary Resumes multiple suspended instances at a time.
+        
         @description This API operation is available for all DataWorks editions.
         
         @param tmp_req: ResumeTaskInstancesRequest
@@ -15214,6 +15370,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ResumeTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.ResumeTaskInstancesResponse:
         """
+        @summary Resumes multiple suspended instances at a time.
+        
         @description This API operation is available for all DataWorks editions.
         
         @param request: ResumeTaskInstancesRequest
@@ -15227,6 +15385,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ResumeTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.ResumeTaskInstancesResponse:
         """
+        @summary Resumes multiple suspended instances at a time.
+        
         @description This API operation is available for all DataWorks editions.
         
         @param request: ResumeTaskInstancesRequest
@@ -15373,6 +15533,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.SetSuccessTaskInstancesResponse:
         """
+        @summary Sets the statuses of multiple instances to successful at a time.
+        
         @description This API operation is available for all DataWorks editions.
         
         @param tmp_req: SetSuccessTaskInstancesRequest
@@ -15420,6 +15582,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.SetSuccessTaskInstancesResponse:
         """
+        @summary Sets the statuses of multiple instances to successful at a time.
+        
         @description This API operation is available for all DataWorks editions.
         
         @param tmp_req: SetSuccessTaskInstancesRequest
@@ -15466,6 +15630,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.SetSuccessTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.SetSuccessTaskInstancesResponse:
         """
+        @summary Sets the statuses of multiple instances to successful at a time.
+        
         @description This API operation is available for all DataWorks editions.
         
         @param request: SetSuccessTaskInstancesRequest
@@ -15479,6 +15645,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.SetSuccessTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.SetSuccessTaskInstancesResponse:
         """
+        @summary Sets the statuses of multiple instances to successful at a time.
+        
         @description This API operation is available for all DataWorks editions.
         
         @param request: SetSuccessTaskInstancesRequest
@@ -15853,6 +16021,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.StopTaskInstancesResponse:
         """
+        @summary Stops multiple instances at a time.
+        
         @description This API operation is available for all DataWorks editions.
         
         @param tmp_req: StopTaskInstancesRequest
@@ -15900,6 +16070,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.StopTaskInstancesResponse:
         """
+        @summary Stops multiple instances at a time.
+        
         @description This API operation is available for all DataWorks editions.
         
         @param tmp_req: StopTaskInstancesRequest
@@ -15946,6 +16118,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.StopTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.StopTaskInstancesResponse:
         """
+        @summary Stops multiple instances at a time.
+        
         @description This API operation is available for all DataWorks editions.
         
         @param request: StopTaskInstancesRequest
@@ -15959,6 +16133,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.StopTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.StopTaskInstancesResponse:
         """
+        @summary Stops multiple instances at a time.
+        
         @description This API operation is available for all DataWorks editions.
         
         @param request: StopTaskInstancesRequest
@@ -15973,6 +16149,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.StopWorkflowInstancesResponse:
         """
+        @summary Stops multiple workflow instances at a time.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: StopWorkflowInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: StopWorkflowInstancesResponse
@@ -16018,6 +16198,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.StopWorkflowInstancesResponse:
         """
+        @summary Stops multiple workflow instances at a time.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: StopWorkflowInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: StopWorkflowInstancesResponse
@@ -16062,6 +16246,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.StopWorkflowInstancesRequest,
     ) -> dataworks_public_20240518_models.StopWorkflowInstancesResponse:
         """
+        @summary Stops multiple workflow instances at a time.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: StopWorkflowInstancesRequest
         @return: StopWorkflowInstancesResponse
         """
@@ -16073,6 +16261,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.StopWorkflowInstancesRequest,
     ) -> dataworks_public_20240518_models.StopWorkflowInstancesResponse:
         """
+        @summary Stops multiple workflow instances at a time.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: StopWorkflowInstancesRequest
         @return: StopWorkflowInstancesResponse
         """
@@ -16085,6 +16277,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.SuspendTaskInstancesResponse:
         """
+        @summary Suspends multiple instances at a time.
+        
         @description This API operation is available for all DataWorks editions.
         
         @param tmp_req: SuspendTaskInstancesRequest
@@ -16132,6 +16326,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.SuspendTaskInstancesResponse:
         """
+        @summary Suspends multiple instances at a time.
+        
         @description This API operation is available for all DataWorks editions.
         
         @param tmp_req: SuspendTaskInstancesRequest
@@ -16178,6 +16374,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.SuspendTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.SuspendTaskInstancesResponse:
         """
+        @summary Suspends multiple instances at a time.
+        
         @description This API operation is available for all DataWorks editions.
         
         @param request: SuspendTaskInstancesRequest
@@ -16191,6 +16389,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.SuspendTaskInstancesRequest,
     ) -> dataworks_public_20240518_models.SuspendTaskInstancesResponse:
         """
+        @summary Suspends multiple instances at a time.
+        
         @description This API operation is available for all DataWorks editions.
         
         @param request: SuspendTaskInstancesRequest
@@ -16205,7 +16405,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.TagDataAssetsResponse:
         """
-        @summary 为资产绑定标签
+        @summary Adds tags to data assets.
+        
+        @description This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
         
         @param tmp_req: TagDataAssetsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16262,7 +16464,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.TagDataAssetsResponse:
         """
-        @summary 为资产绑定标签
+        @summary Adds tags to data assets.
+        
+        @description This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
         
         @param tmp_req: TagDataAssetsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16318,7 +16522,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.TagDataAssetsRequest,
     ) -> dataworks_public_20240518_models.TagDataAssetsResponse:
         """
-        @summary 为资产绑定标签
+        @summary Adds tags to data assets.
+        
+        @description This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
         
         @param request: TagDataAssetsRequest
         @return: TagDataAssetsResponse
@@ -16331,7 +16537,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.TagDataAssetsRequest,
     ) -> dataworks_public_20240518_models.TagDataAssetsResponse:
         """
-        @summary 为资产绑定标签
+        @summary Adds tags to data assets.
+        
+        @description This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
         
         @param request: TagDataAssetsRequest
         @return: TagDataAssetsResponse
@@ -16473,7 +16681,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UnTagDataAssetsResponse:
         """
-        @summary 为资产解绑标签关系
+        @summary Removes tags from data assets.
+        
+        @description This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
         
         @param tmp_req: UnTagDataAssetsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16528,7 +16738,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UnTagDataAssetsResponse:
         """
-        @summary 为资产解绑标签关系
+        @summary Removes tags from data assets.
+        
+        @description This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
         
         @param tmp_req: UnTagDataAssetsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16582,7 +16794,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UnTagDataAssetsRequest,
     ) -> dataworks_public_20240518_models.UnTagDataAssetsResponse:
         """
-        @summary 为资产解绑标签关系
+        @summary Removes tags from data assets.
+        
+        @description This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
         
         @param request: UnTagDataAssetsRequest
         @return: UnTagDataAssetsResponse
@@ -16595,7 +16809,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UnTagDataAssetsRequest,
     ) -> dataworks_public_20240518_models.UnTagDataAssetsResponse:
         """
-        @summary 为资产解绑标签关系
+        @summary Removes tags from data assets.
+        
+        @description This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
         
         @param request: UnTagDataAssetsRequest
         @return: UnTagDataAssetsResponse
@@ -16997,7 +17213,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateDataAssetTagResponse:
         """
-        @summary 更新标签
+        @summary Updates a tag.
+        
+        @description This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
         
         @param tmp_req: UpdateDataAssetTagRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17050,7 +17268,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateDataAssetTagResponse:
         """
-        @summary 更新标签
+        @summary Updates a tag.
+        
+        @description This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
         
         @param tmp_req: UpdateDataAssetTagRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17102,7 +17322,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateDataAssetTagRequest,
     ) -> dataworks_public_20240518_models.UpdateDataAssetTagResponse:
         """
-        @summary 更新标签
+        @summary Updates a tag.
+        
+        @description This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
         
         @param request: UpdateDataAssetTagRequest
         @return: UpdateDataAssetTagResponse
@@ -17115,7 +17337,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateDataAssetTagRequest,
     ) -> dataworks_public_20240518_models.UpdateDataAssetTagResponse:
         """
-        @summary 更新标签
+        @summary Updates a tag.
+        
+        @description This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
         
         @param request: UpdateDataAssetTagRequest
         @return: UpdateDataAssetTagResponse
