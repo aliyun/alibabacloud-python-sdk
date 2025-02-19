@@ -1,3 +1,26 @@
+2025-02-19 Version: 3.0.0
+- Support API GetInstanceAcl.
+- Support API GetInstanceIpWhitelist.
+- Update API AddDisasterRecoveryItem: update param body.
+- Update API CreateInstance: update param body.
+- Update API CreateInstanceAcl: update param body.
+- Update API DeleteInstanceIpWhitelist: add param ipWhitelists.
+- Update API DeleteInstanceIpWhitelist: update param ipWhitelist.
+- Update API GetConsumerGroup: update param consumerGroupId.
+- Update API GetConsumerGroup: update response param.
+- Update API GetConsumerGroupLag: add param topicName.
+- Update API GetInstanceAccount: update response param.
+- Update API GetTrace: update response param.
+- Update API ListInstanceAccount: update param pageNumber.
+- Update API ListInstanceAccount: update param pageSize.
+- Update API ListInstanceAcl: update param pageNumber.
+- Update API ListInstanceAcl: update param pageSize.
+- Update API ListInstanceIpWhitelist: update param pageNumber.
+- Update API ListInstanceIpWhitelist: update param pageSize.
+- Update API UpdateInstanceAccount: update param username.
+- Update API UpdateInstanceAcl: update param body.
+
+
 2024-12-31 Version: 2.1.0
 - Support API DeleteDisasterRecoveryPlan.
 - Support API ListMetricMeta.

@@ -56,12 +56,14 @@ class AddDisasterRecoveryItemRequestTopics(TeaModel):
     def __init__(
         self,
         consumer_group_id: str = None,
+        delivery_order_type: str = None,
         instance_id: str = None,
         instance_type: str = None,
         region_id: str = None,
         topic_name: str = None,
     ):
         self.consumer_group_id = consumer_group_id
+        self.delivery_order_type = delivery_order_type
         self.instance_id = instance_id
         self.instance_type = instance_type
         # regionId
@@ -79,6 +81,8 @@ class AddDisasterRecoveryItemRequestTopics(TeaModel):
         result = dict()
         if self.consumer_group_id is not None:
             result['consumerGroupId'] = self.consumer_group_id
+        if self.delivery_order_type is not None:
+            result['deliveryOrderType'] = self.delivery_order_type
         if self.instance_id is not None:
             result['instanceId'] = self.instance_id
         if self.instance_type is not None:
@@ -93,6 +97,8 @@ class AddDisasterRecoveryItemRequestTopics(TeaModel):
         m = m or dict()
         if m.get('consumerGroupId') is not None:
             self.consumer_group_id = m.get('consumerGroupId')
+        if m.get('deliveryOrderType') is not None:
+            self.delivery_order_type = m.get('deliveryOrderType')
         if m.get('instanceId') is not None:
             self.instance_id = m.get('instanceId')
         if m.get('instanceType') is not None:
@@ -880,8 +886,6 @@ class CreateInstanceRequestProductInfo(TeaModel):
     def __init__(
         self,
         auto_scaling: bool = None,
-        charge_type: str = None,
-        intranet_spec: str = None,
         message_retention_time: int = None,
         msg_process_spec: str = None,
         send_receive_ratio: float = None,
@@ -899,15 +903,6 @@ class CreateInstanceRequestProductInfo(TeaModel):
         # 
         # >  The elastic TPS feature is supported only by instances of specific editions. For more information, see [Instance editions](https://help.aliyun.com/document_detail/444715.html).
         self.auto_scaling = auto_scaling
-        # The billing method.
-        # 
-        # Valid values:
-        # 
-        # *   provisioned
-        # *   ondemand
-        self.charge_type = charge_type
-        # This parameter is no longer used. You do not need to configure this parameter.
-        self.intranet_spec = intranet_spec
         # The retention period of messages. Unit: hours.
         # 
         # For information about the valid values of this parameter, see the "Limits on resource quotas" section of the [Limits](https://help.aliyun.com/document_detail/440347.html) topic.
@@ -940,10 +935,6 @@ class CreateInstanceRequestProductInfo(TeaModel):
         result = dict()
         if self.auto_scaling is not None:
             result['autoScaling'] = self.auto_scaling
-        if self.charge_type is not None:
-            result['chargeType'] = self.charge_type
-        if self.intranet_spec is not None:
-            result['intranetSpec'] = self.intranet_spec
         if self.message_retention_time is not None:
             result['messageRetentionTime'] = self.message_retention_time
         if self.msg_process_spec is not None:
@@ -960,10 +951,6 @@ class CreateInstanceRequestProductInfo(TeaModel):
         m = m or dict()
         if m.get('autoScaling') is not None:
             self.auto_scaling = m.get('autoScaling')
-        if m.get('chargeType') is not None:
-            self.charge_type = m.get('chargeType')
-        if m.get('intranetSpec') is not None:
-            self.intranet_spec = m.get('intranetSpec')
         if m.get('messageRetentionTime') is not None:
             self.message_retention_time = m.get('messageRetentionTime')
         if m.get('msgProcessSpec') is not None:
@@ -974,6 +961,39 @@ class CreateInstanceRequestProductInfo(TeaModel):
             self.storage_encryption = m.get('storageEncryption')
         if m.get('storageSecretKey') is not None:
             self.storage_secret_key = m.get('storageSecretKey')
+        return self
+
+
+class CreateInstanceRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
         return self
 
 
@@ -994,6 +1014,7 @@ class CreateInstanceRequest(TeaModel):
         series_code: str = None,
         service_code: str = None,
         sub_series_code: str = None,
+        tags: List[CreateInstanceRequestTags] = None,
         client_token: str = None,
     ):
         # Specifies whether to enable auto-renewal for the instance. This parameter takes effect only if you set paymentType to Subscription. Valid values:
@@ -1087,6 +1108,7 @@ class CreateInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.sub_series_code = sub_series_code
+        self.tags = tags
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value of this parameter, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
@@ -1095,6 +1117,10 @@ class CreateInstanceRequest(TeaModel):
             self.network_info.validate()
         if self.product_info:
             self.product_info.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1130,6 +1156,10 @@ class CreateInstanceRequest(TeaModel):
             result['serviceCode'] = self.service_code
         if self.sub_series_code is not None:
             result['subSeriesCode'] = self.sub_series_code
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
         if self.client_token is not None:
             result['clientToken'] = self.client_token
         return result
@@ -1166,6 +1196,11 @@ class CreateInstanceRequest(TeaModel):
             self.service_code = m.get('serviceCode')
         if m.get('subSeriesCode') is not None:
             self.sub_series_code = m.get('subSeriesCode')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = CreateInstanceRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('clientToken') is not None:
             self.client_token = m.get('clientToken')
         return self
@@ -1456,7 +1491,7 @@ class CreateInstanceAccountResponse(TeaModel):
 class CreateInstanceAclRequest(TeaModel):
     def __init__(
         self,
-        actions: str = None,
+        actions: List[str] = None,
         decision: str = None,
         ip_whitelists: List[str] = None,
         resource_name: str = None,
@@ -2120,11 +2155,6 @@ class DeleteConsumerGroupSubscriptionRequest(TeaModel):
         # *   SQL: filters messages by using SQL expressions.
         # *   TAG: filters messages by using tags.
         # 
-        # Valid values:
-        # 
-        # *   TAG: filters messages by using SQL expressions.
-        # *   SQL: filters messages by using SQL expressions.
-        # 
         # This parameter is required.
         self.filter_type = filter_type
         # The topic name.
@@ -2173,7 +2203,7 @@ class DeleteConsumerGroupSubscriptionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details about the access denial. This parameter is returned only if the access is denied due to the reason that the Resource Access Management (RAM) user does not have the required permissions.
+        # The details about the access denial. This parameter is returned only if the access is denied because the Resource Access Management (RAM) user does not have the required permissions.
         self.access_denied_detail = access_denied_detail
         # The error code.
         self.code = code
@@ -2817,11 +2847,11 @@ class DeleteInstanceIpWhitelistRequest(TeaModel):
     def __init__(
         self,
         ip_whitelist: str = None,
+        ip_whitelists: List[str] = None,
     ):
         # The IP address whitelist.
-        # 
-        # This parameter is required.
         self.ip_whitelist = ip_whitelist
+        self.ip_whitelists = ip_whitelists
 
     def validate(self):
         pass
@@ -2834,12 +2864,50 @@ class DeleteInstanceIpWhitelistRequest(TeaModel):
         result = dict()
         if self.ip_whitelist is not None:
             result['ipWhitelist'] = self.ip_whitelist
+        if self.ip_whitelists is not None:
+            result['ipWhitelists'] = self.ip_whitelists
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ipWhitelist') is not None:
             self.ip_whitelist = m.get('ipWhitelist')
+        if m.get('ipWhitelists') is not None:
+            self.ip_whitelists = m.get('ipWhitelists')
+        return self
+
+
+class DeleteInstanceIpWhitelistShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        ip_whitelist: str = None,
+        ip_whitelists_shrink: str = None,
+    ):
+        # The IP address whitelist.
+        self.ip_whitelist = ip_whitelist
+        self.ip_whitelists_shrink = ip_whitelists_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip_whitelist is not None:
+            result['ipWhitelist'] = self.ip_whitelist
+        if self.ip_whitelists_shrink is not None:
+            result['ipWhitelists'] = self.ip_whitelists_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ipWhitelist') is not None:
+            self.ip_whitelist = m.get('ipWhitelist')
+        if m.get('ipWhitelists') is not None:
+            self.ip_whitelists_shrink = m.get('ipWhitelists')
         return self
 
 
@@ -3168,6 +3236,7 @@ class GetConsumerGroupResponseBodyData(TeaModel):
         create_time: str = None,
         delivery_order_type: str = None,
         instance_id: str = None,
+        max_receive_tps: int = None,
         region_id: str = None,
         remark: str = None,
         status: str = None,
@@ -3209,6 +3278,7 @@ class GetConsumerGroupResponseBodyData(TeaModel):
         self.delivery_order_type = delivery_order_type
         # The ID of the instance.
         self.instance_id = instance_id
+        self.max_receive_tps = max_receive_tps
         # The ID of the region in which the instance resides.
         self.region_id = region_id
         # The remarks on the consumer group.
@@ -3268,6 +3338,8 @@ class GetConsumerGroupResponseBodyData(TeaModel):
             result['deliveryOrderType'] = self.delivery_order_type
         if self.instance_id is not None:
             result['instanceId'] = self.instance_id
+        if self.max_receive_tps is not None:
+            result['maxReceiveTps'] = self.max_receive_tps
         if self.region_id is not None:
             result['regionId'] = self.region_id
         if self.remark is not None:
@@ -3291,6 +3363,8 @@ class GetConsumerGroupResponseBodyData(TeaModel):
             self.delivery_order_type = m.get('deliveryOrderType')
         if m.get('instanceId') is not None:
             self.instance_id = m.get('instanceId')
+        if m.get('maxReceiveTps') is not None:
+            self.max_receive_tps = m.get('maxReceiveTps')
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
         if m.get('remark') is not None:
@@ -3419,6 +3493,33 @@ class GetConsumerGroupResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = GetConsumerGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetConsumerGroupLagRequest(TeaModel):
+    def __init__(
+        self,
+        topic_name: str = None,
+    ):
+        self.topic_name = topic_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.topic_name is not None:
+            result['topicName'] = self.topic_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('topicName') is not None:
+            self.topic_name = m.get('topicName')
         return self
 
 
@@ -5349,9 +5450,11 @@ class GetInstanceAccountRequest(TeaModel):
 class GetInstanceAccountResponseBodyData(TeaModel):
     def __init__(
         self,
+        account_status: str = None,
         password: str = None,
         username: str = None,
     ):
+        self.account_status = account_status
         # The password of the account.
         self.password = password
         # The username of the account.
@@ -5366,6 +5469,8 @@ class GetInstanceAccountResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.account_status is not None:
+            result['accountStatus'] = self.account_status
         if self.password is not None:
             result['password'] = self.password
         if self.username is not None:
@@ -5374,6 +5479,8 @@ class GetInstanceAccountResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('accountStatus') is not None:
+            self.account_status = m.get('accountStatus')
         if m.get('password') is not None:
             self.password = m.get('password')
         if m.get('username') is not None:
@@ -5497,6 +5604,434 @@ class GetInstanceAccountResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetInstanceAccountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetInstanceAclRequest(TeaModel):
+    def __init__(
+        self,
+        resource_name: str = None,
+        resource_type: str = None,
+    ):
+        # This parameter is required.
+        self.resource_name = resource_name
+        # This parameter is required.
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_name is not None:
+            result['resourceName'] = self.resource_name
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('resourceName') is not None:
+            self.resource_name = m.get('resourceName')
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
+        return self
+
+
+class GetInstanceAclResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        acl_type: str = None,
+        actions: List[str] = None,
+        decision: str = None,
+        instance_id: str = None,
+        ip_whitelists: List[str] = None,
+        region_id: str = None,
+        resource_name: str = None,
+        resource_type: str = None,
+        username: str = None,
+    ):
+        self.acl_type = acl_type
+        self.actions = actions
+        self.decision = decision
+        self.instance_id = instance_id
+        self.ip_whitelists = ip_whitelists
+        self.region_id = region_id
+        self.resource_name = resource_name
+        self.resource_type = resource_type
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_type is not None:
+            result['aclType'] = self.acl_type
+        if self.actions is not None:
+            result['actions'] = self.actions
+        if self.decision is not None:
+            result['decision'] = self.decision
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.ip_whitelists is not None:
+            result['ipWhitelists'] = self.ip_whitelists
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.resource_name is not None:
+            result['resourceName'] = self.resource_name
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
+        if self.username is not None:
+            result['username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aclType') is not None:
+            self.acl_type = m.get('aclType')
+        if m.get('actions') is not None:
+            self.actions = m.get('actions')
+        if m.get('decision') is not None:
+            self.decision = m.get('decision')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('ipWhitelists') is not None:
+            self.ip_whitelists = m.get('ipWhitelists')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('resourceName') is not None:
+            self.resource_name = m.get('resourceName')
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
+        if m.get('username') is not None:
+            self.username = m.get('username')
+        return self
+
+
+class GetInstanceAclResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetInstanceAclResponseBodyData = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.dynamic_code is not None:
+            result['dynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['dynamicMessage'] = self.dynamic_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = GetInstanceAclResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('dynamicCode') is not None:
+            self.dynamic_code = m.get('dynamicCode')
+        if m.get('dynamicMessage') is not None:
+            self.dynamic_message = m.get('dynamicMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetInstanceAclResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetInstanceAclResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetInstanceAclResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetInstanceIpWhitelistRequest(TeaModel):
+    def __init__(
+        self,
+        ip_whitelists: List[str] = None,
+    ):
+        self.ip_whitelists = ip_whitelists
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip_whitelists is not None:
+            result['ipWhitelists'] = self.ip_whitelists
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ipWhitelists') is not None:
+            self.ip_whitelists = m.get('ipWhitelists')
+        return self
+
+
+class GetInstanceIpWhitelistShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        ip_whitelists_shrink: str = None,
+    ):
+        self.ip_whitelists_shrink = ip_whitelists_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip_whitelists_shrink is not None:
+            result['ipWhitelists'] = self.ip_whitelists_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ipWhitelists') is not None:
+            self.ip_whitelists_shrink = m.get('ipWhitelists')
+        return self
+
+
+class GetInstanceIpWhitelistResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        ip_whitelists: List[str] = None,
+        region_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.ip_whitelists = ip_whitelists
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.ip_whitelists is not None:
+            result['ipWhitelists'] = self.ip_whitelists
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('ipWhitelists') is not None:
+            self.ip_whitelists = m.get('ipWhitelists')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class GetInstanceIpWhitelistResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetInstanceIpWhitelistResponseBodyData = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.dynamic_code is not None:
+            result['dynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['dynamicMessage'] = self.dynamic_message
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = GetInstanceIpWhitelistResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('dynamicCode') is not None:
+            self.dynamic_code = m.get('dynamicCode')
+        if m.get('dynamicMessage') is not None:
+            self.dynamic_message = m.get('dynamicMessage')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetInstanceIpWhitelistResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetInstanceIpWhitelistResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetInstanceIpWhitelistResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6010,6 +6545,7 @@ class GetTraceResponseBodyDataBrokerInfo(TeaModel):
         delay_status: str = None,
         operations: List[GetTraceResponseBodyDataBrokerInfoOperations] = None,
         preset_delay_time: str = None,
+        recall_result: str = None,
     ):
         # Delay status.
         self.delay_status = delay_status
@@ -6017,6 +6553,7 @@ class GetTraceResponseBodyDataBrokerInfo(TeaModel):
         self.operations = operations
         # Preset delivery time.
         self.preset_delay_time = preset_delay_time
+        self.recall_result = recall_result
 
     def validate(self):
         if self.operations:
@@ -6038,6 +6575,8 @@ class GetTraceResponseBodyDataBrokerInfo(TeaModel):
                 result['operations'].append(k.to_map() if k else None)
         if self.preset_delay_time is not None:
             result['presetDelayTime'] = self.preset_delay_time
+        if self.recall_result is not None:
+            result['recallResult'] = self.recall_result
         return result
 
     def from_map(self, m: dict = None):
@@ -6051,6 +6590,8 @@ class GetTraceResponseBodyDataBrokerInfo(TeaModel):
                 self.operations.append(temp_model.from_map(k))
         if m.get('presetDelayTime') is not None:
             self.preset_delay_time = m.get('presetDelayTime')
+        if m.get('recallResult') is not None:
+            self.recall_result = m.get('recallResult')
         return self
 
 
@@ -6420,6 +6961,7 @@ class GetTraceResponseBodyDataProducerInfoRecords(TeaModel):
         produce_duration: int = None,
         produce_status: str = None,
         produce_time: str = None,
+        recall_time: str = None,
         user_name: str = None,
     ):
         # Arrive time.
@@ -6438,6 +6980,7 @@ class GetTraceResponseBodyDataProducerInfoRecords(TeaModel):
         self.produce_status = produce_status
         # Producer time.
         self.produce_time = produce_time
+        self.recall_time = recall_time
         # Producer name.
         self.user_name = user_name
 
@@ -6466,6 +7009,8 @@ class GetTraceResponseBodyDataProducerInfoRecords(TeaModel):
             result['produceStatus'] = self.produce_status
         if self.produce_time is not None:
             result['produceTime'] = self.produce_time
+        if self.recall_time is not None:
+            result['recallTime'] = self.recall_time
         if self.user_name is not None:
             result['userName'] = self.user_name
         return result
@@ -6488,6 +7033,8 @@ class GetTraceResponseBodyDataProducerInfoRecords(TeaModel):
             self.produce_status = m.get('produceStatus')
         if m.get('produceTime') is not None:
             self.produce_time = m.get('produceTime')
+        if m.get('recallTime') is not None:
+            self.recall_time = m.get('recallTime')
         if m.get('userName') is not None:
             self.user_name = m.get('userName')
         return self
@@ -7714,12 +8261,8 @@ class ListInstanceAccountRequest(TeaModel):
         #   - DEFAULT
         self.account_type = account_type
         # The page number. Default value: 1.
-        # 
-        # This parameter is required.
         self.page_number = page_number
         # The number of entries per page. Default value: 10.
-        # 
-        # This parameter is required.
         self.page_size = page_size
         # The username of the account.
         self.username = username
@@ -8015,12 +8558,8 @@ class ListInstanceAclRequest(TeaModel):
         # The condition that you specify to filter the ACLs. If you do not specify this parameter, all ACLs are queried.
         self.filter = filter
         # The page number. Pages start from page 1.
-        # 
-        # This parameter is required.
         self.page_number = page_number
         # The number of entries per page.
-        # 
-        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -8343,12 +8882,8 @@ class ListInstanceIpWhitelistRequest(TeaModel):
         # IP whitelist.
         self.ip_whitelist = ip_whitelist
         # The page number. Default value: 1.
-        # 
-        # This parameter is required.
         self.page_number = page_number
         # The number of entries to return on each page.
-        # 
-        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -12798,7 +13333,7 @@ class UpdateInstanceAccountResponse(TeaModel):
 class UpdateInstanceAclRequest(TeaModel):
     def __init__(
         self,
-        actions: str = None,
+        actions: List[str] = None,
         decision: str = None,
         ip_whitelists: List[str] = None,
         resource_name: str = None,
