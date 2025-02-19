@@ -1,3 +1,26 @@
+2025-02-19 Version: 4.7.0
+- Support API CancelCreateIndexJob.
+- Support API CloneDBInstance.
+- Support API CreateBackup.
+- Support API CreateIndex.
+- Support API DeleteBackup.
+- Support API DeleteIndex.
+- Support API DescribeBackupJob.
+- Support API DescribeCreateIndexJob.
+- Support API DescribeIndex.
+- Support API ListBackupJobs.
+- Support API ListIndices.
+- Support API ModifyDBInstanceDeploymentMode.
+- Update API CreateCollection: add param HnswEfConstruction.
+- Update API CreateDBInstance: add param AINodeSpecInfos.
+- Update API CreateDBInstance: add param MasterAISpec.
+- Update API CreateDocumentCollection: add param HnswEfConstruction.
+- Update API CreateVectorIndex: add param HnswEfConstruction.
+- Update API DescribeDBInstanceAttribute: update response param.
+- Update API ModifyMasterSpec: add param MasterAISpec.
+- Update API ModifyMasterSpec: update param MasterCU.
+
+
 2025-02-17 Version: 4.6.0
 - Support API CancelCreateIndexJob.
 - Support API CloneDBInstance.
