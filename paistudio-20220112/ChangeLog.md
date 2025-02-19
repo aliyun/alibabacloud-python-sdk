@@ -1,5 +1,6 @@
-2025-01-23 Version: 2.1.1
-- Generated python 2022-01-12 for PaiStudio.
+2025-02-19 Version: 2.1.2
+- Update API ListQuotaWorkloads: add param WithHistoricalData.
+
 
 2024-12-30 Version: 2.1.0
 - Support API GetSpotPriceHistory.

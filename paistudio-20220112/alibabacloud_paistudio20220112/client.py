@@ -4224,6 +4224,8 @@ class Client(OpenApiClient):
             query['SubQuotaIds'] = request.sub_quota_ids
         if not UtilClient.is_unset(request.user_ids):
             query['UserIds'] = request.user_ids
+        if not UtilClient.is_unset(request.with_historical_data):
+            query['WithHistoricalData'] = request.with_historical_data
         if not UtilClient.is_unset(request.workload_created_time_range):
             query['WorkloadCreatedTimeRange'] = request.workload_created_time_range
         if not UtilClient.is_unset(request.workload_ids):
@@ -4303,6 +4305,8 @@ class Client(OpenApiClient):
             query['SubQuotaIds'] = request.sub_quota_ids
         if not UtilClient.is_unset(request.user_ids):
             query['UserIds'] = request.user_ids
+        if not UtilClient.is_unset(request.with_historical_data):
+            query['WithHistoricalData'] = request.with_historical_data
         if not UtilClient.is_unset(request.workload_created_time_range):
             query['WorkloadCreatedTimeRange'] = request.workload_created_time_range
         if not UtilClient.is_unset(request.workload_ids):

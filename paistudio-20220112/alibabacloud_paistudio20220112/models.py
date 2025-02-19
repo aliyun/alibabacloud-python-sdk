@@ -11060,6 +11060,7 @@ class ListQuotaWorkloadsRequest(TeaModel):
         status: str = None,
         sub_quota_ids: str = None,
         user_ids: str = None,
+        with_historical_data: bool = None,
         workload_created_time_range: TimeRangeFilter = None,
         workload_ids: str = None,
         workload_statuses: str = None,
@@ -11079,6 +11080,7 @@ class ListQuotaWorkloadsRequest(TeaModel):
         self.status = status
         self.sub_quota_ids = sub_quota_ids
         self.user_ids = user_ids
+        self.with_historical_data = with_historical_data
         self.workload_created_time_range = workload_created_time_range
         self.workload_ids = workload_ids
         self.workload_statuses = workload_statuses
@@ -11127,6 +11129,8 @@ class ListQuotaWorkloadsRequest(TeaModel):
             result['SubQuotaIds'] = self.sub_quota_ids
         if self.user_ids is not None:
             result['UserIds'] = self.user_ids
+        if self.with_historical_data is not None:
+            result['WithHistoricalData'] = self.with_historical_data
         if self.workload_created_time_range is not None:
             result['WorkloadCreatedTimeRange'] = self.workload_created_time_range.to_map()
         if self.workload_ids is not None:
@@ -11170,6 +11174,8 @@ class ListQuotaWorkloadsRequest(TeaModel):
             self.sub_quota_ids = m.get('SubQuotaIds')
         if m.get('UserIds') is not None:
             self.user_ids = m.get('UserIds')
+        if m.get('WithHistoricalData') is not None:
+            self.with_historical_data = m.get('WithHistoricalData')
         if m.get('WorkloadCreatedTimeRange') is not None:
             temp_model = TimeRangeFilter()
             self.workload_created_time_range = temp_model.from_map(m['WorkloadCreatedTimeRange'])
