@@ -1,3 +1,8 @@
+2025-02-19 Version: 1.2.1
+- Update API GetSymUploadParam: update param fileType.
+- Update API UploadSymbolFile: update param fileType.
+
+
 2024-06-11 Version: 1.2.0
 - Support API DeleteSymRecords.
 

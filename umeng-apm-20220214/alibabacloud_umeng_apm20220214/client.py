@@ -88,10 +88,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            umeng_apm_20220214_models.DeleteSymRecordsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.DeleteSymRecordsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.DeleteSymRecordsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_sym_records_with_options_async(
         self,
@@ -134,10 +140,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            umeng_apm_20220214_models.DeleteSymRecordsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.DeleteSymRecordsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.DeleteSymRecordsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_sym_records(
         self,
@@ -208,10 +220,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            umeng_apm_20220214_models.GetH5PageTrendResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetH5PageTrendResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetH5PageTrendResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_h5page_trend_with_options_async(
         self,
@@ -254,10 +272,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            umeng_apm_20220214_models.GetH5PageTrendResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetH5PageTrendResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetH5PageTrendResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_h5page_trend(
         self,
@@ -328,10 +352,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            umeng_apm_20220214_models.GetLaunchTrendResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetLaunchTrendResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetLaunchTrendResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_launch_trend_with_options_async(
         self,
@@ -374,10 +404,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            umeng_apm_20220214_models.GetLaunchTrendResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetLaunchTrendResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetLaunchTrendResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_launch_trend(
         self,
@@ -448,10 +484,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            umeng_apm_20220214_models.GetNativePageTrendResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetNativePageTrendResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetNativePageTrendResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_native_page_trend_with_options_async(
         self,
@@ -494,10 +536,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            umeng_apm_20220214_models.GetNativePageTrendResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetNativePageTrendResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetNativePageTrendResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_native_page_trend(
         self,
@@ -568,10 +616,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            umeng_apm_20220214_models.GetNetworkTrendResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetNetworkTrendResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetNetworkTrendResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_network_trend_with_options_async(
         self,
@@ -614,10 +668,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            umeng_apm_20220214_models.GetNetworkTrendResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetNetworkTrendResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetNetworkTrendResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_network_trend(
         self,
@@ -688,10 +748,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            umeng_apm_20220214_models.GetStatTrendResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetStatTrendResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetStatTrendResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_stat_trend_with_options_async(
         self,
@@ -734,10 +800,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            umeng_apm_20220214_models.GetStatTrendResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetStatTrendResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetStatTrendResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_stat_trend(
         self,
@@ -808,10 +880,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            umeng_apm_20220214_models.GetSymUploadParamResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetSymUploadParamResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetSymUploadParamResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_sym_upload_param_with_options_async(
         self,
@@ -854,10 +932,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            umeng_apm_20220214_models.GetSymUploadParamResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetSymUploadParamResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetSymUploadParamResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_sym_upload_param(
         self,
@@ -924,10 +1008,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            umeng_apm_20220214_models.GetTodayStatTrendResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetTodayStatTrendResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetTodayStatTrendResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_today_stat_trend_with_options_async(
         self,
@@ -966,10 +1056,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            umeng_apm_20220214_models.GetTodayStatTrendResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetTodayStatTrendResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetTodayStatTrendResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_today_stat_trend(
         self,
@@ -1036,10 +1132,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            umeng_apm_20220214_models.UpdateAlertPlanResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.UpdateAlertPlanResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.UpdateAlertPlanResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_alert_plan_with_options_async(
         self,
@@ -1078,10 +1180,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            umeng_apm_20220214_models.UpdateAlertPlanResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.UpdateAlertPlanResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.UpdateAlertPlanResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_alert_plan(
         self,
@@ -1154,10 +1262,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            umeng_apm_20220214_models.UploadSymbolFileResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.UploadSymbolFileResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.UploadSymbolFileResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def upload_symbol_file_with_options_async(
         self,
@@ -1202,10 +1316,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            umeng_apm_20220214_models.UploadSymbolFileResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.UploadSymbolFileResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.UploadSymbolFileResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def upload_symbol_file(
         self,
