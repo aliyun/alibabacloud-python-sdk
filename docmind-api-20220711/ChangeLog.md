@@ -1,3 +1,33 @@
+2025-02-19 Version: 1.4.4
+- Update API SubmitConvertImageToExcelJob: add param OssBucket.
+- Update API SubmitConvertImageToExcelJob: add param OssEndpoint.
+- Update API SubmitConvertImageToMarkdownJob: add param OssBucket.
+- Update API SubmitConvertImageToMarkdownJob: add param OssEndpoint.
+- Update API SubmitConvertImageToPdfJob: add param OssBucket.
+- Update API SubmitConvertImageToPdfJob: add param OssEndpoint.
+- Update API SubmitConvertImageToWordJob: add param OssBucket.
+- Update API SubmitConvertImageToWordJob: add param OssEndpoint.
+- Update API SubmitConvertPdfToExcelJob: add param OssBucket.
+- Update API SubmitConvertPdfToExcelJob: add param OssEndpoint.
+- Update API SubmitConvertPdfToImageJob: add param OssBucket.
+- Update API SubmitConvertPdfToImageJob: add param OssEndpoint.
+- Update API SubmitConvertPdfToMarkdownJob: add param OssBucket.
+- Update API SubmitConvertPdfToMarkdownJob: add param OssEndpoint.
+- Update API SubmitConvertPdfToWordJob: add param OssBucket.
+- Update API SubmitConvertPdfToWordJob: add param OssEndpoint.
+- Update API SubmitDigitalDocStructureJob: add param OssBucket.
+- Update API SubmitDigitalDocStructureJob: add param OssEndpoint.
+- Update API SubmitDocParserJob: add param LlmEnhancement.
+- Update API SubmitDocParserJob: add param OssBucket.
+- Update API SubmitDocParserJob: add param OssEndpoint.
+- Update API SubmitDocStructureJob: add param OssBucket.
+- Update API SubmitDocStructureJob: add param OssEndpoint.
+- Update API SubmitDocumentExtractJob: add param OssBucket.
+- Update API SubmitDocumentExtractJob: add param OssEndpoint.
+- Update API SubmitTableUnderstandingJob: add param OssBucket.
+- Update API SubmitTableUnderstandingJob: add param OssEndpoint.
+
+
 2025-01-08 Version: 1.4.3
 - Update API SubmitDocParserJob: add param LlmEnhancement.
 

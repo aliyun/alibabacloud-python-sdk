@@ -1368,11 +1368,15 @@ class SubmitConvertImageToExcelJobRequest(TeaModel):
         image_name_extension: str = None,
         image_names: List[str] = None,
         image_urls: List[str] = None,
+        oss_bucket: str = None,
+        oss_endpoint: str = None,
     ):
         self.force_merge_excel = force_merge_excel
         self.image_name_extension = image_name_extension
         self.image_names = image_names
         self.image_urls = image_urls
+        self.oss_bucket = oss_bucket
+        self.oss_endpoint = oss_endpoint
 
     def validate(self):
         pass
@@ -1391,6 +1395,10 @@ class SubmitConvertImageToExcelJobRequest(TeaModel):
             result['ImageNames'] = self.image_names
         if self.image_urls is not None:
             result['ImageUrls'] = self.image_urls
+        if self.oss_bucket is not None:
+            result['OssBucket'] = self.oss_bucket
+        if self.oss_endpoint is not None:
+            result['OssEndpoint'] = self.oss_endpoint
         return result
 
     def from_map(self, m: dict = None):
@@ -1403,6 +1411,10 @@ class SubmitConvertImageToExcelJobRequest(TeaModel):
             self.image_names = m.get('ImageNames')
         if m.get('ImageUrls') is not None:
             self.image_urls = m.get('ImageUrls')
+        if m.get('OssBucket') is not None:
+            self.oss_bucket = m.get('OssBucket')
+        if m.get('OssEndpoint') is not None:
+            self.oss_endpoint = m.get('OssEndpoint')
         return self
 
 
@@ -1413,11 +1425,15 @@ class SubmitConvertImageToExcelJobShrinkRequest(TeaModel):
         image_name_extension: str = None,
         image_names_shrink: str = None,
         image_urls_shrink: str = None,
+        oss_bucket: str = None,
+        oss_endpoint: str = None,
     ):
         self.force_merge_excel = force_merge_excel
         self.image_name_extension = image_name_extension
         self.image_names_shrink = image_names_shrink
         self.image_urls_shrink = image_urls_shrink
+        self.oss_bucket = oss_bucket
+        self.oss_endpoint = oss_endpoint
 
     def validate(self):
         pass
@@ -1436,6 +1452,10 @@ class SubmitConvertImageToExcelJobShrinkRequest(TeaModel):
             result['ImageNames'] = self.image_names_shrink
         if self.image_urls_shrink is not None:
             result['ImageUrls'] = self.image_urls_shrink
+        if self.oss_bucket is not None:
+            result['OssBucket'] = self.oss_bucket
+        if self.oss_endpoint is not None:
+            result['OssEndpoint'] = self.oss_endpoint
         return result
 
     def from_map(self, m: dict = None):
@@ -1448,6 +1468,10 @@ class SubmitConvertImageToExcelJobShrinkRequest(TeaModel):
             self.image_names_shrink = m.get('ImageNames')
         if m.get('ImageUrls') is not None:
             self.image_urls_shrink = m.get('ImageUrls')
+        if m.get('OssBucket') is not None:
+            self.oss_bucket = m.get('OssBucket')
+        if m.get('OssEndpoint') is not None:
+            self.oss_endpoint = m.get('OssEndpoint')
         return self
 
 
@@ -1572,10 +1596,14 @@ class SubmitConvertImageToMarkdownJobRequest(TeaModel):
         image_name_extension: str = None,
         image_names: List[str] = None,
         image_urls: List[str] = None,
+        oss_bucket: str = None,
+        oss_endpoint: str = None,
     ):
         self.image_name_extension = image_name_extension
         self.image_names = image_names
         self.image_urls = image_urls
+        self.oss_bucket = oss_bucket
+        self.oss_endpoint = oss_endpoint
 
     def validate(self):
         pass
@@ -1592,6 +1620,10 @@ class SubmitConvertImageToMarkdownJobRequest(TeaModel):
             result['ImageNames'] = self.image_names
         if self.image_urls is not None:
             result['ImageUrls'] = self.image_urls
+        if self.oss_bucket is not None:
+            result['OssBucket'] = self.oss_bucket
+        if self.oss_endpoint is not None:
+            result['OssEndpoint'] = self.oss_endpoint
         return result
 
     def from_map(self, m: dict = None):
@@ -1602,6 +1634,10 @@ class SubmitConvertImageToMarkdownJobRequest(TeaModel):
             self.image_names = m.get('ImageNames')
         if m.get('ImageUrls') is not None:
             self.image_urls = m.get('ImageUrls')
+        if m.get('OssBucket') is not None:
+            self.oss_bucket = m.get('OssBucket')
+        if m.get('OssEndpoint') is not None:
+            self.oss_endpoint = m.get('OssEndpoint')
         return self
 
 
@@ -1611,10 +1647,14 @@ class SubmitConvertImageToMarkdownJobShrinkRequest(TeaModel):
         image_name_extension: str = None,
         image_names_shrink: str = None,
         image_urls_shrink: str = None,
+        oss_bucket: str = None,
+        oss_endpoint: str = None,
     ):
         self.image_name_extension = image_name_extension
         self.image_names_shrink = image_names_shrink
         self.image_urls_shrink = image_urls_shrink
+        self.oss_bucket = oss_bucket
+        self.oss_endpoint = oss_endpoint
 
     def validate(self):
         pass
@@ -1631,6 +1671,10 @@ class SubmitConvertImageToMarkdownJobShrinkRequest(TeaModel):
             result['ImageNames'] = self.image_names_shrink
         if self.image_urls_shrink is not None:
             result['ImageUrls'] = self.image_urls_shrink
+        if self.oss_bucket is not None:
+            result['OssBucket'] = self.oss_bucket
+        if self.oss_endpoint is not None:
+            result['OssEndpoint'] = self.oss_endpoint
         return result
 
     def from_map(self, m: dict = None):
@@ -1641,6 +1685,10 @@ class SubmitConvertImageToMarkdownJobShrinkRequest(TeaModel):
             self.image_names_shrink = m.get('ImageNames')
         if m.get('ImageUrls') is not None:
             self.image_urls_shrink = m.get('ImageUrls')
+        if m.get('OssBucket') is not None:
+            self.oss_bucket = m.get('OssBucket')
+        if m.get('OssEndpoint') is not None:
+            self.oss_endpoint = m.get('OssEndpoint')
         return self
 
 
@@ -1765,10 +1813,14 @@ class SubmitConvertImageToPdfJobRequest(TeaModel):
         image_name_extension: str = None,
         image_names: List[str] = None,
         image_urls: List[str] = None,
+        oss_bucket: str = None,
+        oss_endpoint: str = None,
     ):
         self.image_name_extension = image_name_extension
         self.image_names = image_names
         self.image_urls = image_urls
+        self.oss_bucket = oss_bucket
+        self.oss_endpoint = oss_endpoint
 
     def validate(self):
         pass
@@ -1785,6 +1837,10 @@ class SubmitConvertImageToPdfJobRequest(TeaModel):
             result['ImageNames'] = self.image_names
         if self.image_urls is not None:
             result['ImageUrls'] = self.image_urls
+        if self.oss_bucket is not None:
+            result['OssBucket'] = self.oss_bucket
+        if self.oss_endpoint is not None:
+            result['OssEndpoint'] = self.oss_endpoint
         return result
 
     def from_map(self, m: dict = None):
@@ -1795,6 +1851,10 @@ class SubmitConvertImageToPdfJobRequest(TeaModel):
             self.image_names = m.get('ImageNames')
         if m.get('ImageUrls') is not None:
             self.image_urls = m.get('ImageUrls')
+        if m.get('OssBucket') is not None:
+            self.oss_bucket = m.get('OssBucket')
+        if m.get('OssEndpoint') is not None:
+            self.oss_endpoint = m.get('OssEndpoint')
         return self
 
 
@@ -1804,10 +1864,14 @@ class SubmitConvertImageToPdfJobShrinkRequest(TeaModel):
         image_name_extension: str = None,
         image_names_shrink: str = None,
         image_urls_shrink: str = None,
+        oss_bucket: str = None,
+        oss_endpoint: str = None,
     ):
         self.image_name_extension = image_name_extension
         self.image_names_shrink = image_names_shrink
         self.image_urls_shrink = image_urls_shrink
+        self.oss_bucket = oss_bucket
+        self.oss_endpoint = oss_endpoint
 
     def validate(self):
         pass
@@ -1824,6 +1888,10 @@ class SubmitConvertImageToPdfJobShrinkRequest(TeaModel):
             result['ImageNames'] = self.image_names_shrink
         if self.image_urls_shrink is not None:
             result['ImageUrls'] = self.image_urls_shrink
+        if self.oss_bucket is not None:
+            result['OssBucket'] = self.oss_bucket
+        if self.oss_endpoint is not None:
+            result['OssEndpoint'] = self.oss_endpoint
         return result
 
     def from_map(self, m: dict = None):
@@ -1834,6 +1902,10 @@ class SubmitConvertImageToPdfJobShrinkRequest(TeaModel):
             self.image_names_shrink = m.get('ImageNames')
         if m.get('ImageUrls') is not None:
             self.image_urls_shrink = m.get('ImageUrls')
+        if m.get('OssBucket') is not None:
+            self.oss_bucket = m.get('OssBucket')
+        if m.get('OssEndpoint') is not None:
+            self.oss_endpoint = m.get('OssEndpoint')
         return self
 
 
@@ -1958,10 +2030,14 @@ class SubmitConvertImageToWordJobRequest(TeaModel):
         image_name_extension: str = None,
         image_names: List[str] = None,
         image_urls: List[str] = None,
+        oss_bucket: str = None,
+        oss_endpoint: str = None,
     ):
         self.image_name_extension = image_name_extension
         self.image_names = image_names
         self.image_urls = image_urls
+        self.oss_bucket = oss_bucket
+        self.oss_endpoint = oss_endpoint
 
     def validate(self):
         pass
@@ -1978,6 +2054,10 @@ class SubmitConvertImageToWordJobRequest(TeaModel):
             result['ImageNames'] = self.image_names
         if self.image_urls is not None:
             result['ImageUrls'] = self.image_urls
+        if self.oss_bucket is not None:
+            result['OssBucket'] = self.oss_bucket
+        if self.oss_endpoint is not None:
+            result['OssEndpoint'] = self.oss_endpoint
         return result
 
     def from_map(self, m: dict = None):
@@ -1988,6 +2068,10 @@ class SubmitConvertImageToWordJobRequest(TeaModel):
             self.image_names = m.get('ImageNames')
         if m.get('ImageUrls') is not None:
             self.image_urls = m.get('ImageUrls')
+        if m.get('OssBucket') is not None:
+            self.oss_bucket = m.get('OssBucket')
+        if m.get('OssEndpoint') is not None:
+            self.oss_endpoint = m.get('OssEndpoint')
         return self
 
 
@@ -1997,10 +2081,14 @@ class SubmitConvertImageToWordJobShrinkRequest(TeaModel):
         image_name_extension: str = None,
         image_names_shrink: str = None,
         image_urls_shrink: str = None,
+        oss_bucket: str = None,
+        oss_endpoint: str = None,
     ):
         self.image_name_extension = image_name_extension
         self.image_names_shrink = image_names_shrink
         self.image_urls_shrink = image_urls_shrink
+        self.oss_bucket = oss_bucket
+        self.oss_endpoint = oss_endpoint
 
     def validate(self):
         pass
@@ -2017,6 +2105,10 @@ class SubmitConvertImageToWordJobShrinkRequest(TeaModel):
             result['ImageNames'] = self.image_names_shrink
         if self.image_urls_shrink is not None:
             result['ImageUrls'] = self.image_urls_shrink
+        if self.oss_bucket is not None:
+            result['OssBucket'] = self.oss_bucket
+        if self.oss_endpoint is not None:
+            result['OssEndpoint'] = self.oss_endpoint
         return result
 
     def from_map(self, m: dict = None):
@@ -2027,6 +2119,10 @@ class SubmitConvertImageToWordJobShrinkRequest(TeaModel):
             self.image_names_shrink = m.get('ImageNames')
         if m.get('ImageUrls') is not None:
             self.image_urls_shrink = m.get('ImageUrls')
+        if m.get('OssBucket') is not None:
+            self.oss_bucket = m.get('OssBucket')
+        if m.get('OssEndpoint') is not None:
+            self.oss_endpoint = m.get('OssEndpoint')
         return self
 
 
@@ -2152,11 +2248,15 @@ class SubmitConvertPdfToExcelJobRequest(TeaModel):
         file_url: str = None,
         force_export_inner_image: bool = None,
         force_merge_excel: bool = None,
+        oss_bucket: str = None,
+        oss_endpoint: str = None,
     ):
         self.file_name = file_name
         self.file_url = file_url
         self.force_export_inner_image = force_export_inner_image
         self.force_merge_excel = force_merge_excel
+        self.oss_bucket = oss_bucket
+        self.oss_endpoint = oss_endpoint
 
     def validate(self):
         pass
@@ -2175,6 +2275,10 @@ class SubmitConvertPdfToExcelJobRequest(TeaModel):
             result['ForceExportInnerImage'] = self.force_export_inner_image
         if self.force_merge_excel is not None:
             result['ForceMergeExcel'] = self.force_merge_excel
+        if self.oss_bucket is not None:
+            result['OssBucket'] = self.oss_bucket
+        if self.oss_endpoint is not None:
+            result['OssEndpoint'] = self.oss_endpoint
         return result
 
     def from_map(self, m: dict = None):
@@ -2187,6 +2291,10 @@ class SubmitConvertPdfToExcelJobRequest(TeaModel):
             self.force_export_inner_image = m.get('ForceExportInnerImage')
         if m.get('ForceMergeExcel') is not None:
             self.force_merge_excel = m.get('ForceMergeExcel')
+        if m.get('OssBucket') is not None:
+            self.oss_bucket = m.get('OssBucket')
+        if m.get('OssEndpoint') is not None:
+            self.oss_endpoint = m.get('OssEndpoint')
         return self
 
 
@@ -2197,11 +2305,15 @@ class SubmitConvertPdfToExcelJobAdvanceRequest(TeaModel):
         file_url_object: BinaryIO = None,
         force_export_inner_image: bool = None,
         force_merge_excel: bool = None,
+        oss_bucket: str = None,
+        oss_endpoint: str = None,
     ):
         self.file_name = file_name
         self.file_url_object = file_url_object
         self.force_export_inner_image = force_export_inner_image
         self.force_merge_excel = force_merge_excel
+        self.oss_bucket = oss_bucket
+        self.oss_endpoint = oss_endpoint
 
     def validate(self):
         pass
@@ -2220,6 +2332,10 @@ class SubmitConvertPdfToExcelJobAdvanceRequest(TeaModel):
             result['ForceExportInnerImage'] = self.force_export_inner_image
         if self.force_merge_excel is not None:
             result['ForceMergeExcel'] = self.force_merge_excel
+        if self.oss_bucket is not None:
+            result['OssBucket'] = self.oss_bucket
+        if self.oss_endpoint is not None:
+            result['OssEndpoint'] = self.oss_endpoint
         return result
 
     def from_map(self, m: dict = None):
@@ -2232,6 +2348,10 @@ class SubmitConvertPdfToExcelJobAdvanceRequest(TeaModel):
             self.force_export_inner_image = m.get('ForceExportInnerImage')
         if m.get('ForceMergeExcel') is not None:
             self.force_merge_excel = m.get('ForceMergeExcel')
+        if m.get('OssBucket') is not None:
+            self.oss_bucket = m.get('OssBucket')
+        if m.get('OssEndpoint') is not None:
+            self.oss_endpoint = m.get('OssEndpoint')
         return self
 
 
@@ -2355,9 +2475,13 @@ class SubmitConvertPdfToImageJobRequest(TeaModel):
         self,
         file_name: str = None,
         file_url: str = None,
+        oss_bucket: str = None,
+        oss_endpoint: str = None,
     ):
         self.file_name = file_name
         self.file_url = file_url
+        self.oss_bucket = oss_bucket
+        self.oss_endpoint = oss_endpoint
 
     def validate(self):
         pass
@@ -2372,6 +2496,10 @@ class SubmitConvertPdfToImageJobRequest(TeaModel):
             result['FileName'] = self.file_name
         if self.file_url is not None:
             result['FileUrl'] = self.file_url
+        if self.oss_bucket is not None:
+            result['OssBucket'] = self.oss_bucket
+        if self.oss_endpoint is not None:
+            result['OssEndpoint'] = self.oss_endpoint
         return result
 
     def from_map(self, m: dict = None):
@@ -2380,6 +2508,10 @@ class SubmitConvertPdfToImageJobRequest(TeaModel):
             self.file_name = m.get('FileName')
         if m.get('FileUrl') is not None:
             self.file_url = m.get('FileUrl')
+        if m.get('OssBucket') is not None:
+            self.oss_bucket = m.get('OssBucket')
+        if m.get('OssEndpoint') is not None:
+            self.oss_endpoint = m.get('OssEndpoint')
         return self
 
 
@@ -2388,9 +2520,13 @@ class SubmitConvertPdfToImageJobAdvanceRequest(TeaModel):
         self,
         file_name: str = None,
         file_url_object: BinaryIO = None,
+        oss_bucket: str = None,
+        oss_endpoint: str = None,
     ):
         self.file_name = file_name
         self.file_url_object = file_url_object
+        self.oss_bucket = oss_bucket
+        self.oss_endpoint = oss_endpoint
 
     def validate(self):
         pass
@@ -2405,6 +2541,10 @@ class SubmitConvertPdfToImageJobAdvanceRequest(TeaModel):
             result['FileName'] = self.file_name
         if self.file_url_object is not None:
             result['FileUrl'] = self.file_url_object
+        if self.oss_bucket is not None:
+            result['OssBucket'] = self.oss_bucket
+        if self.oss_endpoint is not None:
+            result['OssEndpoint'] = self.oss_endpoint
         return result
 
     def from_map(self, m: dict = None):
@@ -2413,6 +2553,10 @@ class SubmitConvertPdfToImageJobAdvanceRequest(TeaModel):
             self.file_name = m.get('FileName')
         if m.get('FileUrl') is not None:
             self.file_url_object = m.get('FileUrl')
+        if m.get('OssBucket') is not None:
+            self.oss_bucket = m.get('OssBucket')
+        if m.get('OssEndpoint') is not None:
+            self.oss_endpoint = m.get('OssEndpoint')
         return self
 
 
@@ -2536,9 +2680,13 @@ class SubmitConvertPdfToMarkdownJobRequest(TeaModel):
         self,
         file_name: str = None,
         file_url: str = None,
+        oss_bucket: str = None,
+        oss_endpoint: str = None,
     ):
         self.file_name = file_name
         self.file_url = file_url
+        self.oss_bucket = oss_bucket
+        self.oss_endpoint = oss_endpoint
 
     def validate(self):
         pass
@@ -2553,6 +2701,10 @@ class SubmitConvertPdfToMarkdownJobRequest(TeaModel):
             result['FileName'] = self.file_name
         if self.file_url is not None:
             result['FileUrl'] = self.file_url
+        if self.oss_bucket is not None:
+            result['OssBucket'] = self.oss_bucket
+        if self.oss_endpoint is not None:
+            result['OssEndpoint'] = self.oss_endpoint
         return result
 
     def from_map(self, m: dict = None):
@@ -2561,6 +2713,10 @@ class SubmitConvertPdfToMarkdownJobRequest(TeaModel):
             self.file_name = m.get('FileName')
         if m.get('FileUrl') is not None:
             self.file_url = m.get('FileUrl')
+        if m.get('OssBucket') is not None:
+            self.oss_bucket = m.get('OssBucket')
+        if m.get('OssEndpoint') is not None:
+            self.oss_endpoint = m.get('OssEndpoint')
         return self
 
 
@@ -2569,9 +2725,13 @@ class SubmitConvertPdfToMarkdownJobAdvanceRequest(TeaModel):
         self,
         file_name: str = None,
         file_url_object: BinaryIO = None,
+        oss_bucket: str = None,
+        oss_endpoint: str = None,
     ):
         self.file_name = file_name
         self.file_url_object = file_url_object
+        self.oss_bucket = oss_bucket
+        self.oss_endpoint = oss_endpoint
 
     def validate(self):
         pass
@@ -2586,6 +2746,10 @@ class SubmitConvertPdfToMarkdownJobAdvanceRequest(TeaModel):
             result['FileName'] = self.file_name
         if self.file_url_object is not None:
             result['FileUrl'] = self.file_url_object
+        if self.oss_bucket is not None:
+            result['OssBucket'] = self.oss_bucket
+        if self.oss_endpoint is not None:
+            result['OssEndpoint'] = self.oss_endpoint
         return result
 
     def from_map(self, m: dict = None):
@@ -2594,6 +2758,10 @@ class SubmitConvertPdfToMarkdownJobAdvanceRequest(TeaModel):
             self.file_name = m.get('FileName')
         if m.get('FileUrl') is not None:
             self.file_url_object = m.get('FileUrl')
+        if m.get('OssBucket') is not None:
+            self.oss_bucket = m.get('OssBucket')
+        if m.get('OssEndpoint') is not None:
+            self.oss_endpoint = m.get('OssEndpoint')
         return self
 
 
@@ -2718,10 +2886,14 @@ class SubmitConvertPdfToWordJobRequest(TeaModel):
         file_name: str = None,
         file_url: str = None,
         force_export_inner_image: bool = None,
+        oss_bucket: str = None,
+        oss_endpoint: str = None,
     ):
         self.file_name = file_name
         self.file_url = file_url
         self.force_export_inner_image = force_export_inner_image
+        self.oss_bucket = oss_bucket
+        self.oss_endpoint = oss_endpoint
 
     def validate(self):
         pass
@@ -2738,6 +2910,10 @@ class SubmitConvertPdfToWordJobRequest(TeaModel):
             result['FileUrl'] = self.file_url
         if self.force_export_inner_image is not None:
             result['ForceExportInnerImage'] = self.force_export_inner_image
+        if self.oss_bucket is not None:
+            result['OssBucket'] = self.oss_bucket
+        if self.oss_endpoint is not None:
+            result['OssEndpoint'] = self.oss_endpoint
         return result
 
     def from_map(self, m: dict = None):
@@ -2748,6 +2924,10 @@ class SubmitConvertPdfToWordJobRequest(TeaModel):
             self.file_url = m.get('FileUrl')
         if m.get('ForceExportInnerImage') is not None:
             self.force_export_inner_image = m.get('ForceExportInnerImage')
+        if m.get('OssBucket') is not None:
+            self.oss_bucket = m.get('OssBucket')
+        if m.get('OssEndpoint') is not None:
+            self.oss_endpoint = m.get('OssEndpoint')
         return self
 
 
@@ -2757,10 +2937,14 @@ class SubmitConvertPdfToWordJobAdvanceRequest(TeaModel):
         file_name: str = None,
         file_url_object: BinaryIO = None,
         force_export_inner_image: bool = None,
+        oss_bucket: str = None,
+        oss_endpoint: str = None,
     ):
         self.file_name = file_name
         self.file_url_object = file_url_object
         self.force_export_inner_image = force_export_inner_image
+        self.oss_bucket = oss_bucket
+        self.oss_endpoint = oss_endpoint
 
     def validate(self):
         pass
@@ -2777,6 +2961,10 @@ class SubmitConvertPdfToWordJobAdvanceRequest(TeaModel):
             result['FileUrl'] = self.file_url_object
         if self.force_export_inner_image is not None:
             result['ForceExportInnerImage'] = self.force_export_inner_image
+        if self.oss_bucket is not None:
+            result['OssBucket'] = self.oss_bucket
+        if self.oss_endpoint is not None:
+            result['OssEndpoint'] = self.oss_endpoint
         return result
 
     def from_map(self, m: dict = None):
@@ -2787,6 +2975,10 @@ class SubmitConvertPdfToWordJobAdvanceRequest(TeaModel):
             self.file_url_object = m.get('FileUrl')
         if m.get('ForceExportInnerImage') is not None:
             self.force_export_inner_image = m.get('ForceExportInnerImage')
+        if m.get('OssBucket') is not None:
+            self.oss_bucket = m.get('OssBucket')
+        if m.get('OssEndpoint') is not None:
+            self.oss_endpoint = m.get('OssEndpoint')
         return self
 
 
@@ -2912,6 +3104,8 @@ class SubmitDigitalDocStructureJobRequest(TeaModel):
         file_name_extension: str = None,
         file_url: str = None,
         image_strategy: str = None,
+        oss_bucket: str = None,
+        oss_endpoint: str = None,
         reveal_markdown: bool = None,
         use_url_response_body: bool = None,
     ):
@@ -2919,6 +3113,8 @@ class SubmitDigitalDocStructureJobRequest(TeaModel):
         self.file_name_extension = file_name_extension
         self.file_url = file_url
         self.image_strategy = image_strategy
+        self.oss_bucket = oss_bucket
+        self.oss_endpoint = oss_endpoint
         self.reveal_markdown = reveal_markdown
         self.use_url_response_body = use_url_response_body
 
@@ -2939,6 +3135,10 @@ class SubmitDigitalDocStructureJobRequest(TeaModel):
             result['FileUrl'] = self.file_url
         if self.image_strategy is not None:
             result['ImageStrategy'] = self.image_strategy
+        if self.oss_bucket is not None:
+            result['OssBucket'] = self.oss_bucket
+        if self.oss_endpoint is not None:
+            result['OssEndpoint'] = self.oss_endpoint
         if self.reveal_markdown is not None:
             result['RevealMarkdown'] = self.reveal_markdown
         if self.use_url_response_body is not None:
@@ -2955,6 +3155,10 @@ class SubmitDigitalDocStructureJobRequest(TeaModel):
             self.file_url = m.get('FileUrl')
         if m.get('ImageStrategy') is not None:
             self.image_strategy = m.get('ImageStrategy')
+        if m.get('OssBucket') is not None:
+            self.oss_bucket = m.get('OssBucket')
+        if m.get('OssEndpoint') is not None:
+            self.oss_endpoint = m.get('OssEndpoint')
         if m.get('RevealMarkdown') is not None:
             self.reveal_markdown = m.get('RevealMarkdown')
         if m.get('UseUrlResponseBody') is not None:
@@ -2969,6 +3173,8 @@ class SubmitDigitalDocStructureJobAdvanceRequest(TeaModel):
         file_name_extension: str = None,
         file_url_object: BinaryIO = None,
         image_strategy: str = None,
+        oss_bucket: str = None,
+        oss_endpoint: str = None,
         reveal_markdown: bool = None,
         use_url_response_body: bool = None,
     ):
@@ -2976,6 +3182,8 @@ class SubmitDigitalDocStructureJobAdvanceRequest(TeaModel):
         self.file_name_extension = file_name_extension
         self.file_url_object = file_url_object
         self.image_strategy = image_strategy
+        self.oss_bucket = oss_bucket
+        self.oss_endpoint = oss_endpoint
         self.reveal_markdown = reveal_markdown
         self.use_url_response_body = use_url_response_body
 
@@ -2996,6 +3204,10 @@ class SubmitDigitalDocStructureJobAdvanceRequest(TeaModel):
             result['FileUrl'] = self.file_url_object
         if self.image_strategy is not None:
             result['ImageStrategy'] = self.image_strategy
+        if self.oss_bucket is not None:
+            result['OssBucket'] = self.oss_bucket
+        if self.oss_endpoint is not None:
+            result['OssEndpoint'] = self.oss_endpoint
         if self.reveal_markdown is not None:
             result['RevealMarkdown'] = self.reveal_markdown
         if self.use_url_response_body is not None:
@@ -3012,6 +3224,10 @@ class SubmitDigitalDocStructureJobAdvanceRequest(TeaModel):
             self.file_url_object = m.get('FileUrl')
         if m.get('ImageStrategy') is not None:
             self.image_strategy = m.get('ImageStrategy')
+        if m.get('OssBucket') is not None:
+            self.oss_bucket = m.get('OssBucket')
+        if m.get('OssEndpoint') is not None:
+            self.oss_endpoint = m.get('OssEndpoint')
         if m.get('RevealMarkdown') is not None:
             self.reveal_markdown = m.get('RevealMarkdown')
         if m.get('UseUrlResponseBody') is not None:
@@ -3125,12 +3341,16 @@ class SubmitDocParserJobRequest(TeaModel):
         file_url: str = None,
         formula_enhancement: bool = None,
         llm_enhancement: bool = None,
+        oss_bucket: str = None,
+        oss_endpoint: str = None,
     ):
         self.file_name = file_name
         self.file_name_extension = file_name_extension
         self.file_url = file_url
         self.formula_enhancement = formula_enhancement
         self.llm_enhancement = llm_enhancement
+        self.oss_bucket = oss_bucket
+        self.oss_endpoint = oss_endpoint
 
     def validate(self):
         pass
@@ -3151,6 +3371,10 @@ class SubmitDocParserJobRequest(TeaModel):
             result['FormulaEnhancement'] = self.formula_enhancement
         if self.llm_enhancement is not None:
             result['LlmEnhancement'] = self.llm_enhancement
+        if self.oss_bucket is not None:
+            result['OssBucket'] = self.oss_bucket
+        if self.oss_endpoint is not None:
+            result['OssEndpoint'] = self.oss_endpoint
         return result
 
     def from_map(self, m: dict = None):
@@ -3165,6 +3389,10 @@ class SubmitDocParserJobRequest(TeaModel):
             self.formula_enhancement = m.get('FormulaEnhancement')
         if m.get('LlmEnhancement') is not None:
             self.llm_enhancement = m.get('LlmEnhancement')
+        if m.get('OssBucket') is not None:
+            self.oss_bucket = m.get('OssBucket')
+        if m.get('OssEndpoint') is not None:
+            self.oss_endpoint = m.get('OssEndpoint')
         return self
 
 
@@ -3176,12 +3404,16 @@ class SubmitDocParserJobAdvanceRequest(TeaModel):
         file_url_object: BinaryIO = None,
         formula_enhancement: bool = None,
         llm_enhancement: bool = None,
+        oss_bucket: str = None,
+        oss_endpoint: str = None,
     ):
         self.file_name = file_name
         self.file_name_extension = file_name_extension
         self.file_url_object = file_url_object
         self.formula_enhancement = formula_enhancement
         self.llm_enhancement = llm_enhancement
+        self.oss_bucket = oss_bucket
+        self.oss_endpoint = oss_endpoint
 
     def validate(self):
         pass
@@ -3202,6 +3434,10 @@ class SubmitDocParserJobAdvanceRequest(TeaModel):
             result['FormulaEnhancement'] = self.formula_enhancement
         if self.llm_enhancement is not None:
             result['LlmEnhancement'] = self.llm_enhancement
+        if self.oss_bucket is not None:
+            result['OssBucket'] = self.oss_bucket
+        if self.oss_endpoint is not None:
+            result['OssEndpoint'] = self.oss_endpoint
         return result
 
     def from_map(self, m: dict = None):
@@ -3216,6 +3452,10 @@ class SubmitDocParserJobAdvanceRequest(TeaModel):
             self.formula_enhancement = m.get('FormulaEnhancement')
         if m.get('LlmEnhancement') is not None:
             self.llm_enhancement = m.get('LlmEnhancement')
+        if m.get('OssBucket') is not None:
+            self.oss_bucket = m.get('OssBucket')
+        if m.get('OssEndpoint') is not None:
+            self.oss_endpoint = m.get('OssEndpoint')
         return self
 
 
@@ -3342,6 +3582,8 @@ class SubmitDocStructureJobRequest(TeaModel):
         file_name_extension: str = None,
         file_url: str = None,
         formula_enhancement: bool = None,
+        oss_bucket: str = None,
+        oss_endpoint: str = None,
         structure_type: str = None,
     ):
         self.allow_ppt_format = allow_ppt_format
@@ -3349,6 +3591,8 @@ class SubmitDocStructureJobRequest(TeaModel):
         self.file_name_extension = file_name_extension
         self.file_url = file_url
         self.formula_enhancement = formula_enhancement
+        self.oss_bucket = oss_bucket
+        self.oss_endpoint = oss_endpoint
         self.structure_type = structure_type
 
     def validate(self):
@@ -3370,6 +3614,10 @@ class SubmitDocStructureJobRequest(TeaModel):
             result['FileUrl'] = self.file_url
         if self.formula_enhancement is not None:
             result['FormulaEnhancement'] = self.formula_enhancement
+        if self.oss_bucket is not None:
+            result['OssBucket'] = self.oss_bucket
+        if self.oss_endpoint is not None:
+            result['OssEndpoint'] = self.oss_endpoint
         if self.structure_type is not None:
             result['StructureType'] = self.structure_type
         return result
@@ -3386,6 +3634,10 @@ class SubmitDocStructureJobRequest(TeaModel):
             self.file_url = m.get('FileUrl')
         if m.get('FormulaEnhancement') is not None:
             self.formula_enhancement = m.get('FormulaEnhancement')
+        if m.get('OssBucket') is not None:
+            self.oss_bucket = m.get('OssBucket')
+        if m.get('OssEndpoint') is not None:
+            self.oss_endpoint = m.get('OssEndpoint')
         if m.get('StructureType') is not None:
             self.structure_type = m.get('StructureType')
         return self
@@ -3399,6 +3651,8 @@ class SubmitDocStructureJobAdvanceRequest(TeaModel):
         file_name_extension: str = None,
         file_url_object: BinaryIO = None,
         formula_enhancement: bool = None,
+        oss_bucket: str = None,
+        oss_endpoint: str = None,
         structure_type: str = None,
     ):
         self.allow_ppt_format = allow_ppt_format
@@ -3406,6 +3660,8 @@ class SubmitDocStructureJobAdvanceRequest(TeaModel):
         self.file_name_extension = file_name_extension
         self.file_url_object = file_url_object
         self.formula_enhancement = formula_enhancement
+        self.oss_bucket = oss_bucket
+        self.oss_endpoint = oss_endpoint
         self.structure_type = structure_type
 
     def validate(self):
@@ -3427,6 +3683,10 @@ class SubmitDocStructureJobAdvanceRequest(TeaModel):
             result['FileUrl'] = self.file_url_object
         if self.formula_enhancement is not None:
             result['FormulaEnhancement'] = self.formula_enhancement
+        if self.oss_bucket is not None:
+            result['OssBucket'] = self.oss_bucket
+        if self.oss_endpoint is not None:
+            result['OssEndpoint'] = self.oss_endpoint
         if self.structure_type is not None:
             result['StructureType'] = self.structure_type
         return result
@@ -3443,6 +3703,10 @@ class SubmitDocStructureJobAdvanceRequest(TeaModel):
             self.file_url_object = m.get('FileUrl')
         if m.get('FormulaEnhancement') is not None:
             self.formula_enhancement = m.get('FormulaEnhancement')
+        if m.get('OssBucket') is not None:
+            self.oss_bucket = m.get('OssBucket')
+        if m.get('OssEndpoint') is not None:
+            self.oss_endpoint = m.get('OssEndpoint')
         if m.get('StructureType') is not None:
             self.structure_type = m.get('StructureType')
         return self
@@ -3569,10 +3833,14 @@ class SubmitDocumentExtractJobRequest(TeaModel):
         file_name: str = None,
         file_name_extension: str = None,
         file_url: str = None,
+        oss_bucket: str = None,
+        oss_endpoint: str = None,
     ):
         self.file_name = file_name
         self.file_name_extension = file_name_extension
         self.file_url = file_url
+        self.oss_bucket = oss_bucket
+        self.oss_endpoint = oss_endpoint
 
     def validate(self):
         pass
@@ -3589,6 +3857,10 @@ class SubmitDocumentExtractJobRequest(TeaModel):
             result['FileNameExtension'] = self.file_name_extension
         if self.file_url is not None:
             result['FileUrl'] = self.file_url
+        if self.oss_bucket is not None:
+            result['OssBucket'] = self.oss_bucket
+        if self.oss_endpoint is not None:
+            result['OssEndpoint'] = self.oss_endpoint
         return result
 
     def from_map(self, m: dict = None):
@@ -3599,6 +3871,10 @@ class SubmitDocumentExtractJobRequest(TeaModel):
             self.file_name_extension = m.get('FileNameExtension')
         if m.get('FileUrl') is not None:
             self.file_url = m.get('FileUrl')
+        if m.get('OssBucket') is not None:
+            self.oss_bucket = m.get('OssBucket')
+        if m.get('OssEndpoint') is not None:
+            self.oss_endpoint = m.get('OssEndpoint')
         return self
 
 
@@ -3608,10 +3884,14 @@ class SubmitDocumentExtractJobAdvanceRequest(TeaModel):
         file_name: str = None,
         file_name_extension: str = None,
         file_url_object: BinaryIO = None,
+        oss_bucket: str = None,
+        oss_endpoint: str = None,
     ):
         self.file_name = file_name
         self.file_name_extension = file_name_extension
         self.file_url_object = file_url_object
+        self.oss_bucket = oss_bucket
+        self.oss_endpoint = oss_endpoint
 
     def validate(self):
         pass
@@ -3628,6 +3908,10 @@ class SubmitDocumentExtractJobAdvanceRequest(TeaModel):
             result['FileNameExtension'] = self.file_name_extension
         if self.file_url_object is not None:
             result['FileUrl'] = self.file_url_object
+        if self.oss_bucket is not None:
+            result['OssBucket'] = self.oss_bucket
+        if self.oss_endpoint is not None:
+            result['OssEndpoint'] = self.oss_endpoint
         return result
 
     def from_map(self, m: dict = None):
@@ -3638,6 +3922,10 @@ class SubmitDocumentExtractJobAdvanceRequest(TeaModel):
             self.file_name_extension = m.get('FileNameExtension')
         if m.get('FileUrl') is not None:
             self.file_url_object = m.get('FileUrl')
+        if m.get('OssBucket') is not None:
+            self.oss_bucket = m.get('OssBucket')
+        if m.get('OssEndpoint') is not None:
+            self.oss_endpoint = m.get('OssEndpoint')
         return self
 
 
@@ -3762,10 +4050,14 @@ class SubmitTableUnderstandingJobRequest(TeaModel):
         file_name: str = None,
         file_name_extension: str = None,
         file_url: str = None,
+        oss_bucket: str = None,
+        oss_endpoint: str = None,
     ):
         self.file_name = file_name
         self.file_name_extension = file_name_extension
         self.file_url = file_url
+        self.oss_bucket = oss_bucket
+        self.oss_endpoint = oss_endpoint
 
     def validate(self):
         pass
@@ -3782,6 +4074,10 @@ class SubmitTableUnderstandingJobRequest(TeaModel):
             result['FileNameExtension'] = self.file_name_extension
         if self.file_url is not None:
             result['FileUrl'] = self.file_url
+        if self.oss_bucket is not None:
+            result['OssBucket'] = self.oss_bucket
+        if self.oss_endpoint is not None:
+            result['OssEndpoint'] = self.oss_endpoint
         return result
 
     def from_map(self, m: dict = None):
@@ -3792,6 +4088,10 @@ class SubmitTableUnderstandingJobRequest(TeaModel):
             self.file_name_extension = m.get('FileNameExtension')
         if m.get('FileUrl') is not None:
             self.file_url = m.get('FileUrl')
+        if m.get('OssBucket') is not None:
+            self.oss_bucket = m.get('OssBucket')
+        if m.get('OssEndpoint') is not None:
+            self.oss_endpoint = m.get('OssEndpoint')
         return self
 
 
@@ -3801,10 +4101,14 @@ class SubmitTableUnderstandingJobAdvanceRequest(TeaModel):
         file_name: str = None,
         file_name_extension: str = None,
         file_url_object: BinaryIO = None,
+        oss_bucket: str = None,
+        oss_endpoint: str = None,
     ):
         self.file_name = file_name
         self.file_name_extension = file_name_extension
         self.file_url_object = file_url_object
+        self.oss_bucket = oss_bucket
+        self.oss_endpoint = oss_endpoint
 
     def validate(self):
         pass
@@ -3821,6 +4125,10 @@ class SubmitTableUnderstandingJobAdvanceRequest(TeaModel):
             result['FileNameExtension'] = self.file_name_extension
         if self.file_url_object is not None:
             result['FileUrl'] = self.file_url_object
+        if self.oss_bucket is not None:
+            result['OssBucket'] = self.oss_bucket
+        if self.oss_endpoint is not None:
+            result['OssEndpoint'] = self.oss_endpoint
         return result
 
     def from_map(self, m: dict = None):
@@ -3831,6 +4139,10 @@ class SubmitTableUnderstandingJobAdvanceRequest(TeaModel):
             self.file_name_extension = m.get('FileNameExtension')
         if m.get('FileUrl') is not None:
             self.file_url_object = m.get('FileUrl')
+        if m.get('OssBucket') is not None:
+            self.oss_bucket = m.get('OssBucket')
+        if m.get('OssEndpoint') is not None:
+            self.oss_endpoint = m.get('OssEndpoint')
         return self
 
 
