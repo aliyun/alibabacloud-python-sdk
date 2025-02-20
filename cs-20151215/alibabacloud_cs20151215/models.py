@@ -9108,6 +9108,7 @@ class DescribeClusterAttachScriptsRequest(TeaModel):
     def __init__(
         self,
         arch: str = None,
+        expired: int = None,
         format_disk: bool = None,
         keep_instance_name: bool = None,
         nodepool_id: str = None,
@@ -9120,6 +9121,7 @@ class DescribeClusterAttachScriptsRequest(TeaModel):
         # 
         # >  This parameter is required if you want to add the existing node to a Container Service for Kubernetes (ACK) Edge cluster.
         self.arch = arch
+        self.expired = expired
         # Specifies whether to mount data disks to an existing instance when you add the instance to the cluster. You can add data disks to store container data and images. Valid values:
         # 
         # *   `true`: mounts data disks to the existing instance that you want to add. After a data disk is mounted, the original data on the disk is erased. Back up data before you mount a data disk.
@@ -9161,6 +9163,8 @@ class DescribeClusterAttachScriptsRequest(TeaModel):
         result = dict()
         if self.arch is not None:
             result['arch'] = self.arch
+        if self.expired is not None:
+            result['expired'] = self.expired
         if self.format_disk is not None:
             result['format_disk'] = self.format_disk
         if self.keep_instance_name is not None:
@@ -9177,6 +9181,8 @@ class DescribeClusterAttachScriptsRequest(TeaModel):
         m = m or dict()
         if m.get('arch') is not None:
             self.arch = m.get('arch')
+        if m.get('expired') is not None:
+            self.expired = m.get('expired')
         if m.get('format_disk') is not None:
             self.format_disk = m.get('format_disk')
         if m.get('keep_instance_name') is not None:

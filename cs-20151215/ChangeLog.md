@@ -1,13 +1,7 @@
-2025-02-18 Version: 4.8.11
+2025-02-20 Version: 4.8.12
+- Update API DescribeClusterAttachScripts: update param body.
 - Update API ModifyNodePoolNodeConfig: update param body.
 - Update API RepairClusterNodePool: update param body.
-
-
-2025-02-07 Version: 4.8.10
-- Generated python 2015-12-15 for CS.
-
-2025-01-15 Version: 4.8.9
-- Update API CreateAutoscalingConfig: update param body.
 
 
 2025-01-10 Version: 4.8.8

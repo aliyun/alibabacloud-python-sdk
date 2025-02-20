@@ -5151,6 +5151,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.arch):
             body['arch'] = request.arch
+        if not UtilClient.is_unset(request.expired):
+            body['expired'] = request.expired
         if not UtilClient.is_unset(request.format_disk):
             body['format_disk'] = request.format_disk
         if not UtilClient.is_unset(request.keep_instance_name):
@@ -5206,6 +5208,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.arch):
             body['arch'] = request.arch
+        if not UtilClient.is_unset(request.expired):
+            body['expired'] = request.expired
         if not UtilClient.is_unset(request.format_disk):
             body['format_disk'] = request.format_disk
         if not UtilClient.is_unset(request.keep_instance_name):
