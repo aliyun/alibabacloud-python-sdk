@@ -2077,6 +2077,7 @@ class CreateAgentRequest(TeaModel):
         self,
         import_agent: CreateAgentInfo = None,
     ):
+        # The details for creating the agent.
         self.import_agent = import_agent
 
     def validate(self):
@@ -3357,6 +3358,7 @@ class ListJobResponseBody(TeaModel):
         self,
         import_job_list: ListJobResp = None,
     ):
+        # The queried migration tasks.
         self.import_job_list = import_job_list
 
     def validate(self):
@@ -3841,7 +3843,7 @@ class VerifyAddressResponseBody(TeaModel):
         self,
         verify_address_response: VerifyAddressResp = None,
     ):
-        # The details for verifying the data address.
+        # 校验数据地址详情。
         self.verify_address_response = verify_address_response
 
     def validate(self):

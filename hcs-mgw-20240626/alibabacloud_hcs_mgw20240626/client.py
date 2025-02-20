@@ -21,6 +21,7 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'hcs-mgw'
         gateway_client = GatewayClientClient()
         self._spi = gateway_client
         self._endpoint_rule = ''
@@ -35,7 +36,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a data address.
         
-        @description    If you want to use an agent to migrate data, you must create an agent first and then associate the agent when you create a data address.
+        @description    To create a data address, you must have the permission on mgw:CreateImportAddress.
+        If you want to use an agent to migrate data, you must create an agent first and then associate the agent with a data address when you create the data address.
         
         @param request: CreateAddressRequest
         @param headers: map
@@ -79,7 +81,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a data address.
         
-        @description    If you want to use an agent to migrate data, you must create an agent first and then associate the agent when you create a data address.
+        @description    To create a data address, you must have the permission on mgw:CreateImportAddress.
+        If you want to use an agent to migrate data, you must create an agent first and then associate the agent with a data address when you create the data address.
         
         @param request: CreateAddressRequest
         @param headers: map
@@ -121,7 +124,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a data address.
         
-        @description    If you want to use an agent to migrate data, you must create an agent first and then associate the agent when you create a data address.
+        @description    To create a data address, you must have the permission on mgw:CreateImportAddress.
+        If you want to use an agent to migrate data, you must create an agent first and then associate the agent with a data address when you create the data address.
         
         @param request: CreateAddressRequest
         @return: CreateAddressResponse
@@ -138,7 +142,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a data address.
         
-        @description    If you want to use an agent to migrate data, you must create an agent first and then associate the agent when you create a data address.
+        @description    To create a data address, you must have the permission on mgw:CreateImportAddress.
+        If you want to use an agent to migrate data, you must create an agent first and then associate the agent with a data address when you create the data address.
         
         @param request: CreateAddressRequest
         @return: CreateAddressResponse
@@ -157,7 +162,9 @@ class Client(OpenApiClient):
         """
         @summary The request boy for creating the agent.
         
-        @description CreateAgent
+        @description    To create an agent, you must have the permission on mgw:CreateImportAgent.
+        If you want to migrate data to Alibaba Cloud over an Express Connect circuit or a VPN gateway, or migrate data from a self-managed storage space to Alibaba Cloud, you can deploy an agent.
+        Before you create an agent, you must create a tunnel. An agent must be associated with a tunnel.
         
         @param request: CreateAgentRequest
         @param headers: map
@@ -201,7 +208,9 @@ class Client(OpenApiClient):
         """
         @summary The request boy for creating the agent.
         
-        @description CreateAgent
+        @description    To create an agent, you must have the permission on mgw:CreateImportAgent.
+        If you want to migrate data to Alibaba Cloud over an Express Connect circuit or a VPN gateway, or migrate data from a self-managed storage space to Alibaba Cloud, you can deploy an agent.
+        Before you create an agent, you must create a tunnel. An agent must be associated with a tunnel.
         
         @param request: CreateAgentRequest
         @param headers: map
@@ -243,7 +252,9 @@ class Client(OpenApiClient):
         """
         @summary The request boy for creating the agent.
         
-        @description CreateAgent
+        @description    To create an agent, you must have the permission on mgw:CreateImportAgent.
+        If you want to migrate data to Alibaba Cloud over an Express Connect circuit or a VPN gateway, or migrate data from a self-managed storage space to Alibaba Cloud, you can deploy an agent.
+        Before you create an agent, you must create a tunnel. An agent must be associated with a tunnel.
         
         @param request: CreateAgentRequest
         @return: CreateAgentResponse
@@ -260,7 +271,9 @@ class Client(OpenApiClient):
         """
         @summary The request boy for creating the agent.
         
-        @description CreateAgent
+        @description    To create an agent, you must have the permission on mgw:CreateImportAgent.
+        If you want to migrate data to Alibaba Cloud over an Express Connect circuit or a VPN gateway, or migrate data from a self-managed storage space to Alibaba Cloud, you can deploy an agent.
+        Before you create an agent, you must create a tunnel. An agent must be associated with a tunnel.
         
         @param request: CreateAgentRequest
         @return: CreateAgentResponse
@@ -279,7 +292,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a migration task.
         
-        @description    Before you create a migration task, you must create a data address.
+        @description    To create a migration task, you must have the permission on mgw:CreateImportJob.
+        Before you create a migration task, you must create data addresses.
         A migration task can run multiple rounds. Each round has an execution ID.
         
         @param request: CreateJobRequest
@@ -324,7 +338,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a migration task.
         
-        @description    Before you create a migration task, you must create a data address.
+        @description    To create a migration task, you must have the permission on mgw:CreateImportJob.
+        Before you create a migration task, you must create data addresses.
         A migration task can run multiple rounds. Each round has an execution ID.
         
         @param request: CreateJobRequest
@@ -367,7 +382,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a migration task.
         
-        @description    Before you create a migration task, you must create a data address.
+        @description    To create a migration task, you must have the permission on mgw:CreateImportJob.
+        Before you create a migration task, you must create data addresses.
         A migration task can run multiple rounds. Each round has an execution ID.
         
         @param request: CreateJobRequest
@@ -385,7 +401,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a migration task.
         
-        @description    Before you create a migration task, you must create a data address.
+        @description    To create a migration task, you must have the permission on mgw:CreateImportJob.
+        Before you create a migration task, you must create data addresses.
         A migration task can run multiple rounds. Each round has an execution ID.
         
         @param request: CreateJobRequest
@@ -405,7 +422,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a migration report.
         
-        @description    If you specify that a migration report is to be generated when you create a migration task, you do not need to call this operation. If you do not specify that a migration report is to be generated when you create a migration task, you can call this operation to create a migration report for a specific execution ID.
+        @description    To create a migration report, you must have the permission on mgw:CreateImportReport.
+        If you specify that a migration report is to be generated when you create a migration task, you do not need to call this operation. If you do not specify that a migration report is to be generated when you create a migration task, you can call this operation to create a migration report for an execution with the specified ID.
         
         @param request: CreateReportRequest
         @param headers: map
@@ -449,7 +467,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a migration report.
         
-        @description    If you specify that a migration report is to be generated when you create a migration task, you do not need to call this operation. If you do not specify that a migration report is to be generated when you create a migration task, you can call this operation to create a migration report for a specific execution ID.
+        @description    To create a migration report, you must have the permission on mgw:CreateImportReport.
+        If you specify that a migration report is to be generated when you create a migration task, you do not need to call this operation. If you do not specify that a migration report is to be generated when you create a migration task, you can call this operation to create a migration report for an execution with the specified ID.
         
         @param request: CreateReportRequest
         @param headers: map
@@ -491,7 +510,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a migration report.
         
-        @description    If you specify that a migration report is to be generated when you create a migration task, you do not need to call this operation. If you do not specify that a migration report is to be generated when you create a migration task, you can call this operation to create a migration report for a specific execution ID.
+        @description    To create a migration report, you must have the permission on mgw:CreateImportReport.
+        If you specify that a migration report is to be generated when you create a migration task, you do not need to call this operation. If you do not specify that a migration report is to be generated when you create a migration task, you can call this operation to create a migration report for an execution with the specified ID.
         
         @param request: CreateReportRequest
         @return: CreateReportResponse
@@ -508,7 +528,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a migration report.
         
-        @description    If you specify that a migration report is to be generated when you create a migration task, you do not need to call this operation. If you do not specify that a migration report is to be generated when you create a migration task, you can call this operation to create a migration report for a specific execution ID.
+        @description    To create a migration report, you must have the permission on mgw:CreateImportReport.
+        If you specify that a migration report is to be generated when you create a migration task, you do not need to call this operation. If you do not specify that a migration report is to be generated when you create a migration task, you can call this operation to create a migration report for an execution with the specified ID.
         
         @param request: CreateReportRequest
         @return: CreateReportResponse
@@ -527,8 +548,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a tunnel.
         
-        @description    When you use an agent to migrate data, the agent must be associated with a tunnel.
-        A tunnel can be associated with multiple agents at the same time. You can throttle the agents that are associated with the agent by setting the bandwidth and the number of requests per second for the tunnel.
+        @description    To create a tunnel, you must have the permission on mgw:CreateImportTunnel.
+        When you use an agent to migrate data, the agent must be associated with a tunnel.
+        A tunnel can be associated with multiple agents. You can throttle the traffic of the agents that are associated with the same tunnel by setting the bandwidth and the number of requests per second for the tunnel.
         
         @param request: CreateTunnelRequest
         @param headers: map
@@ -572,8 +594,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a tunnel.
         
-        @description    When you use an agent to migrate data, the agent must be associated with a tunnel.
-        A tunnel can be associated with multiple agents at the same time. You can throttle the agents that are associated with the agent by setting the bandwidth and the number of requests per second for the tunnel.
+        @description    To create a tunnel, you must have the permission on mgw:CreateImportTunnel.
+        When you use an agent to migrate data, the agent must be associated with a tunnel.
+        A tunnel can be associated with multiple agents. You can throttle the traffic of the agents that are associated with the same tunnel by setting the bandwidth and the number of requests per second for the tunnel.
         
         @param request: CreateTunnelRequest
         @param headers: map
@@ -615,8 +638,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a tunnel.
         
-        @description    When you use an agent to migrate data, the agent must be associated with a tunnel.
-        A tunnel can be associated with multiple agents at the same time. You can throttle the agents that are associated with the agent by setting the bandwidth and the number of requests per second for the tunnel.
+        @description    To create a tunnel, you must have the permission on mgw:CreateImportTunnel.
+        When you use an agent to migrate data, the agent must be associated with a tunnel.
+        A tunnel can be associated with multiple agents. You can throttle the traffic of the agents that are associated with the same tunnel by setting the bandwidth and the number of requests per second for the tunnel.
         
         @param request: CreateTunnelRequest
         @return: CreateTunnelResponse
@@ -633,8 +657,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a tunnel.
         
-        @description    When you use an agent to migrate data, the agent must be associated with a tunnel.
-        A tunnel can be associated with multiple agents at the same time. You can throttle the agents that are associated with the agent by setting the bandwidth and the number of requests per second for the tunnel.
+        @description    To create a tunnel, you must have the permission on mgw:CreateImportTunnel.
+        When you use an agent to migrate data, the agent must be associated with a tunnel.
+        A tunnel can be associated with multiple agents. You can throttle the traffic of the agents that are associated with the same tunnel by setting the bandwidth and the number of requests per second for the tunnel.
         
         @param request: CreateTunnelRequest
         @return: CreateTunnelResponse
@@ -652,6 +677,8 @@ class Client(OpenApiClient):
     ) -> hcs_mgw_20240626_models.DeleteAddressResponse:
         """
         @summary Deletes a data address.
+        
+        @description    To delete a data address, you must have the permission on mgw:DeleteImportAddress.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -689,6 +716,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a data address.
         
+        @description    To delete a data address, you must have the permission on mgw:DeleteImportAddress.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteAddressResponse
@@ -723,6 +752,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a data address.
         
+        @description    To delete a data address, you must have the permission on mgw:DeleteImportAddress.
+        
         @return: DeleteAddressResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -736,6 +767,8 @@ class Client(OpenApiClient):
     ) -> hcs_mgw_20240626_models.DeleteAddressResponse:
         """
         @summary Deletes a data address.
+        
+        @description    To delete a data address, you must have the permission on mgw:DeleteImportAddress.
         
         @return: DeleteAddressResponse
         """
@@ -752,6 +785,8 @@ class Client(OpenApiClient):
     ) -> hcs_mgw_20240626_models.DeleteAgentResponse:
         """
         @summary Deletes an agent.
+        
+        @description    To delete an agent, you must have the permission on mgw:DeleteImportAgent.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -789,6 +824,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes an agent.
         
+        @description    To delete an agent, you must have the permission on mgw:DeleteImportAgent.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteAgentResponse
@@ -823,6 +860,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes an agent.
         
+        @description    To delete an agent, you must have the permission on mgw:DeleteImportAgent.
+        
         @return: DeleteAgentResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -836,6 +875,8 @@ class Client(OpenApiClient):
     ) -> hcs_mgw_20240626_models.DeleteAgentResponse:
         """
         @summary Deletes an agent.
+        
+        @description    To delete an agent, you must have the permission on mgw:DeleteImportAgent.
         
         @return: DeleteAgentResponse
         """
@@ -854,7 +895,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a migration task.
         
-        @description    The operation to delete a migration task is asynchronous. The migration task remains in the Deleting state until it is deleted.
+        @description    To delete a migration task, you must have the permission on mgw:DeleteImportJob.
+        The operation to delete a migration task is asynchronous. The migration task remains in the Deleting state until it is deleted.
         
         @param request: DeleteJobRequest
         @param headers: map
@@ -899,7 +941,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a migration task.
         
-        @description    The operation to delete a migration task is asynchronous. The migration task remains in the Deleting state until it is deleted.
+        @description    To delete a migration task, you must have the permission on mgw:DeleteImportJob.
+        The operation to delete a migration task is asynchronous. The migration task remains in the Deleting state until it is deleted.
         
         @param request: DeleteJobRequest
         @param headers: map
@@ -942,7 +985,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a migration task.
         
-        @description    The operation to delete a migration task is asynchronous. The migration task remains in the Deleting state until it is deleted.
+        @description    To delete a migration task, you must have the permission on mgw:DeleteImportJob.
+        The operation to delete a migration task is asynchronous. The migration task remains in the Deleting state until it is deleted.
         
         @param request: DeleteJobRequest
         @return: DeleteJobResponse
@@ -960,7 +1004,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a migration task.
         
-        @description    The operation to delete a migration task is asynchronous. The migration task remains in the Deleting state until it is deleted.
+        @description    To delete a migration task, you must have the permission on mgw:DeleteImportJob.
+        The operation to delete a migration task is asynchronous. The migration task remains in the Deleting state until it is deleted.
         
         @param request: DeleteJobRequest
         @return: DeleteJobResponse
@@ -978,6 +1023,8 @@ class Client(OpenApiClient):
     ) -> hcs_mgw_20240626_models.DeleteTunnelResponse:
         """
         @summary Deletes a tunnel.
+        
+        @description    To delete a tunnel, you must have the permission on mgw:DeleteImportTunnel.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1015,6 +1062,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a tunnel.
         
+        @description    To delete a tunnel, you must have the permission on mgw:DeleteImportTunnel.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteTunnelResponse
@@ -1049,6 +1098,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a tunnel.
         
+        @description    To delete a tunnel, you must have the permission on mgw:DeleteImportTunnel.
+        
         @return: DeleteTunnelResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -1062,6 +1113,8 @@ class Client(OpenApiClient):
     ) -> hcs_mgw_20240626_models.DeleteTunnelResponse:
         """
         @summary Deletes a tunnel.
+        
+        @description    To delete a tunnel, you must have the permission on mgw:DeleteImportTunnel.
         
         @return: DeleteTunnelResponse
         """
@@ -1078,6 +1131,8 @@ class Client(OpenApiClient):
     ) -> hcs_mgw_20240626_models.GetAddressResponse:
         """
         @summary Obtains the details of a data address.
+        
+        @description    To query the information about a data address, you must have the permission on mgw:GetImportAddress.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1115,6 +1170,8 @@ class Client(OpenApiClient):
         """
         @summary Obtains the details of a data address.
         
+        @description    To query the information about a data address, you must have the permission on mgw:GetImportAddress.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetAddressResponse
@@ -1149,6 +1206,8 @@ class Client(OpenApiClient):
         """
         @summary Obtains the details of a data address.
         
+        @description    To query the information about a data address, you must have the permission on mgw:GetImportAddress.
+        
         @return: GetAddressResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -1162,6 +1221,8 @@ class Client(OpenApiClient):
     ) -> hcs_mgw_20240626_models.GetAddressResponse:
         """
         @summary Obtains the details of a data address.
+        
+        @description    To query the information about a data address, you must have the permission on mgw:GetImportAddress.
         
         @return: GetAddressResponse
         """
@@ -1178,6 +1239,8 @@ class Client(OpenApiClient):
     ) -> hcs_mgw_20240626_models.GetAgentResponse:
         """
         @summary Obtains the details of an agent.
+        
+        @description    To query the information about an agent, you must have the permission on mgw:GetImportAgent.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1215,6 +1278,8 @@ class Client(OpenApiClient):
         """
         @summary Obtains the details of an agent.
         
+        @description    To query the information about an agent, you must have the permission on mgw:GetImportAgent.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetAgentResponse
@@ -1249,6 +1314,8 @@ class Client(OpenApiClient):
         """
         @summary Obtains the details of an agent.
         
+        @description    To query the information about an agent, you must have the permission on mgw:GetImportAgent.
+        
         @return: GetAgentResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -1262,6 +1329,8 @@ class Client(OpenApiClient):
     ) -> hcs_mgw_20240626_models.GetAgentResponse:
         """
         @summary Obtains the details of an agent.
+        
+        @description    To query the information about an agent, you must have the permission on mgw:GetImportAgent.
         
         @return: GetAgentResponse
         """
@@ -1278,6 +1347,8 @@ class Client(OpenApiClient):
     ) -> hcs_mgw_20240626_models.GetAgentStatusResponse:
         """
         @summary Obtains the running status of an agent.
+        
+        @description    To query the status of an agent, you must have the permission on mgw:GetImportAgent.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1315,6 +1386,8 @@ class Client(OpenApiClient):
         """
         @summary Obtains the running status of an agent.
         
+        @description    To query the status of an agent, you must have the permission on mgw:GetImportAgent.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetAgentStatusResponse
@@ -1349,6 +1422,8 @@ class Client(OpenApiClient):
         """
         @summary Obtains the running status of an agent.
         
+        @description    To query the status of an agent, you must have the permission on mgw:GetImportAgent.
+        
         @return: GetAgentStatusResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -1362,6 +1437,8 @@ class Client(OpenApiClient):
     ) -> hcs_mgw_20240626_models.GetAgentStatusResponse:
         """
         @summary Obtains the running status of an agent.
+        
+        @description    To query the status of an agent, you must have the permission on mgw:GetImportAgent.
         
         @return: GetAgentStatusResponse
         """
@@ -1379,6 +1456,8 @@ class Client(OpenApiClient):
     ) -> hcs_mgw_20240626_models.GetJobResponse:
         """
         @summary Obtains the details of a migration task.
+        
+        @description    To query the information about a migration task, you must have the permission on mgw:GetImportJob.
         
         @param request: GetJobRequest
         @param headers: map
@@ -1423,6 +1502,8 @@ class Client(OpenApiClient):
         """
         @summary Obtains the details of a migration task.
         
+        @description    To query the information about a migration task, you must have the permission on mgw:GetImportJob.
+        
         @param request: GetJobRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1464,6 +1545,8 @@ class Client(OpenApiClient):
         """
         @summary Obtains the details of a migration task.
         
+        @description    To query the information about a migration task, you must have the permission on mgw:GetImportJob.
+        
         @param request: GetJobRequest
         @return: GetJobResponse
         """
@@ -1479,6 +1562,8 @@ class Client(OpenApiClient):
     ) -> hcs_mgw_20240626_models.GetJobResponse:
         """
         @summary Obtains the details of a migration task.
+        
+        @description    To query the information about a migration task, you must have the permission on mgw:GetImportJob.
         
         @param request: GetJobRequest
         @return: GetJobResponse
@@ -1498,7 +1583,8 @@ class Client(OpenApiClient):
         """
         @summary Obtains the list of files that fail to be migrated when files fail to be migrated during a migration task.
         
-        @description    When files fail to be migrated during a migration task, a list of files that fail to be migrated is generated. You can call this operation to obtain the list of such files. You can create a data address based on this list and create a subtask. This way, you can migrate these files that fail to be migrated again.
+        @description    To query the retry information about a migration task, you must have the permission on mgw:GetImportJobResult.
+        If files fail to be migrated during a migration task, a list of files that fail to be migrated is generated. You can call this operation to query this list. You can create a data address based on this list and create a subtask. This way, you can migrate these files again.
         
         @param request: GetJobResultRequest
         @param headers: map
@@ -1543,7 +1629,8 @@ class Client(OpenApiClient):
         """
         @summary Obtains the list of files that fail to be migrated when files fail to be migrated during a migration task.
         
-        @description    When files fail to be migrated during a migration task, a list of files that fail to be migrated is generated. You can call this operation to obtain the list of such files. You can create a data address based on this list and create a subtask. This way, you can migrate these files that fail to be migrated again.
+        @description    To query the retry information about a migration task, you must have the permission on mgw:GetImportJobResult.
+        If files fail to be migrated during a migration task, a list of files that fail to be migrated is generated. You can call this operation to query this list. You can create a data address based on this list and create a subtask. This way, you can migrate these files again.
         
         @param request: GetJobResultRequest
         @param headers: map
@@ -1586,7 +1673,8 @@ class Client(OpenApiClient):
         """
         @summary Obtains the list of files that fail to be migrated when files fail to be migrated during a migration task.
         
-        @description    When files fail to be migrated during a migration task, a list of files that fail to be migrated is generated. You can call this operation to obtain the list of such files. You can create a data address based on this list and create a subtask. This way, you can migrate these files that fail to be migrated again.
+        @description    To query the retry information about a migration task, you must have the permission on mgw:GetImportJobResult.
+        If files fail to be migrated during a migration task, a list of files that fail to be migrated is generated. You can call this operation to query this list. You can create a data address based on this list and create a subtask. This way, you can migrate these files again.
         
         @param request: GetJobResultRequest
         @return: GetJobResultResponse
@@ -1604,7 +1692,8 @@ class Client(OpenApiClient):
         """
         @summary Obtains the list of files that fail to be migrated when files fail to be migrated during a migration task.
         
-        @description    When files fail to be migrated during a migration task, a list of files that fail to be migrated is generated. You can call this operation to obtain the list of such files. You can create a data address based on this list and create a subtask. This way, you can migrate these files that fail to be migrated again.
+        @description    To query the retry information about a migration task, you must have the permission on mgw:GetImportJobResult.
+        If files fail to be migrated during a migration task, a list of files that fail to be migrated is generated. You can call this operation to query this list. You can create a data address based on this list and create a subtask. This way, you can migrate these files again.
         
         @param request: GetJobResultRequest
         @return: GetJobResultResponse
@@ -1623,7 +1712,8 @@ class Client(OpenApiClient):
         """
         @summary Obtains the details of a migration report.
         
-        @description    The migration report is pushed to your destination data address. For more information, see [View a migration report](https://www.alibabacloud.com/help/en/data-online-migration/user-guide/manage-migration-jobs-between-oss-buckets).
+        @description    To query the information about a migration report, you must have the permission on mgw:GetImportReport.
+        The migration report is pushed to the destination data address. For more information, see the "View a migration report" section of the "Subsequent operations" topic in migration tutorials.
         
         @param request: GetReportRequest
         @param headers: map
@@ -1669,7 +1759,8 @@ class Client(OpenApiClient):
         """
         @summary Obtains the details of a migration report.
         
-        @description    The migration report is pushed to your destination data address. For more information, see [View a migration report](https://www.alibabacloud.com/help/en/data-online-migration/user-guide/manage-migration-jobs-between-oss-buckets).
+        @description    To query the information about a migration report, you must have the permission on mgw:GetImportReport.
+        The migration report is pushed to the destination data address. For more information, see the "View a migration report" section of the "Subsequent operations" topic in migration tutorials.
         
         @param request: GetReportRequest
         @param headers: map
@@ -1713,7 +1804,8 @@ class Client(OpenApiClient):
         """
         @summary Obtains the details of a migration report.
         
-        @description    The migration report is pushed to your destination data address. For more information, see [View a migration report](https://www.alibabacloud.com/help/en/data-online-migration/user-guide/manage-migration-jobs-between-oss-buckets).
+        @description    To query the information about a migration report, you must have the permission on mgw:GetImportReport.
+        The migration report is pushed to the destination data address. For more information, see the "View a migration report" section of the "Subsequent operations" topic in migration tutorials.
         
         @param request: GetReportRequest
         @return: GetReportResponse
@@ -1730,7 +1822,8 @@ class Client(OpenApiClient):
         """
         @summary Obtains the details of a migration report.
         
-        @description    The migration report is pushed to your destination data address. For more information, see [View a migration report](https://www.alibabacloud.com/help/en/data-online-migration/user-guide/manage-migration-jobs-between-oss-buckets).
+        @description    To query the information about a migration report, you must have the permission on mgw:GetImportReport.
+        The migration report is pushed to the destination data address. For more information, see the "View a migration report" section of the "Subsequent operations" topic in migration tutorials.
         
         @param request: GetReportRequest
         @return: GetReportResponse
@@ -1748,6 +1841,8 @@ class Client(OpenApiClient):
     ) -> hcs_mgw_20240626_models.GetTunnelResponse:
         """
         @summary Obtains the details of a tunnel.
+        
+        @description    To query the information about a tunnel, you must have the permission on mgw:GetImportTunnel.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1785,6 +1880,8 @@ class Client(OpenApiClient):
         """
         @summary Obtains the details of a tunnel.
         
+        @description    To query the information about a tunnel, you must have the permission on mgw:GetImportTunnel.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTunnelResponse
@@ -1819,6 +1916,8 @@ class Client(OpenApiClient):
         """
         @summary Obtains the details of a tunnel.
         
+        @description    To query the information about a tunnel, you must have the permission on mgw:GetImportTunnel.
+        
         @return: GetTunnelResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -1832,6 +1931,8 @@ class Client(OpenApiClient):
     ) -> hcs_mgw_20240626_models.GetTunnelResponse:
         """
         @summary Obtains the details of a tunnel.
+        
+        @description    To query the information about a tunnel, you must have the permission on mgw:GetImportTunnel.
         
         @return: GetTunnelResponse
         """
@@ -1848,6 +1949,8 @@ class Client(OpenApiClient):
     ) -> hcs_mgw_20240626_models.ListAddressResponse:
         """
         @summary Lists the data addresses created by a user in the specific region.
+        
+        @description    To query a list of data addresses, you must have the permission on mgw:ListImportAddress.
         
         @param request: ListAddressRequest
         @param headers: map
@@ -1893,6 +1996,8 @@ class Client(OpenApiClient):
         """
         @summary Lists the data addresses created by a user in the specific region.
         
+        @description    To query a list of data addresses, you must have the permission on mgw:ListImportAddress.
+        
         @param request: ListAddressRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1935,6 +2040,8 @@ class Client(OpenApiClient):
         """
         @summary Lists the data addresses created by a user in the specific region.
         
+        @description    To query a list of data addresses, you must have the permission on mgw:ListImportAddress.
+        
         @param request: ListAddressRequest
         @return: ListAddressResponse
         """
@@ -1949,6 +2056,8 @@ class Client(OpenApiClient):
     ) -> hcs_mgw_20240626_models.ListAddressResponse:
         """
         @summary Lists the data addresses created by a user in the specific region.
+        
+        @description    To query a list of data addresses, you must have the permission on mgw:ListImportAddress.
         
         @param request: ListAddressRequest
         @return: ListAddressResponse
@@ -1966,6 +2075,8 @@ class Client(OpenApiClient):
     ) -> hcs_mgw_20240626_models.ListAgentResponse:
         """
         @summary Lists the agents created by a user in the specific region.
+        
+        @description    To query a list of agents, you must have the permission on mgw:ListImportAgent.
         
         @param request: ListAgentRequest
         @param headers: map
@@ -2011,6 +2122,8 @@ class Client(OpenApiClient):
         """
         @summary Lists the agents created by a user in the specific region.
         
+        @description    To query a list of agents, you must have the permission on mgw:ListImportAgent.
+        
         @param request: ListAgentRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2053,6 +2166,8 @@ class Client(OpenApiClient):
         """
         @summary Lists the agents created by a user in the specific region.
         
+        @description    To query a list of agents, you must have the permission on mgw:ListImportAgent.
+        
         @param request: ListAgentRequest
         @return: ListAgentResponse
         """
@@ -2067,6 +2182,8 @@ class Client(OpenApiClient):
     ) -> hcs_mgw_20240626_models.ListAgentResponse:
         """
         @summary Lists the agents created by a user in the specific region.
+        
+        @description    To query a list of agents, you must have the permission on mgw:ListImportAgent.
         
         @param request: ListAgentRequest
         @return: ListAgentResponse
@@ -2084,6 +2201,8 @@ class Client(OpenApiClient):
     ) -> hcs_mgw_20240626_models.ListJobResponse:
         """
         @summary Lists the migration tasks created by a user in the specific region.
+        
+        @description    To query a list of migration tasks, you must have the permission on mgw:ListImportJob.
         
         @param request: ListJobRequest
         @param headers: map
@@ -2133,6 +2252,8 @@ class Client(OpenApiClient):
         """
         @summary Lists the migration tasks created by a user in the specific region.
         
+        @description    To query a list of migration tasks, you must have the permission on mgw:ListImportJob.
+        
         @param request: ListJobRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2179,6 +2300,8 @@ class Client(OpenApiClient):
         """
         @summary Lists the migration tasks created by a user in the specific region.
         
+        @description    To query a list of migration tasks, you must have the permission on mgw:ListImportJob.
+        
         @param request: ListJobRequest
         @return: ListJobResponse
         """
@@ -2193,6 +2316,8 @@ class Client(OpenApiClient):
     ) -> hcs_mgw_20240626_models.ListJobResponse:
         """
         @summary Lists the migration tasks created by a user in the specific region.
+        
+        @description    To query a list of migration tasks, you must have the permission on mgw:ListImportJob.
         
         @param request: ListJobRequest
         @return: ListJobResponse
@@ -2212,8 +2337,9 @@ class Client(OpenApiClient):
         """
         @summary Lists the running history of a migration task.
         
-        @description    A migration task can run multiple times. A unique execution ID is generated for each time.
-        The running history of a migration task records the status change history of the task.
+        @description    To query the execution history of a migration task, you must have the permission on mgw:ListImportJobHistory.
+        A migration task can run multiple rounds. A unique execution ID is generated for each round.
+        The execution history of a migration task records the change history of the task status.
         
         @param request: ListJobHistoryRequest
         @param headers: map
@@ -2262,8 +2388,9 @@ class Client(OpenApiClient):
         """
         @summary Lists the running history of a migration task.
         
-        @description    A migration task can run multiple times. A unique execution ID is generated for each time.
-        The running history of a migration task records the status change history of the task.
+        @description    To query the execution history of a migration task, you must have the permission on mgw:ListImportJobHistory.
+        A migration task can run multiple rounds. A unique execution ID is generated for each round.
+        The execution history of a migration task records the change history of the task status.
         
         @param request: ListJobHistoryRequest
         @param headers: map
@@ -2310,8 +2437,9 @@ class Client(OpenApiClient):
         """
         @summary Lists the running history of a migration task.
         
-        @description    A migration task can run multiple times. A unique execution ID is generated for each time.
-        The running history of a migration task records the status change history of the task.
+        @description    To query the execution history of a migration task, you must have the permission on mgw:ListImportJobHistory.
+        A migration task can run multiple rounds. A unique execution ID is generated for each round.
+        The execution history of a migration task records the change history of the task status.
         
         @param request: ListJobHistoryRequest
         @return: ListJobHistoryResponse
@@ -2329,8 +2457,9 @@ class Client(OpenApiClient):
         """
         @summary Lists the running history of a migration task.
         
-        @description    A migration task can run multiple times. A unique execution ID is generated for each time.
-        The running history of a migration task records the status change history of the task.
+        @description    To query the execution history of a migration task, you must have the permission on mgw:ListImportJobHistory.
+        A migration task can run multiple rounds. A unique execution ID is generated for each round.
+        The execution history of a migration task records the change history of the task status.
         
         @param request: ListJobHistoryRequest
         @return: ListJobHistoryResponse
@@ -2348,6 +2477,8 @@ class Client(OpenApiClient):
     ) -> hcs_mgw_20240626_models.ListTunnelResponse:
         """
         @summary Lists tunnels.
+        
+        @description    To query a list of tunnels, you must have the permission on mgw:ListImportTunnel.
         
         @param request: ListTunnelRequest
         @param headers: map
@@ -2393,6 +2524,8 @@ class Client(OpenApiClient):
         """
         @summary Lists tunnels.
         
+        @description    To query a list of tunnels, you must have the permission on mgw:ListImportTunnel.
+        
         @param request: ListTunnelRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2435,6 +2568,8 @@ class Client(OpenApiClient):
         """
         @summary Lists tunnels.
         
+        @description    To query a list of tunnels, you must have the permission on mgw:ListImportTunnel.
+        
         @param request: ListTunnelRequest
         @return: ListTunnelResponse
         """
@@ -2449,6 +2584,8 @@ class Client(OpenApiClient):
     ) -> hcs_mgw_20240626_models.ListTunnelResponse:
         """
         @summary Lists tunnels.
+        
+        @description    To query a list of tunnels, you must have the permission on mgw:ListImportTunnel.
         
         @param request: ListTunnelRequest
         @return: ListTunnelResponse
@@ -2468,7 +2605,8 @@ class Client(OpenApiClient):
         """
         @summary Updates a data address.
         
-        @description    If the data address is associated with an agent, you can scale in or out the agent.
+        @description    To update a data address, you must have the permission on mgw:UpdateImportAddress.
+        If the data address is associated with an agent, you can scale up or down the agent.
         
         @param request: UpdateAddressRequest
         @param headers: map
@@ -2513,7 +2651,8 @@ class Client(OpenApiClient):
         """
         @summary Updates a data address.
         
-        @description    If the data address is associated with an agent, you can scale in or out the agent.
+        @description    To update a data address, you must have the permission on mgw:UpdateImportAddress.
+        If the data address is associated with an agent, you can scale up or down the agent.
         
         @param request: UpdateAddressRequest
         @param headers: map
@@ -2556,7 +2695,8 @@ class Client(OpenApiClient):
         """
         @summary Updates a data address.
         
-        @description    If the data address is associated with an agent, you can scale in or out the agent.
+        @description    To update a data address, you must have the permission on mgw:UpdateImportAddress.
+        If the data address is associated with an agent, you can scale up or down the agent.
         
         @param request: UpdateAddressRequest
         @return: UpdateAddressResponse
@@ -2574,7 +2714,8 @@ class Client(OpenApiClient):
         """
         @summary Updates a data address.
         
-        @description    If the data address is associated with an agent, you can scale in or out the agent.
+        @description    To update a data address, you must have the permission on mgw:UpdateImportAddress.
+        If the data address is associated with an agent, you can scale up or down the agent.
         
         @param request: UpdateAddressRequest
         @return: UpdateAddressResponse
@@ -2594,7 +2735,8 @@ class Client(OpenApiClient):
         """
         @summary Updates the status or throttling of a task.
         
-        @description    A request can update either the status or throttling of a task.
+        @description    To update a migration task, you must have the permission on mgw:UpdateImportJob.
+        You can update only the status or throttling settings of a task in a single request.
         
         @param request: UpdateJobRequest
         @param headers: map
@@ -2639,7 +2781,8 @@ class Client(OpenApiClient):
         """
         @summary Updates the status or throttling of a task.
         
-        @description    A request can update either the status or throttling of a task.
+        @description    To update a migration task, you must have the permission on mgw:UpdateImportJob.
+        You can update only the status or throttling settings of a task in a single request.
         
         @param request: UpdateJobRequest
         @param headers: map
@@ -2682,7 +2825,8 @@ class Client(OpenApiClient):
         """
         @summary Updates the status or throttling of a task.
         
-        @description    A request can update either the status or throttling of a task.
+        @description    To update a migration task, you must have the permission on mgw:UpdateImportJob.
+        You can update only the status or throttling settings of a task in a single request.
         
         @param request: UpdateJobRequest
         @return: UpdateJobResponse
@@ -2700,7 +2844,8 @@ class Client(OpenApiClient):
         """
         @summary Updates the status or throttling of a task.
         
-        @description    A request can update either the status or throttling of a task.
+        @description    To update a migration task, you must have the permission on mgw:UpdateImportJob.
+        You can update only the status or throttling settings of a task in a single request.
         
         @param request: UpdateJobRequest
         @return: UpdateJobResponse
@@ -2719,6 +2864,8 @@ class Client(OpenApiClient):
     ) -> hcs_mgw_20240626_models.UpdateTunnelResponse:
         """
         @summary Updates a tunnel.
+        
+        @description    To update a tunnel, you must have the permission on mgw:UpdateImportTunnel.
         
         @param request: UpdateTunnelRequest
         @param headers: map
@@ -2763,6 +2910,8 @@ class Client(OpenApiClient):
         """
         @summary Updates a tunnel.
         
+        @description    To update a tunnel, you must have the permission on mgw:UpdateImportTunnel.
+        
         @param request: UpdateTunnelRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2804,6 +2953,8 @@ class Client(OpenApiClient):
         """
         @summary Updates a tunnel.
         
+        @description    To update a tunnel, you must have the permission on mgw:UpdateImportTunnel.
+        
         @param request: UpdateTunnelRequest
         @return: UpdateTunnelResponse
         """
@@ -2819,6 +2970,8 @@ class Client(OpenApiClient):
     ) -> hcs_mgw_20240626_models.UpdateTunnelResponse:
         """
         @summary Updates a tunnel.
+        
+        @description    To update a tunnel, you must have the permission on mgw:UpdateImportTunnel.
         
         @param request: UpdateTunnelRequest
         @return: UpdateTunnelResponse
@@ -2836,8 +2989,6 @@ class Client(OpenApiClient):
     ) -> hcs_mgw_20240626_models.VerifyAddressResponse:
         """
         @summary Verifies whether a data address is available.
-        
-        @description    A data address may not be available even if the data address passes the availability verification. The data migration results prevail.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2875,8 +3026,6 @@ class Client(OpenApiClient):
         """
         @summary Verifies whether a data address is available.
         
-        @description    A data address may not be available even if the data address passes the availability verification. The data migration results prevail.
-        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: VerifyAddressResponse
@@ -2911,8 +3060,6 @@ class Client(OpenApiClient):
         """
         @summary Verifies whether a data address is available.
         
-        @description    A data address may not be available even if the data address passes the availability verification. The data migration results prevail.
-        
         @return: VerifyAddressResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -2926,8 +3073,6 @@ class Client(OpenApiClient):
     ) -> hcs_mgw_20240626_models.VerifyAddressResponse:
         """
         @summary Verifies whether a data address is available.
-        
-        @description    A data address may not be available even if the data address passes the availability verification. The data migration results prevail.
         
         @return: VerifyAddressResponse
         """

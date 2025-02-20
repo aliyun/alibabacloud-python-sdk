@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_hcs-mgw20240626.
 
-Created on 17/10/2024
+Created on 20/02/2025
 
 @author: Alibaba Cloud SDK
 """
@@ -38,9 +38,9 @@ URL = "https://github.com/aliyun/alibabacloud-python-sdk"
 VERSION = __import__(PACKAGE).__version__
 REQUIRES = [
     "alibabacloud_tea_util>=0.3.13, <1.0.0",
-    "alibabacloud_gateway_oss>=0.0.12, <1.0.0",
+    "alibabacloud_gateway_oss>=0.0.15, <1.0.0",
     "alibabacloud_tea_openapi>=0.3.12, <1.0.0",
-    "alibabacloud_openapi_util>=0.2.1, <1.0.0"
+    "alibabacloud_openapi_util>=0.2.2, <1.0.0"
 ]
 
 LONG_DESCRIPTION = ''
