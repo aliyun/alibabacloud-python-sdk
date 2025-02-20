@@ -8453,6 +8453,57 @@ class DescribeBackupJobs2ResponseBodyBackupJobsBackupJobPaths(TeaModel):
         return self
 
 
+class DescribeBackupJobs2ResponseBodyBackupJobsBackupJobReport(TeaModel):
+    def __init__(
+        self,
+        failed_files: str = None,
+        report_task_status: str = None,
+        skipped_files: str = None,
+        success_files: str = None,
+        total_files: str = None,
+    ):
+        self.failed_files = failed_files
+        self.report_task_status = report_task_status
+        self.skipped_files = skipped_files
+        self.success_files = success_files
+        self.total_files = total_files
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed_files is not None:
+            result['FailedFiles'] = self.failed_files
+        if self.report_task_status is not None:
+            result['ReportTaskStatus'] = self.report_task_status
+        if self.skipped_files is not None:
+            result['SkippedFiles'] = self.skipped_files
+        if self.success_files is not None:
+            result['SuccessFiles'] = self.success_files
+        if self.total_files is not None:
+            result['TotalFiles'] = self.total_files
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailedFiles') is not None:
+            self.failed_files = m.get('FailedFiles')
+        if m.get('ReportTaskStatus') is not None:
+            self.report_task_status = m.get('ReportTaskStatus')
+        if m.get('SkippedFiles') is not None:
+            self.skipped_files = m.get('SkippedFiles')
+        if m.get('SuccessFiles') is not None:
+            self.success_files = m.get('SuccessFiles')
+        if m.get('TotalFiles') is not None:
+            self.total_files = m.get('TotalFiles')
+        return self
+
+
 class DescribeBackupJobs2ResponseBodyBackupJobsBackupJob(TeaModel):
     def __init__(
         self,
@@ -8494,6 +8545,7 @@ class DescribeBackupJobs2ResponseBodyBackupJobsBackupJob(TeaModel):
         plan_id: str = None,
         prefix: str = None,
         progress: int = None,
+        report: DescribeBackupJobs2ResponseBodyBackupJobsBackupJobReport = None,
         source_type: str = None,
         speed: int = None,
         speed_limit: str = None,
@@ -8586,6 +8638,7 @@ class DescribeBackupJobs2ResponseBodyBackupJobsBackupJob(TeaModel):
         self.prefix = prefix
         # The backup progress. For example, 10000 indicates that the progress is 100%.
         self.progress = progress
+        self.report = report
         # The type of the data source. Valid values:
         # 
         # *   **ECS_FILE**: ECS files
@@ -8622,6 +8675,8 @@ class DescribeBackupJobs2ResponseBodyBackupJobsBackupJob(TeaModel):
             self.ots_detail.validate()
         if self.paths:
             self.paths.validate()
+        if self.report:
+            self.report.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -8705,6 +8760,8 @@ class DescribeBackupJobs2ResponseBodyBackupJobsBackupJob(TeaModel):
             result['Prefix'] = self.prefix
         if self.progress is not None:
             result['Progress'] = self.progress
+        if self.report is not None:
+            result['Report'] = self.report.to_map()
         if self.source_type is not None:
             result['SourceType'] = self.source_type
         if self.speed is not None:
@@ -8804,6 +8861,9 @@ class DescribeBackupJobs2ResponseBodyBackupJobsBackupJob(TeaModel):
             self.prefix = m.get('Prefix')
         if m.get('Progress') is not None:
             self.progress = m.get('Progress')
+        if m.get('Report') is not None:
+            temp_model = DescribeBackupJobs2ResponseBodyBackupJobsBackupJobReport()
+            self.report = temp_model.from_map(m['Report'])
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')
         if m.get('Speed') is not None:
@@ -16753,6 +16813,7 @@ class DescribeUdmSnapshotsResponseBodySnapshots(TeaModel):
         advanced_retention_type: str = None,
         backup_type: str = None,
         bytes_total: int = None,
+        can_be_deleted: bool = None,
         complete_time: int = None,
         create_time: int = None,
         created_time: int = None,
@@ -16786,6 +16847,7 @@ class DescribeUdmSnapshotsResponseBodySnapshots(TeaModel):
         self.backup_type = backup_type
         # The total amount of data. Unit: bytes.
         self.bytes_total = bytes_total
+        self.can_be_deleted = can_be_deleted
         # The time when the backup snapshot was completed. The value is a UNIX timestamp. Unit: seconds.
         self.complete_time = complete_time
         # The time when the backup snapshot was created.
@@ -16853,6 +16915,8 @@ class DescribeUdmSnapshotsResponseBodySnapshots(TeaModel):
             result['BackupType'] = self.backup_type
         if self.bytes_total is not None:
             result['BytesTotal'] = self.bytes_total
+        if self.can_be_deleted is not None:
+            result['CanBeDeleted'] = self.can_be_deleted
         if self.complete_time is not None:
             result['CompleteTime'] = self.complete_time
         if self.create_time is not None:
@@ -16905,6 +16969,8 @@ class DescribeUdmSnapshotsResponseBodySnapshots(TeaModel):
             self.backup_type = m.get('BackupType')
         if m.get('BytesTotal') is not None:
             self.bytes_total = m.get('BytesTotal')
+        if m.get('CanBeDeleted') is not None:
+            self.can_be_deleted = m.get('CanBeDeleted')
         if m.get('CompleteTime') is not None:
             self.complete_time = m.get('CompleteTime')
         if m.get('CreateTime') is not None:
