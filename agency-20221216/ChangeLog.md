@@ -1,3 +1,7 @@
+2025-02-20 Version: 1.6.1
+- Update API IssueCouponForCustomer: add param IsUseBenefit.
+
+
 2024-11-29 Version: 1.6.0
 - Support API CancelCoupon.
 - Support API CouponApprovalStatusList.

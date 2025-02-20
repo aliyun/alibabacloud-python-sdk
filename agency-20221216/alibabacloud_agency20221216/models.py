@@ -4080,7 +4080,7 @@ class GetMonthlyBillRequest(TeaModel):
         # 
         # - MonthlyInvoice
         # - MonthRefundInvoice
-        # - MonthlySummary
+        # - MonthlySummary (Deprecated)
         # - MonthlyInstanceAddAdjustBill 
         # - MonthlyInstanceRefundBill
         # - MonthlyAddAdjustInvoce
@@ -4972,11 +4972,13 @@ class IssueCouponForCustomerRequest(TeaModel):
         self,
         accept_language: str = None,
         coupon_template_id: int = None,
+        is_use_benefit: bool = None,
         uidlist: str = None,
     ):
         self.accept_language = accept_language
         # This parameter is required.
         self.coupon_template_id = coupon_template_id
+        self.is_use_benefit = is_use_benefit
         # This parameter is required.
         self.uidlist = uidlist
 
@@ -4993,6 +4995,8 @@ class IssueCouponForCustomerRequest(TeaModel):
             result['AcceptLanguage'] = self.accept_language
         if self.coupon_template_id is not None:
             result['CouponTemplateId'] = self.coupon_template_id
+        if self.is_use_benefit is not None:
+            result['IsUseBenefit'] = self.is_use_benefit
         if self.uidlist is not None:
             result['Uidlist'] = self.uidlist
         return result
@@ -5003,6 +5007,8 @@ class IssueCouponForCustomerRequest(TeaModel):
             self.accept_language = m.get('AcceptLanguage')
         if m.get('CouponTemplateId') is not None:
             self.coupon_template_id = m.get('CouponTemplateId')
+        if m.get('IsUseBenefit') is not None:
+            self.is_use_benefit = m.get('IsUseBenefit')
         if m.get('Uidlist') is not None:
             self.uidlist = m.get('Uidlist')
         return self
