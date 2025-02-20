@@ -2458,10 +2458,12 @@ class CreateCommentRequest(TeaModel):
         content: str = None,
         draft: bool = None,
         file_path: str = None,
+        from_pach_set_biz_id: str = None,
         line_number: int = None,
         parent_comment_biz_id: str = None,
         patch_set_biz_id: str = None,
         resolved: bool = None,
+        to_patch_set_biz_id: str = None,
         local_id: int = None,
         organization_id: str = None,
         repository_identity: str = None,
@@ -2473,10 +2475,12 @@ class CreateCommentRequest(TeaModel):
         self.content = content
         self.draft = draft
         self.file_path = file_path
+        self.from_pach_set_biz_id = from_pach_set_biz_id
         self.line_number = line_number
         self.parent_comment_biz_id = parent_comment_biz_id
         self.patch_set_biz_id = patch_set_biz_id
         self.resolved = resolved
+        self.to_patch_set_biz_id = to_patch_set_biz_id
         # This parameter is required.
         self.local_id = local_id
         # This parameter is required.
@@ -2503,6 +2507,8 @@ class CreateCommentRequest(TeaModel):
             result['draft'] = self.draft
         if self.file_path is not None:
             result['filePath'] = self.file_path
+        if self.from_pach_set_biz_id is not None:
+            result['fromPachSetBizId'] = self.from_pach_set_biz_id
         if self.line_number is not None:
             result['lineNumber'] = self.line_number
         if self.parent_comment_biz_id is not None:
@@ -2511,6 +2517,8 @@ class CreateCommentRequest(TeaModel):
             result['patchSetBizId'] = self.patch_set_biz_id
         if self.resolved is not None:
             result['resolved'] = self.resolved
+        if self.to_patch_set_biz_id is not None:
+            result['toPatchSetBizId'] = self.to_patch_set_biz_id
         if self.local_id is not None:
             result['localId'] = self.local_id
         if self.organization_id is not None:
@@ -2531,6 +2539,8 @@ class CreateCommentRequest(TeaModel):
             self.draft = m.get('draft')
         if m.get('filePath') is not None:
             self.file_path = m.get('filePath')
+        if m.get('fromPachSetBizId') is not None:
+            self.from_pach_set_biz_id = m.get('fromPachSetBizId')
         if m.get('lineNumber') is not None:
             self.line_number = m.get('lineNumber')
         if m.get('parentCommentBizId') is not None:
@@ -2539,6 +2549,8 @@ class CreateCommentRequest(TeaModel):
             self.patch_set_biz_id = m.get('patchSetBizId')
         if m.get('resolved') is not None:
             self.resolved = m.get('resolved')
+        if m.get('toPatchSetBizId') is not None:
+            self.to_patch_set_biz_id = m.get('toPatchSetBizId')
         if m.get('localId') is not None:
             self.local_id = m.get('localId')
         if m.get('organizationId') is not None:
