@@ -1,3 +1,11 @@
+2025-02-20 Version: 2.31.0
+- Support API InvokeAssistant.
+- Support API InvokeSkill.
+- Support API SubscribeEvent.
+- Support API UnsubscribeEvent.
+- Update API CreateTodoTask: add param actionList.
+
+
 2025-02-13 Version: 2.30.0
 - Support API InvokeAssistant.
 - Support API InvokeSkill.

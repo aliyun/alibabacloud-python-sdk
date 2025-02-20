@@ -6790,6 +6790,8 @@ class Client(OpenApiClient):
             headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
         if not UtilClient.is_unset(tmp_req.tenant_context):
             request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not UtilClient.is_unset(tmp_req.action_list):
+            request.action_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.action_list, 'actionList', 'json')
         if not UtilClient.is_unset(tmp_req.content_field_list):
             request.content_field_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.content_field_list, 'contentFieldList', 'json')
         if not UtilClient.is_unset(tmp_req.detail_url):
@@ -6806,6 +6808,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.tenant_context_shrink):
             body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.action_list_shrink):
+            body['actionList'] = request.action_list_shrink
         if not UtilClient.is_unset(request.content_field_list_shrink):
             body['contentFieldList'] = request.content_field_list_shrink
         if not UtilClient.is_unset(request.creator_id):
@@ -6885,6 +6889,8 @@ class Client(OpenApiClient):
             headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
         if not UtilClient.is_unset(tmp_req.tenant_context):
             request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not UtilClient.is_unset(tmp_req.action_list):
+            request.action_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.action_list, 'actionList', 'json')
         if not UtilClient.is_unset(tmp_req.content_field_list):
             request.content_field_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.content_field_list, 'contentFieldList', 'json')
         if not UtilClient.is_unset(tmp_req.detail_url):
@@ -6901,6 +6907,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.tenant_context_shrink):
             body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.action_list_shrink):
+            body['actionList'] = request.action_list_shrink
         if not UtilClient.is_unset(request.content_field_list_shrink):
             body['contentFieldList'] = request.content_field_list_shrink
         if not UtilClient.is_unset(request.creator_id):
@@ -31977,6 +31985,156 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.SubscribeCalendarHeaders()
         return await self.subscribe_calendar_with_options_async(request, headers, runtime)
 
+    def subscribe_event_with_options(
+        self,
+        tmp_req: aliding_20230426_models.SubscribeEventRequest,
+        tmp_header: aliding_20230426_models.SubscribeEventHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.SubscribeEventResponse:
+        """
+        @summary 订阅文件变更事件
+        
+        @param tmp_req: SubscribeEventRequest
+        @param tmp_header: SubscribeEventHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubscribeEventResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.SubscribeEventShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.SubscribeEventShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.scope):
+            body['Scope'] = request.scope
+        if not UtilClient.is_unset(request.scope_id):
+            body['ScopeId'] = request.scope_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubscribeEvent',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/subscribeEvent',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aliding_20230426_models.SubscribeEventResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aliding_20230426_models.SubscribeEventResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def subscribe_event_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.SubscribeEventRequest,
+        tmp_header: aliding_20230426_models.SubscribeEventHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.SubscribeEventResponse:
+        """
+        @summary 订阅文件变更事件
+        
+        @param tmp_req: SubscribeEventRequest
+        @param tmp_header: SubscribeEventHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubscribeEventResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.SubscribeEventShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.SubscribeEventShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.scope):
+            body['Scope'] = request.scope
+        if not UtilClient.is_unset(request.scope_id):
+            body['ScopeId'] = request.scope_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubscribeEvent',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/subscribeEvent',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aliding_20230426_models.SubscribeEventResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aliding_20230426_models.SubscribeEventResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def subscribe_event(
+        self,
+        request: aliding_20230426_models.SubscribeEventRequest,
+    ) -> aliding_20230426_models.SubscribeEventResponse:
+        """
+        @summary 订阅文件变更事件
+        
+        @param request: SubscribeEventRequest
+        @return: SubscribeEventResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.SubscribeEventHeaders()
+        return self.subscribe_event_with_options(request, headers, runtime)
+
+    async def subscribe_event_async(
+        self,
+        request: aliding_20230426_models.SubscribeEventRequest,
+    ) -> aliding_20230426_models.SubscribeEventResponse:
+        """
+        @summary 订阅文件变更事件
+        
+        @param request: SubscribeEventRequest
+        @return: SubscribeEventResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.SubscribeEventHeaders()
+        return await self.subscribe_event_with_options_async(request, headers, runtime)
+
     def sync_ding_type_with_options(
         self,
         tmp_req: aliding_20230426_models.SyncDingTypeRequest,
@@ -32588,6 +32746,156 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UnsubscribeCalendarHeaders()
         return await self.unsubscribe_calendar_with_options_async(request, headers, runtime)
+
+    def unsubscribe_event_with_options(
+        self,
+        tmp_req: aliding_20230426_models.UnsubscribeEventRequest,
+        tmp_header: aliding_20230426_models.UnsubscribeEventHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.UnsubscribeEventResponse:
+        """
+        @summary 取消订阅文件变更事件
+        
+        @param tmp_req: UnsubscribeEventRequest
+        @param tmp_header: UnsubscribeEventHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnsubscribeEventResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.UnsubscribeEventShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.UnsubscribeEventShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.scope):
+            body['Scope'] = request.scope
+        if not UtilClient.is_unset(request.scope_id):
+            body['ScopeId'] = request.scope_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UnsubscribeEvent',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/unsubscribeEvent',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aliding_20230426_models.UnsubscribeEventResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aliding_20230426_models.UnsubscribeEventResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def unsubscribe_event_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.UnsubscribeEventRequest,
+        tmp_header: aliding_20230426_models.UnsubscribeEventHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.UnsubscribeEventResponse:
+        """
+        @summary 取消订阅文件变更事件
+        
+        @param tmp_req: UnsubscribeEventRequest
+        @param tmp_header: UnsubscribeEventHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnsubscribeEventResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.UnsubscribeEventShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.UnsubscribeEventShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.scope):
+            body['Scope'] = request.scope
+        if not UtilClient.is_unset(request.scope_id):
+            body['ScopeId'] = request.scope_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UnsubscribeEvent',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/unsubscribeEvent',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aliding_20230426_models.UnsubscribeEventResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aliding_20230426_models.UnsubscribeEventResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def unsubscribe_event(
+        self,
+        request: aliding_20230426_models.UnsubscribeEventRequest,
+    ) -> aliding_20230426_models.UnsubscribeEventResponse:
+        """
+        @summary 取消订阅文件变更事件
+        
+        @param request: UnsubscribeEventRequest
+        @return: UnsubscribeEventResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.UnsubscribeEventHeaders()
+        return self.unsubscribe_event_with_options(request, headers, runtime)
+
+    async def unsubscribe_event_async(
+        self,
+        request: aliding_20230426_models.UnsubscribeEventRequest,
+    ) -> aliding_20230426_models.UnsubscribeEventResponse:
+        """
+        @summary 取消订阅文件变更事件
+        
+        @param request: UnsubscribeEventRequest
+        @return: UnsubscribeEventResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.UnsubscribeEventHeaders()
+        return await self.unsubscribe_event_with_options_async(request, headers, runtime)
 
     def update_form_data_with_options(
         self,
