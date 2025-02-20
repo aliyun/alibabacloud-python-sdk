@@ -1148,6 +1148,7 @@ class CreateTaskRequestTranscription(TeaModel):
         level: str = None,
         service_channel: int = None,
         service_channel_keywords: List[str] = None,
+        vocabulary_id: str = None,
         voice_file_url: str = None,
     ):
         self.asr_model_code = asr_model_code
@@ -1158,6 +1159,7 @@ class CreateTaskRequestTranscription(TeaModel):
         self.level = level
         self.service_channel = service_channel
         self.service_channel_keywords = service_channel_keywords
+        self.vocabulary_id = vocabulary_id
         # This parameter is required.
         self.voice_file_url = voice_file_url
 
@@ -1184,6 +1186,8 @@ class CreateTaskRequestTranscription(TeaModel):
             result['serviceChannel'] = self.service_channel
         if self.service_channel_keywords is not None:
             result['serviceChannelKeywords'] = self.service_channel_keywords
+        if self.vocabulary_id is not None:
+            result['vocabularyId'] = self.vocabulary_id
         if self.voice_file_url is not None:
             result['voiceFileUrl'] = self.voice_file_url
         return result
@@ -1204,6 +1208,8 @@ class CreateTaskRequestTranscription(TeaModel):
             self.service_channel = m.get('serviceChannel')
         if m.get('serviceChannelKeywords') is not None:
             self.service_channel_keywords = m.get('serviceChannelKeywords')
+        if m.get('vocabularyId') is not None:
+            self.vocabulary_id = m.get('vocabularyId')
         if m.get('voiceFileUrl') is not None:
             self.voice_file_url = m.get('voiceFileUrl')
         return self

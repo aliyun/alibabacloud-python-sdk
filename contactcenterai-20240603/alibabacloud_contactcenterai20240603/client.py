@@ -100,10 +100,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            contact_center_ai20240603_models.AnalyzeConversationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.AnalyzeConversationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.AnalyzeConversationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def analyze_conversation_with_options_async(
         self,
@@ -164,10 +170,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            contact_center_ai20240603_models.AnalyzeConversationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.AnalyzeConversationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.AnalyzeConversationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def analyze_conversation(
         self,
@@ -240,10 +252,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            contact_center_ai20240603_models.AnalyzeImageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.AnalyzeImageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.AnalyzeImageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def analyze_image_with_options_async(
         self,
@@ -284,10 +302,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            contact_center_ai20240603_models.AnalyzeImageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.AnalyzeImageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.AnalyzeImageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def analyze_image(
         self,
@@ -372,10 +396,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            contact_center_ai20240603_models.CreateTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.CreateTaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.CreateTaskResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_task_with_options_async(
         self,
@@ -428,10 +458,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            contact_center_ai20240603_models.CreateTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.CreateTaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.CreateTaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_task(
         self,
@@ -504,10 +540,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            contact_center_ai20240603_models.GetTaskResultResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.GetTaskResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.GetTaskResultResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_task_result_with_options_async(
         self,
@@ -548,10 +590,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            contact_center_ai20240603_models.GetTaskResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.GetTaskResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.GetTaskResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_task_result(
         self,
@@ -626,10 +674,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            contact_center_ai20240603_models.RunCompletionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.RunCompletionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.RunCompletionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def run_completion_with_options_async(
         self,
@@ -676,10 +730,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            contact_center_ai20240603_models.RunCompletionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.RunCompletionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.RunCompletionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def run_completion(
         self,
@@ -752,10 +812,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            contact_center_ai20240603_models.RunCompletionMessageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.RunCompletionMessageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.RunCompletionMessageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def run_completion_message_with_options_async(
         self,
@@ -796,10 +862,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            contact_center_ai20240603_models.RunCompletionMessageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.RunCompletionMessageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.RunCompletionMessageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def run_completion_message(
         self,

@@ -1,3 +1,7 @@
+2025-02-20 Version: 3.3.5
+- Update API CreateTask: update param body.
+
+
 2025-01-16 Version: 3.3.4
 - Update API CreateTask: update param body.
 - Update API GetTaskResult: update param requiredFieldList.
