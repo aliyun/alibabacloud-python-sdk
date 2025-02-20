@@ -1,3 +1,7 @@
+2025-02-20 Version: 1.2.1
+- Update API SendCustomEvent: add param EventMarkdown.
+
+
 2025-01-15 Version: 1.2.0
 - Support API ConfirmDjbhReport.
 - Support API CreateServiceLinkedRole.

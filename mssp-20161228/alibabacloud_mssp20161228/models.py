@@ -271,6 +271,7 @@ class CreateServiceWorkOrderRequest(TeaModel):
         # 
         # This parameter is required.
         self.is_attachment = is_attachment
+        # Is milestone.
         self.is_milestone = is_milestone
         # Whether a reminder is needed.
         # 
@@ -535,14 +536,17 @@ class CreateServiceWorkOrderResponseBody(TeaModel):
         self.data = data
         # HTTP status code.
         self.http_status_code = http_status_code
-        # The prompt message of the returned result.
+        # Prompt message of the returned result.
         self.message = message
         # Request ID.
         # 
         # This parameter is required.
         self.request_id = request_id
         # Whether the call was successful.
-        # - **true**: The call was successful. - **false**: The call failed.
+        # 
+        # - **true**: Call succeeded.
+        # 
+        # - **false**: Call failed.
         self.success = success
 
     def validate(self):
@@ -7013,6 +7017,7 @@ class SendCustomEventRequest(TeaModel):
         data_source: str = None,
         event_description: str = None,
         event_details: str = None,
+        event_markdown: str = None,
         event_name: str = None,
         event_type: str = None,
         find_time: int = None,
@@ -7036,6 +7041,7 @@ class SendCustomEventRequest(TeaModel):
         self.event_description = event_description
         # Alert event details.
         self.event_details = event_details
+        self.event_markdown = event_markdown
         # Event name.
         # 
         # This parameter is required.
@@ -7089,6 +7095,8 @@ class SendCustomEventRequest(TeaModel):
             result['EventDescription'] = self.event_description
         if self.event_details is not None:
             result['EventDetails'] = self.event_details
+        if self.event_markdown is not None:
+            result['EventMarkdown'] = self.event_markdown
         if self.event_name is not None:
             result['EventName'] = self.event_name
         if self.event_type is not None:
@@ -7125,6 +7133,8 @@ class SendCustomEventRequest(TeaModel):
             self.event_description = m.get('EventDescription')
         if m.get('EventDetails') is not None:
             self.event_details = m.get('EventDetails')
+        if m.get('EventMarkdown') is not None:
+            self.event_markdown = m.get('EventMarkdown')
         if m.get('EventName') is not None:
             self.event_name = m.get('EventName')
         if m.get('EventType') is not None:
