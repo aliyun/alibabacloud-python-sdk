@@ -501,6 +501,258 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_task_with_options_async(workspace_id, app_id, request, headers, runtime)
 
+    def create_vocab_with_options(
+        self,
+        request: contact_center_ai20240603_models.CreateVocabRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> contact_center_ai20240603_models.CreateVocabResponse:
+        """
+        @summary 创建热词
+        
+        @param request: CreateVocabRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVocabResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.audio_model_code):
+            body['audioModelCode'] = request.audio_model_code
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.word_weight_list):
+            body['wordWeightList'] = request.word_weight_list
+        if not UtilClient.is_unset(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateVocab',
+            version='2024-06-03',
+            protocol='HTTPS',
+            pathname=f'/vocab/createVocab',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.CreateVocabResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.CreateVocabResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_vocab_with_options_async(
+        self,
+        request: contact_center_ai20240603_models.CreateVocabRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> contact_center_ai20240603_models.CreateVocabResponse:
+        """
+        @summary 创建热词
+        
+        @param request: CreateVocabRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVocabResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.audio_model_code):
+            body['audioModelCode'] = request.audio_model_code
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.word_weight_list):
+            body['wordWeightList'] = request.word_weight_list
+        if not UtilClient.is_unset(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateVocab',
+            version='2024-06-03',
+            protocol='HTTPS',
+            pathname=f'/vocab/createVocab',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.CreateVocabResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.CreateVocabResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_vocab(
+        self,
+        request: contact_center_ai20240603_models.CreateVocabRequest,
+    ) -> contact_center_ai20240603_models.CreateVocabResponse:
+        """
+        @summary 创建热词
+        
+        @param request: CreateVocabRequest
+        @return: CreateVocabResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_vocab_with_options(request, headers, runtime)
+
+    async def create_vocab_async(
+        self,
+        request: contact_center_ai20240603_models.CreateVocabRequest,
+    ) -> contact_center_ai20240603_models.CreateVocabResponse:
+        """
+        @summary 创建热词
+        
+        @param request: CreateVocabRequest
+        @return: CreateVocabResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_vocab_with_options_async(request, headers, runtime)
+
+    def delete_vocab_with_options(
+        self,
+        request: contact_center_ai20240603_models.DeleteVocabRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> contact_center_ai20240603_models.DeleteVocabResponse:
+        """
+        @summary 删删除热词
+        
+        @param request: DeleteVocabRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVocabResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.vocabulary_id):
+            body['vocabularyId'] = request.vocabulary_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteVocab',
+            version='2024-06-03',
+            protocol='HTTPS',
+            pathname=f'/vocab/deleteVocab',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.DeleteVocabResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.DeleteVocabResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_vocab_with_options_async(
+        self,
+        request: contact_center_ai20240603_models.DeleteVocabRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> contact_center_ai20240603_models.DeleteVocabResponse:
+        """
+        @summary 删删除热词
+        
+        @param request: DeleteVocabRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVocabResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.vocabulary_id):
+            body['vocabularyId'] = request.vocabulary_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteVocab',
+            version='2024-06-03',
+            protocol='HTTPS',
+            pathname=f'/vocab/deleteVocab',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.DeleteVocabResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.DeleteVocabResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_vocab(
+        self,
+        request: contact_center_ai20240603_models.DeleteVocabRequest,
+    ) -> contact_center_ai20240603_models.DeleteVocabResponse:
+        """
+        @summary 删删除热词
+        
+        @param request: DeleteVocabRequest
+        @return: DeleteVocabResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_vocab_with_options(request, headers, runtime)
+
+    async def delete_vocab_async(
+        self,
+        request: contact_center_ai20240603_models.DeleteVocabRequest,
+    ) -> contact_center_ai20240603_models.DeleteVocabResponse:
+        """
+        @summary 删删除热词
+        
+        @param request: DeleteVocabRequest
+        @return: DeleteVocabResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_vocab_with_options_async(request, headers, runtime)
+
     def get_task_result_with_options(
         self,
         tmp_req: contact_center_ai20240603_models.GetTaskResultRequest,
@@ -628,6 +880,242 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_task_result_with_options_async(request, headers, runtime)
+
+    def get_vocab_with_options(
+        self,
+        request: contact_center_ai20240603_models.GetVocabRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> contact_center_ai20240603_models.GetVocabResponse:
+        """
+        @summary 获取热词
+        
+        @param request: GetVocabRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVocabResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.vocabulary_id):
+            body['vocabularyId'] = request.vocabulary_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetVocab',
+            version='2024-06-03',
+            protocol='HTTPS',
+            pathname=f'/vocab/getVocab',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.GetVocabResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.GetVocabResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_vocab_with_options_async(
+        self,
+        request: contact_center_ai20240603_models.GetVocabRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> contact_center_ai20240603_models.GetVocabResponse:
+        """
+        @summary 获取热词
+        
+        @param request: GetVocabRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVocabResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.vocabulary_id):
+            body['vocabularyId'] = request.vocabulary_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetVocab',
+            version='2024-06-03',
+            protocol='HTTPS',
+            pathname=f'/vocab/getVocab',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.GetVocabResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.GetVocabResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_vocab(
+        self,
+        request: contact_center_ai20240603_models.GetVocabRequest,
+    ) -> contact_center_ai20240603_models.GetVocabResponse:
+        """
+        @summary 获取热词
+        
+        @param request: GetVocabRequest
+        @return: GetVocabResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_vocab_with_options(request, headers, runtime)
+
+    async def get_vocab_async(
+        self,
+        request: contact_center_ai20240603_models.GetVocabRequest,
+    ) -> contact_center_ai20240603_models.GetVocabResponse:
+        """
+        @summary 获取热词
+        
+        @param request: GetVocabRequest
+        @return: GetVocabResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_vocab_with_options_async(request, headers, runtime)
+
+    def list_vocab_with_options(
+        self,
+        request: contact_center_ai20240603_models.ListVocabRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> contact_center_ai20240603_models.ListVocabResponse:
+        """
+        @summary 热词列表
+        
+        @param request: ListVocabRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVocabResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListVocab',
+            version='2024-06-03',
+            protocol='HTTPS',
+            pathname=f'/vocab/listVocab',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.ListVocabResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.ListVocabResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_vocab_with_options_async(
+        self,
+        request: contact_center_ai20240603_models.ListVocabRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> contact_center_ai20240603_models.ListVocabResponse:
+        """
+        @summary 热词列表
+        
+        @param request: ListVocabRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVocabResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListVocab',
+            version='2024-06-03',
+            protocol='HTTPS',
+            pathname=f'/vocab/listVocab',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.ListVocabResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.ListVocabResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_vocab(
+        self,
+        request: contact_center_ai20240603_models.ListVocabRequest,
+    ) -> contact_center_ai20240603_models.ListVocabResponse:
+        """
+        @summary 热词列表
+        
+        @param request: ListVocabRequest
+        @return: ListVocabResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_vocab_with_options(request, headers, runtime)
+
+    async def list_vocab_async(
+        self,
+        request: contact_center_ai20240603_models.ListVocabRequest,
+    ) -> contact_center_ai20240603_models.ListVocabResponse:
+        """
+        @summary 热词列表
+        
+        @param request: ListVocabRequest
+        @return: ListVocabResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_vocab_with_options_async(request, headers, runtime)
 
     def run_completion_with_options(
         self,
@@ -904,3 +1392,135 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.run_completion_message_with_options_async(workspace_id, app_id, request, headers, runtime)
+
+    def update_vocab_with_options(
+        self,
+        request: contact_center_ai20240603_models.UpdateVocabRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> contact_center_ai20240603_models.UpdateVocabResponse:
+        """
+        @summary 修改热词
+        
+        @param request: UpdateVocabRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateVocabResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.vocabulary_id):
+            body['vocabularyId'] = request.vocabulary_id
+        if not UtilClient.is_unset(request.word_weight_list):
+            body['wordWeightList'] = request.word_weight_list
+        if not UtilClient.is_unset(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateVocab',
+            version='2024-06-03',
+            protocol='HTTPS',
+            pathname=f'/vocab/updateVocab',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.UpdateVocabResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.UpdateVocabResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_vocab_with_options_async(
+        self,
+        request: contact_center_ai20240603_models.UpdateVocabRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> contact_center_ai20240603_models.UpdateVocabResponse:
+        """
+        @summary 修改热词
+        
+        @param request: UpdateVocabRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateVocabResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.vocabulary_id):
+            body['vocabularyId'] = request.vocabulary_id
+        if not UtilClient.is_unset(request.word_weight_list):
+            body['wordWeightList'] = request.word_weight_list
+        if not UtilClient.is_unset(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateVocab',
+            version='2024-06-03',
+            protocol='HTTPS',
+            pathname=f'/vocab/updateVocab',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.UpdateVocabResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                contact_center_ai20240603_models.UpdateVocabResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_vocab(
+        self,
+        request: contact_center_ai20240603_models.UpdateVocabRequest,
+    ) -> contact_center_ai20240603_models.UpdateVocabResponse:
+        """
+        @summary 修改热词
+        
+        @param request: UpdateVocabRequest
+        @return: UpdateVocabResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_vocab_with_options(request, headers, runtime)
+
+    async def update_vocab_async(
+        self,
+        request: contact_center_ai20240603_models.UpdateVocabRequest,
+    ) -> contact_center_ai20240603_models.UpdateVocabResponse:
+        """
+        @summary 修改热词
+        
+        @param request: UpdateVocabRequest
+        @return: UpdateVocabResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_vocab_with_options_async(request, headers, runtime)

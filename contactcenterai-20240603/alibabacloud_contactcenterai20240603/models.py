@@ -1421,6 +1421,328 @@ class CreateTaskResponse(TeaModel):
         return self
 
 
+class CreateVocabRequestWordWeightList(TeaModel):
+    def __init__(
+        self,
+        weight: int = None,
+        word: str = None,
+    ):
+        # This parameter is required.
+        self.weight = weight
+        # This parameter is required.
+        self.word = word
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.weight is not None:
+            result['weight'] = self.weight
+        if self.word is not None:
+            result['word'] = self.word
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('weight') is not None:
+            self.weight = m.get('weight')
+        if m.get('word') is not None:
+            self.word = m.get('word')
+        return self
+
+
+class CreateVocabRequest(TeaModel):
+    def __init__(
+        self,
+        audio_model_code: str = None,
+        description: str = None,
+        name: str = None,
+        word_weight_list: List[CreateVocabRequestWordWeightList] = None,
+        workspace_id: str = None,
+    ):
+        self.audio_model_code = audio_model_code
+        # This parameter is required.
+        self.description = description
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.word_weight_list = word_weight_list
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.word_weight_list:
+            for k in self.word_weight_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_model_code is not None:
+            result['audioModelCode'] = self.audio_model_code
+        if self.description is not None:
+            result['description'] = self.description
+        if self.name is not None:
+            result['name'] = self.name
+        result['wordWeightList'] = []
+        if self.word_weight_list is not None:
+            for k in self.word_weight_list:
+                result['wordWeightList'].append(k.to_map() if k else None)
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('audioModelCode') is not None:
+            self.audio_model_code = m.get('audioModelCode')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        self.word_weight_list = []
+        if m.get('wordWeightList') is not None:
+            for k in m.get('wordWeightList'):
+                temp_model = CreateVocabRequestWordWeightList()
+                self.word_weight_list.append(temp_model.from_map(k))
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
+        return self
+
+
+class CreateVocabResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        vocabulary_id: str = None,
+    ):
+        self.vocabulary_id = vocabulary_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.vocabulary_id is not None:
+            result['vocabularyId'] = self.vocabulary_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('vocabularyId') is not None:
+            self.vocabulary_id = m.get('vocabularyId')
+        return self
+
+
+class CreateVocabResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CreateVocabResponseBodyData = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = CreateVocabResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CreateVocabResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateVocabResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateVocabResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteVocabRequest(TeaModel):
+    def __init__(
+        self,
+        vocabulary_id: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.vocabulary_id = vocabulary_id
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.vocabulary_id is not None:
+            result['vocabularyId'] = self.vocabulary_id
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('vocabularyId') is not None:
+            self.vocabulary_id = m.get('vocabularyId')
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
+        return self
+
+
+class DeleteVocabResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class DeleteVocabResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteVocabResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteVocabResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetTaskResultRequest(TeaModel):
     def __init__(
         self,
@@ -1687,6 +2009,423 @@ class GetTaskResultResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetTaskResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetVocabRequest(TeaModel):
+    def __init__(
+        self,
+        vocabulary_id: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.vocabulary_id = vocabulary_id
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.vocabulary_id is not None:
+            result['vocabularyId'] = self.vocabulary_id
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('vocabularyId') is not None:
+            self.vocabulary_id = m.get('vocabularyId')
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
+        return self
+
+
+class GetVocabResponseBodyDataWordWeightList(TeaModel):
+    def __init__(
+        self,
+        weight: int = None,
+        word: str = None,
+    ):
+        self.weight = weight
+        self.word = word
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.weight is not None:
+            result['weight'] = self.weight
+        if self.word is not None:
+            result['word'] = self.word
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('weight') is not None:
+            self.weight = m.get('weight')
+        if m.get('word') is not None:
+            self.word = m.get('word')
+        return self
+
+
+class GetVocabResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        audio_model_code: str = None,
+        description: str = None,
+        name: str = None,
+        vocabulary_id: str = None,
+        word_weight_list: List[GetVocabResponseBodyDataWordWeightList] = None,
+    ):
+        self.audio_model_code = audio_model_code
+        self.description = description
+        self.name = name
+        self.vocabulary_id = vocabulary_id
+        self.word_weight_list = word_weight_list
+
+    def validate(self):
+        if self.word_weight_list:
+            for k in self.word_weight_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_model_code is not None:
+            result['audioModelCode'] = self.audio_model_code
+        if self.description is not None:
+            result['description'] = self.description
+        if self.name is not None:
+            result['name'] = self.name
+        if self.vocabulary_id is not None:
+            result['vocabularyId'] = self.vocabulary_id
+        result['wordWeightList'] = []
+        if self.word_weight_list is not None:
+            for k in self.word_weight_list:
+                result['wordWeightList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('audioModelCode') is not None:
+            self.audio_model_code = m.get('audioModelCode')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('vocabularyId') is not None:
+            self.vocabulary_id = m.get('vocabularyId')
+        self.word_weight_list = []
+        if m.get('wordWeightList') is not None:
+            for k in m.get('wordWeightList'):
+                temp_model = GetVocabResponseBodyDataWordWeightList()
+                self.word_weight_list.append(temp_model.from_map(k))
+        return self
+
+
+class GetVocabResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetVocabResponseBodyData = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = GetVocabResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetVocabResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetVocabResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetVocabResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListVocabRequest(TeaModel):
+    def __init__(
+        self,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
+        return self
+
+
+class ListVocabResponseBodyDataWordWeightList(TeaModel):
+    def __init__(
+        self,
+        weight: int = None,
+        word: str = None,
+    ):
+        self.weight = weight
+        self.word = word
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.weight is not None:
+            result['weight'] = self.weight
+        if self.word is not None:
+            result['word'] = self.word
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('weight') is not None:
+            self.weight = m.get('weight')
+        if m.get('word') is not None:
+            self.word = m.get('word')
+        return self
+
+
+class ListVocabResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        audio_model_code: str = None,
+        description: str = None,
+        name: str = None,
+        vocabulary_id: str = None,
+        word_weight_list: List[ListVocabResponseBodyDataWordWeightList] = None,
+    ):
+        self.audio_model_code = audio_model_code
+        self.description = description
+        self.name = name
+        self.vocabulary_id = vocabulary_id
+        self.word_weight_list = word_weight_list
+
+    def validate(self):
+        if self.word_weight_list:
+            for k in self.word_weight_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_model_code is not None:
+            result['audioModelCode'] = self.audio_model_code
+        if self.description is not None:
+            result['description'] = self.description
+        if self.name is not None:
+            result['name'] = self.name
+        if self.vocabulary_id is not None:
+            result['vocabularyId'] = self.vocabulary_id
+        result['wordWeightList'] = []
+        if self.word_weight_list is not None:
+            for k in self.word_weight_list:
+                result['wordWeightList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('audioModelCode') is not None:
+            self.audio_model_code = m.get('audioModelCode')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('vocabularyId') is not None:
+            self.vocabulary_id = m.get('vocabularyId')
+        self.word_weight_list = []
+        if m.get('wordWeightList') is not None:
+            for k in m.get('wordWeightList'):
+                temp_model = ListVocabResponseBodyDataWordWeightList()
+                self.word_weight_list.append(temp_model.from_map(k))
+        return self
+
+
+class ListVocabResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[ListVocabResponseBodyData] = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = ListVocabResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ListVocabResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListVocabResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListVocabResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2290,6 +3029,182 @@ class RunCompletionMessageResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RunCompletionMessageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateVocabRequestWordWeightList(TeaModel):
+    def __init__(
+        self,
+        weight: int = None,
+        word: str = None,
+    ):
+        # This parameter is required.
+        self.weight = weight
+        # This parameter is required.
+        self.word = word
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.weight is not None:
+            result['weight'] = self.weight
+        if self.word is not None:
+            result['word'] = self.word
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('weight') is not None:
+            self.weight = m.get('weight')
+        if m.get('word') is not None:
+            self.word = m.get('word')
+        return self
+
+
+class UpdateVocabRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+        vocabulary_id: str = None,
+        word_weight_list: List[UpdateVocabRequestWordWeightList] = None,
+        workspace_id: str = None,
+    ):
+        self.description = description
+        self.name = name
+        # This parameter is required.
+        self.vocabulary_id = vocabulary_id
+        self.word_weight_list = word_weight_list
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.word_weight_list:
+            for k in self.word_weight_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.name is not None:
+            result['name'] = self.name
+        if self.vocabulary_id is not None:
+            result['vocabularyId'] = self.vocabulary_id
+        result['wordWeightList'] = []
+        if self.word_weight_list is not None:
+            for k in self.word_weight_list:
+                result['wordWeightList'].append(k.to_map() if k else None)
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('vocabularyId') is not None:
+            self.vocabulary_id = m.get('vocabularyId')
+        self.word_weight_list = []
+        if m.get('wordWeightList') is not None:
+            for k in m.get('wordWeightList'):
+                temp_model = UpdateVocabRequestWordWeightList()
+                self.word_weight_list.append(temp_model.from_map(k))
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
+        return self
+
+
+class UpdateVocabResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class UpdateVocabResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateVocabResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateVocabResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
