@@ -3,6 +3,11 @@
 - Update API ListClusterHealthCheckTask: update response param.
 
 
+2025-02-20 Version: 6.17.3
+- Update API GetGatewayConfig: update response param.
+- Update API ListClusterHealthCheckTask: update response param.
+
+
 2025-01-13 Version: 6.17.0
 - Support API GetLocalityRule.
 - Support API UpdateLocalityRule.
