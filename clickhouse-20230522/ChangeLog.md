@@ -1,11 +1,7 @@
-2025-02-06 Version: 1.0.3
+2025-02-20 Version: 1.0.4
+- Update API CreateDBInstance: add param BackupSetId.
 - Update API CreateDBInstance: add param DeploySchema.
-
-
-2025-01-14 Version: 1.0.2
-- Update API DescribeDBInstanceAttribute: update response param.
-- Update API ModifyDBInstanceConnectionString: add param DisablePorts.
-- Update API ModifyDBInstanceConnectionString: update response param.
+- Update API CreateDBInstance: add param SourceDBInstanceId.
 
 
 2024-10-11 Version: 1.0.1

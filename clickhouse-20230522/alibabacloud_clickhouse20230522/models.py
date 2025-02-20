@@ -537,6 +537,7 @@ class CreateDBInstanceRequestMultiZone(TeaModel):
 class CreateDBInstanceRequest(TeaModel):
     def __init__(
         self,
+        backup_set_id: str = None,
         client_token: str = None,
         dbinstance_description: str = None,
         deploy_schema: str = None,
@@ -546,10 +547,12 @@ class CreateDBInstanceRequest(TeaModel):
         region_id: str = None,
         scale_max: str = None,
         scale_min: str = None,
+        source_dbinstance_id: str = None,
         vpc_id: str = None,
         vswitch_id: str = None,
         zone_id: str = None,
     ):
+        self.backup_set_id = backup_set_id
         self.client_token = client_token
         self.dbinstance_description = dbinstance_description
         self.deploy_schema = deploy_schema
@@ -561,6 +564,7 @@ class CreateDBInstanceRequest(TeaModel):
         self.region_id = region_id
         self.scale_max = scale_max
         self.scale_min = scale_min
+        self.source_dbinstance_id = source_dbinstance_id
         # VPC ID。
         self.vpc_id = vpc_id
         self.vswitch_id = vswitch_id
@@ -578,6 +582,8 @@ class CreateDBInstanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.backup_set_id is not None:
+            result['BackupSetId'] = self.backup_set_id
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dbinstance_description is not None:
@@ -598,6 +604,8 @@ class CreateDBInstanceRequest(TeaModel):
             result['ScaleMax'] = self.scale_max
         if self.scale_min is not None:
             result['ScaleMin'] = self.scale_min
+        if self.source_dbinstance_id is not None:
+            result['SourceDBInstanceId'] = self.source_dbinstance_id
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         if self.vswitch_id is not None:
@@ -608,6 +616,8 @@ class CreateDBInstanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BackupSetId') is not None:
+            self.backup_set_id = m.get('BackupSetId')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DBInstanceDescription') is not None:
@@ -629,6 +639,8 @@ class CreateDBInstanceRequest(TeaModel):
             self.scale_max = m.get('ScaleMax')
         if m.get('ScaleMin') is not None:
             self.scale_min = m.get('ScaleMin')
+        if m.get('SourceDBInstanceId') is not None:
+            self.source_dbinstance_id = m.get('SourceDBInstanceId')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         if m.get('VswitchId') is not None:
@@ -641,6 +653,7 @@ class CreateDBInstanceRequest(TeaModel):
 class CreateDBInstanceShrinkRequest(TeaModel):
     def __init__(
         self,
+        backup_set_id: str = None,
         client_token: str = None,
         dbinstance_description: str = None,
         deploy_schema: str = None,
@@ -650,10 +663,12 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         region_id: str = None,
         scale_max: str = None,
         scale_min: str = None,
+        source_dbinstance_id: str = None,
         vpc_id: str = None,
         vswitch_id: str = None,
         zone_id: str = None,
     ):
+        self.backup_set_id = backup_set_id
         self.client_token = client_token
         self.dbinstance_description = dbinstance_description
         self.deploy_schema = deploy_schema
@@ -665,6 +680,7 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         self.region_id = region_id
         self.scale_max = scale_max
         self.scale_min = scale_min
+        self.source_dbinstance_id = source_dbinstance_id
         # VPC ID。
         self.vpc_id = vpc_id
         self.vswitch_id = vswitch_id
@@ -679,6 +695,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.backup_set_id is not None:
+            result['BackupSetId'] = self.backup_set_id
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dbinstance_description is not None:
@@ -697,6 +715,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
             result['ScaleMax'] = self.scale_max
         if self.scale_min is not None:
             result['ScaleMin'] = self.scale_min
+        if self.source_dbinstance_id is not None:
+            result['SourceDBInstanceId'] = self.source_dbinstance_id
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         if self.vswitch_id is not None:
@@ -707,6 +727,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BackupSetId') is not None:
+            self.backup_set_id = m.get('BackupSetId')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DBInstanceDescription') is not None:
@@ -725,6 +747,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
             self.scale_max = m.get('ScaleMax')
         if m.get('ScaleMin') is not None:
             self.scale_min = m.get('ScaleMin')
+        if m.get('SourceDBInstanceId') is not None:
+            self.source_dbinstance_id = m.get('SourceDBInstanceId')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         if m.get('VswitchId') is not None:

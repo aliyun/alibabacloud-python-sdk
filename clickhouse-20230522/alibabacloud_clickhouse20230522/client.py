@@ -369,6 +369,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.multi_zone):
             request.multi_zone_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.multi_zone, 'MultiZone', 'json')
         query = {}
+        if not UtilClient.is_unset(request.backup_set_id):
+            query['BackupSetId'] = request.backup_set_id
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbinstance_description):
@@ -387,6 +389,8 @@ class Client(OpenApiClient):
             query['ScaleMax'] = request.scale_max
         if not UtilClient.is_unset(request.scale_min):
             query['ScaleMin'] = request.scale_min
+        if not UtilClient.is_unset(request.source_dbinstance_id):
+            query['SourceDBInstanceId'] = request.source_dbinstance_id
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         if not UtilClient.is_unset(request.vswitch_id):
@@ -436,6 +440,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.multi_zone):
             request.multi_zone_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.multi_zone, 'MultiZone', 'json')
         query = {}
+        if not UtilClient.is_unset(request.backup_set_id):
+            query['BackupSetId'] = request.backup_set_id
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbinstance_description):
@@ -454,6 +460,8 @@ class Client(OpenApiClient):
             query['ScaleMax'] = request.scale_max
         if not UtilClient.is_unset(request.scale_min):
             query['ScaleMin'] = request.scale_min
+        if not UtilClient.is_unset(request.source_dbinstance_id):
+            query['SourceDBInstanceId'] = request.source_dbinstance_id
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         if not UtilClient.is_unset(request.vswitch_id):
