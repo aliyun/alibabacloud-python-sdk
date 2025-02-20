@@ -1,3 +1,15 @@
+2025-02-20 Version: 2.8.2
+- Update API InvokeRobotPush: add param RoomName.
+- Update API InvokeRobotPush: update param HotelId.
+- Update API InvokeRobotPush: update param PushType.
+- Update API InvokeRobotPush: update param RoomNo.
+- Update API PushWelcome: add param RoomName.
+- Update API PushWelcome: update param RoomNo.
+- Update API PushWelcomeTextAndMusic: add param RoomName.
+- Update API PushWelcomeTextAndMusic: update param RoomNo.
+- Update API PushWelcomeTextAndMusic: update param TemplateVariable.
+
+
 2025-01-13 Version: 2.8.1
 - Generated python ip_1.0 for AliGenie.
 

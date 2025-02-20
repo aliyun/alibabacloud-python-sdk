@@ -85,10 +85,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.AddCartoonResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddCartoonResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddCartoonResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_cartoon_with_options_async(
         self,
@@ -134,10 +140,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.AddCartoonResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddCartoonResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddCartoonResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_cartoon(
         self,
@@ -223,10 +235,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.AddCustomQAResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddCustomQAResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddCustomQAResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_custom_qawith_options_async(
         self,
@@ -284,10 +302,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.AddCustomQAResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddCustomQAResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddCustomQAResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_custom_qa(
         self,
@@ -373,10 +397,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.AddCustomQAV2Response(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddCustomQAV2Response(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddCustomQAV2Response(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_custom_qav2with_options_async(
         self,
@@ -434,10 +464,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.AddCustomQAV2Response(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddCustomQAV2Response(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddCustomQAV2Response(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_custom_qav2(
         self,
@@ -509,10 +545,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.AddMessageTemplateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddMessageTemplateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddMessageTemplateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_message_template_with_options_async(
         self,
@@ -556,10 +598,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.AddMessageTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddMessageTemplateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddMessageTemplateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_message_template(
         self,
@@ -635,10 +683,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.AddOrUpdateDisPlayModesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddOrUpdateDisPlayModesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddOrUpdateDisPlayModesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_or_update_dis_play_modes_with_options_async(
         self,
@@ -686,10 +740,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.AddOrUpdateDisPlayModesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddOrUpdateDisPlayModesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddOrUpdateDisPlayModesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_or_update_dis_play_modes(
         self,
@@ -777,10 +837,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.AddOrUpdateHotelSettingResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddOrUpdateHotelSettingResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddOrUpdateHotelSettingResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_or_update_hotel_setting_with_options_async(
         self,
@@ -840,10 +906,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.AddOrUpdateHotelSettingResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddOrUpdateHotelSettingResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddOrUpdateHotelSettingResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_or_update_hotel_setting(
         self,
@@ -919,10 +991,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.AddOrUpdateScreenSaverResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddOrUpdateScreenSaverResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddOrUpdateScreenSaverResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_or_update_screen_saver_with_options_async(
         self,
@@ -970,10 +1048,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.AddOrUpdateScreenSaverResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddOrUpdateScreenSaverResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddOrUpdateScreenSaverResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_or_update_screen_saver(
         self,
@@ -1047,10 +1131,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.AddOrUpdateWelcomeTextResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddOrUpdateWelcomeTextResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddOrUpdateWelcomeTextResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_or_update_welcome_text_with_options_async(
         self,
@@ -1096,10 +1186,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.AddOrUpdateWelcomeTextResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddOrUpdateWelcomeTextResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AddOrUpdateWelcomeTextResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_or_update_welcome_text(
         self,
@@ -1173,10 +1269,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.AuditHotelResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AuditHotelResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AuditHotelResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def audit_hotel_with_options_async(
         self,
@@ -1222,10 +1324,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.AuditHotelResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AuditHotelResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.AuditHotelResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def audit_hotel(
         self,
@@ -1301,10 +1409,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.BatchAddHotelRoomResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.BatchAddHotelRoomResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.BatchAddHotelRoomResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def batch_add_hotel_room_with_options_async(
         self,
@@ -1352,10 +1466,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.BatchAddHotelRoomResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.BatchAddHotelRoomResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.BatchAddHotelRoomResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def batch_add_hotel_room(
         self,
@@ -1431,10 +1551,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.BatchDeleteHotelRoomResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.BatchDeleteHotelRoomResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.BatchDeleteHotelRoomResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def batch_delete_hotel_room_with_options_async(
         self,
@@ -1482,10 +1608,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.BatchDeleteHotelRoomResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.BatchDeleteHotelRoomResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.BatchDeleteHotelRoomResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def batch_delete_hotel_room(
         self,
@@ -1557,10 +1689,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.CheckoutWithAKResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.CheckoutWithAKResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.CheckoutWithAKResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def checkout_with_akwith_options_async(
         self,
@@ -1604,10 +1742,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.CheckoutWithAKResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.CheckoutWithAKResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.CheckoutWithAKResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def checkout_with_ak(
         self,
@@ -1683,10 +1827,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ChildAccountAuthResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ChildAccountAuthResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ChildAccountAuthResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def child_account_auth_with_options_async(
         self,
@@ -1734,10 +1884,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ChildAccountAuthResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ChildAccountAuthResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ChildAccountAuthResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def child_account_auth(
         self,
@@ -1821,10 +1977,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ControlRoomDeviceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ControlRoomDeviceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ControlRoomDeviceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def control_room_device_with_options_async(
         self,
@@ -1880,10 +2042,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ControlRoomDeviceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ControlRoomDeviceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ControlRoomDeviceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def control_room_device(
         self,
@@ -1977,10 +2145,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.CreateHotelResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.CreateHotelResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.CreateHotelResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_hotel_with_options_async(
         self,
@@ -2046,10 +2220,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.CreateHotelResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.CreateHotelResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.CreateHotelResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_hotel(
         self,
@@ -2131,10 +2311,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.CreateHotelAlarmResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.CreateHotelAlarmResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.CreateHotelAlarmResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_hotel_alarm_with_options_async(
         self,
@@ -2188,10 +2374,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.CreateHotelAlarmResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.CreateHotelAlarmResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.CreateHotelAlarmResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_hotel_alarm(
         self,
@@ -2269,10 +2461,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.CreateRcuSceneResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.CreateRcuSceneResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.CreateRcuSceneResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_rcu_scene_with_options_async(
         self,
@@ -2322,10 +2520,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.CreateRcuSceneResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.CreateRcuSceneResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.CreateRcuSceneResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_rcu_scene(
         self,
@@ -2395,10 +2599,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.DeleteCartoonResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeleteCartoonResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeleteCartoonResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_cartoon_with_options_async(
         self,
@@ -2440,10 +2650,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.DeleteCartoonResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeleteCartoonResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeleteCartoonResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_cartoon(
         self,
@@ -2519,10 +2735,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.DeleteCustomQAResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeleteCustomQAResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeleteCustomQAResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_custom_qawith_options_async(
         self,
@@ -2570,10 +2792,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.DeleteCustomQAResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeleteCustomQAResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeleteCustomQAResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_custom_qa(
         self,
@@ -2649,10 +2877,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.DeleteHotelAlarmResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeleteHotelAlarmResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeleteHotelAlarmResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_hotel_alarm_with_options_async(
         self,
@@ -2700,10 +2934,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.DeleteHotelAlarmResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeleteHotelAlarmResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeleteHotelAlarmResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_hotel_alarm(
         self,
@@ -2777,10 +3017,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.DeleteHotelSceneBookItemResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeleteHotelSceneBookItemResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeleteHotelSceneBookItemResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_hotel_scene_book_item_with_options_async(
         self,
@@ -2826,10 +3072,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.DeleteHotelSceneBookItemResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeleteHotelSceneBookItemResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeleteHotelSceneBookItemResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_hotel_scene_book_item(
         self,
@@ -2901,10 +3153,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.DeleteHotelSettingResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeleteHotelSettingResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeleteHotelSettingResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_hotel_setting_with_options_async(
         self,
@@ -2948,10 +3206,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.DeleteHotelSettingResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeleteHotelSettingResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeleteHotelSettingResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_hotel_setting(
         self,
@@ -3021,10 +3285,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.DeleteMessageTemplateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeleteMessageTemplateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeleteMessageTemplateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_message_template_with_options_async(
         self,
@@ -3066,10 +3336,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.DeleteMessageTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeleteMessageTemplateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeleteMessageTemplateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_message_template(
         self,
@@ -3141,10 +3417,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.DeleteRcuSceneResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeleteRcuSceneResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeleteRcuSceneResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_rcu_scene_with_options_async(
         self,
@@ -3188,10 +3470,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.DeleteRcuSceneResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeleteRcuSceneResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeleteRcuSceneResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_rcu_scene(
         self,
@@ -3269,10 +3557,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.DeviceControlResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeviceControlResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeviceControlResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def device_control_with_options_async(
         self,
@@ -3322,10 +3616,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.DeviceControlResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeviceControlResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.DeviceControlResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def device_control(
         self,
@@ -3399,10 +3699,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ExecuteSceneResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ExecuteSceneResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ExecuteSceneResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def execute_scene_with_options_async(
         self,
@@ -3448,10 +3754,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ExecuteSceneResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ExecuteSceneResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ExecuteSceneResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def execute_scene(
         self,
@@ -3521,10 +3833,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetBasicInfoQAResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetBasicInfoQAResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetBasicInfoQAResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_basic_info_qawith_options_async(
         self,
@@ -3566,10 +3884,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetBasicInfoQAResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetBasicInfoQAResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetBasicInfoQAResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_basic_info_qa(
         self,
@@ -3639,10 +3963,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetCartoonResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetCartoonResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetCartoonResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_cartoon_with_options_async(
         self,
@@ -3684,10 +4014,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetCartoonResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetCartoonResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetCartoonResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_cartoon(
         self,
@@ -3765,10 +4101,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetHotelContactByGenieDeviceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelContactByGenieDeviceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelContactByGenieDeviceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_hotel_contact_by_genie_device_with_options_async(
         self,
@@ -3818,10 +4160,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetHotelContactByGenieDeviceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelContactByGenieDeviceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelContactByGenieDeviceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_hotel_contact_by_genie_device(
         self,
@@ -3899,10 +4247,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetHotelContactByNumberResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelContactByNumberResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelContactByNumberResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_hotel_contact_by_number_with_options_async(
         self,
@@ -3952,10 +4306,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetHotelContactByNumberResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelContactByNumberResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelContactByNumberResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_hotel_contact_by_number(
         self,
@@ -4029,10 +4389,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetHotelContactsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelContactsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelContactsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_hotel_contacts_with_options_async(
         self,
@@ -4078,10 +4444,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetHotelContactsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelContactsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelContactsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_hotel_contacts(
         self,
@@ -4155,10 +4527,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetHotelHomeBackImageAndModesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelHomeBackImageAndModesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelHomeBackImageAndModesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_hotel_home_back_image_and_modes_with_options_async(
         self,
@@ -4204,10 +4582,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetHotelHomeBackImageAndModesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelHomeBackImageAndModesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelHomeBackImageAndModesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_hotel_home_back_image_and_modes(
         self,
@@ -4281,10 +4665,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetHotelNoticeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelNoticeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelNoticeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_hotel_notice_with_options_async(
         self,
@@ -4330,10 +4720,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetHotelNoticeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelNoticeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelNoticeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_hotel_notice(
         self,
@@ -4407,10 +4803,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetHotelNoticeV2Response(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelNoticeV2Response(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelNoticeV2Response(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_hotel_notice_v2with_options_async(
         self,
@@ -4456,10 +4858,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetHotelNoticeV2Response(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelNoticeV2Response(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelNoticeV2Response(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_hotel_notice_v2(
         self,
@@ -4533,10 +4941,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetHotelOrderDetailResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelOrderDetailResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelOrderDetailResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_hotel_order_detail_with_options_async(
         self,
@@ -4582,10 +4996,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetHotelOrderDetailResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelOrderDetailResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelOrderDetailResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_hotel_order_detail(
         self,
@@ -4657,10 +5077,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetHotelRoomDeviceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelRoomDeviceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelRoomDeviceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_hotel_room_device_with_options_async(
         self,
@@ -4704,10 +5130,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetHotelRoomDeviceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelRoomDeviceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelRoomDeviceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_hotel_room_device(
         self,
@@ -4781,10 +5213,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetHotelSampleUtterancesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelSampleUtterancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelSampleUtterancesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_hotel_sample_utterances_with_options_async(
         self,
@@ -4830,10 +5268,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetHotelSampleUtterancesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelSampleUtterancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelSampleUtterancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_hotel_sample_utterances(
         self,
@@ -4907,10 +5351,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetHotelSceneItemDetailResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelSceneItemDetailResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelSceneItemDetailResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_hotel_scene_item_detail_with_options_async(
         self,
@@ -4956,10 +5406,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetHotelSceneItemDetailResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelSceneItemDetailResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelSceneItemDetailResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_hotel_scene_item_detail(
         self,
@@ -5033,10 +5489,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetHotelScreenSaverResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelScreenSaverResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelScreenSaverResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_hotel_screen_saver_with_options_async(
         self,
@@ -5082,10 +5544,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetHotelScreenSaverResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelScreenSaverResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelScreenSaverResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_hotel_screen_saver(
         self,
@@ -5155,10 +5623,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetHotelScreenSaverStyleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelScreenSaverStyleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelScreenSaverStyleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_hotel_screen_saver_style_with_options_async(
         self,
@@ -5200,10 +5674,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetHotelScreenSaverStyleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelScreenSaverStyleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelScreenSaverStyleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_hotel_screen_saver_style(
         self,
@@ -5275,10 +5755,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetHotelSettingResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelSettingResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelSettingResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_hotel_setting_with_options_async(
         self,
@@ -5322,10 +5808,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetHotelSettingResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelSettingResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetHotelSettingResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_hotel_setting(
         self,
@@ -5388,10 +5880,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetRelationProductListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetRelationProductListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetRelationProductListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_relation_product_list_with_options_async(
         self,
@@ -5426,10 +5924,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetRelationProductListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetRelationProductListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetRelationProductListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_relation_product_list(self) -> ali_genieip__1__0_models.GetRelationProductListResponse:
         """
@@ -5497,10 +6001,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetUnionIdResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetUnionIdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetUnionIdResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_union_id_with_options_async(
         self,
@@ -5548,10 +6058,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetUnionIdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetUnionIdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetUnionIdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_union_id(
         self,
@@ -5621,10 +6137,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetWelcomeTextAndMusicResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetWelcomeTextAndMusicResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetWelcomeTextAndMusicResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_welcome_text_and_music_with_options_async(
         self,
@@ -5666,10 +6188,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.GetWelcomeTextAndMusicResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetWelcomeTextAndMusicResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.GetWelcomeTextAndMusicResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_welcome_text_and_music(
         self,
@@ -5747,10 +6275,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.HotelQrBindResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.HotelQrBindResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.HotelQrBindResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def hotel_qr_bind_with_options_async(
         self,
@@ -5800,10 +6334,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.HotelQrBindResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.HotelQrBindResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.HotelQrBindResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def hotel_qr_bind(
         self,
@@ -5879,10 +6419,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ImportHotelConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ImportHotelConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ImportHotelConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def import_hotel_config_with_options_async(
         self,
@@ -5930,10 +6476,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ImportHotelConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ImportHotelConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ImportHotelConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def import_hotel_config(
         self,
@@ -6013,10 +6565,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ImportRoomControlDevicesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ImportRoomControlDevicesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ImportRoomControlDevicesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def import_room_control_devices_with_options_async(
         self,
@@ -6068,10 +6626,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ImportRoomControlDevicesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ImportRoomControlDevicesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ImportRoomControlDevicesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def import_room_control_devices(
         self,
@@ -6149,10 +6713,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ImportRoomGenieScenesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ImportRoomGenieScenesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ImportRoomGenieScenesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def import_room_genie_scenes_with_options_async(
         self,
@@ -6202,10 +6772,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ImportRoomGenieScenesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ImportRoomGenieScenesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ImportRoomGenieScenesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def import_room_genie_scenes(
         self,
@@ -6283,10 +6859,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.InsertHotelSceneBookItemResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.InsertHotelSceneBookItemResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.InsertHotelSceneBookItemResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def insert_hotel_scene_book_item_with_options_async(
         self,
@@ -6336,10 +6918,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.InsertHotelSceneBookItemResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.InsertHotelSceneBookItemResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.InsertHotelSceneBookItemResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def insert_hotel_scene_book_item(
         self,
@@ -6389,6 +6977,8 @@ class Client(OpenApiClient):
             body['HotelId'] = request.hotel_id
         if not UtilClient.is_unset(request.push_type):
             body['PushType'] = request.push_type
+        if not UtilClient.is_unset(request.room_name):
+            body['RoomName'] = request.room_name
         if not UtilClient.is_unset(request.room_no):
             body['RoomNo'] = request.room_no
         real_headers = {}
@@ -6413,10 +7003,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.InvokeRobotPushResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.InvokeRobotPushResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.InvokeRobotPushResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def invoke_robot_push_with_options_async(
         self,
@@ -6438,6 +7034,8 @@ class Client(OpenApiClient):
             body['HotelId'] = request.hotel_id
         if not UtilClient.is_unset(request.push_type):
             body['PushType'] = request.push_type
+        if not UtilClient.is_unset(request.room_name):
+            body['RoomName'] = request.room_name
         if not UtilClient.is_unset(request.room_no):
             body['RoomNo'] = request.room_no
         real_headers = {}
@@ -6462,10 +7060,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.InvokeRobotPushResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.InvokeRobotPushResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.InvokeRobotPushResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def invoke_robot_push(
         self,
@@ -6528,10 +7132,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListAllProvincesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListAllProvincesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListAllProvincesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_all_provinces_with_options_async(
         self,
@@ -6566,10 +7176,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListAllProvincesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListAllProvincesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListAllProvincesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_all_provinces(self) -> ali_genieip__1__0_models.ListAllProvincesResponse:
         """
@@ -6631,10 +7247,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListCitiesByProvinceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListCitiesByProvinceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListCitiesByProvinceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_cities_by_province_with_options_async(
         self,
@@ -6676,10 +7298,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListCitiesByProvinceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListCitiesByProvinceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListCitiesByProvinceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_cities_by_province(
         self,
@@ -6757,10 +7385,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListCustomQAResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListCustomQAResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListCustomQAResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_custom_qawith_options_async(
         self,
@@ -6810,10 +7444,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListCustomQAResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListCustomQAResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListCustomQAResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_custom_qa(
         self,
@@ -6883,10 +7523,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListDialogueTemplateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListDialogueTemplateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListDialogueTemplateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_dialogue_template_with_options_async(
         self,
@@ -6928,10 +7574,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListDialogueTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListDialogueTemplateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListDialogueTemplateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_dialogue_template(
         self,
@@ -7007,10 +7659,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListHotelAlarmResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelAlarmResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelAlarmResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_hotel_alarm_with_options_async(
         self,
@@ -7058,10 +7716,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListHotelAlarmResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelAlarmResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelAlarmResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_hotel_alarm(
         self,
@@ -7135,10 +7799,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListHotelControlDeviceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelControlDeviceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelControlDeviceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_hotel_control_device_with_options_async(
         self,
@@ -7184,10 +7854,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListHotelControlDeviceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelControlDeviceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelControlDeviceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_hotel_control_device(
         self,
@@ -7250,10 +7926,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListHotelInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_hotel_info_with_options_async(
         self,
@@ -7288,10 +7970,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListHotelInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_hotel_info(self) -> ali_genieip__1__0_models.ListHotelInfoResponse:
         """
@@ -7346,10 +8034,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListHotelMessageTemplateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelMessageTemplateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelMessageTemplateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_hotel_message_template_with_options_async(
         self,
@@ -7384,10 +8078,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListHotelMessageTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelMessageTemplateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelMessageTemplateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_hotel_message_template(self) -> ali_genieip__1__0_models.ListHotelMessageTemplateResponse:
         """
@@ -7457,10 +8157,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListHotelOrderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelOrderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelOrderResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_hotel_order_with_options_async(
         self,
@@ -7510,10 +8216,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListHotelOrderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelOrderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelOrderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_hotel_order(
         self,
@@ -7589,10 +8301,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListHotelRoomsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelRoomsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelRoomsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_hotel_rooms_with_options_async(
         self,
@@ -7640,10 +8358,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListHotelRoomsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelRoomsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelRoomsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_hotel_rooms(
         self,
@@ -7723,10 +8447,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListHotelSceneBookItemsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelSceneBookItemsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelSceneBookItemsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_hotel_scene_book_items_with_options_async(
         self,
@@ -7778,10 +8508,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListHotelSceneBookItemsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelSceneBookItemsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelSceneBookItemsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_hotel_scene_book_items(
         self,
@@ -7859,10 +8595,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListHotelSceneItemResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelSceneItemResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelSceneItemResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_hotel_scene_item_with_options_async(
         self,
@@ -7912,10 +8654,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListHotelSceneItemResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelSceneItemResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelSceneItemResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_hotel_scene_item(
         self,
@@ -7993,10 +8741,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListHotelSceneItemsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelSceneItemsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelSceneItemsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_hotel_scene_items_with_options_async(
         self,
@@ -8046,10 +8800,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListHotelSceneItemsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelSceneItemsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelSceneItemsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_hotel_scene_items(
         self,
@@ -8123,10 +8883,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListHotelServiceCategoryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelServiceCategoryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelServiceCategoryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_hotel_service_category_with_options_async(
         self,
@@ -8172,10 +8938,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListHotelServiceCategoryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelServiceCategoryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelServiceCategoryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_hotel_service_category(
         self,
@@ -8257,10 +9029,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListHotelsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_hotels_with_options_async(
         self,
@@ -8314,10 +9092,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListHotelsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListHotelsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_hotels(
         self,
@@ -8389,10 +9173,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListInfraredDeviceBrandsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListInfraredDeviceBrandsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListInfraredDeviceBrandsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_infrared_device_brands_with_options_async(
         self,
@@ -8436,10 +9226,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListInfraredDeviceBrandsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListInfraredDeviceBrandsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListInfraredDeviceBrandsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_infrared_device_brands(
         self,
@@ -8519,10 +9315,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListInfraredRemoteControllersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListInfraredRemoteControllersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListInfraredRemoteControllersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_infrared_remote_controllers_with_options_async(
         self,
@@ -8574,10 +9376,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListInfraredRemoteControllersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListInfraredRemoteControllersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListInfraredRemoteControllersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_infrared_remote_controllers(
         self,
@@ -8649,10 +9457,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListSTBServiceProvidersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListSTBServiceProvidersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListSTBServiceProvidersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_stbservice_providers_with_options_async(
         self,
@@ -8696,10 +9510,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListSTBServiceProvidersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListSTBServiceProvidersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListSTBServiceProvidersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_stbservice_providers(
         self,
@@ -8771,10 +9591,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListSceneCategoryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListSceneCategoryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListSceneCategoryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_scene_category_with_options_async(
         self,
@@ -8818,10 +9644,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListSceneCategoryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListSceneCategoryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListSceneCategoryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_scene_category(
         self,
@@ -8901,10 +9733,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListServiceQAResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListServiceQAResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListServiceQAResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_service_qawith_options_async(
         self,
@@ -8956,10 +9794,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListServiceQAResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListServiceQAResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListServiceQAResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_service_qa(
         self,
@@ -9053,10 +9897,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListTicketsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListTicketsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListTicketsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_tickets_with_options_async(
         self,
@@ -9122,10 +9972,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ListTicketsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListTicketsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ListTicketsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_tickets(
         self,
@@ -9199,10 +10055,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.PageGetHotelRoomDevicesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.PageGetHotelRoomDevicesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.PageGetHotelRoomDevicesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def page_get_hotel_room_devices_with_options_async(
         self,
@@ -9248,10 +10110,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.PageGetHotelRoomDevicesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.PageGetHotelRoomDevicesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.PageGetHotelRoomDevicesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def page_get_hotel_room_devices(
         self,
@@ -9321,10 +10189,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.PmsEventReportResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.PmsEventReportResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.PmsEventReportResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def pms_event_report_with_options_async(
         self,
@@ -9366,10 +10240,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.PmsEventReportResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.PmsEventReportResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.PmsEventReportResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def pms_event_report(
         self,
@@ -9443,10 +10323,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.PushHotelMessageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.PushHotelMessageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.PushHotelMessageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def push_hotel_message_with_options_async(
         self,
@@ -9492,10 +10378,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.PushHotelMessageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.PushHotelMessageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.PushHotelMessageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def push_hotel_message(
         self,
@@ -9573,10 +10465,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.PushVoiceBoxCommandsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.PushVoiceBoxCommandsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.PushVoiceBoxCommandsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def push_voice_box_commands_with_options_async(
         self,
@@ -9626,10 +10524,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.PushVoiceBoxCommandsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.PushVoiceBoxCommandsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.PushVoiceBoxCommandsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def push_voice_box_commands(
         self,
@@ -9677,6 +10581,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
             body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.room_name):
+            body['RoomName'] = request.room_name
         if not UtilClient.is_unset(request.room_no):
             body['RoomNo'] = request.room_no
         if not UtilClient.is_unset(request.welcome_music_url):
@@ -9705,10 +10611,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.PushWelcomeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.PushWelcomeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.PushWelcomeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def push_welcome_with_options_async(
         self,
@@ -9728,6 +10640,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
             body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.room_name):
+            body['RoomName'] = request.room_name
         if not UtilClient.is_unset(request.room_no):
             body['RoomNo'] = request.room_no
         if not UtilClient.is_unset(request.welcome_music_url):
@@ -9756,10 +10670,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.PushWelcomeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.PushWelcomeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.PushWelcomeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def push_welcome(
         self,
@@ -9811,6 +10731,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
             body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.room_name):
+            body['RoomName'] = request.room_name
         if not UtilClient.is_unset(request.room_no):
             body['RoomNo'] = request.room_no
         if not UtilClient.is_unset(request.template_variable_shrink):
@@ -9837,10 +10759,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.PushWelcomeTextAndMusicResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.PushWelcomeTextAndMusicResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.PushWelcomeTextAndMusicResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def push_welcome_text_and_music_with_options_async(
         self,
@@ -9864,6 +10792,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
             body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.room_name):
+            body['RoomName'] = request.room_name
         if not UtilClient.is_unset(request.room_no):
             body['RoomNo'] = request.room_no
         if not UtilClient.is_unset(request.template_variable_shrink):
@@ -9890,10 +10820,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.PushWelcomeTextAndMusicResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.PushWelcomeTextAndMusicResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.PushWelcomeTextAndMusicResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def push_welcome_text_and_music(
         self,
@@ -9971,10 +10907,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.QueryDeviceStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.QueryDeviceStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.QueryDeviceStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_device_status_with_options_async(
         self,
@@ -10024,10 +10966,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.QueryDeviceStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.QueryDeviceStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.QueryDeviceStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_device_status(
         self,
@@ -10105,10 +11053,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.QueryHotelRoomDetailResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.QueryHotelRoomDetailResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.QueryHotelRoomDetailResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_hotel_room_detail_with_options_async(
         self,
@@ -10158,10 +11112,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.QueryHotelRoomDetailResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.QueryHotelRoomDetailResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.QueryHotelRoomDetailResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_hotel_room_detail(
         self,
@@ -10233,10 +11193,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.QueryRoomControlDevicesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.QueryRoomControlDevicesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.QueryRoomControlDevicesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_room_control_devices_with_options_async(
         self,
@@ -10280,10 +11246,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.QueryRoomControlDevicesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.QueryRoomControlDevicesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.QueryRoomControlDevicesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_room_control_devices(
         self,
@@ -10355,10 +11327,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.QueryRoomControlDevicesAndStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.QueryRoomControlDevicesAndStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.QueryRoomControlDevicesAndStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_room_control_devices_and_status_with_options_async(
         self,
@@ -10402,10 +11380,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.QueryRoomControlDevicesAndStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.QueryRoomControlDevicesAndStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.QueryRoomControlDevicesAndStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_room_control_devices_and_status(
         self,
@@ -10477,10 +11461,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.QueryRoomStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.QueryRoomStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.QueryRoomStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_room_status_with_options_async(
         self,
@@ -10524,10 +11514,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.QueryRoomStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.QueryRoomStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.QueryRoomStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_room_status(
         self,
@@ -10611,10 +11607,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.QuerySceneListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.QuerySceneListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.QuerySceneListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_scene_list_with_options_async(
         self,
@@ -10670,10 +11672,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.QuerySceneListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.QuerySceneListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.QuerySceneListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_scene_list(
         self,
@@ -10749,10 +11757,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.RemoveChildAccountAuthResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.RemoveChildAccountAuthResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.RemoveChildAccountAuthResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def remove_child_account_auth_with_options_async(
         self,
@@ -10800,10 +11814,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.RemoveChildAccountAuthResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.RemoveChildAccountAuthResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.RemoveChildAccountAuthResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def remove_child_account_auth(
         self,
@@ -10877,10 +11897,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.RemoveHotelResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.RemoveHotelResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.RemoveHotelResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def remove_hotel_with_options_async(
         self,
@@ -10926,10 +11952,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.RemoveHotelResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.RemoveHotelResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.RemoveHotelResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def remove_hotel(
         self,
@@ -10999,10 +12031,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ResetWelcomeTextAndMusicResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ResetWelcomeTextAndMusicResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ResetWelcomeTextAndMusicResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def reset_welcome_text_and_music_with_options_async(
         self,
@@ -11044,10 +12082,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.ResetWelcomeTextAndMusicResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ResetWelcomeTextAndMusicResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.ResetWelcomeTextAndMusicResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def reset_welcome_text_and_music(
         self,
@@ -11125,10 +12169,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.RoomCheckOutResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.RoomCheckOutResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.RoomCheckOutResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def room_check_out_with_options_async(
         self,
@@ -11178,10 +12228,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.RoomCheckOutResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.RoomCheckOutResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.RoomCheckOutResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def room_check_out(
         self,
@@ -11259,10 +12315,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.SubmitHotelOrderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.SubmitHotelOrderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.SubmitHotelOrderResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def submit_hotel_order_with_options_async(
         self,
@@ -11312,10 +12374,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.SubmitHotelOrderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.SubmitHotelOrderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.SubmitHotelOrderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def submit_hotel_order(
         self,
@@ -11411,10 +12479,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.SyncDeviceStatusWithAkResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.SyncDeviceStatusWithAkResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.SyncDeviceStatusWithAkResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def sync_device_status_with_ak_with_options_async(
         self,
@@ -11482,10 +12556,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.SyncDeviceStatusWithAkResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.SyncDeviceStatusWithAkResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.SyncDeviceStatusWithAkResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def sync_device_status_with_ak(
         self,
@@ -11577,10 +12657,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.UpdateBasicInfoQAResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateBasicInfoQAResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateBasicInfoQAResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_basic_info_qawith_options_async(
         self,
@@ -11644,10 +12730,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.UpdateBasicInfoQAResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateBasicInfoQAResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateBasicInfoQAResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_basic_info_qa(
         self,
@@ -11735,10 +12827,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.UpdateCustomQAResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateCustomQAResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateCustomQAResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_custom_qawith_options_async(
         self,
@@ -11798,10 +12896,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.UpdateCustomQAResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateCustomQAResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateCustomQAResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_custom_qa(
         self,
@@ -11895,10 +12999,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.UpdateHotelResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateHotelResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateHotelResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_hotel_with_options_async(
         self,
@@ -11964,10 +13074,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.UpdateHotelResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateHotelResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateHotelResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_hotel(
         self,
@@ -12047,10 +13163,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.UpdateHotelAlarmResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateHotelAlarmResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateHotelAlarmResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_hotel_alarm_with_options_async(
         self,
@@ -12102,10 +13224,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.UpdateHotelAlarmResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateHotelAlarmResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateHotelAlarmResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_hotel_alarm(
         self,
@@ -12183,10 +13311,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.UpdateHotelSceneBookItemResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateHotelSceneBookItemResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateHotelSceneBookItemResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_hotel_scene_book_item_with_options_async(
         self,
@@ -12236,10 +13370,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.UpdateHotelSceneBookItemResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateHotelSceneBookItemResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateHotelSceneBookItemResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_hotel_scene_book_item(
         self,
@@ -12321,10 +13461,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.UpdateHotelSceneItemResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateHotelSceneItemResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateHotelSceneItemResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_hotel_scene_item_with_options_async(
         self,
@@ -12378,10 +13524,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.UpdateHotelSceneItemResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateHotelSceneItemResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateHotelSceneItemResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_hotel_scene_item(
         self,
@@ -12455,10 +13607,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.UpdateMessageTemplateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateMessageTemplateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateMessageTemplateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_message_template_with_options_async(
         self,
@@ -12504,10 +13662,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.UpdateMessageTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateMessageTemplateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateMessageTemplateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_message_template(
         self,
@@ -12585,10 +13749,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.UpdateRcuSceneResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateRcuSceneResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateRcuSceneResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_rcu_scene_with_options_async(
         self,
@@ -12638,10 +13808,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.UpdateRcuSceneResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateRcuSceneResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateRcuSceneResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_rcu_scene(
         self,
@@ -12717,10 +13893,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.UpdateServiceQAResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateServiceQAResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateServiceQAResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_service_qawith_options_async(
         self,
@@ -12768,10 +13950,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.UpdateServiceQAResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateServiceQAResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateServiceQAResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_service_qa(
         self,
@@ -12845,10 +14033,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.UpdateTicketResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateTicketResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateTicketResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_ticket_with_options_async(
         self,
@@ -12894,10 +14088,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ali_genieip__1__0_models.UpdateTicketResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateTicketResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ali_genieip__1__0_models.UpdateTicketResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_ticket(
         self,
