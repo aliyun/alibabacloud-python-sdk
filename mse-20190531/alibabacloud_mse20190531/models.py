@@ -23796,6 +23796,84 @@ class GetGatewayConfigRequest(TeaModel):
         return self
 
 
+class GetGatewayConfigResponseBodyDataEnableK8sSourceWorkloadFilter(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        filter_opt: str = None,
+        label_key: str = None,
+        label_value: str = None,
+    ):
+        self.enable = enable
+        self.filter_opt = filter_opt
+        self.label_key = label_key
+        self.label_value = label_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.filter_opt is not None:
+            result['FilterOpt'] = self.filter_opt
+        if self.label_key is not None:
+            result['LabelKey'] = self.label_key
+        if self.label_value is not None:
+            result['LabelValue'] = self.label_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('FilterOpt') is not None:
+            self.filter_opt = m.get('FilterOpt')
+        if m.get('LabelKey') is not None:
+            self.label_key = m.get('LabelKey')
+        if m.get('LabelValue') is not None:
+            self.label_value = m.get('LabelValue')
+        return self
+
+
+class GetGatewayConfigResponseBodyDataEnableXffTrustedCidrs(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        ip_list_content: str = None,
+    ):
+        self.enable = enable
+        self.ip_list_content = ip_list_content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.ip_list_content is not None:
+            result['IpListContent'] = self.ip_list_content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('IpListContent') is not None:
+            self.ip_list_content = m.get('IpListContent')
+        return self
+
+
 class GetGatewayConfigResponseBodyDataSlsConfigDetails(TeaModel):
     def __init__(
         self,
@@ -23965,9 +24043,11 @@ class GetGatewayConfigResponseBodyData(TeaModel):
         enable_hardware_accelerate: bool = None,
         enable_http_2: bool = None,
         enable_http_3: bool = None,
+        enable_k8s_source_workload_filter: GetGatewayConfigResponseBodyDataEnableK8sSourceWorkloadFilter = None,
         enable_proxy_protocol: bool = None,
         enable_slash_merge: bool = None,
         enable_waf: bool = None,
+        enable_xff_trusted_cidrs: GetGatewayConfigResponseBodyDataEnableXffTrustedCidrs = None,
         gateway_unique_id: str = None,
         initial_connection_window_size: int = None,
         initial_stream_window_size: int = None,
@@ -23994,9 +24074,11 @@ class GetGatewayConfigResponseBodyData(TeaModel):
         self.enable_hardware_accelerate = enable_hardware_accelerate
         self.enable_http_2 = enable_http_2
         self.enable_http_3 = enable_http_3
+        self.enable_k8s_source_workload_filter = enable_k8s_source_workload_filter
         self.enable_proxy_protocol = enable_proxy_protocol
         self.enable_slash_merge = enable_slash_merge
         self.enable_waf = enable_waf
+        self.enable_xff_trusted_cidrs = enable_xff_trusted_cidrs
         self.gateway_unique_id = gateway_unique_id
         self.initial_connection_window_size = initial_connection_window_size
         self.initial_stream_window_size = initial_stream_window_size
@@ -24014,6 +24096,10 @@ class GetGatewayConfigResponseBodyData(TeaModel):
         self.zip_algorithm = zip_algorithm
 
     def validate(self):
+        if self.enable_k8s_source_workload_filter:
+            self.enable_k8s_source_workload_filter.validate()
+        if self.enable_xff_trusted_cidrs:
+            self.enable_xff_trusted_cidrs.validate()
         if self.sls_config_details:
             self.sls_config_details.validate()
         if self.xtrace_details:
@@ -24045,12 +24131,16 @@ class GetGatewayConfigResponseBodyData(TeaModel):
             result['EnableHttp2'] = self.enable_http_2
         if self.enable_http_3 is not None:
             result['EnableHttp3'] = self.enable_http_3
+        if self.enable_k8s_source_workload_filter is not None:
+            result['EnableK8sSourceWorkloadFilter'] = self.enable_k8s_source_workload_filter.to_map()
         if self.enable_proxy_protocol is not None:
             result['EnableProxyProtocol'] = self.enable_proxy_protocol
         if self.enable_slash_merge is not None:
             result['EnableSlashMerge'] = self.enable_slash_merge
         if self.enable_waf is not None:
             result['EnableWaf'] = self.enable_waf
+        if self.enable_xff_trusted_cidrs is not None:
+            result['EnableXffTrustedCidrs'] = self.enable_xff_trusted_cidrs.to_map()
         if self.gateway_unique_id is not None:
             result['GatewayUniqueId'] = self.gateway_unique_id
         if self.initial_connection_window_size is not None:
@@ -24105,12 +24195,18 @@ class GetGatewayConfigResponseBodyData(TeaModel):
             self.enable_http_2 = m.get('EnableHttp2')
         if m.get('EnableHttp3') is not None:
             self.enable_http_3 = m.get('EnableHttp3')
+        if m.get('EnableK8sSourceWorkloadFilter') is not None:
+            temp_model = GetGatewayConfigResponseBodyDataEnableK8sSourceWorkloadFilter()
+            self.enable_k8s_source_workload_filter = temp_model.from_map(m['EnableK8sSourceWorkloadFilter'])
         if m.get('EnableProxyProtocol') is not None:
             self.enable_proxy_protocol = m.get('EnableProxyProtocol')
         if m.get('EnableSlashMerge') is not None:
             self.enable_slash_merge = m.get('EnableSlashMerge')
         if m.get('EnableWaf') is not None:
             self.enable_waf = m.get('EnableWaf')
+        if m.get('EnableXffTrustedCidrs') is not None:
+            temp_model = GetGatewayConfigResponseBodyDataEnableXffTrustedCidrs()
+            self.enable_xff_trusted_cidrs = temp_model.from_map(m['EnableXffTrustedCidrs'])
         if m.get('GatewayUniqueId') is not None:
             self.gateway_unique_id = m.get('GatewayUniqueId')
         if m.get('InitialConnectionWindowSize') is not None:
@@ -36503,6 +36599,7 @@ class ListClusterHealthCheckTaskResponseBodyDataResultRiskList(TeaModel):
     def __init__(
         self,
         description: str = None,
+        description_en: str = None,
         id: int = None,
         module: str = None,
         mute: bool = None,
@@ -36511,15 +36608,19 @@ class ListClusterHealthCheckTaskResponseBodyDataResultRiskList(TeaModel):
         risk_code: str = None,
         risk_level: str = None,
         risk_name: str = None,
+        risk_name_en: str = None,
         risk_type: str = None,
         situation: str = None,
+        situation_en: str = None,
         suggestion: str = None,
+        suggestion_en: str = None,
         task_id: int = None,
         type: int = None,
         values: str = None,
     ):
         # The description.
         self.description = description
+        self.description_en = description_en
         # The ID.
         self.id = id
         # A redundant parameter.
@@ -36543,12 +36644,15 @@ class ListClusterHealthCheckTaskResponseBodyDataResultRiskList(TeaModel):
         self.risk_level = risk_level
         # The name of the risk.
         self.risk_name = risk_name
+        self.risk_name_en = risk_name_en
         # The type of the risk.
         self.risk_type = risk_type
         # The situation.
         self.situation = situation
+        self.situation_en = situation_en
         # The suggestion.
         self.suggestion = suggestion
+        self.suggestion_en = suggestion_en
         # The ID of the associated parent task.
         self.task_id = task_id
         # A redundant parameter.
@@ -36567,6 +36671,8 @@ class ListClusterHealthCheckTaskResponseBodyDataResultRiskList(TeaModel):
         result = dict()
         if self.description is not None:
             result['Description'] = self.description
+        if self.description_en is not None:
+            result['DescriptionEn'] = self.description_en
         if self.id is not None:
             result['Id'] = self.id
         if self.module is not None:
@@ -36583,12 +36689,18 @@ class ListClusterHealthCheckTaskResponseBodyDataResultRiskList(TeaModel):
             result['RiskLevel'] = self.risk_level
         if self.risk_name is not None:
             result['RiskName'] = self.risk_name
+        if self.risk_name_en is not None:
+            result['RiskNameEn'] = self.risk_name_en
         if self.risk_type is not None:
             result['RiskType'] = self.risk_type
         if self.situation is not None:
             result['Situation'] = self.situation
+        if self.situation_en is not None:
+            result['SituationEn'] = self.situation_en
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
+        if self.suggestion_en is not None:
+            result['SuggestionEn'] = self.suggestion_en
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         if self.type is not None:
@@ -36601,6 +36713,8 @@ class ListClusterHealthCheckTaskResponseBodyDataResultRiskList(TeaModel):
         m = m or dict()
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DescriptionEn') is not None:
+            self.description_en = m.get('DescriptionEn')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('Module') is not None:
@@ -36617,12 +36731,18 @@ class ListClusterHealthCheckTaskResponseBodyDataResultRiskList(TeaModel):
             self.risk_level = m.get('RiskLevel')
         if m.get('RiskName') is not None:
             self.risk_name = m.get('RiskName')
+        if m.get('RiskNameEn') is not None:
+            self.risk_name_en = m.get('RiskNameEn')
         if m.get('RiskType') is not None:
             self.risk_type = m.get('RiskType')
         if m.get('Situation') is not None:
             self.situation = m.get('Situation')
+        if m.get('SituationEn') is not None:
+            self.situation_en = m.get('SituationEn')
         if m.get('Suggestion') is not None:
             self.suggestion = m.get('Suggestion')
+        if m.get('SuggestionEn') is not None:
+            self.suggestion_en = m.get('SuggestionEn')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         if m.get('Type') is not None:
