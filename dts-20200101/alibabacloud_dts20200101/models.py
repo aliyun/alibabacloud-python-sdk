@@ -73,350 +73,402 @@ class ConfigureDtsJobRequest(TeaModel):
         structure_initialization: bool = None,
         synchronization_direction: str = None,
     ):
-        # The type of the task. Valid values:
-        # 
-        # *   **MIGRATION**: data migration task
-        # *   **SYNC**: data synchronization task
+        # The start offset of incremental data migration or incremental data synchronization. The value is a UNIX timestamp. Unit: seconds.
         self.checkpoint = checkpoint
-        # The HTTP status code.
+        # The parameters for data verification, including the configurations for data verification and alerts. The value is a JSON string. For more information, see [DataCheckConfigure parameter description](https://help.aliyun.com/document_detail/459023.html).
         self.data_check_configure = data_check_configure
-        # The objects that you want to migrate or synchronize. The value is a JSON string. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
+        # Specifies whether to perform full data migration or full data synchronization. Valid values:
+        # 
+        # *   **true** (default)
+        # *   **false**\
+        # 
+        # > If **JobType** is set to **CHECK**, set this parameter to **false**.
         # 
         # This parameter is required.
         self.data_initialization = data_initialization
-        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to add more configurations of the source or destination instance to the DTS task. For example, you can specify the data storage format of the destination Kafka database and the ID of the CEN instance. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
+        # Specifies whether to perform incremental data migration or incremental data synchronization. Valid values:
+        # 
+        # *   **false** (default)
+        # *   **true**\
+        # 
+        # > If **JobType** is set to **CHECK**, set this parameter to **false**.
         # 
         # This parameter is required.
         self.data_synchronization = data_synchronization
-        # The objects to be migrated or synchronized. Specify a JSON string. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
-        # 
-        # >  The value can be up to 10 MB in size.
+        # The objects that you want to migrate or synchronize. The value is a JSON string. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
         self.db_list = db_list
-        # The data verification task for a data migration or synchronization instance. The value is a JSON string that indicates parameter limits or alert configurations. For more information, see [DataCheckConfigure](https://help.aliyun.com/document_detail/459023.html).
+        # The ID of the DTS dedicated cluster on which the task runs.
+        # 
+        # > If this parameter is specified, the task is scheduled to the specified DTS dedicated cluster.
         self.dedicated_cluster_id = dedicated_cluster_id
-        # Specifies whether to monitor the task status. Valid values:
+        # Specifies whether to monitor task latency. Valid values:
         # 
-        # *   **true**: monitors the task status.
-        # *   **false**: does not monitor the task status.
+        # *   **true**\
+        # *   **false**\
         self.delay_notice = delay_notice
-        # Specifies whether to monitor the task latency. Valid values:
+        # The mobile phone numbers to which latency-related alerts are sent. Separate multiple mobile phone numbers with commas (,).
         # 
-        # *   **true**: monitors the task latency.
-        # *   **false**: does not monitor the task latency.
+        # > 
+        # 
+        # *   This parameter is available only for users of the China site (aliyun.com). Only mobile phone numbers in the Chinese mainland are supported. You can specify up to 10 mobile phone numbers.
+        # *   Users of the international site (alibabacloud.com) cannot receive alerts by using mobile phone numbers, but can configure alert rules for DTS tasks in the CloudMonitor console. For more information, see [Configure alert rules for DTS tasks in the CloudMonitor console](https://help.aliyun.com/document_detail/175876.html).
         self.delay_phone = delay_phone
-        # The threshold for triggering latency-related alerts. Unit: seconds. The value must be an integer. You can specify this parameter based on your business requirements. To prevent unstable latency caused by network and database workloads, we recommend that you set this parameter to more than 10 seconds.
+        # The threshold for latency alerts. Unit: seconds. The value must be an integer. You can set the threshold based on your business requirements. To prevent unstable latency caused by network and database overloads, we recommend that you set the threshold to more than 10 seconds.
         # 
-        # >  You must specify this parameter if **DelayNotice** is set to **true**.
+        # > If **DelayNotice** is set to **true**, this parameter is required.
         self.delay_rule_time = delay_rule_time
-        # The path of the CA certificate when the target library is securely connected via SSL.
-        # >This feature is currently not supported, please do not pass in this parameter.
+        # The path of the CA certificate that is used if the connection to the destination database is encrypted by using SSL.
+        # 
+        # > This feature is not supported. Do not specify this parameter.
         self.dest_ca_certificate_oss_url = dest_ca_certificate_oss_url
-        # The key of the CA certificate when the target library is securely connected via SSL.
-        # >This feature is currently not supported, please do not pass in this parameter.
+        # The key of the CA certificate that is used if the connection to the destination database is encrypted by using SSL.
+        # 
+        # > This feature is not supported. Do not specify this parameter.
         self.dest_ca_certificate_password = dest_ca_certificate_password
-        # The path to the client certificate that is used if the connection to the destination database is encrypted by using the SSL protocol.
+        # The path to the client certificate that is used if the connection to the destination database is encrypted by using SSL.
         # 
-        # >  This feature is not supported. Do not specify this parameter.
+        # > This feature is not supported. Do not specify this parameter.
         self.dest_client_cert_oss_url = dest_client_cert_oss_url
-        # The path to the private key of the client certificate that is used if the connection to the destination database is encrypted by using the SSL protocol.
+        # The path to the private key of the client certificate that is used if the connection to the destination database is encrypted by using SSL.
         # 
-        # >  This feature is not supported. Do not specify this parameter.
+        # > This feature is not supported. Do not specify this parameter.
         self.dest_client_key_oss_url = dest_client_key_oss_url
-        # The password of the private key of the client certificate that is used if the connection to the destination database is encrypted by using the SSL protocol.
+        # The password of the private key of the client certificate that is used if the connection to the destination database is encrypted by using SSL.
         # 
-        # >  This feature is not supported. Do not specify this parameter.
+        # > This feature is not supported. Do not specify this parameter.
         self.dest_client_password = dest_client_password
+        # VPCNAT destination main VSW
         self.dest_primary_vsw_id = dest_primary_vsw_id
+        # VPCNAT destination backup VSW
         self.dest_secondary_vsw_id = dest_secondary_vsw_id
-        # The password of the destination database account.
+        # The name of the database to which the objects are migrated or synchronized in the destination instance.
         # 
-        # >  If the destination database is a MaxCompute project, you must specify the AccessKey secret of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](https://help.aliyun.com/document_detail/116401.html).
+        # > 
+        # 
+        # *   This parameter is valid and required only if the destination database is a PolarDB for PostgreSQL (Compatible with Oracle) cluster, an AnalyticDB for PostgreSQL instance, a PostgreSQL database, a MaxCompute project, or a MongoDB database.
+        # *   If the destination instance is a MaxCompute project, you must specify the MaxCompute project ID.
         self.destination_endpoint_data_base_name = destination_endpoint_data_base_name
+        # The type of the destination database. Valid values:
+        # 
+        # *   **MYSQL**: ApsaraDB RDS for MySQL instance or self-managed MySQL database.
+        # *   **MARIADB**: ApsaraDB RDS for MariaDB instance.
+        # *   **PolarDB**: PolarDB for MySQL cluster.
+        # *   **POLARDB_O**: PolarDB for PostgreSQL (Compatible with Oracle) cluster.
+        # *   **POLARDBX10**: PolarDB-X 1.0 instance (formerly DRDS).
+        # *   **POLARDBX20**: PolarDB-X 2.0 instance.
+        # *   **ORACLE**: self-managed Oracle database.
+        # *   **POSTGRESQL**: ApsaraDB RDS for PostgreSQL instance or self-managed PostgreSQL database.
+        # *   **MSSQL**: ApsaraDB RDS for SQL Server instance or self-managed SQL Server database.
+        # *   **ADS**: AnalyticDB for MySQL V2.0 cluster.
+        # *   **ADB30**: AnalyticDB for MySQL V3.0 cluster.
+        # *   **MONGODB**: ApsaraDB for MongoDB instance or self-managed MongoDB database.
+        # *   **GREENPLUM**: AnalyticDB for PostgreSQL instance.
+        # *   **KAFKA**: ApsaraMQ for Kafka instance or self-managed Kafka cluster.
+        # *   **DATAHUB**: DataHub project.
+        # *   **DB2**: self-managed Db2 for LUW database.
+        # *   **AS400**: Db2 for i database.
+        # *   **ODPS**: MaxCompute project.
+        # *   **Tablestore**: Tablestore instance.
+        # *   **ELK**: Elasticsearch cluster.
+        # *   **REDIS**: ApsaraDB for Redis instance or self-managed Redis database.
+        # 
+        # > 
+        # 
+        # *   Default value: **MYSQL**.
+        # *   If this parameter is set to **KAFKA**, **MONGODB**, or **PolarDB**, you must also specify the database information in Reserve. For more information, see [Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+        self.destination_endpoint_engine_name = destination_endpoint_engine_name
         # The IP address of the destination instance.
         # 
-        # >  If the **DestinationEndpointInstanceType** parameter is set to **OTHER**, **EXPRESS**, **DG**, or **CEN**, this parameter is available and required.
-        self.destination_endpoint_engine_name = destination_endpoint_engine_name
-        # The name of the database to which the objects migrated to the destination instance belong.
-        # 
-        # > 
-        # *   If the destination instance is a PolarDB for Oracle cluster, an AnalyticDB for PostgreSQL instance, a PostgreSQL database, a MaxCompute project, or a MongoDB database, this parameter is available and required.
-        # *   If the destination instance is a MaxCompute project, you must specify the ID of the MaxCompute project.
+        # > This parameter is valid and required only if **DestinationEndpointInstanceType** is set to **OTHER**, **EXPRESS**, **DG**, or **CEN**.
         self.destination_endpoint_ip = destination_endpoint_ip
-        # The ID of the region in which the destination instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The destination instance ID.
         # 
-        # >  If the destination instance is an Alibaba Cloud database instance, this parameter is required.
+        # If the destination instance is an Alibaba Cloud database instance, you must specify the database instance ID. For example, if the destination instance is an ApsaraDB RDS for MySQL instance, you must specify the ID of the ApsaraDB RDS for MySQL instance.
+        # 
+        # If the destination instance is a self-managed database, the value of this parameter varies with the value of **DestinationEndpointInstanceType**.****\
+        # 
+        # *   If DestinationEndpointInstanceType is set to **ECS**, you must specify the ECS instance ID.
+        # *   If DestinationEndpointInstanceType is set to **DG**, you must specify the database gateway ID.
+        # *   If DestinationEndpointInstanceType is set to **EXPRESS** or **CEN**, you must specify the ID of the VPC that is connected to the source instance.
+        # 
+        # > If DestinationEndpointInstanceType is set to **CEN**, you must also specify the ID of the CEN instance in Reserve. For more information, see [Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
         self.destination_endpoint_instance_id = destination_endpoint_instance_id
-        # The database engine of the destination instance. Valid values:
+        # The type of the destination instance. Valid values:
         # 
-        # *   **MySQL**: ApsaraDB RDS for MySQL instance or self-managed MySQL database
-        # *   **MARIADB**: ApsaraDB RDS for MariaDB instance
-        # *   **PolarDB**: PolarDB for MySQL cluster
-        # *   **POLARDB_O**: PolarDB for Oracle cluster
-        # *   **POLARDBX10**: PolarDB-X 1.0 instance
-        # *   **POLARDBX20**: PolarDB-X 2.0 instance
-        # *   **ORACLE**: self-managed Oracle database
-        # *   **POSTGRESQL**: ApsaraDB RDS for PostgreSQL instance or self-managed PostgreSQL database
-        # *   **MSSQL**: ApsaraDB RDS for SQL Server instance or self-managed SQL Server database
-        # *   **ADS**: AnalyticDB for MySQL V2.0 cluster
-        # *   **ADB30**: AnalyticDB for MySQL V3.0 cluster
-        # *   **MONGODB**: ApsaraDB for MongoDB instance or self-managed MongoDB database
-        # *   **GREENPLUM**: AnalyticDB for PostgreSQL instance
-        # *   **KAFKA**: Message Queue for Apache Kafka instance or self-managed Kafka cluster
-        # *   **DATAHUB**: DataHub project
-        # *   **DB2**: self-managed Db2 for LUW database
-        # *   **AS400**: self-managed Db2 for i database
-        # *   **ODPS**: MaxCompute project
-        # *   **Tablestore**: Tablestore instance
-        # *   **ELK**: Elasticsearch cluster
-        # *   **REDIS**: ApsaraDB for Redis instance or self-managed Redis database
+        # **Alibaba Cloud database instance**\
+        # 
+        # *   **RDS**: ApsaraDB RDS for MySQL instance, ApsaraDB RDS for SQL Server instance, ApsaraDB RDS for PostgreSQL instance, or ApsaraDB RDS for MariaDB instance.
+        # *   **PolarDB**: PolarDB for MySQL cluster.
+        # *   **DISTRIBUTED_POLARDBX10**: PolarDB-X 1.0 instance (formerly DRDS).
+        # *   **POLARDBX20**: PolarDB-X 2.0 instance.
+        # *   **REDIS**: ApsaraDB for Redis instance.
+        # *   **ADS**: AnalyticDB for MySQL V2.0 cluster or AnalyticDB for MySQL V3.0 cluster.
+        # *   **MONGODB**: ApsaraDB for MongoDB instance.
+        # *   **GREENPLUM**: AnalyticDB for PostgreSQL instance.
+        # *   **DATAHUB**: DataHub project.
+        # *   **ELK**: Elasticsearch cluster.
+        # *   **Tablestore**: Tablestore instance.
+        # *   **ODPS**: MaxCompute project.
+        # 
+        # **Self-managed database**\
+        # 
+        # *   **OTHER**: self-managed database with a public IP address.
+        # *   **ECS**: self-managed database hosted on an ECS instance.
+        # *   **EXPRESS**: self-managed database connected over Express Connect.
+        # *   **CEN**: self-managed database connected over Cloud Enterprise Network (CEN).
+        # *   **DG**: self-managed database connected over Database Gateway.
         # 
         # > 
-        # *   Default value: **MYSQL**.
-        # *   If the DestinationEndpointEngineName parameter is set to **KAFKA**, **MONGODB**, or **PolarDB**, you must also specify the database information in the Reserve parameter. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
+        # 
+        # *   If the destination instance is a PolarDB for PostgreSQL (Compatible with Oracle) cluster, you must connect the cluster to DTS as a self-managed database by using a public IP address or Express Connect and set this parameter to **OTHER** or **EXPRESS**.
+        # *   If the destination instance is an ApsaraMQ for Kafka instance, you must connect the instance to DTS as a self-managed database by using ECS or Express Connect and set this parameter to **ECS** or **EXPRESS**.
+        # *   For more information, see [Supported source and destination databases](https://help.aliyun.com/document_detail/176064.html).
+        # *   If the destination instance is a self-managed database, you must deploy the network environment for the database. For more information, see [Preparation overview](https://help.aliyun.com/document_detail/146958.html).
         # 
         # This parameter is required.
         self.destination_endpoint_instance_type = destination_endpoint_instance_type
-        # The ID of the data migration or synchronization task.
+        # The SID of the Oracle database.
         # 
-        # >  You must specify at least one of the DtsJobId and **DtsInstanceId** parameters. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+        # > This parameter is valid and required only if **DestinationEndpointEngineName** is set to **ORACLE** and the **Oracle** database is deployed in a non-RAC architecture.
         self.destination_endpoint_oracle_sid = destination_endpoint_oracle_sid
-        # The Alibaba Cloud account ID to which the target RDS MySQL instance belongs.
-        # 
-        # >Currently, it can only be configured when the target instance is RDS MySQL.
-        # - Passing in this parameter means performing data migration or synchronization across Alibaba Cloud accounts, and you also need to pass in the Destination Endpoint Role parameter.
-        self.destination_endpoint_owner_id = destination_endpoint_owner_id
-        # Specifies whether to perform full data migration or synchronization. Default value: true. Valid values:
-        # 
-        # *   **true**: performs full data migration or synchronization.
-        # *   **false**: does not perform full data migration or synchronization.
-        self.destination_endpoint_password = destination_endpoint_password
-        # The database account of the destination database.
+        # The ID of the Alibaba Cloud account to which the destination ApsaraDB RDS for MySQL instance belongs.
         # 
         # > 
+        # 
+        # *   This parameter is available only if the destination instance is an ApsaraDB RDS for MySQL instance.
+        # *   You can specify this parameter to migrate or synchronize data across different Alibaba Cloud accounts. In this case, you must specify **DestinationEndpointRole**.
+        self.destination_endpoint_owner_id = destination_endpoint_owner_id
+        # The password of the account that is used to log on to the destination database.
+        # 
+        # > If the destination database is a MaxCompute project, you must specify the AccessKey secret of your Alibaba Cloud account. For information about how to obtain an AccessKey pair, see [Create an AccessKey pair](https://help.aliyun.com/document_detail/116401.html).
+        self.destination_endpoint_password = destination_endpoint_password
+        # The port number of the destination instance.
+        # 
+        # > This parameter is valid and required only if the destination instance is a self-managed database.
+        self.destination_endpoint_port = destination_endpoint_port
+        # The ID of the region in which the destination instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # 
+        # > If the destination instance is an Alibaba Cloud database instance, this parameter is required.
+        self.destination_endpoint_region = destination_endpoint_region
+        # The name of the RAM role configured for the Alibaba Cloud account to which the destination instance belongs.
+        # 
+        # > This parameter is required if you migrate or synchronize data across Alibaba Cloud accounts. For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account DTS tasks](https://help.aliyun.com/document_detail/48468.html).
+        self.destination_endpoint_role = destination_endpoint_role
+        # The username of the account that is used to log on to the destination database.
+        # 
+        # > 
+        # 
         # *   In most cases, this parameter is required.
         # *   The permissions that are required for the database account vary with the migration or synchronization scenario. For more information, see [Prepare the database accounts for data migration](https://help.aliyun.com/document_detail/175878.html) or [Prepare the database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.html).
-        # *   If the destination database is a MaxCompute project, you must specify the AccessKey ID of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](https://help.aliyun.com/document_detail/116401.html).
-        self.destination_endpoint_port = destination_endpoint_port
-        # The database service port of the destination instance.
-        # 
-        # >  If the destination instance is a self-managed database, this parameter is available and required.
-        self.destination_endpoint_region = destination_endpoint_region
-        # The role name configured for the cloud account to which the target instance belongs.
-        # >When performing data migration or synchronization across Alibaba Cloud accounts, this parameter must be passed in. For the required permissions and authorization methods for this role, please refer to how to configure RAM authorization during data migration or synchronization across Alibaba Cloud accounts.
-        self.destination_endpoint_role = destination_endpoint_role
-        # Specifies whether to perform schema migration or synchronization. Default value: true. Valid values:
-        # 
-        # *   **true**: performs schema migration or synchronization.
-        # *   **false**: does not perform schema migration or synchronization.
+        # *   If the destination database is a MaxCompute project, you must specify the AccessKey ID of your Alibaba Cloud account. For information about how to obtain an AccessKey pair, see [Create an AccessKey pair](https://help.aliyun.com/document_detail/116401.html).
         self.destination_endpoint_user_name = destination_endpoint_user_name
-        # The ID of the request.
+        # Specifies whether the instance is a disaster recovery instance. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.disaster_recovery_job = disaster_recovery_job
-        # The environment label of the DTS instance has a value of:
-        # - Normal: Normal
-        # - Online: Online
+        # The environment tag of the DTS instance. Valid values:
+        # 
+        # *   **normal******\
+        # *   **online******\
         self.dts_bis_label = dts_bis_label
-        # The threshold for triggering latency-related alerts. Unit: seconds. The value must be an integer. You can set the threshold based on your business needs. To prevent jitters caused by network and database overloads, we recommend that you set the threshold to more than 10 seconds.
+        # The ID of the data migration or synchronization instance.
         # 
-        # >  If the **DelayNotice** parameter is set to **true**, this parameter is required.
+        # > You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
         self.dts_instance_id = dts_instance_id
-        # The mobile numbers that receive latency-related alerts. Separate multiple mobile numbers with commas (,).
+        # The ID of the data migration or synchronization task.
         # 
-        # > 
-        # *   This parameter is available only for China site (aliyun.com) users. Only mobile numbers in the Chinese mainland are supported. Up to 10 mobile numbers can be specified.
-        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the CloudMonitor console](https://help.aliyun.com/document_detail/175876.html).
+        # > You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
         self.dts_job_id = dts_job_id
-        # The ID of the source instance.
-        # 
-        # If the source instance is an Alibaba Cloud database instance, you must specify the ID of the database instance. For example, if the source instance is an ApsaraDB RDS for MySQL instance, you must specify the ID of the ApsaraDB RDS for MySQL instance.
-        # 
-        # If the source instance is a self-managed database, the value of this parameter varies with the value of the **SourceEndpointInstanceType** parameter.****\
-        # 
-        # *   If the SourceEndpointInstanceType parameter is set to **ECS**, you must specify the ID of the ECS instance.
-        # *   If the SourceEndpointInstanceType parameter is set to **DG**, you must specify the ID of the database gateway.
-        # *   If the SourceEndpointInstanceType parameter is set to **EXPRESS** or **CEN**, you must specify the ID of the VPC that is connected to the source instance.
-        # 
-        # >  If the SourceEndpointInstanceType parameter is set to **CEN**, you must also specify the ID of the CEN instance in the Reserve parameter. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
+        # The name of the DTS instance.
         # 
         # This parameter is required.
         self.dts_job_name = dts_job_name
-        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
-        self.error_notice = error_notice
-        # The synchronization direction. Valid values:
+        # Specifies whether to monitor task status. Valid values:
         # 
-        # *   **Forward**: Data is synchronized from the source database to the destination database.
-        # *   **Reverse**: Data is synchronized from the destination database to the source database.
+        # *   **true**\
+        # *   **false**\
+        self.error_notice = error_notice
+        # The mobile phone numbers to which status-related alerts are sent. Separate multiple mobile phone numbers with commas (,).
         # 
         # > 
-        # *   Default value: **Forward**.
-        # *   The value **Reverse** takes effect only if the topology of the data synchronization task is two-way synchronization.
+        # 
+        # *   This parameter is available only for users of the China site (aliyun.com). Only mobile phone numbers in the Chinese mainland are supported. You can specify up to 10 mobile phone numbers.
+        # *   Users of the international site (alibabacloud.com) cannot receive alerts by using mobile phone numbers, but can configure alert rules for DTS tasks in the CloudMonitor console. For more information, see [Configure alert rules for DTS tasks in the CloudMonitor console](https://help.aliyun.com/document_detail/175876.html).
         self.error_phone = error_phone
-        # Specifies whether the instance is a disaster recovery instance.
-        # 
-        # *   **true**: The instance is a disaster recovery instance.
-        # *   **false**: The instance is not a disaster recovery instance.
+        # The URL of the Object Storage Service (OSS) bucket that stores the files related to the DTS task.
         self.file_oss_url = file_oss_url
-        # The ID of the data migration or synchronization instance.
+        # The type of the task. Valid values:
         # 
-        # >  You must specify at least one of the **DtsJobId** and DtsInstanceId parameters. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
+        # *   **MIGRATION**: data migration task.
+        # *   **SYNC**: data synchronization task.
+        # *   **CHECK**: data verification task. You must separately purchase a data verification instance.
+        # 
+        # > If you set this parameter to **MIGRATION** or **SYNC**, you can also enable data verification in the data migration or synchronization task.
         # 
         # This parameter is required.
         self.job_type = job_type
-        # Upper limit of DU.
+        # The maximum number of DUs.
         # 
-        # > Only supported by Serverless instances.
+        # > This parameter is supported only for serverless instances.
         self.max_du = max_du
-        # Lower limit of DU.
+        # The minimum number of DTS Units (DUs).
         # 
-        # > Only supported by Serverless instances.
+        # > This parameter is supported only for serverless instances.
         self.min_du = min_du
         self.owner_id = owner_id
-        # The URL of the Object Storage Service (OSS) bucket that stores the files related to the DTS task.
+        # The ID of the region in which the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The SID of the Oracle database.
-        # 
-        # >  If the **DestinationEndpointEngineName** parameter is set to **ORACLE** and the **Oracle** database is deployed in a non-RAC architecture, this parameter is available and required.
+        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to add more configurations of the source or destination instance to the DTS task. For example, you can specify the data storage format of the destination Kafka database and the CEN instance ID. For more information, see [Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
         self.reserve = reserve
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The password of the source database account.
+        # The name of the database from which the objects are migrated or synchronized in the source instance.
+        # 
+        # > This parameter is valid and required only if the source instance is a PolarDB for PostgreSQL (Compatible with Oracle) cluster, a PostgreSQL database, or a MongoDB database.
         self.source_endpoint_database_name = source_endpoint_database_name
-        # The IP address of the source instance.
+        # The database type of the source instance.
         # 
-        # >  If the **SourceEndpointInstanceType** parameter is set to **OTHER**, **EXPRESS**, **DG**, or **CEN**, this parameter is available and required.
-        self.source_endpoint_engine_name = source_endpoint_engine_name
-        # The system ID (SID) of the Oracle database.
-        # 
-        # >  If the **SourceEndpointEngineName** parameter is set to **ORACLE** and the **Oracle** database is deployed in an architecture that is not a Real Application Cluster (RAC), this parameter is available and required.
-        self.source_endpoint_ip = source_endpoint_ip
-        # The ID of the region in which the source instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
-        # 
-        # >  If the source instance is an Alibaba Cloud database instance, this parameter is required.
-        self.source_endpoint_instance_id = source_endpoint_instance_id
-        # The database engine of the source instance. Valid values:
-        # 
-        # *   **MYSQL**: ApsaraDB RDS for MySQL instance or self-managed MySQL database
-        # *   **MARIADB**: ApsaraDB RDS for MariaDB instance
-        # *   **PolarDB**: PolarDB for MySQL cluster
-        # *   **POLARDB_O**: PolarDB for Oracle cluster
-        # *   **POLARDBX10**: PolarDB-X 1.0 instance
-        # *   **POLARDBX20**: PolarDB-X 2.0 instance
-        # *   **ORACLE**: self-managed Oracle database
-        # *   **POSTGRESQL**: ApsaraDB RDS for PostgreSQL instance or self-managed PostgreSQL database
-        # *   **MSSQL**: ApsaraDB RDS for SQL Server instance or self-managed SQL Server database
-        # *   **MONGODB**: ApsaraDB for MongoDB instance or self-managed MongoDB database
-        # *   **DB2**: self-managed Db2 for LUW database
-        # *   **AS400**: self-managed Db2 for i database
-        # *   **DMSPOLARDB**: DMS logical database
-        # *   **HBASE**: self-managed HBase database
-        # *   **TERADATA**: Teradata database
-        # *   **TiDB**: TiDB database
-        # *   **REDIS**: ApsaraDB for Redis instance or self-managed Redis database
+        # *   **MYSQL**: ApsaraDB RDS for MySQL instance or self-managed MySQL database.
+        # *   **MARIADB**: ApsaraDB RDS for MariaDB instance.
+        # *   **PolarDB**: PolarDB for MySQL cluster.
+        # *   **POLARDB_O**: PolarDB for PostgreSQL (Compatible with Oracle) cluster.
+        # *   **POLARDBX10**: PolarDB-X 1.0 instance (formerly DRDS).
+        # *   **POLARDBX20**: PolarDB-X 2.0 instance.
+        # *   **ORACLE**: self-managed Oracle database.
+        # *   **POSTGRESQL**: ApsaraDB RDS for PostgreSQL instance or self-managed PostgreSQL database.
+        # *   **MSSQL**: ApsaraDB RDS for SQL Server instance or self-managed SQL Server database.
+        # *   **MONGODB**: ApsaraDB for MongoDB instance or self-managed MongoDB database.
+        # *   **DB2**: self-managed Db2 for LUW database.
+        # *   **AS400**: self-managed Db2 for i database.
+        # *   **DMSPOLARDB**: DMS logical database.
+        # *   **HBASE**: self-managed HBase database.
+        # *   **TERADATA**: Teradata database.
+        # *   **TiDB**: TiDB database.
+        # *   **REDIS**: ApsaraDB for Redis instance or self-managed Redis database.
         # 
         # > 
+        # 
         # *   Default value: **MYSQL**.
-        # *   If the SourceEndpointEngineName parameter is set to **MONGODB**, you must also specify the architecture type of the MongoDB database in the Reserve parameter. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
+        # *   If this parameter is set to **MONGODB**, you must also specify the architecture type of the MongoDB database in Reserve. For more information, see [Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+        self.source_endpoint_engine_name = source_endpoint_engine_name
+        # The IP address of the source instance.
+        # 
+        # > This parameter is valid and required only if **SourceEndpointInstanceType** is set to **OTHER**, **EXPRESS**, **DG**, or **CEN**.
+        self.source_endpoint_ip = source_endpoint_ip
+        # The source instance ID.
+        # 
+        # If the source instance is an Alibaba Cloud database instance, you must specify the database instance ID. For example, if the source instance is an ApsaraDB RDS for MySQL instance, you must specify the ID of the ApsaraDB RDS for MySQL instance.
+        # 
+        # If the source instance is a self-managed database, the value of this parameter varies with the value of **SourceEndpointInstanceType**.****\
+        # 
+        # *   If SourceEndpointInstanceType is set to **ECS**, you must specify the ECS instance ID.
+        # *   If SourceEndpointInstanceType is set to **DG**, you must specify the database gateway ID.
+        # *   If SourceEndpointInstanceType is set to **EXPRESS** or **CEN**, you must specify the ID of the virtual private cloud (VPC) that is connected to the source instance.
+        # 
+        # > If SourceEndpointInstanceType is set to **CEN**, you must also specify the ID of the CEN instance in Reserve. For more information, see [Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+        self.source_endpoint_instance_id = source_endpoint_instance_id
+        # The type of the source instance. Valid values:
+        # 
+        # **Alibaba Cloud database instance**\
+        # 
+        # *   **RDS**: ApsaraDB RDS for MySQL instance, ApsaraDB RDS for SQL Server instance, ApsaraDB RDS for PostgreSQL instance, or ApsaraDB RDS for MariaDB instance
+        # *   **PolarDB**: PolarDB for MySQL cluster.
+        # *   **REDIS**: ApsaraDB for Redis instance.
+        # *   **DISTRIBUTED_POLARDBX10**: PolarDB-X 1.0 instance (formerly DRDS).
+        # *   **POLARDBX20**: PolarDB-X 2.0 instance.
+        # *   **MONGODB**: ApsaraDB for MongoDB instance.
+        # *   **DISTRIBUTED_DMSLOGICDB**: Data Management (DMS) logical database
+        # 
+        # **Self-managed database**\
+        # 
+        # *   **OTHER**: self-managed database with a public IP address.
+        # *   **ECS**: self-managed database hosted on an ECS instance.
+        # *   **EXPRESS**: self-managed database connected over Express Connect.
+        # *   **CEN**: self-managed database connected over Cloud Enterprise Network (CEN).
+        # *   **DG**: self-managed database connected over Database Gateway.
+        # 
+        # > 
+        # 
+        # *   If the source instance is a PolarDB for PostgreSQL (Compatible with Oracle) cluster, you must connect the cluster to DTS as a self-managed database by using a public IP address or Express Connect and set this parameter to **OTHER** or **EXPRESS**.
+        # *   For more information, see [Supported sources and targets](https://help.aliyun.com/document_detail/176064.html).
+        # *   If the source instance is a self-managed database, you must deploy the network environment for the database. For more information, see [Preparation overview](https://help.aliyun.com/document_detail/146958.html).
         # 
         # This parameter is required.
         self.source_endpoint_instance_type = source_endpoint_instance_type
-        # The database account of the source database.
+        # The SID of the Oracle database.
+        # 
+        # > This parameter is valid and required only if **SourceEndpointEngineName** is set to **ORACLE** and the **Oracle** database is deployed in a non-Real Application Cluster (RAC) architecture.
+        self.source_endpoint_oracle_sid = source_endpoint_oracle_sid
+        # The ID of the Alibaba Cloud account to which the source database belongs.
+        # 
+        # > You can specify this parameter to migrate or synchronize data across different Alibaba Cloud accounts. In this case, you must specify **SourceEndpointRole**.
+        self.source_endpoint_owner_id = source_endpoint_owner_id
+        # The password of the account that is used to log on to the source database.
+        self.source_endpoint_password = source_endpoint_password
+        # The port number of the source instance.
+        # 
+        # > This parameter is required only if the source instance is a self-managed database.
+        self.source_endpoint_port = source_endpoint_port
+        # The ID of the region in which the source instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # 
+        # > If the source instance is an Alibaba Cloud database instance, this parameter is required.
+        self.source_endpoint_region = source_endpoint_region
+        # The name of the Resource Access Management (RAM) role configured for the Alibaba Cloud account to which the source instance belongs.
+        # 
+        # > This parameter is required if you migrate or synchronize data across different Alibaba Cloud accounts. For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account DTS tasks](https://help.aliyun.com/document_detail/48468.html).
+        self.source_endpoint_role = source_endpoint_role
+        # The username of the account that is used to log on to the source database.
         # 
         # > 
+        # 
         # *   In most cases, this parameter is required.
         # *   The permissions that are required for the database account vary with the migration or synchronization scenario. For more information, see [Prepare the database accounts for data migration](https://help.aliyun.com/document_detail/175878.html) or [Prepare the database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.html).
-        self.source_endpoint_oracle_sid = source_endpoint_oracle_sid
-        # The type of the destination instance. Valid values:
-        # 
-        # **Alibaba Cloud database instances**\
-        # 
-        # *   **RDS**: ApsaraDB RDS for MySQL instance, ApsaraDB RDS for SQL Server instance, ApsaraDB RDS for PostgreSQL instance, or ApsaraDB RDS for MariaDB instance
-        # *   **PolarDB**: PolarDB for MySQL cluster
-        # *   **POLARDBX10**: PolarDB-X 1.0 instance
-        # *   **POLARDBX20**: PolarDB-X 2.0 instance
-        # *   **REDIS**: ApsaraDB for Redis instance
-        # *   **ADS**: AnalyticDB for MySQL V2.0 cluster or AnalyticDB for MySQL V3.0 cluster
-        # *   **MONGODB**: ApsaraDB for MongoDB instance
-        # *   **GREENPLUM**: AnalyticDB for PostgreSQL instance
-        # *   **DATAHUB**: DataHub project
-        # *   **ELK**: Elasticsearch cluster
-        # *   **Tablestore**: Tablestore instance
-        # *   **ODPS**: MaxCompute project
-        # 
-        # **Self-managed databases**\
-        # 
-        # *   **OTHER**: self-managed database with a public IP address
-        # *   **ECS**: self-managed database hosted on an ECS instance
-        # *   **EXPRESS**: self-managed database connected over Express Connect
-        # *   **CEN**: self-managed database connected over CEN
-        # *   **DG**: self-managed database connected over Database Gateway
-        # 
-        # > 
-        # *   If the destination instance is a PolarDB for Oracle cluster, you must set this parameter to **OTHER** or **EXPRESS** because you can use a PolarDB for Oracle cluster only as a self-managed database connected over the Internet or Express Connect.
-        # *   If the destination instance is a Message Queue for Apache Kafka instance, you must set this parameter to **ECS** or **EXPRESS** because you can use a Message Queue for Apache Kafka instance only as a self-managed database connected over ECS or Express Connect.
-        # *   For more information, see [Supported databases](https://help.aliyun.com/document_detail/176064.html).
-        # *   If the destination instance is a self-managed database, you must deploy the network environment for the database. For more information, see [Preparation overview](https://help.aliyun.com/document_detail/146958.html).
-        self.source_endpoint_owner_id = source_endpoint_owner_id
-        # The name of the RAM role configured for the Alibaba Cloud account that owns the source instance.
-        # 
-        # >  This parameter is required when you migrate or synchronize data across different Alibaba Cloud accounts. For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](https://help.aliyun.com/document_detail/48468.html).
-        self.source_endpoint_password = source_endpoint_password
-        # The name of the database to which the objects to be migrated in the source instance belong.
-        # 
-        # >  If the source instance is a PolarDB for Oracle cluster, a PostgreSQL database, or a MongoDB database, this parameter is available and required.
-        self.source_endpoint_port = source_endpoint_port
-        # The database service port of the source instance.
-        # 
-        # >  If the source instance is a self-managed database, this parameter is available and required.
-        self.source_endpoint_region = source_endpoint_region
-        # The ID of the destination instance.
-        # 
-        # If the destination instance is an Alibaba Cloud database instance, you must specify the ID of the database instance. For example, if the destination instance is an ApsaraDB RDS for MySQL instance, you must specify the ID of the ApsaraDB RDS for MySQL instance.
-        # 
-        # If the destination instance is a self-managed database, the value of this parameter varies with the value of the **DestinationEndpointInstanceType** parameter.****\
-        # 
-        # *   If the DestinationEndpointInstanceType parameter is set to **ECS**, you must specify the ID of the ECS instance.
-        # *   If the DestinationEndpointInstanceType parameter is set to **DG**, you must specify the ID of the database gateway.
-        # *   If the DestinationEndpointInstanceType parameter is set to **EXPRESS** or **CEN**, you must specify the ID of the VPC that is connected to the source instance.
-        # 
-        # >  If the DestinationEndpointInstanceType parameter is set to **CEN**, you must also specify the ID of the CEN instance in the Reserve parameter. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
-        self.source_endpoint_role = source_endpoint_role
-        # The ID of the Alibaba Cloud account to which the source instance belongs.
-        # 
-        # >  You can specify this parameter to migrate or synchronize data across different Alibaba Cloud accounts. In this case, you must specify the **SourceEndpointRole** parameter.
         self.source_endpoint_user_name = source_endpoint_user_name
-        # Data delivery link switch instance ID.
+        # The ID of the vSwitch that is used for data shipping.
         self.source_endpoint_vswitch_id = source_endpoint_vswitch_id
-        # The path of the certificate authority (CA) certificate that is used if the connection to the source database is encrypted by using the SSL protocol.
+        # The path of the certificate authority (CA) certificate that is used if the connection to the source database is encrypted by using SSL.
         # 
-        # >  This feature is not supported. Do not specify this parameter.
+        # > This feature is not supported. Do not specify this parameter.
         self.src_ca_certificate_oss_url = src_ca_certificate_oss_url
-        # The key of the CA certificate that is used if the connection to the source database is encrypted by using the SSL protocol.
+        # The key of the CA certificate that is used if the connection to the source database is encrypted by using SSL.
         # 
-        # >  This feature is not supported. Do not specify this parameter.
+        # > This feature is not supported. Do not specify this parameter.
         self.src_ca_certificate_password = src_ca_certificate_password
-        # The path to the client certificate that is used if the connection to the source database is encrypted by using the SSL protocol.
+        # The path to the client certificate that is used if the connection to the source database is encrypted by using SSL.
         # 
-        # >  This feature is not supported. Do not specify this parameter.
+        # > This feature is not supported. Do not specify this parameter.
         self.src_client_cert_oss_url = src_client_cert_oss_url
-        # The path to the private key of the client certificate that is used if the connection to the source database is encrypted by using the SSL protocol.
+        # The path to the private key of the client certificate that is used if the connection to the source database is encrypted by using SSL.
         # 
-        # >  This feature is not supported. Do not specify this parameter.
+        # > This feature is not supported. Do not specify this parameter.
         self.src_client_key_oss_url = src_client_key_oss_url
-        # The password of the private key of the client certificate that is used if the connection to the source database is encrypted by using the SSL protocol.
+        # The password of the private key of the client certificate that is used if the connection to the source database is encrypted by using SSL.
         # 
-        # >  This feature is not supported. Do not specify this parameter.
+        # > This feature is not supported. Do not specify this parameter.
         self.src_client_password = src_client_password
+        # VPCNAT source end main VSW
         self.src_primary_vsw_id = src_primary_vsw_id
+        # VPCNAT source backup VSW
         self.src_secondary_vsw_id = src_secondary_vsw_id
-        # Specifies whether to perform incremental data migration or synchronization. Default value: false. Valid values:
+        # Specifies whether to perform schema migration or schema synchronization. Valid values:
         # 
-        # *   **false**: does not perform incremental data migration or synchronization.
-        # *   **true**: performs incremental data migration or synchronization.
+        # *   **true** (default)
+        # *   **false**\
+        # 
+        # > If **JobType** is set to **CHECK**, set this parameter to **false**.
         # 
         # This parameter is required.
         self.structure_initialization = structure_initialization
-        # The ID of the DTS dedicated cluster on which the task runs.
+        # The synchronization direction. Valid values:
         # 
-        # >  If this parameter is specified, the task is scheduled to the specified DTS dedicated cluster.
+        # *   **Forward**\
+        # *   **Reverse**\
+        # 
+        # > 
+        # 
+        # *   The default value is **Forward**.
+        # *   The value **Reverse** takes effect only if the topology of the data synchronization task is two-way synchronization.
         self.synchronization_direction = synchronization_direction
 
     def validate(self):
@@ -764,350 +816,402 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         structure_initialization: bool = None,
         synchronization_direction: str = None,
     ):
-        # The type of the task. Valid values:
-        # 
-        # *   **MIGRATION**: data migration task
-        # *   **SYNC**: data synchronization task
+        # The start offset of incremental data migration or incremental data synchronization. The value is a UNIX timestamp. Unit: seconds.
         self.checkpoint = checkpoint
-        # The HTTP status code.
+        # The parameters for data verification, including the configurations for data verification and alerts. The value is a JSON string. For more information, see [DataCheckConfigure parameter description](https://help.aliyun.com/document_detail/459023.html).
         self.data_check_configure = data_check_configure
-        # The objects that you want to migrate or synchronize. The value is a JSON string. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
+        # Specifies whether to perform full data migration or full data synchronization. Valid values:
+        # 
+        # *   **true** (default)
+        # *   **false**\
+        # 
+        # > If **JobType** is set to **CHECK**, set this parameter to **false**.
         # 
         # This parameter is required.
         self.data_initialization = data_initialization
-        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to add more configurations of the source or destination instance to the DTS task. For example, you can specify the data storage format of the destination Kafka database and the ID of the CEN instance. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
+        # Specifies whether to perform incremental data migration or incremental data synchronization. Valid values:
+        # 
+        # *   **false** (default)
+        # *   **true**\
+        # 
+        # > If **JobType** is set to **CHECK**, set this parameter to **false**.
         # 
         # This parameter is required.
         self.data_synchronization = data_synchronization
-        # The objects to be migrated or synchronized. Specify a JSON string. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
-        # 
-        # >  The value can be up to 10 MB in size.
+        # The objects that you want to migrate or synchronize. The value is a JSON string. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
         self.db_list = db_list
-        # The data verification task for a data migration or synchronization instance. The value is a JSON string that indicates parameter limits or alert configurations. For more information, see [DataCheckConfigure](https://help.aliyun.com/document_detail/459023.html).
+        # The ID of the DTS dedicated cluster on which the task runs.
+        # 
+        # > If this parameter is specified, the task is scheduled to the specified DTS dedicated cluster.
         self.dedicated_cluster_id = dedicated_cluster_id
-        # Specifies whether to monitor the task status. Valid values:
+        # Specifies whether to monitor task latency. Valid values:
         # 
-        # *   **true**: monitors the task status.
-        # *   **false**: does not monitor the task status.
+        # *   **true**\
+        # *   **false**\
         self.delay_notice = delay_notice
-        # Specifies whether to monitor the task latency. Valid values:
+        # The mobile phone numbers to which latency-related alerts are sent. Separate multiple mobile phone numbers with commas (,).
         # 
-        # *   **true**: monitors the task latency.
-        # *   **false**: does not monitor the task latency.
+        # > 
+        # 
+        # *   This parameter is available only for users of the China site (aliyun.com). Only mobile phone numbers in the Chinese mainland are supported. You can specify up to 10 mobile phone numbers.
+        # *   Users of the international site (alibabacloud.com) cannot receive alerts by using mobile phone numbers, but can configure alert rules for DTS tasks in the CloudMonitor console. For more information, see [Configure alert rules for DTS tasks in the CloudMonitor console](https://help.aliyun.com/document_detail/175876.html).
         self.delay_phone = delay_phone
-        # The threshold for triggering latency-related alerts. Unit: seconds. The value must be an integer. You can specify this parameter based on your business requirements. To prevent unstable latency caused by network and database workloads, we recommend that you set this parameter to more than 10 seconds.
+        # The threshold for latency alerts. Unit: seconds. The value must be an integer. You can set the threshold based on your business requirements. To prevent unstable latency caused by network and database overloads, we recommend that you set the threshold to more than 10 seconds.
         # 
-        # >  You must specify this parameter if **DelayNotice** is set to **true**.
+        # > If **DelayNotice** is set to **true**, this parameter is required.
         self.delay_rule_time = delay_rule_time
-        # The path of the CA certificate when the target library is securely connected via SSL.
-        # >This feature is currently not supported, please do not pass in this parameter.
+        # The path of the CA certificate that is used if the connection to the destination database is encrypted by using SSL.
+        # 
+        # > This feature is not supported. Do not specify this parameter.
         self.dest_ca_certificate_oss_url = dest_ca_certificate_oss_url
-        # The key of the CA certificate when the target library is securely connected via SSL.
-        # >This feature is currently not supported, please do not pass in this parameter.
+        # The key of the CA certificate that is used if the connection to the destination database is encrypted by using SSL.
+        # 
+        # > This feature is not supported. Do not specify this parameter.
         self.dest_ca_certificate_password = dest_ca_certificate_password
-        # The path to the client certificate that is used if the connection to the destination database is encrypted by using the SSL protocol.
+        # The path to the client certificate that is used if the connection to the destination database is encrypted by using SSL.
         # 
-        # >  This feature is not supported. Do not specify this parameter.
+        # > This feature is not supported. Do not specify this parameter.
         self.dest_client_cert_oss_url = dest_client_cert_oss_url
-        # The path to the private key of the client certificate that is used if the connection to the destination database is encrypted by using the SSL protocol.
+        # The path to the private key of the client certificate that is used if the connection to the destination database is encrypted by using SSL.
         # 
-        # >  This feature is not supported. Do not specify this parameter.
+        # > This feature is not supported. Do not specify this parameter.
         self.dest_client_key_oss_url = dest_client_key_oss_url
-        # The password of the private key of the client certificate that is used if the connection to the destination database is encrypted by using the SSL protocol.
+        # The password of the private key of the client certificate that is used if the connection to the destination database is encrypted by using SSL.
         # 
-        # >  This feature is not supported. Do not specify this parameter.
+        # > This feature is not supported. Do not specify this parameter.
         self.dest_client_password = dest_client_password
+        # VPCNAT destination main VSW
         self.dest_primary_vsw_id = dest_primary_vsw_id
+        # VPCNAT destination backup VSW
         self.dest_secondary_vsw_id = dest_secondary_vsw_id
-        # The password of the destination database account.
+        # The name of the database to which the objects are migrated or synchronized in the destination instance.
         # 
-        # >  If the destination database is a MaxCompute project, you must specify the AccessKey secret of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](https://help.aliyun.com/document_detail/116401.html).
+        # > 
+        # 
+        # *   This parameter is valid and required only if the destination database is a PolarDB for PostgreSQL (Compatible with Oracle) cluster, an AnalyticDB for PostgreSQL instance, a PostgreSQL database, a MaxCompute project, or a MongoDB database.
+        # *   If the destination instance is a MaxCompute project, you must specify the MaxCompute project ID.
         self.destination_endpoint_data_base_name = destination_endpoint_data_base_name
+        # The type of the destination database. Valid values:
+        # 
+        # *   **MYSQL**: ApsaraDB RDS for MySQL instance or self-managed MySQL database.
+        # *   **MARIADB**: ApsaraDB RDS for MariaDB instance.
+        # *   **PolarDB**: PolarDB for MySQL cluster.
+        # *   **POLARDB_O**: PolarDB for PostgreSQL (Compatible with Oracle) cluster.
+        # *   **POLARDBX10**: PolarDB-X 1.0 instance (formerly DRDS).
+        # *   **POLARDBX20**: PolarDB-X 2.0 instance.
+        # *   **ORACLE**: self-managed Oracle database.
+        # *   **POSTGRESQL**: ApsaraDB RDS for PostgreSQL instance or self-managed PostgreSQL database.
+        # *   **MSSQL**: ApsaraDB RDS for SQL Server instance or self-managed SQL Server database.
+        # *   **ADS**: AnalyticDB for MySQL V2.0 cluster.
+        # *   **ADB30**: AnalyticDB for MySQL V3.0 cluster.
+        # *   **MONGODB**: ApsaraDB for MongoDB instance or self-managed MongoDB database.
+        # *   **GREENPLUM**: AnalyticDB for PostgreSQL instance.
+        # *   **KAFKA**: ApsaraMQ for Kafka instance or self-managed Kafka cluster.
+        # *   **DATAHUB**: DataHub project.
+        # *   **DB2**: self-managed Db2 for LUW database.
+        # *   **AS400**: Db2 for i database.
+        # *   **ODPS**: MaxCompute project.
+        # *   **Tablestore**: Tablestore instance.
+        # *   **ELK**: Elasticsearch cluster.
+        # *   **REDIS**: ApsaraDB for Redis instance or self-managed Redis database.
+        # 
+        # > 
+        # 
+        # *   Default value: **MYSQL**.
+        # *   If this parameter is set to **KAFKA**, **MONGODB**, or **PolarDB**, you must also specify the database information in Reserve. For more information, see [Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+        self.destination_endpoint_engine_name = destination_endpoint_engine_name
         # The IP address of the destination instance.
         # 
-        # >  If the **DestinationEndpointInstanceType** parameter is set to **OTHER**, **EXPRESS**, **DG**, or **CEN**, this parameter is available and required.
-        self.destination_endpoint_engine_name = destination_endpoint_engine_name
-        # The name of the database to which the objects migrated to the destination instance belong.
-        # 
-        # > 
-        # *   If the destination instance is a PolarDB for Oracle cluster, an AnalyticDB for PostgreSQL instance, a PostgreSQL database, a MaxCompute project, or a MongoDB database, this parameter is available and required.
-        # *   If the destination instance is a MaxCompute project, you must specify the ID of the MaxCompute project.
+        # > This parameter is valid and required only if **DestinationEndpointInstanceType** is set to **OTHER**, **EXPRESS**, **DG**, or **CEN**.
         self.destination_endpoint_ip = destination_endpoint_ip
-        # The ID of the region in which the destination instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The destination instance ID.
         # 
-        # >  If the destination instance is an Alibaba Cloud database instance, this parameter is required.
+        # If the destination instance is an Alibaba Cloud database instance, you must specify the database instance ID. For example, if the destination instance is an ApsaraDB RDS for MySQL instance, you must specify the ID of the ApsaraDB RDS for MySQL instance.
+        # 
+        # If the destination instance is a self-managed database, the value of this parameter varies with the value of **DestinationEndpointInstanceType**.****\
+        # 
+        # *   If DestinationEndpointInstanceType is set to **ECS**, you must specify the ECS instance ID.
+        # *   If DestinationEndpointInstanceType is set to **DG**, you must specify the database gateway ID.
+        # *   If DestinationEndpointInstanceType is set to **EXPRESS** or **CEN**, you must specify the ID of the VPC that is connected to the source instance.
+        # 
+        # > If DestinationEndpointInstanceType is set to **CEN**, you must also specify the ID of the CEN instance in Reserve. For more information, see [Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
         self.destination_endpoint_instance_id = destination_endpoint_instance_id
-        # The database engine of the destination instance. Valid values:
+        # The type of the destination instance. Valid values:
         # 
-        # *   **MySQL**: ApsaraDB RDS for MySQL instance or self-managed MySQL database
-        # *   **MARIADB**: ApsaraDB RDS for MariaDB instance
-        # *   **PolarDB**: PolarDB for MySQL cluster
-        # *   **POLARDB_O**: PolarDB for Oracle cluster
-        # *   **POLARDBX10**: PolarDB-X 1.0 instance
-        # *   **POLARDBX20**: PolarDB-X 2.0 instance
-        # *   **ORACLE**: self-managed Oracle database
-        # *   **POSTGRESQL**: ApsaraDB RDS for PostgreSQL instance or self-managed PostgreSQL database
-        # *   **MSSQL**: ApsaraDB RDS for SQL Server instance or self-managed SQL Server database
-        # *   **ADS**: AnalyticDB for MySQL V2.0 cluster
-        # *   **ADB30**: AnalyticDB for MySQL V3.0 cluster
-        # *   **MONGODB**: ApsaraDB for MongoDB instance or self-managed MongoDB database
-        # *   **GREENPLUM**: AnalyticDB for PostgreSQL instance
-        # *   **KAFKA**: Message Queue for Apache Kafka instance or self-managed Kafka cluster
-        # *   **DATAHUB**: DataHub project
-        # *   **DB2**: self-managed Db2 for LUW database
-        # *   **AS400**: self-managed Db2 for i database
-        # *   **ODPS**: MaxCompute project
-        # *   **Tablestore**: Tablestore instance
-        # *   **ELK**: Elasticsearch cluster
-        # *   **REDIS**: ApsaraDB for Redis instance or self-managed Redis database
+        # **Alibaba Cloud database instance**\
+        # 
+        # *   **RDS**: ApsaraDB RDS for MySQL instance, ApsaraDB RDS for SQL Server instance, ApsaraDB RDS for PostgreSQL instance, or ApsaraDB RDS for MariaDB instance.
+        # *   **PolarDB**: PolarDB for MySQL cluster.
+        # *   **DISTRIBUTED_POLARDBX10**: PolarDB-X 1.0 instance (formerly DRDS).
+        # *   **POLARDBX20**: PolarDB-X 2.0 instance.
+        # *   **REDIS**: ApsaraDB for Redis instance.
+        # *   **ADS**: AnalyticDB for MySQL V2.0 cluster or AnalyticDB for MySQL V3.0 cluster.
+        # *   **MONGODB**: ApsaraDB for MongoDB instance.
+        # *   **GREENPLUM**: AnalyticDB for PostgreSQL instance.
+        # *   **DATAHUB**: DataHub project.
+        # *   **ELK**: Elasticsearch cluster.
+        # *   **Tablestore**: Tablestore instance.
+        # *   **ODPS**: MaxCompute project.
+        # 
+        # **Self-managed database**\
+        # 
+        # *   **OTHER**: self-managed database with a public IP address.
+        # *   **ECS**: self-managed database hosted on an ECS instance.
+        # *   **EXPRESS**: self-managed database connected over Express Connect.
+        # *   **CEN**: self-managed database connected over Cloud Enterprise Network (CEN).
+        # *   **DG**: self-managed database connected over Database Gateway.
         # 
         # > 
-        # *   Default value: **MYSQL**.
-        # *   If the DestinationEndpointEngineName parameter is set to **KAFKA**, **MONGODB**, or **PolarDB**, you must also specify the database information in the Reserve parameter. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
+        # 
+        # *   If the destination instance is a PolarDB for PostgreSQL (Compatible with Oracle) cluster, you must connect the cluster to DTS as a self-managed database by using a public IP address or Express Connect and set this parameter to **OTHER** or **EXPRESS**.
+        # *   If the destination instance is an ApsaraMQ for Kafka instance, you must connect the instance to DTS as a self-managed database by using ECS or Express Connect and set this parameter to **ECS** or **EXPRESS**.
+        # *   For more information, see [Supported source and destination databases](https://help.aliyun.com/document_detail/176064.html).
+        # *   If the destination instance is a self-managed database, you must deploy the network environment for the database. For more information, see [Preparation overview](https://help.aliyun.com/document_detail/146958.html).
         # 
         # This parameter is required.
         self.destination_endpoint_instance_type = destination_endpoint_instance_type
-        # The ID of the data migration or synchronization task.
+        # The SID of the Oracle database.
         # 
-        # >  You must specify at least one of the DtsJobId and **DtsInstanceId** parameters. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+        # > This parameter is valid and required only if **DestinationEndpointEngineName** is set to **ORACLE** and the **Oracle** database is deployed in a non-RAC architecture.
         self.destination_endpoint_oracle_sid = destination_endpoint_oracle_sid
-        # The Alibaba Cloud account ID to which the target RDS MySQL instance belongs.
-        # 
-        # >Currently, it can only be configured when the target instance is RDS MySQL.
-        # - Passing in this parameter means performing data migration or synchronization across Alibaba Cloud accounts, and you also need to pass in the Destination Endpoint Role parameter.
-        self.destination_endpoint_owner_id = destination_endpoint_owner_id
-        # Specifies whether to perform full data migration or synchronization. Default value: true. Valid values:
-        # 
-        # *   **true**: performs full data migration or synchronization.
-        # *   **false**: does not perform full data migration or synchronization.
-        self.destination_endpoint_password = destination_endpoint_password
-        # The database account of the destination database.
+        # The ID of the Alibaba Cloud account to which the destination ApsaraDB RDS for MySQL instance belongs.
         # 
         # > 
+        # 
+        # *   This parameter is available only if the destination instance is an ApsaraDB RDS for MySQL instance.
+        # *   You can specify this parameter to migrate or synchronize data across different Alibaba Cloud accounts. In this case, you must specify **DestinationEndpointRole**.
+        self.destination_endpoint_owner_id = destination_endpoint_owner_id
+        # The password of the account that is used to log on to the destination database.
+        # 
+        # > If the destination database is a MaxCompute project, you must specify the AccessKey secret of your Alibaba Cloud account. For information about how to obtain an AccessKey pair, see [Create an AccessKey pair](https://help.aliyun.com/document_detail/116401.html).
+        self.destination_endpoint_password = destination_endpoint_password
+        # The port number of the destination instance.
+        # 
+        # > This parameter is valid and required only if the destination instance is a self-managed database.
+        self.destination_endpoint_port = destination_endpoint_port
+        # The ID of the region in which the destination instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # 
+        # > If the destination instance is an Alibaba Cloud database instance, this parameter is required.
+        self.destination_endpoint_region = destination_endpoint_region
+        # The name of the RAM role configured for the Alibaba Cloud account to which the destination instance belongs.
+        # 
+        # > This parameter is required if you migrate or synchronize data across Alibaba Cloud accounts. For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account DTS tasks](https://help.aliyun.com/document_detail/48468.html).
+        self.destination_endpoint_role = destination_endpoint_role
+        # The username of the account that is used to log on to the destination database.
+        # 
+        # > 
+        # 
         # *   In most cases, this parameter is required.
         # *   The permissions that are required for the database account vary with the migration or synchronization scenario. For more information, see [Prepare the database accounts for data migration](https://help.aliyun.com/document_detail/175878.html) or [Prepare the database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.html).
-        # *   If the destination database is a MaxCompute project, you must specify the AccessKey ID of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](https://help.aliyun.com/document_detail/116401.html).
-        self.destination_endpoint_port = destination_endpoint_port
-        # The database service port of the destination instance.
-        # 
-        # >  If the destination instance is a self-managed database, this parameter is available and required.
-        self.destination_endpoint_region = destination_endpoint_region
-        # The role name configured for the cloud account to which the target instance belongs.
-        # >When performing data migration or synchronization across Alibaba Cloud accounts, this parameter must be passed in. For the required permissions and authorization methods for this role, please refer to how to configure RAM authorization during data migration or synchronization across Alibaba Cloud accounts.
-        self.destination_endpoint_role = destination_endpoint_role
-        # Specifies whether to perform schema migration or synchronization. Default value: true. Valid values:
-        # 
-        # *   **true**: performs schema migration or synchronization.
-        # *   **false**: does not perform schema migration or synchronization.
+        # *   If the destination database is a MaxCompute project, you must specify the AccessKey ID of your Alibaba Cloud account. For information about how to obtain an AccessKey pair, see [Create an AccessKey pair](https://help.aliyun.com/document_detail/116401.html).
         self.destination_endpoint_user_name = destination_endpoint_user_name
-        # The ID of the request.
+        # Specifies whether the instance is a disaster recovery instance. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.disaster_recovery_job = disaster_recovery_job
-        # The environment label of the DTS instance has a value of:
-        # - Normal: Normal
-        # - Online: Online
+        # The environment tag of the DTS instance. Valid values:
+        # 
+        # *   **normal******\
+        # *   **online******\
         self.dts_bis_label = dts_bis_label
-        # The threshold for triggering latency-related alerts. Unit: seconds. The value must be an integer. You can set the threshold based on your business needs. To prevent jitters caused by network and database overloads, we recommend that you set the threshold to more than 10 seconds.
+        # The ID of the data migration or synchronization instance.
         # 
-        # >  If the **DelayNotice** parameter is set to **true**, this parameter is required.
+        # > You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
         self.dts_instance_id = dts_instance_id
-        # The mobile numbers that receive latency-related alerts. Separate multiple mobile numbers with commas (,).
+        # The ID of the data migration or synchronization task.
         # 
-        # > 
-        # *   This parameter is available only for China site (aliyun.com) users. Only mobile numbers in the Chinese mainland are supported. Up to 10 mobile numbers can be specified.
-        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the CloudMonitor console](https://help.aliyun.com/document_detail/175876.html).
+        # > You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
         self.dts_job_id = dts_job_id
-        # The ID of the source instance.
-        # 
-        # If the source instance is an Alibaba Cloud database instance, you must specify the ID of the database instance. For example, if the source instance is an ApsaraDB RDS for MySQL instance, you must specify the ID of the ApsaraDB RDS for MySQL instance.
-        # 
-        # If the source instance is a self-managed database, the value of this parameter varies with the value of the **SourceEndpointInstanceType** parameter.****\
-        # 
-        # *   If the SourceEndpointInstanceType parameter is set to **ECS**, you must specify the ID of the ECS instance.
-        # *   If the SourceEndpointInstanceType parameter is set to **DG**, you must specify the ID of the database gateway.
-        # *   If the SourceEndpointInstanceType parameter is set to **EXPRESS** or **CEN**, you must specify the ID of the VPC that is connected to the source instance.
-        # 
-        # >  If the SourceEndpointInstanceType parameter is set to **CEN**, you must also specify the ID of the CEN instance in the Reserve parameter. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
+        # The name of the DTS instance.
         # 
         # This parameter is required.
         self.dts_job_name = dts_job_name
-        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
-        self.error_notice = error_notice
-        # The synchronization direction. Valid values:
+        # Specifies whether to monitor task status. Valid values:
         # 
-        # *   **Forward**: Data is synchronized from the source database to the destination database.
-        # *   **Reverse**: Data is synchronized from the destination database to the source database.
+        # *   **true**\
+        # *   **false**\
+        self.error_notice = error_notice
+        # The mobile phone numbers to which status-related alerts are sent. Separate multiple mobile phone numbers with commas (,).
         # 
         # > 
-        # *   Default value: **Forward**.
-        # *   The value **Reverse** takes effect only if the topology of the data synchronization task is two-way synchronization.
+        # 
+        # *   This parameter is available only for users of the China site (aliyun.com). Only mobile phone numbers in the Chinese mainland are supported. You can specify up to 10 mobile phone numbers.
+        # *   Users of the international site (alibabacloud.com) cannot receive alerts by using mobile phone numbers, but can configure alert rules for DTS tasks in the CloudMonitor console. For more information, see [Configure alert rules for DTS tasks in the CloudMonitor console](https://help.aliyun.com/document_detail/175876.html).
         self.error_phone = error_phone
-        # Specifies whether the instance is a disaster recovery instance.
-        # 
-        # *   **true**: The instance is a disaster recovery instance.
-        # *   **false**: The instance is not a disaster recovery instance.
+        # The URL of the Object Storage Service (OSS) bucket that stores the files related to the DTS task.
         self.file_oss_url_object = file_oss_url_object
-        # The ID of the data migration or synchronization instance.
+        # The type of the task. Valid values:
         # 
-        # >  You must specify at least one of the **DtsJobId** and DtsInstanceId parameters. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
+        # *   **MIGRATION**: data migration task.
+        # *   **SYNC**: data synchronization task.
+        # *   **CHECK**: data verification task. You must separately purchase a data verification instance.
+        # 
+        # > If you set this parameter to **MIGRATION** or **SYNC**, you can also enable data verification in the data migration or synchronization task.
         # 
         # This parameter is required.
         self.job_type = job_type
-        # Upper limit of DU.
+        # The maximum number of DUs.
         # 
-        # > Only supported by Serverless instances.
+        # > This parameter is supported only for serverless instances.
         self.max_du = max_du
-        # Lower limit of DU.
+        # The minimum number of DTS Units (DUs).
         # 
-        # > Only supported by Serverless instances.
+        # > This parameter is supported only for serverless instances.
         self.min_du = min_du
         self.owner_id = owner_id
-        # The URL of the Object Storage Service (OSS) bucket that stores the files related to the DTS task.
+        # The ID of the region in which the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The SID of the Oracle database.
-        # 
-        # >  If the **DestinationEndpointEngineName** parameter is set to **ORACLE** and the **Oracle** database is deployed in a non-RAC architecture, this parameter is available and required.
+        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to add more configurations of the source or destination instance to the DTS task. For example, you can specify the data storage format of the destination Kafka database and the CEN instance ID. For more information, see [Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
         self.reserve = reserve
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The password of the source database account.
+        # The name of the database from which the objects are migrated or synchronized in the source instance.
+        # 
+        # > This parameter is valid and required only if the source instance is a PolarDB for PostgreSQL (Compatible with Oracle) cluster, a PostgreSQL database, or a MongoDB database.
         self.source_endpoint_database_name = source_endpoint_database_name
-        # The IP address of the source instance.
+        # The database type of the source instance.
         # 
-        # >  If the **SourceEndpointInstanceType** parameter is set to **OTHER**, **EXPRESS**, **DG**, or **CEN**, this parameter is available and required.
-        self.source_endpoint_engine_name = source_endpoint_engine_name
-        # The system ID (SID) of the Oracle database.
-        # 
-        # >  If the **SourceEndpointEngineName** parameter is set to **ORACLE** and the **Oracle** database is deployed in an architecture that is not a Real Application Cluster (RAC), this parameter is available and required.
-        self.source_endpoint_ip = source_endpoint_ip
-        # The ID of the region in which the source instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
-        # 
-        # >  If the source instance is an Alibaba Cloud database instance, this parameter is required.
-        self.source_endpoint_instance_id = source_endpoint_instance_id
-        # The database engine of the source instance. Valid values:
-        # 
-        # *   **MYSQL**: ApsaraDB RDS for MySQL instance or self-managed MySQL database
-        # *   **MARIADB**: ApsaraDB RDS for MariaDB instance
-        # *   **PolarDB**: PolarDB for MySQL cluster
-        # *   **POLARDB_O**: PolarDB for Oracle cluster
-        # *   **POLARDBX10**: PolarDB-X 1.0 instance
-        # *   **POLARDBX20**: PolarDB-X 2.0 instance
-        # *   **ORACLE**: self-managed Oracle database
-        # *   **POSTGRESQL**: ApsaraDB RDS for PostgreSQL instance or self-managed PostgreSQL database
-        # *   **MSSQL**: ApsaraDB RDS for SQL Server instance or self-managed SQL Server database
-        # *   **MONGODB**: ApsaraDB for MongoDB instance or self-managed MongoDB database
-        # *   **DB2**: self-managed Db2 for LUW database
-        # *   **AS400**: self-managed Db2 for i database
-        # *   **DMSPOLARDB**: DMS logical database
-        # *   **HBASE**: self-managed HBase database
-        # *   **TERADATA**: Teradata database
-        # *   **TiDB**: TiDB database
-        # *   **REDIS**: ApsaraDB for Redis instance or self-managed Redis database
+        # *   **MYSQL**: ApsaraDB RDS for MySQL instance or self-managed MySQL database.
+        # *   **MARIADB**: ApsaraDB RDS for MariaDB instance.
+        # *   **PolarDB**: PolarDB for MySQL cluster.
+        # *   **POLARDB_O**: PolarDB for PostgreSQL (Compatible with Oracle) cluster.
+        # *   **POLARDBX10**: PolarDB-X 1.0 instance (formerly DRDS).
+        # *   **POLARDBX20**: PolarDB-X 2.0 instance.
+        # *   **ORACLE**: self-managed Oracle database.
+        # *   **POSTGRESQL**: ApsaraDB RDS for PostgreSQL instance or self-managed PostgreSQL database.
+        # *   **MSSQL**: ApsaraDB RDS for SQL Server instance or self-managed SQL Server database.
+        # *   **MONGODB**: ApsaraDB for MongoDB instance or self-managed MongoDB database.
+        # *   **DB2**: self-managed Db2 for LUW database.
+        # *   **AS400**: self-managed Db2 for i database.
+        # *   **DMSPOLARDB**: DMS logical database.
+        # *   **HBASE**: self-managed HBase database.
+        # *   **TERADATA**: Teradata database.
+        # *   **TiDB**: TiDB database.
+        # *   **REDIS**: ApsaraDB for Redis instance or self-managed Redis database.
         # 
         # > 
+        # 
         # *   Default value: **MYSQL**.
-        # *   If the SourceEndpointEngineName parameter is set to **MONGODB**, you must also specify the architecture type of the MongoDB database in the Reserve parameter. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
+        # *   If this parameter is set to **MONGODB**, you must also specify the architecture type of the MongoDB database in Reserve. For more information, see [Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+        self.source_endpoint_engine_name = source_endpoint_engine_name
+        # The IP address of the source instance.
+        # 
+        # > This parameter is valid and required only if **SourceEndpointInstanceType** is set to **OTHER**, **EXPRESS**, **DG**, or **CEN**.
+        self.source_endpoint_ip = source_endpoint_ip
+        # The source instance ID.
+        # 
+        # If the source instance is an Alibaba Cloud database instance, you must specify the database instance ID. For example, if the source instance is an ApsaraDB RDS for MySQL instance, you must specify the ID of the ApsaraDB RDS for MySQL instance.
+        # 
+        # If the source instance is a self-managed database, the value of this parameter varies with the value of **SourceEndpointInstanceType**.****\
+        # 
+        # *   If SourceEndpointInstanceType is set to **ECS**, you must specify the ECS instance ID.
+        # *   If SourceEndpointInstanceType is set to **DG**, you must specify the database gateway ID.
+        # *   If SourceEndpointInstanceType is set to **EXPRESS** or **CEN**, you must specify the ID of the virtual private cloud (VPC) that is connected to the source instance.
+        # 
+        # > If SourceEndpointInstanceType is set to **CEN**, you must also specify the ID of the CEN instance in Reserve. For more information, see [Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+        self.source_endpoint_instance_id = source_endpoint_instance_id
+        # The type of the source instance. Valid values:
+        # 
+        # **Alibaba Cloud database instance**\
+        # 
+        # *   **RDS**: ApsaraDB RDS for MySQL instance, ApsaraDB RDS for SQL Server instance, ApsaraDB RDS for PostgreSQL instance, or ApsaraDB RDS for MariaDB instance
+        # *   **PolarDB**: PolarDB for MySQL cluster.
+        # *   **REDIS**: ApsaraDB for Redis instance.
+        # *   **DISTRIBUTED_POLARDBX10**: PolarDB-X 1.0 instance (formerly DRDS).
+        # *   **POLARDBX20**: PolarDB-X 2.0 instance.
+        # *   **MONGODB**: ApsaraDB for MongoDB instance.
+        # *   **DISTRIBUTED_DMSLOGICDB**: Data Management (DMS) logical database
+        # 
+        # **Self-managed database**\
+        # 
+        # *   **OTHER**: self-managed database with a public IP address.
+        # *   **ECS**: self-managed database hosted on an ECS instance.
+        # *   **EXPRESS**: self-managed database connected over Express Connect.
+        # *   **CEN**: self-managed database connected over Cloud Enterprise Network (CEN).
+        # *   **DG**: self-managed database connected over Database Gateway.
+        # 
+        # > 
+        # 
+        # *   If the source instance is a PolarDB for PostgreSQL (Compatible with Oracle) cluster, you must connect the cluster to DTS as a self-managed database by using a public IP address or Express Connect and set this parameter to **OTHER** or **EXPRESS**.
+        # *   For more information, see [Supported sources and targets](https://help.aliyun.com/document_detail/176064.html).
+        # *   If the source instance is a self-managed database, you must deploy the network environment for the database. For more information, see [Preparation overview](https://help.aliyun.com/document_detail/146958.html).
         # 
         # This parameter is required.
         self.source_endpoint_instance_type = source_endpoint_instance_type
-        # The database account of the source database.
+        # The SID of the Oracle database.
+        # 
+        # > This parameter is valid and required only if **SourceEndpointEngineName** is set to **ORACLE** and the **Oracle** database is deployed in a non-Real Application Cluster (RAC) architecture.
+        self.source_endpoint_oracle_sid = source_endpoint_oracle_sid
+        # The ID of the Alibaba Cloud account to which the source database belongs.
+        # 
+        # > You can specify this parameter to migrate or synchronize data across different Alibaba Cloud accounts. In this case, you must specify **SourceEndpointRole**.
+        self.source_endpoint_owner_id = source_endpoint_owner_id
+        # The password of the account that is used to log on to the source database.
+        self.source_endpoint_password = source_endpoint_password
+        # The port number of the source instance.
+        # 
+        # > This parameter is required only if the source instance is a self-managed database.
+        self.source_endpoint_port = source_endpoint_port
+        # The ID of the region in which the source instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # 
+        # > If the source instance is an Alibaba Cloud database instance, this parameter is required.
+        self.source_endpoint_region = source_endpoint_region
+        # The name of the Resource Access Management (RAM) role configured for the Alibaba Cloud account to which the source instance belongs.
+        # 
+        # > This parameter is required if you migrate or synchronize data across different Alibaba Cloud accounts. For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account DTS tasks](https://help.aliyun.com/document_detail/48468.html).
+        self.source_endpoint_role = source_endpoint_role
+        # The username of the account that is used to log on to the source database.
         # 
         # > 
+        # 
         # *   In most cases, this parameter is required.
         # *   The permissions that are required for the database account vary with the migration or synchronization scenario. For more information, see [Prepare the database accounts for data migration](https://help.aliyun.com/document_detail/175878.html) or [Prepare the database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.html).
-        self.source_endpoint_oracle_sid = source_endpoint_oracle_sid
-        # The type of the destination instance. Valid values:
-        # 
-        # **Alibaba Cloud database instances**\
-        # 
-        # *   **RDS**: ApsaraDB RDS for MySQL instance, ApsaraDB RDS for SQL Server instance, ApsaraDB RDS for PostgreSQL instance, or ApsaraDB RDS for MariaDB instance
-        # *   **PolarDB**: PolarDB for MySQL cluster
-        # *   **POLARDBX10**: PolarDB-X 1.0 instance
-        # *   **POLARDBX20**: PolarDB-X 2.0 instance
-        # *   **REDIS**: ApsaraDB for Redis instance
-        # *   **ADS**: AnalyticDB for MySQL V2.0 cluster or AnalyticDB for MySQL V3.0 cluster
-        # *   **MONGODB**: ApsaraDB for MongoDB instance
-        # *   **GREENPLUM**: AnalyticDB for PostgreSQL instance
-        # *   **DATAHUB**: DataHub project
-        # *   **ELK**: Elasticsearch cluster
-        # *   **Tablestore**: Tablestore instance
-        # *   **ODPS**: MaxCompute project
-        # 
-        # **Self-managed databases**\
-        # 
-        # *   **OTHER**: self-managed database with a public IP address
-        # *   **ECS**: self-managed database hosted on an ECS instance
-        # *   **EXPRESS**: self-managed database connected over Express Connect
-        # *   **CEN**: self-managed database connected over CEN
-        # *   **DG**: self-managed database connected over Database Gateway
-        # 
-        # > 
-        # *   If the destination instance is a PolarDB for Oracle cluster, you must set this parameter to **OTHER** or **EXPRESS** because you can use a PolarDB for Oracle cluster only as a self-managed database connected over the Internet or Express Connect.
-        # *   If the destination instance is a Message Queue for Apache Kafka instance, you must set this parameter to **ECS** or **EXPRESS** because you can use a Message Queue for Apache Kafka instance only as a self-managed database connected over ECS or Express Connect.
-        # *   For more information, see [Supported databases](https://help.aliyun.com/document_detail/176064.html).
-        # *   If the destination instance is a self-managed database, you must deploy the network environment for the database. For more information, see [Preparation overview](https://help.aliyun.com/document_detail/146958.html).
-        self.source_endpoint_owner_id = source_endpoint_owner_id
-        # The name of the RAM role configured for the Alibaba Cloud account that owns the source instance.
-        # 
-        # >  This parameter is required when you migrate or synchronize data across different Alibaba Cloud accounts. For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](https://help.aliyun.com/document_detail/48468.html).
-        self.source_endpoint_password = source_endpoint_password
-        # The name of the database to which the objects to be migrated in the source instance belong.
-        # 
-        # >  If the source instance is a PolarDB for Oracle cluster, a PostgreSQL database, or a MongoDB database, this parameter is available and required.
-        self.source_endpoint_port = source_endpoint_port
-        # The database service port of the source instance.
-        # 
-        # >  If the source instance is a self-managed database, this parameter is available and required.
-        self.source_endpoint_region = source_endpoint_region
-        # The ID of the destination instance.
-        # 
-        # If the destination instance is an Alibaba Cloud database instance, you must specify the ID of the database instance. For example, if the destination instance is an ApsaraDB RDS for MySQL instance, you must specify the ID of the ApsaraDB RDS for MySQL instance.
-        # 
-        # If the destination instance is a self-managed database, the value of this parameter varies with the value of the **DestinationEndpointInstanceType** parameter.****\
-        # 
-        # *   If the DestinationEndpointInstanceType parameter is set to **ECS**, you must specify the ID of the ECS instance.
-        # *   If the DestinationEndpointInstanceType parameter is set to **DG**, you must specify the ID of the database gateway.
-        # *   If the DestinationEndpointInstanceType parameter is set to **EXPRESS** or **CEN**, you must specify the ID of the VPC that is connected to the source instance.
-        # 
-        # >  If the DestinationEndpointInstanceType parameter is set to **CEN**, you must also specify the ID of the CEN instance in the Reserve parameter. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
-        self.source_endpoint_role = source_endpoint_role
-        # The ID of the Alibaba Cloud account to which the source instance belongs.
-        # 
-        # >  You can specify this parameter to migrate or synchronize data across different Alibaba Cloud accounts. In this case, you must specify the **SourceEndpointRole** parameter.
         self.source_endpoint_user_name = source_endpoint_user_name
-        # Data delivery link switch instance ID.
+        # The ID of the vSwitch that is used for data shipping.
         self.source_endpoint_vswitch_id = source_endpoint_vswitch_id
-        # The path of the certificate authority (CA) certificate that is used if the connection to the source database is encrypted by using the SSL protocol.
+        # The path of the certificate authority (CA) certificate that is used if the connection to the source database is encrypted by using SSL.
         # 
-        # >  This feature is not supported. Do not specify this parameter.
+        # > This feature is not supported. Do not specify this parameter.
         self.src_ca_certificate_oss_url = src_ca_certificate_oss_url
-        # The key of the CA certificate that is used if the connection to the source database is encrypted by using the SSL protocol.
+        # The key of the CA certificate that is used if the connection to the source database is encrypted by using SSL.
         # 
-        # >  This feature is not supported. Do not specify this parameter.
+        # > This feature is not supported. Do not specify this parameter.
         self.src_ca_certificate_password = src_ca_certificate_password
-        # The path to the client certificate that is used if the connection to the source database is encrypted by using the SSL protocol.
+        # The path to the client certificate that is used if the connection to the source database is encrypted by using SSL.
         # 
-        # >  This feature is not supported. Do not specify this parameter.
+        # > This feature is not supported. Do not specify this parameter.
         self.src_client_cert_oss_url = src_client_cert_oss_url
-        # The path to the private key of the client certificate that is used if the connection to the source database is encrypted by using the SSL protocol.
+        # The path to the private key of the client certificate that is used if the connection to the source database is encrypted by using SSL.
         # 
-        # >  This feature is not supported. Do not specify this parameter.
+        # > This feature is not supported. Do not specify this parameter.
         self.src_client_key_oss_url = src_client_key_oss_url
-        # The password of the private key of the client certificate that is used if the connection to the source database is encrypted by using the SSL protocol.
+        # The password of the private key of the client certificate that is used if the connection to the source database is encrypted by using SSL.
         # 
-        # >  This feature is not supported. Do not specify this parameter.
+        # > This feature is not supported. Do not specify this parameter.
         self.src_client_password = src_client_password
+        # VPCNAT source end main VSW
         self.src_primary_vsw_id = src_primary_vsw_id
+        # VPCNAT source backup VSW
         self.src_secondary_vsw_id = src_secondary_vsw_id
-        # Specifies whether to perform incremental data migration or synchronization. Default value: false. Valid values:
+        # Specifies whether to perform schema migration or schema synchronization. Valid values:
         # 
-        # *   **false**: does not perform incremental data migration or synchronization.
-        # *   **true**: performs incremental data migration or synchronization.
+        # *   **true** (default)
+        # *   **false**\
+        # 
+        # > If **JobType** is set to **CHECK**, set this parameter to **false**.
         # 
         # This parameter is required.
         self.structure_initialization = structure_initialization
-        # The ID of the DTS dedicated cluster on which the task runs.
+        # The synchronization direction. Valid values:
         # 
-        # >  If this parameter is specified, the task is scheduled to the specified DTS dedicated cluster.
+        # *   **Forward**\
+        # *   **Reverse**\
+        # 
+        # > 
+        # 
+        # *   The default value is **Forward**.
+        # *   The value **Reverse** takes effect only if the topology of the data synchronization task is two-way synchronization.
         self.synchronization_direction = synchronization_direction
 
     def validate(self):
@@ -1397,19 +1501,19 @@ class ConfigureDtsJobResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The error message returned if the call failed.
-        self.dts_instance_id = dts_instance_id
-        # Indicates whether the request was successful.
-        self.dts_job_id = dts_job_id
         # The ID of the data migration or synchronization instance.
-        self.err_code = err_code
-        # The error message returned if the call failed.
-        self.err_message = err_message
-        # The error code returned if the call failed.
-        self.http_status_code = http_status_code
+        self.dts_instance_id = dts_instance_id
         # The ID of the data migration or synchronization task.
+        self.dts_job_id = dts_job_id
+        # The error code returned if the request failed.
+        self.err_code = err_code
+        # The error message returned if the request failed.
+        self.err_message = err_message
+        # The returned HTTP status codes.
+        self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -2051,6 +2155,7 @@ class ConfigureMigrationJobAlertRequest(TeaModel):
         # The mobile phone numbers that receive latency-related alerts. Separate mobile phone numbers with commas (,).
         # 
         # > 
+        # 
         # *   This parameter is available only for China site (aliyun.com) users. Only mobile phone numbers in the Chinese mainland are supported. Up to 10 mobile phone numbers can be specified.
         # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](https://help.aliyun.com/document_detail/175876.html).
         self.delay_alert_phone = delay_alert_phone
@@ -2060,6 +2165,7 @@ class ConfigureMigrationJobAlertRequest(TeaModel):
         # *   **disable**: no
         # 
         # > 
+        # 
         # *   The default value is **enable**.
         # *   You must specify at least one of the DelayAlertStatus and **ErrorAlertStatus** parameters.
         self.delay_alert_status = delay_alert_status
@@ -2070,6 +2176,7 @@ class ConfigureMigrationJobAlertRequest(TeaModel):
         # The mobile phone numbers that receive status-related alerts. Separate mobile phone numbers with commas (,).
         # 
         # > 
+        # 
         # *   This parameter is available only for China site (aliyun.com) users. Only mobile phone numbers in the Chinese mainland are supported. Up to 10 mobile phone numbers can be specified.
         # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](https://help.aliyun.com/document_detail/175876.html).
         self.error_alert_phone = error_alert_phone
@@ -2079,6 +2186,7 @@ class ConfigureMigrationJobAlertRequest(TeaModel):
         # *   **disable**: no
         # 
         # > 
+        # 
         # *   The default value is **enable**.
         # *   You must specify at least one of the **DelayAlertStatus** and ErrorAlertStatus parameters.
         # *   If the task that you monitor enters an abnormal state, an alert is triggered.
@@ -2088,7 +2196,9 @@ class ConfigureMigrationJobAlertRequest(TeaModel):
         # This parameter is required.
         self.migration_job_id = migration_job_id
         self.owner_id = owner_id
+        # The ID of the region where the data migration instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
+        # Resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -3875,6 +3985,7 @@ class ConfigureSynchronizationJobAlertRequest(TeaModel):
         # The mobile phone numbers that receive latency-related alerts. Separate mobile phone numbers with commas (,).
         # 
         # > 
+        # 
         # *   This parameter is available only for China site (aliyun.com) users. Only mobile phone numbers in the Chinese mainland are supported. Up to 10 mobile phone numbers can be specified.
         # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](https://help.aliyun.com/document_detail/175876.html).
         self.delay_alert_phone = delay_alert_phone
@@ -3884,6 +3995,7 @@ class ConfigureSynchronizationJobAlertRequest(TeaModel):
         # *   **disable**: no
         # 
         # > 
+        # 
         # *   The default value is **enable**.
         # *   You must specify at least one of the DelayAlertStatus and **ErrorAlertStatus** parameters.
         self.delay_alert_status = delay_alert_status
@@ -3894,6 +4006,7 @@ class ConfigureSynchronizationJobAlertRequest(TeaModel):
         # The mobile phone numbers that receive status-related alerts. Separate mobile phone numbers with commas (,).
         # 
         # > 
+        # 
         # *   This parameter is available only for China site (aliyun.com) users. Only mobile phone numbers in the Chinese mainland are supported. Up to 10 mobile phone numbers can be specified.
         # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](https://help.aliyun.com/document_detail/175876.html).
         self.error_alert_phone = error_alert_phone
@@ -3903,12 +4016,15 @@ class ConfigureSynchronizationJobAlertRequest(TeaModel):
         # *   **disable**: no
         # 
         # > 
+        # 
         # *   The default value is **enable**.
         # *   You must specify at least one of the **DelayAlertStatus** and ErrorAlertStatus parameters.
         # *   If the task that you monitor enters an abnormal state, an alert is triggered.
         self.error_alert_status = error_alert_status
         self.owner_id = owner_id
+        # The ID of the region where the data synchronization instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
+        # Resource GroupId
         self.resource_group_id = resource_group_id
         # The synchronization direction. Valid values:
         # 
@@ -7956,12 +8072,20 @@ class DescribeCheckJobsRequest(TeaModel):
         page_size: int = None,
         resource_group_id: str = None,
     ):
+        # Check the task job ID.
         self.check_job_id = check_job_id
+        # The type of the check
+        # >>1 full quantity, 2 incremental, 3 all
         self.check_type = check_type
+        # Data migration instance ID, which can be queried by calling the **describemigrationjobs** API.
         self.instance_id = instance_id
+        # The name of the data migration or synchronization job.
         self.job_name = job_name
+        # The number of the page to return. The value must be an integer that is greater than **0**. Default value: **1**.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # Resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -8028,21 +8152,38 @@ class DescribeCheckJobsResponseBodyCheckJobs(TeaModel):
         status: int = None,
         total_count: int = None,
     ):
+        # Billing type, return values: - **POSTPAY**: Pay-as-you-go (postpaid). - **PREPAY**: Subscription (prepaid).
         self.charge_type = charge_type
+        # checkpoint
         self.check_point = check_point
+        # Data validation method, with values:
+        # - **1**: Full validation. - **2**: Incremental validation.
         self.check_type = check_type
+        # Number of rows with data inconsistency
         self.diff_count = diff_count
+        # Synchronization initialization progress, in percentage.
         self.diff_sum = diff_sum
+        # Migration, synchronization, or subscription instance ID.
         self.dts_instance_id = dts_instance_id
+        # Migration, synchronization, or subscription task ID.
         self.dts_job_id = dts_job_id
+        # The number of data rows in the table that have completed validation.
         self.finish_count = finish_count
+        # DTS task ID. In most cases, there is no need to set this parameter.
         self.group_id = group_id
+        # Instance specification.
         self.instance_class = instance_class
+        # Check the name of the task.
         self.job_name = job_name
+        # Task ID.
         self.job_step_id = job_step_id
+        # This parameter will be deprecated.
         self.parent_job_type = parent_job_type
+        # Region ID to which it belongs.
         self.region_id = region_id
+        # Check result, return values: -**0**: Check passed -**1**: Check failed
         self.status = status
+        # Verify the total number of rows in the data.
         self.total_count = total_count
 
     def validate(self):
@@ -8140,16 +8281,27 @@ class DescribeCheckJobsResponseBody(TeaModel):
         success: bool = None,
         total_record_count: int = None,
     ):
+        # Item information check.
         self.check_jobs = check_jobs
+        # Dynamic error code, this parameter will be deprecated soon.
         self.dynamic_code = dynamic_code
+        # Dynamic error message, used to replace the **%s** in the **errmessage** return parameter. If **errmessage** returns **thevalueofinputparameter%sisnotvalid**, and **dynamicmessage** returns *[1,2,3]*, it indicates that the request parameter **dtsjobid** is invalid.
         self.dynamic_message = dynamic_message
+        # Error code returned when the call fails.
         self.err_code = err_code
+        # Error message returned when the call fails.
         self.err_message = err_message
+        # Status code.
         self.http_status_code = http_status_code
+        # Current page number.
         self.page_number = page_number
+        # The maximum number of records that can be displayed on the current page.
         self.page_record_count = page_record_count
+        # Request ID.
         self.request_id = request_id
+        # Whether the request was successful.
         self.success = success
+        # Total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -10317,6 +10469,7 @@ class DescribeDataCheckTableDetailsResponseBody(TeaModel):
         dynamic_message: str = None,
         err_code: str = None,
         err_message: str = None,
+        failed_table_count: int = None,
         finished_count: int = None,
         http_status_code: int = None,
         page_number: int = None,
@@ -10337,6 +10490,7 @@ class DescribeDataCheckTableDetailsResponseBody(TeaModel):
         self.err_code = err_code
         # The error message returned if the request failed.
         self.err_message = err_message
+        self.failed_table_count = failed_table_count
         # The total number of data rows that were verified.
         self.finished_count = finished_count
         # The HTTP status code returned.
@@ -10374,6 +10528,8 @@ class DescribeDataCheckTableDetailsResponseBody(TeaModel):
             result['ErrCode'] = self.err_code
         if self.err_message is not None:
             result['ErrMessage'] = self.err_message
+        if self.failed_table_count is not None:
+            result['FailedTableCount'] = self.failed_table_count
         if self.finished_count is not None:
             result['FinishedCount'] = self.finished_count
         if self.http_status_code is not None:
@@ -10404,6 +10560,8 @@ class DescribeDataCheckTableDetailsResponseBody(TeaModel):
             self.err_code = m.get('ErrCode')
         if m.get('ErrMessage') is not None:
             self.err_message = m.get('ErrMessage')
+        if m.get('FailedTableCount') is not None:
+            self.failed_table_count = m.get('FailedTableCount')
         if m.get('FinishedCount') is not None:
             self.finished_count = m.get('FinishedCount')
         if m.get('HttpStatusCode') is not None:
@@ -37238,6 +37396,7 @@ class ModifyDtsJobRequest(TeaModel):
         self.region_id = region_id
         # The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
         self.reserved = reserved
+        # Resource group ID.
         self.resource_group_id = resource_group_id
         # Specifies whether to perform schema migration or synchronization. Valid values:
         # 
@@ -37253,6 +37412,8 @@ class ModifyDtsJobRequest(TeaModel):
         # *   Default value: **Forward**.
         # *   This parameter is required only if the topology of the data synchronization instance is two-way synchronization.
         self.synchronization_direction = synchronization_direction
+        # Whether it is a seamless integration (Zero-ETL) task, the value can be:
+        # - **false**: No. - **true**: Yes.
         self.zero_etl_job = zero_etl_job
 
     def validate(self):
@@ -37393,6 +37554,7 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
         self.region_id = region_id
         # The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
         self.reserved = reserved
+        # Resource group ID.
         self.resource_group_id = resource_group_id
         # Specifies whether to perform schema migration or synchronization. Valid values:
         # 
@@ -37408,6 +37570,8 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
         # *   Default value: **Forward**.
         # *   This parameter is required only if the topology of the data synchronization instance is two-way synchronization.
         self.synchronization_direction = synchronization_direction
+        # Whether it is a seamless integration (Zero-ETL) task, the value can be:
+        # - **false**: No. - **true**: Yes.
         self.zero_etl_job = zero_etl_job
 
     def validate(self):
@@ -37548,6 +37712,7 @@ class ModifyDtsJobShrinkRequest(TeaModel):
         self.region_id = region_id
         # The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
         self.reserved = reserved
+        # Resource group ID.
         self.resource_group_id = resource_group_id
         # Specifies whether to perform schema migration or synchronization. Valid values:
         # 
@@ -37563,6 +37728,8 @@ class ModifyDtsJobShrinkRequest(TeaModel):
         # *   Default value: **Forward**.
         # *   This parameter is required only if the topology of the data synchronization instance is two-way synchronization.
         self.synchronization_direction = synchronization_direction
+        # Whether it is a seamless integration (Zero-ETL) task, the value can be:
+        # - **false**: No. - **true**: Yes.
         self.zero_etl_job = zero_etl_job
 
     def validate(self):
@@ -43971,19 +44138,17 @@ class TransferInstanceClassRequest(TeaModel):
         # *   DTS supports the following instance classes for a data migration instance: **xxlarge**, **xlarge**, **large**, **medium**, and **small**.
         # *   DTS supports the following instance classes for a data synchronization instance: **large**, **medium**, **small**, and **micro**.
         # 
-        # >  For more information about the test performance of each instance class, see [Specifications of data migration instances](https://help.aliyun.com/document_detail/26606.html) and [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
+        # > For more information about the test performance of each instance class, see [Specifications of data migration instances](https://help.aliyun.com/document_detail/26606.html) and [Specifications of data synchronization channels](https://help.aliyun.com/document_detail/26605.html).
         # 
         # This parameter is required.
         self.instance_class = instance_class
-        # Specifies whether to upgrade or downgrade the DTS instance. Valid values:
-        # 
-        # *   **UPGRADE**\
-        # *   **DOWNGRADE**\
+        # Set the value to **UPGRADE**.
         # 
         # This parameter is required.
         self.order_type = order_type
-        # The ID of the region where the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The ID of the region in which the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
+        # Resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -44039,35 +44204,35 @@ class TransferInstanceClassResponseBody(TeaModel):
     ):
         # The billing method of the DTS instance. Valid values:
         # 
-        # *   **POSTPAY**: pay-as-you-go
-        # *   **PREPAY**: subscription
+        # *   **POSTPAY**: pay-as-you-go.
+        # *   **PREPAY**: subscription.
         self.charge_type = charge_type
-        # The error code.
+        # The error code that is returned.
         self.code = code
         # The ID of the data migration or data synchronization task.
         self.dts_job_id = dts_job_id
-        # The dynamic part in the error message. This parameter is used to replace the **%s** variable in the **ErrMessage** parameter.
+        # The dynamic part in the error message. This parameter is used to replace the **%s** variable in the value of the **ErrMessage** parameter.
         # 
-        # >  If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
+        # > For example, if the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified value of the **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
         # The expiration time of the DTS instance.
         # 
-        # >  This parameter is returned only if the ChargeType parameter is set to **PREPAY**.
+        # > This parameter is returned only if the value of the ChargeType parameter is **PREPAY**.
         self.end_time = end_time
-        # The error code returned if the call failed.
+        # The error code returned if the request failed.
         self.err_code = err_code
-        # The error message returned if the call failed.
+        # The error message returned if the request failed.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of DTS instance.
+        # The ID of the DTS instance.
         self.instance_id = instance_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The call was successful.
-        # *   **false**:The call failed.
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -44178,6 +44343,7 @@ class TransferPayTypeRequest(TeaModel):
         buy_count: str = None,
         charge_type: str = None,
         dts_job_id: str = None,
+        instance_class: str = None,
         max_du: int = None,
         min_du: int = None,
         period: str = None,
@@ -44207,6 +44373,7 @@ class TransferPayTypeRequest(TeaModel):
         # 
         # This parameter is required.
         self.dts_job_id = dts_job_id
+        self.instance_class = instance_class
         # The maximum number of DUs in a serverless instance. Valid values: 2, 4, 8, and 16.
         # 
         # >  This feature is not supported. Do not specify this parameter.
@@ -44244,6 +44411,8 @@ class TransferPayTypeRequest(TeaModel):
             result['ChargeType'] = self.charge_type
         if self.dts_job_id is not None:
             result['DtsJobId'] = self.dts_job_id
+        if self.instance_class is not None:
+            result['InstanceClass'] = self.instance_class
         if self.max_du is not None:
             result['MaxDu'] = self.max_du
         if self.min_du is not None:
@@ -44266,6 +44435,8 @@ class TransferPayTypeRequest(TeaModel):
             self.charge_type = m.get('ChargeType')
         if m.get('DtsJobId') is not None:
             self.dts_job_id = m.get('DtsJobId')
+        if m.get('InstanceClass') is not None:
+            self.instance_class = m.get('InstanceClass')
         if m.get('MaxDu') is not None:
             self.max_du = m.get('MaxDu')
         if m.get('MinDu') is not None:
@@ -44785,33 +44956,41 @@ class WhiteIpListRequest(TeaModel):
         type: str = None,
         zero_etl_job: bool = None,
     ):
+        # destination aliyun uid
         self.dest_aliyun_uid = dest_aliyun_uid
+        # VPCNAT destination main VSW
         self.dest_primary_vsw_id = dest_primary_vsw_id
+        # destination role name
         self.dest_role_name = dest_role_name
+        # VPCNAT destination backup VSW
         self.dest_secondary_vsw_id = dest_secondary_vsw_id
+        # source vpc id
         self.dest_vpc_id = dest_vpc_id
-        # The HTTP status code.
+        # The region ID to which the target instance belongs, please refer to the supported region list for details.
+        # >>If the target instance is a self built database or third-party cloud database with a public IP address, you can pass in the cn Hangzhou or the region ID closest to the physical distance of the database.
+        #  - When the DTS task is migration or synchronization, this parameter must be passed in.
         self.destination_region = destination_region
-        # The ID of the region where the destination instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
-        # 
-        # > 
-        # *   If the destination instance is a self-managed database with a public IP address or a third-party cloud database, you can set the parameter to **cn-hangzhou** or the ID of the closest region.
-        # *   If the DTS task is a data migration or data synchronization task, you must specify this parameter.
+        # The region ID of the change tracking instance. The region ID is the same as that of the source instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         # 
         # This parameter is required.
         self.region = region
-        # The region to which the DTS instance belongs. For more information, see [List of Supported Regions](https://help.aliyun.com/document_detail/141033.html).
+        # The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         # Resource group ID.
         self.resource_group_id = resource_group_id
+        # source aliyun uid
         self.src_aliyun_uid = src_aliyun_uid
+        # VPCNAT source end main VSW
         self.src_primary_vsw_id = src_primary_vsw_id
+        # source role Name
         self.src_role_name = src_role_name
+        # VPCNAT source backup VSW
         self.src_secondary_vsw_id = src_secondary_vsw_id
+        # source vpc id
         self.src_vpc_id = src_vpc_id
-        # The ID of the region where the source instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
-        # 
-        # >  If the source instance is a self-managed database with a public IP address or a third-party cloud database, you can set the parameter to **cn-hangzhou** or the ID of the closest region.
+        # The access method for self built databases or third-party cloud databases, with a value of
+        #  - Internet: accessed through the public network.
+        #  - VPC: Connected through dedicated line/VPN gateway/intelligent gateway.
         # 
         # This parameter is required.
         self.type = type
@@ -44913,26 +45092,25 @@ class WhiteIpListResponseBody(TeaModel):
         src_ip_list: str = None,
         success: bool = None,
     ):
+        # Target end adaptation to VPCNAT IP whitelist
         self.dest_ip_list = dest_ip_list
         # The dynamic error code. This parameter will be removed in the future.
         self.dynamic_code = dynamic_code
         # The dynamic error message. This parameter will be removed in the future.
         self.dynamic_message = dynamic_message
-        # Indicates whether the call was successful. Valid values:
-        # 
-        # *   **true**: The call was successful.
-        # *   **false**: The call failed.
-        self.err_code = err_code
-        # The CIDR blocks of DTS servers. Multiple CIDR blocks are separated by commas (,).
-        self.err_message = err_message
-        # The ID of the request.
-        self.http_status_code = http_status_code
-        # The dynamic part in the error message. This parameter is used to replace **%s** in the **ErrMessage** parameter.
-        self.ip_list = ip_list
         # The error code returned if the call failed.
-        self.request_id = request_id
-        self.src_ip_list = src_ip_list
+        self.err_code = err_code
         # The error message returned if the call failed.
+        self.err_message = err_message
+        # The HTTP status code.
+        self.http_status_code = http_status_code
+        # IP address.
+        self.ip_list = ip_list
+        # The ID of the request.
+        self.request_id = request_id
+        # Source adaptation to VPC NAT IP whitelist
+        self.src_ip_list = src_ip_list
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

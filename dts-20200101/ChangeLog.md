@@ -1,3 +1,10 @@
+2025-02-21 Version: 5.7.5
+- Update API CreateReverseDtsJob: update param ShardPassword.
+- Update API DescribeDataCheckTableDetails: update response param.
+- Update API DescribeDtsJobs: update param RegionId.
+- Update API TransferPayType: add param InstanceClass.
+
+
 2024-11-12 Version: 5.7.4
 - Update API ConfigureDtsJob: add param DestPrimaryVswId.
 - Update API ConfigureDtsJob: add param DestSecondaryVswId.
