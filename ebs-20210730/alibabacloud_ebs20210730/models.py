@@ -6715,6 +6715,7 @@ class DescribeLensMonitorDisksRequest(TeaModel):
         # - cloud_auto
         # - cloud_essd_entry
         self.disk_category = disk_category
+        # Regular matching fuzzy query to filter cloud disk IDs.
         self.disk_id_pattern = disk_id_pattern
         # The list of disks.
         self.disk_ids = disk_ids
@@ -6732,7 +6733,6 @@ class DescribeLensMonitorDisksRequest(TeaModel):
         # *   DiskBPSExceedInstanceMaxLimit: specifies the event that is triggered when the number of BPS on the disk reaches the upper limit of the instance.
         # *   DiskIOPSExceedDiskMaxLimit: specifies the event that is triggered when the number of IOPS on the disk reaches the upper limit of the disk.
         # *   DiskBPSExceedDiskMaxLimit: specifies the event that is triggered when the number of BPS on the disk reaches the upper limit of the disk.
-        # *   DiskSlowIOTriggerred: specifies the event that is triggered when the I/O speed on the disk is slow.
         self.lens_tags = lens_tags
         # The number of entries to return on each page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
@@ -6884,11 +6884,11 @@ class DescribeLensMonitorDisksResponseBodyDiskInfos(TeaModel):
         # *   PL2: An ESSD can deliver up to 100,000 random read/write IOPS.
         # *   PL3: An ESSD delivers up to 1,000,000 random read/write IOPS.
         self.performance_level = performance_level
-        # The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}
+        # The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}.
         # 
-        # Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}
+        # Baseline performance = min{1,800 + 50 × Capacity, 50,000}
         # 
-        # >  This parameter is available only if the DiskCategory parameter is set to cloud_auto. For more information, see [ESSD AutoPL disks](https://www.alibabacloud.com/help/en/ecs/user-guide/essd-autopl-disks)
+        # This parameter is available only if you set `DiskCategory` to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
         self.provisioned_iops = provisioned_iops
         # The region ID of the disk.
         self.region_id = region_id
@@ -6991,7 +6991,7 @@ class DescribeLensMonitorDisksResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Cloud disk information list.
+        # The information about the disks.
         self.disk_infos = disk_infos
         # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
@@ -8383,6 +8383,315 @@ class DescribeSolutionInstanceConfigurationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSolutionInstanceConfigurationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeUserTagKeysRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        region_id: str = None,
+        tag_filter_key: str = None,
+    ):
+        # Number of items per page in paginated queries. The maximum value is 100.
+        # 
+        # Default value:
+        # 
+        # - If no value is set or the set value is less than 10, the default is 10.
+        # 
+        # - If the set value is greater than 100, the default is 100.
+        self.max_results = max_results
+        # The query token returned by this call (Token).
+        self.next_token = next_token
+        # The ID of the region to which the resource belongs. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to view the latest list of Alibaba Cloud regions.
+        self.region_id = region_id
+        # The tagKey for filtering the query.
+        self.tag_filter_key = tag_filter_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.tag_filter_key is not None:
+            result['TagFilterKey'] = self.tag_filter_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TagFilterKey') is not None:
+            self.tag_filter_key = m.get('TagFilterKey')
+        return self
+
+
+class DescribeUserTagKeysResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        tag_keys: List[str] = None,
+    ):
+        # Number of items per page in paginated queries. The maximum value is 100.
+        # 
+        # Default value:
+        # 
+        # - If no value is set or the set value is less than 10, the default is 10.
+        # 
+        # - If the set value is greater than 100, the default is 100.
+        self.max_results = max_results
+        # The token for the next query. An empty NextToken indicates there are no more results.
+        self.next_token = next_token
+        # Request ID.
+        self.request_id = request_id
+        # List of matching tag keys.
+        self.tag_keys = tag_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.tag_keys is not None:
+            result['TagKeys'] = self.tag_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TagKeys') is not None:
+            self.tag_keys = m.get('TagKeys')
+        return self
+
+
+class DescribeUserTagKeysResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeUserTagKeysResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeUserTagKeysResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeUserTagValuesRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        region_id: str = None,
+        tag_filter_value: str = None,
+        tag_key: str = None,
+    ):
+        # Number of items per page in a paginated query. The maximum value is 100.
+        # 
+        # Default value:
+        # 
+        # - If no value is set or the set value is less than 10, the default value is 10.
+        # 
+        # - If the set value is greater than 100, the default value is 100.
+        self.max_results = max_results
+        # Query token (Token). The value should be the NextToken parameter value from the previous call to this interface. This parameter is not required for the initial call. If NextToken is set, the PageSize and PageNumber request parameters become invalid, and the TotalCount in the response data is also invalid.
+        self.next_token = next_token
+        # The region ID of the consistency replication group.
+        self.region_id = region_id
+        # Tag content filter
+        self.tag_filter_value = tag_filter_value
+        # Tag key.
+        self.tag_key = tag_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.tag_filter_value is not None:
+            result['TagFilterValue'] = self.tag_filter_value
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TagFilterValue') is not None:
+            self.tag_filter_value = m.get('TagFilterValue')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        return self
+
+
+class DescribeUserTagValuesResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        tag_values: List[str] = None,
+    ):
+        # Number of items per page in a paginated query. The maximum value is 100.
+        # 
+        # Default value:
+        # 
+        # - If no value is set or the set value is less than 10, the default value is 10.
+        # 
+        # - If the set value is greater than 100, the default value is 100.
+        self.max_results = max_results
+        # Query token (Token). The value should be the NextToken parameter value from the previous call to this interface. This parameter is not required for the initial call. If NextToken is set, the PageSize and PageNumber request parameters become invalid, and the TotalCount in the response data is also invalid.
+        self.next_token = next_token
+        # Request ID. We return the request ID regardless of whether the API call was successful or not.
+        self.request_id = request_id
+        # Tag values corresponding to the tag key.
+        self.tag_values = tag_values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.tag_values is not None:
+            result['TagValues'] = self.tag_values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TagValues') is not None:
+            self.tag_values = m.get('TagValues')
+        return self
+
+
+class DescribeUserTagValuesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeUserTagValuesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeUserTagValuesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

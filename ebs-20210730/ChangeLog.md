@@ -1,3 +1,8 @@
+2025-02-21 Version: 3.1.0
+- Support API DescribeUserTagKeys.
+- Support API DescribeUserTagValues.
+
+
 2025-01-03 Version: 3.0.1
 - Update API DescribeEvents: add param EventLevel.
 - Update API DescribeEvents: update response param.
