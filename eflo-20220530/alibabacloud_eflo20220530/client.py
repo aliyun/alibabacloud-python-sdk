@@ -83,10 +83,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.AssignLeniPrivateIpAddressResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.AssignLeniPrivateIpAddressResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.AssignLeniPrivateIpAddressResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def assign_leni_private_ip_address_with_options_async(
         self,
@@ -130,10 +136,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.AssignLeniPrivateIpAddressResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.AssignLeniPrivateIpAddressResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.AssignLeniPrivateIpAddressResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def assign_leni_private_ip_address(
         self,
@@ -217,10 +229,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.AssignPrivateIpAddressResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.AssignPrivateIpAddressResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.AssignPrivateIpAddressResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def assign_private_ip_address_with_options_async(
         self,
@@ -270,10 +288,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.AssignPrivateIpAddressResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.AssignPrivateIpAddressResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.AssignPrivateIpAddressResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def assign_private_ip_address(
         self,
@@ -349,10 +373,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.AssociateVpdCidrBlockResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.AssociateVpdCidrBlockResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.AssociateVpdCidrBlockResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def associate_vpd_cidr_block_with_options_async(
         self,
@@ -394,10 +424,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.AssociateVpdCidrBlockResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.AssociateVpdCidrBlockResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.AssociateVpdCidrBlockResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def associate_vpd_cidr_block(
         self,
@@ -473,10 +509,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.AttachElasticNetworkInterfaceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.AttachElasticNetworkInterfaceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.AttachElasticNetworkInterfaceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def attach_elastic_network_interface_with_options_async(
         self,
@@ -514,10 +556,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.AttachElasticNetworkInterfaceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.AttachElasticNetworkInterfaceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.AttachElasticNetworkInterfaceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def attach_elastic_network_interface(
         self,
@@ -595,10 +643,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.CreateElasticNetworkInterfaceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateElasticNetworkInterfaceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateElasticNetworkInterfaceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_elastic_network_interface_with_options_async(
         self,
@@ -646,10 +700,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.CreateElasticNetworkInterfaceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateElasticNetworkInterfaceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateElasticNetworkInterfaceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_elastic_network_interface(
         self,
@@ -721,10 +781,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.CreateErResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateErResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateErResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_er_with_options_async(
         self,
@@ -770,10 +836,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.CreateErResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateErResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateErResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_er(
         self,
@@ -862,10 +934,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.CreateErAttachmentResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateErAttachmentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateErAttachmentResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_er_attachment_with_options_async(
         self,
@@ -916,10 +994,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.CreateErAttachmentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateErAttachmentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateErAttachmentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_er_attachment(
         self,
@@ -1020,10 +1104,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.CreateErRouteMapResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateErRouteMapResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateErRouteMapResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_er_route_map_with_options_async(
         self,
@@ -1084,10 +1174,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.CreateErRouteMapResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateErRouteMapResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateErRouteMapResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_er_route_map(
         self,
@@ -1180,10 +1276,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.CreateSubnetResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateSubnetResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateSubnetResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_subnet_with_options_async(
         self,
@@ -1236,10 +1338,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.CreateSubnetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateSubnetResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateSubnetResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_subnet(
         self,
@@ -1354,10 +1462,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.CreateVccResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateVccResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateVccResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_vcc_with_options_async(
         self,
@@ -1428,10 +1542,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.CreateVccResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateVccResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateVccResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_vcc(
         self,
@@ -1513,10 +1633,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.CreateVccGrantRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateVccGrantRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateVccGrantRuleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_vcc_grant_rule_with_options_async(
         self,
@@ -1558,10 +1684,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.CreateVccGrantRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateVccGrantRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateVccGrantRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_vcc_grant_rule(
         self,
@@ -1637,10 +1769,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.CreateVccRouteEntryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateVccRouteEntryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateVccRouteEntryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_vcc_route_entry_with_options_async(
         self,
@@ -1682,10 +1820,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.CreateVccRouteEntryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateVccRouteEntryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateVccRouteEntryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_vcc_route_entry(
         self,
@@ -1773,10 +1917,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.CreateVpdResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateVpdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateVpdResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_vpd_with_options_async(
         self,
@@ -1826,10 +1976,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.CreateVpdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateVpdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateVpdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_vpd(
         self,
@@ -1913,10 +2069,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.CreateVpdGrantRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateVpdGrantRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateVpdGrantRuleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_vpd_grant_rule_with_options_async(
         self,
@@ -1958,10 +2120,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.CreateVpdGrantRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateVpdGrantRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.CreateVpdGrantRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_vpd_grant_rule(
         self,
@@ -2031,10 +2199,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.DeleteElasticNetworkInterfaceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteElasticNetworkInterfaceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteElasticNetworkInterfaceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_elastic_network_interface_with_options_async(
         self,
@@ -2070,10 +2244,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.DeleteElasticNetworkInterfaceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteElasticNetworkInterfaceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteElasticNetworkInterfaceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_elastic_network_interface(
         self,
@@ -2140,10 +2320,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.DeleteErResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteErResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteErResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_er_with_options_async(
         self,
@@ -2184,10 +2370,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.DeleteErResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteErResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteErResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_er(
         self,
@@ -2270,10 +2462,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.DeleteErAttachmentResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteErAttachmentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteErAttachmentResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_er_attachment_with_options_async(
         self,
@@ -2316,10 +2514,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.DeleteErAttachmentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteErAttachmentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteErAttachmentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_er_attachment(
         self,
@@ -2401,10 +2605,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.DeleteErRouteMapResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteErRouteMapResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteErRouteMapResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_er_route_map_with_options_async(
         self,
@@ -2446,10 +2656,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.DeleteErRouteMapResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteErRouteMapResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteErRouteMapResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_er_route_map(
         self,
@@ -2531,10 +2747,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.DeleteSubnetResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteSubnetResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteSubnetResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_subnet_with_options_async(
         self,
@@ -2578,10 +2800,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.DeleteSubnetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteSubnetResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteSubnetResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_subnet(
         self,
@@ -2657,10 +2885,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.DeleteVccGrantRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteVccGrantRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteVccGrantRuleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_vcc_grant_rule_with_options_async(
         self,
@@ -2698,10 +2932,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.DeleteVccGrantRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteVccGrantRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteVccGrantRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_vcc_grant_rule(
         self,
@@ -2771,10 +3011,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.DeleteVccRouteEntryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteVccRouteEntryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteVccRouteEntryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_vcc_route_entry_with_options_async(
         self,
@@ -2818,10 +3064,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.DeleteVccRouteEntryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteVccRouteEntryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteVccRouteEntryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_vcc_route_entry(
         self,
@@ -2900,10 +3152,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.DeleteVpdResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteVpdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteVpdResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_vpd_with_options_async(
         self,
@@ -2944,10 +3202,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.DeleteVpdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteVpdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteVpdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_vpd(
         self,
@@ -3027,10 +3291,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.DeleteVpdGrantRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteVpdGrantRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteVpdGrantRuleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_vpd_grant_rule_with_options_async(
         self,
@@ -3070,10 +3340,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.DeleteVpdGrantRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteVpdGrantRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.DeleteVpdGrantRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_vpd_grant_rule(
         self,
@@ -3134,10 +3410,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.DescribeSlrResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.DescribeSlrResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.DescribeSlrResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_slr_with_options_async(
         self,
@@ -3172,10 +3454,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.DescribeSlrResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.DescribeSlrResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.DescribeSlrResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_slr(
         self,
@@ -3245,10 +3533,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.DetachElasticNetworkInterfaceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.DetachElasticNetworkInterfaceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.DetachElasticNetworkInterfaceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def detach_elastic_network_interface_with_options_async(
         self,
@@ -3286,10 +3580,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.DetachElasticNetworkInterfaceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.DetachElasticNetworkInterfaceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.DetachElasticNetworkInterfaceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def detach_elastic_network_interface(
         self,
@@ -3353,10 +3653,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetDestinationCidrBlockResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetDestinationCidrBlockResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetDestinationCidrBlockResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_destination_cidr_block_with_options_async(
         self,
@@ -3390,10 +3696,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetDestinationCidrBlockResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetDestinationCidrBlockResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetDestinationCidrBlockResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_destination_cidr_block(
         self,
@@ -3453,10 +3765,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetElasticNetworkInterfaceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetElasticNetworkInterfaceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetElasticNetworkInterfaceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_elastic_network_interface_with_options_async(
         self,
@@ -3490,10 +3808,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetElasticNetworkInterfaceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetElasticNetworkInterfaceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetElasticNetworkInterfaceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_elastic_network_interface(
         self,
@@ -3553,10 +3877,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetErResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetErResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetErResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_er_with_options_async(
         self,
@@ -3590,10 +3920,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetErResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetErResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetErResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_er(
         self,
@@ -3655,10 +3991,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetErAttachmentResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetErAttachmentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetErAttachmentResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_er_attachment_with_options_async(
         self,
@@ -3694,10 +4036,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetErAttachmentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetErAttachmentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetErAttachmentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_er_attachment(
         self,
@@ -3759,10 +4107,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetErRouteEntryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetErRouteEntryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetErRouteEntryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_er_route_entry_with_options_async(
         self,
@@ -3798,10 +4152,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetErRouteEntryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetErRouteEntryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetErRouteEntryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_er_route_entry(
         self,
@@ -3863,10 +4223,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetErRouteMapResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetErRouteMapResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetErRouteMapResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_er_route_map_with_options_async(
         self,
@@ -3902,10 +4268,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetErRouteMapResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetErRouteMapResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetErRouteMapResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_er_route_map(
         self,
@@ -3973,10 +4345,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetFabricTopologyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetFabricTopologyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetFabricTopologyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_fabric_topology_with_options_async(
         self,
@@ -4018,10 +4396,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetFabricTopologyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetFabricTopologyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetFabricTopologyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_fabric_topology(
         self,
@@ -4083,10 +4467,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetLeniPrivateIpAddressResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetLeniPrivateIpAddressResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetLeniPrivateIpAddressResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_leni_private_ip_address_with_options_async(
         self,
@@ -4122,10 +4512,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetLeniPrivateIpAddressResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetLeniPrivateIpAddressResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetLeniPrivateIpAddressResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_leni_private_ip_address(
         self,
@@ -4187,10 +4583,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetLniPrivateIpAddressResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetLniPrivateIpAddressResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetLniPrivateIpAddressResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_lni_private_ip_address_with_options_async(
         self,
@@ -4226,10 +4628,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetLniPrivateIpAddressResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetLniPrivateIpAddressResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetLniPrivateIpAddressResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_lni_private_ip_address(
         self,
@@ -4291,10 +4699,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetNetworkInterfaceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetNetworkInterfaceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetNetworkInterfaceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_network_interface_with_options_async(
         self,
@@ -4330,10 +4744,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetNetworkInterfaceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetNetworkInterfaceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetNetworkInterfaceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_network_interface(
         self,
@@ -4393,10 +4813,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetNodeInfoForPodResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetNodeInfoForPodResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetNodeInfoForPodResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_node_info_for_pod_with_options_async(
         self,
@@ -4430,10 +4856,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetNodeInfoForPodResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetNodeInfoForPodResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetNodeInfoForPodResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_node_info_for_pod(
         self,
@@ -4495,10 +4927,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetSubnetResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetSubnetResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetSubnetResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_subnet_with_options_async(
         self,
@@ -4534,10 +4972,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetSubnetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetSubnetResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetSubnetResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_subnet(
         self,
@@ -4605,10 +5049,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetVccResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetVccResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetVccResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_vcc_with_options_async(
         self,
@@ -4650,10 +5100,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetVccResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetVccResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetVccResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_vcc(
         self,
@@ -4719,10 +5175,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetVccGrantRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetVccGrantRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetVccGrantRuleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_vcc_grant_rule_with_options_async(
         self,
@@ -4762,10 +5224,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetVccGrantRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetVccGrantRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetVccGrantRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_vcc_grant_rule(
         self,
@@ -4827,10 +5295,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetVccRouteEntryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetVccRouteEntryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetVccRouteEntryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_vcc_route_entry_with_options_async(
         self,
@@ -4866,10 +5340,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetVccRouteEntryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetVccRouteEntryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetVccRouteEntryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_vcc_route_entry(
         self,
@@ -4929,10 +5409,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetVpdResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetVpdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetVpdResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_vpd_with_options_async(
         self,
@@ -4966,10 +5452,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetVpdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetVpdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetVpdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_vpd(
         self,
@@ -5035,10 +5527,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetVpdGrantRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetVpdGrantRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetVpdGrantRuleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_vpd_grant_rule_with_options_async(
         self,
@@ -5078,10 +5576,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetVpdGrantRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetVpdGrantRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetVpdGrantRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_vpd_grant_rule(
         self,
@@ -5143,10 +5647,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetVpdRouteEntryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetVpdRouteEntryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetVpdRouteEntryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_vpd_route_entry_with_options_async(
         self,
@@ -5182,10 +5692,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.GetVpdRouteEntryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.GetVpdRouteEntryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.GetVpdRouteEntryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_vpd_route_entry(
         self,
@@ -5243,10 +5759,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.InitializeVccResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.InitializeVccResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.InitializeVccResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def initialize_vcc_with_options_async(
         self,
@@ -5278,10 +5800,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.InitializeVccResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.InitializeVccResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.InitializeVccResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def initialize_vcc(
         self,
@@ -5361,10 +5889,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListElasticNetworkInterfacesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListElasticNetworkInterfacesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListElasticNetworkInterfacesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_elastic_network_interfaces_with_options_async(
         self,
@@ -5418,10 +5952,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListElasticNetworkInterfacesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListElasticNetworkInterfacesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListElasticNetworkInterfacesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_elastic_network_interfaces(
         self,
@@ -5503,10 +6043,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListErAttachmentsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListErAttachmentsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListErAttachmentsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_er_attachments_with_options_async(
         self,
@@ -5562,10 +6108,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListErAttachmentsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListErAttachmentsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListErAttachmentsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_er_attachments(
         self,
@@ -5647,10 +6199,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListErRouteEntriesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListErRouteEntriesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListErRouteEntriesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_er_route_entries_with_options_async(
         self,
@@ -5706,10 +6264,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListErRouteEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListErRouteEntriesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListErRouteEntriesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_er_route_entries(
         self,
@@ -5797,10 +6361,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListErRouteMapsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListErRouteMapsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListErRouteMapsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_er_route_maps_with_options_async(
         self,
@@ -5862,10 +6432,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListErRouteMapsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListErRouteMapsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListErRouteMapsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_er_route_maps(
         self,
@@ -5941,10 +6517,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListErsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListErsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListErsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_ers_with_options_async(
         self,
@@ -5994,10 +6576,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListErsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListErsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListErsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_ers(
         self,
@@ -6061,10 +6649,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListInstancesByNcdResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListInstancesByNcdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListInstancesByNcdResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_instances_by_ncd_with_options_async(
         self,
@@ -6102,10 +6696,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListInstancesByNcdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListInstancesByNcdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListInstancesByNcdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_instances_by_ncd(
         self,
@@ -6175,10 +6775,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListLeniPrivateIpAddressesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListLeniPrivateIpAddressesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListLeniPrivateIpAddressesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_leni_private_ip_addresses_with_options_async(
         self,
@@ -6222,10 +6828,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListLeniPrivateIpAddressesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListLeniPrivateIpAddressesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListLeniPrivateIpAddressesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_leni_private_ip_addresses(
         self,
@@ -6297,10 +6909,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListLniPrivateIpAddressResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListLniPrivateIpAddressResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListLniPrivateIpAddressResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_lni_private_ip_address_with_options_async(
         self,
@@ -6346,10 +6964,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListLniPrivateIpAddressResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListLniPrivateIpAddressResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListLniPrivateIpAddressResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_lni_private_ip_address(
         self,
@@ -6423,10 +7047,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListNetworkInterfacesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListNetworkInterfacesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListNetworkInterfacesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_network_interfaces_with_options_async(
         self,
@@ -6474,10 +7104,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListNetworkInterfacesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListNetworkInterfacesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListNetworkInterfacesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_network_interfaces(
         self,
@@ -6541,10 +7177,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListNodeInfosForPodResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListNodeInfosForPodResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListNodeInfosForPodResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_node_infos_for_pod_with_options_async(
         self,
@@ -6582,10 +7224,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListNodeInfosForPodResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListNodeInfosForPodResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListNodeInfosForPodResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_node_infos_for_pod(
         self,
@@ -6665,10 +7313,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListSubnetsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListSubnetsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListSubnetsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_subnets_with_options_async(
         self,
@@ -6722,10 +7376,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListSubnetsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListSubnetsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListSubnetsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_subnets(
         self,
@@ -6793,10 +7453,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListVccFlowInfosResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListVccFlowInfosResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListVccFlowInfosResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_vcc_flow_infos_with_options_async(
         self,
@@ -6838,10 +7504,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListVccFlowInfosResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListVccFlowInfosResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListVccFlowInfosResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_vcc_flow_infos(
         self,
@@ -6919,10 +7591,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListVccGrantRulesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListVccGrantRulesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListVccGrantRulesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_vcc_grant_rules_with_options_async(
         self,
@@ -6974,10 +7652,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListVccGrantRulesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListVccGrantRulesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListVccGrantRulesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_vcc_grant_rules(
         self,
@@ -7059,10 +7743,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListVccRouteEntriesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListVccRouteEntriesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListVccRouteEntriesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_vcc_route_entries_with_options_async(
         self,
@@ -7118,10 +7808,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListVccRouteEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListVccRouteEntriesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListVccRouteEntriesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_vcc_route_entries(
         self,
@@ -7205,10 +7901,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListVccsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListVccsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListVccsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_vccs_with_options_async(
         self,
@@ -7266,10 +7968,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListVccsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListVccsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListVccsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_vccs(
         self,
@@ -7347,10 +8055,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListVpdGrantRulesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListVpdGrantRulesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListVpdGrantRulesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_vpd_grant_rules_with_options_async(
         self,
@@ -7402,10 +8116,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListVpdGrantRulesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListVpdGrantRulesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListVpdGrantRulesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_vpd_grant_rules(
         self,
@@ -7487,10 +8207,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListVpdRouteEntriesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListVpdRouteEntriesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListVpdRouteEntriesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_vpd_route_entries_with_options_async(
         self,
@@ -7546,10 +8272,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListVpdRouteEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListVpdRouteEntriesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListVpdRouteEntriesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_vpd_route_entries(
         self,
@@ -7631,10 +8363,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListVpdsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListVpdsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListVpdsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_vpds_with_options_async(
         self,
@@ -7690,10 +8428,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.ListVpdsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.ListVpdsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.ListVpdsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_vpds(
         self,
@@ -7757,10 +8501,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.QueryInstanceNcdResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.QueryInstanceNcdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.QueryInstanceNcdResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_instance_ncd_with_options_async(
         self,
@@ -7798,10 +8548,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.QueryInstanceNcdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.QueryInstanceNcdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.QueryInstanceNcdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_instance_ncd(
         self,
@@ -7863,10 +8619,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.RefundVccResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.RefundVccResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.RefundVccResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def refund_vcc_with_options_async(
         self,
@@ -7902,10 +8664,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.RefundVccResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.RefundVccResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.RefundVccResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def refund_vcc(
         self,
@@ -7971,10 +8739,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.RetryVccResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.RetryVccResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.RetryVccResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def retry_vcc_with_options_async(
         self,
@@ -8010,10 +8784,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.RetryVccResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.RetryVccResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.RetryVccResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def retry_vcc(
         self,
@@ -8085,10 +8865,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.UnAssignPrivateIpAddressResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.UnAssignPrivateIpAddressResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.UnAssignPrivateIpAddressResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def un_assign_private_ip_address_with_options_async(
         self,
@@ -8130,10 +8916,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.UnAssignPrivateIpAddressResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.UnAssignPrivateIpAddressResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.UnAssignPrivateIpAddressResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def un_assign_private_ip_address(
         self,
@@ -8198,10 +8990,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.UnAssociateVpdCidrBlockResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.UnAssociateVpdCidrBlockResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.UnAssociateVpdCidrBlockResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def un_associate_vpd_cidr_block_with_options_async(
         self,
@@ -8240,10 +9038,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.UnAssociateVpdCidrBlockResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.UnAssociateVpdCidrBlockResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.UnAssociateVpdCidrBlockResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def un_associate_vpd_cidr_block(
         self,
@@ -8313,10 +9117,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.UnassignLeniPrivateIpAddressResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.UnassignLeniPrivateIpAddressResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.UnassignLeniPrivateIpAddressResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def unassign_leni_private_ip_address_with_options_async(
         self,
@@ -8354,10 +9164,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.UnassignLeniPrivateIpAddressResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.UnassignLeniPrivateIpAddressResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.UnassignLeniPrivateIpAddressResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def unassign_leni_private_ip_address(
         self,
@@ -8423,10 +9239,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.UpdateElasticNetworkInterfaceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateElasticNetworkInterfaceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateElasticNetworkInterfaceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_elastic_network_interface_with_options_async(
         self,
@@ -8466,10 +9288,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.UpdateElasticNetworkInterfaceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateElasticNetworkInterfaceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateElasticNetworkInterfaceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_elastic_network_interface(
         self,
@@ -8533,10 +9361,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.UpdateErResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateErResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateErResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_er_with_options_async(
         self,
@@ -8574,10 +9408,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.UpdateErResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateErResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateErResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_er(
         self,
@@ -8641,10 +9481,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.UpdateErAttachmentResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateErAttachmentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateErAttachmentResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_er_attachment_with_options_async(
         self,
@@ -8682,10 +9528,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.UpdateErAttachmentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateErAttachmentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateErAttachmentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_er_attachment(
         self,
@@ -8749,10 +9601,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.UpdateErRouteMapResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateErRouteMapResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateErRouteMapResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_er_route_map_with_options_async(
         self,
@@ -8790,10 +9648,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.UpdateErRouteMapResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateErRouteMapResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateErRouteMapResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_er_route_map(
         self,
@@ -8857,10 +9721,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.UpdateLeniPrivateIpAddressResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateLeniPrivateIpAddressResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateLeniPrivateIpAddressResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_leni_private_ip_address_with_options_async(
         self,
@@ -8898,10 +9768,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.UpdateLeniPrivateIpAddressResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateLeniPrivateIpAddressResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateLeniPrivateIpAddressResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_leni_private_ip_address(
         self,
@@ -8967,10 +9843,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.UpdateSubnetResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateSubnetResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateSubnetResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_subnet_with_options_async(
         self,
@@ -9010,10 +9892,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.UpdateSubnetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateSubnetResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateSubnetResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_subnet(
         self,
@@ -9079,10 +9967,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.UpdateVccResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateVccResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateVccResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_vcc_with_options_async(
         self,
@@ -9122,10 +10016,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.UpdateVccResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateVccResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateVccResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_vcc(
         self,
@@ -9187,10 +10087,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.UpdateVpdResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateVpdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateVpdResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_vpd_with_options_async(
         self,
@@ -9226,10 +10132,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_20220530_models.UpdateVpdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateVpdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_20220530_models.UpdateVpdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_vpd(
         self,

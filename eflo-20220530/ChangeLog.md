@@ -1,5 +1,81 @@
-2025-01-16 Version: 2.0.1
-- Generated python 2022-05-30 for eflo.
+2025-02-21 Version: 2.0.2
+- Update API AssignLeniPrivateIpAddress: update response param.
+- Update API AssignPrivateIpAddress: update response param.
+- Update API AssociateVpdCidrBlock: update response param.
+- Update API AttachElasticNetworkInterface: update response param.
+- Update API CreateElasticNetworkInterface: update response param.
+- Update API CreateEr: update response param.
+- Update API CreateErAttachment: update response param.
+- Update API CreateErRouteMap: update response param.
+- Update API CreateSubnet: update response param.
+- Update API CreateVcc: update response param.
+- Update API CreateVccGrantRule: update response param.
+- Update API CreateVccRouteEntry: update response param.
+- Update API CreateVpd: update response param.
+- Update API CreateVpdGrantRule: update response param.
+- Update API DeleteElasticNetworkInterface: update response param.
+- Update API DeleteEr: update response param.
+- Update API DeleteErAttachment: update response param.
+- Update API DeleteErRouteMap: update response param.
+- Update API DeleteSubnet: update response param.
+- Update API DeleteVccGrantRule: update response param.
+- Update API DeleteVccRouteEntry: update response param.
+- Update API DeleteVpd: update response param.
+- Update API DeleteVpdGrantRule: update response param.
+- Update API DescribeSlr: update response param.
+- Update API DetachElasticNetworkInterface: update response param.
+- Update API GetDestinationCidrBlock: update response param.
+- Update API GetElasticNetworkInterface: update response param.
+- Update API GetEr: update response param.
+- Update API GetErAttachment: update response param.
+- Update API GetErRouteEntry: update response param.
+- Update API GetErRouteMap: update response param.
+- Update API GetFabricTopology: update response param.
+- Update API GetLeniPrivateIpAddress: update response param.
+- Update API GetLniPrivateIpAddress: update response param.
+- Update API GetNetworkInterface: update response param.
+- Update API GetNodeInfoForPod: update response param.
+- Update API GetSubnet: update response param.
+- Update API GetVcc: update response param.
+- Update API GetVccGrantRule: update response param.
+- Update API GetVccRouteEntry: update response param.
+- Update API GetVpd: update response param.
+- Update API GetVpdGrantRule: update response param.
+- Update API GetVpdRouteEntry: update response param.
+- Update API InitializeVcc: update response param.
+- Update API ListElasticNetworkInterfaces: update response param.
+- Update API ListErAttachments: update response param.
+- Update API ListErRouteEntries: update response param.
+- Update API ListErRouteMaps: update response param.
+- Update API ListErs: update response param.
+- Update API ListInstancesByNcd: update response param.
+- Update API ListLeniPrivateIpAddresses: update response param.
+- Update API ListLniPrivateIpAddress: update response param.
+- Update API ListNetworkInterfaces: update response param.
+- Update API ListNodeInfosForPod: update response param.
+- Update API ListSubnets: update response param.
+- Update API ListVccFlowInfos: update response param.
+- Update API ListVccGrantRules: update response param.
+- Update API ListVccRouteEntries: update response param.
+- Update API ListVccs: update response param.
+- Update API ListVpdGrantRules: update response param.
+- Update API ListVpdRouteEntries: update response param.
+- Update API ListVpds: update response param.
+- Update API QueryInstanceNcd: update response param.
+- Update API RefundVcc: update response param.
+- Update API RetryVcc: update response param.
+- Update API UnAssignPrivateIpAddress: update response param.
+- Update API UnAssociateVpdCidrBlock: update response param.
+- Update API UnassignLeniPrivateIpAddress: update response param.
+- Update API UpdateElasticNetworkInterface: update response param.
+- Update API UpdateEr: update response param.
+- Update API UpdateErAttachment: update response param.
+- Update API UpdateErRouteMap: update response param.
+- Update API UpdateLeniPrivateIpAddress: update response param.
+- Update API UpdateSubnet: update response param.
+- Update API UpdateVcc: update response param.
+- Update API UpdateVpd: update response param.
+
 
 2025-01-10 Version: 2.0.0
 - Support API AssignLeniPrivateIpAddress.

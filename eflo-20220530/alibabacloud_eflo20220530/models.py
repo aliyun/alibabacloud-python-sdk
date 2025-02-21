@@ -102,11 +102,13 @@ class AssignLeniPrivateIpAddressResponseBodyContent(TeaModel):
 class AssignLeniPrivateIpAddressResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: AssignLeniPrivateIpAddressResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response data.
@@ -126,6 +128,8 @@ class AssignLeniPrivateIpAddressResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -138,6 +142,8 @@ class AssignLeniPrivateIpAddressResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -314,11 +320,13 @@ class AssignPrivateIpAddressResponseBodyContent(TeaModel):
 class AssignPrivateIpAddressResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: AssignPrivateIpAddressResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response data.
@@ -338,6 +346,8 @@ class AssignPrivateIpAddressResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -350,6 +360,8 @@ class AssignPrivateIpAddressResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -482,11 +494,13 @@ class AssociateVpdCidrBlockResponseBodyContent(TeaModel):
 class AssociateVpdCidrBlockResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: AssociateVpdCidrBlockResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response data.
@@ -506,6 +520,8 @@ class AssociateVpdCidrBlockResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -518,6 +534,8 @@ class AssociateVpdCidrBlockResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -622,11 +640,13 @@ class AttachElasticNetworkInterfaceRequest(TeaModel):
 class AttachElasticNetworkInterfaceResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: Any = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # Response body
@@ -645,6 +665,8 @@ class AttachElasticNetworkInterfaceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -657,6 +679,8 @@ class AttachElasticNetworkInterfaceResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -837,11 +861,13 @@ class CreateElasticNetworkInterfaceResponseBodyContent(TeaModel):
 class CreateElasticNetworkInterfaceResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: CreateElasticNetworkInterfaceResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response data.
@@ -861,6 +887,8 @@ class CreateElasticNetworkInterfaceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -873,6 +901,8 @@ class CreateElasticNetworkInterfaceResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -1019,11 +1049,13 @@ class CreateErResponseBodyContent(TeaModel):
 class CreateErResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: CreateErResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -1043,6 +1075,8 @@ class CreateErResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -1055,6 +1089,8 @@ class CreateErResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -1231,11 +1267,13 @@ class CreateErAttachmentResponseBodyContent(TeaModel):
 class CreateErAttachmentResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: CreateErAttachmentResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response data.
@@ -1255,6 +1293,8 @@ class CreateErAttachmentResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -1267,6 +1307,8 @@ class CreateErAttachmentResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -1485,11 +1527,13 @@ class CreateErRouteMapResponseBodyContent(TeaModel):
 class CreateErRouteMapResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: CreateErRouteMapResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -1509,6 +1553,8 @@ class CreateErRouteMapResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -1521,6 +1567,8 @@ class CreateErRouteMapResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -1745,11 +1793,13 @@ class CreateSubnetResponseBodyContent(TeaModel):
 class CreateSubnetResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: CreateSubnetResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -1769,6 +1819,8 @@ class CreateSubnetResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -1781,6 +1833,8 @@ class CreateSubnetResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -2072,11 +2126,13 @@ class CreateVccResponseBodyContent(TeaModel):
 class CreateVccResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: CreateVccResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The returned data.
@@ -2096,6 +2152,8 @@ class CreateVccResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -2108,6 +2166,8 @@ class CreateVccResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -2249,11 +2309,13 @@ class CreateVccGrantRuleResponseBodyContent(TeaModel):
 class CreateVccGrantRuleResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: CreateVccGrantRuleResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -2273,6 +2335,8 @@ class CreateVccGrantRuleResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -2285,6 +2349,8 @@ class CreateVccGrantRuleResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -2411,11 +2477,13 @@ class CreateVccRouteEntryResponseBodyContent(TeaModel):
 class CreateVccRouteEntryResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: CreateVccRouteEntryResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The returned data.
@@ -2435,6 +2503,8 @@ class CreateVccRouteEntryResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -2447,6 +2517,8 @@ class CreateVccRouteEntryResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -2735,11 +2807,13 @@ class CreateVpdResponseBodyContent(TeaModel):
 class CreateVpdResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: CreateVpdResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -2759,6 +2833,8 @@ class CreateVpdResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -2771,6 +2847,8 @@ class CreateVpdResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -2912,11 +2990,13 @@ class CreateVpdGrantRuleResponseBodyContent(TeaModel):
 class CreateVpdGrantRuleResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: CreateVpdGrantRuleResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -2936,6 +3016,8 @@ class CreateVpdGrantRuleResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -2948,6 +3030,8 @@ class CreateVpdGrantRuleResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -3085,11 +3169,13 @@ class DeleteElasticNetworkInterfaceResponseBodyContent(TeaModel):
 class DeleteElasticNetworkInterfaceResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: DeleteElasticNetworkInterfaceResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -3109,6 +3195,8 @@ class DeleteElasticNetworkInterfaceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -3121,6 +3209,8 @@ class DeleteElasticNetworkInterfaceResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -3216,11 +3306,13 @@ class DeleteErRequest(TeaModel):
 class DeleteErResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: Any = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # Response body
@@ -3239,6 +3331,8 @@ class DeleteErResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -3251,6 +3345,8 @@ class DeleteErResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -3354,11 +3450,13 @@ class DeleteErAttachmentRequest(TeaModel):
 class DeleteErAttachmentResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: Any = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response content. If a resource has dependent resources, the existing dependent resources are returned.
@@ -3377,6 +3475,8 @@ class DeleteErAttachmentResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -3389,6 +3489,8 @@ class DeleteErAttachmentResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -3492,11 +3594,13 @@ class DeleteErRouteMapRequest(TeaModel):
 class DeleteErRouteMapResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: Any = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # Response body
@@ -3515,6 +3619,8 @@ class DeleteErRouteMapResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -3527,6 +3633,8 @@ class DeleteErRouteMapResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -3639,11 +3747,13 @@ class DeleteSubnetRequest(TeaModel):
 class DeleteSubnetResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: Any = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # Response content (if the resource has dependent resources, the existing dependent resources will be returned)
@@ -3662,6 +3772,8 @@ class DeleteSubnetResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -3674,6 +3786,8 @@ class DeleteSubnetResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -3782,11 +3896,13 @@ class DeleteVccGrantRuleRequest(TeaModel):
 class DeleteVccGrantRuleResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: Any = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # Response body
@@ -3805,6 +3921,8 @@ class DeleteVccGrantRuleResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -3817,6 +3935,8 @@ class DeleteVccGrantRuleResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -3921,11 +4041,13 @@ class DeleteVccRouteEntryRequest(TeaModel):
 class DeleteVccRouteEntryResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: Any = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # Response body
@@ -3944,6 +4066,8 @@ class DeleteVccRouteEntryResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -3956,6 +4080,8 @@ class DeleteVccRouteEntryResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -4050,11 +4176,13 @@ class DeleteVpdRequest(TeaModel):
 class DeleteVpdResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: Any = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters. (If a dependent resource exists, the existing dependent resource is returned.)
@@ -4073,6 +4201,8 @@ class DeleteVpdResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -4085,6 +4215,8 @@ class DeleteVpdResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -4200,11 +4332,13 @@ class DeleteVpdGrantRuleRequest(TeaModel):
 class DeleteVpdGrantRuleResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: Any = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # Response body
@@ -4223,6 +4357,8 @@ class DeleteVpdGrantRuleResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -4235,6 +4371,8 @@ class DeleteVpdGrantRuleResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -4346,11 +4484,13 @@ class DescribeSlrResponseBodyContent(TeaModel):
 class DescribeSlrResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: DescribeSlrResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The returned data.
@@ -4370,6 +4510,8 @@ class DescribeSlrResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -4382,6 +4524,8 @@ class DescribeSlrResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -4486,10 +4630,12 @@ class DetachElasticNetworkInterfaceRequest(TeaModel):
 class DetachElasticNetworkInterfaceResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # Response
@@ -4506,6 +4652,8 @@ class DetachElasticNetworkInterfaceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -4516,6 +4664,8 @@ class DetachElasticNetworkInterfaceResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -4636,11 +4786,13 @@ class GetDestinationCidrBlockResponseBodyContent(TeaModel):
 class GetDestinationCidrBlockResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: GetDestinationCidrBlockResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code
         self.code = code
         # Response content
@@ -4660,6 +4812,8 @@ class GetDestinationCidrBlockResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -4672,6 +4826,8 @@ class GetDestinationCidrBlockResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -5126,11 +5282,13 @@ class GetElasticNetworkInterfaceResponseBodyContent(TeaModel):
 class GetElasticNetworkInterfaceResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: GetElasticNetworkInterfaceResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -5150,6 +5308,8 @@ class GetElasticNetworkInterfaceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -5162,6 +5322,8 @@ class GetElasticNetworkInterfaceResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -5825,11 +5987,13 @@ class GetErResponseBodyContent(TeaModel):
 class GetErResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: GetErResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -5849,6 +6013,8 @@ class GetErResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -5861,6 +6027,8 @@ class GetErResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -6116,11 +6284,13 @@ class GetErAttachmentResponseBodyContent(TeaModel):
 class GetErAttachmentResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: GetErAttachmentResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response data.
@@ -6140,6 +6310,8 @@ class GetErAttachmentResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -6152,6 +6324,8 @@ class GetErAttachmentResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -6354,11 +6528,13 @@ class GetErRouteEntryResponseBodyContent(TeaModel):
 class GetErRouteEntryResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: GetErRouteEntryResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The returned data.
@@ -6378,6 +6554,8 @@ class GetErRouteEntryResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -6390,6 +6568,8 @@ class GetErRouteEntryResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -6685,11 +6865,13 @@ class GetErRouteMapResponseBodyContent(TeaModel):
 class GetErRouteMapResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: GetErRouteMapResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The returned data.
@@ -6709,6 +6891,8 @@ class GetErRouteMapResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -6721,6 +6905,8 @@ class GetErRouteMapResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -6956,11 +7142,13 @@ class GetFabricTopologyResponseBodyContent(TeaModel):
 class GetFabricTopologyResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: GetFabricTopologyResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -6980,6 +7168,8 @@ class GetFabricTopologyResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -6992,6 +7182,8 @@ class GetFabricTopologyResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -7180,11 +7372,13 @@ class GetLeniPrivateIpAddressResponseBodyContent(TeaModel):
 class GetLeniPrivateIpAddressResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: GetLeniPrivateIpAddressResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response data.
@@ -7204,6 +7398,8 @@ class GetLeniPrivateIpAddressResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -7216,6 +7412,8 @@ class GetLeniPrivateIpAddressResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -7404,11 +7602,13 @@ class GetLniPrivateIpAddressResponseBodyContent(TeaModel):
 class GetLniPrivateIpAddressResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: GetLniPrivateIpAddressResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -7428,6 +7628,8 @@ class GetLniPrivateIpAddressResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -7440,6 +7642,8 @@ class GetLniPrivateIpAddressResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -7875,11 +8079,13 @@ class GetNetworkInterfaceResponseBodyContent(TeaModel):
 class GetNetworkInterfaceResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: GetNetworkInterfaceResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response data. (If a resource has dependent resources, the existing dependent resources are returned.)
@@ -7899,6 +8105,8 @@ class GetNetworkInterfaceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -7911,6 +8119,8 @@ class GetNetworkInterfaceResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -8097,11 +8307,13 @@ class GetNodeInfoForPodResponseBodyContent(TeaModel):
 class GetNodeInfoForPodResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: GetNodeInfoForPodResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -8121,6 +8333,8 @@ class GetNodeInfoForPodResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -8133,6 +8347,8 @@ class GetNodeInfoForPodResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -8509,11 +8725,13 @@ class GetSubnetResponseBodyContent(TeaModel):
 class GetSubnetResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: GetSubnetResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response data.
@@ -8533,6 +8751,8 @@ class GetSubnetResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -8545,6 +8765,8 @@ class GetSubnetResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -9540,11 +9762,13 @@ class GetVccResponseBodyContent(TeaModel):
 class GetVccResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: GetVccResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -9564,6 +9788,8 @@ class GetVccResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -9576,6 +9802,8 @@ class GetVccResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -9796,11 +10024,13 @@ class GetVccGrantRuleResponseBodyContent(TeaModel):
 class GetVccGrantRuleResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: GetVccGrantRuleResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The returned data.
@@ -9820,6 +10050,8 @@ class GetVccGrantRuleResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -9832,6 +10064,8 @@ class GetVccGrantRuleResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -10041,11 +10275,13 @@ class GetVccRouteEntryResponseBodyContent(TeaModel):
 class GetVccRouteEntryResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: GetVccRouteEntryResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -10065,6 +10301,8 @@ class GetVccRouteEntryResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -10077,6 +10315,8 @@ class GetVccRouteEntryResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -10512,11 +10752,13 @@ class GetVpdResponseBodyContent(TeaModel):
 class GetVpdResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: GetVpdResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The data returned.
@@ -10536,6 +10778,8 @@ class GetVpdResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -10548,6 +10792,8 @@ class GetVpdResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -10765,11 +11011,13 @@ class GetVpdGrantRuleResponseBodyContent(TeaModel):
 class GetVpdGrantRuleResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: GetVpdGrantRuleResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -10789,6 +11037,8 @@ class GetVpdGrantRuleResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -10801,6 +11051,8 @@ class GetVpdGrantRuleResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -11003,11 +11255,13 @@ class GetVpdRouteEntryResponseBodyContent(TeaModel):
 class GetVpdRouteEntryResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: GetVpdRouteEntryResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -11027,6 +11281,8 @@ class GetVpdRouteEntryResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -11039,6 +11295,8 @@ class GetVpdRouteEntryResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -11160,11 +11418,13 @@ class InitializeVccResponseBodyContent(TeaModel):
 class InitializeVccResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: InitializeVccResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -11184,6 +11444,8 @@ class InitializeVccResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -11196,6 +11458,8 @@ class InitializeVccResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -11565,11 +11829,13 @@ class ListElasticNetworkInterfacesResponseBodyContent(TeaModel):
 class ListElasticNetworkInterfacesResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: ListElasticNetworkInterfacesResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -11589,6 +11855,8 @@ class ListElasticNetworkInterfacesResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -11601,6 +11869,8 @@ class ListElasticNetworkInterfacesResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -11985,11 +12255,13 @@ class ListErAttachmentsResponseBodyContent(TeaModel):
 class ListErAttachmentsResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: ListErAttachmentsResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The data returned.
@@ -12009,6 +12281,8 @@ class ListErAttachmentsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -12021,6 +12295,8 @@ class ListErAttachmentsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -12344,11 +12620,13 @@ class ListErRouteEntriesResponseBodyContent(TeaModel):
 class ListErRouteEntriesResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: ListErRouteEntriesResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -12368,6 +12646,8 @@ class ListErRouteEntriesResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -12380,6 +12660,8 @@ class ListErRouteEntriesResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -12811,11 +13093,13 @@ class ListErRouteMapsResponseBodyContent(TeaModel):
 class ListErRouteMapsResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: ListErRouteMapsResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -12835,6 +13119,8 @@ class ListErRouteMapsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -12847,6 +13133,8 @@ class ListErRouteMapsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -13157,11 +13445,13 @@ class ListErsResponseBodyContent(TeaModel):
 class ListErsResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: ListErsResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response data.
@@ -13181,6 +13471,8 @@ class ListErsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -13193,6 +13485,8 @@ class ListErsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -13408,11 +13702,13 @@ class ListInstancesByNcdResponseBodyContent(TeaModel):
 class ListInstancesByNcdResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: ListInstancesByNcdResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -13432,6 +13728,8 @@ class ListInstancesByNcdResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -13444,6 +13742,8 @@ class ListInstancesByNcdResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -13699,11 +13999,13 @@ class ListLeniPrivateIpAddressesResponseBodyContent(TeaModel):
 class ListLeniPrivateIpAddressesResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: ListLeniPrivateIpAddressesResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response data.
@@ -13723,6 +14025,8 @@ class ListLeniPrivateIpAddressesResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -13735,6 +14039,8 @@ class ListLeniPrivateIpAddressesResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -13997,11 +14303,13 @@ class ListLniPrivateIpAddressResponseBodyContent(TeaModel):
 class ListLniPrivateIpAddressResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: ListLniPrivateIpAddressResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -14021,6 +14329,8 @@ class ListLniPrivateIpAddressResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -14033,6 +14343,8 @@ class ListLniPrivateIpAddressResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -14552,11 +14864,13 @@ class ListNetworkInterfacesResponseBodyContent(TeaModel):
 class ListNetworkInterfacesResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: ListNetworkInterfacesResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response data.
@@ -14576,6 +14890,8 @@ class ListNetworkInterfacesResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -14588,6 +14904,8 @@ class ListNetworkInterfacesResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -14786,11 +15104,13 @@ class ListNodeInfosForPodResponseBodyContent(TeaModel):
 class ListNodeInfosForPodResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: List[ListNodeInfosForPodResponseBodyContent] = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # Response body
@@ -14812,6 +15132,8 @@ class ListNodeInfosForPodResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         result['Content'] = []
@@ -14826,6 +15148,8 @@ class ListNodeInfosForPodResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         self.content = []
@@ -15363,11 +15687,13 @@ class ListSubnetsResponseBodyContent(TeaModel):
 class ListSubnetsResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: ListSubnetsResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -15387,6 +15713,8 @@ class ListSubnetsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -15399,6 +15727,8 @@ class ListSubnetsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -15638,11 +15968,13 @@ class ListVccFlowInfosResponseBodyContent(TeaModel):
 class ListVccFlowInfosResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: ListVccFlowInfosResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The returned data.
@@ -15662,6 +15994,8 @@ class ListVccFlowInfosResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -15674,6 +16008,8 @@ class ListVccFlowInfosResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -15980,11 +16316,13 @@ class ListVccGrantRulesResponseBodyContent(TeaModel):
 class ListVccGrantRulesResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: ListVccGrantRulesResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -16004,6 +16342,8 @@ class ListVccGrantRulesResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -16016,6 +16356,8 @@ class ListVccGrantRulesResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -16343,11 +16685,13 @@ class ListVccRouteEntriesResponseBodyContent(TeaModel):
 class ListVccRouteEntriesResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: ListVccRouteEntriesResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -16367,6 +16711,8 @@ class ListVccRouteEntriesResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -16379,6 +16725,8 @@ class ListVccRouteEntriesResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -17128,11 +17476,13 @@ class ListVccsResponseBodyContent(TeaModel):
 class ListVccsResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: ListVccsResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -17152,6 +17502,8 @@ class ListVccsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -17164,6 +17516,8 @@ class ListVccsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -17466,11 +17820,13 @@ class ListVpdGrantRulesResponseBodyContent(TeaModel):
 class ListVpdGrantRulesResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: ListVpdGrantRulesResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The response parameters.
@@ -17490,6 +17846,8 @@ class ListVpdGrantRulesResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -17502,6 +17860,8 @@ class ListVpdGrantRulesResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -17825,11 +18185,13 @@ class ListVpdRouteEntriesResponseBodyContent(TeaModel):
 class ListVpdRouteEntriesResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: ListVpdRouteEntriesResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -17849,6 +18211,8 @@ class ListVpdRouteEntriesResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -17861,6 +18225,8 @@ class ListVpdRouteEntriesResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -18462,11 +18828,13 @@ class ListVpdsResponseBodyContent(TeaModel):
 class ListVpdsResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: ListVpdsResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response data.
@@ -18486,6 +18854,8 @@ class ListVpdsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -18498,6 +18868,8 @@ class ListVpdsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -18670,11 +19042,13 @@ class QueryInstanceNcdResponseBodyContent(TeaModel):
 class QueryInstanceNcdResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: QueryInstanceNcdResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -18694,6 +19068,8 @@ class QueryInstanceNcdResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -18706,6 +19082,8 @@ class QueryInstanceNcdResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -18797,11 +19175,13 @@ class RefundVccRequest(TeaModel):
 class RefundVccResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: Any = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code
         self.code = code
         # Response content
@@ -18820,6 +19200,8 @@ class RefundVccResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -18832,6 +19214,8 @@ class RefundVccResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -18922,11 +19306,13 @@ class RetryVccRequest(TeaModel):
 class RetryVccResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: Any = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The returned data.
@@ -18945,6 +19331,8 @@ class RetryVccResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -18957,6 +19345,8 @@ class RetryVccResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -19118,11 +19508,13 @@ class UnAssignPrivateIpAddressResponseBodyContent(TeaModel):
 class UnAssignPrivateIpAddressResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: UnAssignPrivateIpAddressResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -19142,6 +19534,8 @@ class UnAssignPrivateIpAddressResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -19154,6 +19548,8 @@ class UnAssignPrivateIpAddressResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -19286,11 +19682,13 @@ class UnAssociateVpdCidrBlockResponseBodyContent(TeaModel):
 class UnAssociateVpdCidrBlockResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: UnAssociateVpdCidrBlockResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response data.
@@ -19310,6 +19708,8 @@ class UnAssociateVpdCidrBlockResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -19322,6 +19722,8 @@ class UnAssociateVpdCidrBlockResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -19468,11 +19870,13 @@ class UnassignLeniPrivateIpAddressResponseBodyContent(TeaModel):
 class UnassignLeniPrivateIpAddressResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: UnassignLeniPrivateIpAddressResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response data.
@@ -19492,6 +19896,8 @@ class UnassignLeniPrivateIpAddressResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -19504,6 +19910,8 @@ class UnassignLeniPrivateIpAddressResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -19655,11 +20063,13 @@ class UpdateElasticNetworkInterfaceResponseBodyContent(TeaModel):
 class UpdateElasticNetworkInterfaceResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: UpdateElasticNetworkInterfaceResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -19679,6 +20089,8 @@ class UpdateElasticNetworkInterfaceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -19691,6 +20103,8 @@ class UpdateElasticNetworkInterfaceResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -19800,11 +20214,13 @@ class UpdateErRequest(TeaModel):
 class UpdateErResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: Dict[str, Any] = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The returned data.
@@ -19823,6 +20239,8 @@ class UpdateErResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -19835,6 +20253,8 @@ class UpdateErResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -19945,11 +20365,13 @@ class UpdateErAttachmentRequest(TeaModel):
 class UpdateErAttachmentResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: Dict[str, Any] = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -19968,6 +20390,8 @@ class UpdateErAttachmentResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -19980,6 +20404,8 @@ class UpdateErAttachmentResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -20090,11 +20516,13 @@ class UpdateErRouteMapRequest(TeaModel):
 class UpdateErRouteMapResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: Dict[str, Any] = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -20113,6 +20541,8 @@ class UpdateErRouteMapResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -20125,6 +20555,8 @@ class UpdateErRouteMapResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -20272,11 +20704,13 @@ class UpdateLeniPrivateIpAddressResponseBodyContent(TeaModel):
 class UpdateLeniPrivateIpAddressResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: UpdateLeniPrivateIpAddressResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response data.
@@ -20296,6 +20730,8 @@ class UpdateLeniPrivateIpAddressResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -20308,6 +20744,8 @@ class UpdateLeniPrivateIpAddressResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -20456,11 +20894,13 @@ class UpdateSubnetResponseBodyContent(TeaModel):
 class UpdateSubnetResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: UpdateSubnetResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response content.
@@ -20480,6 +20920,8 @@ class UpdateSubnetResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -20492,6 +20934,8 @@ class UpdateSubnetResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -20634,11 +21078,13 @@ class UpdateVccResponseBodyContent(TeaModel):
 class UpdateVccResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: UpdateVccResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response parameters.
@@ -20658,6 +21104,8 @@ class UpdateVccResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -20670,6 +21118,8 @@ class UpdateVccResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
@@ -20800,11 +21250,13 @@ class UpdateVpdResponseBodyContent(TeaModel):
 class UpdateVpdResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         content: UpdateVpdResponseBodyContent = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response status code.
         self.code = code
         # The response data.
@@ -20824,6 +21276,8 @@ class UpdateVpdResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.content is not None:
@@ -20836,6 +21290,8 @@ class UpdateVpdResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Content') is not None:
