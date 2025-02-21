@@ -19603,9 +19603,11 @@ class StartCloudRecordRequestPanes(TeaModel):
         images: List[StartCloudRecordRequestPanesImages] = None,
         pane_crop_mode: int = None,
         pane_id: int = None,
+        reserve_pane_for_offline_user: bool = None,
         source: str = None,
         source_type: str = None,
         texts: List[StartCloudRecordRequestPanesTexts] = None,
+        video_order: str = None,
         whiteboard: StartCloudRecordRequestPanesWhiteboard = None,
     ):
         self.images = images
@@ -19614,11 +19616,13 @@ class StartCloudRecordRequestPanes(TeaModel):
         # 
         # This parameter is required.
         self.pane_id = pane_id
+        self.reserve_pane_for_offline_user = reserve_pane_for_offline_user
         # source
         self.source = source
         # sourceType
         self.source_type = source_type
         self.texts = texts
+        self.video_order = video_order
         self.whiteboard = whiteboard
 
     def validate(self):
@@ -19647,6 +19651,8 @@ class StartCloudRecordRequestPanes(TeaModel):
             result['PaneCropMode'] = self.pane_crop_mode
         if self.pane_id is not None:
             result['PaneId'] = self.pane_id
+        if self.reserve_pane_for_offline_user is not None:
+            result['ReservePaneForOfflineUser'] = self.reserve_pane_for_offline_user
         if self.source is not None:
             result['Source'] = self.source
         if self.source_type is not None:
@@ -19655,6 +19661,8 @@ class StartCloudRecordRequestPanes(TeaModel):
         if self.texts is not None:
             for k in self.texts:
                 result['Texts'].append(k.to_map() if k else None)
+        if self.video_order is not None:
+            result['VideoOrder'] = self.video_order
         if self.whiteboard is not None:
             result['Whiteboard'] = self.whiteboard.to_map()
         return result
@@ -19670,6 +19678,8 @@ class StartCloudRecordRequestPanes(TeaModel):
             self.pane_crop_mode = m.get('PaneCropMode')
         if m.get('PaneId') is not None:
             self.pane_id = m.get('PaneId')
+        if m.get('ReservePaneForOfflineUser') is not None:
+            self.reserve_pane_for_offline_user = m.get('ReservePaneForOfflineUser')
         if m.get('Source') is not None:
             self.source = m.get('Source')
         if m.get('SourceType') is not None:
@@ -19679,6 +19689,8 @@ class StartCloudRecordRequestPanes(TeaModel):
             for k in m.get('Texts'):
                 temp_model = StartCloudRecordRequestPanesTexts()
                 self.texts.append(temp_model.from_map(k))
+        if m.get('VideoOrder') is not None:
+            self.video_order = m.get('VideoOrder')
         if m.get('Whiteboard') is not None:
             temp_model = StartCloudRecordRequestPanesWhiteboard()
             self.whiteboard = temp_model.from_map(m['Whiteboard'])
@@ -19729,6 +19741,7 @@ class StartCloudRecordRequestStorageConfig(TeaModel):
         self,
         access_key: str = None,
         bucket: str = None,
+        endpoint: str = None,
         region: int = None,
         secret_key: str = None,
         vendor: int = None,
@@ -19741,6 +19754,7 @@ class StartCloudRecordRequestStorageConfig(TeaModel):
         # 
         # This parameter is required.
         self.bucket = bucket
+        self.endpoint = endpoint
         # region
         # 
         # This parameter is required.
@@ -19767,6 +19781,8 @@ class StartCloudRecordRequestStorageConfig(TeaModel):
             result['AccessKey'] = self.access_key
         if self.bucket is not None:
             result['Bucket'] = self.bucket
+        if self.endpoint is not None:
+            result['Endpoint'] = self.endpoint
         if self.region is not None:
             result['Region'] = self.region
         if self.secret_key is not None:
@@ -19781,6 +19797,8 @@ class StartCloudRecordRequestStorageConfig(TeaModel):
             self.access_key = m.get('AccessKey')
         if m.get('Bucket') is not None:
             self.bucket = m.get('Bucket')
+        if m.get('Endpoint') is not None:
+            self.endpoint = m.get('Endpoint')
         if m.get('Region') is not None:
             self.region = m.get('Region')
         if m.get('SecretKey') is not None:
@@ -19981,6 +19999,7 @@ class StartCloudRecordRequest(TeaModel):
         layout_specified_users: StartCloudRecordRequestLayoutSpecifiedUsers = None,
         panes: List[StartCloudRecordRequestPanes] = None,
         region_color: StartCloudRecordRequestRegionColor = None,
+        reserve_pane_for_no_camera_user: bool = None,
         storage_config: StartCloudRecordRequestStorageConfig = None,
         task_id: str = None,
         template_id: str = None,
@@ -20002,6 +20021,7 @@ class StartCloudRecordRequest(TeaModel):
         # panes
         self.panes = panes
         self.region_color = region_color
+        self.reserve_pane_for_no_camera_user = reserve_pane_for_no_camera_user
         # storageConfig
         # 
         # This parameter is required.
@@ -20074,6 +20094,8 @@ class StartCloudRecordRequest(TeaModel):
                 result['Panes'].append(k.to_map() if k else None)
         if self.region_color is not None:
             result['RegionColor'] = self.region_color.to_map()
+        if self.reserve_pane_for_no_camera_user is not None:
+            result['ReservePaneForNoCameraUser'] = self.reserve_pane_for_no_camera_user
         if self.storage_config is not None:
             result['StorageConfig'] = self.storage_config.to_map()
         if self.task_id is not None:
@@ -20120,6 +20142,8 @@ class StartCloudRecordRequest(TeaModel):
         if m.get('RegionColor') is not None:
             temp_model = StartCloudRecordRequestRegionColor()
             self.region_color = temp_model.from_map(m['RegionColor'])
+        if m.get('ReservePaneForNoCameraUser') is not None:
+            self.reserve_pane_for_no_camera_user = m.get('ReservePaneForNoCameraUser')
         if m.get('StorageConfig') is not None:
             temp_model = StartCloudRecordRequestStorageConfig()
             self.storage_config = temp_model.from_map(m['StorageConfig'])
@@ -20747,9 +20771,11 @@ class StartCloudRecordShrinkRequestPanes(TeaModel):
         images: List[StartCloudRecordShrinkRequestPanesImages] = None,
         pane_crop_mode: int = None,
         pane_id: int = None,
+        reserve_pane_for_offline_user: bool = None,
         source: str = None,
         source_type: str = None,
         texts: List[StartCloudRecordShrinkRequestPanesTexts] = None,
+        video_order: str = None,
         whiteboard: StartCloudRecordShrinkRequestPanesWhiteboard = None,
     ):
         self.images = images
@@ -20758,11 +20784,13 @@ class StartCloudRecordShrinkRequestPanes(TeaModel):
         # 
         # This parameter is required.
         self.pane_id = pane_id
+        self.reserve_pane_for_offline_user = reserve_pane_for_offline_user
         # source
         self.source = source
         # sourceType
         self.source_type = source_type
         self.texts = texts
+        self.video_order = video_order
         self.whiteboard = whiteboard
 
     def validate(self):
@@ -20791,6 +20819,8 @@ class StartCloudRecordShrinkRequestPanes(TeaModel):
             result['PaneCropMode'] = self.pane_crop_mode
         if self.pane_id is not None:
             result['PaneId'] = self.pane_id
+        if self.reserve_pane_for_offline_user is not None:
+            result['ReservePaneForOfflineUser'] = self.reserve_pane_for_offline_user
         if self.source is not None:
             result['Source'] = self.source
         if self.source_type is not None:
@@ -20799,6 +20829,8 @@ class StartCloudRecordShrinkRequestPanes(TeaModel):
         if self.texts is not None:
             for k in self.texts:
                 result['Texts'].append(k.to_map() if k else None)
+        if self.video_order is not None:
+            result['VideoOrder'] = self.video_order
         if self.whiteboard is not None:
             result['Whiteboard'] = self.whiteboard.to_map()
         return result
@@ -20814,6 +20846,8 @@ class StartCloudRecordShrinkRequestPanes(TeaModel):
             self.pane_crop_mode = m.get('PaneCropMode')
         if m.get('PaneId') is not None:
             self.pane_id = m.get('PaneId')
+        if m.get('ReservePaneForOfflineUser') is not None:
+            self.reserve_pane_for_offline_user = m.get('ReservePaneForOfflineUser')
         if m.get('Source') is not None:
             self.source = m.get('Source')
         if m.get('SourceType') is not None:
@@ -20823,6 +20857,8 @@ class StartCloudRecordShrinkRequestPanes(TeaModel):
             for k in m.get('Texts'):
                 temp_model = StartCloudRecordShrinkRequestPanesTexts()
                 self.texts.append(temp_model.from_map(k))
+        if m.get('VideoOrder') is not None:
+            self.video_order = m.get('VideoOrder')
         if m.get('Whiteboard') is not None:
             temp_model = StartCloudRecordShrinkRequestPanesWhiteboard()
             self.whiteboard = temp_model.from_map(m['Whiteboard'])
@@ -20873,6 +20909,7 @@ class StartCloudRecordShrinkRequestStorageConfig(TeaModel):
         self,
         access_key: str = None,
         bucket: str = None,
+        endpoint: str = None,
         region: int = None,
         secret_key: str = None,
         vendor: int = None,
@@ -20885,6 +20922,7 @@ class StartCloudRecordShrinkRequestStorageConfig(TeaModel):
         # 
         # This parameter is required.
         self.bucket = bucket
+        self.endpoint = endpoint
         # region
         # 
         # This parameter is required.
@@ -20911,6 +20949,8 @@ class StartCloudRecordShrinkRequestStorageConfig(TeaModel):
             result['AccessKey'] = self.access_key
         if self.bucket is not None:
             result['Bucket'] = self.bucket
+        if self.endpoint is not None:
+            result['Endpoint'] = self.endpoint
         if self.region is not None:
             result['Region'] = self.region
         if self.secret_key is not None:
@@ -20925,6 +20965,8 @@ class StartCloudRecordShrinkRequestStorageConfig(TeaModel):
             self.access_key = m.get('AccessKey')
         if m.get('Bucket') is not None:
             self.bucket = m.get('Bucket')
+        if m.get('Endpoint') is not None:
+            self.endpoint = m.get('Endpoint')
         if m.get('Region') is not None:
             self.region = m.get('Region')
         if m.get('SecretKey') is not None:
@@ -21125,6 +21167,7 @@ class StartCloudRecordShrinkRequest(TeaModel):
         layout_specified_users_shrink: str = None,
         panes: List[StartCloudRecordShrinkRequestPanes] = None,
         region_color: StartCloudRecordShrinkRequestRegionColor = None,
+        reserve_pane_for_no_camera_user: bool = None,
         storage_config: StartCloudRecordShrinkRequestStorageConfig = None,
         task_id: str = None,
         template_id: str = None,
@@ -21146,6 +21189,7 @@ class StartCloudRecordShrinkRequest(TeaModel):
         # panes
         self.panes = panes
         self.region_color = region_color
+        self.reserve_pane_for_no_camera_user = reserve_pane_for_no_camera_user
         # storageConfig
         # 
         # This parameter is required.
@@ -21216,6 +21260,8 @@ class StartCloudRecordShrinkRequest(TeaModel):
                 result['Panes'].append(k.to_map() if k else None)
         if self.region_color is not None:
             result['RegionColor'] = self.region_color.to_map()
+        if self.reserve_pane_for_no_camera_user is not None:
+            result['ReservePaneForNoCameraUser'] = self.reserve_pane_for_no_camera_user
         if self.storage_config is not None:
             result['StorageConfig'] = self.storage_config.to_map()
         if self.task_id is not None:
@@ -21261,6 +21307,8 @@ class StartCloudRecordShrinkRequest(TeaModel):
         if m.get('RegionColor') is not None:
             temp_model = StartCloudRecordShrinkRequestRegionColor()
             self.region_color = temp_model.from_map(m['RegionColor'])
+        if m.get('ReservePaneForNoCameraUser') is not None:
+            self.reserve_pane_for_no_camera_user = m.get('ReservePaneForNoCameraUser')
         if m.get('StorageConfig') is not None:
             temp_model = StartCloudRecordShrinkRequestStorageConfig()
             self.storage_config = temp_model.from_map(m['StorageConfig'])
@@ -23212,18 +23260,22 @@ class StartStreamingOutRequestPanes(TeaModel):
         images: List[StartStreamingOutRequestPanesImages] = None,
         pane_crop_mode: int = None,
         pane_id: str = None,
+        reserve_pane_for_offline_user: bool = None,
         source: str = None,
         source_type: str = None,
         texts: List[StartStreamingOutRequestPanesTexts] = None,
+        video_order: str = None,
         whiteboard: StartStreamingOutRequestPanesWhiteboard = None,
     ):
         self.images = images
         self.pane_crop_mode = pane_crop_mode
         # This parameter is required.
         self.pane_id = pane_id
+        self.reserve_pane_for_offline_user = reserve_pane_for_offline_user
         self.source = source
         self.source_type = source_type
         self.texts = texts
+        self.video_order = video_order
         self.whiteboard = whiteboard
 
     def validate(self):
@@ -23252,6 +23304,8 @@ class StartStreamingOutRequestPanes(TeaModel):
             result['PaneCropMode'] = self.pane_crop_mode
         if self.pane_id is not None:
             result['PaneId'] = self.pane_id
+        if self.reserve_pane_for_offline_user is not None:
+            result['ReservePaneForOfflineUser'] = self.reserve_pane_for_offline_user
         if self.source is not None:
             result['Source'] = self.source
         if self.source_type is not None:
@@ -23260,6 +23314,8 @@ class StartStreamingOutRequestPanes(TeaModel):
         if self.texts is not None:
             for k in self.texts:
                 result['Texts'].append(k.to_map() if k else None)
+        if self.video_order is not None:
+            result['VideoOrder'] = self.video_order
         if self.whiteboard is not None:
             result['Whiteboard'] = self.whiteboard.to_map()
         return result
@@ -23275,6 +23331,8 @@ class StartStreamingOutRequestPanes(TeaModel):
             self.pane_crop_mode = m.get('PaneCropMode')
         if m.get('PaneId') is not None:
             self.pane_id = m.get('PaneId')
+        if m.get('ReservePaneForOfflineUser') is not None:
+            self.reserve_pane_for_offline_user = m.get('ReservePaneForOfflineUser')
         if m.get('Source') is not None:
             self.source = m.get('Source')
         if m.get('SourceType') is not None:
@@ -23284,6 +23342,8 @@ class StartStreamingOutRequestPanes(TeaModel):
             for k in m.get('Texts'):
                 temp_model = StartStreamingOutRequestPanesTexts()
                 self.texts.append(temp_model.from_map(k))
+        if m.get('VideoOrder') is not None:
+            self.video_order = m.get('VideoOrder')
         if m.get('Whiteboard') is not None:
             temp_model = StartStreamingOutRequestPanesWhiteboard()
             self.whiteboard = temp_model.from_map(m['Whiteboard'])
@@ -23520,6 +23580,9 @@ class StartStreamingOutRequest(TeaModel):
         layout_specified_users: StartStreamingOutRequestLayoutSpecifiedUsers = None,
         panes: List[StartStreamingOutRequestPanes] = None,
         region_color: StartStreamingOutRequestRegionColor = None,
+        reserve_pane_for_no_camera_user: bool = None,
+        start_without_channel: bool = None,
+        start_without_channel_wait_time: int = None,
         task_id: str = None,
         template_id: str = None,
         texts: List[StartStreamingOutRequestTexts] = None,
@@ -23536,6 +23599,9 @@ class StartStreamingOutRequest(TeaModel):
         self.layout_specified_users = layout_specified_users
         self.panes = panes
         self.region_color = region_color
+        self.reserve_pane_for_no_camera_user = reserve_pane_for_no_camera_user
+        self.start_without_channel = start_without_channel
+        self.start_without_channel_wait_time = start_without_channel_wait_time
         self.task_id = task_id
         # This parameter is required.
         self.template_id = template_id
@@ -23601,6 +23667,12 @@ class StartStreamingOutRequest(TeaModel):
                 result['Panes'].append(k.to_map() if k else None)
         if self.region_color is not None:
             result['RegionColor'] = self.region_color.to_map()
+        if self.reserve_pane_for_no_camera_user is not None:
+            result['ReservePaneForNoCameraUser'] = self.reserve_pane_for_no_camera_user
+        if self.start_without_channel is not None:
+            result['StartWithoutChannel'] = self.start_without_channel
+        if self.start_without_channel_wait_time is not None:
+            result['StartWithoutChannelWaitTime'] = self.start_without_channel_wait_time
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         if self.template_id is not None:
@@ -23647,6 +23719,12 @@ class StartStreamingOutRequest(TeaModel):
         if m.get('RegionColor') is not None:
             temp_model = StartStreamingOutRequestRegionColor()
             self.region_color = temp_model.from_map(m['RegionColor'])
+        if m.get('ReservePaneForNoCameraUser') is not None:
+            self.reserve_pane_for_no_camera_user = m.get('ReservePaneForNoCameraUser')
+        if m.get('StartWithoutChannel') is not None:
+            self.start_without_channel = m.get('StartWithoutChannel')
+        if m.get('StartWithoutChannelWaitTime') is not None:
+            self.start_without_channel_wait_time = m.get('StartWithoutChannelWaitTime')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         if m.get('TemplateId') is not None:
@@ -24273,18 +24351,22 @@ class StartStreamingOutShrinkRequestPanes(TeaModel):
         images: List[StartStreamingOutShrinkRequestPanesImages] = None,
         pane_crop_mode: int = None,
         pane_id: str = None,
+        reserve_pane_for_offline_user: bool = None,
         source: str = None,
         source_type: str = None,
         texts: List[StartStreamingOutShrinkRequestPanesTexts] = None,
+        video_order: str = None,
         whiteboard: StartStreamingOutShrinkRequestPanesWhiteboard = None,
     ):
         self.images = images
         self.pane_crop_mode = pane_crop_mode
         # This parameter is required.
         self.pane_id = pane_id
+        self.reserve_pane_for_offline_user = reserve_pane_for_offline_user
         self.source = source
         self.source_type = source_type
         self.texts = texts
+        self.video_order = video_order
         self.whiteboard = whiteboard
 
     def validate(self):
@@ -24313,6 +24395,8 @@ class StartStreamingOutShrinkRequestPanes(TeaModel):
             result['PaneCropMode'] = self.pane_crop_mode
         if self.pane_id is not None:
             result['PaneId'] = self.pane_id
+        if self.reserve_pane_for_offline_user is not None:
+            result['ReservePaneForOfflineUser'] = self.reserve_pane_for_offline_user
         if self.source is not None:
             result['Source'] = self.source
         if self.source_type is not None:
@@ -24321,6 +24405,8 @@ class StartStreamingOutShrinkRequestPanes(TeaModel):
         if self.texts is not None:
             for k in self.texts:
                 result['Texts'].append(k.to_map() if k else None)
+        if self.video_order is not None:
+            result['VideoOrder'] = self.video_order
         if self.whiteboard is not None:
             result['Whiteboard'] = self.whiteboard.to_map()
         return result
@@ -24336,6 +24422,8 @@ class StartStreamingOutShrinkRequestPanes(TeaModel):
             self.pane_crop_mode = m.get('PaneCropMode')
         if m.get('PaneId') is not None:
             self.pane_id = m.get('PaneId')
+        if m.get('ReservePaneForOfflineUser') is not None:
+            self.reserve_pane_for_offline_user = m.get('ReservePaneForOfflineUser')
         if m.get('Source') is not None:
             self.source = m.get('Source')
         if m.get('SourceType') is not None:
@@ -24345,6 +24433,8 @@ class StartStreamingOutShrinkRequestPanes(TeaModel):
             for k in m.get('Texts'):
                 temp_model = StartStreamingOutShrinkRequestPanesTexts()
                 self.texts.append(temp_model.from_map(k))
+        if m.get('VideoOrder') is not None:
+            self.video_order = m.get('VideoOrder')
         if m.get('Whiteboard') is not None:
             temp_model = StartStreamingOutShrinkRequestPanesWhiteboard()
             self.whiteboard = temp_model.from_map(m['Whiteboard'])
@@ -24581,6 +24671,9 @@ class StartStreamingOutShrinkRequest(TeaModel):
         layout_specified_users_shrink: str = None,
         panes: List[StartStreamingOutShrinkRequestPanes] = None,
         region_color: StartStreamingOutShrinkRequestRegionColor = None,
+        reserve_pane_for_no_camera_user: bool = None,
+        start_without_channel: bool = None,
+        start_without_channel_wait_time: int = None,
         task_id: str = None,
         template_id: str = None,
         texts: List[StartStreamingOutShrinkRequestTexts] = None,
@@ -24597,6 +24690,9 @@ class StartStreamingOutShrinkRequest(TeaModel):
         self.layout_specified_users_shrink = layout_specified_users_shrink
         self.panes = panes
         self.region_color = region_color
+        self.reserve_pane_for_no_camera_user = reserve_pane_for_no_camera_user
+        self.start_without_channel = start_without_channel
+        self.start_without_channel_wait_time = start_without_channel_wait_time
         self.task_id = task_id
         # This parameter is required.
         self.template_id = template_id
@@ -24660,6 +24756,12 @@ class StartStreamingOutShrinkRequest(TeaModel):
                 result['Panes'].append(k.to_map() if k else None)
         if self.region_color is not None:
             result['RegionColor'] = self.region_color.to_map()
+        if self.reserve_pane_for_no_camera_user is not None:
+            result['ReservePaneForNoCameraUser'] = self.reserve_pane_for_no_camera_user
+        if self.start_without_channel is not None:
+            result['StartWithoutChannel'] = self.start_without_channel
+        if self.start_without_channel_wait_time is not None:
+            result['StartWithoutChannelWaitTime'] = self.start_without_channel_wait_time
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         if self.template_id is not None:
@@ -24705,6 +24807,12 @@ class StartStreamingOutShrinkRequest(TeaModel):
         if m.get('RegionColor') is not None:
             temp_model = StartStreamingOutShrinkRequestRegionColor()
             self.region_color = temp_model.from_map(m['RegionColor'])
+        if m.get('ReservePaneForNoCameraUser') is not None:
+            self.reserve_pane_for_no_camera_user = m.get('ReservePaneForNoCameraUser')
+        if m.get('StartWithoutChannel') is not None:
+            self.start_without_channel = m.get('StartWithoutChannel')
+        if m.get('StartWithoutChannelWaitTime') is not None:
+            self.start_without_channel_wait_time = m.get('StartWithoutChannelWaitTime')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         if m.get('TemplateId') is not None:
@@ -26430,18 +26538,22 @@ class UpdateCloudRecordRequestPanes(TeaModel):
         images: List[UpdateCloudRecordRequestPanesImages] = None,
         pane_crop_mode: int = None,
         pane_id: int = None,
+        reserve_pane_for_offline_user: bool = None,
         source: str = None,
         source_type: str = None,
         texts: List[UpdateCloudRecordRequestPanesTexts] = None,
+        video_order: str = None,
         whiteboard: UpdateCloudRecordRequestPanesWhiteboard = None,
     ):
         self.images = images
         self.pane_crop_mode = pane_crop_mode
         # This parameter is required.
         self.pane_id = pane_id
+        self.reserve_pane_for_offline_user = reserve_pane_for_offline_user
         self.source = source
         self.source_type = source_type
         self.texts = texts
+        self.video_order = video_order
         self.whiteboard = whiteboard
 
     def validate(self):
@@ -26470,6 +26582,8 @@ class UpdateCloudRecordRequestPanes(TeaModel):
             result['PaneCropMode'] = self.pane_crop_mode
         if self.pane_id is not None:
             result['PaneId'] = self.pane_id
+        if self.reserve_pane_for_offline_user is not None:
+            result['ReservePaneForOfflineUser'] = self.reserve_pane_for_offline_user
         if self.source is not None:
             result['Source'] = self.source
         if self.source_type is not None:
@@ -26478,6 +26592,8 @@ class UpdateCloudRecordRequestPanes(TeaModel):
         if self.texts is not None:
             for k in self.texts:
                 result['Texts'].append(k.to_map() if k else None)
+        if self.video_order is not None:
+            result['VideoOrder'] = self.video_order
         if self.whiteboard is not None:
             result['Whiteboard'] = self.whiteboard.to_map()
         return result
@@ -26493,6 +26609,8 @@ class UpdateCloudRecordRequestPanes(TeaModel):
             self.pane_crop_mode = m.get('PaneCropMode')
         if m.get('PaneId') is not None:
             self.pane_id = m.get('PaneId')
+        if m.get('ReservePaneForOfflineUser') is not None:
+            self.reserve_pane_for_offline_user = m.get('ReservePaneForOfflineUser')
         if m.get('Source') is not None:
             self.source = m.get('Source')
         if m.get('SourceType') is not None:
@@ -26502,6 +26620,8 @@ class UpdateCloudRecordRequestPanes(TeaModel):
             for k in m.get('Texts'):
                 temp_model = UpdateCloudRecordRequestPanesTexts()
                 self.texts.append(temp_model.from_map(k))
+        if m.get('VideoOrder') is not None:
+            self.video_order = m.get('VideoOrder')
         if m.get('Whiteboard') is not None:
             temp_model = UpdateCloudRecordRequestPanesWhiteboard()
             self.whiteboard = temp_model.from_map(m['Whiteboard'])
@@ -27431,18 +27551,22 @@ class UpdateCloudRecordShrinkRequestPanes(TeaModel):
         images: List[UpdateCloudRecordShrinkRequestPanesImages] = None,
         pane_crop_mode: int = None,
         pane_id: int = None,
+        reserve_pane_for_offline_user: bool = None,
         source: str = None,
         source_type: str = None,
         texts: List[UpdateCloudRecordShrinkRequestPanesTexts] = None,
+        video_order: str = None,
         whiteboard: UpdateCloudRecordShrinkRequestPanesWhiteboard = None,
     ):
         self.images = images
         self.pane_crop_mode = pane_crop_mode
         # This parameter is required.
         self.pane_id = pane_id
+        self.reserve_pane_for_offline_user = reserve_pane_for_offline_user
         self.source = source
         self.source_type = source_type
         self.texts = texts
+        self.video_order = video_order
         self.whiteboard = whiteboard
 
     def validate(self):
@@ -27471,6 +27595,8 @@ class UpdateCloudRecordShrinkRequestPanes(TeaModel):
             result['PaneCropMode'] = self.pane_crop_mode
         if self.pane_id is not None:
             result['PaneId'] = self.pane_id
+        if self.reserve_pane_for_offline_user is not None:
+            result['ReservePaneForOfflineUser'] = self.reserve_pane_for_offline_user
         if self.source is not None:
             result['Source'] = self.source
         if self.source_type is not None:
@@ -27479,6 +27605,8 @@ class UpdateCloudRecordShrinkRequestPanes(TeaModel):
         if self.texts is not None:
             for k in self.texts:
                 result['Texts'].append(k.to_map() if k else None)
+        if self.video_order is not None:
+            result['VideoOrder'] = self.video_order
         if self.whiteboard is not None:
             result['Whiteboard'] = self.whiteboard.to_map()
         return result
@@ -27494,6 +27622,8 @@ class UpdateCloudRecordShrinkRequestPanes(TeaModel):
             self.pane_crop_mode = m.get('PaneCropMode')
         if m.get('PaneId') is not None:
             self.pane_id = m.get('PaneId')
+        if m.get('ReservePaneForOfflineUser') is not None:
+            self.reserve_pane_for_offline_user = m.get('ReservePaneForOfflineUser')
         if m.get('Source') is not None:
             self.source = m.get('Source')
         if m.get('SourceType') is not None:
@@ -27503,6 +27633,8 @@ class UpdateCloudRecordShrinkRequestPanes(TeaModel):
             for k in m.get('Texts'):
                 temp_model = UpdateCloudRecordShrinkRequestPanesTexts()
                 self.texts.append(temp_model.from_map(k))
+        if m.get('VideoOrder') is not None:
+            self.video_order = m.get('VideoOrder')
         if m.get('Whiteboard') is not None:
             temp_model = UpdateCloudRecordShrinkRequestPanesWhiteboard()
             self.whiteboard = temp_model.from_map(m['Whiteboard'])
@@ -30088,17 +30220,21 @@ class UpdateStreamingOutRequestPanes(TeaModel):
         images: List[UpdateStreamingOutRequestPanesImages] = None,
         pane_crop_mode: int = None,
         pane_id: int = None,
+        reserve_pane_for_offline_user: bool = None,
         source: str = None,
         source_type: str = None,
         texts: List[UpdateStreamingOutRequestPanesTexts] = None,
+        video_order: str = None,
         whiteboard: UpdateStreamingOutRequestPanesWhiteboard = None,
     ):
         self.images = images
         self.pane_crop_mode = pane_crop_mode
         self.pane_id = pane_id
+        self.reserve_pane_for_offline_user = reserve_pane_for_offline_user
         self.source = source
         self.source_type = source_type
         self.texts = texts
+        self.video_order = video_order
         self.whiteboard = whiteboard
 
     def validate(self):
@@ -30127,6 +30263,8 @@ class UpdateStreamingOutRequestPanes(TeaModel):
             result['PaneCropMode'] = self.pane_crop_mode
         if self.pane_id is not None:
             result['PaneId'] = self.pane_id
+        if self.reserve_pane_for_offline_user is not None:
+            result['ReservePaneForOfflineUser'] = self.reserve_pane_for_offline_user
         if self.source is not None:
             result['Source'] = self.source
         if self.source_type is not None:
@@ -30135,6 +30273,8 @@ class UpdateStreamingOutRequestPanes(TeaModel):
         if self.texts is not None:
             for k in self.texts:
                 result['Texts'].append(k.to_map() if k else None)
+        if self.video_order is not None:
+            result['VideoOrder'] = self.video_order
         if self.whiteboard is not None:
             result['Whiteboard'] = self.whiteboard.to_map()
         return result
@@ -30150,6 +30290,8 @@ class UpdateStreamingOutRequestPanes(TeaModel):
             self.pane_crop_mode = m.get('PaneCropMode')
         if m.get('PaneId') is not None:
             self.pane_id = m.get('PaneId')
+        if m.get('ReservePaneForOfflineUser') is not None:
+            self.reserve_pane_for_offline_user = m.get('ReservePaneForOfflineUser')
         if m.get('Source') is not None:
             self.source = m.get('Source')
         if m.get('SourceType') is not None:
@@ -30159,6 +30301,8 @@ class UpdateStreamingOutRequestPanes(TeaModel):
             for k in m.get('Texts'):
                 temp_model = UpdateStreamingOutRequestPanesTexts()
                 self.texts.append(temp_model.from_map(k))
+        if m.get('VideoOrder') is not None:
+            self.video_order = m.get('VideoOrder')
         if m.get('Whiteboard') is not None:
             temp_model = UpdateStreamingOutRequestPanesWhiteboard()
             self.whiteboard = temp_model.from_map(m['Whiteboard'])
@@ -31088,17 +31232,21 @@ class UpdateStreamingOutShrinkRequestPanes(TeaModel):
         images: List[UpdateStreamingOutShrinkRequestPanesImages] = None,
         pane_crop_mode: int = None,
         pane_id: int = None,
+        reserve_pane_for_offline_user: bool = None,
         source: str = None,
         source_type: str = None,
         texts: List[UpdateStreamingOutShrinkRequestPanesTexts] = None,
+        video_order: str = None,
         whiteboard: UpdateStreamingOutShrinkRequestPanesWhiteboard = None,
     ):
         self.images = images
         self.pane_crop_mode = pane_crop_mode
         self.pane_id = pane_id
+        self.reserve_pane_for_offline_user = reserve_pane_for_offline_user
         self.source = source
         self.source_type = source_type
         self.texts = texts
+        self.video_order = video_order
         self.whiteboard = whiteboard
 
     def validate(self):
@@ -31127,6 +31275,8 @@ class UpdateStreamingOutShrinkRequestPanes(TeaModel):
             result['PaneCropMode'] = self.pane_crop_mode
         if self.pane_id is not None:
             result['PaneId'] = self.pane_id
+        if self.reserve_pane_for_offline_user is not None:
+            result['ReservePaneForOfflineUser'] = self.reserve_pane_for_offline_user
         if self.source is not None:
             result['Source'] = self.source
         if self.source_type is not None:
@@ -31135,6 +31285,8 @@ class UpdateStreamingOutShrinkRequestPanes(TeaModel):
         if self.texts is not None:
             for k in self.texts:
                 result['Texts'].append(k.to_map() if k else None)
+        if self.video_order is not None:
+            result['VideoOrder'] = self.video_order
         if self.whiteboard is not None:
             result['Whiteboard'] = self.whiteboard.to_map()
         return result
@@ -31150,6 +31302,8 @@ class UpdateStreamingOutShrinkRequestPanes(TeaModel):
             self.pane_crop_mode = m.get('PaneCropMode')
         if m.get('PaneId') is not None:
             self.pane_id = m.get('PaneId')
+        if m.get('ReservePaneForOfflineUser') is not None:
+            self.reserve_pane_for_offline_user = m.get('ReservePaneForOfflineUser')
         if m.get('Source') is not None:
             self.source = m.get('Source')
         if m.get('SourceType') is not None:
@@ -31159,6 +31313,8 @@ class UpdateStreamingOutShrinkRequestPanes(TeaModel):
             for k in m.get('Texts'):
                 temp_model = UpdateStreamingOutShrinkRequestPanesTexts()
                 self.texts.append(temp_model.from_map(k))
+        if m.get('VideoOrder') is not None:
+            self.video_order = m.get('VideoOrder')
         if m.get('Whiteboard') is not None:
             temp_model = UpdateStreamingOutShrinkRequestPanesWhiteboard()
             self.whiteboard = temp_model.from_map(m['Whiteboard'])

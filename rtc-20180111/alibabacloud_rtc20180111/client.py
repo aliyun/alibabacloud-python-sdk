@@ -10179,6 +10179,8 @@ class Client(OpenApiClient):
             query['Panes'] = request.panes
         if not UtilClient.is_unset(request.region_color):
             query['RegionColor'] = request.region_color
+        if not UtilClient.is_unset(request.reserve_pane_for_no_camera_user):
+            query['ReservePaneForNoCameraUser'] = request.reserve_pane_for_no_camera_user
         if not UtilClient.is_unset(request.storage_config):
             query['StorageConfig'] = request.storage_config
         if not UtilClient.is_unset(request.task_id):
@@ -10248,6 +10250,8 @@ class Client(OpenApiClient):
             query['Panes'] = request.panes
         if not UtilClient.is_unset(request.region_color):
             query['RegionColor'] = request.region_color
+        if not UtilClient.is_unset(request.reserve_pane_for_no_camera_user):
+            query['ReservePaneForNoCameraUser'] = request.reserve_pane_for_no_camera_user
         if not UtilClient.is_unset(request.storage_config):
             query['StorageConfig'] = request.storage_config
         if not UtilClient.is_unset(request.task_id):
@@ -10745,6 +10749,12 @@ class Client(OpenApiClient):
             query['Panes'] = request.panes
         if not UtilClient.is_unset(request.region_color):
             query['RegionColor'] = request.region_color
+        if not UtilClient.is_unset(request.reserve_pane_for_no_camera_user):
+            query['ReservePaneForNoCameraUser'] = request.reserve_pane_for_no_camera_user
+        if not UtilClient.is_unset(request.start_without_channel):
+            query['StartWithoutChannel'] = request.start_without_channel
+        if not UtilClient.is_unset(request.start_without_channel_wait_time):
+            query['StartWithoutChannelWaitTime'] = request.start_without_channel_wait_time
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.template_id):
@@ -10814,6 +10824,12 @@ class Client(OpenApiClient):
             query['Panes'] = request.panes
         if not UtilClient.is_unset(request.region_color):
             query['RegionColor'] = request.region_color
+        if not UtilClient.is_unset(request.reserve_pane_for_no_camera_user):
+            query['ReservePaneForNoCameraUser'] = request.reserve_pane_for_no_camera_user
+        if not UtilClient.is_unset(request.start_without_channel):
+            query['StartWithoutChannel'] = request.start_without_channel
+        if not UtilClient.is_unset(request.start_without_channel_wait_time):
+            query['StartWithoutChannelWaitTime'] = request.start_without_channel_wait_time
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.template_id):

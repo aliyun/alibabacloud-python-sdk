@@ -1,3 +1,15 @@
+2025-02-21 Version: 5.0.3
+- Update API StartCloudRecord: add param ReservePaneForNoCameraUser.
+- Update API StartCloudRecord: update param Panes.
+- Update API StartCloudRecord: update param StorageConfig.
+- Update API StartStreamingOut: add param ReservePaneForNoCameraUser.
+- Update API StartStreamingOut: add param StartWithoutChannel.
+- Update API StartStreamingOut: add param StartWithoutChannelWaitTime.
+- Update API StartStreamingOut: update param Panes.
+- Update API UpdateCloudRecord: update param Panes.
+- Update API UpdateStreamingOut: update param Panes.
+
+
 2025-02-13 Version: 5.0.2
 - Update API StartCloudRecord: update param Panes.
 - Update API StartStreamingOut: update param Panes.
