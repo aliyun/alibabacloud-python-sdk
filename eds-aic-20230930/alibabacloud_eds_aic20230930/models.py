@@ -10,7 +10,17 @@ class DataImageRegionDistributeMapValue(TeaModel):
         distribute_status: str = None,
         progress: str = None,
     ):
+        # The status of the image distribution task.
+        # 
+        # Valid values:
+        # 
+        # *   AVAILABLE: The task is ready.
+        # *   DELETE: The task is deleted.
+        # *   INIT: The task is being initialized.
+        # *   CREATE_FAILED: The task failed to be created.
+        # *   CREATING: The task is being created.
         self.distribute_status = distribute_status
+        # The distribution progress of the image.
         self.progress = progress
 
     def validate(self):
@@ -199,8 +209,11 @@ class AuthorizeAndroidInstanceRequest(TeaModel):
         authorize_user_id: str = None,
         un_authorize_user_id: str = None,
     ):
+        # List of instance IDs.
         self.android_instance_ids = android_instance_ids
+        # User ID to be assigned.
         self.authorize_user_id = authorize_user_id
+        # User ID to be unassigned.
         self.un_authorize_user_id = un_authorize_user_id
 
     def validate(self):
@@ -236,6 +249,7 @@ class AuthorizeAndroidInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -312,16 +326,35 @@ class BackupFileRequest(TeaModel):
         upload_endpoint: str = None,
         upload_type: str = None,
     ):
+        # The IDs of the instances.
+        # 
         # This parameter is required.
         self.android_instance_id_list = android_instance_id_list
+        # Whether all data is to be backed up.
         self.backup_all = backup_all
+        # Backup file name.
         self.backup_file_name = backup_file_name
+        # The OSS path of the backup file.
+        # 
+        # >  To upload a backup file to an OSS bucket, you must obtain the name of the bucket. When calling the describeBuckets operation to retrieve a bucket name, you must also call the ossObjectList operation to obtain the object key. Combine these to form the full path: oss://${bucketName}/${key}.
+        # 
         # This parameter is required.
         self.backup_file_path = backup_file_path
+        # The description of the backup file.
         self.description = description
+        # List of apps to be backed up.
         self.source_app_list = source_app_list
+        # The paths to the source files.
         self.source_file_path_list = source_file_path_list
+        # The endpoint of the OSS bucket to which you want to upload the backup file.
+        # 
+        # > : When calling the DescribeBuckets operation to query buckets, retrieve the IntranetEndpoint value if the cloud phone and the OSS bucket are in the same region. If they are in different regions, retrieve the ExtranetEndpoint value instead.
         self.upload_endpoint = upload_endpoint
+        # The type of the backup.
+        # 
+        # Valid values:
+        # 
+        # *   OSS: uploads the backup file to an OSS bucket.
         self.upload_type = upload_type
 
     def validate(self):
@@ -384,9 +417,13 @@ class BackupFileResponseBodyData(TeaModel):
         backup_file_name: str = None,
         task_id: str = None,
     ):
+        # Instance id.
         self.android_instance_id = android_instance_id
+        # Backup file id.
         self.backup_file_id = backup_file_id
+        # Backup file name.
         self.backup_file_name = backup_file_name
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -429,9 +466,13 @@ class BackupFileResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The total number of entries returned.
         self.count = count
+        # The objects that are returned.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
+        # The batch task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -744,11 +785,15 @@ class CheckResourceStockRequest(TeaModel):
         gpu_acceleration: bool = None,
         zone_id: str = None,
     ):
+        # Specification ID.
         self.acp_spec_id = acp_spec_id
         self.amount = amount
+        # Region ID.
+        # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
         self.gpu_acceleration = gpu_acceleration
+        # The availability zone of the resource.
         self.zone_id = zone_id
 
     def validate(self):
@@ -794,8 +839,11 @@ class CheckResourceStockResponseBodyResourceStockModels(TeaModel):
         stock_status: str = None,
         zone_id: str = None,
     ):
+        # Region ID.
         self.region_id = region_id
+        # Inventory status of the instance group.
         self.stock_status = stock_status
+        # Zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -832,7 +880,9 @@ class CheckResourceStockResponseBody(TeaModel):
         request_id: str = None,
         resource_stock_models: List[CheckResourceStockResponseBodyResourceStockModels] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Details of resource inventory.
         self.resource_stock_models = resource_stock_models
 
     def validate(self):
@@ -908,6 +958,39 @@ class CheckResourceStockResponse(TeaModel):
         return self
 
 
+class CreateAndroidInstanceGroupRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateAndroidInstanceGroupRequest(TeaModel):
     def __init__(
         self,
@@ -917,41 +1000,119 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
         biz_region_id: str = None,
         charge_type: str = None,
         client_token: str = None,
+        enable_ipv_6: bool = None,
         gpu_acceleration: bool = None,
         image_id: str = None,
         instance_group_name: str = None,
         instance_group_spec: str = None,
+        ipv_6bandwidth: int = None,
         key_pair_id: str = None,
         number_of_instances: int = None,
         office_site_id: str = None,
         period: int = None,
         period_unit: str = None,
         policy_group_id: str = None,
+        tag: List[CreateAndroidInstanceGroupRequestTag] = None,
         v_switch_id: str = None,
     ):
+        # The number of instance groups. Default value: 1. Maximum value: 1.
         self.amount = amount
+        # Specifies whether to enable automatic payment. Default value: false.
+        # 
+        # Valid values:
+        # 
+        # *   true: enables automatic payment. Make sure that your Alibaba Cloud account has sufficient balance.
+        # *   false: disables automatic payment. You must manually complete the payment.
         self.auto_pay = auto_pay
+        # Specifies whether to enable auto-renewal. Default value: false.
+        # 
+        # Valid values:
+        # 
+        # *   true: automatically renew resource upon expiration.
+        # *   false: manually renew resources upon expiration.
         self.auto_renew = auto_renew
+        # The ID of the region. You can call the DescribeRegions operation to query the regions where Cloud Phone is supported.
+        # 
+        # Valid values:
+        # 
+        # *   cn-shenzhen: China (Shenzhen).
+        # *   cn-beijing: China (Beijing).
+        # *   cn-shanghai: China (Shanghai).
+        # *   cn-hongkong: China (Hong Kong).
+        # *   ap-southeast-1: Singapore.
+        # *   cn-hangzhou: China (Hangzhou).
+        # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
+        # The billing method.
+        # 
+        # Valid values:
+        # 
+        # *   PostPaid: pay-as-you-go.
+        # *   PrePaid: subscription.
         self.charge_type = charge_type
+        # The client token that is used to ensure the idempotence of the request. The value cannot exceed 100 characters in length.
         self.client_token = client_token
+        self.enable_ipv_6 = enable_ipv_6
+        # Specifies whether to enable GPU acceleration.
+        # 
+        # *   true
+        # *   false (true)
         self.gpu_acceleration = gpu_acceleration
+        # The ID of the image. You can call the [DescribeImageList](https://help.aliyun.com/document_detail/2807324.html) operation to query images.
+        # 
         # This parameter is required.
         self.image_id = image_id
+        # The name of the instance group.
+        # 
+        # > The name can be up to 30 characters in length. It can contain letters, digits, colons (:), underscores (_), periods (.), or hyphens (-). It must start with letters but cannot start with http:// or https://.
         self.instance_group_name = instance_group_name
+        # The specifications of the instance group. You can call the [DescribeSpec](https://help.aliyun.com/document_detail/2807299.html) operation to query the available specifications.
+        # 
+        # Valid values:
+        # 
+        # *   acp.perf.large: Performance (8 vCPUs, 16 GiB of memory, and 32 GiB of storage.
+        # *   acp.basic.small: Lightweight (2 vCPUs, 4 GiB of memory, and 32 GiB of storage).
+        # *   acp.std.large: Standard (4 vCPUs, 8 GiB of memory, and 32 GiB of storage).
+        # 
         # This parameter is required.
         self.instance_group_spec = instance_group_spec
+        self.ipv_6bandwidth = ipv_6bandwidth
+        # The ID of the key pair. When you create an instance group and specify a valid key pair ID, all cloud phone instances within the group will automatically be bound to that key pair upon creation. This eliminates the need to manually call the operation to bind key pairs to individual cloud phone instances.
+        # 
+        # Take note that binding key pairs to cloud phone instances is currently not supported during instance group resizing.
         self.key_pair_id = key_pair_id
+        # The number of cloud phones in the instance group. Maximum value: 100.
         self.number_of_instances = number_of_instances
+        # The ID of the network.
+        # 
+        # *   This parameter is required if you assign a shared network to cloud phones. You can go to the [Network](https://wya.wuying.aliyun.com/network) page of the Cloud Phone console to retrieve the ID of a **shared network**. If no shared network is available in the Cloud Phone console, you can leave this parameter empty. The system automatically creates one when you create an instance group.
+        # *   This parameter is required if you assign a virtual private cloud (VPC) to cloud phones. You can go to the [Network](https://wya.wuying.aliyun.com/network) page of the Cloud Phone console to retrieve the ID of a **VPC**. If no VPC is available in the Cloud Phone console, you must first create one.
         self.office_site_id = office_site_id
+        # The subscription duration. The unit is specified by PeriodUnit.
         self.period = period
+        # The unit of the subscription duration.
+        # 
+        # Valid values:
+        # 
+        # *   Month
+        # *   Year
+        # *   Hour (Note that this unit is supported only by pay-as-you-go.)
         self.period_unit = period_unit
+        # The ID of the policy. You can call the [ListPolicyGroups](https://help.aliyun.com/document_detail/2807352.html) operation to query policies.
         self.policy_group_id = policy_group_id
+        self.tag = tag
+        # The ID of the vSwitch. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/448774.html) operation to query vSwitches.
+        # 
+        # *   This parameter is not required if you assign a shared network to cloud phones.
+        # *   This parameter is required if you assign a VPC to cloud phones. The vSwitch specified by this parameter is used to create cloud phones.
         self.v_switch_id = v_switch_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -971,6 +1132,8 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
             result['ChargeType'] = self.charge_type
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.enable_ipv_6 is not None:
+            result['EnableIpv6'] = self.enable_ipv_6
         if self.gpu_acceleration is not None:
             result['GpuAcceleration'] = self.gpu_acceleration
         if self.image_id is not None:
@@ -979,6 +1142,8 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
             result['InstanceGroupName'] = self.instance_group_name
         if self.instance_group_spec is not None:
             result['InstanceGroupSpec'] = self.instance_group_spec
+        if self.ipv_6bandwidth is not None:
+            result['Ipv6Bandwidth'] = self.ipv_6bandwidth
         if self.key_pair_id is not None:
             result['KeyPairId'] = self.key_pair_id
         if self.number_of_instances is not None:
@@ -991,6 +1156,10 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
             result['PeriodUnit'] = self.period_unit
         if self.policy_group_id is not None:
             result['PolicyGroupId'] = self.policy_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         return result
@@ -1009,6 +1178,8 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
             self.charge_type = m.get('ChargeType')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('EnableIpv6') is not None:
+            self.enable_ipv_6 = m.get('EnableIpv6')
         if m.get('GpuAcceleration') is not None:
             self.gpu_acceleration = m.get('GpuAcceleration')
         if m.get('ImageId') is not None:
@@ -1017,6 +1188,8 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
             self.instance_group_name = m.get('InstanceGroupName')
         if m.get('InstanceGroupSpec') is not None:
             self.instance_group_spec = m.get('InstanceGroupSpec')
+        if m.get('Ipv6Bandwidth') is not None:
+            self.ipv_6bandwidth = m.get('Ipv6Bandwidth')
         if m.get('KeyPairId') is not None:
             self.key_pair_id = m.get('KeyPairId')
         if m.get('NumberOfInstances') is not None:
@@ -1029,6 +1202,11 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
             self.period_unit = m.get('PeriodUnit')
         if m.get('PolicyGroupId') is not None:
             self.policy_group_id = m.get('PolicyGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateAndroidInstanceGroupRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         return self
@@ -1040,7 +1218,9 @@ class CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos(TeaModel):
         instance_group_id: str = None,
         instance_ids: List[str] = None,
     ):
+        # The ID of the instance group.
         self.instance_group_id = instance_group_id
+        # The IDs of the instances.
         self.instance_ids = instance_ids
 
     def validate(self):
@@ -1075,9 +1255,13 @@ class CreateAndroidInstanceGroupResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The IDs of the instance groups.
         self.instance_group_ids = instance_group_ids
+        # The instance groups.
         self.instance_group_infos = instance_group_infos
+        # The ID of the order.
         self.order_id = order_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1161,11 +1345,69 @@ class CreateAndroidInstanceGroupResponse(TeaModel):
         return self
 
 
+class CreateAppRequestCustomAppInfo(TeaModel):
+    def __init__(
+        self,
+        apk_size: str = None,
+        download_url: str = None,
+        md_5: str = None,
+        package_name: str = None,
+        version: str = None,
+        version_code: str = None,
+    ):
+        self.apk_size = apk_size
+        self.download_url = download_url
+        self.md_5 = md_5
+        self.package_name = package_name
+        self.version = version
+        self.version_code = version_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.apk_size is not None:
+            result['ApkSize'] = self.apk_size
+        if self.download_url is not None:
+            result['DownloadUrl'] = self.download_url
+        if self.md_5 is not None:
+            result['Md5'] = self.md_5
+        if self.package_name is not None:
+            result['PackageName'] = self.package_name
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.version_code is not None:
+            result['VersionCode'] = self.version_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApkSize') is not None:
+            self.apk_size = m.get('ApkSize')
+        if m.get('DownloadUrl') is not None:
+            self.download_url = m.get('DownloadUrl')
+        if m.get('Md5') is not None:
+            self.md_5 = m.get('Md5')
+        if m.get('PackageName') is not None:
+            self.package_name = m.get('PackageName')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('VersionCode') is not None:
+            self.version_code = m.get('VersionCode')
+        return self
+
+
 class CreateAppRequest(TeaModel):
     def __init__(
         self,
         app_name: str = None,
         biz_region_id: str = None,
+        custom_app_info: CreateAppRequestCustomAppInfo = None,
         description: str = None,
         file_name: str = None,
         file_path: str = None,
@@ -1173,17 +1415,45 @@ class CreateAppRequest(TeaModel):
         install_param: str = None,
         oss_app_url: str = None,
     ):
+        # The name of the application.
         self.app_name = app_name
+        # The ID of the region.
         self.biz_region_id = biz_region_id
+        self.custom_app_info = custom_app_info
+        # The description of the application.
         self.description = description
+        # The name used by the application file in OSS. This parameter, combined with `FilePath`, uniquely identifies the OSS path of the application file.
+        # 
+        # > 
+        # 
+        # *   Log on to the [Cloud Phone console](https://eds.console.aliyun.com/osshelp) and follow the on-screen instructions to upload the application file to Application Center to obtain the value of this parameter.
+        # 
+        # *   If you do not specify `OssAppUrl`, you must specify `FileName` and `FilePath`.
         self.file_name = file_name
+        # The OSS bucket path to the application file. This parameter, combined with `FileName`, uniquely identifies the OSS path of the application file.
+        # 
+        # > 
+        # 
+        # *   Log on to the [Cloud Phone console](https://eds.console.aliyun.com/osshelp) and follow the on-screen instructions to upload the application file to Application Center to obtain the value of this parameter.
+        # 
+        # *   If you do not specify `OssAppUrl`, you must specify `FileName` and `FilePath`.
         self.file_path = file_path
+        # The icon URL of the application.
         self.icon_url = icon_url
+        # The parameters used for installing the application. By default, the `-r` parameter is included when you install an application.
         self.install_param = install_param
+        # The endpoint of the OSS bucket to which you want to upload the application file.
+        # 
+        # > 
+        # 
+        # *   Log on to the [Cloud Phone console](https://eds.console.aliyun.com/osshelp) and follow the on-screen instructions to upload the application file to Application Center to obtain the value of this parameter.
+        # 
+        # *   If you do not specify `FileName` or `FilePath`, you must specify this parameter.
         self.oss_app_url = oss_app_url
 
     def validate(self):
-        pass
+        if self.custom_app_info:
+            self.custom_app_info.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1195,6 +1465,8 @@ class CreateAppRequest(TeaModel):
             result['AppName'] = self.app_name
         if self.biz_region_id is not None:
             result['BizRegionId'] = self.biz_region_id
+        if self.custom_app_info is not None:
+            result['CustomAppInfo'] = self.custom_app_info.to_map()
         if self.description is not None:
             result['Description'] = self.description
         if self.file_name is not None:
@@ -1215,6 +1487,110 @@ class CreateAppRequest(TeaModel):
             self.app_name = m.get('AppName')
         if m.get('BizRegionId') is not None:
             self.biz_region_id = m.get('BizRegionId')
+        if m.get('CustomAppInfo') is not None:
+            temp_model = CreateAppRequestCustomAppInfo()
+            self.custom_app_info = temp_model.from_map(m['CustomAppInfo'])
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FilePath') is not None:
+            self.file_path = m.get('FilePath')
+        if m.get('IconUrl') is not None:
+            self.icon_url = m.get('IconUrl')
+        if m.get('InstallParam') is not None:
+            self.install_param = m.get('InstallParam')
+        if m.get('OssAppUrl') is not None:
+            self.oss_app_url = m.get('OssAppUrl')
+        return self
+
+
+class CreateAppShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_name: str = None,
+        biz_region_id: str = None,
+        custom_app_info_shrink: str = None,
+        description: str = None,
+        file_name: str = None,
+        file_path: str = None,
+        icon_url: str = None,
+        install_param: str = None,
+        oss_app_url: str = None,
+    ):
+        # The name of the application.
+        self.app_name = app_name
+        # The ID of the region.
+        self.biz_region_id = biz_region_id
+        self.custom_app_info_shrink = custom_app_info_shrink
+        # The description of the application.
+        self.description = description
+        # The name used by the application file in OSS. This parameter, combined with `FilePath`, uniquely identifies the OSS path of the application file.
+        # 
+        # > 
+        # 
+        # *   Log on to the [Cloud Phone console](https://eds.console.aliyun.com/osshelp) and follow the on-screen instructions to upload the application file to Application Center to obtain the value of this parameter.
+        # 
+        # *   If you do not specify `OssAppUrl`, you must specify `FileName` and `FilePath`.
+        self.file_name = file_name
+        # The OSS bucket path to the application file. This parameter, combined with `FileName`, uniquely identifies the OSS path of the application file.
+        # 
+        # > 
+        # 
+        # *   Log on to the [Cloud Phone console](https://eds.console.aliyun.com/osshelp) and follow the on-screen instructions to upload the application file to Application Center to obtain the value of this parameter.
+        # 
+        # *   If you do not specify `OssAppUrl`, you must specify `FileName` and `FilePath`.
+        self.file_path = file_path
+        # The icon URL of the application.
+        self.icon_url = icon_url
+        # The parameters used for installing the application. By default, the `-r` parameter is included when you install an application.
+        self.install_param = install_param
+        # The endpoint of the OSS bucket to which you want to upload the application file.
+        # 
+        # > 
+        # 
+        # *   Log on to the [Cloud Phone console](https://eds.console.aliyun.com/osshelp) and follow the on-screen instructions to upload the application file to Application Center to obtain the value of this parameter.
+        # 
+        # *   If you do not specify `FileName` or `FilePath`, you must specify this parameter.
+        self.oss_app_url = oss_app_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.biz_region_id is not None:
+            result['BizRegionId'] = self.biz_region_id
+        if self.custom_app_info_shrink is not None:
+            result['CustomAppInfo'] = self.custom_app_info_shrink
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_path is not None:
+            result['FilePath'] = self.file_path
+        if self.icon_url is not None:
+            result['IconUrl'] = self.icon_url
+        if self.install_param is not None:
+            result['InstallParam'] = self.install_param
+        if self.oss_app_url is not None:
+            result['OssAppUrl'] = self.oss_app_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('BizRegionId') is not None:
+            self.biz_region_id = m.get('BizRegionId')
+        if m.get('CustomAppInfo') is not None:
+            self.custom_app_info_shrink = m.get('CustomAppInfo')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('FileName') is not None:
@@ -1236,7 +1612,9 @@ class CreateAppResponseBody(TeaModel):
         app_id: int = None,
         request_id: str = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1312,10 +1690,16 @@ class CreateCustomImageRequest(TeaModel):
         image_name: str = None,
         instance_id: str = None,
     ):
+        # Idempotent parameter. Default is empty, with a maximum length of 100 characters.
         self.client_token = client_token
+        # Image description.
         self.description = description
+        # Image name.
+        # 
         # This parameter is required.
         self.image_name = image_name
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 
@@ -1357,7 +1741,9 @@ class CreateCustomImageResponseBody(TeaModel):
         image_id: str = None,
         request_id: str = None,
     ):
+        # Image ID.
         self.image_id = image_id
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1430,6 +1816,8 @@ class CreateKeyPairRequest(TeaModel):
         self,
         key_pair_name: str = None,
     ):
+        # The name of the key pair. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+        # 
         # This parameter is required.
         self.key_pair_name = key_pair_name
 
@@ -1461,9 +1849,13 @@ class CreateKeyPairResponseBodyData(TeaModel):
         key_pair_name: str = None,
         private_key_body: str = None,
     ):
+        # The time when the key pair was created.
         self.gmt_created = gmt_created
+        # The ID of the key pair.
         self.key_pair_id = key_pair_id
+        # The name of the key pair.
         self.key_pair_name = key_pair_name
+        # The private key of the key pair. The PEM-encoded private key that is in PKCS#8 format and adheres to the ADB connection specification.
         self.private_key_body = private_key_body
 
     def validate(self):
@@ -1504,7 +1896,9 @@ class CreateKeyPairResponseBody(TeaModel):
         data: CreateKeyPairResponseBodyData = None,
         request_id: str = None,
     ):
+        # The objects that are returned.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1580,7 +1974,14 @@ class CreatePolicyGroupRequestNetRedirectPolicyRules(TeaModel):
         rule_type: str = None,
         target: str = None,
     ):
+        # The type of the rule.
+        # 
+        # Valid values:
+        # 
+        # *   prc: an application package name.
+        # *   domain: a domain name.
         self.rule_type = rule_type
+        # The name of the application package or domain name.
         self.target = target
 
     def validate(self):
@@ -1619,13 +2020,35 @@ class CreatePolicyGroupRequestNetRedirectPolicy(TeaModel):
         proxy_user_name: str = None,
         rules: List[CreatePolicyGroupRequestNetRedirectPolicyRules] = None,
     ):
+        # Specifies whether to manually configure a custom proxy.
+        # 
+        # Valid values:
+        # 
+        # *   off
+        # *   on
         self.custom_proxy = custom_proxy
+        # The IPv4 address of the custom proxy.
         self.host_addr = host_addr
+        # Specifies whether to enable the network redirection feature.
+        # 
+        # Valid values:
+        # 
+        # *   off
+        # *   on
         self.net_redirect = net_redirect
+        # The port of the custom proxy. Valid values: 1 to 65535.
         self.port = port
+        # The password of the proxy. The password must be 1 to 256 in length and cannot contain Chinese character or space characters.
         self.proxy_password = proxy_password
+        # The type of the proxy protocol.
+        # 
+        # Valid values:
+        # 
+        # *   socks5.
         self.proxy_type = proxy_type
+        # The username of the proxy. The name must be 1 to 256 in length and cannot contain Chinese character or space characters.
         self.proxy_user_name = proxy_user_name
+        # The proxy rules. You can create up to 100 proxy rules.
         self.rules = rules
 
     def validate(self):
@@ -1697,14 +2120,52 @@ class CreatePolicyGroupRequest(TeaModel):
         resolution_height: int = None,
         resolution_width: int = None,
     ):
+        # Specifies whether to enable the webcam redirection feature.
+        # 
+        # Valid values:
+        # 
+        # *   off
+        # *   on
         self.camera_redirect = camera_redirect
+        # The read/write permissions on the clipboard.
+        # 
+        # Valid values:
+        # 
+        # *   read: read-only.
+        # *   readwrite: read and write.
+        # *   off: read/write disabled.
         self.clipboard = clipboard
+        # The file transfer policy of the Alibaba Cloud Workspace web client.
+        # 
+        # Valid values:
+        # 
+        # *   all: File upload and download are supported.
+        # *   download: Only file download is supported.
+        # *   upload: Only file upload is supported.
+        # *   off: File upload or download is forbidden.
         self.html_5file_transfer = html_5file_transfer
+        # The read/write permissions on the on-premises drive.
+        # 
+        # Valid values:
+        # 
+        # *   read: read-only.
+        # *   readwrite: ready and write.
+        # *   off: read/write disabled.
         self.local_drive = local_drive
+        # Specifies whether to lock the resolution.
+        # 
+        # Valid values:
+        # 
+        # *   off
+        # *   on
         self.lock_resolution = lock_resolution
+        # The network redirection policy.
         self.net_redirect_policy = net_redirect_policy
+        # The name of the policy.
         self.policy_group_name = policy_group_name
+        # The height of the resolution. Unit: pixels.
         self.resolution_height = resolution_height
+        # The width of the resolution. Unit: pixels.
         self.resolution_width = resolution_width
 
     def validate(self):
@@ -1774,14 +2235,52 @@ class CreatePolicyGroupShrinkRequest(TeaModel):
         resolution_height: int = None,
         resolution_width: int = None,
     ):
+        # Specifies whether to enable the webcam redirection feature.
+        # 
+        # Valid values:
+        # 
+        # *   off
+        # *   on
         self.camera_redirect = camera_redirect
+        # The read/write permissions on the clipboard.
+        # 
+        # Valid values:
+        # 
+        # *   read: read-only.
+        # *   readwrite: read and write.
+        # *   off: read/write disabled.
         self.clipboard = clipboard
+        # The file transfer policy of the Alibaba Cloud Workspace web client.
+        # 
+        # Valid values:
+        # 
+        # *   all: File upload and download are supported.
+        # *   download: Only file download is supported.
+        # *   upload: Only file upload is supported.
+        # *   off: File upload or download is forbidden.
         self.html_5file_transfer = html_5file_transfer
+        # The read/write permissions on the on-premises drive.
+        # 
+        # Valid values:
+        # 
+        # *   read: read-only.
+        # *   readwrite: ready and write.
+        # *   off: read/write disabled.
         self.local_drive = local_drive
+        # Specifies whether to lock the resolution.
+        # 
+        # Valid values:
+        # 
+        # *   off
+        # *   on
         self.lock_resolution = lock_resolution
+        # The network redirection policy.
         self.net_redirect_policy_shrink = net_redirect_policy_shrink
+        # The name of the policy.
         self.policy_group_name = policy_group_name
+        # The height of the resolution. Unit: pixels.
         self.resolution_height = resolution_height
+        # The width of the resolution. Unit: pixels.
         self.resolution_width = resolution_width
 
     def validate(self):
@@ -1842,7 +2341,9 @@ class CreatePolicyGroupResponseBody(TeaModel):
         policy_group_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the policy.
         self.policy_group_id = policy_group_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2070,6 +2571,7 @@ class DeleteAndroidInstanceGroupRequest(TeaModel):
         self,
         instance_group_ids: List[str] = None,
     ):
+        # The IDs of the instance groups.
         self.instance_group_ids = instance_group_ids
 
     def validate(self):
@@ -2097,6 +2599,7 @@ class DeleteAndroidInstanceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2165,6 +2668,7 @@ class DeleteAppsRequest(TeaModel):
         self,
         app_id_list: List[str] = None,
     ):
+        # The IDs of the applications.
         self.app_id_list = app_id_list
 
     def validate(self):
@@ -2192,6 +2696,7 @@ class DeleteAppsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2260,6 +2765,8 @@ class DeleteImagesRequest(TeaModel):
         self,
         image_ids: List[str] = None,
     ):
+        # The IDs of the images.
+        # 
         # This parameter is required.
         self.image_ids = image_ids
 
@@ -2288,6 +2795,8 @@ class DeleteImagesShrinkRequest(TeaModel):
         self,
         image_ids_shrink: str = None,
     ):
+        # The IDs of the images.
+        # 
         # This parameter is required.
         self.image_ids_shrink = image_ids_shrink
 
@@ -2317,7 +2826,9 @@ class DeleteImagesResponseBodyData(TeaModel):
         fail_delete_image_ids: List[str] = None,
         success_delete_image_ids: List[str] = None,
     ):
+        # The IDs of the images that failed to be deleted.
         self.fail_delete_image_ids = fail_delete_image_ids
+        # The IDs of the images that are successfully deleted.
         self.success_delete_image_ids = success_delete_image_ids
 
     def validate(self):
@@ -2350,7 +2861,9 @@ class DeleteImagesResponseBody(TeaModel):
         data: DeleteImagesResponseBodyData = None,
         request_id: str = None,
     ):
+        # The images.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2425,6 +2938,7 @@ class DeleteKeyPairsRequest(TeaModel):
         self,
         key_pair_ids: List[str] = None,
     ):
+        # The IDs of the ADB key pairs.
         self.key_pair_ids = key_pair_ids
 
     def validate(self):
@@ -2452,6 +2966,7 @@ class DeleteKeyPairsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2520,6 +3035,8 @@ class DeletePolicyGroupRequest(TeaModel):
         self,
         policy_group_ids: List[str] = None,
     ):
+        # The IDs of the policies.
+        # 
         # This parameter is required.
         self.policy_group_ids = policy_group_ids
 
@@ -2548,6 +3065,7 @@ class DeletePolicyGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2625,15 +3143,45 @@ class DescribeAndroidInstanceGroupsRequest(TeaModel):
         sale_mode: str = None,
         status: str = None,
     ):
+        # The ID of the region.
         self.biz_region_id = biz_region_id
+        # The billing method.
+        # 
+        # Valid values:
+        # 
+        # *   PrePaid: subscription
+        # *   PostPaid: pay-as-you-go
         self.charge_type = charge_type
+        # The IDs of the instance groups.
         self.instance_group_ids = instance_group_ids
+        # The name of the instance group. Instance groups support fuzzy search by name.
         self.instance_group_name = instance_group_name
+        # The ID of the key pair.
         self.key_pair_id = key_pair_id
+        # The maximum number of entries per page. Value range: 0 to 100. Default value: 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The ID of the policy.
         self.policy_group_id = policy_group_id
+        # The sales mode.
+        # 
+        # Valid values:
+        # 
+        # *   standard
         self.sale_mode = sale_mode
+        # The status of the instance group.
+        # 
+        # Valid values:
+        # 
+        # *   UPDATING_FAILED: The image update for the instance group failed.
+        # *   FAILED: The instance group failed to be created.
+        # *   RUNNING: The instance group is available.
+        # *   EXPIRED: The instance group expired.
+        # *   DELETING: The instance group is being deleted.
+        # *   DELETED: The instance group is deleted.
+        # *   UPDATING: The instance group is undergoing an image update.
+        # *   CREATING: The instance group is being created.
         self.status = status
 
     def validate(self):
@@ -2698,7 +3246,9 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks(TeaModel)
         disk_size: int = None,
         disk_type: str = None,
     ):
+        # The size of the disk. Unit: GB.
         self.disk_size = disk_size
+        # The type of the disk.
         self.disk_type = disk_type
 
     def validate(self):
@@ -2757,33 +3307,61 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
         system_version: str = None,
         v_switch_id: str = None,
     ):
+        # The ID of the delivery group.
         self.app_instance_group_id = app_instance_group_id
+        # The type of the architecture.
         self.architecture_type = architecture_type
+        # Number of instances.
         self.available_instance_amount = available_instance_amount
+        # The billing method.
         self.charge_type = charge_type
+        # The number of vCPUs.
         self.cpu = cpu
+        # The disks.
         self.disks = disks
+        # The error code.
         self.error_code = error_code
+        # The time when the instance group was created.
         self.gmt_create = gmt_create
+        # The time when the subscription instance group expires.
         self.gmt_expired = gmt_expired
+        # The time when the instance group was updated.
         self.gmt_modified = gmt_modified
+        # The ID of the image.
         self.image_id = image_id
+        # The list of installed applications.
         self.installed_app_list = installed_app_list
+        # The ID of the instance group.
         self.instance_group_id = instance_group_id
+        # The name of the instance group.
         self.instance_group_name = instance_group_name
+        # The specifications of the instance group.
         self.instance_group_spec = instance_group_spec
+        # The description of the instance group specifications.
         self.instance_group_spec_describe = instance_group_spec_describe
+        # The status of the instance group.
         self.instance_group_status = instance_group_status
+        # The memory size.
         self.memory = memory
+        # The number of instances in the instance group.
         self.number_of_instances = number_of_instances
+        # The ID of the network.
         self.office_site_id = office_site_id
+        # The ID of the policy.
         self.policy_group_id = policy_group_id
+        # The ID of the region.
         self.region_id = region_id
+        # The rendering type.
         self.rendering_type = rendering_type
+        # The height of the resolution.
         self.resolution_height = resolution_height
+        # The width of the resolution.
         self.resolution_width = resolution_width
+        # The sales mode.
         self.sale_mode = sale_mode
+        # The version of the operating system.
         self.system_version = system_version
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -2930,9 +3508,13 @@ class DescribeAndroidInstanceGroupsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The details of the instance group.
         self.instance_group_model = instance_group_model
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -3022,7 +3604,9 @@ class DescribeAndroidInstancesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -3068,20 +3652,61 @@ class DescribeAndroidInstancesRequest(TeaModel):
         status: str = None,
         tag: List[DescribeAndroidInstancesRequestTag] = None,
     ):
+        # The IDs of the instances.
         self.android_instance_ids = android_instance_ids
+        # The name of the instance.
         self.android_instance_name = android_instance_name
+        # The ID of the region. You can call the DescribeRegions operation to query the regions where Cloud Phone is supported.
         self.biz_region_id = biz_region_id
+        # The billing method. Valid values:
+        # 
+        # *   PrePaid: subscription.
+        # *   PostPaid: pay-as-you-go.
         self.charge_type = charge_type
+        # The ID of the instance group.
         self.instance_group_id = instance_group_id
+        # The IDs of the instance groups.
         self.instance_group_ids = instance_group_ids
+        # The name of the instance group.
         self.instance_group_name = instance_group_name
+        # The ID of the bound key pair.
         self.key_pair_id = key_pair_id
+        # The maximum number of entries per page. Valid values: 1 to 100. Default value: 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. If the parameter is left empty, the data is queried from the first entry.
         self.next_token = next_token
+        # The ID of the node.
         self.node_id = node_id
+        # The name of the node.
         self.node_name = node_name
+        # The sales mode.
+        # 
+        # Valid values:
+        # 
+        # *   Instance: the standard mode.
+        # *   Node: the node mode.
         self.sale_mode = sale_mode
+        # The state of the instance.
+        # 
+        # Valid values:
+        # 
+        # *   BACKUPING: The instance is being backed up.
+        # *   STARTING: The instance is being started.
+        # *   RUNNING: The instance group is available.
+        # *   DELETING: The instance is being deleted.
+        # *   BACKUP_FAILED: The backup operation failed.
+        # *   DELETED: The instance is deleted.
+        # *   FAILED: The instance failed to be created.
+        # *   STOPPED: The instance is stopped.
+        # *   RECOVERING: The instance has an ongoing file recovery task.
+        # *   UNAVAILABLE: The instance has an exception.
+        # *   REBOOTING: The instance is being restarted.
+        # *   RESETTING: The instance is being reset.
+        # *   STOPPING: The instance is being stopped.
+        # *   RECOVER_FAILED: The file recovery task failed.
+        # *   CREATING: The instance is being created.
         self.status = status
+        # The tags of the resources.
         self.tag = tag
 
     def validate(self):
@@ -3174,7 +3799,9 @@ class DescribeAndroidInstancesResponseBodyInstanceModelDisks(TeaModel):
         disk_size: int = None,
         disk_type: str = None,
     ):
+        # The size of the disk. Unit: GB.
         self.disk_size = disk_size
+        # The type of the disk.
         self.disk_type = disk_type
 
     def validate(self):
@@ -3207,7 +3834,9 @@ class DescribeAndroidInstancesResponseBodyInstanceModelTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -3258,45 +3887,82 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         key_pair_id: str = None,
         memory: int = None,
         network_interface_ip: str = None,
+        network_interface_ipv_6address: str = None,
         office_site_id: str = None,
         persistent_app_instance_id: str = None,
         policy_group_id: str = None,
         public_ip_address: str = None,
+        public_ipv_6address: str = None,
         rate: int = None,
         region_id: str = None,
         rendering_type: str = None,
         session_status: str = None,
         tags: List[DescribeAndroidInstancesResponseBodyInstanceModelTags] = None,
     ):
+        # The ID of the instance group.
         self.android_instance_group_id = android_instance_group_id
+        # The name of the instance group.
         self.android_instance_group_name = android_instance_group_name
+        # The ID of the instance.
         self.android_instance_id = android_instance_id
+        # The name of the instance.
         self.android_instance_name = android_instance_name
+        # The state of the instance.
         self.android_instance_status = android_instance_status
+        # The ID of the delivery group.
         self.app_instance_group_id = app_instance_group_id
+        # The ID of the physical instance.
         self.app_instance_id = app_instance_id
+        # The ID of the user to whom the instance is assigned.
         self.authorized_user_id = authorized_user_id
+        # The ID of the bound user.
         self.bind_user_id = bind_user_id
+        # The billing method of the instance.
         self.charge_type = charge_type
+        # The number of vCPUs.
         self.cpu = cpu
+        # The disks.
         self.disks = disks
+        # The cause of the instance data backup failure or restoration failure.
         self.error_code = error_code
+        # The time when the instance was created.
         self.gmt_create = gmt_create
+        # The time when the subscription instance group expires.
         self.gmt_expired = gmt_expired
+        # The time when the instance was modified.
         self.gmt_modified = gmt_modified
+        # The version of the image.
         self.image_version = image_version
+        # The type of the instance.
         self.instance_type = instance_type
+        # The ID of the key pair.
         self.key_pair_id = key_pair_id
+        # The memory size.
         self.memory = memory
+        # The IP address of the ENI.
         self.network_interface_ip = network_interface_ip
+        self.network_interface_ipv_6address = network_interface_ipv_6address
+        # The ID of the workspace.
         self.office_site_id = office_site_id
+        # The ID of the persistent session.
         self.persistent_app_instance_id = persistent_app_instance_id
+        # The ID of the policy.
         self.policy_group_id = policy_group_id
+        # The public IP address.
         self.public_ip_address = public_ip_address
+        self.public_ipv_6address = public_ipv_6address
+        # The progress of instance data backup or restoration.
         self.rate = rate
+        # The region ID of the instance.
         self.region_id = region_id
+        # The rendering type.
         self.rendering_type = rendering_type
+        # The status of the session connection.
+        # 
+        # *   connect
+        # *   disConnect
         self.session_status = session_status
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -3359,6 +4025,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             result['Memory'] = self.memory
         if self.network_interface_ip is not None:
             result['NetworkInterfaceIp'] = self.network_interface_ip
+        if self.network_interface_ipv_6address is not None:
+            result['NetworkInterfaceIpv6Address'] = self.network_interface_ipv_6address
         if self.office_site_id is not None:
             result['OfficeSiteId'] = self.office_site_id
         if self.persistent_app_instance_id is not None:
@@ -3367,6 +4035,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             result['PolicyGroupId'] = self.policy_group_id
         if self.public_ip_address is not None:
             result['PublicIpAddress'] = self.public_ip_address
+        if self.public_ipv_6address is not None:
+            result['PublicIpv6Address'] = self.public_ipv_6address
         if self.rate is not None:
             result['Rate'] = self.rate
         if self.region_id is not None:
@@ -3428,6 +4098,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             self.memory = m.get('Memory')
         if m.get('NetworkInterfaceIp') is not None:
             self.network_interface_ip = m.get('NetworkInterfaceIp')
+        if m.get('NetworkInterfaceIpv6Address') is not None:
+            self.network_interface_ipv_6address = m.get('NetworkInterfaceIpv6Address')
         if m.get('OfficeSiteId') is not None:
             self.office_site_id = m.get('OfficeSiteId')
         if m.get('PersistentAppInstanceId') is not None:
@@ -3436,6 +4108,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             self.policy_group_id = m.get('PolicyGroupId')
         if m.get('PublicIpAddress') is not None:
             self.public_ip_address = m.get('PublicIpAddress')
+        if m.get('PublicIpv6Address') is not None:
+            self.public_ipv_6address = m.get('PublicIpv6Address')
         if m.get('Rate') is not None:
             self.rate = m.get('Rate')
         if m.get('RegionId') is not None:
@@ -3460,9 +4134,13 @@ class DescribeAndroidInstancesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The instances.
         self.instance_model = instance_model
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -3558,13 +4236,36 @@ class DescribeAppsRequest(TeaModel):
         next_token: str = None,
         status: str = None,
     ):
+        # The IDs of the applications.
         self.app_id_list = app_id_list
+        # The name of the application.
         self.app_name = app_name
+        # Region id.
         self.biz_region_id = biz_region_id
+        # The installation/uninstallation status of the application.
+        # 
+        # Valid values:
+        # 
+        # *   INSTALLFAILED: The application failed to be installed.
+        # *   UNINSTALLING: The application is being uninstalled.
+        # *   INSTALLING: The application is being installed.
+        # *   UNINSTALLED: The application is uninstalled.
+        # *   INSTALLED: The application is installed.
+        # *   UNINSTALLFAILED: The application failed to be uninstalled.
         self.installation_status = installation_status
+        # The value of MD5.
         self.md5 = md5
+        # The maximum number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. If the parameter is left empty, the data is queried from the first entry.
         self.next_token = next_token
+        # The status of the application.
+        # 
+        # Valid values:
+        # 
+        # *   FAILED: The application failed to be created.
+        # *   NORMAL: The application is available.
+        # *   CREATING: The application is being created.
         self.status = status
 
     def validate(self):
@@ -3633,19 +4334,48 @@ class DescribeAppsResponseBodyData(TeaModel):
         package_name: str = None,
         status: str = None,
     ):
+        # The version of the application.
         self.android_app_version = android_app_version
+        # Apk size.
         self.apk_size = apk_size
+        # The ID of the application.
         self.app_id = app_id
+        # The name of the application.
         self.app_name = app_name
+        # Region id.
         self.biz_region_id = biz_region_id
+        # The description of the application.
         self.description = description
+        # The time when the application was created.
         self.gmt_create = gmt_create
+        # The time when the application was last modified.
         self.gmt_modified = gmt_modified
+        # The icon URL of the application.
         self.icon_url = icon_url
+        # The installation/uninstallation status of the application.
+        # 
+        # Valid values:
+        # 
+        # *   INSTALLFAILED: The application failed to be installed.
+        # *   UNINSTALLING: The application is being uninstalled.
+        # *   INSTALLING: The application is being installed.
+        # *   UNINSTALLED: The application is uninstalled.
+        # *   INSTALLED: The application is installed.
+        # *   UNINSTALLFAILED: The application failed to be uninstalled.
         self.installation_status = installation_status
+        # The list of instance groups where the application is installed.
         self.instance_group_list = instance_group_list
+        # The value of MD5.
         self.md5 = md5
+        # The name of the application package.
         self.package_name = package_name
+        # The status of the application.
+        # 
+        # Valid values:
+        # 
+        # *   FAILED: The application failed to be created.
+        # *   NORMAL: The application is available.
+        # *   CREATING: The application is being created.
         self.status = status
 
     def validate(self):
@@ -3728,9 +4458,13 @@ class DescribeAppsResponseBody(TeaModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # The objects that are returned.
         self.data = data
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -3831,18 +4565,31 @@ class DescribeBackupFilesRequest(TeaModel):
         start_time: str = None,
         status_list: List[str] = None,
     ):
+        # The ID of the instance.
         self.android_instance_id = android_instance_id
+        # The name of the instance. Instances support fuzzy search by name.
         self.android_instance_name = android_instance_name
+        # Is all data to be backed up.
         self.backup_all = backup_all
+        # The ID of the backup file.
         self.backup_file_id = backup_file_id
+        # The name of the backup file. Backup files support fuzzy search by name.
         self.backup_file_name = backup_file_name
+        # The description of the backup file. Backup files support fuzzy search by description.
         self.description = description
+        # The end of the period for querying generated backup files.
         self.end_time = end_time
+        # The owner of the backup file.
         self.end_user_id = end_user_id
+        # The ID of the instance group.
         self.instance_group_id = instance_group_id
+        # The maximum number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The beginning of the period for querying generated backup files.
         self.start_time = start_time
+        # The list of backup file status.
         self.status_list = status_list
 
     def validate(self):
@@ -3936,24 +4683,52 @@ class DescribeBackupFilesResponseBodyData(TeaModel):
         upload_endpoint: str = None,
         upload_type: str = None,
     ):
+        # The ID of the instance.
         self.android_instance_id = android_instance_id
+        # The name of the instance.
         self.android_instance_name = android_instance_name
+        # Is all data to be backed up.
         self.backup_all = backup_all
+        # The ID of the backup file.
         self.backup_file_id = backup_file_id
+        # The name of the backup file.
         self.backup_file_name = backup_file_name
+        # The directory in which the backup file is stored.
         self.backup_file_path = backup_file_path
+        # The description of the backup file.
         self.description = description
+        # The owner of the backup file.
         self.end_user_id = end_user_id
+        # The total size of the source files.
         self.file_size = file_size
+        # The time when the backup file was created.
         self.gmt_created = gmt_created
+        # The time when the backup file was last updated.
         self.gmt_modified = gmt_modified
+        # The ID of the instance group.
         self.instance_group_id = instance_group_id
+        # The region ID.
         self.region_id = region_id
+        # List of apps to be backed up.
         self.source_app_info_list = source_app_info_list
+        # The directories of the source files.
         self.source_file_path_list = source_file_path_list
+        # The status of the backup file.
+        # 
+        # Valid values:
+        # 
+        # *   AVAILABLE
+        # *   RECOVERING
         self.status = status
+        # The task ID.
         self.task_id = task_id
+        # The endpoint of the OSS bucket that stores the backup file.
         self.upload_endpoint = upload_endpoint
+        # The type of the backup.
+        # 
+        # Valid values:
+        # 
+        # *   OSS: backup files are stored in OSS buckets. .
         self.upload_type = upload_type
 
     def validate(self):
@@ -4057,10 +4832,15 @@ class DescribeBackupFilesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The backup files that are returned.
         self.data = data
+        # The total number of entries returned.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The ID of the request. If the request fails, provide this ID to technical support to assist in diagnosing the issue.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -4159,13 +4939,34 @@ class DescribeImageListRequest(TeaModel):
         next_token: str = None,
         status: str = None,
     ):
+        # The ID of the image.
         self.image_id = image_id
+        # The name of the image.
         self.image_name = image_name
+        # Image package type.
         self.image_package_type = image_package_type
+        # The type of the image.
+        # 
+        # Valid values:
+        # 
+        # *   User: custom images.
+        # *   System: system images.
+        # 
         # This parameter is required.
         self.image_type = image_type
+        # The maximum number of entries per page. Value range: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. If the parameter is left empty, the data is queried from the first entry.
         self.next_token = next_token
+        # The state of the image.
+        # 
+        # Valid values:
+        # 
+        # *   AVAILABLE: The image is available.
+        # *   DELETE: The image is deleted.
+        # *   INIT: The image is being initialized.
+        # *   CREATE_FAILED: The image failed to be created.
+        # *   CREATING: The image is being created.
         self.status = status
 
     def validate(self):
@@ -4230,19 +5031,52 @@ class DescribeImageListResponseBodyData(TeaModel):
         status: str = None,
         system_type: str = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
+        # The description of the image.
         self.description = description
+        # The time when the image was created.
         self.gmt_create = gmt_create
+        # The time when the image was last modified.
         self.gmt_modified = gmt_modified
+        # The ID of the image.
         self.image_id = image_id
+        # The name of the image.
         self.image_name = image_name
+        # The region where the image is distributed. The key is the region and the value is the distribution information.
         self.image_region_distribute_map = image_region_distribute_map
+        # The list of regions.
         self.image_region_list = image_region_list
+        # The type of the image.
+        # 
+        # Valid values:
+        # 
+        # *   User: custom images.
+        # *   System: system images.
         self.image_type = image_type
+        # The language of the image.
         self.language = language
+        # The time when the image was published.
         self.release_time = release_time
+        # The rendering type.
+        # 
+        # Valid values:
+        # 
+        # *   GPURemote
+        # *   CPU
+        # *   GPULocal
         self.rendering_type = rendering_type
+        # The state of the image.
+        # 
+        # Valid values:
+        # 
+        # *   AVAILABLE: The image is available.
+        # *   DELETE: The image is deleted.
+        # *   INIT: The image is being initialized.
+        # *   CREATE_FAILED: The image failed to be created.
+        # *   CREATING: The image is being created.
         self.status = status
+        # The OS type of the image.
         self.system_type = system_type
 
     def validate(self):
@@ -4333,9 +5167,13 @@ class DescribeImageListResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The objects that are returned.
         self.data = data
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -4607,9 +5445,13 @@ class DescribeKeyPairsRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The IDs of the ADB key pairs.
         self.key_pair_ids = key_pair_ids
+        # The name of the ADB key pair.
         self.key_pair_name = key_pair_name
+        # The maximum number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. If the parameter is left empty, the data is queried from the first entry.
         self.next_token = next_token
 
     def validate(self):
@@ -4651,8 +5493,11 @@ class DescribeKeyPairsResponseBodyData(TeaModel):
         key_pair_id: str = None,
         key_pair_name: str = None,
     ):
+        # The time when the ADB key pair was created.
         self.gmt_created = gmt_created
+        # The ID of the ADB key pair.
         self.key_pair_id = key_pair_id
+        # The name of the ADB key pair.
         self.key_pair_name = key_pair_name
 
     def validate(self):
@@ -4691,9 +5536,13 @@ class DescribeKeyPairsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The objects that are returned.
         self.data = data
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -4816,6 +5665,7 @@ class DescribeRegionsResponseBodyRegionModels(TeaModel):
         region_id: str = None,
         region_name: str = None,
     ):
+        # Region ID.
         self.region_id = region_id
         self.region_name = region_name
 
@@ -4849,7 +5699,9 @@ class DescribeRegionsResponseBody(TeaModel):
         region_models: List[DescribeRegionsResponseBodyRegionModels] = None,
         request_id: str = None,
     ):
+        # Available regions.
         self.region_models = region_models
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4939,11 +5791,16 @@ class DescribeSpecRequest(TeaModel):
     ):
         self.biz_region_id = biz_region_id
         self.matrix_spec = matrix_spec
+        # The maximum number of items to return per page in a paginated query. The value range is 1 to 100, with a default value of 100.
         self.max_results = max_results
+        # Indicates the starting position for reading. If left empty, it starts from the beginning.
         self.next_token = next_token
         self.sale_mode = sale_mode
+        # List of specification IDs.
         self.spec_ids = spec_ids
+        # Specification status.
         self.spec_status = spec_status
+        # Specification type.
         self.spec_type = spec_type
 
     def validate(self):
@@ -5006,13 +5863,19 @@ class DescribeSpecResponseBodySpecInfoModel(TeaModel):
         spec_type: str = None,
         system_disk_size: int = None,
     ):
+        # Number of CPU cores.
         self.core = core
+        # Memory size.
         self.memory = memory
         self.phone_count = phone_count
         self.resolution = resolution
+        # Specification ID.
         self.spec_id = spec_id
+        # Specification status.
         self.spec_status = spec_status
+        # Specification type.
         self.spec_type = spec_type
+        # System disk size, in GB.
         self.system_disk_size = system_disk_size
 
     def validate(self):
@@ -5071,9 +5934,13 @@ class DescribeSpecResponseBody(TeaModel):
         spec_info_model: List[DescribeSpecResponseBodySpecInfoModel] = None,
         total_count: int = None,
     ):
+        # Indicates the current read position returned by this call. An empty value means that all data has been read.
         self.next_token = next_token
+        # Request ID.
         self.request_id = request_id
+        # Specification information.
         self.spec_info_model = spec_info_model
+        # Total number of items.
         self.total_count = total_count
 
     def validate(self):
@@ -6329,9 +7196,13 @@ class ListPolicyGroupsRequest(TeaModel):
         policy_group_ids: List[str] = None,
         policy_group_name: str = None,
     ):
+        # The maximum number of entries per page. Value range: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the request to retrieve a new page of results. If the parameter is left empty, the data is queried from the first entry.
         self.next_token = next_token
+        # The IDs of the policies.
         self.policy_group_ids = policy_group_ids
+        # The name of the policy.
         self.policy_group_name = policy_group_name
 
     def validate(self):
@@ -6372,7 +7243,14 @@ class ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules(TeaMode
         rule_type: str = None,
         target: str = None,
     ):
+        # The type of the rule.
+        # 
+        # Valid values:
+        # 
+        # *   prc: an application package name.
+        # *   domain: a domain name.
         self.rule_type = rule_type
+        # The name of the application package or domain name.
         self.target = target
 
     def validate(self):
@@ -6411,13 +7289,35 @@ class ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy(TeaModel):
         proxy_user_name: str = None,
         rules: List[ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules] = None,
     ):
+        # Indicates whether a custom proxy is manually configured.
+        # 
+        # Valid values:
+        # 
+        # *   off
+        # *   on
         self.custom_proxy = custom_proxy
+        # The IPv4 address of the custom proxy.
         self.host_addr = host_addr
+        # Indicates whether the network redirection feature is enabled. When this feature is enabled, network traffic is automatically redirected to the on-premises network by default.
+        # 
+        # Valid values:
+        # 
+        # *   off
+        # *   on
         self.net_redirect = net_redirect
+        # The port of the custom proxy. Valid values: 1 to 65535.
         self.port = port
+        # The password of the proxy. The password must be 1 to 256 in length and cannot contain Chinese character or space characters.
         self.proxy_password = proxy_password
+        # The type of the proxy protocol.
+        # 
+        # Valid values:
+        # 
+        # *   socks5.
         self.proxy_type = proxy_type
+        # The username of the proxy. The name must be 1 to 256 in length and cannot contain Chinese character or space characters.
         self.proxy_user_name = proxy_user_name
+        # The proxy rules.
         self.rules = rules
 
     def validate(self):
@@ -6491,16 +7391,56 @@ class ListPolicyGroupsResponseBodyPolicyGroupModel(TeaModel):
         session_resolution_height: int = None,
         session_resolution_width: int = None,
     ):
+        # Specifies whether to enable the webcam redirection feature.
+        # 
+        # Valid values:
+        # 
+        # *   off
+        # *   on
         self.camera_redirect = camera_redirect
+        # The read/write permissions on the clipboard.
+        # 
+        # Valid values:
+        # 
+        # *   read: read-only.
+        # *   readwrite: read and write.
+        # *   off: read/write disabled.
         self.clipboard = clipboard
+        # The time when the policy was created.
         self.gmt_create = gmt_create
+        # The file transfer policy of the HTML5 client.
+        # 
+        # Valid values:
+        # 
+        # *   all: File upload and download are supported.
+        # *   download: Only file download is supported.
+        # *   upload: Only file upload is supported.
+        # *   off: File upload or download is forbidden.
         self.html_5file_transfer = html_5file_transfer
+        # The read/write permissions on the on-premises drive.
+        # 
+        # Valid values:
+        # 
+        # *   read: read-only.
+        # *   readwrite: ready and write.
+        # *   off: read/write denied.
         self.local_drive = local_drive
+        # Identifies whether the resolution is locked.
+        # 
+        # Valid values:
+        # 
+        # *   off
+        # *   on
         self.lock_resolution = lock_resolution
+        # The network redirection policy.
         self.net_redirect_policy = net_redirect_policy
+        # The ID of the policy.
         self.policy_group_id = policy_group_id
+        # The name of the policy.
         self.policy_group_name = policy_group_name
+        # The height of the resolution.
         self.session_resolution_height = session_resolution_height
+        # The width of the resolution.
         self.session_resolution_width = session_resolution_width
 
     def validate(self):
@@ -6573,9 +7513,13 @@ class ListPolicyGroupsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The policies.
         self.policy_group_model = policy_group_model
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -6665,7 +7609,11 @@ class ModifyAndroidInstanceRequest(TeaModel):
         android_instance_id: str = None,
         new_android_instance_name: str = None,
     ):
+        # The ID of the cloud phone instance.
         self.android_instance_id = android_instance_id
+        # The new name of the cloud phone instance.
+        # 
+        # >  The name can be up to 30 characters in length. It can contain letters, digits, colons (:), underscores (_), periods (.), or hyphens (-). It must start with letters but cannot start with http:// or https://.
         self.new_android_instance_name = new_android_instance_name
 
     def validate(self):
@@ -6697,6 +7645,7 @@ class ModifyAndroidInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6767,8 +7716,15 @@ class ModifyAndroidInstanceGroupRequest(TeaModel):
         new_instance_group_name: str = None,
         policy_group_id: str = None,
     ):
+        # The ID of the instance group.
         self.instance_group_id = instance_group_id
+        # The new name of the instance group.
+        # 
+        # > 
+        # 
+        # *   The name can be up to 30 characters in length. It can contain letters, digits, colons (:), underscores (_), periods (.), or hyphens (-). It must start with letters but cannot start with http:// or https://.
         self.new_instance_group_name = new_instance_group_name
+        # The ID of the policy.
         self.policy_group_id = policy_group_id
 
     def validate(self):
@@ -6804,6 +7760,7 @@ class ModifyAndroidInstanceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6875,9 +7832,13 @@ class ModifyAppRequest(TeaModel):
         description: str = None,
         icon_url: str = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The name of the application.
         self.app_name = app_name
+        # The description of the application.
         self.description = description
+        # The URL of the icon.
         self.icon_url = icon_url
 
     def validate(self):
@@ -6917,6 +7878,7 @@ class ModifyAppResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6986,8 +7948,12 @@ class ModifyKeyPairNameRequest(TeaModel):
         key_pair_id: str = None,
         new_key_pair_name: str = None,
     ):
+        # The ID of the ADB key pair.
+        # 
         # This parameter is required.
         self.key_pair_id = key_pair_id
+        # The name of the ADB key pair.
+        # 
         # This parameter is required.
         self.new_key_pair_name = new_key_pair_name
 
@@ -7020,6 +7986,7 @@ class ModifyKeyPairNameResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7094,12 +8061,33 @@ class ModifyPolicyGroupRequestNetRedirectPolicy(TeaModel):
         proxy_type: str = None,
         proxy_user_name: str = None,
     ):
+        # Specifies whether to manually configure a custom proxy.
+        # 
+        # Valid values:
+        # 
+        # *   off
+        # *   on
         self.custom_proxy = custom_proxy
+        # The IPv4 address of the custom proxy.
         self.host_addr = host_addr
+        # Specifies whether to enable network redirection.
+        # 
+        # Valid values:
+        # 
+        # *   off
+        # *   on
         self.net_redirect = net_redirect
+        # The port of the custom proxy. Valid values: 1 to 65535.
         self.port = port
+        # The password of the proxy. The password must be 1 to 256 in length and cannot contain Chinese character or space characters.
         self.proxy_password = proxy_password
+        # The type of the proxy protocol.
+        # 
+        # Valid values:
+        # 
+        # *   socks5.
         self.proxy_type = proxy_type
+        # The username of the proxy. The name must be 1 to 256 in length and cannot contain Chinese character or space characters.
         self.proxy_user_name = proxy_user_name
 
     def validate(self):
@@ -7160,15 +8148,54 @@ class ModifyPolicyGroupRequest(TeaModel):
         resolution_height: int = None,
         resolution_width: int = None,
     ):
+        # Specifies whether to enable the webcam redirection feature.
+        # 
+        # Valid values:
+        # 
+        # *   off
+        # *   on
         self.camera_redirect = camera_redirect
+        # The read/write permissions on the clipboard.
+        # 
+        # Valid values:
+        # 
+        # *   read: read-only.
+        # *   readwrite: ready and write.
+        # *   off: read/write disabled.
         self.clipboard = clipboard
+        # The file transfer policy of the Alibaba Cloud Workspace web client.
+        # 
+        # Valid values:
+        # 
+        # *   all: File upload and download are supported.
+        # *   download: Only file download is supported.
+        # *   upload: Only file upload is supported.
+        # *   off: File upload or download is forbidden.
         self.html_5file_transfer = html_5file_transfer
+        # The read/write permissions on the on-premises drive.
+        # 
+        # Valid values:
+        # 
+        # *   read: read-only.
+        # *   readwrite: ready and write.
+        # *   off: read/write disabled.
         self.local_drive = local_drive
+        # Specifies whether to lock the resolution.
+        # 
+        # Valid values:
+        # 
+        # *   off
+        # *   on
         self.lock_resolution = lock_resolution
+        # The network redirection policy.
         self.net_redirect_policy = net_redirect_policy
+        # The ID of the policy.
         self.policy_group_id = policy_group_id
+        # The name of the policy.
         self.policy_group_name = policy_group_name
+        # The height of the resolution. Unit: pixels.
         self.resolution_height = resolution_height
+        # The width of the resolution. Unit: pixels.
         self.resolution_width = resolution_width
 
     def validate(self):
@@ -7243,15 +8270,54 @@ class ModifyPolicyGroupShrinkRequest(TeaModel):
         resolution_height: int = None,
         resolution_width: int = None,
     ):
+        # Specifies whether to enable the webcam redirection feature.
+        # 
+        # Valid values:
+        # 
+        # *   off
+        # *   on
         self.camera_redirect = camera_redirect
+        # The read/write permissions on the clipboard.
+        # 
+        # Valid values:
+        # 
+        # *   read: read-only.
+        # *   readwrite: ready and write.
+        # *   off: read/write disabled.
         self.clipboard = clipboard
+        # The file transfer policy of the Alibaba Cloud Workspace web client.
+        # 
+        # Valid values:
+        # 
+        # *   all: File upload and download are supported.
+        # *   download: Only file download is supported.
+        # *   upload: Only file upload is supported.
+        # *   off: File upload or download is forbidden.
         self.html_5file_transfer = html_5file_transfer
+        # The read/write permissions on the on-premises drive.
+        # 
+        # Valid values:
+        # 
+        # *   read: read-only.
+        # *   readwrite: ready and write.
+        # *   off: read/write disabled.
         self.local_drive = local_drive
+        # Specifies whether to lock the resolution.
+        # 
+        # Valid values:
+        # 
+        # *   off
+        # *   on
         self.lock_resolution = lock_resolution
+        # The network redirection policy.
         self.net_redirect_policy_shrink = net_redirect_policy_shrink
+        # The ID of the policy.
         self.policy_group_id = policy_group_id
+        # The name of the policy.
         self.policy_group_name = policy_group_name
+        # The height of the resolution. Unit: pixels.
         self.resolution_height = resolution_height
+        # The width of the resolution. Unit: pixels.
         self.resolution_width = resolution_width
 
     def validate(self):
@@ -7315,6 +8381,7 @@ class ModifyPolicyGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7602,12 +8669,27 @@ class RecoveryFileRequest(TeaModel):
         upload_endpoint: str = None,
         upload_type: str = None,
     ):
+        # The IDs of the instances.
+        # 
         # This parameter is required.
         self.android_instance_id_list = android_instance_id_list
+        # Whether all data is to be backed up.
         self.backup_all = backup_all
+        # The ID of the backup file.
         self.backup_file_id = backup_file_id
+        # The OSS path to which the backup file is uploaded.
+        # 
+        # >  When calling the describeBuckets operation to retrieve a bucket name, you must also call the ossObjectList operation to obtain the object key. Combine these to form the full path: oss://${bucketName}/${key}.
         self.backup_file_path = backup_file_path
+        # The endpoint of the OSS bucket that stores the backup file.
+        # 
+        # > : When calling the DescribeBuckets operation to query buckets, retrieve the IntranetEndpoint value if the cloud phone and the OSS bucket are in the same region. If they are in different regions, retrieve the ExtranetEndpoint value instead.
         self.upload_endpoint = upload_endpoint
+        # The type of the backup.
+        # 
+        # Valid values:
+        # 
+        # *   OSS: backup files are stored in OSS buckets.
         self.upload_type = upload_type
 
     def validate(self):
@@ -7656,7 +8738,9 @@ class RecoveryFileResponseBodyData(TeaModel):
         android_instance_id: str = None,
         task_id: str = None,
     ):
+        # The instance ID.
         self.android_instance_id = android_instance_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -7691,9 +8775,13 @@ class RecoveryFileResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The number of entries.
         self.count = count
+        # The backup file that is restored.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -8123,7 +9211,6 @@ class SendFileRequest(TeaModel):
         self.android_instance_id_list = android_instance_id_list
         # This parameter is required.
         self.source_file_path = source_file_path
-        # This parameter is required.
         self.upload_endpoint = upload_endpoint
         # This parameter is required.
         self.upload_type = upload_type
@@ -8287,11 +9374,161 @@ class SendFileResponse(TeaModel):
         return self
 
 
+class SetAdbSecureRequest(TeaModel):
+    def __init__(
+        self,
+        instance_ids: List[str] = None,
+        status: int = None,
+    ):
+        self.instance_ids = instance_ids
+        # This parameter is required.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class SetAdbSecureResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        fail_count: int = None,
+        instance_ids: List[str] = None,
+        total_count: int = None,
+    ):
+        self.fail_count = fail_count
+        self.instance_ids = instance_ids
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fail_count is not None:
+            result['FailCount'] = self.fail_count
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailCount') is not None:
+            self.fail_count = m.get('FailCount')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class SetAdbSecureResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: SetAdbSecureResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = SetAdbSecureResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SetAdbSecureResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetAdbSecureResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetAdbSecureResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StartAndroidInstanceRequest(TeaModel):
     def __init__(
         self,
         android_instance_ids: List[str] = None,
     ):
+        # List of instances.
         self.android_instance_ids = android_instance_ids
 
     def validate(self):
@@ -8319,6 +9556,7 @@ class StartAndroidInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8602,7 +9840,9 @@ class UpdateCustomImageNameRequest(TeaModel):
         image_id: str = None,
         image_name: str = None,
     ):
+        # The ID of the image.
         self.image_id = image_id
+        # The name of the image.
         self.image_name = image_name
 
     def validate(self):
@@ -8634,6 +9874,7 @@ class UpdateCustomImageNameResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8807,8 +10048,16 @@ class UpgradeAndroidInstanceGroupRequest(TeaModel):
         increase_number_of_instance: int = None,
         instance_group_id: str = None,
     ):
+        # Specifies whether to enable the auto-payment feature.
+        # 
+        # Valid values:
+        # 
+        # *   true: enables the auto-payment feature. Make sure that your Alibaba Cloud account has sufficient balance.
+        # *   false: disables the auto-payment feature. You need to manually complete the payment process.
         self.auto_pay = auto_pay
+        # The number of instances that you want to increase.
         self.increase_number_of_instance = increase_number_of_instance
+        # The ID of the instance group.
         self.instance_group_id = instance_group_id
 
     def validate(self):
@@ -8846,8 +10095,11 @@ class UpgradeAndroidInstanceGroupResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The instance ID.
         self.instance_ids = instance_ids
+        # The ID of the order.
         self.order_id = order_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
