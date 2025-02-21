@@ -1,4 +1,4 @@
-2025-02-20 Version: 4.3.0
+2025-02-21 Version: 4.4.0
 - Support API AddCloudVendorTrialConfig.
 - Support API AddProtectVpcList.
 - Support API CreateBatchUploadUrl.
