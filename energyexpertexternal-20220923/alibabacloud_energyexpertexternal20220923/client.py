@@ -47,6 +47,284 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def analyze_vl_realtime_with_options(
+        self,
+        request: energy_expert_external_20220923_models.AnalyzeVlRealtimeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.AnalyzeVlRealtimeResponse:
+        """
+        @summary Get Document Results
+        
+        @description Users obtain real-time VL results by uploading a document URL.
+        
+        @param request: AnalyzeVlRealtimeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AnalyzeVlRealtimeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_url):
+            query['fileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.language):
+            query['language'] = request.language
+        if not UtilClient.is_unset(request.template_id):
+            query['templateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AnalyzeVlRealtime',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aidoc/document/analyzeVlRealtime',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                energy_expert_external_20220923_models.AnalyzeVlRealtimeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                energy_expert_external_20220923_models.AnalyzeVlRealtimeResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def analyze_vl_realtime_with_options_async(
+        self,
+        request: energy_expert_external_20220923_models.AnalyzeVlRealtimeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.AnalyzeVlRealtimeResponse:
+        """
+        @summary Get Document Results
+        
+        @description Users obtain real-time VL results by uploading a document URL.
+        
+        @param request: AnalyzeVlRealtimeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AnalyzeVlRealtimeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_url):
+            query['fileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.language):
+            query['language'] = request.language
+        if not UtilClient.is_unset(request.template_id):
+            query['templateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AnalyzeVlRealtime',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aidoc/document/analyzeVlRealtime',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                energy_expert_external_20220923_models.AnalyzeVlRealtimeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                energy_expert_external_20220923_models.AnalyzeVlRealtimeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def analyze_vl_realtime(
+        self,
+        request: energy_expert_external_20220923_models.AnalyzeVlRealtimeRequest,
+    ) -> energy_expert_external_20220923_models.AnalyzeVlRealtimeResponse:
+        """
+        @summary Get Document Results
+        
+        @description Users obtain real-time VL results by uploading a document URL.
+        
+        @param request: AnalyzeVlRealtimeRequest
+        @return: AnalyzeVlRealtimeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.analyze_vl_realtime_with_options(request, headers, runtime)
+
+    async def analyze_vl_realtime_async(
+        self,
+        request: energy_expert_external_20220923_models.AnalyzeVlRealtimeRequest,
+    ) -> energy_expert_external_20220923_models.AnalyzeVlRealtimeResponse:
+        """
+        @summary Get Document Results
+        
+        @description Users obtain real-time VL results by uploading a document URL.
+        
+        @param request: AnalyzeVlRealtimeRequest
+        @return: AnalyzeVlRealtimeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.analyze_vl_realtime_with_options_async(request, headers, runtime)
+
+    def analyze_vl_realtime_advance(
+        self,
+        request: energy_expert_external_20220923_models.AnalyzeVlRealtimeAdvanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.AnalyzeVlRealtimeResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.empty(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='energyExpertExternal',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        analyze_vl_realtime_req = energy_expert_external_20220923_models.AnalyzeVlRealtimeRequest()
+        OpenApiUtilClient.convert(request, analyze_vl_realtime_req)
+        if not UtilClient.is_unset(request.file_url_object):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.body.object_key,
+                content=request.file_url_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.body.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            analyze_vl_realtime_req.file_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+        analyze_vl_realtime_resp = self.analyze_vl_realtime_with_options(analyze_vl_realtime_req, headers, runtime)
+        return analyze_vl_realtime_resp
+
+    async def analyze_vl_realtime_advance_async(
+        self,
+        request: energy_expert_external_20220923_models.AnalyzeVlRealtimeAdvanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.AnalyzeVlRealtimeResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.empty(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='energyExpertExternal',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        analyze_vl_realtime_req = energy_expert_external_20220923_models.AnalyzeVlRealtimeRequest()
+        OpenApiUtilClient.convert(request, analyze_vl_realtime_req)
+        if not UtilClient.is_unset(request.file_url_object):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.body.object_key,
+                content=request.file_url_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.body.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            analyze_vl_realtime_req.file_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+        analyze_vl_realtime_resp = await self.analyze_vl_realtime_with_options_async(analyze_vl_realtime_req, headers, runtime)
+        return analyze_vl_realtime_resp
+
     def batch_save_instruction_status_with_options(
         self,
         request: energy_expert_external_20220923_models.BatchSaveInstructionStatusRequest,

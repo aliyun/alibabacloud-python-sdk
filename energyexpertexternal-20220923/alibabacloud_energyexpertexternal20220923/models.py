@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict, Any, BinaryIO
+from typing import List, BinaryIO, Dict, Any
 
 
 class CarbonEmissionElecSummaryItem(TeaModel):
@@ -781,6 +781,367 @@ class OrgEmission(TeaModel):
             self.weighting_proportion = m.get('weightingProportion')
         if m.get('weightingRatio') is not None:
             self.weighting_ratio = m.get('weightingRatio')
+        return self
+
+
+class AnalyzeVlRealtimeRequest(TeaModel):
+    def __init__(
+        self,
+        file_url: str = None,
+        language: str = None,
+        template_id: str = None,
+    ):
+        # Choose one of fileUrl or fileUrlObject:
+        # 
+        # - fileUrl: Use in the form of a document URL, for a single document (supports up to 1000 pages and 100MB)
+        # 
+        # - fileUrlObject: Use when calling the interface with local file upload, for a single document (supports up to 1000 pages and 100 MB)
+        # 
+        # > The relationship between file parsing methods and supported document types
+        # > - Long Text RAG: Supports pdf, doc/docx, up to 1000 pages
+        # > - Image Processing: Supports pdf, jpg, jpeg, png, bmp
+        # > - Long Text Understanding: Supports pdf, doc/docx, xls/xlsx
+        self.file_url = file_url
+        # Language, parameters that can be passed
+        # - zh-CN: Chinese (default)
+        # - en-US: English
+        self.language = language
+        # A unique parsing template ID used to specify the key-value pairs to be extracted from the document. You need to log in to the template management page, configure the template, and then get the corresponding template ID.
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_url is not None:
+            result['fileUrl'] = self.file_url
+        if self.language is not None:
+            result['language'] = self.language
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileUrl') is not None:
+            self.file_url = m.get('fileUrl')
+        if m.get('language') is not None:
+            self.language = m.get('language')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        return self
+
+
+class AnalyzeVlRealtimeAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        file_url_object: BinaryIO = None,
+        language: str = None,
+        template_id: str = None,
+    ):
+        # Choose one of fileUrl or fileUrlObject:
+        # 
+        # - fileUrl: Use in the form of a document URL, for a single document (supports up to 1000 pages and 100MB)
+        # 
+        # - fileUrlObject: Use when calling the interface with local file upload, for a single document (supports up to 1000 pages and 100 MB)
+        # 
+        # > The relationship between file parsing methods and supported document types
+        # > - Long Text RAG: Supports pdf, doc/docx, up to 1000 pages
+        # > - Image Processing: Supports pdf, jpg, jpeg, png, bmp
+        # > - Long Text Understanding: Supports pdf, doc/docx, xls/xlsx
+        self.file_url_object = file_url_object
+        # Language, parameters that can be passed
+        # - zh-CN: Chinese (default)
+        # - en-US: English
+        self.language = language
+        # A unique parsing template ID used to specify the key-value pairs to be extracted from the document. You need to log in to the template management page, configure the template, and then get the corresponding template ID.
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_url_object is not None:
+            result['fileUrl'] = self.file_url_object
+        if self.language is not None:
+            result['language'] = self.language
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileUrl') is not None:
+            self.file_url_object = m.get('fileUrl')
+        if m.get('language') is not None:
+            self.language = m.get('language')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        return self
+
+
+class AnalyzeVlRealtimeResponseBodyDataKvListInfoContextConfidence(TeaModel):
+    def __init__(
+        self,
+        key_confidence: float = None,
+        value_confidence: float = None,
+    ):
+        # Key confidence
+        self.key_confidence = key_confidence
+        # Value confidence
+        self.value_confidence = value_confidence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key_confidence is not None:
+            result['keyConfidence'] = self.key_confidence
+        if self.value_confidence is not None:
+            result['valueConfidence'] = self.value_confidence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('keyConfidence') is not None:
+            self.key_confidence = m.get('keyConfidence')
+        if m.get('valueConfidence') is not None:
+            self.value_confidence = m.get('valueConfidence')
+        return self
+
+
+class AnalyzeVlRealtimeResponseBodyDataKvListInfoContext(TeaModel):
+    def __init__(
+        self,
+        confidence: AnalyzeVlRealtimeResponseBodyDataKvListInfoContextConfidence = None,
+        key: List[ContentItem] = None,
+        value: List[ContentItem] = None,
+    ):
+        # Confidence
+        self.confidence = confidence
+        # Key recall information details
+        self.key = key
+        # Value recall information details
+        self.value = value
+
+    def validate(self):
+        if self.confidence:
+            self.confidence.validate()
+        if self.key:
+            for k in self.key:
+                if k:
+                    k.validate()
+        if self.value:
+            for k in self.value:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['confidence'] = self.confidence.to_map()
+        result['key'] = []
+        if self.key is not None:
+            for k in self.key:
+                result['key'].append(k.to_map() if k else None)
+        result['value'] = []
+        if self.value is not None:
+            for k in self.value:
+                result['value'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('confidence') is not None:
+            temp_model = AnalyzeVlRealtimeResponseBodyDataKvListInfoContextConfidence()
+            self.confidence = temp_model.from_map(m['confidence'])
+        self.key = []
+        if m.get('key') is not None:
+            for k in m.get('key'):
+                temp_model = ContentItem()
+                self.key.append(temp_model.from_map(k))
+        self.value = []
+        if m.get('value') is not None:
+            for k in m.get('value'):
+                temp_model = ContentItem()
+                self.value.append(temp_model.from_map(k))
+        return self
+
+
+class AnalyzeVlRealtimeResponseBodyDataKvListInfo(TeaModel):
+    def __init__(
+        self,
+        context: AnalyzeVlRealtimeResponseBodyDataKvListInfoContext = None,
+        key_name: str = None,
+        key_value: str = None,
+    ):
+        # Recall content
+        self.context = context
+        # Field Key name
+        self.key_name = key_name
+        # Field key value
+        self.key_value = key_value
+
+    def validate(self):
+        if self.context:
+            self.context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.context is not None:
+            result['context'] = self.context.to_map()
+        if self.key_name is not None:
+            result['keyName'] = self.key_name
+        if self.key_value is not None:
+            result['keyValue'] = self.key_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('context') is not None:
+            temp_model = AnalyzeVlRealtimeResponseBodyDataKvListInfoContext()
+            self.context = temp_model.from_map(m['context'])
+        if m.get('keyName') is not None:
+            self.key_name = m.get('keyName')
+        if m.get('keyValue') is not None:
+            self.key_value = m.get('keyValue')
+        return self
+
+
+class AnalyzeVlRealtimeResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        kv_list_info: List[AnalyzeVlRealtimeResponseBodyDataKvListInfo] = None,
+    ):
+        # Document parsing result details
+        self.kv_list_info = kv_list_info
+
+    def validate(self):
+        if self.kv_list_info:
+            for k in self.kv_list_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['kvListInfo'] = []
+        if self.kv_list_info is not None:
+            for k in self.kv_list_info:
+                result['kvListInfo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.kv_list_info = []
+        if m.get('kvListInfo') is not None:
+            for k in m.get('kvListInfo'):
+                temp_model = AnalyzeVlRealtimeResponseBodyDataKvListInfo()
+                self.kv_list_info.append(temp_model.from_map(k))
+        return self
+
+
+class AnalyzeVlRealtimeResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: AnalyzeVlRealtimeResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # Return result.
+        self.data = data
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = AnalyzeVlRealtimeResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class AnalyzeVlRealtimeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AnalyzeVlRealtimeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AnalyzeVlRealtimeResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 

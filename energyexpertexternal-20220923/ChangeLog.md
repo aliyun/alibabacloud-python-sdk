@@ -1,3 +1,12 @@
+2025-02-21 Version: 3.1.0
+- Support API AnalyzeVlRealtime.
+- Update API BatchSaveInstructionStatus: update param body.
+- Update API BatchUpdateSystemRunningPlan: update param body.
+- Update API EditProhibitedDevices: update param body.
+- Update API EditUnfavorableAreaDevices: update param body.
+- Update API SetRunningPlan: update param body.
+
+
 2025-02-12 Version: 3.0.1
 - Update API BatchSaveInstructionStatus: update param body.
 - Update API BatchUpdateSystemRunningPlan: update param body.
