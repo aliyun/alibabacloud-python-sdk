@@ -77,10 +77,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            brain_industrial_20200920_models.ActivateLicenseResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.ActivateLicenseResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.ActivateLicenseResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def activate_license_with_options_async(
         self,
@@ -118,10 +124,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            brain_industrial_20200920_models.ActivateLicenseResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.ActivateLicenseResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.ActivateLicenseResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def activate_license(
         self,
@@ -148,6 +160,574 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.activate_license_with_options_async(request, runtime)
+
+    def create_ess_opt_job_with_options(
+        self,
+        tmp_req: brain_industrial_20200920_models.CreateEssOptJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> brain_industrial_20200920_models.CreateEssOptJobResponse:
+        """
+        @summary 创建储能运行优化任务
+        
+        @param tmp_req: CreateEssOptJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEssOptJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = brain_industrial_20200920_models.CreateEssOptJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.elec_price):
+            request.elec_price_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.elec_price, 'ElecPrice', 'json')
+        if not UtilClient.is_unset(tmp_req.gen_price):
+            request.gen_price_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.gen_price, 'GenPrice', 'json')
+        if not UtilClient.is_unset(tmp_req.location):
+            request.location_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.location, 'Location', 'json')
+        if not UtilClient.is_unset(tmp_req.system_data):
+            request.system_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.system_data, 'SystemData', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.duration):
+            body['Duration'] = request.duration
+        if not UtilClient.is_unset(request.elec_price_shrink):
+            body['ElecPrice'] = request.elec_price_shrink
+        if not UtilClient.is_unset(request.freq):
+            body['Freq'] = request.freq
+        if not UtilClient.is_unset(request.gen_price_shrink):
+            body['GenPrice'] = request.gen_price_shrink
+        if not UtilClient.is_unset(request.location_shrink):
+            body['Location'] = request.location_shrink
+        if not UtilClient.is_unset(request.model_version):
+            body['ModelVersion'] = request.model_version
+        if not UtilClient.is_unset(request.run_date):
+            body['RunDate'] = request.run_date
+        if not UtilClient.is_unset(request.system_data_shrink):
+            body['SystemData'] = request.system_data_shrink
+        if not UtilClient.is_unset(request.time_zone):
+            body['TimeZone'] = request.time_zone
+        if not UtilClient.is_unset(request.topo_type):
+            body['TopoType'] = request.topo_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateEssOptJob',
+            version='2020-09-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.CreateEssOptJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.CreateEssOptJobResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_ess_opt_job_with_options_async(
+        self,
+        tmp_req: brain_industrial_20200920_models.CreateEssOptJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> brain_industrial_20200920_models.CreateEssOptJobResponse:
+        """
+        @summary 创建储能运行优化任务
+        
+        @param tmp_req: CreateEssOptJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEssOptJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = brain_industrial_20200920_models.CreateEssOptJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.elec_price):
+            request.elec_price_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.elec_price, 'ElecPrice', 'json')
+        if not UtilClient.is_unset(tmp_req.gen_price):
+            request.gen_price_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.gen_price, 'GenPrice', 'json')
+        if not UtilClient.is_unset(tmp_req.location):
+            request.location_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.location, 'Location', 'json')
+        if not UtilClient.is_unset(tmp_req.system_data):
+            request.system_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.system_data, 'SystemData', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.duration):
+            body['Duration'] = request.duration
+        if not UtilClient.is_unset(request.elec_price_shrink):
+            body['ElecPrice'] = request.elec_price_shrink
+        if not UtilClient.is_unset(request.freq):
+            body['Freq'] = request.freq
+        if not UtilClient.is_unset(request.gen_price_shrink):
+            body['GenPrice'] = request.gen_price_shrink
+        if not UtilClient.is_unset(request.location_shrink):
+            body['Location'] = request.location_shrink
+        if not UtilClient.is_unset(request.model_version):
+            body['ModelVersion'] = request.model_version
+        if not UtilClient.is_unset(request.run_date):
+            body['RunDate'] = request.run_date
+        if not UtilClient.is_unset(request.system_data_shrink):
+            body['SystemData'] = request.system_data_shrink
+        if not UtilClient.is_unset(request.time_zone):
+            body['TimeZone'] = request.time_zone
+        if not UtilClient.is_unset(request.topo_type):
+            body['TopoType'] = request.topo_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateEssOptJob',
+            version='2020-09-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.CreateEssOptJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.CreateEssOptJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_ess_opt_job(
+        self,
+        request: brain_industrial_20200920_models.CreateEssOptJobRequest,
+    ) -> brain_industrial_20200920_models.CreateEssOptJobResponse:
+        """
+        @summary 创建储能运行优化任务
+        
+        @param request: CreateEssOptJobRequest
+        @return: CreateEssOptJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_ess_opt_job_with_options(request, runtime)
+
+    async def create_ess_opt_job_async(
+        self,
+        request: brain_industrial_20200920_models.CreateEssOptJobRequest,
+    ) -> brain_industrial_20200920_models.CreateEssOptJobResponse:
+        """
+        @summary 创建储能运行优化任务
+        
+        @param request: CreateEssOptJobRequest
+        @return: CreateEssOptJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_ess_opt_job_with_options_async(request, runtime)
+
+    def create_load_forecast_job_with_options(
+        self,
+        tmp_req: brain_industrial_20200920_models.CreateLoadForecastJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> brain_industrial_20200920_models.CreateLoadForecastJobResponse:
+        """
+        @summary 创建用电负荷预测任务
+        
+        @param tmp_req: CreateLoadForecastJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLoadForecastJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = brain_industrial_20200920_models.CreateLoadForecastJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.history_data):
+            request.history_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.history_data, 'HistoryData', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.device_type):
+            body['DeviceType'] = request.device_type
+        if not UtilClient.is_unset(request.duration):
+            body['Duration'] = request.duration
+        if not UtilClient.is_unset(request.freq):
+            body['Freq'] = request.freq
+        if not UtilClient.is_unset(request.history_data_shrink):
+            body['HistoryData'] = request.history_data_shrink
+        if not UtilClient.is_unset(request.model_version):
+            body['ModelVersion'] = request.model_version
+        if not UtilClient.is_unset(request.run_date):
+            body['RunDate'] = request.run_date
+        if not UtilClient.is_unset(request.system_type):
+            body['SystemType'] = request.system_type
+        if not UtilClient.is_unset(request.time_zone):
+            body['TimeZone'] = request.time_zone
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateLoadForecastJob',
+            version='2020-09-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.CreateLoadForecastJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.CreateLoadForecastJobResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_load_forecast_job_with_options_async(
+        self,
+        tmp_req: brain_industrial_20200920_models.CreateLoadForecastJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> brain_industrial_20200920_models.CreateLoadForecastJobResponse:
+        """
+        @summary 创建用电负荷预测任务
+        
+        @param tmp_req: CreateLoadForecastJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLoadForecastJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = brain_industrial_20200920_models.CreateLoadForecastJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.history_data):
+            request.history_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.history_data, 'HistoryData', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.device_type):
+            body['DeviceType'] = request.device_type
+        if not UtilClient.is_unset(request.duration):
+            body['Duration'] = request.duration
+        if not UtilClient.is_unset(request.freq):
+            body['Freq'] = request.freq
+        if not UtilClient.is_unset(request.history_data_shrink):
+            body['HistoryData'] = request.history_data_shrink
+        if not UtilClient.is_unset(request.model_version):
+            body['ModelVersion'] = request.model_version
+        if not UtilClient.is_unset(request.run_date):
+            body['RunDate'] = request.run_date
+        if not UtilClient.is_unset(request.system_type):
+            body['SystemType'] = request.system_type
+        if not UtilClient.is_unset(request.time_zone):
+            body['TimeZone'] = request.time_zone
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateLoadForecastJob',
+            version='2020-09-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.CreateLoadForecastJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.CreateLoadForecastJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_load_forecast_job(
+        self,
+        request: brain_industrial_20200920_models.CreateLoadForecastJobRequest,
+    ) -> brain_industrial_20200920_models.CreateLoadForecastJobResponse:
+        """
+        @summary 创建用电负荷预测任务
+        
+        @param request: CreateLoadForecastJobRequest
+        @return: CreateLoadForecastJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_load_forecast_job_with_options(request, runtime)
+
+    async def create_load_forecast_job_async(
+        self,
+        request: brain_industrial_20200920_models.CreateLoadForecastJobRequest,
+    ) -> brain_industrial_20200920_models.CreateLoadForecastJobResponse:
+        """
+        @summary 创建用电负荷预测任务
+        
+        @param request: CreateLoadForecastJobRequest
+        @return: CreateLoadForecastJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_load_forecast_job_with_options_async(request, runtime)
+
+    def create_power_forecast_job_with_options(
+        self,
+        tmp_req: brain_industrial_20200920_models.CreatePowerForecastJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> brain_industrial_20200920_models.CreatePowerForecastJobResponse:
+        """
+        @summary 创建发电功率预测任务
+        
+        @param tmp_req: CreatePowerForecastJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePowerForecastJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = brain_industrial_20200920_models.CreatePowerForecastJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.history_data):
+            request.history_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.history_data, 'HistoryData', 'json')
+        if not UtilClient.is_unset(tmp_req.location):
+            request.location_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.location, 'Location', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.device_type):
+            body['DeviceType'] = request.device_type
+        if not UtilClient.is_unset(request.duration):
+            body['Duration'] = request.duration
+        if not UtilClient.is_unset(request.freq):
+            body['Freq'] = request.freq
+        if not UtilClient.is_unset(request.history_data_shrink):
+            body['HistoryData'] = request.history_data_shrink
+        if not UtilClient.is_unset(request.location_shrink):
+            body['Location'] = request.location_shrink
+        if not UtilClient.is_unset(request.model_version):
+            body['ModelVersion'] = request.model_version
+        if not UtilClient.is_unset(request.run_date):
+            body['RunDate'] = request.run_date
+        if not UtilClient.is_unset(request.system_type):
+            body['SystemType'] = request.system_type
+        if not UtilClient.is_unset(request.time_zone):
+            body['TimeZone'] = request.time_zone
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreatePowerForecastJob',
+            version='2020-09-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.CreatePowerForecastJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.CreatePowerForecastJobResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_power_forecast_job_with_options_async(
+        self,
+        tmp_req: brain_industrial_20200920_models.CreatePowerForecastJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> brain_industrial_20200920_models.CreatePowerForecastJobResponse:
+        """
+        @summary 创建发电功率预测任务
+        
+        @param tmp_req: CreatePowerForecastJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePowerForecastJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = brain_industrial_20200920_models.CreatePowerForecastJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.history_data):
+            request.history_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.history_data, 'HistoryData', 'json')
+        if not UtilClient.is_unset(tmp_req.location):
+            request.location_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.location, 'Location', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.device_type):
+            body['DeviceType'] = request.device_type
+        if not UtilClient.is_unset(request.duration):
+            body['Duration'] = request.duration
+        if not UtilClient.is_unset(request.freq):
+            body['Freq'] = request.freq
+        if not UtilClient.is_unset(request.history_data_shrink):
+            body['HistoryData'] = request.history_data_shrink
+        if not UtilClient.is_unset(request.location_shrink):
+            body['Location'] = request.location_shrink
+        if not UtilClient.is_unset(request.model_version):
+            body['ModelVersion'] = request.model_version
+        if not UtilClient.is_unset(request.run_date):
+            body['RunDate'] = request.run_date
+        if not UtilClient.is_unset(request.system_type):
+            body['SystemType'] = request.system_type
+        if not UtilClient.is_unset(request.time_zone):
+            body['TimeZone'] = request.time_zone
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreatePowerForecastJob',
+            version='2020-09-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.CreatePowerForecastJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.CreatePowerForecastJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_power_forecast_job(
+        self,
+        request: brain_industrial_20200920_models.CreatePowerForecastJobRequest,
+    ) -> brain_industrial_20200920_models.CreatePowerForecastJobResponse:
+        """
+        @summary 创建发电功率预测任务
+        
+        @param request: CreatePowerForecastJobRequest
+        @return: CreatePowerForecastJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_power_forecast_job_with_options(request, runtime)
+
+    async def create_power_forecast_job_async(
+        self,
+        request: brain_industrial_20200920_models.CreatePowerForecastJobRequest,
+    ) -> brain_industrial_20200920_models.CreatePowerForecastJobResponse:
+        """
+        @summary 创建发电功率预测任务
+        
+        @param request: CreatePowerForecastJobRequest
+        @return: CreatePowerForecastJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_power_forecast_job_with_options_async(request, runtime)
+
+    def get_aivpp_algo_job_with_options(
+        self,
+        request: brain_industrial_20200920_models.GetAivppAlgoJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> brain_industrial_20200920_models.GetAivppAlgoJobResponse:
+        """
+        @summary 查询aivpp算法job
+        
+        @param request: GetAivppAlgoJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAivppAlgoJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.job_id):
+            body['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetAivppAlgoJob',
+            version='2020-09-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.GetAivppAlgoJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.GetAivppAlgoJobResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_aivpp_algo_job_with_options_async(
+        self,
+        request: brain_industrial_20200920_models.GetAivppAlgoJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> brain_industrial_20200920_models.GetAivppAlgoJobResponse:
+        """
+        @summary 查询aivpp算法job
+        
+        @param request: GetAivppAlgoJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAivppAlgoJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.job_id):
+            body['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetAivppAlgoJob',
+            version='2020-09-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.GetAivppAlgoJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.GetAivppAlgoJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_aivpp_algo_job(
+        self,
+        request: brain_industrial_20200920_models.GetAivppAlgoJobRequest,
+    ) -> brain_industrial_20200920_models.GetAivppAlgoJobResponse:
+        """
+        @summary 查询aivpp算法job
+        
+        @param request: GetAivppAlgoJobRequest
+        @return: GetAivppAlgoJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_aivpp_algo_job_with_options(request, runtime)
+
+    async def get_aivpp_algo_job_async(
+        self,
+        request: brain_industrial_20200920_models.GetAivppAlgoJobRequest,
+    ) -> brain_industrial_20200920_models.GetAivppAlgoJobResponse:
+        """
+        @summary 查询aivpp算法job
+        
+        @param request: GetAivppAlgoJobRequest
+        @return: GetAivppAlgoJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_aivpp_algo_job_with_options_async(request, runtime)
 
     def get_license_with_options(
         self,
@@ -181,10 +761,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            brain_industrial_20200920_models.GetLicenseResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.GetLicenseResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.GetLicenseResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_license_with_options_async(
         self,
@@ -218,10 +804,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            brain_industrial_20200920_models.GetLicenseResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.GetLicenseResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.GetLicenseResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_license(
         self,
@@ -248,6 +840,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_license_with_options_async(request, runtime)
+
+    def list_aivpp_resources_with_options(
+        self,
+        request: brain_industrial_20200920_models.ListAivppResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> brain_industrial_20200920_models.ListAivppResourcesResponse:
+        """
+        @summary 获取用户AIVPP资源列表
+        
+        @param request: ListAivppResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAivppResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListAivppResources',
+            version='2020-09-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.ListAivppResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.ListAivppResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_aivpp_resources_with_options_async(
+        self,
+        request: brain_industrial_20200920_models.ListAivppResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> brain_industrial_20200920_models.ListAivppResourcesResponse:
+        """
+        @summary 获取用户AIVPP资源列表
+        
+        @param request: ListAivppResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAivppResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListAivppResources',
+            version='2020-09-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.ListAivppResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.ListAivppResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_aivpp_resources(
+        self,
+        request: brain_industrial_20200920_models.ListAivppResourcesRequest,
+    ) -> brain_industrial_20200920_models.ListAivppResourcesResponse:
+        """
+        @summary 获取用户AIVPP资源列表
+        
+        @param request: ListAivppResourcesRequest
+        @return: ListAivppResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_aivpp_resources_with_options(request, runtime)
+
+    async def list_aivpp_resources_async(
+        self,
+        request: brain_industrial_20200920_models.ListAivppResourcesRequest,
+    ) -> brain_industrial_20200920_models.ListAivppResourcesResponse:
+        """
+        @summary 获取用户AIVPP资源列表
+        
+        @param request: ListAivppResourcesRequest
+        @return: ListAivppResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_aivpp_resources_with_options_async(request, runtime)
 
     def list_licenses_with_options(
         self,
@@ -283,10 +987,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            brain_industrial_20200920_models.ListLicensesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.ListLicensesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.ListLicensesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_licenses_with_options_async(
         self,
@@ -322,10 +1032,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            brain_industrial_20200920_models.ListLicensesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.ListLicensesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.ListLicensesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_licenses(
         self,
@@ -383,10 +1099,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            brain_industrial_20200920_models.ListUserResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.ListUserResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.ListUserResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_user_resources_with_options_async(
         self,
@@ -418,10 +1140,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            brain_industrial_20200920_models.ListUserResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.ListUserResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.ListUserResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_user_resources(
         self,
@@ -481,10 +1209,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            brain_industrial_20200920_models.UpdateLicenseDescriptionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.UpdateLicenseDescriptionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.UpdateLicenseDescriptionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_license_description_with_options_async(
         self,
@@ -518,10 +1252,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            brain_industrial_20200920_models.UpdateLicenseDescriptionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.UpdateLicenseDescriptionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                brain_industrial_20200920_models.UpdateLicenseDescriptionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_license_description(
         self,

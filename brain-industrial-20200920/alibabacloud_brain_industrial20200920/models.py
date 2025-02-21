@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict
+from typing import List, Dict, Any
 
 
 class ActivateLicenseRequest(TeaModel):
@@ -351,6 +351,1582 @@ class ActivateLicenseResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ActivateLicenseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateEssOptJobRequestElecPrice(TeaModel):
+    def __init__(
+        self,
+        data_time: str = None,
+        price: str = None,
+    ):
+        self.data_time = data_time
+        self.price = price
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_time is not None:
+            result['DataTime'] = self.data_time
+        if self.price is not None:
+            result['Price'] = self.price
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataTime') is not None:
+            self.data_time = m.get('DataTime')
+        if m.get('Price') is not None:
+            self.price = m.get('Price')
+        return self
+
+
+class CreateEssOptJobRequestGenPrice(TeaModel):
+    def __init__(
+        self,
+        data_time: str = None,
+        price: str = None,
+    ):
+        self.data_time = data_time
+        self.price = price
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_time is not None:
+            result['DataTime'] = self.data_time
+        if self.price is not None:
+            result['Price'] = self.price
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataTime') is not None:
+            self.data_time = m.get('DataTime')
+        if m.get('Price') is not None:
+            self.price = m.get('Price')
+        return self
+
+
+class CreateEssOptJobRequestLocation(TeaModel):
+    def __init__(
+        self,
+        altitude: float = None,
+        latitude: float = None,
+        longitude: float = None,
+    ):
+        self.altitude = altitude
+        self.latitude = latitude
+        self.longitude = longitude
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.altitude is not None:
+            result['Altitude'] = self.altitude
+        if self.latitude is not None:
+            result['Latitude'] = self.latitude
+        if self.longitude is not None:
+            result['Longitude'] = self.longitude
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Altitude') is not None:
+            self.altitude = m.get('Altitude')
+        if m.get('Latitude') is not None:
+            self.latitude = m.get('Latitude')
+        if m.get('Longitude') is not None:
+            self.longitude = m.get('Longitude')
+        return self
+
+
+class CreateEssOptJobRequestSystemData(TeaModel):
+    def __init__(
+        self,
+        history_data: List[Dict[str, Any]] = None,
+        system_id: str = None,
+        system_params: Dict[str, Any] = None,
+        system_type: str = None,
+    ):
+        self.history_data = history_data
+        self.system_id = system_id
+        self.system_params = system_params
+        self.system_type = system_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.history_data is not None:
+            result['HistoryData'] = self.history_data
+        if self.system_id is not None:
+            result['SystemId'] = self.system_id
+        if self.system_params is not None:
+            result['SystemParams'] = self.system_params
+        if self.system_type is not None:
+            result['SystemType'] = self.system_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HistoryData') is not None:
+            self.history_data = m.get('HistoryData')
+        if m.get('SystemId') is not None:
+            self.system_id = m.get('SystemId')
+        if m.get('SystemParams') is not None:
+            self.system_params = m.get('SystemParams')
+        if m.get('SystemType') is not None:
+            self.system_type = m.get('SystemType')
+        return self
+
+
+class CreateEssOptJobRequest(TeaModel):
+    def __init__(
+        self,
+        duration: int = None,
+        elec_price: List[CreateEssOptJobRequestElecPrice] = None,
+        freq: str = None,
+        gen_price: List[CreateEssOptJobRequestGenPrice] = None,
+        location: CreateEssOptJobRequestLocation = None,
+        model_version: str = None,
+        run_date: str = None,
+        system_data: List[CreateEssOptJobRequestSystemData] = None,
+        time_zone: str = None,
+        topo_type: str = None,
+    ):
+        self.duration = duration
+        self.elec_price = elec_price
+        self.freq = freq
+        self.gen_price = gen_price
+        self.location = location
+        self.model_version = model_version
+        self.run_date = run_date
+        self.system_data = system_data
+        self.time_zone = time_zone
+        self.topo_type = topo_type
+
+    def validate(self):
+        if self.elec_price:
+            for k in self.elec_price:
+                if k:
+                    k.validate()
+        if self.gen_price:
+            for k in self.gen_price:
+                if k:
+                    k.validate()
+        if self.location:
+            self.location.validate()
+        if self.system_data:
+            for k in self.system_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        result['ElecPrice'] = []
+        if self.elec_price is not None:
+            for k in self.elec_price:
+                result['ElecPrice'].append(k.to_map() if k else None)
+        if self.freq is not None:
+            result['Freq'] = self.freq
+        result['GenPrice'] = []
+        if self.gen_price is not None:
+            for k in self.gen_price:
+                result['GenPrice'].append(k.to_map() if k else None)
+        if self.location is not None:
+            result['Location'] = self.location.to_map()
+        if self.model_version is not None:
+            result['ModelVersion'] = self.model_version
+        if self.run_date is not None:
+            result['RunDate'] = self.run_date
+        result['SystemData'] = []
+        if self.system_data is not None:
+            for k in self.system_data:
+                result['SystemData'].append(k.to_map() if k else None)
+        if self.time_zone is not None:
+            result['TimeZone'] = self.time_zone
+        if self.topo_type is not None:
+            result['TopoType'] = self.topo_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        self.elec_price = []
+        if m.get('ElecPrice') is not None:
+            for k in m.get('ElecPrice'):
+                temp_model = CreateEssOptJobRequestElecPrice()
+                self.elec_price.append(temp_model.from_map(k))
+        if m.get('Freq') is not None:
+            self.freq = m.get('Freq')
+        self.gen_price = []
+        if m.get('GenPrice') is not None:
+            for k in m.get('GenPrice'):
+                temp_model = CreateEssOptJobRequestGenPrice()
+                self.gen_price.append(temp_model.from_map(k))
+        if m.get('Location') is not None:
+            temp_model = CreateEssOptJobRequestLocation()
+            self.location = temp_model.from_map(m['Location'])
+        if m.get('ModelVersion') is not None:
+            self.model_version = m.get('ModelVersion')
+        if m.get('RunDate') is not None:
+            self.run_date = m.get('RunDate')
+        self.system_data = []
+        if m.get('SystemData') is not None:
+            for k in m.get('SystemData'):
+                temp_model = CreateEssOptJobRequestSystemData()
+                self.system_data.append(temp_model.from_map(k))
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
+        if m.get('TopoType') is not None:
+            self.topo_type = m.get('TopoType')
+        return self
+
+
+class CreateEssOptJobShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        duration: int = None,
+        elec_price_shrink: str = None,
+        freq: str = None,
+        gen_price_shrink: str = None,
+        location_shrink: str = None,
+        model_version: str = None,
+        run_date: str = None,
+        system_data_shrink: str = None,
+        time_zone: str = None,
+        topo_type: str = None,
+    ):
+        self.duration = duration
+        self.elec_price_shrink = elec_price_shrink
+        self.freq = freq
+        self.gen_price_shrink = gen_price_shrink
+        self.location_shrink = location_shrink
+        self.model_version = model_version
+        self.run_date = run_date
+        self.system_data_shrink = system_data_shrink
+        self.time_zone = time_zone
+        self.topo_type = topo_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.elec_price_shrink is not None:
+            result['ElecPrice'] = self.elec_price_shrink
+        if self.freq is not None:
+            result['Freq'] = self.freq
+        if self.gen_price_shrink is not None:
+            result['GenPrice'] = self.gen_price_shrink
+        if self.location_shrink is not None:
+            result['Location'] = self.location_shrink
+        if self.model_version is not None:
+            result['ModelVersion'] = self.model_version
+        if self.run_date is not None:
+            result['RunDate'] = self.run_date
+        if self.system_data_shrink is not None:
+            result['SystemData'] = self.system_data_shrink
+        if self.time_zone is not None:
+            result['TimeZone'] = self.time_zone
+        if self.topo_type is not None:
+            result['TopoType'] = self.topo_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('ElecPrice') is not None:
+            self.elec_price_shrink = m.get('ElecPrice')
+        if m.get('Freq') is not None:
+            self.freq = m.get('Freq')
+        if m.get('GenPrice') is not None:
+            self.gen_price_shrink = m.get('GenPrice')
+        if m.get('Location') is not None:
+            self.location_shrink = m.get('Location')
+        if m.get('ModelVersion') is not None:
+            self.model_version = m.get('ModelVersion')
+        if m.get('RunDate') is not None:
+            self.run_date = m.get('RunDate')
+        if m.get('SystemData') is not None:
+            self.system_data_shrink = m.get('SystemData')
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
+        if m.get('TopoType') is not None:
+            self.topo_type = m.get('TopoType')
+        return self
+
+
+class CreateEssOptJobResponseBodyDataResponse(TeaModel):
+    def __init__(
+        self,
+        debug_info: Any = None,
+        job_type: str = None,
+        result: Any = None,
+    ):
+        self.debug_info = debug_info
+        self.job_type = job_type
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.debug_info is not None:
+            result['DebugInfo'] = self.debug_info
+        if self.job_type is not None:
+            result['JobType'] = self.job_type
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DebugInfo') is not None:
+            self.debug_info = m.get('DebugInfo')
+        if m.get('JobType') is not None:
+            self.job_type = m.get('JobType')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class CreateEssOptJobResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        completed: bool = None,
+        create_time: str = None,
+        error: str = None,
+        job_id: str = None,
+        progress: int = None,
+        response: CreateEssOptJobResponseBodyDataResponse = None,
+        status: str = None,
+    ):
+        self.completed = completed
+        self.create_time = create_time
+        self.error = error
+        self.job_id = job_id
+        self.progress = progress
+        self.response = response
+        self.status = status
+
+    def validate(self):
+        if self.response:
+            self.response.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.completed is not None:
+            result['Completed'] = self.completed
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.error is not None:
+            result['Error'] = self.error
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.response is not None:
+            result['Response'] = self.response.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Completed') is not None:
+            self.completed = m.get('Completed')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Error') is not None:
+            self.error = m.get('Error')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('Response') is not None:
+            temp_model = CreateEssOptJobResponseBodyDataResponse()
+            self.response = temp_model.from_map(m['Response'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class CreateEssOptJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateEssOptJobResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreateEssOptJobResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateEssOptJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateEssOptJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateEssOptJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateLoadForecastJobRequestHistoryData(TeaModel):
+    def __init__(
+        self,
+        run_time: str = None,
+        value: float = None,
+    ):
+        self.run_time = run_time
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.run_time is not None:
+            result['RunTime'] = self.run_time
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RunTime') is not None:
+            self.run_time = m.get('RunTime')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateLoadForecastJobRequest(TeaModel):
+    def __init__(
+        self,
+        device_type: str = None,
+        duration: int = None,
+        freq: str = None,
+        history_data: List[CreateLoadForecastJobRequestHistoryData] = None,
+        model_version: str = None,
+        run_date: str = None,
+        system_type: str = None,
+        time_zone: str = None,
+    ):
+        self.device_type = device_type
+        self.duration = duration
+        self.freq = freq
+        self.history_data = history_data
+        self.model_version = model_version
+        self.run_date = run_date
+        self.system_type = system_type
+        self.time_zone = time_zone
+
+    def validate(self):
+        if self.history_data:
+            for k in self.history_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.freq is not None:
+            result['Freq'] = self.freq
+        result['HistoryData'] = []
+        if self.history_data is not None:
+            for k in self.history_data:
+                result['HistoryData'].append(k.to_map() if k else None)
+        if self.model_version is not None:
+            result['ModelVersion'] = self.model_version
+        if self.run_date is not None:
+            result['RunDate'] = self.run_date
+        if self.system_type is not None:
+            result['SystemType'] = self.system_type
+        if self.time_zone is not None:
+            result['TimeZone'] = self.time_zone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Freq') is not None:
+            self.freq = m.get('Freq')
+        self.history_data = []
+        if m.get('HistoryData') is not None:
+            for k in m.get('HistoryData'):
+                temp_model = CreateLoadForecastJobRequestHistoryData()
+                self.history_data.append(temp_model.from_map(k))
+        if m.get('ModelVersion') is not None:
+            self.model_version = m.get('ModelVersion')
+        if m.get('RunDate') is not None:
+            self.run_date = m.get('RunDate')
+        if m.get('SystemType') is not None:
+            self.system_type = m.get('SystemType')
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
+        return self
+
+
+class CreateLoadForecastJobShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        device_type: str = None,
+        duration: int = None,
+        freq: str = None,
+        history_data_shrink: str = None,
+        model_version: str = None,
+        run_date: str = None,
+        system_type: str = None,
+        time_zone: str = None,
+    ):
+        self.device_type = device_type
+        self.duration = duration
+        self.freq = freq
+        self.history_data_shrink = history_data_shrink
+        self.model_version = model_version
+        self.run_date = run_date
+        self.system_type = system_type
+        self.time_zone = time_zone
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.freq is not None:
+            result['Freq'] = self.freq
+        if self.history_data_shrink is not None:
+            result['HistoryData'] = self.history_data_shrink
+        if self.model_version is not None:
+            result['ModelVersion'] = self.model_version
+        if self.run_date is not None:
+            result['RunDate'] = self.run_date
+        if self.system_type is not None:
+            result['SystemType'] = self.system_type
+        if self.time_zone is not None:
+            result['TimeZone'] = self.time_zone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Freq') is not None:
+            self.freq = m.get('Freq')
+        if m.get('HistoryData') is not None:
+            self.history_data_shrink = m.get('HistoryData')
+        if m.get('ModelVersion') is not None:
+            self.model_version = m.get('ModelVersion')
+        if m.get('RunDate') is not None:
+            self.run_date = m.get('RunDate')
+        if m.get('SystemType') is not None:
+            self.system_type = m.get('SystemType')
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
+        return self
+
+
+class CreateLoadForecastJobResponseBodyDataResponse(TeaModel):
+    def __init__(
+        self,
+        debug_info: Any = None,
+        job_type: str = None,
+        result: Any = None,
+    ):
+        self.debug_info = debug_info
+        self.job_type = job_type
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.debug_info is not None:
+            result['DebugInfo'] = self.debug_info
+        if self.job_type is not None:
+            result['JobType'] = self.job_type
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DebugInfo') is not None:
+            self.debug_info = m.get('DebugInfo')
+        if m.get('JobType') is not None:
+            self.job_type = m.get('JobType')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class CreateLoadForecastJobResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        completed: bool = None,
+        create_time: str = None,
+        error: str = None,
+        job_id: str = None,
+        progress: int = None,
+        response: CreateLoadForecastJobResponseBodyDataResponse = None,
+        status: str = None,
+    ):
+        self.completed = completed
+        self.create_time = create_time
+        self.error = error
+        self.job_id = job_id
+        self.progress = progress
+        self.response = response
+        self.status = status
+
+    def validate(self):
+        if self.response:
+            self.response.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.completed is not None:
+            result['Completed'] = self.completed
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.error is not None:
+            result['Error'] = self.error
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.response is not None:
+            result['Response'] = self.response.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Completed') is not None:
+            self.completed = m.get('Completed')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Error') is not None:
+            self.error = m.get('Error')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('Response') is not None:
+            temp_model = CreateLoadForecastJobResponseBodyDataResponse()
+            self.response = temp_model.from_map(m['Response'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class CreateLoadForecastJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateLoadForecastJobResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreateLoadForecastJobResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateLoadForecastJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateLoadForecastJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateLoadForecastJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreatePowerForecastJobRequestHistoryData(TeaModel):
+    def __init__(
+        self,
+        run_time: str = None,
+        value: float = None,
+    ):
+        self.run_time = run_time
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.run_time is not None:
+            result['RunTime'] = self.run_time
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RunTime') is not None:
+            self.run_time = m.get('RunTime')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreatePowerForecastJobRequestLocation(TeaModel):
+    def __init__(
+        self,
+        altitude: float = None,
+        latitude: float = None,
+        longitude: float = None,
+    ):
+        self.altitude = altitude
+        self.latitude = latitude
+        self.longitude = longitude
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.altitude is not None:
+            result['Altitude'] = self.altitude
+        if self.latitude is not None:
+            result['Latitude'] = self.latitude
+        if self.longitude is not None:
+            result['Longitude'] = self.longitude
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Altitude') is not None:
+            self.altitude = m.get('Altitude')
+        if m.get('Latitude') is not None:
+            self.latitude = m.get('Latitude')
+        if m.get('Longitude') is not None:
+            self.longitude = m.get('Longitude')
+        return self
+
+
+class CreatePowerForecastJobRequest(TeaModel):
+    def __init__(
+        self,
+        device_type: str = None,
+        duration: int = None,
+        freq: str = None,
+        history_data: List[CreatePowerForecastJobRequestHistoryData] = None,
+        location: CreatePowerForecastJobRequestLocation = None,
+        model_version: str = None,
+        run_date: str = None,
+        system_type: str = None,
+        time_zone: str = None,
+    ):
+        self.device_type = device_type
+        self.duration = duration
+        self.freq = freq
+        self.history_data = history_data
+        self.location = location
+        self.model_version = model_version
+        self.run_date = run_date
+        self.system_type = system_type
+        self.time_zone = time_zone
+
+    def validate(self):
+        if self.history_data:
+            for k in self.history_data:
+                if k:
+                    k.validate()
+        if self.location:
+            self.location.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.freq is not None:
+            result['Freq'] = self.freq
+        result['HistoryData'] = []
+        if self.history_data is not None:
+            for k in self.history_data:
+                result['HistoryData'].append(k.to_map() if k else None)
+        if self.location is not None:
+            result['Location'] = self.location.to_map()
+        if self.model_version is not None:
+            result['ModelVersion'] = self.model_version
+        if self.run_date is not None:
+            result['RunDate'] = self.run_date
+        if self.system_type is not None:
+            result['SystemType'] = self.system_type
+        if self.time_zone is not None:
+            result['TimeZone'] = self.time_zone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Freq') is not None:
+            self.freq = m.get('Freq')
+        self.history_data = []
+        if m.get('HistoryData') is not None:
+            for k in m.get('HistoryData'):
+                temp_model = CreatePowerForecastJobRequestHistoryData()
+                self.history_data.append(temp_model.from_map(k))
+        if m.get('Location') is not None:
+            temp_model = CreatePowerForecastJobRequestLocation()
+            self.location = temp_model.from_map(m['Location'])
+        if m.get('ModelVersion') is not None:
+            self.model_version = m.get('ModelVersion')
+        if m.get('RunDate') is not None:
+            self.run_date = m.get('RunDate')
+        if m.get('SystemType') is not None:
+            self.system_type = m.get('SystemType')
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
+        return self
+
+
+class CreatePowerForecastJobShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        device_type: str = None,
+        duration: int = None,
+        freq: str = None,
+        history_data_shrink: str = None,
+        location_shrink: str = None,
+        model_version: str = None,
+        run_date: str = None,
+        system_type: str = None,
+        time_zone: str = None,
+    ):
+        self.device_type = device_type
+        self.duration = duration
+        self.freq = freq
+        self.history_data_shrink = history_data_shrink
+        self.location_shrink = location_shrink
+        self.model_version = model_version
+        self.run_date = run_date
+        self.system_type = system_type
+        self.time_zone = time_zone
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.freq is not None:
+            result['Freq'] = self.freq
+        if self.history_data_shrink is not None:
+            result['HistoryData'] = self.history_data_shrink
+        if self.location_shrink is not None:
+            result['Location'] = self.location_shrink
+        if self.model_version is not None:
+            result['ModelVersion'] = self.model_version
+        if self.run_date is not None:
+            result['RunDate'] = self.run_date
+        if self.system_type is not None:
+            result['SystemType'] = self.system_type
+        if self.time_zone is not None:
+            result['TimeZone'] = self.time_zone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Freq') is not None:
+            self.freq = m.get('Freq')
+        if m.get('HistoryData') is not None:
+            self.history_data_shrink = m.get('HistoryData')
+        if m.get('Location') is not None:
+            self.location_shrink = m.get('Location')
+        if m.get('ModelVersion') is not None:
+            self.model_version = m.get('ModelVersion')
+        if m.get('RunDate') is not None:
+            self.run_date = m.get('RunDate')
+        if m.get('SystemType') is not None:
+            self.system_type = m.get('SystemType')
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
+        return self
+
+
+class CreatePowerForecastJobResponseBodyDataResponse(TeaModel):
+    def __init__(
+        self,
+        debug_info: Any = None,
+        job_type: str = None,
+        result: Any = None,
+    ):
+        self.debug_info = debug_info
+        self.job_type = job_type
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.debug_info is not None:
+            result['DebugInfo'] = self.debug_info
+        if self.job_type is not None:
+            result['JobType'] = self.job_type
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DebugInfo') is not None:
+            self.debug_info = m.get('DebugInfo')
+        if m.get('JobType') is not None:
+            self.job_type = m.get('JobType')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class CreatePowerForecastJobResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        completed: bool = None,
+        create_time: str = None,
+        error: str = None,
+        job_id: str = None,
+        progress: int = None,
+        response: CreatePowerForecastJobResponseBodyDataResponse = None,
+        status: str = None,
+    ):
+        self.completed = completed
+        self.create_time = create_time
+        self.error = error
+        self.job_id = job_id
+        self.progress = progress
+        self.response = response
+        self.status = status
+
+    def validate(self):
+        if self.response:
+            self.response.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.completed is not None:
+            result['Completed'] = self.completed
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.error is not None:
+            result['Error'] = self.error
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.response is not None:
+            result['Response'] = self.response.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Completed') is not None:
+            self.completed = m.get('Completed')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Error') is not None:
+            self.error = m.get('Error')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('Response') is not None:
+            temp_model = CreatePowerForecastJobResponseBodyDataResponse()
+            self.response = temp_model.from_map(m['Response'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class CreatePowerForecastJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreatePowerForecastJobResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreatePowerForecastJobResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreatePowerForecastJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreatePowerForecastJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreatePowerForecastJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAivppAlgoJobRequest(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+    ):
+        self.job_id = job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        return self
+
+
+class GetAivppAlgoJobResponseBodyDataResponse(TeaModel):
+    def __init__(
+        self,
+        debug_info: Any = None,
+        job_type: str = None,
+        result: Any = None,
+    ):
+        self.debug_info = debug_info
+        self.job_type = job_type
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.debug_info is not None:
+            result['DebugInfo'] = self.debug_info
+        if self.job_type is not None:
+            result['JobType'] = self.job_type
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DebugInfo') is not None:
+            self.debug_info = m.get('DebugInfo')
+        if m.get('JobType') is not None:
+            self.job_type = m.get('JobType')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class GetAivppAlgoJobResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        completed: bool = None,
+        create_time: str = None,
+        error: str = None,
+        job_id: str = None,
+        progress: int = None,
+        response: GetAivppAlgoJobResponseBodyDataResponse = None,
+        status: str = None,
+    ):
+        self.completed = completed
+        self.create_time = create_time
+        self.error = error
+        self.job_id = job_id
+        self.progress = progress
+        self.response = response
+        self.status = status
+
+    def validate(self):
+        if self.response:
+            self.response.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.completed is not None:
+            result['Completed'] = self.completed
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.error is not None:
+            result['Error'] = self.error
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.response is not None:
+            result['Response'] = self.response.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Completed') is not None:
+            self.completed = m.get('Completed')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Error') is not None:
+            self.error = m.get('Error')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('Response') is not None:
+            temp_model = GetAivppAlgoJobResponseBodyDataResponse()
+            self.response = temp_model.from_map(m['Response'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetAivppAlgoJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetAivppAlgoJobResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetAivppAlgoJobResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetAivppAlgoJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAivppAlgoJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAivppAlgoJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -718,6 +2294,245 @@ class GetLicenseResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetLicenseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAivppResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        max_results: int = None,
+    ):
+        self.current_page = current_page
+        self.max_results = max_results
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        return self
+
+
+class ListAivppResourcesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        detail: str = None,
+        expire_time: str = None,
+        instance_id: str = None,
+        instance_type: str = None,
+        left_quantity: str = None,
+        order_id: str = None,
+        quantity: str = None,
+        specification: str = None,
+        start_time: str = None,
+        status: str = None,
+        user_id: str = None,
+    ):
+        self.detail = detail
+        self.expire_time = expire_time
+        self.instance_id = instance_id
+        self.instance_type = instance_type
+        self.left_quantity = left_quantity
+        self.order_id = order_id
+        self.quantity = quantity
+        self.specification = specification
+        self.start_time = start_time
+        self.status = status
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.detail is not None:
+            result['Detail'] = self.detail
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.left_quantity is not None:
+            result['LeftQuantity'] = self.left_quantity
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.quantity is not None:
+            result['Quantity'] = self.quantity
+        if self.specification is not None:
+            result['Specification'] = self.specification
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Detail') is not None:
+            self.detail = m.get('Detail')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('LeftQuantity') is not None:
+            self.left_quantity = m.get('LeftQuantity')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('Quantity') is not None:
+            self.quantity = m.get('Quantity')
+        if m.get('Specification') is not None:
+            self.specification = m.get('Specification')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class ListAivppResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListAivppResourcesResponseBodyData] = None,
+        max_results: int = None,
+        message: str = None,
+        next_token: str = None,
+        request_id: str = None,
+        success: str = None,
+        total_count: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.max_results = max_results
+        self.message = message
+        self.next_token = next_token
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListAivppResourcesResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListAivppResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAivppResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAivppResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
