@@ -7807,6 +7807,12 @@ class CreateClusterRequest(TeaModel):
         # 
         # This parameter is required.
         self.cluster_type = cluster_type
+        # Specifies whether to enable release protection for the cluster. Valid values:
+        # 
+        # *   true: enables release protection for the cluster.
+        # *   false: disables release protection for the cluster.
+        # 
+        # Default value: false.
         self.deletion_protection = deletion_protection
         # The deployment mode of master nodes in the cluster. Valid values:
         # 
@@ -8221,10 +8227,11 @@ class CreateScriptRequest(TeaModel):
         # 
         # This parameter is required.
         self.script_type = script_type
-        # The scripts.
+        # The common scripts or bootstrap actions.
         # 
         # This parameter is required.
         self.scripts = scripts
+        # The timeout period for manually running a common script. You cannot specify the timeout period for a bootstrap action.
         self.timeout_secs = timeout_secs
 
     def validate(self):
@@ -8343,6 +8350,175 @@ class CreateScriptResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateScriptResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateUsersRequestUsers(TeaModel):
+    def __init__(
+        self,
+        password: str = None,
+        user_name: str = None,
+    ):
+        # 用户密码。
+        # 
+        # This parameter is required.
+        self.password = password
+        # 用户名。
+        # 
+        # This parameter is required.
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class CreateUsersRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        region_id: str = None,
+        users: List[CreateUsersRequestUsers] = None,
+    ):
+        # 集群ID。
+        # 
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        # 区域ID。
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # 用户列表。
+        # 
+        # This parameter is required.
+        self.users = users
+
+    def validate(self):
+        if self.users:
+            for k in self.users:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        result['Users'] = []
+        if self.users is not None:
+            for k in self.users:
+                result['Users'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        self.users = []
+        if m.get('Users') is not None:
+            for k in m.get('Users'):
+                temp_model = CreateUsersRequestUsers()
+                self.users.append(temp_model.from_map(k))
+        return self
+
+
+class CreateUsersResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateUsersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateUsersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateUsersResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8870,6 +9046,166 @@ class DeleteScriptResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteScriptResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteUsersRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        region_id: str = None,
+        user_names: List[str] = None,
+    ):
+        # 集群ID。
+        # 
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.user_names = user_names
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.user_names is not None:
+            result['UserNames'] = self.user_names
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('UserNames') is not None:
+            self.user_names = m.get('UserNames')
+        return self
+
+
+class DeleteUsersShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        region_id: str = None,
+        user_names_shrink: str = None,
+    ):
+        # 集群ID。
+        # 
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.user_names_shrink = user_names_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.user_names_shrink is not None:
+            result['UserNames'] = self.user_names_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('UserNames') is not None:
+            self.user_names_shrink = m.get('UserNames')
+        return self
+
+
+class DeleteUsersResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteUsersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteUsersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteUsersResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10102,7 +10438,7 @@ class GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstraints(
     ):
         # The maximum number of nodes in the node group. Default value: 2000.
         self.max_capacity = max_capacity
-        # The maximum number of nodes that you can configure based on your business requirements.
+        # The maximum number of pay-as-you-go nodes in the node group.
         self.max_on_demand_capacity = max_on_demand_capacity
         # The minimum number of nodes in the node group. Default value: 0.
         self.min_capacity = min_capacity
@@ -10226,12 +10562,13 @@ class GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies(TeaModel):
         self.constraints = constraints
         # The node group ID.
         self.node_group_id = node_group_id
+        # The name of the node group.
         self.node_group_name = node_group_name
         # The ID of the auto scaling policy.
         self.scaling_policy_id = scaling_policy_id
         # The type of the auto scaling policy.
         self.scaling_policy_type = scaling_policy_type
-        # The list of auto scaling rules.
+        # The auto scaling rules.
         self.scaling_rules = scaling_rules
 
     def validate(self):
@@ -10316,7 +10653,7 @@ class GetClusterCloneMetaResponseBodyClusterCloneMeta(TeaModel):
     ):
         # The modified configuration items.
         self.application_configs = application_configs
-        # The services deployed in the cluster.
+        # The services.
         self.applications = applications
         # The bootstrap actions. Number of elements in the array: 1 to 10.
         self.bootstrap_scripts = bootstrap_scripts
@@ -10344,6 +10681,12 @@ class GetClusterCloneMetaResponseBodyClusterCloneMeta(TeaModel):
         # *   CUSTOM
         # *   HADOOP
         self.cluster_type = cluster_type
+        # Indicates whether release protection is enabled for the cluster. Valid values:
+        # 
+        # *   true: Release protection is enabled for the cluster.
+        # *   false: Release protection is disabled for the cluster.
+        # 
+        # Default value: false.
         self.deletion_protection = deletion_protection
         # The deployment mode of master nodes in the cluster. Valid values:
         # 
@@ -47454,7 +47797,9 @@ class ListScriptsRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The script ID. Only common scripts are supported.
         self.script_id = script_id
+        # The name of the script. Only common scripts are supported. Fuzzy search is supported.
         self.script_name = script_name
         # Type of cluster script. Possible values:
         # 
@@ -47463,6 +47808,7 @@ class ListScriptsRequest(TeaModel):
         # 
         # This parameter is required.
         self.script_type = script_type
+        # The status of the script. Only common scripts are supported.
         self.statuses = statuses
 
     def validate(self):
@@ -47552,7 +47898,7 @@ class ListScriptsResponseBodyScripts(TeaModel):
         self.execution_state = execution_state
         # Time of the last update.
         self.last_update_time = last_update_time
-        # Node selector.
+        # The node selector.
         self.node_selector = node_selector
         # Region ID.
         self.region_id = region_id
@@ -47652,7 +47998,7 @@ class ListScriptsResponseBody(TeaModel):
         self.next_token = next_token
         # Request ID.
         self.request_id = request_id
-        # List of scripts.
+        # The scripts.
         self.scripts = scripts
         # The total amount of data under the conditions of this request.
         self.total_count = total_count
@@ -47969,6 +48315,248 @@ class ListTagResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListTagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListUsersRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        region_id: str = None,
+        user_name: str = None,
+        user_names: List[str] = None,
+    ):
+        # 集群ID。
+        # 
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        # 一次获取的最大记录数。取值范围：1~100。
+        self.max_results = max_results
+        # 标记当前开始读取的位置，置空表示从头开始。
+        self.next_token = next_token
+        # 区域ID。
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # 用户名，支持模糊搜索。
+        self.user_name = user_name
+        self.user_names = user_names
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.user_names is not None:
+            result['UserNames'] = self.user_names
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('UserNames') is not None:
+            self.user_names = m.get('UserNames')
+        return self
+
+
+class ListUsersResponseBodyUsers(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        description: str = None,
+        keytab_hex: str = None,
+        ldap_url: str = None,
+        user_id: str = None,
+        user_name: str = None,
+    ):
+        # 创建时间。
+        self.create_time = create_time
+        # 备注。
+        self.description = description
+        # Keytab内容Base64编码。
+        self.keytab_hex = keytab_hex
+        # LDAP链接。
+        # ldap://emr-header-1.cluster-50018****:10389
+        self.ldap_url = ldap_url
+        # 用户ID。
+        self.user_id = user_id
+        # 用户名称。
+        # test
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.keytab_hex is not None:
+            result['KeytabHex'] = self.keytab_hex
+        if self.ldap_url is not None:
+            result['LdapUrl'] = self.ldap_url
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('KeytabHex') is not None:
+            self.keytab_hex = m.get('KeytabHex')
+        if m.get('LdapUrl') is not None:
+            self.ldap_url = m.get('LdapUrl')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class ListUsersResponseBody(TeaModel):
+    def __init__(
+        self,
+        is_admin: bool = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+        users: List[ListUsersResponseBodyUsers] = None,
+    ):
+        self.is_admin = is_admin
+        # 本次请求所返回的最大记录条数。
+        self.max_results = max_results
+        # 返回读取到的数据位置，空代表数据已经读取完毕。
+        self.next_token = next_token
+        # 请求ID。
+        self.request_id = request_id
+        # 本次请求条件下的数据总量。
+        self.total_count = total_count
+        # 用户列表。
+        self.users = users
+
+    def validate(self):
+        if self.users:
+            for k in self.users:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_admin is not None:
+            result['IsAdmin'] = self.is_admin
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['Users'] = []
+        if self.users is not None:
+            for k in self.users:
+                result['Users'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsAdmin') is not None:
+            self.is_admin = m.get('IsAdmin')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.users = []
+        if m.get('Users') is not None:
+            for k in m.get('Users'):
+                temp_model = ListUsersResponseBodyUsers()
+                self.users.append(temp_model.from_map(k))
+        return self
+
+
+class ListUsersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListUsersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListUsersResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -48641,6 +49229,12 @@ class RunClusterRequest(TeaModel):
         # 
         # This parameter is required.
         self.cluster_type = cluster_type
+        # Specifies whether to enable release protection for the cluster. Valid values:
+        # 
+        # *   true: enables release protection for the cluster.
+        # *   false: disables release protection for the cluster.
+        # 
+        # Default value: false.
         self.deletion_protection = deletion_protection
         # The deployment mode of master nodes in the cluster. Valid values:
         # 
@@ -48869,6 +49463,12 @@ class RunClusterShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.cluster_type = cluster_type
+        # Specifies whether to enable release protection for the cluster. Valid values:
+        # 
+        # *   true: enables release protection for the cluster.
+        # *   false: disables release protection for the cluster.
+        # 
+        # Default value: false.
         self.deletion_protection = deletion_protection
         # The deployment mode of master nodes in the cluster. Valid values:
         # 
@@ -49700,15 +50300,17 @@ class UpdateClusterAttributeRequest(TeaModel):
         description: str = None,
         region_id: str = None,
     ):
-        # 集群ID。
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # 集群名称。
+        # The cluster name.
         self.cluster_name = cluster_name
+        # Specifies whether release protection is enabled.
         self.deletion_protection = deletion_protection
+        # The cluster description.
         self.description = description
-        # 区域ID。
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -49754,7 +50356,7 @@ class UpdateClusterAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50023,6 +50625,147 @@ class UpdateScriptResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateScriptResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateUserAttributeRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        description: str = None,
+        password: str = None,
+        region_id: str = None,
+        user_id: str = None,
+        user_name: str = None,
+    ):
+        # 集群ID。
+        # 
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        # 用户备注。
+        self.description = description
+        # 用户密码。
+        self.password = password
+        # 区域ID。
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # 用户ID。
+        self.user_id = user_id
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class UpdateUserAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        # 请求ID。
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateUserAttributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateUserAttributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateUserAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
