@@ -2609,6 +2609,10 @@ class AllocateIpv6InternetBandwidthRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized RAM users, and missing parameter values. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false**: sends the API request. After the request passes the check, a 2XX HTTP status code is returned and the route table is associated. This is the default value.
         self.dry_run = dry_run
         # The metering method of the Internet bandwidth for the IPv6 address. Valid values:
         # 
@@ -9646,6 +9650,7 @@ class CreateFlowLogRequest(TeaModel):
         resource_owner_id: int = None,
         resource_type: str = None,
         tag: List[CreateFlowLogRequestTag] = None,
+        traffic_analyzer_id: str = None,
         traffic_path: List[str] = None,
         traffic_type: str = None,
     ):
@@ -9665,8 +9670,6 @@ class CreateFlowLogRequest(TeaModel):
         # *   The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
         # *   The name must start and end with a lowercase letter or a digit.
         # *   The name must be 3 to 63 characters in length.
-        # 
-        # This parameter is required.
         self.log_store_name = log_store_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -9675,8 +9678,6 @@ class CreateFlowLogRequest(TeaModel):
         # *   The name can contain only lowercase letters, digits, and hyphens (-).
         # *   The name must start and end with a lowercase letter or a digit.
         # *   The name must be 3 to 63 characters in length.
-        # 
-        # This parameter is required.
         self.project_name = project_name
         # The ID of the region where you want to create the flow log. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         # 
@@ -9700,6 +9701,7 @@ class CreateFlowLogRequest(TeaModel):
         self.resource_type = resource_type
         # The tag of the resource.
         self.tag = tag
+        self.traffic_analyzer_id = traffic_analyzer_id
         # The scope of the traffic that you want to capture. Valid values:
         # 
         # *   **all**: all traffic.
@@ -9758,6 +9760,8 @@ class CreateFlowLogRequest(TeaModel):
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
+        if self.traffic_analyzer_id is not None:
+            result['TrafficAnalyzerId'] = self.traffic_analyzer_id
         if self.traffic_path is not None:
             result['TrafficPath'] = self.traffic_path
         if self.traffic_type is not None:
@@ -9799,6 +9803,8 @@ class CreateFlowLogRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = CreateFlowLogRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        if m.get('TrafficAnalyzerId') is not None:
+            self.traffic_analyzer_id = m.get('TrafficAnalyzerId')
         if m.get('TrafficPath') is not None:
             self.traffic_path = m.get('TrafficPath')
         if m.get('TrafficType') is not None:
@@ -40292,6 +40298,7 @@ class DescribeFlowLogsResponseBodyFlowLogsFlowLog(TeaModel):
         service_type: str = None,
         status: str = None,
         tags: DescribeFlowLogsResponseBodyFlowLogsFlowLogTags = None,
+        traffic_analyzer_id: str = None,
         traffic_path: DescribeFlowLogsResponseBodyFlowLogsFlowLogTrafficPath = None,
         traffic_type: str = None,
     ):
@@ -40352,6 +40359,7 @@ class DescribeFlowLogsResponseBodyFlowLogsFlowLog(TeaModel):
         self.status = status
         # The list of tags.
         self.tags = tags
+        self.traffic_analyzer_id = traffic_analyzer_id
         # The sampling scope of the traffic that is collected. Valid values:
         # 
         # *   **all** (default value): all traffic
@@ -40414,6 +40422,8 @@ class DescribeFlowLogsResponseBodyFlowLogsFlowLog(TeaModel):
             result['Status'] = self.status
         if self.tags is not None:
             result['Tags'] = self.tags.to_map()
+        if self.traffic_analyzer_id is not None:
+            result['TrafficAnalyzerId'] = self.traffic_analyzer_id
         if self.traffic_path is not None:
             result['TrafficPath'] = self.traffic_path.to_map()
         if self.traffic_type is not None:
@@ -40459,6 +40469,8 @@ class DescribeFlowLogsResponseBodyFlowLogsFlowLog(TeaModel):
         if m.get('Tags') is not None:
             temp_model = DescribeFlowLogsResponseBodyFlowLogsFlowLogTags()
             self.tags = temp_model.from_map(m['Tags'])
+        if m.get('TrafficAnalyzerId') is not None:
+            self.traffic_analyzer_id = m.get('TrafficAnalyzerId')
         if m.get('TrafficPath') is not None:
             temp_model = DescribeFlowLogsResponseBodyFlowLogsFlowLogTrafficPath()
             self.traffic_path = temp_model.from_map(m['TrafficPath'])
@@ -51060,9 +51072,13 @@ class DescribeRouteTableListRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The detailed information about the route tables.
+        # The value of tag N to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         self.key = key
-        # The ID of the VPC to which the route table belongs.
+        # The value of tag N to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -51110,40 +51126,41 @@ class DescribeRouteTableListRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The value of tag N to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
-        # 
-        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # The number of the returned page. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. Maximum value: **50**. Default value: **10**.
+        self.page_size = page_size
+        # The region ID of the VPC to which the route table belongs.
+        # 
+        # You can call [DescribeRegions](https://www.alibabacloud.com/help/vpc/developer-reference/api-vpc-2016-04-28-describeregions) to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The ID of the resource group to which the route table belongs.
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # The ID of the route table.
+        self.route_table_id = route_table_id
+        # The name of the route table.
+        self.route_table_name = route_table_name
         # The type of the route table.
         # 
         # *   **System**\
         # *   **Custom**\
-        self.page_size = page_size
-        # The number of entries per page.
-        # 
-        # This parameter is required.
-        self.region_id = region_id
-        # The details of the route table.
-        self.resource_group_id = resource_group_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
-        # The tags.
-        self.route_table_id = route_table_id
-        # The key of tag N to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
-        # 
-        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
-        self.route_table_name = route_table_name
-        # The time when the route table was created.
         self.route_table_type = route_table_type
-        # The region ID of the VPC to which the route table belongs.
-        # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The ID of vRouter to which the route table belongs.
         self.router_id = router_id
-        # The ID of the resource group to which the route table to be queried belongs.
+        # The type of the router to which the route table belongs. Valid value:
+        # 
+        # *   **VRouter** (default): a vRouter
+        # *   **VBR**: a VBR
         self.router_type = router_type
-        # The page number.
-        self.tag = tag
         # The tags of the resource.
+        self.tag = tag
+        # The ID of the VPC to which the route table belongs. 
+        # 
+        # When this parameter is set, the value of **RouterType** is automatically assigned to **VRouter**.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -51263,13 +51280,9 @@ class DescribeRouteTableListResponseBodyRouterTableListRouterTableListTypeTagsTa
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
-        # 
-        # The tag key can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
+        # The key of the tag that is added to the route table.
         self.key = key
-        # The value of tag N to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
-        # 
-        # The tag value can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
+        # The value of the tag that is added to the route table.
         self.value = value
 
     def validate(self):
@@ -51378,44 +51391,55 @@ class DescribeRouteTableListResponseBodyRouterTableListRouterTableListType(TeaMo
         v_switch_ids: DescribeRouteTableListResponseBodyRouterTableListRouterTableListTypeVSwitchIds = None,
         vpc_id: str = None,
     ):
-        # The tags.
-        self.associate_type = associate_type
-        # The type of the router to which the route table belongs. Valid values:
+        # The type of the cloud resource with which the route table is associated. Valid values:
         # 
-        # *   **VRouter**\
-        # *   **VBR**\
+        # *   **VSwitch**: vSwitch
+        # *   **Gateway**: IPv4 gateway
+        self.associate_type = associate_type
+        # The time when the route table was created.
         self.creation_time = creation_time
-        # The information about the vSwitches.
+        # The information about the route table.
         self.description = description
         # The detailed information about the IPv4 gateway.
         self.gateway_ids = gateway_ids
-        # The value of tag N added to the resource.
+        # The ID of the Alibaba Cloud account to which the route table belongs.
         self.owner_id = owner_id
-        # The detailed information about the IPv4 gateway.
+        # The ID of the resource group to which the route table belongs.
         self.resource_group_id = resource_group_id
         # Whether to receive the propagation routes. Valid Values:
         # 
-        # *   **True**: The propagation route is received.
+        # *   **true**: received.
         # 
-        # *   **False**: The propagation route is not received.
+        # *   **false**: not received.
         self.route_propagation_enable = route_propagation_enable
-        # The key of tag N added to the resource.
+        # The ID of the route table.
         self.route_table_id = route_table_id
         # The name of the route table.
         self.route_table_name = route_table_name
-        # The ID of the vSwitch.
+        # The type of the route table. Valid values:
+        # 
+        # *   **Custom**\
+        # *   **System**\
         self.route_table_type = route_table_type
-        # The tag added to the route table.
+        # The ID of the vRouter to which the route table belongs.
         self.router_id = router_id
-        # The detailed information about the IPv4 gateway.
+        # The type of the vRouter to which the route table belongs. Valid values:
+        # 
+        # - **VRouter**: a vRouter.
+        # 
+        # - **VBR**: a VBR.
         self.router_type = router_type
-        # The name of the route table.
+        # The status of the route table. Valid values:
+        # 
+        # *   **Pending**\
+        # *   **Available**\
+        # *   **Deleting**\
         self.status = status
         # The tags.
         self.tags = tags
         # The vSwitch IDs.
         self.v_switch_ids = v_switch_ids
-        # The ID of the resource group to which the route table belongs.
+        # The ID of the VPC to which the route table belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -51550,18 +51574,15 @@ class DescribeRouteTableListResponseBody(TeaModel):
         router_table_list: DescribeRouteTableListResponseBodyRouterTableList = None,
         total_count: int = None,
     ):
-        # The ID of the route table.
+        # The page number.
         self.page_number = page_number
-        # The type of the cloud resource with which the route table is associated. Valid values:
-        # 
-        # *   **VSwitch**: vSwitch
-        # *   **Gateway**: IPv4 gateway
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the vRouter to which the route table belongs.
+        # The request ID.
         self.request_id = request_id
-        # The description of the route table.
+        # The detailed information about the route tables.
         self.router_table_list = router_table_list
-        # The ID of the Alibaba Cloud account to which the route table belongs.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -65364,13 +65385,35 @@ class DescribeVpnGatewayAvailableZonesRequest(TeaModel):
         resource_owner_id: int = None,
         spec: str = None,
     ):
+        # The language in which the returned results are displayed. Valid values:
+        # 
+        # *   **zh-CN**: Chinese
+        # *   **en-US** (default): English
         self.accept_language = accept_language
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The bandwidth specification.
+        # 
+        # *   If an IPsec-VPN connection can be associated with the VPN gateway, this parameter specifies the bandwidth specification of the VPN gateway.
+        # *   In scenarios where an IPsec-VPN connection can be associated with a transit router. This parameter specifies the bandwidth specification supported by an IPsec-VPN connection.
+        # 
+        # Different bandwidth specifications may affect returned zone information. Valid values:
+        # 
+        # *   **5M**\
+        # *   **10M**\
+        # *   **20M**\
+        # *   **50M**\
+        # *   **100M**\
+        # *   **200M**\
+        # *   **500M**\
+        # *   **1000M**\
+        # 
         # This parameter is required.
         self.spec = spec
 
@@ -65424,7 +65467,9 @@ class DescribeVpnGatewayAvailableZonesResponseBodyAvailableZoneIdList(TeaModel):
         zone_id: str = None,
         zone_name: str = None,
     ):
+        # The zone ID.
         self.zone_id = zone_id
+        # The zone name.
         self.zone_name = zone_name
 
     def validate(self):
@@ -65458,8 +65503,11 @@ class DescribeVpnGatewayAvailableZonesResponseBody(TeaModel):
         region_id: str = None,
         request_id: str = None,
     ):
+        # The zones.
         self.available_zone_id_list = available_zone_id_list
+        # The region ID.
         self.region_id = region_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -66737,8 +66785,17 @@ class DescribeVpnRouteEntriesResponseBodyVpnRouteCountsVpnRouteCount(TeaModel):
         route_entry_type: str = None,
         source: str = None,
     ):
+        # The number of route entries.
         self.route_count = route_count
+        # The route type. Valid values:
+        # 
+        # *   **custom** (default): destination-based route.
+        # *   **bgp** : BGP route entry.
         self.route_entry_type = route_entry_type
+        # The source of the BGP route. Valid values:
+        # 
+        # *   **CLOUD**: advertised from a cloud service associated with the VPN gateway.
+        # *   **VPN_BGP**: indicates that the current route is learned by using BGP of the VPN gateway. For example, the BGP is used to learn the route of the on-premises data center.
         self.source = source
 
     def validate(self):
@@ -66839,7 +66896,10 @@ class DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry(TeaModel):
         # *   **Custom**: custom
         # *   **System**: system
         self.route_entry_type = route_entry_type
-        # The source CIDR block of the route entry.
+        # The source of the BGP route. Valid values:
+        # 
+        # *   **CLOUD**: advertised from a cloud service associated with the VPN gateway.
+        # *   **VPN_BGP**: indicates that the current route is learned by using BGP of the VPN gateway. For example, the BGP is used to learn the route of the on-premises data center.
         self.source = source
         # The status of the route entry. Valid values:
         # 
@@ -66967,8 +67027,11 @@ class DescribeVpnRouteEntriesResponseBody(TeaModel):
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
+        # The information about route entries of the VPN gateway in dual-tunnel mode.
+        # 
+        # > This parameter is returned only if the VPN gateway supports IPsec-VPN connections in dual-tunnel mode.
         self.vpn_route_counts = vpn_route_counts
-        # The list of route entries.
+        # The route entry list.
         self.vpn_route_entries = vpn_route_entries
 
     def validate(self):
@@ -68729,9 +68792,9 @@ class DissociateVpnGatewayWithCertificateRequest(TeaModel):
         region_id: str = None,
         vpn_gateway_id: str = None,
     ):
-        # The certificate ID.
+        # The ID of the certificate.
         # 
-        # > The certificate ID refers to the ID generated after the SSL certificate is associated with the VPN gateway. It is not the ID of the SSL certificate. You can call the [ListVpnCertificateAssociations](https://help.aliyun.com/document_detail/2521961.html) operation to query certificate IDs.
+        # >  The certificate ID refers to the ID generated after the SSL certificate is associated with the VPN gateway. It is not the ID of the SSL certificate.
         # 
         # This parameter is required.
         self.certificate_id = certificate_id
@@ -75884,7 +75947,7 @@ class ListIpsecServersRequest(TeaModel):
         self.ipsec_server_id = ipsec_server_id
         # The name of the IPsec server.
         # 
-        # The name must be 1 to 100 characters in length and cannot start with `http://` or `https://`.
+        # The name must be 1 to 100 characters in length.
         self.ipsec_server_name = ipsec_server_name
         # The number of entries to return on each page. Valid values: **1** to **20**. Default value: **10**.
         self.max_results = max_results
@@ -75901,9 +75964,7 @@ class ListIpsecServersRequest(TeaModel):
         self.region_id = region_id
         # The ID of the resource group to which the IPsec server belongs.
         # 
-        # The IPsec server has the same resource group as its associated VPN gateway instance.
-        # 
-        # You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2526915.html) operation to query the ID of the resource group to which the VPN gateway instance belongs.
+        # The IPsec server and its associated VPN gateway belong to the same resource group. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the ID of the resource group to which the VPN gateway belongs.
         self.resource_group_id = resource_group_id
         # The ID of the VPN gateway.
         self.vpn_gateway_id = vpn_gateway_id
@@ -83872,6 +83933,140 @@ class ModifyEipAddressAttributeResponse(TeaModel):
         return self
 
 
+class ModifyEipForwardModeRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        instance_id: str = None,
+        mode: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.client_token = client_token
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.mode = mode
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ModifyEipForwardModeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyEipForwardModeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyEipForwardModeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyEipForwardModeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyExpressCloudConnectionAttributeRequest(TeaModel):
     def __init__(
         self,
@@ -84898,6 +85093,8 @@ class ModifyFlowLogAttributeRequest(TeaModel):
         self,
         aggregation_interval: int = None,
         description: str = None,
+        disable_log_delivery: str = None,
+        enable_traffic_analyze: str = None,
         flow_log_id: str = None,
         flow_log_name: str = None,
         ip_version: str = None,
@@ -84906,6 +85103,7 @@ class ModifyFlowLogAttributeRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        traffic_analyzer_id: str = None,
     ):
         # The new sampling interval of the flow log. Unit: minutes. Valid values: **1**, **5**, and **10**.
         self.aggregation_interval = aggregation_interval
@@ -84913,6 +85111,8 @@ class ModifyFlowLogAttributeRequest(TeaModel):
         # 
         # The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
+        self.disable_log_delivery = disable_log_delivery
+        self.enable_traffic_analyze = enable_traffic_analyze
         # The ID of the flow log.
         # 
         # This parameter is required.
@@ -84932,6 +85132,7 @@ class ModifyFlowLogAttributeRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.traffic_analyzer_id = traffic_analyzer_id
 
     def validate(self):
         pass
@@ -84946,6 +85147,10 @@ class ModifyFlowLogAttributeRequest(TeaModel):
             result['AggregationInterval'] = self.aggregation_interval
         if self.description is not None:
             result['Description'] = self.description
+        if self.disable_log_delivery is not None:
+            result['DisableLogDelivery'] = self.disable_log_delivery
+        if self.enable_traffic_analyze is not None:
+            result['EnableTrafficAnalyze'] = self.enable_traffic_analyze
         if self.flow_log_id is not None:
             result['FlowLogId'] = self.flow_log_id
         if self.flow_log_name is not None:
@@ -84962,6 +85167,8 @@ class ModifyFlowLogAttributeRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.traffic_analyzer_id is not None:
+            result['TrafficAnalyzerId'] = self.traffic_analyzer_id
         return result
 
     def from_map(self, m: dict = None):
@@ -84970,6 +85177,10 @@ class ModifyFlowLogAttributeRequest(TeaModel):
             self.aggregation_interval = m.get('AggregationInterval')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DisableLogDelivery') is not None:
+            self.disable_log_delivery = m.get('DisableLogDelivery')
+        if m.get('EnableTrafficAnalyze') is not None:
+            self.enable_traffic_analyze = m.get('EnableTrafficAnalyze')
         if m.get('FlowLogId') is not None:
             self.flow_log_id = m.get('FlowLogId')
         if m.get('FlowLogName') is not None:
@@ -84986,6 +85197,8 @@ class ModifyFlowLogAttributeRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TrafficAnalyzerId') is not None:
+            self.traffic_analyzer_id = m.get('TrafficAnalyzerId')
         return self
 
 
@@ -87189,6 +87402,10 @@ class ModifyIpv6InternetBandwidthRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform a dry run, without sending the actual request. Valid values:
+        # 
+        # *   **true**: pre-checks the request but does not create the IPv4 gateway. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): sends the API request. After the request passes the check, an HTTP 2xx status code is returned and the IPv4 gateway is created.
         self.dry_run = dry_run
         # The ID of the IPv6 address.
         # 
@@ -101273,13 +101490,29 @@ class TransformEipSegmentToPublicIpAddressPoolRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** is different for each request.
         self.client_token = client_token
+        # The description of the IP address pool.
+        # 
+        # The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
+        # The ID of the contiguous EIP group to be migrated.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The name of the IP address pool.
+        # 
+        # The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
         self.name = name
+        # The ID of the region to which the contiguous EIP group belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group to which the address pool belongs.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -101329,8 +101562,11 @@ class TransformEipSegmentToPublicIpAddressPoolResponseBody(TeaModel):
         request_id: str = None,
         resource_group_id: str = None,
     ):
+        # The ID of the IP address pool.
         self.public_ip_address_pool_id = public_ip_address_pool_id
+        # The request ID.
         self.request_id = request_id
+        # The ID of the resource group to which the IP address pool belongs.
         self.resource_group_id = resource_group_id
 
     def validate(self):

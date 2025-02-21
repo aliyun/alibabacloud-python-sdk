@@ -8215,6 +8215,8 @@ class Client(OpenApiClient):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.traffic_analyzer_id):
+            query['TrafficAnalyzerId'] = request.traffic_analyzer_id
         if not UtilClient.is_unset(request.traffic_path):
             query['TrafficPath'] = request.traffic_path
         if not UtilClient.is_unset(request.traffic_type):
@@ -8292,6 +8294,8 @@ class Client(OpenApiClient):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.traffic_analyzer_id):
+            query['TrafficAnalyzerId'] = request.traffic_analyzer_id
         if not UtilClient.is_unset(request.traffic_path):
             query['TrafficPath'] = request.traffic_path
         if not UtilClient.is_unset(request.traffic_type):
@@ -12961,7 +12965,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateSslVpnClientCertResponse:
         """
-        @summary 创建SSL-VPN客户端证书
+        @summary Creates an SSL client certificate.
+        
+        @description Before you create an SSL client certificate, make sure that an SSL server is created on the VPN gateway. For more information, see [CreateSslVpnServer](https://help.aliyun.com/document_detail/2794075.html).
         
         @param request: CreateSslVpnClientCertRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13016,7 +13022,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateSslVpnClientCertResponse:
         """
-        @summary 创建SSL-VPN客户端证书
+        @summary Creates an SSL client certificate.
+        
+        @description Before you create an SSL client certificate, make sure that an SSL server is created on the VPN gateway. For more information, see [CreateSslVpnServer](https://help.aliyun.com/document_detail/2794075.html).
         
         @param request: CreateSslVpnClientCertRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13070,7 +13078,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateSslVpnClientCertRequest,
     ) -> vpc_20160428_models.CreateSslVpnClientCertResponse:
         """
-        @summary 创建SSL-VPN客户端证书
+        @summary Creates an SSL client certificate.
+        
+        @description Before you create an SSL client certificate, make sure that an SSL server is created on the VPN gateway. For more information, see [CreateSslVpnServer](https://help.aliyun.com/document_detail/2794075.html).
         
         @param request: CreateSslVpnClientCertRequest
         @return: CreateSslVpnClientCertResponse
@@ -13083,7 +13093,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateSslVpnClientCertRequest,
     ) -> vpc_20160428_models.CreateSslVpnClientCertResponse:
         """
-        @summary 创建SSL-VPN客户端证书
+        @summary Creates an SSL client certificate.
+        
+        @description Before you create an SSL client certificate, make sure that an SSL server is created on the VPN gateway. For more information, see [CreateSslVpnServer](https://help.aliyun.com/document_detail/2794075.html).
         
         @param request: CreateSslVpnClientCertRequest
         @return: CreateSslVpnClientCertResponse
@@ -22295,10 +22307,14 @@ class Client(OpenApiClient):
         """
         @summary Deletes an SSL client certificate.
         
-        @description    **DeleteSslVpnClientCert** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of the task.
+        @description    If you delete an SSL client certificate, all SSL-VPN client connections to the SSL server are disconnected. You need to reinitiate connections from SSL clients.
+        For example, SSL client certificate 1 and SSL client certificate 2 are created on an SSL server. After you delete certificate 1, all client connections associated with certificate 1 and certificate 2 are disconnected from the SSL server.
+        If clients associated with certificate 1 require SSL-VPN connections, you need to install other certificates on the clients and reinitiate connections from the clients.
+        If clients associated with certificate 2 require SSL-VPN connections, you can directly reinitiate connections from the clients.
+        **DeleteSslVpnClientCert** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the status of the task.
         If the VPN gateway is in the **updating** state, the SSL client certificate is being deleted.
         If the VPN gateway is in the **active** state, the SSL client certificate is deleted.
-        You cannot repeatedly call **DeleteSslVpnClientCert** to delete an SSL client certificate from the same VPN gateway within the specified period of time.
+        You cannot call **DeleteSslVpnClientCert** within the specified period of time.
         
         @param request: DeleteSslVpnClientCertRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22353,10 +22369,14 @@ class Client(OpenApiClient):
         """
         @summary Deletes an SSL client certificate.
         
-        @description    **DeleteSslVpnClientCert** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of the task.
+        @description    If you delete an SSL client certificate, all SSL-VPN client connections to the SSL server are disconnected. You need to reinitiate connections from SSL clients.
+        For example, SSL client certificate 1 and SSL client certificate 2 are created on an SSL server. After you delete certificate 1, all client connections associated with certificate 1 and certificate 2 are disconnected from the SSL server.
+        If clients associated with certificate 1 require SSL-VPN connections, you need to install other certificates on the clients and reinitiate connections from the clients.
+        If clients associated with certificate 2 require SSL-VPN connections, you can directly reinitiate connections from the clients.
+        **DeleteSslVpnClientCert** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the status of the task.
         If the VPN gateway is in the **updating** state, the SSL client certificate is being deleted.
         If the VPN gateway is in the **active** state, the SSL client certificate is deleted.
-        You cannot repeatedly call **DeleteSslVpnClientCert** to delete an SSL client certificate from the same VPN gateway within the specified period of time.
+        You cannot call **DeleteSslVpnClientCert** within the specified period of time.
         
         @param request: DeleteSslVpnClientCertRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22410,10 +22430,14 @@ class Client(OpenApiClient):
         """
         @summary Deletes an SSL client certificate.
         
-        @description    **DeleteSslVpnClientCert** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of the task.
+        @description    If you delete an SSL client certificate, all SSL-VPN client connections to the SSL server are disconnected. You need to reinitiate connections from SSL clients.
+        For example, SSL client certificate 1 and SSL client certificate 2 are created on an SSL server. After you delete certificate 1, all client connections associated with certificate 1 and certificate 2 are disconnected from the SSL server.
+        If clients associated with certificate 1 require SSL-VPN connections, you need to install other certificates on the clients and reinitiate connections from the clients.
+        If clients associated with certificate 2 require SSL-VPN connections, you can directly reinitiate connections from the clients.
+        **DeleteSslVpnClientCert** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the status of the task.
         If the VPN gateway is in the **updating** state, the SSL client certificate is being deleted.
         If the VPN gateway is in the **active** state, the SSL client certificate is deleted.
-        You cannot repeatedly call **DeleteSslVpnClientCert** to delete an SSL client certificate from the same VPN gateway within the specified period of time.
+        You cannot call **DeleteSslVpnClientCert** within the specified period of time.
         
         @param request: DeleteSslVpnClientCertRequest
         @return: DeleteSslVpnClientCertResponse
@@ -22428,10 +22452,14 @@ class Client(OpenApiClient):
         """
         @summary Deletes an SSL client certificate.
         
-        @description    **DeleteSslVpnClientCert** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of the task.
+        @description    If you delete an SSL client certificate, all SSL-VPN client connections to the SSL server are disconnected. You need to reinitiate connections from SSL clients.
+        For example, SSL client certificate 1 and SSL client certificate 2 are created on an SSL server. After you delete certificate 1, all client connections associated with certificate 1 and certificate 2 are disconnected from the SSL server.
+        If clients associated with certificate 1 require SSL-VPN connections, you need to install other certificates on the clients and reinitiate connections from the clients.
+        If clients associated with certificate 2 require SSL-VPN connections, you can directly reinitiate connections from the clients.
+        **DeleteSslVpnClientCert** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the status of the task.
         If the VPN gateway is in the **updating** state, the SSL client certificate is being deleted.
         If the VPN gateway is in the **active** state, the SSL client certificate is deleted.
-        You cannot repeatedly call **DeleteSslVpnClientCert** to delete an SSL client certificate from the same VPN gateway within the specified period of time.
+        You cannot call **DeleteSslVpnClientCert** within the specified period of time.
         
         @param request: DeleteSslVpnClientCertRequest
         @return: DeleteSslVpnClientCertResponse
@@ -35525,7 +35553,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVpnGatewayAvailableZonesResponse:
         """
-        @summary 基于地域查询可以创建双隧道VPN与IPSec连接（CEN）的可用区
+        @summary Queries zones that support IPsec-VPN connections in a region.
         
         @param request: DescribeVpnGatewayAvailableZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35564,7 +35592,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVpnGatewayAvailableZonesResponse:
         """
-        @summary 基于地域查询可以创建双隧道VPN与IPSec连接（CEN）的可用区
+        @summary Queries zones that support IPsec-VPN connections in a region.
         
         @param request: DescribeVpnGatewayAvailableZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35602,7 +35630,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeVpnGatewayAvailableZonesRequest,
     ) -> vpc_20160428_models.DescribeVpnGatewayAvailableZonesResponse:
         """
-        @summary 基于地域查询可以创建双隧道VPN与IPSec连接（CEN）的可用区
+        @summary Queries zones that support IPsec-VPN connections in a region.
         
         @param request: DescribeVpnGatewayAvailableZonesRequest
         @return: DescribeVpnGatewayAvailableZonesResponse
@@ -35615,7 +35643,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeVpnGatewayAvailableZonesRequest,
     ) -> vpc_20160428_models.DescribeVpnGatewayAvailableZonesResponse:
         """
-        @summary 基于地域查询可以创建双隧道VPN与IPSec连接（CEN）的可用区
+        @summary Queries zones that support IPsec-VPN connections in a region.
         
         @param request: DescribeVpnGatewayAvailableZonesRequest
         @return: DescribeVpnGatewayAvailableZonesResponse
@@ -44877,6 +44905,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_eip_address_attribute_with_options_async(request, runtime)
 
+    def modify_eip_forward_mode_with_options(
+        self,
+        request: vpc_20160428_models.ModifyEipForwardModeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ModifyEipForwardModeResponse:
+        """
+        @summary 修改eip转发类型
+        
+        @param request: ModifyEipForwardModeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyEipForwardModeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyEipForwardMode',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyEipForwardModeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyEipForwardModeResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_eip_forward_mode_with_options_async(
+        self,
+        request: vpc_20160428_models.ModifyEipForwardModeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ModifyEipForwardModeResponse:
+        """
+        @summary 修改eip转发类型
+        
+        @param request: ModifyEipForwardModeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyEipForwardModeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyEipForwardMode',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyEipForwardModeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyEipForwardModeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_eip_forward_mode(
+        self,
+        request: vpc_20160428_models.ModifyEipForwardModeRequest,
+    ) -> vpc_20160428_models.ModifyEipForwardModeResponse:
+        """
+        @summary 修改eip转发类型
+        
+        @param request: ModifyEipForwardModeRequest
+        @return: ModifyEipForwardModeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_eip_forward_mode_with_options(request, runtime)
+
+    async def modify_eip_forward_mode_async(
+        self,
+        request: vpc_20160428_models.ModifyEipForwardModeRequest,
+    ) -> vpc_20160428_models.ModifyEipForwardModeResponse:
+        """
+        @summary 修改eip转发类型
+        
+        @param request: ModifyEipForwardModeRequest
+        @return: ModifyEipForwardModeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_eip_forward_mode_with_options_async(request, runtime)
+
     def modify_express_cloud_connection_attribute_with_options(
         self,
         request: vpc_20160428_models.ModifyExpressCloudConnectionAttributeRequest,
@@ -45664,6 +45828,10 @@ class Client(OpenApiClient):
             query['AggregationInterval'] = request.aggregation_interval
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.disable_log_delivery):
+            query['DisableLogDelivery'] = request.disable_log_delivery
+        if not UtilClient.is_unset(request.enable_traffic_analyze):
+            query['EnableTrafficAnalyze'] = request.enable_traffic_analyze
         if not UtilClient.is_unset(request.flow_log_id):
             query['FlowLogId'] = request.flow_log_id
         if not UtilClient.is_unset(request.flow_log_name):
@@ -45680,6 +45848,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_analyzer_id):
+            query['TrafficAnalyzerId'] = request.traffic_analyzer_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -45728,6 +45898,10 @@ class Client(OpenApiClient):
             query['AggregationInterval'] = request.aggregation_interval
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.disable_log_delivery):
+            query['DisableLogDelivery'] = request.disable_log_delivery
+        if not UtilClient.is_unset(request.enable_traffic_analyze):
+            query['EnableTrafficAnalyze'] = request.enable_traffic_analyze
         if not UtilClient.is_unset(request.flow_log_id):
             query['FlowLogId'] = request.flow_log_id
         if not UtilClient.is_unset(request.flow_log_name):
@@ -45744,6 +45918,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_analyzer_id):
+            query['TrafficAnalyzerId'] = request.traffic_analyzer_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -47655,7 +47831,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyIpv6InternetBandwidthResponse:
         """
-        @summary Modifies the Internet bandwidth value of an IPv6 address.
+        @summary Modifies the Internet bandwidth of an IPv6 address.
         
         @description You cannot repeatedly call the *ModifyIpv6InternetBandwidth** operation to modify the Internet bandwidth value of an IPv6 CIDR block within the specified period of time.
         
@@ -47720,7 +47896,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyIpv6InternetBandwidthResponse:
         """
-        @summary Modifies the Internet bandwidth value of an IPv6 address.
+        @summary Modifies the Internet bandwidth of an IPv6 address.
         
         @description You cannot repeatedly call the *ModifyIpv6InternetBandwidth** operation to modify the Internet bandwidth value of an IPv6 CIDR block within the specified period of time.
         
@@ -47784,7 +47960,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyIpv6InternetBandwidthRequest,
     ) -> vpc_20160428_models.ModifyIpv6InternetBandwidthResponse:
         """
-        @summary Modifies the Internet bandwidth value of an IPv6 address.
+        @summary Modifies the Internet bandwidth of an IPv6 address.
         
         @description You cannot repeatedly call the *ModifyIpv6InternetBandwidth** operation to modify the Internet bandwidth value of an IPv6 CIDR block within the specified period of time.
         
@@ -47799,7 +47975,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyIpv6InternetBandwidthRequest,
     ) -> vpc_20160428_models.ModifyIpv6InternetBandwidthResponse:
         """
-        @summary Modifies the Internet bandwidth value of an IPv6 address.
+        @summary Modifies the Internet bandwidth of an IPv6 address.
         
         @description You cannot repeatedly call the *ModifyIpv6InternetBandwidth** operation to modify the Internet bandwidth value of an IPv6 CIDR block within the specified period of time.
         
@@ -56939,7 +57115,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.TransformEipSegmentToPublicIpAddressPoolResponse:
         """
-        @summary 连续EIP组转换为公网IP地址池
+        @summary Migrate contiguous EIP groups to IP address pool by calling TransformEipSegmentToPublicIpAddressPool.
         
         @param request: TransformEipSegmentToPublicIpAddressPoolRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -56990,7 +57166,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.TransformEipSegmentToPublicIpAddressPoolResponse:
         """
-        @summary 连续EIP组转换为公网IP地址池
+        @summary Migrate contiguous EIP groups to IP address pool by calling TransformEipSegmentToPublicIpAddressPool.
         
         @param request: TransformEipSegmentToPublicIpAddressPoolRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -57040,7 +57216,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.TransformEipSegmentToPublicIpAddressPoolRequest,
     ) -> vpc_20160428_models.TransformEipSegmentToPublicIpAddressPoolResponse:
         """
-        @summary 连续EIP组转换为公网IP地址池
+        @summary Migrate contiguous EIP groups to IP address pool by calling TransformEipSegmentToPublicIpAddressPool.
         
         @param request: TransformEipSegmentToPublicIpAddressPoolRequest
         @return: TransformEipSegmentToPublicIpAddressPoolResponse
@@ -57053,7 +57229,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.TransformEipSegmentToPublicIpAddressPoolRequest,
     ) -> vpc_20160428_models.TransformEipSegmentToPublicIpAddressPoolResponse:
         """
-        @summary 连续EIP组转换为公网IP地址池
+        @summary Migrate contiguous EIP groups to IP address pool by calling TransformEipSegmentToPublicIpAddressPool.
         
         @param request: TransformEipSegmentToPublicIpAddressPoolRequest
         @return: TransformEipSegmentToPublicIpAddressPoolResponse

@@ -1,14 +1,23 @@
-2025-02-10 Version: 6.10.3
+2025-02-21 Version: 6.11.0
+- Support API ModifyEipForwardMode.
 - Update API AssociateVpcCidrBlock: update response param.
+- Update API CreateFlowLog: add param TrafficAnalyzerId.
+- Update API CreateFlowLog: update param LogStoreName.
+- Update API CreateFlowLog: update param ProjectName.
 - Update API CreateRouteEntries: update param RouteEntries.
 - Update API DeleteRouteEntries: update param RouteEntries.
 - Update API DeleteVSwitch: update response param.
 - Update API DeletionProtection: update response param.
 - Update API DescribeEipAddresses: update response param.
+- Update API DescribeFlowLogs: update response param.
 - Update API DescribeIpv6Gateways: update response param.
 - Update API DescribeRouteEntryList: update param DestCidrBlockList.
 - Update API GetIpv4GatewayAttribute: update response param.
 - Update API ListDhcpOptionsSets: update response param.
+- Update API ListTrafficMirrorSessions: update response param.
+- Update API ModifyFlowLogAttribute: add param DisableLogDelivery.
+- Update API ModifyFlowLogAttribute: add param EnableTrafficAnalyze.
+- Update API ModifyFlowLogAttribute: add param TrafficAnalyzerId.
 
 
 2024-12-30 Version: 6.10.1
