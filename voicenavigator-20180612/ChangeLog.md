@@ -1,3 +1,6 @@
+2025-02-21 Version: 1.0.8
+- Generated python 2018-06-12 for VoiceNavigator.
+
 2025-01-06 Version: 1.0.7
 - Update API GetAsrConfig: update response param.
 - Update API ModifyAsrConfig: add param Engine.
