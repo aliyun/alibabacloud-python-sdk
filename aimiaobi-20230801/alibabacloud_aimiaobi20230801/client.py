@@ -12113,6 +12113,250 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.run_expand_content_with_options_async(request, runtime)
 
+    def run_generate_questions_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.RunGenerateQuestionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunGenerateQuestionsResponse:
+        """
+        @summary 妙读猜你想问接口
+        
+        @param request: RunGenerateQuestionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunGenerateQuestionsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_id):
+            body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.reference_content):
+            body['ReferenceContent'] = request.reference_content
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunGenerateQuestions',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_miao_bi_20230801_models.RunGenerateQuestionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_miao_bi_20230801_models.RunGenerateQuestionsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def run_generate_questions_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunGenerateQuestionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunGenerateQuestionsResponse:
+        """
+        @summary 妙读猜你想问接口
+        
+        @param request: RunGenerateQuestionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunGenerateQuestionsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_id):
+            body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.reference_content):
+            body['ReferenceContent'] = request.reference_content
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunGenerateQuestions',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_miao_bi_20230801_models.RunGenerateQuestionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_miao_bi_20230801_models.RunGenerateQuestionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def run_generate_questions(
+        self,
+        request: ai_miao_bi_20230801_models.RunGenerateQuestionsRequest,
+    ) -> ai_miao_bi_20230801_models.RunGenerateQuestionsResponse:
+        """
+        @summary 妙读猜你想问接口
+        
+        @param request: RunGenerateQuestionsRequest
+        @return: RunGenerateQuestionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_generate_questions_with_options(request, runtime)
+
+    async def run_generate_questions_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunGenerateQuestionsRequest,
+    ) -> ai_miao_bi_20230801_models.RunGenerateQuestionsResponse:
+        """
+        @summary 妙读猜你想问接口
+        
+        @param request: RunGenerateQuestionsRequest
+        @return: RunGenerateQuestionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_generate_questions_with_options_async(request, runtime)
+
+    def run_hotword_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.RunHotwordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunHotwordResponse:
+        """
+        @summary 妙读文档关键词抽取接口
+        
+        @param request: RunHotwordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunHotwordResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_id):
+            body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.reference_content):
+            body['ReferenceContent'] = request.reference_content
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunHotword',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_miao_bi_20230801_models.RunHotwordResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_miao_bi_20230801_models.RunHotwordResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def run_hotword_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunHotwordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunHotwordResponse:
+        """
+        @summary 妙读文档关键词抽取接口
+        
+        @param request: RunHotwordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunHotwordResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_id):
+            body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.reference_content):
+            body['ReferenceContent'] = request.reference_content
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunHotword',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_miao_bi_20230801_models.RunHotwordResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_miao_bi_20230801_models.RunHotwordResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def run_hotword(
+        self,
+        request: ai_miao_bi_20230801_models.RunHotwordRequest,
+    ) -> ai_miao_bi_20230801_models.RunHotwordResponse:
+        """
+        @summary 妙读文档关键词抽取接口
+        
+        @param request: RunHotwordRequest
+        @return: RunHotwordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_hotword_with_options(request, runtime)
+
+    async def run_hotword_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunHotwordRequest,
+    ) -> ai_miao_bi_20230801_models.RunHotwordResponse:
+        """
+        @summary 妙读文档关键词抽取接口
+        
+        @param request: RunHotwordRequest
+        @return: RunHotwordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_hotword_with_options_async(request, runtime)
+
     def run_keywords_extraction_generation_with_options(
         self,
         tmp_req: ai_miao_bi_20230801_models.RunKeywordsExtractionGenerationRequest,
