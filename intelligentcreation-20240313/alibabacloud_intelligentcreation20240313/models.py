@@ -2337,15 +2337,37 @@ class CreateAICoachTaskSessionRequest(TeaModel):
 class CreateAICoachTaskSessionResponseBodyScriptInfo(TeaModel):
     def __init__(
         self,
+        agent_icon_url: str = None,
+        character_name: str = None,
+        dialogue_text_flag: bool = None,
+        dialogue_tip_flag: bool = None,
         initiator: str = None,
+        input_type_list: List[str] = None,
         max_duration: int = None,
         script_desc: str = None,
         script_name: str = None,
+        script_record_id: str = None,
+        script_type: int = None,
+        sparring_tip_content: str = None,
+        sparring_tip_title: str = None,
+        student_think_time_flag: bool = None,
+        student_think_time_limit: int = None,
     ):
+        self.agent_icon_url = agent_icon_url
+        self.character_name = character_name
+        self.dialogue_text_flag = dialogue_text_flag
+        self.dialogue_tip_flag = dialogue_tip_flag
         self.initiator = initiator
+        self.input_type_list = input_type_list
         self.max_duration = max_duration
         self.script_desc = script_desc
         self.script_name = script_name
+        self.script_record_id = script_record_id
+        self.script_type = script_type
+        self.sparring_tip_content = sparring_tip_content
+        self.sparring_tip_title = sparring_tip_title
+        self.student_think_time_flag = student_think_time_flag
+        self.student_think_time_limit = student_think_time_limit
 
     def validate(self):
         pass
@@ -2356,26 +2378,70 @@ class CreateAICoachTaskSessionResponseBodyScriptInfo(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_icon_url is not None:
+            result['agentIconUrl'] = self.agent_icon_url
+        if self.character_name is not None:
+            result['characterName'] = self.character_name
+        if self.dialogue_text_flag is not None:
+            result['dialogueTextFlag'] = self.dialogue_text_flag
+        if self.dialogue_tip_flag is not None:
+            result['dialogueTipFlag'] = self.dialogue_tip_flag
         if self.initiator is not None:
             result['initiator'] = self.initiator
+        if self.input_type_list is not None:
+            result['inputTypeList'] = self.input_type_list
         if self.max_duration is not None:
             result['maxDuration'] = self.max_duration
         if self.script_desc is not None:
             result['scriptDesc'] = self.script_desc
         if self.script_name is not None:
             result['scriptName'] = self.script_name
+        if self.script_record_id is not None:
+            result['scriptRecordId'] = self.script_record_id
+        if self.script_type is not None:
+            result['scriptType'] = self.script_type
+        if self.sparring_tip_content is not None:
+            result['sparringTipContent'] = self.sparring_tip_content
+        if self.sparring_tip_title is not None:
+            result['sparringTipTitle'] = self.sparring_tip_title
+        if self.student_think_time_flag is not None:
+            result['studentThinkTimeFlag'] = self.student_think_time_flag
+        if self.student_think_time_limit is not None:
+            result['studentThinkTimeLimit'] = self.student_think_time_limit
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('agentIconUrl') is not None:
+            self.agent_icon_url = m.get('agentIconUrl')
+        if m.get('characterName') is not None:
+            self.character_name = m.get('characterName')
+        if m.get('dialogueTextFlag') is not None:
+            self.dialogue_text_flag = m.get('dialogueTextFlag')
+        if m.get('dialogueTipFlag') is not None:
+            self.dialogue_tip_flag = m.get('dialogueTipFlag')
         if m.get('initiator') is not None:
             self.initiator = m.get('initiator')
+        if m.get('inputTypeList') is not None:
+            self.input_type_list = m.get('inputTypeList')
         if m.get('maxDuration') is not None:
             self.max_duration = m.get('maxDuration')
         if m.get('scriptDesc') is not None:
             self.script_desc = m.get('scriptDesc')
         if m.get('scriptName') is not None:
             self.script_name = m.get('scriptName')
+        if m.get('scriptRecordId') is not None:
+            self.script_record_id = m.get('scriptRecordId')
+        if m.get('scriptType') is not None:
+            self.script_type = m.get('scriptType')
+        if m.get('sparringTipContent') is not None:
+            self.sparring_tip_content = m.get('sparringTipContent')
+        if m.get('sparringTipTitle') is not None:
+            self.sparring_tip_title = m.get('sparringTipTitle')
+        if m.get('studentThinkTimeFlag') is not None:
+            self.student_think_time_flag = m.get('studentThinkTimeFlag')
+        if m.get('studentThinkTimeLimit') is not None:
+            self.student_think_time_limit = m.get('studentThinkTimeLimit')
         return self
 
 
@@ -2386,6 +2452,7 @@ class CreateAICoachTaskSessionResponseBody(TeaModel):
         request_id: str = None,
         script_info: CreateAICoachTaskSessionResponseBodyScriptInfo = None,
         session_id: str = None,
+        session_status: int = None,
         token: str = None,
         web_socket_url: str = None,
     ):
@@ -2394,6 +2461,7 @@ class CreateAICoachTaskSessionResponseBody(TeaModel):
         self.request_id = request_id
         self.script_info = script_info
         self.session_id = session_id
+        self.session_status = session_status
         # Token
         self.token = token
         self.web_socket_url = web_socket_url
@@ -2416,6 +2484,8 @@ class CreateAICoachTaskSessionResponseBody(TeaModel):
             result['scriptInfo'] = self.script_info.to_map()
         if self.session_id is not None:
             result['sessionId'] = self.session_id
+        if self.session_status is not None:
+            result['sessionStatus'] = self.session_status
         if self.token is not None:
             result['token'] = self.token
         if self.web_socket_url is not None:
@@ -2433,6 +2503,8 @@ class CreateAICoachTaskSessionResponseBody(TeaModel):
             self.script_info = temp_model.from_map(m['scriptInfo'])
         if m.get('sessionId') is not None:
             self.session_id = m.get('sessionId')
+        if m.get('sessionStatus') is not None:
+            self.session_status = m.get('sessionStatus')
         if m.get('token') is not None:
             self.token = m.get('token')
         if m.get('webSocketUrl') is not None:
@@ -3502,6 +3574,662 @@ class FinishAICoachTaskSessionResponse(TeaModel):
         return self
 
 
+class GetAICoachScriptRequest(TeaModel):
+    def __init__(
+        self,
+        script_record_id: str = None,
+    ):
+        self.script_record_id = script_record_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.script_record_id is not None:
+            result['scriptRecordId'] = self.script_record_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('scriptRecordId') is not None:
+            self.script_record_id = m.get('scriptRecordId')
+        return self
+
+
+class GetAICoachScriptResponseBodyCompleteStrategy(TeaModel):
+    def __init__(
+        self,
+        abnormal_quit_session_expired: int = None,
+        abnormal_quit_session_expired_flag: bool = None,
+        click_complete_auto_end: bool = None,
+        duration: int = None,
+        duration_flag: bool = None,
+        full_coverage_auto_end: bool = None,
+    ):
+        self.abnormal_quit_session_expired = abnormal_quit_session_expired
+        self.abnormal_quit_session_expired_flag = abnormal_quit_session_expired_flag
+        self.click_complete_auto_end = click_complete_auto_end
+        self.duration = duration
+        self.duration_flag = duration_flag
+        self.full_coverage_auto_end = full_coverage_auto_end
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.abnormal_quit_session_expired is not None:
+            result['abnormalQuitSessionExpired'] = self.abnormal_quit_session_expired
+        if self.abnormal_quit_session_expired_flag is not None:
+            result['abnormalQuitSessionExpiredFlag'] = self.abnormal_quit_session_expired_flag
+        if self.click_complete_auto_end is not None:
+            result['clickCompleteAutoEnd'] = self.click_complete_auto_end
+        if self.duration is not None:
+            result['duration'] = self.duration
+        if self.duration_flag is not None:
+            result['durationFlag'] = self.duration_flag
+        if self.full_coverage_auto_end is not None:
+            result['fullCoverageAutoEnd'] = self.full_coverage_auto_end
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('abnormalQuitSessionExpired') is not None:
+            self.abnormal_quit_session_expired = m.get('abnormalQuitSessionExpired')
+        if m.get('abnormalQuitSessionExpiredFlag') is not None:
+            self.abnormal_quit_session_expired_flag = m.get('abnormalQuitSessionExpiredFlag')
+        if m.get('clickCompleteAutoEnd') is not None:
+            self.click_complete_auto_end = m.get('clickCompleteAutoEnd')
+        if m.get('duration') is not None:
+            self.duration = m.get('duration')
+        if m.get('durationFlag') is not None:
+            self.duration_flag = m.get('durationFlag')
+        if m.get('fullCoverageAutoEnd') is not None:
+            self.full_coverage_auto_end = m.get('fullCoverageAutoEnd')
+        return self
+
+
+class GetAICoachScriptResponseBodyPointDeductionRuleList(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        punishment_types: List[str] = None,
+        rule_value: str = None,
+        weight: int = None,
+    ):
+        self.description = description
+        self.punishment_types = punishment_types
+        self.rule_value = rule_value
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.punishment_types is not None:
+            result['punishmentTypes'] = self.punishment_types
+        if self.rule_value is not None:
+            result['ruleValue'] = self.rule_value
+        if self.weight is not None:
+            result['weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('punishmentTypes') is not None:
+            self.punishment_types = m.get('punishmentTypes')
+        if m.get('ruleValue') is not None:
+            self.rule_value = m.get('ruleValue')
+        if m.get('weight') is not None:
+            self.weight = m.get('weight')
+        return self
+
+
+class GetAICoachScriptResponseBodyPointsAnswerListParameters(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class GetAICoachScriptResponseBodyPointsAnswerList(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        parameters: List[GetAICoachScriptResponseBodyPointsAnswerListParameters] = None,
+        type: str = None,
+        weight: int = None,
+    ):
+        self.name = name
+        self.parameters = parameters
+        self.type = type
+        self.weight = weight
+
+    def validate(self):
+        if self.parameters:
+            for k in self.parameters:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        result['parameters'] = []
+        if self.parameters is not None:
+            for k in self.parameters:
+                result['parameters'].append(k.to_map() if k else None)
+        if self.type is not None:
+            result['type'] = self.type
+        if self.weight is not None:
+            result['weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        self.parameters = []
+        if m.get('parameters') is not None:
+            for k in m.get('parameters'):
+                temp_model = GetAICoachScriptResponseBodyPointsAnswerListParameters()
+                self.parameters.append(temp_model.from_map(k))
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('weight') is not None:
+            self.weight = m.get('weight')
+        return self
+
+
+class GetAICoachScriptResponseBodyPoints(TeaModel):
+    def __init__(
+        self,
+        answer_list: List[GetAICoachScriptResponseBodyPointsAnswerList] = None,
+        knowledge_list: List[str] = None,
+        name: str = None,
+        question_description: str = None,
+        sort_no: int = None,
+        weight: int = None,
+    ):
+        self.answer_list = answer_list
+        self.knowledge_list = knowledge_list
+        self.name = name
+        self.question_description = question_description
+        self.sort_no = sort_no
+        self.weight = weight
+
+    def validate(self):
+        if self.answer_list:
+            for k in self.answer_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['answerList'] = []
+        if self.answer_list is not None:
+            for k in self.answer_list:
+                result['answerList'].append(k.to_map() if k else None)
+        if self.knowledge_list is not None:
+            result['knowledgeList'] = self.knowledge_list
+        if self.name is not None:
+            result['name'] = self.name
+        if self.question_description is not None:
+            result['questionDescription'] = self.question_description
+        if self.sort_no is not None:
+            result['sortNo'] = self.sort_no
+        if self.weight is not None:
+            result['weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.answer_list = []
+        if m.get('answerList') is not None:
+            for k in m.get('answerList'):
+                temp_model = GetAICoachScriptResponseBodyPointsAnswerList()
+                self.answer_list.append(temp_model.from_map(k))
+        if m.get('knowledgeList') is not None:
+            self.knowledge_list = m.get('knowledgeList')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('questionDescription') is not None:
+            self.question_description = m.get('questionDescription')
+        if m.get('sortNo') is not None:
+            self.sort_no = m.get('sortNo')
+        if m.get('weight') is not None:
+            self.weight = m.get('weight')
+        return self
+
+
+class GetAICoachScriptResponseBodySampleDialogueList(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        role: str = None,
+    ):
+        self.message = message
+        self.role = role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.role is not None:
+            result['role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        return self
+
+
+class GetAICoachScriptResponseBodyWeights(TeaModel):
+    def __init__(
+        self,
+        ability_evaluation: int = None,
+        ability_evaluation_enabled: bool = None,
+        assessment_point: int = None,
+        expressiveness: int = None,
+        expressiveness_enabled: bool = None,
+        point_deduction_rule: int = None,
+        point_deduction_rule_enabled: bool = None,
+        standard: int = None,
+        standard_enabled: bool = None,
+    ):
+        self.ability_evaluation = ability_evaluation
+        self.ability_evaluation_enabled = ability_evaluation_enabled
+        self.assessment_point = assessment_point
+        self.expressiveness = expressiveness
+        self.expressiveness_enabled = expressiveness_enabled
+        self.point_deduction_rule = point_deduction_rule
+        self.point_deduction_rule_enabled = point_deduction_rule_enabled
+        self.standard = standard
+        self.standard_enabled = standard_enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ability_evaluation is not None:
+            result['abilityEvaluation'] = self.ability_evaluation
+        if self.ability_evaluation_enabled is not None:
+            result['abilityEvaluationEnabled'] = self.ability_evaluation_enabled
+        if self.assessment_point is not None:
+            result['assessmentPoint'] = self.assessment_point
+        if self.expressiveness is not None:
+            result['expressiveness'] = self.expressiveness
+        if self.expressiveness_enabled is not None:
+            result['expressivenessEnabled'] = self.expressiveness_enabled
+        if self.point_deduction_rule is not None:
+            result['pointDeductionRule'] = self.point_deduction_rule
+        if self.point_deduction_rule_enabled is not None:
+            result['pointDeductionRuleEnabled'] = self.point_deduction_rule_enabled
+        if self.standard is not None:
+            result['standard'] = self.standard
+        if self.standard_enabled is not None:
+            result['standardEnabled'] = self.standard_enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('abilityEvaluation') is not None:
+            self.ability_evaluation = m.get('abilityEvaluation')
+        if m.get('abilityEvaluationEnabled') is not None:
+            self.ability_evaluation_enabled = m.get('abilityEvaluationEnabled')
+        if m.get('assessmentPoint') is not None:
+            self.assessment_point = m.get('assessmentPoint')
+        if m.get('expressiveness') is not None:
+            self.expressiveness = m.get('expressiveness')
+        if m.get('expressivenessEnabled') is not None:
+            self.expressiveness_enabled = m.get('expressivenessEnabled')
+        if m.get('pointDeductionRule') is not None:
+            self.point_deduction_rule = m.get('pointDeductionRule')
+        if m.get('pointDeductionRuleEnabled') is not None:
+            self.point_deduction_rule_enabled = m.get('pointDeductionRuleEnabled')
+        if m.get('standard') is not None:
+            self.standard = m.get('standard')
+        if m.get('standardEnabled') is not None:
+            self.standard_enabled = m.get('standardEnabled')
+        return self
+
+
+class GetAICoachScriptResponseBody(TeaModel):
+    def __init__(
+        self,
+        assessment_scope: str = None,
+        complete_strategy: GetAICoachScriptResponseBodyCompleteStrategy = None,
+        cover_url: str = None,
+        dialogue_input_text_limit: int = None,
+        dialogue_text_flag: bool = None,
+        dialogue_tip_flag: bool = None,
+        dialogue_voice_limit: int = None,
+        evaluate_report_flag: bool = None,
+        expressiveness: Dict[str, int] = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        initiator: str = None,
+        interaction_input_types: List[str] = None,
+        interaction_type: int = None,
+        introduce: str = None,
+        name: str = None,
+        order_ack_flag: bool = None,
+        point_deduction_rule_list: List[GetAICoachScriptResponseBodyPointDeductionRuleList] = None,
+        points: List[GetAICoachScriptResponseBodyPoints] = None,
+        request_id: str = None,
+        sample_dialogue_list: List[GetAICoachScriptResponseBodySampleDialogueList] = None,
+        script_record_id: str = None,
+        sparring_tip_content: str = None,
+        sparring_tip_title: str = None,
+        status: int = None,
+        student_think_time_flag: bool = None,
+        student_think_time_limit: int = None,
+        type: int = None,
+        weights: GetAICoachScriptResponseBodyWeights = None,
+    ):
+        self.assessment_scope = assessment_scope
+        self.complete_strategy = complete_strategy
+        self.cover_url = cover_url
+        self.dialogue_input_text_limit = dialogue_input_text_limit
+        self.dialogue_text_flag = dialogue_text_flag
+        self.dialogue_tip_flag = dialogue_tip_flag
+        self.dialogue_voice_limit = dialogue_voice_limit
+        self.evaluate_report_flag = evaluate_report_flag
+        self.expressiveness = expressiveness
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.initiator = initiator
+        self.interaction_input_types = interaction_input_types
+        self.interaction_type = interaction_type
+        self.introduce = introduce
+        self.name = name
+        self.order_ack_flag = order_ack_flag
+        self.point_deduction_rule_list = point_deduction_rule_list
+        self.points = points
+        self.request_id = request_id
+        self.sample_dialogue_list = sample_dialogue_list
+        self.script_record_id = script_record_id
+        self.sparring_tip_content = sparring_tip_content
+        self.sparring_tip_title = sparring_tip_title
+        self.status = status
+        self.student_think_time_flag = student_think_time_flag
+        self.student_think_time_limit = student_think_time_limit
+        self.type = type
+        self.weights = weights
+
+    def validate(self):
+        if self.complete_strategy:
+            self.complete_strategy.validate()
+        if self.point_deduction_rule_list:
+            for k in self.point_deduction_rule_list:
+                if k:
+                    k.validate()
+        if self.points:
+            for k in self.points:
+                if k:
+                    k.validate()
+        if self.sample_dialogue_list:
+            for k in self.sample_dialogue_list:
+                if k:
+                    k.validate()
+        if self.weights:
+            self.weights.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assessment_scope is not None:
+            result['assessmentScope'] = self.assessment_scope
+        if self.complete_strategy is not None:
+            result['completeStrategy'] = self.complete_strategy.to_map()
+        if self.cover_url is not None:
+            result['coverUrl'] = self.cover_url
+        if self.dialogue_input_text_limit is not None:
+            result['dialogueInputTextLimit'] = self.dialogue_input_text_limit
+        if self.dialogue_text_flag is not None:
+            result['dialogueTextFlag'] = self.dialogue_text_flag
+        if self.dialogue_tip_flag is not None:
+            result['dialogueTipFlag'] = self.dialogue_tip_flag
+        if self.dialogue_voice_limit is not None:
+            result['dialogueVoiceLimit'] = self.dialogue_voice_limit
+        if self.evaluate_report_flag is not None:
+            result['evaluateReportFlag'] = self.evaluate_report_flag
+        if self.expressiveness is not None:
+            result['expressiveness'] = self.expressiveness
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.initiator is not None:
+            result['initiator'] = self.initiator
+        if self.interaction_input_types is not None:
+            result['interactionInputTypes'] = self.interaction_input_types
+        if self.interaction_type is not None:
+            result['interactionType'] = self.interaction_type
+        if self.introduce is not None:
+            result['introduce'] = self.introduce
+        if self.name is not None:
+            result['name'] = self.name
+        if self.order_ack_flag is not None:
+            result['orderAckFlag'] = self.order_ack_flag
+        result['pointDeductionRuleList'] = []
+        if self.point_deduction_rule_list is not None:
+            for k in self.point_deduction_rule_list:
+                result['pointDeductionRuleList'].append(k.to_map() if k else None)
+        result['points'] = []
+        if self.points is not None:
+            for k in self.points:
+                result['points'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['sampleDialogueList'] = []
+        if self.sample_dialogue_list is not None:
+            for k in self.sample_dialogue_list:
+                result['sampleDialogueList'].append(k.to_map() if k else None)
+        if self.script_record_id is not None:
+            result['scriptRecordId'] = self.script_record_id
+        if self.sparring_tip_content is not None:
+            result['sparringTipContent'] = self.sparring_tip_content
+        if self.sparring_tip_title is not None:
+            result['sparringTipTitle'] = self.sparring_tip_title
+        if self.status is not None:
+            result['status'] = self.status
+        if self.student_think_time_flag is not None:
+            result['studentThinkTimeFlag'] = self.student_think_time_flag
+        if self.student_think_time_limit is not None:
+            result['studentThinkTimeLimit'] = self.student_think_time_limit
+        if self.type is not None:
+            result['type'] = self.type
+        if self.weights is not None:
+            result['weights'] = self.weights.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assessmentScope') is not None:
+            self.assessment_scope = m.get('assessmentScope')
+        if m.get('completeStrategy') is not None:
+            temp_model = GetAICoachScriptResponseBodyCompleteStrategy()
+            self.complete_strategy = temp_model.from_map(m['completeStrategy'])
+        if m.get('coverUrl') is not None:
+            self.cover_url = m.get('coverUrl')
+        if m.get('dialogueInputTextLimit') is not None:
+            self.dialogue_input_text_limit = m.get('dialogueInputTextLimit')
+        if m.get('dialogueTextFlag') is not None:
+            self.dialogue_text_flag = m.get('dialogueTextFlag')
+        if m.get('dialogueTipFlag') is not None:
+            self.dialogue_tip_flag = m.get('dialogueTipFlag')
+        if m.get('dialogueVoiceLimit') is not None:
+            self.dialogue_voice_limit = m.get('dialogueVoiceLimit')
+        if m.get('evaluateReportFlag') is not None:
+            self.evaluate_report_flag = m.get('evaluateReportFlag')
+        if m.get('expressiveness') is not None:
+            self.expressiveness = m.get('expressiveness')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('initiator') is not None:
+            self.initiator = m.get('initiator')
+        if m.get('interactionInputTypes') is not None:
+            self.interaction_input_types = m.get('interactionInputTypes')
+        if m.get('interactionType') is not None:
+            self.interaction_type = m.get('interactionType')
+        if m.get('introduce') is not None:
+            self.introduce = m.get('introduce')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('orderAckFlag') is not None:
+            self.order_ack_flag = m.get('orderAckFlag')
+        self.point_deduction_rule_list = []
+        if m.get('pointDeductionRuleList') is not None:
+            for k in m.get('pointDeductionRuleList'):
+                temp_model = GetAICoachScriptResponseBodyPointDeductionRuleList()
+                self.point_deduction_rule_list.append(temp_model.from_map(k))
+        self.points = []
+        if m.get('points') is not None:
+            for k in m.get('points'):
+                temp_model = GetAICoachScriptResponseBodyPoints()
+                self.points.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.sample_dialogue_list = []
+        if m.get('sampleDialogueList') is not None:
+            for k in m.get('sampleDialogueList'):
+                temp_model = GetAICoachScriptResponseBodySampleDialogueList()
+                self.sample_dialogue_list.append(temp_model.from_map(k))
+        if m.get('scriptRecordId') is not None:
+            self.script_record_id = m.get('scriptRecordId')
+        if m.get('sparringTipContent') is not None:
+            self.sparring_tip_content = m.get('sparringTipContent')
+        if m.get('sparringTipTitle') is not None:
+            self.sparring_tip_title = m.get('sparringTipTitle')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('studentThinkTimeFlag') is not None:
+            self.student_think_time_flag = m.get('studentThinkTimeFlag')
+        if m.get('studentThinkTimeLimit') is not None:
+            self.student_think_time_limit = m.get('studentThinkTimeLimit')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('weights') is not None:
+            temp_model = GetAICoachScriptResponseBodyWeights()
+            self.weights = temp_model.from_map(m['weights'])
+        return self
+
+
+class GetAICoachScriptResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAICoachScriptResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAICoachScriptResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetAICoachTaskSessionHistoryRequest(TeaModel):
     def __init__(
         self,
@@ -3604,6 +4332,7 @@ class GetAICoachTaskSessionHistoryResponseBody(TeaModel):
         conversation_list: List[GetAICoachTaskSessionHistoryResponseBodyConversationList] = None,
         duration: int = None,
         end_time: str = None,
+        pause_duration: int = None,
         request_id: str = None,
         script_name: str = None,
         start_time: str = None,
@@ -3614,6 +4343,7 @@ class GetAICoachTaskSessionHistoryResponseBody(TeaModel):
         self.conversation_list = conversation_list
         self.duration = duration
         self.end_time = end_time
+        self.pause_duration = pause_duration
         self.request_id = request_id
         self.script_name = script_name
         self.start_time = start_time
@@ -3641,6 +4371,8 @@ class GetAICoachTaskSessionHistoryResponseBody(TeaModel):
             result['duration'] = self.duration
         if self.end_time is not None:
             result['endTime'] = self.end_time
+        if self.pause_duration is not None:
+            result['pauseDuration'] = self.pause_duration
         if self.request_id is not None:
             result['requestId'] = self.request_id
         if self.script_name is not None:
@@ -3666,6 +4398,8 @@ class GetAICoachTaskSessionHistoryResponseBody(TeaModel):
             self.duration = m.get('duration')
         if m.get('endTime') is not None:
             self.end_time = m.get('endTime')
+        if m.get('pauseDuration') is not None:
+            self.pause_duration = m.get('pauseDuration')
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
         if m.get('scriptName') is not None:
@@ -7787,11 +8521,13 @@ class SendSdkMessageRequest(TeaModel):
     def __init__(
         self,
         data: str = None,
+        header: str = None,
         module_name: str = None,
         operation_name: str = None,
         user_id: str = None,
     ):
         self.data = data
+        self.header = header
         self.module_name = module_name
         self.operation_name = operation_name
         self.user_id = user_id
@@ -7807,6 +8543,8 @@ class SendSdkMessageRequest(TeaModel):
         result = dict()
         if self.data is not None:
             result['data'] = self.data
+        if self.header is not None:
+            result['header'] = self.header
         if self.module_name is not None:
             result['moduleName'] = self.module_name
         if self.operation_name is not None:
@@ -7819,6 +8557,8 @@ class SendSdkMessageRequest(TeaModel):
         m = m or dict()
         if m.get('data') is not None:
             self.data = m.get('data')
+        if m.get('header') is not None:
+            self.header = m.get('header')
         if m.get('moduleName') is not None:
             self.module_name = m.get('moduleName')
         if m.get('operationName') is not None:

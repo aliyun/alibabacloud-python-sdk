@@ -2277,6 +2277,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.finish_aicoach_task_session_with_options_async(request, headers, runtime)
 
+    def get_aicoach_script_with_options(
+        self,
+        request: intelligent_creation_20240313_models.GetAICoachScriptRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.GetAICoachScriptResponse:
+        """
+        @summary 查询剧本详情
+        
+        @param request: GetAICoachScriptRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAICoachScriptResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.script_record_id):
+            query['scriptRecordId'] = request.script_record_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAICoachScript',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/aicoach/getScript',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.GetAICoachScriptResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.GetAICoachScriptResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_aicoach_script_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.GetAICoachScriptRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.GetAICoachScriptResponse:
+        """
+        @summary 查询剧本详情
+        
+        @param request: GetAICoachScriptRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAICoachScriptResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.script_record_id):
+            query['scriptRecordId'] = request.script_record_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAICoachScript',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/aicoach/getScript',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.GetAICoachScriptResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.GetAICoachScriptResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_aicoach_script(
+        self,
+        request: intelligent_creation_20240313_models.GetAICoachScriptRequest,
+    ) -> intelligent_creation_20240313_models.GetAICoachScriptResponse:
+        """
+        @summary 查询剧本详情
+        
+        @param request: GetAICoachScriptRequest
+        @return: GetAICoachScriptResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_aicoach_script_with_options(request, headers, runtime)
+
+    async def get_aicoach_script_async(
+        self,
+        request: intelligent_creation_20240313_models.GetAICoachScriptRequest,
+    ) -> intelligent_creation_20240313_models.GetAICoachScriptResponse:
+        """
+        @summary 查询剧本详情
+        
+        @param request: GetAICoachScriptRequest
+        @return: GetAICoachScriptResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_aicoach_script_with_options_async(request, headers, runtime)
+
     def get_aicoach_task_session_history_with_options(
         self,
         request: intelligent_creation_20240313_models.GetAICoachTaskSessionHistoryRequest,
@@ -5439,6 +5555,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.data):
             body['data'] = request.data
+        if not UtilClient.is_unset(request.header):
+            body['header'] = request.header
         if not UtilClient.is_unset(request.module_name):
             body['moduleName'] = request.module_name
         if not UtilClient.is_unset(request.operation_name):
@@ -5489,6 +5607,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.data):
             body['data'] = request.data
+        if not UtilClient.is_unset(request.header):
+            body['header'] = request.header
         if not UtilClient.is_unset(request.module_name):
             body['moduleName'] = request.module_name
         if not UtilClient.is_unset(request.operation_name):
