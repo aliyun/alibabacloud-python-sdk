@@ -1410,11 +1410,17 @@ class CreateAppInstanceGroupRequestRuntimePolicy(TeaModel):
     def __init__(
         self,
         debug_mode: str = None,
+        per_session_per_app: bool = None,
+        session_pre_open: str = None,
         session_type: str = None,
+        session_user_generation_mode: str = None,
     ):
         self.debug_mode = debug_mode
+        self.per_session_per_app = per_session_per_app
+        self.session_pre_open = session_pre_open
         # 会话类型。
         self.session_type = session_type
+        self.session_user_generation_mode = session_user_generation_mode
 
     def validate(self):
         pass
@@ -1427,16 +1433,28 @@ class CreateAppInstanceGroupRequestRuntimePolicy(TeaModel):
         result = dict()
         if self.debug_mode is not None:
             result['DebugMode'] = self.debug_mode
+        if self.per_session_per_app is not None:
+            result['PerSessionPerApp'] = self.per_session_per_app
+        if self.session_pre_open is not None:
+            result['SessionPreOpen'] = self.session_pre_open
         if self.session_type is not None:
             result['SessionType'] = self.session_type
+        if self.session_user_generation_mode is not None:
+            result['SessionUserGenerationMode'] = self.session_user_generation_mode
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('DebugMode') is not None:
             self.debug_mode = m.get('DebugMode')
+        if m.get('PerSessionPerApp') is not None:
+            self.per_session_per_app = m.get('PerSessionPerApp')
+        if m.get('SessionPreOpen') is not None:
+            self.session_pre_open = m.get('SessionPreOpen')
         if m.get('SessionType') is not None:
             self.session_type = m.get('SessionType')
+        if m.get('SessionUserGenerationMode') is not None:
+            self.session_user_generation_mode = m.get('SessionUserGenerationMode')
         return self
 
 
@@ -1473,12 +1491,16 @@ class CreateAppInstanceGroupRequestSecurityPolicy(TeaModel):
         return self
 
 
-class CreateAppInstanceGroupRequestStoragePolicy(TeaModel):
+class CreateAppInstanceGroupRequestStoragePolicyUserProfile(TeaModel):
     def __init__(
         self,
-        storage_type_list: List[str] = None,
+        remote_storage_path: str = None,
+        remote_storage_type: str = None,
+        user_profile_switch: bool = None,
     ):
-        self.storage_type_list = storage_type_list
+        self.remote_storage_path = remote_storage_path
+        self.remote_storage_type = remote_storage_type
+        self.user_profile_switch = user_profile_switch
 
     def validate(self):
         pass
@@ -1489,14 +1511,57 @@ class CreateAppInstanceGroupRequestStoragePolicy(TeaModel):
             return _map
 
         result = dict()
+        if self.remote_storage_path is not None:
+            result['RemoteStoragePath'] = self.remote_storage_path
+        if self.remote_storage_type is not None:
+            result['RemoteStorageType'] = self.remote_storage_type
+        if self.user_profile_switch is not None:
+            result['UserProfileSwitch'] = self.user_profile_switch
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RemoteStoragePath') is not None:
+            self.remote_storage_path = m.get('RemoteStoragePath')
+        if m.get('RemoteStorageType') is not None:
+            self.remote_storage_type = m.get('RemoteStorageType')
+        if m.get('UserProfileSwitch') is not None:
+            self.user_profile_switch = m.get('UserProfileSwitch')
+        return self
+
+
+class CreateAppInstanceGroupRequestStoragePolicy(TeaModel):
+    def __init__(
+        self,
+        storage_type_list: List[str] = None,
+        user_profile: CreateAppInstanceGroupRequestStoragePolicyUserProfile = None,
+    ):
+        self.storage_type_list = storage_type_list
+        self.user_profile = user_profile
+
+    def validate(self):
+        if self.user_profile:
+            self.user_profile.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.storage_type_list is not None:
             result['StorageTypeList'] = self.storage_type_list
+        if self.user_profile is not None:
+            result['UserProfile'] = self.user_profile.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('StorageTypeList') is not None:
             self.storage_type_list = m.get('StorageTypeList')
+        if m.get('UserProfile') is not None:
+            temp_model = CreateAppInstanceGroupRequestStoragePolicyUserProfile()
+            self.user_profile = temp_model.from_map(m['UserProfile'])
         return self
 
 
@@ -1616,12 +1681,14 @@ class CreateAppInstanceGroupRequest(TeaModel):
         self,
         app_center_image_id: str = None,
         app_instance_group_name: str = None,
+        app_package_type: str = None,
         app_policy_id: str = None,
         auto_pay: bool = None,
         auto_renew: bool = None,
         biz_region_id: str = None,
         charge_resource_mode: str = None,
         charge_type: str = None,
+        cluster_id: str = None,
         network: CreateAppInstanceGroupRequestNetwork = None,
         node_pool: CreateAppInstanceGroupRequestNodePool = None,
         period: int = None,
@@ -1633,6 +1700,7 @@ class CreateAppInstanceGroupRequest(TeaModel):
         security_policy: CreateAppInstanceGroupRequestSecurityPolicy = None,
         session_timeout: int = None,
         storage_policy: CreateAppInstanceGroupRequestStoragePolicy = None,
+        sub_pay_type: str = None,
         user_define_policy: CreateAppInstanceGroupRequestUserDefinePolicy = None,
         user_info: CreateAppInstanceGroupRequestUserInfo = None,
         users: List[str] = None,
@@ -1641,6 +1709,7 @@ class CreateAppInstanceGroupRequest(TeaModel):
         # This parameter is required.
         self.app_center_image_id = app_center_image_id
         self.app_instance_group_name = app_instance_group_name
+        self.app_package_type = app_package_type
         self.app_policy_id = app_policy_id
         self.auto_pay = auto_pay
         self.auto_renew = auto_renew
@@ -1650,6 +1719,7 @@ class CreateAppInstanceGroupRequest(TeaModel):
         self.charge_resource_mode = charge_resource_mode
         # This parameter is required.
         self.charge_type = charge_type
+        self.cluster_id = cluster_id
         self.network = network
         self.node_pool = node_pool
         # This parameter is required.
@@ -1665,6 +1735,7 @@ class CreateAppInstanceGroupRequest(TeaModel):
         # This parameter is required.
         self.session_timeout = session_timeout
         self.storage_policy = storage_policy
+        self.sub_pay_type = sub_pay_type
         self.user_define_policy = user_define_policy
         self.user_info = user_info
         self.users = users
@@ -1698,6 +1769,8 @@ class CreateAppInstanceGroupRequest(TeaModel):
             result['AppCenterImageId'] = self.app_center_image_id
         if self.app_instance_group_name is not None:
             result['AppInstanceGroupName'] = self.app_instance_group_name
+        if self.app_package_type is not None:
+            result['AppPackageType'] = self.app_package_type
         if self.app_policy_id is not None:
             result['AppPolicyId'] = self.app_policy_id
         if self.auto_pay is not None:
@@ -1710,6 +1783,8 @@ class CreateAppInstanceGroupRequest(TeaModel):
             result['ChargeResourceMode'] = self.charge_resource_mode
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
         if self.network is not None:
             result['Network'] = self.network.to_map()
         if self.node_pool is not None:
@@ -1732,6 +1807,8 @@ class CreateAppInstanceGroupRequest(TeaModel):
             result['SessionTimeout'] = self.session_timeout
         if self.storage_policy is not None:
             result['StoragePolicy'] = self.storage_policy.to_map()
+        if self.sub_pay_type is not None:
+            result['SubPayType'] = self.sub_pay_type
         if self.user_define_policy is not None:
             result['UserDefinePolicy'] = self.user_define_policy.to_map()
         if self.user_info is not None:
@@ -1748,6 +1825,8 @@ class CreateAppInstanceGroupRequest(TeaModel):
             self.app_center_image_id = m.get('AppCenterImageId')
         if m.get('AppInstanceGroupName') is not None:
             self.app_instance_group_name = m.get('AppInstanceGroupName')
+        if m.get('AppPackageType') is not None:
+            self.app_package_type = m.get('AppPackageType')
         if m.get('AppPolicyId') is not None:
             self.app_policy_id = m.get('AppPolicyId')
         if m.get('AutoPay') is not None:
@@ -1760,6 +1839,8 @@ class CreateAppInstanceGroupRequest(TeaModel):
             self.charge_resource_mode = m.get('ChargeResourceMode')
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
         if m.get('Network') is not None:
             temp_model = CreateAppInstanceGroupRequestNetwork()
             self.network = temp_model.from_map(m['Network'])
@@ -1787,6 +1868,8 @@ class CreateAppInstanceGroupRequest(TeaModel):
         if m.get('StoragePolicy') is not None:
             temp_model = CreateAppInstanceGroupRequestStoragePolicy()
             self.storage_policy = temp_model.from_map(m['StoragePolicy'])
+        if m.get('SubPayType') is not None:
+            self.sub_pay_type = m.get('SubPayType')
         if m.get('UserDefinePolicy') is not None:
             temp_model = CreateAppInstanceGroupRequestUserDefinePolicy()
             self.user_define_policy = temp_model.from_map(m['UserDefinePolicy'])
@@ -1806,12 +1889,14 @@ class CreateAppInstanceGroupShrinkRequest(TeaModel):
         self,
         app_center_image_id: str = None,
         app_instance_group_name: str = None,
+        app_package_type: str = None,
         app_policy_id: str = None,
         auto_pay: bool = None,
         auto_renew: bool = None,
         biz_region_id: str = None,
         charge_resource_mode: str = None,
         charge_type: str = None,
+        cluster_id: str = None,
         network_shrink: str = None,
         node_pool_shrink: str = None,
         period: int = None,
@@ -1823,6 +1908,7 @@ class CreateAppInstanceGroupShrinkRequest(TeaModel):
         security_policy_shrink: str = None,
         session_timeout: int = None,
         storage_policy_shrink: str = None,
+        sub_pay_type: str = None,
         user_define_policy_shrink: str = None,
         user_info_shrink: str = None,
         users: List[str] = None,
@@ -1831,6 +1917,7 @@ class CreateAppInstanceGroupShrinkRequest(TeaModel):
         # This parameter is required.
         self.app_center_image_id = app_center_image_id
         self.app_instance_group_name = app_instance_group_name
+        self.app_package_type = app_package_type
         self.app_policy_id = app_policy_id
         self.auto_pay = auto_pay
         self.auto_renew = auto_renew
@@ -1840,6 +1927,7 @@ class CreateAppInstanceGroupShrinkRequest(TeaModel):
         self.charge_resource_mode = charge_resource_mode
         # This parameter is required.
         self.charge_type = charge_type
+        self.cluster_id = cluster_id
         self.network_shrink = network_shrink
         self.node_pool_shrink = node_pool_shrink
         # This parameter is required.
@@ -1855,6 +1943,7 @@ class CreateAppInstanceGroupShrinkRequest(TeaModel):
         # This parameter is required.
         self.session_timeout = session_timeout
         self.storage_policy_shrink = storage_policy_shrink
+        self.sub_pay_type = sub_pay_type
         self.user_define_policy_shrink = user_define_policy_shrink
         self.user_info_shrink = user_info_shrink
         self.users = users
@@ -1873,6 +1962,8 @@ class CreateAppInstanceGroupShrinkRequest(TeaModel):
             result['AppCenterImageId'] = self.app_center_image_id
         if self.app_instance_group_name is not None:
             result['AppInstanceGroupName'] = self.app_instance_group_name
+        if self.app_package_type is not None:
+            result['AppPackageType'] = self.app_package_type
         if self.app_policy_id is not None:
             result['AppPolicyId'] = self.app_policy_id
         if self.auto_pay is not None:
@@ -1885,6 +1976,8 @@ class CreateAppInstanceGroupShrinkRequest(TeaModel):
             result['ChargeResourceMode'] = self.charge_resource_mode
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
         if self.network_shrink is not None:
             result['Network'] = self.network_shrink
         if self.node_pool_shrink is not None:
@@ -1907,6 +2000,8 @@ class CreateAppInstanceGroupShrinkRequest(TeaModel):
             result['SessionTimeout'] = self.session_timeout
         if self.storage_policy_shrink is not None:
             result['StoragePolicy'] = self.storage_policy_shrink
+        if self.sub_pay_type is not None:
+            result['SubPayType'] = self.sub_pay_type
         if self.user_define_policy_shrink is not None:
             result['UserDefinePolicy'] = self.user_define_policy_shrink
         if self.user_info_shrink is not None:
@@ -1923,6 +2018,8 @@ class CreateAppInstanceGroupShrinkRequest(TeaModel):
             self.app_center_image_id = m.get('AppCenterImageId')
         if m.get('AppInstanceGroupName') is not None:
             self.app_instance_group_name = m.get('AppInstanceGroupName')
+        if m.get('AppPackageType') is not None:
+            self.app_package_type = m.get('AppPackageType')
         if m.get('AppPolicyId') is not None:
             self.app_policy_id = m.get('AppPolicyId')
         if m.get('AutoPay') is not None:
@@ -1935,6 +2032,8 @@ class CreateAppInstanceGroupShrinkRequest(TeaModel):
             self.charge_resource_mode = m.get('ChargeResourceMode')
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
         if m.get('Network') is not None:
             self.network_shrink = m.get('Network')
         if m.get('NodePool') is not None:
@@ -1957,6 +2056,8 @@ class CreateAppInstanceGroupShrinkRequest(TeaModel):
             self.session_timeout = m.get('SessionTimeout')
         if m.get('StoragePolicy') is not None:
             self.storage_policy_shrink = m.get('StoragePolicy')
+        if m.get('SubPayType') is not None:
+            self.sub_pay_type = m.get('SubPayType')
         if m.get('UserDefinePolicy') is not None:
             self.user_define_policy_shrink = m.get('UserDefinePolicy')
         if m.get('UserInfo') is not None:
@@ -3487,23 +3588,17 @@ class GetConnectionTicketRequest(TeaModel):
         self.app_id = app_id
         # The delivery groups.
         # 
-        # > 
-        # 
-        # *   If you configure this parameter, the system assigns application instances only among the specified authorized delivery groups.
-        # 
-        # *   This parameter is required if you configure `AppInstanceId` or `AppInstancePersistentId`.
+        # > *   If you configure this parameter, the system assigns application instances only among the specified authorized delivery groups. 
+        # > *   This parameter is required if you configure `AppInstanceId` or `AppInstancePersistentId`.
         self.app_instance_group_id_list = app_instance_group_id_list
         # The ID of the application instance.
         # 
-        # > 
-        # 
-        # *   If you configure this parameter, the system attempts to assign only the specified application instance.
-        # 
-        # *   If you configure this parameter, you must also configure `AppInstanceGroupIdList` and the number of delivery groups specified by `AppInstanceGroupIdList` must be 1.
+        # > *   If you configure this parameter, the system attempts to assign only the specified application instance.
+        # > *   If you configure this parameter, you must also configure `AppInstanceGroupIdList` and the number of delivery groups specified by `AppInstanceGroupIdList` must be 1.
         self.app_instance_id = app_instance_id
         # The ID of the persistent session.
         self.app_instance_persistent_id = app_instance_persistent_id
-        # The parameters that are configured to start the application. For information about how to obtain these parameters, see [Obtain parameters configured to install and start an application](https://help.aliyun.com/zh/wuying-appstreaming/user-guide/create-an-application?#how-to-get-installation-and-startup-para).
+        # The parameters that are configured to start the application. For information about how to obtain these parameters, see [Obtain parameters configured to install and start an application](https://help.aliyun.com/document_detail/426045.html).
         self.app_start_param = app_start_param
         # The application version. If you configure this parameter, only an application of the specified version is started. If you do not configure this parameter, an application of a random authorized version is started.
         self.app_version = app_version
@@ -5329,13 +5424,21 @@ class ListAppInstanceGroupRequest(TeaModel):
         self.app_center_image_id = app_center_image_id
         self.app_instance_group_id = app_instance_group_id
         self.app_instance_group_name = app_instance_group_name
+        # The ID of the region where the delivery group resides. For information about the supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
+        # 
+        # Valid values:
+        # 
+        # *   cn-shanghai: China (Shanghai)
+        # *   cn-hangzhou: China (Hangzhou)
         self.biz_region_id = biz_region_id
+        # The ID of the resource specification that you purchase. You can call the [ListNodeInstanceType](~~ListNodeInstanceType~~) operation to obtain the ID.
         self.node_instance_type = node_instance_type
         self.office_site_id = office_site_id
         self.page_number = page_number
         self.page_size = page_size
         # This parameter is required.
         self.product_type = product_type
+        # The region ID.
         self.region_id = region_id
         self.status = status
 
@@ -5408,13 +5511,10 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModelsApps(TeaModel):
         app_version: str = None,
         app_version_name: str = None,
     ):
-        # 应用图标。
         self.app_icon = app_icon
         self.app_id = app_id
         self.app_name = app_name
-        # 应用版本。
         self.app_version = app_version
-        # 应用版本名称。
         self.app_version_name = app_version_name
 
     def validate(self):
@@ -5563,6 +5663,7 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool(TeaModel):
         warm_up: bool = None,
     ):
         self.amount = amount
+        # The maximum number of idle sessions. After you specify a value for this parameter, auto scaling is triggered only if the number of idle sessions in the delivery group is smaller than the specified value and the session usage exceeds the value specified for `ScalingUsageThreshold`. Otherwise, the system determines that the idle sessions in the delivery group are sufficient and does not perform auto scaling.`` You can use this parameter to flexibly manage auto scaling and reduce costs.
         self.max_idle_app_instance_amount = max_idle_app_instance_amount
         self.max_scaling_amount = max_scaling_amount
         self.node_amount = node_amount
@@ -5762,18 +5863,17 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
         self.app_instance_group_id = app_instance_group_id
         self.app_instance_group_name = app_instance_group_name
         self.app_instance_type = app_instance_type
-        # 策略ID。
         self.app_policy_id = app_policy_id
         self.app_policy_image_check = app_policy_image_check
         self.app_policy_version = app_policy_version
         self.apps = apps
-        # 售卖模式。
         self.charge_resource_mode = charge_resource_mode
         self.charge_type = charge_type
         self.expired_time = expired_time
         self.gmt_create = gmt_create
         self.max_amount = max_amount
         self.min_amount = min_amount
+        # The resource groups.
         self.node_pool = node_pool
         self.office_site_id = office_site_id
         self.os_type = os_type
@@ -5965,6 +6065,7 @@ class ListAppInstanceGroupResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The delivery groups.
         self.app_instance_group_models = app_instance_group_models
         self.page_number = page_number
         self.page_size = page_size
@@ -6066,6 +6167,7 @@ class ListAppInstancesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         status: List[str] = None,
+        user_id_list: List[str] = None,
     ):
         # The ID of the delivery group.
         # 
@@ -6088,6 +6190,7 @@ class ListAppInstancesRequest(TeaModel):
         self.page_size = page_size
         # The status of the application instances.
         self.status = status
+        self.user_id_list = user_id_list
 
     def validate(self):
         pass
@@ -6112,6 +6215,8 @@ class ListAppInstancesRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.status is not None:
             result['Status'] = self.status
+        if self.user_id_list is not None:
+            result['UserIdList'] = self.user_id_list
         return result
 
     def from_map(self, m: dict = None):
@@ -6130,6 +6235,8 @@ class ListAppInstancesRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('UserIdList') is not None:
+            self.user_id_list = m.get('UserIdList')
         return self
 
 
@@ -7169,6 +7276,11 @@ class ListRegionsRequest(TeaModel):
         product_type: str = None,
     ):
         self.biz_source = biz_source
+        # The product type.
+        # 
+        # Valid value:
+        # 
+        # *   CloudApp: App Streaming
         self.product_type = product_type
 
     def validate(self):
@@ -7200,6 +7312,7 @@ class ListRegionsResponseBodyRegionModels(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -7228,7 +7341,9 @@ class ListRegionsResponseBody(TeaModel):
         region_models: List[ListRegionsResponseBodyRegionModels] = None,
         request_id: str = None,
     ):
+        # The region IDs.
         self.region_models = region_models
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9523,13 +9638,13 @@ class UnbindRequest(TeaModel):
         end_user_id: str = None,
         product_type: str = None,
     ):
-        # The ID of the delivery group. You can call the [GetConnectionTicket](https://help.aliyun.com/zh/wuying-appstreaming/developer-reference/api-appstream-center-2021-09-01-getconnectionticket) operation to obtain the ID.
+        # The ID of the delivery group. You can call the [GetConnectionTicket](~~GetConnectionTicket~~) operation to obtain the ID.
         # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
-        # The session ID. You can call the [GetConnectionTicket](https://help.aliyun.com/zh/wuying-appstreaming/developer-reference/api-appstream-center-2021-09-01-getconnectionticket) operation to obtain the ID.
+        # The session ID. You can call the [GetConnectionTicket](~~GetConnectionTicket~~) operation to obtain the ID.
         self.app_instance_id = app_instance_id
-        # The ID of the persistent session. You can call the [GetConnectionTicket](https://help.aliyun.com/zh/wuying-appstreaming/developer-reference/api-appstream-center-2021-09-01-getconnectionticket) operation to obtain the ID.
+        # The ID of the persistent session. You can call the [GetConnectionTicket](~~GetConnectionTicket~~) operation to obtain the ID.
         self.app_instance_persistent_id = app_instance_persistent_id
         # The username.
         # 

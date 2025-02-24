@@ -1,3 +1,14 @@
+2025-02-24 Version: 3.0.2
+- Update API CreateAppInstanceGroup: add param AppPackageType.
+- Update API CreateAppInstanceGroup: add param ClusterId.
+- Update API CreateAppInstanceGroup: add param SubPayType.
+- Update API CreateAppInstanceGroup: update param RuntimePolicy.
+- Update API CreateAppInstanceGroup: update param StoragePolicy.
+- Update API ListAppInstances: add param UserIdList.
+- Update API ListAppInstances: update response param.
+- Update API ModifyAppInstanceGroupAttribute: update param StoragePolicy.
+
+
 2025-02-18 Version: 3.0.1
 - Update API ListAppInstances: update response param.
 - Update API ModifyAppInstanceGroupAttribute: update param StoragePolicy.

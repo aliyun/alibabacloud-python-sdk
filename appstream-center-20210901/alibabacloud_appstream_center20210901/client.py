@@ -879,6 +879,8 @@ class Client(OpenApiClient):
             body['AppCenterImageId'] = request.app_center_image_id
         if not UtilClient.is_unset(request.app_instance_group_name):
             body['AppInstanceGroupName'] = request.app_instance_group_name
+        if not UtilClient.is_unset(request.app_package_type):
+            body['AppPackageType'] = request.app_package_type
         if not UtilClient.is_unset(request.app_policy_id):
             body['AppPolicyId'] = request.app_policy_id
         if not UtilClient.is_unset(request.auto_pay):
@@ -891,6 +893,8 @@ class Client(OpenApiClient):
             body['ChargeResourceMode'] = request.charge_resource_mode
         if not UtilClient.is_unset(request.charge_type):
             body['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.network_shrink):
             body['Network'] = request.network_shrink
         if not UtilClient.is_unset(request.node_pool_shrink):
@@ -913,6 +917,8 @@ class Client(OpenApiClient):
             body['SessionTimeout'] = request.session_timeout
         if not UtilClient.is_unset(request.storage_policy_shrink):
             body['StoragePolicy'] = request.storage_policy_shrink
+        if not UtilClient.is_unset(request.sub_pay_type):
+            body['SubPayType'] = request.sub_pay_type
         if not UtilClient.is_unset(request.user_info_shrink):
             body['UserInfo'] = request.user_info_shrink
         if not UtilClient.is_unset(request.users):
@@ -984,6 +990,8 @@ class Client(OpenApiClient):
             body['AppCenterImageId'] = request.app_center_image_id
         if not UtilClient.is_unset(request.app_instance_group_name):
             body['AppInstanceGroupName'] = request.app_instance_group_name
+        if not UtilClient.is_unset(request.app_package_type):
+            body['AppPackageType'] = request.app_package_type
         if not UtilClient.is_unset(request.app_policy_id):
             body['AppPolicyId'] = request.app_policy_id
         if not UtilClient.is_unset(request.auto_pay):
@@ -996,6 +1004,8 @@ class Client(OpenApiClient):
             body['ChargeResourceMode'] = request.charge_resource_mode
         if not UtilClient.is_unset(request.charge_type):
             body['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.network_shrink):
             body['Network'] = request.network_shrink
         if not UtilClient.is_unset(request.node_pool_shrink):
@@ -1018,6 +1028,8 @@ class Client(OpenApiClient):
             body['SessionTimeout'] = request.session_timeout
         if not UtilClient.is_unset(request.storage_policy_shrink):
             body['StoragePolicy'] = request.storage_policy_shrink
+        if not UtilClient.is_unset(request.sub_pay_type):
+            body['SubPayType'] = request.sub_pay_type
         if not UtilClient.is_unset(request.user_info_shrink):
             body['UserInfo'] = request.user_info_shrink
         if not UtilClient.is_unset(request.users):
@@ -2542,7 +2554,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListAppInstanceGroupResponse:
         """
-        @summary 列表展示云应用交付组
+        @summary Queries the details of multiple delivery groups that meet the query conditions.
         
         @param request: ListAppInstanceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2605,7 +2617,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListAppInstanceGroupResponse:
         """
-        @summary 列表展示云应用交付组
+        @summary Queries the details of multiple delivery groups that meet the query conditions.
         
         @param request: ListAppInstanceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2667,7 +2679,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListAppInstanceGroupRequest,
     ) -> appstream_center_20210901_models.ListAppInstanceGroupResponse:
         """
-        @summary 列表展示云应用交付组
+        @summary Queries the details of multiple delivery groups that meet the query conditions.
         
         @param request: ListAppInstanceGroupRequest
         @return: ListAppInstanceGroupResponse
@@ -2680,7 +2692,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListAppInstanceGroupRequest,
     ) -> appstream_center_20210901_models.ListAppInstanceGroupResponse:
         """
-        @summary 列表展示云应用交付组
+        @summary Queries the details of multiple delivery groups that meet the query conditions.
         
         @param request: ListAppInstanceGroupRequest
         @return: ListAppInstanceGroupResponse
@@ -2712,6 +2724,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.user_id_list):
+            query['UserIdList'] = request.user_id_list
         body = {}
         if not UtilClient.is_unset(request.app_instance_id_list):
             body['AppInstanceIdList'] = request.app_instance_id_list
@@ -2767,6 +2781,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.user_id_list):
+            query['UserIdList'] = request.user_id_list
         body = {}
         if not UtilClient.is_unset(request.app_instance_id_list):
             body['AppInstanceIdList'] = request.app_instance_id_list
@@ -3242,7 +3258,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListRegionsResponse:
         """
-        @summary 云应用支持的地域列表
+        @summary Queries the regions that are supported by App Streaming.
+        
+        @description >  All supported regions instead of available regions are returned by this operation. For more information, see [Supported regions](https://help.aliyun.com/document_detail/426036.html).
         
         @param request: ListRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3285,7 +3303,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListRegionsResponse:
         """
-        @summary 云应用支持的地域列表
+        @summary Queries the regions that are supported by App Streaming.
+        
+        @description >  All supported regions instead of available regions are returned by this operation. For more information, see [Supported regions](https://help.aliyun.com/document_detail/426036.html).
         
         @param request: ListRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3327,7 +3347,9 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListRegionsRequest,
     ) -> appstream_center_20210901_models.ListRegionsResponse:
         """
-        @summary 云应用支持的地域列表
+        @summary Queries the regions that are supported by App Streaming.
+        
+        @description >  All supported regions instead of available regions are returned by this operation. For more information, see [Supported regions](https://help.aliyun.com/document_detail/426036.html).
         
         @param request: ListRegionsRequest
         @return: ListRegionsResponse
@@ -3340,7 +3362,9 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListRegionsRequest,
     ) -> appstream_center_20210901_models.ListRegionsResponse:
         """
-        @summary 云应用支持的地域列表
+        @summary Queries the regions that are supported by App Streaming.
+        
+        @description >  All supported regions instead of available regions are returned by this operation. For more information, see [Supported regions](https://help.aliyun.com/document_detail/426036.html).
         
         @param request: ListRegionsRequest
         @return: ListRegionsResponse
