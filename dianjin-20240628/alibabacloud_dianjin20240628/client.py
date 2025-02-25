@@ -3922,10 +3922,14 @@ class Client(OpenApiClient):
             body['metaData'] = request.meta_data
         if not UtilClient.is_unset(request.recommend):
             body['recommend'] = request.recommend
+        if not UtilClient.is_unset(request.script_content_played):
+            body['scriptContentPlayed'] = request.script_content_played
         if not UtilClient.is_unset(request.session_id):
             body['sessionId'] = request.session_id
         if not UtilClient.is_unset(request.stream):
             body['stream'] = request.stream
+        if not UtilClient.is_unset(request.user_vad):
+            body['userVad'] = request.user_vad
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -3981,10 +3985,14 @@ class Client(OpenApiClient):
             body['metaData'] = request.meta_data
         if not UtilClient.is_unset(request.recommend):
             body['recommend'] = request.recommend
+        if not UtilClient.is_unset(request.script_content_played):
+            body['scriptContentPlayed'] = request.script_content_played
         if not UtilClient.is_unset(request.session_id):
             body['sessionId'] = request.session_id
         if not UtilClient.is_unset(request.stream):
             body['stream'] = request.stream
+        if not UtilClient.is_unset(request.user_vad):
+            body['userVad'] = request.user_vad
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)

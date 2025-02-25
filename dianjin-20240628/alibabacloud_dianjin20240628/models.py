@@ -8268,8 +8268,10 @@ class RealTimeDialogRequest(TeaModel):
         dialog_memory_turns: int = None,
         meta_data: Dict[str, Any] = None,
         recommend: bool = None,
+        script_content_played: str = None,
         session_id: str = None,
         stream: bool = None,
+        user_vad: bool = None,
     ):
         self.analysis = analysis
         self.biz_type = biz_type
@@ -8278,9 +8280,11 @@ class RealTimeDialogRequest(TeaModel):
         self.dialog_memory_turns = dialog_memory_turns
         self.meta_data = meta_data
         self.recommend = recommend
+        self.script_content_played = script_content_played
         # This parameter is required.
         self.session_id = session_id
         self.stream = stream
+        self.user_vad = user_vad
 
     def validate(self):
         if self.conversation_model:
@@ -8308,10 +8312,14 @@ class RealTimeDialogRequest(TeaModel):
             result['metaData'] = self.meta_data
         if self.recommend is not None:
             result['recommend'] = self.recommend
+        if self.script_content_played is not None:
+            result['scriptContentPlayed'] = self.script_content_played
         if self.session_id is not None:
             result['sessionId'] = self.session_id
         if self.stream is not None:
             result['stream'] = self.stream
+        if self.user_vad is not None:
+            result['userVad'] = self.user_vad
         return result
 
     def from_map(self, m: dict = None):
@@ -8331,10 +8339,14 @@ class RealTimeDialogRequest(TeaModel):
             self.meta_data = m.get('metaData')
         if m.get('recommend') is not None:
             self.recommend = m.get('recommend')
+        if m.get('scriptContentPlayed') is not None:
+            self.script_content_played = m.get('scriptContentPlayed')
         if m.get('sessionId') is not None:
             self.session_id = m.get('sessionId')
         if m.get('stream') is not None:
             self.stream = m.get('stream')
+        if m.get('userVad') is not None:
+            self.user_vad = m.get('userVad')
         return self
 
 
@@ -8347,6 +8359,7 @@ class RealTimeDialogResponseBodyChoicesDelta(TeaModel):
         intention_code: str = None,
         intention_name: str = None,
         intention_script: str = None,
+        interrupt: bool = None,
         recommend_intention: str = None,
         recommend_script: str = None,
         self_directed_script: str = None,
@@ -8359,6 +8372,7 @@ class RealTimeDialogResponseBodyChoicesDelta(TeaModel):
         self.intention_code = intention_code
         self.intention_name = intention_name
         self.intention_script = intention_script
+        self.interrupt = interrupt
         self.recommend_intention = recommend_intention
         self.recommend_script = recommend_script
         self.self_directed_script = self_directed_script
@@ -8385,6 +8399,8 @@ class RealTimeDialogResponseBodyChoicesDelta(TeaModel):
             result['intentionName'] = self.intention_name
         if self.intention_script is not None:
             result['intentionScript'] = self.intention_script
+        if self.interrupt is not None:
+            result['interrupt'] = self.interrupt
         if self.recommend_intention is not None:
             result['recommendIntention'] = self.recommend_intention
         if self.recommend_script is not None:
@@ -8409,6 +8425,8 @@ class RealTimeDialogResponseBodyChoicesDelta(TeaModel):
             self.intention_name = m.get('intentionName')
         if m.get('intentionScript') is not None:
             self.intention_script = m.get('intentionScript')
+        if m.get('interrupt') is not None:
+            self.interrupt = m.get('interrupt')
         if m.get('recommendIntention') is not None:
             self.recommend_intention = m.get('recommendIntention')
         if m.get('recommendScript') is not None:
@@ -8429,6 +8447,7 @@ class RealTimeDialogResponseBodyChoicesMessage(TeaModel):
         intention_code: str = None,
         intention_name: str = None,
         intention_script: str = None,
+        interrupt: bool = None,
         recommend_intention: str = None,
         recommend_script: str = None,
         self_directed_script: str = None,
@@ -8441,6 +8460,7 @@ class RealTimeDialogResponseBodyChoicesMessage(TeaModel):
         self.intention_code = intention_code
         self.intention_name = intention_name
         self.intention_script = intention_script
+        self.interrupt = interrupt
         self.recommend_intention = recommend_intention
         self.recommend_script = recommend_script
         self.self_directed_script = self_directed_script
@@ -8467,6 +8487,8 @@ class RealTimeDialogResponseBodyChoicesMessage(TeaModel):
             result['intentionName'] = self.intention_name
         if self.intention_script is not None:
             result['intentionScript'] = self.intention_script
+        if self.interrupt is not None:
+            result['interrupt'] = self.interrupt
         if self.recommend_intention is not None:
             result['recommendIntention'] = self.recommend_intention
         if self.recommend_script is not None:
@@ -8491,6 +8513,8 @@ class RealTimeDialogResponseBodyChoicesMessage(TeaModel):
             self.intention_name = m.get('intentionName')
         if m.get('intentionScript') is not None:
             self.intention_script = m.get('intentionScript')
+        if m.get('interrupt') is not None:
+            self.interrupt = m.get('interrupt')
         if m.get('recommendIntention') is not None:
             self.recommend_intention = m.get('recommendIntention')
         if m.get('recommendScript') is not None:

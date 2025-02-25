@@ -1,3 +1,8 @@
+2025-02-25 Version: 1.10.2
+- Update API RealTimeDialog: update param body.
+- Update API RealTimeDialog: update response param.
+
+
 2025-01-23 Version: 1.10.1
 - Update API GetChatQuestionResp: update response param.
 
