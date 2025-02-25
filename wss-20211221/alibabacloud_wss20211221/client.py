@@ -63,6 +63,8 @@ class Client(OpenApiClient):
             query['OrderType'] = request.order_type
         if not UtilClient.is_unset(request.properties_shrink):
             query['Properties'] = request.properties_shrink
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -110,6 +112,8 @@ class Client(OpenApiClient):
             query['OrderType'] = request.order_type
         if not UtilClient.is_unset(request.properties_shrink):
             query['Properties'] = request.properties_shrink
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

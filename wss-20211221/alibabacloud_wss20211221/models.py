@@ -127,10 +127,12 @@ class CreateMultiOrderRequest(TeaModel):
         order_items: List[CreateMultiOrderRequestOrderItems] = None,
         order_type: str = None,
         properties: Dict[str, str] = None,
+        reseller_owner_uid: int = None,
     ):
         self.order_items = order_items
         self.order_type = order_type
         self.properties = properties
+        self.reseller_owner_uid = reseller_owner_uid
 
     def validate(self):
         if self.order_items:
@@ -152,6 +154,8 @@ class CreateMultiOrderRequest(TeaModel):
             result['OrderType'] = self.order_type
         if self.properties is not None:
             result['Properties'] = self.properties
+        if self.reseller_owner_uid is not None:
+            result['ResellerOwnerUid'] = self.reseller_owner_uid
         return result
 
     def from_map(self, m: dict = None):
@@ -165,6 +169,8 @@ class CreateMultiOrderRequest(TeaModel):
             self.order_type = m.get('OrderType')
         if m.get('Properties') is not None:
             self.properties = m.get('Properties')
+        if m.get('ResellerOwnerUid') is not None:
+            self.reseller_owner_uid = m.get('ResellerOwnerUid')
         return self
 
 
@@ -291,10 +297,12 @@ class CreateMultiOrderShrinkRequest(TeaModel):
         order_items: List[CreateMultiOrderShrinkRequestOrderItems] = None,
         order_type: str = None,
         properties_shrink: str = None,
+        reseller_owner_uid: int = None,
     ):
         self.order_items = order_items
         self.order_type = order_type
         self.properties_shrink = properties_shrink
+        self.reseller_owner_uid = reseller_owner_uid
 
     def validate(self):
         if self.order_items:
@@ -316,6 +324,8 @@ class CreateMultiOrderShrinkRequest(TeaModel):
             result['OrderType'] = self.order_type
         if self.properties_shrink is not None:
             result['Properties'] = self.properties_shrink
+        if self.reseller_owner_uid is not None:
+            result['ResellerOwnerUid'] = self.reseller_owner_uid
         return result
 
     def from_map(self, m: dict = None):
@@ -329,6 +339,8 @@ class CreateMultiOrderShrinkRequest(TeaModel):
             self.order_type = m.get('OrderType')
         if m.get('Properties') is not None:
             self.properties_shrink = m.get('Properties')
+        if m.get('ResellerOwnerUid') is not None:
+            self.reseller_owner_uid = m.get('ResellerOwnerUid')
         return self
 
 

@@ -1,3 +1,7 @@
+2025-02-25 Version: 1.2.1
+- Update API CreateMultiOrder: add param ResellerOwnerUid.
+
+
 2025-02-10 Version: 1.2.0
 - Support API CreateMultiOrder.
 - Support API ModifyInstanceProperties.
