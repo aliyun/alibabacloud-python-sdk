@@ -1,3 +1,12 @@
+2025-02-25 Version: 3.5.0
+- Support API CreateVocab.
+- Support API DeleteVocab.
+- Support API GetVocab.
+- Support API ListVocab.
+- Support API UpdateVocab.
+- Update API CreateTask: update param body.
+
+
 2025-02-20 Version: 3.4.0
 - Support API CreateVocab.
 - Support API DeleteVocab.

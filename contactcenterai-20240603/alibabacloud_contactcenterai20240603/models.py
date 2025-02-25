@@ -1008,7 +1008,6 @@ class CreateTaskRequestFields(TeaModel):
         self.code = code
         # This parameter is required.
         self.desc = desc
-        # This parameter is required.
         self.enum_values = enum_values
         # This parameter is required.
         self.name = name
@@ -1218,6 +1217,7 @@ class CreateTaskRequestTranscription(TeaModel):
 class CreateTaskRequest(TeaModel):
     def __init__(
         self,
+        custom_prompt: str = None,
         dialogue: CreateTaskRequestDialogue = None,
         examples: CreateTaskRequestExamples = None,
         fields: List[CreateTaskRequestFields] = None,
@@ -1228,6 +1228,7 @@ class CreateTaskRequest(TeaModel):
         template_ids: List[str] = None,
         transcription: CreateTaskRequestTranscription = None,
     ):
+        self.custom_prompt = custom_prompt
         self.dialogue = dialogue
         self.examples = examples
         self.fields = fields
@@ -1260,6 +1261,8 @@ class CreateTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.custom_prompt is not None:
+            result['customPrompt'] = self.custom_prompt
         if self.dialogue is not None:
             result['dialogue'] = self.dialogue.to_map()
         if self.examples is not None:
@@ -1284,6 +1287,8 @@ class CreateTaskRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('customPrompt') is not None:
+            self.custom_prompt = m.get('customPrompt')
         if m.get('dialogue') is not None:
             temp_model = CreateTaskRequestDialogue()
             self.dialogue = temp_model.from_map(m['dialogue'])
