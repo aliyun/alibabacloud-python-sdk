@@ -1377,3 +1377,1649 @@ class GetErrorResponse(TeaModel):
         return self
 
 
+class GetErrorsRequestFilter(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        operator: str = None,
+        sub_filters: List[str] = None,
+        values: List[Any] = None,
+    ):
+        self.key = key
+        self.operator = operator
+        self.sub_filters = sub_filters
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.sub_filters is not None:
+            result['SubFilters'] = self.sub_filters
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('SubFilters') is not None:
+            self.sub_filters = m.get('SubFilters')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class GetErrorsRequestTimeRange(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        start_time: int = None,
+    ):
+        # This parameter is required.
+        self.end_time = end_time
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class GetErrorsRequest(TeaModel):
+    def __init__(
+        self,
+        app_key: int = None,
+        biz_module: str = None,
+        digest_hash: str = None,
+        filter: GetErrorsRequestFilter = None,
+        os: str = None,
+        page_index: int = None,
+        page_size: int = None,
+        time_range: GetErrorsRequestTimeRange = None,
+        utdid: str = None,
+    ):
+        # appKey
+        # 
+        # This parameter is required.
+        self.app_key = app_key
+        # This parameter is required.
+        self.biz_module = biz_module
+        self.digest_hash = digest_hash
+        self.filter = filter
+        self.os = os
+        # This parameter is required.
+        self.page_index = page_index
+        # This parameter is required.
+        self.page_size = page_size
+        # This parameter is required.
+        self.time_range = time_range
+        # utdid
+        self.utdid = utdid
+
+    def validate(self):
+        if self.filter:
+            self.filter.validate()
+        if self.time_range:
+            self.time_range.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.biz_module is not None:
+            result['BizModule'] = self.biz_module
+        if self.digest_hash is not None:
+            result['DigestHash'] = self.digest_hash
+        if self.filter is not None:
+            result['Filter'] = self.filter.to_map()
+        if self.os is not None:
+            result['Os'] = self.os
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.time_range is not None:
+            result['TimeRange'] = self.time_range.to_map()
+        if self.utdid is not None:
+            result['Utdid'] = self.utdid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('BizModule') is not None:
+            self.biz_module = m.get('BizModule')
+        if m.get('DigestHash') is not None:
+            self.digest_hash = m.get('DigestHash')
+        if m.get('Filter') is not None:
+            temp_model = GetErrorsRequestFilter()
+            self.filter = temp_model.from_map(m['Filter'])
+        if m.get('Os') is not None:
+            self.os = m.get('Os')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TimeRange') is not None:
+            temp_model = GetErrorsRequestTimeRange()
+            self.time_range = temp_model.from_map(m['TimeRange'])
+        if m.get('Utdid') is not None:
+            self.utdid = m.get('Utdid')
+        return self
+
+
+class GetErrorsShrinkRequestTimeRange(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        start_time: int = None,
+    ):
+        # This parameter is required.
+        self.end_time = end_time
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class GetErrorsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_key: int = None,
+        biz_module: str = None,
+        digest_hash: str = None,
+        filter_shrink: str = None,
+        os: str = None,
+        page_index: int = None,
+        page_size: int = None,
+        time_range: GetErrorsShrinkRequestTimeRange = None,
+        utdid: str = None,
+    ):
+        # appKey
+        # 
+        # This parameter is required.
+        self.app_key = app_key
+        # This parameter is required.
+        self.biz_module = biz_module
+        self.digest_hash = digest_hash
+        self.filter_shrink = filter_shrink
+        self.os = os
+        # This parameter is required.
+        self.page_index = page_index
+        # This parameter is required.
+        self.page_size = page_size
+        # This parameter is required.
+        self.time_range = time_range
+        # utdid
+        self.utdid = utdid
+
+    def validate(self):
+        if self.time_range:
+            self.time_range.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.biz_module is not None:
+            result['BizModule'] = self.biz_module
+        if self.digest_hash is not None:
+            result['DigestHash'] = self.digest_hash
+        if self.filter_shrink is not None:
+            result['Filter'] = self.filter_shrink
+        if self.os is not None:
+            result['Os'] = self.os
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.time_range is not None:
+            result['TimeRange'] = self.time_range.to_map()
+        if self.utdid is not None:
+            result['Utdid'] = self.utdid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('BizModule') is not None:
+            self.biz_module = m.get('BizModule')
+        if m.get('DigestHash') is not None:
+            self.digest_hash = m.get('DigestHash')
+        if m.get('Filter') is not None:
+            self.filter_shrink = m.get('Filter')
+        if m.get('Os') is not None:
+            self.os = m.get('Os')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TimeRange') is not None:
+            temp_model = GetErrorsShrinkRequestTimeRange()
+            self.time_range = temp_model.from_map(m['TimeRange'])
+        if m.get('Utdid') is not None:
+            self.utdid = m.get('Utdid')
+        return self
+
+
+class GetErrorsResponseBodyModelItems(TeaModel):
+    def __init__(
+        self,
+        client_time: int = None,
+        did: str = None,
+        utdid: str = None,
+        uuid: str = None,
+    ):
+        self.client_time = client_time
+        self.did = did
+        # Utdid
+        self.utdid = utdid
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_time is not None:
+            result['ClientTime'] = self.client_time
+        if self.did is not None:
+            result['Did'] = self.did
+        if self.utdid is not None:
+            result['Utdid'] = self.utdid
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientTime') is not None:
+            self.client_time = m.get('ClientTime')
+        if m.get('Did') is not None:
+            self.did = m.get('Did')
+        if m.get('Utdid') is not None:
+            self.utdid = m.get('Utdid')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class GetErrorsResponseBodyModel(TeaModel):
+    def __init__(
+        self,
+        items: List[GetErrorsResponseBodyModelItems] = None,
+        page_num: int = None,
+        page_size: int = None,
+        pages: int = None,
+        total: int = None,
+    ):
+        self.items = items
+        self.page_num = page_num
+        self.page_size = page_size
+        self.pages = pages
+        self.total = total
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.pages is not None:
+            result['Pages'] = self.pages
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = GetErrorsResponseBodyModelItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Pages') is not None:
+            self.pages = m.get('Pages')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetErrorsResponseBody(TeaModel):
+    def __init__(
+        self,
+        args: Dict[str, Any] = None,
+        error_code: int = None,
+        message: str = None,
+        model: GetErrorsResponseBodyModel = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Args
+        self.args = args
+        self.error_code = error_code
+        self.message = message
+        self.model = model
+        # RequestId
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.model:
+            self.model.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.args is not None:
+            result['Args'] = self.args
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.model is not None:
+            result['Model'] = self.model.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Args') is not None:
+            self.args = m.get('Args')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Model') is not None:
+            temp_model = GetErrorsResponseBodyModel()
+            self.model = temp_model.from_map(m['Model'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetErrorsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetErrorsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetErrorsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetIssueRequestFilter(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        operator: str = None,
+        sub_filters: List[str] = None,
+        values: List[Any] = None,
+    ):
+        self.key = key
+        self.operator = operator
+        self.sub_filters = sub_filters
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.sub_filters is not None:
+            result['SubFilters'] = self.sub_filters
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('SubFilters') is not None:
+            self.sub_filters = m.get('SubFilters')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class GetIssueRequestTimeRange(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        granularity: int = None,
+        granularity_unit: str = None,
+        start_time: int = None,
+    ):
+        self.end_time = end_time
+        self.granularity = granularity
+        self.granularity_unit = granularity_unit
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.granularity is not None:
+            result['Granularity'] = self.granularity
+        if self.granularity_unit is not None:
+            result['GranularityUnit'] = self.granularity_unit
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Granularity') is not None:
+            self.granularity = m.get('Granularity')
+        if m.get('GranularityUnit') is not None:
+            self.granularity_unit = m.get('GranularityUnit')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class GetIssueRequest(TeaModel):
+    def __init__(
+        self,
+        app_key: int = None,
+        biz_module: str = None,
+        digest_hash: str = None,
+        filter: GetIssueRequestFilter = None,
+        os: str = None,
+        time_range: GetIssueRequestTimeRange = None,
+    ):
+        # AppKey
+        # 
+        # This parameter is required.
+        self.app_key = app_key
+        # This parameter is required.
+        self.biz_module = biz_module
+        self.digest_hash = digest_hash
+        self.filter = filter
+        # This parameter is required.
+        self.os = os
+        # This parameter is required.
+        self.time_range = time_range
+
+    def validate(self):
+        if self.filter:
+            self.filter.validate()
+        if self.time_range:
+            self.time_range.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.biz_module is not None:
+            result['BizModule'] = self.biz_module
+        if self.digest_hash is not None:
+            result['DigestHash'] = self.digest_hash
+        if self.filter is not None:
+            result['Filter'] = self.filter.to_map()
+        if self.os is not None:
+            result['Os'] = self.os
+        if self.time_range is not None:
+            result['TimeRange'] = self.time_range.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('BizModule') is not None:
+            self.biz_module = m.get('BizModule')
+        if m.get('DigestHash') is not None:
+            self.digest_hash = m.get('DigestHash')
+        if m.get('Filter') is not None:
+            temp_model = GetIssueRequestFilter()
+            self.filter = temp_model.from_map(m['Filter'])
+        if m.get('Os') is not None:
+            self.os = m.get('Os')
+        if m.get('TimeRange') is not None:
+            temp_model = GetIssueRequestTimeRange()
+            self.time_range = temp_model.from_map(m['TimeRange'])
+        return self
+
+
+class GetIssueShrinkRequestTimeRange(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        granularity: int = None,
+        granularity_unit: str = None,
+        start_time: int = None,
+    ):
+        self.end_time = end_time
+        self.granularity = granularity
+        self.granularity_unit = granularity_unit
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.granularity is not None:
+            result['Granularity'] = self.granularity
+        if self.granularity_unit is not None:
+            result['GranularityUnit'] = self.granularity_unit
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Granularity') is not None:
+            self.granularity = m.get('Granularity')
+        if m.get('GranularityUnit') is not None:
+            self.granularity_unit = m.get('GranularityUnit')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class GetIssueShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_key: int = None,
+        biz_module: str = None,
+        digest_hash: str = None,
+        filter_shrink: str = None,
+        os: str = None,
+        time_range: GetIssueShrinkRequestTimeRange = None,
+    ):
+        # AppKey
+        # 
+        # This parameter is required.
+        self.app_key = app_key
+        # This parameter is required.
+        self.biz_module = biz_module
+        self.digest_hash = digest_hash
+        self.filter_shrink = filter_shrink
+        # This parameter is required.
+        self.os = os
+        # This parameter is required.
+        self.time_range = time_range
+
+    def validate(self):
+        if self.time_range:
+            self.time_range.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.biz_module is not None:
+            result['BizModule'] = self.biz_module
+        if self.digest_hash is not None:
+            result['DigestHash'] = self.digest_hash
+        if self.filter_shrink is not None:
+            result['Filter'] = self.filter_shrink
+        if self.os is not None:
+            result['Os'] = self.os
+        if self.time_range is not None:
+            result['TimeRange'] = self.time_range.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('BizModule') is not None:
+            self.biz_module = m.get('BizModule')
+        if m.get('DigestHash') is not None:
+            self.digest_hash = m.get('DigestHash')
+        if m.get('Filter') is not None:
+            self.filter_shrink = m.get('Filter')
+        if m.get('Os') is not None:
+            self.os = m.get('Os')
+        if m.get('TimeRange') is not None:
+            temp_model = GetIssueShrinkRequestTimeRange()
+            self.time_range = temp_model.from_map(m['TimeRange'])
+        return self
+
+
+class GetIssueResponseBodyModel(TeaModel):
+    def __init__(
+        self,
+        affected_versions: List[str] = None,
+        crux_stack: str = None,
+        digest_hash: str = None,
+        error_column: int = None,
+        error_count: int = None,
+        error_count_growth_rate: float = None,
+        error_device_count: int = None,
+        error_device_count_growth_rate: float = None,
+        error_device_rate: float = None,
+        error_device_rate_growth_rate: float = None,
+        error_file_name: str = None,
+        error_line: str = None,
+        error_name: str = None,
+        error_rate: float = None,
+        error_rate_growth_rate: float = None,
+        error_type: str = None,
+        first_version: str = None,
+        gmt_create: int = None,
+        gmt_latest: int = None,
+        key_line: int = None,
+        name: str = None,
+        stack: str = None,
+        status: int = None,
+        summary: str = None,
+        symbolic_status: bool = None,
+        tags: List[str] = None,
+    ):
+        self.affected_versions = affected_versions
+        self.crux_stack = crux_stack
+        self.digest_hash = digest_hash
+        self.error_column = error_column
+        self.error_count = error_count
+        self.error_count_growth_rate = error_count_growth_rate
+        self.error_device_count = error_device_count
+        self.error_device_count_growth_rate = error_device_count_growth_rate
+        self.error_device_rate = error_device_rate
+        self.error_device_rate_growth_rate = error_device_rate_growth_rate
+        self.error_file_name = error_file_name
+        self.error_line = error_line
+        self.error_name = error_name
+        self.error_rate = error_rate
+        self.error_rate_growth_rate = error_rate_growth_rate
+        self.error_type = error_type
+        self.first_version = first_version
+        self.gmt_create = gmt_create
+        self.gmt_latest = gmt_latest
+        self.key_line = key_line
+        self.name = name
+        self.stack = stack
+        self.status = status
+        self.summary = summary
+        self.symbolic_status = symbolic_status
+        self.tags = tags
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.affected_versions is not None:
+            result['AffectedVersions'] = self.affected_versions
+        if self.crux_stack is not None:
+            result['CruxStack'] = self.crux_stack
+        if self.digest_hash is not None:
+            result['DigestHash'] = self.digest_hash
+        if self.error_column is not None:
+            result['ErrorColumn'] = self.error_column
+        if self.error_count is not None:
+            result['ErrorCount'] = self.error_count
+        if self.error_count_growth_rate is not None:
+            result['ErrorCountGrowthRate'] = self.error_count_growth_rate
+        if self.error_device_count is not None:
+            result['ErrorDeviceCount'] = self.error_device_count
+        if self.error_device_count_growth_rate is not None:
+            result['ErrorDeviceCountGrowthRate'] = self.error_device_count_growth_rate
+        if self.error_device_rate is not None:
+            result['ErrorDeviceRate'] = self.error_device_rate
+        if self.error_device_rate_growth_rate is not None:
+            result['ErrorDeviceRateGrowthRate'] = self.error_device_rate_growth_rate
+        if self.error_file_name is not None:
+            result['ErrorFileName'] = self.error_file_name
+        if self.error_line is not None:
+            result['ErrorLine'] = self.error_line
+        if self.error_name is not None:
+            result['ErrorName'] = self.error_name
+        if self.error_rate is not None:
+            result['ErrorRate'] = self.error_rate
+        if self.error_rate_growth_rate is not None:
+            result['ErrorRateGrowthRate'] = self.error_rate_growth_rate
+        if self.error_type is not None:
+            result['ErrorType'] = self.error_type
+        if self.first_version is not None:
+            result['FirstVersion'] = self.first_version
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_latest is not None:
+            result['GmtLatest'] = self.gmt_latest
+        if self.key_line is not None:
+            result['KeyLine'] = self.key_line
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.stack is not None:
+            result['Stack'] = self.stack
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        if self.symbolic_status is not None:
+            result['SymbolicStatus'] = self.symbolic_status
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AffectedVersions') is not None:
+            self.affected_versions = m.get('AffectedVersions')
+        if m.get('CruxStack') is not None:
+            self.crux_stack = m.get('CruxStack')
+        if m.get('DigestHash') is not None:
+            self.digest_hash = m.get('DigestHash')
+        if m.get('ErrorColumn') is not None:
+            self.error_column = m.get('ErrorColumn')
+        if m.get('ErrorCount') is not None:
+            self.error_count = m.get('ErrorCount')
+        if m.get('ErrorCountGrowthRate') is not None:
+            self.error_count_growth_rate = m.get('ErrorCountGrowthRate')
+        if m.get('ErrorDeviceCount') is not None:
+            self.error_device_count = m.get('ErrorDeviceCount')
+        if m.get('ErrorDeviceCountGrowthRate') is not None:
+            self.error_device_count_growth_rate = m.get('ErrorDeviceCountGrowthRate')
+        if m.get('ErrorDeviceRate') is not None:
+            self.error_device_rate = m.get('ErrorDeviceRate')
+        if m.get('ErrorDeviceRateGrowthRate') is not None:
+            self.error_device_rate_growth_rate = m.get('ErrorDeviceRateGrowthRate')
+        if m.get('ErrorFileName') is not None:
+            self.error_file_name = m.get('ErrorFileName')
+        if m.get('ErrorLine') is not None:
+            self.error_line = m.get('ErrorLine')
+        if m.get('ErrorName') is not None:
+            self.error_name = m.get('ErrorName')
+        if m.get('ErrorRate') is not None:
+            self.error_rate = m.get('ErrorRate')
+        if m.get('ErrorRateGrowthRate') is not None:
+            self.error_rate_growth_rate = m.get('ErrorRateGrowthRate')
+        if m.get('ErrorType') is not None:
+            self.error_type = m.get('ErrorType')
+        if m.get('FirstVersion') is not None:
+            self.first_version = m.get('FirstVersion')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtLatest') is not None:
+            self.gmt_latest = m.get('GmtLatest')
+        if m.get('KeyLine') is not None:
+            self.key_line = m.get('KeyLine')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Stack') is not None:
+            self.stack = m.get('Stack')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        if m.get('SymbolicStatus') is not None:
+            self.symbolic_status = m.get('SymbolicStatus')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        return self
+
+
+class GetIssueResponseBody(TeaModel):
+    def __init__(
+        self,
+        args: Dict[str, Any] = None,
+        error_code: int = None,
+        message: str = None,
+        model: GetIssueResponseBodyModel = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Args
+        self.args = args
+        self.error_code = error_code
+        self.message = message
+        self.model = model
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.model:
+            self.model.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.args is not None:
+            result['Args'] = self.args
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.model is not None:
+            result['Model'] = self.model.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Args') is not None:
+            self.args = m.get('Args')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Model') is not None:
+            temp_model = GetIssueResponseBodyModel()
+            self.model = temp_model.from_map(m['Model'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetIssueResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetIssueResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetIssueResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetIssuesRequestFilter(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        operator: str = None,
+        sub_filters: List[str] = None,
+        values: List[Any] = None,
+    ):
+        self.key = key
+        self.operator = operator
+        self.sub_filters = sub_filters
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.sub_filters is not None:
+            result['SubFilters'] = self.sub_filters
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('SubFilters') is not None:
+            self.sub_filters = m.get('SubFilters')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class GetIssuesRequestTimeRange(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        granularity: int = None,
+        granularity_unit: str = None,
+        start_time: int = None,
+    ):
+        self.end_time = end_time
+        self.granularity = granularity
+        self.granularity_unit = granularity_unit
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.granularity is not None:
+            result['Granularity'] = self.granularity
+        if self.granularity_unit is not None:
+            result['GranularityUnit'] = self.granularity_unit
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Granularity') is not None:
+            self.granularity = m.get('Granularity')
+        if m.get('GranularityUnit') is not None:
+            self.granularity_unit = m.get('GranularityUnit')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class GetIssuesRequest(TeaModel):
+    def __init__(
+        self,
+        app_key: int = None,
+        biz_module: str = None,
+        filter: GetIssuesRequestFilter = None,
+        name: str = None,
+        order_by: str = None,
+        order_type: str = None,
+        os: str = None,
+        page_index: int = None,
+        page_size: int = None,
+        status: int = None,
+        time_range: GetIssuesRequestTimeRange = None,
+    ):
+        # This parameter is required.
+        self.app_key = app_key
+        # This parameter is required.
+        self.biz_module = biz_module
+        self.filter = filter
+        self.name = name
+        self.order_by = order_by
+        self.order_type = order_type
+        self.os = os
+        self.page_index = page_index
+        self.page_size = page_size
+        self.status = status
+        # This parameter is required.
+        self.time_range = time_range
+
+    def validate(self):
+        if self.filter:
+            self.filter.validate()
+        if self.time_range:
+            self.time_range.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.biz_module is not None:
+            result['BizModule'] = self.biz_module
+        if self.filter is not None:
+            result['Filter'] = self.filter.to_map()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
+        if self.order_type is not None:
+            result['OrderType'] = self.order_type
+        if self.os is not None:
+            result['Os'] = self.os
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.time_range is not None:
+            result['TimeRange'] = self.time_range.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('BizModule') is not None:
+            self.biz_module = m.get('BizModule')
+        if m.get('Filter') is not None:
+            temp_model = GetIssuesRequestFilter()
+            self.filter = temp_model.from_map(m['Filter'])
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
+        if m.get('OrderType') is not None:
+            self.order_type = m.get('OrderType')
+        if m.get('Os') is not None:
+            self.os = m.get('Os')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TimeRange') is not None:
+            temp_model = GetIssuesRequestTimeRange()
+            self.time_range = temp_model.from_map(m['TimeRange'])
+        return self
+
+
+class GetIssuesShrinkRequestTimeRange(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        granularity: int = None,
+        granularity_unit: str = None,
+        start_time: int = None,
+    ):
+        self.end_time = end_time
+        self.granularity = granularity
+        self.granularity_unit = granularity_unit
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.granularity is not None:
+            result['Granularity'] = self.granularity
+        if self.granularity_unit is not None:
+            result['GranularityUnit'] = self.granularity_unit
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Granularity') is not None:
+            self.granularity = m.get('Granularity')
+        if m.get('GranularityUnit') is not None:
+            self.granularity_unit = m.get('GranularityUnit')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class GetIssuesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_key: int = None,
+        biz_module: str = None,
+        filter_shrink: str = None,
+        name: str = None,
+        order_by: str = None,
+        order_type: str = None,
+        os: str = None,
+        page_index: int = None,
+        page_size: int = None,
+        status: int = None,
+        time_range: GetIssuesShrinkRequestTimeRange = None,
+    ):
+        # This parameter is required.
+        self.app_key = app_key
+        # This parameter is required.
+        self.biz_module = biz_module
+        self.filter_shrink = filter_shrink
+        self.name = name
+        self.order_by = order_by
+        self.order_type = order_type
+        self.os = os
+        self.page_index = page_index
+        self.page_size = page_size
+        self.status = status
+        # This parameter is required.
+        self.time_range = time_range
+
+    def validate(self):
+        if self.time_range:
+            self.time_range.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.biz_module is not None:
+            result['BizModule'] = self.biz_module
+        if self.filter_shrink is not None:
+            result['Filter'] = self.filter_shrink
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
+        if self.order_type is not None:
+            result['OrderType'] = self.order_type
+        if self.os is not None:
+            result['Os'] = self.os
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.time_range is not None:
+            result['TimeRange'] = self.time_range.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('BizModule') is not None:
+            self.biz_module = m.get('BizModule')
+        if m.get('Filter') is not None:
+            self.filter_shrink = m.get('Filter')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
+        if m.get('OrderType') is not None:
+            self.order_type = m.get('OrderType')
+        if m.get('Os') is not None:
+            self.os = m.get('Os')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TimeRange') is not None:
+            temp_model = GetIssuesShrinkRequestTimeRange()
+            self.time_range = temp_model.from_map(m['TimeRange'])
+        return self
+
+
+class GetIssuesResponseBodyModelItems(TeaModel):
+    def __init__(
+        self,
+        affected_user_count: int = None,
+        digest_hash: str = None,
+        dom_score: str = None,
+        error_column: int = None,
+        error_count: int = None,
+        error_device_count: int = None,
+        error_device_rate: float = None,
+        error_file_name: str = None,
+        error_line: int = None,
+        error_name: str = None,
+        error_rate: float = None,
+        error_type: str = None,
+        event_time: str = None,
+        first_version: str = None,
+        name: str = None,
+        stack: str = None,
+        status: int = None,
+    ):
+        self.affected_user_count = affected_user_count
+        self.digest_hash = digest_hash
+        self.dom_score = dom_score
+        self.error_column = error_column
+        self.error_count = error_count
+        self.error_device_count = error_device_count
+        self.error_device_rate = error_device_rate
+        self.error_file_name = error_file_name
+        self.error_line = error_line
+        self.error_name = error_name
+        self.error_rate = error_rate
+        self.error_type = error_type
+        self.event_time = event_time
+        self.first_version = first_version
+        self.name = name
+        self.stack = stack
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.affected_user_count is not None:
+            result['AffectedUserCount'] = self.affected_user_count
+        if self.digest_hash is not None:
+            result['DigestHash'] = self.digest_hash
+        if self.dom_score is not None:
+            result['DomScore'] = self.dom_score
+        if self.error_column is not None:
+            result['ErrorColumn'] = self.error_column
+        if self.error_count is not None:
+            result['ErrorCount'] = self.error_count
+        if self.error_device_count is not None:
+            result['ErrorDeviceCount'] = self.error_device_count
+        if self.error_device_rate is not None:
+            result['ErrorDeviceRate'] = self.error_device_rate
+        if self.error_file_name is not None:
+            result['ErrorFileName'] = self.error_file_name
+        if self.error_line is not None:
+            result['ErrorLine'] = self.error_line
+        if self.error_name is not None:
+            result['ErrorName'] = self.error_name
+        if self.error_rate is not None:
+            result['ErrorRate'] = self.error_rate
+        if self.error_type is not None:
+            result['ErrorType'] = self.error_type
+        if self.event_time is not None:
+            result['EventTime'] = self.event_time
+        if self.first_version is not None:
+            result['FirstVersion'] = self.first_version
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.stack is not None:
+            result['Stack'] = self.stack
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AffectedUserCount') is not None:
+            self.affected_user_count = m.get('AffectedUserCount')
+        if m.get('DigestHash') is not None:
+            self.digest_hash = m.get('DigestHash')
+        if m.get('DomScore') is not None:
+            self.dom_score = m.get('DomScore')
+        if m.get('ErrorColumn') is not None:
+            self.error_column = m.get('ErrorColumn')
+        if m.get('ErrorCount') is not None:
+            self.error_count = m.get('ErrorCount')
+        if m.get('ErrorDeviceCount') is not None:
+            self.error_device_count = m.get('ErrorDeviceCount')
+        if m.get('ErrorDeviceRate') is not None:
+            self.error_device_rate = m.get('ErrorDeviceRate')
+        if m.get('ErrorFileName') is not None:
+            self.error_file_name = m.get('ErrorFileName')
+        if m.get('ErrorLine') is not None:
+            self.error_line = m.get('ErrorLine')
+        if m.get('ErrorName') is not None:
+            self.error_name = m.get('ErrorName')
+        if m.get('ErrorRate') is not None:
+            self.error_rate = m.get('ErrorRate')
+        if m.get('ErrorType') is not None:
+            self.error_type = m.get('ErrorType')
+        if m.get('EventTime') is not None:
+            self.event_time = m.get('EventTime')
+        if m.get('FirstVersion') is not None:
+            self.first_version = m.get('FirstVersion')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Stack') is not None:
+            self.stack = m.get('Stack')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetIssuesResponseBodyModel(TeaModel):
+    def __init__(
+        self,
+        items: List[GetIssuesResponseBodyModelItems] = None,
+        page_num: int = None,
+        page_size: int = None,
+        pages: int = None,
+        total: int = None,
+    ):
+        self.items = items
+        self.page_num = page_num
+        self.page_size = page_size
+        self.pages = pages
+        self.total = total
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.pages is not None:
+            result['Pages'] = self.pages
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = GetIssuesResponseBodyModelItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Pages') is not None:
+            self.pages = m.get('Pages')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetIssuesResponseBody(TeaModel):
+    def __init__(
+        self,
+        args: Dict[str, Any] = None,
+        error_code: int = None,
+        message: str = None,
+        model: GetIssuesResponseBodyModel = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Args
+        self.args = args
+        self.error_code = error_code
+        self.message = message
+        self.model = model
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.model:
+            self.model.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.args is not None:
+            result['Args'] = self.args
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.model is not None:
+            result['Model'] = self.model.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Args') is not None:
+            self.args = m.get('Args')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Model') is not None:
+            temp_model = GetIssuesResponseBodyModel()
+            self.model = temp_model.from_map(m['Model'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetIssuesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetIssuesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetIssuesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+

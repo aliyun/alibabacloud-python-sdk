@@ -172,3 +172,461 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_error_with_options_async(request, runtime)
+
+    def get_errors_with_options(
+        self,
+        tmp_req: emas_appmonitor_20190611_models.GetErrorsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emas_appmonitor_20190611_models.GetErrorsResponse:
+        """
+        @summary 获取某一聚合错误下所有的错误事件列表
+        
+        @param tmp_req: GetErrorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetErrorsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = emas_appmonitor_20190611_models.GetErrorsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_key):
+            body['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.biz_module):
+            body['BizModule'] = request.biz_module
+        if not UtilClient.is_unset(request.digest_hash):
+            body['DigestHash'] = request.digest_hash
+        if not UtilClient.is_unset(request.filter_shrink):
+            body['Filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.os):
+            body['Os'] = request.os
+        if not UtilClient.is_unset(request.page_index):
+            body['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        body_flat = {}
+        if not UtilClient.is_unset(request.time_range):
+            body_flat['TimeRange'] = request.time_range
+        if not UtilClient.is_unset(request.utdid):
+            body['Utdid'] = request.utdid
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetErrors',
+            version='2019-06-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                emas_appmonitor_20190611_models.GetErrorsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                emas_appmonitor_20190611_models.GetErrorsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_errors_with_options_async(
+        self,
+        tmp_req: emas_appmonitor_20190611_models.GetErrorsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emas_appmonitor_20190611_models.GetErrorsResponse:
+        """
+        @summary 获取某一聚合错误下所有的错误事件列表
+        
+        @param tmp_req: GetErrorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetErrorsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = emas_appmonitor_20190611_models.GetErrorsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_key):
+            body['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.biz_module):
+            body['BizModule'] = request.biz_module
+        if not UtilClient.is_unset(request.digest_hash):
+            body['DigestHash'] = request.digest_hash
+        if not UtilClient.is_unset(request.filter_shrink):
+            body['Filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.os):
+            body['Os'] = request.os
+        if not UtilClient.is_unset(request.page_index):
+            body['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        body_flat = {}
+        if not UtilClient.is_unset(request.time_range):
+            body_flat['TimeRange'] = request.time_range
+        if not UtilClient.is_unset(request.utdid):
+            body['Utdid'] = request.utdid
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetErrors',
+            version='2019-06-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                emas_appmonitor_20190611_models.GetErrorsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                emas_appmonitor_20190611_models.GetErrorsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_errors(
+        self,
+        request: emas_appmonitor_20190611_models.GetErrorsRequest,
+    ) -> emas_appmonitor_20190611_models.GetErrorsResponse:
+        """
+        @summary 获取某一聚合错误下所有的错误事件列表
+        
+        @param request: GetErrorsRequest
+        @return: GetErrorsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_errors_with_options(request, runtime)
+
+    async def get_errors_async(
+        self,
+        request: emas_appmonitor_20190611_models.GetErrorsRequest,
+    ) -> emas_appmonitor_20190611_models.GetErrorsResponse:
+        """
+        @summary 获取某一聚合错误下所有的错误事件列表
+        
+        @param request: GetErrorsRequest
+        @return: GetErrorsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_errors_with_options_async(request, runtime)
+
+    def get_issue_with_options(
+        self,
+        tmp_req: emas_appmonitor_20190611_models.GetIssueRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emas_appmonitor_20190611_models.GetIssueResponse:
+        """
+        @summary 获取聚合错误详情
+        
+        @param tmp_req: GetIssueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIssueResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = emas_appmonitor_20190611_models.GetIssueShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_key):
+            body['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.biz_module):
+            body['BizModule'] = request.biz_module
+        if not UtilClient.is_unset(request.digest_hash):
+            body['DigestHash'] = request.digest_hash
+        if not UtilClient.is_unset(request.filter_shrink):
+            body['Filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.os):
+            body['Os'] = request.os
+        body_flat = {}
+        if not UtilClient.is_unset(request.time_range):
+            body_flat['TimeRange'] = request.time_range
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetIssue',
+            version='2019-06-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                emas_appmonitor_20190611_models.GetIssueResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                emas_appmonitor_20190611_models.GetIssueResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_issue_with_options_async(
+        self,
+        tmp_req: emas_appmonitor_20190611_models.GetIssueRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emas_appmonitor_20190611_models.GetIssueResponse:
+        """
+        @summary 获取聚合错误详情
+        
+        @param tmp_req: GetIssueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIssueResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = emas_appmonitor_20190611_models.GetIssueShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_key):
+            body['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.biz_module):
+            body['BizModule'] = request.biz_module
+        if not UtilClient.is_unset(request.digest_hash):
+            body['DigestHash'] = request.digest_hash
+        if not UtilClient.is_unset(request.filter_shrink):
+            body['Filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.os):
+            body['Os'] = request.os
+        body_flat = {}
+        if not UtilClient.is_unset(request.time_range):
+            body_flat['TimeRange'] = request.time_range
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetIssue',
+            version='2019-06-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                emas_appmonitor_20190611_models.GetIssueResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                emas_appmonitor_20190611_models.GetIssueResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_issue(
+        self,
+        request: emas_appmonitor_20190611_models.GetIssueRequest,
+    ) -> emas_appmonitor_20190611_models.GetIssueResponse:
+        """
+        @summary 获取聚合错误详情
+        
+        @param request: GetIssueRequest
+        @return: GetIssueResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_issue_with_options(request, runtime)
+
+    async def get_issue_async(
+        self,
+        request: emas_appmonitor_20190611_models.GetIssueRequest,
+    ) -> emas_appmonitor_20190611_models.GetIssueResponse:
+        """
+        @summary 获取聚合错误详情
+        
+        @param request: GetIssueRequest
+        @return: GetIssueResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_issue_with_options_async(request, runtime)
+
+    def get_issues_with_options(
+        self,
+        tmp_req: emas_appmonitor_20190611_models.GetIssuesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emas_appmonitor_20190611_models.GetIssuesResponse:
+        """
+        @summary 获取聚合错误列表
+        
+        @param tmp_req: GetIssuesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIssuesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = emas_appmonitor_20190611_models.GetIssuesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_key):
+            body['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.biz_module):
+            body['BizModule'] = request.biz_module
+        if not UtilClient.is_unset(request.filter_shrink):
+            body['Filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.order_by):
+            body['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.order_type):
+            body['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.os):
+            body['Os'] = request.os
+        if not UtilClient.is_unset(request.page_index):
+            body['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        body_flat = {}
+        if not UtilClient.is_unset(request.time_range):
+            body_flat['TimeRange'] = request.time_range
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetIssues',
+            version='2019-06-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                emas_appmonitor_20190611_models.GetIssuesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                emas_appmonitor_20190611_models.GetIssuesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_issues_with_options_async(
+        self,
+        tmp_req: emas_appmonitor_20190611_models.GetIssuesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emas_appmonitor_20190611_models.GetIssuesResponse:
+        """
+        @summary 获取聚合错误列表
+        
+        @param tmp_req: GetIssuesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIssuesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = emas_appmonitor_20190611_models.GetIssuesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_key):
+            body['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.biz_module):
+            body['BizModule'] = request.biz_module
+        if not UtilClient.is_unset(request.filter_shrink):
+            body['Filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.order_by):
+            body['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.order_type):
+            body['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.os):
+            body['Os'] = request.os
+        if not UtilClient.is_unset(request.page_index):
+            body['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        body_flat = {}
+        if not UtilClient.is_unset(request.time_range):
+            body_flat['TimeRange'] = request.time_range
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetIssues',
+            version='2019-06-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                emas_appmonitor_20190611_models.GetIssuesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                emas_appmonitor_20190611_models.GetIssuesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_issues(
+        self,
+        request: emas_appmonitor_20190611_models.GetIssuesRequest,
+    ) -> emas_appmonitor_20190611_models.GetIssuesResponse:
+        """
+        @summary 获取聚合错误列表
+        
+        @param request: GetIssuesRequest
+        @return: GetIssuesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_issues_with_options(request, runtime)
+
+    async def get_issues_async(
+        self,
+        request: emas_appmonitor_20190611_models.GetIssuesRequest,
+    ) -> emas_appmonitor_20190611_models.GetIssuesResponse:
+        """
+        @summary 获取聚合错误列表
+        
+        @param request: GetIssuesRequest
+        @return: GetIssuesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_issues_with_options_async(request, runtime)
