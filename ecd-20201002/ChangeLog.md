@@ -1,3 +1,7 @@
+2025-02-25 Version: 1.2.1
+- Update API DescribeUserResources: update response param.
+
+
 2025-01-24 Version: 1.2.0
 - Support API DescribeUserResources.
 

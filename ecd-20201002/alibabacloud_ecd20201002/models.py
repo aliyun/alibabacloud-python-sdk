@@ -2686,6 +2686,104 @@ class DescribeUserResourcesResponseBodyResourcesFotaUpdate(TeaModel):
         return self
 
 
+class DescribeUserResourcesResponseBodyResourcesOsUpdatePackages(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        kb: str = None,
+        title: str = None,
+    ):
+        self.description = description
+        self.kb = kb
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.kb is not None:
+            result['Kb'] = self.kb
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Kb') is not None:
+            self.kb = m.get('Kb')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class DescribeUserResourcesResponseBodyResourcesOsUpdate(TeaModel):
+    def __init__(
+        self,
+        check_id: str = None,
+        kb_list_string: str = None,
+        package_count: int = None,
+        packages: List[DescribeUserResourcesResponseBodyResourcesOsUpdatePackages] = None,
+        update_catalog_url: str = None,
+    ):
+        self.check_id = check_id
+        self.kb_list_string = kb_list_string
+        self.package_count = package_count
+        self.packages = packages
+        self.update_catalog_url = update_catalog_url
+
+    def validate(self):
+        if self.packages:
+            for k in self.packages:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_id is not None:
+            result['CheckId'] = self.check_id
+        if self.kb_list_string is not None:
+            result['KbListString'] = self.kb_list_string
+        if self.package_count is not None:
+            result['PackageCount'] = self.package_count
+        result['Packages'] = []
+        if self.packages is not None:
+            for k in self.packages:
+                result['Packages'].append(k.to_map() if k else None)
+        if self.update_catalog_url is not None:
+            result['UpdateCatalogUrl'] = self.update_catalog_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckId') is not None:
+            self.check_id = m.get('CheckId')
+        if m.get('KbListString') is not None:
+            self.kb_list_string = m.get('KbListString')
+        if m.get('PackageCount') is not None:
+            self.package_count = m.get('PackageCount')
+        self.packages = []
+        if m.get('Packages') is not None:
+            for k in m.get('Packages'):
+                temp_model = DescribeUserResourcesResponseBodyResourcesOsUpdatePackages()
+                self.packages.append(temp_model.from_map(k))
+        if m.get('UpdateCatalogUrl') is not None:
+            self.update_catalog_url = m.get('UpdateCatalogUrl')
+        return self
+
+
 class DescribeUserResourcesResponseBodyResourcesSessions(TeaModel):
     def __init__(
         self,
@@ -2747,6 +2845,7 @@ class DescribeUserResourcesResponseBodyResources(TeaModel):
         external_user_id: str = None,
         fota_update: DescribeUserResourcesResponseBodyResourcesFotaUpdate = None,
         global_status: bool = None,
+        has_upgrade: bool = None,
         hibernation_beta: bool = None,
         icon: str = None,
         last_start_time: str = None,
@@ -2757,6 +2856,7 @@ class DescribeUserResourcesResponseBodyResources(TeaModel):
         os: str = None,
         os_description: str = None,
         os_type: str = None,
+        os_update: DescribeUserResourcesResponseBodyResourcesOsUpdate = None,
         product_type: str = None,
         protocol_type: str = None,
         real_desktop_id: str = None,
@@ -2797,6 +2897,7 @@ class DescribeUserResourcesResponseBodyResources(TeaModel):
         self.external_user_id = external_user_id
         self.fota_update = fota_update
         self.global_status = global_status
+        self.has_upgrade = has_upgrade
         self.hibernation_beta = hibernation_beta
         self.icon = icon
         self.last_start_time = last_start_time
@@ -2807,6 +2908,7 @@ class DescribeUserResourcesResponseBodyResources(TeaModel):
         self.os = os
         self.os_description = os_description
         self.os_type = os_type
+        self.os_update = os_update
         self.product_type = product_type
         self.protocol_type = protocol_type
         self.real_desktop_id = real_desktop_id
@@ -2843,6 +2945,8 @@ class DescribeUserResourcesResponseBodyResources(TeaModel):
                     k.validate()
         if self.fota_update:
             self.fota_update.validate()
+        if self.os_update:
+            self.os_update.validate()
         if self.sessions:
             for k in self.sessions:
                 if k:
@@ -2898,6 +3002,8 @@ class DescribeUserResourcesResponseBodyResources(TeaModel):
             result['FotaUpdate'] = self.fota_update.to_map()
         if self.global_status is not None:
             result['GlobalStatus'] = self.global_status
+        if self.has_upgrade is not None:
+            result['HasUpgrade'] = self.has_upgrade
         if self.hibernation_beta is not None:
             result['HibernationBeta'] = self.hibernation_beta
         if self.icon is not None:
@@ -2918,6 +3024,8 @@ class DescribeUserResourcesResponseBodyResources(TeaModel):
             result['OsDescription'] = self.os_description
         if self.os_type is not None:
             result['OsType'] = self.os_type
+        if self.os_update is not None:
+            result['OsUpdate'] = self.os_update.to_map()
         if self.product_type is not None:
             result['ProductType'] = self.product_type
         if self.protocol_type is not None:
@@ -3012,6 +3120,8 @@ class DescribeUserResourcesResponseBodyResources(TeaModel):
             self.fota_update = temp_model.from_map(m['FotaUpdate'])
         if m.get('GlobalStatus') is not None:
             self.global_status = m.get('GlobalStatus')
+        if m.get('HasUpgrade') is not None:
+            self.has_upgrade = m.get('HasUpgrade')
         if m.get('HibernationBeta') is not None:
             self.hibernation_beta = m.get('HibernationBeta')
         if m.get('Icon') is not None:
@@ -3032,6 +3142,9 @@ class DescribeUserResourcesResponseBodyResources(TeaModel):
             self.os_description = m.get('OsDescription')
         if m.get('OsType') is not None:
             self.os_type = m.get('OsType')
+        if m.get('OsUpdate') is not None:
+            temp_model = DescribeUserResourcesResponseBodyResourcesOsUpdate()
+            self.os_update = temp_model.from_map(m['OsUpdate'])
         if m.get('ProductType') is not None:
             self.product_type = m.get('ProductType')
         if m.get('ProtocolType') is not None:
