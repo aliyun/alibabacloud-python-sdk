@@ -2636,11 +2636,11 @@ class CreateResourceRequestSelfManagedResourceOptions(TeaModel):
     ):
         # The ID of the self-managed cluster.
         self.external_cluster_id = external_cluster_id
-        # The tag key-value pairs for nodes.
+        # The tag key-value pairs of the node.
         self.node_match_labels = node_match_labels
-        # Tolerations for nodes.
+        # The tolerations for the node taint.
         self.node_tolerations = node_tolerations
-        # The name of the RAM user to which the permissions on Elastic Algorithm Service of Platform for AI (PAI-EAS) are granted.
+        # The name of the RAM user to which the permissions on Elastic Algorithm Service (EAS) of Platform for AI (PAI) are granted.
         self.role_name = role_name
 
     def validate(self):
@@ -2716,6 +2716,7 @@ class CreateResourceRequest(TeaModel):
         # 
         # >  This parameter is required when the ResourceType parameter is set to Dedicated.
         self.ecs_instance_type = ecs_instance_type
+        # The custom tag.
         self.labels = labels
         # The type of the resource group. Valid values:
         # 
@@ -2921,6 +2922,7 @@ class CreateResourceInstancesRequest(TeaModel):
         # 
         # This parameter is required.
         self.ecs_instance_type = ecs_instance_type
+        # The custom service tag.
         self.labels = labels
         # The size of the system disk. Unit: GiB. Valid values: 200 to 2000. Default value: 200.
         self.system_disk_size = system_disk_size
@@ -3582,7 +3584,7 @@ class CreateServiceAutoScalerRequestScaleStrategies(TeaModel):
         # 
         # *   If you set metricName to qps, scale-out is triggered when the average qps for a single instance is greater than this threshold.
         # *   If you set metricName to cpu, scale-out is triggered when the average cpu utilization for a single instance is greater than this threshold.
-        # *   If you set metricName to gpu, scale-out is triggered when the average cpu utilization for a single instance is greater than this threshold.
+        # *   If you set metricName to gpu, scale-out is triggered when the average gpu utilization for a single instance is greater than this threshold.
         # 
         # This parameter is required.
         self.threshold = threshold
@@ -4049,21 +4051,21 @@ class CreateVirtualResourceRequestResources(TeaModel):
         # 
         # >  You must specify one and only one of the InstanceType, ResourceId, and QuotaId parameters.
         self.instance_type = instance_type
-        # The priority of resource scheduling. A greater number specifies a higher priority.
+        # The priority of resource scheduling. A greater number indicates a higher priority.
         self.priority = priority
-        # Lingjun Resource Quota ID.
+        # The ID of the Lingjun resource quota.
         # 
         # >  You must specify one and only one of the InstanceType, ResourceId, and QuotaId parameters.
         self.quota_id = quota_id
-        # The region where the resource resides.
+        # The region in which the resource resides.
         self.region = region
-        # The ID of the dedicated resource group. For information about how to query the ID of a dedicated resource group, see [ListResources](https://help.aliyun.com/document_detail/412133.html).
+        # The ID of the dedicated resource group. For information about how to obtain the ID of a dedicated resource group, see [ListResources](https://help.aliyun.com/document_detail/412133.html).
         # 
         # >  You must specify one and only one of the InstanceType, ResourceId, and QuotaId parameters.
         self.resource_id = resource_id
         # The maximum price of preemptible instances in a public resource group.
         # 
-        # >  If you do not set this value, preemptible instances are not used.
+        # >  If you leave this parameter empty, preemptible instances are not used.
         self.spot_price_limit = spot_price_limit
 
     def validate(self):
@@ -4113,8 +4115,9 @@ class CreateVirtualResourceRequest(TeaModel):
         resources: List[CreateVirtualResourceRequestResources] = None,
         virtual_resource_name: str = None,
     ):
+        # Specifies whether to disable the retention period of preemptible instances.
         self.disable_spot_protection_period = disable_spot_protection_period
-        # The list of resources in the virtual resource group.
+        # The resources in the virtual resource group.
         self.resources = resources
         # The name of the virtual resource group. Default value: the ID of the virtual resource group.
         self.virtual_resource_name = virtual_resource_name
@@ -5066,8 +5069,11 @@ class DeleteResourceInstanceLabelRequest(TeaModel):
         instance_ids: List[str] = None,
         keys: List[str] = None,
     ):
+        # Specifies whether the delete operation takes effect on all instances in the resource group. If you set this parameter to true, the InstanceIds parameter does not take effect.
         self.all_instances = all_instances
+        # The instance IDs.
         self.instance_ids = instance_ids
+        # The keys of the tags that you want to delete.
         self.keys = keys
 
     def validate(self):
@@ -5105,8 +5111,11 @@ class DeleteResourceInstanceLabelShrinkRequest(TeaModel):
         instance_ids_shrink: str = None,
         keys_shrink: str = None,
     ):
+        # Specifies whether the delete operation takes effect on all instances in the resource group. If you set this parameter to true, the InstanceIds parameter does not take effect.
         self.all_instances = all_instances
+        # The instance IDs.
         self.instance_ids_shrink = instance_ids_shrink
+        # The keys of the tags that you want to delete.
         self.keys_shrink = keys_shrink
 
     def validate(self):
@@ -5143,7 +5152,9 @@ class DeleteResourceInstanceLabelResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6433,6 +6444,7 @@ class DescribeGatewayResponseBody(TeaModel):
         self.replicas = replicas
         # The request ID.
         self.request_id = request_id
+        # Indicates whether the HTTP to HTTPS redirection is enabled.
         self.sslredirection_enabled = sslredirection_enabled
         # The status of the private gateway.
         # 
@@ -6775,6 +6787,277 @@ class DescribeGroupEndpointsResponse(TeaModel):
         return self
 
 
+class DescribeMachineSpecRequest(TeaModel):
+    def __init__(
+        self,
+        instance_types: List[str] = None,
+    ):
+        self.instance_types = instance_types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_types is not None:
+            result['InstanceTypes'] = self.instance_types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceTypes') is not None:
+            self.instance_types = m.get('InstanceTypes')
+        return self
+
+
+class DescribeMachineSpecShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_types_shrink: str = None,
+    ):
+        self.instance_types_shrink = instance_types_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_types_shrink is not None:
+            result['InstanceTypes'] = self.instance_types_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceTypes') is not None:
+            self.instance_types_shrink = m.get('InstanceTypes')
+        return self
+
+
+class DescribeMachineSpecResponseBodyInstanceMetas(TeaModel):
+    def __init__(
+        self,
+        cpu: int = None,
+        gpu: str = None,
+        gpuamount: int = None,
+        gpumemory: float = None,
+        instance_type: str = None,
+        is_available: bool = None,
+        memory: float = None,
+        non_protect_spot_discount: float = None,
+        spot_discount: float = None,
+        stock_status: str = None,
+        vendor: str = None,
+    ):
+        self.cpu = cpu
+        self.gpu = gpu
+        self.gpuamount = gpuamount
+        self.gpumemory = gpumemory
+        self.instance_type = instance_type
+        self.is_available = is_available
+        self.memory = memory
+        self.non_protect_spot_discount = non_protect_spot_discount
+        self.spot_discount = spot_discount
+        self.stock_status = stock_status
+        self.vendor = vendor
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['CPU'] = self.cpu
+        if self.gpu is not None:
+            result['GPU'] = self.gpu
+        if self.gpuamount is not None:
+            result['GPUAmount'] = self.gpuamount
+        if self.gpumemory is not None:
+            result['GPUMemory'] = self.gpumemory
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.is_available is not None:
+            result['IsAvailable'] = self.is_available
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.non_protect_spot_discount is not None:
+            result['NonProtectSpotDiscount'] = self.non_protect_spot_discount
+        if self.spot_discount is not None:
+            result['SpotDiscount'] = self.spot_discount
+        if self.stock_status is not None:
+            result['StockStatus'] = self.stock_status
+        if self.vendor is not None:
+            result['Vendor'] = self.vendor
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CPU') is not None:
+            self.cpu = m.get('CPU')
+        if m.get('GPU') is not None:
+            self.gpu = m.get('GPU')
+        if m.get('GPUAmount') is not None:
+            self.gpuamount = m.get('GPUAmount')
+        if m.get('GPUMemory') is not None:
+            self.gpumemory = m.get('GPUMemory')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('IsAvailable') is not None:
+            self.is_available = m.get('IsAvailable')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('NonProtectSpotDiscount') is not None:
+            self.non_protect_spot_discount = m.get('NonProtectSpotDiscount')
+        if m.get('SpotDiscount') is not None:
+            self.spot_discount = m.get('SpotDiscount')
+        if m.get('StockStatus') is not None:
+            self.stock_status = m.get('StockStatus')
+        if m.get('Vendor') is not None:
+            self.vendor = m.get('Vendor')
+        return self
+
+
+class DescribeMachineSpecResponseBodyTypes(TeaModel):
+    def __init__(
+        self,
+        cpu: int = None,
+        memory: List[int] = None,
+    ):
+        self.cpu = cpu
+        self.memory = memory
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['CPU'] = self.cpu
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CPU') is not None:
+            self.cpu = m.get('CPU')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        return self
+
+
+class DescribeMachineSpecResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_metas: List[DescribeMachineSpecResponseBodyInstanceMetas] = None,
+        request_id: str = None,
+        types: List[DescribeMachineSpecResponseBodyTypes] = None,
+    ):
+        self.instance_metas = instance_metas
+        self.request_id = request_id
+        self.types = types
+
+    def validate(self):
+        if self.instance_metas:
+            for k in self.instance_metas:
+                if k:
+                    k.validate()
+        if self.types:
+            for k in self.types:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InstanceMetas'] = []
+        if self.instance_metas is not None:
+            for k in self.instance_metas:
+                result['InstanceMetas'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Types'] = []
+        if self.types is not None:
+            for k in self.types:
+                result['Types'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance_metas = []
+        if m.get('InstanceMetas') is not None:
+            for k in m.get('InstanceMetas'):
+                temp_model = DescribeMachineSpecResponseBodyInstanceMetas()
+                self.instance_metas.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.types = []
+        if m.get('Types') is not None:
+            for k in m.get('Types'):
+                temp_model = DescribeMachineSpecResponseBodyTypes()
+                self.types.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeMachineSpecResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeMachineSpecResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeMachineSpecResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeResourceResponseBody(TeaModel):
     def __init__(
         self,
@@ -6803,6 +7086,7 @@ class DescribeResourceResponseBody(TeaModel):
         self.cluster_id = cluster_id
         # The total number of CPU cores.
         self.cpu_count = cpu_count
+        # The number of vCPUs that is used.
         self.cpu_used = cpu_used
         # The time when the resource group was created.
         self.create_time = create_time
@@ -6810,10 +7094,13 @@ class DescribeResourceResponseBody(TeaModel):
         self.extra_data = extra_data
         # The total number of GPUs.
         self.gpu_count = gpu_count
+        # The number of GPUs that is used.
         self.gpu_used = gpu_used
         # The total number of instances in the resource group.
         self.instance_count = instance_count
+        # The total memory size. Unit: MB.
         self.memory = memory
+        # The size of memory that is used. Unit: MB.
         self.memory_used = memory_used
         # The returned message.
         self.message = message
@@ -8903,11 +9190,13 @@ class DescribeVirtualResourceResponseBody(TeaModel):
     ):
         # The time when the virtual resource group was created.
         self.create_time = create_time
+        # Indicates whether the retention period of preemptible instances was disabled.
         self.disable_spot_protection_period = disable_spot_protection_period
         # The ID of the request.
         self.request_id = request_id
         # The list of resources in the virtual resource group.
         self.resources = resources
+        # The number of deployed services.
         self.service_count = service_count
         # The time when the virtual resource group was last updated.
         self.update_time = update_time
@@ -10943,6 +11232,7 @@ class ListResourceInstanceWorkerRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Default value: 100.
         self.page_size = page_size
+        # The worker name.
         self.worker_name = worker_name
 
     def validate(self):
@@ -11204,6 +11494,7 @@ class ListResourceInstancesRequest(TeaModel):
         # 
         #     <!-- -->
         self.instance_status = instance_status
+        # The tag.
         self.label = label
         # The sorting order.
         # 
@@ -11478,6 +11769,7 @@ class ListResourceInstancesShrinkRequest(TeaModel):
         # 
         #     <!-- -->
         self.instance_status = instance_status
+        # The tag.
         self.label_shrink = label_shrink
         # The sorting order.
         # 
@@ -11883,6 +12175,10 @@ class ListResourcesRequest(TeaModel):
         resource_type: str = None,
         sort: str = None,
     ):
+        # The sorting order. Valid values:
+        # 
+        # *   Desc
+        # *   Asc
         self.order = order
         # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
@@ -11892,12 +12188,27 @@ class ListResourcesRequest(TeaModel):
         self.resource_id = resource_id
         # The name of the resource group. You can call the [CreateResource](https://help.aliyun.com/document_detail/412111.html) operation to query the name of the resource group.
         self.resource_name = resource_name
+        # The resource group status.
         self.resource_status = resource_status
         # The type of the resource group. Valid values:
         # 
         # *   Dedicated: the dedicated resource group.
         # *   SelfManaged: the self-managed resource group.
         self.resource_type = resource_type
+        # The condition by which the results are sorted. By default, the query results are sorted by the timestamp type in descending order.
+        # 
+        # Valid values:
+        # 
+        # *   PrePaidInstanceCount
+        # *   CpuCount
+        # *   Memory
+        # *   CreateTime
+        # *   PostPaidInstanceCount
+        # *   MemoryUsed
+        # *   GpuCount
+        # *   GpuUsed
+        # *   CpuUsed
+        # *   ServiceCount
         self.sort = sort
 
     def validate(self):
@@ -13650,6 +13961,7 @@ class ListVirtualResourceResponseBodyVirtualResources(TeaModel):
     ):
         # The time when the virtual resource group was created.
         self.create_time = create_time
+        # The number of deployed services.
         self.service_count = service_count
         # The time when the virtual resource group was last updated.
         self.update_time = update_time
@@ -13711,7 +14023,7 @@ class ListVirtualResourceResponseBody(TeaModel):
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
-        # The list of virtual resource groups.
+        # The virtual resource groups.
         self.virtual_resources = virtual_resources
 
     def validate(self):
@@ -14656,29 +14968,27 @@ class UpdateGatewayRequest(TeaModel):
         # Valid values:
         # 
         # *   true
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   false
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.enable_internet = enable_internet
-        # Specifies whether to enable internal network access. Default value: true.
+        # Specifies whether to enable private access. Default value: true.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.enable_intranet = enable_intranet
+        # Specifies whether to enable HTTP to HTTPS redirection. Default value: false.
         self.enable_sslredirection = enable_sslredirection
-        # The instance type used for the private gateway.
+        # The instance type used by the private gateway. Valid values:
+        # 
+        # *   2c4g
+        # *   4c8g
+        # *   8c16g
+        # *   16c32g
         self.instance_type = instance_type
-        # Indicates whether it is the default private gateway.
+        # Specifies whether it is the default private gateway.
         self.is_default = is_default
-        # The private gateway alias.
+        # The alias of the private gateway.
         self.name = name
         # The number of nodes in the private gateway.
         self.replicas = replicas
@@ -15282,8 +15592,11 @@ class UpdateResourceInstanceLabelRequest(TeaModel):
         instance_ids: List[str] = None,
         labels: Dict[str, str] = None,
     ):
+        # Specifies whether the modification takes effect on all instances in the resource group. If you set this parameter to true, the InstanceIds parameter does not take effect.
         self.all_instances = all_instances
+        # The instance IDs.
         self.instance_ids = instance_ids
+        # The custom tag.
         self.labels = labels
 
     def validate(self):
@@ -15321,8 +15634,11 @@ class UpdateResourceInstanceLabelShrinkRequest(TeaModel):
         instance_ids_shrink: str = None,
         labels: Dict[str, str] = None,
     ):
+        # Specifies whether the modification takes effect on all instances in the resource group. If you set this parameter to true, the InstanceIds parameter does not take effect.
         self.all_instances = all_instances
+        # The instance IDs.
         self.instance_ids_shrink = instance_ids_shrink
+        # The custom tag.
         self.labels = labels
 
     def validate(self):
@@ -15359,8 +15675,9 @@ class UpdateResourceInstanceLabelResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16598,21 +16915,21 @@ class UpdateVirtualResourceRequestResources(TeaModel):
         # 
         # >  You must specify one and only one of the InstanceType, ResourceId, and QuotaId parameters.
         self.instance_type = instance_type
-        # The priority of resource scheduling. A greater number specifies a higher priority.
+        # The priority of resource scheduling. A greater number indicates a higher priority.
         self.priority = priority
-        # The Lingjun resource quota ID.
+        # The ID of the Lingjun resource quota.
         # 
         # >  You must specify one and only one of the InstanceType, ResourceId, and QuotaId parameters.
         self.quota_id = quota_id
-        # The region where the resource resides.
+        # The region in which the resource resides.
         self.region = region
-        # The ID of the dedicated resource group. For information about how to query the ID of a dedicated resource group, see [ListResources](https://help.aliyun.com/document_detail/412133.html).
+        # The ID of the dedicated resource group. For information about how to obtain the ID of a dedicated resource group, see [ListResources](https://help.aliyun.com/document_detail/412133.html).
         # 
         # >  You must specify one and only one of the InstanceType, ResourceId, and QuotaId parameters.
         self.resource_id = resource_id
         # The maximum price of preemptible instances in a public resource group.
         # 
-        # >  If you do not specify this parameter, preemptible instances are not used.
+        # >  If you leave this parameter empty, preemptible instances are not used.
         self.spot_price_limit = spot_price_limit
 
     def validate(self):
@@ -16662,12 +16979,13 @@ class UpdateVirtualResourceRequest(TeaModel):
         resources: List[UpdateVirtualResourceRequestResources] = None,
         virtual_resource_name: str = None,
     ):
+        # Specifies whether to disable the retention period of preemptible instances.
         self.disable_spot_protection_period = disable_spot_protection_period
-        # The list of resources in the virtual resource group.
+        # The resources in the virtual resource group.
         # 
-        # >  If you specify this parameter, previous data are overwritten.
+        # >  If you specify this parameter, previous data is overwritten.
         self.resources = resources
-        # The new name for the virtual resource group.
+        # The new name of the virtual resource group.
         self.virtual_resource_name = virtual_resource_name
 
     def validate(self):

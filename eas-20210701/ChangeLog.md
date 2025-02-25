@@ -1,3 +1,7 @@
+2025-02-25 Version: 6.6.0
+- Support API DescribeMachineSpec.
+
+
 2025-02-05 Version: 6.5.0
 - Support API DeleteResourceInstanceLabel.
 - Support API UpdateResourceInstanceLabel.

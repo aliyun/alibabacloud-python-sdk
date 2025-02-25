@@ -3163,7 +3163,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteResourceInstanceLabelResponse:
         """
-        @summary 删除资源组实例标签
+        @summary Deletes the tags of an instance in a resource group.
         
         @param tmp_req: DeleteResourceInstanceLabelRequest
         @param headers: map
@@ -3219,7 +3219,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteResourceInstanceLabelResponse:
         """
-        @summary 删除资源组实例标签
+        @summary Deletes the tags of an instance in a resource group.
         
         @param tmp_req: DeleteResourceInstanceLabelRequest
         @param headers: map
@@ -3273,7 +3273,7 @@ class Client(OpenApiClient):
         request: eas_20210701_models.DeleteResourceInstanceLabelRequest,
     ) -> eas_20210701_models.DeleteResourceInstanceLabelResponse:
         """
-        @summary 删除资源组实例标签
+        @summary Deletes the tags of an instance in a resource group.
         
         @param request: DeleteResourceInstanceLabelRequest
         @return: DeleteResourceInstanceLabelResponse
@@ -3289,7 +3289,7 @@ class Client(OpenApiClient):
         request: eas_20210701_models.DeleteResourceInstanceLabelRequest,
     ) -> eas_20210701_models.DeleteResourceInstanceLabelResponse:
         """
-        @summary 删除资源组实例标签
+        @summary Deletes the tags of an instance in a resource group.
         
         @param request: DeleteResourceInstanceLabelRequest
         @return: DeleteResourceInstanceLabelResponse
@@ -4873,6 +4873,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_group_endpoints_with_options_async(cluster_id, group_name, headers, runtime)
+
+    def describe_machine_spec_with_options(
+        self,
+        tmp_req: eas_20210701_models.DescribeMachineSpecRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DescribeMachineSpecResponse:
+        """
+        @summary 查询可用机器规格
+        
+        @param tmp_req: DescribeMachineSpecRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMachineSpecResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eas_20210701_models.DescribeMachineSpecShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_types):
+            request.instance_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_types, 'InstanceTypes', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.instance_types_shrink):
+            query['InstanceTypes'] = request.instance_types_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMachineSpec',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/public/instance_types',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eas_20210701_models.DescribeMachineSpecResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eas_20210701_models.DescribeMachineSpecResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_machine_spec_with_options_async(
+        self,
+        tmp_req: eas_20210701_models.DescribeMachineSpecRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DescribeMachineSpecResponse:
+        """
+        @summary 查询可用机器规格
+        
+        @param tmp_req: DescribeMachineSpecRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMachineSpecResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eas_20210701_models.DescribeMachineSpecShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_types):
+            request.instance_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_types, 'InstanceTypes', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.instance_types_shrink):
+            query['InstanceTypes'] = request.instance_types_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMachineSpec',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/public/instance_types',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eas_20210701_models.DescribeMachineSpecResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eas_20210701_models.DescribeMachineSpecResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_machine_spec(
+        self,
+        request: eas_20210701_models.DescribeMachineSpecRequest,
+    ) -> eas_20210701_models.DescribeMachineSpecResponse:
+        """
+        @summary 查询可用机器规格
+        
+        @param request: DescribeMachineSpecRequest
+        @return: DescribeMachineSpecResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_machine_spec_with_options(request, headers, runtime)
+
+    async def describe_machine_spec_async(
+        self,
+        request: eas_20210701_models.DescribeMachineSpecRequest,
+    ) -> eas_20210701_models.DescribeMachineSpecResponse:
+        """
+        @summary 查询可用机器规格
+        
+        @param request: DescribeMachineSpecRequest
+        @return: DescribeMachineSpecResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_machine_spec_with_options_async(request, headers, runtime)
 
     def describe_resource_with_options(
         self,
@@ -10801,7 +10925,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateResourceInstanceLabelResponse:
         """
-        @summary 更新资源组实例标签
+        @summary Updates the tag of an instance in a resource group.
         
         @param tmp_req: UpdateResourceInstanceLabelRequest
         @param headers: map
@@ -10857,7 +10981,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateResourceInstanceLabelResponse:
         """
-        @summary 更新资源组实例标签
+        @summary Updates the tag of an instance in a resource group.
         
         @param tmp_req: UpdateResourceInstanceLabelRequest
         @param headers: map
@@ -10911,7 +11035,7 @@ class Client(OpenApiClient):
         request: eas_20210701_models.UpdateResourceInstanceLabelRequest,
     ) -> eas_20210701_models.UpdateResourceInstanceLabelResponse:
         """
-        @summary 更新资源组实例标签
+        @summary Updates the tag of an instance in a resource group.
         
         @param request: UpdateResourceInstanceLabelRequest
         @return: UpdateResourceInstanceLabelResponse
@@ -10927,7 +11051,7 @@ class Client(OpenApiClient):
         request: eas_20210701_models.UpdateResourceInstanceLabelRequest,
     ) -> eas_20210701_models.UpdateResourceInstanceLabelResponse:
         """
-        @summary 更新资源组实例标签
+        @summary Updates the tag of an instance in a resource group.
         
         @param request: UpdateResourceInstanceLabelRequest
         @return: UpdateResourceInstanceLabelResponse
