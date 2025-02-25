@@ -3795,6 +3795,7 @@ class GetAICoachScriptResponseBodyPoints(TeaModel):
         answer_list: List[GetAICoachScriptResponseBodyPointsAnswerList] = None,
         knowledge_list: List[str] = None,
         name: str = None,
+        point_id: str = None,
         question_description: str = None,
         sort_no: int = None,
         weight: int = None,
@@ -3802,6 +3803,7 @@ class GetAICoachScriptResponseBodyPoints(TeaModel):
         self.answer_list = answer_list
         self.knowledge_list = knowledge_list
         self.name = name
+        self.point_id = point_id
         self.question_description = question_description
         self.sort_no = sort_no
         self.weight = weight
@@ -3826,6 +3828,8 @@ class GetAICoachScriptResponseBodyPoints(TeaModel):
             result['knowledgeList'] = self.knowledge_list
         if self.name is not None:
             result['name'] = self.name
+        if self.point_id is not None:
+            result['pointId'] = self.point_id
         if self.question_description is not None:
             result['questionDescription'] = self.question_description
         if self.sort_no is not None:
@@ -3845,6 +3849,8 @@ class GetAICoachScriptResponseBodyPoints(TeaModel):
             self.knowledge_list = m.get('knowledgeList')
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('pointId') is not None:
+            self.point_id = m.get('pointId')
         if m.get('questionDescription') is not None:
             self.question_description = m.get('questionDescription')
         if m.get('sortNo') is not None:

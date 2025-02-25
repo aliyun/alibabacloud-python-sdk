@@ -1,3 +1,7 @@
+2025-02-25 Version: 2.11.1
+- Update API GetAICoachScript: update response param.
+
+
 2025-02-24 Version: 2.11.0
 - Support API GetAICoachScript.
 - Update API CreateAICoachTaskSession: update response param.
