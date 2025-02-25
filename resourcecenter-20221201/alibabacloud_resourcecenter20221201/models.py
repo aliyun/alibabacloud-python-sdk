@@ -3623,19 +3623,19 @@ class ListResourceTypesResponseBodyResourceTypesCodeMapping(TeaModel):
 class ListResourceTypesResponseBodyResourceTypes(TeaModel):
     def __init__(
         self,
-        authorized: bool = None,
         code_mapping: ListResourceTypesResponseBodyResourceTypesCodeMapping = None,
         filter_keys: List[str] = None,
         product_name: str = None,
+        related_resource_types: List[str] = None,
         resource_type: str = None,
         resource_type_name: str = None,
     ):
-        self.authorized = authorized
         self.code_mapping = code_mapping
         # The supported filter conditions.
         self.filter_keys = filter_keys
         # The name of the Alibaba Cloud service.
         self.product_name = product_name
+        self.related_resource_types = related_resource_types
         # The resource type.
         self.resource_type = resource_type
         # The name of the resource type.
@@ -3651,14 +3651,14 @@ class ListResourceTypesResponseBodyResourceTypes(TeaModel):
             return _map
 
         result = dict()
-        if self.authorized is not None:
-            result['Authorized'] = self.authorized
         if self.code_mapping is not None:
             result['CodeMapping'] = self.code_mapping.to_map()
         if self.filter_keys is not None:
             result['FilterKeys'] = self.filter_keys
         if self.product_name is not None:
             result['ProductName'] = self.product_name
+        if self.related_resource_types is not None:
+            result['RelatedResourceTypes'] = self.related_resource_types
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
         if self.resource_type_name is not None:
@@ -3667,8 +3667,6 @@ class ListResourceTypesResponseBodyResourceTypes(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Authorized') is not None:
-            self.authorized = m.get('Authorized')
         if m.get('CodeMapping') is not None:
             temp_model = ListResourceTypesResponseBodyResourceTypesCodeMapping()
             self.code_mapping = temp_model.from_map(m['CodeMapping'])
@@ -3676,6 +3674,8 @@ class ListResourceTypesResponseBodyResourceTypes(TeaModel):
             self.filter_keys = m.get('FilterKeys')
         if m.get('ProductName') is not None:
             self.product_name = m.get('ProductName')
+        if m.get('RelatedResourceTypes') is not None:
+            self.related_resource_types = m.get('RelatedResourceTypes')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
         if m.get('ResourceTypeName') is not None:

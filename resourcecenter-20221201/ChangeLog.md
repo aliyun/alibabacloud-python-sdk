@@ -1,3 +1,14 @@
+2025-02-25 Version: 1.2.2
+- Update API ExecuteMultiAccountSQLQuery: update response param.
+- Update API ExecuteSQLQuery: update response param.
+- Update API ListMultiAccountTagKeys: update param MatchType.
+- Update API ListResourceTypes: update response param.
+- Update API SearchMultiAccountResources: update param Filter.
+- Update API SearchMultiAccountResources: update param MaxResults.
+- Update API SearchMultiAccountResources: update param NextToken.
+- Update API SearchMultiAccountResources: update response param.
+
+
 2024-10-10 Version: 1.2.1
 - Update API ExecuteMultiAccountSQLQuery: add param MaxResults.
 - Update API ExecuteMultiAccountSQLQuery: add param NextToken.
