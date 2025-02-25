@@ -10,8 +10,14 @@ class ActiveCaCertificateRequest(TeaModel):
         mqtt_instance_id: str = None,
         sn: str = None,
     ):
+        # The ID of the ApsaraMQ for MQTT instance to which the CA certificate is bound.
+        # 
         # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
+        # The serial number of the CA certificate that you want to reactivate. The serial number is the unique identifier of a CA certificate.
+        # 
+        # The serial number of a CA certificate cannot exceed 128 bytes in size.
+        # 
         # This parameter is required.
         self.sn = sn
 
@@ -2023,6 +2029,262 @@ class DeleteGroupIdResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteGroupIdResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DisasterDowngradeRequest(TeaModel):
+    def __init__(
+        self,
+        downgrade_instance_id: str = None,
+        instance_id: str = None,
+    ):
+        # This parameter is required.
+        self.downgrade_instance_id = downgrade_instance_id
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.downgrade_instance_id is not None:
+            result['DowngradeInstanceId'] = self.downgrade_instance_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DowngradeInstanceId') is not None:
+            self.downgrade_instance_id = m.get('DowngradeInstanceId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DisasterDowngradeResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DisasterDowngradeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisasterDowngradeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisasterDowngradeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DisasterRecoveryRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        recovery_instance_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.recovery_instance_id = recovery_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.recovery_instance_id is not None:
+            result['RecoveryInstanceId'] = self.recovery_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RecoveryInstanceId') is not None:
+            self.recovery_instance_id = m.get('RecoveryInstanceId')
+        return self
+
+
+class DisasterRecoveryResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DisasterRecoveryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisasterRecoveryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisasterRecoveryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6604,16 +6866,24 @@ class RegisterCaCertificateRequest(TeaModel):
         mqtt_instance_id: str = None,
         verification_content: str = None,
     ):
+        # The content of the CA certificate that you want to register with an ApsaraMQ for MQTT broker.
+        # 
+        # 
+        # > In the example, \\n indicates a line feed.
+        # 
         # This parameter is required.
         self.ca_content = ca_content
-        # - Only Platinum and Professional instances support using the RegisterCaCertificate interface. - The request frequency limit per user is 500 times/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
+        # The name of the CA certificate that you want to register with an ApsaraMQ for MQTT broker.
         # 
         # This parameter is required.
         self.ca_name = ca_name
-        # RegisterCaCertificate
+        # The ID of the ApsaraMQ for MQTT instance to which you want to bind the CA certificate.
         # 
         # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
+        # The content of the validation certificate issued by the CA certificate that you want to register with an ApsaraMQ for MQTT broker. The validation certificate must be used together with the registration code of the CA certificate to verify the private key of the CA certificate.
+        # > In the example, \\n indicates a line feed.
+        # 
         # This parameter is required.
         self.verification_content = verification_content
 
@@ -6655,7 +6925,9 @@ class RegisterCaCertificateResponseBody(TeaModel):
         request_id: str = None,
         sn: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The serial number of the registered CA certificate. The serial number is the unique identifier of a CA certificate.
         self.sn = sn
 
     def validate(self):

@@ -1,3 +1,8 @@
+2025-02-25 Version: 1.6.0
+- Support API DisasterDowngrade.
+- Support API DisasterRecovery.
+
+
 2025-01-17 Version: 1.5.1
 - Update API AddCustomAuthIdentity: update param SignMode.
 

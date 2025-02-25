@@ -49,42 +49,9 @@ class Client(OpenApiClient):
         """
         @summary Activate CA Certificate
         
-        @param request: ActiveCaCertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ActiveCaCertificateResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.mqtt_instance_id):
-            query['MqttInstanceId'] = request.mqtt_instance_id
-        if not UtilClient.is_unset(request.sn):
-            query['Sn'] = request.sn
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ActiveCaCertificate',
-            version='2020-04-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.ActiveCaCertificateResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def active_ca_certificate_with_options_async(
-        self,
-        request: ons_mqtt_20200420_models.ActiveCaCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ons_mqtt_20200420_models.ActiveCaCertificateResponse:
-        """
-        @summary Activate CA Certificate
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+        You can call this operation to reactivate only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
         
         @param request: ActiveCaCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -110,10 +77,63 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.ActiveCaCertificateResponse(),
-            await self.call_api_async(params, req, runtime)
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ActiveCaCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ActiveCaCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def active_ca_certificate_with_options_async(
+        self,
+        request: ons_mqtt_20200420_models.ActiveCaCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ons_mqtt_20200420_models.ActiveCaCertificateResponse:
+        """
+        @summary Activate CA Certificate
+        
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+        You can call this operation to reactivate only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
+        
+        @param request: ActiveCaCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ActiveCaCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.mqtt_instance_id):
+            query['MqttInstanceId'] = request.mqtt_instance_id
+        if not UtilClient.is_unset(request.sn):
+            query['Sn'] = request.sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ActiveCaCertificate',
+            version='2020-04-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ActiveCaCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ActiveCaCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def active_ca_certificate(
         self,
@@ -121,6 +141,10 @@ class Client(OpenApiClient):
     ) -> ons_mqtt_20200420_models.ActiveCaCertificateResponse:
         """
         @summary Activate CA Certificate
+        
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+        You can call this operation to reactivate only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
         
         @param request: ActiveCaCertificateRequest
         @return: ActiveCaCertificateResponse
@@ -134,6 +158,10 @@ class Client(OpenApiClient):
     ) -> ons_mqtt_20200420_models.ActiveCaCertificateResponse:
         """
         @summary Activate CA Certificate
+        
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+        You can call this operation to reactivate only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
         
         @param request: ActiveCaCertificateRequest
         @return: ActiveCaCertificateResponse
@@ -149,8 +177,8 @@ class Client(OpenApiClient):
         """
         @summary Reactivates a device certificate. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client based on the registered CA certificate. If the CA certificate matches the device certificate, the client passes the authentication and the system automatically registers the device certificate with the ApsaraMQ for MQTT broker. After a device certificate is registered with an ApsaraMQ for MQTT broker, the certificate is automatically activated. If your device certificate is changed to the inactivated state, you can call this operation to reactivate the device certificate.
         
-        @description    This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
-        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: ActiveDeviceCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -178,10 +206,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.ActiveDeviceCertificateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ActiveDeviceCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ActiveDeviceCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def active_device_certificate_with_options_async(
         self,
@@ -191,8 +225,8 @@ class Client(OpenApiClient):
         """
         @summary Reactivates a device certificate. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client based on the registered CA certificate. If the CA certificate matches the device certificate, the client passes the authentication and the system automatically registers the device certificate with the ApsaraMQ for MQTT broker. After a device certificate is registered with an ApsaraMQ for MQTT broker, the certificate is automatically activated. If your device certificate is changed to the inactivated state, you can call this operation to reactivate the device certificate.
         
-        @description    This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
-        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: ActiveDeviceCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -220,10 +254,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.ActiveDeviceCertificateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ActiveDeviceCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ActiveDeviceCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def active_device_certificate(
         self,
@@ -232,8 +272,8 @@ class Client(OpenApiClient):
         """
         @summary Reactivates a device certificate. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client based on the registered CA certificate. If the CA certificate matches the device certificate, the client passes the authentication and the system automatically registers the device certificate with the ApsaraMQ for MQTT broker. After a device certificate is registered with an ApsaraMQ for MQTT broker, the certificate is automatically activated. If your device certificate is changed to the inactivated state, you can call this operation to reactivate the device certificate.
         
-        @description    This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
-        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: ActiveDeviceCertificateRequest
         @return: ActiveDeviceCertificateResponse
@@ -248,8 +288,8 @@ class Client(OpenApiClient):
         """
         @summary Reactivates a device certificate. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client based on the registered CA certificate. If the CA certificate matches the device certificate, the client passes the authentication and the system automatically registers the device certificate with the ApsaraMQ for MQTT broker. After a device certificate is registered with an ApsaraMQ for MQTT broker, the certificate is automatically activated. If your device certificate is changed to the inactivated state, you can call this operation to reactivate the device certificate.
         
-        @description    This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
-        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: ActiveDeviceCertificateRequest
         @return: ActiveDeviceCertificateResponse
@@ -289,10 +329,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.AddCustomAuthConnectBlackResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.AddCustomAuthConnectBlackResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.AddCustomAuthConnectBlackResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_custom_auth_connect_black_with_options_async(
         self,
@@ -326,10 +372,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.AddCustomAuthConnectBlackResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.AddCustomAuthConnectBlackResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.AddCustomAuthConnectBlackResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_custom_auth_connect_black(
         self,
@@ -397,10 +449,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.AddCustomAuthIdentityResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.AddCustomAuthIdentityResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.AddCustomAuthIdentityResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_custom_auth_identity_with_options_async(
         self,
@@ -442,10 +500,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.AddCustomAuthIdentityResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.AddCustomAuthIdentityResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.AddCustomAuthIdentityResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_custom_auth_identity(
         self,
@@ -513,10 +577,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.AddCustomAuthPermissionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.AddCustomAuthPermissionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.AddCustomAuthPermissionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_custom_auth_permission_with_options_async(
         self,
@@ -558,10 +628,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.AddCustomAuthPermissionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.AddCustomAuthPermissionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.AddCustomAuthPermissionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_custom_auth_permission(
         self,
@@ -628,10 +704,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.ApplyTokenResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ApplyTokenResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ApplyTokenResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def apply_token_with_options_async(
         self,
@@ -672,10 +754,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.ApplyTokenResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ApplyTokenResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ApplyTokenResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def apply_token(
         self,
@@ -745,10 +833,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.BatchQuerySessionByClientIdsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.BatchQuerySessionByClientIdsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.BatchQuerySessionByClientIdsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def batch_query_session_by_client_ids_with_options_async(
         self,
@@ -786,10 +880,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.BatchQuerySessionByClientIdsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.BatchQuerySessionByClientIdsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.BatchQuerySessionByClientIdsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def batch_query_session_by_client_ids(
         self,
@@ -859,10 +959,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.CloseConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.CloseConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.CloseConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def close_connection_with_options_async(
         self,
@@ -898,10 +1004,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.CloseConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.CloseConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.CloseConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def close_connection(
         self,
@@ -967,10 +1079,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.CreateGroupIdResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.CreateGroupIdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.CreateGroupIdResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_group_id_with_options_async(
         self,
@@ -1006,10 +1124,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.CreateGroupIdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.CreateGroupIdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.CreateGroupIdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_group_id(
         self,
@@ -1049,9 +1173,9 @@ class Client(OpenApiClient):
         """
         @summary Deletes a certificate authority (CA) certificate from an ApsaraMQ for MQTT broker. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. Before you can use a CA certificate, you must register the certificate with an ApsaraMQ for MQTT broker. If you no longer require a CA certificate, you can call this operation to delete the certificate from the ApsaraMQ for MQTT broker.
         
-        @description    This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
-        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
-        You can call this operation to delete only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/436768.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+        You can call this operation to delete only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
         If you delete a specific CA certificate from an ApsaraMQ for MQTT broker, all device certificates that are issued by the CA certificate and are registered with the ApsaraMQ for MQTT broker are automatically deleted.
         
         @param request: DeleteCaCertificateRequest
@@ -1078,10 +1202,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.DeleteCaCertificateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DeleteCaCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DeleteCaCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_ca_certificate_with_options_async(
         self,
@@ -1091,9 +1221,9 @@ class Client(OpenApiClient):
         """
         @summary Deletes a certificate authority (CA) certificate from an ApsaraMQ for MQTT broker. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. Before you can use a CA certificate, you must register the certificate with an ApsaraMQ for MQTT broker. If you no longer require a CA certificate, you can call this operation to delete the certificate from the ApsaraMQ for MQTT broker.
         
-        @description    This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
-        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
-        You can call this operation to delete only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/436768.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+        You can call this operation to delete only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
         If you delete a specific CA certificate from an ApsaraMQ for MQTT broker, all device certificates that are issued by the CA certificate and are registered with the ApsaraMQ for MQTT broker are automatically deleted.
         
         @param request: DeleteCaCertificateRequest
@@ -1120,10 +1250,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.DeleteCaCertificateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DeleteCaCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DeleteCaCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_ca_certificate(
         self,
@@ -1132,9 +1268,9 @@ class Client(OpenApiClient):
         """
         @summary Deletes a certificate authority (CA) certificate from an ApsaraMQ for MQTT broker. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. Before you can use a CA certificate, you must register the certificate with an ApsaraMQ for MQTT broker. If you no longer require a CA certificate, you can call this operation to delete the certificate from the ApsaraMQ for MQTT broker.
         
-        @description    This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
-        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
-        You can call this operation to delete only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/436768.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+        You can call this operation to delete only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
         If you delete a specific CA certificate from an ApsaraMQ for MQTT broker, all device certificates that are issued by the CA certificate and are registered with the ApsaraMQ for MQTT broker are automatically deleted.
         
         @param request: DeleteCaCertificateRequest
@@ -1150,9 +1286,9 @@ class Client(OpenApiClient):
         """
         @summary Deletes a certificate authority (CA) certificate from an ApsaraMQ for MQTT broker. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. Before you can use a CA certificate, you must register the certificate with an ApsaraMQ for MQTT broker. If you no longer require a CA certificate, you can call this operation to delete the certificate from the ApsaraMQ for MQTT broker.
         
-        @description    This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
-        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
-        You can call this operation to delete only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/436768.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+        You can call this operation to delete only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
         If you delete a specific CA certificate from an ApsaraMQ for MQTT broker, all device certificates that are issued by the CA certificate and are registered with the ApsaraMQ for MQTT broker are automatically deleted.
         
         @param request: DeleteCaCertificateRequest
@@ -1193,10 +1329,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.DeleteCustomAuthConnectBlackResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DeleteCustomAuthConnectBlackResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DeleteCustomAuthConnectBlackResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_custom_auth_connect_black_with_options_async(
         self,
@@ -1230,10 +1372,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.DeleteCustomAuthConnectBlackResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DeleteCustomAuthConnectBlackResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DeleteCustomAuthConnectBlackResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_custom_auth_connect_black(
         self,
@@ -1297,10 +1445,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.DeleteCustomAuthIdentityResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DeleteCustomAuthIdentityResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DeleteCustomAuthIdentityResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_custom_auth_identity_with_options_async(
         self,
@@ -1338,10 +1492,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.DeleteCustomAuthIdentityResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DeleteCustomAuthIdentityResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DeleteCustomAuthIdentityResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_custom_auth_identity(
         self,
@@ -1405,10 +1565,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.DeleteCustomAuthPermissionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DeleteCustomAuthPermissionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DeleteCustomAuthPermissionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_custom_auth_permission_with_options_async(
         self,
@@ -1446,10 +1612,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.DeleteCustomAuthPermissionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DeleteCustomAuthPermissionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DeleteCustomAuthPermissionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_custom_auth_permission(
         self,
@@ -1485,8 +1657,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes the registration information about a specific device certificate from an ApsaraMQ for MQTT broker. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client. If you no longer require a device certificate, you can call this operation to delete the registration information about the certificate from an ApsaraMQ for MQTT broker.
         
-        @description    This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
-        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: DeleteDeviceCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1514,10 +1686,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.DeleteDeviceCertificateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DeleteDeviceCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DeleteDeviceCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_device_certificate_with_options_async(
         self,
@@ -1527,8 +1705,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes the registration information about a specific device certificate from an ApsaraMQ for MQTT broker. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client. If you no longer require a device certificate, you can call this operation to delete the registration information about the certificate from an ApsaraMQ for MQTT broker.
         
-        @description    This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
-        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: DeleteDeviceCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1556,10 +1734,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.DeleteDeviceCertificateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DeleteDeviceCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DeleteDeviceCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_device_certificate(
         self,
@@ -1568,8 +1752,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes the registration information about a specific device certificate from an ApsaraMQ for MQTT broker. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client. If you no longer require a device certificate, you can call this operation to delete the registration information about the certificate from an ApsaraMQ for MQTT broker.
         
-        @description    This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
-        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: DeleteDeviceCertificateRequest
         @return: DeleteDeviceCertificateResponse
@@ -1584,8 +1768,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes the registration information about a specific device certificate from an ApsaraMQ for MQTT broker. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client. If you no longer require a device certificate, you can call this operation to delete the registration information about the certificate from an ApsaraMQ for MQTT broker.
         
-        @description    This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
-        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: DeleteDeviceCertificateRequest
         @return: DeleteDeviceCertificateResponse
@@ -1627,10 +1811,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.DeleteGroupIdResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DeleteGroupIdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DeleteGroupIdResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_group_id_with_options_async(
         self,
@@ -1666,10 +1856,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.DeleteGroupIdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DeleteGroupIdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DeleteGroupIdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_group_id(
         self,
@@ -1701,6 +1897,230 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_group_id_with_options_async(request, runtime)
 
+    def disaster_downgrade_with_options(
+        self,
+        request: ons_mqtt_20200420_models.DisasterDowngradeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ons_mqtt_20200420_models.DisasterDowngradeResponse:
+        """
+        @summary DisasterDowngrade
+        
+        @param request: DisasterDowngradeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisasterDowngradeResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.downgrade_instance_id):
+            body['DowngradeInstanceId'] = request.downgrade_instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DisasterDowngrade',
+            version='2020-04-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DisasterDowngradeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DisasterDowngradeResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def disaster_downgrade_with_options_async(
+        self,
+        request: ons_mqtt_20200420_models.DisasterDowngradeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ons_mqtt_20200420_models.DisasterDowngradeResponse:
+        """
+        @summary DisasterDowngrade
+        
+        @param request: DisasterDowngradeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisasterDowngradeResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.downgrade_instance_id):
+            body['DowngradeInstanceId'] = request.downgrade_instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DisasterDowngrade',
+            version='2020-04-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DisasterDowngradeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DisasterDowngradeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def disaster_downgrade(
+        self,
+        request: ons_mqtt_20200420_models.DisasterDowngradeRequest,
+    ) -> ons_mqtt_20200420_models.DisasterDowngradeResponse:
+        """
+        @summary DisasterDowngrade
+        
+        @param request: DisasterDowngradeRequest
+        @return: DisasterDowngradeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.disaster_downgrade_with_options(request, runtime)
+
+    async def disaster_downgrade_async(
+        self,
+        request: ons_mqtt_20200420_models.DisasterDowngradeRequest,
+    ) -> ons_mqtt_20200420_models.DisasterDowngradeResponse:
+        """
+        @summary DisasterDowngrade
+        
+        @param request: DisasterDowngradeRequest
+        @return: DisasterDowngradeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.disaster_downgrade_with_options_async(request, runtime)
+
+    def disaster_recovery_with_options(
+        self,
+        request: ons_mqtt_20200420_models.DisasterRecoveryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ons_mqtt_20200420_models.DisasterRecoveryResponse:
+        """
+        @summary DisasterRecovery
+        
+        @param request: DisasterRecoveryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisasterRecoveryResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.recovery_instance_id):
+            body['RecoveryInstanceId'] = request.recovery_instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DisasterRecovery',
+            version='2020-04-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DisasterRecoveryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DisasterRecoveryResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def disaster_recovery_with_options_async(
+        self,
+        request: ons_mqtt_20200420_models.DisasterRecoveryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ons_mqtt_20200420_models.DisasterRecoveryResponse:
+        """
+        @summary DisasterRecovery
+        
+        @param request: DisasterRecoveryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisasterRecoveryResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.recovery_instance_id):
+            body['RecoveryInstanceId'] = request.recovery_instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DisasterRecovery',
+            version='2020-04-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DisasterRecoveryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.DisasterRecoveryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def disaster_recovery(
+        self,
+        request: ons_mqtt_20200420_models.DisasterRecoveryRequest,
+    ) -> ons_mqtt_20200420_models.DisasterRecoveryResponse:
+        """
+        @summary DisasterRecovery
+        
+        @param request: DisasterRecoveryRequest
+        @return: DisasterRecoveryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.disaster_recovery_with_options(request, runtime)
+
+    async def disaster_recovery_async(
+        self,
+        request: ons_mqtt_20200420_models.DisasterRecoveryRequest,
+    ) -> ons_mqtt_20200420_models.DisasterRecoveryResponse:
+        """
+        @summary DisasterRecovery
+        
+        @param request: DisasterRecoveryRequest
+        @return: DisasterRecoveryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.disaster_recovery_with_options_async(request, runtime)
+
     def get_ca_certificate_with_options(
         self,
         request: ons_mqtt_20200420_models.GetCaCertificateRequest,
@@ -1708,6 +2128,9 @@ class Client(OpenApiClient):
     ) -> ons_mqtt_20200420_models.GetCaCertificateResponse:
         """
         @summary Queries the details of a certificate authority (CA) certificate, such as the content and status of the certificate. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates.
+        
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: GetCaCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1729,10 +2152,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.GetCaCertificateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.GetCaCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.GetCaCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_ca_certificate_with_options_async(
         self,
@@ -1742,6 +2171,9 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of a certificate authority (CA) certificate, such as the content and status of the certificate. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates.
         
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+        
         @param request: GetCaCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetCaCertificateResponse
@@ -1762,10 +2194,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.GetCaCertificateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.GetCaCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.GetCaCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_ca_certificate(
         self,
@@ -1773,6 +2211,9 @@ class Client(OpenApiClient):
     ) -> ons_mqtt_20200420_models.GetCaCertificateResponse:
         """
         @summary Queries the details of a certificate authority (CA) certificate, such as the content and status of the certificate. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates.
+        
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: GetCaCertificateRequest
         @return: GetCaCertificateResponse
@@ -1786,6 +2227,9 @@ class Client(OpenApiClient):
     ) -> ons_mqtt_20200420_models.GetCaCertificateResponse:
         """
         @summary Queries the details of a certificate authority (CA) certificate, such as the content and status of the certificate. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates.
+        
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: GetCaCertificateRequest
         @return: GetCaCertificateResponse
@@ -1801,7 +2245,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of a device certificate. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client.
         
-        @description - Only Platinum edition instances support the use of the GetDeviceCertificate interface. - The request frequency limit per user is 500 requests/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: GetDeviceCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1823,10 +2268,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.GetDeviceCertificateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.GetDeviceCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.GetDeviceCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_device_certificate_with_options_async(
         self,
@@ -1836,7 +2287,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of a device certificate. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client.
         
-        @description - Only Platinum edition instances support the use of the GetDeviceCertificate interface. - The request frequency limit per user is 500 requests/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: GetDeviceCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1858,10 +2310,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.GetDeviceCertificateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.GetDeviceCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.GetDeviceCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_device_certificate(
         self,
@@ -1870,7 +2328,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of a device certificate. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client.
         
-        @description - Only Platinum edition instances support the use of the GetDeviceCertificate interface. - The request frequency limit per user is 500 requests/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: GetDeviceCertificateRequest
         @return: GetDeviceCertificateResponse
@@ -1885,7 +2344,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of a device certificate. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client.
         
-        @description - Only Platinum edition instances support the use of the GetDeviceCertificate interface. - The request frequency limit per user is 500 requests/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: GetDeviceCertificateRequest
         @return: GetDeviceCertificateResponse
@@ -1928,10 +2388,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.GetDeviceCredentialResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.GetDeviceCredentialResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.GetDeviceCredentialResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_device_credential_with_options_async(
         self,
@@ -1968,10 +2434,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.GetDeviceCredentialResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.GetDeviceCredentialResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.GetDeviceCredentialResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_device_credential(
         self,
@@ -2013,8 +2485,8 @@ class Client(OpenApiClient):
         """
         @summary Obtains the registration code of a specific certificate authority (CA) certificate. When you register a CA certificate with an ApsaraMQ for MQTT broker, you must upload the validation certificate of the CA certificate to verify whether you have the private key of the CA certificate. The validation certificate of a CA certificate must be generated by using the registration code of the CA certificate.
         
-        @description    This API operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
-        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: GetRegisterCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2036,10 +2508,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.GetRegisterCodeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.GetRegisterCodeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.GetRegisterCodeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_register_code_with_options_async(
         self,
@@ -2049,8 +2527,8 @@ class Client(OpenApiClient):
         """
         @summary Obtains the registration code of a specific certificate authority (CA) certificate. When you register a CA certificate with an ApsaraMQ for MQTT broker, you must upload the validation certificate of the CA certificate to verify whether you have the private key of the CA certificate. The validation certificate of a CA certificate must be generated by using the registration code of the CA certificate.
         
-        @description    This API operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
-        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: GetRegisterCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2072,10 +2550,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.GetRegisterCodeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.GetRegisterCodeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.GetRegisterCodeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_register_code(
         self,
@@ -2084,8 +2568,8 @@ class Client(OpenApiClient):
         """
         @summary Obtains the registration code of a specific certificate authority (CA) certificate. When you register a CA certificate with an ApsaraMQ for MQTT broker, you must upload the validation certificate of the CA certificate to verify whether you have the private key of the CA certificate. The validation certificate of a CA certificate must be generated by using the registration code of the CA certificate.
         
-        @description    This API operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
-        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: GetRegisterCodeRequest
         @return: GetRegisterCodeResponse
@@ -2100,8 +2584,8 @@ class Client(OpenApiClient):
         """
         @summary Obtains the registration code of a specific certificate authority (CA) certificate. When you register a CA certificate with an ApsaraMQ for MQTT broker, you must upload the validation certificate of the CA certificate to verify whether you have the private key of the CA certificate. The validation certificate of a CA certificate must be generated by using the registration code of the CA certificate.
         
-        @description    This API operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
-        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: GetRegisterCodeRequest
         @return: GetRegisterCodeResponse
@@ -2117,9 +2601,9 @@ class Client(OpenApiClient):
         """
         @summary Deregister a certificate authority (CA) certificate. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. If you no longer require a CA certificate, you can call this operation to deregister the certificate. If you want to continue using a deregistered CA certificate, you can call the ActiveCaCertificate operation to reactivate the certificate.
         
-        @description    This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
-        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
-        You can call this operation to deregister only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/436768.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+        You can call this operation to deregister only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
         
         @param request: InactivateCaCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2145,10 +2629,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.InactivateCaCertificateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.InactivateCaCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.InactivateCaCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def inactivate_ca_certificate_with_options_async(
         self,
@@ -2158,9 +2648,9 @@ class Client(OpenApiClient):
         """
         @summary Deregister a certificate authority (CA) certificate. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. If you no longer require a CA certificate, you can call this operation to deregister the certificate. If you want to continue using a deregistered CA certificate, you can call the ActiveCaCertificate operation to reactivate the certificate.
         
-        @description    This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
-        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
-        You can call this operation to deregister only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/436768.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+        You can call this operation to deregister only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
         
         @param request: InactivateCaCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2186,10 +2676,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.InactivateCaCertificateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.InactivateCaCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.InactivateCaCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def inactivate_ca_certificate(
         self,
@@ -2198,9 +2694,9 @@ class Client(OpenApiClient):
         """
         @summary Deregister a certificate authority (CA) certificate. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. If you no longer require a CA certificate, you can call this operation to deregister the certificate. If you want to continue using a deregistered CA certificate, you can call the ActiveCaCertificate operation to reactivate the certificate.
         
-        @description    This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
-        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
-        You can call this operation to deregister only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/436768.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+        You can call this operation to deregister only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
         
         @param request: InactivateCaCertificateRequest
         @return: InactivateCaCertificateResponse
@@ -2215,9 +2711,9 @@ class Client(OpenApiClient):
         """
         @summary Deregister a certificate authority (CA) certificate. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. If you no longer require a CA certificate, you can call this operation to deregister the certificate. If you want to continue using a deregistered CA certificate, you can call the ActiveCaCertificate operation to reactivate the certificate.
         
-        @description    This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
-        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
-        You can call this operation to deregister only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/436768.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+        You can call this operation to deregister only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
         
         @param request: InactivateCaCertificateRequest
         @return: InactivateCaCertificateResponse
@@ -2233,8 +2729,8 @@ class Client(OpenApiClient):
         """
         @summary Deregisters a device certificate. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client.
         
-        @description    This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
-        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: InactivateDeviceCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2262,10 +2758,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.InactivateDeviceCertificateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.InactivateDeviceCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.InactivateDeviceCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def inactivate_device_certificate_with_options_async(
         self,
@@ -2275,8 +2777,8 @@ class Client(OpenApiClient):
         """
         @summary Deregisters a device certificate. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client.
         
-        @description    This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
-        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: InactivateDeviceCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2304,10 +2806,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.InactivateDeviceCertificateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.InactivateDeviceCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.InactivateDeviceCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def inactivate_device_certificate(
         self,
@@ -2316,8 +2824,8 @@ class Client(OpenApiClient):
         """
         @summary Deregisters a device certificate. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client.
         
-        @description    This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
-        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: InactivateDeviceCertificateRequest
         @return: InactivateDeviceCertificateResponse
@@ -2332,8 +2840,8 @@ class Client(OpenApiClient):
         """
         @summary Deregisters a device certificate. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client.
         
-        @description    This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
-        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: InactivateDeviceCertificateRequest
         @return: InactivateDeviceCertificateResponse
@@ -2349,7 +2857,8 @@ class Client(OpenApiClient):
         """
         @summary Queries all certificate authority (CA) certificates that are registered with an ApsaraMQ for MQTT instance. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates.
         
-        @description - Only Platinum and Professional instances support using the ListCaCertificate interface. - The request frequency limit per user is 500 times/second. For special requirements, please contact the Micro Message Queue MQTT version technical support, DingTalk group number: 35228338.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: ListCaCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2371,10 +2880,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.ListCaCertificateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ListCaCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ListCaCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_ca_certificate_with_options_async(
         self,
@@ -2384,7 +2899,8 @@ class Client(OpenApiClient):
         """
         @summary Queries all certificate authority (CA) certificates that are registered with an ApsaraMQ for MQTT instance. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates.
         
-        @description - Only Platinum and Professional instances support using the ListCaCertificate interface. - The request frequency limit per user is 500 times/second. For special requirements, please contact the Micro Message Queue MQTT version technical support, DingTalk group number: 35228338.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: ListCaCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2406,10 +2922,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.ListCaCertificateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ListCaCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ListCaCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_ca_certificate(
         self,
@@ -2418,7 +2940,8 @@ class Client(OpenApiClient):
         """
         @summary Queries all certificate authority (CA) certificates that are registered with an ApsaraMQ for MQTT instance. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates.
         
-        @description - Only Platinum and Professional instances support using the ListCaCertificate interface. - The request frequency limit per user is 500 times/second. For special requirements, please contact the Micro Message Queue MQTT version technical support, DingTalk group number: 35228338.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: ListCaCertificateRequest
         @return: ListCaCertificateResponse
@@ -2433,7 +2956,8 @@ class Client(OpenApiClient):
         """
         @summary Queries all certificate authority (CA) certificates that are registered with an ApsaraMQ for MQTT instance. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates.
         
-        @description - Only Platinum and Professional instances support using the ListCaCertificate interface. - The request frequency limit per user is 500 times/second. For special requirements, please contact the Micro Message Queue MQTT version technical support, DingTalk group number: 35228338.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: ListCaCertificateRequest
         @return: ListCaCertificateResponse
@@ -2449,7 +2973,8 @@ class Client(OpenApiClient):
         """
         @summary Queries all device certificates that are registered with an ApsaraMQ for MQTT instance. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client.
         
-        @description - Only Platinum and Professional instances support using the ListDeviceCertificate interface. - The request frequency limit per user is 500 times/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: ListDeviceCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2471,10 +2996,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.ListDeviceCertificateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ListDeviceCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ListDeviceCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_device_certificate_with_options_async(
         self,
@@ -2484,7 +3015,8 @@ class Client(OpenApiClient):
         """
         @summary Queries all device certificates that are registered with an ApsaraMQ for MQTT instance. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client.
         
-        @description - Only Platinum and Professional instances support using the ListDeviceCertificate interface. - The request frequency limit per user is 500 times/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: ListDeviceCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2506,10 +3038,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.ListDeviceCertificateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ListDeviceCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ListDeviceCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_device_certificate(
         self,
@@ -2518,7 +3056,8 @@ class Client(OpenApiClient):
         """
         @summary Queries all device certificates that are registered with an ApsaraMQ for MQTT instance. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client.
         
-        @description - Only Platinum and Professional instances support using the ListDeviceCertificate interface. - The request frequency limit per user is 500 times/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: ListDeviceCertificateRequest
         @return: ListDeviceCertificateResponse
@@ -2533,7 +3072,8 @@ class Client(OpenApiClient):
         """
         @summary Queries all device certificates that are registered with an ApsaraMQ for MQTT instance. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client.
         
-        @description - Only Platinum and Professional instances support using the ListDeviceCertificate interface. - The request frequency limit per user is 500 times/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: ListDeviceCertificateRequest
         @return: ListDeviceCertificateResponse
@@ -2549,7 +3089,8 @@ class Client(OpenApiClient):
         """
         @summary Queries all device certificates that are issued by a certificate authority (CA) certificate and registered with ApsaraMQ for MQTT brokers. Device certificates are digital certificates issued to clients by CA root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client.
         
-        @description - Only Platinum and Professional edition instances support using the ListDeviceCertificateByCaSn interface. - The request frequency limit for a single user is 500 times/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: ListDeviceCertificateByCaSnRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2571,10 +3112,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.ListDeviceCertificateByCaSnResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ListDeviceCertificateByCaSnResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ListDeviceCertificateByCaSnResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_device_certificate_by_ca_sn_with_options_async(
         self,
@@ -2584,7 +3131,8 @@ class Client(OpenApiClient):
         """
         @summary Queries all device certificates that are issued by a certificate authority (CA) certificate and registered with ApsaraMQ for MQTT brokers. Device certificates are digital certificates issued to clients by CA root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client.
         
-        @description - Only Platinum and Professional edition instances support using the ListDeviceCertificateByCaSn interface. - The request frequency limit for a single user is 500 times/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: ListDeviceCertificateByCaSnRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2606,10 +3154,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.ListDeviceCertificateByCaSnResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ListDeviceCertificateByCaSnResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ListDeviceCertificateByCaSnResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_device_certificate_by_ca_sn(
         self,
@@ -2618,7 +3172,8 @@ class Client(OpenApiClient):
         """
         @summary Queries all device certificates that are issued by a certificate authority (CA) certificate and registered with ApsaraMQ for MQTT brokers. Device certificates are digital certificates issued to clients by CA root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client.
         
-        @description - Only Platinum and Professional edition instances support using the ListDeviceCertificateByCaSn interface. - The request frequency limit for a single user is 500 times/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: ListDeviceCertificateByCaSnRequest
         @return: ListDeviceCertificateByCaSnResponse
@@ -2633,7 +3188,8 @@ class Client(OpenApiClient):
         """
         @summary Queries all device certificates that are issued by a certificate authority (CA) certificate and registered with ApsaraMQ for MQTT brokers. Device certificates are digital certificates issued to clients by CA root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client.
         
-        @description - Only Platinum and Professional edition instances support using the ListDeviceCertificateByCaSn interface. - The request frequency limit for a single user is 500 times/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: ListDeviceCertificateByCaSnRequest
         @return: ListDeviceCertificateByCaSnResponse
@@ -2679,10 +3235,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.ListDeviceCredentialClientIdResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ListDeviceCredentialClientIdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ListDeviceCredentialClientIdResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_device_credential_client_id_with_options_async(
         self,
@@ -2722,10 +3284,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.ListDeviceCredentialClientIdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ListDeviceCredentialClientIdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ListDeviceCredentialClientIdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_device_credential_client_id(
         self,
@@ -2785,10 +3353,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.ListGroupIdResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ListGroupIdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ListGroupIdResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_group_id_with_options_async(
         self,
@@ -2822,10 +3396,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.ListGroupIdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ListGroupIdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ListGroupIdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_group_id(
         self,
@@ -2893,10 +3473,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.ListTagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ListTagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ListTagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_tag_resources_with_options_async(
         self,
@@ -2934,10 +3520,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.ListTagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ListTagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ListTagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_tag_resources(
         self,
@@ -2993,10 +3585,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.QueryCustomAuthConnectBlackResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryCustomAuthConnectBlackResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryCustomAuthConnectBlackResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_custom_auth_connect_black_with_options_async(
         self,
@@ -3026,10 +3624,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.QueryCustomAuthConnectBlackResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryCustomAuthConnectBlackResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryCustomAuthConnectBlackResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_custom_auth_connect_black(
         self,
@@ -3085,10 +3689,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.QueryCustomAuthIdentityResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryCustomAuthIdentityResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryCustomAuthIdentityResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_custom_auth_identity_with_options_async(
         self,
@@ -3118,10 +3728,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.QueryCustomAuthIdentityResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryCustomAuthIdentityResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryCustomAuthIdentityResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_custom_auth_identity(
         self,
@@ -3177,10 +3793,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.QueryCustomAuthPermissionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryCustomAuthPermissionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryCustomAuthPermissionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_custom_auth_permission_with_options_async(
         self,
@@ -3210,10 +3832,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.QueryCustomAuthPermissionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryCustomAuthPermissionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryCustomAuthPermissionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_custom_auth_permission(
         self,
@@ -3288,10 +3916,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.QueryMqttTraceDeviceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryMqttTraceDeviceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryMqttTraceDeviceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_mqtt_trace_device_with_options_async(
         self,
@@ -3340,10 +3974,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.QueryMqttTraceDeviceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryMqttTraceDeviceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryMqttTraceDeviceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_mqtt_trace_device(
         self,
@@ -3424,10 +4064,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.QueryMqttTraceMessageOfClientResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryMqttTraceMessageOfClientResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryMqttTraceMessageOfClientResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_mqtt_trace_message_of_client_with_options_async(
         self,
@@ -3476,10 +4122,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.QueryMqttTraceMessageOfClientResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryMqttTraceMessageOfClientResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryMqttTraceMessageOfClientResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_mqtt_trace_message_of_client(
         self,
@@ -3554,10 +4206,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.QueryMqttTraceMessagePublishResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryMqttTraceMessagePublishResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryMqttTraceMessagePublishResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_mqtt_trace_message_publish_with_options_async(
         self,
@@ -3600,10 +4258,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.QueryMqttTraceMessagePublishResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryMqttTraceMessagePublishResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryMqttTraceMessagePublishResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_mqtt_trace_message_publish(
         self,
@@ -3686,10 +4350,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.QueryMqttTraceMessageSubscribeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryMqttTraceMessageSubscribeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryMqttTraceMessageSubscribeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_mqtt_trace_message_subscribe_with_options_async(
         self,
@@ -3740,10 +4410,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.QueryMqttTraceMessageSubscribeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryMqttTraceMessageSubscribeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryMqttTraceMessageSubscribeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_mqtt_trace_message_subscribe(
         self,
@@ -3812,10 +4488,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.QuerySessionByClientIdResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QuerySessionByClientIdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QuerySessionByClientIdResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_session_by_client_id_with_options_async(
         self,
@@ -3852,10 +4534,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.QuerySessionByClientIdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QuerySessionByClientIdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QuerySessionByClientIdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_session_by_client_id(
         self,
@@ -3924,10 +4612,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.QueryTokenResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryTokenResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryTokenResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_token_with_options_async(
         self,
@@ -3964,10 +4658,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.QueryTokenResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryTokenResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.QueryTokenResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_token(
         self,
@@ -4037,10 +4737,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.RefreshDeviceCredentialResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.RefreshDeviceCredentialResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.RefreshDeviceCredentialResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def refresh_device_credential_with_options_async(
         self,
@@ -4078,10 +4784,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.RefreshDeviceCredentialResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.RefreshDeviceCredentialResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.RefreshDeviceCredentialResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def refresh_device_credential(
         self,
@@ -4125,7 +4837,8 @@ class Client(OpenApiClient):
         """
         @summary RegisterCaCertificate
         
-        @description Registers a certificate authority (CA) certificate with an ApsaraMQ for MQTT broker. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. Before you use a device certificate to authenticate an ApsaraMQ for MQTT client, you must register the CA certificate for which you apply with the ApsaraMQ for MQTT broker.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: RegisterCaCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4155,10 +4868,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.RegisterCaCertificateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.RegisterCaCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.RegisterCaCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def register_ca_certificate_with_options_async(
         self,
@@ -4168,7 +4887,8 @@ class Client(OpenApiClient):
         """
         @summary RegisterCaCertificate
         
-        @description Registers a certificate authority (CA) certificate with an ApsaraMQ for MQTT broker. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. Before you use a device certificate to authenticate an ApsaraMQ for MQTT client, you must register the CA certificate for which you apply with the ApsaraMQ for MQTT broker.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: RegisterCaCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4198,10 +4918,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.RegisterCaCertificateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.RegisterCaCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.RegisterCaCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def register_ca_certificate(
         self,
@@ -4210,7 +4936,8 @@ class Client(OpenApiClient):
         """
         @summary RegisterCaCertificate
         
-        @description Registers a certificate authority (CA) certificate with an ApsaraMQ for MQTT broker. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. Before you use a device certificate to authenticate an ApsaraMQ for MQTT client, you must register the CA certificate for which you apply with the ApsaraMQ for MQTT broker.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: RegisterCaCertificateRequest
         @return: RegisterCaCertificateResponse
@@ -4225,7 +4952,8 @@ class Client(OpenApiClient):
         """
         @summary RegisterCaCertificate
         
-        @description Registers a certificate authority (CA) certificate with an ApsaraMQ for MQTT broker. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. Before you use a device certificate to authenticate an ApsaraMQ for MQTT client, you must register the CA certificate for which you apply with the ApsaraMQ for MQTT broker.
+        @description    Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+        You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
         
         @param request: RegisterCaCertificateRequest
         @return: RegisterCaCertificateResponse
@@ -4268,10 +4996,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.RegisterDeviceCredentialResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.RegisterDeviceCredentialResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.RegisterDeviceCredentialResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def register_device_credential_with_options_async(
         self,
@@ -4308,10 +5042,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.RegisterDeviceCredentialResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.RegisterDeviceCredentialResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.RegisterDeviceCredentialResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def register_device_credential(
         self,
@@ -4380,10 +5120,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.RevokeTokenResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.RevokeTokenResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.RevokeTokenResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def revoke_token_with_options_async(
         self,
@@ -4420,10 +5166,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.RevokeTokenResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.RevokeTokenResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.RevokeTokenResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def revoke_token(
         self,
@@ -4495,10 +5247,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.SendMessageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.SendMessageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.SendMessageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def send_message_with_options_async(
         self,
@@ -4538,10 +5296,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.SendMessageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.SendMessageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.SendMessageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def send_message(
         self,
@@ -4611,10 +5375,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.SetSniConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.SetSniConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.SetSniConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def set_sni_config_with_options_async(
         self,
@@ -4650,10 +5420,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.SetSniConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.SetSniConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.SetSniConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def set_sni_config(
         self,
@@ -4715,10 +5491,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.TagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.TagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.TagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def tag_resources_with_options_async(
         self,
@@ -4754,10 +5536,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.TagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.TagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.TagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def tag_resources(
         self,
@@ -4820,10 +5608,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.UnRegisterDeviceCredentialResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.UnRegisterDeviceCredentialResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.UnRegisterDeviceCredentialResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def un_register_device_credential_with_options_async(
         self,
@@ -4860,10 +5654,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.UnRegisterDeviceCredentialResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.UnRegisterDeviceCredentialResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.UnRegisterDeviceCredentialResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def un_register_device_credential(
         self,
@@ -4933,10 +5733,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.UntagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.UntagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.UntagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def untag_resources_with_options_async(
         self,
@@ -4974,10 +5780,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.UntagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.UntagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.UntagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def untag_resources(
         self,
@@ -5045,10 +5857,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.UpdateCustomAuthIdentityResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.UpdateCustomAuthIdentityResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.UpdateCustomAuthIdentityResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_custom_auth_identity_with_options_async(
         self,
@@ -5090,10 +5908,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.UpdateCustomAuthIdentityResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.UpdateCustomAuthIdentityResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.UpdateCustomAuthIdentityResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_custom_auth_identity(
         self,
@@ -5161,10 +5985,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.UpdateCustomAuthPermissionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.UpdateCustomAuthPermissionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.UpdateCustomAuthPermissionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_custom_auth_permission_with_options_async(
         self,
@@ -5206,10 +6036,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ons_mqtt_20200420_models.UpdateCustomAuthPermissionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.UpdateCustomAuthPermissionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.UpdateCustomAuthPermissionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_custom_auth_permission(
         self,
