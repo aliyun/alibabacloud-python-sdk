@@ -1,3 +1,12 @@
+2025-02-25 Version: 4.5.0
+- Support API ModifyOfficeSiteDnsInfo.
+- Update API CreatePolicyGroup: update param DomainResolveRule.
+- Update API DescribeDesktopTypes: add param GpuMemory.
+- Update API DescribeDesktopTypes: update param DesktopTypeIdList.
+- Update API DescribeDesktops: update response param.
+- Update API ModifyPolicyGroup: update param DomainResolveRule.
+
+
 2025-02-11 Version: 4.4.0
 - Support API BindConfigGroup.
 - Support API CreateConfigGroup.

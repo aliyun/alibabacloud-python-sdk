@@ -2276,7 +2276,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ClonePolicyGroupResponse:
         """
-        @summary Clones an existing policy.
+        @summary Clones an existing policy to quickly create a policy.
         
         @param request: ClonePolicyGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2321,7 +2321,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ClonePolicyGroupResponse:
         """
-        @summary Clones an existing policy.
+        @summary Clones an existing policy to quickly create a policy.
         
         @param request: ClonePolicyGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2365,7 +2365,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ClonePolicyGroupRequest,
     ) -> ecd_20200930_models.ClonePolicyGroupResponse:
         """
-        @summary Clones an existing policy.
+        @summary Clones an existing policy to quickly create a policy.
         
         @param request: ClonePolicyGroupRequest
         @return: ClonePolicyGroupResponse
@@ -2378,7 +2378,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ClonePolicyGroupRequest,
     ) -> ecd_20200930_models.ClonePolicyGroupResponse:
         """
-        @summary Clones an existing policy.
+        @summary Clones an existing policy to quickly create a policy.
         
         @param request: ClonePolicyGroupRequest
         @return: ClonePolicyGroupResponse
@@ -5912,9 +5912,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreatePolicyGroupResponse:
         """
-        @summary Creates a policy.
+        @summary Creates a cloud computer policy.
         
-        @description A policy is a set of security rules that are used to control security configurations when end users use cloud desktops. A policy contains basic features, such as USB redirection and watermarking, and other features, such as security group control. For more information, see [Policy overview](https://help.aliyun.com/document_detail/189345.html).
+        @description A cloud computer policy is a collection of rules to manage cloud computers in performance and security. For example, you can create a basic policy that involves the disk mapping, USB redirection, watermarking features and rules such as DNS rules. For more information, see [Policy overview](https://help.aliyun.com/document_detail/189345.html).
         
         @param request: CreatePolicyGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6067,9 +6067,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreatePolicyGroupResponse:
         """
-        @summary Creates a policy.
+        @summary Creates a cloud computer policy.
         
-        @description A policy is a set of security rules that are used to control security configurations when end users use cloud desktops. A policy contains basic features, such as USB redirection and watermarking, and other features, such as security group control. For more information, see [Policy overview](https://help.aliyun.com/document_detail/189345.html).
+        @description A cloud computer policy is a collection of rules to manage cloud computers in performance and security. For example, you can create a basic policy that involves the disk mapping, USB redirection, watermarking features and rules such as DNS rules. For more information, see [Policy overview](https://help.aliyun.com/document_detail/189345.html).
         
         @param request: CreatePolicyGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6221,9 +6221,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreatePolicyGroupRequest,
     ) -> ecd_20200930_models.CreatePolicyGroupResponse:
         """
-        @summary Creates a policy.
+        @summary Creates a cloud computer policy.
         
-        @description A policy is a set of security rules that are used to control security configurations when end users use cloud desktops. A policy contains basic features, such as USB redirection and watermarking, and other features, such as security group control. For more information, see [Policy overview](https://help.aliyun.com/document_detail/189345.html).
+        @description A cloud computer policy is a collection of rules to manage cloud computers in performance and security. For example, you can create a basic policy that involves the disk mapping, USB redirection, watermarking features and rules such as DNS rules. For more information, see [Policy overview](https://help.aliyun.com/document_detail/189345.html).
         
         @param request: CreatePolicyGroupRequest
         @return: CreatePolicyGroupResponse
@@ -6236,9 +6236,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreatePolicyGroupRequest,
     ) -> ecd_20200930_models.CreatePolicyGroupResponse:
         """
-        @summary Creates a policy.
+        @summary Creates a cloud computer policy.
         
-        @description A policy is a set of security rules that are used to control security configurations when end users use cloud desktops. A policy contains basic features, such as USB redirection and watermarking, and other features, such as security group control. For more information, see [Policy overview](https://help.aliyun.com/document_detail/189345.html).
+        @description A cloud computer policy is a collection of rules to manage cloud computers in performance and security. For example, you can create a basic policy that involves the disk mapping, USB redirection, watermarking features and rules such as DNS rules. For more information, see [Policy overview](https://help.aliyun.com/document_detail/189345.html).
         
         @param request: CreatePolicyGroupRequest
         @return: CreatePolicyGroupResponse
@@ -8468,7 +8468,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeletePolicyGroupsResponse:
         """
-        @summary Deletes one or more custom policies.
+        @summary Deletes one or more custom cloud computer policies.
+        
+        @description    You cannot delete the cloud computer policy created by the Elastic Desktop Service (EDS) system.
+        You cannot delete the cloud computer policies that are associated with cloud computers.
         
         @param request: DeletePolicyGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8511,7 +8514,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeletePolicyGroupsResponse:
         """
-        @summary Deletes one or more custom policies.
+        @summary Deletes one or more custom cloud computer policies.
+        
+        @description    You cannot delete the cloud computer policy created by the Elastic Desktop Service (EDS) system.
+        You cannot delete the cloud computer policies that are associated with cloud computers.
         
         @param request: DeletePolicyGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8553,7 +8559,10 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeletePolicyGroupsRequest,
     ) -> ecd_20200930_models.DeletePolicyGroupsResponse:
         """
-        @summary Deletes one or more custom policies.
+        @summary Deletes one or more custom cloud computer policies.
+        
+        @description    You cannot delete the cloud computer policy created by the Elastic Desktop Service (EDS) system.
+        You cannot delete the cloud computer policies that are associated with cloud computers.
         
         @param request: DeletePolicyGroupsRequest
         @return: DeletePolicyGroupsResponse
@@ -8566,7 +8575,10 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeletePolicyGroupsRequest,
     ) -> ecd_20200930_models.DeletePolicyGroupsResponse:
         """
-        @summary Deletes one or more custom policies.
+        @summary Deletes one or more custom cloud computer policies.
+        
+        @description    You cannot delete the cloud computer policy created by the Elastic Desktop Service (EDS) system.
+        You cannot delete the cloud computer policies that are associated with cloud computers.
         
         @param request: DeletePolicyGroupsRequest
         @return: DeletePolicyGroupsResponse
@@ -11306,6 +11318,8 @@ class Client(OpenApiClient):
             query['GpuCount'] = request.gpu_count
         if not UtilClient.is_unset(request.gpu_driver_type):
             query['GpuDriverType'] = request.gpu_driver_type
+        if not UtilClient.is_unset(request.gpu_memory):
+            query['GpuMemory'] = request.gpu_memory
         if not UtilClient.is_unset(request.instance_type_family):
             query['InstanceTypeFamily'] = request.instance_type_family
         if not UtilClient.is_unset(request.memory_size):
@@ -11381,6 +11395,8 @@ class Client(OpenApiClient):
             query['GpuCount'] = request.gpu_count
         if not UtilClient.is_unset(request.gpu_driver_type):
             query['GpuDriverType'] = request.gpu_driver_type
+        if not UtilClient.is_unset(request.gpu_memory):
+            query['GpuMemory'] = request.gpu_memory
         if not UtilClient.is_unset(request.instance_type_family):
             query['InstanceTypeFamily'] = request.instance_type_family
         if not UtilClient.is_unset(request.memory_size):
@@ -22736,9 +22752,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDesktopsPolicyGroupResponse:
         """
-        @summary Modifies the policies that are configured for a cloud desktop.
+        @summary Changes an existing cloud computer policy for cloud computers.
         
-        @description The cloud desktops that you want to restart by calling this operation must be in the Running state.
+        @description The cloud computers for which you want to change their policies must be in the Running state.
         
         @param request: ModifyDesktopsPolicyGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22785,9 +22801,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDesktopsPolicyGroupResponse:
         """
-        @summary Modifies the policies that are configured for a cloud desktop.
+        @summary Changes an existing cloud computer policy for cloud computers.
         
-        @description The cloud desktops that you want to restart by calling this operation must be in the Running state.
+        @description The cloud computers for which you want to change their policies must be in the Running state.
         
         @param request: ModifyDesktopsPolicyGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22833,9 +22849,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDesktopsPolicyGroupRequest,
     ) -> ecd_20200930_models.ModifyDesktopsPolicyGroupResponse:
         """
-        @summary Modifies the policies that are configured for a cloud desktop.
+        @summary Changes an existing cloud computer policy for cloud computers.
         
-        @description The cloud desktops that you want to restart by calling this operation must be in the Running state.
+        @description The cloud computers for which you want to change their policies must be in the Running state.
         
         @param request: ModifyDesktopsPolicyGroupRequest
         @return: ModifyDesktopsPolicyGroupResponse
@@ -22848,9 +22864,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDesktopsPolicyGroupRequest,
     ) -> ecd_20200930_models.ModifyDesktopsPolicyGroupResponse:
         """
-        @summary Modifies the policies that are configured for a cloud desktop.
+        @summary Changes an existing cloud computer policy for cloud computers.
         
-        @description The cloud desktops that you want to restart by calling this operation must be in the Running state.
+        @description The cloud computers for which you want to change their policies must be in the Running state.
         
         @param request: ModifyDesktopsPolicyGroupRequest
         @return: ModifyDesktopsPolicyGroupResponse
@@ -24086,6 +24102,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_office_site_cross_desktop_access_with_options_async(request, runtime)
 
+    def modify_office_site_dns_info_with_options(
+        self,
+        request: ecd_20200930_models.ModifyOfficeSiteDnsInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.ModifyOfficeSiteDnsInfoResponse:
+        """
+        @summary 修改工作区DNS信息
+        
+        @param request: ModifyOfficeSiteDnsInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyOfficeSiteDnsInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dns_address):
+            query['DnsAddress'] = request.dns_address
+        if not UtilClient.is_unset(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyOfficeSiteDnsInfo',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ecd_20200930_models.ModifyOfficeSiteDnsInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ecd_20200930_models.ModifyOfficeSiteDnsInfoResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_office_site_dns_info_with_options_async(
+        self,
+        request: ecd_20200930_models.ModifyOfficeSiteDnsInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.ModifyOfficeSiteDnsInfoResponse:
+        """
+        @summary 修改工作区DNS信息
+        
+        @param request: ModifyOfficeSiteDnsInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyOfficeSiteDnsInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dns_address):
+            query['DnsAddress'] = request.dns_address
+        if not UtilClient.is_unset(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyOfficeSiteDnsInfo',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ecd_20200930_models.ModifyOfficeSiteDnsInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ecd_20200930_models.ModifyOfficeSiteDnsInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_office_site_dns_info(
+        self,
+        request: ecd_20200930_models.ModifyOfficeSiteDnsInfoRequest,
+    ) -> ecd_20200930_models.ModifyOfficeSiteDnsInfoResponse:
+        """
+        @summary 修改工作区DNS信息
+        
+        @param request: ModifyOfficeSiteDnsInfoRequest
+        @return: ModifyOfficeSiteDnsInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_office_site_dns_info_with_options(request, runtime)
+
+    async def modify_office_site_dns_info_async(
+        self,
+        request: ecd_20200930_models.ModifyOfficeSiteDnsInfoRequest,
+    ) -> ecd_20200930_models.ModifyOfficeSiteDnsInfoResponse:
+        """
+        @summary 修改工作区DNS信息
+        
+        @param request: ModifyOfficeSiteDnsInfoRequest
+        @return: ModifyOfficeSiteDnsInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_office_site_dns_info_with_options_async(request, runtime)
+
     def modify_office_site_mfa_enabled_with_options(
         self,
         request: ecd_20200930_models.ModifyOfficeSiteMfaEnabledRequest,
@@ -24208,7 +24340,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyPolicyGroupResponse:
         """
-        @summary Modifies a policy.
+        @summary Modifies the cloud computer policy.
         
         @param request: ModifyPolicyGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24367,7 +24499,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyPolicyGroupResponse:
         """
-        @summary Modifies a policy.
+        @summary Modifies the cloud computer policy.
         
         @param request: ModifyPolicyGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24525,7 +24657,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyPolicyGroupRequest,
     ) -> ecd_20200930_models.ModifyPolicyGroupResponse:
         """
-        @summary Modifies a policy.
+        @summary Modifies the cloud computer policy.
         
         @param request: ModifyPolicyGroupRequest
         @return: ModifyPolicyGroupResponse
@@ -24538,7 +24670,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyPolicyGroupRequest,
     ) -> ecd_20200930_models.ModifyPolicyGroupResponse:
         """
-        @summary Modifies a policy.
+        @summary Modifies the cloud computer policy.
         
         @param request: ModifyPolicyGroupRequest
         @return: ModifyPolicyGroupResponse
@@ -25940,7 +26072,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RenewDesktopsResponse:
         """
-        @summary Renew subscription cloud computers.
+        @summary Renews monthly subscription cloud computers.
         
         @param request: RenewDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25995,7 +26127,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RenewDesktopsResponse:
         """
-        @summary Renew subscription cloud computers.
+        @summary Renews monthly subscription cloud computers.
         
         @param request: RenewDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26049,7 +26181,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RenewDesktopsRequest,
     ) -> ecd_20200930_models.RenewDesktopsResponse:
         """
-        @summary Renew subscription cloud computers.
+        @summary Renews monthly subscription cloud computers.
         
         @param request: RenewDesktopsRequest
         @return: RenewDesktopsResponse
@@ -26062,7 +26194,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RenewDesktopsRequest,
     ) -> ecd_20200930_models.RenewDesktopsResponse:
         """
-        @summary Renew subscription cloud computers.
+        @summary Renews monthly subscription cloud computers.
         
         @param request: RenewDesktopsRequest
         @return: RenewDesktopsResponse
