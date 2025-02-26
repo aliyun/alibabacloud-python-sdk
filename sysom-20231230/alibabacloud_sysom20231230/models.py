@@ -8440,6 +8440,7 @@ class ListRegionsResponse(TeaModel):
 class StartAIAnalysisRequest(TeaModel):
     def __init__(
         self,
+        analysis_tool: str = None,
         channel: str = None,
         comms: str = None,
         instance: str = None,
@@ -8447,6 +8448,7 @@ class StartAIAnalysisRequest(TeaModel):
         region: str = None,
         timeout: int = None,
     ):
+        self.analysis_tool = analysis_tool
         self.channel = channel
         self.comms = comms
         self.instance = instance
@@ -8463,6 +8465,8 @@ class StartAIAnalysisRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.analysis_tool is not None:
+            result['analysisTool'] = self.analysis_tool
         if self.channel is not None:
             result['channel'] = self.channel
         if self.comms is not None:
@@ -8479,6 +8483,8 @@ class StartAIAnalysisRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('analysisTool') is not None:
+            self.analysis_tool = m.get('analysisTool')
         if m.get('channel') is not None:
             self.channel = m.get('channel')
         if m.get('comms') is not None:

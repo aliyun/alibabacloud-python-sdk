@@ -5463,6 +5463,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.analysis_tool):
+            body['analysisTool'] = request.analysis_tool
         if not UtilClient.is_unset(request.channel):
             body['channel'] = request.channel
         if not UtilClient.is_unset(request.comms):
@@ -5517,6 +5519,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.analysis_tool):
+            body['analysisTool'] = request.analysis_tool
         if not UtilClient.is_unset(request.channel):
             body['channel'] = request.channel
         if not UtilClient.is_unset(request.comms):

@@ -1,3 +1,7 @@
+2025-02-26 Version: 1.9.1
+- Update API StartAIAnalysis: update param body.
+
+
 2025-02-17 Version: 1.9.0
 - Support API GenerateCopilotStreamResponse.
 - Support API GetAIQueryResult.
