@@ -48,7 +48,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.AttachKeyPairResponse:
         """
-        @summary 绑定密钥对
+        @summary Attaches an Android Debug Bridge (ADB) key pair to one or more cloud phone instances.
+        
+        @description    You can attach to an ADB key pair only to cloud phone instances in the Running state.
+        After you attach an ADB key pair, make sure the private key of the ADB key pair is copied to the ~/.android directory (macOS or Linux operating systems) or the C:\\Users\\Username.android directory (Windows operating systems). In addition, you must run the adb kill-server command to restart the ADB process to ensure correct ADB connection. Otherwise, ADB connection may fail due to authentication exceptions.
         
         @param request: AttachKeyPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -91,7 +94,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.AttachKeyPairResponse:
         """
-        @summary 绑定密钥对
+        @summary Attaches an Android Debug Bridge (ADB) key pair to one or more cloud phone instances.
+        
+        @description    You can attach to an ADB key pair only to cloud phone instances in the Running state.
+        After you attach an ADB key pair, make sure the private key of the ADB key pair is copied to the ~/.android directory (macOS or Linux operating systems) or the C:\\Users\\Username.android directory (Windows operating systems). In addition, you must run the adb kill-server command to restart the ADB process to ensure correct ADB connection. Otherwise, ADB connection may fail due to authentication exceptions.
         
         @param request: AttachKeyPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -133,7 +139,10 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.AttachKeyPairRequest,
     ) -> eds_aic_20230930_models.AttachKeyPairResponse:
         """
-        @summary 绑定密钥对
+        @summary Attaches an Android Debug Bridge (ADB) key pair to one or more cloud phone instances.
+        
+        @description    You can attach to an ADB key pair only to cloud phone instances in the Running state.
+        After you attach an ADB key pair, make sure the private key of the ADB key pair is copied to the ~/.android directory (macOS or Linux operating systems) or the C:\\Users\\Username.android directory (Windows operating systems). In addition, you must run the adb kill-server command to restart the ADB process to ensure correct ADB connection. Otherwise, ADB connection may fail due to authentication exceptions.
         
         @param request: AttachKeyPairRequest
         @return: AttachKeyPairResponse
@@ -146,7 +155,10 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.AttachKeyPairRequest,
     ) -> eds_aic_20230930_models.AttachKeyPairResponse:
         """
-        @summary 绑定密钥对
+        @summary Attaches an Android Debug Bridge (ADB) key pair to one or more cloud phone instances.
+        
+        @description    You can attach to an ADB key pair only to cloud phone instances in the Running state.
+        After you attach an ADB key pair, make sure the private key of the ADB key pair is copied to the ~/.android directory (macOS or Linux operating systems) or the C:\\Users\\Username.android directory (Windows operating systems). In addition, you must run the adb kill-server command to restart the ADB process to ensure correct ADB connection. Otherwise, ADB connection may fail due to authentication exceptions.
         
         @param request: AttachKeyPairRequest
         @return: AttachKeyPairResponse
@@ -436,7 +448,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.BatchGetAcpConnectionTicketResponse:
         """
-        @summary 批量获取ticket
+        @summary Retrieves connection tickets in bulk.
         
         @param request: BatchGetAcpConnectionTicketRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -483,7 +495,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.BatchGetAcpConnectionTicketResponse:
         """
-        @summary 批量获取ticket
+        @summary Retrieves connection tickets in bulk.
         
         @param request: BatchGetAcpConnectionTicketRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -529,7 +541,7 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.BatchGetAcpConnectionTicketRequest,
     ) -> eds_aic_20230930_models.BatchGetAcpConnectionTicketResponse:
         """
-        @summary 批量获取ticket
+        @summary Retrieves connection tickets in bulk.
         
         @param request: BatchGetAcpConnectionTicketRequest
         @return: BatchGetAcpConnectionTicketResponse
@@ -542,7 +554,7 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.BatchGetAcpConnectionTicketRequest,
     ) -> eds_aic_20230930_models.BatchGetAcpConnectionTicketResponse:
         """
-        @summary 批量获取ticket
+        @summary Retrieves connection tickets in bulk.
         
         @param request: BatchGetAcpConnectionTicketRequest
         @return: BatchGetAcpConnectionTicketResponse
@@ -1428,7 +1440,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.CreateScreenshotResponse:
         """
-        @summary 创建云手机截图接口
+        @summary Creates a screenshot of a cloud phone instance.
+        
+        @description You can call this operation to create a screenshot of a cloud phone instance and upload it to the default Object Storage Service (OSS) bucket. The operation returns a task ID, which you can use with the DescribeTasks operation to get the download link for the screenshot.
         
         @param request: CreateScreenshotRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1473,7 +1487,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.CreateScreenshotResponse:
         """
-        @summary 创建云手机截图接口
+        @summary Creates a screenshot of a cloud phone instance.
+        
+        @description You can call this operation to create a screenshot of a cloud phone instance and upload it to the default Object Storage Service (OSS) bucket. The operation returns a task ID, which you can use with the DescribeTasks operation to get the download link for the screenshot.
         
         @param request: CreateScreenshotRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1517,7 +1533,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.CreateScreenshotRequest,
     ) -> eds_aic_20230930_models.CreateScreenshotResponse:
         """
-        @summary 创建云手机截图接口
+        @summary Creates a screenshot of a cloud phone instance.
+        
+        @description You can call this operation to create a screenshot of a cloud phone instance and upload it to the default Object Storage Service (OSS) bucket. The operation returns a task ID, which you can use with the DescribeTasks operation to get the download link for the screenshot.
         
         @param request: CreateScreenshotRequest
         @return: CreateScreenshotResponse
@@ -1530,7 +1548,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.CreateScreenshotRequest,
     ) -> eds_aic_20230930_models.CreateScreenshotResponse:
         """
-        @summary 创建云手机截图接口
+        @summary Creates a screenshot of a cloud phone instance.
+        
+        @description You can call this operation to create a screenshot of a cloud phone instance and upload it to the default Object Storage Service (OSS) bucket. The operation returns a task ID, which you can use with the DescribeTasks operation to get the download link for the screenshot.
         
         @param request: CreateScreenshotRequest
         @return: CreateScreenshotResponse
@@ -2868,7 +2888,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.DescribeInvocationsResponse:
         """
-        @summary 查询命令结果
+        @summary Queries the execution results of commands.
         
         @param request: DescribeInvocationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2911,7 +2931,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.DescribeInvocationsResponse:
         """
-        @summary 查询命令结果
+        @summary Queries the execution results of commands.
         
         @param request: DescribeInvocationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2953,7 +2973,7 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.DescribeInvocationsRequest,
     ) -> eds_aic_20230930_models.DescribeInvocationsResponse:
         """
-        @summary 查询命令结果
+        @summary Queries the execution results of commands.
         
         @param request: DescribeInvocationsRequest
         @return: DescribeInvocationsResponse
@@ -2966,7 +2986,7 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.DescribeInvocationsRequest,
     ) -> eds_aic_20230930_models.DescribeInvocationsResponse:
         """
-        @summary 查询命令结果
+        @summary Queries the execution results of commands.
         
         @param request: DescribeInvocationsRequest
         @return: DescribeInvocationsResponse
@@ -3348,7 +3368,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.DescribeTasksResponse:
         """
-        @summary 查询异步任务
+        @summary Queries tasks created for a cloud phone instance.
+        
+        @description    You can call the DescribeTasks operation to query the tasks created for one or more cloud phone instances.
+        The system currently supports various tasks, including starting, stopping, restarting, and resetting cloud phone instances; backing up and restoring data; installing apps; and executing remote commands.
+        You can use the Level field to specify the type of task. If Level is set to 1, it represents a batch task. If Level is set to 2, it represents an instance-level task.
+        *Example**\
+        Assume you restart two cloud phone instances with the instance IDs acp-25nt4kk9whhok\\\\*\\*\\* and acp-j2taq887orj8l\\*\\*\\*\\*, and the returned request ID is B8ED2BA9-0C6A-5643-818F-B5D60A64\\*\\*\\*\\*. If you want to check the operation outcomes of the two cloud phone instances, you can call the DescribeTasks operation. You need to set the InvokeId request parameter to B8ED2BA9-0C6A-5643-818F-B5D60A64\\*\\*\\*\\*. If you only want to check the cloud phone instance with the ID acp-25nt4kk9whhok\\*\\*\\*\\*, you must set the ParentTaskId request parameter to the ID of the batch task and the AndroidInstanceId request parameter to acp-25nt4kk9whhok\\*\\*\\*\\* when calling the DescribeTasks operation.
         
         @param request: DescribeTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3415,7 +3441,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.DescribeTasksResponse:
         """
-        @summary 查询异步任务
+        @summary Queries tasks created for a cloud phone instance.
+        
+        @description    You can call the DescribeTasks operation to query the tasks created for one or more cloud phone instances.
+        The system currently supports various tasks, including starting, stopping, restarting, and resetting cloud phone instances; backing up and restoring data; installing apps; and executing remote commands.
+        You can use the Level field to specify the type of task. If Level is set to 1, it represents a batch task. If Level is set to 2, it represents an instance-level task.
+        *Example**\
+        Assume you restart two cloud phone instances with the instance IDs acp-25nt4kk9whhok\\\\*\\*\\* and acp-j2taq887orj8l\\*\\*\\*\\*, and the returned request ID is B8ED2BA9-0C6A-5643-818F-B5D60A64\\*\\*\\*\\*. If you want to check the operation outcomes of the two cloud phone instances, you can call the DescribeTasks operation. You need to set the InvokeId request parameter to B8ED2BA9-0C6A-5643-818F-B5D60A64\\*\\*\\*\\*. If you only want to check the cloud phone instance with the ID acp-25nt4kk9whhok\\*\\*\\*\\*, you must set the ParentTaskId request parameter to the ID of the batch task and the AndroidInstanceId request parameter to acp-25nt4kk9whhok\\*\\*\\*\\* when calling the DescribeTasks operation.
         
         @param request: DescribeTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3481,7 +3513,13 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.DescribeTasksRequest,
     ) -> eds_aic_20230930_models.DescribeTasksResponse:
         """
-        @summary 查询异步任务
+        @summary Queries tasks created for a cloud phone instance.
+        
+        @description    You can call the DescribeTasks operation to query the tasks created for one or more cloud phone instances.
+        The system currently supports various tasks, including starting, stopping, restarting, and resetting cloud phone instances; backing up and restoring data; installing apps; and executing remote commands.
+        You can use the Level field to specify the type of task. If Level is set to 1, it represents a batch task. If Level is set to 2, it represents an instance-level task.
+        *Example**\
+        Assume you restart two cloud phone instances with the instance IDs acp-25nt4kk9whhok\\\\*\\*\\* and acp-j2taq887orj8l\\*\\*\\*\\*, and the returned request ID is B8ED2BA9-0C6A-5643-818F-B5D60A64\\*\\*\\*\\*. If you want to check the operation outcomes of the two cloud phone instances, you can call the DescribeTasks operation. You need to set the InvokeId request parameter to B8ED2BA9-0C6A-5643-818F-B5D60A64\\*\\*\\*\\*. If you only want to check the cloud phone instance with the ID acp-25nt4kk9whhok\\*\\*\\*\\*, you must set the ParentTaskId request parameter to the ID of the batch task and the AndroidInstanceId request parameter to acp-25nt4kk9whhok\\*\\*\\*\\* when calling the DescribeTasks operation.
         
         @param request: DescribeTasksRequest
         @return: DescribeTasksResponse
@@ -3494,7 +3532,13 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.DescribeTasksRequest,
     ) -> eds_aic_20230930_models.DescribeTasksResponse:
         """
-        @summary 查询异步任务
+        @summary Queries tasks created for a cloud phone instance.
+        
+        @description    You can call the DescribeTasks operation to query the tasks created for one or more cloud phone instances.
+        The system currently supports various tasks, including starting, stopping, restarting, and resetting cloud phone instances; backing up and restoring data; installing apps; and executing remote commands.
+        You can use the Level field to specify the type of task. If Level is set to 1, it represents a batch task. If Level is set to 2, it represents an instance-level task.
+        *Example**\
+        Assume you restart two cloud phone instances with the instance IDs acp-25nt4kk9whhok\\\\*\\*\\* and acp-j2taq887orj8l\\*\\*\\*\\*, and the returned request ID is B8ED2BA9-0C6A-5643-818F-B5D60A64\\*\\*\\*\\*. If you want to check the operation outcomes of the two cloud phone instances, you can call the DescribeTasks operation. You need to set the InvokeId request parameter to B8ED2BA9-0C6A-5643-818F-B5D60A64\\*\\*\\*\\*. If you only want to check the cloud phone instance with the ID acp-25nt4kk9whhok\\*\\*\\*\\*, you must set the ParentTaskId request parameter to the ID of the batch task and the AndroidInstanceId request parameter to acp-25nt4kk9whhok\\*\\*\\*\\* when calling the DescribeTasks operation.
         
         @param request: DescribeTasksRequest
         @return: DescribeTasksResponse
@@ -3508,7 +3552,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.DetachKeyPairResponse:
         """
-        @summary 解绑密钥对
+        @summary Detaches an Android Debug Bridge (ADB) key pair from one or more cloud phone instances.
+        
+        @description    After you detach an ADB key pair from a cloud phone instance, the ADB connection will fail. This occurs because the system can no longer authenticate using a valid ADB public key, leading to authentication errors.
         
         @param request: DetachKeyPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3551,7 +3597,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.DetachKeyPairResponse:
         """
-        @summary 解绑密钥对
+        @summary Detaches an Android Debug Bridge (ADB) key pair from one or more cloud phone instances.
+        
+        @description    After you detach an ADB key pair from a cloud phone instance, the ADB connection will fail. This occurs because the system can no longer authenticate using a valid ADB public key, leading to authentication errors.
         
         @param request: DetachKeyPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3593,7 +3641,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.DetachKeyPairRequest,
     ) -> eds_aic_20230930_models.DetachKeyPairResponse:
         """
-        @summary 解绑密钥对
+        @summary Detaches an Android Debug Bridge (ADB) key pair from one or more cloud phone instances.
+        
+        @description    After you detach an ADB key pair from a cloud phone instance, the ADB connection will fail. This occurs because the system can no longer authenticate using a valid ADB public key, leading to authentication errors.
         
         @param request: DetachKeyPairRequest
         @return: DetachKeyPairResponse
@@ -3606,7 +3656,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.DetachKeyPairRequest,
     ) -> eds_aic_20230930_models.DetachKeyPairResponse:
         """
-        @summary 解绑密钥对
+        @summary Detaches an Android Debug Bridge (ADB) key pair from one or more cloud phone instances.
+        
+        @description    After you detach an ADB key pair from a cloud phone instance, the ADB connection will fail. This occurs because the system can no longer authenticate using a valid ADB public key, leading to authentication errors.
         
         @param request: DetachKeyPairRequest
         @return: DetachKeyPairResponse
@@ -3614,13 +3666,123 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.detach_key_pair_with_options_async(request, runtime)
 
+    def disconnect_android_instance_with_options(
+        self,
+        request: eds_aic_20230930_models.DisconnectAndroidInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.DisconnectAndroidInstanceResponse:
+        """
+        @summary 实例断开连接
+        
+        @param request: DisconnectAndroidInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisconnectAndroidInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisconnectAndroidInstance',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eds_aic_20230930_models.DisconnectAndroidInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eds_aic_20230930_models.DisconnectAndroidInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def disconnect_android_instance_with_options_async(
+        self,
+        request: eds_aic_20230930_models.DisconnectAndroidInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.DisconnectAndroidInstanceResponse:
+        """
+        @summary 实例断开连接
+        
+        @param request: DisconnectAndroidInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisconnectAndroidInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisconnectAndroidInstance',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eds_aic_20230930_models.DisconnectAndroidInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eds_aic_20230930_models.DisconnectAndroidInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def disconnect_android_instance(
+        self,
+        request: eds_aic_20230930_models.DisconnectAndroidInstanceRequest,
+    ) -> eds_aic_20230930_models.DisconnectAndroidInstanceResponse:
+        """
+        @summary 实例断开连接
+        
+        @param request: DisconnectAndroidInstanceRequest
+        @return: DisconnectAndroidInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.disconnect_android_instance_with_options(request, runtime)
+
+    async def disconnect_android_instance_async(
+        self,
+        request: eds_aic_20230930_models.DisconnectAndroidInstanceRequest,
+    ) -> eds_aic_20230930_models.DisconnectAndroidInstanceResponse:
+        """
+        @summary 实例断开连接
+        
+        @param request: DisconnectAndroidInstanceRequest
+        @return: DisconnectAndroidInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.disconnect_android_instance_with_options_async(request, runtime)
+
     def distribute_image_with_options(
         self,
         request: eds_aic_20230930_models.DistributeImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.DistributeImageResponse:
         """
-        @summary 自定义镜像分发
+        @summary Distributes an image.
+        
+        @description After you distribute an image in supported regions, the distribution cannot be canceled.
         
         @param request: DistributeImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3663,7 +3825,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.DistributeImageResponse:
         """
-        @summary 自定义镜像分发
+        @summary Distributes an image.
+        
+        @description After you distribute an image in supported regions, the distribution cannot be canceled.
         
         @param request: DistributeImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3705,7 +3869,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.DistributeImageRequest,
     ) -> eds_aic_20230930_models.DistributeImageResponse:
         """
-        @summary 自定义镜像分发
+        @summary Distributes an image.
+        
+        @description After you distribute an image in supported regions, the distribution cannot be canceled.
         
         @param request: DistributeImageRequest
         @return: DistributeImageResponse
@@ -3718,7 +3884,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.DistributeImageRequest,
     ) -> eds_aic_20230930_models.DistributeImageResponse:
         """
-        @summary 自定义镜像分发
+        @summary Distributes an image.
+        
+        @description After you distribute an image in supported regions, the distribution cannot be canceled.
         
         @param request: DistributeImageRequest
         @return: DistributeImageResponse
@@ -3732,7 +3900,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.DowngradeAndroidInstanceGroupResponse:
         """
-        @summary 实例组缩容
+        @summary Downgrades an instance group. Currently, this operation allows you to only delete specific cloud phone instances from an instance group.
+        
+        @description This operation only allows you to scale down an instance group.
         
         @param request: DowngradeAndroidInstanceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3777,7 +3947,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.DowngradeAndroidInstanceGroupResponse:
         """
-        @summary 实例组缩容
+        @summary Downgrades an instance group. Currently, this operation allows you to only delete specific cloud phone instances from an instance group.
+        
+        @description This operation only allows you to scale down an instance group.
         
         @param request: DowngradeAndroidInstanceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3821,7 +3993,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.DowngradeAndroidInstanceGroupRequest,
     ) -> eds_aic_20230930_models.DowngradeAndroidInstanceGroupResponse:
         """
-        @summary 实例组缩容
+        @summary Downgrades an instance group. Currently, this operation allows you to only delete specific cloud phone instances from an instance group.
+        
+        @description This operation only allows you to scale down an instance group.
         
         @param request: DowngradeAndroidInstanceGroupRequest
         @return: DowngradeAndroidInstanceGroupResponse
@@ -3834,7 +4008,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.DowngradeAndroidInstanceGroupRequest,
     ) -> eds_aic_20230930_models.DowngradeAndroidInstanceGroupResponse:
         """
-        @summary 实例组缩容
+        @summary Downgrades an instance group. Currently, this operation allows you to only delete specific cloud phone instances from an instance group.
+        
+        @description This operation only allows you to scale down an instance group.
         
         @param request: DowngradeAndroidInstanceGroupRequest
         @return: DowngradeAndroidInstanceGroupResponse
@@ -3842,13 +4018,131 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.downgrade_android_instance_group_with_options_async(request, runtime)
 
+    def end_coordination_with_options(
+        self,
+        request: eds_aic_20230930_models.EndCoordinationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.EndCoordinationResponse:
+        """
+        @summary 结束协同
+        
+        @param request: EndCoordinationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EndCoordinationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.coordinator_user_id):
+            query['CoordinatorUserId'] = request.coordinator_user_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_user_id):
+            query['OwnerUserId'] = request.owner_user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EndCoordination',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eds_aic_20230930_models.EndCoordinationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eds_aic_20230930_models.EndCoordinationResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def end_coordination_with_options_async(
+        self,
+        request: eds_aic_20230930_models.EndCoordinationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.EndCoordinationResponse:
+        """
+        @summary 结束协同
+        
+        @param request: EndCoordinationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EndCoordinationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.coordinator_user_id):
+            query['CoordinatorUserId'] = request.coordinator_user_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_user_id):
+            query['OwnerUserId'] = request.owner_user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EndCoordination',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eds_aic_20230930_models.EndCoordinationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eds_aic_20230930_models.EndCoordinationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def end_coordination(
+        self,
+        request: eds_aic_20230930_models.EndCoordinationRequest,
+    ) -> eds_aic_20230930_models.EndCoordinationResponse:
+        """
+        @summary 结束协同
+        
+        @param request: EndCoordinationRequest
+        @return: EndCoordinationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.end_coordination_with_options(request, runtime)
+
+    async def end_coordination_async(
+        self,
+        request: eds_aic_20230930_models.EndCoordinationRequest,
+    ) -> eds_aic_20230930_models.EndCoordinationResponse:
+        """
+        @summary 结束协同
+        
+        @param request: EndCoordinationRequest
+        @return: EndCoordinationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.end_coordination_with_options_async(request, runtime)
+
     def fetch_file_with_options(
         self,
         request: eds_aic_20230930_models.FetchFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.FetchFileResponse:
         """
-        @summary 云手机拉取文件到OSS
+        @summary Pulls a file from a cloud phone instance and stores it in Object Storage Service (OSS).
+        
+        @description Currently, this operation allows you to retrieve files or folders from cloud phone instances and save them directly to OSS.
         
         @param request: FetchFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3897,7 +4191,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.FetchFileResponse:
         """
-        @summary 云手机拉取文件到OSS
+        @summary Pulls a file from a cloud phone instance and stores it in Object Storage Service (OSS).
+        
+        @description Currently, this operation allows you to retrieve files or folders from cloud phone instances and save them directly to OSS.
         
         @param request: FetchFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3945,7 +4241,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.FetchFileRequest,
     ) -> eds_aic_20230930_models.FetchFileResponse:
         """
-        @summary 云手机拉取文件到OSS
+        @summary Pulls a file from a cloud phone instance and stores it in Object Storage Service (OSS).
+        
+        @description Currently, this operation allows you to retrieve files or folders from cloud phone instances and save them directly to OSS.
         
         @param request: FetchFileRequest
         @return: FetchFileResponse
@@ -3958,7 +4256,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.FetchFileRequest,
     ) -> eds_aic_20230930_models.FetchFileResponse:
         """
-        @summary 云手机拉取文件到OSS
+        @summary Pulls a file from a cloud phone instance and stores it in Object Storage Service (OSS).
+        
+        @description Currently, this operation allows you to retrieve files or folders from cloud phone instances and save them directly to OSS.
         
         @param request: FetchFileRequest
         @return: FetchFileResponse
@@ -3966,13 +4266,127 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.fetch_file_with_options_async(request, runtime)
 
+    def generate_coordination_code_with_options(
+        self,
+        request: eds_aic_20230930_models.GenerateCoordinationCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.GenerateCoordinationCodeResponse:
+        """
+        @summary 获取协同码
+        
+        @param request: GenerateCoordinationCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateCoordinationCodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_user_id):
+            query['OwnerUserId'] = request.owner_user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateCoordinationCode',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eds_aic_20230930_models.GenerateCoordinationCodeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eds_aic_20230930_models.GenerateCoordinationCodeResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def generate_coordination_code_with_options_async(
+        self,
+        request: eds_aic_20230930_models.GenerateCoordinationCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.GenerateCoordinationCodeResponse:
+        """
+        @summary 获取协同码
+        
+        @param request: GenerateCoordinationCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateCoordinationCodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_user_id):
+            query['OwnerUserId'] = request.owner_user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateCoordinationCode',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eds_aic_20230930_models.GenerateCoordinationCodeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eds_aic_20230930_models.GenerateCoordinationCodeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def generate_coordination_code(
+        self,
+        request: eds_aic_20230930_models.GenerateCoordinationCodeRequest,
+    ) -> eds_aic_20230930_models.GenerateCoordinationCodeResponse:
+        """
+        @summary 获取协同码
+        
+        @param request: GenerateCoordinationCodeRequest
+        @return: GenerateCoordinationCodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.generate_coordination_code_with_options(request, runtime)
+
+    async def generate_coordination_code_async(
+        self,
+        request: eds_aic_20230930_models.GenerateCoordinationCodeRequest,
+    ) -> eds_aic_20230930_models.GenerateCoordinationCodeResponse:
+        """
+        @summary 获取协同码
+        
+        @param request: GenerateCoordinationCodeRequest
+        @return: GenerateCoordinationCodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.generate_coordination_code_with_options_async(request, runtime)
+
     def import_key_pair_with_options(
         self,
         request: eds_aic_20230930_models.ImportKeyPairRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.ImportKeyPairResponse:
         """
-        @summary 导入秘钥
+        @summary Imports the public key of an Android Debug Bridge (ADB) key pair.
+        
+        @description To avoid authorization errors that could cause ADB connection failures, you must import the public key of an ADB key pair.
         
         @param request: ImportKeyPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4015,7 +4429,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.ImportKeyPairResponse:
         """
-        @summary 导入秘钥
+        @summary Imports the public key of an Android Debug Bridge (ADB) key pair.
+        
+        @description To avoid authorization errors that could cause ADB connection failures, you must import the public key of an ADB key pair.
         
         @param request: ImportKeyPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4057,7 +4473,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.ImportKeyPairRequest,
     ) -> eds_aic_20230930_models.ImportKeyPairResponse:
         """
-        @summary 导入秘钥
+        @summary Imports the public key of an Android Debug Bridge (ADB) key pair.
+        
+        @description To avoid authorization errors that could cause ADB connection failures, you must import the public key of an ADB key pair.
         
         @param request: ImportKeyPairRequest
         @return: ImportKeyPairResponse
@@ -4070,7 +4488,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.ImportKeyPairRequest,
     ) -> eds_aic_20230930_models.ImportKeyPairResponse:
         """
-        @summary 导入秘钥
+        @summary Imports the public key of an Android Debug Bridge (ADB) key pair.
+        
+        @description To avoid authorization errors that could cause ADB connection failures, you must import the public key of an ADB key pair.
         
         @param request: ImportKeyPairRequest
         @return: ImportKeyPairResponse
@@ -4084,7 +4504,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.InstallAppResponse:
         """
-        @summary 安装app到实例组
+        @summary Installs an app on multiple cloud phone instances at the same time.
+        
+        @description This operation runs asynchronously. To check the installation result, you can query the installation history for the app.
         
         @param request: InstallAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4129,7 +4551,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.InstallAppResponse:
         """
-        @summary 安装app到实例组
+        @summary Installs an app on multiple cloud phone instances at the same time.
+        
+        @description This operation runs asynchronously. To check the installation result, you can query the installation history for the app.
         
         @param request: InstallAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4173,7 +4597,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.InstallAppRequest,
     ) -> eds_aic_20230930_models.InstallAppResponse:
         """
-        @summary 安装app到实例组
+        @summary Installs an app on multiple cloud phone instances at the same time.
+        
+        @description This operation runs asynchronously. To check the installation result, you can query the installation history for the app.
         
         @param request: InstallAppRequest
         @return: InstallAppResponse
@@ -4186,7 +4612,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.InstallAppRequest,
     ) -> eds_aic_20230930_models.InstallAppResponse:
         """
-        @summary 安装app到实例组
+        @summary Installs an app on multiple cloud phone instances at the same time.
+        
+        @description This operation runs asynchronously. To check the installation result, you can query the installation history for the app.
         
         @param request: InstallAppRequest
         @return: InstallAppResponse
@@ -4932,7 +5360,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.OperateAppResponse:
         """
-        @summary 操作App
+        @summary Operates apps in a cloud phone, such as opening, closing, and reopening apps.
         
         @param request: OperateAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4977,7 +5405,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.OperateAppResponse:
         """
-        @summary 操作App
+        @summary Operates apps in a cloud phone, such as opening, closing, and reopening apps.
         
         @param request: OperateAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5021,7 +5449,7 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.OperateAppRequest,
     ) -> eds_aic_20230930_models.OperateAppResponse:
         """
-        @summary 操作App
+        @summary Operates apps in a cloud phone, such as opening, closing, and reopening apps.
         
         @param request: OperateAppRequest
         @return: OperateAppResponse
@@ -5034,7 +5462,7 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.OperateAppRequest,
     ) -> eds_aic_20230930_models.OperateAppResponse:
         """
-        @summary 操作App
+        @summary Operates apps in a cloud phone, such as opening, closing, and reopening apps.
         
         @param request: OperateAppRequest
         @return: OperateAppResponse
@@ -5048,7 +5476,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.RebootAndroidInstancesInGroupResponse:
         """
-        @summary 重启安卓实例
+        @summary Restarts one or more cloud phone instances.
+        
+        @description Before you restart a cloud phone instance, make sure it is in one of the following states: *Available, Abnormal, Backup failure, and Restoration failure**.
         
         @param request: RebootAndroidInstancesInGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5091,7 +5521,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.RebootAndroidInstancesInGroupResponse:
         """
-        @summary 重启安卓实例
+        @summary Restarts one or more cloud phone instances.
+        
+        @description Before you restart a cloud phone instance, make sure it is in one of the following states: *Available, Abnormal, Backup failure, and Restoration failure**.
         
         @param request: RebootAndroidInstancesInGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5133,7 +5565,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.RebootAndroidInstancesInGroupRequest,
     ) -> eds_aic_20230930_models.RebootAndroidInstancesInGroupResponse:
         """
-        @summary 重启安卓实例
+        @summary Restarts one or more cloud phone instances.
+        
+        @description Before you restart a cloud phone instance, make sure it is in one of the following states: *Available, Abnormal, Backup failure, and Restoration failure**.
         
         @param request: RebootAndroidInstancesInGroupRequest
         @return: RebootAndroidInstancesInGroupResponse
@@ -5146,7 +5580,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.RebootAndroidInstancesInGroupRequest,
     ) -> eds_aic_20230930_models.RebootAndroidInstancesInGroupResponse:
         """
-        @summary 重启安卓实例
+        @summary Restarts one or more cloud phone instances.
+        
+        @description Before you restart a cloud phone instance, make sure it is in one of the following states: *Available, Abnormal, Backup failure, and Restoration failure**.
         
         @param request: RebootAndroidInstancesInGroupRequest
         @return: RebootAndroidInstancesInGroupResponse
@@ -5296,7 +5732,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.RenewAndroidInstanceGroupsResponse:
         """
-        @summary 续费安卓实例组
+        @summary Renews instance groups.
         
         @param request: RenewAndroidInstanceGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5343,7 +5779,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.RenewAndroidInstanceGroupsResponse:
         """
-        @summary 续费安卓实例组
+        @summary Renews instance groups.
         
         @param request: RenewAndroidInstanceGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5389,7 +5825,7 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.RenewAndroidInstanceGroupsRequest,
     ) -> eds_aic_20230930_models.RenewAndroidInstanceGroupsResponse:
         """
-        @summary 续费安卓实例组
+        @summary Renews instance groups.
         
         @param request: RenewAndroidInstanceGroupsRequest
         @return: RenewAndroidInstanceGroupsResponse
@@ -5402,7 +5838,7 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.RenewAndroidInstanceGroupsRequest,
     ) -> eds_aic_20230930_models.RenewAndroidInstanceGroupsResponse:
         """
-        @summary 续费安卓实例组
+        @summary Renews instance groups.
         
         @param request: RenewAndroidInstanceGroupsRequest
         @return: RenewAndroidInstanceGroupsResponse
@@ -5416,7 +5852,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.ResetAndroidInstancesInGroupResponse:
         """
-        @summary 重置安卓实例
+        @summary Resets one or more cloud phone instances.
+        
+        @description Before you reset a cloud phone instance, make sure it is in one of the following states: *Available, Stopped, Abnormal, Backup failure, and Restoration failure**.
         
         @param request: ResetAndroidInstancesInGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5457,7 +5895,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.ResetAndroidInstancesInGroupResponse:
         """
-        @summary 重置安卓实例
+        @summary Resets one or more cloud phone instances.
+        
+        @description Before you reset a cloud phone instance, make sure it is in one of the following states: *Available, Stopped, Abnormal, Backup failure, and Restoration failure**.
         
         @param request: ResetAndroidInstancesInGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5497,7 +5937,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.ResetAndroidInstancesInGroupRequest,
     ) -> eds_aic_20230930_models.ResetAndroidInstancesInGroupResponse:
         """
-        @summary 重置安卓实例
+        @summary Resets one or more cloud phone instances.
+        
+        @description Before you reset a cloud phone instance, make sure it is in one of the following states: *Available, Stopped, Abnormal, Backup failure, and Restoration failure**.
         
         @param request: ResetAndroidInstancesInGroupRequest
         @return: ResetAndroidInstancesInGroupResponse
@@ -5510,7 +5952,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.ResetAndroidInstancesInGroupRequest,
     ) -> eds_aic_20230930_models.ResetAndroidInstancesInGroupResponse:
         """
-        @summary 重置安卓实例
+        @summary Resets one or more cloud phone instances.
+        
+        @description Before you reset a cloud phone instance, make sure it is in one of the following states: *Available, Stopped, Abnormal, Backup failure, and Restoration failure**.
         
         @param request: ResetAndroidInstancesInGroupRequest
         @return: ResetAndroidInstancesInGroupResponse
@@ -5524,7 +5968,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.RunCommandResponse:
         """
-        @summary 通过eds agent通道下发命令
+        @summary Executes a command on a cloud phone instance.
         
         @param request: RunCommandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5571,7 +6015,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.RunCommandResponse:
         """
-        @summary 通过eds agent通道下发命令
+        @summary Executes a command on a cloud phone instance.
         
         @param request: RunCommandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5617,7 +6061,7 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.RunCommandRequest,
     ) -> eds_aic_20230930_models.RunCommandResponse:
         """
-        @summary 通过eds agent通道下发命令
+        @summary Executes a command on a cloud phone instance.
         
         @param request: RunCommandRequest
         @return: RunCommandResponse
@@ -5630,7 +6074,7 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.RunCommandRequest,
     ) -> eds_aic_20230930_models.RunCommandResponse:
         """
-        @summary 通过eds agent通道下发命令
+        @summary Executes a command on a cloud phone instance.
         
         @param request: RunCommandRequest
         @return: RunCommandResponse
@@ -5644,7 +6088,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.SendFileResponse:
         """
-        @summary 推送文件到云手机
+        @summary Pushes files from Object Storage Service (OSS) buckets to cloud phone instances.
+        
+        @description Currently, this operation allows you to only push files or folders from OSS buckets to cloud phone instances.
         
         @param request: SendFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5693,7 +6139,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.SendFileResponse:
         """
-        @summary 推送文件到云手机
+        @summary Pushes files from Object Storage Service (OSS) buckets to cloud phone instances.
+        
+        @description Currently, this operation allows you to only push files or folders from OSS buckets to cloud phone instances.
         
         @param request: SendFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5741,7 +6189,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.SendFileRequest,
     ) -> eds_aic_20230930_models.SendFileResponse:
         """
-        @summary 推送文件到云手机
+        @summary Pushes files from Object Storage Service (OSS) buckets to cloud phone instances.
+        
+        @description Currently, this operation allows you to only push files or folders from OSS buckets to cloud phone instances.
         
         @param request: SendFileRequest
         @return: SendFileResponse
@@ -5754,7 +6204,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.SendFileRequest,
     ) -> eds_aic_20230930_models.SendFileResponse:
         """
-        @summary 推送文件到云手机
+        @summary Pushes files from Object Storage Service (OSS) buckets to cloud phone instances.
+        
+        @description Currently, this operation allows you to only push files or folders from OSS buckets to cloud phone instances.
         
         @param request: SendFileRequest
         @return: SendFileResponse
@@ -5768,6 +6220,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.SetAdbSecureResponse:
         """
+        @summary Sets the authentication status for cloud phone instances. If you enable Android Debug Bridge (ADB) authentication for cloud phone instances, the system will verify the validity of the ADB key pairs provided by end users when they connect to the instances over ADB. To ensure successful authentication and a proper connection, we recommend that you attach ADB key pairs to cloud phone instances. If you disable ADB authentication for cloud phone instances, the system will no longer verify the validity of any ADB key pairs. As a result, end users can connect to the cloud phone instances over ADB without authentication, provided the network connection is functioning properly.
+        
+        @description Before you call this operation, make sure that the desired cloud phone instance is in the Running state.
+        
         @param request: SetAdbSecureRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetAdbSecureResponse
@@ -5809,6 +6265,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.SetAdbSecureResponse:
         """
+        @summary Sets the authentication status for cloud phone instances. If you enable Android Debug Bridge (ADB) authentication for cloud phone instances, the system will verify the validity of the ADB key pairs provided by end users when they connect to the instances over ADB. To ensure successful authentication and a proper connection, we recommend that you attach ADB key pairs to cloud phone instances. If you disable ADB authentication for cloud phone instances, the system will no longer verify the validity of any ADB key pairs. As a result, end users can connect to the cloud phone instances over ADB without authentication, provided the network connection is functioning properly.
+        
+        @description Before you call this operation, make sure that the desired cloud phone instance is in the Running state.
+        
         @param request: SetAdbSecureRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetAdbSecureResponse
@@ -5849,6 +6309,10 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.SetAdbSecureRequest,
     ) -> eds_aic_20230930_models.SetAdbSecureResponse:
         """
+        @summary Sets the authentication status for cloud phone instances. If you enable Android Debug Bridge (ADB) authentication for cloud phone instances, the system will verify the validity of the ADB key pairs provided by end users when they connect to the instances over ADB. To ensure successful authentication and a proper connection, we recommend that you attach ADB key pairs to cloud phone instances. If you disable ADB authentication for cloud phone instances, the system will no longer verify the validity of any ADB key pairs. As a result, end users can connect to the cloud phone instances over ADB without authentication, provided the network connection is functioning properly.
+        
+        @description Before you call this operation, make sure that the desired cloud phone instance is in the Running state.
+        
         @param request: SetAdbSecureRequest
         @return: SetAdbSecureResponse
         """
@@ -5860,6 +6324,10 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.SetAdbSecureRequest,
     ) -> eds_aic_20230930_models.SetAdbSecureResponse:
         """
+        @summary Sets the authentication status for cloud phone instances. If you enable Android Debug Bridge (ADB) authentication for cloud phone instances, the system will verify the validity of the ADB key pairs provided by end users when they connect to the instances over ADB. To ensure successful authentication and a proper connection, we recommend that you attach ADB key pairs to cloud phone instances. If you disable ADB authentication for cloud phone instances, the system will no longer verify the validity of any ADB key pairs. As a result, end users can connect to the cloud phone instances over ADB without authentication, provided the network connection is functioning properly.
+        
+        @description Before you call this operation, make sure that the desired cloud phone instance is in the Running state.
+        
         @param request: SetAdbSecureRequest
         @return: SetAdbSecureResponse
         """
@@ -5988,7 +6456,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.StopAndroidInstanceResponse:
         """
-        @summary 实例关机
+        @summary Stops a cloud phone instance.
+        
+        @description Before you stop a cloud phone instance, make sure it is in one of the following states: *Available, Backup failure, and Restoration failure**.
         
         @param request: StopAndroidInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6031,7 +6501,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.StopAndroidInstanceResponse:
         """
-        @summary 实例关机
+        @summary Stops a cloud phone instance.
+        
+        @description Before you stop a cloud phone instance, make sure it is in one of the following states: *Available, Backup failure, and Restoration failure**.
         
         @param request: StopAndroidInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6073,7 +6545,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.StopAndroidInstanceRequest,
     ) -> eds_aic_20230930_models.StopAndroidInstanceResponse:
         """
-        @summary 实例关机
+        @summary Stops a cloud phone instance.
+        
+        @description Before you stop a cloud phone instance, make sure it is in one of the following states: *Available, Backup failure, and Restoration failure**.
         
         @param request: StopAndroidInstanceRequest
         @return: StopAndroidInstanceResponse
@@ -6086,7 +6560,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.StopAndroidInstanceRequest,
     ) -> eds_aic_20230930_models.StopAndroidInstanceResponse:
         """
-        @summary 实例关机
+        @summary Stops a cloud phone instance.
+        
+        @description Before you stop a cloud phone instance, make sure it is in one of the following states: *Available, Backup failure, and Restoration failure**.
         
         @param request: StopAndroidInstanceRequest
         @return: StopAndroidInstanceResponse
@@ -6100,7 +6576,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.UninstallAppResponse:
         """
-        @summary 卸载app
+        @summary Uninstalls an app from multiple cloud phone instances. This operation runs asynchronously. You can check the result of the task by using the task ID.
         
         @param request: UninstallAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6145,7 +6621,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.UninstallAppResponse:
         """
-        @summary 卸载app
+        @summary Uninstalls an app from multiple cloud phone instances. This operation runs asynchronously. You can check the result of the task by using the task ID.
         
         @param request: UninstallAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6189,7 +6665,7 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.UninstallAppRequest,
     ) -> eds_aic_20230930_models.UninstallAppResponse:
         """
-        @summary 卸载app
+        @summary Uninstalls an app from multiple cloud phone instances. This operation runs asynchronously. You can check the result of the task by using the task ID.
         
         @param request: UninstallAppRequest
         @return: UninstallAppResponse
@@ -6202,7 +6678,7 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.UninstallAppRequest,
     ) -> eds_aic_20230930_models.UninstallAppResponse:
         """
-        @summary 卸载app
+        @summary Uninstalls an app from multiple cloud phone instances. This operation runs asynchronously. You can check the result of the task by using the task ID.
         
         @param request: UninstallAppRequest
         @return: UninstallAppResponse
@@ -6328,7 +6804,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.UpdateInstanceGroupImageResponse:
         """
-        @summary 实例组变更镜像
+        @summary Changes the image of an instance group.
+        
+        @description Before you call this operation, make sure the image is in the Available state and the region of the image is included in the region list of the desired instance group. In addition, the instance group itself is available.
         
         @param request: UpdateInstanceGroupImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6371,7 +6849,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.UpdateInstanceGroupImageResponse:
         """
-        @summary 实例组变更镜像
+        @summary Changes the image of an instance group.
+        
+        @description Before you call this operation, make sure the image is in the Available state and the region of the image is included in the region list of the desired instance group. In addition, the instance group itself is available.
         
         @param request: UpdateInstanceGroupImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6413,7 +6893,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.UpdateInstanceGroupImageRequest,
     ) -> eds_aic_20230930_models.UpdateInstanceGroupImageResponse:
         """
-        @summary 实例组变更镜像
+        @summary Changes the image of an instance group.
+        
+        @description Before you call this operation, make sure the image is in the Available state and the region of the image is included in the region list of the desired instance group. In addition, the instance group itself is available.
         
         @param request: UpdateInstanceGroupImageRequest
         @return: UpdateInstanceGroupImageResponse
@@ -6426,7 +6908,9 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.UpdateInstanceGroupImageRequest,
     ) -> eds_aic_20230930_models.UpdateInstanceGroupImageResponse:
         """
-        @summary 实例组变更镜像
+        @summary Changes the image of an instance group.
+        
+        @description Before you call this operation, make sure the image is in the Available state and the region of the image is included in the region list of the desired instance group. In addition, the instance group itself is available.
         
         @param request: UpdateInstanceGroupImageRequest
         @return: UpdateInstanceGroupImageResponse

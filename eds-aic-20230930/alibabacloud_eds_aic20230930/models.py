@@ -53,7 +53,10 @@ class AttachKeyPairRequest(TeaModel):
         instance_ids: List[str] = None,
         key_pair_id: str = None,
     ):
+        # The IDs of the cloud phone instances. You can specify a maximum of 50 cloud phone instances.
         self.instance_ids = instance_ids
+        # The ID of the ADB key pair.
+        # 
         # This parameter is required.
         self.key_pair_id = key_pair_id
 
@@ -89,9 +92,13 @@ class AttachKeyPairResponseBodyData(TeaModel):
         key_pair_id: str = None,
         total_count: int = None,
     ):
+        # The IDs of the cloud phone instances to which the ADB key pair is successfully attached.
         self.attached_instance_ids = attached_instance_ids
+        # The number of the cloud phone instances to which the ADB key pair failed to be attached.
         self.fail_count = fail_count
+        # The ID of the ADB key pair.
         self.key_pair_id = key_pair_id
+        # The total number of the cloud phone instances.
         self.total_count = total_count
 
     def validate(self):
@@ -132,7 +139,9 @@ class AttachKeyPairResponseBody(TeaModel):
         data: AttachKeyPairResponseBodyData = None,
         request_id: str = None,
     ):
+        # The object that is returned.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -562,7 +571,9 @@ class BatchGetAcpConnectionTicketRequestInstanceTasks(TeaModel):
         instance_id: str = None,
         task_id: str = None,
     ):
+        # The ID of the cloud phone instance.
         self.instance_id = instance_id
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):
@@ -597,9 +608,13 @@ class BatchGetAcpConnectionTicketRequest(TeaModel):
         instance_ids: List[str] = None,
         instance_tasks: List[BatchGetAcpConnectionTicketRequestInstanceTasks] = None,
     ):
+        # The ID of the user to whom the cloud phone instance is assigned.
         self.end_user_id = end_user_id
+        # The ID of the instance group.
         self.instance_group_id = instance_group_id
+        # The IDs of the cloud phone instances. You can specify 1 to 100 IDs of cloud phone instances.
         self.instance_ids = instance_ids
+        # The instance connection tasks.
         self.instance_tasks = instance_tasks
 
     def validate(self):
@@ -651,10 +666,15 @@ class BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels(TeaModel):
         task_status: str = None,
         ticket: str = None,
     ):
+        # The ID of the delivery group.
         self.app_instance_group_id = app_instance_group_id
+        # The ID of the cloud phone instance.
         self.instance_id = instance_id
+        # The ID of the task.
         self.task_id = task_id
+        # The state of the task.
         self.task_status = task_status
+        # The ticket used to connect to the cloud phone instance.
         self.ticket = ticket
 
     def validate(self):
@@ -699,8 +719,9 @@ class BatchGetAcpConnectionTicketResponseBody(TeaModel):
         instance_connection_models: List[BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels] = None,
         request_id: str = None,
     ):
+        # The results of the instance connection tasks.
         self.instance_connection_models = instance_connection_models
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2418,9 +2439,13 @@ class CreateScreenshotRequest(TeaModel):
         oss_bucket_name: str = None,
         skip_check_policy_config: str = None,
     ):
+        # The IDs of the cloud phone instances. You can create multiple snapshots simultaneously.
+        # 
         # This parameter is required.
         self.android_instance_id_list = android_instance_id_list
+        # The name of the OSS bucket. The name must start with "cloudphone-saved-bucket-". The OSS bucket and the cloud phone instance must be in the same region. If you leave this parameter empty, the system will create a default OSS bucket named “cloudphone-saved-bucket-{Region of the cloud phone instance}-{AliUid}.”
         self.oss_bucket_name = oss_bucket_name
+        # Specifies whether to bypass the snapshot policy control. Default value: false.
         self.skip_check_policy_config = skip_check_policy_config
 
     def validate(self):
@@ -2457,7 +2482,9 @@ class CreateScreenshotResponseBodyTasks(TeaModel):
         android_instance_id: str = None,
         task_id: str = None,
     ):
+        # The ID of the cloud phone instance.
         self.android_instance_id = android_instance_id
+        # The ID of the task. You can use the task ID with the DescribeTasks operation to get the download link for the screenshot.
         self.task_id = task_id
 
     def validate(self):
@@ -2490,7 +2517,9 @@ class CreateScreenshotResponseBody(TeaModel):
         request_id: str = None,
         tasks: List[CreateScreenshotResponseBodyTasks] = None,
     ):
+        # The ID of the request. If the request fails, share this ID with technical support to help diagnose the issue.
         self.request_id = request_id
+        # The tasks.
         self.tasks = tasks
 
     def validate(self):
@@ -5263,8 +5292,12 @@ class DescribeInvocationsRequest(TeaModel):
         instance_ids: List[str] = None,
         invocation_id: str = None,
     ):
+        # The IDs of the cloud phone instances. You can specify a maximum of 50 cloud phone instances.
+        # 
         # This parameter is required.
         self.instance_ids = instance_ids
+        # The ID of the execution. You can retrieve the output of a command once by using either the execution ID or the cloud phone instance ID.
+        # 
         # This parameter is required.
         self.invocation_id = invocation_id
 
@@ -5302,11 +5335,25 @@ class DescribeInvocationsResponseBodyData(TeaModel):
         output: str = None,
         start_time: str = None,
     ):
+        # The end time of the command execution.
         self.finish_time = finish_time
+        # The ID of the cloud phone instance on which the command is executed.
         self.instance_id = instance_id
+        # The ID of the execution.
         self.invocation_id = invocation_id
+        # The execution state of the command.
+        # 
+        # Valid values:
+        # 
+        # *   SUCCESS: The command is successfully executed.
+        # *   FAILED: The command failed to be executed.
+        # *   RUNNING: The command is being executed.
+        # *   PENDING: The command is pending execution.
+        # *   TIMEOUT: The command execution timed out.
         self.invocation_status = invocation_status
+        # The output of the command execution.
         self.output = output
+        # The start time of the command execution.
         self.start_time = start_time
 
     def validate(self):
@@ -5356,8 +5403,11 @@ class DescribeInvocationsResponseBody(TeaModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # The objects that are returned.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -6042,19 +6092,61 @@ class DescribeTasksRequest(TeaModel):
         task_type: str = None,
         task_types: List[str] = None,
     ):
+        # The ID of the cloud phone instance.
         self.instance_id = instance_id
+        # The name of the cloud phone instance.
         self.instance_name = instance_name
+        # The ID of the command execution. You can set the value to the last returned request ID.
         self.invoke_id = invoke_id
+        # The level of the task. A value of 1 specifies a batch task. A value of 2 specifies an instance-level task.
         self.level = level
+        # The maximum number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. If the parameter is left empty, the data is queried from the first entry.
         self.next_token = next_token
+        # The extension field.
         self.param = param
+        # The ID of the parent task.
         self.parent_task_id = parent_task_id
+        # The IDs of the resources.
         self.resource_ids = resource_ids
+        # The IDs of the tasks.
         self.task_ids = task_ids
+        # The state of the task.
+        # 
+        # Valid values:
+        # 
+        # *   PartFinished: The task is partially successful.
+        # *   Finished: The task is completed.
+        # *   Failed: The task failed.
+        # *   Skipped: The task is skipped.
+        # *   Processing: The task is running.
+        # *   Waiting: The task is in queue.
         self.task_status = task_status
+        # The status of the tasks.
         self.task_statuses = task_statuses
+        # The type of the task.
+        # 
+        # Valid values:
+        # 
+        # *   BackupFile: backs up files.
+        # *   StopInstance: stops cloud phone instances.
+        # *   RebootInstance: restarts cloud phone instances.
+        # *   StartApp: starts apps.
+        # *   SendFile: uploads files.
+        # *   RunCommand: sends remote command.
+        # *   RestartApp: restarts apps.
+        # *   ResetInstance: resets cloud phone instances.
+        # *   RecoverFile: recovers files.
+        # *   UninstallApp: uninstalls apps.
+        # *   StopApp: stops apps.
+        # *   Screenshot: takes screenshots.
+        # *   InstallApp: installs apps.
+        # *   FetchFile: downloads files.
+        # *   UpdateGroupImage: replaces images.
+        # *   StartInstance: starts instances.
         self.task_type = task_type
+        # The types of the tasks.
         self.task_types = task_types
 
     def validate(self):
@@ -6155,27 +6247,49 @@ class DescribeTasksResponseBodyData(TeaModel):
         task_type: str = None,
         total_child_count: int = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The total number of failed subtasks.
         self.failed_child_count = failed_child_count
+        # The end time of the task.
         self.finish_time = finish_time
+        # The ID of the cloud phone instance.
         self.instance_id = instance_id
+        # The name of the cloud phone instance.
         self.instance_name = instance_name
+        # The state of the cloud phone instance.
         self.instance_status = instance_status
+        # The ID of the command execution.
         self.invoke_id = invoke_id
+        # The level of the task.
         self.level = level
+        # The operator.
         self.operator = operator
+        # The parameters of the task.
         self.param = param
+        # The ID of the parent task.
         self.parent_task_id = parent_task_id
+        # The ID of the region.
         self.region_id = region_id
+        # The ID of the resource.
         self.resource_id = resource_id
+        # The execution result of the task.
         self.result = result
+        # The total number of the subtasks that are running.
         self.running_child_count = running_child_count
+        # The start time of the task.
         self.start_time = start_time
+        # The total number of successfully executed subtasks.
         self.success_child_count = success_child_count
+        # The ID of the task.
         self.task_id = task_id
+        # The state of the task.
         self.task_status = task_status
+        # The type of the task.
         self.task_type = task_type
+        # The total number of subtasks of the current batch task.
         self.total_child_count = total_child_count
 
     def validate(self):
@@ -6290,9 +6404,13 @@ class DescribeTasksResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The objects that are returned.
         self.data = data
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -6382,7 +6500,10 @@ class DetachKeyPairRequest(TeaModel):
         instance_ids: List[str] = None,
         key_pair_id: str = None,
     ):
+        # The IDs of the cloud phone instances. You can specify a maximum of 50 cloud phone instances.
         self.instance_ids = instance_ids
+        # The ID of the ADB key pair.
+        # 
         # This parameter is required.
         self.key_pair_id = key_pair_id
 
@@ -6418,9 +6539,13 @@ class DetachKeyPairResponseBodyData(TeaModel):
         key_pair_id: str = None,
         total_count: int = None,
     ):
+        # The IDs of the cloud phone instances from which the ADB key pair is successfully detached.
         self.detached_instance_ids = detached_instance_ids
+        # The number of the cloud phone instances from which the ADB key pair failed to be detached.
         self.fail_count = fail_count
+        # The ID of the ADB key pair.
         self.key_pair_id = key_pair_id
+        # The total number of the cloud phone instances.
         self.total_count = total_count
 
     def validate(self):
@@ -6461,7 +6586,9 @@ class DetachKeyPairResponseBody(TeaModel):
         data: DetachKeyPairResponseBodyData = None,
         request_id: str = None,
     ):
+        # The object that is returned.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6531,14 +6658,114 @@ class DetachKeyPairResponse(TeaModel):
         return self
 
 
+class DisconnectAndroidInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        instance_ids: List[str] = None,
+    ):
+        # This parameter is required.
+        self.instance_ids = instance_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        return self
+
+
+class DisconnectAndroidInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisconnectAndroidInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisconnectAndroidInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisconnectAndroidInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DistributeImageRequest(TeaModel):
     def __init__(
         self,
         distribute_region_list: List[str] = None,
         image_id: str = None,
     ):
+        # The regions to which you want to distribute an image.
+        # 
         # This parameter is required.
         self.distribute_region_list = distribute_region_list
+        # The ID of the image that you want to distribute.
+        # 
         # This parameter is required.
         self.image_id = image_id
 
@@ -6571,6 +6798,7 @@ class DistributeImageResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6641,8 +6869,17 @@ class DowngradeAndroidInstanceGroupRequest(TeaModel):
         auto_pay: bool = None,
         instance_group_id: str = None,
     ):
+        # The IDs of the cloud phone instances that you want to delete.
         self.android_instance_ids = android_instance_ids
+        # Specifies whether to enable the auto-payment feature. Default value: false.
+        # 
+        # Valid values:
+        # 
+        # *   true: enables the auto-payment feature. Ensure your account has sufficient balance to use this feature.
+        # *   false: disables the auto-payment feature. This requires manual payment each time you place an order.
         self.auto_pay = auto_pay
+        # The ID of the instance group.
+        # 
         # This parameter is required.
         self.instance_group_id = instance_group_id
 
@@ -6680,7 +6917,9 @@ class DowngradeAndroidInstanceGroupResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the order.
         self.order_id = order_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6748,6 +6987,113 @@ class DowngradeAndroidInstanceGroupResponse(TeaModel):
         return self
 
 
+class EndCoordinationRequest(TeaModel):
+    def __init__(
+        self,
+        coordinator_user_id: str = None,
+        instance_id: str = None,
+        owner_user_id: str = None,
+    ):
+        self.coordinator_user_id = coordinator_user_id
+        self.instance_id = instance_id
+        self.owner_user_id = owner_user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.coordinator_user_id is not None:
+            result['CoordinatorUserId'] = self.coordinator_user_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_user_id is not None:
+            result['OwnerUserId'] = self.owner_user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CoordinatorUserId') is not None:
+            self.coordinator_user_id = m.get('CoordinatorUserId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerUserId') is not None:
+            self.owner_user_id = m.get('OwnerUserId')
+        return self
+
+
+class EndCoordinationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EndCoordinationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EndCoordinationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EndCoordinationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class FetchFileRequest(TeaModel):
     def __init__(
         self,
@@ -6757,14 +7103,30 @@ class FetchFileRequest(TeaModel):
         upload_type: str = None,
         upload_url: str = None,
     ):
+        # The IDs of the cloud phone instances.
+        # 
         # This parameter is required.
         self.android_instance_id_list = android_instance_id_list
+        # The path to the file that you want to pull from the cloud phone instance.
+        # 
         # This parameter is required.
         self.source_file_path = source_file_path
+        # The endpoint of the OSS bucket in which you want to store the pulled file.
+        # 
+        # >  Set the value to an internal endpoint when the cloud phone instance and the OSS bucket are in the same region to improve upload speed without incurring public traffic fees. Sample endpoint: `oss-cn-hangzhou-internal.aliyuncs.com`. For more information, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html).
+        # 
         # This parameter is required.
         self.upload_endpoint = upload_endpoint
+        # The type of the storage service.
+        # 
+        # >  Currently, only OSS is supported.
+        # 
         # This parameter is required.
         self.upload_type = upload_type
+        # The OSS URL of the pulled file.
+        # 
+        # >  The OSS bucket name must start with "cloudphone-saved-bucket-", for example, "cloudphone-saved-bucket-example". You must also create an OSS directory to store the backup data. Set the value for UploadUrl in this format: oss://\\<BucketName>/\\<OSSDirectoryName>.
+        # 
         # This parameter is required.
         self.upload_url = upload_url
 
@@ -6844,8 +7206,11 @@ class FetchFileResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The objects that are returned.
         self.data = data
+        # The ID of the request. If the request fails, share this ID with technical support to help diagnose the issue.
         self.request_id = request_id
+        # The ID of the batch task.
         self.task_id = task_id
 
     def validate(self):
@@ -6925,14 +7290,125 @@ class FetchFileResponse(TeaModel):
         return self
 
 
+class GenerateCoordinationCodeRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        owner_user_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.owner_user_id = owner_user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_user_id is not None:
+            result['OwnerUserId'] = self.owner_user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerUserId') is not None:
+            self.owner_user_id = m.get('OwnerUserId')
+        return self
+
+
+class GenerateCoordinationCodeResponseBody(TeaModel):
+    def __init__(
+        self,
+        coordinator_code: str = None,
+        request_id: str = None,
+    ):
+        self.coordinator_code = coordinator_code
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.coordinator_code is not None:
+            result['CoordinatorCode'] = self.coordinator_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CoordinatorCode') is not None:
+            self.coordinator_code = m.get('CoordinatorCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GenerateCoordinationCodeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GenerateCoordinationCodeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GenerateCoordinationCodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ImportKeyPairRequest(TeaModel):
     def __init__(
         self,
         key_pair_name: str = None,
         public_key_body: str = None,
     ):
+        # The name of the ADB key pair.
+        # 
         # This parameter is required.
         self.key_pair_name = key_pair_name
+        # The public key of the ADB key pair.
+        # 
         # This parameter is required.
         self.public_key_body = public_key_body
 
@@ -6967,8 +7443,11 @@ class ImportKeyPairResponseBodyData(TeaModel):
         key_pair_id: str = None,
         key_pair_name: str = None,
     ):
+        # The time when the ADB key pair was created.
         self.gmt_created = gmt_created
+        # The ID of the ADB key pair.
         self.key_pair_id = key_pair_id
+        # The name of the ADB key pair.
         self.key_pair_name = key_pair_name
 
     def validate(self):
@@ -7005,7 +7484,9 @@ class ImportKeyPairResponseBody(TeaModel):
         data: ImportKeyPairResponseBodyData = None,
         request_id: str = None,
     ):
+        # The object that is returned.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7082,8 +7563,11 @@ class InstallAppRequest(TeaModel):
         instance_group_id_list: List[str] = None,
         instance_id_list: List[str] = None,
     ):
+        # The IDs of the apps that you want to install.
         self.app_id_list = app_id_list
+        # The IDs of the instance groups.
         self.instance_group_id_list = instance_group_id_list
+        # The IDs of the cloud phone instances.
         self.instance_id_list = instance_id_list
 
     def validate(self):
@@ -7120,7 +7604,9 @@ class InstallAppResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):
@@ -8452,8 +8938,17 @@ class OperateAppRequest(TeaModel):
         instance_id_list: List[str] = None,
         operate_type: str = None,
     ):
+        # The ID of the app.
         self.app_id = app_id
+        # The IDs of the cloud phone instances.
         self.instance_id_list = instance_id_list
+        # The type of the operation.
+        # 
+        # Valid values:
+        # 
+        # *   stop: closes the app.
+        # *   restart: reopens the app.
+        # *   start: open the app.
         self.operate_type = operate_type
 
     def validate(self):
@@ -8490,7 +8985,9 @@ class OperateAppResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):
@@ -8564,7 +9061,14 @@ class RebootAndroidInstancesInGroupRequest(TeaModel):
         android_instance_ids: List[str] = None,
         force_stop: bool = None,
     ):
+        # The IDs of the cloud phone instances.
         self.android_instance_ids = android_instance_ids
+        # Specifies whether to enforce a restart operation. If a cloud phone instance fails to stop due to system or network issues, a forced restart can be triggered, though it may result in data loss.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.force_stop = force_stop
 
     def validate(self):
@@ -8596,6 +9100,7 @@ class RebootAndroidInstancesInGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8873,9 +9378,23 @@ class RenewAndroidInstanceGroupsRequest(TeaModel):
         period: int = None,
         period_unit: str = None,
     ):
+        # Specifies whether to enable the auto-payment feature.
+        # 
+        # Valid values:
+        # 
+        # *   true: enables the auto-payment feature. Ensure your account has sufficient balance to use this feature.
+        # *   false: disables the auto-payment feature. You need to manually complete the payment process.
         self.auto_pay = auto_pay
+        # The IDs of the instance groups.
         self.instance_group_ids = instance_group_ids
+        # The duration of the renewal, measured in units defined by PeriodUnit.
         self.period = period
+        # The unit of the renewal duration. Default value: Month.
+        # 
+        # Valid values:
+        # 
+        # *   Month
+        # *   Year
         self.period_unit = period_unit
 
     def validate(self):
@@ -8916,7 +9435,9 @@ class RenewAndroidInstanceGroupsResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the order.
         self.order_id = order_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8989,6 +9510,7 @@ class ResetAndroidInstancesInGroupRequest(TeaModel):
         self,
         android_instance_ids: List[str] = None,
     ):
+        # The IDs of the cloud phone instances.
         self.android_instance_ids = android_instance_ids
 
     def validate(self):
@@ -9016,6 +9538,7 @@ class ResetAndroidInstancesInGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9087,9 +9610,20 @@ class RunCommandRequest(TeaModel):
         instance_ids: List[str] = None,
         timeout: int = None,
     ):
+        # The content of the command.
         self.command_content = command_content
+        # The encoding method of the command content (`CommandContent`). The value is not case-sensitive.
+        # 
+        # >  If you set the value to an invalid encoding method, the system will process the command content as `PlainText`.
+        # 
+        # Valid values:
+        # 
+        # *   Base64: encodes the command content in Base64.
+        # *   PlainText (default): does not encode the command content. The command content is input as plain text.
         self.content_encoding = content_encoding
+        # The IDs of the cloud phone instances. You can specify a maximum of 50 cloud phone instances.
         self.instance_ids = instance_ids
+        # The timeout period of the command execution. If the command execution exceeds the timeout period, it will be considered timed out. If you leave this parameter empty, it defaults to 60.
         self.timeout = timeout
 
     def validate(self):
@@ -9130,7 +9664,9 @@ class RunCommandResponseBody(TeaModel):
         invoke_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the command execution. You can use the command execution ID to query the output of a command.
         self.invoke_id = invoke_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9207,13 +9743,28 @@ class SendFileRequest(TeaModel):
         upload_type: str = None,
         upload_url: str = None,
     ):
+        # The IDs of the cloud phone instances.
+        # 
         # This parameter is required.
         self.android_instance_id_list = android_instance_id_list
+        # The path to which you want to upload the pushed file in the cloud phone instance.
+        # 
         # This parameter is required.
         self.source_file_path = source_file_path
+        # The endpoint of the OSS bucket in which the file is stored.
+        # 
+        # >  Set the value to an internal endpoint when the cloud phone instance and the OSS bucket are in the same region to improve transfer speed without incurring public traffic fees. Sample endpoint: `oss-cn-hangzhou-internal.aliyuncs.com`. For more information, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html).
         self.upload_endpoint = upload_endpoint
+        # The storage type of the file that you want to upload.
+        # 
+        # *   Set the value to OSS.
+        # 
         # This parameter is required.
         self.upload_type = upload_type
+        # The OSS URL of the file.
+        # 
+        # >  The OSS bucket name must start with "cloudphone-saved-bucket-", for example, "cloudphone-saved-bucket-example". You must also create an OSS directory to store the backup data. Set the value for UploadUrl in this format: oss://\\<BucketName>/\\<OSSDirectoryName>\\<FileName>.
+        # 
         # This parameter is required.
         self.upload_url = upload_url
 
@@ -9293,8 +9844,11 @@ class SendFileResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The objects that are returned.
         self.data = data
+        # The ID of the request. If the request fails, share this ID with technical support to help diagnose the issue.
         self.request_id = request_id
+        # The ID of the batch task.
         self.task_id = task_id
 
     def validate(self):
@@ -9380,7 +9934,15 @@ class SetAdbSecureRequest(TeaModel):
         instance_ids: List[str] = None,
         status: int = None,
     ):
+        # The IDs of the cloud phone instances. You can specify a maximum of 50 cloud phone instances.
         self.instance_ids = instance_ids
+        # The status of the ADB authentication feature.
+        # 
+        # Valid values:
+        # 
+        # *   0: The ADB authentication feature is disabled.
+        # *   1: The ADB authentication feature is enabled.
+        # 
         # This parameter is required.
         self.status = status
 
@@ -9415,8 +9977,11 @@ class SetAdbSecureResponseBodyData(TeaModel):
         instance_ids: List[str] = None,
         total_count: int = None,
     ):
+        # The number of the cloud phone instances for which the ADB authentication feature failed to be enabled.
         self.fail_count = fail_count
+        # The IDs of the cloud phone instances for which the ADB authentication feature is enabled.
         self.instance_ids = instance_ids
+        # The total number of the cloud phone instances.
         self.total_count = total_count
 
     def validate(self):
@@ -9453,7 +10018,9 @@ class SetAdbSecureResponseBody(TeaModel):
         data: SetAdbSecureResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned object.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9626,7 +10193,9 @@ class StopAndroidInstanceRequest(TeaModel):
         android_instance_ids: List[str] = None,
         force_stop: bool = None,
     ):
+        # The IDs of the cloud phone instances.
         self.android_instance_ids = android_instance_ids
+        # Specifies whether to enforce a stop operation. If a cloud phone instance fails to stop due to system or network issues, a forced stop can be triggered, though it may result in data loss.
         self.force_stop = force_stop
 
     def validate(self):
@@ -9658,6 +10227,7 @@ class StopAndroidInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9728,8 +10298,11 @@ class UninstallAppRequest(TeaModel):
         instance_group_id_list: List[str] = None,
         instance_id_list: List[str] = None,
     ):
+        # The IDs of the apps.
         self.app_id_list = app_id_list
+        # The ID of the instance groups. If you specify this parameter, you cannot specify InstanceIdList.
         self.instance_group_id_list = instance_group_id_list
+        # The IDs of the cloud phone instances. If you specify this parameter, you cannot specify InstanceGroupIdList.
         self.instance_id_list = instance_id_list
 
     def validate(self):
@@ -9766,7 +10339,9 @@ class UninstallAppResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):
@@ -9944,8 +10519,12 @@ class UpdateInstanceGroupImageRequest(TeaModel):
         image_id: str = None,
         instance_group_ids: List[str] = None,
     ):
+        # The ID of the image.
+        # 
         # This parameter is required.
         self.image_id = image_id
+        # The IDs of the instance groups.
+        # 
         # This parameter is required.
         self.instance_group_ids = instance_group_ids
 
@@ -9978,6 +10557,7 @@ class UpdateInstanceGroupImageResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
