@@ -5926,6 +5926,103 @@ class UpdateTriggerInput(TeaModel):
         return self
 
 
+class OpenStructDescribeRegionsOutputRegionsRegion(TeaModel):
+    def __init__(
+        self,
+        local_name: str = None,
+        region_id: str = None,
+    ):
+        self.local_name = local_name
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.local_name is not None:
+            result['LocalName'] = self.local_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LocalName') is not None:
+            self.local_name = m.get('LocalName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class OpenStructDescribeRegionsOutputRegions(TeaModel):
+    def __init__(
+        self,
+        region: List[OpenStructDescribeRegionsOutputRegionsRegion] = None,
+    ):
+        self.region = region
+
+    def validate(self):
+        if self.region:
+            for k in self.region:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Region'] = []
+        if self.region is not None:
+            for k in self.region:
+                result['Region'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.region = []
+        if m.get('Region') is not None:
+            for k in m.get('Region'):
+                temp_model = OpenStructDescribeRegionsOutputRegionsRegion()
+                self.region.append(temp_model.from_map(k))
+        return self
+
+
+class OpenStructDescribeRegionsOutput(TeaModel):
+    def __init__(
+        self,
+        regions: OpenStructDescribeRegionsOutputRegions = None,
+    ):
+        self.regions = regions
+
+    def validate(self):
+        if self.regions:
+            self.regions.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.regions is not None:
+            result['Regions'] = self.regions.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Regions') is not None:
+            temp_model = OpenStructDescribeRegionsOutputRegions()
+            self.regions = temp_model.from_map(m['Regions'])
+        return self
+
+
 class CreateAliasRequest(TeaModel):
     def __init__(
         self,
