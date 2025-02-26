@@ -3437,6 +3437,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_group_id_with_options_async(request, runtime)
 
+    def list_instances_with_options(
+        self,
+        request: ons_mqtt_20200420_models.ListInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ons_mqtt_20200420_models.ListInstancesResponse:
+        """
+        @summary 查询实例列表
+        
+        @param request: ListInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstances',
+            version='2020-04-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ListInstancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ListInstancesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_instances_with_options_async(
+        self,
+        request: ons_mqtt_20200420_models.ListInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ons_mqtt_20200420_models.ListInstancesResponse:
+        """
+        @summary 查询实例列表
+        
+        @param request: ListInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstances',
+            version='2020-04-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ListInstancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ons_mqtt_20200420_models.ListInstancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_instances(
+        self,
+        request: ons_mqtt_20200420_models.ListInstancesRequest,
+    ) -> ons_mqtt_20200420_models.ListInstancesResponse:
+        """
+        @summary 查询实例列表
+        
+        @param request: ListInstancesRequest
+        @return: ListInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_instances_with_options(request, runtime)
+
+    async def list_instances_async(
+        self,
+        request: ons_mqtt_20200420_models.ListInstancesRequest,
+    ) -> ons_mqtt_20200420_models.ListInstancesResponse:
+        """
+        @summary 查询实例列表
+        
+        @param request: ListInstancesRequest
+        @return: ListInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_instances_with_options_async(request, runtime)
+
     def list_tag_resources_with_options(
         self,
         request: ons_mqtt_20200420_models.ListTagResourcesRequest,

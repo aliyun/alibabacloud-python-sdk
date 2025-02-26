@@ -1,3 +1,7 @@
+2025-02-26 Version: 1.7.0
+- Support API ListInstances.
+
+
 2025-02-25 Version: 1.6.0
 - Support API DisasterDowngrade.
 - Support API DisasterRecovery.
