@@ -4426,6 +4426,8 @@ class Client(OpenApiClient):
             query['DbStorageType'] = request.db_storage_type
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.gpu_node_spec):
+            query['GpuNodeSpec'] = request.gpu_node_spec
         if not UtilClient.is_unset(request.kv_store_account):
             query['KvStoreAccount'] = request.kv_store_account
         if not UtilClient.is_unset(request.kv_store_engine_version):
@@ -4442,6 +4444,10 @@ class Client(OpenApiClient):
             query['KvStoreResourceId'] = request.kv_store_resource_id
         if not UtilClient.is_unset(request.kv_store_type):
             query['KvStoreType'] = request.kv_store_type
+        if not UtilClient.is_unset(request.model_id):
+            query['ModelId'] = request.model_id
+        if not UtilClient.is_unset(request.model_option):
+            query['ModelOption'] = request.model_option
         if not UtilClient.is_unset(request.oss_path):
             query['OssPath'] = request.oss_path
         if not UtilClient.is_unset(request.oss_resource_id):
@@ -4574,6 +4580,8 @@ class Client(OpenApiClient):
             query['DbStorageType'] = request.db_storage_type
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.gpu_node_spec):
+            query['GpuNodeSpec'] = request.gpu_node_spec
         if not UtilClient.is_unset(request.kv_store_account):
             query['KvStoreAccount'] = request.kv_store_account
         if not UtilClient.is_unset(request.kv_store_engine_version):
@@ -4590,6 +4598,10 @@ class Client(OpenApiClient):
             query['KvStoreResourceId'] = request.kv_store_resource_id
         if not UtilClient.is_unset(request.kv_store_type):
             query['KvStoreType'] = request.kv_store_type
+        if not UtilClient.is_unset(request.model_id):
+            query['ModelId'] = request.model_id
+        if not UtilClient.is_unset(request.model_option):
+            query['ModelOption'] = request.model_option
         if not UtilClient.is_unset(request.oss_path):
             query['OssPath'] = request.oss_path
         if not UtilClient.is_unset(request.oss_resource_id):
@@ -33258,6 +33270,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_task_content_with_options_async(request, runtime)
+
+    def update_task_content_v2with_options(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskContentV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskContentV2Response:
+        """
+        @summary 接受大容量sql文件的更新节点内容API
+        
+        @param request: UpdateTaskContentV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTaskContentV2Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        body = {}
+        if not UtilClient.is_unset(request.node_content):
+            body['NodeContent'] = request.node_content
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskContentV2',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.UpdateTaskContentV2Response(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.UpdateTaskContentV2Response(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_task_content_v2with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskContentV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskContentV2Response:
+        """
+        @summary 接受大容量sql文件的更新节点内容API
+        
+        @param request: UpdateTaskContentV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTaskContentV2Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        body = {}
+        if not UtilClient.is_unset(request.node_content):
+            body['NodeContent'] = request.node_content
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskContentV2',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.UpdateTaskContentV2Response(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.UpdateTaskContentV2Response(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_task_content_v2(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskContentV2Request,
+    ) -> dms_enterprise_20181101_models.UpdateTaskContentV2Response:
+        """
+        @summary 接受大容量sql文件的更新节点内容API
+        
+        @param request: UpdateTaskContentV2Request
+        @return: UpdateTaskContentV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_task_content_v2with_options(request, runtime)
+
+    async def update_task_content_v2_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskContentV2Request,
+    ) -> dms_enterprise_20181101_models.UpdateTaskContentV2Response:
+        """
+        @summary 接受大容量sql文件的更新节点内容API
+        
+        @param request: UpdateTaskContentV2Request
+        @return: UpdateTaskContentV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_task_content_v2with_options_async(request, runtime)
 
     def update_task_flow_constants_with_options(
         self,

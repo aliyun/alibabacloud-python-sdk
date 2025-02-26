@@ -9874,6 +9874,7 @@ class CreateDifyInstanceRequest(TeaModel):
         db_storage_size: str = None,
         db_storage_type: str = None,
         dry_run: bool = None,
+        gpu_node_spec: str = None,
         kv_store_account: str = None,
         kv_store_engine_version: str = None,
         kv_store_instance_class: str = None,
@@ -9882,6 +9883,8 @@ class CreateDifyInstanceRequest(TeaModel):
         kv_store_password: str = None,
         kv_store_resource_id: int = None,
         kv_store_type: str = None,
+        model_id: str = None,
+        model_option: str = None,
         oss_path: str = None,
         oss_resource_id: int = None,
         pay_period: int = None,
@@ -9926,6 +9929,7 @@ class CreateDifyInstanceRequest(TeaModel):
         self.db_storage_size = db_storage_size
         self.db_storage_type = db_storage_type
         self.dry_run = dry_run
+        self.gpu_node_spec = gpu_node_spec
         self.kv_store_account = kv_store_account
         self.kv_store_engine_version = kv_store_engine_version
         self.kv_store_instance_class = kv_store_instance_class
@@ -9934,6 +9938,8 @@ class CreateDifyInstanceRequest(TeaModel):
         self.kv_store_password = kv_store_password
         self.kv_store_resource_id = kv_store_resource_id
         self.kv_store_type = kv_store_type
+        self.model_id = model_id
+        self.model_option = model_option
         self.oss_path = oss_path
         self.oss_resource_id = oss_resource_id
         self.pay_period = pay_period
@@ -10005,6 +10011,8 @@ class CreateDifyInstanceRequest(TeaModel):
             result['DbStorageType'] = self.db_storage_type
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+        if self.gpu_node_spec is not None:
+            result['GpuNodeSpec'] = self.gpu_node_spec
         if self.kv_store_account is not None:
             result['KvStoreAccount'] = self.kv_store_account
         if self.kv_store_engine_version is not None:
@@ -10021,6 +10029,10 @@ class CreateDifyInstanceRequest(TeaModel):
             result['KvStoreResourceId'] = self.kv_store_resource_id
         if self.kv_store_type is not None:
             result['KvStoreType'] = self.kv_store_type
+        if self.model_id is not None:
+            result['ModelId'] = self.model_id
+        if self.model_option is not None:
+            result['ModelOption'] = self.model_option
         if self.oss_path is not None:
             result['OssPath'] = self.oss_path
         if self.oss_resource_id is not None:
@@ -10109,6 +10121,8 @@ class CreateDifyInstanceRequest(TeaModel):
             self.db_storage_type = m.get('DbStorageType')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+        if m.get('GpuNodeSpec') is not None:
+            self.gpu_node_spec = m.get('GpuNodeSpec')
         if m.get('KvStoreAccount') is not None:
             self.kv_store_account = m.get('KvStoreAccount')
         if m.get('KvStoreEngineVersion') is not None:
@@ -10125,6 +10139,10 @@ class CreateDifyInstanceRequest(TeaModel):
             self.kv_store_resource_id = m.get('KvStoreResourceId')
         if m.get('KvStoreType') is not None:
             self.kv_store_type = m.get('KvStoreType')
+        if m.get('ModelId') is not None:
+            self.model_id = m.get('ModelId')
+        if m.get('ModelOption') is not None:
+            self.model_option = m.get('ModelOption')
         if m.get('OssPath') is not None:
             self.oss_path = m.get('OssPath')
         if m.get('OssResourceId') is not None:
@@ -66791,6 +66809,127 @@ class UpdateTaskContentResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateTaskContentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateTaskContentV2Request(TeaModel):
+    def __init__(
+        self,
+        node_content: str = None,
+        node_id: str = None,
+    ):
+        self.node_content = node_content
+        # This parameter is required.
+        self.node_id = node_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.node_content is not None:
+            result['NodeContent'] = self.node_content
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NodeContent') is not None:
+            self.node_content = m.get('NodeContent')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        return self
+
+
+class UpdateTaskContentV2ResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateTaskContentV2Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateTaskContentV2ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateTaskContentV2ResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

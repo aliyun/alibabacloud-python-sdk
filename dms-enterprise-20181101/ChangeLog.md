@@ -1,3 +1,10 @@
+2025-02-26 Version: 1.69.0
+- Support API UpdateTaskContentV2.
+- Update API CreateDifyInstance: add param GpuNodeSpec.
+- Update API CreateDifyInstance: add param ModelId.
+- Update API CreateDifyInstance: add param ModelOption.
+
+
 2025-02-14 Version: 1.68.0
 - Support API CreateDataLakeFunction.
 - Support API CreateDifyInstance.
