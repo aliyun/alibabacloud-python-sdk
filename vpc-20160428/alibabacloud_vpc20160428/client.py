@@ -8215,8 +8215,6 @@ class Client(OpenApiClient):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
-        if not UtilClient.is_unset(request.traffic_analyzer_id):
-            query['TrafficAnalyzerId'] = request.traffic_analyzer_id
         if not UtilClient.is_unset(request.traffic_path):
             query['TrafficPath'] = request.traffic_path
         if not UtilClient.is_unset(request.traffic_type):
@@ -8294,8 +8292,6 @@ class Client(OpenApiClient):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
-        if not UtilClient.is_unset(request.traffic_analyzer_id):
-            query['TrafficAnalyzerId'] = request.traffic_analyzer_id
         if not UtilClient.is_unset(request.traffic_path):
             query['TrafficPath'] = request.traffic_path
         if not UtilClient.is_unset(request.traffic_type):
@@ -44911,7 +44907,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyEipForwardModeResponse:
         """
-        @summary 修改eip转发类型
+        @summary Modifies the EIP forwarding mode.
         
         @param request: ModifyEipForwardModeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -44966,7 +44962,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyEipForwardModeResponse:
         """
-        @summary 修改eip转发类型
+        @summary Modifies the EIP forwarding mode.
         
         @param request: ModifyEipForwardModeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -45020,7 +45016,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyEipForwardModeRequest,
     ) -> vpc_20160428_models.ModifyEipForwardModeResponse:
         """
-        @summary 修改eip转发类型
+        @summary Modifies the EIP forwarding mode.
         
         @param request: ModifyEipForwardModeRequest
         @return: ModifyEipForwardModeResponse
@@ -45033,7 +45029,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyEipForwardModeRequest,
     ) -> vpc_20160428_models.ModifyEipForwardModeResponse:
         """
-        @summary 修改eip转发类型
+        @summary Modifies the EIP forwarding mode.
         
         @param request: ModifyEipForwardModeRequest
         @return: ModifyEipForwardModeResponse
@@ -45828,10 +45824,6 @@ class Client(OpenApiClient):
             query['AggregationInterval'] = request.aggregation_interval
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.disable_log_delivery):
-            query['DisableLogDelivery'] = request.disable_log_delivery
-        if not UtilClient.is_unset(request.enable_traffic_analyze):
-            query['EnableTrafficAnalyze'] = request.enable_traffic_analyze
         if not UtilClient.is_unset(request.flow_log_id):
             query['FlowLogId'] = request.flow_log_id
         if not UtilClient.is_unset(request.flow_log_name):
@@ -45848,8 +45840,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.traffic_analyzer_id):
-            query['TrafficAnalyzerId'] = request.traffic_analyzer_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -45898,10 +45888,6 @@ class Client(OpenApiClient):
             query['AggregationInterval'] = request.aggregation_interval
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.disable_log_delivery):
-            query['DisableLogDelivery'] = request.disable_log_delivery
-        if not UtilClient.is_unset(request.enable_traffic_analyze):
-            query['EnableTrafficAnalyze'] = request.enable_traffic_analyze
         if not UtilClient.is_unset(request.flow_log_id):
             query['FlowLogId'] = request.flow_log_id
         if not UtilClient.is_unset(request.flow_log_name):
@@ -45918,8 +45904,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.traffic_analyzer_id):
-            query['TrafficAnalyzerId'] = request.traffic_analyzer_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

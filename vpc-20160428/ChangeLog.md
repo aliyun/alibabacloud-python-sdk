@@ -1,3 +1,7 @@
+2025-02-26 Version: 6.11.1
+- Update API DescribeFlowLogs: update response param.
+
+
 2025-02-21 Version: 6.11.0
 - Support API ModifyEipForwardMode.
 - Update API AssociateVpcCidrBlock: update response param.

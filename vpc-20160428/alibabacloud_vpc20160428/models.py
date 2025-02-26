@@ -9650,7 +9650,6 @@ class CreateFlowLogRequest(TeaModel):
         resource_owner_id: int = None,
         resource_type: str = None,
         tag: List[CreateFlowLogRequestTag] = None,
-        traffic_analyzer_id: str = None,
         traffic_path: List[str] = None,
         traffic_type: str = None,
     ):
@@ -9701,7 +9700,6 @@ class CreateFlowLogRequest(TeaModel):
         self.resource_type = resource_type
         # The tag of the resource.
         self.tag = tag
-        self.traffic_analyzer_id = traffic_analyzer_id
         # The scope of the traffic that you want to capture. Valid values:
         # 
         # *   **all**: all traffic.
@@ -9760,8 +9758,6 @@ class CreateFlowLogRequest(TeaModel):
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
-        if self.traffic_analyzer_id is not None:
-            result['TrafficAnalyzerId'] = self.traffic_analyzer_id
         if self.traffic_path is not None:
             result['TrafficPath'] = self.traffic_path
         if self.traffic_type is not None:
@@ -9803,8 +9799,6 @@ class CreateFlowLogRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = CreateFlowLogRequestTag()
                 self.tag.append(temp_model.from_map(k))
-        if m.get('TrafficAnalyzerId') is not None:
-            self.traffic_analyzer_id = m.get('TrafficAnalyzerId')
         if m.get('TrafficPath') is not None:
             self.traffic_path = m.get('TrafficPath')
         if m.get('TrafficType') is not None:
@@ -15557,7 +15551,7 @@ class CreatePublicIpAddressPoolRequest(TeaModel):
         self.client_token = client_token
         # The description of the IP address pool.
         # 
-        # This parameter is optional. The description must be 2 to 256 characters in length, and cannot start with http:// or https://.
+        # The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
         # Specifies whether to precheck only this request. Valid values:
         # 
@@ -15584,7 +15578,7 @@ class CreatePublicIpAddressPoolRequest(TeaModel):
         self.isp = isp
         # The name of the IP address pool.
         # 
-        # This parameter is optional. The name must be 1 to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        # The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -15697,6 +15691,7 @@ class CreatePublicIpAddressPoolResponseBody(TeaModel):
         request_id: str = None,
         resource_group_id: str = None,
     ):
+        # The ID of the IP address pool.
         self.public_ip_address_pool_id = public_ip_address_pool_id
         # The ID of the IP address pool.
         self.pulbic_ip_address_pool_id = pulbic_ip_address_pool_id
@@ -16198,7 +16193,7 @@ class CreateRouteEntryRequest(TeaModel):
         # *   **VpcPeer**: a VPC peering connection.
         # *   **Ipv4Gateway**: an IPv4 gateway.
         # *   **GatewayEndpoint**: a gateway endpoint.
-        # *   **Ecr**: a Express Connect Router (ECR).
+        # *   **Ecr**: an Express Connect Router (ECR).
         self.next_hop_type = next_hop_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -36328,6 +36323,12 @@ class DescribeEipAddressesRequest(TeaModel):
         self.security_protection_enabled = security_protection_enabled
         # The ID of the contiguous EIP group.
         self.segment_instance_id = segment_instance_id
+        # Indicates whether the instance is managed. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no.
+        # 
+        # If you do not specify this parameter, all instances are queried.
         self.service_managed = service_managed
         # The state of the EIP. Valid values:
         # 
@@ -36816,11 +36817,13 @@ class DescribeEipAddressesResponseBodyEipAddressesEipAddress(TeaModel):
         # 
         # This value is returned only when you query contiguous EIPs.
         self.segment_instance_id = segment_instance_id
+        # The ID of the service provider to which the managed instance belongs.
+        # > This is only valid when the ServiceManaged parameter is set to True.
         self.service_id = service_id
-        # Indicates whether the resource is created by the service account. Valid values:
+        # Indicates whether the instance is managed. Valid values:
         # 
-        # *   **0**\
-        # *   **1**\
+        # *   **1**: yes
+        # *   **0**: no
         self.service_managed = service_managed
         # The status of the EIP. Valid values:
         # 
@@ -37079,7 +37082,7 @@ class DescribeEipAddressesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details about the EIPs.
+        # Details of the EIPs.
         self.eip_addresses = eip_addresses
         # The page number.
         self.page_number = page_number
@@ -40298,7 +40301,6 @@ class DescribeFlowLogsResponseBodyFlowLogsFlowLog(TeaModel):
         service_type: str = None,
         status: str = None,
         tags: DescribeFlowLogsResponseBodyFlowLogsFlowLogTags = None,
-        traffic_analyzer_id: str = None,
         traffic_path: DescribeFlowLogsResponseBodyFlowLogsFlowLogTrafficPath = None,
         traffic_type: str = None,
     ):
@@ -40359,7 +40361,6 @@ class DescribeFlowLogsResponseBodyFlowLogsFlowLog(TeaModel):
         self.status = status
         # The list of tags.
         self.tags = tags
-        self.traffic_analyzer_id = traffic_analyzer_id
         # The sampling scope of the traffic that is collected. Valid values:
         # 
         # *   **all** (default value): all traffic
@@ -40422,8 +40423,6 @@ class DescribeFlowLogsResponseBodyFlowLogsFlowLog(TeaModel):
             result['Status'] = self.status
         if self.tags is not None:
             result['Tags'] = self.tags.to_map()
-        if self.traffic_analyzer_id is not None:
-            result['TrafficAnalyzerId'] = self.traffic_analyzer_id
         if self.traffic_path is not None:
             result['TrafficPath'] = self.traffic_path.to_map()
         if self.traffic_type is not None:
@@ -40469,8 +40468,6 @@ class DescribeFlowLogsResponseBodyFlowLogsFlowLog(TeaModel):
         if m.get('Tags') is not None:
             temp_model = DescribeFlowLogsResponseBodyFlowLogsFlowLogTags()
             self.tags = temp_model.from_map(m['Tags'])
-        if m.get('TrafficAnalyzerId') is not None:
-            self.traffic_analyzer_id = m.get('TrafficAnalyzerId')
         if m.get('TrafficPath') is not None:
             temp_model = DescribeFlowLogsResponseBodyFlowLogsFlowLogTrafficPath()
             self.traffic_path = temp_model.from_map(m['TrafficPath'])
@@ -50068,6 +50065,10 @@ class DescribePublicIpAddressRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The IP version. Valid values:
+        # 
+        # *   **IPv4** (default)
+        # *   **IPv6**\
         self.ip_version = ip_version
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -83944,12 +83945,29 @@ class ModifyEipForwardModeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **RequestId** may be different for each request.
         self.client_token = client_token
+        # The ID of the EIP whose attributes you want to modify.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The association mode. Valid values:
+        # 
+        # *   **NAT** (default): the standard NAT mode.
+        # *   **MULTI_BINDED**: the multi-EIP-to-ENI mode.
+        # *   **BINDED**: the cut-through mode.
+        # 
+        # >  This parameter is required only if **InstanceType** is set to **NetworkInterface**.
+        # 
         # This parameter is required.
         self.mode = mode
         self.owner_id = owner_id
+        # The ID of the region to which the EIP belongs. You can call the DescribeRegions operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -84004,6 +84022,7 @@ class ModifyEipForwardModeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -85093,8 +85112,6 @@ class ModifyFlowLogAttributeRequest(TeaModel):
         self,
         aggregation_interval: int = None,
         description: str = None,
-        disable_log_delivery: str = None,
-        enable_traffic_analyze: str = None,
         flow_log_id: str = None,
         flow_log_name: str = None,
         ip_version: str = None,
@@ -85103,7 +85120,6 @@ class ModifyFlowLogAttributeRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        traffic_analyzer_id: str = None,
     ):
         # The new sampling interval of the flow log. Unit: minutes. Valid values: **1**, **5**, and **10**.
         self.aggregation_interval = aggregation_interval
@@ -85111,8 +85127,6 @@ class ModifyFlowLogAttributeRequest(TeaModel):
         # 
         # The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        self.disable_log_delivery = disable_log_delivery
-        self.enable_traffic_analyze = enable_traffic_analyze
         # The ID of the flow log.
         # 
         # This parameter is required.
@@ -85132,7 +85146,6 @@ class ModifyFlowLogAttributeRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.traffic_analyzer_id = traffic_analyzer_id
 
     def validate(self):
         pass
@@ -85147,10 +85160,6 @@ class ModifyFlowLogAttributeRequest(TeaModel):
             result['AggregationInterval'] = self.aggregation_interval
         if self.description is not None:
             result['Description'] = self.description
-        if self.disable_log_delivery is not None:
-            result['DisableLogDelivery'] = self.disable_log_delivery
-        if self.enable_traffic_analyze is not None:
-            result['EnableTrafficAnalyze'] = self.enable_traffic_analyze
         if self.flow_log_id is not None:
             result['FlowLogId'] = self.flow_log_id
         if self.flow_log_name is not None:
@@ -85167,8 +85176,6 @@ class ModifyFlowLogAttributeRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.traffic_analyzer_id is not None:
-            result['TrafficAnalyzerId'] = self.traffic_analyzer_id
         return result
 
     def from_map(self, m: dict = None):
@@ -85177,10 +85184,6 @@ class ModifyFlowLogAttributeRequest(TeaModel):
             self.aggregation_interval = m.get('AggregationInterval')
         if m.get('Description') is not None:
             self.description = m.get('Description')
-        if m.get('DisableLogDelivery') is not None:
-            self.disable_log_delivery = m.get('DisableLogDelivery')
-        if m.get('EnableTrafficAnalyze') is not None:
-            self.enable_traffic_analyze = m.get('EnableTrafficAnalyze')
         if m.get('FlowLogId') is not None:
             self.flow_log_id = m.get('FlowLogId')
         if m.get('FlowLogName') is not None:
@@ -85197,8 +85200,6 @@ class ModifyFlowLogAttributeRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('TrafficAnalyzerId') is not None:
-            self.traffic_analyzer_id = m.get('TrafficAnalyzerId')
         return self
 
 
@@ -90366,11 +90367,13 @@ class ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig(TeaM
     ):
         # The local autonomous system number (ASN). Valid values: **1** to **4294967295**.
         self.local_asn = local_asn
-        # The BGP IP address of the tunnel. The IP address must fall into the **CIDR block** of the tunnel.
+        # The BGP IP address of the tunnel. The address needs to be an IP address within the **TunnelCidr**.
         self.local_bgp_ip = local_bgp_ip
         # The CIDR block of the tunnel.
         # 
-        # The CIDR block must fall within the 169.254.0.0/16 range. The subnet mask of the CIDR block must be 30 bits in length.
+        # The CIDR block must fall within 169.254.0.0/16 and the mask of the CIDR block must be 30 bits in length. The CIDR block cannot be 169.254.0.0/30, 169.254.1.0/30, 169.254.2.0/30, 169.254.3.0/30, 169.254.4.0/30, 169.254.5.0/30, 169.254.6.0/30, or 169.254.169.252/30.
+        # 
+        # >  The CIDR block of the IPsec tunnel for each IPsec-VPN connection on a VPN gateway must be unique.
         self.tunnel_cidr = tunnel_cidr
 
     def validate(self):
@@ -90416,15 +90419,30 @@ class ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig(TeaM
     ):
         # The authentication algorithm that is used in IKE Phase 1 negotiations.
         # 
-        # *   Valid values when the IPsec connection is attached to a standard VPN gateway: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
-        # *   Valid values when the IPsec connection is attached to a VPN gateway that uses an SM certificate: **sm3**.
+        # 
+        # <props="china">
+        # 
+        # *   If an IPsec-VPN gateway is associated with a standard VPN gateway, the valid values are **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
+        # *   If the IPsec-VPN gateway is associated with an SSL-VPN gateway, the valid value is **sm3**.
+        # 
+        # 
+        # <props="intl">
+        # 
+        # Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
         self.ike_auth_alg = ike_auth_alg
         # The encryption algorithm that is used in IKE Phase 1 negotiations.
         # 
-        # *   Valid values when the IPsec connection is attached to a standard VPN gateway: **aes**, **aes192**, **aes256**, **des**, and **3des**.
-        # *   If the IPsec connection is attached to a VPN gateway that uses an SM certificate, set the value to **sm4**.
+        # <props="china">
+        # 
+        # *   If an IPsec-VPN gateway is associated with a standard VPN gateway, the valid values are **aes**, **aes192**, **aes256**, **des**, and **3des**.
+        # *   If the IPsec-VPN gateway is associated with an SSL-VPN gateway, set the value to **sm4**.
+        # 
+        # 
+        # <props="intl">
+        # 
+        # Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**.
         self.ike_enc_alg = ike_enc_alg
-        # The SA lifetime as a result of Phase 1 negotiations. Unit: seconds. Valid values: **0 to 86400**.
+        # The SA lifetime as a result of Phase 1 negotiations. Unit: seconds Valid values: **0 to 86400**.
         self.ike_lifetime = ike_lifetime
         # The negotiation mode of IKE. Valid values:
         # 
@@ -90435,16 +90453,16 @@ class ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig(TeaM
         self.ike_pfs = ike_pfs
         # The version of the IKE protocol. Valid values: **ikev1** and **ikev2**.
         self.ike_version = ike_version
-        # The tunnel identifier. The identifier can be up to 100 characters in length, and supports FQDNs and IP addresses. The default value is the IP address of the tunnel.
+        # The tunnel identifier. The identifier can be up to 100 characters in length and cannot contain spaces. It supports fully qualified domain names (FQDNs) and IP addresses. The default value is the IP address of the tunnel.
         self.local_id = local_id
         # The pre-shared key that is used to verify identities between the tunnel and peer.
         # 
-        # *   The key must be 1 to 100 characters in length and can contain digits, letters, and the following special characters: ``~!`@#$%^&*()_-+={}[]|;:\\",.<>/?``
-        # *   If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/120374.html) operation to query the pre-shared key that is automatically generated by the system.
+        # *   The key must be 1 to 100 characters in length, and can contain digits, and letters. It cannot contain spaces. ``~!`@#$%^&*()_-+={}[]|;:\\",.<>/?``
+        # *   If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the key. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/120374.html) operation to query the pre-shared key that is automatically generated by the system.
         # 
-        # > The pre-shared key that is configured for the tunnel and the tunnel peer must be the same. Otherwise, the system cannot establish the tunnel.
+        # >  The pre-shared key that is configured for the tunnel and the tunnel peer must be the same. Otherwise, the system cannot establish the tunnel.
         self.psk = psk
-        # The peer identifier. The identifier can be up to 100 characters in length, and supports FQDNs and IP addresses. The default identifier is the IP address of the customer gateway associated with the tunnel.
+        # The peer identifier. The identifier can be up to 100 characters in length, and cannot contain spaces. It supports FQDNs and IP addresses. The default identifier is the IP address of the customer gateway associated with the tunnel.
         self.remote_id = remote_id
 
     def validate(self):
@@ -90509,15 +90527,31 @@ class ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig(Te
     ):
         # The authentication algorithm that is used in IPsec Phase 2 negotiations.
         # 
-        # *   Valid values when the IPsec connection is attached to a standard VPN gateway: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
-        # *   Valid values when the IPsec connection is attached to a VPN gateway that uses an SM certificate: **sm3**.
+        # <props="china">
+        # 
+        # *   If an IPsec-VPN gateway is associated with a standard VPN gateway, the valid values are **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
+        # *   If the IPsec-VPN gateway is associated with an SSL-VPN gateway, set the value to **sm3**.
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
         self.ipsec_auth_alg = ipsec_auth_alg
         # The encryption algorithm that is used in IPsec Phase 2 negotiations.
         # 
-        # *   Valid values when the IPsec connection is attached to a standard VPN gateway: **aes**, **aes192**, **aes256**, **des**, and **3des**.
+        # <props="china">
+        # 
+        # *   If an IPsec-VPN gateway is associated with a standard VPN gateway, the valid values are **aes**, **aes192**, **aes256**, **des**, and **3des**.
         # *   If the IPsec connection is attached to a VPN gateway that uses an SM certificate, set the value to **sm4**.
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**.
         self.ipsec_enc_alg = ipsec_enc_alg
-        # The SA lifetime as a result of Phase 2 negotiations. Unit: seconds. Valid values: **0 to 86400**.
+        # The SA lifetime as a result of Phase 2 negotiations. Unit: seconds Valid values: **0 to 86400**.
         self.ipsec_lifetime = ipsec_lifetime
         # The Diffie-Hellman key exchange algorithm that is used in Phase 2 negotiations. Valid values: **disabled**, **group1**, **group2**, **group5**, and **group14**.
         self.ipsec_pfs = ipsec_pfs
@@ -90565,10 +90599,11 @@ class ModifyTunnelAttributeRequestTunnelOptionsSpecification(TeaModel):
         tunnel_ike_config: ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig = None,
         tunnel_ipsec_config: ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig = None,
     ):
+        # The ID of the customer gateway associated with the tunnel.
         self.customer_gateway_id = customer_gateway_id
-        # Specifies whether to enable dead peer detection (DPD). Valid values: Valid values:
+        # Specifies whether to enable dead peer detection (DPD). Valid values:
         # 
-        # *   **true** The IPsec initiator sends DPD packets to verify the existence and availability of the IPsec peer. If no response is received from the peer within a specified period of time, the IPsec peer is considered disconnected. Then, the ISAKMP SA, IPsec SA, and IPsec tunnel are deleted.
+        # *   **true** The IPsec initiator sends DPD packets to check the IPsec peer is alive. If no response is received from the peer within a specified period of time, the IPsec peer is considered disconnected. Then, the ISAKMP SA, IPsec SA, and IPsec tunnel are deleted.
         # *   **false**: DPD is disabled. The IPsec initiator does not send DPD packets.
         self.enable_dpd = enable_dpd
         # Specifies whether to enable NAT traversal. Valid values:
@@ -90580,7 +90615,7 @@ class ModifyTunnelAttributeRequestTunnelOptionsSpecification(TeaModel):
         self.remote_ca_certificate = remote_ca_certificate
         # The Border Gateway Protocol (BGP) configurations of the tunnel.
         # 
-        # If the BGP feature is not enabled for the tunnel, you must call the [ModifyVpnConnectionAttribute](https://help.aliyun.com/document_detail/120381.html) operation to enable the BGP feature for the tunnel and configure BGP.
+        # If the BGP feature is not enabled for the tunnel, you must call the [ModifyVpnConnectionAttribute](https://help.aliyun.com/document_detail/120381.html) operation to enable the feature and configure BGP.
         self.tunnel_bgp_config = tunnel_bgp_config
         # The configurations of IKE Phase 1.
         self.tunnel_ike_config = tunnel_ike_config
@@ -95733,14 +95768,17 @@ class ModifyVpnGatewayAttributeResponseBody(TeaModel):
         # 
         #     If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the system assigns two IP addresses to the VPN gateway to create two encrypted tunnels.
         self.internet_ip = internet_ip
-        # The IP address of the VPN gateway.
+        # The private IP address of the vSwitch that is used by the system when the VPN gateway is deployed.
         # 
-        # This parameter is returned only if the VPN gateway supports IPsec-VPN connections in single-tunnel mode.
+        # The parameter is returned only for VPN gateways that support single-tunnel IPsec-VPN connections. The IPsec-VPN feature must be enabled.
         self.intranet_ip = intranet_ip
         # The name of the VPN gateway.
         self.name = name
         # The request ID.
         self.request_id = request_id
+        # The ID of the resource group to which the VPN gateway belongs.
+        # 
+        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
         self.resource_group_id = resource_group_id
         # The maximum bandwidth of the VPN gateway. Unit: Mbit/s.
         self.spec = spec
