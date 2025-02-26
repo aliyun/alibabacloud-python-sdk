@@ -1,3 +1,14 @@
+2025-02-26 Version: 5.0.6
+- Update API DescribeApisecAbnormals: update response param.
+- Update API DescribeApisecApiResources: update response param.
+- Update API DescribeApisecEvents: update response param.
+- Update API DescribeApisecStatistics: update response param.
+- Update API DescribeDefenseResource: update response param.
+- Update API DescribeDefenseResources: update response param.
+- Update API DescribeSensitiveRequestLog: update param PageSize.
+- Update API ModifyDefenseResourceXff: add param ResponseHeaders.
+
+
 2025-01-15 Version: 5.0.4
 - Update API DescribePunishedDomains: add param PunishType.
 - Update API DescribePunishedDomains: update param Domains.

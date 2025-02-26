@@ -1724,25 +1724,25 @@ class CreateDomainRequestListen(TeaModel):
     ):
         # The ID of the certificate that you want to add. This parameter is available only if you specify **HttpsPorts**.
         self.cert_id = cert_id
-        # The type of cipher suite that you want to add. This parameter is available only if you specify **HttpsPorts**. Valid values:
+        # The type of the cipher suites that you want to add. This parameter is available only if you specify **HttpsPorts**. Valid values:
         # 
-        # *   **1:** all cipher suites.
-        # *   **2:** strong cipher suites. You can select this value only if you set **TLSVersion** to **tlsv1.2**.
-        # *   **99:** custom cipher suites.
+        # *   **1**: all cipher suites.
+        # *   **2**: strong cipher suites. This value is available only if you set **TLSVersion** to **tlsv1.2**.
+        # *   **99**: custom cipher suites.
         self.cipher_suite = cipher_suite
-        # The custom cipher suite that you want to add.
+        # The custom cipher suites that you want to add.
         self.custom_ciphers = custom_ciphers
         # Specifies whether to support TLS 1.3. This parameter is available only if you specify **HttpsPorts**. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         self.enable_tlsv_3 = enable_tlsv_3
-        # Specifies whether to enable an exclusive IP address. This parameter is available only if you set **IPv6Enabled** to **false** and **ProtectionResource** to **share**. Valid values:
+        # Specifies whether to enable the exclusive IP address feature. This parameter is available only if you set **IPv6Enabled** to **false** and **ProtectionResource** to **share**. Valid values:
         # 
         # *   **true**\
         # *   **false** (default)
         self.exclusive_ip = exclusive_ip
-        # Specifies whether to enable HTTP to HTTPS redirection. This parameter is available only if you specify HttpsPorts and leave HttpPorts empty. Valid values:
+        # Specifies whether to enable force redirect from HTTP to HTTPS for received requests. This parameter is available only if you specify HttpsPorts and leave HttpPorts empty. Valid values:
         # 
         # *   **true**\
         # *   **false**\
@@ -1752,19 +1752,19 @@ class CreateDomainRequestListen(TeaModel):
         # *   **true**\
         # *   **false** (default)
         self.http_2enabled = http_2enabled
-        # The HTTP listener port.
+        # The HTTP listener ports.
         self.http_ports = http_ports
-        # The HTTPS listener port.
+        # The HTTPS listener ports.
         self.https_ports = https_ports
-        # Specifies whether to enable IPv6. Valid values:
+        # Specifies whether to enable IPv6 protection. Valid values:
         # 
         # *   **true**\
         # *   **false** (default)
         self.ipv_6enabled = ipv_6enabled
         # The type of the protection resource. Valid values:
         # 
-        # *   **share:** a shared cluster. This is the default value.
-        # *   **gslb:** shared cluster-based intelligent load balancing.
+        # *   **share** (default): a shared cluster.
+        # *   **gslb**: shared cluster-based intelligent load balancing.
         self.protection_resource = protection_resource
         # Specifies whether to allow access only from SM certificate-based clients. This parameter is available only if you set SM2Enabled to true.
         # 
@@ -1773,21 +1773,21 @@ class CreateDomainRequestListen(TeaModel):
         self.sm2access_only = sm2access_only
         # The ID of the SM certificate that you want to add. This parameter is available only if you set SM2Enabled to true.
         self.sm2cert_id = sm2cert_id
-        # Specifies whether to enable the ShangMi (SM) certificate.
+        # Specifies whether to add an SM certificate.
         self.sm2enabled = sm2enabled
-        # The version of the Transport Layer Security (TLS) protocol. This parameter is available only if you specify **HttpsPorts**. Valid values:
+        # The Transport Layer Security (TLS) version that you want to add. This parameter is available only if you specify **HttpsPorts**. Valid values:
         # 
         # *   **tlsv1**\
         # *   **tlsv1.1**\
         # *   **tlsv1.2**\
         self.tlsversion = tlsversion
-        # The method that you want WAF to use to obtain the actual IP address of a client. Valid values:
+        # The method that is used to obtain the originating IP address of a client. Valid values:
         # 
-        # *   **0:** No Layer 7 proxies are deployed in front of WAF. This is the default value.
-        # *   **1:** WAF reads the first value of the X-Forwarded-For (XFF) header field as the IP address of the client.
-        # *   **2:** WAF reads the value of a custom header field as the IP address of the client.
+        # *   **0** (default): Client traffic is not filtered by a Layer 7 proxy before the traffic reaches WAF.
+        # *   **1**: WAF reads the first value of the X-Forwarded-For (XFF) header field as the originating IP address of the client.
+        # *   **2**: WAF reads the value of a custom header field as the originating IP address of the client.
         self.xff_header_mode = xff_header_mode
-        # The custom header field that you want WAF to use to obtain the actual IP address of a client.
+        # The custom header fields that are used to obtain the originating IP address of a client.
         self.xff_headers = xff_headers
 
     def validate(self):
@@ -1880,7 +1880,7 @@ class CreateDomainRequestRedirectRequestHeaders(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The custom header field.
+        # The key of the custom header field.
         self.key = key
         # The value of the custom header field.
         self.value = value
@@ -1932,15 +1932,16 @@ class CreateDomainRequestRedirect(TeaModel):
     ):
         # The IP addresses or domain names of the origin server.
         self.backends = backends
+        # The secondary IP addresses or domain names of the origin server.
         self.backup_backends = backup_backends
         # Specifies whether to enable the public cloud disaster recovery feature. Valid values:
         # 
         # *   **true**\
         # *   **false** (default)
         self.cname_enabled = cname_enabled
-        # The timeout period for connections. Unit: seconds. Valid values: 1 to 3600.
+        # The timeout period of connections. Unit: seconds. Valid values: 1 to 3600.
         self.connect_timeout = connect_timeout
-        # Specifies whether to enable HTTPS to HTTP redirection for back-to-origin requests. This parameter is available only if you specify **HttpsPorts**. Valid values:
+        # Specifies whether to enable force redirect from HTTPS to HTTP for back-to-origin requests. This parameter is available only if you specify **HttpsPorts**. Valid values:
         # 
         # *   **true**\
         # *   **false**\
@@ -1952,49 +1953,49 @@ class CreateDomainRequestRedirect(TeaModel):
         self.keepalive = keepalive
         # The number of reused persistent connections. Valid values: 60 to 1000.
         # 
-        # >  This parameter specifies the number of reused persistent connections after you enable the persistent connection feature.
+        # >  This parameter specifies the number of persistent connections that can be reused after you enable the persistent connection feature.
         self.keepalive_requests = keepalive_requests
-        # The timeout period for idle persistent connections. Valid values: 1 to 60. Default value: 15. Unit: seconds.
+        # The timeout period of idle persistent connections. Valid values: 1 to 60. Default value: 15. Unit: seconds.
         # 
-        # >  This parameter specifies the time for which a reused persistent connection can remain in the Idle state before the persistent connection is closed.
+        # >  This parameter specifies the period of time after which an idle persistent connection is closed.
         self.keepalive_timeout = keepalive_timeout
         # The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
         # 
         # *   **iphash**\
         # *   **roundRobin**\
-        # *   **leastTime** You can set the parameter to this value only if you set **ProtectionResource** to **gslb**.
+        # *   **leastTime**: This value is available only if you set **ProtectionResource** to **gslb**.
         # 
         # This parameter is required.
         self.loadbalance = loadbalance
-        # The timeout period for read connections. Unit: seconds. Valid values: 1 to 3600.
+        # The timeout period of read connections. Unit: seconds. Valid values: 1 to 3600.
         self.read_timeout = read_timeout
-        # The custom header field that you want to use to label requests that are processed by WAF.
+        # The custom header fields, which are key-value pairs. The fields are used to mark requests that pass through WAF.
         # 
-        # When a request passes through WAF, the custom header field is automatically used to label the request. This way, the backend service can identify requests that are processed by WAF.
+        # When a request passes through WAF, WAF automatically adds the custom header fields to the request to mark the request. This way, the backend service can identify requests that are processed by WAF.
         self.request_headers = request_headers
-        # Specifies whether WAF retries forwarding requests to the origin server when the requests fail to be forwarded to the origin server. Valid values:
+        # Specifies whether WAF retries if WAF fails to forward requests to the origin server. Valid values:
         # 
         # *   **true** (default)
         # *   **false**\
         self.retry = retry
-        # The forwarding rules that you want to configure for the domain name that you want to add to WAF in hybrid cloud mode. This parameter is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
+        # The forwarding rules for the hybrid cloud mode. The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
         # 
-        # *   **rs**: the back-to-origin IP addresses or CNAMEs. The value must be of the ARRAY type.
-        # *   **location**: the name of the protection node. The value must be of the STRING type.
-        # *   **locationId**: the ID of the protection node. The value must be of the LONG type.
+        # *   **rs**: the back-to-origin IP addresses or CNAMEs. Data type: array.
+        # *   **location**: the name of the protection node. Data type: string.
+        # *   **locationId**: the ID of the protection node. Data type: long.
         self.routing_rules = routing_rules
-        # Specifies whether to enable origin Server Name Indication (SNI). This parameter is available only if you specify **HttpsPorts**. Valid values:
+        # Specifies whether to enable the Server Name Indication (SNI) feature for back-to-origin requests. This parameter is available only if you specify **HttpsPorts**. Valid values:
         # 
         # *   **true**\
         # *   **false** (default)
         self.sni_enabled = sni_enabled
-        # The value of the SNI field. If you do not specify this parameter, the value of the **Host** field is automatically used. This parameter is optional. If you want WAF to use an SNI field value that is different from the Host field value in back-to-origin requests, you can specify a custom value for the SNI field.
+        # The custom value of the SNI field. If you do not specify this parameter, the value of the **Host** header field is automatically used. In most cases, you do not need to specify a custom value for the SNI field. However, if you want WAF to use an SNI field whose value is different from the value of the Host header field in back-to-origin requests, you can specify a custom value for the SNI field.
         # 
         # >  This parameter is required only if you set **SniEnabled** to **true**.
         self.sni_host = sni_host
-        # The timeout period for write connections. Unit: seconds. Valid values: 1 to 3600.
+        # The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600.
         self.write_timeout = write_timeout
-        # Specifies whether to use X-Forward-For-Proto to pass the protocol used by WAF to forward requests to the origin server. Valid values:
+        # Specifies whether to use the X-Forward-For-Proto header field to pass the protocol used by WAF to forward requests to the origin server. Valid values:
         # 
         # *   **true** (default)
         # *   **false**\
@@ -2098,7 +2099,9 @@ class CreateDomainRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -2152,11 +2155,11 @@ class CreateDomainRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The configurations of the listeners.
+        # The listener configurations.
         # 
         # This parameter is required.
         self.listen = listen
-        # The configurations of the forwarding rule.
+        # The forwarding configurations.
         # 
         # This parameter is required.
         self.redirect = redirect
@@ -2169,6 +2172,7 @@ class CreateDomainRequest(TeaModel):
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        # The tags. You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -2239,7 +2243,9 @@ class CreateDomainShrinkRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -2293,11 +2299,11 @@ class CreateDomainShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The configurations of the listeners.
+        # The listener configurations.
         # 
         # This parameter is required.
         self.listen_shrink = listen_shrink
-        # The configurations of the forwarding rule.
+        # The forwarding configurations.
         # 
         # This parameter is required.
         self.redirect_shrink = redirect_shrink
@@ -2310,6 +2316,7 @@ class CreateDomainShrinkRequest(TeaModel):
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        # The tags. You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -2379,6 +2386,7 @@ class CreateDomainResponseBodyDomainInfo(TeaModel):
         self.cname = cname
         # The domain name that you added to WAF.
         self.domain = domain
+        # The name of the protected object that is generated.
         self.domain_id = domain_id
 
     def validate(self):
@@ -2415,7 +2423,7 @@ class CreateDomainResponseBody(TeaModel):
         domain_info: CreateDomainResponseBodyDomainInfo = None,
         request_id: str = None,
     ):
-        # The information about the domain name.
+        # The information about the domain name that is added.
         self.domain_info = domain_info
         # The ID of the request.
         self.request_id = request_id
@@ -5143,11 +5151,12 @@ class DescribeApisecAbnormalsRequest(TeaModel):
         # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purposes of APIs.
         self.api_tag = api_tag
         # The ID of the hybrid cloud cluster.
-        # >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+        # 
+        # >  This parameter is available only in hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query hybrid cloud clusters.
         self.cluster_id = cluster_id
         # The end of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.end_time = end_time
-        # The ID of the Web Application Firewall (WAF) instance.
+        # The ID of the WAF instance.
         # 
         # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
@@ -5174,11 +5183,10 @@ class DescribeApisecAbnormalsRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Default value: **10**.
         self.page_size = page_size
-        # The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+        # The region ID of the WAF instance. Valid value:
         # 
-        # * **cn-hangzhou**: Chinese mainland
-        # 
-        # * **ap-southeast-1**: outside the Chinese mainland
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
@@ -5303,6 +5311,7 @@ class DescribeApisecAbnormalsResponseBodyData(TeaModel):
         follow: int = None,
         ignore_time: int = None,
         lastest_time: int = None,
+        latest_discover_time: int = None,
         matched_host: str = None,
         note: str = None,
         origin: str = None,
@@ -5354,6 +5363,7 @@ class DescribeApisecAbnormalsResponseBodyData(TeaModel):
         self.ignore_time = ignore_time
         # The time at which the risk was last active. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.lastest_time = lastest_time
+        self.latest_discover_time = latest_discover_time
         # The domain name or IP address of the API.
         self.matched_host = matched_host
         # The remarks.
@@ -5411,6 +5421,8 @@ class DescribeApisecAbnormalsResponseBodyData(TeaModel):
             result['IgnoreTime'] = self.ignore_time
         if self.lastest_time is not None:
             result['LastestTime'] = self.lastest_time
+        if self.latest_discover_time is not None:
+            result['LatestDiscoverTime'] = self.latest_discover_time
         if self.matched_host is not None:
             result['MatchedHost'] = self.matched_host
         if self.note is not None:
@@ -5453,6 +5465,8 @@ class DescribeApisecAbnormalsResponseBodyData(TeaModel):
             self.ignore_time = m.get('IgnoreTime')
         if m.get('LastestTime') is not None:
             self.lastest_time = m.get('LastestTime')
+        if m.get('LatestDiscoverTime') is not None:
+            self.latest_discover_time = m.get('LatestDiscoverTime')
         if m.get('MatchedHost') is not None:
             self.matched_host = m.get('MatchedHost')
         if m.get('Note') is not None:
@@ -5815,6 +5829,7 @@ class DescribeApisecApiResourcesResponseBodyData(TeaModel):
         lastest_ts: int = None,
         matched_host: str = None,
         note: str = None,
+        resources: List[str] = None,
     ):
         # The number of API-related risks.
         self.abnormal_num = abnormal_num
@@ -5899,6 +5914,8 @@ class DescribeApisecApiResourcesResponseBodyData(TeaModel):
         self.matched_host = matched_host
         # The remarks.
         self.note = note
+        # The list of protection objects corresponding to this asset.
+        self.resources = resources
 
     def validate(self):
         pass
@@ -5953,6 +5970,8 @@ class DescribeApisecApiResourcesResponseBodyData(TeaModel):
             result['MatchedHost'] = self.matched_host
         if self.note is not None:
             result['Note'] = self.note
+        if self.resources is not None:
+            result['Resources'] = self.resources
         return result
 
     def from_map(self, m: dict = None):
@@ -6001,6 +6020,8 @@ class DescribeApisecApiResourcesResponseBodyData(TeaModel):
             self.matched_host = m.get('MatchedHost')
         if m.get('Note') is not None:
             self.note = m.get('Note')
+        if m.get('Resources') is not None:
+            self.resources = m.get('Resources')
         return self
 
 
@@ -6742,6 +6763,7 @@ class DescribeApisecEventsResponseBodyData(TeaModel):
         attack_cnt_info: str = None,
         attack_ip: str = None,
         attack_ip_info: str = None,
+        attack_ips: List[str] = None,
         end_ts: int = None,
         event_id: str = None,
         event_info: str = None,
@@ -6759,6 +6781,7 @@ class DescribeApisecEventsResponseBodyData(TeaModel):
         user_status: str = None,
     ):
         # The number of attacks.
+        # >Notice: The parameter has been deprecated, please use the Attackips parameter.
         self.all_cnt = all_cnt
         # The API.
         self.api_format = api_format
@@ -6781,6 +6804,8 @@ class DescribeApisecEventsResponseBodyData(TeaModel):
         # *   **region_id**: the region ID
         # *   **cnt**: the number of attacks
         self.attack_ip_info = attack_ip_info
+        # The source IP addresses of the attacks.
+        self.attack_ips = attack_ips
         # The end of the time range to query. This value is a UNIX timestamp in UTC. Unit: seconds.
         self.end_ts = end_ts
         # The ID of the event.
@@ -6857,6 +6882,8 @@ class DescribeApisecEventsResponseBodyData(TeaModel):
             result['AttackIp'] = self.attack_ip
         if self.attack_ip_info is not None:
             result['AttackIpInfo'] = self.attack_ip_info
+        if self.attack_ips is not None:
+            result['AttackIps'] = self.attack_ips
         if self.end_ts is not None:
             result['EndTs'] = self.end_ts
         if self.event_id is not None:
@@ -6907,6 +6934,8 @@ class DescribeApisecEventsResponseBodyData(TeaModel):
             self.attack_ip = m.get('AttackIp')
         if m.get('AttackIpInfo') is not None:
             self.attack_ip_info = m.get('AttackIpInfo')
+        if m.get('AttackIps') is not None:
+            self.attack_ips = m.get('AttackIps')
         if m.get('EndTs') is not None:
             self.end_ts = m.get('EndTs')
         if m.get('EventId') is not None:
@@ -8773,6 +8802,7 @@ class DescribeApisecStatisticsRequest(TeaModel):
 class DescribeApisecStatisticsResponseBodyData(TeaModel):
     def __init__(
         self,
+        actioned: int = None,
         api: int = None,
         confirmed: int = None,
         domain: int = None,
@@ -8789,6 +8819,8 @@ class DescribeApisecStatisticsResponseBodyData(TeaModel):
         today_total: str = None,
         total: int = None,
     ):
+        # The number of handled events.
+        self.actioned = actioned
         # The number of APIs.
         self.api = api
         # The number of confirmed events.
@@ -8829,6 +8861,8 @@ class DescribeApisecStatisticsResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.actioned is not None:
+            result['Actioned'] = self.actioned
         if self.api is not None:
             result['Api'] = self.api
         if self.confirmed is not None:
@@ -8863,6 +8897,8 @@ class DescribeApisecStatisticsResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Actioned') is not None:
+            self.actioned = m.get('Actioned')
         if m.get('Api') is not None:
             self.api = m.get('Api')
         if m.get('Confirmed') is not None:
@@ -11487,6 +11523,39 @@ class DescribeDefenseResourceRequest(TeaModel):
         return self
 
 
+class DescribeDefenseResourceResponseBodyResourceResponseHeaders(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeDefenseResourceResponseBodyResource(TeaModel):
     def __init__(
         self,
@@ -11505,6 +11574,7 @@ class DescribeDefenseResourceResponseBodyResource(TeaModel):
         resource_group: str = None,
         resource_manager_resource_group_id: str = None,
         resource_origin: str = None,
+        response_headers: List[DescribeDefenseResourceResponseBodyResourceResponseHeaders] = None,
         xff_status: int = None,
     ):
         # The status of the tracking cookie.
@@ -11551,6 +11621,7 @@ class DescribeDefenseResourceResponseBodyResource(TeaModel):
         # *   **custom**\
         # *   **access**\
         self.resource_origin = resource_origin
+        self.response_headers = response_headers
         # Indicates whether a Layer 7 proxy is deployed in front of WAF, such as Anti-DDoS Proxy and Alibaba Cloud CDN. Valid values:
         # 
         # *   **0**: No Layer 7 proxy is deployed.
@@ -11558,7 +11629,10 @@ class DescribeDefenseResourceResponseBodyResource(TeaModel):
         self.xff_status = xff_status
 
     def validate(self):
-        pass
+        if self.response_headers:
+            for k in self.response_headers:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -11596,6 +11670,10 @@ class DescribeDefenseResourceResponseBodyResource(TeaModel):
             result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
         if self.resource_origin is not None:
             result['ResourceOrigin'] = self.resource_origin
+        result['ResponseHeaders'] = []
+        if self.response_headers is not None:
+            for k in self.response_headers:
+                result['ResponseHeaders'].append(k.to_map() if k else None)
         if self.xff_status is not None:
             result['XffStatus'] = self.xff_status
         return result
@@ -11632,6 +11710,11 @@ class DescribeDefenseResourceResponseBodyResource(TeaModel):
             self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
         if m.get('ResourceOrigin') is not None:
             self.resource_origin = m.get('ResourceOrigin')
+        self.response_headers = []
+        if m.get('ResponseHeaders') is not None:
+            for k in m.get('ResponseHeaders'):
+                temp_model = DescribeDefenseResourceResponseBodyResourceResponseHeaders()
+                self.response_headers.append(temp_model.from_map(k))
         if m.get('XffStatus') is not None:
             self.xff_status = m.get('XffStatus')
         return self
@@ -12847,6 +12930,39 @@ class DescribeDefenseResourcesRequest(TeaModel):
         return self
 
 
+class DescribeDefenseResourcesResponseBodyResourcesResponseHeaders(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeDefenseResourcesResponseBodyResources(TeaModel):
     def __init__(
         self,
@@ -12865,6 +12981,7 @@ class DescribeDefenseResourcesResponseBodyResources(TeaModel):
         resource_group: str = None,
         resource_manager_resource_group_id: str = None,
         resource_origin: str = None,
+        response_headers: List[DescribeDefenseResourcesResponseBodyResourcesResponseHeaders] = None,
         xff_status: int = None,
     ):
         # The status of the tracking cookie.
@@ -12906,11 +13023,15 @@ class DescribeDefenseResourcesResponseBodyResources(TeaModel):
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The origin of the protected object.
         self.resource_origin = resource_origin
+        self.response_headers = response_headers
         # Indicates whether the X-Forwarded-For (XFF) header is used.
         self.xff_status = xff_status
 
     def validate(self):
-        pass
+        if self.response_headers:
+            for k in self.response_headers:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -12948,6 +13069,10 @@ class DescribeDefenseResourcesResponseBodyResources(TeaModel):
             result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
         if self.resource_origin is not None:
             result['ResourceOrigin'] = self.resource_origin
+        result['ResponseHeaders'] = []
+        if self.response_headers is not None:
+            for k in self.response_headers:
+                result['ResponseHeaders'].append(k.to_map() if k else None)
         if self.xff_status is not None:
             result['XffStatus'] = self.xff_status
         return result
@@ -12984,6 +13109,11 @@ class DescribeDefenseResourcesResponseBodyResources(TeaModel):
             self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
         if m.get('ResourceOrigin') is not None:
             self.resource_origin = m.get('ResourceOrigin')
+        self.response_headers = []
+        if m.get('ResponseHeaders') is not None:
+            for k in m.get('ResponseHeaders'):
+                temp_model = DescribeDefenseResourcesResponseBodyResourcesResponseHeaders()
+                self.response_headers.append(temp_model.from_map(k))
         if m.get('XffStatus') is not None:
             self.xff_status = m.get('XffStatus')
         return self
@@ -20935,7 +21065,7 @@ class DescribePunishedDomainsRequest(TeaModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The domain names.
+        # The domain names that are added to WAF.
         self.domains = domains
         # The ID of the WAF instance.
         # 
@@ -24967,10 +25097,10 @@ class DescribeSensitiveRequestLogRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Default value: **10**.
         self.page_size = page_size
-        # The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+        # The region ID of the WAF instance. Valid value:
         # 
-        # *   **cn-hangzhou**: Chinese mainland
-        # *   **ap-southeast-1**: outside the Chinese mainland
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
@@ -25078,7 +25208,8 @@ class DescribeSensitiveRequestLogResponseBodyData(TeaModel):
         self.remote_country_id = remote_country_id
         # The time when the request was initiated. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
         self.request_time = request_time
-        # The sensitive data.
+        # The sensitive data. The value of this parameter is a JSON string that contains multiple parameters. The Key of JSON is the sensitive information type identifier (including default and custom types), and the Value is the sensitive information data list.
+        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of sensitive data.
         self.sensitive_list = sensitive_list
         # The trace ID.
         self.trace_id = trace_id
@@ -31118,6 +31249,39 @@ class ModifyDefenseResourceGroupResponse(TeaModel):
         return self
 
 
+class ModifyDefenseResourceXffRequestResponseHeaders(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ModifyDefenseResourceXffRequest(TeaModel):
     def __init__(
         self,
@@ -31129,6 +31293,7 @@ class ModifyDefenseResourceXffRequest(TeaModel):
         region_id: str = None,
         resource: str = None,
         resource_manager_resource_group_id: str = None,
+        response_headers: List[ModifyDefenseResourceXffRequestResponseHeaders] = None,
         xff_status: int = None,
     ):
         # The status of the tracking cookie.
@@ -31167,6 +31332,7 @@ class ModifyDefenseResourceXffRequest(TeaModel):
         self.resource = resource
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        self.response_headers = response_headers
         # Specifies whether a Layer 7 proxy is deployed in front of WAF. Layer 7 proxies include Anti-DDoS Proxy and Alibaba Cloud CDN. Valid values:
         # 
         # *   **0**: No Layer 7 proxies are deployed. This is the default value.
@@ -31176,7 +31342,10 @@ class ModifyDefenseResourceXffRequest(TeaModel):
         self.xff_status = xff_status
 
     def validate(self):
-        pass
+        if self.response_headers:
+            for k in self.response_headers:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -31200,6 +31369,10 @@ class ModifyDefenseResourceXffRequest(TeaModel):
             result['Resource'] = self.resource
         if self.resource_manager_resource_group_id is not None:
             result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        result['ResponseHeaders'] = []
+        if self.response_headers is not None:
+            for k in self.response_headers:
+                result['ResponseHeaders'].append(k.to_map() if k else None)
         if self.xff_status is not None:
             result['XffStatus'] = self.xff_status
         return result
@@ -31222,6 +31395,11 @@ class ModifyDefenseResourceXffRequest(TeaModel):
             self.resource = m.get('Resource')
         if m.get('ResourceManagerResourceGroupId') is not None:
             self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        self.response_headers = []
+        if m.get('ResponseHeaders') is not None:
+            for k in m.get('ResponseHeaders'):
+                temp_model = ModifyDefenseResourceXffRequestResponseHeaders()
+                self.response_headers.append(temp_model.from_map(k))
         if m.get('XffStatus') is not None:
             self.xff_status = m.get('XffStatus')
         return self
@@ -32028,47 +32206,47 @@ class ModifyDomainRequestListen(TeaModel):
     ):
         # The ID of the certificate that you want to add.
         self.cert_id = cert_id
-        # The type of cipher suite that you want to add. This parameter is available only when you specify the **HttpsPorts** parameter. Valid values:
+        # The type of the cipher suites that you want to add. This parameter is available only if you specify **HttpsPorts**. Valid values:
         # 
-        # *   **1:** all cipher suites.
-        # *   **2:** strong cipher suites. You can select this value only when you set the **TLSVersion** parameter to **tlsv1.2**.
-        # *   **99:** custom cipher suites.
+        # *   **1**: all cipher suites.
+        # *   **2**: strong cipher suites. This value is available only if you set **TLSVersion** to **tlsv1.2**.
+        # *   **99**: custom cipher suites.
         self.cipher_suite = cipher_suite
-        # The custom cipher suites that you want to add. This parameter is available only when you set the **CipherSuite** parameter to **99**.
+        # The custom cipher suites that you want to add. This parameter is available only if you set **CipherSuite** to **99**.
         self.custom_ciphers = custom_ciphers
-        # Specifies whether to support TLS 1.3. This parameter is available only when you specify the **HttpsPorts** parameter. Valid values:
+        # Specifies whether to support TLS 1.3. This parameter is available only if you specify **HttpsPorts**. Valid values:
         # 
-        # *   **true:** supports TLS 1.3.
-        # *   **false:** does not support TLS 1.3.
+        # *   **true**\
+        # *   **false**\
         self.enable_tlsv_3 = enable_tlsv_3
-        # Specifies whether to enable an exclusive IP address for the domain name. This parameter is available only when you set the **IPv6Enabled** parameter to false and the **ProtectionResource** parameter to **share**. Valid values:
+        # Specifies whether to enable the exclusive IP address feature. This parameter is available only if you set **IPv6Enabled** to false and **ProtectionResource** to **share**. Valid values:
         # 
-        # *   **true:** enables an exclusive IP address for the domain name.
-        # *   **false:** does not enable an exclusive IP address for the domain name. This is the default value.
+        # *   **true**\
+        # *   **false** (default)
         self.exclusive_ip = exclusive_ip
-        # Specifies whether to enable HTTP to HTTPS redirection for the domain name. This parameter is available only when you specify the **HttpsPorts** parameter and leave the **HttpPorts** parameter empty. Valid values:
+        # Specifies whether to enable force redirect from HTTP to HTTPS for received requests. This parameter is available only if you specify **HttpsPorts** and leave **HttpPorts** empty. Valid values:
         # 
-        # *   **true:** enables HTTP to HTTPS redirection.
-        # *   **false:** disables HTTP to HTTPS redirection.
+        # *   **true**\
+        # *   **false**\
         self.focus_https = focus_https
-        # Specifies whether to enable HTTP/2. This parameter is available only when you specify the **HttpsPorts** parameter. Valid values:
+        # Specifies whether to enable HTTP/2. This parameter is available only if you specify **HttpsPorts**. Valid values:
         # 
-        # *   **true:** enables HTTP/2.
-        # *   **false:** disables HTTP/2. This is the default value.
+        # *   **true**\
+        # *   **false** (default)
         self.http_2enabled = http_2enabled
-        # An array of HTTP listener ports. Specify the value of this parameter in the [port1,port2,...] format.
+        # The HTTP listener ports. Specify the value in the [**port1,port2,...**] format.
         self.http_ports = http_ports
-        # An array of HTTPS listener ports. Specify the value of this parameter in the [port1,port2,...] format.
+        # The HTTPS listener ports. Specify the value in the [**port1,port2,...**] format.
         self.https_ports = https_ports
-        # Specifies whether to enable IPv6. Valid values:
+        # Specifies whether to enable IPv6 protection. Valid values:
         # 
-        # *   **true:** enables IPv6.
-        # *   **false:** disables IPv6. This is the default value.
+        # *   **true**\
+        # *   **false** (default)
         self.ipv_6enabled = ipv_6enabled
-        # The type of the protection resource that you want to use. Valid values:
+        # The type of the protection resource. Valid values:
         # 
-        # *   **share:** shared cluster. This is the default value.
-        # *   **gslb:** shared cluster-based intelligent load balancing.
+        # *   **share** (default): a shared cluster.
+        # *   **gslb**: shared cluster-based intelligent load balancing.
         self.protection_resource = protection_resource
         # Specifies whether to allow access only from SM certificate-based clients. This parameter is available only if you set SM2Enabled to true.
         # 
@@ -32077,26 +32255,23 @@ class ModifyDomainRequestListen(TeaModel):
         self.sm2access_only = sm2access_only
         # The ID of the SM certificate that you want to add. This parameter is available only if you set SM2Enabled to true.
         self.sm2cert_id = sm2cert_id
-        # Indicates whether SM certificate-based verification is enabled. Valid values:
-        # 
-        # *   **true**\
-        # *   **false**\
+        # Specifies whether to add an SM certificate.
         self.sm2enabled = sm2enabled
-        # The version of the Transport Layer Security (TLS) protocol. This parameter is available only when you specify the **HttpsPorts** parameter. Valid values:
+        # The Transport Layer Security (TLS) version that you want to add. This parameter is available only if you specify **HttpsPorts**. Valid values:
         # 
         # *   **tlsv1**\
         # *   **tlsv1.1**\
         # *   **tlsv1.2**\
         self.tlsversion = tlsversion
-        # The method that you want WAF to use to obtain the actual IP address of a client. Valid values:
+        # The method that is used to obtain the originating IP address of a client. Valid values:
         # 
-        # *   **0:** No Layer 7 proxies are deployed in front of WAF. This is the default value.
-        # *   **1:** WAF reads the first value of the X-Forwarded-For (XFF) header field as the actual IP address of the client.
-        # *   **2:** WAF reads the value of a custom header field as the actual IP address of the client.
+        # *   **0** (default): Client traffic is not filtered by a Layer 7 proxy before the traffic reaches WAF.
+        # *   **1**: WAF reads the first value of the X-Forwarded-For (XFF) header field as the originating IP address of the client.
+        # *   **2**: WAF reads the value of a custom header field as the originating IP address of the client.
         self.xff_header_mode = xff_header_mode
-        # The custom header fields that you want to use to obtain the actual IP address of a client. Specify the value of this parameter in the ["header1","header2",...] format.
+        # The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **["header1","header2",...]** format.
         # 
-        # >  If you set the **XffHeaderMode** parameter to 2, this parameter is required.
+        # >  This parameter is required only if you set **XffHeaderMode** to 2.
         self.xff_headers = xff_headers
 
     def validate(self):
@@ -32239,20 +32414,21 @@ class ModifyDomainRequestRedirect(TeaModel):
         write_timeout: int = None,
         xff_proto: bool = None,
     ):
-        # The IP addresses or domain names of the origin server. You can use only one of the address types. If you use the domain name type, the domain name can be resolved only to an IPv4 address.
+        # The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
         # 
-        # *   If you use the IP address type, specify the value in the ["ip1","ip2",...] format. You can enter up to 20 IP addresses.
-        # *   If you use the domain name type, specify the value in the ["domain"] format. You can enter up to 20 domain names.
+        # *   If you specify IP addresses, specify the value in the **["ip1","ip2",...]** format. You can enter up to 20 IP addresses.
+        # *   If you specify domain names, specify the value in the **["domain"]** format. You can enter up to 20 domain names.
         self.backends = backends
+        # The secondary IP addresses or domain names of the origin server.
         self.backup_backends = backup_backends
         # Specifies whether to enable the public cloud disaster recovery feature. Valid values:
         # 
         # *   **true**\
         # *   **false** (default)
         self.cname_enabled = cname_enabled
-        # The timeout period for connections. Unit: seconds. Valid values: 1 to 3600.
+        # The timeout period of connections. Unit: seconds. Valid values: 1 to 3600.
         self.connect_timeout = connect_timeout
-        # Specifies whether to enable HTTPS to HTTP redirection for back-to-origin requests. This parameter is available only if you specify **HttpsPorts**. Valid values:
+        # Specifies whether to enable force redirect from HTTPS to HTTP for back-to-origin requests. This parameter is available only if you specify **HttpsPorts**. Valid values:
         # 
         # *   **true**\
         # *   **false**\
@@ -32264,49 +32440,49 @@ class ModifyDomainRequestRedirect(TeaModel):
         self.keepalive = keepalive
         # The number of reused persistent connections. Valid values: 60 to 1000.
         # 
-        # >  This parameter specifies the number of reused persistent connections after you enable the persistent connection feature.
+        # >  This parameter specifies the number of persistent connections that can be reused after you enable the persistent connection feature.
         self.keepalive_requests = keepalive_requests
-        # The timeout period for idle persistent connections. Valid values: 1 to 60. Default value: 15. Unit: seconds.
+        # The timeout period of idle persistent connections. Valid values: 1 to 60. Default value: 15. Unit: seconds.
         # 
-        # >  This parameter specifies the time for which a reused persistent connection can remain in the Idle state before the persistent connection is released.
+        # >  This parameter specifies the period of time after which an idle persistent connection is closed.
         self.keepalive_timeout = keepalive_timeout
         # The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
         # 
-        # *   **ip_hash**\
+        # *   **iphash**\
         # *   **roundRobin**\
-        # *   **leastTime** You can set the parameter to this value only if you set **ProtectionResource** to **gslb**.
+        # *   **leastTime**: This value is available only if you set **ProtectionResource** to **gslb**.
         # 
         # This parameter is required.
         self.loadbalance = loadbalance
-        # The timeout period for read connections. Unit: seconds. Valid values: 1 to 3600.
+        # The timeout period of read connections. Unit: seconds. Valid values: 1 to 3600.
         self.read_timeout = read_timeout
-        # The custom header field that you want to use to label requests that are processed by WAF.
+        # The custom header fields, which are key-value pairs. The fields are used to mark requests that pass through WAF.
         # 
-        # When a request passes through WAF, the custom header field is automatically used to label the request. This way, the backend service can identify requests that are processed by WAF.
+        # When a request passes through WAF, WAF automatically adds the custom header fields to the request to mark the request. This way, the backend service can identify requests that are processed by WAF.
         self.request_headers = request_headers
-        # Specifies whether WAF retries forwarding requests to the origin server when the requests fail to be forwarded to the origin server. Valid values:
+        # Specifies whether WAF retries if WAF fails to forward requests to the origin server. Valid values:
         # 
         # *   **true** (default)
         # *   **false**\
         self.retry = retry
-        # The forwarding rules that you want to configure for the domain name that you want to add to WAF in hybrid cloud mode. This parameter is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
+        # The forwarding rules for the hybrid cloud mode. The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
         # 
-        # *   **rs**: the back-to-origin IP addresses or CNAMEs. The value must be of the ARRAY type.
-        # *   **location**: the name of the protection node. The value must be of the STRING type.
-        # *   **locationId**: the ID of the protection node. The value must be of the LONG type.
+        # *   **rs**: the back-to-origin IP addresses or CNAMEs. Data type: array.
+        # *   **location**: the name of the protection node. Data type: string.
+        # *   **locationId**: the ID of the protection node. Data type: long.
         self.routing_rules = routing_rules
-        # Specifies whether to enable origin Server Name Indication (SNI). This parameter is available only if you specify **HttpsPorts**. Valid values:
+        # Specifies whether to enable the Server Name Indication (SNI) feature for back-to-origin requests. This parameter is available only if you specify **HttpsPorts**. Valid values:
         # 
         # *   **true**\
         # *   **false** (default)
         self.sni_enabled = sni_enabled
-        # The value of the SNI field. If you do not specify this parameter, the value of the **Host** field is automatically used. This parameter is optional. If you want WAF to use an SNI field value that is different from the Host field value in back-to-origin requests, you can specify a custom value for the SNI field.
+        # The custom value of the SNI field. If you do not specify this parameter, the value of the **Host** header field is automatically used. In most cases, you do not need to specify a custom value for the SNI field. However, if you want WAF to use an SNI field whose value is different from the value of the Host header field in back-to-origin requests, you can specify a custom value for the SNI field.
         # 
-        # >  This parameter is required only if you set **SniEnalbed** to xxx.
+        # >  This parameter is required only if you set **SniEnabled** to true.
         self.sni_host = sni_host
-        # The timeout period for write connections. Unit: seconds. Valid values: 1 to 3600.
+        # The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600.
         self.write_timeout = write_timeout
-        # Specifies whether to use the X-Forward-For-Proto header to identify the protocol used by WAF to forward requests to the origin server. Valid values:
+        # Specifies whether to use the X-Forward-For-Proto header field to pass the protocol used by WAF to forward requests to the origin server. Valid values:
         # 
         # *   **true** (default)
         # *   **false**\
@@ -32428,11 +32604,11 @@ class ModifyDomainRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The configurations of the listeners.
+        # The listener configurations.
         # 
         # This parameter is required.
         self.listen = listen
-        # The configurations of the forwarding rule.
+        # The forwarding configurations.
         # 
         # This parameter is required.
         self.redirect = redirect
@@ -32513,11 +32689,11 @@ class ModifyDomainShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The configurations of the listeners.
+        # The listener configurations.
         # 
         # This parameter is required.
         self.listen_shrink = listen_shrink
-        # The configurations of the forwarding rule.
+        # The forwarding configurations.
         # 
         # This parameter is required.
         self.redirect_shrink = redirect_shrink
@@ -32619,7 +32795,7 @@ class ModifyDomainResponseBody(TeaModel):
     ):
         # The information about the domain name.
         self.domain_info = domain_info
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
