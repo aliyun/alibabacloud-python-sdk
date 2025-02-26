@@ -1,64 +1,8 @@
-2025-02-21 Version: 4.4.0
-- Support API AddCloudVendorTrialConfig.
-- Support API AddProtectVpcList.
-- Support API CreateBatchUploadUrl.
-- Support API DescribeCanAccessVpcSale.
-- Support API DescribeCloudVendorTrialConfig.
-- Support API DescribeDomainSecureSuggests.
-- Support API DescribeGraph4InvestigationOnline.
-- Support API DescribeIdcProbeList.
-- Support API DescribeImageRiskLevelStatistic.
-- Support API DescribeImageSecurityScanCount.
-- Support API DescribeSoarPlaybookTaskDetail.
-- Support API DescribeSoarStrategyTaskParams.
-- Support API DescribeSoarStrategyTaskResult.
-- Support API DescribeStrictEventName.
-- Support API GetCheckCountStatistic.
-- Support API GetCheckTimeDimensionStatistic.
-- Support API GetConsoleFuncGrayStatus.
-- Support API GetDockerhubImageRiskRankInfo.
-- Support API GetDockerhubImageRiskStatistic.
-- Support API GetFunctionTrialStatus.
-- Support API GetInstallCodeForUuid.
-- Support API GetInstanceAlarmStatistics.
-- Support API GetPublishCron.
-- Support API GetRegistryScanDayNum.
-- Support API GetSasContainerWebDefenseRule.
-- Support API GetServerlessAppAuthDetail.
-- Support API GetServerlessAuthSummary.
-- Support API GrantSwitchAgreement.
-- Support API HandleMaliciousFiles.
-- Support API ListAgentlessAsset.
-- Support API ListCheckRule.
-- Support API ListCheckRuleInstance.
-- Support API ListDockerhubImage.
-- Support API ListImageRegistryExtra.
-- Support API ListMachineApps.
-- Support API ListOperationCheck.
-- Support API ListOperationTask.
-- Support API ListTargetByBatch.
-- Support API ListUserVpc.
-- Support API ListUuidsByAppId.
-- Support API ModifyBinarySecurityPolicy.
-- Support API ModifyCheckRule.
-- Support API ModifyCloudVendorTrialConfig.
-- Support API ModifyHybridProxyCluster.
-- Support API ModifyHybridProxyPolicy.
-- Support API ModifyServerlessAuthToMachine.
-- Support API ProcessSoarStrategyTask.
-- Support API UpdateHybridProxy.
-- Support API UpdateStrictEventName.
-- Support API UpdateWhiteList.
-- Support API VerifyCheckCustomConfig.
-- Update API AddContainerDefenseRule: update param Whitelist.
-- Update API DescribeGroupedVul: update response param.
-- Update API DescribeImageEventOperationPage: update response param.
-- Update API DescribeVulWhitelist: add param Lang.
-- Update API GetContainerDefenseRuleDetail: update response param.
-- Update API GetImageEventOperation: update response param.
-- Update API ListVulAutoRepairConfig: add param Lang.
-- Update API ModifyBackupPolicyStatus: update param PolicyVersion.
-- Update API ModifyContainerDefenseRule: update param Whitelist.
+2025-02-26 Version: 4.4.1
+- Update API DescribeCloudCenterInstances: update response param.
+- Update API DescribeVersionConfig: update response param.
+- Update API GetAuthSummary: update response param.
+- Update API ListCheckResult: update response param.
 
 
 2025-01-14 Version: 4.0.3
