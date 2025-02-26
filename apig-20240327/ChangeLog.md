@@ -1,3 +1,10 @@
+2025-02-26 Version: 3.1.0
+- Support API CreateService.
+- Support API GetService.
+- Support API ListHttpApiRoutes.
+- Support API ListServices.
+
+
 2025-02-14 Version: 3.0.0
 - Support API ChangeResourceGroup.
 - Support API CreateHttpApiRoute.
