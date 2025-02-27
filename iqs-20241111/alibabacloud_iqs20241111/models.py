@@ -889,10 +889,12 @@ class AiSearchResponse(TeaModel):
 class GenericAdvancedSearchRequest(TeaModel):
     def __init__(
         self,
+        industry: str = None,
         query: str = None,
         session_id: str = None,
         time_range: str = None,
     ):
+        self.industry = industry
         # This parameter is required.
         self.query = query
         self.session_id = session_id
@@ -907,6 +909,8 @@ class GenericAdvancedSearchRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.industry is not None:
+            result['industry'] = self.industry
         if self.query is not None:
             result['query'] = self.query
         if self.session_id is not None:
@@ -917,6 +921,8 @@ class GenericAdvancedSearchRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('industry') is not None:
+            self.industry = m.get('industry')
         if m.get('query') is not None:
             self.query = m.get('query')
         if m.get('sessionId') is not None:

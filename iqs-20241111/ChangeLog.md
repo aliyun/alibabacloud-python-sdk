@@ -1,3 +1,7 @@
+2025-02-27 Version: 1.1.5
+- Update API GenericAdvancedSearch: add param industry.
+
+
 2025-02-18 Version: 1.1.4
 - Generated python 2024-11-11 for IQS.
 

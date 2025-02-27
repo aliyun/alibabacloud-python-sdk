@@ -189,6 +189,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.industry):
+            query['industry'] = request.industry
         if not UtilClient.is_unset(request.query):
             query['query'] = request.query
         if not UtilClient.is_unset(request.session_id):
@@ -237,6 +239,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.industry):
+            query['industry'] = request.industry
         if not UtilClient.is_unset(request.query):
             query['query'] = request.query
         if not UtilClient.is_unset(request.session_id):
