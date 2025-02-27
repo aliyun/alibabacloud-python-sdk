@@ -24,7 +24,11 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_emr20210320.
 
+<<<<<<< Updated upstream
 Created on 21/02/2025
+=======
+Created on 27/02/2025
+>>>>>>> Stashed changes
 
 @author: Alibaba Cloud SDK
 """

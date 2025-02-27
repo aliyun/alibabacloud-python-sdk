@@ -4707,6 +4707,7 @@ class NodeGroup(TeaModel):
     def __init__(
         self,
         additional_security_group_ids: List[str] = None,
+        compensate_with_on_demand: bool = None,
         cost_optimized_config: CostOptimizedConfig = None,
         data_disks: List[DataDisk] = None,
         deployment_set_strategy: str = None,
@@ -4732,6 +4733,7 @@ class NodeGroup(TeaModel):
     ):
         # 安全组ID。
         self.additional_security_group_ids = additional_security_group_ids
+        self.compensate_with_on_demand = compensate_with_on_demand
         # 成本优化模式配置。
         self.cost_optimized_config = cost_optimized_config
         # 数据盘列表。
@@ -4819,6 +4821,8 @@ class NodeGroup(TeaModel):
         result = dict()
         if self.additional_security_group_ids is not None:
             result['AdditionalSecurityGroupIds'] = self.additional_security_group_ids
+        if self.compensate_with_on_demand is not None:
+            result['CompensateWithOnDemand'] = self.compensate_with_on_demand
         if self.cost_optimized_config is not None:
             result['CostOptimizedConfig'] = self.cost_optimized_config.to_map()
         result['DataDisks'] = []
@@ -4873,6 +4877,8 @@ class NodeGroup(TeaModel):
         m = m or dict()
         if m.get('AdditionalSecurityGroupIds') is not None:
             self.additional_security_group_ids = m.get('AdditionalSecurityGroupIds')
+        if m.get('CompensateWithOnDemand') is not None:
+            self.compensate_with_on_demand = m.get('CompensateWithOnDemand')
         if m.get('CostOptimizedConfig') is not None:
             temp_model = CostOptimizedConfig()
             self.cost_optimized_config = temp_model.from_map(m['CostOptimizedConfig'])
@@ -4935,6 +4941,7 @@ class NodeGroupConfig(TeaModel):
         self,
         additional_security_group_ids: List[str] = None,
         auto_scaling_policy: AutoScalingPolicy = None,
+        compensate_with_on_demand: bool = None,
         component_tags: List[str] = None,
         cost_optimized_config: CostOptimizedConfig = None,
         data_disks: List[DataDisk] = None,
@@ -4958,6 +4965,7 @@ class NodeGroupConfig(TeaModel):
         # 附加安全组。除集群设置的安全组外，为节点组单独设置的附加安全组。数组元数个数N的取值范围：0~2。
         self.additional_security_group_ids = additional_security_group_ids
         self.auto_scaling_policy = auto_scaling_policy
+        self.compensate_with_on_demand = compensate_with_on_demand
         self.component_tags = component_tags
         # 成本优化模式配置。
         self.cost_optimized_config = cost_optimized_config
@@ -5060,6 +5068,8 @@ class NodeGroupConfig(TeaModel):
             result['AdditionalSecurityGroupIds'] = self.additional_security_group_ids
         if self.auto_scaling_policy is not None:
             result['AutoScalingPolicy'] = self.auto_scaling_policy.to_map()
+        if self.compensate_with_on_demand is not None:
+            result['CompensateWithOnDemand'] = self.compensate_with_on_demand
         if self.component_tags is not None:
             result['ComponentTags'] = self.component_tags
         if self.cost_optimized_config is not None:
@@ -5111,6 +5121,8 @@ class NodeGroupConfig(TeaModel):
         if m.get('AutoScalingPolicy') is not None:
             temp_model = AutoScalingPolicy()
             self.auto_scaling_policy = temp_model.from_map(m['AutoScalingPolicy'])
+        if m.get('CompensateWithOnDemand') is not None:
+            self.compensate_with_on_demand = m.get('CompensateWithOnDemand')
         if m.get('ComponentTags') is not None:
             self.component_tags = m.get('ComponentTags')
         if m.get('CostOptimizedConfig') is not None:
