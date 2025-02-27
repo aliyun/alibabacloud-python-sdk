@@ -1,3 +1,6 @@
+2025-02-27 Version: 6.11.2
+- Generated python 2016-04-28 for Vpc.
+
 2025-02-26 Version: 6.11.1
 - Update API DescribeFlowLogs: update response param.
 
