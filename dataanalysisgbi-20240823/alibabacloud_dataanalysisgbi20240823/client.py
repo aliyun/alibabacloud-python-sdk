@@ -2354,6 +2354,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.agent_ctrl_params):
+            body['agentCtrlParams'] = request.agent_ctrl_params
         if not UtilClient.is_unset(request.data_role):
             body['dataRole'] = request.data_role
         if not UtilClient.is_unset(request.generate_sql_only):
@@ -2409,6 +2411,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.agent_ctrl_params):
+            body['agentCtrlParams'] = request.agent_ctrl_params
         if not UtilClient.is_unset(request.data_role):
             body['dataRole'] = request.data_role
         if not UtilClient.is_unset(request.generate_sql_only):

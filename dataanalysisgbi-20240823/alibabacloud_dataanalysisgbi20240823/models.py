@@ -2391,6 +2391,7 @@ class ResyncTableResponse(TeaModel):
 class RunDataAnalysisRequest(TeaModel):
     def __init__(
         self,
+        agent_ctrl_params: Any = None,
         data_role: List[str] = None,
         generate_sql_only: bool = None,
         query: str = None,
@@ -2398,6 +2399,7 @@ class RunDataAnalysisRequest(TeaModel):
         specification_type: str = None,
         user_params: Any = None,
     ):
+        self.agent_ctrl_params = agent_ctrl_params
         self.data_role = data_role
         self.generate_sql_only = generate_sql_only
         # This parameter is required.
@@ -2415,6 +2417,8 @@ class RunDataAnalysisRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_ctrl_params is not None:
+            result['agentCtrlParams'] = self.agent_ctrl_params
         if self.data_role is not None:
             result['dataRole'] = self.data_role
         if self.generate_sql_only is not None:
@@ -2431,6 +2435,8 @@ class RunDataAnalysisRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('agentCtrlParams') is not None:
+            self.agent_ctrl_params = m.get('agentCtrlParams')
         if m.get('dataRole') is not None:
             self.data_role = m.get('dataRole')
         if m.get('generateSqlOnly') is not None:
