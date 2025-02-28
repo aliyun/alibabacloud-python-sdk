@@ -4,6 +4,66 @@ from Tea.model import TeaModel
 from typing import Dict, List, Any
 
 
+class TrafficControlTaskTrafficInfoTargetTrafficsDataValue(TeaModel):
+    def __init__(
+        self,
+        traffic: float = None,
+        record_time: int = None,
+    ):
+        self.traffic = traffic
+        self.record_time = record_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.traffic is not None:
+            result['Traffic'] = self.traffic
+        if self.record_time is not None:
+            result['RecordTime'] = self.record_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Traffic') is not None:
+            self.traffic = m.get('Traffic')
+        if m.get('RecordTime') is not None:
+            self.record_time = m.get('RecordTime')
+        return self
+
+
+class TrafficControlTaskTrafficInfoTaskTrafficsValue(TeaModel):
+    def __init__(
+        self,
+        traffic: float = None,
+    ):
+        self.traffic = traffic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.traffic is not None:
+            result['Traffic'] = self.traffic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Traffic') is not None:
+            self.traffic = m.get('Traffic')
+        return self
+
+
 class ExperimentReportValue(TeaModel):
     def __init__(
         self,
@@ -446,14 +506,138 @@ class CheckInstanceResourcesResponse(TeaModel):
         return self
 
 
+class CheckTrafficControlTaskExpressionRequest(TeaModel):
+    def __init__(
+        self,
+        expression: str = None,
+        instance_id: str = None,
+        table_meta_id: str = None,
+    ):
+        # This parameter is required.
+        self.expression = expression
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.table_meta_id = table_meta_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expression is not None:
+            result['Expression'] = self.expression
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.table_meta_id is not None:
+            result['TableMetaId'] = self.table_meta_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Expression') is not None:
+            self.expression = m.get('Expression')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TableMetaId') is not None:
+            self.table_meta_id = m.get('TableMetaId')
+        return self
+
+
+class CheckTrafficControlTaskExpressionResponseBody(TeaModel):
+    def __init__(
+        self,
+        is_valie: bool = None,
+        reason: str = None,
+        request_id: str = None,
+    ):
+        self.is_valie = is_valie
+        self.reason = reason
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_valie is not None:
+            result['IsValie'] = self.is_valie
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsValie') is not None:
+            self.is_valie = m.get('IsValie')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CheckTrafficControlTaskExpressionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CheckTrafficControlTaskExpressionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CheckTrafficControlTaskExpressionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CloneEngineConfigRequest(TeaModel):
     def __init__(
         self,
         config_value: str = None,
+        description: str = None,
         environment: str = None,
         instance_id: str = None,
     ):
         self.config_value = config_value
+        self.description = description
         self.environment = environment
         self.instance_id = instance_id
 
@@ -468,6 +652,8 @@ class CloneEngineConfigRequest(TeaModel):
         result = dict()
         if self.config_value is not None:
             result['ConfigValue'] = self.config_value
+        if self.description is not None:
+            result['Description'] = self.description
         if self.environment is not None:
             result['Environment'] = self.environment
         if self.instance_id is not None:
@@ -478,6 +664,8 @@ class CloneEngineConfigRequest(TeaModel):
         m = m or dict()
         if m.get('ConfigValue') is not None:
             self.config_value = m.get('ConfigValue')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('Environment') is not None:
             self.environment = m.get('Environment')
         if m.get('InstanceId') is not None:
@@ -1679,11 +1867,13 @@ class CreateEngineConfigRequest(TeaModel):
     def __init__(
         self,
         config_value: str = None,
+        description: str = None,
         environment: str = None,
         instance_id: str = None,
         name: str = None,
     ):
         self.config_value = config_value
+        self.description = description
         self.environment = environment
         self.instance_id = instance_id
         self.name = name
@@ -1699,6 +1889,8 @@ class CreateEngineConfigRequest(TeaModel):
         result = dict()
         if self.config_value is not None:
             result['ConfigValue'] = self.config_value
+        if self.description is not None:
+            result['Description'] = self.description
         if self.environment is not None:
             result['Environment'] = self.environment
         if self.instance_id is not None:
@@ -1711,6 +1903,8 @@ class CreateEngineConfigRequest(TeaModel):
         m = m or dict()
         if m.get('ConfigValue') is not None:
             self.config_value = m.get('ConfigValue')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('Environment') is not None:
             self.environment = m.get('Environment')
         if m.get('InstanceId') is not None:
@@ -2266,6 +2460,12 @@ class CreateFeatureConsistencyCheckJobConfigRequest(TeaModel):
     def __init__(
         self,
         compare_feature: bool = None,
+        dataset_id: str = None,
+        dataset_mount_path: str = None,
+        dataset_name: str = None,
+        dataset_type: str = None,
+        dataset_uri: str = None,
+        default_route: str = None,
         eas_service_name: str = None,
         easy_rec_package_path: str = None,
         easy_rec_version: str = None,
@@ -2288,18 +2488,31 @@ class CreateFeatureConsistencyCheckJobConfigRequest(TeaModel):
         item_table_partition_field_format: str = None,
         name: str = None,
         oss_resource_id: str = None,
+        predict_worker_count: int = None,
+        predict_worker_cpu: int = None,
+        predict_worker_memory: int = None,
         sample_rate: float = None,
         scene_id: str = None,
+        security_group_id: str = None,
         service_id: str = None,
+        switch_id: str = None,
         use_feature_store: bool = None,
         user_id_field: str = None,
         user_table: str = None,
         user_table_partition_field: str = None,
         user_table_partition_field_format: str = None,
+        vpc_id: str = None,
         workflow_name: str = None,
+        workspace_id: str = None,
     ):
         # This parameter is required.
         self.compare_feature = compare_feature
+        self.dataset_id = dataset_id
+        self.dataset_mount_path = dataset_mount_path
+        self.dataset_name = dataset_name
+        self.dataset_type = dataset_type
+        self.dataset_uri = dataset_uri
+        self.default_route = default_route
         # This parameter is required.
         self.eas_service_name = eas_service_name
         self.easy_rec_package_path = easy_rec_package_path
@@ -2328,19 +2541,26 @@ class CreateFeatureConsistencyCheckJobConfigRequest(TeaModel):
         # This parameter is required.
         self.name = name
         self.oss_resource_id = oss_resource_id
+        self.predict_worker_count = predict_worker_count
+        self.predict_worker_cpu = predict_worker_cpu
+        self.predict_worker_memory = predict_worker_memory
         # This parameter is required.
         self.sample_rate = sample_rate
         # This parameter is required.
         self.scene_id = scene_id
+        self.security_group_id = security_group_id
         # This parameter is required.
         self.service_id = service_id
+        self.switch_id = switch_id
         # This parameter is required.
         self.use_feature_store = use_feature_store
         self.user_id_field = user_id_field
         self.user_table = user_table
         self.user_table_partition_field = user_table_partition_field
         self.user_table_partition_field_format = user_table_partition_field_format
+        self.vpc_id = vpc_id
         self.workflow_name = workflow_name
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -2353,6 +2573,18 @@ class CreateFeatureConsistencyCheckJobConfigRequest(TeaModel):
         result = dict()
         if self.compare_feature is not None:
             result['CompareFeature'] = self.compare_feature
+        if self.dataset_id is not None:
+            result['DatasetId'] = self.dataset_id
+        if self.dataset_mount_path is not None:
+            result['DatasetMountPath'] = self.dataset_mount_path
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.dataset_type is not None:
+            result['DatasetType'] = self.dataset_type
+        if self.dataset_uri is not None:
+            result['DatasetUri'] = self.dataset_uri
+        if self.default_route is not None:
+            result['DefaultRoute'] = self.default_route
         if self.eas_service_name is not None:
             result['EasServiceName'] = self.eas_service_name
         if self.easy_rec_package_path is not None:
@@ -2397,12 +2629,22 @@ class CreateFeatureConsistencyCheckJobConfigRequest(TeaModel):
             result['Name'] = self.name
         if self.oss_resource_id is not None:
             result['OssResourceId'] = self.oss_resource_id
+        if self.predict_worker_count is not None:
+            result['PredictWorkerCount'] = self.predict_worker_count
+        if self.predict_worker_cpu is not None:
+            result['PredictWorkerCpu'] = self.predict_worker_cpu
+        if self.predict_worker_memory is not None:
+            result['PredictWorkerMemory'] = self.predict_worker_memory
         if self.sample_rate is not None:
             result['SampleRate'] = self.sample_rate
         if self.scene_id is not None:
             result['SceneId'] = self.scene_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
+        if self.switch_id is not None:
+            result['SwitchId'] = self.switch_id
         if self.use_feature_store is not None:
             result['UseFeatureStore'] = self.use_feature_store
         if self.user_id_field is not None:
@@ -2413,14 +2655,30 @@ class CreateFeatureConsistencyCheckJobConfigRequest(TeaModel):
             result['UserTablePartitionField'] = self.user_table_partition_field
         if self.user_table_partition_field_format is not None:
             result['UserTablePartitionFieldFormat'] = self.user_table_partition_field_format
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         if self.workflow_name is not None:
             result['WorkflowName'] = self.workflow_name
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CompareFeature') is not None:
             self.compare_feature = m.get('CompareFeature')
+        if m.get('DatasetId') is not None:
+            self.dataset_id = m.get('DatasetId')
+        if m.get('DatasetMountPath') is not None:
+            self.dataset_mount_path = m.get('DatasetMountPath')
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('DatasetType') is not None:
+            self.dataset_type = m.get('DatasetType')
+        if m.get('DatasetUri') is not None:
+            self.dataset_uri = m.get('DatasetUri')
+        if m.get('DefaultRoute') is not None:
+            self.default_route = m.get('DefaultRoute')
         if m.get('EasServiceName') is not None:
             self.eas_service_name = m.get('EasServiceName')
         if m.get('EasyRecPackagePath') is not None:
@@ -2465,12 +2723,22 @@ class CreateFeatureConsistencyCheckJobConfigRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('OssResourceId') is not None:
             self.oss_resource_id = m.get('OssResourceId')
+        if m.get('PredictWorkerCount') is not None:
+            self.predict_worker_count = m.get('PredictWorkerCount')
+        if m.get('PredictWorkerCpu') is not None:
+            self.predict_worker_cpu = m.get('PredictWorkerCpu')
+        if m.get('PredictWorkerMemory') is not None:
+            self.predict_worker_memory = m.get('PredictWorkerMemory')
         if m.get('SampleRate') is not None:
             self.sample_rate = m.get('SampleRate')
         if m.get('SceneId') is not None:
             self.scene_id = m.get('SceneId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
+        if m.get('SwitchId') is not None:
+            self.switch_id = m.get('SwitchId')
         if m.get('UseFeatureStore') is not None:
             self.use_feature_store = m.get('UseFeatureStore')
         if m.get('UserIdField') is not None:
@@ -2481,8 +2749,12 @@ class CreateFeatureConsistencyCheckJobConfigRequest(TeaModel):
             self.user_table_partition_field = m.get('UserTablePartitionField')
         if m.get('UserTablePartitionFieldFormat') is not None:
             self.user_table_partition_field_format = m.get('UserTablePartitionFieldFormat')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         if m.get('WorkflowName') is not None:
             self.workflow_name = m.get('WorkflowName')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -4240,7 +4512,10 @@ class CreateTrafficControlTaskRequest(TeaModel):
         item_condition_type: str = None,
         item_table_meta_id: str = None,
         name: str = None,
+        pre_experiment_ids: str = None,
+        prod_experiment_ids: str = None,
         scene_id: str = None,
+        service_id: str = None,
         start_time: str = None,
         statis_behavior_condition_array: str = None,
         statis_behavior_condition_express: str = None,
@@ -4264,7 +4539,11 @@ class CreateTrafficControlTaskRequest(TeaModel):
         self.item_condition_type = item_condition_type
         self.item_table_meta_id = item_table_meta_id
         self.name = name
+        self.pre_experiment_ids = pre_experiment_ids
+        self.prod_experiment_ids = prod_experiment_ids
         self.scene_id = scene_id
+        # This parameter is required.
+        self.service_id = service_id
         self.start_time = start_time
         self.statis_behavior_condition_array = statis_behavior_condition_array
         self.statis_behavior_condition_express = statis_behavior_condition_express
@@ -4313,8 +4592,14 @@ class CreateTrafficControlTaskRequest(TeaModel):
             result['ItemTableMetaId'] = self.item_table_meta_id
         if self.name is not None:
             result['Name'] = self.name
+        if self.pre_experiment_ids is not None:
+            result['PreExperimentIds'] = self.pre_experiment_ids
+        if self.prod_experiment_ids is not None:
+            result['ProdExperimentIds'] = self.prod_experiment_ids
         if self.scene_id is not None:
             result['SceneId'] = self.scene_id
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.statis_behavior_condition_array is not None:
@@ -4365,8 +4650,14 @@ class CreateTrafficControlTaskRequest(TeaModel):
             self.item_table_meta_id = m.get('ItemTableMetaId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('PreExperimentIds') is not None:
+            self.pre_experiment_ids = m.get('PreExperimentIds')
+        if m.get('ProdExperimentIds') is not None:
+            self.prod_experiment_ids = m.get('ProdExperimentIds')
         if m.get('SceneId') is not None:
             self.scene_id = m.get('SceneId')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('StatisBehaviorConditionArray') is not None:
@@ -6236,8 +6527,11 @@ class DeleteTrafficControlTaskResponse(TeaModel):
 class GenerateTrafficControlTaskCodeRequest(TeaModel):
     def __init__(
         self,
+        environment: str = None,
         instance_id: str = None,
     ):
+        self.environment = environment
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -6249,12 +6543,16 @@ class GenerateTrafficControlTaskCodeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.environment is not None:
+            result['Environment'] = self.environment
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Environment') is not None:
+            self.environment = m.get('Environment')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         return self
@@ -6264,9 +6562,11 @@ class GenerateTrafficControlTaskCodeResponseBody(TeaModel):
     def __init__(
         self,
         code: str = None,
+        pre_need_config: bool = None,
         request_id: str = None,
     ):
         self.code = code
+        self.pre_need_config = pre_need_config
         self.request_id = request_id
 
     def validate(self):
@@ -6280,6 +6580,8 @@ class GenerateTrafficControlTaskCodeResponseBody(TeaModel):
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
+        if self.pre_need_config is not None:
+            result['PreNeedConfig'] = self.pre_need_config
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -6288,6 +6590,8 @@ class GenerateTrafficControlTaskCodeResponseBody(TeaModel):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('PreNeedConfig') is not None:
+            self.pre_need_config = m.get('PreNeedConfig')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -6928,6 +7232,7 @@ class GetEngineConfigResponseBody(TeaModel):
     def __init__(
         self,
         config_value: str = None,
+        description: str = None,
         environment: str = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
@@ -6937,6 +7242,7 @@ class GetEngineConfigResponseBody(TeaModel):
         status: str = None,
     ):
         self.config_value = config_value
+        self.description = description
         self.environment = environment
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
@@ -6956,6 +7262,8 @@ class GetEngineConfigResponseBody(TeaModel):
         result = dict()
         if self.config_value is not None:
             result['ConfigValue'] = self.config_value
+        if self.description is not None:
+            result['Description'] = self.description
         if self.environment is not None:
             result['Environment'] = self.environment
         if self.gmt_create_time is not None:
@@ -6976,6 +7284,8 @@ class GetEngineConfigResponseBody(TeaModel):
         m = m or dict()
         if m.get('ConfigValue') is not None:
             self.config_value = m.get('ConfigValue')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('Environment') is not None:
             self.environment = m.get('Environment')
         if m.get('GmtCreateTime') is not None:
@@ -7607,6 +7917,12 @@ class GetFeatureConsistencyCheckJobConfigResponseBody(TeaModel):
     def __init__(
         self,
         compare_feature: bool = None,
+        dataset_id: str = None,
+        dataset_mount_path: str = None,
+        dataset_name: str = None,
+        dataset_type: str = None,
+        dataset_uri: str = None,
+        default_route: str = None,
         eas_service_name: str = None,
         easy_rec_package_path: str = None,
         easy_rec_version: str = None,
@@ -7635,21 +7951,34 @@ class GetFeatureConsistencyCheckJobConfigResponseBody(TeaModel):
         name: str = None,
         oss_bucket: str = None,
         oss_resource_id: str = None,
+        predict_worker_count: int = None,
+        predict_worker_cpu: int = None,
+        predict_worker_memory: int = None,
         request_id: str = None,
         sample_rate: str = None,
         scene_id: str = None,
         scene_name: str = None,
+        security_group_id: str = None,
         service_id: str = None,
         service_name: str = None,
         status: str = None,
+        switch_id: str = None,
         use_feature_store: bool = None,
         user_id_field: str = None,
         user_table: str = None,
         user_table_partition_field: str = None,
         user_table_partition_field_format: str = None,
+        vpc_id: str = None,
         workflow_name: str = None,
+        workspace_id: str = None,
     ):
         self.compare_feature = compare_feature
+        self.dataset_id = dataset_id
+        self.dataset_mount_path = dataset_mount_path
+        self.dataset_name = dataset_name
+        self.dataset_type = dataset_type
+        self.dataset_uri = dataset_uri
+        self.default_route = default_route
         self.eas_service_name = eas_service_name
         self.easy_rec_package_path = easy_rec_package_path
         self.easy_rec_version = easy_rec_version
@@ -7678,19 +8007,26 @@ class GetFeatureConsistencyCheckJobConfigResponseBody(TeaModel):
         self.name = name
         self.oss_bucket = oss_bucket
         self.oss_resource_id = oss_resource_id
+        self.predict_worker_count = predict_worker_count
+        self.predict_worker_cpu = predict_worker_cpu
+        self.predict_worker_memory = predict_worker_memory
         self.request_id = request_id
         self.sample_rate = sample_rate
         self.scene_id = scene_id
         self.scene_name = scene_name
+        self.security_group_id = security_group_id
         self.service_id = service_id
         self.service_name = service_name
         self.status = status
+        self.switch_id = switch_id
         self.use_feature_store = use_feature_store
         self.user_id_field = user_id_field
         self.user_table = user_table
         self.user_table_partition_field = user_table_partition_field
         self.user_table_partition_field_format = user_table_partition_field_format
+        self.vpc_id = vpc_id
         self.workflow_name = workflow_name
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -7703,6 +8039,18 @@ class GetFeatureConsistencyCheckJobConfigResponseBody(TeaModel):
         result = dict()
         if self.compare_feature is not None:
             result['CompareFeature'] = self.compare_feature
+        if self.dataset_id is not None:
+            result['DatasetId'] = self.dataset_id
+        if self.dataset_mount_path is not None:
+            result['DatasetMountPath'] = self.dataset_mount_path
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.dataset_type is not None:
+            result['DatasetType'] = self.dataset_type
+        if self.dataset_uri is not None:
+            result['DatasetUri'] = self.dataset_uri
+        if self.default_route is not None:
+            result['DefaultRoute'] = self.default_route
         if self.eas_service_name is not None:
             result['EasServiceName'] = self.eas_service_name
         if self.easy_rec_package_path is not None:
@@ -7759,6 +8107,12 @@ class GetFeatureConsistencyCheckJobConfigResponseBody(TeaModel):
             result['OssBucket'] = self.oss_bucket
         if self.oss_resource_id is not None:
             result['OssResourceId'] = self.oss_resource_id
+        if self.predict_worker_count is not None:
+            result['PredictWorkerCount'] = self.predict_worker_count
+        if self.predict_worker_cpu is not None:
+            result['PredictWorkerCpu'] = self.predict_worker_cpu
+        if self.predict_worker_memory is not None:
+            result['PredictWorkerMemory'] = self.predict_worker_memory
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.sample_rate is not None:
@@ -7767,12 +8121,16 @@ class GetFeatureConsistencyCheckJobConfigResponseBody(TeaModel):
             result['SceneId'] = self.scene_id
         if self.scene_name is not None:
             result['SceneName'] = self.scene_name
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
         if self.service_name is not None:
             result['ServiceName'] = self.service_name
         if self.status is not None:
             result['Status'] = self.status
+        if self.switch_id is not None:
+            result['SwitchId'] = self.switch_id
         if self.use_feature_store is not None:
             result['UseFeatureStore'] = self.use_feature_store
         if self.user_id_field is not None:
@@ -7783,14 +8141,30 @@ class GetFeatureConsistencyCheckJobConfigResponseBody(TeaModel):
             result['UserTablePartitionField'] = self.user_table_partition_field
         if self.user_table_partition_field_format is not None:
             result['UserTablePartitionFieldFormat'] = self.user_table_partition_field_format
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         if self.workflow_name is not None:
             result['WorkflowName'] = self.workflow_name
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CompareFeature') is not None:
             self.compare_feature = m.get('CompareFeature')
+        if m.get('DatasetId') is not None:
+            self.dataset_id = m.get('DatasetId')
+        if m.get('DatasetMountPath') is not None:
+            self.dataset_mount_path = m.get('DatasetMountPath')
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('DatasetType') is not None:
+            self.dataset_type = m.get('DatasetType')
+        if m.get('DatasetUri') is not None:
+            self.dataset_uri = m.get('DatasetUri')
+        if m.get('DefaultRoute') is not None:
+            self.default_route = m.get('DefaultRoute')
         if m.get('EasServiceName') is not None:
             self.eas_service_name = m.get('EasServiceName')
         if m.get('EasyRecPackagePath') is not None:
@@ -7847,6 +8221,12 @@ class GetFeatureConsistencyCheckJobConfigResponseBody(TeaModel):
             self.oss_bucket = m.get('OssBucket')
         if m.get('OssResourceId') is not None:
             self.oss_resource_id = m.get('OssResourceId')
+        if m.get('PredictWorkerCount') is not None:
+            self.predict_worker_count = m.get('PredictWorkerCount')
+        if m.get('PredictWorkerCpu') is not None:
+            self.predict_worker_cpu = m.get('PredictWorkerCpu')
+        if m.get('PredictWorkerMemory') is not None:
+            self.predict_worker_memory = m.get('PredictWorkerMemory')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('SampleRate') is not None:
@@ -7855,12 +8235,16 @@ class GetFeatureConsistencyCheckJobConfigResponseBody(TeaModel):
             self.scene_id = m.get('SceneId')
         if m.get('SceneName') is not None:
             self.scene_name = m.get('SceneName')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
         if m.get('ServiceName') is not None:
             self.service_name = m.get('ServiceName')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('SwitchId') is not None:
+            self.switch_id = m.get('SwitchId')
         if m.get('UseFeatureStore') is not None:
             self.use_feature_store = m.get('UseFeatureStore')
         if m.get('UserIdField') is not None:
@@ -7871,8 +8255,12 @@ class GetFeatureConsistencyCheckJobConfigResponseBody(TeaModel):
             self.user_table_partition_field = m.get('UserTablePartitionField')
         if m.get('UserTablePartitionFieldFormat') is not None:
             self.user_table_partition_field_format = m.get('UserTablePartitionFieldFormat')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         if m.get('WorkflowName') is not None:
             self.workflow_name = m.get('WorkflowName')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -10006,11 +10394,14 @@ class GetTrafficControlTaskResponseBody(TeaModel):
         item_condition_type: str = None,
         item_table_meta_id: str = None,
         name: str = None,
+        pre_experiment_ids: str = None,
         prepub_status: str = None,
+        prod_experiment_ids: str = None,
         product_status: str = None,
         request_id: str = None,
         scene_id: str = None,
         scene_name: str = None,
+        service_id: str = None,
         start_time: str = None,
         statis_behavior_condition_array: str = None,
         statis_behavior_condition_express: str = None,
@@ -10037,11 +10428,14 @@ class GetTrafficControlTaskResponseBody(TeaModel):
         self.item_condition_type = item_condition_type
         self.item_table_meta_id = item_table_meta_id
         self.name = name
+        self.pre_experiment_ids = pre_experiment_ids
         self.prepub_status = prepub_status
+        self.prod_experiment_ids = prod_experiment_ids
         self.product_status = product_status
         self.request_id = request_id
         self.scene_id = scene_id
         self.scene_name = scene_name
+        self.service_id = service_id
         self.start_time = start_time
         self.statis_behavior_condition_array = statis_behavior_condition_array
         self.statis_behavior_condition_express = statis_behavior_condition_express
@@ -10095,8 +10489,12 @@ class GetTrafficControlTaskResponseBody(TeaModel):
             result['ItemTableMetaId'] = self.item_table_meta_id
         if self.name is not None:
             result['Name'] = self.name
+        if self.pre_experiment_ids is not None:
+            result['PreExperimentIds'] = self.pre_experiment_ids
         if self.prepub_status is not None:
             result['PrepubStatus'] = self.prepub_status
+        if self.prod_experiment_ids is not None:
+            result['ProdExperimentIds'] = self.prod_experiment_ids
         if self.product_status is not None:
             result['ProductStatus'] = self.product_status
         if self.request_id is not None:
@@ -10105,6 +10503,8 @@ class GetTrafficControlTaskResponseBody(TeaModel):
             result['SceneId'] = self.scene_id
         if self.scene_name is not None:
             result['SceneName'] = self.scene_name
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.statis_behavior_condition_array is not None:
@@ -10161,8 +10561,12 @@ class GetTrafficControlTaskResponseBody(TeaModel):
             self.item_table_meta_id = m.get('ItemTableMetaId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('PreExperimentIds') is not None:
+            self.pre_experiment_ids = m.get('PreExperimentIds')
         if m.get('PrepubStatus') is not None:
             self.prepub_status = m.get('PrepubStatus')
+        if m.get('ProdExperimentIds') is not None:
+            self.prod_experiment_ids = m.get('ProdExperimentIds')
         if m.get('ProductStatus') is not None:
             self.product_status = m.get('ProductStatus')
         if m.get('RequestId') is not None:
@@ -10171,6 +10575,8 @@ class GetTrafficControlTaskResponseBody(TeaModel):
             self.scene_id = m.get('SceneId')
         if m.get('SceneName') is not None:
             self.scene_name = m.get('SceneName')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('StatisBehaviorConditionArray') is not None:
@@ -10274,14 +10680,17 @@ class GetTrafficControlTaskTrafficRequest(TeaModel):
 class GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics(TeaModel):
     def __init__(
         self,
-        data: List[Dict[str, Any]] = None,
+        data: Dict[str, TrafficControlTaskTrafficInfoTargetTrafficsDataValue] = None,
         traffic_contorl_target_id: str = None,
     ):
         self.data = data
         self.traffic_contorl_target_id = traffic_contorl_target_id
 
     def validate(self):
-        pass
+        if self.data:
+            for v in self.data.values():
+                if v:
+                    v.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -10289,16 +10698,21 @@ class GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTarge
             return _map
 
         result = dict()
+        result['Data'] = {}
         if self.data is not None:
-            result['Data'] = self.data
+            for k, v in self.data.items():
+                result['Data'][k] = v.to_map()
         if self.traffic_contorl_target_id is not None:
             result['TrafficContorlTargetId'] = self.traffic_contorl_target_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.data = {}
         if m.get('Data') is not None:
-            self.data = m.get('Data')
+            for k, v in m.get('Data').items():
+                temp_model = TrafficControlTaskTrafficInfoTargetTrafficsDataValue()
+                self.data[k] = temp_model.from_map(v)
         if m.get('TrafficContorlTargetId') is not None:
             self.traffic_contorl_target_id = m.get('TrafficContorlTargetId')
         return self
@@ -10308,7 +10722,7 @@ class GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo(TeaM
     def __init__(
         self,
         target_traffics: List[GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics] = None,
-        task_traffics: Dict[str, Any] = None,
+        task_traffics: Dict[str, TrafficControlTaskTrafficInfoTaskTrafficsValue] = None,
     ):
         self.target_traffics = target_traffics
         self.task_traffics = task_traffics
@@ -10318,6 +10732,10 @@ class GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo(TeaM
             for k in self.target_traffics:
                 if k:
                     k.validate()
+        if self.task_traffics:
+            for v in self.task_traffics.values():
+                if v:
+                    v.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -10329,8 +10747,10 @@ class GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo(TeaM
         if self.target_traffics is not None:
             for k in self.target_traffics:
                 result['TargetTraffics'].append(k.to_map() if k else None)
+        result['TaskTraffics'] = {}
         if self.task_traffics is not None:
-            result['TaskTraffics'] = self.task_traffics
+            for k, v in self.task_traffics.items():
+                result['TaskTraffics'][k] = v.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -10340,8 +10760,11 @@ class GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo(TeaM
             for k in m.get('TargetTraffics'):
                 temp_model = GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics()
                 self.target_traffics.append(temp_model.from_map(k))
+        self.task_traffics = {}
         if m.get('TaskTraffics') is not None:
-            self.task_traffics = m.get('TaskTraffics')
+            for k, v in m.get('TaskTraffics').items():
+                temp_model = TrafficControlTaskTrafficInfoTaskTrafficsValue()
+                self.task_traffics[k] = temp_model.from_map(v)
         return self
 
 
@@ -11484,6 +11907,7 @@ class ListEngineConfigsResponseBodyEngineConfigs(TeaModel):
     def __init__(
         self,
         config_value: str = None,
+        description: str = None,
         engine_config_id: str = None,
         environment: str = None,
         gmt_create_time: str = None,
@@ -11494,6 +11918,7 @@ class ListEngineConfigsResponseBodyEngineConfigs(TeaModel):
         version: str = None,
     ):
         self.config_value = config_value
+        self.description = description
         self.engine_config_id = engine_config_id
         self.environment = environment
         self.gmt_create_time = gmt_create_time
@@ -11514,6 +11939,8 @@ class ListEngineConfigsResponseBodyEngineConfigs(TeaModel):
         result = dict()
         if self.config_value is not None:
             result['ConfigValue'] = self.config_value
+        if self.description is not None:
+            result['Description'] = self.description
         if self.engine_config_id is not None:
             result['EngineConfigId'] = self.engine_config_id
         if self.environment is not None:
@@ -11536,6 +11963,8 @@ class ListEngineConfigsResponseBodyEngineConfigs(TeaModel):
         m = m or dict()
         if m.get('ConfigValue') is not None:
             self.config_value = m.get('ConfigValue')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('EngineConfigId') is not None:
             self.engine_config_id = m.get('EngineConfigId')
         if m.get('Environment') is not None:
@@ -12245,6 +12674,12 @@ class ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCo
     def __init__(
         self,
         compare_feature: bool = None,
+        dataset_id: str = None,
+        dataset_mount_path: str = None,
+        dataset_name: str = None,
+        dataset_type: str = None,
+        dataset_uri: str = None,
+        default_route: str = None,
         eas_service_name: str = None,
         easy_rec_package_path: str = None,
         easy_rec_version: str = None,
@@ -12274,20 +12709,33 @@ class ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCo
         name: str = None,
         oss_bucket: str = None,
         oss_resource_id: str = None,
+        predict_worker_count: int = None,
+        predict_worker_cpu: int = None,
+        predict_worker_memory: int = None,
         sample_rate: str = None,
         scene_id: str = None,
         scene_name: str = None,
+        security_group_id: str = None,
         service_id: str = None,
         service_name: str = None,
         status: str = None,
+        switch_id: str = None,
         use_feature_store: str = None,
         user_id_field: str = None,
         user_table: str = None,
         user_table_partition_field: str = None,
         user_table_partition_field_format: str = None,
+        vpc_id: str = None,
         workflow_name: str = None,
+        workspace_id: str = None,
     ):
         self.compare_feature = compare_feature
+        self.dataset_id = dataset_id
+        self.dataset_mount_path = dataset_mount_path
+        self.dataset_name = dataset_name
+        self.dataset_type = dataset_type
+        self.dataset_uri = dataset_uri
+        self.default_route = default_route
         self.eas_service_name = eas_service_name
         self.easy_rec_package_path = easy_rec_package_path
         self.easy_rec_version = easy_rec_version
@@ -12317,18 +12765,25 @@ class ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCo
         self.name = name
         self.oss_bucket = oss_bucket
         self.oss_resource_id = oss_resource_id
+        self.predict_worker_count = predict_worker_count
+        self.predict_worker_cpu = predict_worker_cpu
+        self.predict_worker_memory = predict_worker_memory
         self.sample_rate = sample_rate
         self.scene_id = scene_id
         self.scene_name = scene_name
+        self.security_group_id = security_group_id
         self.service_id = service_id
         self.service_name = service_name
         self.status = status
+        self.switch_id = switch_id
         self.use_feature_store = use_feature_store
         self.user_id_field = user_id_field
         self.user_table = user_table
         self.user_table_partition_field = user_table_partition_field
         self.user_table_partition_field_format = user_table_partition_field_format
+        self.vpc_id = vpc_id
         self.workflow_name = workflow_name
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -12341,6 +12796,18 @@ class ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCo
         result = dict()
         if self.compare_feature is not None:
             result['CompareFeature'] = self.compare_feature
+        if self.dataset_id is not None:
+            result['DatasetId'] = self.dataset_id
+        if self.dataset_mount_path is not None:
+            result['DatasetMountPath'] = self.dataset_mount_path
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.dataset_type is not None:
+            result['DatasetType'] = self.dataset_type
+        if self.dataset_uri is not None:
+            result['DatasetUri'] = self.dataset_uri
+        if self.default_route is not None:
+            result['DefaultRoute'] = self.default_route
         if self.eas_service_name is not None:
             result['EasServiceName'] = self.eas_service_name
         if self.easy_rec_package_path is not None:
@@ -12399,18 +12866,28 @@ class ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCo
             result['OssBucket'] = self.oss_bucket
         if self.oss_resource_id is not None:
             result['OssResourceId'] = self.oss_resource_id
+        if self.predict_worker_count is not None:
+            result['PredictWorkerCount'] = self.predict_worker_count
+        if self.predict_worker_cpu is not None:
+            result['PredictWorkerCpu'] = self.predict_worker_cpu
+        if self.predict_worker_memory is not None:
+            result['PredictWorkerMemory'] = self.predict_worker_memory
         if self.sample_rate is not None:
             result['SampleRate'] = self.sample_rate
         if self.scene_id is not None:
             result['SceneId'] = self.scene_id
         if self.scene_name is not None:
             result['SceneName'] = self.scene_name
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
         if self.service_name is not None:
             result['ServiceName'] = self.service_name
         if self.status is not None:
             result['Status'] = self.status
+        if self.switch_id is not None:
+            result['SwitchId'] = self.switch_id
         if self.use_feature_store is not None:
             result['UseFeatureStore'] = self.use_feature_store
         if self.user_id_field is not None:
@@ -12421,14 +12898,30 @@ class ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCo
             result['UserTablePartitionField'] = self.user_table_partition_field
         if self.user_table_partition_field_format is not None:
             result['UserTablePartitionFieldFormat'] = self.user_table_partition_field_format
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         if self.workflow_name is not None:
             result['WorkflowName'] = self.workflow_name
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CompareFeature') is not None:
             self.compare_feature = m.get('CompareFeature')
+        if m.get('DatasetId') is not None:
+            self.dataset_id = m.get('DatasetId')
+        if m.get('DatasetMountPath') is not None:
+            self.dataset_mount_path = m.get('DatasetMountPath')
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('DatasetType') is not None:
+            self.dataset_type = m.get('DatasetType')
+        if m.get('DatasetUri') is not None:
+            self.dataset_uri = m.get('DatasetUri')
+        if m.get('DefaultRoute') is not None:
+            self.default_route = m.get('DefaultRoute')
         if m.get('EasServiceName') is not None:
             self.eas_service_name = m.get('EasServiceName')
         if m.get('EasyRecPackagePath') is not None:
@@ -12487,18 +12980,28 @@ class ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCo
             self.oss_bucket = m.get('OssBucket')
         if m.get('OssResourceId') is not None:
             self.oss_resource_id = m.get('OssResourceId')
+        if m.get('PredictWorkerCount') is not None:
+            self.predict_worker_count = m.get('PredictWorkerCount')
+        if m.get('PredictWorkerCpu') is not None:
+            self.predict_worker_cpu = m.get('PredictWorkerCpu')
+        if m.get('PredictWorkerMemory') is not None:
+            self.predict_worker_memory = m.get('PredictWorkerMemory')
         if m.get('SampleRate') is not None:
             self.sample_rate = m.get('SampleRate')
         if m.get('SceneId') is not None:
             self.scene_id = m.get('SceneId')
         if m.get('SceneName') is not None:
             self.scene_name = m.get('SceneName')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
         if m.get('ServiceName') is not None:
             self.service_name = m.get('ServiceName')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('SwitchId') is not None:
+            self.switch_id = m.get('SwitchId')
         if m.get('UseFeatureStore') is not None:
             self.use_feature_store = m.get('UseFeatureStore')
         if m.get('UserIdField') is not None:
@@ -12509,8 +13012,12 @@ class ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCo
             self.user_table_partition_field = m.get('UserTablePartitionField')
         if m.get('UserTablePartitionFieldFormat') is not None:
             self.user_table_partition_field_format = m.get('UserTablePartitionFieldFormat')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         if m.get('WorkflowName') is not None:
             self.workflow_name = m.get('WorkflowName')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -15539,9 +16046,9 @@ class ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTraffi
         experiment_id: str = None,
         item_id: str = None,
         record_time: str = None,
-        traffic_control_target_aim_traffic: str = None,
-        traffic_control_target_traffic: str = None,
-        traffic_control_task_traffic: str = None,
+        traffic_control_target_aim_traffic: float = None,
+        traffic_control_target_traffic: float = None,
+        traffic_control_task_traffic: float = None,
     ):
         self.experiment_id = experiment_id
         self.item_id = item_id
@@ -15953,10 +16460,13 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasks(TeaModel):
         item_condition_type: str = None,
         item_table_meta_id: str = None,
         name: str = None,
+        pre_experiment_ids: str = None,
         prepub_status: str = None,
+        prod_experiment_ids: str = None,
         product_status: str = None,
         scene_id: str = None,
         scene_name: str = None,
+        service_id: str = None,
         start_time: str = None,
         statis_bahavior_condition_express: str = None,
         statis_behavior_condition_array: str = None,
@@ -15983,10 +16493,13 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasks(TeaModel):
         self.item_condition_type = item_condition_type
         self.item_table_meta_id = item_table_meta_id
         self.name = name
+        self.pre_experiment_ids = pre_experiment_ids
         self.prepub_status = prepub_status
+        self.prod_experiment_ids = prod_experiment_ids
         self.product_status = product_status
         self.scene_id = scene_id
         self.scene_name = scene_name
+        self.service_id = service_id
         self.start_time = start_time
         self.statis_bahavior_condition_express = statis_bahavior_condition_express
         self.statis_behavior_condition_array = statis_behavior_condition_array
@@ -16040,14 +16553,20 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasks(TeaModel):
             result['ItemTableMetaId'] = self.item_table_meta_id
         if self.name is not None:
             result['Name'] = self.name
+        if self.pre_experiment_ids is not None:
+            result['PreExperimentIds'] = self.pre_experiment_ids
         if self.prepub_status is not None:
             result['PrepubStatus'] = self.prepub_status
+        if self.prod_experiment_ids is not None:
+            result['ProdExperimentIds'] = self.prod_experiment_ids
         if self.product_status is not None:
             result['ProductStatus'] = self.product_status
         if self.scene_id is not None:
             result['SceneId'] = self.scene_id
         if self.scene_name is not None:
             result['SceneName'] = self.scene_name
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.statis_bahavior_condition_express is not None:
@@ -16104,14 +16623,20 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasks(TeaModel):
             self.item_table_meta_id = m.get('ItemTableMetaId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('PreExperimentIds') is not None:
+            self.pre_experiment_ids = m.get('PreExperimentIds')
         if m.get('PrepubStatus') is not None:
             self.prepub_status = m.get('PrepubStatus')
+        if m.get('ProdExperimentIds') is not None:
+            self.prod_experiment_ids = m.get('ProdExperimentIds')
         if m.get('ProductStatus') is not None:
             self.product_status = m.get('ProductStatus')
         if m.get('SceneId') is not None:
             self.scene_id = m.get('SceneId')
         if m.get('SceneName') is not None:
             self.scene_name = m.get('SceneName')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('StatisBahaviorConditionExpress') is not None:
@@ -17144,6 +17669,263 @@ class PushResourceRuleResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PushResourceRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryTrafficControlTargetItemReportDetailRequest(TeaModel):
+    def __init__(
+        self,
+        date: str = None,
+        environment: str = None,
+        instance_id: str = None,
+    ):
+        self.date = date
+        # This parameter is required.
+        self.environment = environment
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.date is not None:
+            result['Date'] = self.date
+        if self.environment is not None:
+            result['Environment'] = self.environment
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('Environment') is not None:
+            self.environment = m.get('Environment')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTailReportDetails(TeaModel):
+    def __init__(
+        self,
+        features: Dict[str, Any] = None,
+        item_id: str = None,
+        target_progress: str = None,
+        target_traffic: int = None,
+    ):
+        self.features = features
+        self.item_id = item_id
+        self.target_progress = target_progress
+        self.target_traffic = target_traffic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.features is not None:
+            result['Features'] = self.features
+        if self.item_id is not None:
+            result['ItemId'] = self.item_id
+        if self.target_progress is not None:
+            result['TargetProgress'] = self.target_progress
+        if self.target_traffic is not None:
+            result['TargetTraffic'] = self.target_traffic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Features') is not None:
+            self.features = m.get('Features')
+        if m.get('ItemId') is not None:
+            self.item_id = m.get('ItemId')
+        if m.get('TargetProgress') is not None:
+            self.target_progress = m.get('TargetProgress')
+        if m.get('TargetTraffic') is not None:
+            self.target_traffic = m.get('TargetTraffic')
+        return self
+
+
+class QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTopReportDetails(TeaModel):
+    def __init__(
+        self,
+        features: Dict[str, Any] = None,
+        item_id: str = None,
+        target_progress: str = None,
+        target_traffic: int = None,
+    ):
+        self.features = features
+        self.item_id = item_id
+        self.target_progress = target_progress
+        self.target_traffic = target_traffic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.features is not None:
+            result['Features'] = self.features
+        if self.item_id is not None:
+            result['ItemId'] = self.item_id
+        if self.target_progress is not None:
+            result['TargetProgress'] = self.target_progress
+        if self.target_traffic is not None:
+            result['TargetTraffic'] = self.target_traffic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Features') is not None:
+            self.features = m.get('Features')
+        if m.get('ItemId') is not None:
+            self.item_id = m.get('ItemId')
+        if m.get('TargetProgress') is not None:
+            self.target_progress = m.get('TargetProgress')
+        if m.get('TargetTraffic') is not None:
+            self.target_traffic = m.get('TargetTraffic')
+        return self
+
+
+class QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetail(TeaModel):
+    def __init__(
+        self,
+        item_control_tail_report_details: List[QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTailReportDetails] = None,
+        item_control_top_report_details: List[QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTopReportDetails] = None,
+    ):
+        self.item_control_tail_report_details = item_control_tail_report_details
+        self.item_control_top_report_details = item_control_top_report_details
+
+    def validate(self):
+        if self.item_control_tail_report_details:
+            for k in self.item_control_tail_report_details:
+                if k:
+                    k.validate()
+        if self.item_control_top_report_details:
+            for k in self.item_control_top_report_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ItemControlTailReportDetails'] = []
+        if self.item_control_tail_report_details is not None:
+            for k in self.item_control_tail_report_details:
+                result['ItemControlTailReportDetails'].append(k.to_map() if k else None)
+        result['ItemControlTopReportDetails'] = []
+        if self.item_control_top_report_details is not None:
+            for k in self.item_control_top_report_details:
+                result['ItemControlTopReportDetails'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.item_control_tail_report_details = []
+        if m.get('ItemControlTailReportDetails') is not None:
+            for k in m.get('ItemControlTailReportDetails'):
+                temp_model = QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTailReportDetails()
+                self.item_control_tail_report_details.append(temp_model.from_map(k))
+        self.item_control_top_report_details = []
+        if m.get('ItemControlTopReportDetails') is not None:
+            for k in m.get('ItemControlTopReportDetails'):
+                temp_model = QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTopReportDetails()
+                self.item_control_top_report_details.append(temp_model.from_map(k))
+        return self
+
+
+class QueryTrafficControlTargetItemReportDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        traffic_control_target_item_report_detail: QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetail = None,
+    ):
+        self.request_id = request_id
+        self.traffic_control_target_item_report_detail = traffic_control_target_item_report_detail
+
+    def validate(self):
+        if self.traffic_control_target_item_report_detail:
+            self.traffic_control_target_item_report_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.traffic_control_target_item_report_detail is not None:
+            result['TrafficControlTargetItemReportDetail'] = self.traffic_control_target_item_report_detail.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TrafficControlTargetItemReportDetail') is not None:
+            temp_model = QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetail()
+            self.traffic_control_target_item_report_detail = temp_model.from_map(m['TrafficControlTargetItemReportDetail'])
+        return self
+
+
+class QueryTrafficControlTargetItemReportDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryTrafficControlTargetItemReportDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryTrafficControlTargetItemReportDetailResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -18615,11 +19397,13 @@ class UpdateEngineConfigRequest(TeaModel):
     def __init__(
         self,
         config_value: str = None,
+        description: str = None,
         environment: str = None,
         instance_id: str = None,
         name: str = None,
     ):
         self.config_value = config_value
+        self.description = description
         self.environment = environment
         self.instance_id = instance_id
         self.name = name
@@ -18635,6 +19419,8 @@ class UpdateEngineConfigRequest(TeaModel):
         result = dict()
         if self.config_value is not None:
             result['ConfigValue'] = self.config_value
+        if self.description is not None:
+            result['Description'] = self.description
         if self.environment is not None:
             result['Environment'] = self.environment
         if self.instance_id is not None:
@@ -18647,6 +19433,8 @@ class UpdateEngineConfigRequest(TeaModel):
         m = m or dict()
         if m.get('ConfigValue') is not None:
             self.config_value = m.get('ConfigValue')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('Environment') is not None:
             self.environment = m.get('Environment')
         if m.get('InstanceId') is not None:
@@ -19054,6 +19842,12 @@ class UpdateFeatureConsistencyCheckJobConfigRequest(TeaModel):
     def __init__(
         self,
         compare_feature: bool = None,
+        dataset_id: str = None,
+        dataset_mount_path: str = None,
+        dataset_name: str = None,
+        dataset_type: str = None,
+        dataset_uri: str = None,
+        default_route: str = None,
         eas_service_name: str = None,
         easy_rec_package_path: str = None,
         easy_rec_version: str = None,
@@ -19077,17 +19871,30 @@ class UpdateFeatureConsistencyCheckJobConfigRequest(TeaModel):
         item_table_partition_field_format: str = None,
         name: str = None,
         oss_resource_id: str = None,
+        predict_worker_count: int = None,
+        predict_worker_cpu: int = None,
+        predict_worker_memory: int = None,
         sample_rate: float = None,
         scene_id: str = None,
+        security_group_id: str = None,
         service_id: str = None,
+        switch_id: str = None,
         user_id_field: str = None,
         user_table: str = None,
         user_table_partition_field: str = None,
         user_table_partition_field_format: str = None,
+        vpc_id: str = None,
         workflow_name: str = None,
+        workspace_id: str = None,
     ):
         # This parameter is required.
         self.compare_feature = compare_feature
+        self.dataset_id = dataset_id
+        self.dataset_mount_path = dataset_mount_path
+        self.dataset_name = dataset_name
+        self.dataset_type = dataset_type
+        self.dataset_uri = dataset_uri
+        self.default_route = default_route
         # This parameter is required.
         self.eas_service_name = eas_service_name
         self.easy_rec_package_path = easy_rec_package_path
@@ -19121,11 +19928,16 @@ class UpdateFeatureConsistencyCheckJobConfigRequest(TeaModel):
         # This parameter is required.
         self.name = name
         self.oss_resource_id = oss_resource_id
+        self.predict_worker_count = predict_worker_count
+        self.predict_worker_cpu = predict_worker_cpu
+        self.predict_worker_memory = predict_worker_memory
         # This parameter is required.
         self.sample_rate = sample_rate
         # This parameter is required.
         self.scene_id = scene_id
+        self.security_group_id = security_group_id
         self.service_id = service_id
+        self.switch_id = switch_id
         # This parameter is required.
         self.user_id_field = user_id_field
         # This parameter is required.
@@ -19134,7 +19946,9 @@ class UpdateFeatureConsistencyCheckJobConfigRequest(TeaModel):
         self.user_table_partition_field = user_table_partition_field
         # This parameter is required.
         self.user_table_partition_field_format = user_table_partition_field_format
+        self.vpc_id = vpc_id
         self.workflow_name = workflow_name
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -19147,6 +19961,18 @@ class UpdateFeatureConsistencyCheckJobConfigRequest(TeaModel):
         result = dict()
         if self.compare_feature is not None:
             result['CompareFeature'] = self.compare_feature
+        if self.dataset_id is not None:
+            result['DatasetId'] = self.dataset_id
+        if self.dataset_mount_path is not None:
+            result['DatasetMountPath'] = self.dataset_mount_path
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.dataset_type is not None:
+            result['DatasetType'] = self.dataset_type
+        if self.dataset_uri is not None:
+            result['DatasetUri'] = self.dataset_uri
+        if self.default_route is not None:
+            result['DefaultRoute'] = self.default_route
         if self.eas_service_name is not None:
             result['EasServiceName'] = self.eas_service_name
         if self.easy_rec_package_path is not None:
@@ -19193,12 +20019,22 @@ class UpdateFeatureConsistencyCheckJobConfigRequest(TeaModel):
             result['Name'] = self.name
         if self.oss_resource_id is not None:
             result['OssResourceId'] = self.oss_resource_id
+        if self.predict_worker_count is not None:
+            result['PredictWorkerCount'] = self.predict_worker_count
+        if self.predict_worker_cpu is not None:
+            result['PredictWorkerCpu'] = self.predict_worker_cpu
+        if self.predict_worker_memory is not None:
+            result['PredictWorkerMemory'] = self.predict_worker_memory
         if self.sample_rate is not None:
             result['SampleRate'] = self.sample_rate
         if self.scene_id is not None:
             result['SceneId'] = self.scene_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
+        if self.switch_id is not None:
+            result['SwitchId'] = self.switch_id
         if self.user_id_field is not None:
             result['UserIdField'] = self.user_id_field
         if self.user_table is not None:
@@ -19207,14 +20043,30 @@ class UpdateFeatureConsistencyCheckJobConfigRequest(TeaModel):
             result['UserTablePartitionField'] = self.user_table_partition_field
         if self.user_table_partition_field_format is not None:
             result['UserTablePartitionFieldFormat'] = self.user_table_partition_field_format
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         if self.workflow_name is not None:
             result['WorkflowName'] = self.workflow_name
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CompareFeature') is not None:
             self.compare_feature = m.get('CompareFeature')
+        if m.get('DatasetId') is not None:
+            self.dataset_id = m.get('DatasetId')
+        if m.get('DatasetMountPath') is not None:
+            self.dataset_mount_path = m.get('DatasetMountPath')
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('DatasetType') is not None:
+            self.dataset_type = m.get('DatasetType')
+        if m.get('DatasetUri') is not None:
+            self.dataset_uri = m.get('DatasetUri')
+        if m.get('DefaultRoute') is not None:
+            self.default_route = m.get('DefaultRoute')
         if m.get('EasServiceName') is not None:
             self.eas_service_name = m.get('EasServiceName')
         if m.get('EasyRecPackagePath') is not None:
@@ -19261,12 +20113,22 @@ class UpdateFeatureConsistencyCheckJobConfigRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('OssResourceId') is not None:
             self.oss_resource_id = m.get('OssResourceId')
+        if m.get('PredictWorkerCount') is not None:
+            self.predict_worker_count = m.get('PredictWorkerCount')
+        if m.get('PredictWorkerCpu') is not None:
+            self.predict_worker_cpu = m.get('PredictWorkerCpu')
+        if m.get('PredictWorkerMemory') is not None:
+            self.predict_worker_memory = m.get('PredictWorkerMemory')
         if m.get('SampleRate') is not None:
             self.sample_rate = m.get('SampleRate')
         if m.get('SceneId') is not None:
             self.scene_id = m.get('SceneId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
+        if m.get('SwitchId') is not None:
+            self.switch_id = m.get('SwitchId')
         if m.get('UserIdField') is not None:
             self.user_id_field = m.get('UserIdField')
         if m.get('UserTable') is not None:
@@ -19275,8 +20137,12 @@ class UpdateFeatureConsistencyCheckJobConfigRequest(TeaModel):
             self.user_table_partition_field = m.get('UserTablePartitionField')
         if m.get('UserTablePartitionFieldFormat') is not None:
             self.user_table_partition_field_format = m.get('UserTablePartitionFieldFormat')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         if m.get('WorkflowName') is not None:
             self.workflow_name = m.get('WorkflowName')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -20734,7 +21600,10 @@ class UpdateTrafficControlTaskRequest(TeaModel):
         item_condition_type: str = None,
         item_table_meta_id: str = None,
         name: str = None,
+        pre_experiment_ids: str = None,
+        prod_experiment_ids: str = None,
         scene_id: str = None,
+        service_id: str = None,
         start_time: str = None,
         statis_baeavior_condition_array: str = None,
         statis_behavior_condition_express: str = None,
@@ -20758,7 +21627,10 @@ class UpdateTrafficControlTaskRequest(TeaModel):
         self.item_condition_type = item_condition_type
         self.item_table_meta_id = item_table_meta_id
         self.name = name
+        self.pre_experiment_ids = pre_experiment_ids
+        self.prod_experiment_ids = prod_experiment_ids
         self.scene_id = scene_id
+        self.service_id = service_id
         self.start_time = start_time
         self.statis_baeavior_condition_array = statis_baeavior_condition_array
         self.statis_behavior_condition_express = statis_behavior_condition_express
@@ -20807,8 +21679,14 @@ class UpdateTrafficControlTaskRequest(TeaModel):
             result['ItemTableMetaId'] = self.item_table_meta_id
         if self.name is not None:
             result['Name'] = self.name
+        if self.pre_experiment_ids is not None:
+            result['PreExperimentIds'] = self.pre_experiment_ids
+        if self.prod_experiment_ids is not None:
+            result['ProdExperimentIds'] = self.prod_experiment_ids
         if self.scene_id is not None:
             result['SceneId'] = self.scene_id
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.statis_baeavior_condition_array is not None:
@@ -20859,8 +21737,14 @@ class UpdateTrafficControlTaskRequest(TeaModel):
             self.item_table_meta_id = m.get('ItemTableMetaId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('PreExperimentIds') is not None:
+            self.pre_experiment_ids = m.get('PreExperimentIds')
+        if m.get('ProdExperimentIds') is not None:
+            self.prod_experiment_ids = m.get('ProdExperimentIds')
         if m.get('SceneId') is not None:
             self.scene_id = m.get('SceneId')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('StatisBaeaviorConditionArray') is not None:
