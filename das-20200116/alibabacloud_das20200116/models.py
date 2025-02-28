@@ -6925,11 +6925,11 @@ class DescribeHotBigKeysRequest(TeaModel):
     ):
         # The reserved parameter.
         self.console_context = console_context
-        # The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID.
+        # The ID of the ApsaraDB for Redis instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the data shard on the ApsaraDB for Redis instance. You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to query the ID.
+        # The ID of the data shard on the ApsaraDB for Redis instance.
         self.node_id = node_id
 
     def validate(self):
@@ -7311,11 +7311,11 @@ class DescribeHotKeysRequest(TeaModel):
         instance_id: str = None,
         node_id: str = None,
     ):
-        # The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the instance ID.
+        # The ID of the ApsaraDB for Redis instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the data shard on the ApsaraDB for Redis instance. You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to query the data shard ID.
+        # The ID of the data shard on the ApsaraDB for Redis instance.
         self.node_id = node_id
 
     def validate(self):
@@ -11768,11 +11768,11 @@ class DescribeTopBigKeysRequest(TeaModel):
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID.
+        # The ID of the ApsaraDB for Redis instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the data shard on the ApsaraDB for Redis instance. You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to query the ID.
+        # The ID of the data shard on the ApsaraDB for Redis instance.
         self.node_id = node_id
         # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
@@ -12033,11 +12033,11 @@ class DescribeTopHotKeysRequest(TeaModel):
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID.
+        # The ID of the ApsaraDB for Redis instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the data shard on the ApsaraDB for Redis instance. You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to query the ID.
+        # The ID of the data shard on the ApsaraDB for Redis instance.
         self.node_id = node_id
         # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
@@ -32531,6 +32531,7 @@ class ModifySqlLogConfigRequest(TeaModel):
     def __init__(
         self,
         enable: bool = None,
+        enable_audit: bool = None,
         filters: List[ModifySqlLogConfigRequestFilters] = None,
         hot_retention: int = None,
         instance_id: str = None,
@@ -32544,6 +32545,7 @@ class ModifySqlLogConfigRequest(TeaModel):
         # 
         # >  This parameter is required if you want to enable DAS Enterprise Edition. By default, the latest version of DAS Enterprise Edition that supports the database instance is enabled.
         self.enable = enable
+        self.enable_audit = enable_audit
         # A reserved parameter.
         self.filters = filters
         # The number of days for which the SQL Explorer and Audit data is stored in hot storage. Valid values: 1 to 7.
@@ -32585,6 +32587,8 @@ class ModifySqlLogConfigRequest(TeaModel):
         result = dict()
         if self.enable is not None:
             result['Enable'] = self.enable
+        if self.enable_audit is not None:
+            result['EnableAudit'] = self.enable_audit
         result['Filters'] = []
         if self.filters is not None:
             for k in self.filters:
@@ -32603,6 +32607,8 @@ class ModifySqlLogConfigRequest(TeaModel):
         m = m or dict()
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
+        if m.get('EnableAudit') is not None:
+            self.enable_audit = m.get('EnableAudit')
         self.filters = []
         if m.get('Filters') is not None:
             for k in m.get('Filters'):

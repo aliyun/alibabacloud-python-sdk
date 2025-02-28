@@ -1,6 +1,5 @@
-2025-02-11 Version: 2.6.0
-- Support API DescribeSlowLogHistogramAsync.
-- Support API DescribeSlowLogStatistic.
+2025-02-28 Version: 2.6.1
+- Update API ModifySqlLogConfig: add param EnableAudit.
 
 
 2024-11-29 Version: 2.5.0

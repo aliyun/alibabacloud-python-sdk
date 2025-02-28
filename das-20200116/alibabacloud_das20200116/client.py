@@ -3059,7 +3059,6 @@ class Client(OpenApiClient):
         This operation is available only for ApsaraDB for Redis instances that meet the following requirements:
         The instance is a Community Edition instance that uses a major version of 5.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
         The ApsaraDB for Redis instance is updated to the latest minor version.
-        >  For information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html) and [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html).
         
         @param request: DescribeHotBigKeysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3113,7 +3112,6 @@ class Client(OpenApiClient):
         This operation is available only for ApsaraDB for Redis instances that meet the following requirements:
         The instance is a Community Edition instance that uses a major version of 5.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
         The ApsaraDB for Redis instance is updated to the latest minor version.
-        >  For information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html) and [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html).
         
         @param request: DescribeHotBigKeysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3166,7 +3164,6 @@ class Client(OpenApiClient):
         This operation is available only for ApsaraDB for Redis instances that meet the following requirements:
         The instance is a Community Edition instance that uses a major version of 5.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
         The ApsaraDB for Redis instance is updated to the latest minor version.
-        >  For information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html) and [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html).
         
         @param request: DescribeHotBigKeysRequest
         @return: DescribeHotBigKeysResponse
@@ -3188,7 +3185,6 @@ class Client(OpenApiClient):
         This operation is available only for ApsaraDB for Redis instances that meet the following requirements:
         The instance is a Community Edition instance that uses a major version of 5.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
         The ApsaraDB for Redis instance is updated to the latest minor version.
-        >  For information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html) and [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html).
         
         @param request: DescribeHotBigKeysRequest
         @return: DescribeHotBigKeysResponse
@@ -3211,7 +3207,6 @@ class Client(OpenApiClient):
         This operation is applicable only to ApsaraDB for Redis instances that meet the following requirements:
         The ApsaraDB for Redis instance is a Community Edition instance that uses a major version of 4.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
         The ApsaraDB for Redis instance is updated to the latest minor version.
-        >  For more information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html) and [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html).
         
         @param request: DescribeHotKeysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3263,7 +3258,6 @@ class Client(OpenApiClient):
         This operation is applicable only to ApsaraDB for Redis instances that meet the following requirements:
         The ApsaraDB for Redis instance is a Community Edition instance that uses a major version of 4.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
         The ApsaraDB for Redis instance is updated to the latest minor version.
-        >  For more information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html) and [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html).
         
         @param request: DescribeHotKeysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3314,7 +3308,6 @@ class Client(OpenApiClient):
         This operation is applicable only to ApsaraDB for Redis instances that meet the following requirements:
         The ApsaraDB for Redis instance is a Community Edition instance that uses a major version of 4.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
         The ApsaraDB for Redis instance is updated to the latest minor version.
-        >  For more information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html) and [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html).
         
         @param request: DescribeHotKeysRequest
         @return: DescribeHotKeysResponse
@@ -3336,7 +3329,6 @@ class Client(OpenApiClient):
         This operation is applicable only to ApsaraDB for Redis instances that meet the following requirements:
         The ApsaraDB for Redis instance is a Community Edition instance that uses a major version of 4.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
         The ApsaraDB for Redis instance is updated to the latest minor version.
-        >  For more information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html) and [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html).
         
         @param request: DescribeHotKeysRequest
         @return: DescribeHotKeysResponse
@@ -4447,7 +4439,6 @@ class Client(OpenApiClient):
         This operation is available only for an ApsaraDB for Redis instance of one of the following versions:
         The instance is ApsaraDB for Redis Community Edition instances that use a major version of 5.0 or later or a performance-enhanced instance of the ApsaraDB for Redis Enhanced Edition (Tair).
         The ApsaraDB for Redis instance is updated to the latest minor version.
-        >  For information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html) and [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html).
         
         @param request: DescribeTopBigKeysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4505,7 +4496,6 @@ class Client(OpenApiClient):
         This operation is available only for an ApsaraDB for Redis instance of one of the following versions:
         The instance is ApsaraDB for Redis Community Edition instances that use a major version of 5.0 or later or a performance-enhanced instance of the ApsaraDB for Redis Enhanced Edition (Tair).
         The ApsaraDB for Redis instance is updated to the latest minor version.
-        >  For information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html) and [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html).
         
         @param request: DescribeTopBigKeysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4562,7 +4552,6 @@ class Client(OpenApiClient):
         This operation is available only for an ApsaraDB for Redis instance of one of the following versions:
         The instance is ApsaraDB for Redis Community Edition instances that use a major version of 5.0 or later or a performance-enhanced instance of the ApsaraDB for Redis Enhanced Edition (Tair).
         The ApsaraDB for Redis instance is updated to the latest minor version.
-        >  For information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html) and [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html).
         
         @param request: DescribeTopBigKeysRequest
         @return: DescribeTopBigKeysResponse
@@ -4584,7 +4573,6 @@ class Client(OpenApiClient):
         This operation is available only for an ApsaraDB for Redis instance of one of the following versions:
         The instance is ApsaraDB for Redis Community Edition instances that use a major version of 5.0 or later or a performance-enhanced instance of the ApsaraDB for Redis Enhanced Edition (Tair).
         The ApsaraDB for Redis instance is updated to the latest minor version.
-        >  For information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html) and [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html).
         
         @param request: DescribeTopBigKeysRequest
         @return: DescribeTopBigKeysResponse
@@ -4607,7 +4595,6 @@ class Client(OpenApiClient):
         This operation is available only for an ApsaraDB for Redis instance of one of the following versions:
         The instance is a Community Edition instance that uses a major version of 4.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
         The ApsaraDB for Redis instance is updated to the latest minor version.
-        >  For information about how to query and update the minor version of an instance, see [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) and [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html).
         
         @param request: DescribeTopHotKeysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4665,7 +4652,6 @@ class Client(OpenApiClient):
         This operation is available only for an ApsaraDB for Redis instance of one of the following versions:
         The instance is a Community Edition instance that uses a major version of 4.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
         The ApsaraDB for Redis instance is updated to the latest minor version.
-        >  For information about how to query and update the minor version of an instance, see [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) and [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html).
         
         @param request: DescribeTopHotKeysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4722,7 +4708,6 @@ class Client(OpenApiClient):
         This operation is available only for an ApsaraDB for Redis instance of one of the following versions:
         The instance is a Community Edition instance that uses a major version of 4.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
         The ApsaraDB for Redis instance is updated to the latest minor version.
-        >  For information about how to query and update the minor version of an instance, see [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) and [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html).
         
         @param request: DescribeTopHotKeysRequest
         @return: DescribeTopHotKeysResponse
@@ -4744,7 +4729,6 @@ class Client(OpenApiClient):
         This operation is available only for an ApsaraDB for Redis instance of one of the following versions:
         The instance is a Community Edition instance that uses a major version of 4.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
         The ApsaraDB for Redis instance is updated to the latest minor version.
-        >  For information about how to query and update the minor version of an instance, see [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) and [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html).
         
         @param request: DescribeTopHotKeysRequest
         @return: DescribeTopHotKeysResponse
@@ -13467,6 +13451,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.enable_audit):
+            query['EnableAudit'] = request.enable_audit
         if not UtilClient.is_unset(request.filters):
             query['Filters'] = request.filters
         body = {}
@@ -13525,6 +13511,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.enable_audit):
+            query['EnableAudit'] = request.enable_audit
         if not UtilClient.is_unset(request.filters):
             query['Filters'] = request.filters
         body = {}
