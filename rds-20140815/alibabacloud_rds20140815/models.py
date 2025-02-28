@@ -1448,6 +1448,235 @@ class AttachWhitelistTemplateToInstanceResponse(TeaModel):
         return self
 
 
+class AuthorizeRCSecurityGroupPermissionRequestSecurityGroupPermissions(TeaModel):
+    def __init__(
+        self,
+        dest_cidr_ip: str = None,
+        ip_protocol: str = None,
+        policy: str = None,
+        port_range: str = None,
+        priority: str = None,
+        source_cidr_ip: str = None,
+        source_port_range: str = None,
+    ):
+        self.dest_cidr_ip = dest_cidr_ip
+        self.ip_protocol = ip_protocol
+        self.policy = policy
+        self.port_range = port_range
+        self.priority = priority
+        self.source_cidr_ip = source_cidr_ip
+        self.source_port_range = source_port_range
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dest_cidr_ip is not None:
+            result['DestCidrIp'] = self.dest_cidr_ip
+        if self.ip_protocol is not None:
+            result['IpProtocol'] = self.ip_protocol
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.port_range is not None:
+            result['PortRange'] = self.port_range
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.source_cidr_ip is not None:
+            result['SourceCidrIp'] = self.source_cidr_ip
+        if self.source_port_range is not None:
+            result['SourcePortRange'] = self.source_port_range
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestCidrIp') is not None:
+            self.dest_cidr_ip = m.get('DestCidrIp')
+        if m.get('IpProtocol') is not None:
+            self.ip_protocol = m.get('IpProtocol')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('PortRange') is not None:
+            self.port_range = m.get('PortRange')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('SourceCidrIp') is not None:
+            self.source_cidr_ip = m.get('SourceCidrIp')
+        if m.get('SourcePortRange') is not None:
+            self.source_port_range = m.get('SourcePortRange')
+        return self
+
+
+class AuthorizeRCSecurityGroupPermissionRequest(TeaModel):
+    def __init__(
+        self,
+        direction: str = None,
+        region_id: str = None,
+        security_group_id: str = None,
+        security_group_permissions: List[AuthorizeRCSecurityGroupPermissionRequestSecurityGroupPermissions] = None,
+    ):
+        self.direction = direction
+        self.region_id = region_id
+        self.security_group_id = security_group_id
+        self.security_group_permissions = security_group_permissions
+
+    def validate(self):
+        if self.security_group_permissions:
+            for k in self.security_group_permissions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        result['SecurityGroupPermissions'] = []
+        if self.security_group_permissions is not None:
+            for k in self.security_group_permissions:
+                result['SecurityGroupPermissions'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        self.security_group_permissions = []
+        if m.get('SecurityGroupPermissions') is not None:
+            for k in m.get('SecurityGroupPermissions'):
+                temp_model = AuthorizeRCSecurityGroupPermissionRequestSecurityGroupPermissions()
+                self.security_group_permissions.append(temp_model.from_map(k))
+        return self
+
+
+class AuthorizeRCSecurityGroupPermissionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        direction: str = None,
+        region_id: str = None,
+        security_group_id: str = None,
+        security_group_permissions_shrink: str = None,
+    ):
+        self.direction = direction
+        self.region_id = region_id
+        self.security_group_id = security_group_id
+        self.security_group_permissions_shrink = security_group_permissions_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.security_group_permissions_shrink is not None:
+            result['SecurityGroupPermissions'] = self.security_group_permissions_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('SecurityGroupPermissions') is not None:
+            self.security_group_permissions_shrink = m.get('SecurityGroupPermissions')
+        return self
+
+
+class AuthorizeRCSecurityGroupPermissionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AuthorizeRCSecurityGroupPermissionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AuthorizeRCSecurityGroupPermissionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AuthorizeRCSecurityGroupPermissionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CalculateDBInstanceWeightRequest(TeaModel):
     def __init__(
         self,
@@ -2675,6 +2904,7 @@ class CheckServiceLinkedRoleResponseBody(TeaModel):
         self.has_service_linked_role = has_service_linked_role
         # The request ID.
         self.request_id = request_id
+        # Indicates whether the service-linked role is required. Default value: true.
         self.require_service_linked_role = require_service_linked_role
 
     def validate(self):
@@ -5325,8 +5555,8 @@ class CreateDBInstanceRequest(TeaModel):
         self.engine_version = engine_version
         # The network type of the instance. Valid values:
         # 
-        # *   **VPC**: a virtual private cloud (VPC)
-        # *   **Classic**: the classic network
+        # *   **VPC**\
+        # *   **Classic**\
         # 
         # > 
         # 
@@ -6105,8 +6335,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         self.engine_version = engine_version
         # The network type of the instance. Valid values:
         # 
-        # *   **VPC**: a virtual private cloud (VPC)
-        # *   **Classic**: the classic network
+        # *   **VPC**\
+        # *   **Classic**\
         # 
         # > 
         # 
@@ -7388,7 +7618,7 @@ class CreateDBInstanceForRebuildRequest(TeaModel):
         # 
         # Default value: Classic.
         # 
-        # >  The **VPCId** and **VSwitchId** parameters must be specified when this parameter is set to **VPC**.
+        # >  If the instance uses cloud disks, this parameter is required. Set the value to **VPC**. The **VpcId** and **VSwitchId** parameters must be specified when this parameter is set to **VPC**.
         self.instance_network_type = instance_network_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -7404,7 +7634,7 @@ class CreateDBInstanceForRebuildRequest(TeaModel):
         # *   **Year**\
         # *   **Month**\
         # 
-        # >  If you set the PayType parameter to **Prepaid**, you must specify this parameter.
+        # >  If you set the PayType parameter to **Prepaid**, you must also specify this parameter.
         self.period = period
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the most recent region list.
         # 
@@ -8522,8 +8752,6 @@ class CreateDdrInstanceRequest(TeaModel):
         # Default value: **Standard**.
         self.connection_mode = connection_mode
         # The instance type of the destination instance. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
-        # 
-        # This parameter is required.
         self.dbinstance_class = dbinstance_class
         # The instance name. The name must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
         # 
@@ -8537,8 +8765,6 @@ class CreateDdrInstanceRequest(TeaModel):
         # This parameter is required.
         self.dbinstance_net_type = dbinstance_net_type
         # The storage capacity of the destination instance. Valid values: **5 to 2000**. Unit: GB. You can increase the storage capacity at a step size of 5 GB. For more information, see [Primary instance types](https://help.aliyun.com/document_detail/26312.html).
-        # 
-        # This parameter is required.
         self.dbinstance_storage = dbinstance_storage
         # The storage type of the destination instance. Only the local SSD storage type is supported. Default value: **local_ssd**.
         self.dbinstance_storage_type = dbinstance_storage_type
@@ -9793,6 +10019,7 @@ class CreateMaskingRulesRequest(TeaModel):
     def __init__(
         self,
         dbinstance_name: str = None,
+        dbname: str = None,
         default_algo: str = None,
         masking_algo: str = None,
         owner_id: str = None,
@@ -9804,6 +10031,7 @@ class CreateMaskingRulesRequest(TeaModel):
     ):
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        self.dbname = dbname
         self.default_algo = default_algo
         self.masking_algo = masking_algo
         self.owner_id = owner_id
@@ -9826,6 +10054,8 @@ class CreateMaskingRulesRequest(TeaModel):
         result = dict()
         if self.dbinstance_name is not None:
             result['DBInstanceName'] = self.dbinstance_name
+        if self.dbname is not None:
+            result['DBName'] = self.dbname
         if self.default_algo is not None:
             result['DefaultAlgo'] = self.default_algo
         if self.masking_algo is not None:
@@ -9848,6 +10078,8 @@ class CreateMaskingRulesRequest(TeaModel):
         m = m or dict()
         if m.get('DBInstanceName') is not None:
             self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('DBName') is not None:
+            self.dbname = m.get('DBName')
         if m.get('DefaultAlgo') is not None:
             self.default_algo = m.get('DefaultAlgo')
         if m.get('MaskingAlgo') is not None:
@@ -9872,6 +10104,7 @@ class CreateMaskingRulesShrinkRequest(TeaModel):
     def __init__(
         self,
         dbinstance_name: str = None,
+        dbname: str = None,
         default_algo: str = None,
         masking_algo: str = None,
         owner_id: str = None,
@@ -9883,6 +10116,7 @@ class CreateMaskingRulesShrinkRequest(TeaModel):
     ):
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        self.dbname = dbname
         self.default_algo = default_algo
         self.masking_algo = masking_algo
         self.owner_id = owner_id
@@ -9904,6 +10138,8 @@ class CreateMaskingRulesShrinkRequest(TeaModel):
         result = dict()
         if self.dbinstance_name is not None:
             result['DBInstanceName'] = self.dbinstance_name
+        if self.dbname is not None:
+            result['DBName'] = self.dbname
         if self.default_algo is not None:
             result['DefaultAlgo'] = self.default_algo
         if self.masking_algo is not None:
@@ -9926,6 +10162,8 @@ class CreateMaskingRulesShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('DBInstanceName') is not None:
             self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('DBName') is not None:
+            self.dbname = m.get('DBName')
         if m.get('DefaultAlgo') is not None:
             self.default_algo = m.get('DefaultAlgo')
         if m.get('MaskingAlgo') is not None:
@@ -11442,13 +11680,15 @@ class CreateRCDiskRequest(TeaModel):
         # The category of the data disk. Valid values:
         # 
         # *   **cloud** (default): basic disk
-        # *   **cloud_efficiency**: ultra disk
-        # *   **cloud_ssd**: standard SSD
-        # *   **cloud_essd**: Enterprise SSD (ESSD)
+        # *   **cloud_efficiency**: ultra disk.
+        # *   **cloud_ssd**: standard SSD.
+        # *   **cloud_essd**: Enterprise SSD (ESSD).
         # *   **cloud_auto**: ESSD AutoPL disk
         # *   **cloud_essd_entry**: ESSD Entry disk
         # *   **elastic_ephemeral_disk_standard**: standard elastic ephemeral disk
         # *   **elastic_ephemeral_disk_premium**: premium elastic ephemeral disk
+        # 
+        # This parameter is required.
         self.disk_category = disk_category
         # The disk name. The name must be 2 to 128 characters in length and can contain letters and digits. The name can contain colons (:), underscores (_), periods (.), and hyphens (-).
         # 
@@ -11500,6 +11740,8 @@ class CreateRCDiskRequest(TeaModel):
         # 
         # *   If the size of the snapshot specified by `SnapshotId` is larger than the value of `Size`, the size of the created disk is equal to the size of the snapshot.
         # *   If the size of the snapshot specified by `SnapshotId` is smaller than the value of `Size`, the size of the created disk is equal to the value of `Size`.
+        # 
+        # This parameter is required.
         self.size = size
         # The snapshot that you want to use to create the disk. Snapshots that were created on or before July 15, 2013 cannot be used to create disks. The following limits apply to `SnapshotId` and `Size`:
         # 
@@ -11508,6 +11750,8 @@ class CreateRCDiskRequest(TeaModel):
         # *   You cannot create elastic ephemeral disks from snapshots.
         self.snapshot_id = snapshot_id
         # The zone ID.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -11670,10 +11914,23 @@ class CreateRCNodePoolRequestDataDisk(TeaModel):
         performance_level: str = None,
         size: int = None,
     ):
+        # The type of the data disk. Set the value to **cloud_essd**, which indicates Enterprise SSDs (ESSDs).
         self.category = category
+        # The reserved parameter. This parameter is not supported.
         self.delete_with_instance = delete_with_instance
+        # Specifies whether to encrypt the data disk. Valid values:
+        # 
+        # *   **true**\
+        # *   **false** (default)
         self.encrypted = encrypted
+        # The performance level of the ESSD. Valid values:
+        # 
+        # *   **PL0**: A single ESSD delivers up to 10,000 random read/write IOPS.
+        # *   **PL1**: A single ESSD delivers up to 50,000 random read/write IOPS.
+        # *   **PL2**: A single ESSD delivers up to 100,000 random read/write IOPS.
+        # *   **PL3**: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         self.performance_level = performance_level
+        # The size of the data disk. Unit: GiB. Valid values: 20 to 65536.
         self.size = size
 
     def validate(self):
@@ -11719,8 +11976,16 @@ class CreateRCNodePoolRequestSystemDisk(TeaModel):
         performance_level: str = None,
         size: int = None,
     ):
+        # The type of the system disk. Set the value to **cloud_essd**, which indicates ESSDs.
         self.category = category
+        # The performance level of the ESSD. Valid values:
+        # 
+        # *   **PL0**: A single ESSD delivers up to 10,000 random read/write IOPS.
+        # *   **PL1**: A single ESSD delivers up to 50,000 random read/write IOPS.
+        # *   **PL2**: A single ESSD delivers up to 100,000 random read/write IOPS.
+        # *   **PL3**: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         self.performance_level = performance_level
+        # The size of the system disk. Unit: GiB. Valid values: 20 to 2048.
         self.size = size
 
     def validate(self):
@@ -11757,7 +12022,9 @@ class CreateRCNodePoolRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag. You can create N tag keys at a time. Valid values of N: **1 to 20**. This parameter cannot be an empty string.
         self.key = key
+        # The tag value. You can create N tag values at a time. Valid values of N: **1** to **20**. This parameter can be an empty string.
         self.value = value
 
     def validate(self):
@@ -11818,45 +12085,117 @@ class CreateRCNodePoolRequest(TeaModel):
         support_case: str = None,
         system_disk: CreateRCNodePoolRequestSystemDisk = None,
         tag: List[CreateRCNodePoolRequestTag] = None,
+        user_data: str = None,
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # The number of RDS Custom instances that you want to create. The parameter is available if you want to create multiple RDS Custom instances at a time.
+        # 
+        # Valid values: **1** to **5**. Default value: **1**.
         self.amount = amount
+        # Specifies whether to enable automatic payment. Valid values:
+        # 
+        # *   **true**: enables the feature. Make sure that your account balance is sufficient.
+        # *   **false**: disables the feature. An unpaid order is generated.
+        # 
+        # >  Default value: true. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
         self.auto_pay = auto_pay
+        # Specifies whether to enable auto-renewal for the instance. If you specify the subscription billing method for the instance, you must specify this parameter. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # > 
+        # 
+        # *   Monthly subscription: The auto-renewal period is one month.
+        # 
+        # *   Annually: The auto-renewal period is one year.
         self.auto_renew = auto_renew
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The ID of the ACK cluster to which the RDS Custom instance belongs.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # Specifies whether to add the instance to the ACK cluster. If this parameter is set to **1**, the created instances can be added to the ACK cluster. This allows you to efficiently manage container applications. Valid values:
+        # 
+        # *   **1**: adds the instance to the ACK cluster.
+        # *   **0** (default): does not add the instance to the ACK cluster.
         self.create_mode = create_mode
+        # The data disks.
         self.data_disk = data_disk
+        # The ID of the deployment set.
         self.deployment_set_id = deployment_set_id
+        # The instance description. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         self.description = description
+        # Specifies whether to perform a dry run. Default value: false. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and insufficient inventory errors.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, the instance is directly created.
         self.dry_run = dry_run
+        # The instance hostname.
         self.host_name = host_name
+        # The ID of the image used by the instance.
         self.image_id = image_id
+        # The billing method of the instance. Valid values:
+        # 
+        # *   **Prepaid**: subscription.
+        # *   **Postpaid**: pay-as-you-go.
         self.instance_charge_type = instance_charge_type
+        # The instance name.
         self.instance_name = instance_name
+        # The instance type. For more information about the instance types that are supported by RDS Custom instances, see [Instance types for RDS Custom instances](https://help.aliyun.com/document_detail/2844823.html).
+        # 
         # This parameter is required.
         self.instance_type = instance_type
+        # The reserved parameter. This parameter is not supported.
         self.internet_charge_type = internet_charge_type
+        # The reserved parameter. This parameter is not supported.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
+        # The reserved parameter. This parameter is not supported.
         self.io_optimized = io_optimized
+        # The name of the AccessKey pair. You can specify only one name.
         self.key_pair_name = key_pair_name
+        # The name of the node pool.
         self.node_pool_name = node_pool_name
+        # The password for the root account of the instance.
         self.password = password
+        # The subscription duration of the instance. Default value: **1**.
         self.period = period
+        # The unit of the subscription duration. Valid values:
+        # 
+        # *   **Year**\
+        # *   **Month** (default)
         self.period_unit = period_unit
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The reserved parameter. This parameter is not supported.
         self.security_enhancement_strategy = security_enhancement_strategy
+        # The ID of the security group. You can enter an existing security group ID. If no security groups exist, a security group is automatically created.
         self.security_group_id = security_group_id
+        # The reserved parameter. This parameter is not supported.
         self.spot_strategy = spot_strategy
+        # The supported scenario. If you set the **createMode** parameter to **1**, you must also specify the SupportCase parameter. Valid value: **edge**.
         self.support_case = support_case
+        # The specification of the system disk.
         self.system_disk = system_disk
+        # The tags.
         self.tag = tag
+        # The reserved parameter. This parameter is not supported.
+        self.user_data = user_data
+        # The vSwitch ID.
+        # 
+        # >  The vSwitch must belong to the same zone as the instance.
+        # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
+        # The zone ID of the instance.
+        # 
+        # >  If you specify the VSwitchId parameter, the zone specified by the ZoneId parameter must be the same as the zone in which the specified vSwitch resides. You can leave the ZoneId parameter empty. In this case, the system uses the zone in which the specified vSwitch resides.
         self.zone_id = zone_id
 
     def validate(self):
@@ -11943,6 +12282,8 @@ class CreateRCNodePoolRequest(TeaModel):
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.zone_id is not None:
@@ -12020,6 +12361,8 @@ class CreateRCNodePoolRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = CreateRCNodePoolRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('ZoneId') is not None:
@@ -12033,7 +12376,9 @@ class CreateRCNodePoolShrinkRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag. You can create N tag keys at a time. Valid values of N: **1 to 20**. This parameter cannot be an empty string.
         self.key = key
+        # The tag value. You can create N tag values at a time. Valid values of N: **1** to **20**. This parameter can be an empty string.
         self.value = value
 
     def validate(self):
@@ -12094,45 +12439,117 @@ class CreateRCNodePoolShrinkRequest(TeaModel):
         support_case: str = None,
         system_disk_shrink: str = None,
         tag: List[CreateRCNodePoolShrinkRequestTag] = None,
+        user_data: str = None,
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # The number of RDS Custom instances that you want to create. The parameter is available if you want to create multiple RDS Custom instances at a time.
+        # 
+        # Valid values: **1** to **5**. Default value: **1**.
         self.amount = amount
+        # Specifies whether to enable automatic payment. Valid values:
+        # 
+        # *   **true**: enables the feature. Make sure that your account balance is sufficient.
+        # *   **false**: disables the feature. An unpaid order is generated.
+        # 
+        # >  Default value: true. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
         self.auto_pay = auto_pay
+        # Specifies whether to enable auto-renewal for the instance. If you specify the subscription billing method for the instance, you must specify this parameter. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # > 
+        # 
+        # *   Monthly subscription: The auto-renewal period is one month.
+        # 
+        # *   Annually: The auto-renewal period is one year.
         self.auto_renew = auto_renew
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The ID of the ACK cluster to which the RDS Custom instance belongs.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # Specifies whether to add the instance to the ACK cluster. If this parameter is set to **1**, the created instances can be added to the ACK cluster. This allows you to efficiently manage container applications. Valid values:
+        # 
+        # *   **1**: adds the instance to the ACK cluster.
+        # *   **0** (default): does not add the instance to the ACK cluster.
         self.create_mode = create_mode
+        # The data disks.
         self.data_disk_shrink = data_disk_shrink
+        # The ID of the deployment set.
         self.deployment_set_id = deployment_set_id
+        # The instance description. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         self.description = description
+        # Specifies whether to perform a dry run. Default value: false. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and insufficient inventory errors.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, the instance is directly created.
         self.dry_run = dry_run
+        # The instance hostname.
         self.host_name = host_name
+        # The ID of the image used by the instance.
         self.image_id = image_id
+        # The billing method of the instance. Valid values:
+        # 
+        # *   **Prepaid**: subscription.
+        # *   **Postpaid**: pay-as-you-go.
         self.instance_charge_type = instance_charge_type
+        # The instance name.
         self.instance_name = instance_name
+        # The instance type. For more information about the instance types that are supported by RDS Custom instances, see [Instance types for RDS Custom instances](https://help.aliyun.com/document_detail/2844823.html).
+        # 
         # This parameter is required.
         self.instance_type = instance_type
+        # The reserved parameter. This parameter is not supported.
         self.internet_charge_type = internet_charge_type
+        # The reserved parameter. This parameter is not supported.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
+        # The reserved parameter. This parameter is not supported.
         self.io_optimized = io_optimized
+        # The name of the AccessKey pair. You can specify only one name.
         self.key_pair_name = key_pair_name
+        # The name of the node pool.
         self.node_pool_name = node_pool_name
+        # The password for the root account of the instance.
         self.password = password
+        # The subscription duration of the instance. Default value: **1**.
         self.period = period
+        # The unit of the subscription duration. Valid values:
+        # 
+        # *   **Year**\
+        # *   **Month** (default)
         self.period_unit = period_unit
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The reserved parameter. This parameter is not supported.
         self.security_enhancement_strategy = security_enhancement_strategy
+        # The ID of the security group. You can enter an existing security group ID. If no security groups exist, a security group is automatically created.
         self.security_group_id = security_group_id
+        # The reserved parameter. This parameter is not supported.
         self.spot_strategy = spot_strategy
+        # The supported scenario. If you set the **createMode** parameter to **1**, you must also specify the SupportCase parameter. Valid value: **edge**.
         self.support_case = support_case
+        # The specification of the system disk.
         self.system_disk_shrink = system_disk_shrink
+        # The tags.
         self.tag = tag
+        # The reserved parameter. This parameter is not supported.
+        self.user_data = user_data
+        # The vSwitch ID.
+        # 
+        # >  The vSwitch must belong to the same zone as the instance.
+        # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
+        # The zone ID of the instance.
+        # 
+        # >  If you specify the VSwitchId parameter, the zone specified by the ZoneId parameter must be the same as the zone in which the specified vSwitch resides. You can leave the ZoneId parameter empty. In this case, the system uses the zone in which the specified vSwitch resides.
         self.zone_id = zone_id
 
     def validate(self):
@@ -12211,6 +12628,8 @@ class CreateRCNodePoolShrinkRequest(TeaModel):
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.zone_id is not None:
@@ -12284,6 +12703,8 @@ class CreateRCNodePoolShrinkRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = CreateRCNodePoolShrinkRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('ZoneId') is not None:
@@ -12299,9 +12720,13 @@ class CreateRCNodePoolResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The instance IDs.
         self.instance_id_sets = instance_id_sets
+        # The node pool ID.
         self.node_pool_id = node_pool_id
+        # The order ID.
         self.order_id = order_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15683,6 +16108,7 @@ class DeleteMaskingRulesRequest(TeaModel):
     def __init__(
         self,
         dbinstance_name: str = None,
+        dbname: str = None,
         owner_id: str = None,
         region_id: str = None,
         resource_owner_account: str = None,
@@ -15691,6 +16117,7 @@ class DeleteMaskingRulesRequest(TeaModel):
     ):
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        self.dbname = dbname
         self.owner_id = owner_id
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -15709,6 +16136,8 @@ class DeleteMaskingRulesRequest(TeaModel):
         result = dict()
         if self.dbinstance_name is not None:
             result['DBInstanceName'] = self.dbinstance_name
+        if self.dbname is not None:
+            result['DBName'] = self.dbname
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
@@ -15725,6 +16154,8 @@ class DeleteMaskingRulesRequest(TeaModel):
         m = m or dict()
         if m.get('DBInstanceName') is not None:
             self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('DBName') is not None:
+            self.dbname = m.get('DBName')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
@@ -16832,10 +17263,16 @@ class DeleteRCNodePoolRequest(TeaModel):
         node_pool_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the ACK cluster to which the RDS Custom instance belongs.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The node pool ID.
+        # 
         # This parameter is required.
         self.node_pool_id = node_pool_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -16872,6 +17309,7 @@ class DeleteRCNodePoolResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -18196,6 +18634,7 @@ class DescribeAccountMaskingPrivilegeRequest(TeaModel):
     def __init__(
         self,
         dbinstance_name: str = None,
+        dbname: str = None,
         owner_id: str = None,
         region_id: str = None,
         resource_owner_account: str = None,
@@ -18204,6 +18643,7 @@ class DescribeAccountMaskingPrivilegeRequest(TeaModel):
     ):
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        self.dbname = dbname
         self.owner_id = owner_id
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -18221,6 +18661,8 @@ class DescribeAccountMaskingPrivilegeRequest(TeaModel):
         result = dict()
         if self.dbinstance_name is not None:
             result['DBInstanceName'] = self.dbinstance_name
+        if self.dbname is not None:
+            result['DBName'] = self.dbname
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
@@ -18237,6 +18679,8 @@ class DescribeAccountMaskingPrivilegeRequest(TeaModel):
         m = m or dict()
         if m.get('DBInstanceName') is not None:
             self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('DBName') is not None:
+            self.dbname = m.get('DBName')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
@@ -31900,6 +32344,159 @@ class DescribeDBInstanceProxyConfigurationResponse(TeaModel):
         return self
 
 
+class DescribeDBInstanceReplicationRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+    ):
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The resource group ID. You can leave this parameter empty.
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class DescribeDBInstanceReplicationResponseBody(TeaModel):
+    def __init__(
+        self,
+        external_replication: str = None,
+        replication_delay: str = None,
+        replication_error_message: str = None,
+        replication_source: str = None,
+        replication_state: str = None,
+        request_id: str = None,
+    ):
+        # Indicates whether to enable the native replication mode. Valid values:
+        # 
+        # *   **ON**\
+        # *   **OFF**\
+        self.external_replication = external_replication
+        # The replication latency. Unit: seconds.
+        self.replication_delay = replication_delay
+        # The replication error message.
+        self.replication_error_message = replication_error_message
+        # The source of the native replication.
+        self.replication_source = replication_source
+        # The current replication status. Valid values:
+        self.replication_state = replication_state
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_replication is not None:
+            result['ExternalReplication'] = self.external_replication
+        if self.replication_delay is not None:
+            result['ReplicationDelay'] = self.replication_delay
+        if self.replication_error_message is not None:
+            result['ReplicationErrorMessage'] = self.replication_error_message
+        if self.replication_source is not None:
+            result['ReplicationSource'] = self.replication_source
+        if self.replication_state is not None:
+            result['ReplicationState'] = self.replication_state
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExternalReplication') is not None:
+            self.external_replication = m.get('ExternalReplication')
+        if m.get('ReplicationDelay') is not None:
+            self.replication_delay = m.get('ReplicationDelay')
+        if m.get('ReplicationErrorMessage') is not None:
+            self.replication_error_message = m.get('ReplicationErrorMessage')
+        if m.get('ReplicationSource') is not None:
+            self.replication_source = m.get('ReplicationSource')
+        if m.get('ReplicationState') is not None:
+            self.replication_state = m.get('ReplicationState')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDBInstanceReplicationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDBInstanceReplicationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDBInstanceReplicationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDBInstanceSSLRequest(TeaModel):
     def __init__(
         self,
@@ -36666,6 +37263,7 @@ class DescribeDBProxyEndpointResponseBodyEndpointConnectItems(TeaModel):
 class DescribeDBProxyEndpointResponseBody(TeaModel):
     def __init__(
         self,
+        causal_consist_read_timeout: str = None,
         dbproxy_connect_string: str = None,
         dbproxy_connect_string_net_type: str = None,
         dbproxy_connect_string_port: str = None,
@@ -36676,6 +37274,7 @@ class DescribeDBProxyEndpointResponseBody(TeaModel):
         dbproxy_nodes: DescribeDBProxyEndpointResponseBodyDBProxyNodes = None,
         db_proxy_endpoint_aliases: str = None,
         db_proxy_endpoint_read_write_mode: str = None,
+        db_proxy_endpoint_vpc_id: str = None,
         db_proxy_endpoint_vswitch_id: str = None,
         db_proxy_endpoint_zone_id: str = None,
         endpoint_connect_items: DescribeDBProxyEndpointResponseBodyEndpointConnectItems = None,
@@ -36684,6 +37283,7 @@ class DescribeDBProxyEndpointResponseBody(TeaModel):
         read_only_instance_weight: str = None,
         request_id: str = None,
     ):
+        self.causal_consist_read_timeout = causal_consist_read_timeout
         # The proxy endpoint queried.
         self.dbproxy_connect_string = dbproxy_connect_string
         # The network type of the proxy endpoint. Valid values:
@@ -36718,6 +37318,7 @@ class DescribeDBProxyEndpointResponseBody(TeaModel):
         # *   **ReadWrite**: The proxy terminal supports read and write requests.
         # *   **ReadOnly**: The proxy terminal supports only read requests.
         self.db_proxy_endpoint_read_write_mode = db_proxy_endpoint_read_write_mode
+        self.db_proxy_endpoint_vpc_id = db_proxy_endpoint_vpc_id
         # The vSwitch ID of the proxy terminal.
         self.db_proxy_endpoint_vswitch_id = db_proxy_endpoint_vswitch_id
         # The zone ID of the proxy terminal.
@@ -36754,6 +37355,8 @@ class DescribeDBProxyEndpointResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.causal_consist_read_timeout is not None:
+            result['CausalConsistReadTimeout'] = self.causal_consist_read_timeout
         if self.dbproxy_connect_string is not None:
             result['DBProxyConnectString'] = self.dbproxy_connect_string
         if self.dbproxy_connect_string_net_type is not None:
@@ -36774,6 +37377,8 @@ class DescribeDBProxyEndpointResponseBody(TeaModel):
             result['DbProxyEndpointAliases'] = self.db_proxy_endpoint_aliases
         if self.db_proxy_endpoint_read_write_mode is not None:
             result['DbProxyEndpointReadWriteMode'] = self.db_proxy_endpoint_read_write_mode
+        if self.db_proxy_endpoint_vpc_id is not None:
+            result['DbProxyEndpointVpcId'] = self.db_proxy_endpoint_vpc_id
         if self.db_proxy_endpoint_vswitch_id is not None:
             result['DbProxyEndpointVswitchId'] = self.db_proxy_endpoint_vswitch_id
         if self.db_proxy_endpoint_zone_id is not None:
@@ -36792,6 +37397,8 @@ class DescribeDBProxyEndpointResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CausalConsistReadTimeout') is not None:
+            self.causal_consist_read_timeout = m.get('CausalConsistReadTimeout')
         if m.get('DBProxyConnectString') is not None:
             self.dbproxy_connect_string = m.get('DBProxyConnectString')
         if m.get('DBProxyConnectStringNetType') is not None:
@@ -36813,6 +37420,8 @@ class DescribeDBProxyEndpointResponseBody(TeaModel):
             self.db_proxy_endpoint_aliases = m.get('DbProxyEndpointAliases')
         if m.get('DbProxyEndpointReadWriteMode') is not None:
             self.db_proxy_endpoint_read_write_mode = m.get('DbProxyEndpointReadWriteMode')
+        if m.get('DbProxyEndpointVpcId') is not None:
+            self.db_proxy_endpoint_vpc_id = m.get('DbProxyEndpointVpcId')
         if m.get('DbProxyEndpointVswitchId') is not None:
             self.db_proxy_endpoint_vswitch_id = m.get('DbProxyEndpointVswitchId')
         if m.get('DbProxyEndpointZoneId') is not None:
@@ -44373,6 +44982,7 @@ class DescribeMaskingRulesRequest(TeaModel):
     def __init__(
         self,
         dbinstance_name: str = None,
+        dbname: str = None,
         owner_id: str = None,
         region_id: str = None,
         resource_owner_account: str = None,
@@ -44381,6 +44991,7 @@ class DescribeMaskingRulesRequest(TeaModel):
     ):
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        self.dbname = dbname
         self.owner_id = owner_id
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -44398,6 +45009,8 @@ class DescribeMaskingRulesRequest(TeaModel):
         result = dict()
         if self.dbinstance_name is not None:
             result['DBInstanceName'] = self.dbinstance_name
+        if self.dbname is not None:
+            result['DBName'] = self.dbname
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
@@ -44414,6 +45027,8 @@ class DescribeMaskingRulesRequest(TeaModel):
         m = m or dict()
         if m.get('DBInstanceName') is not None:
             self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('DBName') is not None:
+            self.dbname = m.get('DBName')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
@@ -48930,11 +49545,12 @@ class DescribePriceRequest(TeaModel):
         # *   **0**: primary instance
         # *   **3**: read-only instance
         self.instance_used_type = instance_used_type
-        # The type of the order. Valid values:
+        # The order type. Valid values:
         # 
-        # *   **BUY**: purchase order
-        # *   **UPGRADE**: specification change order
-        # *   **RENEW**: renewal order
+        # *   **BUY**\
+        # *   **RENEW**\
+        # *   **UPGRADE**\
+        # *   **DOWNGRADE**\
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -48960,7 +49576,7 @@ class DescribePriceRequest(TeaModel):
         # *   **Year**\
         # *   **Month**\
         self.time_type = time_type
-        # The subscription duration of the instance. Valid values:
+        # The subscription duration of the instance.
         # 
         # *   If you set the **TimeType** parameter to **Year**, the value of the UsedTime parameter ranges from **1 to 100**.
         # *   If you set the **TimeType** parameter to **Month**, the value of the UsedTime parameter ranges from **1 to 999**.
@@ -49178,11 +49794,12 @@ class DescribePriceShrinkRequest(TeaModel):
         # *   **0**: primary instance
         # *   **3**: read-only instance
         self.instance_used_type = instance_used_type
-        # The type of the order. Valid values:
+        # The order type. Valid values:
         # 
-        # *   **BUY**: purchase order
-        # *   **UPGRADE**: specification change order
-        # *   **RENEW**: renewal order
+        # *   **BUY**\
+        # *   **RENEW**\
+        # *   **UPGRADE**\
+        # *   **DOWNGRADE**\
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -49208,7 +49825,7 @@ class DescribePriceShrinkRequest(TeaModel):
         # *   **Year**\
         # *   **Month**\
         self.time_type = time_type
-        # The subscription duration of the instance. Valid values:
+        # The subscription duration of the instance.
         # 
         # *   If you set the **TimeType** parameter to **Year**, the value of the UsedTime parameter ranges from **1 to 100**.
         # *   If you set the **TimeType** parameter to **Month**, the value of the UsedTime parameter ranges from **1 to 999**.
@@ -53671,8 +54288,11 @@ class DescribeRCNodePoolRequest(TeaModel):
         node_pool_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the ACK Edge cluster in which the RDS Custom instance resides.
         self.cluster_id = cluster_id
+        # The node pool ID.
         self.node_pool_id = node_pool_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -53712,10 +54332,23 @@ class DescribeRCNodePoolResponseBodyNodePoolListDataDisk(TeaModel):
         performance_level: str = None,
         size: int = None,
     ):
+        # The type of the data disk. Set the value to **cloud_essd**, which indicates Enterprise SSDs (ESSDs).
         self.category = category
+        # The reserved parameter. This parameter is not supported.
         self.delete_with_instance = delete_with_instance
+        # Indicates whether to encrypt the cloud disk. Valid values:
+        # 
+        # *   **true**\
+        # *   **false** (default)
         self.encrypted = encrypted
+        # The performance level of the ESSD. Valid values:
+        # 
+        # *   **PL0**: A single ESSD delivers up to 10,000 random read/write IOPS.
+        # *   **PL1**: A single ESSD delivers up to 50,000 random read/write IOPS.
+        # *   **PL2**: A single ESSD delivers up to 100,000 random read/write IOPS.
+        # *   **PL3**: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         self.performance_level = performance_level
+        # The data disk size. Unit: GiB.
         self.size = size
 
     def validate(self):
@@ -53761,8 +54394,16 @@ class DescribeRCNodePoolResponseBodyNodePoolListSystemDisk(TeaModel):
         performance_level: str = None,
         size: int = None,
     ):
+        # The type of the system disk. Set the value to **cloud_essd**, which indicates ESSDs.
         self.category = category
+        # The performance level of the ESSD. Valid values:
+        # 
+        # *   **PL0**: A single ESSD delivers up to 10,000 random read/write IOPS.
+        # *   **PL1**: A single ESSD delivers up to 50,000 random read/write IOPS.
+        # *   **PL2**: A single ESSD delivers up to 100,000 random read/write IOPS.
+        # *   **PL3**: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         self.performance_level = performance_level
+        # The size of the system disk. Unit: GiB.
         self.size = size
 
     def validate(self):
@@ -53799,7 +54440,9 @@ class DescribeRCNodePoolResponseBodyNodePoolListTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag keys.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -53860,35 +54503,77 @@ class DescribeRCNodePoolResponseBodyNodePoolList(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # Indicates whether to enable automatic payment. Valid values:
+        # 
+        # *   **true** (default): enables the feature. You must make sure that your account balance is sufficient.
+        # *   **false**: disables the feature. An unpaid order is generated.
         self.auto_pay = auto_pay
+        # Indicates whether to enable auto-renewal for the instance. Valid values:
+        # 
+        # *   **true** (default)
+        # *   **false**\
         self.auto_renew = auto_renew
+        # The ID of the container cluster in which the RDS Custom instance resides.
         self.cluster_id = cluster_id
+        # Indicates whether to add the instance to the ACK cluster.
         self.create_mode = create_mode
+        # The data disks.
         self.data_disk = data_disk
+        # The ID of the deployment set.
         self.deployment_set_id = deployment_set_id
+        # The instance description.
         self.description = description
+        # The instance hostname.
         self.host_name = host_name
+        # The ID of the image used by the instance.
         self.image_id = image_id
+        # The billing method. Valid value:
+        # 
+        # *   **Prepaid**: subscription
+        # *   **Postpaid**: pay-as-you-go
         self.instance_charge_type = instance_charge_type
+        # The instance name.
         self.instance_name = instance_name
+        # The instance type.
         self.instance_type = instance_type
+        # The reserved parameter. This parameter is not supported.
         self.internet_charge_type = internet_charge_type
+        # The reserved parameter. This parameter is not supported.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
+        # The reserved parameter. This parameter is not supported.
         self.io_optimized = io_optimized
+        # The key pair name.
         self.key_pair_name = key_pair_name
+        # The node pool ID.
         self.node_pool_id = node_pool_id
+        # The name of the node pool.
         self.node_pool_name = node_pool_name
+        # The password of the root user of the instance.
         self.password = password
+        # The subscription duration.
         self.period = period
+        # The unit of the subscription period. Valid values:
+        # 
+        # *   **Year**\
+        # *   **Month** (default)
         self.period_unit = period_unit
+        # The region ID of the instance.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The reserved parameter. This parameter is not supported.
         self.security_enhancement_strategy = security_enhancement_strategy
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The reserved parameter. This parameter is not supported.
         self.spot_strategy = spot_strategy
+        # The specification of the system disk.
         self.system_disk = system_disk
+        # The tags.
         self.tag = tag
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -54053,7 +54738,9 @@ class DescribeRCNodePoolResponseBody(TeaModel):
         node_pool_list: List[DescribeRCNodePoolResponseBodyNodePoolList] = None,
         request_id: str = None,
     ):
+        # The node pool information.
         self.node_pool_list = node_pool_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54125,6 +54812,222 @@ class DescribeRCNodePoolResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeRCNodePoolResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeRCSecurityGroupPermissionRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        security_group_id: str = None,
+    ):
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.security_group_id = security_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        return self
+
+
+class DescribeRCSecurityGroupPermissionResponseBodySecurityGroupPermissions(TeaModel):
+    def __init__(
+        self,
+        dest_cidr_ip: str = None,
+        direction: str = None,
+        ip_protocol: str = None,
+        policy: str = None,
+        port_range: str = None,
+        priority: str = None,
+        security_group_rule_id: str = None,
+        source_cidr_ip: str = None,
+        source_port_range: str = None,
+    ):
+        self.dest_cidr_ip = dest_cidr_ip
+        self.direction = direction
+        self.ip_protocol = ip_protocol
+        self.policy = policy
+        self.port_range = port_range
+        self.priority = priority
+        self.security_group_rule_id = security_group_rule_id
+        self.source_cidr_ip = source_cidr_ip
+        self.source_port_range = source_port_range
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dest_cidr_ip is not None:
+            result['DestCidrIp'] = self.dest_cidr_ip
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.ip_protocol is not None:
+            result['IpProtocol'] = self.ip_protocol
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.port_range is not None:
+            result['PortRange'] = self.port_range
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.security_group_rule_id is not None:
+            result['SecurityGroupRuleId'] = self.security_group_rule_id
+        if self.source_cidr_ip is not None:
+            result['SourceCidrIp'] = self.source_cidr_ip
+        if self.source_port_range is not None:
+            result['SourcePortRange'] = self.source_port_range
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestCidrIp') is not None:
+            self.dest_cidr_ip = m.get('DestCidrIp')
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('IpProtocol') is not None:
+            self.ip_protocol = m.get('IpProtocol')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('PortRange') is not None:
+            self.port_range = m.get('PortRange')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('SecurityGroupRuleId') is not None:
+            self.security_group_rule_id = m.get('SecurityGroupRuleId')
+        if m.get('SourceCidrIp') is not None:
+            self.source_cidr_ip = m.get('SourceCidrIp')
+        if m.get('SourcePortRange') is not None:
+            self.source_port_range = m.get('SourcePortRange')
+        return self
+
+
+class DescribeRCSecurityGroupPermissionResponseBody(TeaModel):
+    def __init__(
+        self,
+        inner_access_policy: str = None,
+        region_id: str = None,
+        request_id: str = None,
+        security_group_id: str = None,
+        security_group_permissions: List[DescribeRCSecurityGroupPermissionResponseBodySecurityGroupPermissions] = None,
+        vpc_id: str = None,
+    ):
+        self.inner_access_policy = inner_access_policy
+        self.region_id = region_id
+        self.request_id = request_id
+        self.security_group_id = security_group_id
+        self.security_group_permissions = security_group_permissions
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        if self.security_group_permissions:
+            for k in self.security_group_permissions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.inner_access_policy is not None:
+            result['InnerAccessPolicy'] = self.inner_access_policy
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        result['SecurityGroupPermissions'] = []
+        if self.security_group_permissions is not None:
+            for k in self.security_group_permissions:
+                result['SecurityGroupPermissions'].append(k.to_map() if k else None)
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InnerAccessPolicy') is not None:
+            self.inner_access_policy = m.get('InnerAccessPolicy')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        self.security_group_permissions = []
+        if m.get('SecurityGroupPermissions') is not None:
+            for k in m.get('SecurityGroupPermissions'):
+                temp_model = DescribeRCSecurityGroupPermissionResponseBodySecurityGroupPermissions()
+                self.security_group_permissions.append(temp_model.from_map(k))
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class DescribeRCSecurityGroupPermissionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeRCSecurityGroupPermissionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeRCSecurityGroupPermissionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -56754,6 +57657,7 @@ class DescribeResourceUsageResponseBody(TeaModel):
         self.archive_backup_size = archive_backup_size
         # The storage that is occupied by data backup files, excluding archived backup files, on the instance. Unit: bytes.
         self.backup_data_size = backup_data_size
+        # The storage capacity that is used to store the snapshot backup files of the **RDS for SQL Server** instance. Unit: bytes. The value 0 indicates that no snapshot backup files are stored for the instance.
         self.backup_ecs_snapshot_size = backup_ecs_snapshot_size
         # The storage that is occupied by log backup files, excluding archived backup files, on the instance. Unit: bytes.
         self.backup_log_size = backup_log_size
@@ -66371,6 +67275,7 @@ class ModifyAccountMaskingPrivilegeRequest(TeaModel):
     def __init__(
         self,
         dbinstance_name: str = None,
+        dbname: str = None,
         expire_time: str = None,
         owner_id: str = None,
         privilege: str = None,
@@ -66381,6 +67286,7 @@ class ModifyAccountMaskingPrivilegeRequest(TeaModel):
     ):
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        self.dbname = dbname
         self.expire_time = expire_time
         self.owner_id = owner_id
         # This parameter is required.
@@ -66402,6 +67308,8 @@ class ModifyAccountMaskingPrivilegeRequest(TeaModel):
         result = dict()
         if self.dbinstance_name is not None:
             result['DBInstanceName'] = self.dbinstance_name
+        if self.dbname is not None:
+            result['DBName'] = self.dbname
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
         if self.owner_id is not None:
@@ -66422,6 +67330,8 @@ class ModifyAccountMaskingPrivilegeRequest(TeaModel):
         m = m or dict()
         if m.get('DBInstanceName') is not None:
             self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('DBName') is not None:
+            self.dbname = m.get('DBName')
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
         if m.get('OwnerId') is not None:
@@ -72866,6 +73776,7 @@ class ModifyDBProxyResponse(TeaModel):
 class ModifyDBProxyEndpointRequest(TeaModel):
     def __init__(
         self,
+        causal_consist_read_timeout: str = None,
         config_dbproxy_features: str = None,
         dbinstance_id: str = None,
         dbproxy_endpoint_id: str = None,
@@ -72885,7 +73796,9 @@ class ModifyDBProxyEndpointRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         v_switch_id: str = None,
+        vpc_id: str = None,
     ):
+        self.causal_consist_read_timeout = causal_consist_read_timeout
         # The capabilities that you want to enable for the proxy endpoint. If you specify more than one capability, separate the capabilities with semicolons (;). Format: `Capability 1:Status;Capability 2:Status;...`. Do not add a semicolon (;) at the end of the value.
         # 
         # Valid capability values:
@@ -72983,6 +73896,7 @@ class ModifyDBProxyEndpointRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The ID of the vSwitch in the zone in which the proxy endpoint is specified. The default value is the ID of the vSwitch that corresponds to the default terminal of the database proxy. You can call the DescribeVSwitches operation to query existing vSwitches.
         self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
 
     def validate(self):
         pass
@@ -72993,6 +73907,8 @@ class ModifyDBProxyEndpointRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.causal_consist_read_timeout is not None:
+            result['CausalConsistReadTimeout'] = self.causal_consist_read_timeout
         if self.config_dbproxy_features is not None:
             result['ConfigDBProxyFeatures'] = self.config_dbproxy_features
         if self.dbinstance_id is not None:
@@ -73031,10 +73947,14 @@ class ModifyDBProxyEndpointRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CausalConsistReadTimeout') is not None:
+            self.causal_consist_read_timeout = m.get('CausalConsistReadTimeout')
         if m.get('ConfigDBProxyFeatures') is not None:
             self.config_dbproxy_features = m.get('ConfigDBProxyFeatures')
         if m.get('DBInstanceId') is not None:
@@ -73073,6 +73993,8 @@ class ModifyDBProxyEndpointRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         return self
 
 
@@ -73361,6 +74283,7 @@ class ModifyDBProxyInstanceRequestMigrateAZ(TeaModel):
         self,
         db_proxy_endpoint_id: str = None,
         dest_vswitch_id: str = None,
+        dest_vpc_id: str = None,
     ):
         # The proxy connection address ID. You can obtain it through the DescribeDBProxyEndpoint interface.
         # 
@@ -73370,6 +74293,7 @@ class ModifyDBProxyInstanceRequestMigrateAZ(TeaModel):
         # 
         # > This parameter is required when MigrateAZ is selected.
         self.dest_vswitch_id = dest_vswitch_id
+        self.dest_vpc_id = dest_vpc_id
 
     def validate(self):
         pass
@@ -73384,6 +74308,8 @@ class ModifyDBProxyInstanceRequestMigrateAZ(TeaModel):
             result['dbProxyEndpointId'] = self.db_proxy_endpoint_id
         if self.dest_vswitch_id is not None:
             result['destVSwitchId'] = self.dest_vswitch_id
+        if self.dest_vpc_id is not None:
+            result['destVpcId'] = self.dest_vpc_id
         return result
 
     def from_map(self, m: dict = None):
@@ -73392,6 +74318,8 @@ class ModifyDBProxyInstanceRequestMigrateAZ(TeaModel):
             self.db_proxy_endpoint_id = m.get('dbProxyEndpointId')
         if m.get('destVSwitchId') is not None:
             self.dest_vswitch_id = m.get('destVSwitchId')
+        if m.get('destVpcId') is not None:
+            self.dest_vpc_id = m.get('destVpcId')
         return self
 
 
@@ -75299,6 +76227,7 @@ class ModifyMaskingRulesRequest(TeaModel):
     def __init__(
         self,
         dbinstance_name: str = None,
+        dbname: str = None,
         default_algo: str = None,
         enabled: str = None,
         masking_algo: str = None,
@@ -75311,6 +76240,7 @@ class ModifyMaskingRulesRequest(TeaModel):
     ):
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        self.dbname = dbname
         self.default_algo = default_algo
         self.enabled = enabled
         self.masking_algo = masking_algo
@@ -75334,6 +76264,8 @@ class ModifyMaskingRulesRequest(TeaModel):
         result = dict()
         if self.dbinstance_name is not None:
             result['DBInstanceName'] = self.dbinstance_name
+        if self.dbname is not None:
+            result['DBName'] = self.dbname
         if self.default_algo is not None:
             result['DefaultAlgo'] = self.default_algo
         if self.enabled is not None:
@@ -75358,6 +76290,8 @@ class ModifyMaskingRulesRequest(TeaModel):
         m = m or dict()
         if m.get('DBInstanceName') is not None:
             self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('DBName') is not None:
+            self.dbname = m.get('DBName')
         if m.get('DefaultAlgo') is not None:
             self.default_algo = m.get('DefaultAlgo')
         if m.get('Enabled') is not None:
@@ -75384,6 +76318,7 @@ class ModifyMaskingRulesShrinkRequest(TeaModel):
     def __init__(
         self,
         dbinstance_name: str = None,
+        dbname: str = None,
         default_algo: str = None,
         enabled: str = None,
         masking_algo: str = None,
@@ -75396,6 +76331,7 @@ class ModifyMaskingRulesShrinkRequest(TeaModel):
     ):
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        self.dbname = dbname
         self.default_algo = default_algo
         self.enabled = enabled
         self.masking_algo = masking_algo
@@ -75418,6 +76354,8 @@ class ModifyMaskingRulesShrinkRequest(TeaModel):
         result = dict()
         if self.dbinstance_name is not None:
             result['DBInstanceName'] = self.dbinstance_name
+        if self.dbname is not None:
+            result['DBName'] = self.dbname
         if self.default_algo is not None:
             result['DefaultAlgo'] = self.default_algo
         if self.enabled is not None:
@@ -75442,6 +76380,8 @@ class ModifyMaskingRulesShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('DBInstanceName') is not None:
             self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('DBName') is not None:
+            self.dbname = m.get('DBName')
         if m.get('DefaultAlgo') is not None:
             self.default_algo = m.get('DefaultAlgo')
         if m.get('Enabled') is not None:
@@ -76353,6 +77293,7 @@ class ModifyRCInstanceAttributeRequest(TeaModel):
         password: str = None,
         reboot: bool = None,
         region_id: str = None,
+        security_group_id: str = None,
     ):
         # The hostname of the instance.
         self.host_name = host_name
@@ -76370,6 +77311,7 @@ class ModifyRCInstanceAttributeRequest(TeaModel):
         self.reboot = reboot
         # The region ID of the instance. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
+        self.security_group_id = security_group_id
 
     def validate(self):
         pass
@@ -76390,6 +77332,8 @@ class ModifyRCInstanceAttributeRequest(TeaModel):
             result['Reboot'] = self.reboot
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -76404,6 +77348,8 @@ class ModifyRCInstanceAttributeRequest(TeaModel):
             self.reboot = m.get('Reboot')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
         return self
 
 
@@ -76921,6 +77867,274 @@ class ModifyRCInstanceKeyPairResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyRCInstanceKeyPairResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyRCInstanceNetworkSpecRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        internet_max_bandwidth_out: str = None,
+        network_charge_type: str = None,
+        region_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.internet_max_bandwidth_out = internet_max_bandwidth_out
+        self.network_charge_type = network_charge_type
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.internet_max_bandwidth_out is not None:
+            result['InternetMaxBandwidthOut'] = self.internet_max_bandwidth_out
+        if self.network_charge_type is not None:
+            result['NetworkChargeType'] = self.network_charge_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InternetMaxBandwidthOut') is not None:
+            self.internet_max_bandwidth_out = m.get('InternetMaxBandwidthOut')
+        if m.get('NetworkChargeType') is not None:
+            self.network_charge_type = m.get('NetworkChargeType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ModifyRCInstanceNetworkSpecResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyRCInstanceNetworkSpecResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyRCInstanceNetworkSpecResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyRCInstanceNetworkSpecResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyRCSecurityGroupPermissionRequest(TeaModel):
+    def __init__(
+        self,
+        dest_cidr_ip: str = None,
+        direction: str = None,
+        ip_protocol: str = None,
+        policy: str = None,
+        port_range: str = None,
+        priority: str = None,
+        region_id: str = None,
+        security_group_id: str = None,
+        security_group_rule_id: str = None,
+        source_cidr_ip: str = None,
+        source_port_range: str = None,
+    ):
+        self.dest_cidr_ip = dest_cidr_ip
+        self.direction = direction
+        self.ip_protocol = ip_protocol
+        self.policy = policy
+        self.port_range = port_range
+        self.priority = priority
+        self.region_id = region_id
+        self.security_group_id = security_group_id
+        self.security_group_rule_id = security_group_rule_id
+        self.source_cidr_ip = source_cidr_ip
+        self.source_port_range = source_port_range
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dest_cidr_ip is not None:
+            result['DestCidrIp'] = self.dest_cidr_ip
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.ip_protocol is not None:
+            result['IpProtocol'] = self.ip_protocol
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.port_range is not None:
+            result['PortRange'] = self.port_range
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.security_group_rule_id is not None:
+            result['SecurityGroupRuleId'] = self.security_group_rule_id
+        if self.source_cidr_ip is not None:
+            result['SourceCidrIp'] = self.source_cidr_ip
+        if self.source_port_range is not None:
+            result['SourcePortRange'] = self.source_port_range
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestCidrIp') is not None:
+            self.dest_cidr_ip = m.get('DestCidrIp')
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('IpProtocol') is not None:
+            self.ip_protocol = m.get('IpProtocol')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('PortRange') is not None:
+            self.port_range = m.get('PortRange')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('SecurityGroupRuleId') is not None:
+            self.security_group_rule_id = m.get('SecurityGroupRuleId')
+        if m.get('SourceCidrIp') is not None:
+            self.source_cidr_ip = m.get('SourceCidrIp')
+        if m.get('SourcePortRange') is not None:
+            self.source_port_range = m.get('SourcePortRange')
+        return self
+
+
+class ModifyRCSecurityGroupPermissionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyRCSecurityGroupPermissionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyRCSecurityGroupPermissionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyRCSecurityGroupPermissionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -81191,6 +82405,256 @@ class RenewInstanceResponse(TeaModel):
         return self
 
 
+class RenewRCInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        auto_pay: bool = None,
+        auto_renew: str = None,
+        auto_use_coupon: bool = None,
+        business_info: str = None,
+        client_token: str = None,
+        commodity_code: str = None,
+        instance_id: str = None,
+        owner_id: int = None,
+        pay_type: str = None,
+        period_align: bool = None,
+        promotion_code: str = None,
+        region_id: str = None,
+        resource: str = None,
+        resource_owner_account: str = None,
+        time_type: str = None,
+        used_time: str = None,
+    ):
+        # Specifies whether to enable automatic payment. Valid values:
+        # 
+        # *   **true**: enables the feature. You must make sure that your account balance is sufficient.
+        # *   **false**: disables the feature. An unpaid order is generated.
+        # 
+        # >  Default value: true. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
+        self.auto_pay = auto_pay
+        # Specifies whether to enable auto-renewal for the instance. Valid values:
+        # 
+        # *   **true**\
+        # *   **false** (default)
+        self.auto_renew = auto_renew
+        # Specifies whether to use a coupon. Default value: false. Valid values:
+        # 
+        # *   **true**: uses a coupon.
+        # *   **false**: does not use a coupon.
+        self.auto_use_coupon = auto_use_coupon
+        # The additional information about the order.
+        self.business_info = business_info
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        self.client_token = client_token
+        # The commodity code of the instance.
+        # 
+        # Default value: **rds_customprepaid_public_intl**.
+        # 
+        # This parameter is required.
+        self.commodity_code = commodity_code
+        # The ID of the RDS Custom instance.
+        self.instance_id = instance_id
+        self.owner_id = owner_id
+        # The billing method of the instance. Set the value to **PrePaid**, which indicates the subscription billing method.
+        self.pay_type = pay_type
+        # Specifies whether the instance is a subscription instance. Valid values:
+        # 
+        # *   **true**\
+        # *   **false** (default)
+        self.period_align = period_align
+        # The coupon code.
+        self.promotion_code = promotion_code
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The resources.
+        self.resource = resource
+        self.resource_owner_account = resource_owner_account
+        # The unit of the renewal period specified by the **UsedTime** parameter. Valid values:
+        # 
+        # *   **1**: year
+        # *   **2** (default): month
+        # 
+        # This parameter is required.
+        self.time_type = time_type
+        # The subscription duration of the instance. Valid values:
+        # 
+        # *   If you set the **TimeType** parameter to **1**, the value of the UsedTime parameter ranges from **1 to 5**. Unit: year.
+        # *   If you set the **TimeType** parameter to **2**, the value of the UsedTime parameter ranges from **1 to 11**. Unit: month.
+        # 
+        # This parameter is required.
+        self.used_time = used_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.auto_use_coupon is not None:
+            result['AutoUseCoupon'] = self.auto_use_coupon
+        if self.business_info is not None:
+            result['BusinessInfo'] = self.business_info
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
+        if self.period_align is not None:
+            result['PeriodAlign'] = self.period_align
+        if self.promotion_code is not None:
+            result['PromotionCode'] = self.promotion_code
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource is not None:
+            result['Resource'] = self.resource
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.time_type is not None:
+            result['TimeType'] = self.time_type
+        if self.used_time is not None:
+            result['UsedTime'] = self.used_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('AutoUseCoupon') is not None:
+            self.auto_use_coupon = m.get('AutoUseCoupon')
+        if m.get('BusinessInfo') is not None:
+            self.business_info = m.get('BusinessInfo')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
+        if m.get('PeriodAlign') is not None:
+            self.period_align = m.get('PeriodAlign')
+        if m.get('PromotionCode') is not None:
+            self.promotion_code = m.get('PromotionCode')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Resource') is not None:
+            self.resource = m.get('Resource')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('TimeType') is not None:
+            self.time_type = m.get('TimeType')
+        if m.get('UsedTime') is not None:
+            self.used_time = m.get('UsedTime')
+        return self
+
+
+class RenewRCInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        order_id: str = None,
+        order_ids: str = None,
+        request_id: str = None,
+    ):
+        # The ID of the RDS Custom instance.
+        self.dbinstance_id = dbinstance_id
+        self.order_id = order_id
+        # The order ID.
+        self.order_ids = order_ids
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.order_ids is not None:
+            result['OrderIds'] = self.order_ids
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('OrderIds') is not None:
+            self.order_ids = m.get('OrderIds')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RenewRCInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RenewRCInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RenewRCInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ReplaceRCInstanceSystemDiskRequest(TeaModel):
     def __init__(
         self,
@@ -82159,7 +83623,12 @@ class RestoreTableRequest(TeaModel):
         # > *   You must specify at least one of **BackupId** and **RestoreTime**.
         # > *   You must enable the log backup feature. For more information, see [Back up an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/98818.html).
         self.restore_time = restore_time
-        # The names of the databases and tables that you want to restore. The value is in the following format: `[{"type":"db","name":"<The name of Database 1 on the source instance>","newname":"<The name of Database 1 on the destination instance>","tables":[{"type":"table","name":"<The name of Table 1 in Database 1 on the source instance>","newname":"<The name of Table 1 in Database 1 on the destination instance>"},{"type":"table","name":"<The name of Table 2 in Database 1 on the source instance>","newname":"<The name of Table 2 in Database 1 on the destination instance>"}]},{"type":"db","name":"<The name of Database 2 on the source instance>","newname":"<The name of Database 2 on the destination instance>","tables":[{"type":"table","name":"<The name of Table 3 in Database 2 on the source instance>","newname":"<The name of Table 3 in Database 2 on the destination instance>"},{"type":"table","name":"<The name of Table 4 in Database 2 on the source instance>","newname":"<The name of Table 4 in Database 2 on the destination instance>"}]}]`
+        # The names of the databases and tables that you want to restore for the source instance.
+        # 
+        # >  ApsaraDB RDS for PostgreSQL allows you to restore only specified databases, not tables.
+        # 
+        # *   ApsaraDB RDS for MySQL: `[{"type":"db","name":"<The name of Database 1 on the source instance>","newname":"<The name of Database 1 on the destination instance>","tables":[{"type":"table","name":"<The name of Table 1 in Database 1 on the source instance>","newname":"<The name of Table 1 in Database 1 on the destination instance>"},{"type":"table","name":"<The name of Table 2 in Database 1 on the source instance>","newname":"<The name of Table 2 in Database 1 on the destination instance>"}]},{"type":"db","name":"<The name of Database 2 on the source instance>","newname":"<The name of Database 2 on the destination instance>","tables":[{"type":"table","name":"<The name of Table 3 in Database 2 on the source instance>","newname":"<The name of Table 3 in Database 2 on the destination instance>"},{"type":"table","name":"<The name of Table 4 in Database 2 on the source instance>","newname":"<The name of Table 4 in Database 2 on the destination instance>"}]}]`
+        # *   ApsaraDB RDS for PostgreSQL: `[{"type":"db","name":"<The name of Database 1 on the source instance 1>","newname":"<The name of Database 1 on the destination instance>"}]`
         # 
         # This parameter is required.
         self.table_meta = table_meta
@@ -82553,6 +84022,164 @@ class RevokeOperatorPermissionResponse(TeaModel):
         return self
 
 
+class RevokeRCSecurityGroupPermissionRequest(TeaModel):
+    def __init__(
+        self,
+        direction: str = None,
+        region_id: str = None,
+        security_group_id: str = None,
+        security_group_rule_id_list: List[str] = None,
+    ):
+        self.direction = direction
+        self.region_id = region_id
+        self.security_group_id = security_group_id
+        self.security_group_rule_id_list = security_group_rule_id_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.security_group_rule_id_list is not None:
+            result['SecurityGroupRuleIdList'] = self.security_group_rule_id_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('SecurityGroupRuleIdList') is not None:
+            self.security_group_rule_id_list = m.get('SecurityGroupRuleIdList')
+        return self
+
+
+class RevokeRCSecurityGroupPermissionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        direction: str = None,
+        region_id: str = None,
+        security_group_id: str = None,
+        security_group_rule_id_list_shrink: str = None,
+    ):
+        self.direction = direction
+        self.region_id = region_id
+        self.security_group_id = security_group_id
+        self.security_group_rule_id_list_shrink = security_group_rule_id_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.security_group_rule_id_list_shrink is not None:
+            result['SecurityGroupRuleIdList'] = self.security_group_rule_id_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('SecurityGroupRuleIdList') is not None:
+            self.security_group_rule_id_list_shrink = m.get('SecurityGroupRuleIdList')
+        return self
+
+
+class RevokeRCSecurityGroupPermissionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RevokeRCSecurityGroupPermissionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RevokeRCSecurityGroupPermissionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RevokeRCSecurityGroupPermissionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RunRCInstancesRequestCreateAckEdgeParam(TeaModel):
     def __init__(
         self,
@@ -82753,6 +84380,7 @@ class RunRCInstancesRequest(TeaModel):
         support_case: str = None,
         system_disk: RunRCInstancesRequestSystemDisk = None,
         tag: List[RunRCInstancesRequestTag] = None,
+        user_data: str = None,
         v_switch_id: str = None,
         zone_id: str = None,
     ):
@@ -82834,6 +84462,7 @@ class RunRCInstancesRequest(TeaModel):
         # The specification of the system disk.
         self.system_disk = system_disk
         self.tag = tag
+        self.user_data = user_data
         # The vSwitch ID of the instance. You must specify this parameter when you create an instance of the virtual private cloud (VPC) type. The specified vSwitch and security group must belong to the same VPC.
         # 
         # >  If you specify the VSwitchId parameter, the zone specified by the ZoneId parameter must be the same as the zone in which the specified vSwitch resides. You can leave the ZoneId parameter empty. In this case, the system uses the zone in which the specified vSwitch resides.
@@ -82931,6 +84560,8 @@ class RunRCInstancesRequest(TeaModel):
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.zone_id is not None:
@@ -83009,6 +84640,8 @@ class RunRCInstancesRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = RunRCInstancesRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('ZoneId') is not None:
@@ -83083,6 +84716,7 @@ class RunRCInstancesShrinkRequest(TeaModel):
         support_case: str = None,
         system_disk_shrink: str = None,
         tag: List[RunRCInstancesShrinkRequestTag] = None,
+        user_data: str = None,
         v_switch_id: str = None,
         zone_id: str = None,
     ):
@@ -83164,6 +84798,7 @@ class RunRCInstancesShrinkRequest(TeaModel):
         # The specification of the system disk.
         self.system_disk_shrink = system_disk_shrink
         self.tag = tag
+        self.user_data = user_data
         # The vSwitch ID of the instance. You must specify this parameter when you create an instance of the virtual private cloud (VPC) type. The specified vSwitch and security group must belong to the same VPC.
         # 
         # >  If you specify the VSwitchId parameter, the zone specified by the ZoneId parameter must be the same as the zone in which the specified vSwitch resides. You can leave the ZoneId parameter empty. In this case, the system uses the zone in which the specified vSwitch resides.
@@ -83251,6 +84886,8 @@ class RunRCInstancesShrinkRequest(TeaModel):
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.zone_id is not None:
@@ -83324,6 +84961,8 @@ class RunRCInstancesShrinkRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = RunRCInstancesShrinkRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('ZoneId') is not None:

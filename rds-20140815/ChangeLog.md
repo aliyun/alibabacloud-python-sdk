@@ -1,3 +1,31 @@
+2025-02-28 Version: 10.1.0
+- Support API AuthorizeRCSecurityGroupPermission.
+- Support API DescribeDBInstanceReplication.
+- Support API DescribeRCSecurityGroupPermission.
+- Support API ModifyRCInstanceNetworkSpec.
+- Support API ModifyRCSecurityGroupPermission.
+- Support API RenewRCInstance.
+- Support API RevokeRCSecurityGroupPermission.
+- Update API CreateDdrInstance: update param DBInstanceClass.
+- Update API CreateDdrInstance: update param DBInstanceStorage.
+- Update API CreateMaskingRules: add param DBName.
+- Update API CreateRCDisk: update param DiskCategory.
+- Update API CreateRCDisk: update param Size.
+- Update API CreateRCDisk: update param ZoneId.
+- Update API CreateRCNodePool: add param UserData.
+- Update API DeleteMaskingRules: add param DBName.
+- Update API DescribeAccountMaskingPrivilege: add param DBName.
+- Update API DescribeDBProxyEndpoint: update response param.
+- Update API DescribeMaskingRules: add param DBName.
+- Update API ModifyAccountMaskingPrivilege: add param DBName.
+- Update API ModifyDBProxyEndpoint: add param CausalConsistReadTimeout.
+- Update API ModifyDBProxyEndpoint: add param VpcId.
+- Update API ModifyDBProxyInstance: update param MigrateAZ.
+- Update API ModifyMaskingRules: add param DBName.
+- Update API ModifyRCInstanceAttribute: add param SecurityGroupId.
+- Update API RunRCInstances: add param UserData.
+
+
 2025-01-14 Version: 10.0.1
 - Update API CheckServiceLinkedRole: update response param.
 - Update API CreateRCNodePool: update param SystemDisk.
