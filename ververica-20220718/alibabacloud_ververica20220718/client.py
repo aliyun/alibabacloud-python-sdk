@@ -74,10 +74,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ApplyScheduledPlanResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ApplyScheduledPlanResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ApplyScheduledPlanResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def apply_scheduled_plan_with_options_async(
         self,
@@ -112,10 +118,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ApplyScheduledPlanResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ApplyScheduledPlanResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ApplyScheduledPlanResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def apply_scheduled_plan(
         self,
@@ -181,10 +193,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.CreateDeploymentResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateDeploymentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateDeploymentResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_deployment_with_options_async(
         self,
@@ -222,10 +240,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.CreateDeploymentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateDeploymentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateDeploymentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_deployment(
         self,
@@ -293,10 +317,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.CreateDeploymentDraftResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateDeploymentDraftResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateDeploymentDraftResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_deployment_draft_with_options_async(
         self,
@@ -334,10 +364,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.CreateDeploymentDraftResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateDeploymentDraftResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateDeploymentDraftResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_deployment_draft(
         self,
@@ -409,10 +445,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.CreateDeploymentTargetResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateDeploymentTargetResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateDeploymentTargetResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_deployment_target_with_options_async(
         self,
@@ -454,10 +496,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.CreateDeploymentTargetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateDeploymentTargetResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateDeploymentTargetResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_deployment_target(
         self,
@@ -525,10 +573,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.CreateFolderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateFolderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateFolderResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_folder_with_options_async(
         self,
@@ -566,10 +620,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.CreateFolderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateFolderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateFolderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_folder(
         self,
@@ -637,10 +697,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.CreateMemberResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateMemberResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateMemberResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_member_with_options_async(
         self,
@@ -678,10 +744,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.CreateMemberResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateMemberResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateMemberResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_member(
         self,
@@ -756,10 +828,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.CreateSavepointResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateSavepointResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateSavepointResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_savepoint_with_options_async(
         self,
@@ -804,10 +882,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.CreateSavepointResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateSavepointResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateSavepointResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_savepoint(
         self,
@@ -875,10 +959,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.CreateScheduledPlanResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateScheduledPlanResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateScheduledPlanResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_scheduled_plan_with_options_async(
         self,
@@ -916,10 +1006,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.CreateScheduledPlanResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateScheduledPlanResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateScheduledPlanResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_scheduled_plan(
         self,
@@ -987,10 +1083,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.CreateSessionClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateSessionClusterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateSessionClusterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_session_cluster_with_options_async(
         self,
@@ -1028,10 +1130,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.CreateSessionClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateSessionClusterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateSessionClusterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_session_cluster(
         self,
@@ -1099,10 +1207,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.CreateUdfArtifactResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateUdfArtifactResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateUdfArtifactResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_udf_artifact_with_options_async(
         self,
@@ -1140,10 +1254,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.CreateUdfArtifactResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateUdfArtifactResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateUdfArtifactResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_udf_artifact(
         self,
@@ -1211,10 +1331,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.CreateVariableResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateVariableResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateVariableResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_variable_with_options_async(
         self,
@@ -1252,10 +1378,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.CreateVariableResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateVariableResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.CreateVariableResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_variable(
         self,
@@ -1320,10 +1452,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.DeleteCustomConnectorResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteCustomConnectorResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteCustomConnectorResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_custom_connector_with_options_async(
         self,
@@ -1358,10 +1496,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.DeleteCustomConnectorResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteCustomConnectorResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteCustomConnectorResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_custom_connector(
         self,
@@ -1424,10 +1568,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.DeleteDeploymentResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteDeploymentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteDeploymentResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_deployment_with_options_async(
         self,
@@ -1462,10 +1612,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.DeleteDeploymentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteDeploymentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteDeploymentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_deployment(
         self,
@@ -1528,10 +1684,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.DeleteDeploymentDraftResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteDeploymentDraftResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteDeploymentDraftResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_deployment_draft_with_options_async(
         self,
@@ -1566,10 +1728,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.DeleteDeploymentDraftResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteDeploymentDraftResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteDeploymentDraftResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_deployment_draft(
         self,
@@ -1632,10 +1800,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.DeleteDeploymentTargetResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteDeploymentTargetResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteDeploymentTargetResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_deployment_target_with_options_async(
         self,
@@ -1670,10 +1844,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.DeleteDeploymentTargetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteDeploymentTargetResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteDeploymentTargetResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_deployment_target(
         self,
@@ -1736,10 +1916,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.DeleteFolderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteFolderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteFolderResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_folder_with_options_async(
         self,
@@ -1774,10 +1960,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.DeleteFolderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteFolderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteFolderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_folder(
         self,
@@ -1840,10 +2032,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.DeleteJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_job_with_options_async(
         self,
@@ -1878,10 +2076,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.DeleteJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_job(
         self,
@@ -1944,10 +2148,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.DeleteMemberResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteMemberResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteMemberResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_member_with_options_async(
         self,
@@ -1982,10 +2192,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.DeleteMemberResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteMemberResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteMemberResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_member(
         self,
@@ -2048,10 +2264,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.DeleteSavepointResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteSavepointResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteSavepointResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_savepoint_with_options_async(
         self,
@@ -2086,10 +2308,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.DeleteSavepointResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteSavepointResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteSavepointResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_savepoint(
         self,
@@ -2152,10 +2380,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.DeleteScheduledPlanResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteScheduledPlanResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteScheduledPlanResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_scheduled_plan_with_options_async(
         self,
@@ -2190,10 +2424,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.DeleteScheduledPlanResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteScheduledPlanResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteScheduledPlanResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_scheduled_plan(
         self,
@@ -2256,10 +2496,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.DeleteSessionClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteSessionClusterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteSessionClusterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_session_cluster_with_options_async(
         self,
@@ -2294,10 +2540,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.DeleteSessionClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteSessionClusterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteSessionClusterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_session_cluster(
         self,
@@ -2360,10 +2612,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.DeleteUdfArtifactResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteUdfArtifactResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteUdfArtifactResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_udf_artifact_with_options_async(
         self,
@@ -2398,10 +2656,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.DeleteUdfArtifactResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteUdfArtifactResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteUdfArtifactResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_udf_artifact(
         self,
@@ -2473,10 +2737,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.DeleteUdfFunctionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteUdfFunctionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteUdfFunctionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_udf_function_with_options_async(
         self,
@@ -2520,10 +2790,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.DeleteUdfFunctionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteUdfFunctionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteUdfFunctionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_udf_function(
         self,
@@ -2590,10 +2866,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.DeleteVariableResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteVariableResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteVariableResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_variable_with_options_async(
         self,
@@ -2628,10 +2910,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.DeleteVariableResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteVariableResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.DeleteVariableResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_variable(
         self,
@@ -2697,10 +2985,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.DeployDeploymentDraftAsyncResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.DeployDeploymentDraftAsyncResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.DeployDeploymentDraftAsyncResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def deploy_deployment_draft_async_with_options_async(
         self,
@@ -2738,10 +3032,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.DeployDeploymentDraftAsyncResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.DeployDeploymentDraftAsyncResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.DeployDeploymentDraftAsyncResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def deploy_deployment_draft_async(
         self,
@@ -2809,10 +3109,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ExecuteSqlStatementResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ExecuteSqlStatementResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ExecuteSqlStatementResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def execute_sql_statement_with_options_async(
         self,
@@ -2850,10 +3156,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ExecuteSqlStatementResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ExecuteSqlStatementResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ExecuteSqlStatementResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def execute_sql_statement(
         self,
@@ -2929,10 +3241,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.FlinkApiProxyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.FlinkApiProxyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.FlinkApiProxyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def flink_api_proxy_with_options_async(
         self,
@@ -2978,10 +3296,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.FlinkApiProxyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.FlinkApiProxyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.FlinkApiProxyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def flink_api_proxy(
         self,
@@ -3048,10 +3372,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GenerateResourcePlanWithFlinkConfAsyncResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GenerateResourcePlanWithFlinkConfAsyncResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GenerateResourcePlanWithFlinkConfAsyncResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def generate_resource_plan_with_flink_conf_async_with_options_async(
         self,
@@ -3090,10 +3420,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GenerateResourcePlanWithFlinkConfAsyncResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GenerateResourcePlanWithFlinkConfAsyncResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GenerateResourcePlanWithFlinkConfAsyncResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def generate_resource_plan_with_flink_conf_async(
         self,
@@ -3166,10 +3502,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetAppliedScheduledPlanResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetAppliedScheduledPlanResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetAppliedScheduledPlanResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_applied_scheduled_plan_with_options_async(
         self,
@@ -3210,10 +3552,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetAppliedScheduledPlanResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetAppliedScheduledPlanResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetAppliedScheduledPlanResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_applied_scheduled_plan(
         self,
@@ -3284,10 +3632,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetCatalogsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetCatalogsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetCatalogsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_catalogs_with_options_async(
         self,
@@ -3328,10 +3682,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetCatalogsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetCatalogsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetCatalogsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_catalogs(
         self,
@@ -3403,10 +3763,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetDatabasesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetDatabasesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetDatabasesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_databases_with_options_async(
         self,
@@ -3448,10 +3814,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetDatabasesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetDatabasesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetDatabasesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_databases(
         self,
@@ -3518,10 +3890,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetDeployDeploymentDraftResultResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetDeployDeploymentDraftResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetDeployDeploymentDraftResultResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_deploy_deployment_draft_result_with_options_async(
         self,
@@ -3556,10 +3934,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetDeployDeploymentDraftResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetDeployDeploymentDraftResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetDeployDeploymentDraftResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_deploy_deployment_draft_result(
         self,
@@ -3622,10 +4006,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetDeploymentResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetDeploymentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetDeploymentResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_deployment_with_options_async(
         self,
@@ -3660,10 +4050,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetDeploymentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetDeploymentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetDeploymentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_deployment(
         self,
@@ -3726,10 +4122,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetDeploymentDraftResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetDeploymentDraftResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetDeploymentDraftResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_deployment_draft_with_options_async(
         self,
@@ -3764,10 +4166,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetDeploymentDraftResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetDeploymentDraftResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetDeploymentDraftResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_deployment_draft(
         self,
@@ -3836,10 +4244,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetDeploymentDraftLockResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetDeploymentDraftLockResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetDeploymentDraftLockResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_deployment_draft_lock_with_options_async(
         self,
@@ -3880,10 +4294,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetDeploymentDraftLockResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetDeploymentDraftLockResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetDeploymentDraftLockResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_deployment_draft_lock(
         self,
@@ -3958,10 +4378,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetEventsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetEventsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetEventsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_events_with_options_async(
         self,
@@ -4006,10 +4432,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetEventsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetEventsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetEventsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_events(
         self,
@@ -4080,10 +4512,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetFolderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetFolderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetFolderResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_folder_with_options_async(
         self,
@@ -4124,10 +4562,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetFolderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetFolderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetFolderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_folder(
         self,
@@ -4192,10 +4636,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetGenerateResourcePlanResultResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetGenerateResourcePlanResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetGenerateResourcePlanResultResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_generate_resource_plan_result_with_options_async(
         self,
@@ -4230,10 +4680,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetGenerateResourcePlanResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetGenerateResourcePlanResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetGenerateResourcePlanResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_generate_resource_plan_result(
         self,
@@ -4296,10 +4752,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetHotUpdateJobResultResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetHotUpdateJobResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetHotUpdateJobResultResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_hot_update_job_result_with_options_async(
         self,
@@ -4334,10 +4796,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetHotUpdateJobResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetHotUpdateJobResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetHotUpdateJobResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_hot_update_job_result(
         self,
@@ -4400,10 +4868,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_job_with_options_async(
         self,
@@ -4438,10 +4912,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_job(
         self,
@@ -4470,6 +4950,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = ververica_20220718_models.GetJobHeaders()
         return await self.get_job_with_options_async(namespace, job_id, headers, runtime)
+
+    def get_job_diagnosis_with_options(
+        self,
+        namespace: str,
+        deployment_id: str,
+        job_id: str,
+        headers: ververica_20220718_models.GetJobDiagnosisHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.GetJobDiagnosisResponse:
+        """
+        @summary 获取作业诊断信息
+        
+        @param headers: GetJobDiagnosisHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobDiagnosisResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='GetJobDiagnosis',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/deployments/{OpenApiUtilClient.get_encode_param(deployment_id)}/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/job-diagnoses/lite',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetJobDiagnosisResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetJobDiagnosisResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_job_diagnosis_with_options_async(
+        self,
+        namespace: str,
+        deployment_id: str,
+        job_id: str,
+        headers: ververica_20220718_models.GetJobDiagnosisHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.GetJobDiagnosisResponse:
+        """
+        @summary 获取作业诊断信息
+        
+        @param headers: GetJobDiagnosisHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobDiagnosisResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='GetJobDiagnosis',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/deployments/{OpenApiUtilClient.get_encode_param(deployment_id)}/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/job-diagnoses/lite',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetJobDiagnosisResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetJobDiagnosisResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_job_diagnosis(
+        self,
+        namespace: str,
+        deployment_id: str,
+        job_id: str,
+    ) -> ververica_20220718_models.GetJobDiagnosisResponse:
+        """
+        @summary 获取作业诊断信息
+        
+        @return: GetJobDiagnosisResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.GetJobDiagnosisHeaders()
+        return self.get_job_diagnosis_with_options(namespace, deployment_id, job_id, headers, runtime)
+
+    async def get_job_diagnosis_async(
+        self,
+        namespace: str,
+        deployment_id: str,
+        job_id: str,
+    ) -> ververica_20220718_models.GetJobDiagnosisResponse:
+        """
+        @summary 获取作业诊断信息
+        
+        @return: GetJobDiagnosisResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.GetJobDiagnosisHeaders()
+        return await self.get_job_diagnosis_with_options_async(namespace, deployment_id, job_id, headers, runtime)
 
     def get_latest_job_start_log_with_options(
         self,
@@ -4504,10 +5104,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetLatestJobStartLogResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetLatestJobStartLogResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetLatestJobStartLogResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_latest_job_start_log_with_options_async(
         self,
@@ -4542,10 +5148,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetLatestJobStartLogResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetLatestJobStartLogResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetLatestJobStartLogResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_latest_job_start_log(
         self,
@@ -4610,10 +5222,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetLineageInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetLineageInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetLineageInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_lineage_info_with_options_async(
         self,
@@ -4650,10 +5268,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetLineageInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetLineageInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetLineageInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_lineage_info(
         self,
@@ -4716,10 +5340,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetMemberResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetMemberResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetMemberResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_member_with_options_async(
         self,
@@ -4754,10 +5384,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetMemberResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetMemberResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetMemberResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_member(
         self,
@@ -4820,10 +5456,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetSavepointResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetSavepointResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetSavepointResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_savepoint_with_options_async(
         self,
@@ -4858,10 +5500,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetSavepointResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetSavepointResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetSavepointResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_savepoint(
         self,
@@ -4924,10 +5572,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetSessionClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetSessionClusterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetSessionClusterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_session_cluster_with_options_async(
         self,
@@ -4962,10 +5616,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetSessionClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetSessionClusterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetSessionClusterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_session_cluster(
         self,
@@ -5036,10 +5696,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetTablesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetTablesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetTablesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_tables_with_options_async(
         self,
@@ -5082,10 +5748,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetTablesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetTablesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetTablesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_tables(
         self,
@@ -5160,10 +5832,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetUdfArtifactsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetUdfArtifactsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetUdfArtifactsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_udf_artifacts_with_options_async(
         self,
@@ -5204,10 +5882,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.GetUdfArtifactsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.GetUdfArtifactsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.GetUdfArtifactsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_udf_artifacts(
         self,
@@ -5272,10 +5956,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.HotUpdateJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.HotUpdateJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.HotUpdateJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def hot_update_job_with_options_async(
         self,
@@ -5310,10 +6000,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.HotUpdateJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.HotUpdateJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.HotUpdateJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def hot_update_job(
         self,
@@ -5375,10 +6071,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ListCustomConnectorsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ListCustomConnectorsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ListCustomConnectorsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_custom_connectors_with_options_async(
         self,
@@ -5412,10 +6114,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ListCustomConnectorsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ListCustomConnectorsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ListCustomConnectorsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_custom_connectors(
         self,
@@ -5484,10 +6192,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ListDeploymentDraftsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ListDeploymentDraftsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ListDeploymentDraftsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_deployment_drafts_with_options_async(
         self,
@@ -5530,10 +6244,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ListDeploymentDraftsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ListDeploymentDraftsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ListDeploymentDraftsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_deployment_drafts(
         self,
@@ -5606,10 +6326,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ListDeploymentTargetsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ListDeploymentTargetsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ListDeploymentTargetsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_deployment_targets_with_options_async(
         self,
@@ -5652,10 +6378,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ListDeploymentTargetsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ListDeploymentTargetsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ListDeploymentTargetsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_deployment_targets(
         self,
@@ -5744,10 +6476,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ListDeploymentsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ListDeploymentsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ListDeploymentsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_deployments_with_options_async(
         self,
@@ -5806,10 +6544,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ListDeploymentsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ListDeploymentsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ListDeploymentsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_deployments(
         self,
@@ -5882,10 +6626,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ListEditableNamespaceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ListEditableNamespaceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ListEditableNamespaceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_editable_namespace_with_options_async(
         self,
@@ -5928,10 +6678,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ListEditableNamespaceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ListEditableNamespaceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ListEditableNamespaceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_editable_namespace(
         self,
@@ -5992,10 +6748,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ListEngineVersionMetadataResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ListEngineVersionMetadataResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ListEngineVersionMetadataResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_engine_version_metadata_with_options_async(
         self,
@@ -6028,10 +6790,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ListEngineVersionMetadataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ListEngineVersionMetadataResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ListEngineVersionMetadataResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_engine_version_metadata(self) -> ververica_20220718_models.ListEngineVersionMetadataResponse:
         """
@@ -6098,10 +6866,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ListJobsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ListJobsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ListJobsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_jobs_with_options_async(
         self,
@@ -6148,10 +6922,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ListJobsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ListJobsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ListJobsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_jobs(
         self,
@@ -6224,10 +7004,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ListMembersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ListMembersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ListMembersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_members_with_options_async(
         self,
@@ -6270,10 +7056,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ListMembersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ListMembersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ListMembersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_members(
         self,
@@ -6350,10 +7142,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ListSavepointsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ListSavepointsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ListSavepointsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_savepoints_with_options_async(
         self,
@@ -6400,10 +7198,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ListSavepointsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ListSavepointsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ListSavepointsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_savepoints(
         self,
@@ -6478,10 +7282,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ListScheduledPlanResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ListScheduledPlanResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ListScheduledPlanResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_scheduled_plan_with_options_async(
         self,
@@ -6526,10 +7336,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ListScheduledPlanResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ListScheduledPlanResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ListScheduledPlanResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_scheduled_plan(
         self,
@@ -6602,10 +7418,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ListScheduledPlanExecutedHistoryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ListScheduledPlanExecutedHistoryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ListScheduledPlanExecutedHistoryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_scheduled_plan_executed_history_with_options_async(
         self,
@@ -6648,10 +7470,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ListScheduledPlanExecutedHistoryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ListScheduledPlanExecutedHistoryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ListScheduledPlanExecutedHistoryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_scheduled_plan_executed_history(
         self,
@@ -6715,10 +7543,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ListSessionClustersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ListSessionClustersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ListSessionClustersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_session_clusters_with_options_async(
         self,
@@ -6752,10 +7586,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ListSessionClustersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ListSessionClustersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ListSessionClustersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_session_clusters(
         self,
@@ -6824,10 +7664,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ListVariablesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ListVariablesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ListVariablesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_variables_with_options_async(
         self,
@@ -6870,10 +7716,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ListVariablesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ListVariablesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ListVariablesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_variables(
         self,
@@ -6944,10 +7796,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.RegisterCustomConnectorResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.RegisterCustomConnectorResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.RegisterCustomConnectorResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def register_custom_connector_with_options_async(
         self,
@@ -6988,10 +7846,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.RegisterCustomConnectorResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.RegisterCustomConnectorResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.RegisterCustomConnectorResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def register_custom_connector(
         self,
@@ -7066,10 +7930,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.RegisterUdfFunctionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.RegisterUdfFunctionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.RegisterUdfFunctionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def register_udf_function_with_options_async(
         self,
@@ -7114,10 +7984,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.RegisterUdfFunctionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.RegisterUdfFunctionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.RegisterUdfFunctionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def register_udf_function(
         self,
@@ -7188,10 +8064,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.StartJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.StartJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.StartJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def start_job_with_options_async(
         self,
@@ -7232,10 +8114,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.StartJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.StartJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.StartJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def start_job(
         self,
@@ -7309,10 +8197,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.StartJobWithParamsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.StartJobWithParamsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.StartJobWithParamsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def start_job_with_params_with_options_async(
         self,
@@ -7350,10 +8244,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.StartJobWithParamsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.StartJobWithParamsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.StartJobWithParamsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def start_job_with_params(
         self,
@@ -7418,10 +8318,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.StartSessionClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.StartSessionClusterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.StartSessionClusterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def start_session_cluster_with_options_async(
         self,
@@ -7456,10 +8362,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.StartSessionClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.StartSessionClusterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.StartSessionClusterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def start_session_cluster(
         self,
@@ -7522,10 +8434,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.StopApplyScheduledPlanResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.StopApplyScheduledPlanResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.StopApplyScheduledPlanResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def stop_apply_scheduled_plan_with_options_async(
         self,
@@ -7560,10 +8478,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.StopApplyScheduledPlanResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.StopApplyScheduledPlanResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.StopApplyScheduledPlanResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def stop_apply_scheduled_plan(
         self,
@@ -7630,10 +8554,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.StopJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.StopJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.StopJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def stop_job_with_options_async(
         self,
@@ -7672,10 +8602,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.StopJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.StopJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.StopJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def stop_job(
         self,
@@ -7742,10 +8678,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.StopSessionClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.StopSessionClusterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.StopSessionClusterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def stop_session_cluster_with_options_async(
         self,
@@ -7780,10 +8722,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.StopSessionClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.StopSessionClusterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.StopSessionClusterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def stop_session_cluster(
         self,
@@ -7850,10 +8798,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.UpdateDeploymentResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateDeploymentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateDeploymentResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_deployment_with_options_async(
         self,
@@ -7892,10 +8846,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.UpdateDeploymentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateDeploymentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateDeploymentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_deployment(
         self,
@@ -7966,10 +8926,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.UpdateDeploymentDraftResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateDeploymentDraftResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateDeploymentDraftResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_deployment_draft_with_options_async(
         self,
@@ -8008,10 +8974,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.UpdateDeploymentDraftResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateDeploymentDraftResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateDeploymentDraftResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_deployment_draft(
         self,
@@ -8082,10 +9054,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.UpdateDeploymentTargetResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateDeploymentTargetResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateDeploymentTargetResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_deployment_target_with_options_async(
         self,
@@ -8124,10 +9102,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.UpdateDeploymentTargetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateDeploymentTargetResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateDeploymentTargetResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_deployment_target(
         self,
@@ -8198,10 +9182,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.UpdateFolderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateFolderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateFolderResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_folder_with_options_async(
         self,
@@ -8240,10 +9230,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.UpdateFolderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateFolderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateFolderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_folder(
         self,
@@ -8313,10 +9309,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.UpdateMemberResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateMemberResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateMemberResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_member_with_options_async(
         self,
@@ -8354,10 +9356,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.UpdateMemberResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateMemberResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateMemberResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_member(
         self,
@@ -8426,10 +9434,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.UpdateScheduledPlanResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateScheduledPlanResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateScheduledPlanResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_scheduled_plan_with_options_async(
         self,
@@ -8468,10 +9482,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.UpdateScheduledPlanResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateScheduledPlanResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateScheduledPlanResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_scheduled_plan(
         self,
@@ -8542,10 +9562,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.UpdateSessionClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateSessionClusterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateSessionClusterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_session_cluster_with_options_async(
         self,
@@ -8584,10 +9610,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.UpdateSessionClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateSessionClusterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateSessionClusterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_session_cluster(
         self,
@@ -8658,10 +9690,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.UpdateUdfArtifactResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateUdfArtifactResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateUdfArtifactResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_udf_artifact_with_options_async(
         self,
@@ -8700,10 +9738,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.UpdateUdfArtifactResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateUdfArtifactResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateUdfArtifactResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_udf_artifact(
         self,
@@ -8736,6 +9780,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = ververica_20220718_models.UpdateUdfArtifactHeaders()
         return await self.update_udf_artifact_with_options_async(namespace, udf_artifact_name, request, headers, runtime)
+
+    def update_variable_with_options(
+        self,
+        namespace: str,
+        name: str,
+        request: ververica_20220718_models.UpdateVariableRequest,
+        headers: ververica_20220718_models.UpdateVariableHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.UpdateVariableResponse:
+        """
+        @summary 更新秘钥
+        
+        @param request: UpdateVariableRequest
+        @param headers: UpdateVariableHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateVariableResponse
+        """
+        UtilClient.validate_model(request)
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateVariable',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/variables/{OpenApiUtilClient.get_encode_param(name)}',
+            method='PATCH',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateVariableResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateVariableResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_variable_with_options_async(
+        self,
+        namespace: str,
+        name: str,
+        request: ververica_20220718_models.UpdateVariableRequest,
+        headers: ververica_20220718_models.UpdateVariableHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.UpdateVariableResponse:
+        """
+        @summary 更新秘钥
+        
+        @param request: UpdateVariableRequest
+        @param headers: UpdateVariableHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateVariableResponse
+        """
+        UtilClient.validate_model(request)
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateVariable',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/variables/{OpenApiUtilClient.get_encode_param(name)}',
+            method='PATCH',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateVariableResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.UpdateVariableResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_variable(
+        self,
+        namespace: str,
+        name: str,
+        request: ververica_20220718_models.UpdateVariableRequest,
+    ) -> ververica_20220718_models.UpdateVariableResponse:
+        """
+        @summary 更新秘钥
+        
+        @param request: UpdateVariableRequest
+        @return: UpdateVariableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.UpdateVariableHeaders()
+        return self.update_variable_with_options(namespace, name, request, headers, runtime)
+
+    async def update_variable_async(
+        self,
+        namespace: str,
+        name: str,
+        request: ververica_20220718_models.UpdateVariableRequest,
+    ) -> ververica_20220718_models.UpdateVariableResponse:
+        """
+        @summary 更新秘钥
+        
+        @param request: UpdateVariableRequest
+        @return: UpdateVariableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.UpdateVariableHeaders()
+        return await self.update_variable_with_options_async(namespace, name, request, headers, runtime)
 
     def validate_sql_statement_with_options(
         self,
@@ -8773,10 +9945,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ValidateSqlStatementResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ValidateSqlStatementResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ValidateSqlStatementResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def validate_sql_statement_with_options_async(
         self,
@@ -8814,10 +9992,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ververica_20220718_models.ValidateSqlStatementResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ververica_20220718_models.ValidateSqlStatementResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ververica_20220718_models.ValidateSqlStatementResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def validate_sql_statement(
         self,

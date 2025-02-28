@@ -2246,7 +2246,7 @@ class ErrorDetails(TeaModel):
 class Event(TeaModel):
     def __init__(
         self,
-        created_at: int = None,
+        created_at: str = None,
         deployment_id: str = None,
         event_id: str = None,
         event_name: str = None,
@@ -3090,6 +3090,208 @@ class Job(TeaModel):
             self.streaming_resource_setting = temp_model.from_map(m['streamingResourceSetting'])
         if m.get('userFlinkConf') is not None:
             self.user_flink_conf = m.get('userFlinkConf')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class JobDiagnosisSymptom(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+        recommendation: str = None,
+    ):
+        self.description = description
+        self.name = name
+        self.recommendation = recommendation
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.name is not None:
+            result['name'] = self.name
+        if self.recommendation is not None:
+            result['recommendation'] = self.recommendation
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('recommendation') is not None:
+            self.recommendation = m.get('recommendation')
+        return self
+
+
+class JobDiagnosisSymptoms(TeaModel):
+    def __init__(
+        self,
+        autopilot: JobDiagnosisSymptom = None,
+        others: List[JobDiagnosisSymptom] = None,
+        runtime: List[JobDiagnosisSymptom] = None,
+        startup: List[JobDiagnosisSymptom] = None,
+        state: List[JobDiagnosisSymptom] = None,
+        troubleshooting: List[JobDiagnosisSymptom] = None,
+    ):
+        self.autopilot = autopilot
+        self.others = others
+        self.runtime = runtime
+        self.startup = startup
+        self.state = state
+        self.troubleshooting = troubleshooting
+
+    def validate(self):
+        if self.autopilot:
+            self.autopilot.validate()
+        if self.others:
+            for k in self.others:
+                if k:
+                    k.validate()
+        if self.runtime:
+            for k in self.runtime:
+                if k:
+                    k.validate()
+        if self.startup:
+            for k in self.startup:
+                if k:
+                    k.validate()
+        if self.state:
+            for k in self.state:
+                if k:
+                    k.validate()
+        if self.troubleshooting:
+            for k in self.troubleshooting:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.autopilot is not None:
+            result['autopilot'] = self.autopilot.to_map()
+        result['others'] = []
+        if self.others is not None:
+            for k in self.others:
+                result['others'].append(k.to_map() if k else None)
+        result['runtime'] = []
+        if self.runtime is not None:
+            for k in self.runtime:
+                result['runtime'].append(k.to_map() if k else None)
+        result['startup'] = []
+        if self.startup is not None:
+            for k in self.startup:
+                result['startup'].append(k.to_map() if k else None)
+        result['state'] = []
+        if self.state is not None:
+            for k in self.state:
+                result['state'].append(k.to_map() if k else None)
+        result['troubleshooting'] = []
+        if self.troubleshooting is not None:
+            for k in self.troubleshooting:
+                result['troubleshooting'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('autopilot') is not None:
+            temp_model = JobDiagnosisSymptom()
+            self.autopilot = temp_model.from_map(m['autopilot'])
+        self.others = []
+        if m.get('others') is not None:
+            for k in m.get('others'):
+                temp_model = JobDiagnosisSymptom()
+                self.others.append(temp_model.from_map(k))
+        self.runtime = []
+        if m.get('runtime') is not None:
+            for k in m.get('runtime'):
+                temp_model = JobDiagnosisSymptom()
+                self.runtime.append(temp_model.from_map(k))
+        self.startup = []
+        if m.get('startup') is not None:
+            for k in m.get('startup'):
+                temp_model = JobDiagnosisSymptom()
+                self.startup.append(temp_model.from_map(k))
+        self.state = []
+        if m.get('state') is not None:
+            for k in m.get('state'):
+                temp_model = JobDiagnosisSymptom()
+                self.state.append(temp_model.from_map(k))
+        self.troubleshooting = []
+        if m.get('troubleshooting') is not None:
+            for k in m.get('troubleshooting'):
+                temp_model = JobDiagnosisSymptom()
+                self.troubleshooting.append(temp_model.from_map(k))
+        return self
+
+
+class JobDiagnosis(TeaModel):
+    def __init__(
+        self,
+        diagnose_id: str = None,
+        diagnose_time: int = None,
+        namespace: str = None,
+        risk_level: str = None,
+        symptoms: JobDiagnosisSymptoms = None,
+        workspace: str = None,
+    ):
+        self.diagnose_id = diagnose_id
+        self.diagnose_time = diagnose_time
+        self.namespace = namespace
+        self.risk_level = risk_level
+        self.symptoms = symptoms
+        self.workspace = workspace
+
+    def validate(self):
+        if self.symptoms:
+            self.symptoms.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.diagnose_id is not None:
+            result['diagnoseId'] = self.diagnose_id
+        if self.diagnose_time is not None:
+            result['diagnoseTime'] = self.diagnose_time
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        if self.risk_level is not None:
+            result['riskLevel'] = self.risk_level
+        if self.symptoms is not None:
+            result['symptoms'] = self.symptoms.to_map()
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('diagnoseId') is not None:
+            self.diagnose_id = m.get('diagnoseId')
+        if m.get('diagnoseTime') is not None:
+            self.diagnose_time = m.get('diagnoseTime')
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        if m.get('riskLevel') is not None:
+            self.risk_level = m.get('riskLevel')
+        if m.get('symptoms') is not None:
+            temp_model = JobDiagnosisSymptoms()
+            self.symptoms = temp_model.from_map(m['symptoms'])
         if m.get('workspace') is not None:
             self.workspace = m.get('workspace')
         return self
@@ -11136,6 +11338,7 @@ class GetJobHeaders(TeaModel):
 class GetJobResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         data: Job = None,
         error_code: str = None,
         error_message: str = None,
@@ -11143,6 +11346,7 @@ class GetJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # *   If the value of success was true, the details of the job was returned.
         # *   If the value of success was false, a null value was returned.
         self.data = data
@@ -11169,6 +11373,8 @@ class GetJobResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['accessDeniedDetail'] = self.access_denied_detail
         if self.data is not None:
             result['data'] = self.data.to_map()
         if self.error_code is not None:
@@ -11185,6 +11391,8 @@ class GetJobResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('accessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('accessDeniedDetail')
         if m.get('data') is not None:
             temp_model = Job()
             self.data = temp_model.from_map(m['data'])
@@ -11238,6 +11446,146 @@ class GetJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetJobDiagnosisHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        workspace: str = None,
+    ):
+        self.common_headers = common_headers
+        # This parameter is required.
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class GetJobDiagnosisResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        data: JobDiagnosis = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_code = http_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['accessDeniedDetail'] = self.access_denied_detail
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('accessDeniedDetail')
+        if m.get('data') is not None:
+            temp_model = JobDiagnosis()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetJobDiagnosisResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetJobDiagnosisResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetJobDiagnosisResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13739,6 +14087,7 @@ class ListJobsRequest(TeaModel):
 class ListJobsResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         data: List[Job] = None,
         error_code: str = None,
         error_message: str = None,
@@ -13749,6 +14098,7 @@ class ListJobsResponseBody(TeaModel):
         success: bool = None,
         total_size: int = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # *   If the value of success was true, all jobs that meet the condition were returned.
         # *   If the value of success was false, a null value was returned.
         self.data = data
@@ -13783,6 +14133,8 @@ class ListJobsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['accessDeniedDetail'] = self.access_denied_detail
         result['data'] = []
         if self.data is not None:
             for k in self.data:
@@ -13807,6 +14159,8 @@ class ListJobsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('accessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('accessDeniedDetail')
         self.data = []
         if m.get('data') is not None:
             for k in m.get('data'):
@@ -15479,6 +15833,7 @@ class StartJobRequest(TeaModel):
 class StartJobResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         data: Job = None,
         error_code: str = None,
         error_message: str = None,
@@ -15486,6 +15841,7 @@ class StartJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # *   If the value of success was true, the job that you created was returned.
         # *   If the value of success was false, a null value was returned.
         self.data = data
@@ -15512,6 +15868,8 @@ class StartJobResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['accessDeniedDetail'] = self.access_denied_detail
         if self.data is not None:
             result['data'] = self.data.to_map()
         if self.error_code is not None:
@@ -15528,6 +15886,8 @@ class StartJobResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('accessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('accessDeniedDetail')
         if m.get('data') is not None:
             temp_model = Job()
             self.data = temp_model.from_map(m['data'])
@@ -15654,6 +16014,7 @@ class StartJobWithParamsRequest(TeaModel):
 class StartJobWithParamsResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         data: Job = None,
         error_code: str = None,
         error_message: str = None,
@@ -15661,6 +16022,7 @@ class StartJobWithParamsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The details of the job of the deployment returned.
         self.data = data
         # If the value of success was false, an error code was returned. If the value of success was true, a null value was returned.
@@ -15684,6 +16046,8 @@ class StartJobWithParamsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['accessDeniedDetail'] = self.access_denied_detail
         if self.data is not None:
             result['data'] = self.data.to_map()
         if self.error_code is not None:
@@ -15700,6 +16064,8 @@ class StartJobWithParamsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('accessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('accessDeniedDetail')
         if m.get('data') is not None:
             temp_model = Job()
             self.data = temp_model.from_map(m['data'])
@@ -16088,6 +16454,7 @@ class StopJobRequest(TeaModel):
 class StopJobResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         data: Job = None,
         error_code: str = None,
         error_message: str = None,
@@ -16095,6 +16462,7 @@ class StopJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # *   If the value of success was true, the job that you stopped was returned.
         # *   If the value of success was false, a null value was returned.
         self.data = data
@@ -16121,6 +16489,8 @@ class StopJobResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['accessDeniedDetail'] = self.access_denied_detail
         if self.data is not None:
             result['data'] = self.data.to_map()
         if self.error_code is not None:
@@ -16137,6 +16507,8 @@ class StopJobResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('accessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('accessDeniedDetail')
         if m.get('data') is not None:
             temp_model = Job()
             self.data = temp_model.from_map(m['data'])
@@ -17660,6 +18032,176 @@ class UpdateUdfArtifactResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateUdfArtifactResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateVariableHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        workspace: str = None,
+    ):
+        self.common_headers = common_headers
+        # This parameter is required.
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class UpdateVariableRequest(TeaModel):
+    def __init__(
+        self,
+        body: Variable = None,
+    ):
+        # This parameter is required.
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = Variable()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateVariableResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        data: Variable = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_code = http_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['accessDeniedDetail'] = self.access_denied_detail
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('accessDeniedDetail')
+        if m.get('data') is not None:
+            temp_model = Variable()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class UpdateVariableResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateVariableResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateVariableResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

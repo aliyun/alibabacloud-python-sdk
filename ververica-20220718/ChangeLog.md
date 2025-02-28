@@ -1,3 +1,13 @@
+2025-02-28 Version: 1.7.0
+- Support API GetJobDiagnosis.
+- Support API UpdateVariable.
+- Update API GetJob: update response param.
+- Update API ListJobs: update response param.
+- Update API StartJob: update response param.
+- Update API StartJobWithParams: update response param.
+- Update API StopJob: update response param.
+
+
 2024-12-05 Version: 1.6.2
 - Generated python 2022-07-18 for ververica.
 
