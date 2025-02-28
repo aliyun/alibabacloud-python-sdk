@@ -1,3 +1,11 @@
+2025-02-28 Version: 2.32.0
+- Support API CreateMessage.
+- Support API CreateRun.
+- Support API CreateThread.
+- Support API ListMessage.
+- Support API RetrieveRun.
+
+
 2025-02-20 Version: 2.31.0
 - Support API InvokeAssistant.
 - Support API InvokeSkill.

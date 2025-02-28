@@ -4881,6 +4881,152 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.CreateMeetingRoomGroupHeaders()
         return await self.create_meeting_room_group_with_options_async(request, headers, runtime)
 
+    def create_message_with_options(
+        self,
+        request: aliding_20230426_models.CreateMessageRequest,
+        headers: aliding_20230426_models.CreateMessageHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CreateMessageResponse:
+        """
+        @summary 创建消息
+        
+        @param request: CreateMessageRequest
+        @param headers: CreateMessageHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMessageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.assistant_id):
+            body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.metadata):
+            body['metadata'] = request.metadata
+        if not UtilClient.is_unset(request.original_assistant_id):
+            body['originalAssistantId'] = request.original_assistant_id
+        if not UtilClient.is_unset(request.role):
+            body['role'] = request.role
+        if not UtilClient.is_unset(request.thread_id):
+            body['threadId'] = request.thread_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_id):
+            real_headers['accountId'] = UtilClient.to_jsonstring(headers.account_id)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMessage',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/ai/v1/assistant/createMessage',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aliding_20230426_models.CreateMessageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aliding_20230426_models.CreateMessageResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_message_with_options_async(
+        self,
+        request: aliding_20230426_models.CreateMessageRequest,
+        headers: aliding_20230426_models.CreateMessageHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CreateMessageResponse:
+        """
+        @summary 创建消息
+        
+        @param request: CreateMessageRequest
+        @param headers: CreateMessageHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMessageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.assistant_id):
+            body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.metadata):
+            body['metadata'] = request.metadata
+        if not UtilClient.is_unset(request.original_assistant_id):
+            body['originalAssistantId'] = request.original_assistant_id
+        if not UtilClient.is_unset(request.role):
+            body['role'] = request.role
+        if not UtilClient.is_unset(request.thread_id):
+            body['threadId'] = request.thread_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_id):
+            real_headers['accountId'] = UtilClient.to_jsonstring(headers.account_id)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMessage',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/ai/v1/assistant/createMessage',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aliding_20230426_models.CreateMessageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aliding_20230426_models.CreateMessageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_message(
+        self,
+        request: aliding_20230426_models.CreateMessageRequest,
+    ) -> aliding_20230426_models.CreateMessageResponse:
+        """
+        @summary 创建消息
+        
+        @param request: CreateMessageRequest
+        @return: CreateMessageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CreateMessageHeaders()
+        return self.create_message_with_options(request, headers, runtime)
+
+    async def create_message_async(
+        self,
+        request: aliding_20230426_models.CreateMessageRequest,
+    ) -> aliding_20230426_models.CreateMessageResponse:
+        """
+        @summary 创建消息
+        
+        @param request: CreateMessageRequest
+        @return: CreateMessageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CreateMessageHeaders()
+        return await self.create_message_with_options_async(request, headers, runtime)
+
     def create_or_update_form_data_with_options(
         self,
         request: aliding_20230426_models.CreateOrUpdateFormDataRequest,
@@ -5568,6 +5714,152 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateReportHeaders()
         return await self.create_report_with_options_async(request, headers, runtime)
+
+    def create_run_with_options(
+        self,
+        request: aliding_20230426_models.CreateRunRequest,
+        headers: aliding_20230426_models.CreateRunHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CreateRunResponse:
+        """
+        @summary 创建运行
+        
+        @param request: CreateRunRequest
+        @param headers: CreateRunHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRunResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.assistant_id):
+            body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.instructions):
+            body['instructions'] = request.instructions
+        if not UtilClient.is_unset(request.metadata):
+            body['metadata'] = request.metadata
+        if not UtilClient.is_unset(request.original_assistant_id):
+            body['originalAssistantId'] = request.original_assistant_id
+        if not UtilClient.is_unset(request.stream):
+            body['stream'] = request.stream
+        if not UtilClient.is_unset(request.thread_id):
+            body['threadId'] = request.thread_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_id):
+            real_headers['accountId'] = UtilClient.to_jsonstring(headers.account_id)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateRun',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/ai/v1/assistant/createRun',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aliding_20230426_models.CreateRunResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aliding_20230426_models.CreateRunResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_run_with_options_async(
+        self,
+        request: aliding_20230426_models.CreateRunRequest,
+        headers: aliding_20230426_models.CreateRunHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CreateRunResponse:
+        """
+        @summary 创建运行
+        
+        @param request: CreateRunRequest
+        @param headers: CreateRunHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRunResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.assistant_id):
+            body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.instructions):
+            body['instructions'] = request.instructions
+        if not UtilClient.is_unset(request.metadata):
+            body['metadata'] = request.metadata
+        if not UtilClient.is_unset(request.original_assistant_id):
+            body['originalAssistantId'] = request.original_assistant_id
+        if not UtilClient.is_unset(request.stream):
+            body['stream'] = request.stream
+        if not UtilClient.is_unset(request.thread_id):
+            body['threadId'] = request.thread_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_id):
+            real_headers['accountId'] = UtilClient.to_jsonstring(headers.account_id)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateRun',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/ai/v1/assistant/createRun',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aliding_20230426_models.CreateRunResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aliding_20230426_models.CreateRunResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_run(
+        self,
+        request: aliding_20230426_models.CreateRunRequest,
+    ) -> aliding_20230426_models.CreateRunResponse:
+        """
+        @summary 创建运行
+        
+        @param request: CreateRunRequest
+        @return: CreateRunResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CreateRunHeaders()
+        return self.create_run_with_options(request, headers, runtime)
+
+    async def create_run_async(
+        self,
+        request: aliding_20230426_models.CreateRunRequest,
+    ) -> aliding_20230426_models.CreateRunResponse:
+        """
+        @summary 创建运行
+        
+        @param request: CreateRunRequest
+        @return: CreateRunResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CreateRunHeaders()
+        return await self.create_run_with_options_async(request, headers, runtime)
 
     def create_scenegroup_with_options(
         self,
@@ -6580,6 +6872,140 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateSubscribedCalendarHeaders()
         return await self.create_subscribed_calendar_with_options_async(request, headers, runtime)
+
+    def create_thread_with_options(
+        self,
+        request: aliding_20230426_models.CreateThreadRequest,
+        headers: aliding_20230426_models.CreateThreadHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CreateThreadResponse:
+        """
+        @summary 创建线程
+        
+        @param request: CreateThreadRequest
+        @param headers: CreateThreadHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateThreadResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.assistant_id):
+            body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.metadata):
+            body['metadata'] = request.metadata
+        if not UtilClient.is_unset(request.original_assistant_id):
+            body['originalAssistantId'] = request.original_assistant_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_id):
+            real_headers['accountId'] = UtilClient.to_jsonstring(headers.account_id)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateThread',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/ai/v1/assistant/createThread',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aliding_20230426_models.CreateThreadResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aliding_20230426_models.CreateThreadResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_thread_with_options_async(
+        self,
+        request: aliding_20230426_models.CreateThreadRequest,
+        headers: aliding_20230426_models.CreateThreadHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CreateThreadResponse:
+        """
+        @summary 创建线程
+        
+        @param request: CreateThreadRequest
+        @param headers: CreateThreadHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateThreadResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.assistant_id):
+            body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.metadata):
+            body['metadata'] = request.metadata
+        if not UtilClient.is_unset(request.original_assistant_id):
+            body['originalAssistantId'] = request.original_assistant_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_id):
+            real_headers['accountId'] = UtilClient.to_jsonstring(headers.account_id)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateThread',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/ai/v1/assistant/createThread',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aliding_20230426_models.CreateThreadResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aliding_20230426_models.CreateThreadResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_thread(
+        self,
+        request: aliding_20230426_models.CreateThreadRequest,
+    ) -> aliding_20230426_models.CreateThreadResponse:
+        """
+        @summary 创建线程
+        
+        @param request: CreateThreadRequest
+        @return: CreateThreadResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CreateThreadHeaders()
+        return self.create_thread_with_options(request, headers, runtime)
+
+    async def create_thread_async(
+        self,
+        request: aliding_20230426_models.CreateThreadRequest,
+    ) -> aliding_20230426_models.CreateThreadResponse:
+        """
+        @summary 创建线程
+        
+        @param request: CreateThreadRequest
+        @return: CreateThreadResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CreateThreadHeaders()
+        return await self.create_thread_with_options_async(request, headers, runtime)
 
     def create_ticket_with_options(
         self,
@@ -21851,6 +22277,152 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.ListFormRemarksHeaders()
         return await self.list_form_remarks_with_options_async(request, headers, runtime)
 
+    def list_message_with_options(
+        self,
+        request: aliding_20230426_models.ListMessageRequest,
+        headers: aliding_20230426_models.ListMessageHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.ListMessageResponse:
+        """
+        @summary 查询消息
+        
+        @param request: ListMessageRequest
+        @param headers: ListMessageHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMessageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.assistant_id):
+            body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.limit):
+            body['limit'] = request.limit
+        if not UtilClient.is_unset(request.order):
+            body['order'] = request.order
+        if not UtilClient.is_unset(request.original_assistantid):
+            body['originalAssistantid'] = request.original_assistantid
+        if not UtilClient.is_unset(request.run_id):
+            body['runId'] = request.run_id
+        if not UtilClient.is_unset(request.thread_id):
+            body['threadId'] = request.thread_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_id):
+            real_headers['accountId'] = UtilClient.to_jsonstring(headers.account_id)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListMessage',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/ai/v1/assistant/listMessage',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aliding_20230426_models.ListMessageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aliding_20230426_models.ListMessageResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_message_with_options_async(
+        self,
+        request: aliding_20230426_models.ListMessageRequest,
+        headers: aliding_20230426_models.ListMessageHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.ListMessageResponse:
+        """
+        @summary 查询消息
+        
+        @param request: ListMessageRequest
+        @param headers: ListMessageHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMessageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.assistant_id):
+            body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.limit):
+            body['limit'] = request.limit
+        if not UtilClient.is_unset(request.order):
+            body['order'] = request.order
+        if not UtilClient.is_unset(request.original_assistantid):
+            body['originalAssistantid'] = request.original_assistantid
+        if not UtilClient.is_unset(request.run_id):
+            body['runId'] = request.run_id
+        if not UtilClient.is_unset(request.thread_id):
+            body['threadId'] = request.thread_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_id):
+            real_headers['accountId'] = UtilClient.to_jsonstring(headers.account_id)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListMessage',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/ai/v1/assistant/listMessage',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aliding_20230426_models.ListMessageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aliding_20230426_models.ListMessageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_message(
+        self,
+        request: aliding_20230426_models.ListMessageRequest,
+    ) -> aliding_20230426_models.ListMessageResponse:
+        """
+        @summary 查询消息
+        
+        @param request: ListMessageRequest
+        @return: ListMessageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.ListMessageHeaders()
+        return self.list_message_with_options(request, headers, runtime)
+
+    async def list_message_async(
+        self,
+        request: aliding_20230426_models.ListMessageRequest,
+    ) -> aliding_20230426_models.ListMessageResponse:
+        """
+        @summary 查询消息
+        
+        @param request: ListMessageRequest
+        @return: ListMessageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.ListMessageHeaders()
+        return await self.list_message_with_options_async(request, headers, runtime)
+
     def list_multi_dim_table_records_with_options(
         self,
         tmp_req: aliding_20230426_models.ListMultiDimTableRecordsRequest,
@@ -28172,6 +28744,144 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.RespondEventHeaders()
         return await self.respond_event_with_options_async(request, headers, runtime)
+
+    def retrieve_run_with_options(
+        self,
+        request: aliding_20230426_models.RetrieveRunRequest,
+        headers: aliding_20230426_models.RetrieveRunHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.RetrieveRunResponse:
+        """
+        @summary 查询运行
+        
+        @param request: RetrieveRunRequest
+        @param headers: RetrieveRunHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RetrieveRunResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.assistant_id):
+            body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.original_assistant_id):
+            body['originalAssistantId'] = request.original_assistant_id
+        if not UtilClient.is_unset(request.run_id):
+            body['runId'] = request.run_id
+        if not UtilClient.is_unset(request.thread_id):
+            body['threadId'] = request.thread_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_id):
+            real_headers['accountId'] = UtilClient.to_jsonstring(headers.account_id)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RetrieveRun',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/ai/v1/assistant/retrieveRun',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aliding_20230426_models.RetrieveRunResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aliding_20230426_models.RetrieveRunResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def retrieve_run_with_options_async(
+        self,
+        request: aliding_20230426_models.RetrieveRunRequest,
+        headers: aliding_20230426_models.RetrieveRunHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.RetrieveRunResponse:
+        """
+        @summary 查询运行
+        
+        @param request: RetrieveRunRequest
+        @param headers: RetrieveRunHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RetrieveRunResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.assistant_id):
+            body['assistantId'] = request.assistant_id
+        if not UtilClient.is_unset(request.original_assistant_id):
+            body['originalAssistantId'] = request.original_assistant_id
+        if not UtilClient.is_unset(request.run_id):
+            body['runId'] = request.run_id
+        if not UtilClient.is_unset(request.thread_id):
+            body['threadId'] = request.thread_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_id):
+            real_headers['accountId'] = UtilClient.to_jsonstring(headers.account_id)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RetrieveRun',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/ai/v1/assistant/retrieveRun',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aliding_20230426_models.RetrieveRunResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aliding_20230426_models.RetrieveRunResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def retrieve_run(
+        self,
+        request: aliding_20230426_models.RetrieveRunRequest,
+    ) -> aliding_20230426_models.RetrieveRunResponse:
+        """
+        @summary 查询运行
+        
+        @param request: RetrieveRunRequest
+        @return: RetrieveRunResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.RetrieveRunHeaders()
+        return self.retrieve_run_with_options(request, headers, runtime)
+
+    async def retrieve_run_async(
+        self,
+        request: aliding_20230426_models.RetrieveRunRequest,
+    ) -> aliding_20230426_models.RetrieveRunResponse:
+        """
+        @summary 查询运行
+        
+        @param request: RetrieveRunRequest
+        @return: RetrieveRunResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.RetrieveRunHeaders()
+        return await self.retrieve_run_with_options_async(request, headers, runtime)
 
     def save_content_with_options(
         self,
