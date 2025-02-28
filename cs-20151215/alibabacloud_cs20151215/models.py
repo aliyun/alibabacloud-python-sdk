@@ -7055,6 +7055,8 @@ class DeleteAlertContactRequest(TeaModel):
         self,
         contact_ids: List[int] = None,
     ):
+        # The list of alert contact IDs.
+        # 
         # This parameter is required.
         self.contact_ids = contact_ids
 
@@ -7083,6 +7085,8 @@ class DeleteAlertContactShrinkRequest(TeaModel):
         self,
         contact_ids_shrink: str = None,
     ):
+        # The list of alert contact IDs.
+        # 
         # This parameter is required.
         self.contact_ids_shrink = contact_ids_shrink
 
@@ -7113,8 +7117,14 @@ class DeleteAlertContactResponseBodyResult(TeaModel):
         msg: str = None,
         contact_id: str = None,
     ):
+        # The deletion status.
+        # 
+        # *   true: The alert contact was deleted.
+        # *   false: The alert contact failed to be deleted.
         self.status = status
+        # The error message returned if the call fails.
         self.msg = msg
+        # An alert contact ID.
         self.contact_id = contact_id
 
     def validate(self):
@@ -7226,6 +7236,8 @@ class DeleteAlertContactGroupRequest(TeaModel):
         self,
         contact_group_ids: List[int] = None,
     ):
+        # The list of alert contact group IDs.
+        # 
         # This parameter is required.
         self.contact_group_ids = contact_group_ids
 
@@ -7254,6 +7266,8 @@ class DeleteAlertContactGroupShrinkRequest(TeaModel):
         self,
         contact_group_ids_shrink: str = None,
     ):
+        # The list of alert contact group IDs.
+        # 
         # This parameter is required.
         self.contact_group_ids_shrink = contact_group_ids_shrink
 
@@ -7284,8 +7298,14 @@ class DeleteAlertContactGroupResponseBody(TeaModel):
         msg: str = None,
         contact_group_id: str = None,
     ):
+        # The deletion status.
+        # 
+        # *   true: The alert contact group was deleted.
+        # *   false: The alert contact group failed to be deleted.
         self.status = status
+        # The error message returned if the call fails.
         self.msg = msg
+        # The alert contact group ID.
         self.contact_group_id = contact_group_id
 
     def validate(self):
@@ -13839,7 +13859,7 @@ class DescribeClusterResourcesResponseBody(TeaModel):
         self.associated_object = associated_object
         # The deletion behavior of the resource when the cluster is deleted.
         self.delete_behavior = delete_behavior
-        # The resource creator. Valid values:
+        # The type of the resource creator. Valid values:
         # 
         # *   user: The resource is created by the user.
         # *   system: The resource is created by the ACK management system.
@@ -24399,7 +24419,9 @@ class ModifyClusterRequest(TeaModel):
         maintenance_window: MaintenanceWindow = None,
         operation_policy: ModifyClusterRequestOperationPolicy = None,
         resource_group_id: str = None,
+        security_group_id: str = None,
         system_events_logging: ModifyClusterRequestSystemEventsLogging = None,
+        timezone: str = None,
         vswitch_ids: List[str] = None,
     ):
         # The network access control list (ACL) of the SLB instance associated with the API server if the cluster is a registered cluster.
@@ -24453,8 +24475,10 @@ class ModifyClusterRequest(TeaModel):
         self.operation_policy = operation_policy
         # The resource group ID of the cluster.
         self.resource_group_id = resource_group_id
+        self.security_group_id = security_group_id
         # The storage configurations of system events.
         self.system_events_logging = system_events_logging
+        self.timezone = timezone
         # The vSwitches of the control plane. This parameter can be used to change the vSwitches of the control plane in an ACK managed cluster. Take note of the following items:
         # 
         # *   This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
@@ -24509,8 +24533,12 @@ class ModifyClusterRequest(TeaModel):
             result['operation_policy'] = self.operation_policy.to_map()
         if self.resource_group_id is not None:
             result['resource_group_id'] = self.resource_group_id
+        if self.security_group_id is not None:
+            result['security_group_id'] = self.security_group_id
         if self.system_events_logging is not None:
             result['system_events_logging'] = self.system_events_logging.to_map()
+        if self.timezone is not None:
+            result['timezone'] = self.timezone
         if self.vswitch_ids is not None:
             result['vswitch_ids'] = self.vswitch_ids
         return result
@@ -24549,9 +24577,13 @@ class ModifyClusterRequest(TeaModel):
             self.operation_policy = temp_model.from_map(m['operation_policy'])
         if m.get('resource_group_id') is not None:
             self.resource_group_id = m.get('resource_group_id')
+        if m.get('security_group_id') is not None:
+            self.security_group_id = m.get('security_group_id')
         if m.get('system_events_logging') is not None:
             temp_model = ModifyClusterRequestSystemEventsLogging()
             self.system_events_logging = temp_model.from_map(m['system_events_logging'])
+        if m.get('timezone') is not None:
+            self.timezone = m.get('timezone')
         if m.get('vswitch_ids') is not None:
             self.vswitch_ids = m.get('vswitch_ids')
         return self

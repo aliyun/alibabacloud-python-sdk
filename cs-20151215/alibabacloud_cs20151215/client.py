@@ -12121,8 +12121,12 @@ class Client(OpenApiClient):
             body['operation_policy'] = request.operation_policy
         if not UtilClient.is_unset(request.resource_group_id):
             body['resource_group_id'] = request.resource_group_id
+        if not UtilClient.is_unset(request.security_group_id):
+            body['security_group_id'] = request.security_group_id
         if not UtilClient.is_unset(request.system_events_logging):
             body['system_events_logging'] = request.system_events_logging
+        if not UtilClient.is_unset(request.timezone):
+            body['timezone'] = request.timezone
         if not UtilClient.is_unset(request.vswitch_ids):
             body['vswitch_ids'] = request.vswitch_ids
         req = open_api_models.OpenApiRequest(
@@ -12196,8 +12200,12 @@ class Client(OpenApiClient):
             body['operation_policy'] = request.operation_policy
         if not UtilClient.is_unset(request.resource_group_id):
             body['resource_group_id'] = request.resource_group_id
+        if not UtilClient.is_unset(request.security_group_id):
+            body['security_group_id'] = request.security_group_id
         if not UtilClient.is_unset(request.system_events_logging):
             body['system_events_logging'] = request.system_events_logging
+        if not UtilClient.is_unset(request.timezone):
+            body['timezone'] = request.timezone
         if not UtilClient.is_unset(request.vswitch_ids):
             body['vswitch_ids'] = request.vswitch_ids
         req = open_api_models.OpenApiRequest(

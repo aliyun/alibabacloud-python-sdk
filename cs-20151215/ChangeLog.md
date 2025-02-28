@@ -1,7 +1,8 @@
-2025-02-20 Version: 4.8.12
+2025-02-28 Version: 4.8.13
 - Update API DescribeClusterAttachScripts: update param body.
-- Update API ModifyNodePoolNodeConfig: update param body.
-- Update API RepairClusterNodePool: update param body.
+- Update API DescribeClusterUserKubeconfig: update response param.
+- Update API DescribeClusterV2UserKubeconfig: update response param.
+- Update API ModifyCluster: update param body.
 
 
 2025-01-10 Version: 4.8.8
