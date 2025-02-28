@@ -190,9 +190,6 @@ class EntElementVerifyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -218,6 +215,222 @@ class EntElementVerifyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = EntElementVerifyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EntElementVerifyV2Request(TeaModel):
+    def __init__(
+        self,
+        ent_name: str = None,
+        info_verify_type: str = None,
+        legal_person_cert_no: str = None,
+        legal_person_name: str = None,
+        license_no: str = None,
+        merchant_biz_id: str = None,
+        merchant_user_id: str = None,
+        scene_code: str = None,
+        user_authorization: str = None,
+    ):
+        # This parameter is required.
+        self.ent_name = ent_name
+        # This parameter is required.
+        self.info_verify_type = info_verify_type
+        self.legal_person_cert_no = legal_person_cert_no
+        self.legal_person_name = legal_person_name
+        # This parameter is required.
+        self.license_no = license_no
+        # This parameter is required.
+        self.merchant_biz_id = merchant_biz_id
+        # This parameter is required.
+        self.merchant_user_id = merchant_user_id
+        # This parameter is required.
+        self.scene_code = scene_code
+        # This parameter is required.
+        self.user_authorization = user_authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ent_name is not None:
+            result['EntName'] = self.ent_name
+        if self.info_verify_type is not None:
+            result['InfoVerifyType'] = self.info_verify_type
+        if self.legal_person_cert_no is not None:
+            result['LegalPersonCertNo'] = self.legal_person_cert_no
+        if self.legal_person_name is not None:
+            result['LegalPersonName'] = self.legal_person_name
+        if self.license_no is not None:
+            result['LicenseNo'] = self.license_no
+        if self.merchant_biz_id is not None:
+            result['MerchantBizId'] = self.merchant_biz_id
+        if self.merchant_user_id is not None:
+            result['MerchantUserId'] = self.merchant_user_id
+        if self.scene_code is not None:
+            result['SceneCode'] = self.scene_code
+        if self.user_authorization is not None:
+            result['UserAuthorization'] = self.user_authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EntName') is not None:
+            self.ent_name = m.get('EntName')
+        if m.get('InfoVerifyType') is not None:
+            self.info_verify_type = m.get('InfoVerifyType')
+        if m.get('LegalPersonCertNo') is not None:
+            self.legal_person_cert_no = m.get('LegalPersonCertNo')
+        if m.get('LegalPersonName') is not None:
+            self.legal_person_name = m.get('LegalPersonName')
+        if m.get('LicenseNo') is not None:
+            self.license_no = m.get('LicenseNo')
+        if m.get('MerchantBizId') is not None:
+            self.merchant_biz_id = m.get('MerchantBizId')
+        if m.get('MerchantUserId') is not None:
+            self.merchant_user_id = m.get('MerchantUserId')
+        if m.get('SceneCode') is not None:
+            self.scene_code = m.get('SceneCode')
+        if m.get('UserAuthorization') is not None:
+            self.user_authorization = m.get('UserAuthorization')
+        return self
+
+
+class EntElementVerifyV2ResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        open_time: str = None,
+        reason_detail: str = None,
+        status: str = None,
+    ):
+        self.biz_code = biz_code
+        self.open_time = open_time
+        self.reason_detail = reason_detail
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.open_time is not None:
+            result['OpenTime'] = self.open_time
+        if self.reason_detail is not None:
+            result['ReasonDetail'] = self.reason_detail
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('OpenTime') is not None:
+            self.open_time = m.get('OpenTime')
+        if m.get('ReasonDetail') is not None:
+            self.reason_detail = m.get('ReasonDetail')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class EntElementVerifyV2ResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result: EntElementVerifyV2ResponseBodyResult = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = EntElementVerifyV2ResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class EntElementVerifyV2Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EntElementVerifyV2ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EntElementVerifyV2ResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -460,9 +673,6 @@ class EntRiskQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -754,9 +964,6 @@ class EntVerifyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
