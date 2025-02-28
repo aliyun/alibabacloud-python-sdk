@@ -1,3 +1,8 @@
+2025-02-28 Version: 7.0.0
+- Update API GetApplication: update response param.
+- Update API ValuateTemplate: update param Variables.
+
+
 2024-11-29 Version: 6.0.4
 - Generated python 2021-09-31 for BPStudio.
 

@@ -73,10 +73,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.AppFailBackResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.AppFailBackResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.AppFailBackResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def app_fail_back_with_options_async(
         self,
@@ -110,10 +116,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.AppFailBackResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.AppFailBackResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.AppFailBackResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def app_fail_back(
         self,
@@ -179,10 +191,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.AppFailOverResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.AppFailOverResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.AppFailOverResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def app_fail_over_with_options_async(
         self,
@@ -218,10 +236,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.AppFailOverResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.AppFailOverResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.AppFailOverResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def app_fail_over(
         self,
@@ -287,10 +311,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.ChangeResourceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ChangeResourceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ChangeResourceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def change_resource_group_with_options_async(
         self,
@@ -326,10 +356,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.ChangeResourceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ChangeResourceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ChangeResourceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def change_resource_group(
         self,
@@ -409,10 +445,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.CreateApplicationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.CreateApplicationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.CreateApplicationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_application_with_options_async(
         self,
@@ -466,10 +508,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.CreateApplicationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.CreateApplicationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.CreateApplicationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_application(
         self,
@@ -531,10 +579,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.DeleteApplicationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.DeleteApplicationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.DeleteApplicationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_application_with_options_async(
         self,
@@ -570,10 +624,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.DeleteApplicationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.DeleteApplicationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.DeleteApplicationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_application(
         self,
@@ -641,10 +701,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.DeployApplicationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.DeployApplicationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.DeployApplicationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def deploy_application_with_options_async(
         self,
@@ -682,10 +748,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.DeployApplicationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.DeployApplicationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.DeployApplicationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def deploy_application(
         self,
@@ -757,10 +829,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.ExecuteOperationASyncResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ExecuteOperationASyncResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ExecuteOperationASyncResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def execute_operation_async_with_options_async(
         self,
@@ -806,10 +884,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.ExecuteOperationASyncResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ExecuteOperationASyncResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ExecuteOperationASyncResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def execute_operation_async(
         self,
@@ -881,10 +965,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.ExecuteOperationSyncResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ExecuteOperationSyncResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ExecuteOperationSyncResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def execute_operation_sync_with_options_async(
         self,
@@ -930,10 +1020,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.ExecuteOperationSyncResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ExecuteOperationSyncResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ExecuteOperationSyncResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def execute_operation_sync(
         self,
@@ -993,10 +1089,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.GetApplicationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetApplicationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetApplicationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_application_with_options_async(
         self,
@@ -1030,10 +1132,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.GetApplicationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetApplicationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetApplicationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_application(
         self,
@@ -1091,10 +1199,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.GetApplicationVariablesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetApplicationVariablesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetApplicationVariablesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_application_variables_with_options_async(
         self,
@@ -1126,10 +1240,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.GetApplicationVariablesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetApplicationVariablesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetApplicationVariablesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_application_variables(
         self,
@@ -1187,10 +1307,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.GetApplicationVariables4FailResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetApplicationVariables4FailResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetApplicationVariables4FailResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_application_variables_4fail_with_options_async(
         self,
@@ -1222,10 +1348,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.GetApplicationVariables4FailResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetApplicationVariables4FailResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetApplicationVariables4FailResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_application_variables_4fail(
         self,
@@ -1285,10 +1417,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.GetExecuteOperationResultResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetExecuteOperationResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetExecuteOperationResultResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_execute_operation_result_with_options_async(
         self,
@@ -1322,10 +1460,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.GetExecuteOperationResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetExecuteOperationResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetExecuteOperationResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_execute_operation_result(
         self,
@@ -1385,10 +1529,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.GetFoTaskStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetFoTaskStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetFoTaskStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_fo_task_status_with_options_async(
         self,
@@ -1422,10 +1572,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.GetFoTaskStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetFoTaskStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetFoTaskStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_fo_task_status(
         self,
@@ -1491,10 +1647,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.GetPotentialFailZonesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetPotentialFailZonesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetPotentialFailZonesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_potential_fail_zones_with_options_async(
         self,
@@ -1530,10 +1692,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.GetPotentialFailZonesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetPotentialFailZonesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetPotentialFailZonesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_potential_fail_zones(
         self,
@@ -1599,10 +1767,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.GetResource4ModifyRecordResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetResource4ModifyRecordResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetResource4ModifyRecordResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_resource_4modify_record_with_options_async(
         self,
@@ -1638,10 +1812,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.GetResource4ModifyRecordResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetResource4ModifyRecordResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetResource4ModifyRecordResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_resource_4modify_record(
         self,
@@ -1701,10 +1881,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.GetResult4QueryInstancePrice4ModifyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetResult4QueryInstancePrice4ModifyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetResult4QueryInstancePrice4ModifyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_result_4query_instance_price_4modify_with_options_async(
         self,
@@ -1738,10 +1924,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.GetResult4QueryInstancePrice4ModifyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetResult4QueryInstancePrice4ModifyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetResult4QueryInstancePrice4ModifyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_result_4query_instance_price_4modify(
         self,
@@ -1775,7 +1967,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.GetTemplateResponse:
         """
-        @summary Get template images and information about architecture diagrams.
+        @summary Gets template images and information about architecture diagrams.
         
         @param request: GetTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1803,10 +1995,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.GetTemplateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetTemplateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetTemplateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_template_with_options_async(
         self,
@@ -1814,7 +2012,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.GetTemplateResponse:
         """
-        @summary Get template images and information about architecture diagrams.
+        @summary Gets template images and information about architecture diagrams.
         
         @param request: GetTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1842,17 +2040,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.GetTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetTemplateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetTemplateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_template(
         self,
         request: bpstudio_20210931_models.GetTemplateRequest,
     ) -> bpstudio_20210931_models.GetTemplateResponse:
         """
-        @summary Get template images and information about architecture diagrams.
+        @summary Gets template images and information about architecture diagrams.
         
         @param request: GetTemplateRequest
         @return: GetTemplateResponse
@@ -1865,7 +2069,7 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.GetTemplateRequest,
     ) -> bpstudio_20210931_models.GetTemplateResponse:
         """
-        @summary Get template images and information about architecture diagrams.
+        @summary Gets template images and information about architecture diagrams.
         
         @param request: GetTemplateRequest
         @return: GetTemplateResponse
@@ -1908,10 +2112,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.GetTokenResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetTokenResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetTokenResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_token_with_options_async(
         self,
@@ -1948,10 +2158,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.GetTokenResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetTokenResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.GetTokenResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_token(
         self,
@@ -2021,10 +2237,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.InitAppFailOverResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.InitAppFailOverResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.InitAppFailOverResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def init_app_fail_over_with_options_async(
         self,
@@ -2058,10 +2280,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.InitAppFailOverResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.InitAppFailOverResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.InitAppFailOverResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def init_app_fail_over(
         self,
@@ -2137,10 +2365,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.ListApplicationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ListApplicationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ListApplicationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_application_with_options_async(
         self,
@@ -2186,10 +2420,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.ListApplicationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ListApplicationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ListApplicationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_application(
         self,
@@ -2222,9 +2462,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ListFoCreatedAppsResponse:
         """
-        @summary Queries disaster recovery plans.
+        @summary Queries the information about all disaster recovery plans of the current account.
         
-        @description You can call this operation to query all disaster recovery plans.
+        @description Queries the information about all disaster recovery plans of the current account.
         
         @param request: ListFoCreatedAppsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2242,19 +2482,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.ListFoCreatedAppsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ListFoCreatedAppsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ListFoCreatedAppsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_fo_created_apps_with_options_async(
         self,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ListFoCreatedAppsResponse:
         """
-        @summary Queries disaster recovery plans.
+        @summary Queries the information about all disaster recovery plans of the current account.
         
-        @description You can call this operation to query all disaster recovery plans.
+        @description Queries the information about all disaster recovery plans of the current account.
         
         @param request: ListFoCreatedAppsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2272,16 +2518,22 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.ListFoCreatedAppsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ListFoCreatedAppsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ListFoCreatedAppsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_fo_created_apps(self) -> bpstudio_20210931_models.ListFoCreatedAppsResponse:
         """
-        @summary Queries disaster recovery plans.
+        @summary Queries the information about all disaster recovery plans of the current account.
         
-        @description You can call this operation to query all disaster recovery plans.
+        @description Queries the information about all disaster recovery plans of the current account.
         
         @return: ListFoCreatedAppsResponse
         """
@@ -2290,9 +2542,9 @@ class Client(OpenApiClient):
 
     async def list_fo_created_apps_async(self) -> bpstudio_20210931_models.ListFoCreatedAppsResponse:
         """
-        @summary Queries disaster recovery plans.
+        @summary Queries the information about all disaster recovery plans of the current account.
         
-        @description You can call this operation to query all disaster recovery plans.
+        @description Queries the information about all disaster recovery plans of the current account.
         
         @return: ListFoCreatedAppsResponse
         """
@@ -2342,10 +2594,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.ListTagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ListTagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ListTagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_tag_resources_with_options_async(
         self,
@@ -2390,10 +2648,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.ListTagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ListTagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ListTagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_tag_resources(
         self,
@@ -2463,10 +2727,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.ListTemplateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ListTemplateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ListTemplateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_template_with_options_async(
         self,
@@ -2510,10 +2780,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.ListTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ListTemplateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ListTemplateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_template(
         self,
@@ -2577,10 +2853,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.ModifyApplicationSpecResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ModifyApplicationSpecResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ModifyApplicationSpecResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_application_spec_with_options_async(
         self,
@@ -2618,10 +2900,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.ModifyApplicationSpecResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ModifyApplicationSpecResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ModifyApplicationSpecResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_application_spec(
         self,
@@ -2687,10 +2975,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.QueryInstancePrice4ModifyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.QueryInstancePrice4ModifyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.QueryInstancePrice4ModifyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_instance_price_4modify_with_options_async(
         self,
@@ -2730,10 +3024,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.QueryInstancePrice4ModifyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.QueryInstancePrice4ModifyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.QueryInstancePrice4ModifyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_instance_price_4modify(
         self,
@@ -2801,10 +3101,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.QueryInstanceSpec4ModifyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.QueryInstanceSpec4ModifyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.QueryInstanceSpec4ModifyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_instance_spec_4modify_with_options_async(
         self,
@@ -2846,10 +3152,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.QueryInstanceSpec4ModifyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.QueryInstanceSpec4ModifyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.QueryInstanceSpec4ModifyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_instance_spec_4modify(
         self,
@@ -2909,10 +3221,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.ReConfigApplicationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ReConfigApplicationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ReConfigApplicationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def re_config_application_with_options_async(
         self,
@@ -2946,10 +3264,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.ReConfigApplicationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ReConfigApplicationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ReConfigApplicationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def re_config_application(
         self,
@@ -3011,10 +3335,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.ReleaseApplicationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ReleaseApplicationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ReleaseApplicationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def release_application_with_options_async(
         self,
@@ -3050,10 +3380,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.ReleaseApplicationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ReleaseApplicationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ReleaseApplicationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def release_application(
         self,
@@ -3117,10 +3453,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.ValidateApplicationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ValidateApplicationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ValidateApplicationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def validate_application_with_options_async(
         self,
@@ -3158,10 +3500,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.ValidateApplicationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ValidateApplicationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ValidateApplicationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def validate_application(
         self,
@@ -3223,10 +3571,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.ValuateApplicationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ValuateApplicationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ValuateApplicationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def valuate_application_with_options_async(
         self,
@@ -3262,10 +3616,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.ValuateApplicationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ValuateApplicationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ValuateApplicationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def valuate_application(
         self,
@@ -3339,10 +3699,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.ValuateTemplateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ValuateTemplateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ValuateTemplateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def valuate_template_with_options_async(
         self,
@@ -3390,10 +3756,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            bpstudio_20210931_models.ValuateTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ValuateTemplateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                bpstudio_20210931_models.ValuateTemplateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def valuate_template(
         self,

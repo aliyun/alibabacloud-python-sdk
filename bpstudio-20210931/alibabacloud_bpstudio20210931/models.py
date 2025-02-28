@@ -985,7 +985,7 @@ class ExecuteOperationASyncRequest(TeaModel):
         self.client_token = client_token
         # This operation type is the operation type of modifying the product, some operation types are generic, and some are used alone. The following is an example of ECS deployment:
         # - The name of the ECS: rename
-        # - Specificationof ecs: modifyInstanceType
+        # - Specification of ecs: modifyInstanceType
         # - Startup of ecs: modifyInstanceType
         # - Stop of ecs: modifyInstanceType
         # - Restart of ecs: modifyInstanceType
@@ -1080,7 +1080,7 @@ class ExecuteOperationASyncShrinkRequest(TeaModel):
         self.client_token = client_token
         # This operation type is the operation type of modifying the product, some operation types are generic, and some are used alone. The following is an example of ECS deployment:
         # - The name of the ECS: rename
-        # - Specificationof ecs: modifyInstanceType
+        # - Specification of ecs: modifyInstanceType
         # - Startup of ecs: modifyInstanceType
         # - Stop of ecs: modifyInstanceType
         # - Restart of ecs: modifyInstanceType
@@ -1147,7 +1147,7 @@ class ExecuteOperationASyncResponseBody(TeaModel):
     ):
         # Result code, 200 for success; Other representatives fail.
         self.code = code
-        # The ID of the operation.
+        # The operation ID. You can call the GetExecuteOperationResult operation to asynchronously query the result of an operation. The ID expires after one hour.
         self.data = data
         # Error message
         self.message = message
@@ -1488,7 +1488,7 @@ class GetApplicationRequest(TeaModel):
         # 
         # This parameter is required.
         self.application_id = application_id
-        # Queries the basic information, verification results, billing results, and deployment results of an application.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -1582,6 +1582,86 @@ class GetApplicationResponseBodyDataChecklist(TeaModel):
             self.result = m.get('Result')
         if m.get('Specification') is not None:
             self.specification = m.get('Specification')
+        return self
+
+
+class GetApplicationResponseBodyDataComplianceListRules(TeaModel):
+    def __init__(
+        self,
+        rule_detail: str = None,
+        rule_id: str = None,
+    ):
+        self.rule_detail = rule_detail
+        self.rule_id = rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rule_detail is not None:
+            result['ruleDetail'] = self.rule_detail
+        if self.rule_id is not None:
+            result['ruleId'] = self.rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ruleDetail') is not None:
+            self.rule_detail = m.get('ruleDetail')
+        if m.get('ruleId') is not None:
+            self.rule_id = m.get('ruleId')
+        return self
+
+
+class GetApplicationResponseBodyDataComplianceList(TeaModel):
+    def __init__(
+        self,
+        resource_code: str = None,
+        resource_name: str = None,
+        rules: List[GetApplicationResponseBodyDataComplianceListRules] = None,
+    ):
+        self.resource_code = resource_code
+        self.resource_name = resource_name
+        self.rules = rules
+
+    def validate(self):
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_code is not None:
+            result['ResourceCode'] = self.resource_code
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceCode') is not None:
+            self.resource_code = m.get('ResourceCode')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = GetApplicationResponseBodyDataComplianceListRules()
+                self.rules.append(temp_model.from_map(k))
         return self
 
 
@@ -1794,6 +1874,7 @@ class GetApplicationResponseBodyData(TeaModel):
         self,
         application_id: str = None,
         checklist: List[GetApplicationResponseBodyDataChecklist] = None,
+        compliance_list: List[GetApplicationResponseBodyDataComplianceList] = None,
         create_time: str = None,
         deploy_percent: float = None,
         description: str = None,
@@ -1810,6 +1891,7 @@ class GetApplicationResponseBodyData(TeaModel):
         self.application_id = application_id
         # The resource tag.
         self.checklist = checklist
+        self.compliance_list = compliance_list
         # The time when the app was created
         self.create_time = create_time
         self.deploy_percent = deploy_percent
@@ -1837,6 +1919,10 @@ class GetApplicationResponseBodyData(TeaModel):
             for k in self.checklist:
                 if k:
                     k.validate()
+        if self.compliance_list:
+            for k in self.compliance_list:
+                if k:
+                    k.validate()
         if self.price_list:
             for k in self.price_list:
                 if k:
@@ -1858,6 +1944,10 @@ class GetApplicationResponseBodyData(TeaModel):
         if self.checklist is not None:
             for k in self.checklist:
                 result['Checklist'].append(k.to_map() if k else None)
+        result['ComplianceList'] = []
+        if self.compliance_list is not None:
+            for k in self.compliance_list:
+                result['ComplianceList'].append(k.to_map() if k else None)
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.deploy_percent is not None:
@@ -1895,6 +1985,11 @@ class GetApplicationResponseBodyData(TeaModel):
             for k in m.get('Checklist'):
                 temp_model = GetApplicationResponseBodyDataChecklist()
                 self.checklist.append(temp_model.from_map(k))
+        self.compliance_list = []
+        if m.get('ComplianceList') is not None:
+            for k in m.get('ComplianceList'):
+                temp_model = GetApplicationResponseBodyDataComplianceList()
+                self.compliance_list.append(temp_model.from_map(k))
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('DeployPercent') is not None:
@@ -3373,7 +3468,7 @@ class GetTemplateResponseBodyData(TeaModel):
     ):
         # The time when the template was created.
         self.create_time = create_time
-        # Template DescriptionD
+        # Template Description
         self.description = description
         # The path to the template schema image file
         self.image_url = image_url
@@ -4095,11 +4190,11 @@ class ListFoCreatedAppsResponseBodyData(TeaModel):
         status: str = None,
         title: str = None,
     ):
-        # 应用ID
+        # The application ID.
         self.application_id = application_id
-        # The URL of an error report.
+        # The URL of the error report.
         self.report_url = report_url
-        # The status of the disaster recovery plan.
+        # The state of the application.
         self.status = status
         # The title.
         self.title = title
@@ -4144,11 +4239,11 @@ class ListFoCreatedAppsResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The response code.
+        # The status code.
         self.code = code
-        # The information about disaster recovery plans.
+        # The templates.
         self.data = data
-        # The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned.
+        # The returned error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -5559,7 +5654,7 @@ class ReleaseApplicationRequest(TeaModel):
         self.application_id = application_id
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
-        # The ID of the resource.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -5827,7 +5922,7 @@ class ValuateApplicationRequest(TeaModel):
         self.application_id = application_id
         # The ID of the resource group to which the application you want to query belongs.
         self.client_token = client_token
-        # The ID of the application.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -5998,7 +6093,7 @@ class ValuateTemplateRequest(TeaModel):
         instances: List[ValuateTemplateRequestInstances] = None,
         resource_group_id: str = None,
         template_id: str = None,
-        variables: Dict[str, str] = None,
+        variables: Dict[str, Any] = None,
     ):
         # The region ID.
         self.area_id = area_id
