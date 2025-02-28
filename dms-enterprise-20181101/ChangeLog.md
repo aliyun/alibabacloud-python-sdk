@@ -1,45 +1,8 @@
-2025-02-26 Version: 1.69.0
-- Support API UpdateTaskContentV2.
-- Update API CreateDifyInstance: add param GpuNodeSpec.
-- Update API CreateDifyInstance: add param ModelId.
-- Update API CreateDifyInstance: add param ModelOption.
-
-
-2025-02-14 Version: 1.68.0
-- Support API CreateDataLakeFunction.
-- Support API CreateDifyInstance.
-- Support API DeleteDataLakeFunction.
-- Support API DescribeDifyDefaultVpc.
-- Support API GetDataLakeFunction.
-- Support API ListDataLakeFunction.
-- Support API ListDataLakeFunctionName.
-- Support API UpdateDataLakeFunction.
-- Update API CreateDataImportOrder: update param Param.
-- Update API UpdateDataLakeTable: add param TableName.
-- Update API UpdateUser: add param UidString.
-
-
-2025-02-13 Version: 1.67.0
-- Support API CreateDifyInstance.
-- Support API DescribeDifyDefaultVpc.
-- Update API CreateDataImportOrder: update param Param.
-- Update API UpdateDataLakeTable: add param TableName.
-- Update API UpdateUser: add param UidString.
-
-
-2025-02-11 Version: 1.66.0
-- Support API CreateDifyInstance.
-- Support API DescribeDifyDefaultVpc.
-- Update API CreateDataImportOrder: update param Param.
-
-
-2025-01-20 Version: 1.65.2
-- Update API CreateDataCorrectOrder: update param Param.
-- Update API CreateFreeLockCorrectOrder: add param RealLoginUserUid.
-- Update API ModifyDataCorrectExecSQL: add param RealLoginUserUid.
-- Update API RestartDataCorrectSQLJob: add param RealLoginUserUid.
-- Update API RetryDataCorrectPreCheck: add param RealLoginUserUid.
-- Update API SkipDataCorrectRowCheck: add param RealLoginUserUid.
+2025-02-28 Version: 1.69.1
+- Update API UpdateTaskContentV2: add param RegionId.
+- Update API UpdateTaskContentV2: update param NodeContent.
+- Update API UpdateTaskContentV2: update param NodeId.
+- Update API UpdateTaskContentV2: update response param.
 
 
 2024-12-30 Version: 1.65.0

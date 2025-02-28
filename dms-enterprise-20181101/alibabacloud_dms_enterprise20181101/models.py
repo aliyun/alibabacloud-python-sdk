@@ -6552,11 +6552,15 @@ class CreateDataCorrectOrderRequestParamDbItemList(TeaModel):
         instance_id: int = None,
         logic: bool = None,
     ):
-        # The ID of the database. The database can be a physical database or a logical database.
+        # The database ID. The database can be a physical database or a logical database.
         # 
-        # *   To obtain the ID of a physical database, call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
-        # *   To obtain the ID of a logical database, call the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
+        # *   To query the ID of a physical database, call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
+        # *   To query the ID of a logical database, call the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
         self.db_id = db_id
+        # The instance ID. You can call the ListInstances or GetInstance operation to query the instance ID.
+        # 
+        # > 
+        # > The instance change feature is supported only by ApsaraDB RDS for MySQL instances, PolarDB for MySQL clusters, and AnalyticDB for MySQL clusters.
         self.instance_id = instance_id
         # Specifies whether the database is a logical database. Valid values:
         # 
@@ -6606,47 +6610,51 @@ class CreateDataCorrectOrderRequestParam(TeaModel):
         rollback_sql_type: str = None,
         sql_type: str = None,
     ):
-        # The key of the attachment that contains the SQL statements used to change data. You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to obtain the attachment key from the value of the AttachmentKey parameter.
+        # The key of the attachment that contains the SQL statements used to change data. You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to obtain the attachment key from the value of AttachmentKey.
         # 
-        # >  This parameter is required if you set the **SqlType** parameter to **ATTACHMENT**.
+        # >  This parameter is required if you set **SqlType** to **ATTACHMENT**.
         self.attachment_name = attachment_name
         # The reason for the data change.
         self.classify = classify
-        # The databases in which you want to change data.
+        # The databases whose data you want to change.
         # 
         # This parameter is required.
         self.db_item_list = db_item_list
-        # The estimated number of data rows to be affected by the data change.
+        # The estimated number of data rows that may be affected by the data change.
         # 
         # This parameter is required.
         self.estimate_affect_rows = estimate_affect_rows
-        # The execution mode of the ticket after the ticket is approved. Valid values:
+        # The mode in which the data change ticket is executed after the ticket is approved. Valid values:
         # 
-        # *   **COMMITOR**: The data change is performed by the user who submits the ticket.
-        # *   **AUTO**: The data change is automatically performed after the ticket is approved.
-        # *   **LAST_AUDITOR**: The data change is performed by the last approver of the ticket.
+        # *   **COMMITOR**: The ticket is executed by the user who submits the ticket.
+        # *   **AUTO**: The ticket is automatically executed after the ticket is approved.
+        # *   **LAST_AUDITOR**: The ticket is executed by the last approver of the ticket.
         self.exec_mode = exec_mode
-        # The SQL statements that you want to execute to change data.
+        # The SQL statements for data change.
         # 
-        # >  This parameter is required if you set the **SqlType** parameter to **TEXT**.
+        # > 
+        # 
+        # *   This parameter is required if you set **SqlType** to **TEXT**.
+        # 
+        # *   The size of the SQL statement cannot exceed 15 MB.
         self.exec_sql = exec_sql
-        # The key of the attachment that contains the SQL statements used to roll back the data change. You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to the attachment key from the value of the AttachmentKey parameter.
+        # The key of the attachment that contains the SQL statements used to roll back the data change. You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to obtain the attachment key from the value of AttachmentKey.
         # 
-        # >  This parameter is required if you set the **RollbackSqlType** parameter to **ATTACHMENT**.
+        # >  This parameter is required if you set **RollbackSqlType** to **ATTACHMENT**.
         self.rollback_attachment_name = rollback_attachment_name
-        # The SQL statements used to roll back the data change.
+        # The SQL statements for rolling back the data change.
         # 
-        # > This parameter is required if you set the **RollbackSqlType** parameter to **TEXT**.
+        # >  This parameter is required if you set **RollbackSqlType** to **TEXT**.
         self.rollback_sql = rollback_sql
         # The format of the SQL statements used to roll back the data change. Valid values:
         # 
-        # *   **TEXT**: text
-        # *   **ATTACHMENT**: attachment
+        # *   **TEXT**\
+        # *   **ATTACHMENT**\
         self.rollback_sql_type = rollback_sql_type
         # The format of the SQL statements used to change data. Valid values:
         # 
-        # *   **TEXT**: text
-        # *   **ATTACHMENT**: attachment
+        # *   **TEXT**\
+        # *   **ATTACHMENT**\
         # 
         # This parameter is required.
         self.sql_type = sql_type
@@ -6735,6 +6743,7 @@ class CreateDataCorrectOrderRequest(TeaModel):
         # 
         # This parameter is required.
         self.param = param
+        # The ID of the Alibaba Cloud account that is used to call the API operation.
         self.real_login_user_uid = real_login_user_uid
         # The stakeholders of the data change. All stakeholders can view the ticket details and assist in the approval process. Irrelevant users other than DMS administrators and database administrators (DBAs) are not allowed to view the ticket details.
         self.related_user_list = related_user_list
@@ -6803,6 +6812,7 @@ class CreateDataCorrectOrderShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.param_shrink = param_shrink
+        # The ID of the Alibaba Cloud account that is used to call the API operation.
         self.real_login_user_uid = real_login_user_uid
         # The stakeholders of the data change. All stakeholders can view the ticket details and assist in the approval process. Irrelevant users other than DMS administrators and database administrators (DBAs) are not allowed to view the ticket details.
         self.related_user_list_shrink = related_user_list_shrink
@@ -17945,6 +17955,7 @@ class ExecuteDataCorrectRequest(TeaModel):
         # 
         # This parameter is required.
         self.order_id = order_id
+        # The ID of the Alibaba Cloud account that is used to call the API operation.
         self.real_login_user_uid = real_login_user_uid
         # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
@@ -18006,6 +18017,7 @@ class ExecuteDataCorrectShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.order_id = order_id
+        # The ID of the Alibaba Cloud account that is used to call the API operation.
         self.real_login_user_uid = real_login_user_uid
         # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
@@ -18143,19 +18155,26 @@ class ExecuteDataExportRequest(TeaModel):
         real_login_user_uid: str = None,
         tid: int = None,
     ):
-        # The parameters that are required to perform the operation:
+        # The parameters that are required to perform the operation. Sample code:
         # 
         # ```json
         # {
-        #    "fileType": "CSV", // The format of the exported file.
-        #    "encoding": "" // The encoding format.
-        #  }
+        #   "mode" : "FAST",   // The mode in which data is exported. Default value: FAST. A value of NORMAL specifies that the export task can be terminated during the export.  "encoding" : "UTF8",  // The encoding format.  "startTime" : "2022-12-22 00:00:00",  // The point in time at which data export starts.  "transaction" : false,    // Specifies whether to enable transactions.  "fileType" : "SQL"    // The format of the exported file.}
         # ```
+        # 
+        # >  You can also set mode, encoding, and fileType to the following values:
+        # 
+        # *   mode: NORMAL
+        # 
+        # *   encoding: UTF8MB4, GB2312, ISO_8859_1, GBK, LATAIN1, or CP1252
+        # 
+        # *   fileType: XLSX, CSV, JSON, or TXT
         self.action_detail = action_detail
         # The ID of the ticket.
         # 
         # This parameter is required.
         self.order_id = order_id
+        # The ID of the Alibaba Cloud account that is used to call the API operation.
         self.real_login_user_uid = real_login_user_uid
         # The ID of the tenant.
         # 
@@ -18202,19 +18221,26 @@ class ExecuteDataExportShrinkRequest(TeaModel):
         real_login_user_uid: str = None,
         tid: int = None,
     ):
-        # The parameters that are required to perform the operation:
+        # The parameters that are required to perform the operation. Sample code:
         # 
         # ```json
         # {
-        #    "fileType": "CSV", // The format of the exported file.
-        #    "encoding": "" // The encoding format.
-        #  }
+        #   "mode" : "FAST",   // The mode in which data is exported. Default value: FAST. A value of NORMAL specifies that the export task can be terminated during the export.  "encoding" : "UTF8",  // The encoding format.  "startTime" : "2022-12-22 00:00:00",  // The point in time at which data export starts.  "transaction" : false,    // Specifies whether to enable transactions.  "fileType" : "SQL"    // The format of the exported file.}
         # ```
+        # 
+        # >  You can also set mode, encoding, and fileType to the following values:
+        # 
+        # *   mode: NORMAL
+        # 
+        # *   encoding: UTF8MB4, GB2312, ISO_8859_1, GBK, LATAIN1, or CP1252
+        # 
+        # *   fileType: XLSX, CSV, JSON, or TXT
         self.action_detail_shrink = action_detail_shrink
         # The ID of the ticket.
         # 
         # This parameter is required.
         self.order_id = order_id
+        # The ID of the Alibaba Cloud account that is used to call the API operation.
         self.real_login_user_uid = real_login_user_uid
         # The ID of the tenant.
         # 
@@ -23933,12 +23959,13 @@ class GetDataExportDownloadURLRequest(TeaModel):
         real_login_user_uid: str = None,
         tid: int = None,
     ):
-        # The ID of the ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to obtain the ticket ID.
+        # The ticket ID. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to query the ticket ID.
         # 
         # This parameter is required.
         self.order_id = order_id
+        # The ID of the Alibaba Cloud account that is used to call the API operation.
         self.real_login_user_uid = real_login_user_uid
-        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
+        # The tenant ID. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -23978,8 +24005,8 @@ class GetDataExportDownloadURLResponseBodyDownloadURLResult(TeaModel):
     ):
         # Indicates whether export results are available for download. Valid values:
         # 
-        # *   **true**: Export results are available for download.
-        # *   **false**: No export results are available for download.
+        # *   **true**\
+        # *   **false**\
         self.has_result = has_result
         # The message that indicates an exception.
         self.tip_message = tip_message
@@ -24023,18 +24050,18 @@ class GetDataExportDownloadURLResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details about the download URL of the file that records the export results for the ticket.
+        # The details of the download URL of the file that records the export results for the ticket.
         self.download_urlresult = download_urlresult
-        # The error code.
+        # The error code returned if the request failed.
         self.error_code = error_code
-        # The error message.
+        # The error message returned if the request failed.
         self.error_message = error_message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -24162,6 +24189,7 @@ class GetDataExportOrderDetailResponseBodyDataExportOrderDetailKeyInfo(TeaModel)
         job_status: str = None,
         pre_check_id: int = None,
     ):
+        # Export task ID.
         self.job_id = job_id
         # The state of the data export ticket. Valid values:
         # 
@@ -24297,7 +24325,7 @@ class GetDataExportOrderDetailResponseBodyDataExportOrderDetail(TeaModel):
         key_info: GetDataExportOrderDetailResponseBodyDataExportOrderDetailKeyInfo = None,
         order_detail: GetDataExportOrderDetailResponseBodyDataExportOrderDetailOrderDetail = None,
     ):
-        # The information about the ticket.
+        # The status information.
         self.key_info = key_info
         # The details of the ticket.
         self.order_detail = order_detail
@@ -63494,6 +63522,7 @@ class SubmitOrderApprovalRequest(TeaModel):
         # 
         # This parameter is required.
         self.order_id = order_id
+        # The ID of the Alibaba Cloud account that is used to call the API operation.
         self.real_login_user_uid = real_login_user_uid
         # The ID of the tenant.
         # 
@@ -66820,7 +66849,6 @@ class UpdateTaskContentV2Request(TeaModel):
         node_id: str = None,
     ):
         self.node_content = node_content
-        # This parameter is required.
         self.node_id = node_id
 
     def validate(self):
@@ -69067,6 +69095,7 @@ class UpdateUserRequest(TeaModel):
         # 
         # This parameter is required.
         self.uid = uid
+        # The UID of the String type. If you specify this parameter, the UID of the Long type is replaced.
         self.uid_string = uid_string
         # The nickname of the user.
         self.user_nick = user_nick

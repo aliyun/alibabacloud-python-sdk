@@ -12325,7 +12325,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataExportDownloadURLResponse:
         """
-        @summary Queries the download URL of the file that records the export results for a data export ticket in Data Management (DMS).
+        @summary Queries the download URL of export results for a data export ticket.
         
         @param request: GetDataExportDownloadURLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12370,7 +12370,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataExportDownloadURLResponse:
         """
-        @summary Queries the download URL of the file that records the export results for a data export ticket in Data Management (DMS).
+        @summary Queries the download URL of export results for a data export ticket.
         
         @param request: GetDataExportDownloadURLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12414,7 +12414,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataExportDownloadURLRequest,
     ) -> dms_enterprise_20181101_models.GetDataExportDownloadURLResponse:
         """
-        @summary Queries the download URL of the file that records the export results for a data export ticket in Data Management (DMS).
+        @summary Queries the download URL of export results for a data export ticket.
         
         @param request: GetDataExportDownloadURLRequest
         @return: GetDataExportDownloadURLResponse
@@ -12427,7 +12427,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataExportDownloadURLRequest,
     ) -> dms_enterprise_20181101_models.GetDataExportDownloadURLResponse:
         """
-        @summary Queries the download URL of the file that records the export results for a data export ticket in Data Management (DMS).
+        @summary Queries the download URL of export results for a data export ticket.
         
         @param request: GetDataExportDownloadURLRequest
         @return: GetDataExportDownloadURLResponse
@@ -33277,7 +33277,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskContentV2Response:
         """
-        @summary 接受大容量sql文件的更新节点内容API
+        @summary 大sql更新节点专用
         
         @param request: UpdateTaskContentV2Request
         @param runtime: runtime options for this request RuntimeOptions
@@ -33322,7 +33322,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskContentV2Response:
         """
-        @summary 接受大容量sql文件的更新节点内容API
+        @summary 大sql更新节点专用
         
         @param request: UpdateTaskContentV2Request
         @param runtime: runtime options for this request RuntimeOptions
@@ -33366,7 +33366,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskContentV2Request,
     ) -> dms_enterprise_20181101_models.UpdateTaskContentV2Response:
         """
-        @summary 接受大容量sql文件的更新节点内容API
+        @summary 大sql更新节点专用
         
         @param request: UpdateTaskContentV2Request
         @return: UpdateTaskContentV2Response
@@ -33379,7 +33379,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskContentV2Request,
     ) -> dms_enterprise_20181101_models.UpdateTaskContentV2Response:
         """
-        @summary 接受大容量sql文件的更新节点内容API
+        @summary 大sql更新节点专用
         
         @param request: UpdateTaskContentV2Request
         @return: UpdateTaskContentV2Response
