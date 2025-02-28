@@ -4009,6 +4009,7 @@ class CreateTransitRouteTableAggregationRequest(TeaModel):
         transit_route_table_aggregation_description: str = None,
         transit_route_table_aggregation_name: str = None,
         transit_route_table_aggregation_scope: str = None,
+        transit_route_table_aggregation_scope_list: List[str] = None,
         transit_route_table_id: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
@@ -4046,6 +4047,7 @@ class CreateTransitRouteTableAggregationRequest(TeaModel):
         # 
         # Set the value to **VPC**, which specified that the aggregate route is advertised to VPCs that are in associated forwarding relationship with a route table of the Enterprise Edition transit router and have route synchronization enabled.
         self.transit_route_table_aggregation_scope = transit_route_table_aggregation_scope
+        self.transit_route_table_aggregation_scope_list = transit_route_table_aggregation_scope_list
         # The ID of the route table of the Enterprise Edition transit router.
         # 
         # This parameter is required.
@@ -4080,6 +4082,8 @@ class CreateTransitRouteTableAggregationRequest(TeaModel):
             result['TransitRouteTableAggregationName'] = self.transit_route_table_aggregation_name
         if self.transit_route_table_aggregation_scope is not None:
             result['TransitRouteTableAggregationScope'] = self.transit_route_table_aggregation_scope
+        if self.transit_route_table_aggregation_scope_list is not None:
+            result['TransitRouteTableAggregationScopeList'] = self.transit_route_table_aggregation_scope_list
         if self.transit_route_table_id is not None:
             result['TransitRouteTableId'] = self.transit_route_table_id
         return result
@@ -4106,6 +4110,129 @@ class CreateTransitRouteTableAggregationRequest(TeaModel):
             self.transit_route_table_aggregation_name = m.get('TransitRouteTableAggregationName')
         if m.get('TransitRouteTableAggregationScope') is not None:
             self.transit_route_table_aggregation_scope = m.get('TransitRouteTableAggregationScope')
+        if m.get('TransitRouteTableAggregationScopeList') is not None:
+            self.transit_route_table_aggregation_scope_list = m.get('TransitRouteTableAggregationScopeList')
+        if m.get('TransitRouteTableId') is not None:
+            self.transit_route_table_id = m.get('TransitRouteTableId')
+        return self
+
+
+class CreateTransitRouteTableAggregationShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dry_run: bool = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        transit_route_table_aggregation_cidr: str = None,
+        transit_route_table_aggregation_description: str = None,
+        transit_route_table_aggregation_name: str = None,
+        transit_route_table_aggregation_scope: str = None,
+        transit_route_table_aggregation_scope_list_shrink: str = None,
+        transit_route_table_id: str = None,
+    ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # 
+        # >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
+        self.client_token = client_token
+        # Specifies whether to perform a dry run. Valid values:
+        # 
+        # *   **false** (default): performs a dry run and sends the request.
+        # *   **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        self.dry_run = dry_run
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # The destination CIDR block of the aggregate route.
+        # 
+        # >  The following CIDR blocks are not supported:
+        # >*   CIDR blocks that start with 0 or 100.64.
+        # >*   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
+        # 
+        # This parameter is required.
+        self.transit_route_table_aggregation_cidr = transit_route_table_aggregation_cidr
+        # The description of the aggregate route.
+        # 
+        # The description must be 0 to 256 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ _ -.
+        self.transit_route_table_aggregation_description = transit_route_table_aggregation_description
+        # The name of the aggregate route.
+        # 
+        # The name must be 1 to 128 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ _ -. You can also leave the name empty.
+        self.transit_route_table_aggregation_name = transit_route_table_aggregation_name
+        # The scope of networks that you want to advertise the aggregate route.
+        # 
+        # Set the value to **VPC**, which specified that the aggregate route is advertised to VPCs that are in associated forwarding relationship with a route table of the Enterprise Edition transit router and have route synchronization enabled.
+        self.transit_route_table_aggregation_scope = transit_route_table_aggregation_scope
+        self.transit_route_table_aggregation_scope_list_shrink = transit_route_table_aggregation_scope_list_shrink
+        # The ID of the route table of the Enterprise Edition transit router.
+        # 
+        # This parameter is required.
+        self.transit_route_table_id = transit_route_table_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.transit_route_table_aggregation_cidr is not None:
+            result['TransitRouteTableAggregationCidr'] = self.transit_route_table_aggregation_cidr
+        if self.transit_route_table_aggregation_description is not None:
+            result['TransitRouteTableAggregationDescription'] = self.transit_route_table_aggregation_description
+        if self.transit_route_table_aggregation_name is not None:
+            result['TransitRouteTableAggregationName'] = self.transit_route_table_aggregation_name
+        if self.transit_route_table_aggregation_scope is not None:
+            result['TransitRouteTableAggregationScope'] = self.transit_route_table_aggregation_scope
+        if self.transit_route_table_aggregation_scope_list_shrink is not None:
+            result['TransitRouteTableAggregationScopeList'] = self.transit_route_table_aggregation_scope_list_shrink
+        if self.transit_route_table_id is not None:
+            result['TransitRouteTableId'] = self.transit_route_table_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TransitRouteTableAggregationCidr') is not None:
+            self.transit_route_table_aggregation_cidr = m.get('TransitRouteTableAggregationCidr')
+        if m.get('TransitRouteTableAggregationDescription') is not None:
+            self.transit_route_table_aggregation_description = m.get('TransitRouteTableAggregationDescription')
+        if m.get('TransitRouteTableAggregationName') is not None:
+            self.transit_route_table_aggregation_name = m.get('TransitRouteTableAggregationName')
+        if m.get('TransitRouteTableAggregationScope') is not None:
+            self.transit_route_table_aggregation_scope = m.get('TransitRouteTableAggregationScope')
+        if m.get('TransitRouteTableAggregationScopeList') is not None:
+            self.transit_route_table_aggregation_scope_list_shrink = m.get('TransitRouteTableAggregationScopeList')
         if m.get('TransitRouteTableId') is not None:
             self.transit_route_table_id = m.get('TransitRouteTableId')
         return self
@@ -5158,6 +5285,13 @@ class CreateTransitRouterMulticastDomainRequestOptions(TeaModel):
         self,
         igmpv_2support: str = None,
     ):
+        # Indicates whether the IGMP feature is enabled for the multicast domain. Once enabled, hosts can dynamically join or leave multicast groups by using IGMP protocol. Valid values:
+        # 
+        # *   **enable**: enables IGMP.
+        # *   **disable**(default): disables IGMP.
+        # 
+        # > *   The IGMP feature is in beta testing. To use it, contact your account manager.
+        # > *   If you select this option, you cannot disable IPv6 after the VBR is created.
         self.igmpv_2support = igmpv_2support
 
     def validate(self):
@@ -5251,6 +5385,7 @@ class CreateTransitRouterMulticastDomainRequest(TeaModel):
         # *   **true**: performs a dry run. The system checks the required parameters, request format, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false** (default): performs a dry run and sends the request.
         self.dry_run = dry_run
+        # Multicast domain feature.
         self.options = options
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -19742,6 +19877,7 @@ class DescribeTransitRouteTableAggregationResponseBodyData(TeaModel):
         name: str = None,
         route_type: str = None,
         scope: str = None,
+        scope_list: List[str] = None,
         status: str = None,
         tr_route_table_id: str = None,
         transit_route_table_aggregation_cidr: str = None,
@@ -19758,6 +19894,7 @@ class DescribeTransitRouteTableAggregationResponseBodyData(TeaModel):
         # 
         # The valid value is **VPC**, which indicates that the aggregate route is advertised to all virtual private clouds (VPCs) that are in associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
         self.scope = scope
+        self.scope_list = scope_list
         # The status of the advertisement of the aggregate route. Valid values:
         # 
         # *   **AllConfigured**: The aggregate route is advertised to all VPCs.
@@ -19788,6 +19925,8 @@ class DescribeTransitRouteTableAggregationResponseBodyData(TeaModel):
             result['RouteType'] = self.route_type
         if self.scope is not None:
             result['Scope'] = self.scope
+        if self.scope_list is not None:
+            result['ScopeList'] = self.scope_list
         if self.status is not None:
             result['Status'] = self.status
         if self.tr_route_table_id is not None:
@@ -19806,6 +19945,8 @@ class DescribeTransitRouteTableAggregationResponseBodyData(TeaModel):
             self.route_type = m.get('RouteType')
         if m.get('Scope') is not None:
             self.scope = m.get('Scope')
+        if m.get('ScopeList') is not None:
+            self.scope_list = m.get('ScopeList')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('TrRouteTableId') is not None:
@@ -25534,7 +25675,7 @@ class ListTransitRouterMulticastDomainsRequest(TeaModel):
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the transit router.
+        # The ID of the region to which the transit router belongs.
         # 
         # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
         self.region_id = region_id
@@ -25626,6 +25767,7 @@ class ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains
         self,
         igmpv_2support: str = None,
     ):
+        # Indicates whether the IGMP feature is enabled for the multicast domain.
         self.igmpv_2support = igmpv_2support
 
     def validate(self):
@@ -25698,6 +25840,7 @@ class ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains
     ):
         # The CEN instance ID.
         self.cen_id = cen_id
+        # Multicast domain feature.
         self.options = options
         # The region ID of the transit router.
         # 
@@ -25801,7 +25944,7 @@ class ListTransitRouterMulticastDomainsResponseBody(TeaModel):
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
-        # The information about the multicast domain.
+        # The list of multicast domains.
         self.transit_router_multicast_domains = transit_router_multicast_domains
 
     def validate(self):
@@ -32026,6 +32169,264 @@ class ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse(TeaModel):
         return self
 
 
+class ModifyTransitRouteTableAggregationRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dry_run: bool = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        transit_route_table_aggregation_cidr: str = None,
+        transit_route_table_aggregation_description: str = None,
+        transit_route_table_aggregation_name: str = None,
+        transit_route_table_aggregation_scope: str = None,
+        transit_route_table_aggregation_scope_list: List[str] = None,
+        transit_route_table_id: str = None,
+    ):
+        self.client_token = client_token
+        self.dry_run = dry_run
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.transit_route_table_aggregation_cidr = transit_route_table_aggregation_cidr
+        self.transit_route_table_aggregation_description = transit_route_table_aggregation_description
+        self.transit_route_table_aggregation_name = transit_route_table_aggregation_name
+        self.transit_route_table_aggregation_scope = transit_route_table_aggregation_scope
+        self.transit_route_table_aggregation_scope_list = transit_route_table_aggregation_scope_list
+        # This parameter is required.
+        self.transit_route_table_id = transit_route_table_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.transit_route_table_aggregation_cidr is not None:
+            result['TransitRouteTableAggregationCidr'] = self.transit_route_table_aggregation_cidr
+        if self.transit_route_table_aggregation_description is not None:
+            result['TransitRouteTableAggregationDescription'] = self.transit_route_table_aggregation_description
+        if self.transit_route_table_aggregation_name is not None:
+            result['TransitRouteTableAggregationName'] = self.transit_route_table_aggregation_name
+        if self.transit_route_table_aggregation_scope is not None:
+            result['TransitRouteTableAggregationScope'] = self.transit_route_table_aggregation_scope
+        if self.transit_route_table_aggregation_scope_list is not None:
+            result['TransitRouteTableAggregationScopeList'] = self.transit_route_table_aggregation_scope_list
+        if self.transit_route_table_id is not None:
+            result['TransitRouteTableId'] = self.transit_route_table_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TransitRouteTableAggregationCidr') is not None:
+            self.transit_route_table_aggregation_cidr = m.get('TransitRouteTableAggregationCidr')
+        if m.get('TransitRouteTableAggregationDescription') is not None:
+            self.transit_route_table_aggregation_description = m.get('TransitRouteTableAggregationDescription')
+        if m.get('TransitRouteTableAggregationName') is not None:
+            self.transit_route_table_aggregation_name = m.get('TransitRouteTableAggregationName')
+        if m.get('TransitRouteTableAggregationScope') is not None:
+            self.transit_route_table_aggregation_scope = m.get('TransitRouteTableAggregationScope')
+        if m.get('TransitRouteTableAggregationScopeList') is not None:
+            self.transit_route_table_aggregation_scope_list = m.get('TransitRouteTableAggregationScopeList')
+        if m.get('TransitRouteTableId') is not None:
+            self.transit_route_table_id = m.get('TransitRouteTableId')
+        return self
+
+
+class ModifyTransitRouteTableAggregationShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dry_run: bool = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        transit_route_table_aggregation_cidr: str = None,
+        transit_route_table_aggregation_description: str = None,
+        transit_route_table_aggregation_name: str = None,
+        transit_route_table_aggregation_scope: str = None,
+        transit_route_table_aggregation_scope_list_shrink: str = None,
+        transit_route_table_id: str = None,
+    ):
+        self.client_token = client_token
+        self.dry_run = dry_run
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.transit_route_table_aggregation_cidr = transit_route_table_aggregation_cidr
+        self.transit_route_table_aggregation_description = transit_route_table_aggregation_description
+        self.transit_route_table_aggregation_name = transit_route_table_aggregation_name
+        self.transit_route_table_aggregation_scope = transit_route_table_aggregation_scope
+        self.transit_route_table_aggregation_scope_list_shrink = transit_route_table_aggregation_scope_list_shrink
+        # This parameter is required.
+        self.transit_route_table_id = transit_route_table_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.transit_route_table_aggregation_cidr is not None:
+            result['TransitRouteTableAggregationCidr'] = self.transit_route_table_aggregation_cidr
+        if self.transit_route_table_aggregation_description is not None:
+            result['TransitRouteTableAggregationDescription'] = self.transit_route_table_aggregation_description
+        if self.transit_route_table_aggregation_name is not None:
+            result['TransitRouteTableAggregationName'] = self.transit_route_table_aggregation_name
+        if self.transit_route_table_aggregation_scope is not None:
+            result['TransitRouteTableAggregationScope'] = self.transit_route_table_aggregation_scope
+        if self.transit_route_table_aggregation_scope_list_shrink is not None:
+            result['TransitRouteTableAggregationScopeList'] = self.transit_route_table_aggregation_scope_list_shrink
+        if self.transit_route_table_id is not None:
+            result['TransitRouteTableId'] = self.transit_route_table_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TransitRouteTableAggregationCidr') is not None:
+            self.transit_route_table_aggregation_cidr = m.get('TransitRouteTableAggregationCidr')
+        if m.get('TransitRouteTableAggregationDescription') is not None:
+            self.transit_route_table_aggregation_description = m.get('TransitRouteTableAggregationDescription')
+        if m.get('TransitRouteTableAggregationName') is not None:
+            self.transit_route_table_aggregation_name = m.get('TransitRouteTableAggregationName')
+        if m.get('TransitRouteTableAggregationScope') is not None:
+            self.transit_route_table_aggregation_scope = m.get('TransitRouteTableAggregationScope')
+        if m.get('TransitRouteTableAggregationScopeList') is not None:
+            self.transit_route_table_aggregation_scope_list_shrink = m.get('TransitRouteTableAggregationScopeList')
+        if m.get('TransitRouteTableId') is not None:
+            self.transit_route_table_id = m.get('TransitRouteTableId')
+        return self
+
+
+class ModifyTransitRouteTableAggregationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyTransitRouteTableAggregationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyTransitRouteTableAggregationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyTransitRouteTableAggregationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyTransitRouterCidrRequest(TeaModel):
     def __init__(
         self,
@@ -32235,6 +32636,10 @@ class ModifyTransitRouterMulticastDomainRequestOptions(TeaModel):
         self,
         igmpv_2support: str = None,
     ):
+        # Indicates whether the IGMP feature is enabled for the multicast domain. Once enabled, hosts can dynamically join or leave multicast groups by using the IGMP protocol. Default value: **enable**.
+        # 
+        # > *   The IGMP feature is in beta testing. To use it, contact your account manager.
+        # > *   The IGMP feature cannot be disabled after it is enabled.
         self.igmpv_2support = igmpv_2support
 
     def validate(self):
@@ -32280,6 +32685,7 @@ class ModifyTransitRouterMulticastDomainRequest(TeaModel):
         # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false** (default): performs a dry run and performs the actual request.
         self.dry_run = dry_run
+        # Multicast domain feature.
         self.options = options
         self.owner_account = owner_account
         self.owner_id = owner_id
