@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         request: dytnsapi_20230101_models.GetPhoneNumberIdentificationResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dytnsapi_20230101_models.GetPhoneNumberIdentificationResultResponse:
+        """
+        @summary Obtains the verification result of your phone number.
+        
+        @param request: GetPhoneNumberIdentificationResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPhoneNumberIdentificationResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth_code):
@@ -78,16 +85,29 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dytnsapi_20230101_models.GetPhoneNumberIdentificationResultResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dytnsapi_20230101_models.GetPhoneNumberIdentificationResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dytnsapi_20230101_models.GetPhoneNumberIdentificationResultResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_phone_number_identification_result_with_options_async(
         self,
         request: dytnsapi_20230101_models.GetPhoneNumberIdentificationResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dytnsapi_20230101_models.GetPhoneNumberIdentificationResultResponse:
+        """
+        @summary Obtains the verification result of your phone number.
+        
+        @param request: GetPhoneNumberIdentificationResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPhoneNumberIdentificationResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth_code):
@@ -120,15 +140,27 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dytnsapi_20230101_models.GetPhoneNumberIdentificationResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dytnsapi_20230101_models.GetPhoneNumberIdentificationResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dytnsapi_20230101_models.GetPhoneNumberIdentificationResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_phone_number_identification_result(
         self,
         request: dytnsapi_20230101_models.GetPhoneNumberIdentificationResultRequest,
     ) -> dytnsapi_20230101_models.GetPhoneNumberIdentificationResultResponse:
+        """
+        @summary Obtains the verification result of your phone number.
+        
+        @param request: GetPhoneNumberIdentificationResultRequest
+        @return: GetPhoneNumberIdentificationResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_phone_number_identification_result_with_options(request, runtime)
 
@@ -136,6 +168,12 @@ class Client(OpenApiClient):
         self,
         request: dytnsapi_20230101_models.GetPhoneNumberIdentificationResultRequest,
     ) -> dytnsapi_20230101_models.GetPhoneNumberIdentificationResultResponse:
+        """
+        @summary Obtains the verification result of your phone number.
+        
+        @param request: GetPhoneNumberIdentificationResultRequest
+        @return: GetPhoneNumberIdentificationResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_phone_number_identification_result_with_options_async(request, runtime)
 
@@ -144,6 +182,13 @@ class Client(OpenApiClient):
         request: dytnsapi_20230101_models.GetPhoneNumberIdentificationUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dytnsapi_20230101_models.GetPhoneNumberIdentificationUrlResponse:
+        """
+        @summary Obtains the verification URL of your phone number.
+        
+        @param request: GetPhoneNumberIdentificationUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPhoneNumberIdentificationUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth_code):
@@ -176,16 +221,29 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dytnsapi_20230101_models.GetPhoneNumberIdentificationUrlResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dytnsapi_20230101_models.GetPhoneNumberIdentificationUrlResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dytnsapi_20230101_models.GetPhoneNumberIdentificationUrlResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_phone_number_identification_url_with_options_async(
         self,
         request: dytnsapi_20230101_models.GetPhoneNumberIdentificationUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dytnsapi_20230101_models.GetPhoneNumberIdentificationUrlResponse:
+        """
+        @summary Obtains the verification URL of your phone number.
+        
+        @param request: GetPhoneNumberIdentificationUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPhoneNumberIdentificationUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth_code):
@@ -218,15 +276,27 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dytnsapi_20230101_models.GetPhoneNumberIdentificationUrlResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dytnsapi_20230101_models.GetPhoneNumberIdentificationUrlResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dytnsapi_20230101_models.GetPhoneNumberIdentificationUrlResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_phone_number_identification_url(
         self,
         request: dytnsapi_20230101_models.GetPhoneNumberIdentificationUrlRequest,
     ) -> dytnsapi_20230101_models.GetPhoneNumberIdentificationUrlResponse:
+        """
+        @summary Obtains the verification URL of your phone number.
+        
+        @param request: GetPhoneNumberIdentificationUrlRequest
+        @return: GetPhoneNumberIdentificationUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_phone_number_identification_url_with_options(request, runtime)
 
@@ -234,5 +304,11 @@ class Client(OpenApiClient):
         self,
         request: dytnsapi_20230101_models.GetPhoneNumberIdentificationUrlRequest,
     ) -> dytnsapi_20230101_models.GetPhoneNumberIdentificationUrlResponse:
+        """
+        @summary Obtains the verification URL of your phone number.
+        
+        @param request: GetPhoneNumberIdentificationUrlRequest
+        @return: GetPhoneNumberIdentificationUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_phone_number_identification_url_with_options_async(request, runtime)

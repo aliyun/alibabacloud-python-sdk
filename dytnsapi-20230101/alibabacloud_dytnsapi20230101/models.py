@@ -17,17 +17,27 @@ class GetPhoneNumberIdentificationResultRequest(TeaModel):
         session_payload: str = None,
     ):
         # The authorization code.
+        # 
+        # This parameter is required.
         self.auth_code = auth_code
         # The external ID.
+        # 
+        # This parameter is required.
         self.out_id = out_id
         self.owner_id = owner_id
         # The phone number of the subscriber. The phone number to be verified must be in the Mobile Station International Subscriber Directory Number (MSISDN) format.
+        # 
+        # This parameter is required.
         self.phone_number = phone_number
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The session ID.
+        # 
+        # This parameter is required.
         self.session_id = session_id
         # The session payload.
+        # 
+        # This parameter is required.
         self.session_payload = session_payload
 
     def validate(self):
@@ -216,13 +226,19 @@ class GetPhoneNumberIdentificationUrlRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The authorization code.
+        # 
+        # This parameter is required.
         self.auth_code = auth_code
-        # The IP address of the subscriber\"s phone.
+        # The IP address of the subscriber\\"s phone.
         self.ip = ip
         # The external ID.
+        # 
+        # This parameter is required.
         self.out_id = out_id
         self.owner_id = owner_id
         # The phone number of the subscriber. The phone number is in the Mobile Station International Subscriber Directory Number (MSISDN) format.
+        # 
+        # This parameter is required.
         self.phone_number = phone_number
         # Specifies whether to remember the phone number.
         self.remember_phone_number = remember_phone_number
