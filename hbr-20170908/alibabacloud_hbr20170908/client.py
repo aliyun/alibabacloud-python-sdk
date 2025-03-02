@@ -7211,6 +7211,8 @@ class Client(OpenApiClient):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.vault_id):
             query['VaultId'] = request.vault_id
+        if not UtilClient.is_unset(request.vault_name):
+            query['VaultName'] = request.vault_name
         if not UtilClient.is_unset(request.vault_region_id):
             query['VaultRegionId'] = request.vault_region_id
         if not UtilClient.is_unset(request.vault_type):
@@ -7268,6 +7270,8 @@ class Client(OpenApiClient):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.vault_id):
             query['VaultId'] = request.vault_id
+        if not UtilClient.is_unset(request.vault_name):
+            query['VaultName'] = request.vault_name
         if not UtilClient.is_unset(request.vault_region_id):
             query['VaultRegionId'] = request.vault_region_id
         if not UtilClient.is_unset(request.vault_type):

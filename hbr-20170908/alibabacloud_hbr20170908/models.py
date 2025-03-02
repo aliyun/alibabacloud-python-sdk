@@ -1527,6 +1527,7 @@ class CreateBackupPlanRequest(TeaModel):
         self.bucket = bucket
         # Configuration for the incremental file synchronization list. (Required only for synchronization)
         self.change_list_path = change_list_path
+        # The ID of the client group that executes the data synchronization plan. This parameter is required only for data synchronization.
         self.cluster_id = cluster_id
         # This parameter is required when **SourceType** is set to **NAS**. It represents the creation time of the file system, in UNIX timestamp, in seconds.
         self.create_time = create_time
@@ -1538,6 +1539,7 @@ class CreateBackupPlanRequest(TeaModel):
         self.cross_account_type = cross_account_type
         # The original account ID used for cross-account backup.
         self.cross_account_user_id = cross_account_user_id
+        # The ID of the data source. This parameter is required only for data synchronization.
         self.data_source_id = data_source_id
         # Destination data source details. (Required only for synchronization)
         self.dest_data_source_detail = dest_data_source_detail
@@ -1574,7 +1576,7 @@ class CreateBackupPlanRequest(TeaModel):
         # - If there are data changes in the backup source and you need to ensure consistency between the backup data and the source data, you can configure it as `["UseVSS":true]`.
         # - After choosing to use VSS, multiple file directories cannot be backed up simultaneously.
         self.options = options
-        # Table store instance details.
+        # The details about the Tablestore instance.
         self.ots_detail = ots_detail
         # Backup paths.
         self.path = path
@@ -1595,13 +1597,14 @@ class CreateBackupPlanRequest(TeaModel):
         # 
         # This parameter is required.
         self.schedule = schedule
-        # Data source type, with the following options:
+        # The type of the data source. Valid values:
         # 
-        # - **ECS_FILE**: Backs up ECS files
-        # - **OSS**: Backs up Alibaba Cloud OSS
-        # - **NAS**: Backs up Alibaba Cloud NAS
-        # - **OTS**: Backs up Alibaba Cloud OTS
-        # - **UDM_ECS**: Backs up the entire ECS instance
+        # *   **ECS_FILE**: Elastic Compute Service (ECS) files
+        # *   **OSS**: Object Storage Service (OSS) buckets
+        # *   **NAS**: File Storage NAS (NAS) file systems
+        # *   **OTS**: Tablestore instances
+        # *   **UDM_ECS**: ECS instances
+        # *   **SYNC**: data synchronization
         # 
         # This parameter is required.
         self.source_type = source_type
@@ -1895,6 +1898,7 @@ class CreateBackupPlanShrinkRequest(TeaModel):
         self.bucket = bucket
         # Configuration for the incremental file synchronization list. (Required only for synchronization)
         self.change_list_path = change_list_path
+        # The ID of the client group that executes the data synchronization plan. This parameter is required only for data synchronization.
         self.cluster_id = cluster_id
         # This parameter is required when **SourceType** is set to **NAS**. It represents the creation time of the file system, in UNIX timestamp, in seconds.
         self.create_time = create_time
@@ -1906,6 +1910,7 @@ class CreateBackupPlanShrinkRequest(TeaModel):
         self.cross_account_type = cross_account_type
         # The original account ID used for cross-account backup.
         self.cross_account_user_id = cross_account_user_id
+        # The ID of the data source. This parameter is required only for data synchronization.
         self.data_source_id = data_source_id
         # Destination data source details. (Required only for synchronization)
         self.dest_data_source_detail_shrink = dest_data_source_detail_shrink
@@ -1942,7 +1947,7 @@ class CreateBackupPlanShrinkRequest(TeaModel):
         # - If there are data changes in the backup source and you need to ensure consistency between the backup data and the source data, you can configure it as `["UseVSS":true]`.
         # - After choosing to use VSS, multiple file directories cannot be backed up simultaneously.
         self.options = options
-        # Table store instance details.
+        # The details about the Tablestore instance.
         self.ots_detail_shrink = ots_detail_shrink
         # Backup paths.
         self.path = path
@@ -1963,13 +1968,14 @@ class CreateBackupPlanShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.schedule = schedule
-        # Data source type, with the following options:
+        # The type of the data source. Valid values:
         # 
-        # - **ECS_FILE**: Backs up ECS files
-        # - **OSS**: Backs up Alibaba Cloud OSS
-        # - **NAS**: Backs up Alibaba Cloud NAS
-        # - **OTS**: Backs up Alibaba Cloud OTS
-        # - **UDM_ECS**: Backs up the entire ECS instance
+        # *   **ECS_FILE**: Elastic Compute Service (ECS) files
+        # *   **OSS**: Object Storage Service (OSS) buckets
+        # *   **NAS**: File Storage NAS (NAS) file systems
+        # *   **OTS**: Tablestore instances
+        # *   **UDM_ECS**: ECS instances
+        # *   **SYNC**: data synchronization
         # 
         # This parameter is required.
         self.source_type = source_type
@@ -5288,13 +5294,14 @@ class CreateVaultRequest(TeaModel):
         # 
         # This parameter is required.
         self.vault_region_id = vault_region_id
-        # The storage class of the backup vault. Valid value: **STANDARD**, which indicates standard storage.
+        # The storage type of the backup vault. Valid value: **STANDARD**, which indicates standard storage.
         self.vault_storage_class = vault_storage_class
         # The type of the backup vault. Valid values:
         # 
         # *   **STANDARD**: standard backup vault
         # *   **OTS_BACKUP**: backup vault for Tablestore
         self.vault_type = vault_type
+        # Whether to enable the vault worm feature. Once the worm feature is enabled, the vault and all its backup data cannot be deleted before they automatically expire. After enabling the worm feature, it is not supported to disable it. The worm feature is only effective for standard and archive backup vault.
         self.worm_enabled = worm_enabled
 
     def validate(self):
@@ -8462,10 +8469,15 @@ class DescribeBackupJobs2ResponseBodyBackupJobsBackupJobReport(TeaModel):
         success_files: str = None,
         total_files: str = None,
     ):
+        # List of failed files
         self.failed_files = failed_files
+        # Report generation status.
         self.report_task_status = report_task_status
+        # List of skipped files
         self.skipped_files = skipped_files
+        # List of successful files.
         self.success_files = success_files
+        # List of all files. (This field is not returned for data synchronization)
         self.total_files = total_files
 
     def validate(self):
@@ -8638,6 +8650,7 @@ class DescribeBackupJobs2ResponseBodyBackupJobsBackupJob(TeaModel):
         self.prefix = prefix
         # The backup progress. For example, 10000 indicates that the progress is 100%.
         self.progress = progress
+        # Task Report
         self.report = report
         # The type of the data source. Valid values:
         # 
@@ -16847,6 +16860,7 @@ class DescribeUdmSnapshotsResponseBodySnapshots(TeaModel):
         self.backup_type = backup_type
         # The total amount of data. Unit: bytes.
         self.bytes_total = bytes_total
+        # Indicates whether the disk backup point can be deleted. This parameter is valid only if the value of SourceType is UDM_ECS_DISK.
         self.can_be_deleted = can_be_deleted
         # The time when the backup snapshot was completed. The value is a UNIX timestamp. Unit: seconds.
         self.complete_time = complete_time
@@ -17338,6 +17352,7 @@ class DescribeVaultsRequest(TeaModel):
         status: str = None,
         tag: List[DescribeVaultsRequestTag] = None,
         vault_id: str = None,
+        vault_name: str = None,
         vault_region_id: str = None,
         vault_type: str = None,
     ):
@@ -17358,6 +17373,7 @@ class DescribeVaultsRequest(TeaModel):
         self.tag = tag
         # Backup vault ID.
         self.vault_id = vault_id
+        self.vault_name = vault_name
         # The region ID to which the backup vault belongs.
         self.vault_region_id = vault_region_id
         # Backup repository type. The values are as follows: 
@@ -17391,6 +17407,8 @@ class DescribeVaultsRequest(TeaModel):
                 result['Tag'].append(k.to_map() if k else None)
         if self.vault_id is not None:
             result['VaultId'] = self.vault_id
+        if self.vault_name is not None:
+            result['VaultName'] = self.vault_name
         if self.vault_region_id is not None:
             result['VaultRegionId'] = self.vault_region_id
         if self.vault_type is not None:
@@ -17414,6 +17432,8 @@ class DescribeVaultsRequest(TeaModel):
                 self.tag.append(temp_model.from_map(k))
         if m.get('VaultId') is not None:
             self.vault_id = m.get('VaultId')
+        if m.get('VaultName') is not None:
+            self.vault_name = m.get('VaultName')
         if m.get('VaultRegionId') is not None:
             self.vault_region_id = m.get('VaultRegionId')
         if m.get('VaultType') is not None:
@@ -24199,6 +24219,7 @@ class UpdateVaultRequest(TeaModel):
         self.vault_id = vault_id
         # The name of the backup vault. The name must be 1 to 64 characters in length.
         self.vault_name = vault_name
+        # Whether to enable the vault worm feature. Once the worm feature is enabled, the vault and all its backup data cannot be deleted before they automatically expire. After enabling the worm feature, it is not supported to disable it. The worm feature is only effective for standard and archive backup vault.
         self.worm_enabled = worm_enabled
 
     def validate(self):
