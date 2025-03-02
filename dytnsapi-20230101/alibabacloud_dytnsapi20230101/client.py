@@ -41,6 +41,254 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def describe_number_hlrwith_options(
+        self,
+        request: dytnsapi_20230101_models.DescribeNumberHLRRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dytnsapi_20230101_models.DescribeNumberHLRResponse:
+        """
+        @summary HLR服务
+        
+        @param request: DescribeNumberHLRRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNumberHLRResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNumberHLR',
+            version='2023-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dytnsapi_20230101_models.DescribeNumberHLRResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dytnsapi_20230101_models.DescribeNumberHLRResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_number_hlrwith_options_async(
+        self,
+        request: dytnsapi_20230101_models.DescribeNumberHLRRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dytnsapi_20230101_models.DescribeNumberHLRResponse:
+        """
+        @summary HLR服务
+        
+        @param request: DescribeNumberHLRRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNumberHLRResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNumberHLR',
+            version='2023-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dytnsapi_20230101_models.DescribeNumberHLRResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dytnsapi_20230101_models.DescribeNumberHLRResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_number_hlr(
+        self,
+        request: dytnsapi_20230101_models.DescribeNumberHLRRequest,
+    ) -> dytnsapi_20230101_models.DescribeNumberHLRResponse:
+        """
+        @summary HLR服务
+        
+        @param request: DescribeNumberHLRRequest
+        @return: DescribeNumberHLRResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_number_hlrwith_options(request, runtime)
+
+    async def describe_number_hlr_async(
+        self,
+        request: dytnsapi_20230101_models.DescribeNumberHLRRequest,
+    ) -> dytnsapi_20230101_models.DescribeNumberHLRResponse:
+        """
+        @summary HLR服务
+        
+        @param request: DescribeNumberHLRRequest
+        @return: DescribeNumberHLRResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_number_hlrwith_options_async(request, runtime)
+
+    def describe_number_mcc_mnc_with_options(
+        self,
+        request: dytnsapi_20230101_models.DescribeNumberMccMncRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dytnsapi_20230101_models.DescribeNumberMccMncResponse:
+        """
+        @summary 号码百科国际站号码归属服务
+        
+        @param request: DescribeNumberMccMncRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNumberMccMncResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNumberMccMnc',
+            version='2023-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dytnsapi_20230101_models.DescribeNumberMccMncResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dytnsapi_20230101_models.DescribeNumberMccMncResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_number_mcc_mnc_with_options_async(
+        self,
+        request: dytnsapi_20230101_models.DescribeNumberMccMncRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dytnsapi_20230101_models.DescribeNumberMccMncResponse:
+        """
+        @summary 号码百科国际站号码归属服务
+        
+        @param request: DescribeNumberMccMncRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNumberMccMncResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNumberMccMnc',
+            version='2023-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dytnsapi_20230101_models.DescribeNumberMccMncResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dytnsapi_20230101_models.DescribeNumberMccMncResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_number_mcc_mnc(
+        self,
+        request: dytnsapi_20230101_models.DescribeNumberMccMncRequest,
+    ) -> dytnsapi_20230101_models.DescribeNumberMccMncResponse:
+        """
+        @summary 号码百科国际站号码归属服务
+        
+        @param request: DescribeNumberMccMncRequest
+        @return: DescribeNumberMccMncResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_number_mcc_mnc_with_options(request, runtime)
+
+    async def describe_number_mcc_mnc_async(
+        self,
+        request: dytnsapi_20230101_models.DescribeNumberMccMncRequest,
+    ) -> dytnsapi_20230101_models.DescribeNumberMccMncResponse:
+        """
+        @summary 号码百科国际站号码归属服务
+        
+        @param request: DescribeNumberMccMncRequest
+        @return: DescribeNumberMccMncResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_number_mcc_mnc_with_options_async(request, runtime)
+
     def get_phone_number_identification_result_with_options(
         self,
         request: dytnsapi_20230101_models.GetPhoneNumberIdentificationResultRequest,

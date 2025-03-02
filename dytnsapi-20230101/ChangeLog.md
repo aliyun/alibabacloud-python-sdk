@@ -1,3 +1,8 @@
+2025-03-02 Version: 1.1.0
+- Support API DescribeNumberHLR.
+- Support API DescribeNumberMccMnc.
+
+
 2025-03-02 Version: 1.0.3
 - Generated python 2023-01-01 for Dytnsapi.
 
