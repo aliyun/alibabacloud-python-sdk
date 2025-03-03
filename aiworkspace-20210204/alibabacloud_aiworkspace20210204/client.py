@@ -41,6 +41,126 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def accept_dataworks_event_with_options(
+        self,
+        request: aiwork_space_20210204_models.AcceptDataworksEventRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.AcceptDataworksEventResponse:
+        """
+        @summary 接受并处理Dataworks发送的事件
+        
+        @param request: AcceptDataworksEventRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AcceptDataworksEventResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data):
+            body['Data'] = request.data
+        if not UtilClient.is_unset(request.message_id):
+            body['MessageId'] = request.message_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AcceptDataworksEvent',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/action/acceptdataworksevent',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.AcceptDataworksEventResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.AcceptDataworksEventResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def accept_dataworks_event_with_options_async(
+        self,
+        request: aiwork_space_20210204_models.AcceptDataworksEventRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.AcceptDataworksEventResponse:
+        """
+        @summary 接受并处理Dataworks发送的事件
+        
+        @param request: AcceptDataworksEventRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AcceptDataworksEventResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data):
+            body['Data'] = request.data
+        if not UtilClient.is_unset(request.message_id):
+            body['MessageId'] = request.message_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AcceptDataworksEvent',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/action/acceptdataworksevent',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.AcceptDataworksEventResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.AcceptDataworksEventResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def accept_dataworks_event(
+        self,
+        request: aiwork_space_20210204_models.AcceptDataworksEventRequest,
+    ) -> aiwork_space_20210204_models.AcceptDataworksEventResponse:
+        """
+        @summary 接受并处理Dataworks发送的事件
+        
+        @param request: AcceptDataworksEventRequest
+        @return: AcceptDataworksEventResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.accept_dataworks_event_with_options(request, headers, runtime)
+
+    async def accept_dataworks_event_async(
+        self,
+        request: aiwork_space_20210204_models.AcceptDataworksEventRequest,
+    ) -> aiwork_space_20210204_models.AcceptDataworksEventResponse:
+        """
+        @summary 接受并处理Dataworks发送的事件
+        
+        @param request: AcceptDataworksEventRequest
+        @return: AcceptDataworksEventResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.accept_dataworks_event_with_options_async(request, headers, runtime)
+
     def add_image_with_options(
         self,
         request: aiwork_space_20210204_models.AddImageRequest,
@@ -88,10 +208,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.AddImageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.AddImageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.AddImageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_image_with_options_async(
         self,
@@ -140,10 +266,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.AddImageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.AddImageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.AddImageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_image(
         self,
@@ -207,10 +339,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.AddImageLabelsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.AddImageLabelsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.AddImageLabelsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_image_labels_with_options_async(
         self,
@@ -246,10 +384,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.AddImageLabelsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.AddImageLabelsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.AddImageLabelsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_image_labels(
         self,
@@ -310,10 +454,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.AddMemberRoleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.AddMemberRoleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.AddMemberRoleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_member_role_with_options_async(
         self,
@@ -344,10 +494,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.AddMemberRoleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.AddMemberRoleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.AddMemberRoleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_member_role(
         self,
@@ -378,6 +534,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.add_member_role_with_options_async(workspace_id, member_id, role_name, headers, runtime)
+
+    def change_resource_group_with_options(
+        self,
+        request: aiwork_space_20210204_models.ChangeResourceGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.ChangeResourceGroupResponse:
+        """
+        @summary 更改资源组
+        
+        @param request: ChangeResourceGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            body['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/resourcegroups/action/changeresourcegroup',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ChangeResourceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ChangeResourceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def change_resource_group_with_options_async(
+        self,
+        request: aiwork_space_20210204_models.ChangeResourceGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.ChangeResourceGroupResponse:
+        """
+        @summary 更改资源组
+        
+        @param request: ChangeResourceGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            body['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/resourcegroups/action/changeresourcegroup',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ChangeResourceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ChangeResourceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def change_resource_group(
+        self,
+        request: aiwork_space_20210204_models.ChangeResourceGroupRequest,
+    ) -> aiwork_space_20210204_models.ChangeResourceGroupResponse:
+        """
+        @summary 更改资源组
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.change_resource_group_with_options(request, headers, runtime)
+
+    async def change_resource_group_async(
+        self,
+        request: aiwork_space_20210204_models.ChangeResourceGroupRequest,
+    ) -> aiwork_space_20210204_models.ChangeResourceGroupResponse:
+        """
+        @summary 更改资源组
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.change_resource_group_with_options_async(request, headers, runtime)
 
     def create_code_source_with_options(
         self,
@@ -430,10 +710,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateCodeSourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateCodeSourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateCodeSourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_code_source_with_options_async(
         self,
@@ -486,10 +772,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateCodeSourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateCodeSourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateCodeSourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_code_source(
         self,
@@ -547,8 +839,12 @@ class Client(OpenApiClient):
             body['DataType'] = request.data_type
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.import_info):
+            body['ImportInfo'] = request.import_info
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
+        if not UtilClient.is_unset(request.mount_access_read_write_role_id_list):
+            body['MountAccessReadWriteRoleIdList'] = request.mount_access_read_write_role_id_list
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.options):
@@ -592,10 +888,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateDatasetResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateDatasetResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateDatasetResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_dataset_with_options_async(
         self,
@@ -625,8 +927,12 @@ class Client(OpenApiClient):
             body['DataType'] = request.data_type
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.import_info):
+            body['ImportInfo'] = request.import_info
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
+        if not UtilClient.is_unset(request.mount_access_read_write_role_id_list):
+            body['MountAccessReadWriteRoleIdList'] = request.mount_access_read_write_role_id_list
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.options):
@@ -670,10 +976,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateDatasetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateDatasetResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateDatasetResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_dataset(
         self,
@@ -702,6 +1014,402 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_dataset_with_options_async(request, headers, runtime)
+
+    def create_dataset_file_metas_with_options(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.CreateDatasetFileMetasRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.CreateDatasetFileMetasResponse:
+        """
+        @summary 批量创建数据集下的文件元数据记录
+        
+        @param request: CreateDatasetFileMetasRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatasetFileMetasResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_file_metas):
+            body['DatasetFileMetas'] = request.dataset_file_metas
+        if not UtilClient.is_unset(request.dataset_version):
+            body['DatasetVersion'] = request.dataset_version
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDatasetFileMetas',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetfilemetas',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateDatasetFileMetasResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateDatasetFileMetasResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_dataset_file_metas_with_options_async(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.CreateDatasetFileMetasRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.CreateDatasetFileMetasResponse:
+        """
+        @summary 批量创建数据集下的文件元数据记录
+        
+        @param request: CreateDatasetFileMetasRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatasetFileMetasResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_file_metas):
+            body['DatasetFileMetas'] = request.dataset_file_metas
+        if not UtilClient.is_unset(request.dataset_version):
+            body['DatasetVersion'] = request.dataset_version
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDatasetFileMetas',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetfilemetas',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateDatasetFileMetasResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateDatasetFileMetasResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_dataset_file_metas(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.CreateDatasetFileMetasRequest,
+    ) -> aiwork_space_20210204_models.CreateDatasetFileMetasResponse:
+        """
+        @summary 批量创建数据集下的文件元数据记录
+        
+        @param request: CreateDatasetFileMetasRequest
+        @return: CreateDatasetFileMetasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_dataset_file_metas_with_options(dataset_id, request, headers, runtime)
+
+    async def create_dataset_file_metas_async(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.CreateDatasetFileMetasRequest,
+    ) -> aiwork_space_20210204_models.CreateDatasetFileMetasResponse:
+        """
+        @summary 批量创建数据集下的文件元数据记录
+        
+        @param request: CreateDatasetFileMetasRequest
+        @return: CreateDatasetFileMetasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_dataset_file_metas_with_options_async(dataset_id, request, headers, runtime)
+
+    def create_dataset_job_with_options(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.CreateDatasetJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.CreateDatasetJobResponse:
+        """
+        @summary 创建数据集任务
+        
+        @param request: CreateDatasetJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatasetJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_version):
+            body['DatasetVersion'] = request.dataset_version
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.job_action):
+            body['JobAction'] = request.job_action
+        if not UtilClient.is_unset(request.job_mode):
+            body['JobMode'] = request.job_mode
+        if not UtilClient.is_unset(request.job_spec):
+            body['JobSpec'] = request.job_spec
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDatasetJob',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetjobs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateDatasetJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateDatasetJobResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_dataset_job_with_options_async(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.CreateDatasetJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.CreateDatasetJobResponse:
+        """
+        @summary 创建数据集任务
+        
+        @param request: CreateDatasetJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatasetJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_version):
+            body['DatasetVersion'] = request.dataset_version
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.job_action):
+            body['JobAction'] = request.job_action
+        if not UtilClient.is_unset(request.job_mode):
+            body['JobMode'] = request.job_mode
+        if not UtilClient.is_unset(request.job_spec):
+            body['JobSpec'] = request.job_spec
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDatasetJob',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetjobs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateDatasetJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateDatasetJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_dataset_job(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.CreateDatasetJobRequest,
+    ) -> aiwork_space_20210204_models.CreateDatasetJobResponse:
+        """
+        @summary 创建数据集任务
+        
+        @param request: CreateDatasetJobRequest
+        @return: CreateDatasetJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_dataset_job_with_options(dataset_id, request, headers, runtime)
+
+    async def create_dataset_job_async(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.CreateDatasetJobRequest,
+    ) -> aiwork_space_20210204_models.CreateDatasetJobResponse:
+        """
+        @summary 创建数据集任务
+        
+        @param request: CreateDatasetJobRequest
+        @return: CreateDatasetJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_dataset_job_with_options_async(dataset_id, request, headers, runtime)
+
+    def create_dataset_job_config_with_options(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.CreateDatasetJobConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.CreateDatasetJobConfigResponse:
+        """
+        @summary 创建数据集任务配置
+        
+        @param request: CreateDatasetJobConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatasetJobConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config):
+            body['Config'] = request.config
+        if not UtilClient.is_unset(request.config_type):
+            body['ConfigType'] = request.config_type
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDatasetJobConfig',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetjobconfigs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateDatasetJobConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateDatasetJobConfigResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_dataset_job_config_with_options_async(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.CreateDatasetJobConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.CreateDatasetJobConfigResponse:
+        """
+        @summary 创建数据集任务配置
+        
+        @param request: CreateDatasetJobConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatasetJobConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config):
+            body['Config'] = request.config
+        if not UtilClient.is_unset(request.config_type):
+            body['ConfigType'] = request.config_type
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDatasetJobConfig',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetjobconfigs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateDatasetJobConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateDatasetJobConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_dataset_job_config(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.CreateDatasetJobConfigRequest,
+    ) -> aiwork_space_20210204_models.CreateDatasetJobConfigResponse:
+        """
+        @summary 创建数据集任务配置
+        
+        @param request: CreateDatasetJobConfigRequest
+        @return: CreateDatasetJobConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_dataset_job_config_with_options(dataset_id, request, headers, runtime)
+
+    async def create_dataset_job_config_async(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.CreateDatasetJobConfigRequest,
+    ) -> aiwork_space_20210204_models.CreateDatasetJobConfigResponse:
+        """
+        @summary 创建数据集任务配置
+        
+        @param request: CreateDatasetJobConfigRequest
+        @return: CreateDatasetJobConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_dataset_job_config_with_options_async(dataset_id, request, headers, runtime)
 
     def create_dataset_labels_with_options(
         self,
@@ -737,10 +1445,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateDatasetLabelsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateDatasetLabelsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateDatasetLabelsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_dataset_labels_with_options_async(
         self,
@@ -776,10 +1490,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateDatasetLabelsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateDatasetLabelsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateDatasetLabelsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_dataset_labels(
         self,
@@ -836,6 +1556,8 @@ class Client(OpenApiClient):
             body['DataSourceType'] = request.data_source_type
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.import_info):
+            body['ImportInfo'] = request.import_info
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
         if not UtilClient.is_unset(request.options):
@@ -863,10 +1585,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateDatasetVersionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateDatasetVersionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateDatasetVersionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_dataset_version_with_options_async(
         self,
@@ -893,6 +1621,8 @@ class Client(OpenApiClient):
             body['DataSourceType'] = request.data_source_type
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.import_info):
+            body['ImportInfo'] = request.import_info
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
         if not UtilClient.is_unset(request.options):
@@ -920,10 +1650,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateDatasetVersionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateDatasetVersionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateDatasetVersionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_dataset_version(
         self,
@@ -990,10 +1726,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateDatasetVersionLabelsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateDatasetVersionLabelsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateDatasetVersionLabelsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_dataset_version_labels_with_options_async(
         self,
@@ -1030,10 +1772,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateDatasetVersionLabelsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateDatasetVersionLabelsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateDatasetVersionLabelsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_dataset_version_labels(
         self,
@@ -1108,10 +1856,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateExperimentResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateExperimentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateExperimentResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_experiment_with_options_async(
         self,
@@ -1154,10 +1908,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateExperimentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateExperimentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateExperimentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_experiment(
         self,
@@ -1221,10 +1981,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateMemberResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateMemberResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateMemberResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_member_with_options_async(
         self,
@@ -1260,10 +2026,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateMemberResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateMemberResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateMemberResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_member(
         self,
@@ -1350,10 +2122,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateModelResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateModelResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateModelResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_model_with_options_async(
         self,
@@ -1410,10 +2188,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateModelResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateModelResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateModelResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_model(
         self,
@@ -1477,10 +2261,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateModelLabelsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateModelLabelsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateModelLabelsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_model_labels_with_options_async(
         self,
@@ -1516,10 +2306,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateModelLabelsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateModelLabelsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateModelLabelsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_model_labels(
         self,
@@ -1615,10 +2411,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateModelVersionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateModelVersionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateModelVersionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_model_version_with_options_async(
         self,
@@ -1684,10 +2486,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateModelVersionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateModelVersionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateModelVersionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_model_version(
         self,
@@ -1754,10 +2562,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateModelVersionLabelsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateModelVersionLabelsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateModelVersionLabelsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_model_version_labels_with_options_async(
         self,
@@ -1794,10 +2608,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateModelVersionLabelsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateModelVersionLabelsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateModelVersionLabelsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_model_version_labels(
         self,
@@ -1866,10 +2686,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateProductOrdersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateProductOrdersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateProductOrdersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_product_orders_with_options_async(
         self,
@@ -1906,10 +2732,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateProductOrdersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateProductOrdersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateProductOrdersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_product_orders(
         self,
@@ -1982,10 +2814,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateRunResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateRunResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateRunResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_run_with_options_async(
         self,
@@ -2030,10 +2868,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateRunResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateRunResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateRunResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_run(
         self,
@@ -2085,6 +2929,8 @@ class Client(OpenApiClient):
             body['DisplayName'] = request.display_name
         if not UtilClient.is_unset(request.env_types):
             body['EnvTypes'] = request.env_types
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.workspace_name):
             body['WorkspaceName'] = request.workspace_name
         req = open_api_models.OpenApiRequest(
@@ -2102,10 +2948,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateWorkspaceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateWorkspaceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateWorkspaceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_workspace_with_options_async(
         self,
@@ -2129,6 +2981,8 @@ class Client(OpenApiClient):
             body['DisplayName'] = request.display_name
         if not UtilClient.is_unset(request.env_types):
             body['EnvTypes'] = request.env_types
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.workspace_name):
             body['WorkspaceName'] = request.workspace_name
         req = open_api_models.OpenApiRequest(
@@ -2146,10 +3000,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateWorkspaceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateWorkspaceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateWorkspaceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_workspace(
         self,
@@ -2215,10 +3075,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateWorkspaceResourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateWorkspaceResourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateWorkspaceResourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_workspace_resource_with_options_async(
         self,
@@ -2256,10 +3122,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateWorkspaceResourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateWorkspaceResourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.CreateWorkspaceResourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_workspace_resource(
         self,
@@ -2318,10 +3190,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteCodeSourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteCodeSourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteCodeSourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_code_source_with_options_async(
         self,
@@ -2350,10 +3228,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteCodeSourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteCodeSourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteCodeSourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_code_source(
         self,
@@ -2408,10 +3292,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteDatasetResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteDatasetResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteDatasetResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_dataset_with_options_async(
         self,
@@ -2440,10 +3330,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteDatasetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteDatasetResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteDatasetResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_dataset(
         self,
@@ -2470,6 +3366,364 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_dataset_with_options_async(dataset_id, headers, runtime)
+
+    def delete_dataset_file_metas_with_options(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.DeleteDatasetFileMetasRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.DeleteDatasetFileMetasResponse:
+        """
+        @summary 批量删除数据集下的文件元数据记录
+        
+        @param request: DeleteDatasetFileMetasRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatasetFileMetasResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dataset_file_meta_ids):
+            query['DatasetFileMetaIds'] = request.dataset_file_meta_ids
+        if not UtilClient.is_unset(request.dataset_version):
+            query['DatasetVersion'] = request.dataset_version
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDatasetFileMetas',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetfilemetas',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteDatasetFileMetasResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteDatasetFileMetasResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_dataset_file_metas_with_options_async(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.DeleteDatasetFileMetasRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.DeleteDatasetFileMetasResponse:
+        """
+        @summary 批量删除数据集下的文件元数据记录
+        
+        @param request: DeleteDatasetFileMetasRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatasetFileMetasResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dataset_file_meta_ids):
+            query['DatasetFileMetaIds'] = request.dataset_file_meta_ids
+        if not UtilClient.is_unset(request.dataset_version):
+            query['DatasetVersion'] = request.dataset_version
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDatasetFileMetas',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetfilemetas',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteDatasetFileMetasResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteDatasetFileMetasResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_dataset_file_metas(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.DeleteDatasetFileMetasRequest,
+    ) -> aiwork_space_20210204_models.DeleteDatasetFileMetasResponse:
+        """
+        @summary 批量删除数据集下的文件元数据记录
+        
+        @param request: DeleteDatasetFileMetasRequest
+        @return: DeleteDatasetFileMetasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_dataset_file_metas_with_options(dataset_id, request, headers, runtime)
+
+    async def delete_dataset_file_metas_async(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.DeleteDatasetFileMetasRequest,
+    ) -> aiwork_space_20210204_models.DeleteDatasetFileMetasResponse:
+        """
+        @summary 批量删除数据集下的文件元数据记录
+        
+        @param request: DeleteDatasetFileMetasRequest
+        @return: DeleteDatasetFileMetasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_dataset_file_metas_with_options_async(dataset_id, request, headers, runtime)
+
+    def delete_dataset_job_with_options(
+        self,
+        dataset_id: str,
+        dataset_job_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.DeleteDatasetJobResponse:
+        """
+        @summary 删除数据集任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatasetJobResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteDatasetJob',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetjobs/{OpenApiUtilClient.get_encode_param(dataset_job_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteDatasetJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteDatasetJobResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_dataset_job_with_options_async(
+        self,
+        dataset_id: str,
+        dataset_job_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.DeleteDatasetJobResponse:
+        """
+        @summary 删除数据集任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatasetJobResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteDatasetJob',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetjobs/{OpenApiUtilClient.get_encode_param(dataset_job_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteDatasetJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteDatasetJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_dataset_job(
+        self,
+        dataset_id: str,
+        dataset_job_id: str,
+    ) -> aiwork_space_20210204_models.DeleteDatasetJobResponse:
+        """
+        @summary 删除数据集任务
+        
+        @return: DeleteDatasetJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_dataset_job_with_options(dataset_id, dataset_job_id, headers, runtime)
+
+    async def delete_dataset_job_async(
+        self,
+        dataset_id: str,
+        dataset_job_id: str,
+    ) -> aiwork_space_20210204_models.DeleteDatasetJobResponse:
+        """
+        @summary 删除数据集任务
+        
+        @return: DeleteDatasetJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_dataset_job_with_options_async(dataset_id, dataset_job_id, headers, runtime)
+
+    def delete_dataset_job_config_with_options(
+        self,
+        dataset_id: str,
+        dataset_job_config_id: str,
+        request: aiwork_space_20210204_models.DeleteDatasetJobConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.DeleteDatasetJobConfigResponse:
+        """
+        @summary 删除数据集任务配置
+        
+        @param request: DeleteDatasetJobConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatasetJobConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDatasetJobConfig',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetjobconfigs/{OpenApiUtilClient.get_encode_param(dataset_job_config_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteDatasetJobConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteDatasetJobConfigResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_dataset_job_config_with_options_async(
+        self,
+        dataset_id: str,
+        dataset_job_config_id: str,
+        request: aiwork_space_20210204_models.DeleteDatasetJobConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.DeleteDatasetJobConfigResponse:
+        """
+        @summary 删除数据集任务配置
+        
+        @param request: DeleteDatasetJobConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatasetJobConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDatasetJobConfig',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetjobconfigs/{OpenApiUtilClient.get_encode_param(dataset_job_config_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteDatasetJobConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteDatasetJobConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_dataset_job_config(
+        self,
+        dataset_id: str,
+        dataset_job_config_id: str,
+        request: aiwork_space_20210204_models.DeleteDatasetJobConfigRequest,
+    ) -> aiwork_space_20210204_models.DeleteDatasetJobConfigResponse:
+        """
+        @summary 删除数据集任务配置
+        
+        @param request: DeleteDatasetJobConfigRequest
+        @return: DeleteDatasetJobConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_dataset_job_config_with_options(dataset_id, dataset_job_config_id, request, headers, runtime)
+
+    async def delete_dataset_job_config_async(
+        self,
+        dataset_id: str,
+        dataset_job_config_id: str,
+        request: aiwork_space_20210204_models.DeleteDatasetJobConfigRequest,
+    ) -> aiwork_space_20210204_models.DeleteDatasetJobConfigResponse:
+        """
+        @summary 删除数据集任务配置
+        
+        @param request: DeleteDatasetJobConfigRequest
+        @return: DeleteDatasetJobConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_dataset_job_config_with_options_async(dataset_id, dataset_job_config_id, request, headers, runtime)
 
     def delete_dataset_labels_with_options(
         self,
@@ -2505,10 +3759,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteDatasetLabelsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteDatasetLabelsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteDatasetLabelsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_dataset_labels_with_options_async(
         self,
@@ -2544,10 +3804,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteDatasetLabelsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteDatasetLabelsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteDatasetLabelsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_dataset_labels(
         self,
@@ -2607,10 +3873,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteDatasetVersionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteDatasetVersionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteDatasetVersionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_dataset_version_with_options_async(
         self,
@@ -2640,10 +3912,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteDatasetVersionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteDatasetVersionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteDatasetVersionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_dataset_version(
         self,
@@ -2708,10 +3986,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteDatasetVersionLabelsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteDatasetVersionLabelsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteDatasetVersionLabelsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_dataset_version_labels_with_options_async(
         self,
@@ -2748,10 +4032,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteDatasetVersionLabelsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteDatasetVersionLabelsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteDatasetVersionLabelsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_dataset_version_labels(
         self,
@@ -2812,10 +4102,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteExperimentResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteExperimentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteExperimentResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_experiment_with_options_async(
         self,
@@ -2844,10 +4140,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteExperimentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteExperimentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteExperimentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_experiment(
         self,
@@ -2903,10 +4205,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteExperimentLabelResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteExperimentLabelResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteExperimentLabelResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_experiment_label_with_options_async(
         self,
@@ -2936,10 +4244,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteExperimentLabelResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteExperimentLabelResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteExperimentLabelResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_experiment_label(
         self,
@@ -3003,10 +4317,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteMembersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteMembersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteMembersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_members_with_options_async(
         self,
@@ -3042,10 +4362,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteMembersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteMembersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteMembersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_members(
         self,
@@ -3104,10 +4430,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteModelResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteModelResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteModelResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_model_with_options_async(
         self,
@@ -3136,10 +4468,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteModelResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteModelResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteModelResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_model(
         self,
@@ -3201,10 +4539,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteModelLabelsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteModelLabelsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteModelLabelsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_model_labels_with_options_async(
         self,
@@ -3240,10 +4584,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteModelLabelsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteModelLabelsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteModelLabelsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_model_labels(
         self,
@@ -3303,10 +4653,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteModelVersionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteModelVersionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteModelVersionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_model_version_with_options_async(
         self,
@@ -3336,10 +4692,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteModelVersionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteModelVersionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteModelVersionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_model_version(
         self,
@@ -3404,10 +4766,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteModelVersionLabelsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteModelVersionLabelsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteModelVersionLabelsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_model_version_labels_with_options_async(
         self,
@@ -3444,10 +4812,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteModelVersionLabelsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteModelVersionLabelsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteModelVersionLabelsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_model_version_labels(
         self,
@@ -3508,10 +4882,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteRunResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteRunResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteRunResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_run_with_options_async(
         self,
@@ -3540,10 +4920,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteRunResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteRunResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteRunResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_run(
         self,
@@ -3599,10 +4985,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteRunLabelResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteRunLabelResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteRunLabelResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_run_label_with_options_async(
         self,
@@ -3632,10 +5024,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteRunLabelResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteRunLabelResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteRunLabelResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_run_label(
         self,
@@ -3692,10 +5090,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteWorkspaceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteWorkspaceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteWorkspaceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_workspace_with_options_async(
         self,
@@ -3724,10 +5128,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteWorkspaceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteWorkspaceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteWorkspaceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_workspace(
         self,
@@ -3799,10 +5209,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteWorkspaceResourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteWorkspaceResourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteWorkspaceResourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_workspace_resource_with_options_async(
         self,
@@ -3848,10 +5264,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteWorkspaceResourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteWorkspaceResourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.DeleteWorkspaceResourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_workspace_resource(
         self,
@@ -3910,10 +5332,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetCodeSourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetCodeSourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetCodeSourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_code_source_with_options_async(
         self,
@@ -3942,10 +5370,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetCodeSourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetCodeSourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetCodeSourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_code_source(
         self,
@@ -4000,10 +5434,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetDatasetResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetDatasetResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetDatasetResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_dataset_with_options_async(
         self,
@@ -4032,10 +5472,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetDatasetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetDatasetResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetDatasetResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_dataset(
         self,
@@ -4062,6 +5508,386 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_dataset_with_options_async(dataset_id, headers, runtime)
+
+    def get_dataset_file_meta_with_options(
+        self,
+        dataset_id: str,
+        dataset_file_meta_id: str,
+        request: aiwork_space_20210204_models.GetDatasetFileMetaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.GetDatasetFileMetaResponse:
+        """
+        @summary 获取数据集下的指定文件元数据记录
+        
+        @param request: GetDatasetFileMetaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatasetFileMetaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dataset_version):
+            query['DatasetVersion'] = request.dataset_version
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDatasetFileMeta',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetfilemetas/{OpenApiUtilClient.get_encode_param(dataset_file_meta_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetDatasetFileMetaResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetDatasetFileMetaResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_dataset_file_meta_with_options_async(
+        self,
+        dataset_id: str,
+        dataset_file_meta_id: str,
+        request: aiwork_space_20210204_models.GetDatasetFileMetaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.GetDatasetFileMetaResponse:
+        """
+        @summary 获取数据集下的指定文件元数据记录
+        
+        @param request: GetDatasetFileMetaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatasetFileMetaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dataset_version):
+            query['DatasetVersion'] = request.dataset_version
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDatasetFileMeta',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetfilemetas/{OpenApiUtilClient.get_encode_param(dataset_file_meta_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetDatasetFileMetaResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetDatasetFileMetaResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_dataset_file_meta(
+        self,
+        dataset_id: str,
+        dataset_file_meta_id: str,
+        request: aiwork_space_20210204_models.GetDatasetFileMetaRequest,
+    ) -> aiwork_space_20210204_models.GetDatasetFileMetaResponse:
+        """
+        @summary 获取数据集下的指定文件元数据记录
+        
+        @param request: GetDatasetFileMetaRequest
+        @return: GetDatasetFileMetaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_dataset_file_meta_with_options(dataset_id, dataset_file_meta_id, request, headers, runtime)
+
+    async def get_dataset_file_meta_async(
+        self,
+        dataset_id: str,
+        dataset_file_meta_id: str,
+        request: aiwork_space_20210204_models.GetDatasetFileMetaRequest,
+    ) -> aiwork_space_20210204_models.GetDatasetFileMetaResponse:
+        """
+        @summary 获取数据集下的指定文件元数据记录
+        
+        @param request: GetDatasetFileMetaRequest
+        @return: GetDatasetFileMetaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_dataset_file_meta_with_options_async(dataset_id, dataset_file_meta_id, request, headers, runtime)
+
+    def get_dataset_job_with_options(
+        self,
+        dataset_id: str,
+        dataset_job_id: str,
+        request: aiwork_space_20210204_models.GetDatasetJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.GetDatasetJobResponse:
+        """
+        @summary 获取数据集任务
+        
+        @param request: GetDatasetJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatasetJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dataset_version):
+            query['DatasetVersion'] = request.dataset_version
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDatasetJob',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetjobs/{OpenApiUtilClient.get_encode_param(dataset_job_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetDatasetJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetDatasetJobResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_dataset_job_with_options_async(
+        self,
+        dataset_id: str,
+        dataset_job_id: str,
+        request: aiwork_space_20210204_models.GetDatasetJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.GetDatasetJobResponse:
+        """
+        @summary 获取数据集任务
+        
+        @param request: GetDatasetJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatasetJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dataset_version):
+            query['DatasetVersion'] = request.dataset_version
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDatasetJob',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetjobs/{OpenApiUtilClient.get_encode_param(dataset_job_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetDatasetJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetDatasetJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_dataset_job(
+        self,
+        dataset_id: str,
+        dataset_job_id: str,
+        request: aiwork_space_20210204_models.GetDatasetJobRequest,
+    ) -> aiwork_space_20210204_models.GetDatasetJobResponse:
+        """
+        @summary 获取数据集任务
+        
+        @param request: GetDatasetJobRequest
+        @return: GetDatasetJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_dataset_job_with_options(dataset_id, dataset_job_id, request, headers, runtime)
+
+    async def get_dataset_job_async(
+        self,
+        dataset_id: str,
+        dataset_job_id: str,
+        request: aiwork_space_20210204_models.GetDatasetJobRequest,
+    ) -> aiwork_space_20210204_models.GetDatasetJobResponse:
+        """
+        @summary 获取数据集任务
+        
+        @param request: GetDatasetJobRequest
+        @return: GetDatasetJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_dataset_job_with_options_async(dataset_id, dataset_job_id, request, headers, runtime)
+
+    def get_dataset_job_config_with_options(
+        self,
+        dataset_id: str,
+        dataset_job_config_id: str,
+        request: aiwork_space_20210204_models.GetDatasetJobConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.GetDatasetJobConfigResponse:
+        """
+        @summary 获取数据集任务配置
+        
+        @param request: GetDatasetJobConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatasetJobConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDatasetJobConfig',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetjobconfigs/{OpenApiUtilClient.get_encode_param(dataset_job_config_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetDatasetJobConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetDatasetJobConfigResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_dataset_job_config_with_options_async(
+        self,
+        dataset_id: str,
+        dataset_job_config_id: str,
+        request: aiwork_space_20210204_models.GetDatasetJobConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.GetDatasetJobConfigResponse:
+        """
+        @summary 获取数据集任务配置
+        
+        @param request: GetDatasetJobConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatasetJobConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDatasetJobConfig',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetjobconfigs/{OpenApiUtilClient.get_encode_param(dataset_job_config_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetDatasetJobConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetDatasetJobConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_dataset_job_config(
+        self,
+        dataset_id: str,
+        dataset_job_config_id: str,
+        request: aiwork_space_20210204_models.GetDatasetJobConfigRequest,
+    ) -> aiwork_space_20210204_models.GetDatasetJobConfigResponse:
+        """
+        @summary 获取数据集任务配置
+        
+        @param request: GetDatasetJobConfigRequest
+        @return: GetDatasetJobConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_dataset_job_config_with_options(dataset_id, dataset_job_config_id, request, headers, runtime)
+
+    async def get_dataset_job_config_async(
+        self,
+        dataset_id: str,
+        dataset_job_config_id: str,
+        request: aiwork_space_20210204_models.GetDatasetJobConfigRequest,
+    ) -> aiwork_space_20210204_models.GetDatasetJobConfigResponse:
+        """
+        @summary 获取数据集任务配置
+        
+        @param request: GetDatasetJobConfigRequest
+        @return: GetDatasetJobConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_dataset_job_config_with_options_async(dataset_id, dataset_job_config_id, request, headers, runtime)
 
     def get_dataset_version_with_options(
         self,
@@ -4091,10 +5917,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetDatasetVersionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetDatasetVersionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetDatasetVersionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_dataset_version_with_options_async(
         self,
@@ -4124,10 +5956,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetDatasetVersionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetDatasetVersionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetDatasetVersionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_dataset_version(
         self,
@@ -4190,10 +6028,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetDefaultWorkspaceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetDefaultWorkspaceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetDefaultWorkspaceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_default_workspace_with_options_async(
         self,
@@ -4228,10 +6072,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetDefaultWorkspaceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetDefaultWorkspaceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetDefaultWorkspaceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_default_workspace(
         self,
@@ -4295,10 +6145,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetExperimentResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetExperimentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetExperimentResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_experiment_with_options_async(
         self,
@@ -4334,10 +6190,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetExperimentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetExperimentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetExperimentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_experiment(
         self,
@@ -4403,10 +6265,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetImageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetImageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetImageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_image_with_options_async(
         self,
@@ -4442,10 +6310,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetImageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetImageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetImageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_image(
         self,
@@ -4513,10 +6387,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetMemberResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetMemberResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetMemberResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_member_with_options_async(
         self,
@@ -4554,10 +6434,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetMemberResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetMemberResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetMemberResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_member(
         self,
@@ -4616,10 +6502,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetModelResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetModelResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetModelResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_model_with_options_async(
         self,
@@ -4648,10 +6540,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetModelResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetModelResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetModelResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_model(
         self,
@@ -4707,10 +6605,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetModelVersionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetModelVersionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetModelVersionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_model_version_with_options_async(
         self,
@@ -4740,10 +6644,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetModelVersionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetModelVersionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetModelVersionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_model_version(
         self,
@@ -4820,10 +6730,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetPermissionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetPermissionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetPermissionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_permission_with_options_async(
         self,
@@ -4872,10 +6788,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetPermissionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetPermissionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetPermissionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_permission(
         self,
@@ -4943,10 +6865,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetRunResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetRunResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetRunResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_run_with_options_async(
         self,
@@ -4982,10 +6910,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetRunResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetRunResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetRunResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_run(
         self,
@@ -5051,10 +6985,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetWorkspaceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetWorkspaceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetWorkspaceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_workspace_with_options_async(
         self,
@@ -5090,10 +7030,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetWorkspaceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetWorkspaceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.GetWorkspaceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_workspace(
         self,
@@ -5168,10 +7114,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListCodeSourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListCodeSourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListCodeSourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_code_sources_with_options_async(
         self,
@@ -5216,10 +7168,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListCodeSourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListCodeSourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListCodeSourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_code_sources(
         self,
@@ -5249,6 +7207,438 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_code_sources_with_options_async(request, headers, runtime)
 
+    def list_dataset_file_metas_with_options(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.ListDatasetFileMetasRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.ListDatasetFileMetasResponse:
+        """
+        @summary 查询数据集文件列表
+        
+        @param request: ListDatasetFileMetasRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatasetFileMetasResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dataset_version):
+            query['DatasetVersion'] = request.dataset_version
+        if not UtilClient.is_unset(request.end_file_update_time):
+            query['EndFileUpdateTime'] = request.end_file_update_time
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_text):
+            query['QueryText'] = request.query_text
+        if not UtilClient.is_unset(request.query_type):
+            query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.score_threshold):
+            query['ScoreThreshold'] = request.score_threshold
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_file_update_time):
+            query['StartFileUpdateTime'] = request.start_file_update_time
+        if not UtilClient.is_unset(request.top_k):
+            query['TopK'] = request.top_k
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatasetFileMetas',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetfilemetas',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListDatasetFileMetasResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListDatasetFileMetasResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_dataset_file_metas_with_options_async(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.ListDatasetFileMetasRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.ListDatasetFileMetasResponse:
+        """
+        @summary 查询数据集文件列表
+        
+        @param request: ListDatasetFileMetasRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatasetFileMetasResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dataset_version):
+            query['DatasetVersion'] = request.dataset_version
+        if not UtilClient.is_unset(request.end_file_update_time):
+            query['EndFileUpdateTime'] = request.end_file_update_time
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_text):
+            query['QueryText'] = request.query_text
+        if not UtilClient.is_unset(request.query_type):
+            query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.score_threshold):
+            query['ScoreThreshold'] = request.score_threshold
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_file_update_time):
+            query['StartFileUpdateTime'] = request.start_file_update_time
+        if not UtilClient.is_unset(request.top_k):
+            query['TopK'] = request.top_k
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatasetFileMetas',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetfilemetas',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListDatasetFileMetasResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListDatasetFileMetasResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_dataset_file_metas(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.ListDatasetFileMetasRequest,
+    ) -> aiwork_space_20210204_models.ListDatasetFileMetasResponse:
+        """
+        @summary 查询数据集文件列表
+        
+        @param request: ListDatasetFileMetasRequest
+        @return: ListDatasetFileMetasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_dataset_file_metas_with_options(dataset_id, request, headers, runtime)
+
+    async def list_dataset_file_metas_async(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.ListDatasetFileMetasRequest,
+    ) -> aiwork_space_20210204_models.ListDatasetFileMetasResponse:
+        """
+        @summary 查询数据集文件列表
+        
+        @param request: ListDatasetFileMetasRequest
+        @return: ListDatasetFileMetasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_dataset_file_metas_with_options_async(dataset_id, request, headers, runtime)
+
+    def list_dataset_job_configs_with_options(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.ListDatasetJobConfigsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.ListDatasetJobConfigsResponse:
+        """
+        @summary 批量查询数据集任务配置
+        
+        @param request: ListDatasetJobConfigsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatasetJobConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_type):
+            query['ConfigType'] = request.config_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatasetJobConfigs',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetjobconfigs/',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListDatasetJobConfigsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListDatasetJobConfigsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_dataset_job_configs_with_options_async(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.ListDatasetJobConfigsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.ListDatasetJobConfigsResponse:
+        """
+        @summary 批量查询数据集任务配置
+        
+        @param request: ListDatasetJobConfigsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatasetJobConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_type):
+            query['ConfigType'] = request.config_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatasetJobConfigs',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetjobconfigs/',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListDatasetJobConfigsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListDatasetJobConfigsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_dataset_job_configs(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.ListDatasetJobConfigsRequest,
+    ) -> aiwork_space_20210204_models.ListDatasetJobConfigsResponse:
+        """
+        @summary 批量查询数据集任务配置
+        
+        @param request: ListDatasetJobConfigsRequest
+        @return: ListDatasetJobConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_dataset_job_configs_with_options(dataset_id, request, headers, runtime)
+
+    async def list_dataset_job_configs_async(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.ListDatasetJobConfigsRequest,
+    ) -> aiwork_space_20210204_models.ListDatasetJobConfigsResponse:
+        """
+        @summary 批量查询数据集任务配置
+        
+        @param request: ListDatasetJobConfigsRequest
+        @return: ListDatasetJobConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_dataset_job_configs_with_options_async(dataset_id, request, headers, runtime)
+
+    def list_dataset_jobs_with_options(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.ListDatasetJobsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.ListDatasetJobsResponse:
+        """
+        @summary 获取数据集任务
+        
+        @param request: ListDatasetJobsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatasetJobsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dataset_version):
+            query['DatasetVersion'] = request.dataset_version
+        if not UtilClient.is_unset(request.job_action):
+            query['JobAction'] = request.job_action
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatasetJobs',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetjobs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListDatasetJobsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListDatasetJobsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_dataset_jobs_with_options_async(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.ListDatasetJobsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.ListDatasetJobsResponse:
+        """
+        @summary 获取数据集任务
+        
+        @param request: ListDatasetJobsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatasetJobsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dataset_version):
+            query['DatasetVersion'] = request.dataset_version
+        if not UtilClient.is_unset(request.job_action):
+            query['JobAction'] = request.job_action
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatasetJobs',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetjobs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListDatasetJobsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListDatasetJobsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_dataset_jobs(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.ListDatasetJobsRequest,
+    ) -> aiwork_space_20210204_models.ListDatasetJobsResponse:
+        """
+        @summary 获取数据集任务
+        
+        @param request: ListDatasetJobsRequest
+        @return: ListDatasetJobsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_dataset_jobs_with_options(dataset_id, request, headers, runtime)
+
+    async def list_dataset_jobs_async(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.ListDatasetJobsRequest,
+    ) -> aiwork_space_20210204_models.ListDatasetJobsResponse:
+        """
+        @summary 获取数据集任务
+        
+        @param request: ListDatasetJobsRequest
+        @return: ListDatasetJobsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_dataset_jobs_with_options_async(dataset_id, request, headers, runtime)
+
     def list_dataset_versions_with_options(
         self,
         dataset_id: str,
@@ -5266,12 +7656,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.data_sources_types):
-            query['DataSourcesTypes'] = request.data_sources_types
         if not UtilClient.is_unset(request.label_keys):
             query['LabelKeys'] = request.label_keys
-        if not UtilClient.is_unset(request.lable_values):
-            query['LableValues'] = request.lable_values
+        if not UtilClient.is_unset(request.label_values):
+            query['LabelValues'] = request.label_values
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
@@ -5301,10 +7689,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListDatasetVersionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListDatasetVersionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListDatasetVersionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_dataset_versions_with_options_async(
         self,
@@ -5323,12 +7717,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.data_sources_types):
-            query['DataSourcesTypes'] = request.data_sources_types
         if not UtilClient.is_unset(request.label_keys):
             query['LabelKeys'] = request.label_keys
-        if not UtilClient.is_unset(request.lable_values):
-            query['LableValues'] = request.lable_values
+        if not UtilClient.is_unset(request.label_values):
+            query['LabelValues'] = request.label_values
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
@@ -5358,10 +7750,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListDatasetVersionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListDatasetVersionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListDatasetVersionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_dataset_versions(
         self,
@@ -5427,6 +7825,8 @@ class Client(OpenApiClient):
             query['Properties'] = request.properties
         if not UtilClient.is_unset(request.provider):
             query['Provider'] = request.provider
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.source_dataset_id):
             query['SourceDatasetId'] = request.source_dataset_id
         if not UtilClient.is_unset(request.source_id):
@@ -5450,10 +7850,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListDatasetsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListDatasetsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListDatasetsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_datasets_with_options_async(
         self,
@@ -5489,6 +7895,8 @@ class Client(OpenApiClient):
             query['Properties'] = request.properties
         if not UtilClient.is_unset(request.provider):
             query['Provider'] = request.provider
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.source_dataset_id):
             query['SourceDatasetId'] = request.source_dataset_id
         if not UtilClient.is_unset(request.source_id):
@@ -5512,10 +7920,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListDatasetsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListDatasetsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListDatasetsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_datasets(
         self,
@@ -5604,10 +8018,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListExperimentResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListExperimentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListExperimentResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_experiment_with_options_async(
         self,
@@ -5668,10 +8088,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListExperimentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListExperimentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListExperimentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_experiment(
         self,
@@ -5742,10 +8168,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListImageLabelsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListImageLabelsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListImageLabelsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_image_labels_with_options_async(
         self,
@@ -5788,10 +8220,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListImageLabelsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListImageLabelsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListImageLabelsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_image_labels(
         self,
@@ -5851,14 +8289,10 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.parent_user_id):
-            query['ParentUserId'] = request.parent_user_id
         if not UtilClient.is_unset(request.query):
             query['Query'] = request.query
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
-        if not UtilClient.is_unset(request.user_id):
-            query['UserId'] = request.user_id
         if not UtilClient.is_unset(request.verbose):
             query['Verbose'] = request.verbose
         if not UtilClient.is_unset(request.workspace_id):
@@ -5878,10 +8312,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListImagesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListImagesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListImagesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_images_with_options_async(
         self,
@@ -5913,14 +8353,10 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.parent_user_id):
-            query['ParentUserId'] = request.parent_user_id
         if not UtilClient.is_unset(request.query):
             query['Query'] = request.query
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
-        if not UtilClient.is_unset(request.user_id):
-            query['UserId'] = request.user_id
         if not UtilClient.is_unset(request.verbose):
             query['Verbose'] = request.verbose
         if not UtilClient.is_unset(request.workspace_id):
@@ -5940,10 +8376,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListImagesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListImagesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListImagesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_images(
         self,
@@ -6013,10 +8455,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListMembersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListMembersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListMembersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_members_with_options_async(
         self,
@@ -6058,10 +8506,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListMembersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListMembersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListMembersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_members(
         self,
@@ -6147,10 +8601,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListModelVersionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListModelVersionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListModelVersionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_model_versions_with_options_async(
         self,
@@ -6206,10 +8666,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListModelVersionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListModelVersionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListModelVersionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_model_versions(
         self,
@@ -6300,10 +8766,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListModelsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListModelsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListModelsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_models_with_options_async(
         self,
@@ -6364,10 +8836,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListModelsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListModelsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListModelsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_models(
         self,
@@ -6424,10 +8902,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListPermissionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListPermissionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListPermissionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_permissions_with_options_async(
         self,
@@ -6456,10 +8940,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListPermissionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListPermissionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListPermissionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_permissions(
         self,
@@ -6524,10 +9014,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListProductsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListProductsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListProductsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_products_with_options_async(
         self,
@@ -6566,10 +9062,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListProductsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListProductsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListProductsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_products(
         self,
@@ -6632,10 +9134,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListQuotasResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListQuotasResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListQuotasResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_quotas_with_options_async(
         self,
@@ -6670,10 +9178,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListQuotasResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListQuotasResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListQuotasResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_quotas(
         self,
@@ -6758,10 +9272,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_resources_with_options_async(
         self,
@@ -6818,10 +9338,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_resources(
         self,
@@ -6889,10 +9415,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListRunMetricsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListRunMetricsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListRunMetricsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_run_metrics_with_options_async(
         self,
@@ -6932,10 +9464,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListRunMetricsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListRunMetricsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListRunMetricsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_run_metrics(
         self,
@@ -7028,10 +9566,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListRunsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListRunsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListRunsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_runs_with_options_async(
         self,
@@ -7094,10 +9638,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListRunsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListRunsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListRunsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_runs(
         self,
@@ -7161,10 +9711,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListWorkspaceUsersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListWorkspaceUsersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListWorkspaceUsersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_workspace_users_with_options_async(
         self,
@@ -7200,10 +9756,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListWorkspaceUsersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListWorkspaceUsersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListWorkspaceUsersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_workspace_users(
         self,
@@ -7263,6 +9825,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.status):
@@ -7288,10 +9852,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListWorkspacesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListWorkspacesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListWorkspacesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_workspaces_with_options_async(
         self,
@@ -7321,6 +9891,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.status):
@@ -7346,10 +9918,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListWorkspacesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListWorkspacesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.ListWorkspacesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_workspaces(
         self,
@@ -7413,10 +9991,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.LogRunMetricsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.LogRunMetricsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.LogRunMetricsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def log_run_metrics_with_options_async(
         self,
@@ -7452,10 +10036,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.LogRunMetricsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.LogRunMetricsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.LogRunMetricsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def log_run_metrics(
         self,
@@ -7514,10 +10104,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.PublishCodeSourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.PublishCodeSourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.PublishCodeSourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def publish_code_source_with_options_async(
         self,
@@ -7546,10 +10142,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.PublishCodeSourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.PublishCodeSourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.PublishCodeSourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def publish_code_source(
         self,
@@ -7604,10 +10206,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.PublishDatasetResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.PublishDatasetResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.PublishDatasetResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def publish_dataset_with_options_async(
         self,
@@ -7636,10 +10244,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.PublishDatasetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.PublishDatasetResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.PublishDatasetResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def publish_dataset(
         self,
@@ -7694,10 +10308,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.PublishImageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.PublishImageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.PublishImageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def publish_image_with_options_async(
         self,
@@ -7726,10 +10346,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.PublishImageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.PublishImageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.PublishImageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def publish_image(
         self,
@@ -7784,10 +10410,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.RemoveImageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.RemoveImageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.RemoveImageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def remove_image_with_options_async(
         self,
@@ -7816,10 +10448,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.RemoveImageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.RemoveImageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.RemoveImageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def remove_image(
         self,
@@ -7875,10 +10513,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.RemoveImageLabelsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.RemoveImageLabelsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.RemoveImageLabelsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def remove_image_labels_with_options_async(
         self,
@@ -7908,10 +10552,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.RemoveImageLabelsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.RemoveImageLabelsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.RemoveImageLabelsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def remove_image_labels(
         self,
@@ -7970,10 +10620,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.RemoveMemberRoleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.RemoveMemberRoleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.RemoveMemberRoleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def remove_member_role_with_options_async(
         self,
@@ -8004,10 +10660,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.RemoveMemberRoleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.RemoveMemberRoleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.RemoveMemberRoleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def remove_member_role(
         self,
@@ -8073,10 +10735,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.SetExperimentLabelsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.SetExperimentLabelsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.SetExperimentLabelsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def set_experiment_labels_with_options_async(
         self,
@@ -8112,10 +10780,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.SetExperimentLabelsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.SetExperimentLabelsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.SetExperimentLabelsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def set_experiment_labels(
         self,
@@ -8146,6 +10820,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.set_experiment_labels_with_options_async(experiment_id, request, headers, runtime)
+
+    def stop_dataset_job_with_options(
+        self,
+        dataset_id: str,
+        dataset_job_id: str,
+        request: aiwork_space_20210204_models.StopDatasetJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.StopDatasetJobResponse:
+        """
+        @summary 停止数据集任务
+        
+        @param request: StopDatasetJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopDatasetJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_version):
+            body['DatasetVersion'] = request.dataset_version
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StopDatasetJob',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetjobs/{OpenApiUtilClient.get_encode_param(dataset_job_id)}/action/stop',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.StopDatasetJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.StopDatasetJobResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def stop_dataset_job_with_options_async(
+        self,
+        dataset_id: str,
+        dataset_job_id: str,
+        request: aiwork_space_20210204_models.StopDatasetJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.StopDatasetJobResponse:
+        """
+        @summary 停止数据集任务
+        
+        @param request: StopDatasetJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopDatasetJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_version):
+            body['DatasetVersion'] = request.dataset_version
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StopDatasetJob',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetjobs/{OpenApiUtilClient.get_encode_param(dataset_job_id)}/action/stop',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.StopDatasetJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.StopDatasetJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def stop_dataset_job(
+        self,
+        dataset_id: str,
+        dataset_job_id: str,
+        request: aiwork_space_20210204_models.StopDatasetJobRequest,
+    ) -> aiwork_space_20210204_models.StopDatasetJobResponse:
+        """
+        @summary 停止数据集任务
+        
+        @param request: StopDatasetJobRequest
+        @return: StopDatasetJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.stop_dataset_job_with_options(dataset_id, dataset_job_id, request, headers, runtime)
+
+    async def stop_dataset_job_async(
+        self,
+        dataset_id: str,
+        dataset_job_id: str,
+        request: aiwork_space_20210204_models.StopDatasetJobRequest,
+    ) -> aiwork_space_20210204_models.StopDatasetJobResponse:
+        """
+        @summary 停止数据集任务
+        
+        @param request: StopDatasetJobRequest
+        @return: StopDatasetJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.stop_dataset_job_with_options_async(dataset_id, dataset_job_id, request, headers, runtime)
 
     def update_code_source_with_options(
         self,
@@ -8195,10 +10997,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.UpdateCodeSourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateCodeSourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateCodeSourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_code_source_with_options_async(
         self,
@@ -8248,10 +11056,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.UpdateCodeSourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateCodeSourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateCodeSourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_code_source(
         self,
@@ -8302,6 +11116,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.mount_access_read_write_role_id_list):
+            body['MountAccessReadWriteRoleIdList'] = request.mount_access_read_write_role_id_list
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.options):
@@ -8321,10 +11137,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.UpdateDatasetResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateDatasetResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateDatasetResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_dataset_with_options_async(
         self,
@@ -8345,6 +11167,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.mount_access_read_write_role_id_list):
+            body['MountAccessReadWriteRoleIdList'] = request.mount_access_read_write_role_id_list
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.options):
@@ -8364,10 +11188,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.UpdateDatasetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateDatasetResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateDatasetResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_dataset(
         self,
@@ -8398,6 +11228,402 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_dataset_with_options_async(dataset_id, request, headers, runtime)
+
+    def update_dataset_file_metas_with_options(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.UpdateDatasetFileMetasRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.UpdateDatasetFileMetasResponse:
+        """
+        @summary 批量更新数据集下的文件元数据记录
+        
+        @param request: UpdateDatasetFileMetasRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDatasetFileMetasResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_file_metas):
+            body['DatasetFileMetas'] = request.dataset_file_metas
+        if not UtilClient.is_unset(request.dataset_version):
+            body['DatasetVersion'] = request.dataset_version
+        if not UtilClient.is_unset(request.tag_job_id):
+            body['TagJobId'] = request.tag_job_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDatasetFileMetas',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetfilemetas',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateDatasetFileMetasResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateDatasetFileMetasResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_dataset_file_metas_with_options_async(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.UpdateDatasetFileMetasRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.UpdateDatasetFileMetasResponse:
+        """
+        @summary 批量更新数据集下的文件元数据记录
+        
+        @param request: UpdateDatasetFileMetasRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDatasetFileMetasResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_file_metas):
+            body['DatasetFileMetas'] = request.dataset_file_metas
+        if not UtilClient.is_unset(request.dataset_version):
+            body['DatasetVersion'] = request.dataset_version
+        if not UtilClient.is_unset(request.tag_job_id):
+            body['TagJobId'] = request.tag_job_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDatasetFileMetas',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetfilemetas',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateDatasetFileMetasResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateDatasetFileMetasResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_dataset_file_metas(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.UpdateDatasetFileMetasRequest,
+    ) -> aiwork_space_20210204_models.UpdateDatasetFileMetasResponse:
+        """
+        @summary 批量更新数据集下的文件元数据记录
+        
+        @param request: UpdateDatasetFileMetasRequest
+        @return: UpdateDatasetFileMetasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_dataset_file_metas_with_options(dataset_id, request, headers, runtime)
+
+    async def update_dataset_file_metas_async(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.UpdateDatasetFileMetasRequest,
+    ) -> aiwork_space_20210204_models.UpdateDatasetFileMetasResponse:
+        """
+        @summary 批量更新数据集下的文件元数据记录
+        
+        @param request: UpdateDatasetFileMetasRequest
+        @return: UpdateDatasetFileMetasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_dataset_file_metas_with_options_async(dataset_id, request, headers, runtime)
+
+    def update_dataset_job_with_options(
+        self,
+        dataset_id: str,
+        dataset_job_id: str,
+        request: aiwork_space_20210204_models.UpdateDatasetJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.UpdateDatasetJobResponse:
+        """
+        @summary 更新数据集任务
+        
+        @param request: UpdateDatasetJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDatasetJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_version):
+            body['DatasetVersion'] = request.dataset_version
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDatasetJob',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetjobs/{OpenApiUtilClient.get_encode_param(dataset_job_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateDatasetJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateDatasetJobResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_dataset_job_with_options_async(
+        self,
+        dataset_id: str,
+        dataset_job_id: str,
+        request: aiwork_space_20210204_models.UpdateDatasetJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.UpdateDatasetJobResponse:
+        """
+        @summary 更新数据集任务
+        
+        @param request: UpdateDatasetJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDatasetJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_version):
+            body['DatasetVersion'] = request.dataset_version
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDatasetJob',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetjobs/{OpenApiUtilClient.get_encode_param(dataset_job_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateDatasetJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateDatasetJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_dataset_job(
+        self,
+        dataset_id: str,
+        dataset_job_id: str,
+        request: aiwork_space_20210204_models.UpdateDatasetJobRequest,
+    ) -> aiwork_space_20210204_models.UpdateDatasetJobResponse:
+        """
+        @summary 更新数据集任务
+        
+        @param request: UpdateDatasetJobRequest
+        @return: UpdateDatasetJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_dataset_job_with_options(dataset_id, dataset_job_id, request, headers, runtime)
+
+    async def update_dataset_job_async(
+        self,
+        dataset_id: str,
+        dataset_job_id: str,
+        request: aiwork_space_20210204_models.UpdateDatasetJobRequest,
+    ) -> aiwork_space_20210204_models.UpdateDatasetJobResponse:
+        """
+        @summary 更新数据集任务
+        
+        @param request: UpdateDatasetJobRequest
+        @return: UpdateDatasetJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_dataset_job_with_options_async(dataset_id, dataset_job_id, request, headers, runtime)
+
+    def update_dataset_job_config_with_options(
+        self,
+        dataset_id: str,
+        dataset_job_config_id: str,
+        request: aiwork_space_20210204_models.UpdateDatasetJobConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.UpdateDatasetJobConfigResponse:
+        """
+        @summary 更新数据集任务配置
+        
+        @param request: UpdateDatasetJobConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDatasetJobConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config):
+            body['Config'] = request.config
+        if not UtilClient.is_unset(request.config_type):
+            body['ConfigType'] = request.config_type
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDatasetJobConfig',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetjobconfigs/{OpenApiUtilClient.get_encode_param(dataset_job_config_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateDatasetJobConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateDatasetJobConfigResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_dataset_job_config_with_options_async(
+        self,
+        dataset_id: str,
+        dataset_job_config_id: str,
+        request: aiwork_space_20210204_models.UpdateDatasetJobConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.UpdateDatasetJobConfigResponse:
+        """
+        @summary 更新数据集任务配置
+        
+        @param request: UpdateDatasetJobConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDatasetJobConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config):
+            body['Config'] = request.config
+        if not UtilClient.is_unset(request.config_type):
+            body['ConfigType'] = request.config_type
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDatasetJobConfig',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/datasetjobconfigs/{OpenApiUtilClient.get_encode_param(dataset_job_config_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateDatasetJobConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateDatasetJobConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_dataset_job_config(
+        self,
+        dataset_id: str,
+        dataset_job_config_id: str,
+        request: aiwork_space_20210204_models.UpdateDatasetJobConfigRequest,
+    ) -> aiwork_space_20210204_models.UpdateDatasetJobConfigResponse:
+        """
+        @summary 更新数据集任务配置
+        
+        @param request: UpdateDatasetJobConfigRequest
+        @return: UpdateDatasetJobConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_dataset_job_config_with_options(dataset_id, dataset_job_config_id, request, headers, runtime)
+
+    async def update_dataset_job_config_async(
+        self,
+        dataset_id: str,
+        dataset_job_config_id: str,
+        request: aiwork_space_20210204_models.UpdateDatasetJobConfigRequest,
+    ) -> aiwork_space_20210204_models.UpdateDatasetJobConfigResponse:
+        """
+        @summary 更新数据集任务配置
+        
+        @param request: UpdateDatasetJobConfigRequest
+        @return: UpdateDatasetJobConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_dataset_job_config_with_options_async(dataset_id, dataset_job_config_id, request, headers, runtime)
 
     def update_dataset_version_with_options(
         self,
@@ -8440,10 +11666,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.UpdateDatasetVersionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateDatasetVersionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateDatasetVersionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_dataset_version_with_options_async(
         self,
@@ -8486,10 +11718,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.UpdateDatasetVersionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateDatasetVersionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateDatasetVersionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_dataset_version(
         self,
@@ -8556,10 +11794,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.UpdateDefaultWorkspaceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateDefaultWorkspaceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateDefaultWorkspaceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_default_workspace_with_options_async(
         self,
@@ -8594,10 +11838,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.UpdateDefaultWorkspaceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateDefaultWorkspaceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateDefaultWorkspaceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_default_workspace(
         self,
@@ -8663,10 +11913,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.UpdateExperimentResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateExperimentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateExperimentResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_experiment_with_options_async(
         self,
@@ -8704,10 +11960,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.UpdateExperimentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateExperimentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateExperimentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_experiment(
         self,
@@ -8791,10 +12053,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.UpdateModelResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateModelResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateModelResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_model_with_options_async(
         self,
@@ -8848,10 +12116,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.UpdateModelResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateModelResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateModelResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_model(
         self,
@@ -8938,10 +12212,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.UpdateModelVersionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateModelVersionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateModelVersionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_model_version_with_options_async(
         self,
@@ -8998,10 +12278,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.UpdateModelVersionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateModelVersionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateModelVersionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_model_version(
         self,
@@ -9073,10 +12359,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.UpdateRunResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateRunResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateRunResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_run_with_options_async(
         self,
@@ -9116,10 +12408,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.UpdateRunResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateRunResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateRunResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_run(
         self,
@@ -9187,10 +12485,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.UpdateWorkspaceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateWorkspaceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateWorkspaceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_workspace_with_options_async(
         self,
@@ -9228,10 +12532,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.UpdateWorkspaceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateWorkspaceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateWorkspaceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_workspace(
         self,
@@ -9309,10 +12619,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.UpdateWorkspaceResourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateWorkspaceResourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateWorkspaceResourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_workspace_resource_with_options_async(
         self,
@@ -9360,10 +12676,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.UpdateWorkspaceResourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateWorkspaceResourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aiwork_space_20210204_models.UpdateWorkspaceResourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_workspace_resource(
         self,

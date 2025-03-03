@@ -202,7 +202,9 @@ class DatasetVersion(TeaModel):
         description: str = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
+        import_info: str = None,
         labels: List[Label] = None,
+        mount_access: str = None,
         options: str = None,
         property: str = None,
         source_id: str = None,
@@ -216,7 +218,9 @@ class DatasetVersion(TeaModel):
         self.description = description
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
+        self.import_info = import_info
         self.labels = labels
+        self.mount_access = mount_access
         self.options = options
         self.property = property
         self.source_id = source_id
@@ -248,10 +252,14 @@ class DatasetVersion(TeaModel):
             result['GmtCreateTime'] = self.gmt_create_time
         if self.gmt_modified_time is not None:
             result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.import_info is not None:
+            result['ImportInfo'] = self.import_info
         result['Labels'] = []
         if self.labels is not None:
             for k in self.labels:
                 result['Labels'].append(k.to_map() if k else None)
+        if self.mount_access is not None:
+            result['MountAccess'] = self.mount_access
         if self.options is not None:
             result['Options'] = self.options
         if self.property is not None:
@@ -280,11 +288,15 @@ class DatasetVersion(TeaModel):
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('GmtModifiedTime') is not None:
             self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('ImportInfo') is not None:
+            self.import_info = m.get('ImportInfo')
         self.labels = []
         if m.get('Labels') is not None:
             for k in m.get('Labels'):
                 temp_model = Label()
                 self.labels.append(temp_model.from_map(k))
+        if m.get('MountAccess') is not None:
+            self.mount_access = m.get('MountAccess')
         if m.get('Options') is not None:
             self.options = m.get('Options')
         if m.get('Property') is not None:
@@ -310,8 +322,11 @@ class Dataset(TeaModel):
         description: str = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
+        import_info: str = None,
         labels: List[Label] = None,
         latest_version: DatasetVersion = None,
+        mount_access: str = None,
+        mount_access_read_write_role_id_list: List[str] = None,
         name: str = None,
         options: str = None,
         owner_id: str = None,
@@ -333,8 +348,11 @@ class Dataset(TeaModel):
         self.description = description
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
+        self.import_info = import_info
         self.labels = labels
         self.latest_version = latest_version
+        self.mount_access = mount_access
+        self.mount_access_read_write_role_id_list = mount_access_read_write_role_id_list
         self.name = name
         self.options = options
         self.owner_id = owner_id
@@ -377,12 +395,18 @@ class Dataset(TeaModel):
             result['GmtCreateTime'] = self.gmt_create_time
         if self.gmt_modified_time is not None:
             result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.import_info is not None:
+            result['ImportInfo'] = self.import_info
         result['Labels'] = []
         if self.labels is not None:
             for k in self.labels:
                 result['Labels'].append(k.to_map() if k else None)
         if self.latest_version is not None:
             result['LatestVersion'] = self.latest_version.to_map()
+        if self.mount_access is not None:
+            result['MountAccess'] = self.mount_access
+        if self.mount_access_read_write_role_id_list is not None:
+            result['MountAccessReadWriteRoleIdList'] = self.mount_access_read_write_role_id_list
         if self.name is not None:
             result['Name'] = self.name
         if self.options is not None:
@@ -427,6 +451,8 @@ class Dataset(TeaModel):
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('GmtModifiedTime') is not None:
             self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('ImportInfo') is not None:
+            self.import_info = m.get('ImportInfo')
         self.labels = []
         if m.get('Labels') is not None:
             for k in m.get('Labels'):
@@ -435,6 +461,10 @@ class Dataset(TeaModel):
         if m.get('LatestVersion') is not None:
             temp_model = DatasetVersion()
             self.latest_version = temp_model.from_map(m['LatestVersion'])
+        if m.get('MountAccess') is not None:
+            self.mount_access = m.get('MountAccess')
+        if m.get('MountAccessReadWriteRoleIdList') is not None:
+            self.mount_access_read_write_role_id_list = m.get('MountAccessReadWriteRoleIdList')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Options') is not None:
@@ -459,6 +489,559 @@ class Dataset(TeaModel):
             self.uri = m.get('Uri')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class DatasetFileMeta(TeaModel):
+    def __init__(
+        self,
+        data_size: int = None,
+        dataset_file_meta_id: str = None,
+        download_url: str = None,
+        file_finger_print: str = None,
+        file_name: str = None,
+        file_update_time: str = None,
+        score: float = None,
+        tags: str = None,
+        uri: str = None,
+    ):
+        self.data_size = data_size
+        self.dataset_file_meta_id = dataset_file_meta_id
+        self.download_url = download_url
+        self.file_finger_print = file_finger_print
+        self.file_name = file_name
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
+        self.file_update_time = file_update_time
+        self.score = score
+        self.tags = tags
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_size is not None:
+            result['DataSize'] = self.data_size
+        if self.dataset_file_meta_id is not None:
+            result['DatasetFileMetaId'] = self.dataset_file_meta_id
+        if self.download_url is not None:
+            result['DownloadUrl'] = self.download_url
+        if self.file_finger_print is not None:
+            result['FileFingerPrint'] = self.file_finger_print
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_update_time is not None:
+            result['FileUpdateTime'] = self.file_update_time
+        if self.score is not None:
+            result['Score'] = self.score
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.uri is not None:
+            result['Uri'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataSize') is not None:
+            self.data_size = m.get('DataSize')
+        if m.get('DatasetFileMetaId') is not None:
+            self.dataset_file_meta_id = m.get('DatasetFileMetaId')
+        if m.get('DownloadUrl') is not None:
+            self.download_url = m.get('DownloadUrl')
+        if m.get('FileFingerPrint') is not None:
+            self.file_finger_print = m.get('FileFingerPrint')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileUpdateTime') is not None:
+            self.file_update_time = m.get('FileUpdateTime')
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
+        return self
+
+
+class DatasetFileMetaConentUpdate(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        content_type: str = None,
+        data_size: int = None,
+        dataset_file_meta_id: str = None,
+        file_create_time: str = None,
+        file_name: str = None,
+        file_type: str = None,
+        file_update_time: str = None,
+        meta_attributes: str = None,
+        tags: str = None,
+    ):
+        self.comment = comment
+        self.content_type = content_type
+        self.data_size = data_size
+        # This parameter is required.
+        self.dataset_file_meta_id = dataset_file_meta_id
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
+        self.file_create_time = file_create_time
+        self.file_name = file_name
+        self.file_type = file_type
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
+        self.file_update_time = file_update_time
+        self.meta_attributes = meta_attributes
+        self.tags = tags
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.content_type is not None:
+            result['ContentType'] = self.content_type
+        if self.data_size is not None:
+            result['DataSize'] = self.data_size
+        if self.dataset_file_meta_id is not None:
+            result['DatasetFileMetaId'] = self.dataset_file_meta_id
+        if self.file_create_time is not None:
+            result['FileCreateTime'] = self.file_create_time
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.file_update_time is not None:
+            result['FileUpdateTime'] = self.file_update_time
+        if self.meta_attributes is not None:
+            result['MetaAttributes'] = self.meta_attributes
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('ContentType') is not None:
+            self.content_type = m.get('ContentType')
+        if m.get('DataSize') is not None:
+            self.data_size = m.get('DataSize')
+        if m.get('DatasetFileMetaId') is not None:
+            self.dataset_file_meta_id = m.get('DatasetFileMetaId')
+        if m.get('FileCreateTime') is not None:
+            self.file_create_time = m.get('FileCreateTime')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('FileUpdateTime') is not None:
+            self.file_update_time = m.get('FileUpdateTime')
+        if m.get('MetaAttributes') is not None:
+            self.meta_attributes = m.get('MetaAttributes')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        return self
+
+
+class DatasetFileMetaContentCreate(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        content_type: str = None,
+        data_size: int = None,
+        file_create_time: str = None,
+        file_finger_print: str = None,
+        file_name: str = None,
+        file_type: str = None,
+        file_update_time: str = None,
+        meta_attributes: str = None,
+        tags: str = None,
+        uri: str = None,
+    ):
+        self.comment = comment
+        # This parameter is required.
+        self.content_type = content_type
+        self.data_size = data_size
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
+        self.file_create_time = file_create_time
+        # This parameter is required.
+        self.file_finger_print = file_finger_print
+        self.file_name = file_name
+        # This parameter is required.
+        self.file_type = file_type
+        # This parameter is required.
+        # 
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
+        self.file_update_time = file_update_time
+        self.meta_attributes = meta_attributes
+        self.tags = tags
+        # This parameter is required.
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.content_type is not None:
+            result['ContentType'] = self.content_type
+        if self.data_size is not None:
+            result['DataSize'] = self.data_size
+        if self.file_create_time is not None:
+            result['FileCreateTime'] = self.file_create_time
+        if self.file_finger_print is not None:
+            result['FileFingerPrint'] = self.file_finger_print
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.file_update_time is not None:
+            result['FileUpdateTime'] = self.file_update_time
+        if self.meta_attributes is not None:
+            result['MetaAttributes'] = self.meta_attributes
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.uri is not None:
+            result['Uri'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('ContentType') is not None:
+            self.content_type = m.get('ContentType')
+        if m.get('DataSize') is not None:
+            self.data_size = m.get('DataSize')
+        if m.get('FileCreateTime') is not None:
+            self.file_create_time = m.get('FileCreateTime')
+        if m.get('FileFingerPrint') is not None:
+            self.file_finger_print = m.get('FileFingerPrint')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('FileUpdateTime') is not None:
+            self.file_update_time = m.get('FileUpdateTime')
+        if m.get('MetaAttributes') is not None:
+            self.meta_attributes = m.get('MetaAttributes')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
+        return self
+
+
+class DatasetFileMetaContentGet(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        content_type: str = None,
+        data_size: int = None,
+        dataset_file_meta_id: str = None,
+        file_create_time: str = None,
+        file_finger_print: str = None,
+        file_name: str = None,
+        file_type: str = None,
+        file_update_time: str = None,
+        meta_attributes: str = None,
+        tags: str = None,
+        uri: str = None,
+    ):
+        self.comment = comment
+        self.content_type = content_type
+        self.data_size = data_size
+        self.dataset_file_meta_id = dataset_file_meta_id
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
+        self.file_create_time = file_create_time
+        self.file_finger_print = file_finger_print
+        self.file_name = file_name
+        self.file_type = file_type
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
+        self.file_update_time = file_update_time
+        self.meta_attributes = meta_attributes
+        self.tags = tags
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.content_type is not None:
+            result['ContentType'] = self.content_type
+        if self.data_size is not None:
+            result['DataSize'] = self.data_size
+        if self.dataset_file_meta_id is not None:
+            result['DatasetFileMetaId'] = self.dataset_file_meta_id
+        if self.file_create_time is not None:
+            result['FileCreateTime'] = self.file_create_time
+        if self.file_finger_print is not None:
+            result['FileFingerPrint'] = self.file_finger_print
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.file_update_time is not None:
+            result['FileUpdateTime'] = self.file_update_time
+        if self.meta_attributes is not None:
+            result['MetaAttributes'] = self.meta_attributes
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.uri is not None:
+            result['Uri'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('ContentType') is not None:
+            self.content_type = m.get('ContentType')
+        if m.get('DataSize') is not None:
+            self.data_size = m.get('DataSize')
+        if m.get('DatasetFileMetaId') is not None:
+            self.dataset_file_meta_id = m.get('DatasetFileMetaId')
+        if m.get('FileCreateTime') is not None:
+            self.file_create_time = m.get('FileCreateTime')
+        if m.get('FileFingerPrint') is not None:
+            self.file_finger_print = m.get('FileFingerPrint')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('FileUpdateTime') is not None:
+            self.file_update_time = m.get('FileUpdateTime')
+        if m.get('MetaAttributes') is not None:
+            self.meta_attributes = m.get('MetaAttributes')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
+        return self
+
+
+class DatasetFileMetaResponse(TeaModel):
+    def __init__(
+        self,
+        dataset_file_meta_id: str = None,
+        result: str = None,
+        uri: str = None,
+    ):
+        # This parameter is required.
+        self.dataset_file_meta_id = dataset_file_meta_id
+        # This parameter is required.
+        self.result = result
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_file_meta_id is not None:
+            result['DatasetFileMetaId'] = self.dataset_file_meta_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.uri is not None:
+            result['Uri'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetFileMetaId') is not None:
+            self.dataset_file_meta_id = m.get('DatasetFileMetaId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
+        return self
+
+
+class DatasetJob(TeaModel):
+    def __init__(
+        self,
+        completed_file_count: int = None,
+        create_time: str = None,
+        dataset_job_id: str = None,
+        dataset_version: str = None,
+        description: str = None,
+        failed_file_count: int = None,
+        finish_time: str = None,
+        job_action: str = None,
+        job_mode: str = None,
+        job_spec: str = None,
+        logs: List[str] = None,
+        status: str = None,
+        total_file_count: int = None,
+        workspace_id: str = None,
+    ):
+        self.completed_file_count = completed_file_count
+        self.create_time = create_time
+        self.dataset_job_id = dataset_job_id
+        self.dataset_version = dataset_version
+        self.description = description
+        self.failed_file_count = failed_file_count
+        self.finish_time = finish_time
+        self.job_action = job_action
+        self.job_mode = job_mode
+        self.job_spec = job_spec
+        self.logs = logs
+        self.status = status
+        self.total_file_count = total_file_count
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.completed_file_count is not None:
+            result['CompletedFileCount'] = self.completed_file_count
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.dataset_job_id is not None:
+            result['DatasetJobId'] = self.dataset_job_id
+        if self.dataset_version is not None:
+            result['DatasetVersion'] = self.dataset_version
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.failed_file_count is not None:
+            result['FailedFileCount'] = self.failed_file_count
+        if self.finish_time is not None:
+            result['FinishTime'] = self.finish_time
+        if self.job_action is not None:
+            result['JobAction'] = self.job_action
+        if self.job_mode is not None:
+            result['JobMode'] = self.job_mode
+        if self.job_spec is not None:
+            result['JobSpec'] = self.job_spec
+        if self.logs is not None:
+            result['Logs'] = self.logs
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.total_file_count is not None:
+            result['TotalFileCount'] = self.total_file_count
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompletedFileCount') is not None:
+            self.completed_file_count = m.get('CompletedFileCount')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DatasetJobId') is not None:
+            self.dataset_job_id = m.get('DatasetJobId')
+        if m.get('DatasetVersion') is not None:
+            self.dataset_version = m.get('DatasetVersion')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FailedFileCount') is not None:
+            self.failed_file_count = m.get('FailedFileCount')
+        if m.get('FinishTime') is not None:
+            self.finish_time = m.get('FinishTime')
+        if m.get('JobAction') is not None:
+            self.job_action = m.get('JobAction')
+        if m.get('JobMode') is not None:
+            self.job_mode = m.get('JobMode')
+        if m.get('JobSpec') is not None:
+            self.job_spec = m.get('JobSpec')
+        if m.get('Logs') is not None:
+            self.logs = m.get('Logs')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TotalFileCount') is not None:
+            self.total_file_count = m.get('TotalFileCount')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class DatasetJobConfig(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+        config_type: str = None,
+        create_time: str = None,
+        dataset_job_config_id: str = None,
+        modify_time: str = None,
+        workspace_id: str = None,
+    ):
+        self.config = config
+        self.config_type = config_type
+        self.create_time = create_time
+        self.dataset_job_config_id = dataset_job_config_id
+        self.modify_time = modify_time
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config
+        if self.config_type is not None:
+            result['ConfigType'] = self.config_type
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.dataset_job_config_id is not None:
+            result['DatasetJobConfigId'] = self.dataset_job_config_id
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+        if m.get('ConfigType') is not None:
+            self.config_type = m.get('ConfigType')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DatasetJobConfigId') is not None:
+            self.dataset_job_config_id = m.get('DatasetJobConfigId')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -963,6 +1546,90 @@ class LabelInfo(TeaModel):
         return self
 
 
+class LineageEntity(TeaModel):
+    def __init__(
+        self,
+        attributes: Dict[str, Any] = None,
+        entity_type: str = None,
+        name: str = None,
+        qualified_name: str = None,
+    ):
+        self.attributes = attributes
+        self.entity_type = entity_type
+        self.name = name
+        self.qualified_name = qualified_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attributes is not None:
+            result['Attributes'] = self.attributes
+        if self.entity_type is not None:
+            result['EntityType'] = self.entity_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.qualified_name is not None:
+            result['QualifiedName'] = self.qualified_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attributes') is not None:
+            self.attributes = m.get('Attributes')
+        if m.get('EntityType') is not None:
+            self.entity_type = m.get('EntityType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('QualifiedName') is not None:
+            self.qualified_name = m.get('QualifiedName')
+        return self
+
+
+class LineageRelation(TeaModel):
+    def __init__(
+        self,
+        dest_entity_qualified_name: str = None,
+        relationship_guid: str = None,
+        src_entity_qualified_name: str = None,
+    ):
+        self.dest_entity_qualified_name = dest_entity_qualified_name
+        self.relationship_guid = relationship_guid
+        self.src_entity_qualified_name = src_entity_qualified_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dest_entity_qualified_name is not None:
+            result['DestEntityQualifiedName'] = self.dest_entity_qualified_name
+        if self.relationship_guid is not None:
+            result['RelationshipGuid'] = self.relationship_guid
+        if self.src_entity_qualified_name is not None:
+            result['SrcEntityQualifiedName'] = self.src_entity_qualified_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestEntityQualifiedName') is not None:
+            self.dest_entity_qualified_name = m.get('DestEntityQualifiedName')
+        if m.get('RelationshipGuid') is not None:
+            self.relationship_guid = m.get('RelationshipGuid')
+        if m.get('SrcEntityQualifiedName') is not None:
+            self.src_entity_qualified_name = m.get('SrcEntityQualifiedName')
+        return self
+
+
 class ModelVersion(TeaModel):
     def __init__(
         self,
@@ -1258,6 +1925,92 @@ class Model(TeaModel):
         return self
 
 
+class Relation(TeaModel):
+    def __init__(
+        self,
+        err_msg: str = None,
+        lineage_relation: LineageRelation = None,
+        result: bool = None,
+    ):
+        self.err_msg = err_msg
+        self.lineage_relation = lineage_relation
+        self.result = result
+
+    def validate(self):
+        if self.lineage_relation:
+            self.lineage_relation.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.err_msg is not None:
+            result['ErrMsg'] = self.err_msg
+        if self.lineage_relation is not None:
+            result['LineageRelation'] = self.lineage_relation.to_map()
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrMsg') is not None:
+            self.err_msg = m.get('ErrMsg')
+        if m.get('LineageRelation') is not None:
+            temp_model = LineageRelation()
+            self.lineage_relation = temp_model.from_map(m['LineageRelation'])
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class Relationship(TeaModel):
+    def __init__(
+        self,
+        attributes: Dict[str, Any] = None,
+        data_channel: str = None,
+        relationship_guid: str = None,
+        relationship_type: str = None,
+    ):
+        self.attributes = attributes
+        self.data_channel = data_channel
+        self.relationship_guid = relationship_guid
+        self.relationship_type = relationship_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attributes is not None:
+            result['Attributes'] = self.attributes
+        if self.data_channel is not None:
+            result['DataChannel'] = self.data_channel
+        if self.relationship_guid is not None:
+            result['RelationshipGuid'] = self.relationship_guid
+        if self.relationship_type is not None:
+            result['RelationshipType'] = self.relationship_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attributes') is not None:
+            self.attributes = m.get('Attributes')
+        if m.get('DataChannel') is not None:
+            self.data_channel = m.get('DataChannel')
+        if m.get('RelationshipGuid') is not None:
+            self.relationship_guid = m.get('RelationshipGuid')
+        if m.get('RelationshipType') is not None:
+            self.relationship_type = m.get('RelationshipType')
+        return self
+
+
 class Trial(TeaModel):
     def __init__(
         self,
@@ -1399,6 +2152,107 @@ class TrialLabel(TeaModel):
             self.trial_id = m.get('TrialId')
         if m.get('Value') is not None:
             self.value = m.get('Value')
+        return self
+
+
+class AcceptDataworksEventRequest(TeaModel):
+    def __init__(
+        self,
+        data: Dict[str, Any] = None,
+        message_id: str = None,
+    ):
+        self.data = data
+        self.message_id = message_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message_id is not None:
+            result['MessageId'] = self.message_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('MessageId') is not None:
+            self.message_id = m.get('MessageId')
+        return self
+
+
+class AcceptDataworksEventResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class AcceptDataworksEventResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AcceptDataworksEventResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AcceptDataworksEventResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -1793,6 +2647,113 @@ class AddMemberRoleResponse(TeaModel):
         return self
 
 
+class ChangeResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        new_resource_group_id: str = None,
+        resource_id: str = None,
+        resource_type: str = None,
+    ):
+        self.new_resource_group_id = new_resource_group_id
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.new_resource_group_id is not None:
+            result['NewResourceGroupId'] = self.new_resource_group_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NewResourceGroupId') is not None:
+            self.new_resource_group_id = m.get('NewResourceGroupId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class ChangeResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ChangeResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ChangeResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ChangeResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateCodeSourceRequest(TeaModel):
     def __init__(
         self,
@@ -1959,7 +2920,9 @@ class CreateDatasetRequest(TeaModel):
         data_source_type: str = None,
         data_type: str = None,
         description: str = None,
+        import_info: str = None,
         labels: List[Label] = None,
+        mount_access_read_write_role_id_list: List[str] = None,
         name: str = None,
         options: str = None,
         property: str = None,
@@ -1982,7 +2945,9 @@ class CreateDatasetRequest(TeaModel):
         self.data_source_type = data_source_type
         self.data_type = data_type
         self.description = description
+        self.import_info = import_info
         self.labels = labels
+        self.mount_access_read_write_role_id_list = mount_access_read_write_role_id_list
         # This parameter is required.
         self.name = name
         self.options = options
@@ -2029,10 +2994,14 @@ class CreateDatasetRequest(TeaModel):
             result['DataType'] = self.data_type
         if self.description is not None:
             result['Description'] = self.description
+        if self.import_info is not None:
+            result['ImportInfo'] = self.import_info
         result['Labels'] = []
         if self.labels is not None:
             for k in self.labels:
                 result['Labels'].append(k.to_map() if k else None)
+        if self.mount_access_read_write_role_id_list is not None:
+            result['MountAccessReadWriteRoleIdList'] = self.mount_access_read_write_role_id_list
         if self.name is not None:
             result['Name'] = self.name
         if self.options is not None:
@@ -2079,11 +3048,15 @@ class CreateDatasetRequest(TeaModel):
             self.data_type = m.get('DataType')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ImportInfo') is not None:
+            self.import_info = m.get('ImportInfo')
         self.labels = []
         if m.get('Labels') is not None:
             for k in m.get('Labels'):
                 temp_model = Label()
                 self.labels.append(temp_model.from_map(k))
+        if m.get('MountAccessReadWriteRoleIdList') is not None:
+            self.mount_access_read_write_role_id_list = m.get('MountAccessReadWriteRoleIdList')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Options') is not None:
@@ -2188,6 +3161,409 @@ class CreateDatasetResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateDatasetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateDatasetFileMetasRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_file_metas: List[DatasetFileMetaContentCreate] = None,
+        dataset_version: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.dataset_file_metas = dataset_file_metas
+        # This parameter is required.
+        self.dataset_version = dataset_version
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.dataset_file_metas:
+            for k in self.dataset_file_metas:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DatasetFileMetas'] = []
+        if self.dataset_file_metas is not None:
+            for k in self.dataset_file_metas:
+                result['DatasetFileMetas'].append(k.to_map() if k else None)
+        if self.dataset_version is not None:
+            result['DatasetVersion'] = self.dataset_version
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dataset_file_metas = []
+        if m.get('DatasetFileMetas') is not None:
+            for k in m.get('DatasetFileMetas'):
+                temp_model = DatasetFileMetaContentCreate()
+                self.dataset_file_metas.append(temp_model.from_map(k))
+        if m.get('DatasetVersion') is not None:
+            self.dataset_version = m.get('DatasetVersion')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class CreateDatasetFileMetasResponseBody(TeaModel):
+    def __init__(
+        self,
+        failed_details: List[DatasetFileMetaResponse] = None,
+        request_id: str = None,
+        status: bool = None,
+        succeed_details: List[DatasetFileMetaResponse] = None,
+    ):
+        self.failed_details = failed_details
+        self.request_id = request_id
+        self.status = status
+        self.succeed_details = succeed_details
+
+    def validate(self):
+        if self.failed_details:
+            for k in self.failed_details:
+                if k:
+                    k.validate()
+        if self.succeed_details:
+            for k in self.succeed_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FailedDetails'] = []
+        if self.failed_details is not None:
+            for k in self.failed_details:
+                result['FailedDetails'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        result['SucceedDetails'] = []
+        if self.succeed_details is not None:
+            for k in self.succeed_details:
+                result['SucceedDetails'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.failed_details = []
+        if m.get('FailedDetails') is not None:
+            for k in m.get('FailedDetails'):
+                temp_model = DatasetFileMetaResponse()
+                self.failed_details.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.succeed_details = []
+        if m.get('SucceedDetails') is not None:
+            for k in m.get('SucceedDetails'):
+                temp_model = DatasetFileMetaResponse()
+                self.succeed_details.append(temp_model.from_map(k))
+        return self
+
+
+class CreateDatasetFileMetasResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDatasetFileMetasResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDatasetFileMetasResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateDatasetJobRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_version: str = None,
+        description: str = None,
+        job_action: str = None,
+        job_mode: str = None,
+        job_spec: str = None,
+        workspace_id: str = None,
+    ):
+        self.dataset_version = dataset_version
+        self.description = description
+        # This parameter is required.
+        self.job_action = job_action
+        self.job_mode = job_mode
+        # This parameter is required.
+        self.job_spec = job_spec
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_version is not None:
+            result['DatasetVersion'] = self.dataset_version
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.job_action is not None:
+            result['JobAction'] = self.job_action
+        if self.job_mode is not None:
+            result['JobMode'] = self.job_mode
+        if self.job_spec is not None:
+            result['JobSpec'] = self.job_spec
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetVersion') is not None:
+            self.dataset_version = m.get('DatasetVersion')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('JobAction') is not None:
+            self.job_action = m.get('JobAction')
+        if m.get('JobMode') is not None:
+            self.job_mode = m.get('JobMode')
+        if m.get('JobSpec') is not None:
+            self.job_spec = m.get('JobSpec')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class CreateDatasetJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        dataset_job_id: str = None,
+        request_id: str = None,
+    ):
+        self.dataset_job_id = dataset_job_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_job_id is not None:
+            result['DatasetJobId'] = self.dataset_job_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetJobId') is not None:
+            self.dataset_job_id = m.get('DatasetJobId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateDatasetJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDatasetJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDatasetJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateDatasetJobConfigRequest(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+        config_type: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.config = config
+        # This parameter is required.
+        self.config_type = config_type
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config
+        if self.config_type is not None:
+            result['ConfigType'] = self.config_type
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+        if m.get('ConfigType') is not None:
+            self.config_type = m.get('ConfigType')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class CreateDatasetJobConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        dataset_job_config_id: str = None,
+        request_id: str = None,
+    ):
+        self.dataset_job_config_id = dataset_job_config_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_job_config_id is not None:
+            result['DatasetJobConfigId'] = self.dataset_job_config_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetJobConfigId') is not None:
+            self.dataset_job_config_id = m.get('DatasetJobConfigId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateDatasetJobConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDatasetJobConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDatasetJobConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2302,6 +3678,7 @@ class CreateDatasetVersionRequest(TeaModel):
         data_size: int = None,
         data_source_type: str = None,
         description: str = None,
+        import_info: str = None,
         labels: List[Label] = None,
         options: str = None,
         property: str = None,
@@ -2314,6 +3691,7 @@ class CreateDatasetVersionRequest(TeaModel):
         # This parameter is required.
         self.data_source_type = data_source_type
         self.description = description
+        self.import_info = import_info
         self.labels = labels
         self.options = options
         # This parameter is required.
@@ -2343,6 +3721,8 @@ class CreateDatasetVersionRequest(TeaModel):
             result['DataSourceType'] = self.data_source_type
         if self.description is not None:
             result['Description'] = self.description
+        if self.import_info is not None:
+            result['ImportInfo'] = self.import_info
         result['Labels'] = []
         if self.labels is not None:
             for k in self.labels:
@@ -2369,6 +3749,8 @@ class CreateDatasetVersionRequest(TeaModel):
             self.data_source_type = m.get('DataSourceType')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ImportInfo') is not None:
+            self.import_info = m.get('ImportInfo')
         self.labels = []
         if m.get('Labels') is not None:
             for k in m.get('Labels'):
@@ -3880,6 +5262,7 @@ class CreateWorkspaceRequest(TeaModel):
         description: str = None,
         display_name: str = None,
         env_types: List[str] = None,
+        resource_group_id: str = None,
         workspace_name: str = None,
     ):
         # This parameter is required.
@@ -3887,6 +5270,7 @@ class CreateWorkspaceRequest(TeaModel):
         self.display_name = display_name
         # This parameter is required.
         self.env_types = env_types
+        self.resource_group_id = resource_group_id
         # This parameter is required.
         self.workspace_name = workspace_name
 
@@ -3905,6 +5289,8 @@ class CreateWorkspaceRequest(TeaModel):
             result['DisplayName'] = self.display_name
         if self.env_types is not None:
             result['EnvTypes'] = self.env_types
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.workspace_name is not None:
             result['WorkspaceName'] = self.workspace_name
         return result
@@ -3917,6 +5303,8 @@ class CreateWorkspaceRequest(TeaModel):
             self.display_name = m.get('DisplayName')
         if m.get('EnvTypes') is not None:
             self.env_types = m.get('EnvTypes')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('WorkspaceName') is not None:
             self.workspace_name = m.get('WorkspaceName')
         return self
@@ -4453,6 +5841,297 @@ class DeleteDatasetResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteDatasetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDatasetFileMetasRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_file_meta_ids: str = None,
+        dataset_version: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.dataset_file_meta_ids = dataset_file_meta_ids
+        self.dataset_version = dataset_version
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_file_meta_ids is not None:
+            result['DatasetFileMetaIds'] = self.dataset_file_meta_ids
+        if self.dataset_version is not None:
+            result['DatasetVersion'] = self.dataset_version
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetFileMetaIds') is not None:
+            self.dataset_file_meta_ids = m.get('DatasetFileMetaIds')
+        if m.get('DatasetVersion') is not None:
+            self.dataset_version = m.get('DatasetVersion')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class DeleteDatasetFileMetasResponseBody(TeaModel):
+    def __init__(
+        self,
+        failed_details: List[DatasetFileMetaResponse] = None,
+        request_id: str = None,
+        status: bool = None,
+    ):
+        self.failed_details = failed_details
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        if self.failed_details:
+            for k in self.failed_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FailedDetails'] = []
+        if self.failed_details is not None:
+            for k in self.failed_details:
+                result['FailedDetails'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.failed_details = []
+        if m.get('FailedDetails') is not None:
+            for k in m.get('FailedDetails'):
+                temp_model = DatasetFileMetaResponse()
+                self.failed_details.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DeleteDatasetFileMetasResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDatasetFileMetasResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDatasetFileMetasResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDatasetJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteDatasetJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDatasetJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDatasetJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDatasetJobConfigRequest(TeaModel):
+    def __init__(
+        self,
+        workspace_id: str = None,
+    ):
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class DeleteDatasetJobConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteDatasetJobConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDatasetJobConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDatasetJobConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5785,8 +7464,11 @@ class GetDatasetResponseBody(TeaModel):
         description: str = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
+        import_info: str = None,
         labels: List[Label] = None,
         latest_version: DatasetVersion = None,
+        mount_access: str = None,
+        mount_access_read_write_role_id_list: List[str] = None,
         name: str = None,
         options: str = None,
         owner_id: str = None,
@@ -5810,8 +7492,11 @@ class GetDatasetResponseBody(TeaModel):
         self.description = description
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
+        self.import_info = import_info
         self.labels = labels
         self.latest_version = latest_version
+        self.mount_access = mount_access
+        self.mount_access_read_write_role_id_list = mount_access_read_write_role_id_list
         self.name = name
         self.options = options
         self.owner_id = owner_id
@@ -5856,12 +7541,18 @@ class GetDatasetResponseBody(TeaModel):
             result['GmtCreateTime'] = self.gmt_create_time
         if self.gmt_modified_time is not None:
             result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.import_info is not None:
+            result['ImportInfo'] = self.import_info
         result['Labels'] = []
         if self.labels is not None:
             for k in self.labels:
                 result['Labels'].append(k.to_map() if k else None)
         if self.latest_version is not None:
             result['LatestVersion'] = self.latest_version.to_map()
+        if self.mount_access is not None:
+            result['MountAccess'] = self.mount_access
+        if self.mount_access_read_write_role_id_list is not None:
+            result['MountAccessReadWriteRoleIdList'] = self.mount_access_read_write_role_id_list
         if self.name is not None:
             result['Name'] = self.name
         if self.options is not None:
@@ -5910,6 +7601,8 @@ class GetDatasetResponseBody(TeaModel):
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('GmtModifiedTime') is not None:
             self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('ImportInfo') is not None:
+            self.import_info = m.get('ImportInfo')
         self.labels = []
         if m.get('Labels') is not None:
             for k in m.get('Labels'):
@@ -5918,6 +7611,10 @@ class GetDatasetResponseBody(TeaModel):
         if m.get('LatestVersion') is not None:
             temp_model = DatasetVersion()
             self.latest_version = temp_model.from_map(m['LatestVersion'])
+        if m.get('MountAccess') is not None:
+            self.mount_access = m.get('MountAccess')
+        if m.get('MountAccessReadWriteRoleIdList') is not None:
+            self.mount_access_read_write_role_id_list = m.get('MountAccessReadWriteRoleIdList')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Options') is not None:
@@ -5992,6 +7689,432 @@ class GetDatasetResponse(TeaModel):
         return self
 
 
+class GetDatasetFileMetaRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_version: str = None,
+        workspace_id: str = None,
+    ):
+        self.dataset_version = dataset_version
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_version is not None:
+            result['DatasetVersion'] = self.dataset_version
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetVersion') is not None:
+            self.dataset_version = m.get('DatasetVersion')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class GetDatasetFileMetaResponseBody(TeaModel):
+    def __init__(
+        self,
+        dataset_file_meta: DatasetFileMetaContentGet = None,
+        dataset_id: str = None,
+        dataset_version: str = None,
+        request_id: str = None,
+        workspace_id: str = None,
+    ):
+        self.dataset_file_meta = dataset_file_meta
+        self.dataset_id = dataset_id
+        self.dataset_version = dataset_version
+        self.request_id = request_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.dataset_file_meta:
+            self.dataset_file_meta.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_file_meta is not None:
+            result['DatasetFileMeta'] = self.dataset_file_meta.to_map()
+        if self.dataset_id is not None:
+            result['DatasetId'] = self.dataset_id
+        if self.dataset_version is not None:
+            result['DatasetVersion'] = self.dataset_version
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetFileMeta') is not None:
+            temp_model = DatasetFileMetaContentGet()
+            self.dataset_file_meta = temp_model.from_map(m['DatasetFileMeta'])
+        if m.get('DatasetId') is not None:
+            self.dataset_id = m.get('DatasetId')
+        if m.get('DatasetVersion') is not None:
+            self.dataset_version = m.get('DatasetVersion')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class GetDatasetFileMetaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDatasetFileMetaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDatasetFileMetaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDatasetJobRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_version: str = None,
+        workspace_id: str = None,
+    ):
+        self.dataset_version = dataset_version
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_version is not None:
+            result['DatasetVersion'] = self.dataset_version
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetVersion') is not None:
+            self.dataset_version = m.get('DatasetVersion')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class GetDatasetJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        completed_file_count: int = None,
+        create_time: str = None,
+        description: str = None,
+        failed_file_count: int = None,
+        finish_time: str = None,
+        job_action: str = None,
+        job_mode: str = None,
+        job_spec: str = None,
+        logs: List[str] = None,
+        request_id: str = None,
+        status: str = None,
+        total_file_count: int = None,
+    ):
+        self.completed_file_count = completed_file_count
+        self.create_time = create_time
+        self.description = description
+        self.failed_file_count = failed_file_count
+        self.finish_time = finish_time
+        self.job_action = job_action
+        self.job_mode = job_mode
+        self.job_spec = job_spec
+        self.logs = logs
+        self.request_id = request_id
+        self.status = status
+        self.total_file_count = total_file_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.completed_file_count is not None:
+            result['CompletedFileCount'] = self.completed_file_count
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.failed_file_count is not None:
+            result['FailedFileCount'] = self.failed_file_count
+        if self.finish_time is not None:
+            result['FinishTime'] = self.finish_time
+        if self.job_action is not None:
+            result['JobAction'] = self.job_action
+        if self.job_mode is not None:
+            result['JobMode'] = self.job_mode
+        if self.job_spec is not None:
+            result['JobSpec'] = self.job_spec
+        if self.logs is not None:
+            result['Logs'] = self.logs
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.total_file_count is not None:
+            result['TotalFileCount'] = self.total_file_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompletedFileCount') is not None:
+            self.completed_file_count = m.get('CompletedFileCount')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FailedFileCount') is not None:
+            self.failed_file_count = m.get('FailedFileCount')
+        if m.get('FinishTime') is not None:
+            self.finish_time = m.get('FinishTime')
+        if m.get('JobAction') is not None:
+            self.job_action = m.get('JobAction')
+        if m.get('JobMode') is not None:
+            self.job_mode = m.get('JobMode')
+        if m.get('JobSpec') is not None:
+            self.job_spec = m.get('JobSpec')
+        if m.get('Logs') is not None:
+            self.logs = m.get('Logs')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TotalFileCount') is not None:
+            self.total_file_count = m.get('TotalFileCount')
+        return self
+
+
+class GetDatasetJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDatasetJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDatasetJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDatasetJobConfigRequest(TeaModel):
+    def __init__(
+        self,
+        workspace_id: str = None,
+    ):
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class GetDatasetJobConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+        config_type: str = None,
+        create_time: str = None,
+        dataset_id: str = None,
+        modify_time: str = None,
+        request_id: str = None,
+        workspace_id: str = None,
+    ):
+        self.config = config
+        self.config_type = config_type
+        self.create_time = create_time
+        self.dataset_id = dataset_id
+        self.modify_time = modify_time
+        # Id of the request
+        self.request_id = request_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config
+        if self.config_type is not None:
+            result['ConfigType'] = self.config_type
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.dataset_id is not None:
+            result['DatasetId'] = self.dataset_id
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+        if m.get('ConfigType') is not None:
+            self.config_type = m.get('ConfigType')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DatasetId') is not None:
+            self.dataset_id = m.get('DatasetId')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class GetDatasetJobConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDatasetJobConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDatasetJobConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetDatasetVersionResponseBody(TeaModel):
     def __init__(
         self,
@@ -6002,7 +8125,9 @@ class GetDatasetVersionResponseBody(TeaModel):
         description: str = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
+        import_info: str = None,
         labels: List[Label] = None,
+        mount_access: str = None,
         options: str = None,
         property: str = None,
         request_id: str = None,
@@ -6028,8 +8153,10 @@ class GetDatasetVersionResponseBody(TeaModel):
         self.gmt_create_time = gmt_create_time
         # 创建时间。
         self.gmt_modified_time = gmt_modified_time
+        self.import_info = import_info
         # 代表资源标签的资源属性字段
         self.labels = labels
+        self.mount_access = mount_access
         # 扩展字段，JsonString类型。
         # 当DLC使用数据集时，可通过配置mountPath字段指定数据集默认挂载路径。
         self.options = options
@@ -6086,10 +8213,14 @@ class GetDatasetVersionResponseBody(TeaModel):
             result['GmtCreateTime'] = self.gmt_create_time
         if self.gmt_modified_time is not None:
             result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.import_info is not None:
+            result['ImportInfo'] = self.import_info
         result['Labels'] = []
         if self.labels is not None:
             for k in self.labels:
                 result['Labels'].append(k.to_map() if k else None)
+        if self.mount_access is not None:
+            result['MountAccess'] = self.mount_access
         if self.options is not None:
             result['Options'] = self.options
         if self.property is not None:
@@ -6122,11 +8253,15 @@ class GetDatasetVersionResponseBody(TeaModel):
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('GmtModifiedTime') is not None:
             self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('ImportInfo') is not None:
+            self.import_info = m.get('ImportInfo')
         self.labels = []
         if m.get('Labels') is not None:
             for k in m.get('Labels'):
                 temp_model = Label()
                 self.labels.append(temp_model.from_map(k))
+        if m.get('MountAccess') is not None:
+            self.mount_access = m.get('MountAccess')
         if m.get('Options') is not None:
             self.options = m.get('Options')
         if m.get('Property') is not None:
@@ -7608,6 +9743,7 @@ class GetWorkspaceResponseBody(TeaModel):
         is_default: bool = None,
         owner: GetWorkspaceResponseBodyOwner = None,
         request_id: str = None,
+        resource_group_id: str = None,
         status: str = None,
         workspace_id: str = None,
         workspace_name: str = None,
@@ -7623,6 +9759,7 @@ class GetWorkspaceResponseBody(TeaModel):
         self.is_default = is_default
         self.owner = owner
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
         self.status = status
         self.workspace_id = workspace_id
         self.workspace_name = workspace_name
@@ -7659,6 +9796,8 @@ class GetWorkspaceResponseBody(TeaModel):
             result['Owner'] = self.owner.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
         if self.workspace_id is not None:
@@ -7692,6 +9831,8 @@ class GetWorkspaceResponseBody(TeaModel):
             self.owner = temp_model.from_map(m['Owner'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('WorkspaceId') is not None:
@@ -7887,12 +10028,492 @@ class ListCodeSourcesResponse(TeaModel):
         return self
 
 
+class ListDatasetFileMetasRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_version: str = None,
+        end_file_update_time: str = None,
+        next_token: str = None,
+        order: str = None,
+        page_size: int = None,
+        query_text: str = None,
+        query_type: str = None,
+        score_threshold: float = None,
+        sort_by: str = None,
+        start_file_update_time: str = None,
+        top_k: int = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.dataset_version = dataset_version
+        # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
+        self.end_file_update_time = end_file_update_time
+        self.next_token = next_token
+        self.order = order
+        self.page_size = page_size
+        self.query_text = query_text
+        self.query_type = query_type
+        self.score_threshold = score_threshold
+        self.sort_by = sort_by
+        # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
+        self.start_file_update_time = start_file_update_time
+        self.top_k = top_k
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_version is not None:
+            result['DatasetVersion'] = self.dataset_version
+        if self.end_file_update_time is not None:
+            result['EndFileUpdateTime'] = self.end_file_update_time
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.query_text is not None:
+            result['QueryText'] = self.query_text
+        if self.query_type is not None:
+            result['QueryType'] = self.query_type
+        if self.score_threshold is not None:
+            result['ScoreThreshold'] = self.score_threshold
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.start_file_update_time is not None:
+            result['StartFileUpdateTime'] = self.start_file_update_time
+        if self.top_k is not None:
+            result['TopK'] = self.top_k
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetVersion') is not None:
+            self.dataset_version = m.get('DatasetVersion')
+        if m.get('EndFileUpdateTime') is not None:
+            self.end_file_update_time = m.get('EndFileUpdateTime')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('QueryText') is not None:
+            self.query_text = m.get('QueryText')
+        if m.get('QueryType') is not None:
+            self.query_type = m.get('QueryType')
+        if m.get('ScoreThreshold') is not None:
+            self.score_threshold = m.get('ScoreThreshold')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('StartFileUpdateTime') is not None:
+            self.start_file_update_time = m.get('StartFileUpdateTime')
+        if m.get('TopK') is not None:
+            self.top_k = m.get('TopK')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class ListDatasetFileMetasResponseBody(TeaModel):
+    def __init__(
+        self,
+        dataset_file_metas: List[DatasetFileMeta] = None,
+        dataset_id: str = None,
+        dataset_version: str = None,
+        next_token: str = None,
+        page_size: int = None,
+        total_count: int = None,
+        workspace_id: str = None,
+    ):
+        self.dataset_file_metas = dataset_file_metas
+        self.dataset_id = dataset_id
+        self.dataset_version = dataset_version
+        self.next_token = next_token
+        self.page_size = page_size
+        self.total_count = total_count
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.dataset_file_metas:
+            for k in self.dataset_file_metas:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DatasetFileMetas'] = []
+        if self.dataset_file_metas is not None:
+            for k in self.dataset_file_metas:
+                result['DatasetFileMetas'].append(k.to_map() if k else None)
+        if self.dataset_id is not None:
+            result['DatasetId'] = self.dataset_id
+        if self.dataset_version is not None:
+            result['DatasetVersion'] = self.dataset_version
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dataset_file_metas = []
+        if m.get('DatasetFileMetas') is not None:
+            for k in m.get('DatasetFileMetas'):
+                temp_model = DatasetFileMeta()
+                self.dataset_file_metas.append(temp_model.from_map(k))
+        if m.get('DatasetId') is not None:
+            self.dataset_id = m.get('DatasetId')
+        if m.get('DatasetVersion') is not None:
+            self.dataset_version = m.get('DatasetVersion')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class ListDatasetFileMetasResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDatasetFileMetasResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDatasetFileMetasResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDatasetJobConfigsRequest(TeaModel):
+    def __init__(
+        self,
+        config_type: str = None,
+        page_number: str = None,
+        page_size: str = None,
+        workspace_id: str = None,
+    ):
+        self.config_type = config_type
+        self.page_number = page_number
+        self.page_size = page_size
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_type is not None:
+            result['ConfigType'] = self.config_type
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigType') is not None:
+            self.config_type = m.get('ConfigType')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class ListDatasetJobConfigsResponseBody(TeaModel):
+    def __init__(
+        self,
+        dataset_job_configs: List[DatasetJobConfig] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.dataset_job_configs = dataset_job_configs
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.dataset_job_configs:
+            for k in self.dataset_job_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DatasetJobConfigs'] = []
+        if self.dataset_job_configs is not None:
+            for k in self.dataset_job_configs:
+                result['DatasetJobConfigs'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dataset_job_configs = []
+        if m.get('DatasetJobConfigs') is not None:
+            for k in m.get('DatasetJobConfigs'):
+                temp_model = DatasetJobConfig()
+                self.dataset_job_configs.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListDatasetJobConfigsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDatasetJobConfigsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDatasetJobConfigsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDatasetJobsRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_version: str = None,
+        job_action: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        workspace_id: str = None,
+    ):
+        self.dataset_version = dataset_version
+        self.job_action = job_action
+        self.page_number = page_number
+        self.page_size = page_size
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_version is not None:
+            result['DatasetVersion'] = self.dataset_version
+        if self.job_action is not None:
+            result['JobAction'] = self.job_action
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetVersion') is not None:
+            self.dataset_version = m.get('DatasetVersion')
+        if m.get('JobAction') is not None:
+            self.job_action = m.get('JobAction')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class ListDatasetJobsResponseBody(TeaModel):
+    def __init__(
+        self,
+        dataset_jobs: List[DatasetJob] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.dataset_jobs = dataset_jobs
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.dataset_jobs:
+            for k in self.dataset_jobs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DatasetJobs'] = []
+        if self.dataset_jobs is not None:
+            for k in self.dataset_jobs:
+                result['DatasetJobs'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dataset_jobs = []
+        if m.get('DatasetJobs') is not None:
+            for k in m.get('DatasetJobs'):
+                temp_model = DatasetJob()
+                self.dataset_jobs.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListDatasetJobsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDatasetJobsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDatasetJobsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListDatasetVersionsRequest(TeaModel):
     def __init__(
         self,
-        data_sources_types: str = None,
         label_keys: str = None,
-        lable_values: str = None,
+        label_values: str = None,
         order: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -7901,9 +10522,8 @@ class ListDatasetVersionsRequest(TeaModel):
         source_id: str = None,
         source_types: str = None,
     ):
-        self.data_sources_types = data_sources_types
         self.label_keys = label_keys
-        self.lable_values = lable_values
+        self.label_values = label_values
         self.order = order
         # This parameter is required.
         self.page_number = page_number
@@ -7923,12 +10543,10 @@ class ListDatasetVersionsRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.data_sources_types is not None:
-            result['DataSourcesTypes'] = self.data_sources_types
         if self.label_keys is not None:
             result['LabelKeys'] = self.label_keys
-        if self.lable_values is not None:
-            result['LableValues'] = self.lable_values
+        if self.label_values is not None:
+            result['LabelValues'] = self.label_values
         if self.order is not None:
             result['Order'] = self.order
         if self.page_number is not None:
@@ -7947,12 +10565,10 @@ class ListDatasetVersionsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('DataSourcesTypes') is not None:
-            self.data_sources_types = m.get('DataSourcesTypes')
         if m.get('LabelKeys') is not None:
             self.label_keys = m.get('LabelKeys')
-        if m.get('LableValues') is not None:
-            self.lable_values = m.get('LableValues')
+        if m.get('LabelValues') is not None:
+            self.label_values = m.get('LabelValues')
         if m.get('Order') is not None:
             self.order = m.get('Order')
         if m.get('PageNumber') is not None:
@@ -8082,6 +10698,7 @@ class ListDatasetsRequest(TeaModel):
         page_size: int = None,
         properties: str = None,
         provider: str = None,
+        sort_by: str = None,
         source_dataset_id: str = None,
         source_id: str = None,
         source_types: str = None,
@@ -8096,6 +10713,7 @@ class ListDatasetsRequest(TeaModel):
         self.page_size = page_size
         self.properties = properties
         self.provider = provider
+        self.sort_by = sort_by
         self.source_dataset_id = source_dataset_id
         self.source_id = source_id
         self.source_types = source_types
@@ -8128,6 +10746,8 @@ class ListDatasetsRequest(TeaModel):
             result['Properties'] = self.properties
         if self.provider is not None:
             result['Provider'] = self.provider
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
         if self.source_dataset_id is not None:
             result['SourceDatasetId'] = self.source_dataset_id
         if self.source_id is not None:
@@ -8158,6 +10778,8 @@ class ListDatasetsRequest(TeaModel):
             self.properties = m.get('Properties')
         if m.get('Provider') is not None:
             self.provider = m.get('Provider')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
         if m.get('SourceDatasetId') is not None:
             self.source_dataset_id = m.get('SourceDatasetId')
         if m.get('SourceId') is not None:
@@ -8748,10 +11370,8 @@ class ListImagesRequest(TeaModel):
         order: str = None,
         page_number: int = None,
         page_size: int = None,
-        parent_user_id: str = None,
         query: str = None,
         sort_by: str = None,
-        user_id: str = None,
         verbose: bool = None,
         workspace_id: str = None,
     ):
@@ -8762,10 +11382,8 @@ class ListImagesRequest(TeaModel):
         self.order = order
         self.page_number = page_number
         self.page_size = page_size
-        self.parent_user_id = parent_user_id
         self.query = query
         self.sort_by = sort_by
-        self.user_id = user_id
         self.verbose = verbose
         self.workspace_id = workspace_id
 
@@ -8792,14 +11410,10 @@ class ListImagesRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.parent_user_id is not None:
-            result['ParentUserId'] = self.parent_user_id
         if self.query is not None:
             result['Query'] = self.query
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
-        if self.user_id is not None:
-            result['UserId'] = self.user_id
         if self.verbose is not None:
             result['Verbose'] = self.verbose
         if self.workspace_id is not None:
@@ -8822,14 +11436,10 @@ class ListImagesRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-        if m.get('ParentUserId') is not None:
-            self.parent_user_id = m.get('ParentUserId')
         if m.get('Query') is not None:
             self.query = m.get('Query')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
-        if m.get('UserId') is not None:
-            self.user_id = m.get('UserId')
         if m.get('Verbose') is not None:
             self.verbose = m.get('Verbose')
         if m.get('WorkspaceId') is not None:
@@ -11246,6 +13856,7 @@ class ListWorkspacesRequest(TeaModel):
         order: str = None,
         page_number: int = None,
         page_size: int = None,
+        resource_group_id: str = None,
         sort_by: str = None,
         status: str = None,
         verbose: bool = None,
@@ -11258,6 +13869,7 @@ class ListWorkspacesRequest(TeaModel):
         self.order = order
         self.page_number = page_number
         self.page_size = page_size
+        self.resource_group_id = resource_group_id
         self.sort_by = sort_by
         self.status = status
         self.verbose = verbose
@@ -11285,6 +13897,8 @@ class ListWorkspacesRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
         if self.status is not None:
@@ -11311,6 +13925,8 @@ class ListWorkspacesRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
         if m.get('Status') is not None:
@@ -11338,6 +13954,7 @@ class ListWorkspacesResponseBodyWorkspaces(TeaModel):
         status: str = None,
         workspace_id: str = None,
         workspace_name: str = None,
+        resource_group_id: str = None,
     ):
         self.admin_names = admin_names
         self.creator = creator
@@ -11350,6 +13967,7 @@ class ListWorkspacesResponseBodyWorkspaces(TeaModel):
         self.status = status
         self.workspace_id = workspace_id
         self.workspace_name = workspace_name
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -11382,6 +14000,8 @@ class ListWorkspacesResponseBodyWorkspaces(TeaModel):
             result['WorkspaceId'] = self.workspace_id
         if self.workspace_name is not None:
             result['WorkspaceName'] = self.workspace_name
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -11408,6 +14028,8 @@ class ListWorkspacesResponseBodyWorkspaces(TeaModel):
             self.workspace_id = m.get('WorkspaceId')
         if m.get('WorkspaceName') is not None:
             self.workspace_name = m.get('WorkspaceName')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
         return self
 
 
@@ -12132,6 +14754,107 @@ class SetExperimentLabelsResponse(TeaModel):
         return self
 
 
+class StopDatasetJobRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_version: str = None,
+        workspace_id: str = None,
+    ):
+        self.dataset_version = dataset_version
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_version is not None:
+            result['DatasetVersion'] = self.dataset_version
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetVersion') is not None:
+            self.dataset_version = m.get('DatasetVersion')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class StopDatasetJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StopDatasetJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopDatasetJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopDatasetJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateCodeSourceRequest(TeaModel):
     def __init__(
         self,
@@ -12279,10 +15002,12 @@ class UpdateDatasetRequest(TeaModel):
     def __init__(
         self,
         description: str = None,
+        mount_access_read_write_role_id_list: List[str] = None,
         name: str = None,
         options: str = None,
     ):
         self.description = description
+        self.mount_access_read_write_role_id_list = mount_access_read_write_role_id_list
         self.name = name
         self.options = options
 
@@ -12297,6 +15022,8 @@ class UpdateDatasetRequest(TeaModel):
         result = dict()
         if self.description is not None:
             result['Description'] = self.description
+        if self.mount_access_read_write_role_id_list is not None:
+            result['MountAccessReadWriteRoleIdList'] = self.mount_access_read_write_role_id_list
         if self.name is not None:
             result['Name'] = self.name
         if self.options is not None:
@@ -12307,6 +15034,8 @@ class UpdateDatasetRequest(TeaModel):
         m = m or dict()
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('MountAccessReadWriteRoleIdList') is not None:
+            self.mount_access_read_write_role_id_list = m.get('MountAccessReadWriteRoleIdList')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Options') is not None:
@@ -12378,6 +15107,362 @@ class UpdateDatasetResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateDatasetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateDatasetFileMetasRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_file_metas: List[DatasetFileMetaConentUpdate] = None,
+        dataset_version: str = None,
+        tag_job_id: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.dataset_file_metas = dataset_file_metas
+        self.dataset_version = dataset_version
+        self.tag_job_id = tag_job_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.dataset_file_metas:
+            for k in self.dataset_file_metas:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DatasetFileMetas'] = []
+        if self.dataset_file_metas is not None:
+            for k in self.dataset_file_metas:
+                result['DatasetFileMetas'].append(k.to_map() if k else None)
+        if self.dataset_version is not None:
+            result['DatasetVersion'] = self.dataset_version
+        if self.tag_job_id is not None:
+            result['TagJobId'] = self.tag_job_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dataset_file_metas = []
+        if m.get('DatasetFileMetas') is not None:
+            for k in m.get('DatasetFileMetas'):
+                temp_model = DatasetFileMetaConentUpdate()
+                self.dataset_file_metas.append(temp_model.from_map(k))
+        if m.get('DatasetVersion') is not None:
+            self.dataset_version = m.get('DatasetVersion')
+        if m.get('TagJobId') is not None:
+            self.tag_job_id = m.get('TagJobId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class UpdateDatasetFileMetasResponseBody(TeaModel):
+    def __init__(
+        self,
+        failed_details: List[DatasetFileMetaResponse] = None,
+        request_id: str = None,
+        status: bool = None,
+    ):
+        self.failed_details = failed_details
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        if self.failed_details:
+            for k in self.failed_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FailedDetails'] = []
+        if self.failed_details is not None:
+            for k in self.failed_details:
+                result['FailedDetails'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.failed_details = []
+        if m.get('FailedDetails') is not None:
+            for k in m.get('FailedDetails'):
+                temp_model = DatasetFileMetaResponse()
+                self.failed_details.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class UpdateDatasetFileMetasResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateDatasetFileMetasResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateDatasetFileMetasResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateDatasetJobRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_version: str = None,
+        description: str = None,
+        workspace_id: str = None,
+    ):
+        self.dataset_version = dataset_version
+        self.description = description
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_version is not None:
+            result['DatasetVersion'] = self.dataset_version
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetVersion') is not None:
+            self.dataset_version = m.get('DatasetVersion')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class UpdateDatasetJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateDatasetJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateDatasetJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateDatasetJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateDatasetJobConfigRequest(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+        config_type: str = None,
+        workspace_id: str = None,
+    ):
+        self.config = config
+        self.config_type = config_type
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config
+        if self.config_type is not None:
+            result['ConfigType'] = self.config_type
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+        if m.get('ConfigType') is not None:
+            self.config_type = m.get('ConfigType')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class UpdateDatasetJobConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateDatasetJobConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateDatasetJobConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateDatasetJobConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

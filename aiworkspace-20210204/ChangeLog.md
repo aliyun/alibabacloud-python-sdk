@@ -1,3 +1,40 @@
+2025-03-03 Version: 6.0.0
+- Support API AcceptDataworksEvent.
+- Support API ChangeResourceGroup.
+- Support API CreateDatasetFileMetas.
+- Support API CreateDatasetJob.
+- Support API CreateDatasetJobConfig.
+- Support API DeleteDatasetFileMetas.
+- Support API DeleteDatasetJob.
+- Support API DeleteDatasetJobConfig.
+- Support API GetDatasetFileMeta.
+- Support API GetDatasetJob.
+- Support API GetDatasetJobConfig.
+- Support API ListDatasetFileMetas.
+- Support API ListDatasetJobConfigs.
+- Support API ListDatasetJobs.
+- Support API StopDatasetJob.
+- Support API UpdateDatasetFileMetas.
+- Support API UpdateDatasetJob.
+- Support API UpdateDatasetJobConfig.
+- Update API CreateDataset: update param body.
+- Update API CreateDatasetVersion: update param body.
+- Update API CreateWorkspace: update param body.
+- Update API CreateWorkspace: update response param.
+- Update API GetDataset: update response param.
+- Update API GetDatasetVersion: update response param.
+- Update API GetWorkspace: update response param.
+- Update API ListDatasetVersions: add param LabelValues.
+- Update API ListDatasetVersions: delete param DataSourcesTypes.
+- Update API ListDatasetVersions: delete param LableValues.
+- Update API ListDatasets: add param SortBy.
+- Update API ListImages: delete param ParentUserId.
+- Update API ListImages: delete param UserId.
+- Update API ListWorkspaces: add param ResourceGroupId.
+- Update API ListWorkspaces: update response param.
+- Update API UpdateDataset: update param body.
+
+
 2024-11-18 Version: 5.1.2
 - Update API CreateCodeSource: update param body.
 - Update API ListMembers: update response param.
