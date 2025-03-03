@@ -1,3 +1,36 @@
+2025-03-03 Version: 6.3.0
+- Support API CancelServiceRegistration.
+- Support API CreateServiceTestCase.
+- Support API CreateServiceTestTask.
+- Support API CreateSupplierRegistration.
+- Support API DeleteServiceTestCase.
+- Support API GenerateDefaultServiceTestConfig.
+- Support API GetServiceRegistration.
+- Support API GetServiceTestTask.
+- Support API GetSupplierInformation.
+- Support API ListArtifactRisks.
+- Support API ListResellers.
+- Support API ListServiceInstanceDeployDetails.
+- Support API ListServiceInstanceLogs.
+- Support API ListServiceInstanceResources.
+- Support API ListServiceInstanceUpgradeHistory.
+- Support API ListServiceRegistrations.
+- Support API ListServiceTestCases.
+- Support API ListServiceTestTaskLogs.
+- Support API ListServiceTestTasks.
+- Support API ListSupplierRegistrations.
+- Support API ListTagResources.
+- Support API UpdateServiceTestCase.
+- Support API UpdateSharedAccountPermission.
+- Support API UpdateSupplierInformation.
+- Support API WithdrawService.
+- Update API GetArtifact: update response param.
+- Update API ListArtifacts: update response param.
+- Update API UpdateArtifact: add param PermissionType.
+- Update API UpdateArtifact: update param ArtifactProperty.
+- Update API UpdateArtifact: update param VersionName.
+
+
 2025-01-02 Version: 6.1.0
 - Support API GenerateServicePolicy.
 - Support API GetServiceProvisions.
