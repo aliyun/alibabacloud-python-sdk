@@ -527,6 +527,7 @@ class CreateTaskRequestParametersTranscription(TeaModel):
         model: str = None,
         output_level: int = None,
         phrase_id: str = None,
+        realtime_diarization_enabled: bool = None,
     ):
         self.additional_stream_output_level = additional_stream_output_level
         self.audio_event_detection_enabled = audio_event_detection_enabled
@@ -535,6 +536,7 @@ class CreateTaskRequestParametersTranscription(TeaModel):
         self.model = model
         self.output_level = output_level
         self.phrase_id = phrase_id
+        self.realtime_diarization_enabled = realtime_diarization_enabled
 
     def validate(self):
         if self.diarization:
@@ -560,6 +562,8 @@ class CreateTaskRequestParametersTranscription(TeaModel):
             result['OutputLevel'] = self.output_level
         if self.phrase_id is not None:
             result['PhraseId'] = self.phrase_id
+        if self.realtime_diarization_enabled is not None:
+            result['RealtimeDiarizationEnabled'] = self.realtime_diarization_enabled
         return result
 
     def from_map(self, m: dict = None):
@@ -579,6 +583,8 @@ class CreateTaskRequestParametersTranscription(TeaModel):
             self.output_level = m.get('OutputLevel')
         if m.get('PhraseId') is not None:
             self.phrase_id = m.get('PhraseId')
+        if m.get('RealtimeDiarizationEnabled') is not None:
+            self.realtime_diarization_enabled = m.get('RealtimeDiarizationEnabled')
         return self
 
 
