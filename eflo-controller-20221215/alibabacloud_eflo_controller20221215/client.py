@@ -73,10 +73,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.ApproveOperationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ApproveOperationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ApproveOperationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def approve_operation_with_options_async(
         self,
@@ -110,10 +116,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.ApproveOperationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ApproveOperationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ApproveOperationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def approve_operation(
         self,
@@ -175,10 +187,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.ChangeResourceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ChangeResourceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ChangeResourceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def change_resource_group_with_options_async(
         self,
@@ -214,10 +232,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.ChangeResourceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ChangeResourceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ChangeResourceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def change_resource_group(
         self,
@@ -244,6 +268,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.change_resource_group_with_options_async(request, runtime)
+
+    def close_session_with_options(
+        self,
+        request: eflo_controller_20221215_models.CloseSessionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.CloseSessionResponse:
+        """
+        @summary 断开连接
+        
+        @param request: CloseSessionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseSessionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.session_token):
+            body['SessionToken'] = request.session_token
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CloseSession',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.CloseSessionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.CloseSessionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def close_session_with_options_async(
+        self,
+        request: eflo_controller_20221215_models.CloseSessionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.CloseSessionResponse:
+        """
+        @summary 断开连接
+        
+        @param request: CloseSessionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseSessionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.session_token):
+            body['SessionToken'] = request.session_token
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CloseSession',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.CloseSessionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.CloseSessionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def close_session(
+        self,
+        request: eflo_controller_20221215_models.CloseSessionRequest,
+    ) -> eflo_controller_20221215_models.CloseSessionResponse:
+        """
+        @summary 断开连接
+        
+        @param request: CloseSessionRequest
+        @return: CloseSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.close_session_with_options(request, runtime)
+
+    async def close_session_async(
+        self,
+        request: eflo_controller_20221215_models.CloseSessionRequest,
+    ) -> eflo_controller_20221215_models.CloseSessionResponse:
+        """
+        @summary 断开连接
+        
+        @param request: CloseSessionRequest
+        @return: CloseSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.close_session_with_options_async(request, runtime)
 
     def create_cluster_with_options(
         self,
@@ -309,10 +445,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.CreateClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.CreateClusterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.CreateClusterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_cluster_with_options_async(
         self,
@@ -378,10 +520,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.CreateClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.CreateClusterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.CreateClusterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_cluster(
         self,
@@ -451,10 +599,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.CreateDiagnosticTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.CreateDiagnosticTaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.CreateDiagnosticTaskResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_diagnostic_task_with_options_async(
         self,
@@ -498,10 +652,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.CreateDiagnosticTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.CreateDiagnosticTaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.CreateDiagnosticTaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_diagnostic_task(
         self,
@@ -528,6 +688,274 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_diagnostic_task_with_options_async(request, runtime)
+
+    def create_net_test_task_with_options(
+        self,
+        tmp_req: eflo_controller_20221215_models.CreateNetTestTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.CreateNetTestTaskResponse:
+        """
+        @summary 创建网络测试任务
+        
+        @param tmp_req: CreateNetTestTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNetTestTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eflo_controller_20221215_models.CreateNetTestTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.comm_test):
+            request.comm_test_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.comm_test, 'CommTest', 'json')
+        if not UtilClient.is_unset(tmp_req.delay_test):
+            request.delay_test_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.delay_test, 'DelayTest', 'json')
+        if not UtilClient.is_unset(tmp_req.traffic_test):
+            request.traffic_test_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.traffic_test, 'TrafficTest', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_name):
+            body['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.comm_test_shrink):
+            body['CommTest'] = request.comm_test_shrink
+        if not UtilClient.is_unset(request.delay_test_shrink):
+            body['DelayTest'] = request.delay_test_shrink
+        if not UtilClient.is_unset(request.net_test_type):
+            body['NetTestType'] = request.net_test_type
+        if not UtilClient.is_unset(request.network_mode):
+            body['NetworkMode'] = request.network_mode
+        if not UtilClient.is_unset(request.port):
+            body['Port'] = request.port
+        if not UtilClient.is_unset(request.traffic_test_shrink):
+            body['TrafficTest'] = request.traffic_test_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateNetTestTask',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.CreateNetTestTaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.CreateNetTestTaskResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_net_test_task_with_options_async(
+        self,
+        tmp_req: eflo_controller_20221215_models.CreateNetTestTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.CreateNetTestTaskResponse:
+        """
+        @summary 创建网络测试任务
+        
+        @param tmp_req: CreateNetTestTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNetTestTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eflo_controller_20221215_models.CreateNetTestTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.comm_test):
+            request.comm_test_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.comm_test, 'CommTest', 'json')
+        if not UtilClient.is_unset(tmp_req.delay_test):
+            request.delay_test_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.delay_test, 'DelayTest', 'json')
+        if not UtilClient.is_unset(tmp_req.traffic_test):
+            request.traffic_test_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.traffic_test, 'TrafficTest', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_name):
+            body['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.comm_test_shrink):
+            body['CommTest'] = request.comm_test_shrink
+        if not UtilClient.is_unset(request.delay_test_shrink):
+            body['DelayTest'] = request.delay_test_shrink
+        if not UtilClient.is_unset(request.net_test_type):
+            body['NetTestType'] = request.net_test_type
+        if not UtilClient.is_unset(request.network_mode):
+            body['NetworkMode'] = request.network_mode
+        if not UtilClient.is_unset(request.port):
+            body['Port'] = request.port
+        if not UtilClient.is_unset(request.traffic_test_shrink):
+            body['TrafficTest'] = request.traffic_test_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateNetTestTask',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.CreateNetTestTaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.CreateNetTestTaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_net_test_task(
+        self,
+        request: eflo_controller_20221215_models.CreateNetTestTaskRequest,
+    ) -> eflo_controller_20221215_models.CreateNetTestTaskResponse:
+        """
+        @summary 创建网络测试任务
+        
+        @param request: CreateNetTestTaskRequest
+        @return: CreateNetTestTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_net_test_task_with_options(request, runtime)
+
+    async def create_net_test_task_async(
+        self,
+        request: eflo_controller_20221215_models.CreateNetTestTaskRequest,
+    ) -> eflo_controller_20221215_models.CreateNetTestTaskResponse:
+        """
+        @summary 创建网络测试任务
+        
+        @param request: CreateNetTestTaskRequest
+        @return: CreateNetTestTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_net_test_task_with_options_async(request, runtime)
+
+    def create_session_with_options(
+        self,
+        request: eflo_controller_20221215_models.CreateSessionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.CreateSessionResponse:
+        """
+        @summary 创建Web Terminal会话
+        
+        @param request: CreateSessionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSessionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.session_type):
+            body['SessionType'] = request.session_type
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSession',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.CreateSessionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.CreateSessionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_session_with_options_async(
+        self,
+        request: eflo_controller_20221215_models.CreateSessionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.CreateSessionResponse:
+        """
+        @summary 创建Web Terminal会话
+        
+        @param request: CreateSessionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSessionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.session_type):
+            body['SessionType'] = request.session_type
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSession',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.CreateSessionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.CreateSessionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_session(
+        self,
+        request: eflo_controller_20221215_models.CreateSessionRequest,
+    ) -> eflo_controller_20221215_models.CreateSessionResponse:
+        """
+        @summary 创建Web Terminal会话
+        
+        @param request: CreateSessionRequest
+        @return: CreateSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_session_with_options(request, runtime)
+
+    async def create_session_async(
+        self,
+        request: eflo_controller_20221215_models.CreateSessionRequest,
+    ) -> eflo_controller_20221215_models.CreateSessionResponse:
+        """
+        @summary 创建Web Terminal会话
+        
+        @param request: CreateSessionRequest
+        @return: CreateSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_session_with_options_async(request, runtime)
 
     def delete_cluster_with_options(
         self,
@@ -559,10 +987,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.DeleteClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DeleteClusterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DeleteClusterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_cluster_with_options_async(
         self,
@@ -594,10 +1028,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.DeleteClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DeleteClusterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DeleteClusterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_cluster(
         self,
@@ -655,10 +1095,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.DescribeClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeClusterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeClusterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_cluster_with_options_async(
         self,
@@ -690,10 +1136,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.DescribeClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeClusterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeClusterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_cluster(
         self,
@@ -757,10 +1209,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.DescribeInvocationsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeInvocationsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeInvocationsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_invocations_with_options_async(
         self,
@@ -798,10 +1256,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.DescribeInvocationsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeInvocationsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeInvocationsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_invocations(
         self,
@@ -828,6 +1292,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_invocations_with_options_async(request, runtime)
+
+    def describe_net_test_result_with_options(
+        self,
+        request: eflo_controller_20221215_models.DescribeNetTestResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.DescribeNetTestResultResponse:
+        """
+        @summary 查询网络测试结果
+        
+        @param request: DescribeNetTestResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNetTestResultResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.test_id):
+            body['TestId'] = request.test_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeNetTestResult',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeNetTestResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeNetTestResultResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_net_test_result_with_options_async(
+        self,
+        request: eflo_controller_20221215_models.DescribeNetTestResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.DescribeNetTestResultResponse:
+        """
+        @summary 查询网络测试结果
+        
+        @param request: DescribeNetTestResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNetTestResultResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.test_id):
+            body['TestId'] = request.test_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeNetTestResult',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeNetTestResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeNetTestResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_net_test_result(
+        self,
+        request: eflo_controller_20221215_models.DescribeNetTestResultRequest,
+    ) -> eflo_controller_20221215_models.DescribeNetTestResultResponse:
+        """
+        @summary 查询网络测试结果
+        
+        @param request: DescribeNetTestResultRequest
+        @return: DescribeNetTestResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_net_test_result_with_options(request, runtime)
+
+    async def describe_net_test_result_async(
+        self,
+        request: eflo_controller_20221215_models.DescribeNetTestResultRequest,
+    ) -> eflo_controller_20221215_models.DescribeNetTestResultResponse:
+        """
+        @summary 查询网络测试结果
+        
+        @param request: DescribeNetTestResultRequest
+        @return: DescribeNetTestResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_net_test_result_with_options_async(request, runtime)
 
     def describe_node_with_options(
         self,
@@ -859,10 +1431,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.DescribeNodeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeNodeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeNodeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_node_with_options_async(
         self,
@@ -894,10 +1472,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.DescribeNodeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeNodeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeNodeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_node(
         self,
@@ -955,10 +1539,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.DescribeRegionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeRegionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeRegionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_regions_with_options_async(
         self,
@@ -990,10 +1580,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.DescribeRegionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeRegionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeRegionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_regions(
         self,
@@ -1053,10 +1649,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.DescribeSendFileResultsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeSendFileResultsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeSendFileResultsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_send_file_results_with_options_async(
         self,
@@ -1090,10 +1692,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.DescribeSendFileResultsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeSendFileResultsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeSendFileResultsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_send_file_results(
         self,
@@ -1151,10 +1759,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.DescribeTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeTaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeTaskResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_task_with_options_async(
         self,
@@ -1186,10 +1800,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.DescribeTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeTaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeTaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_task(
         self,
@@ -1247,10 +1867,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.DescribeZonesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeZonesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeZonesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_zones_with_options_async(
         self,
@@ -1282,10 +1908,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.DescribeZonesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeZonesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeZonesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_zones(
         self,
@@ -1361,10 +1993,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.ExtendClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ExtendClusterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ExtendClusterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def extend_cluster_with_options_async(
         self,
@@ -1414,10 +2052,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.ExtendClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ExtendClusterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ExtendClusterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def extend_cluster(
         self,
@@ -1481,10 +2125,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.ListClusterNodesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListClusterNodesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListClusterNodesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_cluster_nodes_with_options_async(
         self,
@@ -1522,10 +2172,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.ListClusterNodesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListClusterNodesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListClusterNodesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_cluster_nodes(
         self,
@@ -1587,10 +2243,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.ListClustersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListClustersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListClustersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_clusters_with_options_async(
         self,
@@ -1626,10 +2288,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.ListClustersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListClustersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListClustersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_clusters(
         self,
@@ -1656,6 +2324,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_clusters_with_options_async(request, runtime)
+
+    def list_diagnostic_results_with_options(
+        self,
+        request: eflo_controller_20221215_models.ListDiagnosticResultsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ListDiagnosticResultsResponse:
+        """
+        @summary 诊断任务列表
+        
+        @param request: ListDiagnosticResultsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDiagnosticResultsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.diag_type):
+            body['DiagType'] = request.diag_type
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDiagnosticResults',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListDiagnosticResultsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListDiagnosticResultsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_diagnostic_results_with_options_async(
+        self,
+        request: eflo_controller_20221215_models.ListDiagnosticResultsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ListDiagnosticResultsResponse:
+        """
+        @summary 诊断任务列表
+        
+        @param request: ListDiagnosticResultsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDiagnosticResultsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.diag_type):
+            body['DiagType'] = request.diag_type
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDiagnosticResults',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListDiagnosticResultsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListDiagnosticResultsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_diagnostic_results(
+        self,
+        request: eflo_controller_20221215_models.ListDiagnosticResultsRequest,
+    ) -> eflo_controller_20221215_models.ListDiagnosticResultsResponse:
+        """
+        @summary 诊断任务列表
+        
+        @param request: ListDiagnosticResultsRequest
+        @return: ListDiagnosticResultsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_diagnostic_results_with_options(request, runtime)
+
+    async def list_diagnostic_results_async(
+        self,
+        request: eflo_controller_20221215_models.ListDiagnosticResultsRequest,
+    ) -> eflo_controller_20221215_models.ListDiagnosticResultsResponse:
+        """
+        @summary 诊断任务列表
+        
+        @param request: ListDiagnosticResultsRequest
+        @return: ListDiagnosticResultsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_diagnostic_results_with_options_async(request, runtime)
 
     def list_free_nodes_with_options(
         self,
@@ -1695,10 +2483,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.ListFreeNodesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListFreeNodesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListFreeNodesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_free_nodes_with_options_async(
         self,
@@ -1738,10 +2532,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.ListFreeNodesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListFreeNodesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListFreeNodesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_free_nodes(
         self,
@@ -1768,6 +2568,238 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_free_nodes_with_options_async(request, runtime)
+
+    def list_images_with_options(
+        self,
+        request: eflo_controller_20221215_models.ListImagesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ListImagesResponse:
+        """
+        @summary Query the list of images available to the user
+        
+        @param request: ListImagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListImagesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.architecture):
+            body['Architecture'] = request.architecture
+        if not UtilClient.is_unset(request.image_version):
+            body['ImageVersion'] = request.image_version
+        if not UtilClient.is_unset(request.platform):
+            body['Platform'] = request.platform
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListImages',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListImagesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListImagesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_images_with_options_async(
+        self,
+        request: eflo_controller_20221215_models.ListImagesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ListImagesResponse:
+        """
+        @summary Query the list of images available to the user
+        
+        @param request: ListImagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListImagesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.architecture):
+            body['Architecture'] = request.architecture
+        if not UtilClient.is_unset(request.image_version):
+            body['ImageVersion'] = request.image_version
+        if not UtilClient.is_unset(request.platform):
+            body['Platform'] = request.platform
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListImages',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListImagesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListImagesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_images(
+        self,
+        request: eflo_controller_20221215_models.ListImagesRequest,
+    ) -> eflo_controller_20221215_models.ListImagesResponse:
+        """
+        @summary Query the list of images available to the user
+        
+        @param request: ListImagesRequest
+        @return: ListImagesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_images_with_options(request, runtime)
+
+    async def list_images_async(
+        self,
+        request: eflo_controller_20221215_models.ListImagesRequest,
+    ) -> eflo_controller_20221215_models.ListImagesResponse:
+        """
+        @summary Query the list of images available to the user
+        
+        @param request: ListImagesRequest
+        @return: ListImagesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_images_with_options_async(request, runtime)
+
+    def list_machine_network_info_with_options(
+        self,
+        tmp_req: eflo_controller_20221215_models.ListMachineNetworkInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ListMachineNetworkInfoResponse:
+        """
+        @summary 使用HPNZone和机型查询机型网络配置
+        
+        @param tmp_req: ListMachineNetworkInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMachineNetworkInfoResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eflo_controller_20221215_models.ListMachineNetworkInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.machine_hpn_info):
+            request.machine_hpn_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.machine_hpn_info, 'MachineHpnInfo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.machine_hpn_info_shrink):
+            body['MachineHpnInfo'] = request.machine_hpn_info_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListMachineNetworkInfo',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListMachineNetworkInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListMachineNetworkInfoResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_machine_network_info_with_options_async(
+        self,
+        tmp_req: eflo_controller_20221215_models.ListMachineNetworkInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ListMachineNetworkInfoResponse:
+        """
+        @summary 使用HPNZone和机型查询机型网络配置
+        
+        @param tmp_req: ListMachineNetworkInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMachineNetworkInfoResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eflo_controller_20221215_models.ListMachineNetworkInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.machine_hpn_info):
+            request.machine_hpn_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.machine_hpn_info, 'MachineHpnInfo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.machine_hpn_info_shrink):
+            body['MachineHpnInfo'] = request.machine_hpn_info_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListMachineNetworkInfo',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListMachineNetworkInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListMachineNetworkInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_machine_network_info(
+        self,
+        request: eflo_controller_20221215_models.ListMachineNetworkInfoRequest,
+    ) -> eflo_controller_20221215_models.ListMachineNetworkInfoResponse:
+        """
+        @summary 使用HPNZone和机型查询机型网络配置
+        
+        @param request: ListMachineNetworkInfoRequest
+        @return: ListMachineNetworkInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_machine_network_info_with_options(request, runtime)
+
+    async def list_machine_network_info_async(
+        self,
+        request: eflo_controller_20221215_models.ListMachineNetworkInfoRequest,
+    ) -> eflo_controller_20221215_models.ListMachineNetworkInfoResponse:
+        """
+        @summary 使用HPNZone和机型查询机型网络配置
+        
+        @param request: ListMachineNetworkInfoRequest
+        @return: ListMachineNetworkInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_machine_network_info_with_options_async(request, runtime)
 
     def list_machine_types_with_options(
         self,
@@ -1799,10 +2831,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.ListMachineTypesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListMachineTypesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListMachineTypesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_machine_types_with_options_async(
         self,
@@ -1834,10 +2872,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.ListMachineTypesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListMachineTypesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListMachineTypesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_machine_types(
         self,
@@ -1864,6 +2908,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_machine_types_with_options_async(request, runtime)
+
+    def list_net_test_results_with_options(
+        self,
+        request: eflo_controller_20221215_models.ListNetTestResultsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ListNetTestResultsResponse:
+        """
+        @summary 网络测试列表
+        
+        @param request: ListNetTestResultsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNetTestResultsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.net_test_type):
+            body['NetTestType'] = request.net_test_type
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListNetTestResults',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListNetTestResultsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListNetTestResultsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_net_test_results_with_options_async(
+        self,
+        request: eflo_controller_20221215_models.ListNetTestResultsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ListNetTestResultsResponse:
+        """
+        @summary 网络测试列表
+        
+        @param request: ListNetTestResultsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNetTestResultsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.net_test_type):
+            body['NetTestType'] = request.net_test_type
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListNetTestResults',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListNetTestResultsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListNetTestResultsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_net_test_results(
+        self,
+        request: eflo_controller_20221215_models.ListNetTestResultsRequest,
+    ) -> eflo_controller_20221215_models.ListNetTestResultsResponse:
+        """
+        @summary 网络测试列表
+        
+        @param request: ListNetTestResultsRequest
+        @return: ListNetTestResultsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_net_test_results_with_options(request, runtime)
+
+    async def list_net_test_results_async(
+        self,
+        request: eflo_controller_20221215_models.ListNetTestResultsRequest,
+    ) -> eflo_controller_20221215_models.ListNetTestResultsResponse:
+        """
+        @summary 网络测试列表
+        
+        @param request: ListNetTestResultsRequest
+        @return: ListNetTestResultsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_net_test_results_with_options_async(request, runtime)
 
     def list_node_groups_with_options(
         self,
@@ -1901,10 +3065,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.ListNodeGroupsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListNodeGroupsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListNodeGroupsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_node_groups_with_options_async(
         self,
@@ -1942,10 +3112,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.ListNodeGroupsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListNodeGroupsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListNodeGroupsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_node_groups(
         self,
@@ -2011,10 +3187,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.ListTagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListTagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListTagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_tag_resources_with_options_async(
         self,
@@ -2054,10 +3236,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.ListTagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListTagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListTagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_tag_resources(
         self,
@@ -2084,6 +3272,92 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
+
+    def list_user_cluster_types_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ListUserClusterTypesResponse:
+        """
+        @summary 查询用户可以使用的集群类型
+        
+        @param request: ListUserClusterTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserClusterTypesResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListUserClusterTypes',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListUserClusterTypesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListUserClusterTypesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_user_cluster_types_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ListUserClusterTypesResponse:
+        """
+        @summary 查询用户可以使用的集群类型
+        
+        @param request: ListUserClusterTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserClusterTypesResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListUserClusterTypes',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListUserClusterTypesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ListUserClusterTypesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_user_cluster_types(self) -> eflo_controller_20221215_models.ListUserClusterTypesResponse:
+        """
+        @summary 查询用户可以使用的集群类型
+        
+        @return: ListUserClusterTypesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_user_cluster_types_with_options(runtime)
+
+    async def list_user_cluster_types_async(self) -> eflo_controller_20221215_models.ListUserClusterTypesResponse:
+        """
+        @summary 查询用户可以使用的集群类型
+        
+        @return: ListUserClusterTypesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_user_cluster_types_with_options_async(runtime)
 
     def reboot_nodes_with_options(
         self,
@@ -2123,10 +3397,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.RebootNodesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.RebootNodesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.RebootNodesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def reboot_nodes_with_options_async(
         self,
@@ -2166,10 +3446,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.RebootNodesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.RebootNodesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.RebootNodesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def reboot_nodes(
         self,
@@ -2237,10 +3523,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.ReimageNodesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ReimageNodesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ReimageNodesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def reimage_nodes_with_options_async(
         self,
@@ -2282,10 +3574,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.ReimageNodesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ReimageNodesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ReimageNodesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def reimage_nodes(
         self,
@@ -2379,10 +3677,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.RunCommandResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.RunCommandResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.RunCommandResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def run_command_with_options_async(
         self,
@@ -2450,10 +3754,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.RunCommandResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.RunCommandResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.RunCommandResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def run_command(
         self,
@@ -2535,10 +3845,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.SendFileResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.SendFileResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.SendFileResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def send_file_with_options_async(
         self,
@@ -2594,10 +3910,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.SendFileResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.SendFileResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.SendFileResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def send_file(
         self,
@@ -2663,10 +3985,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.ShrinkClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ShrinkClusterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ShrinkClusterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def shrink_cluster_with_options_async(
         self,
@@ -2706,10 +4034,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.ShrinkClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ShrinkClusterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.ShrinkClusterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def shrink_cluster(
         self,
@@ -2773,10 +4107,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.StopInvocationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.StopInvocationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.StopInvocationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def stop_invocation_with_options_async(
         self,
@@ -2814,10 +4154,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.StopInvocationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.StopInvocationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.StopInvocationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def stop_invocation(
         self,
@@ -2851,7 +4197,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.StopNodesResponse:
         """
-        @summary 关机节点
+        @summary Shut down the nodes
         
         @param tmp_req: StopNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2881,10 +4227,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.StopNodesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.StopNodesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.StopNodesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def stop_nodes_with_options_async(
         self,
@@ -2892,7 +4244,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.StopNodesResponse:
         """
-        @summary 关机节点
+        @summary Shut down the nodes
         
         @param tmp_req: StopNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2922,17 +4274,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.StopNodesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.StopNodesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.StopNodesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def stop_nodes(
         self,
         request: eflo_controller_20221215_models.StopNodesRequest,
     ) -> eflo_controller_20221215_models.StopNodesResponse:
         """
-        @summary 关机节点
+        @summary Shut down the nodes
         
         @param request: StopNodesRequest
         @return: StopNodesResponse
@@ -2945,7 +4303,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.StopNodesRequest,
     ) -> eflo_controller_20221215_models.StopNodesResponse:
         """
-        @summary 关机节点
+        @summary Shut down the nodes
         
         @param request: StopNodesRequest
         @return: StopNodesResponse
@@ -2989,10 +4347,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.TagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.TagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.TagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def tag_resources_with_options_async(
         self,
@@ -3030,10 +4394,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.TagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.TagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.TagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def tag_resources(
         self,
@@ -3099,10 +4469,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.UntagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.UntagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.UntagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def untag_resources_with_options_async(
         self,
@@ -3142,10 +4518,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            eflo_controller_20221215_models.UntagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.UntagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.UntagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def untag_resources(
         self,

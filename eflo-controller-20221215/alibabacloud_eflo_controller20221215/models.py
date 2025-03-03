@@ -232,6 +232,120 @@ class ChangeResourceGroupResponse(TeaModel):
         return self
 
 
+class CloseSessionRequest(TeaModel):
+    def __init__(
+        self,
+        session_id: str = None,
+        session_token: str = None,
+    ):
+        self.session_id = session_id
+        self.session_token = session_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.session_token is not None:
+            result['SessionToken'] = self.session_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('SessionToken') is not None:
+            self.session_token = m.get('SessionToken')
+        return self
+
+
+class CloseSessionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        session_id: str = None,
+        state: str = None,
+    ):
+        self.request_id = request_id
+        self.session_id = session_id
+        # ClosingActive
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
+class CloseSessionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CloseSessionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CloseSessionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateClusterRequestComponentsComponentConfig(TeaModel):
     def __init__(
         self,
@@ -1693,6 +1807,725 @@ class CreateDiagnosticTaskResponse(TeaModel):
         return self
 
 
+class CreateNetTestTaskRequestCommTestHosts(TeaModel):
+    def __init__(
+        self,
+        ip: str = None,
+        node_id: str = None,
+        resource_id: str = None,
+        server_name: str = None,
+    ):
+        self.ip = ip
+        self.node_id = node_id
+        self.resource_id = resource_id
+        self.server_name = server_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip is not None:
+            result['IP'] = self.ip
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.server_name is not None:
+            result['ServerName'] = self.server_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IP') is not None:
+            self.ip = m.get('IP')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ServerName') is not None:
+            self.server_name = m.get('ServerName')
+        return self
+
+
+class CreateNetTestTaskRequestCommTest(TeaModel):
+    def __init__(
+        self,
+        gpunum: int = None,
+        hosts: List[CreateNetTestTaskRequestCommTestHosts] = None,
+        model: str = None,
+        type: str = None,
+    ):
+        self.gpunum = gpunum
+        self.hosts = hosts
+        self.model = model
+        self.type = type
+
+    def validate(self):
+        if self.hosts:
+            for k in self.hosts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gpunum is not None:
+            result['GPUNum'] = self.gpunum
+        result['Hosts'] = []
+        if self.hosts is not None:
+            for k in self.hosts:
+                result['Hosts'].append(k.to_map() if k else None)
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GPUNum') is not None:
+            self.gpunum = m.get('GPUNum')
+        self.hosts = []
+        if m.get('Hosts') is not None:
+            for k in m.get('Hosts'):
+                temp_model = CreateNetTestTaskRequestCommTestHosts()
+                self.hosts.append(temp_model.from_map(k))
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreateNetTestTaskRequestDelayTestHosts(TeaModel):
+    def __init__(
+        self,
+        bond: str = None,
+        ip: str = None,
+        node_id: str = None,
+        resource_id: str = None,
+        server_name: str = None,
+    ):
+        self.bond = bond
+        self.ip = ip
+        self.node_id = node_id
+        self.resource_id = resource_id
+        self.server_name = server_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bond is not None:
+            result['Bond'] = self.bond
+        if self.ip is not None:
+            result['IP'] = self.ip
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.server_name is not None:
+            result['ServerName'] = self.server_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bond') is not None:
+            self.bond = m.get('Bond')
+        if m.get('IP') is not None:
+            self.ip = m.get('IP')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ServerName') is not None:
+            self.server_name = m.get('ServerName')
+        return self
+
+
+class CreateNetTestTaskRequestDelayTest(TeaModel):
+    def __init__(
+        self,
+        hosts: List[CreateNetTestTaskRequestDelayTestHosts] = None,
+    ):
+        self.hosts = hosts
+
+    def validate(self):
+        if self.hosts:
+            for k in self.hosts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Hosts'] = []
+        if self.hosts is not None:
+            for k in self.hosts:
+                result['Hosts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.hosts = []
+        if m.get('Hosts') is not None:
+            for k in m.get('Hosts'):
+                temp_model = CreateNetTestTaskRequestDelayTestHosts()
+                self.hosts.append(temp_model.from_map(k))
+        return self
+
+
+class CreateNetTestTaskRequestTrafficTestClients(TeaModel):
+    def __init__(
+        self,
+        bond: str = None,
+        ip: str = None,
+        node_id: str = None,
+        resource_id: str = None,
+        server_name: str = None,
+    ):
+        self.bond = bond
+        self.ip = ip
+        self.node_id = node_id
+        self.resource_id = resource_id
+        self.server_name = server_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bond is not None:
+            result['Bond'] = self.bond
+        if self.ip is not None:
+            result['IP'] = self.ip
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.server_name is not None:
+            result['ServerName'] = self.server_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bond') is not None:
+            self.bond = m.get('Bond')
+        if m.get('IP') is not None:
+            self.ip = m.get('IP')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ServerName') is not None:
+            self.server_name = m.get('ServerName')
+        return self
+
+
+class CreateNetTestTaskRequestTrafficTestServers(TeaModel):
+    def __init__(
+        self,
+        bond: str = None,
+        ip: str = None,
+        node_id: str = None,
+        resource_id: str = None,
+        server_name: str = None,
+    ):
+        self.bond = bond
+        self.ip = ip
+        self.node_id = node_id
+        self.resource_id = resource_id
+        self.server_name = server_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bond is not None:
+            result['Bond'] = self.bond
+        if self.ip is not None:
+            result['IP'] = self.ip
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.server_name is not None:
+            result['ServerName'] = self.server_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bond') is not None:
+            self.bond = m.get('Bond')
+        if m.get('IP') is not None:
+            self.ip = m.get('IP')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ServerName') is not None:
+            self.server_name = m.get('ServerName')
+        return self
+
+
+class CreateNetTestTaskRequestTrafficTest(TeaModel):
+    def __init__(
+        self,
+        clients: List[CreateNetTestTaskRequestTrafficTestClients] = None,
+        duration: int = None,
+        gdr: bool = None,
+        protocol: str = None,
+        qp: int = None,
+        servers: List[CreateNetTestTaskRequestTrafficTestServers] = None,
+        traffic_model: str = None,
+    ):
+        self.clients = clients
+        self.duration = duration
+        self.gdr = gdr
+        self.protocol = protocol
+        self.qp = qp
+        self.servers = servers
+        self.traffic_model = traffic_model
+
+    def validate(self):
+        if self.clients:
+            for k in self.clients:
+                if k:
+                    k.validate()
+        if self.servers:
+            for k in self.servers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Clients'] = []
+        if self.clients is not None:
+            for k in self.clients:
+                result['Clients'].append(k.to_map() if k else None)
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.gdr is not None:
+            result['GDR'] = self.gdr
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.qp is not None:
+            result['QP'] = self.qp
+        result['Servers'] = []
+        if self.servers is not None:
+            for k in self.servers:
+                result['Servers'].append(k.to_map() if k else None)
+        if self.traffic_model is not None:
+            result['TrafficModel'] = self.traffic_model
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.clients = []
+        if m.get('Clients') is not None:
+            for k in m.get('Clients'):
+                temp_model = CreateNetTestTaskRequestTrafficTestClients()
+                self.clients.append(temp_model.from_map(k))
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('GDR') is not None:
+            self.gdr = m.get('GDR')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('QP') is not None:
+            self.qp = m.get('QP')
+        self.servers = []
+        if m.get('Servers') is not None:
+            for k in m.get('Servers'):
+                temp_model = CreateNetTestTaskRequestTrafficTestServers()
+                self.servers.append(temp_model.from_map(k))
+        if m.get('TrafficModel') is not None:
+            self.traffic_model = m.get('TrafficModel')
+        return self
+
+
+class CreateNetTestTaskRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        cluster_name: str = None,
+        comm_test: CreateNetTestTaskRequestCommTest = None,
+        delay_test: CreateNetTestTaskRequestDelayTest = None,
+        net_test_type: str = None,
+        network_mode: str = None,
+        port: str = None,
+        traffic_test: CreateNetTestTaskRequestTrafficTest = None,
+    ):
+        self.cluster_id = cluster_id
+        self.cluster_name = cluster_name
+        self.comm_test = comm_test
+        self.delay_test = delay_test
+        self.net_test_type = net_test_type
+        self.network_mode = network_mode
+        self.port = port
+        self.traffic_test = traffic_test
+
+    def validate(self):
+        if self.comm_test:
+            self.comm_test.validate()
+        if self.delay_test:
+            self.delay_test.validate()
+        if self.traffic_test:
+            self.traffic_test.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.comm_test is not None:
+            result['CommTest'] = self.comm_test.to_map()
+        if self.delay_test is not None:
+            result['DelayTest'] = self.delay_test.to_map()
+        if self.net_test_type is not None:
+            result['NetTestType'] = self.net_test_type
+        if self.network_mode is not None:
+            result['NetworkMode'] = self.network_mode
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.traffic_test is not None:
+            result['TrafficTest'] = self.traffic_test.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('CommTest') is not None:
+            temp_model = CreateNetTestTaskRequestCommTest()
+            self.comm_test = temp_model.from_map(m['CommTest'])
+        if m.get('DelayTest') is not None:
+            temp_model = CreateNetTestTaskRequestDelayTest()
+            self.delay_test = temp_model.from_map(m['DelayTest'])
+        if m.get('NetTestType') is not None:
+            self.net_test_type = m.get('NetTestType')
+        if m.get('NetworkMode') is not None:
+            self.network_mode = m.get('NetworkMode')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('TrafficTest') is not None:
+            temp_model = CreateNetTestTaskRequestTrafficTest()
+            self.traffic_test = temp_model.from_map(m['TrafficTest'])
+        return self
+
+
+class CreateNetTestTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        cluster_name: str = None,
+        comm_test_shrink: str = None,
+        delay_test_shrink: str = None,
+        net_test_type: str = None,
+        network_mode: str = None,
+        port: str = None,
+        traffic_test_shrink: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.cluster_name = cluster_name
+        self.comm_test_shrink = comm_test_shrink
+        self.delay_test_shrink = delay_test_shrink
+        self.net_test_type = net_test_type
+        self.network_mode = network_mode
+        self.port = port
+        self.traffic_test_shrink = traffic_test_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.comm_test_shrink is not None:
+            result['CommTest'] = self.comm_test_shrink
+        if self.delay_test_shrink is not None:
+            result['DelayTest'] = self.delay_test_shrink
+        if self.net_test_type is not None:
+            result['NetTestType'] = self.net_test_type
+        if self.network_mode is not None:
+            result['NetworkMode'] = self.network_mode
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.traffic_test_shrink is not None:
+            result['TrafficTest'] = self.traffic_test_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('CommTest') is not None:
+            self.comm_test_shrink = m.get('CommTest')
+        if m.get('DelayTest') is not None:
+            self.delay_test_shrink = m.get('DelayTest')
+        if m.get('NetTestType') is not None:
+            self.net_test_type = m.get('NetTestType')
+        if m.get('NetworkMode') is not None:
+            self.network_mode = m.get('NetworkMode')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('TrafficTest') is not None:
+            self.traffic_test_shrink = m.get('TrafficTest')
+        return self
+
+
+class CreateNetTestTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        test_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.test_id = test_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.test_id is not None:
+            result['TestId'] = self.test_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TestId') is not None:
+            self.test_id = m.get('TestId')
+        return self
+
+
+class CreateNetTestTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateNetTestTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateNetTestTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateSessionRequest(TeaModel):
+    def __init__(
+        self,
+        node_id: str = None,
+        session_type: str = None,
+        start_time: str = None,
+    ):
+        self.node_id = node_id
+        self.session_type = session_type
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.session_type is not None:
+            result['SessionType'] = self.session_type
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('SessionType') is not None:
+            self.session_type = m.get('SessionType')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class CreateSessionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        server_sn: str = None,
+        session_id: str = None,
+        session_token: str = None,
+        wss_endpoint: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.server_sn = server_sn
+        self.session_id = session_id
+        self.session_token = session_token
+        self.wss_endpoint = wss_endpoint
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.server_sn is not None:
+            result['ServerSn'] = self.server_sn
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.session_token is not None:
+            result['SessionToken'] = self.session_token
+        if self.wss_endpoint is not None:
+            result['WssEndpoint'] = self.wss_endpoint
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ServerSn') is not None:
+            self.server_sn = m.get('ServerSn')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('SessionToken') is not None:
+            self.session_token = m.get('SessionToken')
+        if m.get('WssEndpoint') is not None:
+            self.wss_endpoint = m.get('WssEndpoint')
+        return self
+
+
+class CreateSessionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSessionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSessionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteClusterRequest(TeaModel):
     def __init__(
         self,
@@ -2647,6 +3480,523 @@ class DescribeInvocationsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeInvocationsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeNetTestResultRequest(TeaModel):
+    def __init__(
+        self,
+        test_id: str = None,
+    ):
+        self.test_id = test_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.test_id is not None:
+            result['TestId'] = self.test_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TestId') is not None:
+            self.test_id = m.get('TestId')
+        return self
+
+
+class DescribeNetTestResultResponseBodyCommTestHosts(TeaModel):
+    def __init__(
+        self,
+        ip: str = None,
+        resource_id: str = None,
+        server_name: str = None,
+    ):
+        self.ip = ip
+        self.resource_id = resource_id
+        self.server_name = server_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip is not None:
+            result['IP'] = self.ip
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.server_name is not None:
+            result['ServerName'] = self.server_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IP') is not None:
+            self.ip = m.get('IP')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ServerName') is not None:
+            self.server_name = m.get('ServerName')
+        return self
+
+
+class DescribeNetTestResultResponseBodyCommTest(TeaModel):
+    def __init__(
+        self,
+        gpunum: str = None,
+        hosts: List[DescribeNetTestResultResponseBodyCommTestHosts] = None,
+        model: str = None,
+        type: str = None,
+    ):
+        self.gpunum = gpunum
+        self.hosts = hosts
+        self.model = model
+        self.type = type
+
+    def validate(self):
+        if self.hosts:
+            for k in self.hosts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gpunum is not None:
+            result['GPUNum'] = self.gpunum
+        result['Hosts'] = []
+        if self.hosts is not None:
+            for k in self.hosts:
+                result['Hosts'].append(k.to_map() if k else None)
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GPUNum') is not None:
+            self.gpunum = m.get('GPUNum')
+        self.hosts = []
+        if m.get('Hosts') is not None:
+            for k in m.get('Hosts'):
+                temp_model = DescribeNetTestResultResponseBodyCommTestHosts()
+                self.hosts.append(temp_model.from_map(k))
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeNetTestResultResponseBodyDelayTestHosts(TeaModel):
+    def __init__(
+        self,
+        bond: str = None,
+        ip: str = None,
+        resource_id: str = None,
+        server_name: str = None,
+    ):
+        self.bond = bond
+        self.ip = ip
+        self.resource_id = resource_id
+        self.server_name = server_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bond is not None:
+            result['Bond'] = self.bond
+        if self.ip is not None:
+            result['IP'] = self.ip
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.server_name is not None:
+            result['ServerName'] = self.server_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bond') is not None:
+            self.bond = m.get('Bond')
+        if m.get('IP') is not None:
+            self.ip = m.get('IP')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ServerName') is not None:
+            self.server_name = m.get('ServerName')
+        return self
+
+
+class DescribeNetTestResultResponseBodyDelayTest(TeaModel):
+    def __init__(
+        self,
+        hosts: List[DescribeNetTestResultResponseBodyDelayTestHosts] = None,
+    ):
+        self.hosts = hosts
+
+    def validate(self):
+        if self.hosts:
+            for k in self.hosts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Hosts'] = []
+        if self.hosts is not None:
+            for k in self.hosts:
+                result['Hosts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.hosts = []
+        if m.get('Hosts') is not None:
+            for k in m.get('Hosts'):
+                temp_model = DescribeNetTestResultResponseBodyDelayTestHosts()
+                self.hosts.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeNetTestResultResponseBodyTrafficTestClients(TeaModel):
+    def __init__(
+        self,
+        bond: str = None,
+        ip: str = None,
+        resource_id: str = None,
+        server_name: str = None,
+    ):
+        self.bond = bond
+        self.ip = ip
+        self.resource_id = resource_id
+        self.server_name = server_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bond is not None:
+            result['Bond'] = self.bond
+        if self.ip is not None:
+            result['IP'] = self.ip
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.server_name is not None:
+            result['ServerName'] = self.server_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bond') is not None:
+            self.bond = m.get('Bond')
+        if m.get('IP') is not None:
+            self.ip = m.get('IP')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ServerName') is not None:
+            self.server_name = m.get('ServerName')
+        return self
+
+
+class DescribeNetTestResultResponseBodyTrafficTestServers(TeaModel):
+    def __init__(
+        self,
+        bond: str = None,
+        ip: str = None,
+        resource_id: str = None,
+        server_name: str = None,
+    ):
+        self.bond = bond
+        self.ip = ip
+        self.resource_id = resource_id
+        self.server_name = server_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bond is not None:
+            result['Bond'] = self.bond
+        if self.ip is not None:
+            result['IP'] = self.ip
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.server_name is not None:
+            result['ServerName'] = self.server_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bond') is not None:
+            self.bond = m.get('Bond')
+        if m.get('IP') is not None:
+            self.ip = m.get('IP')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ServerName') is not None:
+            self.server_name = m.get('ServerName')
+        return self
+
+
+class DescribeNetTestResultResponseBodyTrafficTest(TeaModel):
+    def __init__(
+        self,
+        clients: List[DescribeNetTestResultResponseBodyTrafficTestClients] = None,
+        duration: int = None,
+        gdr: str = None,
+        protocol: str = None,
+        qp: int = None,
+        servers: List[DescribeNetTestResultResponseBodyTrafficTestServers] = None,
+        traffic_model: str = None,
+    ):
+        self.clients = clients
+        self.duration = duration
+        self.gdr = gdr
+        self.protocol = protocol
+        self.qp = qp
+        self.servers = servers
+        self.traffic_model = traffic_model
+
+    def validate(self):
+        if self.clients:
+            for k in self.clients:
+                if k:
+                    k.validate()
+        if self.servers:
+            for k in self.servers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Clients'] = []
+        if self.clients is not None:
+            for k in self.clients:
+                result['Clients'].append(k.to_map() if k else None)
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.gdr is not None:
+            result['GDR'] = self.gdr
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.qp is not None:
+            result['QP'] = self.qp
+        result['Servers'] = []
+        if self.servers is not None:
+            for k in self.servers:
+                result['Servers'].append(k.to_map() if k else None)
+        if self.traffic_model is not None:
+            result['TrafficModel'] = self.traffic_model
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.clients = []
+        if m.get('Clients') is not None:
+            for k in m.get('Clients'):
+                temp_model = DescribeNetTestResultResponseBodyTrafficTestClients()
+                self.clients.append(temp_model.from_map(k))
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('GDR') is not None:
+            self.gdr = m.get('GDR')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('QP') is not None:
+            self.qp = m.get('QP')
+        self.servers = []
+        if m.get('Servers') is not None:
+            for k in m.get('Servers'):
+                temp_model = DescribeNetTestResultResponseBodyTrafficTestServers()
+                self.servers.append(temp_model.from_map(k))
+        if m.get('TrafficModel') is not None:
+            self.traffic_model = m.get('TrafficModel')
+        return self
+
+
+class DescribeNetTestResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        cluster_name: str = None,
+        comm_test: DescribeNetTestResultResponseBodyCommTest = None,
+        creation_time: str = None,
+        delay_test: DescribeNetTestResultResponseBodyDelayTest = None,
+        finished_time: str = None,
+        net_test_type: str = None,
+        port: str = None,
+        request_id: str = None,
+        result_detial: str = None,
+        status: str = None,
+        test_id: str = None,
+        traffic_test: DescribeNetTestResultResponseBodyTrafficTest = None,
+    ):
+        self.cluster_id = cluster_id
+        self.cluster_name = cluster_name
+        self.comm_test = comm_test
+        self.creation_time = creation_time
+        self.delay_test = delay_test
+        self.finished_time = finished_time
+        self.net_test_type = net_test_type
+        self.port = port
+        self.request_id = request_id
+        self.result_detial = result_detial
+        self.status = status
+        self.test_id = test_id
+        self.traffic_test = traffic_test
+
+    def validate(self):
+        if self.comm_test:
+            self.comm_test.validate()
+        if self.delay_test:
+            self.delay_test.validate()
+        if self.traffic_test:
+            self.traffic_test.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.comm_test is not None:
+            result['CommTest'] = self.comm_test.to_map()
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.delay_test is not None:
+            result['DelayTest'] = self.delay_test.to_map()
+        if self.finished_time is not None:
+            result['FinishedTime'] = self.finished_time
+        if self.net_test_type is not None:
+            result['NetTestType'] = self.net_test_type
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_detial is not None:
+            result['ResultDetial'] = self.result_detial
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.test_id is not None:
+            result['TestId'] = self.test_id
+        if self.traffic_test is not None:
+            result['TrafficTest'] = self.traffic_test.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('CommTest') is not None:
+            temp_model = DescribeNetTestResultResponseBodyCommTest()
+            self.comm_test = temp_model.from_map(m['CommTest'])
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('DelayTest') is not None:
+            temp_model = DescribeNetTestResultResponseBodyDelayTest()
+            self.delay_test = temp_model.from_map(m['DelayTest'])
+        if m.get('FinishedTime') is not None:
+            self.finished_time = m.get('FinishedTime')
+        if m.get('NetTestType') is not None:
+            self.net_test_type = m.get('NetTestType')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultDetial') is not None:
+            self.result_detial = m.get('ResultDetial')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TestId') is not None:
+            self.test_id = m.get('TestId')
+        if m.get('TrafficTest') is not None:
+            temp_model = DescribeNetTestResultResponseBodyTrafficTest()
+            self.traffic_test = temp_model.from_map(m['TrafficTest'])
+        return self
+
+
+class DescribeNetTestResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeNetTestResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeNetTestResultResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5194,6 +6544,227 @@ class ListClustersResponse(TeaModel):
         return self
 
 
+class ListDiagnosticResultsRequest(TeaModel):
+    def __init__(
+        self,
+        diag_type: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        resource_group_id: str = None,
+    ):
+        self.diag_type = diag_type
+        self.max_results = max_results
+        self.next_token = next_token
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.diag_type is not None:
+            result['DiagType'] = self.diag_type
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiagType') is not None:
+            self.diag_type = m.get('DiagType')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class ListDiagnosticResultsResponseBodyDiagnosticResults(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        cluster_name: str = None,
+        creation_time: str = None,
+        diag_content: str = None,
+        diag_id: str = None,
+        diag_result: str = None,
+        finished_time: str = None,
+        resource_id: str = None,
+        server_name: str = None,
+        status: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.cluster_name = cluster_name
+        self.creation_time = creation_time
+        self.diag_content = diag_content
+        self.diag_id = diag_id
+        self.diag_result = diag_result
+        self.finished_time = finished_time
+        self.resource_id = resource_id
+        self.server_name = server_name
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.diag_content is not None:
+            result['DiagContent'] = self.diag_content
+        if self.diag_id is not None:
+            result['DiagId'] = self.diag_id
+        if self.diag_result is not None:
+            result['DiagResult'] = self.diag_result
+        if self.finished_time is not None:
+            result['FinishedTime'] = self.finished_time
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.server_name is not None:
+            result['ServerName'] = self.server_name
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('DiagContent') is not None:
+            self.diag_content = m.get('DiagContent')
+        if m.get('DiagId') is not None:
+            self.diag_id = m.get('DiagId')
+        if m.get('DiagResult') is not None:
+            self.diag_result = m.get('DiagResult')
+        if m.get('FinishedTime') is not None:
+            self.finished_time = m.get('FinishedTime')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ServerName') is not None:
+            self.server_name = m.get('ServerName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListDiagnosticResultsResponseBody(TeaModel):
+    def __init__(
+        self,
+        diagnostic_results: List[ListDiagnosticResultsResponseBodyDiagnosticResults] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.diagnostic_results = diagnostic_results
+        self.max_results = max_results
+        self.next_token = next_token
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.diagnostic_results:
+            for k in self.diagnostic_results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DiagnosticResults'] = []
+        if self.diagnostic_results is not None:
+            for k in self.diagnostic_results:
+                result['DiagnosticResults'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.diagnostic_results = []
+        if m.get('DiagnosticResults') is not None:
+            for k in m.get('DiagnosticResults'):
+                temp_model = ListDiagnosticResultsResponseBodyDiagnosticResults()
+                self.diagnostic_results.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListDiagnosticResultsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDiagnosticResultsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDiagnosticResultsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListFreeNodesRequest(TeaModel):
     def __init__(
         self,
@@ -5418,6 +6989,477 @@ class ListFreeNodesResponse(TeaModel):
         return self
 
 
+class ListImagesRequest(TeaModel):
+    def __init__(
+        self,
+        architecture: str = None,
+        image_version: str = None,
+        platform: str = None,
+    ):
+        # Architecture
+        self.architecture = architecture
+        # Image version
+        self.image_version = image_version
+        # Platform
+        self.platform = platform
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.architecture is not None:
+            result['Architecture'] = self.architecture
+        if self.image_version is not None:
+            result['ImageVersion'] = self.image_version
+        if self.platform is not None:
+            result['Platform'] = self.platform
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Architecture') is not None:
+            self.architecture = m.get('Architecture')
+        if m.get('ImageVersion') is not None:
+            self.image_version = m.get('ImageVersion')
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
+        return self
+
+
+class ListImagesResponseBodyImages(TeaModel):
+    def __init__(
+        self,
+        architecture: str = None,
+        description: str = None,
+        image_id: str = None,
+        image_name: str = None,
+        image_version: str = None,
+        node_count: int = None,
+        platform: str = None,
+        release_file_md_5: str = None,
+        release_file_size: int = None,
+        type: str = None,
+    ):
+        # Architecture
+        self.architecture = architecture
+        # Description
+        self.description = description
+        # Image ID
+        self.image_id = image_id
+        # Image name
+        self.image_name = image_name
+        # Image version
+        self.image_version = image_version
+        # node count
+        self.node_count = node_count
+        # Platform
+        self.platform = platform
+        # File MD5
+        self.release_file_md_5 = release_file_md_5
+        # Image size
+        self.release_file_size = release_file_size
+        # image type
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.architecture is not None:
+            result['Architecture'] = self.architecture
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.image_name is not None:
+            result['ImageName'] = self.image_name
+        if self.image_version is not None:
+            result['ImageVersion'] = self.image_version
+        if self.node_count is not None:
+            result['NodeCount'] = self.node_count
+        if self.platform is not None:
+            result['Platform'] = self.platform
+        if self.release_file_md_5 is not None:
+            result['ReleaseFileMd5'] = self.release_file_md_5
+        if self.release_file_size is not None:
+            result['ReleaseFileSize'] = self.release_file_size
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Architecture') is not None:
+            self.architecture = m.get('Architecture')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('ImageName') is not None:
+            self.image_name = m.get('ImageName')
+        if m.get('ImageVersion') is not None:
+            self.image_version = m.get('ImageVersion')
+        if m.get('NodeCount') is not None:
+            self.node_count = m.get('NodeCount')
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
+        if m.get('ReleaseFileMd5') is not None:
+            self.release_file_md_5 = m.get('ReleaseFileMd5')
+        if m.get('ReleaseFileSize') is not None:
+            self.release_file_size = m.get('ReleaseFileSize')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListImagesResponseBody(TeaModel):
+    def __init__(
+        self,
+        images: List[ListImagesResponseBodyImages] = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        # Image details
+        self.images = images
+        # NextToken for the next page, include this value when requesting the next page
+        self.next_token = next_token
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.images:
+            for k in self.images:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Images'] = []
+        if self.images is not None:
+            for k in self.images:
+                result['Images'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.images = []
+        if m.get('Images') is not None:
+            for k in m.get('Images'):
+                temp_model = ListImagesResponseBodyImages()
+                self.images.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListImagesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListImagesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListImagesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListMachineNetworkInfoRequestMachineHpnInfo(TeaModel):
+    def __init__(
+        self,
+        hpn_zone: str = None,
+        machine_type: str = None,
+        region_id: str = None,
+    ):
+        self.hpn_zone = hpn_zone
+        self.machine_type = machine_type
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hpn_zone is not None:
+            result['HpnZone'] = self.hpn_zone
+        if self.machine_type is not None:
+            result['MachineType'] = self.machine_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HpnZone') is not None:
+            self.hpn_zone = m.get('HpnZone')
+        if m.get('MachineType') is not None:
+            self.machine_type = m.get('MachineType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ListMachineNetworkInfoRequest(TeaModel):
+    def __init__(
+        self,
+        machine_hpn_info: List[ListMachineNetworkInfoRequestMachineHpnInfo] = None,
+    ):
+        self.machine_hpn_info = machine_hpn_info
+
+    def validate(self):
+        if self.machine_hpn_info:
+            for k in self.machine_hpn_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['MachineHpnInfo'] = []
+        if self.machine_hpn_info is not None:
+            for k in self.machine_hpn_info:
+                result['MachineHpnInfo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.machine_hpn_info = []
+        if m.get('MachineHpnInfo') is not None:
+            for k in m.get('MachineHpnInfo'):
+                temp_model = ListMachineNetworkInfoRequestMachineHpnInfo()
+                self.machine_hpn_info.append(temp_model.from_map(k))
+        return self
+
+
+class ListMachineNetworkInfoShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        machine_hpn_info_shrink: str = None,
+    ):
+        self.machine_hpn_info_shrink = machine_hpn_info_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.machine_hpn_info_shrink is not None:
+            result['MachineHpnInfo'] = self.machine_hpn_info_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MachineHpnInfo') is not None:
+            self.machine_hpn_info_shrink = m.get('MachineHpnInfo')
+        return self
+
+
+class ListMachineNetworkInfoResponseBodyMachineNetworkInfo(TeaModel):
+    def __init__(
+        self,
+        cluster_net: str = None,
+        enable_jumbo_frame: bool = None,
+        hpn_zone: str = None,
+        is_dpu_mode: bool = None,
+        machine_type: str = None,
+        net_arch: str = None,
+        region_id: str = None,
+    ):
+        self.cluster_net = cluster_net
+        self.enable_jumbo_frame = enable_jumbo_frame
+        self.hpn_zone = hpn_zone
+        self.is_dpu_mode = is_dpu_mode
+        self.machine_type = machine_type
+        self.net_arch = net_arch
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_net is not None:
+            result['ClusterNet'] = self.cluster_net
+        if self.enable_jumbo_frame is not None:
+            result['EnableJumboFrame'] = self.enable_jumbo_frame
+        if self.hpn_zone is not None:
+            result['HpnZone'] = self.hpn_zone
+        if self.is_dpu_mode is not None:
+            result['IsDpuMode'] = self.is_dpu_mode
+        if self.machine_type is not None:
+            result['MachineType'] = self.machine_type
+        if self.net_arch is not None:
+            result['NetArch'] = self.net_arch
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterNet') is not None:
+            self.cluster_net = m.get('ClusterNet')
+        if m.get('EnableJumboFrame') is not None:
+            self.enable_jumbo_frame = m.get('EnableJumboFrame')
+        if m.get('HpnZone') is not None:
+            self.hpn_zone = m.get('HpnZone')
+        if m.get('IsDpuMode') is not None:
+            self.is_dpu_mode = m.get('IsDpuMode')
+        if m.get('MachineType') is not None:
+            self.machine_type = m.get('MachineType')
+        if m.get('NetArch') is not None:
+            self.net_arch = m.get('NetArch')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ListMachineNetworkInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        machine_network_info: List[ListMachineNetworkInfoResponseBodyMachineNetworkInfo] = None,
+        request_id: str = None,
+    ):
+        self.machine_network_info = machine_network_info
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.machine_network_info:
+            for k in self.machine_network_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['MachineNetworkInfo'] = []
+        if self.machine_network_info is not None:
+            for k in self.machine_network_info:
+                result['MachineNetworkInfo'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.machine_network_info = []
+        if m.get('MachineNetworkInfo') is not None:
+            for k in m.get('MachineNetworkInfo'):
+                temp_model = ListMachineNetworkInfoResponseBodyMachineNetworkInfo()
+                self.machine_network_info.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListMachineNetworkInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListMachineNetworkInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListMachineNetworkInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListMachineTypesRequest(TeaModel):
     def __init__(
         self,
@@ -5624,6 +7666,589 @@ class ListMachineTypesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListMachineTypesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListNetTestResultsRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        net_test_type: str = None,
+        next_token: str = None,
+        resource_group_id: str = None,
+    ):
+        self.max_results = max_results
+        self.net_test_type = net_test_type
+        self.next_token = next_token
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.net_test_type is not None:
+            result['NetTestType'] = self.net_test_type
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NetTestType') is not None:
+            self.net_test_type = m.get('NetTestType')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class ListNetTestResultsResponseBodyNetTestResultsCommTestHosts(TeaModel):
+    def __init__(
+        self,
+        ip: str = None,
+        resource_id: str = None,
+        server_name: str = None,
+    ):
+        self.ip = ip
+        self.resource_id = resource_id
+        self.server_name = server_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip is not None:
+            result['IP'] = self.ip
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.server_name is not None:
+            result['ServerName'] = self.server_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IP') is not None:
+            self.ip = m.get('IP')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ServerName') is not None:
+            self.server_name = m.get('ServerName')
+        return self
+
+
+class ListNetTestResultsResponseBodyNetTestResultsCommTest(TeaModel):
+    def __init__(
+        self,
+        gpunum: str = None,
+        hosts: List[ListNetTestResultsResponseBodyNetTestResultsCommTestHosts] = None,
+        model: str = None,
+        type: str = None,
+    ):
+        self.gpunum = gpunum
+        self.hosts = hosts
+        self.model = model
+        self.type = type
+
+    def validate(self):
+        if self.hosts:
+            for k in self.hosts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gpunum is not None:
+            result['GPUNum'] = self.gpunum
+        result['Hosts'] = []
+        if self.hosts is not None:
+            for k in self.hosts:
+                result['Hosts'].append(k.to_map() if k else None)
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GPUNum') is not None:
+            self.gpunum = m.get('GPUNum')
+        self.hosts = []
+        if m.get('Hosts') is not None:
+            for k in m.get('Hosts'):
+                temp_model = ListNetTestResultsResponseBodyNetTestResultsCommTestHosts()
+                self.hosts.append(temp_model.from_map(k))
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListNetTestResultsResponseBodyNetTestResultsDelayTestHosts(TeaModel):
+    def __init__(
+        self,
+        bond: str = None,
+        ip: str = None,
+        resource_id: str = None,
+        server_name: str = None,
+    ):
+        self.bond = bond
+        self.ip = ip
+        self.resource_id = resource_id
+        self.server_name = server_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bond is not None:
+            result['Bond'] = self.bond
+        if self.ip is not None:
+            result['IP'] = self.ip
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.server_name is not None:
+            result['ServerName'] = self.server_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bond') is not None:
+            self.bond = m.get('Bond')
+        if m.get('IP') is not None:
+            self.ip = m.get('IP')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ServerName') is not None:
+            self.server_name = m.get('ServerName')
+        return self
+
+
+class ListNetTestResultsResponseBodyNetTestResultsDelayTest(TeaModel):
+    def __init__(
+        self,
+        hosts: List[ListNetTestResultsResponseBodyNetTestResultsDelayTestHosts] = None,
+    ):
+        self.hosts = hosts
+
+    def validate(self):
+        if self.hosts:
+            for k in self.hosts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Hosts'] = []
+        if self.hosts is not None:
+            for k in self.hosts:
+                result['Hosts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.hosts = []
+        if m.get('Hosts') is not None:
+            for k in m.get('Hosts'):
+                temp_model = ListNetTestResultsResponseBodyNetTestResultsDelayTestHosts()
+                self.hosts.append(temp_model.from_map(k))
+        return self
+
+
+class ListNetTestResultsResponseBodyNetTestResultsTrafficTestClients(TeaModel):
+    def __init__(
+        self,
+        bond: str = None,
+        ip: str = None,
+        resource_id: str = None,
+        server_name: str = None,
+    ):
+        self.bond = bond
+        self.ip = ip
+        self.resource_id = resource_id
+        self.server_name = server_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bond is not None:
+            result['Bond'] = self.bond
+        if self.ip is not None:
+            result['IP'] = self.ip
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.server_name is not None:
+            result['ServerName'] = self.server_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bond') is not None:
+            self.bond = m.get('Bond')
+        if m.get('IP') is not None:
+            self.ip = m.get('IP')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ServerName') is not None:
+            self.server_name = m.get('ServerName')
+        return self
+
+
+class ListNetTestResultsResponseBodyNetTestResultsTrafficTestServers(TeaModel):
+    def __init__(
+        self,
+        bond: str = None,
+        ip: str = None,
+        resource_id: str = None,
+        server_name: str = None,
+    ):
+        self.bond = bond
+        self.ip = ip
+        self.resource_id = resource_id
+        self.server_name = server_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bond is not None:
+            result['Bond'] = self.bond
+        if self.ip is not None:
+            result['IP'] = self.ip
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.server_name is not None:
+            result['ServerName'] = self.server_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bond') is not None:
+            self.bond = m.get('Bond')
+        if m.get('IP') is not None:
+            self.ip = m.get('IP')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ServerName') is not None:
+            self.server_name = m.get('ServerName')
+        return self
+
+
+class ListNetTestResultsResponseBodyNetTestResultsTrafficTest(TeaModel):
+    def __init__(
+        self,
+        clients: List[ListNetTestResultsResponseBodyNetTestResultsTrafficTestClients] = None,
+        duration: int = None,
+        gdr: str = None,
+        protocol: str = None,
+        qp: int = None,
+        servers: List[ListNetTestResultsResponseBodyNetTestResultsTrafficTestServers] = None,
+        traffic_model: str = None,
+    ):
+        self.clients = clients
+        self.duration = duration
+        self.gdr = gdr
+        self.protocol = protocol
+        self.qp = qp
+        self.servers = servers
+        self.traffic_model = traffic_model
+
+    def validate(self):
+        if self.clients:
+            for k in self.clients:
+                if k:
+                    k.validate()
+        if self.servers:
+            for k in self.servers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Clients'] = []
+        if self.clients is not None:
+            for k in self.clients:
+                result['Clients'].append(k.to_map() if k else None)
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.gdr is not None:
+            result['GDR'] = self.gdr
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.qp is not None:
+            result['QP'] = self.qp
+        result['Servers'] = []
+        if self.servers is not None:
+            for k in self.servers:
+                result['Servers'].append(k.to_map() if k else None)
+        if self.traffic_model is not None:
+            result['TrafficModel'] = self.traffic_model
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.clients = []
+        if m.get('Clients') is not None:
+            for k in m.get('Clients'):
+                temp_model = ListNetTestResultsResponseBodyNetTestResultsTrafficTestClients()
+                self.clients.append(temp_model.from_map(k))
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('GDR') is not None:
+            self.gdr = m.get('GDR')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('QP') is not None:
+            self.qp = m.get('QP')
+        self.servers = []
+        if m.get('Servers') is not None:
+            for k in m.get('Servers'):
+                temp_model = ListNetTestResultsResponseBodyNetTestResultsTrafficTestServers()
+                self.servers.append(temp_model.from_map(k))
+        if m.get('TrafficModel') is not None:
+            self.traffic_model = m.get('TrafficModel')
+        return self
+
+
+class ListNetTestResultsResponseBodyNetTestResults(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        cluster_name: str = None,
+        comm_test: ListNetTestResultsResponseBodyNetTestResultsCommTest = None,
+        creation_time: str = None,
+        delay_test: ListNetTestResultsResponseBodyNetTestResultsDelayTest = None,
+        finished_time: str = None,
+        net_test_type: str = None,
+        network_mode: str = None,
+        port: str = None,
+        status: str = None,
+        test_id: str = None,
+        traffic_test: ListNetTestResultsResponseBodyNetTestResultsTrafficTest = None,
+    ):
+        self.cluster_id = cluster_id
+        self.cluster_name = cluster_name
+        self.comm_test = comm_test
+        self.creation_time = creation_time
+        self.delay_test = delay_test
+        self.finished_time = finished_time
+        self.net_test_type = net_test_type
+        self.network_mode = network_mode
+        self.port = port
+        self.status = status
+        self.test_id = test_id
+        self.traffic_test = traffic_test
+
+    def validate(self):
+        if self.comm_test:
+            self.comm_test.validate()
+        if self.delay_test:
+            self.delay_test.validate()
+        if self.traffic_test:
+            self.traffic_test.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.comm_test is not None:
+            result['CommTest'] = self.comm_test.to_map()
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.delay_test is not None:
+            result['DelayTest'] = self.delay_test.to_map()
+        if self.finished_time is not None:
+            result['FinishedTime'] = self.finished_time
+        if self.net_test_type is not None:
+            result['NetTestType'] = self.net_test_type
+        if self.network_mode is not None:
+            result['NetworkMode'] = self.network_mode
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.test_id is not None:
+            result['TestId'] = self.test_id
+        if self.traffic_test is not None:
+            result['TrafficTest'] = self.traffic_test.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('CommTest') is not None:
+            temp_model = ListNetTestResultsResponseBodyNetTestResultsCommTest()
+            self.comm_test = temp_model.from_map(m['CommTest'])
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('DelayTest') is not None:
+            temp_model = ListNetTestResultsResponseBodyNetTestResultsDelayTest()
+            self.delay_test = temp_model.from_map(m['DelayTest'])
+        if m.get('FinishedTime') is not None:
+            self.finished_time = m.get('FinishedTime')
+        if m.get('NetTestType') is not None:
+            self.net_test_type = m.get('NetTestType')
+        if m.get('NetworkMode') is not None:
+            self.network_mode = m.get('NetworkMode')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TestId') is not None:
+            self.test_id = m.get('TestId')
+        if m.get('TrafficTest') is not None:
+            temp_model = ListNetTestResultsResponseBodyNetTestResultsTrafficTest()
+            self.traffic_test = temp_model.from_map(m['TrafficTest'])
+        return self
+
+
+class ListNetTestResultsResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        net_test_results: List[ListNetTestResultsResponseBodyNetTestResults] = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.max_results = max_results
+        self.net_test_results = net_test_results
+        self.next_token = next_token
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.net_test_results:
+            for k in self.net_test_results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        result['NetTestResults'] = []
+        if self.net_test_results is not None:
+            for k in self.net_test_results:
+                result['NetTestResults'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        self.net_test_results = []
+        if m.get('NetTestResults') is not None:
+            for k in m.get('NetTestResults'):
+                temp_model = ListNetTestResultsResponseBodyNetTestResults()
+                self.net_test_results.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListNetTestResultsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListNetTestResultsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListNetTestResultsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6148,6 +8773,128 @@ class ListTagResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListTagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListUserClusterTypesResponseBodyClusterTypes(TeaModel):
+    def __init__(
+        self,
+        access_type: str = None,
+        type_name: str = None,
+    ):
+        self.access_type = access_type
+        self.type_name = type_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_type is not None:
+            result['AccessType'] = self.access_type
+        if self.type_name is not None:
+            result['TypeName'] = self.type_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessType') is not None:
+            self.access_type = m.get('AccessType')
+        if m.get('TypeName') is not None:
+            self.type_name = m.get('TypeName')
+        return self
+
+
+class ListUserClusterTypesResponseBody(TeaModel):
+    def __init__(
+        self,
+        cluster_types: List[ListUserClusterTypesResponseBodyClusterTypes] = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.cluster_types = cluster_types
+        self.next_token = next_token
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.cluster_types:
+            for k in self.cluster_types:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ClusterTypes'] = []
+        if self.cluster_types is not None:
+            for k in self.cluster_types:
+                result['ClusterTypes'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cluster_types = []
+        if m.get('ClusterTypes') is not None:
+            for k in m.get('ClusterTypes'):
+                temp_model = ListUserClusterTypesResponseBodyClusterTypes()
+                self.cluster_types.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListUserClusterTypesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListUserClusterTypesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListUserClusterTypesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7711,7 +10458,9 @@ class StopNodesRequest(TeaModel):
         ignore_failed_node_tasks: bool = None,
         nodes: List[str] = None,
     ):
+        # Whether to allow skipping failed node tasks, default value is False.
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
+        # List of nodes.
         self.nodes = nodes
 
     def validate(self):
@@ -7744,7 +10493,9 @@ class StopNodesShrinkRequest(TeaModel):
         ignore_failed_node_tasks: bool = None,
         nodes_shrink: str = None,
     ):
+        # Whether to allow skipping failed node tasks, default value is False.
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
+        # List of nodes.
         self.nodes_shrink = nodes_shrink
 
     def validate(self):
@@ -7777,7 +10528,9 @@ class StopNodesResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Task ID
         self.task_id = task_id
 
     def validate(self):
