@@ -1,3 +1,94 @@
+2025-03-03 Version: 2.4.0
+- Support API CreateAutoGroupingRule.
+- Support API DeleteAutoGroupingRule.
+- Support API DisableAutoGrouping.
+- Support API EnableAutoGrouping.
+- Support API GetAutoGroupingRule.
+- Support API GetAutoGroupingStatus.
+- Support API ListAutoGroupingRules.
+- Support API UpdateAutoGroupingConfig.
+- Support API UpdateAutoGroupingRule.
+- Update API AttachPolicy: update param PolicyName.
+- Update API AttachPolicy: update param PolicyType.
+- Update API AttachPolicy: update param PrincipalName.
+- Update API AttachPolicy: update param PrincipalType.
+- Update API AttachPolicy: update param ResourceGroupId.
+- Update API AttachPolicy: update response param.
+- Update API CreatePolicy: update param Description.
+- Update API CreatePolicy: update param PolicyDocument.
+- Update API CreatePolicy: update param PolicyName.
+- Update API CreatePolicy: update response param.
+- Update API CreatePolicyVersion: update param PolicyDocument.
+- Update API CreatePolicyVersion: update param PolicyName.
+- Update API CreatePolicyVersion: update param SetAsDefault.
+- Update API CreatePolicyVersion: update response param.
+- Update API CreateRole: update param AssumeRolePolicyDocument.
+- Update API CreateRole: update param Description.
+- Update API CreateRole: update param MaxSessionDuration.
+- Update API CreateRole: update param RoleName.
+- Update API CreateRole: update response param.
+- Update API CreateServiceLinkedRole: update param CustomSuffix.
+- Update API CreateServiceLinkedRole: update param Description.
+- Update API CreateServiceLinkedRole: update param ServiceName.
+- Update API CreateServiceLinkedRole: update response param.
+- Update API DeletePolicy: update param PolicyName.
+- Update API DeletePolicy: update response param.
+- Update API DeletePolicyVersion: update param PolicyName.
+- Update API DeletePolicyVersion: update param VersionId.
+- Update API DeletePolicyVersion: update response param.
+- Update API DeleteRole: update param RoleName.
+- Update API DeleteRole: update response param.
+- Update API DeleteServiceLinkedRole: update param RoleName.
+- Update API DeleteServiceLinkedRole: update response param.
+- Update API DetachPolicy: update param PolicyName.
+- Update API DetachPolicy: update param PolicyType.
+- Update API DetachPolicy: update param PrincipalName.
+- Update API DetachPolicy: update param PrincipalType.
+- Update API DetachPolicy: update param ResourceGroupId.
+- Update API DetachPolicy: update response param.
+- Update API GetPolicy: update param Language.
+- Update API GetPolicy: update param PolicyName.
+- Update API GetPolicy: update param PolicyType.
+- Update API GetPolicy: update response param.
+- Update API GetPolicyVersion: update param PolicyName.
+- Update API GetPolicyVersion: update param PolicyType.
+- Update API GetPolicyVersion: update param VersionId.
+- Update API GetPolicyVersion: update response param.
+- Update API GetRole: update param Language.
+- Update API GetRole: update param RoleName.
+- Update API GetRole: update response param.
+- Update API GetServiceLinkedRoleDeletionStatus: update param DeletionTaskId.
+- Update API GetServiceLinkedRoleDeletionStatus: update response param.
+- Update API ListPolicies: update param Language.
+- Update API ListPolicies: update param PageNumber.
+- Update API ListPolicies: update param PolicyType.
+- Update API ListPolicies: update response param.
+- Update API ListPolicyAttachments: update param Language.
+- Update API ListPolicyAttachments: update param PageNumber.
+- Update API ListPolicyAttachments: update param PolicyName.
+- Update API ListPolicyAttachments: update param PolicyType.
+- Update API ListPolicyAttachments: update param PrincipalName.
+- Update API ListPolicyAttachments: update param PrincipalType.
+- Update API ListPolicyAttachments: update param ResourceGroupId.
+- Update API ListPolicyAttachments: update response param.
+- Update API ListPolicyVersions: update param PolicyName.
+- Update API ListPolicyVersions: update param PolicyType.
+- Update API ListPolicyVersions: update response param.
+- Update API ListRoles: update param Language.
+- Update API ListRoles: update param PageNumber.
+- Update API ListRoles: update response param.
+- Update API MoveResources: update response param.
+- Update API SetDefaultPolicyVersion: update param PolicyName.
+- Update API SetDefaultPolicyVersion: update param VersionId.
+- Update API SetDefaultPolicyVersion: update response param.
+- Update API UpdateAssociatedTransferSetting: update param EnableExistingResourcesTransfer.
+- Update API UpdateRole: update param NewAssumeRolePolicyDocument.
+- Update API UpdateRole: update param NewDescription.
+- Update API UpdateRole: update param NewMaxSessionDuration.
+- Update API UpdateRole: update param RoleName.
+- Update API UpdateRole: update response param.
+
+
 2024-01-29 Version: 2.3.1
 - Update API EnableAssociatedTransferupdate response param.
 - Update API ListAssociatedTransferSettingupdate response param.

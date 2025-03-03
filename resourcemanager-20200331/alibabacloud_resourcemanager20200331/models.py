@@ -11,7 +11,9 @@ class AcceptHandshakeRequest(TeaModel):
     ):
         # The ID of the invitation.
         # 
-        # You can call the [ListHandshakesForAccount](~~160006~~) operation to obtain the ID.
+        # You can call the [ListHandshakesForAccount](https://help.aliyun.com/document_detail/160006.html) operation to obtain the ID.
+        # 
+        # This parameter is required.
         self.handshake_id = handshake_id
 
     def validate(self):
@@ -226,12 +228,16 @@ class AttachControlPolicyRequest(TeaModel):
         target_id: str = None,
     ):
         # The ID of the access control policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
         # The ID of the object to which you want to attach the access control policy. Access control policies can be attached to the following objects:
         # 
         # *   Root folder
         # *   Subfolders of the Root folder
         # *   Members
+        # 
+        # This parameter is required.
         self.target_id = target_id
 
     def validate(self):
@@ -339,30 +345,40 @@ class AttachPolicyRequest(TeaModel):
         # The name of the policy.
         # 
         # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+        # 
+        # This parameter is required.
         self.policy_name = policy_name
         # The type of the policy. Valid values:
         # 
         # *   Custom: custom policy
         # *   System: system policy
+        # 
+        # This parameter is required.
         self.policy_type = policy_type
         # The name of the object to which you want to attach the policy.
         # 
-        # *   If you want to attach the policy to a RAM user, specify the name in the \<UserName>@\<AccountAlias>.onaliyun.com format. \<UserName> indicates the name of the RAM user, and \<AccountAlias> indicates the alias of the Alibaba Cloud account to which the RAM user belongs.
-        # *   If you want to attach the policy to a RAM user group, specify the name in the \<GroupName>@group.\<AccountAlias>.onaliyun.com format. \<GroupName> indicates the name of the RAM user group, and \<AccountAlias> indicates the alias of the Alibaba Cloud account to which the RAM user group belongs.
-        # *   If you want to attach the policy to a RAM role, specify the name in the \<RoleName>@role.\<AccountAlias>.onaliyun.com format. \<RoleName> indicates the name of the RAM role, and \<AccountAlias> indicates the alias of the Alibaba Cloud account to which the RAM role belongs.
+        # *   If you want to attach the policy to a RAM user, specify the name in the \\<UserName>@\\<AccountAlias>.onaliyun.com format. \\<UserName> indicates the name of the RAM user, and \\<AccountAlias> indicates the alias of the Alibaba Cloud account to which the RAM user belongs.
+        # *   If you want to attach the policy to a RAM user group, specify the name in the \\<GroupName>@group.\\<AccountAlias>.onaliyun.com format. \\<GroupName> indicates the name of the RAM user group, and \\<AccountAlias> indicates the alias of the Alibaba Cloud account to which the RAM user group belongs.
+        # *   If you want to attach the policy to a RAM role, specify the name in the \\<RoleName>@role.\\<AccountAlias>.onaliyun.com format. \\<RoleName> indicates the name of the RAM role, and \\<AccountAlias> indicates the alias of the Alibaba Cloud account to which the RAM role belongs.
         # 
-        # >  The alias of an Alibaba Cloud account is a part of the default domain name. You can call the [GetDefaultDomain](~~186720~~) operation to obtain the alias of an Alibaba Cloud account.
+        # >  The alias of an Alibaba Cloud account is a part of the default domain name. You can call the [GetDefaultDomain](https://help.aliyun.com/document_detail/186720.html) operation to obtain the alias of an Alibaba Cloud account.
+        # 
+        # This parameter is required.
         self.principal_name = principal_name
         # The type of the object to which you want to attach the policy. Valid values:
         # 
         # *   IMSUser: RAM user
         # *   IMSGroup: RAM user group
         # *   ServiceRole: RAM role
+        # 
+        # This parameter is required.
         self.principal_type = principal_type
         # The effective scope of the policy. You can set this parameter to one of the following items:
         # 
         # *   ID of a resource group: indicates that the policy takes effect for the resources in the resource group.
         # *   ID of the Alibaba Cloud account to which the authorized object belongs: indicates that the policy takes effect for the resources within the Alibaba Cloud account.
+        # 
+        # This parameter is required.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -478,18 +494,24 @@ class BindSecureMobilePhoneRequest(TeaModel):
         verification_code: str = None,
     ):
         # The Alibaba Cloud account ID of the member.
+        # 
+        # This parameter is required.
         self.account_id = account_id
         # The mobile phone number that you want to bind to the member for security purposes.
         # 
-        # The mobile phone number you specify must be the same as the mobile phone number that you specify when you call the [SendVerificationCodeForBindSecureMobilePhone](~~372556~~) operation to obtain a verification code.
+        # The mobile phone number you specify must be the same as the mobile phone number that you specify when you call the [SendVerificationCodeForBindSecureMobilePhone](https://help.aliyun.com/document_detail/372556.html) operation to obtain a verification code.
         # 
-        # Specify the mobile phone number in the \<Country code>-\<Mobile phone number> format.
+        # Specify the mobile phone number in the \\<Country code>-\\<Mobile phone number> format.
         # 
         # >  Mobile phone numbers in the `86-<Mobile phone number>` format in the Chinese mainland are not supported.
+        # 
+        # This parameter is required.
         self.secure_mobile_phone = secure_mobile_phone
         # The verification code.
         # 
-        # You can call the [SendVerificationCodeForBindSecureMobilePhone](~~372556~~) operation to obtain the verification code.
+        # You can call the [SendVerificationCodeForBindSecureMobilePhone](https://help.aliyun.com/document_detail/372556.html) operation to obtain the verification code.
+        # 
+        # This parameter is required.
         self.verification_code = verification_code
 
     def validate(self):
@@ -595,6 +617,8 @@ class CancelChangeAccountEmailRequest(TeaModel):
         account_id: str = None,
     ):
         # The Alibaba Cloud account ID of the member.
+        # 
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -692,6 +716,8 @@ class CancelCreateCloudAccountRequest(TeaModel):
         record_id: str = None,
     ):
         # The account record ID.
+        # 
+        # This parameter is required.
         self.record_id = record_id
 
     def validate(self):
@@ -789,6 +815,8 @@ class CancelHandshakeRequest(TeaModel):
         handshake_id: str = None,
     ):
         # The ID of the invitation.
+        # 
+        # This parameter is required.
         self.handshake_id = handshake_id
 
     def validate(self):
@@ -1002,6 +1030,8 @@ class CancelPromoteResourceAccountRequest(TeaModel):
         record_id: str = None,
     ):
         # The account record ID.
+        # 
+        # This parameter is required.
         self.record_id = record_id
 
     def validate(self):
@@ -1100,10 +1130,14 @@ class ChangeAccountEmailRequest(TeaModel):
         email: str = None,
     ):
         # The Alibaba Cloud account ID of the member.
+        # 
+        # This parameter is required.
         self.account_id = account_id
         # The email address to be bound to the member.
         # 
         # >  The system automatically sends a verification email to the email address. After the verification is passed, the email address takes effect, and the system changes both the logon email address and secure email address of the member.
+        # 
+        # This parameter is required.
         self.email = email
 
     def validate(self):
@@ -1205,6 +1239,8 @@ class CheckAccountDeleteRequest(TeaModel):
         account_id: str = None,
     ):
         # The ID of the member that you want to delete.
+        # 
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -1296,6 +1332,241 @@ class CheckAccountDeleteResponse(TeaModel):
         return self
 
 
+class CreateAutoGroupingRuleRequestRuleContents(TeaModel):
+    def __init__(
+        self,
+        auto_grouping_scope_condition: str = None,
+        target_resource_group_condition: str = None,
+    ):
+        # The condition for the range of resources to be automatically transferred.
+        self.auto_grouping_scope_condition = auto_grouping_scope_condition
+        # The condition for the destination resource group.
+        # 
+        # This parameter is required.
+        self.target_resource_group_condition = target_resource_group_condition
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_grouping_scope_condition is not None:
+            result['AutoGroupingScopeCondition'] = self.auto_grouping_scope_condition
+        if self.target_resource_group_condition is not None:
+            result['TargetResourceGroupCondition'] = self.target_resource_group_condition
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoGroupingScopeCondition') is not None:
+            self.auto_grouping_scope_condition = m.get('AutoGroupingScopeCondition')
+        if m.get('TargetResourceGroupCondition') is not None:
+            self.target_resource_group_condition = m.get('TargetResourceGroupCondition')
+        return self
+
+
+class CreateAutoGroupingRuleRequest(TeaModel):
+    def __init__(
+        self,
+        exclude_region_ids_scope: str = None,
+        exclude_resource_group_ids_scope: str = None,
+        exclude_resource_ids_scope: str = None,
+        exclude_resource_types_scope: str = None,
+        region_ids_scope: str = None,
+        resource_group_ids_scope: str = None,
+        resource_ids_scope: str = None,
+        resource_types_scope: str = None,
+        rule_contents: List[CreateAutoGroupingRuleRequestRuleContents] = None,
+        rule_desc: str = None,
+        rule_name: str = None,
+        rule_type: str = None,
+    ):
+        # The IDs of regions to be excluded. Separate multiple IDs with commas (,).
+        self.exclude_region_ids_scope = exclude_region_ids_scope
+        # The IDs of resource groups to be excluded. Separate multiple IDs with commas (,).
+        self.exclude_resource_group_ids_scope = exclude_resource_group_ids_scope
+        # The IDs of resources to be excluded. Separate multiple IDs with commas (,).
+        self.exclude_resource_ids_scope = exclude_resource_ids_scope
+        # The resource types to be excluded. Separate multiple resource types with commas (,).
+        self.exclude_resource_types_scope = exclude_resource_types_scope
+        # The IDs of regions. Separate multiple IDs with commas (,).
+        self.region_ids_scope = region_ids_scope
+        # The IDs of resource groups. Separate multiple IDs with commas (,).
+        self.resource_group_ids_scope = resource_group_ids_scope
+        # The IDs of resources. Separate multiple IDs with commas (,).
+        self.resource_ids_scope = resource_ids_scope
+        # The resource types. Separate multiple resource types with commas (,).
+        self.resource_types_scope = resource_types_scope
+        # The content records of the rule.
+        # 
+        # This parameter is required.
+        self.rule_contents = rule_contents
+        # The description of the rule.
+        self.rule_desc = rule_desc
+        # The name of the rule.
+        # 
+        # This parameter is required.
+        self.rule_name = rule_name
+        # The type of the rule. Valid values:
+        # 
+        # *   custom_condition: custom transfer rule
+        # *   associated_transfer: transfer rule for associated resources
+        # 
+        # This parameter is required.
+        self.rule_type = rule_type
+
+    def validate(self):
+        if self.rule_contents:
+            for k in self.rule_contents:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exclude_region_ids_scope is not None:
+            result['ExcludeRegionIdsScope'] = self.exclude_region_ids_scope
+        if self.exclude_resource_group_ids_scope is not None:
+            result['ExcludeResourceGroupIdsScope'] = self.exclude_resource_group_ids_scope
+        if self.exclude_resource_ids_scope is not None:
+            result['ExcludeResourceIdsScope'] = self.exclude_resource_ids_scope
+        if self.exclude_resource_types_scope is not None:
+            result['ExcludeResourceTypesScope'] = self.exclude_resource_types_scope
+        if self.region_ids_scope is not None:
+            result['RegionIdsScope'] = self.region_ids_scope
+        if self.resource_group_ids_scope is not None:
+            result['ResourceGroupIdsScope'] = self.resource_group_ids_scope
+        if self.resource_ids_scope is not None:
+            result['ResourceIdsScope'] = self.resource_ids_scope
+        if self.resource_types_scope is not None:
+            result['ResourceTypesScope'] = self.resource_types_scope
+        result['RuleContents'] = []
+        if self.rule_contents is not None:
+            for k in self.rule_contents:
+                result['RuleContents'].append(k.to_map() if k else None)
+        if self.rule_desc is not None:
+            result['RuleDesc'] = self.rule_desc
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.rule_type is not None:
+            result['RuleType'] = self.rule_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExcludeRegionIdsScope') is not None:
+            self.exclude_region_ids_scope = m.get('ExcludeRegionIdsScope')
+        if m.get('ExcludeResourceGroupIdsScope') is not None:
+            self.exclude_resource_group_ids_scope = m.get('ExcludeResourceGroupIdsScope')
+        if m.get('ExcludeResourceIdsScope') is not None:
+            self.exclude_resource_ids_scope = m.get('ExcludeResourceIdsScope')
+        if m.get('ExcludeResourceTypesScope') is not None:
+            self.exclude_resource_types_scope = m.get('ExcludeResourceTypesScope')
+        if m.get('RegionIdsScope') is not None:
+            self.region_ids_scope = m.get('RegionIdsScope')
+        if m.get('ResourceGroupIdsScope') is not None:
+            self.resource_group_ids_scope = m.get('ResourceGroupIdsScope')
+        if m.get('ResourceIdsScope') is not None:
+            self.resource_ids_scope = m.get('ResourceIdsScope')
+        if m.get('ResourceTypesScope') is not None:
+            self.resource_types_scope = m.get('ResourceTypesScope')
+        self.rule_contents = []
+        if m.get('RuleContents') is not None:
+            for k in m.get('RuleContents'):
+                temp_model = CreateAutoGroupingRuleRequestRuleContents()
+                self.rule_contents.append(temp_model.from_map(k))
+        if m.get('RuleDesc') is not None:
+            self.rule_desc = m.get('RuleDesc')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('RuleType') is not None:
+            self.rule_type = m.get('RuleType')
+        return self
+
+
+class CreateAutoGroupingRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        rule_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+        # The ID of the rule.
+        self.rule_id = rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        return self
+
+
+class CreateAutoGroupingRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAutoGroupingRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAutoGroupingRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateCloudAccountRequest(TeaModel):
     def __init__(
         self,
@@ -1306,11 +1577,15 @@ class CreateCloudAccountRequest(TeaModel):
     ):
         # The display name of the member account.
         # 
-        # The name must be 2 to 50 characters in length and can contain letters, digits, underscores (\_), periods (.), and hyphens (-).
+        # The name must be 2 to 50 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
         # 
         # The name must be unique in the current resource directory.
+        # 
+        # This parameter is required.
         self.display_name = display_name
         # The email address used to log on to the cloud account.
+        # 
+        # This parameter is required.
         self.email = email
         # The ID of the parent folder.
         self.parent_folder_id = parent_folder_id
@@ -1544,23 +1819,29 @@ class CreateControlPolicyRequest(TeaModel):
     ):
         # The description of the access control policy.
         # 
-        # The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\_), and hyphens (-) and must start with a letter.
+        # The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (_), and hyphens (-) and must start with a letter.
         self.description = description
         # The effective scope of the access control policy.
         # 
         # The value RAM indicates that the access control policy takes effect only for RAM users and RAM roles.
+        # 
+        # This parameter is required.
         self.effect_scope = effect_scope
         # The document of the access control policy.
         # 
         # The document can be a maximum of 4,096 characters in length.
         # 
-        # For more information about the languages of access control policies, see [Languages of access control policies](~~179096~~).
+        # For more information about the languages of access control policies, see [Languages of access control policies](https://help.aliyun.com/document_detail/179096.html).
         # 
-        # For more information about the examples of access control policies, see [Examples of custom access control policies](~~181474~~).
+        # For more information about the examples of access control policies, see [Examples of custom access control policies](https://help.aliyun.com/document_detail/181474.html).
+        # 
+        # This parameter is required.
         self.policy_document = policy_document
         # The name of the access control policy.
         # 
         # The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
+        # 
+        # This parameter is required.
         self.policy_name = policy_name
 
     def validate(self):
@@ -1763,7 +2044,9 @@ class CreateFolderRequest(TeaModel):
     ):
         # The name of the folder.
         # 
-        # The name must be 1 to 24 characters in length and can contain letters, digits, underscores (\_), periods (.),and hyphens (-).
+        # The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.),and hyphens (-).
+        # 
+        # This parameter is required.
         self.folder_name = folder_name
         # The ID of the parent folder.
         self.parent_folder_id = parent_folder_id
@@ -1933,10 +2216,14 @@ class CreatePolicyRequest(TeaModel):
         # The document of the policy.
         # 
         # The document must be 1 to 2,048 characters in length.
+        # 
+        # This parameter is required.
         self.policy_document = policy_document
         # The name of the policy.
         # 
         # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+        # 
+        # This parameter is required.
         self.policy_name = policy_name
 
     def validate(self):
@@ -2114,10 +2401,14 @@ class CreatePolicyVersionRequest(TeaModel):
         # The document of the policy.
         # 
         # The document must be 1 to 2,048 characters in length.
+        # 
+        # This parameter is required.
         self.policy_document = policy_document
         # The name of the policy.
         # 
         # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+        # 
+        # This parameter is required.
         self.policy_name = policy_name
         # Specifies whether to set the policy version as the default version. Valid values:
         # 
@@ -2281,9 +2572,9 @@ class CreateResourceAccountRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # A tag key
+        # The tag key.
         self.key = key
-        # A tag value.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -2324,9 +2615,9 @@ class CreateResourceAccountRequest(TeaModel):
         # 
         # The prefix must be 2 to 37 characters in length.
         # 
-        # The prefix can contain letters, digits, and special characters but cannot contain consecutive special characters. The prefix must start with a letter or digit and end with a letter or digit. Valid special characters include underscores (`_`), periods (.), and hyphens (`-`).
+        # The prefix can contain letters, digits, and special characters but cannot contain consecutive special characters. The prefix must start with a letter or digit and end with a letter or digit. Valid special characters include underscores (`_`), periods (`.`), and hyphens (-).
         # 
-        # The complete Alibaba Cloud account name of a member in a resource directory is in the \<AccountNamePrefix>@\<ResourceDirectoryId>.aliyunid.com format, such as `alice@rd-3G****.aliyunid.com`.
+        # The complete Alibaba Cloud account name of a member is in the @.aliyunid.com format, such as `alice@rd-3G****.aliyunid.com`.
         # 
         # Each name must be unique in the resource directory.
         self.account_name_prefix = account_name_prefix
@@ -2334,22 +2625,24 @@ class CreateResourceAccountRequest(TeaModel):
         # 
         # The name must be 2 to 50 characters in length.
         # 
-        # The name can contain letters, digits, underscores (\_), periods (.), hyphens (-), and spaces.
+        # The name can contain letters, digits, underscores (_), periods (.), hyphens (-), and spaces.
         # 
         # The name must be unique in the resource directory.
+        # 
+        # This parameter is required.
         self.display_name = display_name
         # The ID of the parent folder.
         self.parent_folder_id = parent_folder_id
-        # The ID of the billing account. If you leave this parameter empty, the member is used as its own billing account.
+        # The ID of the billing account. If you leave this parameter empty, the newly created member is used as its billing account.
         self.payer_account_id = payer_account_id
         # The identity type of the member. Valid values:
         # 
-        # *   resell: The member is an account for a reseller. This is the default value. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
+        # *   resell (default): The member is an account for a reseller. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
         # *   non_resell: The member is not an account for a reseller. The member is an account that is not associated with a reseller. You can directly use the account to purchase Alibaba Cloud resources. The member is used as its own billing account.
         # 
         # >  This parameter is available only for resellers at the international site (alibabacloud.com).
         self.resell_account_type = resell_account_type
-        # The tag key and value.
+        # The tag of the member.
         self.tag = tag
 
     def validate(self):
@@ -2414,9 +2707,9 @@ class CreateResourceAccountResponseBodyAccount(TeaModel):
         status: str = None,
         type: str = None,
     ):
-        # The Alibaba Cloud account ID of the member.
+        # The ID of the member.
         self.account_id = account_id
-        # The Alibaba Cloud account name of the member.
+        # The Alibaba Cloud account ID of the member.
         self.account_name = account_name
         # The display name of the member.
         self.display_name = display_name
@@ -2500,9 +2793,9 @@ class CreateResourceAccountResponseBody(TeaModel):
         account: CreateResourceAccountResponseBodyAccount = None,
         request_id: str = None,
     ):
-        # The information of the member.
+        # The information about the member.
         self.account = account
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2621,10 +2914,14 @@ class CreateResourceGroupRequest(TeaModel):
         # The display name of the resource group.
         # 
         # The name must be 1 to 50 characters in length.
+        # 
+        # This parameter is required.
         self.display_name = display_name
         # The unique identifier of the resource group.
         # 
         # The identifier must be 3 to 50 characters in length and can contain letters, digits, and hyphens (-). The identifier must start with a letter.
+        # 
+        # This parameter is required.
         self.name = name
         # The tags.
         self.tag = tag
@@ -2902,6 +3199,8 @@ class CreateRoleRequest(TeaModel):
         # The document of the policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
         # 
         # >  RAM users cannot assume the RAM roles of trusted Alibaba Cloud services.
+        # 
+        # This parameter is required.
         self.assume_role_policy_document = assume_role_policy_document
         # The description of the RAM role.
         # 
@@ -2916,6 +3215,8 @@ class CreateRoleRequest(TeaModel):
         # The name of the RAM role.
         # 
         # The name must be 1 to 64 characters in length and can contain letters, digits, periods (.), and hyphens (-).
+        # 
+        # This parameter is required.
         self.role_name = role_name
 
     def validate(self):
@@ -3126,7 +3427,9 @@ class CreateServiceLinkedRoleRequest(TeaModel):
         self.description = description
         # The name of the service.
         # 
-        # For more information about the service name, see [Alibaba Cloud services that support service-linked roles](~~461722~~).
+        # For more information about the service name, see [Alibaba Cloud services that support service-linked roles](https://help.aliyun.com/document_detail/461722.html).
+        # 
+        # This parameter is required.
         self.service_name = service_name
 
     def validate(self):
@@ -3321,6 +3624,8 @@ class DeclineHandshakeRequest(TeaModel):
         handshake_id: str = None,
     ):
         # The ID of the invitation.
+        # 
+        # This parameter is required.
         self.handshake_id = handshake_id
 
     def validate(self):
@@ -3538,7 +3843,9 @@ class DeleteAccountRequest(TeaModel):
         # The type of the deletion. Valid values:
         # 
         # *   0: direct deletion. If the member does not have pay-as-you-go resources that are purchased within the previous 30 days, the system directly deletes the member.
-        # *   1: deletion with a silence period. If the member has pay-as-you-go resources that are purchased within the previous 30 days, the member enters a silence period of 45 days. The system starts to delete the member until the silence period ends. For more information about the silence period, see [What is the silence period for member deletion?](~~446079~~)
+        # *   1: deletion with a silence period. If the member has pay-as-you-go resources that are purchased within the previous 30 days, the member enters a silence period of 45 days. The system starts to delete the member until the silence period ends. For more information about the silence period, see [What is the silence period for member deletion?](https://help.aliyun.com/document_detail/446079.html)
+        # 
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -3575,7 +3882,9 @@ class DeleteAccountShrinkRequest(TeaModel):
         # The type of the deletion. Valid values:
         # 
         # *   0: direct deletion. If the member does not have pay-as-you-go resources that are purchased within the previous 30 days, the system directly deletes the member.
-        # *   1: deletion with a silence period. If the member has pay-as-you-go resources that are purchased within the previous 30 days, the member enters a silence period of 45 days. The system starts to delete the member until the silence period ends. For more information about the silence period, see [What is the silence period for member deletion?](~~446079~~)
+        # *   1: deletion with a silence period. If the member has pay-as-you-go resources that are purchased within the previous 30 days, the member enters a silence period of 45 days. The system starts to delete the member until the silence period ends. For more information about the silence period, see [What is the silence period for member deletion?](https://help.aliyun.com/document_detail/446079.html)
+        # 
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -3676,12 +3985,113 @@ class DeleteAccountResponse(TeaModel):
         return self
 
 
+class DeleteAutoGroupingRuleRequest(TeaModel):
+    def __init__(
+        self,
+        rule_id: str = None,
+    ):
+        # The ID of the rule.
+        # 
+        # This parameter is required.
+        self.rule_id = rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        return self
+
+
+class DeleteAutoGroupingRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteAutoGroupingRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAutoGroupingRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAutoGroupingRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteControlPolicyRequest(TeaModel):
     def __init__(
         self,
         policy_id: str = None,
     ):
         # The ID of the control policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
 
     def validate(self):
@@ -3779,6 +4189,8 @@ class DeleteFolderRequest(TeaModel):
         folder_id: str = None,
     ):
         # The ID of the folder.
+        # 
+        # This parameter is required.
         self.folder_id = folder_id
 
     def validate(self):
@@ -3878,6 +4290,8 @@ class DeletePolicyRequest(TeaModel):
         # The name of the policy.
         # 
         # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+        # 
+        # This parameter is required.
         self.policy_name = policy_name
 
     def validate(self):
@@ -3978,10 +4392,14 @@ class DeletePolicyVersionRequest(TeaModel):
         # The name of the policy.
         # 
         # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+        # 
+        # This parameter is required.
         self.policy_name = policy_name
         # The ID of the policy version.
         # 
-        # You can call the [ListPolicyVersions](~~159982~~) operation to query the ID.
+        # You can call the [ListPolicyVersions](https://help.aliyun.com/document_detail/159982.html) operation to query the ID.
+        # 
+        # This parameter is required.
         self.version_id = version_id
 
     def validate(self):
@@ -4084,7 +4502,9 @@ class DeleteResourceGroupRequest(TeaModel):
     ):
         # The ID of the resource group.
         # 
-        # You can call the [ListResourceGroups](~~158855~~) operation to obtain the ID.
+        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to obtain the ID.
+        # 
+        # This parameter is required.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -4344,6 +4764,8 @@ class DeleteRoleRequest(TeaModel):
         # The name of the RAM role.
         # 
         # The name must be 1 to 64 characters in length and can contain letters, digits, periods (.), and hyphens (-).
+        # 
+        # This parameter is required.
         self.role_name = role_name
 
     def validate(self):
@@ -4441,6 +4863,8 @@ class DeleteServiceLinkedRoleRequest(TeaModel):
         role_name: str = None,
     ):
         # The name of the role.
+        # 
+        # This parameter is required.
         self.role_name = role_name
 
     def validate(self):
@@ -4546,10 +4970,14 @@ class DeregisterDelegatedAdministratorRequest(TeaModel):
         service_principal: str = None,
     ):
         # The ID of the member in the resource directory.
+        # 
+        # This parameter is required.
         self.account_id = account_id
         # The identifier of the trusted service.
         # 
-        # For more information, see the `Trusted service identifier` column in [Supported trusted services](~~208133~~).
+        # For more information, see the `Trusted service identifier` column in [Supported trusted services](https://help.aliyun.com/document_detail/208133.html).
+        # 
+        # This parameter is required.
         self.service_principal = service_principal
 
     def validate(self):
@@ -4721,12 +5149,16 @@ class DetachControlPolicyRequest(TeaModel):
         target_id: str = None,
     ):
         # The ID of the access control policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
         # The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
         # 
         # *   Root folder
         # *   Subfolders of the Root folder
         # *   Members
+        # 
+        # This parameter is required.
         self.target_id = target_id
 
     def validate(self):
@@ -4834,23 +5266,33 @@ class DetachPolicyRequest(TeaModel):
         # The name of the policy.
         # 
         # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+        # 
+        # This parameter is required.
         self.policy_name = policy_name
         # The type of the policy. Valid values:
         # 
         # *   Custom: custom policy
         # *   System: system policy
+        # 
+        # This parameter is required.
         self.policy_type = policy_type
         # The name of the object to which the policy is attached.
+        # 
+        # This parameter is required.
         self.principal_name = principal_name
         # The type of the object to which the policy is attached. Valid values:
         # 
         # *   IMSUser: RAM user
         # *   IMSGroup: RAM user group
         # *   ServiceRole: RAM role
+        # 
+        # This parameter is required.
         self.principal_type = principal_type
         # The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
         # 
         # This parameter specifies the resource group or Alibaba Cloud account for which you want to revoke permissions.
+        # 
+        # This parameter is required.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -5027,6 +5469,75 @@ class DisableAssociatedTransferResponse(TeaModel):
         return self
 
 
+class DisableAutoGroupingResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisableAutoGroupingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisableAutoGroupingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisableAutoGroupingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DisableControlPolicyResponseBody(TeaModel):
     def __init__(
         self,
@@ -5177,6 +5688,75 @@ class EnableAssociatedTransferResponse(TeaModel):
         return self
 
 
+class EnableAutoGroupingResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EnableAutoGroupingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableAutoGroupingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableAutoGroupingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class EnableControlPolicyResponseBody(TeaModel):
     def __init__(
         self,
@@ -5270,14 +5850,16 @@ class EnableResourceDirectoryRequest(TeaModel):
         # 
         # *   CurrentAccount: indicates that the current account is used to enable a resource directory.
         # *   NewManagementAccount: indicates that a newly created account is used to enable a resource directory. If you select this mode, you must configure the `MAName`, `MASecureMobilePhone`, and `VerificationCode` parameters.
+        # 
+        # This parameter is required.
         self.enable_mode = enable_mode
         # The name of the newly created account.
         # 
-        # Specify the name in the `<Prefix>@rdadmin.aliyunid.com` format. The prefix can contain letters, digits, and special characters but cannot contain consecutive special characters. The prefix must start with a letter or digit and end with a letter or digit. Valid special characters include underscores (\_), periods (.), and hyphens (-). The prefix must be 2 to 50 characters in length.
+        # Specify the name in the `<Prefix>@rdadmin.aliyunid.com` format. The prefix can contain letters, digits, and special characters but cannot contain consecutive special characters. The prefix must start with a letter or digit and end with a letter or digit. Valid special characters include underscores (_), periods (.), and hyphens (-). The prefix must be 2 to 50 characters in length.
         self.maname = maname
         # The mobile phone number that is bound to the newly created account.
         # 
-        # If you leave this parameter empty, the mobile phone number that is bound to the current account is used. The mobile phone number you specify must be the same as the mobile phone number that you specify when you call the [SendVerificationCodeForEnableRD](~~364248~~) operation to obtain a verification code.
+        # If you leave this parameter empty, the mobile phone number that is bound to the current account is used. The mobile phone number you specify must be the same as the mobile phone number that you specify when you call the [SendVerificationCodeForEnableRD](https://help.aliyun.com/document_detail/364248.html) operation to obtain a verification code.
         # 
         # Specify the mobile phone number in the `<Country code>-<Mobile phone number>` format.
         # 
@@ -5285,7 +5867,7 @@ class EnableResourceDirectoryRequest(TeaModel):
         self.masecure_mobile_phone = masecure_mobile_phone
         # The verification code.
         # 
-        # You can call the [SendVerificationCodeForEnableRD](~~364248~~) operation to obtain the verification code.
+        # You can call the [SendVerificationCodeForEnableRD](https://help.aliyun.com/document_detail/364248.html) operation to obtain the verification code.
         self.verification_code = verification_code
 
     def validate(self):
@@ -5461,6 +6043,8 @@ class GetAccountRequest(TeaModel):
         include_tags: bool = None,
     ):
         # The Alibaba Cloud account ID of the member.
+        # 
+        # This parameter is required.
         self.account_id = account_id
         # Specifies whether to return the information of tags. Valid values:
         # 
@@ -5765,6 +6349,8 @@ class GetAccountDeletionCheckResultRequest(TeaModel):
         account_id: str = None,
     ):
         # The ID of the member that you want to delete.
+        # 
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -6031,6 +6617,8 @@ class GetAccountDeletionStatusRequest(TeaModel):
         account_id: str = None,
     ):
         # The Alibaba Cloud account ID of the member.
+        # 
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -6103,11 +6691,13 @@ class GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus(TeaModel):
         # The start time of the deletion.
         self.create_time = create_time
         # The end time of the deletion.
+        # 
+        # This parameter is required.
         self.deletion_time = deletion_time
         # The type of the deletion. Valid values:
         # 
         # *   0: direct deletion. If the member does not have pay-as-you-go resources that are purchased within the previous 30 days, the system directly deletes the member.
-        # *   1: deletion with a silence period. If the member has pay-as-you-go resources that are purchased within the previous 30 days, the member enters a silence period. The system starts to delete the member until the silence period ends. For more information about the silence period, see [What is the silence period for member deletion?](~~446079~~)
+        # *   1: deletion with a silence period. If the member has pay-as-you-go resources that are purchased within the previous 30 days, the member enters a silence period. The system starts to delete the member until the silence period ends. For more information about the silence period, see [What is the silence period for member deletion?](https://help.aliyun.com/document_detail/446079.html)
         self.deletion_type = deletion_type
         # The reasons why the member fails to be deleted.
         self.fail_reason_list = fail_reason_list
@@ -6246,6 +6836,384 @@ class GetAccountDeletionStatusResponse(TeaModel):
         return self
 
 
+class GetAutoGroupingRuleRequest(TeaModel):
+    def __init__(
+        self,
+        rule_id: str = None,
+    ):
+        # The ID of the rule.
+        # 
+        # This parameter is required.
+        self.rule_id = rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        return self
+
+
+class GetAutoGroupingRuleResponseBodyRuleRuleContents(TeaModel):
+    def __init__(
+        self,
+        auto_grouping_scope_condition: str = None,
+        rule_content_id: str = None,
+        target_resource_group_condition: str = None,
+    ):
+        # The condition for the range of resources that are automatically transferred.
+        self.auto_grouping_scope_condition = auto_grouping_scope_condition
+        # The ID of the content record.
+        self.rule_content_id = rule_content_id
+        # The condition for the destination resource group.
+        self.target_resource_group_condition = target_resource_group_condition
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_grouping_scope_condition is not None:
+            result['AutoGroupingScopeCondition'] = self.auto_grouping_scope_condition
+        if self.rule_content_id is not None:
+            result['RuleContentId'] = self.rule_content_id
+        if self.target_resource_group_condition is not None:
+            result['TargetResourceGroupCondition'] = self.target_resource_group_condition
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoGroupingScopeCondition') is not None:
+            self.auto_grouping_scope_condition = m.get('AutoGroupingScopeCondition')
+        if m.get('RuleContentId') is not None:
+            self.rule_content_id = m.get('RuleContentId')
+        if m.get('TargetResourceGroupCondition') is not None:
+            self.target_resource_group_condition = m.get('TargetResourceGroupCondition')
+        return self
+
+
+class GetAutoGroupingRuleResponseBodyRule(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        exclude_region_ids_scope: str = None,
+        exclude_resource_group_ids_scope: str = None,
+        exclude_resource_ids_scope: str = None,
+        exclude_resource_types_scope: str = None,
+        modify_time: str = None,
+        region_ids_scope: str = None,
+        resource_group_ids_scope: str = None,
+        resource_ids_scope: str = None,
+        resource_types_scope: str = None,
+        rule_contents: List[GetAutoGroupingRuleResponseBodyRuleRuleContents] = None,
+        rule_desc: str = None,
+        rule_id: str = None,
+        rule_name: str = None,
+        rule_type: str = None,
+    ):
+        # The time when the rule was created.
+        self.create_time = create_time
+        # The IDs of excluded regions. Multiple IDs are separated by commas (,).
+        self.exclude_region_ids_scope = exclude_region_ids_scope
+        # The IDs of excluded resource groups. Multiple IDs are separated by commas (,).
+        self.exclude_resource_group_ids_scope = exclude_resource_group_ids_scope
+        # The IDs of excluded resources. Multiple IDs are separated by commas (,).
+        self.exclude_resource_ids_scope = exclude_resource_ids_scope
+        # The excluded resource types. Multiple resource types are separated by commas (,).
+        self.exclude_resource_types_scope = exclude_resource_types_scope
+        # The time when the rule was modified.
+        self.modify_time = modify_time
+        # The IDs of regions. Multiple IDs are separated by commas (,).
+        self.region_ids_scope = region_ids_scope
+        # The IDs of resource groups. Multiple IDs are separated by commas (,).
+        self.resource_group_ids_scope = resource_group_ids_scope
+        # The IDs of resources. Multiple IDs are separated by commas (,).
+        self.resource_ids_scope = resource_ids_scope
+        # The resource types. Multiple resource types are separated by commas (,).
+        self.resource_types_scope = resource_types_scope
+        # The content records of the rule.
+        self.rule_contents = rule_contents
+        # The description of the rule.
+        self.rule_desc = rule_desc
+        # The ID of the rule.
+        self.rule_id = rule_id
+        # The name of the rule.
+        self.rule_name = rule_name
+        # The type of the rule. Valid values:
+        # 
+        # *   custom_condition: custom transfer rule
+        # *   associated_transfer: transfer rule for associated resources
+        self.rule_type = rule_type
+
+    def validate(self):
+        if self.rule_contents:
+            for k in self.rule_contents:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.exclude_region_ids_scope is not None:
+            result['ExcludeRegionIdsScope'] = self.exclude_region_ids_scope
+        if self.exclude_resource_group_ids_scope is not None:
+            result['ExcludeResourceGroupIdsScope'] = self.exclude_resource_group_ids_scope
+        if self.exclude_resource_ids_scope is not None:
+            result['ExcludeResourceIdsScope'] = self.exclude_resource_ids_scope
+        if self.exclude_resource_types_scope is not None:
+            result['ExcludeResourceTypesScope'] = self.exclude_resource_types_scope
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.region_ids_scope is not None:
+            result['RegionIdsScope'] = self.region_ids_scope
+        if self.resource_group_ids_scope is not None:
+            result['ResourceGroupIdsScope'] = self.resource_group_ids_scope
+        if self.resource_ids_scope is not None:
+            result['ResourceIdsScope'] = self.resource_ids_scope
+        if self.resource_types_scope is not None:
+            result['ResourceTypesScope'] = self.resource_types_scope
+        result['RuleContents'] = []
+        if self.rule_contents is not None:
+            for k in self.rule_contents:
+                result['RuleContents'].append(k.to_map() if k else None)
+        if self.rule_desc is not None:
+            result['RuleDesc'] = self.rule_desc
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.rule_type is not None:
+            result['RuleType'] = self.rule_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('ExcludeRegionIdsScope') is not None:
+            self.exclude_region_ids_scope = m.get('ExcludeRegionIdsScope')
+        if m.get('ExcludeResourceGroupIdsScope') is not None:
+            self.exclude_resource_group_ids_scope = m.get('ExcludeResourceGroupIdsScope')
+        if m.get('ExcludeResourceIdsScope') is not None:
+            self.exclude_resource_ids_scope = m.get('ExcludeResourceIdsScope')
+        if m.get('ExcludeResourceTypesScope') is not None:
+            self.exclude_resource_types_scope = m.get('ExcludeResourceTypesScope')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('RegionIdsScope') is not None:
+            self.region_ids_scope = m.get('RegionIdsScope')
+        if m.get('ResourceGroupIdsScope') is not None:
+            self.resource_group_ids_scope = m.get('ResourceGroupIdsScope')
+        if m.get('ResourceIdsScope') is not None:
+            self.resource_ids_scope = m.get('ResourceIdsScope')
+        if m.get('ResourceTypesScope') is not None:
+            self.resource_types_scope = m.get('ResourceTypesScope')
+        self.rule_contents = []
+        if m.get('RuleContents') is not None:
+            for k in m.get('RuleContents'):
+                temp_model = GetAutoGroupingRuleResponseBodyRuleRuleContents()
+                self.rule_contents.append(temp_model.from_map(k))
+        if m.get('RuleDesc') is not None:
+            self.rule_desc = m.get('RuleDesc')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('RuleType') is not None:
+            self.rule_type = m.get('RuleType')
+        return self
+
+
+class GetAutoGroupingRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        rule: GetAutoGroupingRuleResponseBodyRule = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+        # The information about the rule.
+        self.rule = rule
+
+    def validate(self):
+        if self.rule:
+            self.rule.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.rule is not None:
+            result['Rule'] = self.rule.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Rule') is not None:
+            temp_model = GetAutoGroupingRuleResponseBodyRule()
+            self.rule = temp_model.from_map(m['Rule'])
+        return self
+
+
+class GetAutoGroupingRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAutoGroupingRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAutoGroupingRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAutoGroupingStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        enable_existed_resources_transfer: bool = None,
+        enable_status: str = None,
+        request_id: str = None,
+    ):
+        # Indicates whether the Transfer Existing Associated Resources feature is enabled. Valid values:
+        # 
+        # *   true
+        # *   false
+        self.enable_existed_resources_transfer = enable_existed_resources_transfer
+        # The status of the Automatic Resource Transfer feature. Valid values:
+        # 
+        # *   Enabling: The feature is being enabled.
+        # *   Enable: The feature is enabled.
+        # *   Partial_Enable: The transfer of associated resources is enabled, but custom transfer rule-based resource transfer is disabled. You can call the [EnableAutoGrouping](https://help.aliyun.com/document_detail/2870380.html) operation to enable custom transfer rule-based resource transfer.
+        # *   Disable: The feature is disabled.
+        self.enable_status = enable_status
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_existed_resources_transfer is not None:
+            result['EnableExistedResourcesTransfer'] = self.enable_existed_resources_transfer
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableExistedResourcesTransfer') is not None:
+            self.enable_existed_resources_transfer = m.get('EnableExistedResourcesTransfer')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetAutoGroupingStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAutoGroupingStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAutoGroupingStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetControlPolicyRequest(TeaModel):
     def __init__(
         self,
@@ -6261,6 +7229,8 @@ class GetControlPolicyRequest(TeaModel):
         # >  This parameter is valid only for system access control policies.
         self.language = language
         # The ID of the access control policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
 
     def validate(self):
@@ -6542,6 +7512,8 @@ class GetFolderRequest(TeaModel):
         folder_id: str = None,
     ):
         # The ID of the folder.
+        # 
+        # This parameter is required.
         self.folder_id = folder_id
 
     def validate(self):
@@ -6704,6 +7676,8 @@ class GetHandshakeRequest(TeaModel):
         handshake_id: str = None,
     ):
         # The ID of the invitation.
+        # 
+        # This parameter is required.
         self.handshake_id = handshake_id
 
     def validate(self):
@@ -6935,6 +7909,8 @@ class GetPayerForAccountRequest(TeaModel):
         account_id: str = None,
     ):
         # The ID of the account.
+        # 
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -7056,11 +8032,15 @@ class GetPolicyRequest(TeaModel):
         # The name of the policy.
         # 
         # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+        # 
+        # This parameter is required.
         self.policy_name = policy_name
         # The type of the policy. Valid values:
         # 
         # *   Custom: custom policy
         # *   System: system policy
+        # 
+        # This parameter is required.
         self.policy_type = policy_type
 
     def validate(self):
@@ -7259,13 +8239,19 @@ class GetPolicyVersionRequest(TeaModel):
         # The name of the policy.
         # 
         # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+        # 
+        # This parameter is required.
         self.policy_name = policy_name
         # The type of the policy. Valid values:
         # 
         # *   Custom: custom policy
         # *   System: system policy
+        # 
+        # This parameter is required.
         self.policy_type = policy_type
         # The ID of the policy version.
+        # 
+        # This parameter is required.
         self.version_id = version_id
 
     def validate(self):
@@ -7452,7 +8438,7 @@ class GetResourceDirectoryResponseBodyResourceDirectory(TeaModel):
         self.master_account_name = master_account_name
         # The status of the member deletion feature. Valid values:
         # 
-        # *   Enabled: The feature is enabled. You can call the [DeleteAccount](~~311546~~) operation to delete members of the resource account type.
+        # *   Enabled: The feature is enabled. You can call the [DeleteAccount](https://help.aliyun.com/document_detail/311546.html) operation to delete members of the resource account type.
         # *   Disabled: The feature is disabled. You cannot delete members of the resource account type.
         self.member_deletion_status = member_deletion_status
         # The ID of the resource directory.
@@ -7598,6 +8584,8 @@ class GetResourceGroupRequest(TeaModel):
         # 
         # *   false (default value)
         # *   true
+        # 
+        # This parameter is required.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -7947,6 +8935,8 @@ class GetRoleRequest(TeaModel):
         # The name of the RAM role.
         # 
         # The name must be 1 to 64 characters in length and can contain letters, digits, periods (.), and hyphens (-).
+        # 
+        # This parameter is required.
         self.role_name = role_name
 
     def validate(self):
@@ -8625,11 +9615,15 @@ class InviteAccountToResourceDirectoryRequest(TeaModel):
         # The tag key and value.
         self.tag = tag
         # The ID or logon email address of the account that you want to invite.
+        # 
+        # This parameter is required.
         self.target_entity = target_entity
         # The type of the account. Valid values:
         # 
         # *   Account: indicates the ID of the account.
         # *   Email: indicates the logon email address of the account.
+        # 
+        # This parameter is required.
         self.target_type = target_type
 
     def validate(self):
@@ -9707,6 +10701,8 @@ class ListAncestorsRequest(TeaModel):
         child_id: str = None,
     ):
         # The ID of the child folder.
+        # 
+        # This parameter is required.
         self.child_id = child_id
 
     def validate(self):
@@ -9903,8 +10899,8 @@ class ListAssociatedTransferSettingResponseBodyAssociatedTransferSettingRuleSett
         self.master_service = master_service
         # The status of the Transfer Associated Resources feature. Valid values:
         # 
-        # - Enable: enabled
-        # - Disable: disabled
+        # *   Enable: enabled
+        # *   Disable: disabled
         self.status = status
 
     def validate(self):
@@ -9951,15 +10947,19 @@ class ListAssociatedTransferSettingResponseBodyAssociatedTransferSetting(TeaMode
         rule_settings: List[ListAssociatedTransferSettingResponseBodyAssociatedTransferSettingRuleSettings] = None,
         status: str = None,
     ):
-        # The settings of the Transfer Associated Resources feature.
+        # The ID of the Alibaba Cloud account.
         self.account_id = account_id
+        # Indicates whether the Transfer Existing Associated Resources feature is enabled. Valid values:
+        # 
+        # *   false
+        # *   true
         self.enable_existing_resources_transfer = enable_existing_resources_transfer
-        # The settings of the transfer rules.
+        # The settings of transfer rules.
         self.rule_settings = rule_settings
         # The status of the Transfer Associated Resources feature. Valid values:
         # 
-        # - Enable: enabled
-        # - Disable: disabled
+        # *   Enable: enabled
+        # *   Disable: disabled
         self.status = status
 
     def validate(self):
@@ -10076,6 +11076,342 @@ class ListAssociatedTransferSettingResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListAssociatedTransferSettingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAutoGroupingRulesRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        rule_id: str = None,
+        rule_name: str = None,
+        rule_type: str = None,
+    ):
+        # The maximum number of entries to return for a single request. Valid values: 1 to 50.
+        self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        self.next_token = next_token
+        # The ID of the rule.
+        self.rule_id = rule_id
+        # The name of the rule.
+        self.rule_name = rule_name
+        # The type of the rule. Valid values:
+        # 
+        # *   custom_condition: custom transfer rule
+        # *   associated_transfer: transfer rule for associated resources
+        self.rule_type = rule_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.rule_type is not None:
+            result['RuleType'] = self.rule_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('RuleType') is not None:
+            self.rule_type = m.get('RuleType')
+        return self
+
+
+class ListAutoGroupingRulesResponseBodyRulesRuleContents(TeaModel):
+    def __init__(
+        self,
+        auto_grouping_scope_condition: str = None,
+        rule_content_id: str = None,
+        target_resource_group_condition: str = None,
+    ):
+        # The condition for the range of resources that are automatically transferred.
+        self.auto_grouping_scope_condition = auto_grouping_scope_condition
+        # The ID of the content record.
+        self.rule_content_id = rule_content_id
+        # The condition for the destination resource group.
+        self.target_resource_group_condition = target_resource_group_condition
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_grouping_scope_condition is not None:
+            result['AutoGroupingScopeCondition'] = self.auto_grouping_scope_condition
+        if self.rule_content_id is not None:
+            result['RuleContentId'] = self.rule_content_id
+        if self.target_resource_group_condition is not None:
+            result['TargetResourceGroupCondition'] = self.target_resource_group_condition
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoGroupingScopeCondition') is not None:
+            self.auto_grouping_scope_condition = m.get('AutoGroupingScopeCondition')
+        if m.get('RuleContentId') is not None:
+            self.rule_content_id = m.get('RuleContentId')
+        if m.get('TargetResourceGroupCondition') is not None:
+            self.target_resource_group_condition = m.get('TargetResourceGroupCondition')
+        return self
+
+
+class ListAutoGroupingRulesResponseBodyRules(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        exclude_region_ids_scope: str = None,
+        exclude_resource_group_ids_scope: str = None,
+        exclude_resource_ids_scope: str = None,
+        exclude_resource_types_scope: str = None,
+        modify_time: str = None,
+        region_ids_scope: str = None,
+        resource_group_ids_scope: str = None,
+        resource_ids_scope: str = None,
+        resource_types_scope: str = None,
+        rule_contents: List[ListAutoGroupingRulesResponseBodyRulesRuleContents] = None,
+        rule_desc: str = None,
+        rule_id: str = None,
+        rule_name: str = None,
+        rule_type: str = None,
+    ):
+        # The time when the rule was created.
+        self.create_time = create_time
+        # The IDs of excluded regions. Multiple IDs are separated by commas (,).
+        self.exclude_region_ids_scope = exclude_region_ids_scope
+        # The IDs of excluded resource groups. Multiple IDs are separated by commas (,).
+        self.exclude_resource_group_ids_scope = exclude_resource_group_ids_scope
+        # The IDs of excluded resources. Multiple IDs are separated by commas (,).
+        self.exclude_resource_ids_scope = exclude_resource_ids_scope
+        # The excluded resource types. Multiple resource types are separated by commas (,).
+        self.exclude_resource_types_scope = exclude_resource_types_scope
+        # The time when the rule was updated.
+        self.modify_time = modify_time
+        # The IDs of regions. Multiple IDs are separated by commas (,).
+        self.region_ids_scope = region_ids_scope
+        # The IDs of resource groups. Multiple IDs are separated by commas (,).
+        self.resource_group_ids_scope = resource_group_ids_scope
+        # The IDs of resources. Multiple IDs are separated by commas (,).
+        self.resource_ids_scope = resource_ids_scope
+        # The resource types. Multiple resource types are separated by commas (,).
+        self.resource_types_scope = resource_types_scope
+        # The content records of the rule.
+        self.rule_contents = rule_contents
+        # The description of the rule.
+        self.rule_desc = rule_desc
+        # The ID of the rule.
+        self.rule_id = rule_id
+        # The name of the rule.
+        self.rule_name = rule_name
+        # The type of the rule. Valid values:
+        # 
+        # *   custom_condition: custom transfer rule
+        # *   associated_transfer: transfer rule for associated resources
+        self.rule_type = rule_type
+
+    def validate(self):
+        if self.rule_contents:
+            for k in self.rule_contents:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.exclude_region_ids_scope is not None:
+            result['ExcludeRegionIdsScope'] = self.exclude_region_ids_scope
+        if self.exclude_resource_group_ids_scope is not None:
+            result['ExcludeResourceGroupIdsScope'] = self.exclude_resource_group_ids_scope
+        if self.exclude_resource_ids_scope is not None:
+            result['ExcludeResourceIdsScope'] = self.exclude_resource_ids_scope
+        if self.exclude_resource_types_scope is not None:
+            result['ExcludeResourceTypesScope'] = self.exclude_resource_types_scope
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.region_ids_scope is not None:
+            result['RegionIdsScope'] = self.region_ids_scope
+        if self.resource_group_ids_scope is not None:
+            result['ResourceGroupIdsScope'] = self.resource_group_ids_scope
+        if self.resource_ids_scope is not None:
+            result['ResourceIdsScope'] = self.resource_ids_scope
+        if self.resource_types_scope is not None:
+            result['ResourceTypesScope'] = self.resource_types_scope
+        result['RuleContents'] = []
+        if self.rule_contents is not None:
+            for k in self.rule_contents:
+                result['RuleContents'].append(k.to_map() if k else None)
+        if self.rule_desc is not None:
+            result['RuleDesc'] = self.rule_desc
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.rule_type is not None:
+            result['RuleType'] = self.rule_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('ExcludeRegionIdsScope') is not None:
+            self.exclude_region_ids_scope = m.get('ExcludeRegionIdsScope')
+        if m.get('ExcludeResourceGroupIdsScope') is not None:
+            self.exclude_resource_group_ids_scope = m.get('ExcludeResourceGroupIdsScope')
+        if m.get('ExcludeResourceIdsScope') is not None:
+            self.exclude_resource_ids_scope = m.get('ExcludeResourceIdsScope')
+        if m.get('ExcludeResourceTypesScope') is not None:
+            self.exclude_resource_types_scope = m.get('ExcludeResourceTypesScope')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('RegionIdsScope') is not None:
+            self.region_ids_scope = m.get('RegionIdsScope')
+        if m.get('ResourceGroupIdsScope') is not None:
+            self.resource_group_ids_scope = m.get('ResourceGroupIdsScope')
+        if m.get('ResourceIdsScope') is not None:
+            self.resource_ids_scope = m.get('ResourceIdsScope')
+        if m.get('ResourceTypesScope') is not None:
+            self.resource_types_scope = m.get('ResourceTypesScope')
+        self.rule_contents = []
+        if m.get('RuleContents') is not None:
+            for k in m.get('RuleContents'):
+                temp_model = ListAutoGroupingRulesResponseBodyRulesRuleContents()
+                self.rule_contents.append(temp_model.from_map(k))
+        if m.get('RuleDesc') is not None:
+            self.rule_desc = m.get('RuleDesc')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('RuleType') is not None:
+            self.rule_type = m.get('RuleType')
+        return self
+
+
+class ListAutoGroupingRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        rules: List[ListAutoGroupingRulesResponseBodyRules] = None,
+    ):
+        # The maximum number of entries returned for a single request. Valid values: 1 to 50.
+        self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        self.next_token = next_token
+        # The request ID.
+        self.request_id = request_id
+        # The queried rules.
+        self.rules = rules
+
+    def validate(self):
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = ListAutoGroupingRulesResponseBodyRules()
+                self.rules.append(temp_model.from_map(k))
+        return self
+
+
+class ListAutoGroupingRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAutoGroupingRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAutoGroupingRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10378,6 +11714,8 @@ class ListControlPolicyAttachmentsForTargetRequest(TeaModel):
         # *   Root folder
         # *   Subfolders of the Root folder
         # *   Members
+        # 
+        # This parameter is required.
         self.target_id = target_id
 
     def validate(self):
@@ -10603,7 +11941,7 @@ class ListDelegatedAdministratorsRequest(TeaModel):
         self.page_size = page_size
         # The identifier of the trusted service.
         # 
-        # For more information, see the `Trusted service identifier` column in [Supported trusted services](~~208133~~).
+        # For more information, see the `Trusted service identifier` column in [Supported trusted services](https://help.aliyun.com/document_detail/208133.html).
         self.service_principal = service_principal
 
     def validate(self):
@@ -10833,6 +12171,8 @@ class ListDelegatedServicesForAccountRequest(TeaModel):
         account_id: str = None,
     ):
         # The ID of the member.
+        # 
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -12389,11 +13729,15 @@ class ListPolicyVersionsRequest(TeaModel):
         # The name of the policy.
         # 
         # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+        # 
+        # This parameter is required.
         self.policy_name = policy_name
         # The type of the policy. Valid values:
         # 
         # *   Custom: custom policy
         # *   System: system policy
+        # 
+        # This parameter is required.
         self.policy_type = policy_type
 
     def validate(self):
@@ -13017,7 +14361,7 @@ class ListResourcesRequestResourceTypes(TeaModel):
         # 
         # Valid values of N: 1 to 50.
         # 
-        # For more information about the supported resource types, see the **Resource type** column in [Services that work with Resource Group](~~94479~~).
+        # For more information about the supported resource types, see the **Resource type** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
         # 
         # >  You must configure both `Service` and `ResourceType` in `ResourceTypes`. Otherwise, the two parameters do not take effect.
         self.resource_type = resource_type
@@ -13025,7 +14369,7 @@ class ListResourcesRequestResourceTypes(TeaModel):
         # 
         # Valid values of N: 1 to 50.
         # 
-        # You can obtain the ID from the **Service code** column in [Services that work with Resource Group](~~94479~~).
+        # You can obtain the ID from the **Service code** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
         # 
         # >  You must configure both `Service` and `ResourceType` in `ResourceTypes`. Otherwise, the two parameters do not take effect.
         self.service = service
@@ -13082,7 +14426,7 @@ class ListResourcesRequest(TeaModel):
         self.resource_id = resource_id
         # The resource type.
         # 
-        # For more information about the supported resource types, see the **Resource type** column in [Services that work with Resource Group](~~94479~~).
+        # For more information about the supported resource types, see the **Resource type** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
         self.resource_type = resource_type
         # The resource types. A maximum of 50 resource types are supported.
         # 
@@ -13090,7 +14434,7 @@ class ListResourcesRequest(TeaModel):
         self.resource_types = resource_types
         # The ID of the Alibaba Cloud service.
         # 
-        # You can obtain the ID from the **Service code** column in [Services that work with Resource Group](~~94479~~).
+        # You can obtain the ID from the **Service code** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
         self.service = service
 
     def validate(self):
@@ -13677,6 +15021,8 @@ class ListTagKeysRequest(TeaModel):
         # The resource type.
         # 
         # The value Account indicates the members of the resource directory.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -14101,8 +15447,12 @@ class ListTagValuesRequest(TeaModel):
         # The resource type.
         # 
         # The value Account indicates the members of the resource directory.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tag key. This parameter specifies a filter condition for the query.
+        # 
+        # This parameter is required.
         self.tag_key = tag_key
         # The tag value for a fuzzy query.
         self.value_filter = value_filter
@@ -14281,6 +15631,8 @@ class ListTargetAttachmentsForControlPolicyRequest(TeaModel):
         # Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
         # The ID of the control policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
 
     def validate(self):
@@ -14510,7 +15862,7 @@ class ListTrustedServiceStatusRequest(TeaModel):
         # *   If you set this parameter to the ID of an enterprise management account, the trusted services that are enabled within the enterprise management account are queried. The default value of this parameter is the ID of an enterprise management account.
         # *   If you set this parameter to the ID of a delegated administrator account, the trusted services that are enabled within the delegated administrator account are queried.
         # 
-        # For more information about trusted services and delegated administrator accounts, see [Overview of trusted services](~~208133~~) and [Delegated administrator accounts](~~208117~~).
+        # For more information about trusted services and delegated administrator accounts, see [Overview of trusted services](https://help.aliyun.com/document_detail/208133.html) and [Delegated administrator accounts](https://help.aliyun.com/document_detail/208117.html).
         self.admin_account_id = admin_account_id
         # The number of the page to return.
         # 
@@ -14725,8 +16077,12 @@ class MoveAccountRequest(TeaModel):
         destination_folder_id: str = None,
     ):
         # The ID of the account you want to move.
+        # 
+        # This parameter is required.
         self.account_id = account_id
         # The ID of the destination folder.
+        # 
+        # This parameter is required.
         self.destination_folder_id = destination_folder_id
 
     def validate(self):
@@ -14878,10 +16234,14 @@ class MoveResourcesRequest(TeaModel):
         resources: List[MoveResourcesRequestResources] = None,
     ):
         # The ID of the resource group to which you want to move the resources.
+        # 
+        # This parameter is required.
         self.resource_group_id = resource_group_id
         # The resources that you want to move.
         # 
         # >  You can move a maximum of 10 resources at a time. If you want to move more than 10 resources, move them in batches.
+        # 
+        # This parameter is required.
         self.resources = resources
 
     def validate(self):
@@ -15091,8 +16451,12 @@ class PromoteResourceAccountRequest(TeaModel):
         email: str = None,
     ):
         # The ID of the resource account you want to upgrade.
+        # 
+        # This parameter is required.
         self.account_id = account_id
         # The email address used to log on to the cloud account after the upgrade.
+        # 
+        # This parameter is required.
         self.email = email
 
     def validate(self):
@@ -15321,10 +16685,14 @@ class RegisterDelegatedAdministratorRequest(TeaModel):
         service_principal: str = None,
     ):
         # The ID of the member in the resource directory.
+        # 
+        # This parameter is required.
         self.account_id = account_id
         # The identifier of the trusted service.
         # 
-        # For more information, see the `Trusted service identifier` column in [Supported trusted services](~~208133~~).
+        # For more information, see the `Trusted service identifier` column in [Supported trusted services](https://help.aliyun.com/document_detail/208133.html).
+        # 
+        # This parameter is required.
         self.service_principal = service_principal
 
     def validate(self):
@@ -15426,6 +16794,8 @@ class RemoveCloudAccountRequest(TeaModel):
         account_id: str = None,
     ):
         # The ID of the member.
+        # 
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -15523,6 +16893,8 @@ class ResendCreateCloudAccountEmailRequest(TeaModel):
         record_id: str = None,
     ):
         # The account record ID.
+        # 
+        # This parameter is required.
         self.record_id = record_id
 
     def validate(self):
@@ -15743,6 +17115,8 @@ class ResendPromoteResourceAccountEmailRequest(TeaModel):
         record_id: str = None,
     ):
         # The account record ID.
+        # 
+        # This parameter is required.
         self.record_id = record_id
 
     def validate(self):
@@ -15966,6 +17340,8 @@ class RetryChangeAccountEmailRequest(TeaModel):
         account_id: str = None,
     ):
         # The Alibaba Cloud account ID of the member.
+        # 
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -16064,12 +17440,16 @@ class SendVerificationCodeForBindSecureMobilePhoneRequest(TeaModel):
         secure_mobile_phone: str = None,
     ):
         # The ID of the resource account.
+        # 
+        # This parameter is required.
         self.account_id = account_id
         # The mobile phone number that you want to bind to the resource account.
         # 
-        # Specify the mobile phone number in the \<Country code>-\<Mobile phone number> format.
+        # Specify the mobile phone number in the \\<Country code>-\\<Mobile phone number> format.
         # 
         # >  Mobile phone numbers in the `86-<Mobile phone number>` format in the Chinese mainland are not supported.
+        # 
+        # This parameter is required.
         self.secure_mobile_phone = secure_mobile_phone
 
     def validate(self):
@@ -16282,8 +17662,12 @@ class SetDefaultPolicyVersionRequest(TeaModel):
         # The name of the policy.
         # 
         # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+        # 
+        # This parameter is required.
         self.policy_name = policy_name
         # The ID of the policy version.
+        # 
+        # This parameter is required.
         self.version_id = version_id
 
     def validate(self):
@@ -16388,6 +17772,8 @@ class SetMemberDeletionPermissionRequest(TeaModel):
         # 
         # *   Enabled: enables the member deletion feature
         # *   Disabled: disables the member deletion feature
+        # 
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -16550,6 +17936,8 @@ class TagResourcesRequest(TeaModel):
         tag: List[TagResourcesRequestTag] = None,
     ):
         # The ID of a resource group or member.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the objects to which you want to add tags. Valid values:
         # 
@@ -16559,6 +17947,8 @@ class TagResourcesRequest(TeaModel):
         # >  This parameter is required if you add tags to members in a resource directory.
         self.resource_type = resource_type
         # The tags.
+        # 
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -16682,6 +18072,8 @@ class UntagResourcesRequest(TeaModel):
         # The ID of a resource group or member.
         # 
         # You can specify a maximum of 50 IDs.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the objects from which you want to remove tags. Valid values:
         # 
@@ -16806,6 +18198,8 @@ class UpdateAccountRequest(TeaModel):
         new_display_name: str = None,
     ):
         # The ID of the Alibaba Cloud account that corresponds to the member.
+        # 
+        # This parameter is required.
         self.account_id = account_id
         # The new type of the member. Valid values:
         # 
@@ -17038,24 +18432,26 @@ class UpdateAssociatedTransferSettingRequestRuleSettings(TeaModel):
     ):
         # The type of the associated resource.
         # 
-        # You can obtain the resource type from the **Resource type** column in [Services that work with Resource Group](~~94479~~).
+        # You can obtain the resource type from the **Resource type** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
         self.associated_resource_type = associated_resource_type
         # The service code of the associated resource.
         # 
-        # You can obtain the service code from the **Service code** column in [Services that work with Resource Group](~~94479~~).
+        # You can obtain the service code from the **Service code** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
         self.associated_service = associated_service
         # The type of the primary resource.
         # 
-        # You can obtain the resource type from the **Resource type** column in [Services that work with Resource Group](~~94479~~).
+        # You can obtain the resource type from the **Resource type** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
         self.master_resource_type = master_resource_type
         # The service code of the primary resource.
         # 
-        # You can obtain the service code from the **Service code** column in [Services that work with Resource Group](~~94479~~).
+        # You can obtain the service code from the **Service code** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
         self.master_service = master_service
         # The status of the Transfer Associated Resources feature. Valid values:
         # 
-        # - Enable: enabled
-        # - Disable: disabled
+        # *   Enable: enabled
+        # *   Disable: disabled
+        # 
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -17100,8 +18496,12 @@ class UpdateAssociatedTransferSettingRequest(TeaModel):
         enable_existing_resources_transfer: str = None,
         rule_settings: List[UpdateAssociatedTransferSettingRequestRuleSettings] = None,
     ):
+        # Specifies whether to enable the Transfer Existing Associated Resources feature. Valid values:
+        # 
+        # *   false
+        # *   true
         self.enable_existing_resources_transfer = enable_existing_resources_transfer
-        # The settings of the transfer rules.
+        # The settings of transfer rules.
         self.rule_settings = rule_settings
 
     def validate(self):
@@ -17205,6 +18605,338 @@ class UpdateAssociatedTransferSettingResponse(TeaModel):
         return self
 
 
+class UpdateAutoGroupingConfigRequest(TeaModel):
+    def __init__(
+        self,
+        enable_existing_resources_transfer: bool = None,
+    ):
+        # Specifies whether to enable the Transfer Existing Associated Resources feature. Valid values:
+        # 
+        # *   false
+        # *   true
+        self.enable_existing_resources_transfer = enable_existing_resources_transfer
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_existing_resources_transfer is not None:
+            result['EnableExistingResourcesTransfer'] = self.enable_existing_resources_transfer
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableExistingResourcesTransfer') is not None:
+            self.enable_existing_resources_transfer = m.get('EnableExistingResourcesTransfer')
+        return self
+
+
+class UpdateAutoGroupingConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateAutoGroupingConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateAutoGroupingConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateAutoGroupingConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateAutoGroupingRuleRequestRuleContents(TeaModel):
+    def __init__(
+        self,
+        auto_grouping_scope_condition: str = None,
+        rule_content_id: str = None,
+        target_resource_group_condition: str = None,
+    ):
+        # The condition for the range of resources that are automatically transferred.
+        self.auto_grouping_scope_condition = auto_grouping_scope_condition
+        # The ID of the content record.
+        self.rule_content_id = rule_content_id
+        # The condition for the destination resource group.
+        # 
+        # This parameter is required.
+        self.target_resource_group_condition = target_resource_group_condition
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_grouping_scope_condition is not None:
+            result['AutoGroupingScopeCondition'] = self.auto_grouping_scope_condition
+        if self.rule_content_id is not None:
+            result['RuleContentId'] = self.rule_content_id
+        if self.target_resource_group_condition is not None:
+            result['TargetResourceGroupCondition'] = self.target_resource_group_condition
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoGroupingScopeCondition') is not None:
+            self.auto_grouping_scope_condition = m.get('AutoGroupingScopeCondition')
+        if m.get('RuleContentId') is not None:
+            self.rule_content_id = m.get('RuleContentId')
+        if m.get('TargetResourceGroupCondition') is not None:
+            self.target_resource_group_condition = m.get('TargetResourceGroupCondition')
+        return self
+
+
+class UpdateAutoGroupingRuleRequest(TeaModel):
+    def __init__(
+        self,
+        exclude_region_ids_scope: str = None,
+        exclude_resource_group_ids_scope: str = None,
+        exclude_resource_ids_scope: str = None,
+        exclude_resource_types_scope: str = None,
+        region_ids_scope: str = None,
+        resource_group_ids_scope: str = None,
+        resource_ids_scope: str = None,
+        resource_types_scope: str = None,
+        rule_contents: List[UpdateAutoGroupingRuleRequestRuleContents] = None,
+        rule_desc: str = None,
+        rule_id: str = None,
+        rule_name: str = None,
+    ):
+        # The IDs of regions to be excluded. Separate multiple IDs with commas (,).
+        self.exclude_region_ids_scope = exclude_region_ids_scope
+        # The IDs of resource groups to be excluded. Separate multiple IDs with commas (,).
+        self.exclude_resource_group_ids_scope = exclude_resource_group_ids_scope
+        # The IDs of resources to be excluded. Separate multiple IDs with commas (,).
+        self.exclude_resource_ids_scope = exclude_resource_ids_scope
+        # The resource types to be excluded. Separate multiple resource types with commas (,).
+        self.exclude_resource_types_scope = exclude_resource_types_scope
+        # The IDs of regions. Separate multiple IDs with commas (,).
+        self.region_ids_scope = region_ids_scope
+        # The IDs of resource groups. Separate multiple IDs with commas (,).
+        self.resource_group_ids_scope = resource_group_ids_scope
+        # The IDs of resources. Separate multiple IDs with commas (,).
+        self.resource_ids_scope = resource_ids_scope
+        # The resource types. Separate multiple resource types with commas (,).
+        self.resource_types_scope = resource_types_scope
+        # The content records of the rule.
+        # 
+        # This parameter is required.
+        self.rule_contents = rule_contents
+        # The description of the rule.
+        self.rule_desc = rule_desc
+        # The ID of the rule.
+        # 
+        # This parameter is required.
+        self.rule_id = rule_id
+        # The name of the rule.
+        # 
+        # This parameter is required.
+        self.rule_name = rule_name
+
+    def validate(self):
+        if self.rule_contents:
+            for k in self.rule_contents:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exclude_region_ids_scope is not None:
+            result['ExcludeRegionIdsScope'] = self.exclude_region_ids_scope
+        if self.exclude_resource_group_ids_scope is not None:
+            result['ExcludeResourceGroupIdsScope'] = self.exclude_resource_group_ids_scope
+        if self.exclude_resource_ids_scope is not None:
+            result['ExcludeResourceIdsScope'] = self.exclude_resource_ids_scope
+        if self.exclude_resource_types_scope is not None:
+            result['ExcludeResourceTypesScope'] = self.exclude_resource_types_scope
+        if self.region_ids_scope is not None:
+            result['RegionIdsScope'] = self.region_ids_scope
+        if self.resource_group_ids_scope is not None:
+            result['ResourceGroupIdsScope'] = self.resource_group_ids_scope
+        if self.resource_ids_scope is not None:
+            result['ResourceIdsScope'] = self.resource_ids_scope
+        if self.resource_types_scope is not None:
+            result['ResourceTypesScope'] = self.resource_types_scope
+        result['RuleContents'] = []
+        if self.rule_contents is not None:
+            for k in self.rule_contents:
+                result['RuleContents'].append(k.to_map() if k else None)
+        if self.rule_desc is not None:
+            result['RuleDesc'] = self.rule_desc
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExcludeRegionIdsScope') is not None:
+            self.exclude_region_ids_scope = m.get('ExcludeRegionIdsScope')
+        if m.get('ExcludeResourceGroupIdsScope') is not None:
+            self.exclude_resource_group_ids_scope = m.get('ExcludeResourceGroupIdsScope')
+        if m.get('ExcludeResourceIdsScope') is not None:
+            self.exclude_resource_ids_scope = m.get('ExcludeResourceIdsScope')
+        if m.get('ExcludeResourceTypesScope') is not None:
+            self.exclude_resource_types_scope = m.get('ExcludeResourceTypesScope')
+        if m.get('RegionIdsScope') is not None:
+            self.region_ids_scope = m.get('RegionIdsScope')
+        if m.get('ResourceGroupIdsScope') is not None:
+            self.resource_group_ids_scope = m.get('ResourceGroupIdsScope')
+        if m.get('ResourceIdsScope') is not None:
+            self.resource_ids_scope = m.get('ResourceIdsScope')
+        if m.get('ResourceTypesScope') is not None:
+            self.resource_types_scope = m.get('ResourceTypesScope')
+        self.rule_contents = []
+        if m.get('RuleContents') is not None:
+            for k in m.get('RuleContents'):
+                temp_model = UpdateAutoGroupingRuleRequestRuleContents()
+                self.rule_contents.append(temp_model.from_map(k))
+        if m.get('RuleDesc') is not None:
+            self.rule_desc = m.get('RuleDesc')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class UpdateAutoGroupingRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateAutoGroupingRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateAutoGroupingRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateAutoGroupingRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateControlPolicyRequest(TeaModel):
     def __init__(
         self,
@@ -17215,21 +18947,23 @@ class UpdateControlPolicyRequest(TeaModel):
     ):
         # The new description of the access control policy.
         # 
-        # The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\_), and hyphens (-) and must start with a letter.
+        # The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (_), and hyphens (-) and must start with a letter.
         self.new_description = new_description
         # The new document of the access control policy.
         # 
         # The document can be a maximum of 4,096 characters in length.
         # 
-        # For more information about the languages of access control policies, see [Languages of access control policies](~~179096~~).
+        # For more information about the languages of access control policies, see [Languages of access control policies](https://help.aliyun.com/document_detail/179096.html).
         # 
-        # For more information about the examples of access control policies, see [Examples of custom access control policies](~~181474~~).
+        # For more information about the examples of access control policies, see [Examples of custom access control policies](https://help.aliyun.com/document_detail/181474.html).
         self.new_policy_document = new_policy_document
         # The new name of the access control policy.
         # 
         # The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
         self.new_policy_name = new_policy_name
         # The ID of the access control policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
 
     def validate(self):
@@ -17432,10 +19166,14 @@ class UpdateFolderRequest(TeaModel):
         new_folder_name: str = None,
     ):
         # The ID of the folder.
+        # 
+        # This parameter is required.
         self.folder_id = folder_id
         # The new name of the folder.
         # 
-        # The name must be 1 to 24 characters in length and can contain letters, digits, underscores (\_), periods (.), and hyphens (-).
+        # The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+        # 
+        # This parameter is required.
         self.new_folder_name = new_folder_name
 
     def validate(self):
@@ -17598,10 +19336,14 @@ class UpdateResourceGroupRequest(TeaModel):
         # The display name of the resource group.
         # 
         # The name must be 1 to 50 characters in length.
+        # 
+        # This parameter is required.
         self.new_display_name = new_display_name
         # The ID of the resource group.
         # 
-        # You can call the [ListResourceGroups](~~158855~~) operation to obtain the ID.
+        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to obtain the ID.
+        # 
+        # This parameter is required.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -17785,6 +19527,8 @@ class UpdateRoleRequest(TeaModel):
         # The name of the RAM role.
         # 
         # The name must be 1 to 64 characters in length and can contain letters, digits, periods (.),and hyphens (-).
+        # 
+        # This parameter is required.
         self.role_name = role_name
 
     def validate(self):
