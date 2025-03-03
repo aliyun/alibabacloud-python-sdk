@@ -1135,12 +1135,10 @@ class DrivingDirectionResponseBody(TeaModel):
         self,
         data: List[DrivingDirectionResponseBodyData] = None,
         request_id: str = None,
-        success: bool = None,
     ):
         self.data = data
         # Id of the request
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         if self.data:
@@ -1160,8 +1158,6 @@ class DrivingDirectionResponseBody(TeaModel):
                 result['data'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['requestId'] = self.request_id
-        if self.success is not None:
-            result['success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
@@ -1173,8 +1169,6 @@ class DrivingDirectionResponseBody(TeaModel):
                 self.data.append(temp_model.from_map(k))
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
-        if m.get('success') is not None:
-            self.success = m.get('success')
         return self
 
 

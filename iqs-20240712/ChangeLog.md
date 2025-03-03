@@ -1,3 +1,7 @@
+2025-03-03 Version: 5.0.0
+- Update API DrivingDirection: update response param.
+
+
 2025-02-14 Version: 4.1.0
 - Support API DrivingDirection.
 - Update API BicyclingDirectionNova: add param showPolyline.
