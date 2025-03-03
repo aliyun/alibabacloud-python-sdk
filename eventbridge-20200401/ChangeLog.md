@@ -1,3 +1,30 @@
+2025-03-03 Version: 5.0.0
+- Delete API EventCenterCheckEnabledOnDefaultBus.
+- Delete API EventCenterDisableOnDefaultBus.
+- Delete API EventCenterEnableOnDefaultBus.
+- Update API CreateEventStreaming: update param EventStreamingName.
+- Update API CreateEventStreaming: update param RunOptions.
+- Update API CreateEventStreaming: update param Sink.
+- Update API CreateEventStreaming: update param Source.
+- Update API CreateRule: update param EventTargets.
+- Update API DeleteEventStreaming: add param RegionId.
+- Update API DeleteEventStreaming: update param EventStreamingName.
+- Update API EventCenterQueryEvents: update param Body.
+- Update API GetEventStreaming: add param RegionId.
+- Update API GetEventStreaming: update param EventStreamingName.
+- Update API GetEventStreaming: update response param.
+- Update API ListEventStreamings: add param RegionId.
+- Update API ListEventStreamings: update response param.
+- Update API ListTargets: update response param.
+- Update API PutTargets: update param Targets.
+- Update API UpdateEventSource: update param ExternalSourceConfig.
+- Update API UpdateEventStreaming: add param RegionId.
+- Update API UpdateEventStreaming: update param EventStreamingName.
+- Update API UpdateEventStreaming: update param RunOptions.
+- Update API UpdateEventStreaming: update param Sink.
+- Update API UpdateEventStreaming: update param Source.
+
+
 2024-07-12 Version: 4.1.6
 - Update API CreateEventStreaming: update param Sink.
 - Update API GetEventStreaming: update response param.
