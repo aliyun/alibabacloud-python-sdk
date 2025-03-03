@@ -195,6 +195,8 @@ class Client(OpenApiClient):
             body['SceneName'] = request.scene_name
         if not UtilClient.is_unset(request.scores):
             body['Scores'] = request.scores
+        if not UtilClient.is_unset(request.service_name):
+            body['ServiceName'] = request.service_name
         if not UtilClient.is_unset(request.user_features):
             body['UserFeatures'] = request.user_features
         req = open_api_models.OpenApiRequest(
@@ -257,6 +259,8 @@ class Client(OpenApiClient):
             body['SceneName'] = request.scene_name
         if not UtilClient.is_unset(request.scores):
             body['Scores'] = request.scores
+        if not UtilClient.is_unset(request.service_name):
+            body['ServiceName'] = request.service_name
         if not UtilClient.is_unset(request.user_features):
             body['UserFeatures'] = request.user_features
         req = open_api_models.OpenApiRequest(

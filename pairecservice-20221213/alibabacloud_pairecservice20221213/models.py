@@ -204,6 +204,7 @@ class BackflowFeatureConsistencyCheckJobDataRequest(TeaModel):
         log_user_id: str = None,
         scene_name: str = None,
         scores: str = None,
+        service_name: str = None,
         user_features: str = None,
     ):
         # This parameter is required.
@@ -224,6 +225,7 @@ class BackflowFeatureConsistencyCheckJobDataRequest(TeaModel):
         self.scene_name = scene_name
         # This parameter is required.
         self.scores = scores
+        self.service_name = service_name
         # This parameter is required.
         self.user_features = user_features
 
@@ -254,6 +256,8 @@ class BackflowFeatureConsistencyCheckJobDataRequest(TeaModel):
             result['SceneName'] = self.scene_name
         if self.scores is not None:
             result['Scores'] = self.scores
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
         if self.user_features is not None:
             result['UserFeatures'] = self.user_features
         return result
@@ -278,6 +282,8 @@ class BackflowFeatureConsistencyCheckJobDataRequest(TeaModel):
             self.scene_name = m.get('SceneName')
         if m.get('Scores') is not None:
             self.scores = m.get('Scores')
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
         if m.get('UserFeatures') is not None:
             self.user_features = m.get('UserFeatures')
         return self
