@@ -1,3 +1,11 @@
+2025-03-03 Version: 5.0.1
+- Update API CreateEventStreaming: update param Sink.
+- Update API CreateEventStreaming: update param Source.
+- Update API ListEventStreamings: update response param.
+- Update API UpdateEventStreaming: update param Sink.
+- Update API UpdateEventStreaming: update param Source.
+
+
 2025-03-03 Version: 5.0.0
 - Delete API EventCenterCheckEnabledOnDefaultBus.
 - Delete API EventCenterDisableOnDefaultBus.
