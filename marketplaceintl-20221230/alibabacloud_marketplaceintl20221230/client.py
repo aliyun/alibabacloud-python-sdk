@@ -41,6 +41,122 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def notice_instance_user_with_options(
+        self,
+        request: marketplace_intl_20221230_models.NoticeInstanceUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> marketplace_intl_20221230_models.NoticeInstanceUserResponse:
+        """
+        @summary isv推送实例消息给用户
+        
+        @param request: NoticeInstanceUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: NoticeInstanceUserResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.notice_param):
+            body['NoticeParam'] = request.notice_param
+        if not UtilClient.is_unset(request.notice_type):
+            body['NoticeType'] = request.notice_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='NoticeInstanceUser',
+            version='2022-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                marketplace_intl_20221230_models.NoticeInstanceUserResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                marketplace_intl_20221230_models.NoticeInstanceUserResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def notice_instance_user_with_options_async(
+        self,
+        request: marketplace_intl_20221230_models.NoticeInstanceUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> marketplace_intl_20221230_models.NoticeInstanceUserResponse:
+        """
+        @summary isv推送实例消息给用户
+        
+        @param request: NoticeInstanceUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: NoticeInstanceUserResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.notice_param):
+            body['NoticeParam'] = request.notice_param
+        if not UtilClient.is_unset(request.notice_type):
+            body['NoticeType'] = request.notice_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='NoticeInstanceUser',
+            version='2022-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                marketplace_intl_20221230_models.NoticeInstanceUserResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                marketplace_intl_20221230_models.NoticeInstanceUserResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def notice_instance_user(
+        self,
+        request: marketplace_intl_20221230_models.NoticeInstanceUserRequest,
+    ) -> marketplace_intl_20221230_models.NoticeInstanceUserResponse:
+        """
+        @summary isv推送实例消息给用户
+        
+        @param request: NoticeInstanceUserRequest
+        @return: NoticeInstanceUserResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.notice_instance_user_with_options(request, runtime)
+
+    async def notice_instance_user_async(
+        self,
+        request: marketplace_intl_20221230_models.NoticeInstanceUserRequest,
+    ) -> marketplace_intl_20221230_models.NoticeInstanceUserResponse:
+        """
+        @summary isv推送实例消息给用户
+        
+        @param request: NoticeInstanceUserRequest
+        @return: NoticeInstanceUserResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.notice_instance_user_with_options_async(request, runtime)
+
     def push_metering_data_with_options(
         self,
         request: marketplace_intl_20221230_models.PushMeteringDataRequest,
