@@ -1700,7 +1700,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.BindConfigGroupResponse:
         """
-        @summary 绑定配置组
+        @summary Binds a configuration group to resources.
         
         @param request: BindConfigGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1745,7 +1745,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.BindConfigGroupResponse:
         """
-        @summary 绑定配置组
+        @summary Binds a configuration group to resources.
         
         @param request: BindConfigGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1789,7 +1789,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.BindConfigGroupRequest,
     ) -> ecd_20200930_models.BindConfigGroupResponse:
         """
-        @summary 绑定配置组
+        @summary Binds a configuration group to resources.
         
         @param request: BindConfigGroupRequest
         @return: BindConfigGroupResponse
@@ -1802,7 +1802,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.BindConfigGroupRequest,
     ) -> ecd_20200930_models.BindConfigGroupResponse:
         """
-        @summary 绑定配置组
+        @summary Binds a configuration group to resources.
         
         @param request: BindConfigGroupRequest
         @return: BindConfigGroupResponse
@@ -3670,6 +3670,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_auto_snapshot_policy_with_options_async(request, runtime)
 
+    def create_bandwidth_resource_packages_with_options(
+        self,
+        request: ecd_20200930_models.CreateBandwidthResourcePackagesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CreateBandwidthResourcePackagesResponse:
+        """
+        @summary Creates data transfer plans.
+        
+        @param request: CreateBandwidthResourcePackagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBandwidthResourcePackagesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.amount):
+            query['Amount'] = request.amount
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.package_size):
+            query['PackageSize'] = request.package_size
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateBandwidthResourcePackages',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ecd_20200930_models.CreateBandwidthResourcePackagesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ecd_20200930_models.CreateBandwidthResourcePackagesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_bandwidth_resource_packages_with_options_async(
+        self,
+        request: ecd_20200930_models.CreateBandwidthResourcePackagesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CreateBandwidthResourcePackagesResponse:
+        """
+        @summary Creates data transfer plans.
+        
+        @param request: CreateBandwidthResourcePackagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBandwidthResourcePackagesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.amount):
+            query['Amount'] = request.amount
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.package_size):
+            query['PackageSize'] = request.package_size
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateBandwidthResourcePackages',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ecd_20200930_models.CreateBandwidthResourcePackagesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ecd_20200930_models.CreateBandwidthResourcePackagesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_bandwidth_resource_packages(
+        self,
+        request: ecd_20200930_models.CreateBandwidthResourcePackagesRequest,
+    ) -> ecd_20200930_models.CreateBandwidthResourcePackagesResponse:
+        """
+        @summary Creates data transfer plans.
+        
+        @param request: CreateBandwidthResourcePackagesRequest
+        @return: CreateBandwidthResourcePackagesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_bandwidth_resource_packages_with_options(request, runtime)
+
+    async def create_bandwidth_resource_packages_async(
+        self,
+        request: ecd_20200930_models.CreateBandwidthResourcePackagesRequest,
+    ) -> ecd_20200930_models.CreateBandwidthResourcePackagesResponse:
+        """
+        @summary Creates data transfer plans.
+        
+        @param request: CreateBandwidthResourcePackagesRequest
+        @return: CreateBandwidthResourcePackagesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_bandwidth_resource_packages_with_options_async(request, runtime)
+
     def create_bundle_with_options(
         self,
         request: ecd_20200930_models.CreateBundleRequest,
@@ -4432,7 +4564,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateConfigGroupResponse:
         """
-        @summary 创建配置组
+        @summary Creates a configuration group. A configuration group stores the setup details for scheduled tasks on cloud computers.
         
         @param request: CreateConfigGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4483,7 +4615,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateConfigGroupResponse:
         """
-        @summary 创建配置组
+        @summary Creates a configuration group. A configuration group stores the setup details for scheduled tasks on cloud computers.
         
         @param request: CreateConfigGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4533,7 +4665,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateConfigGroupRequest,
     ) -> ecd_20200930_models.CreateConfigGroupResponse:
         """
-        @summary 创建配置组
+        @summary Creates a configuration group. A configuration group stores the setup details for scheduled tasks on cloud computers.
         
         @param request: CreateConfigGroupRequest
         @return: CreateConfigGroupResponse
@@ -4546,7 +4678,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateConfigGroupRequest,
     ) -> ecd_20200930_models.CreateConfigGroupResponse:
         """
-        @summary 创建配置组
+        @summary Creates a configuration group. A configuration group stores the setup details for scheduled tasks on cloud computers.
         
         @param request: CreateConfigGroupRequest
         @return: CreateConfigGroupResponse
@@ -4560,11 +4692,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateDesktopGroupResponse:
         """
-        @summary Creates a cloud computer pool (formerly desktop group).
+        @summary Creates a shared group.
         
-        @description Before you call this operation to create a desktop group, make sure that the following operations are complete:
-        You are familiar with the features, usage limits, and scaling policies of desktop groups. For more information, see [Overview](https://help.aliyun.com/document_detail/290959.html) of desktop groups.
-        Resources, such as workspaces, users, desktop templates, and policies, are created.
+        @description    To learn about the features, application scenarios, usage limits, scaling policies, and other details of shared groups, refer to [Overview](https://help.aliyun.com/document_detail/290959.html).
+        Before you call this operation, make sure that the required resources, such as the office network, cloud computer template, and policies, are created.
         
         @param request: CreateDesktopGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4715,11 +4846,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateDesktopGroupResponse:
         """
-        @summary Creates a cloud computer pool (formerly desktop group).
+        @summary Creates a shared group.
         
-        @description Before you call this operation to create a desktop group, make sure that the following operations are complete:
-        You are familiar with the features, usage limits, and scaling policies of desktop groups. For more information, see [Overview](https://help.aliyun.com/document_detail/290959.html) of desktop groups.
-        Resources, such as workspaces, users, desktop templates, and policies, are created.
+        @description    To learn about the features, application scenarios, usage limits, scaling policies, and other details of shared groups, refer to [Overview](https://help.aliyun.com/document_detail/290959.html).
+        Before you call this operation, make sure that the required resources, such as the office network, cloud computer template, and policies, are created.
         
         @param request: CreateDesktopGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4869,11 +4999,10 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateDesktopGroupRequest,
     ) -> ecd_20200930_models.CreateDesktopGroupResponse:
         """
-        @summary Creates a cloud computer pool (formerly desktop group).
+        @summary Creates a shared group.
         
-        @description Before you call this operation to create a desktop group, make sure that the following operations are complete:
-        You are familiar with the features, usage limits, and scaling policies of desktop groups. For more information, see [Overview](https://help.aliyun.com/document_detail/290959.html) of desktop groups.
-        Resources, such as workspaces, users, desktop templates, and policies, are created.
+        @description    To learn about the features, application scenarios, usage limits, scaling policies, and other details of shared groups, refer to [Overview](https://help.aliyun.com/document_detail/290959.html).
+        Before you call this operation, make sure that the required resources, such as the office network, cloud computer template, and policies, are created.
         
         @param request: CreateDesktopGroupRequest
         @return: CreateDesktopGroupResponse
@@ -4886,11 +5015,10 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateDesktopGroupRequest,
     ) -> ecd_20200930_models.CreateDesktopGroupResponse:
         """
-        @summary Creates a cloud computer pool (formerly desktop group).
+        @summary Creates a shared group.
         
-        @description Before you call this operation to create a desktop group, make sure that the following operations are complete:
-        You are familiar with the features, usage limits, and scaling policies of desktop groups. For more information, see [Overview](https://help.aliyun.com/document_detail/290959.html) of desktop groups.
-        Resources, such as workspaces, users, desktop templates, and policies, are created.
+        @description    To learn about the features, application scenarios, usage limits, scaling policies, and other details of shared groups, refer to [Overview](https://help.aliyun.com/document_detail/290959.html).
+        Before you call this operation, make sure that the required resources, such as the office network, cloud computer template, and policies, are created.
         
         @param request: CreateDesktopGroupRequest
         @return: CreateDesktopGroupResponse
@@ -7268,7 +7396,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteConfigGroupResponse:
         """
-        @summary 删除配置组
+        @summary Deletes a configuration group.
         
         @param request: DeleteConfigGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7311,7 +7439,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteConfigGroupResponse:
         """
-        @summary 删除配置组
+        @summary Deletes a configuration group.
         
         @param request: DeleteConfigGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7353,7 +7481,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteConfigGroupRequest,
     ) -> ecd_20200930_models.DeleteConfigGroupResponse:
         """
-        @summary 删除配置组
+        @summary Deletes a configuration group.
         
         @param request: DeleteConfigGroupRequest
         @return: DeleteConfigGroupResponse
@@ -7366,7 +7494,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteConfigGroupRequest,
     ) -> ecd_20200930_models.DeleteConfigGroupResponse:
         """
-        @summary 删除配置组
+        @summary Deletes a configuration group.
         
         @param request: DeleteConfigGroupRequest
         @return: DeleteConfigGroupResponse
@@ -10084,7 +10212,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeConfigGroupResponse:
         """
-        @summary 查询配置组
+        @summary Queries configuration groups.
         
         @param request: DescribeConfigGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10141,7 +10269,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeConfigGroupResponse:
         """
-        @summary 查询配置组
+        @summary Queries configuration groups.
         
         @param request: DescribeConfigGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10197,7 +10325,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeConfigGroupRequest,
     ) -> ecd_20200930_models.DescribeConfigGroupResponse:
         """
-        @summary 查询配置组
+        @summary Queries configuration groups.
         
         @param request: DescribeConfigGroupRequest
         @return: DescribeConfigGroupResponse
@@ -10210,7 +10338,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeConfigGroupRequest,
     ) -> ecd_20200930_models.DescribeConfigGroupResponse:
         """
-        @summary 查询配置组
+        @summary Queries configuration groups.
         
         @param request: DescribeConfigGroupRequest
         @return: DescribeConfigGroupResponse
@@ -11476,7 +11604,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDesktopsResponse:
         """
-        @summary Query the details of the cloud desktop.
+        @summary Queries the details of cloud computers.
         
         @param request: DescribeDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11587,7 +11715,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDesktopsResponse:
         """
-        @summary Query the details of the cloud desktop.
+        @summary Queries the details of cloud computers.
         
         @param request: DescribeDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11697,7 +11825,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDesktopsRequest,
     ) -> ecd_20200930_models.DescribeDesktopsResponse:
         """
-        @summary Query the details of the cloud desktop.
+        @summary Queries the details of cloud computers.
         
         @param request: DescribeDesktopsRequest
         @return: DescribeDesktopsResponse
@@ -11710,7 +11838,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDesktopsRequest,
     ) -> ecd_20200930_models.DescribeDesktopsResponse:
         """
-        @summary Query the details of the cloud desktop.
+        @summary Queries the details of cloud computers.
         
         @param request: DescribeDesktopsRequest
         @return: DescribeDesktopsResponse
@@ -11732,6 +11860,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.custom_end_time_period):
+            query['CustomEndTimePeriod'] = request.custom_end_time_period
+        if not UtilClient.is_unset(request.custom_start_time_period):
+            query['CustomStartTimePeriod'] = request.custom_start_time_period
         if not UtilClient.is_unset(request.desktop_group_id):
             query['DesktopGroupId'] = request.desktop_group_id
         if not UtilClient.is_unset(request.ignore_deleted):
@@ -11783,6 +11915,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.custom_end_time_period):
+            query['CustomEndTimePeriod'] = request.custom_end_time_period
+        if not UtilClient.is_unset(request.custom_start_time_period):
+            query['CustomStartTimePeriod'] = request.custom_start_time_period
         if not UtilClient.is_unset(request.desktop_group_id):
             query['DesktopGroupId'] = request.desktop_group_id
         if not UtilClient.is_unset(request.ignore_deleted):
@@ -13940,7 +14076,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribePolicyGroupsResponse:
         """
-        @summary Queries the information about one or more policies.
+        @summary Queries the details of a cloud computer policy.
         
         @param request: DescribePolicyGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13954,6 +14090,10 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.policy_group_id):
             query['PolicyGroupId'] = request.policy_group_id
         if not UtilClient.is_unset(request.region_id):
@@ -13991,7 +14131,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribePolicyGroupsResponse:
         """
-        @summary Queries the information about one or more policies.
+        @summary Queries the details of a cloud computer policy.
         
         @param request: DescribePolicyGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14005,6 +14145,10 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.policy_group_id):
             query['PolicyGroupId'] = request.policy_group_id
         if not UtilClient.is_unset(request.region_id):
@@ -14041,7 +14185,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribePolicyGroupsRequest,
     ) -> ecd_20200930_models.DescribePolicyGroupsResponse:
         """
-        @summary Queries the information about one or more policies.
+        @summary Queries the details of a cloud computer policy.
         
         @param request: DescribePolicyGroupsRequest
         @return: DescribePolicyGroupsResponse
@@ -14054,7 +14198,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribePolicyGroupsRequest,
     ) -> ecd_20200930_models.DescribePolicyGroupsResponse:
         """
-        @summary Queries the information about one or more policies.
+        @summary Queries the details of a cloud computer policy.
         
         @param request: DescribePolicyGroupsRequest
         @return: DescribePolicyGroupsResponse
@@ -14068,7 +14212,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribePriceResponse:
         """
-        @summary Queries the price information of desktop resources in Elastic Desktop Service (EDS).
+        @summary Queries the prices of Elastic Desktop Service (EDS) resources.
         
         @description ## Usage notes
         The request parameters vary based on the type of desktop resources whose price you want to query. Take note of the following items:
@@ -14146,7 +14290,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribePriceResponse:
         """
-        @summary Queries the price information of desktop resources in Elastic Desktop Service (EDS).
+        @summary Queries the prices of Elastic Desktop Service (EDS) resources.
         
         @description ## Usage notes
         The request parameters vary based on the type of desktop resources whose price you want to query. Take note of the following items:
@@ -14223,7 +14367,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribePriceRequest,
     ) -> ecd_20200930_models.DescribePriceResponse:
         """
-        @summary Queries the price information of desktop resources in Elastic Desktop Service (EDS).
+        @summary Queries the prices of Elastic Desktop Service (EDS) resources.
         
         @description ## Usage notes
         The request parameters vary based on the type of desktop resources whose price you want to query. Take note of the following items:
@@ -14243,7 +14387,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribePriceRequest,
     ) -> ecd_20200930_models.DescribePriceResponse:
         """
-        @summary Queries the price information of desktop resources in Elastic Desktop Service (EDS).
+        @summary Queries the prices of Elastic Desktop Service (EDS) resources.
         
         @description ## Usage notes
         The request parameters vary based on the type of desktop resources whose price you want to query. Take note of the following items:
@@ -14768,6 +14912,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeRefundPriceResponse:
         """
+        @summary Queries the refund amount for unsubscribing from a cloud computer.
+        
         @param request: DescribeRefundPriceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeRefundPriceResponse
@@ -14811,6 +14957,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeRefundPriceResponse:
         """
+        @summary Queries the refund amount for unsubscribing from a cloud computer.
+        
         @param request: DescribeRefundPriceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeRefundPriceResponse
@@ -14853,6 +15001,8 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeRefundPriceRequest,
     ) -> ecd_20200930_models.DescribeRefundPriceResponse:
         """
+        @summary Queries the refund amount for unsubscribing from a cloud computer.
+        
         @param request: DescribeRefundPriceRequest
         @return: DescribeRefundPriceResponse
         """
@@ -14864,6 +15014,8 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeRefundPriceRequest,
     ) -> ecd_20200930_models.DescribeRefundPriceResponse:
         """
+        @summary Queries the refund amount for unsubscribing from a cloud computer.
+        
         @param request: DescribeRefundPriceRequest
         @return: DescribeRefundPriceResponse
         """
@@ -15400,7 +15552,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeTimerGroupResponse:
         """
-        @summary 查询定时任务配置
+        @summary Queries a scheduled task configuration group.
         
         @param request: DescribeTimerGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15443,7 +15595,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeTimerGroupResponse:
         """
-        @summary 查询定时任务配置
+        @summary Queries a scheduled task configuration group.
         
         @param request: DescribeTimerGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15485,7 +15637,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeTimerGroupRequest,
     ) -> ecd_20200930_models.DescribeTimerGroupResponse:
         """
-        @summary 查询定时任务配置
+        @summary Queries a scheduled task configuration group.
         
         @param request: DescribeTimerGroupRequest
         @return: DescribeTimerGroupResponse
@@ -15498,7 +15650,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeTimerGroupRequest,
     ) -> ecd_20200930_models.DescribeTimerGroupResponse:
         """
-        @summary 查询定时任务配置
+        @summary Queries a scheduled task configuration group.
         
         @param request: DescribeTimerGroupRequest
         @return: DescribeTimerGroupResponse
@@ -21212,7 +21364,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyConfigGroupResponse:
         """
-        @summary 修改配置组
+        @summary Modifies the basic information of a configuration group.
         
         @param request: ModifyConfigGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21259,7 +21411,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyConfigGroupResponse:
         """
-        @summary 修改配置组
+        @summary Modifies the basic information of a configuration group.
         
         @param request: ModifyConfigGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21305,7 +21457,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyConfigGroupRequest,
     ) -> ecd_20200930_models.ModifyConfigGroupResponse:
         """
-        @summary 修改配置组
+        @summary Modifies the basic information of a configuration group.
         
         @param request: ModifyConfigGroupRequest
         @return: ModifyConfigGroupResponse
@@ -21318,7 +21470,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyConfigGroupRequest,
     ) -> ecd_20200930_models.ModifyConfigGroupResponse:
         """
-        @summary 修改配置组
+        @summary Modifies the basic information of a configuration group.
         
         @param request: ModifyConfigGroupRequest
         @return: ModifyConfigGroupResponse
@@ -22880,18 +23032,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDiskSpecResponse:
         """
-        @summary Changes the configurations of a cloud desktop, including the number of vCPUs, memory size, and disk size.
+        @summary Changes the performance level (PL) of a system disk or data disk.
         
-        @description You can call this operation to change the configurations, such as the desktop type and disk size, of a cloud desktop.
-        Before you call this operation, you must know the cloud desktop types and the disk sizes for each type of cloud desktop that Elastic Desktop Service (EDS) provides.
-        When you change the configurations of a cloud desktop, you must change the desktop type or the size of the system disk or data disk. You must configure at least one of the following parameters: DesktopType, RootDiskSizeGib, and UserDiskSizeGib. Take note of the following items:
-        1\\. Desktop types include the specifications of vCPUs, memory, and GPUs. You can change only the desktop type, instead of one of the specifications.
-        2\\. You cannot change a cloud desktop from the General Office type to a non-General Office type, or from a non-General Office type to the General Office type. You cannot change a cloud desktop from the Graphics type to a non-Graphics type, or from a non-Graphics type to the Graphics type.
-        3\\. You can only increase the sizes of system and data disks. You cannot decrease the sizes of system and data disks.
-        4\\. If your cloud desktop uses the subscription billing method, the price difference is calculated based on the price before and after configuration changes. You may receive a refund, or must pay for the price difference.
-        5\\. If you need to change the configurations of a cloud desktop multiple times, we recommend that you wait at least 5 minutes between consecutive operations on the cloud desktop.
-        6\\. The cloud desktop for which you want to change the desktop type must be in the Stopped state.
-        The changes do not affect your personal data on the cloud desktop.
+        @description When creating a cloud computer in Elastic Desktop Service (EDS) Enterprise, you can use a template to define specifications that align with your business needs. By default, Enterprise Graphics or High Frequency cloud computers utilize Enterprise SSDs (ESSDs). You can customize the disk capacity and performance level (PL) of these ESSDs, and adjust the PL for both system and data disks as needed.
+        >  Only Enterprise Graphics or High Frequency cloud computers support disk PL adjustments.
         
         @param request: ModifyDiskSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22907,6 +23051,8 @@ class Client(OpenApiClient):
             query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         if not UtilClient.is_unset(request.root_disk_performance_level):
             query['RootDiskPerformanceLevel'] = request.root_disk_performance_level
         if not UtilClient.is_unset(request.user_disk_performance_level):
@@ -22942,18 +23088,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDiskSpecResponse:
         """
-        @summary Changes the configurations of a cloud desktop, including the number of vCPUs, memory size, and disk size.
+        @summary Changes the performance level (PL) of a system disk or data disk.
         
-        @description You can call this operation to change the configurations, such as the desktop type and disk size, of a cloud desktop.
-        Before you call this operation, you must know the cloud desktop types and the disk sizes for each type of cloud desktop that Elastic Desktop Service (EDS) provides.
-        When you change the configurations of a cloud desktop, you must change the desktop type or the size of the system disk or data disk. You must configure at least one of the following parameters: DesktopType, RootDiskSizeGib, and UserDiskSizeGib. Take note of the following items:
-        1\\. Desktop types include the specifications of vCPUs, memory, and GPUs. You can change only the desktop type, instead of one of the specifications.
-        2\\. You cannot change a cloud desktop from the General Office type to a non-General Office type, or from a non-General Office type to the General Office type. You cannot change a cloud desktop from the Graphics type to a non-Graphics type, or from a non-Graphics type to the Graphics type.
-        3\\. You can only increase the sizes of system and data disks. You cannot decrease the sizes of system and data disks.
-        4\\. If your cloud desktop uses the subscription billing method, the price difference is calculated based on the price before and after configuration changes. You may receive a refund, or must pay for the price difference.
-        5\\. If you need to change the configurations of a cloud desktop multiple times, we recommend that you wait at least 5 minutes between consecutive operations on the cloud desktop.
-        6\\. The cloud desktop for which you want to change the desktop type must be in the Stopped state.
-        The changes do not affect your personal data on the cloud desktop.
+        @description When creating a cloud computer in Elastic Desktop Service (EDS) Enterprise, you can use a template to define specifications that align with your business needs. By default, Enterprise Graphics or High Frequency cloud computers utilize Enterprise SSDs (ESSDs). You can customize the disk capacity and performance level (PL) of these ESSDs, and adjust the PL for both system and data disks as needed.
+        >  Only Enterprise Graphics or High Frequency cloud computers support disk PL adjustments.
         
         @param request: ModifyDiskSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22969,6 +23107,8 @@ class Client(OpenApiClient):
             query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reseller_owner_uid):
+            query['ResellerOwnerUid'] = request.reseller_owner_uid
         if not UtilClient.is_unset(request.root_disk_performance_level):
             query['RootDiskPerformanceLevel'] = request.root_disk_performance_level
         if not UtilClient.is_unset(request.user_disk_performance_level):
@@ -23003,18 +23143,10 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDiskSpecRequest,
     ) -> ecd_20200930_models.ModifyDiskSpecResponse:
         """
-        @summary Changes the configurations of a cloud desktop, including the number of vCPUs, memory size, and disk size.
+        @summary Changes the performance level (PL) of a system disk or data disk.
         
-        @description You can call this operation to change the configurations, such as the desktop type and disk size, of a cloud desktop.
-        Before you call this operation, you must know the cloud desktop types and the disk sizes for each type of cloud desktop that Elastic Desktop Service (EDS) provides.
-        When you change the configurations of a cloud desktop, you must change the desktop type or the size of the system disk or data disk. You must configure at least one of the following parameters: DesktopType, RootDiskSizeGib, and UserDiskSizeGib. Take note of the following items:
-        1\\. Desktop types include the specifications of vCPUs, memory, and GPUs. You can change only the desktop type, instead of one of the specifications.
-        2\\. You cannot change a cloud desktop from the General Office type to a non-General Office type, or from a non-General Office type to the General Office type. You cannot change a cloud desktop from the Graphics type to a non-Graphics type, or from a non-Graphics type to the Graphics type.
-        3\\. You can only increase the sizes of system and data disks. You cannot decrease the sizes of system and data disks.
-        4\\. If your cloud desktop uses the subscription billing method, the price difference is calculated based on the price before and after configuration changes. You may receive a refund, or must pay for the price difference.
-        5\\. If you need to change the configurations of a cloud desktop multiple times, we recommend that you wait at least 5 minutes between consecutive operations on the cloud desktop.
-        6\\. The cloud desktop for which you want to change the desktop type must be in the Stopped state.
-        The changes do not affect your personal data on the cloud desktop.
+        @description When creating a cloud computer in Elastic Desktop Service (EDS) Enterprise, you can use a template to define specifications that align with your business needs. By default, Enterprise Graphics or High Frequency cloud computers utilize Enterprise SSDs (ESSDs). You can customize the disk capacity and performance level (PL) of these ESSDs, and adjust the PL for both system and data disks as needed.
+        >  Only Enterprise Graphics or High Frequency cloud computers support disk PL adjustments.
         
         @param request: ModifyDiskSpecRequest
         @return: ModifyDiskSpecResponse
@@ -23027,18 +23159,10 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDiskSpecRequest,
     ) -> ecd_20200930_models.ModifyDiskSpecResponse:
         """
-        @summary Changes the configurations of a cloud desktop, including the number of vCPUs, memory size, and disk size.
+        @summary Changes the performance level (PL) of a system disk or data disk.
         
-        @description You can call this operation to change the configurations, such as the desktop type and disk size, of a cloud desktop.
-        Before you call this operation, you must know the cloud desktop types and the disk sizes for each type of cloud desktop that Elastic Desktop Service (EDS) provides.
-        When you change the configurations of a cloud desktop, you must change the desktop type or the size of the system disk or data disk. You must configure at least one of the following parameters: DesktopType, RootDiskSizeGib, and UserDiskSizeGib. Take note of the following items:
-        1\\. Desktop types include the specifications of vCPUs, memory, and GPUs. You can change only the desktop type, instead of one of the specifications.
-        2\\. You cannot change a cloud desktop from the General Office type to a non-General Office type, or from a non-General Office type to the General Office type. You cannot change a cloud desktop from the Graphics type to a non-Graphics type, or from a non-Graphics type to the Graphics type.
-        3\\. You can only increase the sizes of system and data disks. You cannot decrease the sizes of system and data disks.
-        4\\. If your cloud desktop uses the subscription billing method, the price difference is calculated based on the price before and after configuration changes. You may receive a refund, or must pay for the price difference.
-        5\\. If you need to change the configurations of a cloud desktop multiple times, we recommend that you wait at least 5 minutes between consecutive operations on the cloud desktop.
-        6\\. The cloud desktop for which you want to change the desktop type must be in the Stopped state.
-        The changes do not affect your personal data on the cloud desktop.
+        @description When creating a cloud computer in Elastic Desktop Service (EDS) Enterprise, you can use a template to define specifications that align with your business needs. By default, Enterprise Graphics or High Frequency cloud computers utilize Enterprise SSDs (ESSDs). You can customize the disk capacity and performance level (PL) of these ESSDs, and adjust the PL for both system and data disks as needed.
+        >  Only Enterprise Graphics or High Frequency cloud computers support disk PL adjustments.
         
         @param request: ModifyDiskSpecRequest
         @return: ModifyDiskSpecResponse
@@ -24684,7 +24808,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyTimerGroupResponse:
         """
-        @summary 修改定时任务配置
+        @summary Modifies a scheduled task configuration group.
         
         @param request: ModifyTimerGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24733,7 +24857,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyTimerGroupResponse:
         """
-        @summary 修改定时任务配置
+        @summary Modifies a scheduled task configuration group.
         
         @param request: ModifyTimerGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24781,7 +24905,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyTimerGroupRequest,
     ) -> ecd_20200930_models.ModifyTimerGroupResponse:
         """
-        @summary 修改定时任务配置
+        @summary Modifies a scheduled task configuration group.
         
         @param request: ModifyTimerGroupRequest
         @return: ModifyTimerGroupResponse
@@ -24794,7 +24918,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyTimerGroupRequest,
     ) -> ecd_20200930_models.ModifyTimerGroupResponse:
         """
-        @summary 修改定时任务配置
+        @summary Modifies a scheduled task configuration group.
         
         @param request: ModifyTimerGroupRequest
         @return: ModifyTimerGroupResponse
@@ -25836,6 +25960,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RenewDesktopGroupResponse:
         """
+        @summary Renew a subscription cloud computer pool.
+        
         @param request: RenewDesktopGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RenewDesktopGroupResponse
@@ -25885,6 +26011,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RenewDesktopGroupResponse:
         """
+        @summary Renew a subscription cloud computer pool.
+        
         @param request: RenewDesktopGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RenewDesktopGroupResponse
@@ -25933,6 +26061,8 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RenewDesktopGroupRequest,
     ) -> ecd_20200930_models.RenewDesktopGroupResponse:
         """
+        @summary Renew a subscription cloud computer pool.
+        
         @param request: RenewDesktopGroupRequest
         @return: RenewDesktopGroupResponse
         """
@@ -25944,6 +26074,8 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RenewDesktopGroupRequest,
     ) -> ecd_20200930_models.RenewDesktopGroupResponse:
         """
+        @summary Renew a subscription cloud computer pool.
+        
         @param request: RenewDesktopGroupRequest
         @return: RenewDesktopGroupResponse
         """
@@ -26218,6 +26350,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.network_package_id):
             query['NetworkPackageId'] = request.network_package_id
         if not UtilClient.is_unset(request.period):
@@ -26269,6 +26403,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.network_package_id):
             query['NetworkPackageId'] = request.network_package_id
         if not UtilClient.is_unset(request.period):
@@ -28592,7 +28728,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.UnbindConfigGroupResponse:
         """
-        @summary 解绑配置组
+        @summary Unbinds a configuration group from resources.
         
         @param request: UnbindConfigGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28637,7 +28773,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.UnbindConfigGroupResponse:
         """
-        @summary 解绑配置组
+        @summary Unbinds a configuration group from resources.
         
         @param request: UnbindConfigGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28681,7 +28817,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.UnbindConfigGroupRequest,
     ) -> ecd_20200930_models.UnbindConfigGroupResponse:
         """
-        @summary 解绑配置组
+        @summary Unbinds a configuration group from resources.
         
         @param request: UnbindConfigGroupRequest
         @return: UnbindConfigGroupResponse
@@ -28694,7 +28830,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.UnbindConfigGroupRequest,
     ) -> ecd_20200930_models.UnbindConfigGroupResponse:
         """
-        @summary 解绑配置组
+        @summary Unbinds a configuration group from resources.
         
         @param request: UnbindConfigGroupRequest
         @return: UnbindConfigGroupResponse
@@ -29480,6 +29616,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.WakeupDesktopsResponse:
         """
+        @summary Wakes up cloud computers.
+        
+        @description Only cloud computers that are in the Hibernated state can be waked up.
+        
         @param request: WakeupDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: WakeupDesktopsResponse
@@ -29521,6 +29661,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.WakeupDesktopsResponse:
         """
+        @summary Wakes up cloud computers.
+        
+        @description Only cloud computers that are in the Hibernated state can be waked up.
+        
         @param request: WakeupDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: WakeupDesktopsResponse
@@ -29561,6 +29705,10 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.WakeupDesktopsRequest,
     ) -> ecd_20200930_models.WakeupDesktopsResponse:
         """
+        @summary Wakes up cloud computers.
+        
+        @description Only cloud computers that are in the Hibernated state can be waked up.
+        
         @param request: WakeupDesktopsRequest
         @return: WakeupDesktopsResponse
         """
@@ -29572,6 +29720,10 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.WakeupDesktopsRequest,
     ) -> ecd_20200930_models.WakeupDesktopsResponse:
         """
+        @summary Wakes up cloud computers.
+        
+        @description Only cloud computers that are in the Hibernated state can be waked up.
+        
         @param request: WakeupDesktopsRequest
         @return: WakeupDesktopsResponse
         """

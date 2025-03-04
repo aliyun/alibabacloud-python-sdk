@@ -2507,9 +2507,22 @@ class BindConfigGroupRequestResourceInfos(TeaModel):
         resource_region_id: str = None,
         resource_type: str = None,
     ):
+        # The service type of the resource.
+        # 
+        # Valid value:
+        # 
+        # *   CLOUD_DESKTOP: the cloud computer service.
         self.product_type = product_type
+        # The ID of the resource.
         self.resource_id = resource_id
+        # The region ID of the resource.
         self.resource_region_id = resource_region_id
+        # The type of the resource.
+        # 
+        # Valid values:
+        # 
+        # *   RESOURCE_GROUP: the resource group
+        # *   CLOUD_DESKTOP: the cloud computer service.
         self.resource_type = resource_type
 
     def validate(self):
@@ -2551,9 +2564,14 @@ class BindConfigGroupRequest(TeaModel):
         region_id: str = None,
         resource_infos: List[BindConfigGroupRequestResourceInfos] = None,
     ):
+        # The ID of the configuration group.
+        # 
         # This parameter is required.
         self.group_id = group_id
+        # The ID of the region. Set the value to `cn-shanghai`.
         self.region_id = region_id
+        # The resources to which you want to bind the configuration group.
+        # 
         # This parameter is required.
         self.resource_infos = resource_infos
 
@@ -2599,7 +2617,9 @@ class BindConfigGroupResponseBody(TeaModel):
         group_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the configuration group.
         self.group_id = group_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4453,7 +4473,9 @@ class CreateADConnectorOfficeSiteRequest(TeaModel):
     ):
         # The hostname of the domain controller. The hostname must comply with the naming conventions for Windows hosts.
         self.ad_hostname = ad_hostname
+        # The hostname of the backup domain controller.
         self.backup_dchostname = backup_dchostname
+        # The DNS address of the backup domain controller.
         self.backup_dns = backup_dns
         # The maximum public bandwidth of the Internet access package. Valid values: 0 to 200.\\
         # If you do not specify this parameter or you set this parameter to 0, Internet access is disabled.
@@ -4564,6 +4586,7 @@ class CreateADConnectorOfficeSiteRequest(TeaModel):
         self.sub_domain_dns_address = sub_domain_dns_address
         # The domain name of the enterprise AD subdomain.
         self.sub_domain_name = sub_domain_name
+        # The array of the vSwitch IDs.
         self.v_switch_id = v_switch_id
         # The verification code. If the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, you must call the [SendVerifyCode](https://help.aliyun.com/document_detail/436847.html) operation to obtain the verification code.
         self.verify_code = verify_code
@@ -5048,6 +5071,166 @@ class CreateAutoSnapshotPolicyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateAutoSnapshotPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateBandwidthResourcePackagesRequest(TeaModel):
+    def __init__(
+        self,
+        amount: int = None,
+        auto_pay: bool = None,
+        package_size: int = None,
+        period: int = None,
+        period_unit: str = None,
+        promotion_id: str = None,
+        region_id: str = None,
+    ):
+        # The number of the data transfer plans that you want to create at the same time. Valid values: 1 to 20. Default value: 1.
+        self.amount = amount
+        # Specifies whether to enable the auto-payment feature.
+        self.auto_pay = auto_pay
+        # The size of the data transfer plan. Valid values: 10 to 1000. Unit: GiB.
+        # 
+        # This parameter is required.
+        self.package_size = package_size
+        # The subscription duration. The valid values of this parameter vary based on the value of `PeriodUnit`.
+        # 
+        # *   If `PeriodUnit` is set to `Month`, the valid values of Period are 1, 3, and 6.
+        # *   If `PeriodUnit` is set to `Year`, the valid value of Period is 1.
+        # 
+        # Default value: 1.
+        self.period = period
+        # The unit of the subscription duration.
+        # 
+        # Valid values:
+        # 
+        # *   Month (default)
+        # *   Year
+        self.period_unit = period_unit
+        # The ID of the promotional activity.
+        self.promotion_id = promotion_id
+        # The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        if self.package_size is not None:
+            result['PackageSize'] = self.package_size
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        if m.get('PackageSize') is not None:
+            self.package_size = m.get('PackageSize')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class CreateBandwidthResourcePackagesResponseBody(TeaModel):
+    def __init__(
+        self,
+        order_id: int = None,
+        request_id: str = None,
+    ):
+        # The ID of the order.
+        self.order_id = order_id
+        # The ID of a request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateBandwidthResourcePackagesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateBandwidthResourcePackagesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateBandwidthResourcePackagesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6444,15 +6627,55 @@ class CreateConfigGroupRequestConfigTimers(TeaModel):
         timer_type: str = None,
         trigger_type: str = None,
     ):
+        # Specifies whether to allow end users to configure scheduled tasks.
         self.allow_client_setting = allow_client_setting
+        # The CRON expression for the scheduled task.
+        # 
+        # >  The time must be in UTC. For example, for 24:00 (UTC+8), you must set the value to 0 0 16 ? \\* 1,2,3,4,5,6,7
         self.cron_expression = cron_expression
+        # Specifies whether to forcibly execute the scheduled task.
         self.enforce = enforce
+        # The interval at which the scheduled task is executed. Unit: minutes.
         self.interval = interval
+        # The type of the scheduled operation. If you set TimerType to NoConnect, you can specify this parameter.
+        # 
+        # Valid values:
+        # 
+        # *   Hibernate: scheduled hibernation.
+        # *   Shutdown: scheduled shutdown.
         self.operation_type = operation_type
+        # The process whitelist. If whitelisted processes are running, the scheduled task upon inactivity does not take effect.
         self.process_whitelist = process_whitelist
+        # The reset operation for cloud computers.
+        # 
+        # Valid values:
+        # 
+        # *   RESET_TYPE_SYSTEM: resets only the system disks of cloud computers.
+        # *   RESET_TYPE_USER_DISK: resets only the data disks of cloud computers.
+        # *   RESET_TYPE_BOTH: resets the system disks and data disks of cloud computers.
         self.reset_type = reset_type
+        # The type of the scheduled task.
+        # 
+        # Valid values:
+        # 
+        # *   NoOperationDisconnect: scheduled disconnection upon inactivity.
+        # *   NoConnect: scheduled disconnection upon specified operation (OperationType).
+        # *   TimerBoot: scheduled start.
+        # *   TimerReset: scheduled reset.
+        # *   NoOperationShutdown: scheduled shutdown upon inactivity.
+        # *   NoOperationHibernate: scheduled hibernation upon inactivity.
+        # *   TimerShutdown: scheduled shutdown.
+        # *   NoOperationReboot: scheduled restart upon inactivity.
+        # *   TimerReboot: scheduled restart.
+        # 
         # This parameter is required.
         self.timer_type = timer_type
+        # The method to trigger the scheduled task upon inactivity.
+        # 
+        # Valid values:
+        # 
+        # *   Advanced: intelligent detection.
+        # *   Standard: standard detection.
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -6517,13 +6740,30 @@ class CreateConfigGroupRequest(TeaModel):
         region_id: str = None,
         type: str = None,
     ):
+        # The list of configuration groups.
         self.config_timers = config_timers
+        # The description of the configuration group.
         self.description = description
+        # The name of the configuration group.
+        # 
         # This parameter is required.
         self.name = name
+        # The service type of the configuration group.
+        # 
+        # Valid value:
+        # 
+        # *   CLOUD_DESKTOP: the cloud computer service.
+        # 
         # This parameter is required.
         self.product_type = product_type
+        # The ID of the region. Set the value to `cn-shanghai`.
         self.region_id = region_id
+        # The type of the configuration group.
+        # 
+        # Valid value:
+        # 
+        # *   Timer: the scheduled task type.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -6582,8 +6822,11 @@ class CreateConfigGroupResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The ID of the configuration group.
         self.group_id = group_id
+        # The creation result of the configuration group.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6661,11 +6904,11 @@ class CreateDesktopGroupRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. If you specify the `Tag` parameter, you must also specify the `Key` parameter. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`. You cannot specify an empty string as a tag key.
+        # The tag key. You cannot specify an empty string as a tag key. A tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
         # 
         # This parameter is required.
         self.key = key
-        # The value of the tag. The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with `acs:` and cannot contain `http://` or `https://`.
+        # The tag value. You can specify an empty string as a tag key. A tag value can be up to 128 characters in length and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
         # 
         # This parameter is required.
         self.value = value
@@ -6754,100 +6997,186 @@ class CreateDesktopGroupRequest(TeaModel):
         volume_encryption_key: str = None,
         vpc_id: str = None,
     ):
-        # The end users whom you want to add to all types of desktop groups.
+        # The types of the users.
+        # 
+        # >  This parameter is not publicly available.
         self.all_classify_users = all_classify_users
-        # Specifies whether to automatically create cloud desktops in the desktop group if you set the billing method to subscription. If you set the ChargeType parameter to PrePaid, this parameter is required.
+        # Specifies whether to enable batch-based automatic creation of subscription cloud computers for the shared group. This parameter is required if you set `ChargeType` to `PrePaid`.
+        # 
+        # Valid values:
+        # 
+        # *   0: enables batch-based automatic creation of subscription cloud computers.
+        # *   1: disables batch-based automatic creation of subscription cloud computers.
         self.allow_auto_setup = allow_auto_setup
-        # Specifies whether to reserve cloud desktops if you set the billing method to pay-as-you-go. If you set the ChargeType parameter to PostPaid, this parameter is required. Valid values: 0: does not allow the system to reserve cloud desktops. N: allows the system to reserve N cloud desktops. The variable N must be an integer that ranges from 1 to 100.
+        # The maximum number of pay-as-you-go cloud computers that can be reserved in the shared group. This parameter is required if you set `ChargeType` to `PostPaid`. Valid values:
+        # 
+        # *   0: does not reserve any cloud computers.
+        # *   N: reserves N cloud computers (1≤ N ≤ 100).
+        # 
+        # >  Setting this parameter to 0 means no cloud computers will be reserved in the shared group. In this case, the system must create, start, and assign cloud computers to end users upon request, which can be time-consuming. To improve user experience, we recommend that you reserve a specific number of cloud computers.
         self.allow_buffer_count = allow_buffer_count
-        # Specifies whether to enable automatic payment.
+        # Specifies whether to automatically complete the payment for subscription orders.
         self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal.
+        # Specifies whether to enable auto-renewal for the shared subscription group.
         # 
         # Valid values:
         # 
         # *   true
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   false
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.auto_renew = auto_renew
-        # The number of sessions that are allowed per cloud desktop in a multi-session desktop group.
+        # The number of concurrent sessions of the multi-session shared group.
+        # 
+        # >  This parameter is not publicly available.
         self.bind_amount = bind_amount
-        # The ID of the desktop template.
+        # The ID of the cloud computer template.
         self.bundle_id = bundle_id
-        # The number of cloud desktops that you want to purchase. Valid values: 0 to 200.
+        # *   For shared subscription groups, this parameter defines the initial number of cloud computers to be created. Valid values: 0 to 200.
+        # *   For shared pay-as-you-go groups, this parameter defines the minimum initial number of cloud computers to be created. Valid values: 0 to `MaxDesktopsCount`. Default value: 1.
         self.buy_desktops_count = buy_desktops_count
-        # The billing method of the cloud desktops in the desktop group.
+        # The billing method of the shared group.
+        # 
+        # Valid values:
+        # 
+        # *   PostPaid: pay-as-you-go.
+        # *   PrePaid: subscription.
         # 
         # This parameter is required.
         self.charge_type = charge_type
-        # The type of the desktop group.
+        # The type of the cloud computers in the shared group.
+        # 
+        # >  This parameter is not publicly available.
+        # 
+        # Valid values:
+        # 
+        # *   teacher: cloud computers designed for teachers.
+        # *   student: cloud computers designed for students.
         self.classify = classify
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The remarks on the desktop group.
+        # The remarks of the shared group.
         self.comments = comments
-        # The maximum period of time during which the session is connected. When the specified maximum period of time is reached, the session automatically disconnects. Unit: milliseconds. This parameter is required only for cloud desktops in the same desktop group.
+        # The maximum duration for which each session remains connected. The session is automatically disconnected once the specified maximum time limit is reached. Unit: milliseconds. Valid values: 900000 to 345600000. That is, the session can be connected for 15 to 5,760 minutes (4 days).
         self.connect_duration = connect_duration
+        # The category of the data disk.
+        # 
+        # Valid values:
+        # 
+        # *   cloud_auto: the standard SSD.
+        # *   cloud_essd: the ESSD.
         self.data_disk_category = data_disk_category
+        # The PL of the data disk of the ESSD category. Default value: PL0.
+        # 
+        # Valid values:
+        # 
+        # *   PL1
+        # *   PL0
         self.data_disk_per_level = data_disk_per_level
+        # The size of the data disk. Unit: GB. Valid values: 0 to 16380. The value must be an integral multiple of 20.
+        # 
+        # *   A value of 0 means no data disk is attached.
+        # *   If the selected plan includes a standard SSD, the data disk size must be at least 20 GB.
+        # 
+        # Default value: 0.
         self.data_disk_size = data_disk_size
-        # The default number of cloud desktops to create when you create the desktop group. Default value: 1.
+        # The default number of cloud computers that you want to create at the same time in the shared group. Default value: 1.
         self.default_init_desktop_count = default_init_desktop_count
+        # The language of the OS.
+        # 
+        # Valid values:
+        # 
+        # *   en-US: English.
+        # *   zh-HK: Traditional Chinese.
+        # *   zh-CN: Simplified Chinese
+        # *   ja-JP: Japanese.
         self.default_language = default_language
-        # The name of the desktop group.
+        # The name of the shared group. The name can be up to 30 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). It must start with a letter but cannot start with `http://` or `https://`.
         self.desktop_group_name = desktop_group_name
+        # The specifications of the cloud computer. You can call the [DescribeDesktopTypes](~~DescribeDesktopTypes~~) operation to query all the supported specifications.
         self.desktop_type = desktop_type
         # The ID of the directory.
+        # 
+        # >  This parameter is not publicly available.
         self.directory_id = directory_id
-        # The end users that can use the desktop group.
+        # The IDs of the end users.
         self.end_user_ids = end_user_ids
+        # Specifies whether the shared group is exclusive. You must set this parameter to `Exclusive` when `SessionType` is set to `MultipleSession`.
         self.exclusive_type = exclusive_type
-        # The File Storage NAS (NAS) file system that is used after data roaming is enabled.
+        # The ID of the File Storage NAS (NAS) file system for the user data roaming feature.
+        # 
+        # >  This parameter is not publicly available.
         self.file_system_id = file_system_id
+        # The number of shared groups for the single-cloud computer type. You must specify this parameter if you set `MultiResource` to `false`. Valid values: 1 to 5. Default value: 1.
         self.group_amount = group_amount
-        # The desktop group version.
+        # The version of the shared group.
         self.group_version = group_version
+        # The hostname series of the cloud computer. This parameter is supported exclusively when the office network operates on Active Directory (AD) and the cloud computer runs on a Windows operating system.
+        # 
+        # Naming conventions:
+        # 
+        # *   A hostname must be 2 to 15 characters in length
+        # *   and can contain only letters, digits, and hyphens (-). It cannot start or end with a hyphen (-), contain consecutive hyphens (-), or contain only digits.
+        # 
+        # If you want to create multiple cloud computers, specify their hostnames in the `name_prefix[begin_number,bits]name_suffix` format. For example, if you set Hostname to ecd-[1,4]-test, the hostnames of the cloud computers will be assigned sequentially as ecd-0001-test, ecd-0002-test, and so on.
+        # 
+        # *   `name_prefix`: the prefix of the hostname.
+        # *   `[begin_number,bits]`: the sequential number in the hostname. The `begin_number` value is the starting number. Valid values of begin_number: 0 to 999999. Default value: 0. The `bits` value is the number of digits. Valid values: 1 to 6. Default value: 6.
+        # *   `name_suffix`: the suffix of the hostname.
         self.hostname = hostname
-        # The maximum period of time for which a session remains idle. If an end user performs no operations on a cloud desktop by using keyboards or mouses during a session, the session becomes idle. When the specified maximum period of time is reached, the session automatically disconnects. Unit: milliseconds. This parameter is required only for cloud desktops in the same desktop group.
+        # The duration after which a session is terminated if no keyboard or mouse activity is detected. When an end user connects to a cloud computer, a session is initiated. If no input from the keyboard or mouse is detected within this specified timeframe, the session is automatically closed. Unit: milliseconds. Valid values: 360000 to 3600000 (6 minutes to 60 minutes)
+        # 
+        # The system prompts end users to save their data 30 seconds before a session is disconnected. To avoid data loss, end users must save their session data upon receiving the prompt.
+        # 
+        # >  This parameter is suitable only for cloud computers whose image version is v1.0.2 or later.
         self.idle_disconnect_duration = idle_disconnect_duration
+        # The ID of the image.
         self.image_id = image_id
-        # The retention period of the cloud desktop after the end user disconnects from the cloud desktop. Unit: milliseconds.
+        # The duration for which each session remains active after disconnection. Valid values: 180000 (3 minutes) to 345600000 (4 days). Unit: milliseconds. If you set this parameter to 0, the session is permanently retained after disconnection.
+        # 
+        # When a session is disconnected, take note of the following items: 1. If the end user does not resume the session within the specified duration, the session will close, and all unsaved data will be cleared. 2. If the end user resumes the session within the specified duration, the session data will remain accessible for continued use.
         self.keep_duration = keep_duration
-        # The load balancing policy of the multi-session desktop group.
+        # The load balancing policy of the multi-session shared group.
+        # 
+        # >  This parameter is not publicly available.
+        # 
+        # Valid values:
+        # 
+        # *   0: depth-first
+        # *   1: breadth first
         self.load_policy = load_policy
-        # The maximum number of cloud desktops that the desktop group can contain. Valid values: 0 to 200.
+        # The maximum number of pay-as-you-go cloud computers that can be automatically provisioned at the same time in the shared group. Valid values: 0 to 500.
         self.max_desktops_count = max_desktops_count
-        # The minimum number of cloud desktops that must be contained in the desktop group if you set the billing method to subscription. If you set the ChargeType parameter to PrePaid, this parameter is required. Valid values: 0 to the value of MaxDesktopsCount. Default value: 1.
+        # The minimum number of subscription cloud computers that can be automatically provisioned at the same time in the shared group. This parameter is required if you set `ChargeType` to `PrePaid`. Default value: 1. Valid values: 0 to `MaxDesktopsCount`.
         self.min_desktops_count = min_desktops_count
+        # Specifies whether the shared group is a multi-cloud computer type.
+        # 
+        # Valid values:
+        # 
+        # *   true: a multi-cloud computer type.
+        # *   false: a single-cloud computer type.
         self.multi_resource = multi_resource
-        # The ID of the workspace.
+        # The ID of the office network.
         # 
         # This parameter is required.
         self.office_site_id = office_site_id
-        # The type of the desktop group.
-        self.own_type = own_type
-        # The subscription period of the cloud desktops in the desktop group. The unit is specified by the PeriodUnit parameter. The Period parameter takes effect only if you set the ChargeType parameter to PrePaid.
+        # The session type of the shared group.
         # 
-        # *   Valid values if you set the PeriodUnit parameter to Month:
+        # >  This parameter is not publicly available.
+        # 
+        # Valid values:
+        # 
+        # *   0: single-session.
+        # *   1: multi-session.
+        self.own_type = own_type
+        # The subscription duration of the shared group. This parameter is required if you set `ChargeType` to `PrePaid`. You must specify the subscription duration unit by using `PeriodUnit`.
+        # 
+        # *   If you set `PeriodUnit` to `Month`, valid values of this parameter:
         # 
         #     *   1
         #     *   2
         #     *   3
         #     *   6
         # 
-        # *   Valid values if you set the PeriodUnit parameter to Year:
+        # *   If you set `PeriodUnit` to `Year`, valid values of this parameter:
         # 
         #     *   1
         #     *   2
@@ -6861,36 +7190,77 @@ class CreateDesktopGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.policy_group_id = policy_group_id
-        # Specifies whether to enable data roaming.
+        # Specifies whether to enable user data roaming.
+        # 
+        # >  This parameter is not publicly available.
         self.profile_follow_switch = profile_follow_switch
+        # The ID of the coupon.
         self.promotion_id = promotion_id
-        # The threshold for the ratio of connected sessions. This parameter is the condition that triggers auto scaling in a multi-session desktop group. `Ratio of connected sessions = Number of connected sessions/(Total number of cloud desktops × Maximum number of sessions allowed for each cloud desktop) × 100%`. When the specified threshold is reached, new cloud desktops are automatically created. When the specified threshold is not reached, idle cloud desktops are released.
+        # The threshold for the ratio of connected sessions. This parameter defines the condition that activates automatic scaling of cloud computers in a multi-session shared group. The ratio of connected sessions is calculated by using the following formula:
+        # 
+        # `Ratio of connected sessions = Number of connected sessions/(Total number of cloud computers × Maximum number of sessions allowed for each cloud computer) × 100%`.
+        # 
+        # If the connected session ratio exceeds the specified threshold, new cloud computers are provisioned. If the ratio falls below the threshold, idle cloud computers are deleted.
+        # 
+        # >  This parameter is not publicly available.
         self.ratio_threshold = ratio_threshold
-        # The ID of the region.
+        # The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Specifies which type of the disk to reset for cloud desktops in the desktop group.
+        # The reset option of the shared group.
+        # 
+        # Valid values:
+        # 
+        # *   0: Reset is not required.
+        # *   1: Only the system disk is reset.
+        # *   2: Only the data disk is reset.
+        # *   3: Both the system disk and the data disk are reset.
         self.reset_type = reset_type
         # The ID of the scaling policy.
         # 
-        # > This parameter is unavailable.
+        # >  This parameter is not publicly available.
         self.scale_strategy_id = scale_strategy_id
+        # The type of the session.
+        # 
+        # Valid values:
+        # 
+        # *   SingleSession
+        # *   MultipleSession
         self.session_type = session_type
+        # The ID of the automatic snapshot policy.
         self.snapshot_policy_id = snapshot_policy_id
-        # The period of time before the idle cloud desktop is stopped. When the specified period of time is reached, the idle cloud desktop automatically stops. If an end user connects to a stopped cloud desktop, the cloud desktop automatically starts. Unit: milliseconds.
+        # The maximum period of inactivity allowed before a cloud computer is automatically stopped. If the idle duration reaches the specified limit, the system stops the cloud computer. When an end user reconnects to the stopped cloud computer, it automatically restarts. Unit: milliseconds.
         self.stop_duration = stop_duration
+        # The category of the system disk.
+        # 
+        # Valid values:
+        # 
+        # *   cloud_auto: the standard SSD.
+        # *   cloud_essd: the Enterprise SSD (ESSD).
         self.system_disk_category = system_disk_category
+        # The performance level (PL) of the system disk of the ESSD category. Default value: PL0.
+        # 
+        # Valid values:
+        # 
+        # *   PL1
+        # *   PL0
         self.system_disk_per_level = system_disk_per_level
+        # The size of the system disk. Unit: GiB.
+        # 
+        # >  The system disk must be at least as large as the image.
         self.system_disk_size = system_disk_size
-        # The tags that you want to attach to the cloud computer pool. You can specify 1 to 20 tags.
+        # The tags. You can specify up to 20 tags.
         self.tag = tag
+        # The ID of the timer group.
         self.timer_group_id = timer_group_id
         # Specifies whether to enable disk encryption.
         self.volume_encryption_enabled = volume_encryption_enabled
         # The ID of the Key Management Service (KMS) key that you want to use when disk encryption is enabled. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to obtain a list of KMS keys.
         self.volume_encryption_key = volume_encryption_key
-        # The ID of the virtual private cloud (VPC) in which you want to create the desktop group.
+        # The ID of the virtual private cloud (VPC).
+        # 
+        # >  This parameter is not publicly available.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -7149,8 +7519,9 @@ class CreateDesktopGroupResponseBody(TeaModel):
         order_ids: List[str] = None,
         request_id: str = None,
     ):
-        # The ID of the desktop group.
+        # The ID of the shared group.
         self.desktop_group_id = desktop_group_id
+        # The IDs of the shared groups.
         self.desktop_group_ids = desktop_group_ids
         # The IDs of the orders.
         self.order_ids = order_ids
@@ -7554,14 +7925,40 @@ class CreateDesktopsRequestDesktopAttachment(TeaModel):
         system_disk_per_level: str = None,
         system_disk_size: int = None,
     ):
+        # The category of the data disk. Valid values:
+        # 
+        # *   cloud_auto: SSD
+        # *   cloud_essd: ESSD
         self.data_disk_category = data_disk_category
+        # The performance level of the data disk. Valid values:
+        # 
+        # - PL0 (default)
+        # - PL1
         self.data_disk_per_level = data_disk_per_level
+        # The size of the data disk. Unit: GiB.
         self.data_disk_size = data_disk_size
+        # The default display language:
+        # 
+        # - zh-CN: Simplified Chinese
+        # - zh-HK: Traditional Chinese
+        # - en-US: English
+        # - ja-JP: Japanese
         self.default_language = default_language
+        # The desktop type. You can call the [DescribeDesktopTypes](~~DescribeDesktopTypes~~) operation to query the IDs of supported desktop types.
         self.desktop_type = desktop_type
+        # The ID of the image.
         self.image_id = image_id
+        # The category of the system disk. Valid values:
+        # 
+        # *   cloud_auto: SSD
+        # *   cloud_essd: ESSD
         self.system_disk_category = system_disk_category
+        # The performance level of the system disk. Valid values:
+        # 
+        # - PL0 (default)
+        # - PL1
         self.system_disk_per_level = system_disk_per_level
+        # The size of the system disk. Unit: GiB.
         self.system_disk_size = system_disk_size
 
     def validate(self):
@@ -7972,6 +8369,7 @@ class CreateDesktopsRequest(TeaModel):
         # 
         #     <!-- -->
         self.charge_type = charge_type
+        # The input parameters used when no templates are used.
         self.desktop_attachment = desktop_attachment
         # The private IP address of the cloud computer.
         self.desktop_member_ip = desktop_member_ip
@@ -8055,11 +8453,15 @@ class CreateDesktopsRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The ID of the saving plan.
         self.saving_plan_id = saving_plan_id
+        # The ID of the auto-snapshot policy.
         self.snapshot_policy_id = snapshot_policy_id
         # The tags that you want to add to the cloud desktop.
         self.tag = tag
+        # The ID of the timer group.
         self.timer_group_id = timer_group_id
         # How the cloud computers are assigned.
         # 
@@ -8726,6 +9128,7 @@ class CreateDesktopsShrinkRequest(TeaModel):
         # 
         #     <!-- -->
         self.charge_type = charge_type
+        # The input parameters used when no templates are used.
         self.desktop_attachment_shrink = desktop_attachment_shrink
         # The private IP address of the cloud computer.
         self.desktop_member_ip = desktop_member_ip
@@ -8809,11 +9212,15 @@ class CreateDesktopsShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The ID of the saving plan.
         self.saving_plan_id = saving_plan_id
+        # The ID of the auto-snapshot policy.
         self.snapshot_policy_id = snapshot_policy_id
         # The tags that you want to add to the cloud desktop.
         self.tag = tag
+        # The ID of the timer group.
         self.timer_group_id = timer_group_id
         # How the cloud computers are assigned.
         # 
@@ -10845,6 +11252,14 @@ class CreatePolicyGroupRequest(TeaModel):
         # *   HostName: the rightmost 15 digits of the cloud computer ID.
         # *   ClientTime: the current time displayed on the cloud computer.
         self.watermark_type = watermark_type
+        # Specifies whether to provide the AI Assistant function in the DesktopAssistant when the cloud computer is accessed from the Alibaba Cloud Workspace desktop clients (including the Windows client and the macOS client).
+        # 
+        # > Desktop clients of V7.7 and higher versions required.
+        # 
+        # Valid values:
+        # 
+        # - off: the AI Aisstant function is not provided.
+        # - on: the AI Aisstant function is provided.
         self.wy_assistant = wy_assistant
 
     def validate(self):
@@ -12519,7 +12934,9 @@ class DeleteConfigGroupRequest(TeaModel):
         group_ids: List[str] = None,
         region_id: str = None,
     ):
+        # The IDs of the configuration groups that you want to delete.
         self.group_ids = group_ids
+        # The ID of the region. Set the value to `cn-shanghai`.
         self.region_id = region_id
 
     def validate(self):
@@ -12551,6 +12968,7 @@ class DeleteConfigGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -13956,6 +14374,7 @@ class DescribeAclEntriesRequest(TeaModel):
         self.max_results = max_results
         # The token that is used for the next query. If this parameter is empty, all results have been returned.
         self.next_token = next_token
+        # The office network ID.
         self.office_site_id = office_site_id
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
         # 
@@ -14469,7 +14888,7 @@ class DescribeBundlesRequest(TeaModel):
         # *   eds.hf: instance families with high clock speeds
         # *   eds.general: general-purpose instance families
         self.desktop_type_family = desktop_type_family
-        # This parameter is now in invitational preview and not publicly available.
+        # >  This parameter is not available for public use.
         self.fota_channel = fota_channel
         # Specifies whether the cloud computers in the template belong to a cloud computer pool.
         # 
@@ -14493,8 +14912,16 @@ class DescribeBundlesRequest(TeaModel):
         self.from_desktop_group = from_desktop_group
         # The number of GPUs contained in the cloud computer instance type.
         self.gpu_count = gpu_count
+        # The GPU driver type.
+        # 
+        # Valid values:
+        # 
+        # *   T4
+        # *   A10
+        # *   G28
+        # *   G39
         self.gpu_driver_type = gpu_driver_type
-        # The image ID.
+        # The image IDs.
         self.image_id = image_id
         # The number of entries to return on each page.
         # 
@@ -14533,7 +14960,7 @@ class DescribeBundlesRequest(TeaModel):
         # *   HDX: High-definition Experience (HDX) protocol
         # *   ASP: in-house Adaptive Streaming Protocol (ASP) (recommend)
         self.protocol_type = protocol_type
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by Elastic Desktop Service (EDS).
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -14541,11 +14968,10 @@ class DescribeBundlesRequest(TeaModel):
         self.scope = scope
         # The desktop template that is selected based on specific criteria.
         self.selected_bundle = selected_bundle
-        # The type of the session.
+        # The type of the session. Valide values:
         # 
-        # Enumeration Value:
-        # * **SingleSession**\
-        # * **MultipleSession**\
+        # - SingleSession
+        # - MultipleSession
         self.session_type = session_type
         # Specifies whether to return multi-session cloud computer templates. Default value: false.
         self.support_multi_session = support_multi_session
@@ -14847,6 +15273,11 @@ class DescribeBundlesResponseBodyBundles(TeaModel):
         self.bundle_type = bundle_type
         # The time when the cloud computer template was created.
         self.creation_time = creation_time
+        # The category of the data disk. Valid values:
+        # 
+        # *   cloud_efficiency: ultra disk
+        # *   cloud_auto: SSD
+        # *   cloud_essd: ESSD (supported by specific specifications)
         self.data_disk_category = data_disk_category
         # The description of the cloud computer template.
         self.description = description
@@ -14871,6 +15302,13 @@ class DescribeBundlesResponseBodyBundles(TeaModel):
         # The status of the image.
         self.image_status = image_status
         # The OS language of the image.
+        # 
+        # Valid values:
+        # 
+        # *   en-US: English
+        # *   zh-HK: Chinese, Traditional (Hong Kong, China)
+        # *   zh-CN: Simplified Chinese
+        # *   ja-JP: Japanese
         self.language = language
         # The type of the OS.
         # 
@@ -14960,6 +15398,11 @@ class DescribeBundlesResponseBodyBundles(TeaModel):
         self.session_type = session_type
         # The inventory status of the cloud computer instance type. This parameter is returned only if you set the `CheckStock` parameter to `true`.
         self.stock_state = stock_state
+        # The category of the system disk. Valid values:
+        # 
+        # *   cloud_efficiency: ultra disk
+        # *   cloud_auto: SSD
+        # *   cloud_essd: ESSD (supported by specific specifications)
         self.system_disk_category = system_disk_category
         # Indicates whether disk encryption is enabled.
         self.volume_encryption_enabled = volume_encryption_enabled
@@ -15088,7 +15531,7 @@ class DescribeBundlesResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The details of the queried cloud computer templates.
+        # The details of the cloud computer templates.
         self.bundles = bundles
         # The token that is used for the next query. If this parameter is empty, all results have been returned.
         self.next_token = next_token
@@ -15942,6 +16385,7 @@ class DescribeClientEventsResponseBodyEvents(TeaModel):
         self.client_os = client_os
         # The client version.
         self.client_version = client_version
+        # The description.
         self.description = description
         # The desktop group ID.
         self.desktop_group_id = desktop_group_id
@@ -16974,14 +17418,31 @@ class DescribeConfigGroupRequest(TeaModel):
         statuses: List[str] = None,
         type: str = None,
     ):
+        # The ID of the configuration group.
         self.group_id = group_id
+        # The IDs of the configuration groups.
         self.group_ids = group_ids
+        # The name of the configuration group.
         self.name = name
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The service type of the configuration group.
+        # 
+        # Valid value:
+        # 
+        # *   CLOUD_DESKTOP: the cloud computer service.
         self.product_type = product_type
+        # The ID of the region. Set the value to `cn-shanghai`.
         self.region_id = region_id
+        # The status of the configuration groups.
         self.statuses = statuses
+        # The type of the configuration group.
+        # 
+        # Valid value:
+        # 
+        # *   Timer: the scheduled task type.
         self.type = type
 
     def validate(self):
@@ -17048,13 +17509,36 @@ class DescribeConfigGroupResponseBodyData(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # The number of resources that are bound to the configuration group.
         self.bind_count = bind_count
+        # The number of bound cloud computers.
         self.bind_count_map = bind_count_map
+        # The description of the configuration group.
         self.description = description
+        # The ID of the configuration group.
         self.group_id = group_id
+        # The name of the configuration group.
         self.name = name
+        # The service type of the configuration group.
+        # 
+        # Valid values:
+        # 
+        # *   CLOUD_DESKTOP: the cloud computer service.
         self.product_type = product_type
+        # The state of the configuration group.
+        # 
+        # Valid values:
+        # 
+        # *   AVAILABLE: The configuration group is available.
+        # *   UNAVAILABLE: The configuration group is deleted.
+        # *   DELETING: The configuration group is being deleted.
+        # *   UPDATING: The configuration group is being modified.
         self.status = status
+        # The type of the configuration group.
+        # 
+        # Valid values:
+        # 
+        # *   Timer: the scheduled task type.
         self.type = type
 
     def validate(self):
@@ -17114,10 +17598,15 @@ class DescribeConfigGroupResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The configuration groups.
         self.data = data
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -19593,6 +20082,7 @@ class DescribeDesktopSessionsRequest(TeaModel):
         self.end_time = end_time
         # The ID of the end user.
         self.end_user_id = end_user_id
+        # The ID the end user. It is the same as EndUserId. Either one of these two parameters is required.
         self.end_user_id_filter = end_user_id_filter
         # The ID of the office network.
         self.office_site_id = office_site_id
@@ -20154,10 +20644,18 @@ class DescribeDesktopTypesRequest(TeaModel):
         # 
         #     <!-- -->
         self.desktop_type_id = desktop_type_id
+        # The array of specifications.
         self.desktop_type_id_list = desktop_type_id_list
         # The number of GPUs.
         self.gpu_count = gpu_count
+        # The type of the pre-installed GPU driver. Valid values:
+        # 
+        # - T4
+        # - A10
+        # - G28
+        # - G39
         self.gpu_driver_type = gpu_driver_type
+        # The GPU memory size. Unit: MB.
         self.gpu_memory = gpu_memory
         # The name of the instance family.
         # 
@@ -20223,6 +20721,10 @@ class DescribeDesktopTypesRequest(TeaModel):
         self.instance_type_family = instance_type_family
         # The memory size. Unit: MiB.
         self.memory_size = memory_size
+        # The sort criterion. If left empty, the entries will be in descending order based on the creation time. Valid values:
+        # 
+        # - Memory: sort by memory size
+        # - Cpu: sort by number of CPU cores
         self.order_by = order_by
         # The order type.
         self.order_type = order_type
@@ -20230,9 +20732,19 @@ class DescribeDesktopTypesRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The sales mode. Valid values:
+        # 
+        # - MonthPackage: monthly subscription
+        # - FastBuy: fast buy
         self.scope = scope
+        # The sort order. Valid values:
+        # 
+        # - ASC: in ascending order [default]
+        # - DESC: in descending order
         self.sort_type = sort_type
+        # The number of sessions supported.
         self.support_min_session_count = support_min_session_count
+        # > This parameter is not publicly available.
         self.zone_id = zone_id
 
     def validate(self):
@@ -20350,15 +20862,19 @@ class DescribeDesktopTypesResponseBodyDesktopTypes(TeaModel):
         self.desktop_type_status = desktop_type_status
         # The number of GPUs.
         self.gpu_count = gpu_count
+        # The GPU memory size. Unit: MB. This parameter applies to GPU-enabled cloud computers only.
         self.gpu_memory = gpu_memory
         # The GPU memory.
         self.gpu_spec = gpu_spec
         # The family of the cloud desktop type.
         self.instance_type_family = instance_type_family
+        # The number of sessions supported by the current specification.
         self.max_session_count = max_session_count
         # The memory size. Unit: MiB.
         self.memory_size = memory_size
+        # The array of sales modes.
         self.scopes = scopes
+        # The stock status.
         self.stock_state = stock_state
         # The size of the system disk. Unit: GiB.
         self.system_disk_size = system_disk_size
@@ -20521,9 +21037,9 @@ class DescribeDesktopsRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. If you specify the `Tag` parameter, you must also specify the `Key` parameter. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`. You cannot specify an empty string as a tag key.
+        # The tag key. If you specify the `Tag` parameter, you must also specify the `Key` parameter. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun` and contain only spaces.
         self.key = key
-        # The value of the tag. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
+        # The tag value. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:` or `aliyun`.
         self.value = value
 
     def validate(self):
@@ -20590,37 +21106,58 @@ class DescribeDesktopsRequest(TeaModel):
         tag: List[DescribeDesktopsRequestTag] = None,
         user_name: str = None,
     ):
-        # The billing method of the cloud desktop.
+        # The billing method of the cloud computer.
+        # 
+        # Valid values:
+        # 
+        # *   Postpaid (default): pay-as-you-go
+        # *   PrePaid: subscription
         self.charge_type = charge_type
-        # The ID of the desktop group. If you specify the `DesktopId` parameter, ignore the `DesktopGroupId` parameter. If you do not specify the `DesktopId` parameter, specify the `DesktopGroupId` parameter in the call to request all IDs of the cloud desktops in the specified desktop group.
+        # The ID of the cloud computer pool. If you specify `OnlyDesktopGroup`, ignore `DesktopGroupId`. If you leave `DesktopId` empty, all IDs of the cloud computers in the cloud computer pool are queried.````
         self.desktop_group_id = desktop_group_id
-        # The IDs of the cloud desktops. You can specify 1 to 100 cloud desktop IDs.
+        # The cloud computer IDs. You can specify the IDs of 1 to 100 cloud computers.
         self.desktop_id = desktop_id
-        # The name of the cloud desktop.
+        # The cloud computer name.
         self.desktop_name = desktop_name
-        # The status of the cloud desktop.
+        # The cloud computer status.
+        # 
+        # Valid values:
+        # 
+        # *   Stopped
+        # *   Starting
+        # *   Rebuilding
+        # *   Running
+        # *   Stopping
+        # *   Expired
+        # *   Deleted
+        # *   Pending
         self.desktop_status = desktop_status
-        # The list of desktop status.
+        # The list of cloud computer status.
         self.desktop_status_list = desktop_status_list
-        # The new desktop type. You can call the [DescribeDesktopTypes](~~DescribeDesktopTypes~~) operation to query the IDs of supported desktop types.
+        # The cloud computer type. You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the IDs of all supported types.
         self.desktop_type = desktop_type
-        # The ID of the directory, The ID is the same as the workspace ID.
+        # The directory ID, which is the same as the office network ID.
         self.directory_id = directory_id
-        # The IDs of the end users that are assigned the cloud desktop. You can specify 1 to 100 end user IDs.
+        # The authorized users of the cloud computer. You can specify the IDs of 1 to 100 users.
         # 
-        # > Only one end user can use the cloud desktop at a time.
+        # >  During a specific period of time, only one user can connect to and use the cloud computer.
         self.end_user_id = end_user_id
-        # The IDs of the end users that are excluded from the end users that are assigned the cloud desktop. You can specify 1 to 100 end user IDs.
+        # The list of authorized users that you want to exclude from the cloud computer. You can specify the IDs of 1 to 100 users.
         self.excluded_end_user_id = excluded_end_user_id
-        # The time when the subscription cloud desktop expires.
+        # The time when a subscription cloud computer expires.
         self.expired_time = expired_time
+        # Specifies whether to query the information about the enterprise resource group.
         self.fill_resource_group = fill_resource_group
-        # Specifies whether to filter cloud desktops in the desktop group.
-        self.filter_desktop_group = filter_desktop_group
-        self.gpu_instance_group_id = gpu_instance_group_id
-        # The ID of the desktop group.
+        # Specifies whether to exclude pooled cloud computers.
         # 
-        # > The desktop group feature is in invitational preview. If you want to use this feature, submit a ticket.
+        # Valid values:
+        # 
+        # *   true (default)
+        # *   false
+        self.filter_desktop_group = filter_desktop_group
+        # The ID of the elastic GPU pool.
+        self.gpu_instance_group_id = gpu_instance_group_id
+        # The ID of the cloud computer pool.
         self.group_id = group_id
         # The IDs of the images.
         self.image_id = image_id
@@ -20631,35 +21168,63 @@ class DescribeDesktopsRequest(TeaModel):
         # *   Maximum value: 100
         # *   Default value: 10
         self.max_results = max_results
+        # Specifies whether the shared group is a multi-cloud computer type.
+        # 
+        # Valid values:
+        # 
+        # - true: a multi-cloud computer type.
+        # - false: a single-cloud computer type.
         self.multi_resource = multi_resource
         # The token that determines the start point of the next query. If this parameter is left empty, all results are returned.
         self.next_token = next_token
-        # The ID of the workspace.
+        # The office network ID.
         self.office_site_id = office_site_id
-        # The name of the workspace.
+        # The office network name.
         self.office_site_name = office_site_name
-        # The progress when the cloud desktop was created.
+        # Specifies whether to query pooled cloud computers.
         self.only_desktop_group = only_desktop_group
-        # The types of the OSs.
+        # The operating systems (OSs).
         self.os_types = os_types
+        # The page number.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
-        # The ID of the policy.
+        # The ID of the cloud computer policy.
         self.policy_group_id = policy_group_id
-        # The type of the protocol.
+        # The protocol.
+        # 
+        # Valid values:
+        # 
+        # *   HDX: High-definition Experience (HDX) protocol
+        # *   ASP: in-house Adaptive Streaming Protocol (ASP) (recommended)
         self.protocol_type = protocol_type
+        # The ID of the network throttling rule.
         self.qos_rule_id = qos_rule_id
-        # Specifies whether to query the information about image update of the cloud desktop.
+        # Specifies whether to query the image update information about the cloud computer.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false (default)
         self.query_fota_update = query_fota_update
-        # The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by Elastic Desktop Service (EDS).
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the enterprise resource group.
         self.resource_group_id = resource_group_id
         # The ID of the snapshot policy.
         self.snapshot_policy_id = snapshot_policy_id
+        # The billing method of the cloud computer.
+        # 
+        # Valid values:
+        # 
+        # *   duration: hourly plan (available for users in the whitelist)
+        # *   postPaid: pay-as-you-go
+        # *   monthPackage: monthly subscription (120-hour or 250-hour computing plan)
+        # *   prePaid: monthly subscription (unlimited-hour computing plan)
         self.sub_pay_type = sub_pay_type
-        # The tags. A tag is a key-value pair that consists of a tag key and a tag value. Tags are used to identify resources. You can use tags to manage cloud desktops by group for easy searching and batch operations. For more information, see [Use tags to manage cloud desktops](https://help.aliyun.com/document_detail/203781.html).
+        # The tags that you want to add to the cloud computer. A tag is a key-value pair that consists of a tag key and a tag value. Tags are used to identify resources. You can use tags to manage cloud computers by group. This facilitates search and batch operations. For more information, see [Use tags to manage cloud computers](https://help.aliyun.com/document_detail/203781.html).
         self.tag = tag
         # The name of the end user.
         self.user_name = user_name
@@ -20841,6 +21406,11 @@ class DescribeDesktopsResponseBodyDesktopsDisks(TeaModel):
         disk_type: str = None,
         performance_level: str = None,
     ):
+        # The type of the disk. Valid values:
+        # 
+        # *   cloud_efficiency: ultra disk.
+        # *   cloud_auto: standard SSD.
+        # *   cloud_essd: enhanced SSD (ESSD).
         self.disk_category = disk_category
         # The disk ID.
         self.disk_id = disk_id
@@ -20866,14 +21436,16 @@ class DescribeDesktopsResponseBodyDesktopsDisks(TeaModel):
         # 
         #     <!-- -->
         self.disk_type = disk_type
-        # The performance level (PL) of the disk when an enhanced SSD (ESSD) is used. Valid values:
+        # The performance level (PL) of the disk when an enterprise SSD (ESSD) is used.
         # 
-        # *   PL0
+        # For more information about the differences among enterprise SSDs (ESSDs) at different PLs, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
+        # 
+        # Valid values:
+        # 
         # *   PL1
-        # *   PL2
+        # *   PL0
         # *   PL3
-        # 
-        # For more information about the differences among ESSDs at different PLs, see [Enhanced SSDs](https://help.aliyun.com/document_detail/122389.html).
+        # *   PL2
         self.performance_level = performance_level
 
     def validate(self):
@@ -20922,13 +21494,13 @@ class DescribeDesktopsResponseBodyDesktopsFotaUpdate(TeaModel):
         release_note_jp: str = None,
         size: int = None,
     ):
-        # The current image version of the cloud desktop.
+        # The current image version of the cloud computer.
         self.current_app_version = current_app_version
-        # The image version to which the cloud desktop can be updated.
+        # The version number to which the image of the cloud computer can be updated.
         self.new_app_version = new_app_version
-        # The description of the image version to which the cloud desktop can be updated.
+        # The description of the version to which the image of the cloud computer can be updated.
         self.release_note = release_note
-        # The English description of the image version to which the cloud desktop can be updated.
+        # The English description of the version to which the image of the cloud computer can be updated.
         self.release_note_en = release_note_en
         # The Japanese description of the image version to which the cloud desktop can be updated.
         self.release_note_jp = release_note_jp
@@ -20981,7 +21553,9 @@ class DescribeDesktopsResponseBodyDesktopsResourceGroups(TeaModel):
         id: str = None,
         name: str = None,
     ):
+        # The ID of the enterprise resource group.
         self.id = id
+        # The name of the enterprise resource group.
         self.name = name
 
     def validate(self):
@@ -21015,9 +21589,9 @@ class DescribeDesktopsResponseBodyDesktopsSessions(TeaModel):
         establishment_time: str = None,
         external_user_name: str = None,
     ):
-        # The ID of the end user who logged on to the cloud desktop.
+        # The ID of the end user that connects to the cloud computer.
         self.end_user_id = end_user_id
-        # The time when the desktop session was established.
+        # The time when the cloud computer session was established.
         self.establishment_time = establishment_time
         # The name of the external user.
         self.external_user_name = external_user_name
@@ -21150,31 +21724,18 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
         volume_encryption_key: str = None,
         zone_type: str = None,
     ):
-        # The number of sessions that are allowed for each cloud desktop in the multi-session desktop group.
+        # The number of concurrent sessions of each cloud computer in a multi-session cloud computer pool.
         self.bind_amount = bind_amount
-        # The ID of the desktop template that is used to create the cloud desktop.
+        # The ID of the template used to create the cloud computer.
         self.bundle_id = bundle_id
-        # The name of the desktop template that is used to create the cloud desktop.
+        # The name of the template used to create the cloud computer.
         self.bundle_name = bundle_name
-        # The billing method of the cloud desktop.
+        # The billing method of the cloud computer.
         # 
-        # Default value: PostPaid. Valid values:
+        # Valid values:
         # 
-        # *   Postpaid: pay-as-you-go
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
+        # *   Postpaid (default): pay-as-you-go
         # *   PrePaid: subscription
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.charge_type = charge_type
         # The connection status of the end user.
         # 
@@ -21206,43 +21767,43 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
         self.connection_status = connection_status
         # The number of vCPUs.
         self.cpu = cpu
-        # The time when the cloud desktop was created.
+        # The time when the cloud computer was created.
         self.creation_time = creation_time
         # >  This parameter is in invitational preview and is not publicly available.
         self.data_disk_category = data_disk_category
         # >  This parameter is in invitational preview and is not publicly available.
         self.data_disk_size = data_disk_size
-        # The ID of the desktop group to which the cloud desktop belongs. Default value: null.
+        # The ID of the cloud computer pool to which cloud computers belong. Default value: null.``
         self.desktop_group_id = desktop_group_id
-        # The cloud desktop ID.
+        # The cloud computer ID.
         self.desktop_id = desktop_id
-        # The cloud desktop name.
+        # The cloud computer name.
         self.desktop_name = desktop_name
-        # The status of the cloud desktop.
+        # The cloud computer status.
         self.desktop_status = desktop_status
-        # The type of the cloud desktop.
+        # The cloud computer type.
         self.desktop_type = desktop_type
-        # The directory ID. The value of this parameter is the same as the workspace ID that is indicated by the OfficeSiteId parameter.
+        # The directory ID, which is the same as the office network ID (OfficeSiteId).
         self.directory_id = directory_id
         # >  This parameter is in invitational preview and is not publicly available.
         self.directory_type = directory_type
-        # Details of the disks.
+        # The information about the disks.
         self.disks = disks
         # The number of times for which the cloud desktop can be downgraded.
         self.downgrade_quota = downgrade_quota
         # The number of times for which the cloud desktop has been downgraded.
         self.downgraded_times = downgraded_times
-        # The IDs of the end users who are authorized to connect to the cloud desktop.
+        # The end user IDs.
         self.end_user_ids = end_user_ids
-        # The time when the subscription cloud desktop expires.
+        # The time when a subscription cloud computer expired.
         self.expired_time = expired_time
-        # The information about the image version that the cloud desktop uses.
+        # The information about the image version of the cloud computer.
         self.fota_update = fota_update
-        # Indicates whether the cloud desktop is a GPU-accelerated desktop.
+        # Indicates whether the cloud computer uses GPUs.
         self.gpu_category = gpu_category
         # The number of GPU cores.
         self.gpu_count = gpu_count
-        # The version number of the GPU driver of the cloud desktop.
+        # The GPU driver version used by the cloud computer.
         self.gpu_driver_version = gpu_driver_version
         # The GPU Specifications.
         self.gpu_spec = gpu_spec
@@ -21254,126 +21815,72 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
         self.host_name = host_name
         # The image ID.
         self.image_id = image_id
-        # The flag that is used to manage the cloud desktop.
+        # The flag that is used to manage the cloud computer.
         # 
         # Valid values:
         # 
-        # *   Updating: The configurations of the cloud desktop are being updated.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
+        # *   Migrating: The cloud computer is being migrated.
+        # *   Updating: The configurations of the cloud computer are being updated.
         # *   NoFlag: No flags are available.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.management_flag = management_flag
-        # The flags that are used to manage the cloud desktops.
+        # The flags that are used to manage the cloud computers.
         self.management_flags = management_flags
         # The memory size. Unit: MiB.
         self.memory = memory
-        # The ID of the secondary network interface controller (NIC) created by the RAM or Active Directory (AD) user in Elastic Desktop Service (EDS). You do not have permissions to modify this parameter.
+        # The ID of the supplementary network interface controller (NIC) created by EDS within an RAM user or Active Directory (AD) user. You cannot modify the ID.
         self.network_interface_id = network_interface_id
-        # The IP address of the secondary NIC that is created by the RAM or AD user in EDS.
+        # The IP address of the supplementary NIC created by EDS within an RAM or AD user.
         self.network_interface_ip = network_interface_ip
-        # The workspace ID.
+        # The office network ID.
         self.office_site_id = office_site_id
-        # The workspace name.
+        # The office network name.
         self.office_site_name = office_site_name
-        # The account type of the workspace.
+        # The account type of the office network.
         # 
         # Valid values:
         # 
         # *   SIMPLE: convenience account
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   AD_CONNECTOR: enterprise AD account
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.office_site_type = office_site_type
-        # The virtual private cloud (VPC) type of the workspace.
+        # The VPC type of the office network.
         # 
         # Valid values:
         # 
         # *   standard
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   customized
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   basic
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.office_site_vpc_type = office_site_vpc_type
         # The OS that is defined in the desktop template.
         self.os_type = os_type
-        # The information about the OS platform. Valid values:
+        # The information about the OS platform.
         # 
-        # *   CentOS
+        # Valid values:
+        # 
         # *   Ubuntu
-        # *   Windows Server 2016
-        # *   Windows Server 2019
+        # *   Windows Server 2022
         # *   UOS
+        # *   CentOS
+        # *   Windows Server 2019
+        # *   Windows Server 2016
         self.platform = platform
         # The policy ID.
         self.policy_group_id = policy_group_id
-        # The policy IDs.
+        # The IDs of the cloud computer policies.
         self.policy_group_id_list = policy_group_id_list
         # The policy name.
         self.policy_group_name = policy_group_name
-        # The policy names.
+        # The names of the cloud computer policies.
         self.policy_group_name_list = policy_group_name_list
-        # The progress when the cloud desktop was created.
+        # The progress of creating the cloud computer.
         self.progress = progress
         # The protocol.
         # 
         # Valid values:
         # 
-        # *   HDX: High-definition Experience (HDX) protocol
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   ASP: Adaptive Streaming Protocol (ASP) developed by Alibaba Cloud
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # *   HDX
+        # *   ASP
         self.protocol_type = protocol_type
+        # The information about the enterprise resource groups.
         self.resource_groups = resource_groups
         # The type of the session.
         # 
@@ -21395,14 +21902,15 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
         # 
         #     <!-- -->
         self.session_type = session_type
-        # The information about the desktop sessions of end users.
+        # The session information about cloud computers connected by end users.
         self.sessions = sessions
-        # The ID of the snapshot policy.
+        # The snapshot policy ID.
         self.snapshot_policy_id = snapshot_policy_id
         # The name of the snapshot policy.
         self.snapshot_policy_name = snapshot_policy_name
+        # The standard start time.
         self.standard_start_time = standard_start_time
-        # The time when the cloud desktop was first started.
+        # The time when the cloud computer was first started.
         self.start_time = start_time
         # Indicates whether the cloud desktop supports hibernation.
         self.support_hibernation = support_hibernation
@@ -21416,7 +21924,7 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
         self.volume_encryption_enabled = volume_encryption_enabled
         # The ID of the Key Management Service (KMS) key that is used when disk encryption is enabled. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to query the list of KMS keys.
         self.volume_encryption_key = volume_encryption_key
-        # The zone type. Default value: **AvailabilityZone**. This value indicates Alibaba Cloud zones.
+        # The zone type. Default value: `AvailabilityZone`. This value indicates Alibaba Cloud zones.
         self.zone_type = zone_type
 
     def validate(self):
@@ -21727,15 +22235,17 @@ class DescribeDesktopsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details about the cloud desktops.
+        # The information about the cloud computers.
         self.desktops = desktops
         # The token that is used for the next query. If this parameter is left empty, all results are returned.
         self.next_token = next_token
+        # The page number.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # The total number of cloud desktops.
+        # The total number of cloud computers.
         self.total_count = total_count
 
     def validate(self):
@@ -21830,6 +22340,8 @@ class DescribeDesktopsResponse(TeaModel):
 class DescribeDesktopsInGroupRequest(TeaModel):
     def __init__(
         self,
+        custom_end_time_period: int = None,
+        custom_start_time_period: int = None,
         desktop_group_id: str = None,
         ignore_deleted: bool = None,
         max_results: int = None,
@@ -21837,6 +22349,8 @@ class DescribeDesktopsInGroupRequest(TeaModel):
         pay_type: str = None,
         region_id: str = None,
     ):
+        self.custom_end_time_period = custom_end_time_period
+        self.custom_start_time_period = custom_start_time_period
         # The ID of the cloud computer pool.
         # 
         # This parameter is required.
@@ -21868,6 +22382,10 @@ class DescribeDesktopsInGroupRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.custom_end_time_period is not None:
+            result['CustomEndTimePeriod'] = self.custom_end_time_period
+        if self.custom_start_time_period is not None:
+            result['CustomStartTimePeriod'] = self.custom_start_time_period
         if self.desktop_group_id is not None:
             result['DesktopGroupId'] = self.desktop_group_id
         if self.ignore_deleted is not None:
@@ -21884,6 +22402,10 @@ class DescribeDesktopsInGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CustomEndTimePeriod') is not None:
+            self.custom_end_time_period = m.get('CustomEndTimePeriod')
+        if m.get('CustomStartTimePeriod') is not None:
+            self.custom_start_time_period = m.get('CustomStartTimePeriod')
         if m.get('DesktopGroupId') is not None:
             self.desktop_group_id = m.get('DesktopGroupId')
         if m.get('IgnoreDeleted') is not None:
@@ -23372,8 +23894,11 @@ class DescribeDirectoriesResponseBodyDirectories(TeaModel):
     ):
         # Details of the AD connector.
         self.adconnectors = adconnectors
+        # The hostname of the domain controller.
         self.ad_hostname = ad_hostname
+        # The hostname of the backup domain controller.
         self.backup_dchostname = backup_dchostname
+        # The DNS address of the backup domain controller.
         self.backup_dns = backup_dns
         # The time when the directory was created.
         self.creation_time = creation_time
@@ -25919,6 +26444,12 @@ class DescribeInvocationsRequest(TeaModel):
         self.desktop_ids = desktop_ids
         # The ID of the end user.
         self.end_user_id = end_user_id
+        # Specifies whether to return the execution results of all cloud computers if the command is executed on multiple cloud computers.
+        # 
+        # Valid values:
+        # 
+        # - true: returned.
+        # - false: not returned.
         self.include_invoke_desktops = include_invoke_desktops
         # Specifies whether to return command outputs in the response. Valid values:
         # 
@@ -26213,7 +26744,9 @@ class DescribeInvocationsResponseBodyInvocations(TeaModel):
         # 
         # *   PartialFailed: The execution succeeded on some cloud desktops and failed on others. If the execution status on different cloud desktops is Success, Failed, or Stopped, the overall execution state is PartialFailed.
         self.invocation_status = invocation_status
+        # The total number of cloud computers on which the command is executed.
         self.invoke_desktop_count = invoke_desktop_count
+        # The total number of cloud computers on which the command is executed successfully.
         self.invoke_desktop_succeed_count = invoke_desktop_succeed_count
         # The cloud desktops on which the command is executed.
         self.invoke_desktops = invoke_desktops
@@ -26954,7 +27487,9 @@ class DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups(TeaModel):
         app_instance_group_id: str = None,
         app_instance_group_name: str = None,
     ):
+        # The ID of the delivery group.
         self.app_instance_group_id = app_instance_group_id
+        # The name of the delivery group.
         self.app_instance_group_name = app_instance_group_name
 
     def validate(self):
@@ -27022,7 +27557,9 @@ class DescribeNASFileSystemsResponseBodyFileSystemsOfficeSites(TeaModel):
         office_site_id: str = None,
         office_site_name: str = None,
     ):
+        # The ID of the office network.
         self.office_site_id = office_site_id
+        # The name of the office network.
         self.office_site_name = office_site_name
 
     def validate(self):
@@ -27076,7 +27613,9 @@ class DescribeNASFileSystemsResponseBodyFileSystems(TeaModel):
         support_acl: bool = None,
         zone_id: str = None,
     ):
+        # > This parameter is not publicly available.
         self.allow_operate_user_drive = allow_operate_user_drive
+        # The array of the app steaming delivery groups bound with UPM-supported NAS.
         self.app_instance_groups = app_instance_groups
         # The total capacity of the NAS file system. Unit: GiB.
         # 
@@ -27122,11 +27661,16 @@ class DescribeNASFileSystemsResponseBodyFileSystems(TeaModel):
         self.office_site_id = office_site_id
         # The name of the workspace.
         self.office_site_name = office_site_name
+        # The array of office networks.
         self.office_sites = office_sites
         # Indicates whether the User Profile Management (UPM) feature is supported.
         self.profile_compatible = profile_compatible
         # The ID of the region.
         self.region_id = region_id
+        # The storage type of the NAS file system. Valid values:
+        # 
+        # - Upm: UPM NAS
+        # - ShareNas: Shared NAS
         self.scene = scene
         # The storage type of the NAS file system. Valid values:
         # 
@@ -28037,7 +28581,12 @@ class DescribeOfficeSitesResponseBodyOfficeSitesResourceAmounts(TeaModel):
         amount: int = None,
         resource_type: str = None,
     ):
+        # The amount of resources.
         self.amount = amount
+        # The resource type. Valid values:
+        # 
+        # - desktop: cloud computers
+        # - desktopGroup: shared cloud computers
         self.resource_type = resource_type
 
     def validate(self):
@@ -28126,6 +28675,7 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
     ):
         # Details of AD connectors.
         self.adconnectors = adconnectors
+        # The ID of the GA instance.
         self.accelerator_id = accelerator_id
         # The hostname of the domain controller. The hostname must comply with the hostname naming convention of Windows.
         self.ad_hostname = ad_hostname
@@ -28151,7 +28701,9 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         self.cloud_box_office_site = cloud_box_office_site
         # The time when the office network was created.
         self.creation_time = creation_time
+        # The custom gateway.
         self.custom_access_point = custom_access_point
+        # The array of custom DNS addresses.
         self.custom_dns_address = custom_dns_address
         # The ID of the security group.
         self.custom_security_group_id = custom_security_group_id
@@ -28211,6 +28763,10 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         self.need_verify_zero_device = need_verify_zero_device
         # The premium bandwidth plan ID.
         self.network_package_id = network_package_id
+        # The network version. App Streaming is supported by the new version. Valid values:
+        # 
+        # - DEFAULT: the legacy version
+        # - NM: the new version
         self.nm_version = nm_version
         # The IDs of the office networks.
         self.office_site_id = office_site_id
@@ -28236,6 +28792,7 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         self.rds_license_domain_name = rds_license_domain_name
         # The remote desktop service (RDS) license status.
         self.rds_license_status = rds_license_status
+        # The amount of resources.
         self.resource_amounts = resource_amounts
         # The security protection setting of the office network.
         # 
@@ -28281,6 +28838,7 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         self.total_eds_count = total_eds_count
         # The number of pooled cloud computers in the cloud computer pool.
         self.total_eds_count_for_group = total_eds_count_for_group
+        # The total number of network cards.
         self.total_resource_amount = total_resource_amount
         # >  This parameter is unavailable.
         self.trust_password = trust_password
@@ -28667,10 +29225,13 @@ class DescribePolicyGroupsRequest(TeaModel):
         external_policy_group_ids: List[str] = None,
         max_results: int = None,
         next_token: str = None,
+        page_number: int = None,
+        page_size: int = None,
         policy_group_id: List[str] = None,
         region_id: str = None,
         scope: str = None,
     ):
+        # The array of cloud computer policy IDs to be excluded.
         self.external_policy_group_ids = external_policy_group_ids
         # The number of entries per page.
         # 
@@ -28679,19 +29240,21 @@ class DescribePolicyGroupsRequest(TeaModel):
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
-        # The policy IDs. You can specify one or more policy IDs.
+        self.page_number = page_number
+        self.page_size = page_size
+        # The IDs of the cloud computer policies.
         self.policy_group_id = policy_group_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by Elastic Desktop Service (EDS).
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The effective scope of the policy. Valid values:
+        # The effective scope of the cloud computer policy.
         # 
-        # *   GLOBAL: The policy takes effect globally.
-        # *   IP: The policy takes effect based on the IP address.
-        # *   ALL: The policy takes effect without limits.
+        # Valid values:
         # 
-        # Default value: GLOBAL.
+        # *   ALL
+        # *   IP
+        # *   GLOBAL
         self.scope = scope
 
     def validate(self):
@@ -28709,6 +29272,10 @@ class DescribePolicyGroupsRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.policy_group_id is not None:
             result['PolicyGroupId'] = self.policy_group_id
         if self.region_id is not None:
@@ -28725,6 +29292,10 @@ class DescribePolicyGroupsRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('PolicyGroupId') is not None:
             self.policy_group_id = m.get('PolicyGroupId')
         if m.get('RegionId') is not None:
@@ -28799,7 +29370,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroupsAuthorizeSecurityPolic
         # Valid values:
         # 
         # *   drop: denies all access requests.
-        # *   accept: accepts all access requests.
+        # *   accept: accepts all requests.
         self.policy = policy
         # The port range of the security group rule.
         self.port_range = port_range
@@ -28868,13 +29439,12 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroupsClientTypes(TeaModel):
         # Valid values:
         # 
         # *   html5: web client
-        # *   linux: Alibaba Cloud Workspace hardware terminal
         # *   android: Android client
         # *   windows: Windows client
         # *   ios: iOS client
         # *   macos: macOS client
         self.client_type = client_type
-        # Indicates whether a specific type of client is allowed to connect to the cloud desktop.
+        # Indicates whether end users are allowed to use a specific type of the client to connect to cloud computers.
         # 
         # Valid values:
         # 
@@ -28912,7 +29482,20 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRedirects(TeaMod
         device_type: str = None,
         redirect_type: str = None,
     ):
+        # The peripheral type.
+        # 
+        # Valid values:
+        # 
+        # *   printer
+        # *   scanner
+        # *   camera
+        # *   adb: the Android Debug Bridge (ADB) device.
         self.device_type = device_type
+        # The redirection type. Valid values:
+        # 
+        # *   usbRedirect
+        # *   deviceRedirect
+        # *   off: direction disabled.
         self.redirect_type = redirect_type
 
     def validate(self):
@@ -28949,11 +29532,36 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules(TeaModel):
         opt_command: str = None,
         redirect_type: str = None,
     ):
+        # The device name.
         self.device_name = device_name
+        # The product ID (PID).
         self.device_pid = device_pid
+        # The peripheral type.
+        # 
+        # Valid values:
+        # 
+        # *   usbKey
+        # *   other
+        # *   graphicsTablet
+        # *   printer
+        # *   cardReader
+        # *   scanner
+        # *   storage
+        # *   camera
+        # *   adb
+        # *   networkInterfaceCard: the NIC device.
         self.device_type = device_type
+        # The vendor ID (VID). For more information, see [Valid USB VIDs](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
         self.device_vid = device_vid
+        # The link optimization command.
         self.opt_command = opt_command
+        # The redirection type.
+        # 
+        # Valid values:
+        # 
+        # *   deviceRedirect
+        # *   usbRedirect
+        # *   off: redirection disabled.
         self.redirect_type = redirect_type
 
     def validate(self):
@@ -29005,9 +29613,11 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroupsDomainResolveRule(TeaM
     ):
         # The rule description.
         self.description = description
-        # The domain name.
+        # The destination domain name.
         self.domain = domain
-        # Indicates whether the domain name resolution is allowed. Valid values:
+        # Indicates whether the domain name resolution rule is allowed.
+        # 
+        # Valid values:
         # 
         # *   allow
         # *   block
@@ -29192,6 +29802,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         cpu_single_rate_limit: int = None,
         desktop_count: int = None,
         desktop_group_count: int = None,
+        device_connect_hint: str = None,
         device_redirects: List[DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRedirects] = None,
         device_rules: List[DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules] = None,
         display_mode: str = None,
@@ -29242,6 +29853,9 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         recording_user_notify_message: str = None,
         remote_coordinate: str = None,
         reset_desktop: str = None,
+        resolution_height: int = None,
+        resolution_model: str = None,
+        resolution_width: int = None,
         resource_group_count: int = None,
         resource_region_id: str = None,
         scope: str = None,
@@ -29274,18 +29888,18 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         watermark_type: str = None,
         wy_assistant: str = None,
     ):
-        # Indicates whether users have the administrator permissions after they connect to cloud desktops.
+        # Indicates whether end users are granted the administrator permissions.
         # 
-        # >  This parameter is in invitational preview and not available to the public.
+        # >  This parameter is in invitational preview for specific users and not available to the public.
         self.admin_access = admin_access
-        # Indicates whether the anti-screenshot feature is enabled. Valid values:
+        # Indicates whether the anti-screenshot feature is enabled.
         # 
+        # Valid values:
+        # 
+        # *   off (default)
         # *   on
-        # *   off
-        # 
-        # Default value: off.
         self.app_content_protection = app_content_protection
-        # The client CIDR blocks in a whitelist.
+        # The client IP address whitelist. End users can access cloud computers only from the IP addresses in the whitelist.
         self.authorize_access_policy_rules = authorize_access_policy_rules
         # The security group rules.
         self.authorize_security_policy_rules = authorize_security_policy_rules
@@ -29296,40 +29910,67 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         # *   off
         # *   on (default)
         self.camera_redirect = camera_redirect
-        # The logon methods.
+        # The logon method control rules to limit the type of the Alibaba Cloud Workspace client used by end users to connect to cloud computers.
         self.client_types = client_types
         # The permissions on the clipboard.
         # 
         # Valid values:
         # 
-        # *   read: One-way transfer is allowed.
-        # *   readwrite: Two-way transfer is allowed.
-        # *   off: Two-way transfer is not allowed.
+        # *   read: specifies one-way transfer. You can copy files only from local devices to cloud computers.
+        # *   readwrite: specifies two-way transfer. You can copy files between local devices and cloud computers.
+        # *   write: specifies one-way transfer. You can only copy files from cloud computers to local devices.
+        # *   off: disables both one-way and two-way transfer. Files cannot be copied between local devices and cloud computers.
         self.clipboard = clipboard
+        # Indicates whether the Color Enhancement switch is turned on in design and 3D scenarios.
+        # 
+        # Valid values:
+        # 
+        # *   off
+        # *   on
         self.color_enhancement = color_enhancement
-        # The CPU underclocking duration. Valid values: 30 to 120.
+        # The CPU underclocking duration. Valid values: 30 to 120. Unit: seconds.
         self.cpu_down_grade_duration = cpu_down_grade_duration
         # The process whitelist that is not restricted by the CPU usage limit.
         self.cpu_processors = cpu_processors
-        # Indicates whether the switch for CPU protection mode is turned on. Valid values: on and off.
+        # Indicates whether the CPU spike protection switch is turned on.
+        # 
+        # Valid values:
+        # 
+        # *   off
+        # *   on
         self.cpu_protected_mode = cpu_protected_mode
-        # The overall CPU utilization. Valid values: 70 to 90.
+        # The overall CPU usage. Valid values: 70 to 90. Unit: percentage (%).
         self.cpu_rate_limit = cpu_rate_limit
-        # The overall CPU sampling duration. Valid values: 10 to 60.
+        # The overall CPU sampling duration. Valid values: 10 to 60. Unit: seconds.
         self.cpu_sample_duration = cpu_sample_duration
-        # The usage of a single CPU. Valid values: 70 to 100.
+        # The single-CPU usage. Valid values: 70 to 100. Unit: %.
         self.cpu_single_rate_limit = cpu_single_rate_limit
+        # The number of cloud computers bound with this policy.
         self.desktop_count = desktop_count
+        # The number of shared cloud computers bound with this policy.
         self.desktop_group_count = desktop_group_count
+        self.device_connect_hint = device_connect_hint
+        # The device redirection rules.
         self.device_redirects = device_redirects
+        # The custom peripheral rules.
         self.device_rules = device_rules
+        # The display mode.
+        # 
+        # Valid values:
+        # 
+        # *   clientCustom: suitable for user-defined scenarios.
+        # *   adminOffice: suitable for daily office scenarios.
+        # *   adminDesign: suitable for 3D application scenarios.
+        # *   adminCustom: administrator-customized scenarios
         self.display_mode = display_mode
-        # Indicates whether the access control for domain names is enabled. The domain names can contain wildcard characters (\\*). Multiple domain names are separated by commas (,). Valid values:
+        # Specifies whether to enable the access control for domain names. Domain names support wildcards (\\*). Separate multiple domain names with commas (,).
+        # 
+        # Valid values:
         # 
         # *   off
         # *   on
         self.domain_list = domain_list
-        # The rule of domain name resolution.
+        # The domain name resolution rules.
         self.domain_resolve_rule = domain_resolve_rule
         # Indicates whether the switch for domain name resolution is turned on.
         # 
@@ -29338,101 +29979,139 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         # *   off
         # *   on
         self.domain_resolve_rule_type = domain_resolve_rule_type
-        # The number of cloud desktops that are associated with the policy.\\
-        # This parameter is returned only for custom policies.
+        # The number of cloud computers that are associated with the policy. The number of cloud computers that are associated only with custom policies is returned.
         self.eds_count = eds_count
-        # Indicates whether the switch for end users to ask for assistance from the administrator is turned on. Valid values: on and off.
+        # Indicates whether the Contact Administrator for Help switch is turned on.
+        # 
+        # Valid values:
+        # 
+        # *   off
+        # *   on
         self.end_user_apply_admin_coordinate = end_user_apply_admin_coordinate
-        # Indicates whether the switch for stream collaboration between end users is turned on. Valid values: on and off.
+        # Indicates whether the User Stream Collaboration switch is turned on.
+        # 
+        # Valid values:
+        # 
+        # *   off
+        # *   on
         self.end_user_group_coordinate = end_user_group_coordinate
+        # Transfers files.
         self.file_transfer = file_transfer
-        # Indicates whether the image quality feature is enabled for Graphics cloud desktops. If you have high requirements for desktop performance and user experience, we recommend that you enable this feature. For example, you can enable this feature in professional graphic design scenarios.
+        # Indicates whether the Image Quality Control feature is enabled. If you have high requirements on the performance and user experience in scenarios such as professional design, we recommend that you enable this feature.
         # 
         # Valid values:
         # 
         # *   off
         # *   on
         self.gpu_acceleration = gpu_acceleration
-        # Indicates whether the access policy on HTML5 clients is allowed.
+        # Specifies whether to allow web client access.
         # 
         # Valid values:
         # 
         # *   off (default)
         # *   on
         self.html_5access = html_5access
-        # The file transfer policy for HTML5 clients.
+        # The file transfer feature on the web client.
         # 
         # Valid values:
         # 
-        # *   all: Files can be uploaded and downloaded between your local computer and HTML5 clients.
-        # *   download: Files on HTML5 clients can be downloaded to your local computer.
-        # *   upload: Files on your local computer can be uploaded to HTML5 clients.
-        # *   off (default): File transfer between HTML5 clients and your computer is disabled.
+        # *   all: Files can be uploaded and downloaded between local computers and the web client.
+        # *   download: Files on the web client can be downloaded to local computers.
+        # *   upload: Files on local computers can be uploaded to the web client.
+        # *   off (default): Files cannot be transferred between the web client and local computers.
         self.html_5file_transfer = html_5file_transfer
-        # The protocol that is used for network communication. Valid values:
+        # The protocol for network communication.
         # 
-        # *   TCP: Only TCP can be used.
-        # *   BOTH: TCP or UDP can be used. The system switches between TCP and UDP based on the actual network condition.
+        # Valid values:
         # 
-        # Default value: TCP.
+        # *   TCP (default): TCP.
+        # *   BOTH: TCP and UDP.
         self.internet_communication_protocol = internet_communication_protocol
         # The permissions on local disk mapping.
         # 
         # Valid values:
         # 
-        # *   read: read-only
-        # *   readwrite: read and write
-        # *   off: no permissions
+        # *   read: read-only. Local disk mapping is available on cloud computers. However, you can only read (copy) local files but cannot modify the files.
+        # *   readwrite: read and write. Local disk mapping is available on cloud computers. You can read (copy) and write (modify) local files.
+        # *   off (default): none.
         self.local_drive = local_drive
+        # The maximum retry period for reconnecting to cloud computers when the cloud computers are disconnected due to none-human reasons. Valid values: 30 to 7200. Unit: seconds.
         self.max_reconnect_time = max_reconnect_time
-        # The duration required for underclocking memory by a single process. Valid values: 30 to 120.
+        # The memory underclocking duration for a single process. Valid values: 30 to 120. Unit: seconds.
         self.memory_down_grade_duration = memory_down_grade_duration
         # The whitelist of processes that are not restricted by the memory usage limit.
         self.memory_processors = memory_processors
-        # Indicates whether the switch for memory protection mode is turned on. Valid values: on and off.
-        self.memory_protected_mode = memory_protected_mode
-        # The overall memory usage. Valid values: 70 to 90.
-        self.memory_rate_limit = memory_rate_limit
-        # The overall sampling duration of memory statistics. Valid values: 30 to 60.
-        self.memory_sample_duration = memory_sample_duration
-        # The memory usage of a single process. Valid values: 30 to 60.
-        self.memory_single_rate_limit = memory_single_rate_limit
-        self.mobile_restart = mobile_restart
-        self.mobile_shutdown = mobile_shutdown
-        # The policy name.
-        self.name = name
-        # Indicates whether the network redirection feature is enabled. Valid values:
+        # Indicates whether the memory spike protection switch is turned on.
         # 
-        # *   on
+        # Valid values:
+        # 
         # *   off
+        # *   on
+        self.memory_protected_mode = memory_protected_mode
+        # The overall memory usage. Valid values: 70 to 90. Unit: %.
+        self.memory_rate_limit = memory_rate_limit
+        # The overall memory sampling duration. Valid values: 30 to 60. Unit: seconds.
+        self.memory_sample_duration = memory_sample_duration
+        # The memory usage of a single process. Valid values: 30 to 60. Unit: %.
+        self.memory_single_rate_limit = memory_single_rate_limit
+        # Specifies whether to display the restart button in the DesktopAssistant when the cloud computer is accessed from the Alibaba Cloud Workspace mobile clients (including the Android client and the iOS client).
         # 
-        # Default value: off.
+        # > Mobile clients of V7.4 and higher versions required.
         # 
-        # >  This parameter is in invitational preview and not available to the public.
+        # Valid values:
+        # 
+        # - off: not provided.
+        # - on: provided.
+        self.mobile_restart = mobile_restart
+        # Specifies whether to display the shut down button in the DesktopAssistant when the cloud computer is accessed from the Alibaba Cloud Workspace mobile clients (including the Android client and the iOS client).
+        # 
+        # > Mobile clients of V7.4 and higher versions required.
+        # 
+        # Valid values:
+        # 
+        # - off: not provided.
+        # - on: provided.
+        self.mobile_shutdown = mobile_shutdown
+        # The name of the cloud computer policy.
+        self.name = name
+        # Indicates whether the network redirection feature is enabled.
+        # 
+        # >  This parameter is in invitational preview for specific users and not available to the public.
+        # 
+        # Valid values:
+        # 
+        # *   off (default)
+        # *   on
         self.net_redirect = net_redirect
         # The network redirection rule.
         # 
-        # >  This parameter is in invitational preview and not available to the public.
+        # >  This parameter is in invitational preview for specific users and not available to the public.
         self.net_redirect_rule = net_redirect_rule
-        # The policy ID.
+        # The ID of the cloud computer policy.
         self.policy_group_id = policy_group_id
-        # The policy type.
+        # The type of the cloud computer policy.
         # 
         # Valid values:
         # 
         # *   SYSTEM
         # *   CUSTOM
         self.policy_group_type = policy_group_type
-        # The policy status.
+        # The status of the cloud computer policy.
         # 
         # Valid values:
         # 
         # *   AVAILABLE
         # *   CREATING
         self.policy_status = policy_status
-        # Indicates whether user preemption is allowed. The value is fixed to `off`, which indicates that user preemption is not allowed.
+        # The cloud computer preemption feature.
+        # 
+        # >  To ensure user experience and data security, when a cloud computer is used by an end user, other end users cannot connect to the cloud computer. By default, this parameter is set to `off`, which cannot be modified.
+        # 
+        # Valid values:
+        # 
+        # *   off: Preemption is not allowed.
         self.preempt_login = preempt_login
-        # The names of the users that are allowed to connect to the cloud desktop to which another user is logged on.
+        # The usernames that can preempt to connect to the cloud computer.
         self.preempt_login_users = preempt_login_users
         # Indicates whether the printer redirection feature is enabled.
         # 
@@ -29441,39 +30120,62 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         # *   off
         # *   on
         self.printer_redirection = printer_redirection
-        self.quality_enhancement = quality_enhancement
-        # Indicates whether the custom screen recording feature is enabled. Valid values:
+        # Indicates whether the Image Quality Enhancement switch is turned on for design and 3D scenarios.
         # 
-        # *   on
+        # Valid values:
+        # 
         # *   off
+        # *   on
+        self.quality_enhancement = quality_enhancement
+        # Indicates whether the custom screen recording feature is enabled.
         # 
-        # Default value: off.
+        # Valid values:
+        # 
+        # *   off (default)
+        # *   on
         self.record_content = record_content
         # The period when the custom screen recording can be retained before expiration. Default value: 30 days.
         self.record_content_expires = record_content_expires
+        # The recording duration since a target event is detected by the screen recording audit policy. Unit: Minute. Valid values: 10-60.
         self.record_event_duration = record_event_duration
+        # The array of absolute paths of the monitored files in the screen recording audit policy.
         self.record_event_file_paths = record_event_file_paths
+        # The array of absolute paths of the monitored registry entries in the screen recording audit policy.
         self.record_event_registers = record_event_registers
         # Indicates whether the screen recording feature is enabled.
         # 
         # Valid values:
         # 
-        # *   ALLTIME: All operations that are performed by end users on cloud desktops are recorded. The recording starts immediately when end users connect to cloud desktops and ends after the end users disconnect from the cloud desktops.
-        # *   PERIOD: The operations that are performed by end users on cloud desktops during a specified period of time are recorded. You must specify the start time and the end time of the recording.
-        # *   OFF: The screen recording feature is disabled.
+        # *   byaction_cmd_ft: enables the operation-triggered screen recording upon command execution and file transfer.
+        # *   ALLTIME: enables the whole-process screen recording. That is, the recording starts when cloud computers are connected and ends when the cloud computers are disconnected.
+        # *   PERIOD: enables the interval-based screen recording. You must specify an interval between the start time and end time of this type of recording.
+        # *   byaction_commands: enables the operation-triggered screen recording upon command execution.
+        # *   OFF: disables the screen recording feature.
+        # *   byaction_file_transfer: enables the operation-triggered screen recording upon file transfer.
         self.recording = recording
-        # Indicates whether to record audio or video data that is generated on the cloud desktop during screen recording. Valid values:
+        # Indicates whether audio files generated from cloud computers are recorded.
         # 
-        # *   on: records audio and video data.
-        # *   off: records only video data.
+        # Valid values:
+        # 
+        # *   off (default): records only video files.
+        # *   on: records video and audio files.
         self.recording_audio = recording_audio
-        # This parameter is used with the Recording parameter to generate a screen recording file after you specify the duration of screen recording.
+        # The file length of the screen recording. Unit: minutes. Screen recording files are split based on the specified file length and uploaded to Object Storage Service (OSS) buckets. When a screen recording file reaches 300 MB in size, the system preferentially performs rolling update for the file.
+        # 
+        # Valid values:
+        # 
+        # *   10
+        # *   20
+        # *   30
+        # *   60
         self.recording_duration = recording_duration
         # The time when the screen recording ended. The value is in the HH:MM:SS format. The value takes effect only when Recording is set to PERIOD.
         self.recording_end_time = recording_end_time
-        # The period in which the screen recording audit is valid. Valid values: 15 to 180. Unit: day.
+        # The retention period of the screen recording file. Valid values: 1 to 180. Unit: days.
         self.recording_expires = recording_expires
-        # The frame rate of screen recording. Unit: fps. Valid values:
+        # The frame rate of screen recording. Unit: fps.
+        # 
+        # Valid values:
         # 
         # *   2
         # *   5
@@ -29482,29 +30184,63 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         self.recording_fps = recording_fps
         # The time when the screen recording was started. The value is in the HH:MM:SS format. The value takes effect only when Recording is set to PERIOD.
         self.recording_start_time = recording_start_time
-        # Indicates whether the client notification of screen recording is enabled. Valid values: on and off.
+        # Indicates whether the screen recording notification feature is enabled after end users log on to the Alibaba Cloud Workspace client.
+        # 
+        # Valid values:
+        # 
+        # *   off
+        # *   on
         self.recording_user_notify = recording_user_notify
         # The notification content of screen recording. By default, this parameter is left empty.
         self.recording_user_notify_message = recording_user_notify_message
-        # The permissions on the keyboard and mouse to control the cloud desktop during remote assistance. Valid values:
+        # The permissions on keyboard and mouse control during remote assistance.
         # 
-        # *   fullControl: The keyboard and mouse are fully controlled.
-        # *   optionalControl: By default, you do not have the permissions on the keyboard or mouse to control the cloud desktop during remote assistance. You can apply for the permissions.
-        # *   disableControl: The keyboard and mouse are not controlled.
+        # Valid values:
+        # 
+        # *   optionalControl: By default, you are not granted the permissions. You can apply for the permissions.
+        # *   fullControl: You are granted the full permissions.
+        # *   disableControl: You are not granted the permissions.
         self.remote_coordinate = remote_coordinate
+        # Resets the cloud computer.
         self.reset_desktop = reset_desktop
+        self.resolution_height = resolution_height
+        self.resolution_model = resolution_model
+        self.resolution_width = resolution_width
+        # The number of resource groups bound with this policy.
         self.resource_group_count = resource_group_count
-        self.resource_region_id = resource_region_id
-        # The effective scope of the policy. Valid values:
+        # The region of the cloud computer policy.
         # 
+        # > The value of a region-less policy is `center`.
+        self.resource_region_id = resource_region_id
+        # The effective scope of the policy.
+        # 
+        # Valid values:
+        # 
+        # *   IP: The policy takes effect based on the IP address.
         # *   GLOBAL: The policy takes effect globally.
-        # *   IP: The policy takes effect based on IP addresses.
         self.scope = scope
-        # This parameter is required when Scope is set to IP. This parameter takes effect when Scope is set to IP.
+        # This parameter is required when the `Scope` parameter is set to `IP`.````
         self.scope_value = scope_value
+        # Indicates whether the Smooth Enhancement switch is turned on.
+        # 
+        # Valid values:
+        # 
+        # *   off
+        # *   on
         self.smooth_enhancement = smooth_enhancement
+        # Specifies whether to provide the Metrics function in the DesktopAssistant. Valid values:
+        # 
+        # - off: not provided.
+        # - on: provided.
         self.status_monitor = status_monitor
+        # The streaming mode.
+        # 
+        # Valid values:
+        # 
+        # *   intelligent: suitable for daily office scenarios (Intelligent Mode).
+        # *   smooth: suitable for design and 3D application scenarios (Smooth Mode).
         self.streaming_mode = streaming_mode
+        # The destination frame rate. Valid values: 10 to 60. Unit: fps.
         self.target_fps = target_fps
         # Indicates whether the USB redirection feature is enabled.
         # 
@@ -29515,12 +30251,27 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         self.usb_redirect = usb_redirect
         # The USB redirection rule.
         self.usb_supply_redirect_rule = usb_supply_redirect_rule
+        # The average bitrate for video encoding. Valid values: 1000 to 50000.
         self.video_enc_avg_kbps = video_enc_avg_kbps
+        # The maximum quantizer parameter (QP) of video files. A larger QP value indicates worse video quality. Valid values: 0 to 51.
         self.video_enc_max_qp = video_enc_max_qp
+        # The minimum quantizer parameter (QP) of video files. A smaller QP value indicates higher video quality. Valid values: 0 to 51.
         self.video_enc_min_qp = video_enc_min_qp
+        # The peak bitrate for video encoding. Valid values: 1000 to 50000.
         self.video_enc_peak_kbps = video_enc_peak_kbps
+        # The video encoding feature.
+        # 
+        # Valid values:
+        # 
+        # *   qualityFirst: The priority given to the image quality.
+        # *   bandwidthFirst: The priority given to the bitrate.
         self.video_enc_policy = video_enc_policy
-        # Indicates whether the multimedia redirection feature is enabled. Valid values: on and off.
+        # Indicates whether the multimedia redirection feature is enabled.
+        # 
+        # Valid values:
+        # 
+        # *   off
+        # *   on
         self.video_redirect = video_redirect
         # The image display quality.
         # 
@@ -29531,33 +30282,54 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         # *   medium (default): adaptive
         # *   lossless: no quality loss
         self.visual_quality = visual_quality
-        # Indicates whether the watermarking feature is enabled.
+        # The watermarking feature.
+        # 
+        # Valid values:
+        # 
+        # *   blind: Invisible watermarks are applied.
+        # *   off: The watermarking feature is disabled.
+        # *   on: Visible watermarks are applied.
+        self.watermark = watermark
+        # Indicates whether the anti-screen photo feature is enabled for invisible watermarks.
         # 
         # Valid values:
         # 
         # *   off
         # *   on
-        self.watermark = watermark
-        # Indicates whether the anti-screen photo feature is enabled for invisible watermarks. Valid values: on and off.
         self.watermark_anti_cam = watermark_anti_cam
         # The font color in red, green, and blue (RGB) of the watermark. Valid values: 0 to 16777215.
         self.watermark_color = watermark_color
-        # This parameter is unavailable for public use.
+        # If you set `WatermarkType` to `custom`, you must also specify `WatermarkCustomText`.
         self.watermark_custom_text = watermark_custom_text
         # The slope of the watermark. Valid values: -10 to -30.
         self.watermark_degree = watermark_degree
         # The font size of the watermark. Valid values: 10 to 20.
         self.watermark_font_size = watermark_font_size
-        # The font style of the watermark. Valid values:
+        # The watermark font style.
+        # 
+        # Valid values:
         # 
         # *   plain
         # *   bold
         self.watermark_font_style = watermark_font_style
-        # The invisible watermark enhancement feature. Valid values: low, medium, and high.
+        # The watermark enhancement feature.
+        # 
+        # Valid values:
+        # 
+        # *   high
+        # *   low
+        # *   medium
         self.watermark_power = watermark_power
-        # The number of watermark rows. This parameter is now invalid.
+        # The number of watermark rows.
+        # 
+        # >  This parameter is not available for public use.
         self.watermark_row_amount = watermark_row_amount
-        # Indicates whether the security priority for invisible watermarks is enabled. Valid values: on and off.
+        # Indicates whether the security priority feature is enabled for invisible watermarks.
+        # 
+        # Valid values:
+        # 
+        # *   off
+        # *   on
         self.watermark_security = watermark_security
         # The watermark transparency.
         # 
@@ -29569,15 +30341,25 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         self.watermark_transparency = watermark_transparency
         # The watermark transparency. A greater value indicates that the watermark is less transparent. Valid values: 10 to 100.
         self.watermark_transparency_value = watermark_transparency_value
-        # The watermark type.
+        # The watermark content.
         # 
         # Valid values:
         # 
-        # *   HostName,EndUserId: The watermark is displayed in the following format: Rightmost 15 characters of the cloud desktop ID,Username.
-        # *   EndUserId: The username is displayed.
-        # *   EndUserId,HostName: The watermark is displayed in the following format: Username,Rightmost 15 characters of the cloud desktop ID.
-        # *   HostName: The rightmost 15 characters of the cloud desktop ID are displayed.
+        # *   EndUserId: the username.
+        # *   Custom
+        # *   DesktopIp: the IP address of the cloud computer.
+        # *   ClientIp: the IP address of the Alibaba Cloud Workspace client.
+        # *   HostName: the rightmost 15 digits of the cloud computer ID.
+        # *   ClientTime: the current time displayed on the cloud computer.
         self.watermark_type = watermark_type
+        # Specifies whether to provide the AI Assistant function in the DesktopAssistant when the cloud computer is accessed from the Alibaba Cloud Workspace desktop clients (including the Windows client and the macOS client).
+        # 
+        # > Desktop clients of V7.7 and higher versions required.
+        # 
+        # Valid values:
+        # 
+        # - off: the AI Aisstant function is not provided.
+        # - on: the AI Aisstant function is provided.
         self.wy_assistant = wy_assistant
 
     def validate(self):
@@ -29658,6 +30440,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['DesktopCount'] = self.desktop_count
         if self.desktop_group_count is not None:
             result['DesktopGroupCount'] = self.desktop_group_count
+        if self.device_connect_hint is not None:
+            result['DeviceConnectHint'] = self.device_connect_hint
         result['DeviceRedirects'] = []
         if self.device_redirects is not None:
             for k in self.device_redirects:
@@ -29766,6 +30550,12 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['RemoteCoordinate'] = self.remote_coordinate
         if self.reset_desktop is not None:
             result['ResetDesktop'] = self.reset_desktop
+        if self.resolution_height is not None:
+            result['ResolutionHeight'] = self.resolution_height
+        if self.resolution_model is not None:
+            result['ResolutionModel'] = self.resolution_model
+        if self.resolution_width is not None:
+            result['ResolutionWidth'] = self.resolution_width
         if self.resource_group_count is not None:
             result['ResourceGroupCount'] = self.resource_group_count
         if self.resource_region_id is not None:
@@ -29875,6 +30665,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.desktop_count = m.get('DesktopCount')
         if m.get('DesktopGroupCount') is not None:
             self.desktop_group_count = m.get('DesktopGroupCount')
+        if m.get('DeviceConnectHint') is not None:
+            self.device_connect_hint = m.get('DeviceConnectHint')
         self.device_redirects = []
         if m.get('DeviceRedirects') is not None:
             for k in m.get('DeviceRedirects'):
@@ -29987,6 +30779,12 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.remote_coordinate = m.get('RemoteCoordinate')
         if m.get('ResetDesktop') is not None:
             self.reset_desktop = m.get('ResetDesktop')
+        if m.get('ResolutionHeight') is not None:
+            self.resolution_height = m.get('ResolutionHeight')
+        if m.get('ResolutionModel') is not None:
+            self.resolution_model = m.get('ResolutionModel')
+        if m.get('ResolutionWidth') is not None:
+            self.resolution_width = m.get('ResolutionWidth')
         if m.get('ResourceGroupCount') is not None:
             self.resource_group_count = m.get('ResourceGroupCount')
         if m.get('ResourceRegionId') is not None:
@@ -30058,14 +30856,20 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
 class DescribePolicyGroupsResponseBody(TeaModel):
     def __init__(
         self,
+        count: int = None,
         describe_policy_groups: List[DescribePolicyGroupsResponseBodyDescribePolicyGroups] = None,
         next_token: str = None,
+        page_number: int = None,
+        page_size: int = None,
         request_id: str = None,
     ):
-        # The details of the policies.
+        self.count = count
+        # The details of the cloud computer policies.
         self.describe_policy_groups = describe_policy_groups
         # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        self.page_number = page_number
+        self.page_size = page_size
         # The request ID.
         self.request_id = request_id
 
@@ -30081,18 +30885,26 @@ class DescribePolicyGroupsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
         result['DescribePolicyGroups'] = []
         if self.describe_policy_groups is not None:
             for k in self.describe_policy_groups:
                 result['DescribePolicyGroups'].append(k.to_map() if k else None)
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
         self.describe_policy_groups = []
         if m.get('DescribePolicyGroups') is not None:
             for k in m.get('DescribePolicyGroups'):
@@ -30100,6 +30912,10 @@ class DescribePolicyGroupsResponseBody(TeaModel):
                 self.describe_policy_groups.append(temp_model.from_map(k))
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -30166,18 +30982,27 @@ class DescribePriceRequest(TeaModel):
         user_disk_category: str = None,
         user_disk_size_gib: int = None,
     ):
-        # The number of the resources. Default value: 1.
+        # The number of resources. Default value: 1.
         self.amount = amount
         # The maximum public bandwidth. Unit: Mbit/s.
         # 
-        # *   Valid values if the PayByTraffic parameter is set to PayByBandwidth: 10 to 1000
-        # *   Valid values if the PayByTraffic parameter is set to PayByTraffic: 10 to 200
+        # *   Valid values if you set InternetChargeType to PayByBandwidth: 10 to 1000.
+        # *   Valid values if you set InternetChargeType to InternetChargeType: 10 to 200.
         self.bandwidth = bandwidth
+        # The type of hourly plan if you use the Monthly Subscription billing method. If you set `ResourceType` to `DesktopMonthPackage`, you must specify this parameter.
+        # 
+        # Valid values:
+        # 
+        # *   120: the 120-hour computing plan.
+        # *   250: the 250-hour computing plan.
         self.duration = duration
+        # The number of cloud computers in the cloud computer pool. Default value: 1.
+        # 
+        # >  This parameter takes effect only if you set `ResourceType` to `DesktopGroup`.
         self.group_desktop_count = group_desktop_count
         # The resource specifications.
         # 
-        # *   If you set ResourceType to Desktop, set this parameter to one of the following values:
+        # *   If you set `ResourceType` to `Desktop`, you must specify this parameter.
         # 
         #     *   ecd.basic.small
         #     *   ecd.basic.large
@@ -30198,51 +31023,60 @@ class DescribePriceRequest(TeaModel):
         #     *   eds.general.8c32g
         #     *   eds.general.16c32g
         # 
-        # *   If you set ResourceType to OfficeSite, set this parameter to large.
+        # *   If you set `ResourceType` to `DesktopGroup`, set the value of this parameter to `large`.
         # 
-        # *   If you set ResourceType to Bandwidth, leave this parameter empty.
+        # *   If you set `ResourceType` to `Bandwidth`, you can leave this parameter empty.
         self.instance_type = instance_type
-        # The metering method of the Internet access package. Valid values:
+        # The metering method for network traffic.
         # 
-        # *   PayByBandwidth: pay-by-bandwidth
-        # *   PayByTraffic: pay-by-data-transfer
+        # Valid values:
+        # 
+        # *   PayByTraffic: You are charged for the actually consumed traffic.
+        # *   PayByBandwidth: You are charged by a fixed bandwidth.
         self.internet_charge_type = internet_charge_type
-        # The OS. Valid values:
+        # The OS type.
         # 
-        # *   Windows
+        # Valid values:
+        # 
         # *   Linux
-        # 
-        # Default value: Windows.
+        # *   Windows (default)
         self.os_type = os_type
-        # The subscription duration. Default value: 1.
-        self.period = period
-        # The unit of the billing cycle. Valid values:
+        # The subscription duration. The valid values of this parameter vary based on the value of `PeriodUnit`.
         # 
-        # *   Hour
+        # *   If you set `PeriodUnit` to `Hour`, set the value of this parameter to 1.
+        # *   If you set `PeriodUnit` to `Month`, set the value of this parameter to 1, 2, 3, or 6.
+        # *   If you set `PeriodUnit` to `Year`, set the value of this parameter to 1, 2, or 3.
+        # 
+        # Default value: 1.
+        self.period = period
+        # The billing cycle.
+        # 
+        # Valid values:
+        # 
         # *   Month
         # *   Year
-        # 
-        # Default value: Hour.
+        # *   Hour (default)
         self.period_unit = period_unit
         # The promotion ID.
         self.promotion_id = promotion_id
-        # The region ID.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by EDS.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource type. Valid values:
+        # The resource type.
         # 
-        # *   Desktop: cloud desktop
-        # *   OfficeSite: workspace
-        # *   Bandwidth: network bandwidth
+        # Valid values:
         # 
-        # Default value: Desktop.
+        # *   DesktopMonthPackage: the monthly subscription plan (also known as the 120-hour or 250-hour computing plan).
+        # *   Desktop (default): the pay-as-you-go cloud computer or the monthly subscription cloud computer (also known as the Unlimited computing plan).
+        # *   Bandwidth: the premium bandwidth plan.
+        # *   DesktopGroup: the cloud computer pool.
         self.resource_type = resource_type
         self.root_disk_category = root_disk_category
-        # The system disk size. Unit: GiB.
+        # The size of the system disk. Unit: GiB. If you set `ResourceType` to `Desktop`, you must specify this parameter.
         self.root_disk_size_gib = root_disk_size_gib
         self.user_disk_category = user_disk_category
-        # The data disk size. Unit: GiB.
+        # The size of the data disk. Unit: GiB.
         self.user_disk_size_gib = user_disk_size_gib
 
     def validate(self):
@@ -30392,17 +31226,19 @@ class DescribePriceResponseBodyPriceInfoPrice(TeaModel):
         sp_price: int = None,
         trade_price: float = None,
     ):
-        # The unit of the currency.
+        # The unit of currency (USD).
         self.currency = currency
-        # The discounted price.
+        # The discounted amount.
         self.discount_price = discount_price
+        # The orders.
         self.order_lines = order_lines
         # The original price.
         self.original_price = original_price
-        # The details of the promotion.
+        # The promotions.
         self.promotions = promotions
+        # The price under an effective savings plan.
         self.sp_price = sp_price
-        # The actual price that is paid. The original price minus the discounted part equals the actual price.
+        # The actual price. The original price minus the discounted amount equals the actual price.
         self.trade_price = trade_price
 
     def validate(self):
@@ -30500,9 +31336,11 @@ class DescribePriceResponseBodyPriceInfo(TeaModel):
         price: DescribePriceResponseBodyPriceInfoPrice = None,
         rules: List[DescribePriceResponseBodyPriceInfoRules] = None,
     ):
+        # Indicates whether a free enterprise drive is available.
         self.free_cds_quota = free_cds_quota
+        # The free capacity provided by the enterprise drive. Unit: GiB.
         self.free_cds_size = free_cds_size
-        # The information about the price.
+        # The price.
         self.price = price
         # The details of the promotion rules.
         self.rules = rules
@@ -30556,7 +31394,7 @@ class DescribePriceResponseBody(TeaModel):
         price_info: DescribePriceResponseBodyPriceInfo = None,
         request_id: str = None,
     ):
-        # The price details.
+        # The price information.
         self.price_info = price_info
         # The request ID.
         self.request_id = request_id
@@ -31342,9 +32180,19 @@ class DescribeRefundPriceRequest(TeaModel):
         refund_type: str = None,
         region_id: str = None,
     ):
+        # ID of cloud computer N. Valid values of N: 1 to 20.
+        # 
         # This parameter is required.
         self.desktop_id = desktop_id
+        # The unsubscription type.
+        # 
+        # Valid values:
+        # 
+        # *   RemainRefund: refunds the remaining balance and releases resources.
+        # *   RenewRefund: refunds only the renewal fee and adjusts the expiration date accordingly.
         self.refund_type = refund_type
+        # The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -31382,7 +32230,9 @@ class DescribeRefundPriceResponseBodyPriceInfo(TeaModel):
         currency: str = None,
         refund_fee: float = None,
     ):
+        # The unit of currency (USD).
         self.currency = currency
+        # The amount of the refund.
         self.refund_fee = refund_fee
 
     def validate(self):
@@ -31415,7 +32265,9 @@ class DescribeRefundPriceResponseBody(TeaModel):
         price_info: DescribeRefundPriceResponseBodyPriceInfo = None,
         request_id: str = None,
     ):
+        # The price details.
         self.price_info = price_info
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -32398,7 +33250,9 @@ class DescribeSnapshotsResponseBodySnapshots(TeaModel):
         # 
         # >  When the `Status` value is `PROGRESSING`, the `RemainTime` value is `-1`. A value of -1 indicates that the system is calculating the remaining time.
         self.remain_time = remain_time
+        # The ID of the restore point.
         self.restore_point_id = restore_point_id
+        # The name of the restore point.
         self.restore_point_name = restore_point_name
         # The snapshot ID.
         self.snapshot_id = snapshot_id
@@ -32672,8 +33526,11 @@ class DescribeTimerGroupRequest(TeaModel):
         group_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the configuration group.
+        # 
         # This parameter is required.
         self.group_id = group_id
+        # The ID of the region. Set the value to `cn-shanghai`.
         self.region_id = region_id
 
     def validate(self):
@@ -32713,14 +33570,51 @@ class DescribeTimerGroupResponseBodyDataConfigTimers(TeaModel):
         timer_type: str = None,
         trigger_type: str = None,
     ):
+        # Indicates whether end users can configure scheduled tasks.
         self.allow_client_setting = allow_client_setting
+        # The CRON expression for the scheduled task.
         self.cron_expression = cron_expression
+        # Specifies whether to forcibly execute the scheduled task. A value of true specifies the scheduled task will run forcefully, ignoring the cloud computer and connection status.
         self.enforce = enforce
+        # The interval at which the scheduled task is executed. Unit: minutes.
         self.interval = interval
+        # The type of the scheduled disconnection task.
+        # 
+        # Valid values:
+        # 
+        # *   Hibernate: scheduled hibernation.
+        # *   Shutdown: scheduled shutdown.
         self.operation_type = operation_type
+        # The process whitelist. If whitelisted processes are running, the scheduled task upon inactivity does not take effect.
         self.process_whitelist = process_whitelist
+        # The reset operation of the scheduled task.
+        # 
+        # Valid values:
+        # 
+        # *   RESET_TYPE_SYSTEM: resets the system disk.
+        # *   RESET_TYPE_USER_DISK: resets the data disk.
+        # *   RESET_TYPE_BOTH: resets the system disk and data disk.
         self.reset_type = reset_type
+        # The type of the scheduled task.
+        # 
+        # Valid values:
+        # 
+        # *   NoOperationDisconnect: scheduled disconnection upon inactivity.
+        # *   NoConnect: scheduled disconnection upon specified operation (OperationType).
+        # *   TimerBoot: scheduled start.
+        # *   TimerReset: scheduled reset.
+        # *   NoOperationShutdown: scheduled shutdown upon inactivity.
+        # *   NoOperationHibernate: scheduled hibernation upon inactivity.
+        # *   TimerShutdown: scheduled shutdown.
+        # *   NoOperationReboot: scheduled restart upon inactivity.
+        # *   TimerReboot: scheduled restart.
         self.timer_type = timer_type
+        # The method to trigger the scheduled task upon inactivity.
+        # 
+        # Valid values:
+        # 
+        # *   Advanced: intelligent detection.
+        # *   Standard: standard detection.
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -32788,14 +33682,38 @@ class DescribeTimerGroupResponseBodyData(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # The number of resources that are bound to the configuration group.
         self.bind_count = bind_count
+        # The number of bound resources.
         self.bind_count_map = bind_count_map
+        # The scheduled task configuration groups.
         self.config_timers = config_timers
+        # The description of the configuration group.
         self.description = description
+        # The ID of the configuration group.
         self.group_id = group_id
+        # The name of the configuration group.
         self.name = name
+        # The service type of the configuration group.
+        # 
+        # Valid value:
+        # 
+        # *   CLOUD_DESKTOP: the cloud computer service.
         self.product_type = product_type
+        # The state of the configuration group.
+        # 
+        # Valid values:
+        # 
+        # *   AVAILABLE: The configuration group is available.
+        # *   UNAVAILABLE: The configuration group is deleted.
+        # *   DELETING: The configuration group is being deleted.
+        # *   UPDATING: The configuration group is being modified.
         self.status = status
+        # The type of the configuration group.
+        # 
+        # Valid value:
+        # 
+        # *   Timer: the scheduled task type.
         self.type = type
 
     def validate(self):
@@ -32864,7 +33782,9 @@ class DescribeTimerGroupResponseBody(TeaModel):
         data: DescribeTimerGroupResponseBodyData = None,
         request_id: str = None,
     ):
+        # The information about the configuration group.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -36907,12 +37827,25 @@ class GetConnectionTicketResponseBody(TeaModel):
         task_status: str = None,
         ticket: str = None,
     ):
+        # The ID of the cloud computer.
         self.desktop_id = desktop_id
         # The ID of the request.
         self.request_id = request_id
+        # The credential that is returned to connect to the cloud computer. Before you use the credential, you must Base64 decode the content of the credential, save the credential as an xxx.ica file, and then open the file. Python sample code:
+        # 
+        #     import base64
+        #     response = {
+        #         "Ticket": "W0VuY29kaW5nXQ0KSW5wdXRFbmNvZGluZz1V********",
+        #         "RequestId": "1CBAFFAB-B697-4049-A9B1-67E1FC5F****",
+        #     }
+        #     f = open (\\"xxx.ica\\", \\"w\\")
+        #     out = base64.b64decode(response[\\"Ticket\\"])
+        #     f.write(out)
+        #     f.close()
         self.task_code = task_code
         # The ID of the cloud computer connection task.
         self.task_id = task_id
+        # The ID of the cloud computer connection task.
         self.task_message = task_message
         # The task status.
         # 
@@ -36942,17 +37875,7 @@ class GetConnectionTicketResponseBody(TeaModel):
         # 
         #     <!-- -->
         self.task_status = task_status
-        # The credential that is returned to connect to the cloud computer. Before you use the credential, you must Base64 decode the content of the credential, save the credential as an xxx.ica file, and then open the file. Python sample code:
-        # 
-        #     import base64
-        #     response = {
-        #         "Ticket": "W0VuY29kaW5nXQ0KSW5wdXRFbmNvZGluZz1V********",
-        #         "RequestId": "1CBAFFAB-B697-4049-A9B1-67E1FC5F****",
-        #     }
-        #     f = open (\\"xxx.ica\\", \\"w\\")
-        #     out = base64.b64decode(response[\\"Ticket\\"])
-        #     f.write(out)
-        #     f.close()
+        # The credential of the cloud computer connection.
         self.ticket = ticket
 
     def validate(self):
@@ -38201,7 +39124,7 @@ class HibernateDesktopsRequest(TeaModel):
         # 
         # This parameter is required.
         self.desktop_id = desktop_id
-        # The ID of the region.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by Elastic Desktop Service (EDS).
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -39049,6 +39972,7 @@ class ListDirectoryUsersRequest(TeaModel):
         region_id: str = None,
         sort_type: str = None,
     ):
+        # > This parameter is not publicly available. The value can be 1 or left empty.
         self.assigned_info = assigned_info
         # The ID of the AD directory.
         # 
@@ -39056,6 +39980,7 @@ class ListDirectoryUsersRequest(TeaModel):
         self.directory_id = directory_id
         # The query string for fuzzy match. If you specify this parameter, the system returns all results that contain the string.
         self.filter = filter
+        # Specifies whether to return the users with assigned cloud computers only.
         self.include_assigned_user = include_assigned_user
         # The number of entries to return on each page.
         # 
@@ -39071,6 +39996,12 @@ class ListDirectoryUsersRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The sort type.
+        # 
+        # Valide values:
+        # 
+        # - asc: cloud computers assigned to users on bottom
+        # - desc: cloud computers assigned to users on top
         self.sort_type = sort_type
 
     def validate(self):
@@ -39134,12 +40065,15 @@ class ListDirectoryUsersResponseBodyUsers(TeaModel):
         end_user: str = None,
         phone: str = None,
     ):
+        # The number of assigned cloud computers.
         self.assigned_desktop_number = assigned_desktop_number
         # The display name of the user.
         self.display_name = display_name
+        # The email address.
         self.email = email
         # The name of the user.
         self.end_user = end_user
+        # The mobile number.
         self.phone = phone
 
     def validate(self):
@@ -41024,7 +41958,9 @@ class ModifyADConnectorOfficeSiteRequest(TeaModel):
     ):
         # The hostname of the domain controller. The hostname must comply with the naming conventions for hostnames in Windows.
         self.ad_hostname = ad_hostname
+        # The hostname of the backup domain controller.
         self.backup_dchostname = backup_dchostname
+        # The DNS address of the backup domain controller.
         self.backup_dns = backup_dns
         # Details of the IP addresses of the Domain Name System (DNS) servers that correspond to the enterprise AD system. You can specify only one IP address.
         self.dns_address = dns_address
@@ -42671,10 +43607,15 @@ class ModifyConfigGroupRequest(TeaModel):
         name: str = None,
         region_id: str = None,
     ):
+        # The description of the configuration group.
         self.description = description
+        # The ID of the configuration group.
+        # 
         # This parameter is required.
         self.group_id = group_id
+        # The name of the configuration group.
         self.name = name
+        # The ID of the region. Set the value to `cn-shanghai`.
         self.region_id = region_id
 
     def validate(self):
@@ -42715,7 +43656,9 @@ class ModifyConfigGroupResponseBody(TeaModel):
         group_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the configuration group.
         self.group_id = group_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -44345,8 +45288,11 @@ class ModifyDesktopSpecRequestResourceSpecs(TeaModel):
         root_disk_size_gib: int = None,
         user_disk_size_gib: int = None,
     ):
+        # The ID of the cloud computer.
         self.desktop_id = desktop_id
+        # The target size of the system disk. Valid values: 80-500 GiB. The value must be a multiple of 10.
         self.root_disk_size_gib = root_disk_size_gib
+        # The target size of the data disk. Valid values: 80-500 GiB. The value must be a multiple of 10.
         self.user_disk_size_gib = user_disk_size_gib
 
     def validate(self):
@@ -44427,7 +45373,11 @@ class ModifyDesktopSpecRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The array of resource specification templates.
         self.resource_specs = resource_specs
+        # The resource type.
+        # 
+        # > This parameter is optional for non-subscribed cloud computers.
         self.resource_type = resource_type
         # The size of the new system disk. Unit: GiB. Valid values: 80 to 500 GiB. The value must be a multiple of 10.
         self.root_disk_size_gib = root_disk_size_gib
@@ -44546,6 +45496,7 @@ class ModifyDesktopSpecResponseBody(TeaModel):
     ):
         # The ID of the order.
         self.order_id = order_id
+        # The array of order IDs.
         self.order_ids = order_ids
         # The ID of the request.
         self.request_id = request_id
@@ -45154,39 +46105,48 @@ class ModifyDiskSpecRequest(TeaModel):
         desktop_id: str = None,
         promotion_id: str = None,
         region_id: str = None,
+        reseller_owner_uid: int = None,
         root_disk_performance_level: str = None,
         user_disk_performance_level: str = None,
     ):
-        # Specifies whether to automatically complete the payment. Valid values:
+        # Specifies whether to enable the automatic payment feature.
         # 
-        # *   `true`: automatically completes the payment. Make sure that your Alibaba Cloud account has sufficient balance. If your Alibaba Cloud account does not have sufficient balance, abnormal orders are generated.
-        # *   `false`: does not complete the payment. In this case, an order is generated, but no payment is made. You can log on to the Elastic Desktop Service (EDS) console and complete the payment based on the order ID on the **Orders** page.
+        # *   If you set the value to `true`, ensure your account has sufficient balance to avoid generating abnormal orders.
+        # *   If you set the value to `false`, go to the **Expenses and Costs** page to complete the payment based on the order number.
         # 
-        # Default value: `true`.
+        # Valid values:
+        # 
+        # *   true (default): enables the automatic payment feature.
+        # *   false: generates the order and manually complete the payment.
         self.auto_pay = auto_pay
-        # The ID of the cloud desktop.
+        # The ID of the cloud computer.
         # 
         # This parameter is required.
         self.desktop_id = desktop_id
         # The ID of the sales promotion activity. You can call the DescribePrice operation to obtain the IDs of matching sales promotion activities.
         self.promotion_id = promotion_id
-        # The ID of the region.
+        # The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The performance level (PL) of the system disk. If the cloud desktop type is Graphics or High Frequency, you can set the PL of the system disk. Valid values:
+        self.reseller_owner_uid = reseller_owner_uid
+        # The PL of the system disk. Only Enterprise Graphics or High Frequency cloud computers support disk PL adjustments.
         # 
-        # *   PL0
+        # Valid values:
+        # 
         # *   PL1
-        # *   PL2
+        # *   PL0
         # *   PL3
+        # *   PL2
         self.root_disk_performance_level = root_disk_performance_level
-        # The PL of the data disk. If the cloud desktop type is Graphics or High Frequency, you can set the PL of the data disk. Valid values:
+        # The PL of the data disk. Only Enterprise Graphics or High Frequency cloud computers support disk PL adjustments.
         # 
-        # *   PL0
+        # Valid values:
+        # 
         # *   PL1
-        # *   PL2
+        # *   PL0
         # *   PL3
+        # *   PL2
         self.user_disk_performance_level = user_disk_performance_level
 
     def validate(self):
@@ -45206,6 +46166,8 @@ class ModifyDiskSpecRequest(TeaModel):
             result['PromotionId'] = self.promotion_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.reseller_owner_uid is not None:
+            result['ResellerOwnerUid'] = self.reseller_owner_uid
         if self.root_disk_performance_level is not None:
             result['RootDiskPerformanceLevel'] = self.root_disk_performance_level
         if self.user_disk_performance_level is not None:
@@ -45222,6 +46184,8 @@ class ModifyDiskSpecRequest(TeaModel):
             self.promotion_id = m.get('PromotionId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResellerOwnerUid') is not None:
+            self.reseller_owner_uid = m.get('ResellerOwnerUid')
         if m.get('RootDiskPerformanceLevel') is not None:
             self.root_disk_performance_level = m.get('RootDiskPerformanceLevel')
         if m.get('UserDiskPerformanceLevel') is not None:
@@ -45235,7 +46199,7 @@ class ModifyDiskSpecResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the order. You can obtain the order ID on the [Orders](https://usercenter2-intl.aliyun.com/order/list?pageIndex=1\\&pageSize=20\\&spm=5176.12818093.top-nav.ditem-ord.36f016d0OQFmJa) page in Alibaba Cloud User Center.
+        # The ID of the order. You can obtain the ID of an order from the [Expenses and Costs > Orders](https://usercenter2-intl.aliyun.com/order/list) page.
         self.order_id = order_id
         # The ID of the request.
         self.request_id = request_id
@@ -47550,6 +48514,14 @@ class ModifyPolicyGroupRequest(TeaModel):
         # *   HostName: the rightmost 15 digits of the cloud computer ID
         # *   ClientTime: the current time displayed on the cloud computer
         self.watermark_type = watermark_type
+        # Specifies whether to provide the AI Assistant function in the DesktopAssistant when the cloud computer is accessed from the Alibaba Cloud Workspace desktop clients (including the Windows client and the macOS client).
+        # 
+        # > Desktop clients of V7.7 and higher versions required.
+        # 
+        # Valid values:
+        # 
+        # - off: the AI Aisstant function is not provided.
+        # - on: the AI Aisstant function is provided.
         self.wy_assistant = wy_assistant
 
     def validate(self):
@@ -47970,14 +48942,53 @@ class ModifyTimerGroupRequestConfigTimers(TeaModel):
         timer_type: str = None,
         trigger_type: str = None,
     ):
+        # Specifies whether to allow end users to configure scheduled tasks.
         self.allow_client_setting = allow_client_setting
+        # The CRON expression for the scheduled task.
+        # 
+        # >  The time must be in UTC. For example, for 24:00 (UTC+8), you must set the value to 0 0 16 ? \\* 1,2,3,4,5,6,7.
         self.cron_expression = cron_expression
+        # Specifies whether to forcibly execute the scheduled task. A value of true specifies the scheduled task will run forcefully, ignoring the cloud computer and connection status.
         self.enforce = enforce
+        # The interval at which the scheduled task is executed. Unit: minutes.
         self.interval = interval
+        # The type of the scheduled operation. If you set TimerType to NoConnect, you can specify this parameter.
+        # 
+        # Valid values:
+        # 
+        # *   Hibernate: scheduled hibernation.
+        # *   Shutdown: scheduled shutdown.
         self.operation_type = operation_type
+        # The process whitelist. If whitelisted processes are running, the scheduled task upon inactivity does not take effect.
         self.process_whitelist = process_whitelist
+        # The reset operation.
+        # 
+        # Valid values:
+        # 
+        # *   RESET_TYPE_SYSTEM: resets the system disk.
+        # *   RESET_TYPE_USER_DISK: resets the data disk.
+        # *   RESET_TYPE_BOTH: resets the system disk and data disk.
         self.reset_type = reset_type
+        # The type of the scheduled task.
+        # 
+        # Valid values:
+        # 
+        # *   NoOperationDisconnect: scheduled disconnection upon inactivity.
+        # *   NoConnect: scheduled disconnection upon specified operation (OperationType).
+        # *   TimerBoot: scheduled start.
+        # *   TimerReset: scheduled reset.
+        # *   NoOperationShutdown: scheduled shutdown upon inactivity.
+        # *   NoOperationHibernate: scheduled hibernation upon inactivity.
+        # *   TimerShutdown: scheduled shutdown.
+        # *   NoOperationReboot: scheduled restart upon inactivity.
+        # *   TimerReboot: scheduled restart.
         self.timer_type = timer_type
+        # The method to trigger the scheduled task upon inactivity.
+        # 
+        # Valid values:
+        # 
+        # *   Advanced: intelligent detection.
+        # *   Standard: standard detection.
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -48041,11 +49052,17 @@ class ModifyTimerGroupRequest(TeaModel):
         name: str = None,
         region_id: str = None,
     ):
+        # The configuration groups.
         self.config_timers = config_timers
+        # The description of the configuration group.
         self.description = description
+        # The ID of the configuration group.
+        # 
         # This parameter is required.
         self.group_id = group_id
+        # The name of the configuration group.
         self.name = name
+        # The ID of the region. Set the value to `cn-shanghai`.
         self.region_id = region_id
 
     def validate(self):
@@ -48098,7 +49115,9 @@ class ModifyTimerGroupResponseBody(TeaModel):
         group_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the configuration group.
         self.group_id = group_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -49749,12 +50768,40 @@ class RenewDesktopGroupRequest(TeaModel):
         period_unit: str = None,
         region_id: str = None,
     ):
+        # Specifies whether to enable the auto-payment feature.
+        # 
+        # Valid values:
+        # 
+        # *   true (default): enables the auto-payment feature. Make sure that your account balance is sufficient. Otherwise, an abnormal order is generated.
+        # *   false: disables the auto-payment feature. In this case, an order is generated but you need to make the payment manually. You can log on to the EDS console and complete the payment based on the order ID on the Orders page.
         self.auto_pay = auto_pay
+        # Specifies whether to enable auto-renewal.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.auto_renew = auto_renew
+        # The ID of the cloud computer pool.
+        # 
         # This parameter is required.
         self.desktop_group_id = desktop_group_id
+        # The renewal duration. Valid values of this parameter are determined by the value of the `PeriodUnit` parameter.
+        # 
+        # *   Valid values if you set the `PeriodUnit` parameter to `Month`: 1, 2, 3, and 6
+        # *   Valid values if you set the `PeriodUnit` parameter to `Year`: 1, 2, 3, 4, and 5
+        # 
+        # Default value: 1
         self.period = period
+        # The unit of the renewal duration specified by the `Period` parameter.
+        # 
+        # Valid values:
+        # 
+        # *   Month (default)
+        # *   Year
         self.period_unit = period_unit
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by Elastic Desktop Service (EDS).
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -49804,7 +50851,9 @@ class RenewDesktopGroupResponseBody(TeaModel):
         order_id: List[str] = None,
         request_id: str = None,
     ):
+        # The order IDs.
         self.order_id = order_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50209,6 +51258,7 @@ class RenewNetworkPackagesRequest(TeaModel):
     def __init__(
         self,
         auto_pay: bool = None,
+        auto_renew: bool = None,
         network_package_id: List[str] = None,
         period: int = None,
         period_unit: str = None,
@@ -50239,6 +51289,7 @@ class RenewNetworkPackagesRequest(TeaModel):
         # 
         #     <!-- -->
         self.auto_pay = auto_pay
+        self.auto_renew = auto_renew
         # The IDs of premium bandwidth plans. You can specify up to 100 IDs.
         # 
         # This parameter is required.
@@ -50274,6 +51325,8 @@ class RenewNetworkPackagesRequest(TeaModel):
         result = dict()
         if self.auto_pay is not None:
             result['AutoPay'] = self.auto_pay
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
         if self.network_package_id is not None:
             result['NetworkPackageId'] = self.network_package_id
         if self.period is not None:
@@ -50290,6 +51343,8 @@ class RenewNetworkPackagesRequest(TeaModel):
         m = m or dict()
         if m.get('AutoPay') is not None:
             self.auto_pay = m.get('AutoPay')
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
         if m.get('NetworkPackageId') is not None:
             self.network_package_id = m.get('NetworkPackageId')
         if m.get('Period') is not None:
@@ -53132,9 +54187,22 @@ class UnbindConfigGroupRequestResourceInfos(TeaModel):
         resource_region_id: str = None,
         resource_type: str = None,
     ):
+        # The service type of the resource.
+        # 
+        # Valid value:
+        # 
+        # *   CLOUD_DESKTOP: the cloud computer service.
         self.product_type = product_type
+        # The ID of the resource.
         self.resource_id = resource_id
+        # The region ID of the resource.
         self.resource_region_id = resource_region_id
+        # The type of the resource.
+        # 
+        # Valid values:
+        # 
+        # *   RESOURCE_GROUP: the resource group.
+        # *   CLOUD_DESKTOP: the cloud computer service.
         self.resource_type = resource_type
 
     def validate(self):
@@ -53176,9 +54244,18 @@ class UnbindConfigGroupRequest(TeaModel):
         resource_infos: List[UnbindConfigGroupRequestResourceInfos] = None,
         type: str = None,
     ):
+        # The ID of the region. Set the value to `cn-shanghai`.
         self.region_id = region_id
+        # The resources from which you want to unbind the configuration group.
+        # 
         # This parameter is required.
         self.resource_infos = resource_infos
+        # The type of the configuration group.
+        # 
+        # Valid value:
+        # 
+        # *   Timer: the scheduled task type.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -53224,7 +54301,9 @@ class UnbindConfigGroupResponseBody(TeaModel):
         group_ids: List[str] = None,
         request_id: str = None,
     ):
+        # The IDs of the configuration groups.
         self.group_ids = group_ids
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -53862,6 +54941,9 @@ class UploadImageRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The size of the system disk. Unit: GB.
+        # 
+        # > The size of the system disk cannot be smaller than the size of the image.
         self.system_disk_size = system_disk_size
 
     def validate(self):
@@ -54236,8 +55318,12 @@ class WakeupDesktopsRequest(TeaModel):
         desktop_id: List[str] = None,
         region_id: str = None,
     ):
+        # The IDs of the cloud computers. You can specify the IDs of 1 to 100 cloud computers.
+        # 
         # This parameter is required.
         self.desktop_id = desktop_id
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by Elastic Desktop Service (EDS).
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -54270,6 +55356,7 @@ class WakeupDesktopsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

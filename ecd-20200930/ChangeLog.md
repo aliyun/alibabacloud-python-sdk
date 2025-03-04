@@ -1,3 +1,14 @@
+2025-03-04 Version: 4.6.0
+- Support API CreateBandwidthResourcePackages.
+- Update API DescribeDesktopsInGroup: add param CustomEndTimePeriod.
+- Update API DescribeDesktopsInGroup: add param CustomStartTimePeriod.
+- Update API DescribePolicyGroups: add param PageNumber.
+- Update API DescribePolicyGroups: add param PageSize.
+- Update API DescribePolicyGroups: update response param.
+- Update API ModifyDiskSpec: add param ResellerOwnerUid.
+- Update API RenewNetworkPackages: add param AutoRenew.
+
+
 2025-02-25 Version: 4.5.0
 - Support API ModifyOfficeSiteDnsInfo.
 - Update API CreatePolicyGroup: update param DomainResolveRule.
