@@ -11153,7 +11153,12 @@ class ListResellersRequestFilter(TeaModel):
         name: str = None,
         value: List[str] = None,
     ):
+        # The parameter name of the filter. You can specify one or more parameter names to query services. Valid values:
+        # 
+        # *   ResellerUid: the uid of the distributor.
+        # *   Name: the name of the distributor.
         self.name = name
+        # Filter value array.
         self.value = value
 
     def validate(self):
@@ -11188,9 +11193,14 @@ class ListResellersRequest(TeaModel):
         next_token: str = None,
         region_id: str = None,
     ):
+        # The filters.
         self.filter = filter
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -11243,10 +11253,15 @@ class ListResellersResponseBodySupplierInformation(TeaModel):
         supplier_uid: int = None,
         supplier_url: str = None,
     ):
+        # The description of distributor.
         self.supplier_desc = supplier_desc
+        # The Logo of distributor
         self.supplier_logo = supplier_logo
+        # The name of the distributor
         self.supplier_name = supplier_name
+        # The Alibaba Cloud account ID of the distributor.
         self.supplier_uid = supplier_uid
+        # The URL of the distributor.
         self.supplier_url = supplier_url
 
     def validate(self):
@@ -11294,10 +11309,15 @@ class ListResellersResponseBody(TeaModel):
         supplier_information: List[ListResellersResponseBodySupplierInformation] = None,
         total_count: int = None,
     ):
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # A pagination token.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # distributor informations
         self.supplier_information = supplier_information
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -12211,7 +12231,6 @@ class ListServiceInstanceResourcesRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
         region_id: str = None,
-        resource_arn: List[str] = None,
         service_instance_id: str = None,
         service_instance_resource_type: str = None,
         tag: List[ListServiceInstanceResourcesRequestTag] = None,
@@ -12228,8 +12247,6 @@ class ListServiceInstanceResourcesRequest(TeaModel):
         self.next_token = next_token
         # The region ID where the service instance resides.
         self.region_id = region_id
-        # The Alibaba Cloud Resource Name (ARN) of a resource.
-        self.resource_arn = resource_arn
         # The ID of the service instance.
         # 
         # This parameter is required.
@@ -12265,8 +12282,6 @@ class ListServiceInstanceResourcesRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.resource_arn is not None:
-            result['ResourceARN'] = self.resource_arn
         if self.service_instance_id is not None:
             result['ServiceInstanceId'] = self.service_instance_id
         if self.service_instance_resource_type is not None:
@@ -12290,8 +12305,6 @@ class ListServiceInstanceResourcesRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('ResourceARN') is not None:
-            self.resource_arn = m.get('ResourceARN')
         if m.get('ServiceInstanceId') is not None:
             self.service_instance_id = m.get('ServiceInstanceId')
         if m.get('ServiceInstanceResourceType') is not None:

@@ -4539,7 +4539,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.ListResellersResponse:
         """
-        @summary 查询分销商
+        @summary Paginated query of distributor information list
         
         @param request: ListResellersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4586,7 +4586,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.ListResellersResponse:
         """
-        @summary 查询分销商
+        @summary Paginated query of distributor information list
         
         @param request: ListResellersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4632,7 +4632,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.ListResellersRequest,
     ) -> compute_nest_supplier_20210521_models.ListResellersResponse:
         """
-        @summary 查询分销商
+        @summary Paginated query of distributor information list
         
         @param request: ListResellersRequest
         @return: ListResellersResponse
@@ -4645,7 +4645,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.ListResellersRequest,
     ) -> compute_nest_supplier_20210521_models.ListResellersResponse:
         """
-        @summary 查询分销商
+        @summary Paginated query of distributor information list
         
         @param request: ListResellersRequest
         @return: ListResellersResponse
@@ -4951,8 +4951,6 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_arn):
-            query['ResourceARN'] = request.resource_arn
         if not UtilClient.is_unset(request.service_instance_id):
             query['ServiceInstanceId'] = request.service_instance_id
         if not UtilClient.is_unset(request.service_instance_resource_type):
@@ -5006,8 +5004,6 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_arn):
-            query['ResourceARN'] = request.resource_arn
         if not UtilClient.is_unset(request.service_instance_id):
             query['ServiceInstanceId'] = request.service_instance_id
         if not UtilClient.is_unset(request.service_instance_resource_type):

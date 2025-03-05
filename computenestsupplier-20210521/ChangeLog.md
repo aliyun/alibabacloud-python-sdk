@@ -1,3 +1,7 @@
+2025-03-05 Version: 7.0.0
+- Update API ListServiceInstanceResources: delete param ResourceARN.
+
+
 2025-03-03 Version: 6.3.0
 - Support API CancelServiceRegistration.
 - Support API CreateServiceTestCase.
