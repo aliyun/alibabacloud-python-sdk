@@ -1,3 +1,15 @@
+2025-03-05 Version: 2.2.0
+- Support API AssociateIpamResourceDiscovery.
+- Support API CreateIpamResourceDiscovery.
+- Support API DeleteIpamResourceDiscovery.
+- Support API DissociateIpamResourceDiscovery.
+- Support API GetIpamPoolNextAvailableCidr.
+- Support API ListIpamResourceDiscoveryAssociations.
+- Support API UpdateIpamResourceDiscovery.
+- Update API ListIpamResourceDiscoveries: add param IsShared.
+- Update API ListIpamResourceDiscoveries: update response param.
+
+
 2025-01-23 Version: 2.1.0
 - Support API GetIpamPoolAllocation.
 - Update API AddIpamPoolCidr: update param ClientToken.

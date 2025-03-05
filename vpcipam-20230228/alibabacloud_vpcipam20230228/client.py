@@ -157,6 +157,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_ipam_pool_cidr_with_options_async(request, runtime)
 
+    def associate_ipam_resource_discovery_with_options(
+        self,
+        request: vpc_ipam_20230228_models.AssociateIpamResourceDiscoveryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_ipam_20230228_models.AssociateIpamResourceDiscoveryResponse:
+        """
+        @summary 关联资源发现和IPAM实例。
+        
+        @param request: AssociateIpamResourceDiscoveryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateIpamResourceDiscoveryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ipam_id):
+            query['IpamId'] = request.ipam_id
+        if not UtilClient.is_unset(request.ipam_resource_discovery_id):
+            query['IpamResourceDiscoveryId'] = request.ipam_resource_discovery_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AssociateIpamResourceDiscovery',
+            version='2023-02-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.AssociateIpamResourceDiscoveryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.AssociateIpamResourceDiscoveryResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def associate_ipam_resource_discovery_with_options_async(
+        self,
+        request: vpc_ipam_20230228_models.AssociateIpamResourceDiscoveryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_ipam_20230228_models.AssociateIpamResourceDiscoveryResponse:
+        """
+        @summary 关联资源发现和IPAM实例。
+        
+        @param request: AssociateIpamResourceDiscoveryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateIpamResourceDiscoveryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ipam_id):
+            query['IpamId'] = request.ipam_id
+        if not UtilClient.is_unset(request.ipam_resource_discovery_id):
+            query['IpamResourceDiscoveryId'] = request.ipam_resource_discovery_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AssociateIpamResourceDiscovery',
+            version='2023-02-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.AssociateIpamResourceDiscoveryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.AssociateIpamResourceDiscoveryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def associate_ipam_resource_discovery(
+        self,
+        request: vpc_ipam_20230228_models.AssociateIpamResourceDiscoveryRequest,
+    ) -> vpc_ipam_20230228_models.AssociateIpamResourceDiscoveryResponse:
+        """
+        @summary 关联资源发现和IPAM实例。
+        
+        @param request: AssociateIpamResourceDiscoveryRequest
+        @return: AssociateIpamResourceDiscoveryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.associate_ipam_resource_discovery_with_options(request, runtime)
+
+    async def associate_ipam_resource_discovery_async(
+        self,
+        request: vpc_ipam_20230228_models.AssociateIpamResourceDiscoveryRequest,
+    ) -> vpc_ipam_20230228_models.AssociateIpamResourceDiscoveryResponse:
+        """
+        @summary 关联资源发现和IPAM实例。
+        
+        @param request: AssociateIpamResourceDiscoveryRequest
+        @return: AssociateIpamResourceDiscoveryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.associate_ipam_resource_discovery_with_options_async(request, runtime)
+
     def change_resource_group_with_options(
         self,
         request: vpc_ipam_20230228_models.ChangeResourceGroupRequest,
@@ -736,6 +876,158 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_ipam_pool_allocation_with_options_async(request, runtime)
+
+    def create_ipam_resource_discovery_with_options(
+        self,
+        request: vpc_ipam_20230228_models.CreateIpamResourceDiscoveryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_ipam_20230228_models.CreateIpamResourceDiscoveryResponse:
+        """
+        @summary 创建自定义类型资源发现。
+        
+        @param request: CreateIpamResourceDiscoveryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIpamResourceDiscoveryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ipam_resource_discovery_description):
+            query['IpamResourceDiscoveryDescription'] = request.ipam_resource_discovery_description
+        if not UtilClient.is_unset(request.ipam_resource_discovery_name):
+            query['IpamResourceDiscoveryName'] = request.ipam_resource_discovery_name
+        if not UtilClient.is_unset(request.operating_region_list):
+            query['OperatingRegionList'] = request.operating_region_list
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateIpamResourceDiscovery',
+            version='2023-02-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.CreateIpamResourceDiscoveryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.CreateIpamResourceDiscoveryResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_ipam_resource_discovery_with_options_async(
+        self,
+        request: vpc_ipam_20230228_models.CreateIpamResourceDiscoveryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_ipam_20230228_models.CreateIpamResourceDiscoveryResponse:
+        """
+        @summary 创建自定义类型资源发现。
+        
+        @param request: CreateIpamResourceDiscoveryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIpamResourceDiscoveryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ipam_resource_discovery_description):
+            query['IpamResourceDiscoveryDescription'] = request.ipam_resource_discovery_description
+        if not UtilClient.is_unset(request.ipam_resource_discovery_name):
+            query['IpamResourceDiscoveryName'] = request.ipam_resource_discovery_name
+        if not UtilClient.is_unset(request.operating_region_list):
+            query['OperatingRegionList'] = request.operating_region_list
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateIpamResourceDiscovery',
+            version='2023-02-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.CreateIpamResourceDiscoveryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.CreateIpamResourceDiscoveryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_ipam_resource_discovery(
+        self,
+        request: vpc_ipam_20230228_models.CreateIpamResourceDiscoveryRequest,
+    ) -> vpc_ipam_20230228_models.CreateIpamResourceDiscoveryResponse:
+        """
+        @summary 创建自定义类型资源发现。
+        
+        @param request: CreateIpamResourceDiscoveryRequest
+        @return: CreateIpamResourceDiscoveryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_ipam_resource_discovery_with_options(request, runtime)
+
+    async def create_ipam_resource_discovery_async(
+        self,
+        request: vpc_ipam_20230228_models.CreateIpamResourceDiscoveryRequest,
+    ) -> vpc_ipam_20230228_models.CreateIpamResourceDiscoveryResponse:
+        """
+        @summary 创建自定义类型资源发现。
+        
+        @param request: CreateIpamResourceDiscoveryRequest
+        @return: CreateIpamResourceDiscoveryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_ipam_resource_discovery_with_options_async(request, runtime)
 
     def create_ipam_scope_with_options(
         self,
@@ -1369,6 +1661,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_ipam_pool_cidr_with_options_async(request, runtime)
 
+    def delete_ipam_resource_discovery_with_options(
+        self,
+        request: vpc_ipam_20230228_models.DeleteIpamResourceDiscoveryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_ipam_20230228_models.DeleteIpamResourceDiscoveryResponse:
+        """
+        @summary 删除自定义类型的资源发现。
+        
+        @param request: DeleteIpamResourceDiscoveryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIpamResourceDiscoveryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ipam_resource_discovery_id):
+            query['IpamResourceDiscoveryId'] = request.ipam_resource_discovery_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteIpamResourceDiscovery',
+            version='2023-02-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.DeleteIpamResourceDiscoveryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.DeleteIpamResourceDiscoveryResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_ipam_resource_discovery_with_options_async(
+        self,
+        request: vpc_ipam_20230228_models.DeleteIpamResourceDiscoveryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_ipam_20230228_models.DeleteIpamResourceDiscoveryResponse:
+        """
+        @summary 删除自定义类型的资源发现。
+        
+        @param request: DeleteIpamResourceDiscoveryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIpamResourceDiscoveryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ipam_resource_discovery_id):
+            query['IpamResourceDiscoveryId'] = request.ipam_resource_discovery_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteIpamResourceDiscovery',
+            version='2023-02-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.DeleteIpamResourceDiscoveryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.DeleteIpamResourceDiscoveryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_ipam_resource_discovery(
+        self,
+        request: vpc_ipam_20230228_models.DeleteIpamResourceDiscoveryRequest,
+    ) -> vpc_ipam_20230228_models.DeleteIpamResourceDiscoveryResponse:
+        """
+        @summary 删除自定义类型的资源发现。
+        
+        @param request: DeleteIpamResourceDiscoveryRequest
+        @return: DeleteIpamResourceDiscoveryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_ipam_resource_discovery_with_options(request, runtime)
+
+    async def delete_ipam_resource_discovery_async(
+        self,
+        request: vpc_ipam_20230228_models.DeleteIpamResourceDiscoveryRequest,
+    ) -> vpc_ipam_20230228_models.DeleteIpamResourceDiscoveryResponse:
+        """
+        @summary 删除自定义类型的资源发现。
+        
+        @param request: DeleteIpamResourceDiscoveryRequest
+        @return: DeleteIpamResourceDiscoveryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_ipam_resource_discovery_with_options_async(request, runtime)
+
     def delete_ipam_scope_with_options(
         self,
         request: vpc_ipam_20230228_models.DeleteIpamScopeRequest,
@@ -1497,6 +1925,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_ipam_scope_with_options_async(request, runtime)
 
+    def dissociate_ipam_resource_discovery_with_options(
+        self,
+        request: vpc_ipam_20230228_models.DissociateIpamResourceDiscoveryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_ipam_20230228_models.DissociateIpamResourceDiscoveryResponse:
+        """
+        @summary 解关联资源发现和IPAM实例。
+        
+        @param request: DissociateIpamResourceDiscoveryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DissociateIpamResourceDiscoveryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ipam_id):
+            query['IpamId'] = request.ipam_id
+        if not UtilClient.is_unset(request.ipam_resource_discovery_id):
+            query['IpamResourceDiscoveryId'] = request.ipam_resource_discovery_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DissociateIpamResourceDiscovery',
+            version='2023-02-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.DissociateIpamResourceDiscoveryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.DissociateIpamResourceDiscoveryResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def dissociate_ipam_resource_discovery_with_options_async(
+        self,
+        request: vpc_ipam_20230228_models.DissociateIpamResourceDiscoveryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_ipam_20230228_models.DissociateIpamResourceDiscoveryResponse:
+        """
+        @summary 解关联资源发现和IPAM实例。
+        
+        @param request: DissociateIpamResourceDiscoveryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DissociateIpamResourceDiscoveryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ipam_id):
+            query['IpamId'] = request.ipam_id
+        if not UtilClient.is_unset(request.ipam_resource_discovery_id):
+            query['IpamResourceDiscoveryId'] = request.ipam_resource_discovery_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DissociateIpamResourceDiscovery',
+            version='2023-02-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.DissociateIpamResourceDiscoveryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.DissociateIpamResourceDiscoveryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def dissociate_ipam_resource_discovery(
+        self,
+        request: vpc_ipam_20230228_models.DissociateIpamResourceDiscoveryRequest,
+    ) -> vpc_ipam_20230228_models.DissociateIpamResourceDiscoveryResponse:
+        """
+        @summary 解关联资源发现和IPAM实例。
+        
+        @param request: DissociateIpamResourceDiscoveryRequest
+        @return: DissociateIpamResourceDiscoveryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dissociate_ipam_resource_discovery_with_options(request, runtime)
+
+    async def dissociate_ipam_resource_discovery_async(
+        self,
+        request: vpc_ipam_20230228_models.DissociateIpamResourceDiscoveryRequest,
+    ) -> vpc_ipam_20230228_models.DissociateIpamResourceDiscoveryResponse:
+        """
+        @summary 解关联资源发现和IPAM实例。
+        
+        @param request: DissociateIpamResourceDiscoveryRequest
+        @return: DissociateIpamResourceDiscoveryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dissociate_ipam_resource_discovery_with_options_async(request, runtime)
+
     def get_ipam_pool_allocation_with_options(
         self,
         request: vpc_ipam_20230228_models.GetIpamPoolAllocationRequest,
@@ -1600,6 +2168,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_ipam_pool_allocation_with_options_async(request, runtime)
+
+    def get_ipam_pool_next_available_cidr_with_options(
+        self,
+        request: vpc_ipam_20230228_models.GetIpamPoolNextAvailableCidrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_ipam_20230228_models.GetIpamPoolNextAvailableCidrResponse:
+        """
+        @summary 获取地址池可用CIDR。
+        
+        @param request: GetIpamPoolNextAvailableCidrRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIpamPoolNextAvailableCidrResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetIpamPoolNextAvailableCidr',
+            version='2023-02-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.GetIpamPoolNextAvailableCidrResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.GetIpamPoolNextAvailableCidrResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_ipam_pool_next_available_cidr_with_options_async(
+        self,
+        request: vpc_ipam_20230228_models.GetIpamPoolNextAvailableCidrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_ipam_20230228_models.GetIpamPoolNextAvailableCidrResponse:
+        """
+        @summary 获取地址池可用CIDR。
+        
+        @param request: GetIpamPoolNextAvailableCidrRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIpamPoolNextAvailableCidrResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetIpamPoolNextAvailableCidr',
+            version='2023-02-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.GetIpamPoolNextAvailableCidrResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.GetIpamPoolNextAvailableCidrResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_ipam_pool_next_available_cidr(
+        self,
+        request: vpc_ipam_20230228_models.GetIpamPoolNextAvailableCidrRequest,
+    ) -> vpc_ipam_20230228_models.GetIpamPoolNextAvailableCidrResponse:
+        """
+        @summary 获取地址池可用CIDR。
+        
+        @param request: GetIpamPoolNextAvailableCidrRequest
+        @return: GetIpamPoolNextAvailableCidrResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_ipam_pool_next_available_cidr_with_options(request, runtime)
+
+    async def get_ipam_pool_next_available_cidr_async(
+        self,
+        request: vpc_ipam_20230228_models.GetIpamPoolNextAvailableCidrRequest,
+    ) -> vpc_ipam_20230228_models.GetIpamPoolNextAvailableCidrResponse:
+        """
+        @summary 获取地址池可用CIDR。
+        
+        @param request: GetIpamPoolNextAvailableCidrRequest
+        @return: GetIpamPoolNextAvailableCidrResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_ipam_pool_next_available_cidr_with_options_async(request, runtime)
 
     def get_vpc_ipam_service_status_with_options(
         self,
@@ -2395,6 +3067,8 @@ class Client(OpenApiClient):
             query['IpamResourceDiscoveryIds'] = request.ipam_resource_discovery_ids
         if not UtilClient.is_unset(request.ipam_resource_discovery_name):
             query['IpamResourceDiscoveryName'] = request.ipam_resource_discovery_name
+        if not UtilClient.is_unset(request.is_shared):
+            query['IsShared'] = request.is_shared
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -2458,6 +3132,8 @@ class Client(OpenApiClient):
             query['IpamResourceDiscoveryIds'] = request.ipam_resource_discovery_ids
         if not UtilClient.is_unset(request.ipam_resource_discovery_name):
             query['IpamResourceDiscoveryName'] = request.ipam_resource_discovery_name
+        if not UtilClient.is_unset(request.is_shared):
+            query['IsShared'] = request.is_shared
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -2528,6 +3204,146 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_ipam_resource_discoveries_with_options_async(request, runtime)
+
+    def list_ipam_resource_discovery_associations_with_options(
+        self,
+        request: vpc_ipam_20230228_models.ListIpamResourceDiscoveryAssociationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_ipam_20230228_models.ListIpamResourceDiscoveryAssociationsResponse:
+        """
+        @summary 查看资源发现和IPAM的关联关系。
+        
+        @param request: ListIpamResourceDiscoveryAssociationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIpamResourceDiscoveryAssociationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ipam_id):
+            query['IpamId'] = request.ipam_id
+        if not UtilClient.is_unset(request.ipam_resource_discovery_id):
+            query['IpamResourceDiscoveryId'] = request.ipam_resource_discovery_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIpamResourceDiscoveryAssociations',
+            version='2023-02-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamResourceDiscoveryAssociationsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamResourceDiscoveryAssociationsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_ipam_resource_discovery_associations_with_options_async(
+        self,
+        request: vpc_ipam_20230228_models.ListIpamResourceDiscoveryAssociationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_ipam_20230228_models.ListIpamResourceDiscoveryAssociationsResponse:
+        """
+        @summary 查看资源发现和IPAM的关联关系。
+        
+        @param request: ListIpamResourceDiscoveryAssociationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIpamResourceDiscoveryAssociationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ipam_id):
+            query['IpamId'] = request.ipam_id
+        if not UtilClient.is_unset(request.ipam_resource_discovery_id):
+            query['IpamResourceDiscoveryId'] = request.ipam_resource_discovery_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIpamResourceDiscoveryAssociations',
+            version='2023-02-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamResourceDiscoveryAssociationsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamResourceDiscoveryAssociationsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_ipam_resource_discovery_associations(
+        self,
+        request: vpc_ipam_20230228_models.ListIpamResourceDiscoveryAssociationsRequest,
+    ) -> vpc_ipam_20230228_models.ListIpamResourceDiscoveryAssociationsResponse:
+        """
+        @summary 查看资源发现和IPAM的关联关系。
+        
+        @param request: ListIpamResourceDiscoveryAssociationsRequest
+        @return: ListIpamResourceDiscoveryAssociationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_ipam_resource_discovery_associations_with_options(request, runtime)
+
+    async def list_ipam_resource_discovery_associations_async(
+        self,
+        request: vpc_ipam_20230228_models.ListIpamResourceDiscoveryAssociationsRequest,
+    ) -> vpc_ipam_20230228_models.ListIpamResourceDiscoveryAssociationsResponse:
+        """
+        @summary 查看资源发现和IPAM的关联关系。
+        
+        @param request: ListIpamResourceDiscoveryAssociationsRequest
+        @return: ListIpamResourceDiscoveryAssociationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_ipam_resource_discovery_associations_with_options_async(request, runtime)
 
     def list_ipam_scopes_with_options(
         self,
@@ -2683,7 +3499,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.ListIpamsResponse:
         """
-        @summary 查询ipam
+        @summary Queries IP Address Managers (IPAMs).
         
         @param request: ListIpamsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2744,7 +3560,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_ipam_20230228_models.ListIpamsResponse:
         """
-        @summary 查询ipam
+        @summary Queries IP Address Managers (IPAMs).
         
         @param request: ListIpamsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2804,7 +3620,7 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.ListIpamsRequest,
     ) -> vpc_ipam_20230228_models.ListIpamsResponse:
         """
-        @summary 查询ipam
+        @summary Queries IP Address Managers (IPAMs).
         
         @param request: ListIpamsRequest
         @return: ListIpamsResponse
@@ -2817,7 +3633,7 @@ class Client(OpenApiClient):
         request: vpc_ipam_20230228_models.ListIpamsRequest,
     ) -> vpc_ipam_20230228_models.ListIpamsResponse:
         """
-        @summary 查询ipam
+        @summary Queries IP Address Managers (IPAMs).
         
         @param request: ListIpamsRequest
         @return: ListIpamsResponse
@@ -3808,6 +4624,158 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_ipam_pool_allocation_with_options_async(request, runtime)
+
+    def update_ipam_resource_discovery_with_options(
+        self,
+        request: vpc_ipam_20230228_models.UpdateIpamResourceDiscoveryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_ipam_20230228_models.UpdateIpamResourceDiscoveryResponse:
+        """
+        @summary 更新自定义类型资源发现。
+        
+        @param request: UpdateIpamResourceDiscoveryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIpamResourceDiscoveryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.add_operating_region):
+            query['AddOperatingRegion'] = request.add_operating_region
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ipam_resource_discovery_description):
+            query['IpamResourceDiscoveryDescription'] = request.ipam_resource_discovery_description
+        if not UtilClient.is_unset(request.ipam_resource_discovery_id):
+            query['IpamResourceDiscoveryId'] = request.ipam_resource_discovery_id
+        if not UtilClient.is_unset(request.ipam_resource_discovery_name):
+            query['IpamResourceDiscoveryName'] = request.ipam_resource_discovery_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.remove_operating_region):
+            query['RemoveOperatingRegion'] = request.remove_operating_region
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateIpamResourceDiscovery',
+            version='2023-02-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.UpdateIpamResourceDiscoveryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.UpdateIpamResourceDiscoveryResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_ipam_resource_discovery_with_options_async(
+        self,
+        request: vpc_ipam_20230228_models.UpdateIpamResourceDiscoveryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_ipam_20230228_models.UpdateIpamResourceDiscoveryResponse:
+        """
+        @summary 更新自定义类型资源发现。
+        
+        @param request: UpdateIpamResourceDiscoveryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIpamResourceDiscoveryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.add_operating_region):
+            query['AddOperatingRegion'] = request.add_operating_region
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ipam_resource_discovery_description):
+            query['IpamResourceDiscoveryDescription'] = request.ipam_resource_discovery_description
+        if not UtilClient.is_unset(request.ipam_resource_discovery_id):
+            query['IpamResourceDiscoveryId'] = request.ipam_resource_discovery_id
+        if not UtilClient.is_unset(request.ipam_resource_discovery_name):
+            query['IpamResourceDiscoveryName'] = request.ipam_resource_discovery_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.remove_operating_region):
+            query['RemoveOperatingRegion'] = request.remove_operating_region
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateIpamResourceDiscovery',
+            version='2023-02-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.UpdateIpamResourceDiscoveryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.UpdateIpamResourceDiscoveryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_ipam_resource_discovery(
+        self,
+        request: vpc_ipam_20230228_models.UpdateIpamResourceDiscoveryRequest,
+    ) -> vpc_ipam_20230228_models.UpdateIpamResourceDiscoveryResponse:
+        """
+        @summary 更新自定义类型资源发现。
+        
+        @param request: UpdateIpamResourceDiscoveryRequest
+        @return: UpdateIpamResourceDiscoveryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_ipam_resource_discovery_with_options(request, runtime)
+
+    async def update_ipam_resource_discovery_async(
+        self,
+        request: vpc_ipam_20230228_models.UpdateIpamResourceDiscoveryRequest,
+    ) -> vpc_ipam_20230228_models.UpdateIpamResourceDiscoveryResponse:
+        """
+        @summary 更新自定义类型资源发现。
+        
+        @param request: UpdateIpamResourceDiscoveryRequest
+        @return: UpdateIpamResourceDiscoveryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_ipam_resource_discovery_with_options_async(request, runtime)
 
     def update_ipam_scope_with_options(
         self,

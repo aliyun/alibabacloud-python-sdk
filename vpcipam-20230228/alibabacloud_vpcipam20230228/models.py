@@ -126,6 +126,152 @@ class AddIpamPoolCidrResponse(TeaModel):
         return self
 
 
+class AssociateIpamResourceDiscoveryRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dry_run: bool = None,
+        ipam_id: str = None,
+        ipam_resource_discovery_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.client_token = client_token
+        self.dry_run = dry_run
+        # This parameter is required.
+        self.ipam_id = ipam_id
+        # This parameter is required.
+        self.ipam_resource_discovery_id = ipam_resource_discovery_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.ipam_id is not None:
+            result['IpamId'] = self.ipam_id
+        if self.ipam_resource_discovery_id is not None:
+            result['IpamResourceDiscoveryId'] = self.ipam_resource_discovery_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('IpamId') is not None:
+            self.ipam_id = m.get('IpamId')
+        if m.get('IpamResourceDiscoveryId') is not None:
+            self.ipam_resource_discovery_id = m.get('IpamResourceDiscoveryId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class AssociateIpamResourceDiscoveryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AssociateIpamResourceDiscoveryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AssociateIpamResourceDiscoveryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AssociateIpamResourceDiscoveryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ChangeResourceGroupRequest(TeaModel):
     def __init__(
         self,
@@ -916,6 +1062,216 @@ class CreateIpamPoolAllocationResponse(TeaModel):
         return self
 
 
+class CreateIpamResourceDiscoveryRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateIpamResourceDiscoveryRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dry_run: bool = None,
+        ipam_resource_discovery_description: str = None,
+        ipam_resource_discovery_name: str = None,
+        operating_region_list: List[str] = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        tag: List[CreateIpamResourceDiscoveryRequestTag] = None,
+    ):
+        self.client_token = client_token
+        self.dry_run = dry_run
+        self.ipam_resource_discovery_description = ipam_resource_discovery_description
+        self.ipam_resource_discovery_name = ipam_resource_discovery_name
+        # This parameter is required.
+        self.operating_region_list = operating_region_list
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.ipam_resource_discovery_description is not None:
+            result['IpamResourceDiscoveryDescription'] = self.ipam_resource_discovery_description
+        if self.ipam_resource_discovery_name is not None:
+            result['IpamResourceDiscoveryName'] = self.ipam_resource_discovery_name
+        if self.operating_region_list is not None:
+            result['OperatingRegionList'] = self.operating_region_list
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('IpamResourceDiscoveryDescription') is not None:
+            self.ipam_resource_discovery_description = m.get('IpamResourceDiscoveryDescription')
+        if m.get('IpamResourceDiscoveryName') is not None:
+            self.ipam_resource_discovery_name = m.get('IpamResourceDiscoveryName')
+        if m.get('OperatingRegionList') is not None:
+            self.operating_region_list = m.get('OperatingRegionList')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateIpamResourceDiscoveryRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class CreateIpamResourceDiscoveryResponseBody(TeaModel):
+    def __init__(
+        self,
+        ipam_resource_discovery_id: str = None,
+        request_id: str = None,
+    ):
+        self.ipam_resource_discovery_id = ipam_resource_discovery_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ipam_resource_discovery_id is not None:
+            result['IpamResourceDiscoveryId'] = self.ipam_resource_discovery_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IpamResourceDiscoveryId') is not None:
+            self.ipam_resource_discovery_id = m.get('IpamResourceDiscoveryId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateIpamResourceDiscoveryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateIpamResourceDiscoveryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateIpamResourceDiscoveryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateIpamScopeRequestTag(TeaModel):
     def __init__(
         self,
@@ -1647,6 +2003,145 @@ class DeleteIpamPoolCidrResponse(TeaModel):
         return self
 
 
+class DeleteIpamResourceDiscoveryRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dry_run: bool = None,
+        ipam_resource_discovery_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.client_token = client_token
+        self.dry_run = dry_run
+        # This parameter is required.
+        self.ipam_resource_discovery_id = ipam_resource_discovery_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.ipam_resource_discovery_id is not None:
+            result['IpamResourceDiscoveryId'] = self.ipam_resource_discovery_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('IpamResourceDiscoveryId') is not None:
+            self.ipam_resource_discovery_id = m.get('IpamResourceDiscoveryId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DeleteIpamResourceDiscoveryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteIpamResourceDiscoveryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteIpamResourceDiscoveryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteIpamResourceDiscoveryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteIpamScopeRequest(TeaModel):
     def __init__(
         self,
@@ -1782,6 +2277,152 @@ class DeleteIpamScopeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteIpamScopeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DissociateIpamResourceDiscoveryRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dry_run: bool = None,
+        ipam_id: str = None,
+        ipam_resource_discovery_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.client_token = client_token
+        self.dry_run = dry_run
+        # This parameter is required.
+        self.ipam_id = ipam_id
+        # This parameter is required.
+        self.ipam_resource_discovery_id = ipam_resource_discovery_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.ipam_id is not None:
+            result['IpamId'] = self.ipam_id
+        if self.ipam_resource_discovery_id is not None:
+            result['IpamResourceDiscoveryId'] = self.ipam_resource_discovery_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('IpamId') is not None:
+            self.ipam_id = m.get('IpamId')
+        if m.get('IpamResourceDiscoveryId') is not None:
+            self.ipam_resource_discovery_id = m.get('IpamResourceDiscoveryId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DissociateIpamResourceDiscoveryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DissociateIpamResourceDiscoveryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DissociateIpamResourceDiscoveryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DissociateIpamResourceDiscoveryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1963,6 +2604,133 @@ class GetIpamPoolAllocationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetIpamPoolAllocationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetIpamPoolNextAvailableCidrRequest(TeaModel):
+    def __init__(
+        self,
+        cidr_block: str = None,
+        cidr_mask: int = None,
+        client_token: str = None,
+        ipam_pool_id: str = None,
+        region_id: str = None,
+    ):
+        self.cidr_block = cidr_block
+        self.cidr_mask = cidr_mask
+        self.client_token = client_token
+        # This parameter is required.
+        self.ipam_pool_id = ipam_pool_id
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidr_block is not None:
+            result['CidrBlock'] = self.cidr_block
+        if self.cidr_mask is not None:
+            result['CidrMask'] = self.cidr_mask
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.ipam_pool_id is not None:
+            result['IpamPoolId'] = self.ipam_pool_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CidrBlock') is not None:
+            self.cidr_block = m.get('CidrBlock')
+        if m.get('CidrMask') is not None:
+            self.cidr_mask = m.get('CidrMask')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('IpamPoolId') is not None:
+            self.ipam_pool_id = m.get('IpamPoolId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class GetIpamPoolNextAvailableCidrResponseBody(TeaModel):
+    def __init__(
+        self,
+        cidr_block: str = None,
+        request_id: str = None,
+    ):
+        self.cidr_block = cidr_block
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidr_block is not None:
+            result['CidrBlock'] = self.cidr_block
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CidrBlock') is not None:
+            self.cidr_block = m.get('CidrBlock')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetIpamPoolNextAvailableCidrResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetIpamPoolNextAvailableCidrResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetIpamPoolNextAvailableCidrResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3675,6 +4443,7 @@ class ListIpamResourceDiscoveriesRequest(TeaModel):
         self,
         ipam_resource_discovery_ids: List[str] = None,
         ipam_resource_discovery_name: str = None,
+        is_shared: bool = None,
         max_results: int = None,
         next_token: str = None,
         owner_account: str = None,
@@ -3688,6 +4457,7 @@ class ListIpamResourceDiscoveriesRequest(TeaModel):
     ):
         self.ipam_resource_discovery_ids = ipam_resource_discovery_ids
         self.ipam_resource_discovery_name = ipam_resource_discovery_name
+        self.is_shared = is_shared
         self.max_results = max_results
         self.next_token = next_token
         self.owner_account = owner_account
@@ -3716,6 +4486,8 @@ class ListIpamResourceDiscoveriesRequest(TeaModel):
             result['IpamResourceDiscoveryIds'] = self.ipam_resource_discovery_ids
         if self.ipam_resource_discovery_name is not None:
             result['IpamResourceDiscoveryName'] = self.ipam_resource_discovery_name
+        if self.is_shared is not None:
+            result['IsShared'] = self.is_shared
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -3746,6 +4518,8 @@ class ListIpamResourceDiscoveriesRequest(TeaModel):
             self.ipam_resource_discovery_ids = m.get('IpamResourceDiscoveryIds')
         if m.get('IpamResourceDiscoveryName') is not None:
             self.ipam_resource_discovery_name = m.get('IpamResourceDiscoveryName')
+        if m.get('IsShared') is not None:
+            self.is_shared = m.get('IsShared')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -3817,6 +4591,7 @@ class ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries(TeaModel):
         owner_id: int = None,
         region_id: str = None,
         resource_group_id: str = None,
+        share_type: str = None,
         tags: List[ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveriesTags] = None,
         type: str = None,
     ):
@@ -3829,6 +4604,7 @@ class ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries(TeaModel):
         self.owner_id = owner_id
         self.region_id = region_id
         self.resource_group_id = resource_group_id
+        self.share_type = share_type
         self.tags = tags
         self.type = type
 
@@ -3862,6 +4638,8 @@ class ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.share_type is not None:
+            result['ShareType'] = self.share_type
         result['Tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -3890,6 +4668,8 @@ class ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ShareType') is not None:
+            self.share_type = m.get('ShareType')
         self.tags = []
         if m.get('Tags') is not None:
             for k in m.get('Tags'):
@@ -4002,6 +4782,245 @@ class ListIpamResourceDiscoveriesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListIpamResourceDiscoveriesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListIpamResourceDiscoveryAssociationsRequest(TeaModel):
+    def __init__(
+        self,
+        ipam_id: str = None,
+        ipam_resource_discovery_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.ipam_id = ipam_id
+        self.ipam_resource_discovery_id = ipam_resource_discovery_id
+        self.max_results = max_results
+        self.next_token = next_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ipam_id is not None:
+            result['IpamId'] = self.ipam_id
+        if self.ipam_resource_discovery_id is not None:
+            result['IpamResourceDiscoveryId'] = self.ipam_resource_discovery_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IpamId') is not None:
+            self.ipam_id = m.get('IpamId')
+        if m.get('IpamResourceDiscoveryId') is not None:
+            self.ipam_resource_discovery_id = m.get('IpamResourceDiscoveryId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAssociations(TeaModel):
+    def __init__(
+        self,
+        ipam_id: str = None,
+        ipam_resource_discovery_id: str = None,
+        ipam_resource_discovery_owner_id: str = None,
+        ipam_resource_discovery_status: str = None,
+        ipam_resource_discovery_type: str = None,
+        status: str = None,
+    ):
+        self.ipam_id = ipam_id
+        self.ipam_resource_discovery_id = ipam_resource_discovery_id
+        self.ipam_resource_discovery_owner_id = ipam_resource_discovery_owner_id
+        self.ipam_resource_discovery_status = ipam_resource_discovery_status
+        self.ipam_resource_discovery_type = ipam_resource_discovery_type
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ipam_id is not None:
+            result['IpamId'] = self.ipam_id
+        if self.ipam_resource_discovery_id is not None:
+            result['IpamResourceDiscoveryId'] = self.ipam_resource_discovery_id
+        if self.ipam_resource_discovery_owner_id is not None:
+            result['IpamResourceDiscoveryOwnerId'] = self.ipam_resource_discovery_owner_id
+        if self.ipam_resource_discovery_status is not None:
+            result['IpamResourceDiscoveryStatus'] = self.ipam_resource_discovery_status
+        if self.ipam_resource_discovery_type is not None:
+            result['IpamResourceDiscoveryType'] = self.ipam_resource_discovery_type
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IpamId') is not None:
+            self.ipam_id = m.get('IpamId')
+        if m.get('IpamResourceDiscoveryId') is not None:
+            self.ipam_resource_discovery_id = m.get('IpamResourceDiscoveryId')
+        if m.get('IpamResourceDiscoveryOwnerId') is not None:
+            self.ipam_resource_discovery_owner_id = m.get('IpamResourceDiscoveryOwnerId')
+        if m.get('IpamResourceDiscoveryStatus') is not None:
+            self.ipam_resource_discovery_status = m.get('IpamResourceDiscoveryStatus')
+        if m.get('IpamResourceDiscoveryType') is not None:
+            self.ipam_resource_discovery_type = m.get('IpamResourceDiscoveryType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListIpamResourceDiscoveryAssociationsResponseBody(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        ipam_resource_discovery_associations: List[ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAssociations] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.count = count
+        self.ipam_resource_discovery_associations = ipam_resource_discovery_associations
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.ipam_resource_discovery_associations:
+            for k in self.ipam_resource_discovery_associations:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        result['IpamResourceDiscoveryAssociations'] = []
+        if self.ipam_resource_discovery_associations is not None:
+            for k in self.ipam_resource_discovery_associations:
+                result['IpamResourceDiscoveryAssociations'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        self.ipam_resource_discovery_associations = []
+        if m.get('IpamResourceDiscoveryAssociations') is not None:
+            for k in m.get('IpamResourceDiscoveryAssociations'):
+                temp_model = ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAssociations()
+                self.ipam_resource_discovery_associations.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListIpamResourceDiscoveryAssociationsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListIpamResourceDiscoveryAssociationsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListIpamResourceDiscoveryAssociationsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4399,7 +5418,13 @@ class ListIpamsRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The tag key must start with a letter but cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length. It must start with a letter and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -4441,17 +5466,30 @@ class ListIpamsRequest(TeaModel):
         resource_owner_id: int = None,
         tags: List[ListIpamsRequestTags] = None,
     ):
+        # The IDs of IPAMs. Valid values of N: 1 to 100. A maximum of 100 IPAMs can be queried at a time.
         self.ipam_ids = ipam_ids
+        # The name of the IPAM.
+        # 
+        # It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.ipam_name = ipam_name
+        # The number of entries per page. Valid values: **1** to **100**. Default value: **10**.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   You do not need to specify this parameter for the first request.
+        # *   You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the IPAM pool is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource group ID of the IPAM.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tag information.
         self.tags = tags
 
     def validate(self):
@@ -4528,7 +5566,9 @@ class ListIpamsResponseBodyIpamsTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -4575,21 +5615,39 @@ class ListIpamsResponseBodyIpams(TeaModel):
         scope_count: int = None,
         tags: List[ListIpamsResponseBodyIpamsTags] = None,
     ):
+        # The time when the IPAM was created.
         self.create_time = create_time
         self.default_resource_discovery_association_id = default_resource_discovery_association_id
         self.default_resource_discovery_id = default_resource_discovery_id
+        # The description of the IPAM.
         self.ipam_description = ipam_description
+        # The ID of the IPAM.
         self.ipam_id = ipam_id
+        # The name of the IPAM.
         self.ipam_name = ipam_name
+        # The status of the IPAM. Valid values:
+        # 
+        # *   **Creating**\
+        # *   **Created**\
+        # *   **Deleting**\
+        # *   **Deleted**\
         self.ipam_status = ipam_status
+        # The effective regions of the IPAM.
         self.operating_region_list = operating_region_list
+        # The Alibaba Cloud account that owns the IPAM.
         self.owner_id = owner_id
+        # The default private scope created by the system after the IPAM is created.
         self.private_default_scope_id = private_default_scope_id
+        # The default public scope created by the system after the IPAM is created.
         self.public_default_scope_id = public_default_scope_id
+        # The region ID of the IPAM.
         self.region_id = region_id
         self.resource_discovery_association_count = resource_discovery_association_count
+        # The resource group ID of the IPAM.
         self.resource_group_id = resource_group_id
+        # The number of IPAM scopes. Value: **2 to 5**.
         self.scope_count = scope_count
+        # The tag list.
         self.tags = tags
 
     def validate(self):
@@ -4691,10 +5749,18 @@ class ListIpamsResponseBody(TeaModel):
         total_count: int = None,
     ):
         self.count = count
+        # The IPAMs.
         self.ipams = ipams
+        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -5976,6 +7042,169 @@ class UpdateIpamPoolAllocationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateIpamPoolAllocationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateIpamResourceDiscoveryRequest(TeaModel):
+    def __init__(
+        self,
+        add_operating_region: List[str] = None,
+        client_token: str = None,
+        dry_run: bool = None,
+        ipam_resource_discovery_description: str = None,
+        ipam_resource_discovery_id: str = None,
+        ipam_resource_discovery_name: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        remove_operating_region: List[str] = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.add_operating_region = add_operating_region
+        self.client_token = client_token
+        self.dry_run = dry_run
+        self.ipam_resource_discovery_description = ipam_resource_discovery_description
+        # This parameter is required.
+        self.ipam_resource_discovery_id = ipam_resource_discovery_id
+        self.ipam_resource_discovery_name = ipam_resource_discovery_name
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.remove_operating_region = remove_operating_region
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.add_operating_region is not None:
+            result['AddOperatingRegion'] = self.add_operating_region
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.ipam_resource_discovery_description is not None:
+            result['IpamResourceDiscoveryDescription'] = self.ipam_resource_discovery_description
+        if self.ipam_resource_discovery_id is not None:
+            result['IpamResourceDiscoveryId'] = self.ipam_resource_discovery_id
+        if self.ipam_resource_discovery_name is not None:
+            result['IpamResourceDiscoveryName'] = self.ipam_resource_discovery_name
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.remove_operating_region is not None:
+            result['RemoveOperatingRegion'] = self.remove_operating_region
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddOperatingRegion') is not None:
+            self.add_operating_region = m.get('AddOperatingRegion')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('IpamResourceDiscoveryDescription') is not None:
+            self.ipam_resource_discovery_description = m.get('IpamResourceDiscoveryDescription')
+        if m.get('IpamResourceDiscoveryId') is not None:
+            self.ipam_resource_discovery_id = m.get('IpamResourceDiscoveryId')
+        if m.get('IpamResourceDiscoveryName') is not None:
+            self.ipam_resource_discovery_name = m.get('IpamResourceDiscoveryName')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RemoveOperatingRegion') is not None:
+            self.remove_operating_region = m.get('RemoveOperatingRegion')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class UpdateIpamResourceDiscoveryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateIpamResourceDiscoveryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateIpamResourceDiscoveryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateIpamResourceDiscoveryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
