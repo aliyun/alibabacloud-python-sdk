@@ -1,3 +1,11 @@
+2025-03-05 Version: 1.2.8
+- Update API CreateHealthCheckTemplate: add param ResourceGroupId.
+- Update API CreateLoadBalancer: update param AddressAllocatedMode.
+- Update API GetHealthCheckTemplateAttribute: update response param.
+- Update API ListHealthCheckTemplates: add param ResourceGroupId.
+- Update API ListHealthCheckTemplates: update response param.
+
+
 2025-02-11 Version: 1.2.7
 - Update API CreateServerGroup: add param Ipv6Enabled.
 - Update API ListListeners: update param ListenerIds.

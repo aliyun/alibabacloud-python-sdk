@@ -1337,6 +1337,8 @@ class Client(OpenApiClient):
             query['HealthCheckTimeout'] = request.health_check_timeout
         if not UtilClient.is_unset(request.healthy_threshold):
             query['HealthyThreshold'] = request.healthy_threshold
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.unhealthy_threshold):
@@ -1406,6 +1408,8 @@ class Client(OpenApiClient):
             query['HealthCheckTimeout'] = request.health_check_timeout
         if not UtilClient.is_unset(request.healthy_threshold):
             query['HealthyThreshold'] = request.healthy_threshold
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.unhealthy_threshold):
@@ -6153,6 +6157,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
@@ -6202,6 +6208,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(

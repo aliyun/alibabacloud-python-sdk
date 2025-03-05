@@ -1745,6 +1745,7 @@ class CreateHealthCheckTemplateRequest(TeaModel):
         health_check_template_name: str = None,
         health_check_timeout: int = None,
         healthy_threshold: int = None,
+        resource_group_id: str = None,
         tag: List[CreateHealthCheckTemplateRequestTag] = None,
         unhealthy_threshold: int = None,
     ):
@@ -1827,6 +1828,7 @@ class CreateHealthCheckTemplateRequest(TeaModel):
         # 
         # Default value: **3**.
         self.healthy_threshold = healthy_threshold
+        self.resource_group_id = resource_group_id
         # The tags.
         self.tag = tag
         # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
@@ -1874,6 +1876,8 @@ class CreateHealthCheckTemplateRequest(TeaModel):
             result['HealthCheckTimeout'] = self.health_check_timeout
         if self.healthy_threshold is not None:
             result['HealthyThreshold'] = self.healthy_threshold
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -1910,6 +1914,8 @@ class CreateHealthCheckTemplateRequest(TeaModel):
             self.health_check_timeout = m.get('HealthCheckTimeout')
         if m.get('HealthyThreshold') is not None:
             self.healthy_threshold = m.get('HealthyThreshold')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -2003,7 +2009,7 @@ class CreateListenerRequestCaCertificates(TeaModel):
     ):
         # The ID of the CA certificate.
         # 
-        # >  This parameter is required if you set **CaEnabled** to **true**.
+        # >  This parameter is required if **CaEnabled** is set to **true**.
         self.certificate_id = certificate_id
 
     def validate(self):
@@ -2031,9 +2037,7 @@ class CreateListenerRequestCertificates(TeaModel):
         self,
         certificate_id: str = None,
     ):
-        # The ID of the certificate. Only server certificates are supported. You can specify at most 20 certificates IDs.
-        # 
-        # >  This parameter is required when you set **ListenerProtocol** to **HTTPS** or **QUIC**.
+        # The ID of the certificate. Only server certificates are supported. You can specify up to 20 certificate IDs.
         self.certificate_id = certificate_id
 
     def validate(self):
@@ -2134,9 +2138,9 @@ class CreateListenerRequestDefaultActions(TeaModel):
         # 
         # This parameter is required.
         self.forward_group_config = forward_group_config
-        # The action. You can specify only one type. Valid value example:
+        # The action type. You can specify only one action type. Valid value:
         # 
-        # **ForwardGroup**: forwards requests to multiple server groups.
+        # **ForwardGroup**: forwards requests to multiple Server groups.
         # 
         # This parameter is required.
         self.type = type
@@ -2173,14 +2177,14 @@ class CreateListenerRequestQuicConfig(TeaModel):
         quic_listener_id: str = None,
         quic_upgrade_enabled: bool = None,
     ):
-        # The ID of the QUIC listener that you want to associate with the ALB instance. This parameter is required if you set **QuicUpgradeEnabled** to **true**.
+        # The ID of the QUIC listener that you want to associate with the HTTPS listener. Only HTTPS listeners support this parameter. This parameter is required when **QuicUpgradeEnabled** is set to **true**.
         # 
-        # >  The original listener and the QUIC listener must belong to the same ALB instance.
+        # >  The HTTPS listener and the QUIC listener must be added to the same ALB instance. Make sure that the QUIC listener is not associated with any other listeners.
         self.quic_listener_id = quic_listener_id
         # Specifies whether to enable QUIC upgrade. Valid values:
         # 
-        # *   **true**:
-        # *   **false** (default)
+        # *   **true**: enables QUIC upgrade.
+        # *   **false** (default): disables QUIC upgrade.
         # 
         # >  Only HTTPS listeners support this parameter.
         self.quic_upgrade_enabled = quic_upgrade_enabled
@@ -2265,59 +2269,59 @@ class CreateListenerRequestXForwardedForConfig(TeaModel):
         xforwarded_for_slbid_enabled: bool = None,
         xforwarded_for_slbport_enabled: bool = None,
     ):
-        # The name of the custom header. This parameter takes effect only when you set **XForwardedForClientCertClientVerifyEnabled** to **true**.
+        # The name of the custom header. This parameter takes effect only when **XForwardedForClientCertClientVerifyEnabled** is set to **true**.
         # 
-        # The name must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (_).
+        # The name must be 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (_), and digits.
         # 
-        # > Only HTTPS listeners support this parameter.
+        # >  Only HTTPS listeners support this parameter.
         self.xforwarded_for_client_cert_client_verify_alias = xforwarded_for_client_cert_client_verify_alias
         # Specifies whether to use the `X-Forwarded-Clientcert-clientverify` header to retrieve the verification result of the client certificate. Valid values:
         # 
-        # *   **true**\
-        # *   **false** (default)
+        # *   **true**: uses the X-Forwarded-Clientcert-clientverify header.
+        # *   **false** (default): does not use the X-Forwarded-Clientcert-clientverify header.
         # 
         # >  Only HTTPS listeners support this parameter.
         self.xforwarded_for_client_cert_client_verify_enabled = xforwarded_for_client_cert_client_verify_enabled
         # The name of the custom header. This parameter takes effect only when **XForwardedForClientCertFingerprintEnabled** is set to **true**.
         # 
-        # The name must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (_).
+        # The name must be 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (_), and digits.
         # 
         # >  Only HTTPS listeners support this parameter.
         self.xforwarded_for_client_cert_fingerprint_alias = xforwarded_for_client_cert_fingerprint_alias
         # Specifies whether to use the `X-Forwarded-Clientcert-fingerprint` header to retrieve the fingerprint of the client certificate. Valid values:
         # 
-        # *   **true**\
-        # *   **false** (default)
+        # *   **true**: uses the X-Forwarded-Clientcert-fingerprint header.
+        # *   **false** (default): does not use the X-Forwarded-Clientcert-fingerprint header.
         # 
         # >  Only HTTPS listeners support this parameter.
         self.xforwarded_for_client_cert_fingerprint_enabled = xforwarded_for_client_cert_fingerprint_enabled
         # The name of the custom header. This parameter takes effect only when **XForwardedForClientCertIssuerDNEnabled** is set to **true**.
         # 
-        # The name must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (_).
+        # The name must be 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (_), and digits.
         # 
         # >  Only HTTPS listeners support this parameter.
         self.xforwarded_for_client_cert_issuer_dnalias = xforwarded_for_client_cert_issuer_dnalias
         # Specifies whether to use the `X-Forwarded-Clientcert-issuerdn` header to retrieve information about the authority that issues the client certificate. Valid values:
         # 
-        # *   **true**\
-        # *   **false** (default)
+        # *   **true**: uses the X-Forwarded-Clientcert-issuerdn header.
+        # *   **false** (default): does not use the X-Forwarded-Clientcert-issuerdn header.
         # 
         # >  Only HTTPS listeners support this parameter.
         self.xforwarded_for_client_cert_issuer_dnenabled = xforwarded_for_client_cert_issuer_dnenabled
         # The name of the custom header. This parameter takes effect only when **XForwardedForClientCertSubjectDNEnabled** is set to **true**.
         # 
-        # The name must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (_).
+        # The name must be 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (_), and digits.
         # 
         # >  Only HTTPS listeners support this parameter.
         self.xforwarded_for_client_cert_subject_dnalias = xforwarded_for_client_cert_subject_dnalias
         # Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header to retrieve information about the owner of the client certificate. Valid values:
         # 
-        # *   **true**\
-        # *   **false** (default)
+        # *   **true**: uses the X-Forwarded-Clientcert-subjectdn header.
+        # *   **false** (default): does not use the X-Forwarded-Clientcert-subjectdn header.
         # 
         # >  Only HTTPS listeners support this parameter.
         self.xforwarded_for_client_cert_subject_dnenabled = xforwarded_for_client_cert_subject_dnenabled
-        # Specifies whether to allow the ALB instance to retrieve client IP addresses from the X-Forwarded-For header. Valid values:
+        # Specifies whether to allow the ALB instance to retrieve client IP addresses from the `X-Forwarded-For` header. Valid values:
         # 
         # *   **true**\
         # *   **false** (default)
@@ -2326,12 +2330,12 @@ class CreateListenerRequestXForwardedForConfig(TeaModel):
         self.xforwarded_for_client_source_ips_enabled = xforwarded_for_client_source_ips_enabled
         # The trusted proxy IP address.
         # 
-        # ALB instances traverse the IP addresses in the `X-Forwarded-For` header from the rightmost IP address to the leftmost IP address. The first IP address that is not on the trusted IP address list is considered the client IP address. Requests from the client IP address are throttled.
+        # ALB traverses `X-Forwarded-For` backwards and selects the first IP address that is not in the trusted IP list as the originating IP address of the client, which will be throttled if source IP address throttling is enabled.
         self.xforwarded_for_client_source_ips_trusted = xforwarded_for_client_source_ips_trusted
         # Specifies whether to use the `X-Forwarded-Client-srcport` header to retrieve the client port. Valid values:
         # 
-        # *   **true**\
-        # *   **false** (default)
+        # *   **true**: uses the X-Forwarded-Client-srcport header.
+        # *   **false** (default): does not use the X-Forwarded-Client-srcport header.
         # 
         # >  HTTP and HTTPS listeners support this parameter.
         self.xforwarded_for_client_src_port_enabled = xforwarded_for_client_src_port_enabled
@@ -2342,26 +2346,40 @@ class CreateListenerRequestXForwardedForConfig(TeaModel):
         # 
         # >  HTTP and HTTPS listeners support this parameter.
         self.xforwarded_for_enabled = xforwarded_for_enabled
-        self.xforwarded_for_host_enabled = xforwarded_for_host_enabled
-        self.xforwarded_for_processing_mode = xforwarded_for_processing_mode
-        # Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol. Valid values:
+        # Specifies whether to use the `X-Forwarded-Host` header to retrieve the client domain name. Valid values:
         # 
         # *   **true**\
         # *   **false** (default)
+        # 
+        # >  This parameter is available for HTTP, HTTPS, and QUIC listeners.
+        self.xforwarded_for_host_enabled = xforwarded_for_host_enabled
+        # Specifies how the `X-Forwarded-For` header is processed. This parameter takes effect only when **XForwardedForEnabled** is set to **true**. Valid values:
+        # 
+        # *   **append** (default)
+        # *   **remove**\
+        # 
+        # > *   If this parameter is set to **append**, ALB appends the IP address of the last hop to the existing `X-Forwarded-For` header in the request before the request is sent to backend servers.
+        # > *   If this parameter is set to **remove**, ALB removes the `X-Forwarded-For` header in the request before the request is sent to backend servers, no matter whether the request carries the `X-Forwarded-For` header.
+        # > *   This parameter is only available for HTTP and HTTPS listeners.
+        self.xforwarded_for_processing_mode = xforwarded_for_processing_mode
+        # Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol of the ALB instance. Valid values:
+        # 
+        # *   **true**: uses the X-Forwarded-Proto header.
+        # *   **false** (default): does not use the X-Forwarded-Proto header.
         # 
         # >  HTTP, HTTPS, and QUIC listeners support this parameter.
         self.xforwarded_for_proto_enabled = xforwarded_for_proto_enabled
         # Specifies whether to use the `SLB-ID` header to retrieve the ID of the ALB instance. Valid values:
         # 
-        # *   **true**\
-        # *   **false** (default)
+        # *   **true**: uses the SLB-ID header.
+        # *   **false** (default): does not use the SLB-ID header.
         # 
         # >  HTTP, HTTPS, and QUIC listeners support this parameter.
         self.xforwarded_for_slbid_enabled = xforwarded_for_slbid_enabled
         # Specifies whether to use the `X-Forwarded-Port` header to retrieve the listener port of the ALB instance. Valid values:
         # 
-        # *   **true**\
-        # *   **false** (default)
+        # *   **true**: uses the X-Forwarded-Port header.
+        # *   **false** (default): does not use the X-Forwarded-Port header.
         # 
         # >  HTTP, HTTPS, and QUIC listeners support this parameter.
         self.xforwarded_for_slbport_enabled = xforwarded_for_slbport_enabled
@@ -2695,9 +2713,9 @@ class CreateListenerResponseBody(TeaModel):
     ):
         # The ID of the asynchronous task.
         self.job_id = job_id
-        # The listener ID.
+        # The ID of the listener.
         self.listener_id = listener_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6375,11 +6393,11 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
         healthy_threshold: int = None,
         unhealthy_threshold: int = None,
     ):
-        # The HTTP status codes that indicate healthy backend servers.
+        # The HTTP status code that indicates healthy backend servers.
         self.health_check_codes = health_check_codes
         # The backend port that is used for health checks.
         # 
-        # Valid values: **0** to **65535**.
+        # Valid values: **0** to **65535**\
         # 
         # The default value is **0**, which specifies that the port of a backend server is used for health checks.
         self.health_check_connect_port = health_check_connect_port
@@ -6400,7 +6418,7 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
         # 
         #     *   The domain name must be 1 to 80 characters in length.
         #     *   The domain name can contain lowercase letters, digits, hyphens (-), and periods (.).
-        #     *   The domain name can contain at least one period (.) but cannot start or end with a period (.).
+        #     *   The domain name must contain at least one period (.) but cannot start or end with a period (.).
         #     *   The rightmost domain label of the domain name can contain only letters, and cannot contain digits or hyphens (-).
         #     *   The domain name cannot start or end with a hyphen (-).
         # 
@@ -6410,9 +6428,9 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
         # 
         # >  This parameter takes effect only if **HealthCheckProtocol** is set to **HTTP** or **HTTPS**.
         self.health_check_http_version = health_check_http_version
-        # The interval at which health checks are performed. Unit: seconds.
+        # The interval at which health checks are performed. Unit: seconds
         # 
-        # Valid values: **1** to **50**.
+        # Valid values: **1** to **50**\
         # 
         # Default value: **2**.
         self.health_check_interval = health_check_interval
@@ -6424,7 +6442,7 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
         # 
         # >  This parameter takes effect only if **HealthCheckProtocol** is set to **HTTP**, **HTTPS**, or **gRPC**.
         self.health_check_method = health_check_method
-        # The path that is used for health checks.
+        # The URL that is used for health checks.
         # 
         # The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : \\" , +`. The URL must start with a forward slash (/).
         # 
@@ -6437,23 +6455,23 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
         # *   **TCP**: TCP health checks send TCP SYN packets to a backend server to probe the availability of backend servers.
         # *   **gRPC**: gRPC health checks send POST or GET requests to a backend server to check whether the backend server is healthy.
         self.health_check_protocol = health_check_protocol
-        # The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the backend server is declared unhealthy. Unit: seconds.
+        # The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the backend server is declared unhealthy. Unit: seconds
         # 
-        # Valid values: **1** to **300**.
+        # Valid values: **1** to **300**\
         # 
-        # Default value: **5**.
+        # Default value: **5**\
         self.health_check_timeout = health_check_timeout
         # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health check status of the backend server changes from **fail** to **success**.
         # 
-        # Valid values: **2** to **10**.
+        # Valid values: **2** to **10**\
         # 
         # Default value: **3**.
         self.healthy_threshold = healthy_threshold
         # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health check status of the backend server changes from **success** to **fail**.
         # 
-        # Valid values: **2** to **10**.
+        # Valid values: **2** to **10**\
         # 
-        # Default value: **3**.
+        # Default value: **3**\
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):
@@ -6575,11 +6593,11 @@ class CreateServerGroupRequestStickySessionConfig(TeaModel):
         # 
         # >  This parameter takes effect only when **StickySessionEnabled** is set to **true** and **StickySessionType** is set to **server**.
         self.cookie = cookie
-        # The maximum amount of time to wait before the session cookie expires. Unit: seconds.
+        # The maximum amount of time to wait before the session cookie expires. Unit: seconds
         # 
-        # Valid values: **1** to **86400**.
+        # Valid values: **1** to **86400**\
         # 
-        # Default value: **1000**.
+        # Default value: **1000**\
         # 
         # >  This parameter takes effect only when **StickySessionEnabled** is set to **true** and **StickySessionType** is set to **Insert**.
         self.cookie_timeout = cookie_timeout
@@ -6592,8 +6610,8 @@ class CreateServerGroupRequestStickySessionConfig(TeaModel):
         self.sticky_session_enabled = sticky_session_enabled
         # The method that is used to handle cookies. Valid values:
         # 
-        # *   **Insert** (default value): inserts a cookie. The first time a client accesses SLB, SLB inserts the SERVERID cookie into the HTTP or HTTPS response packet. Subsequent requests from the client that carry this cookie are forwarded to the same backend server as the first request.
-        # *   **Server**: rewrites a cookie. SLB rewrites the custom cookies in requests from a client. Subsequent requests from the client that carry the new cookie are forwarded to the same backend server as the first request.
+        # *   **Insert** (default value): inserts a cookie. The first time a client accesses ALB, ALB inserts the SERVERID cookie into the HTTP or HTTPS response packet. Subsequent requests from the client that carry this cookie are forwarded to the same backend server as the first request.
+        # *   **Server**: rewrites a cookie. ALB rewrites the custom cookies in requests from a client. Subsequent requests from the client that carry the new cookie are forwarded to the same backend server as the first request.
         # 
         # >  This parameter takes effect when the **StickySessionEnabled** parameter is set to **true**.
         self.sticky_session_type = sticky_session_type
@@ -6745,13 +6763,9 @@ class CreateServerGroupRequest(TeaModel):
         # *   **true** (default)
         # *   **false**\
         # 
-        # > 
-        # 
-        # *   Basic ALB instances do not support server groups that have cross-zone load balancing disabled. Only Standard and WAF-enabled ALB instances support server groups that have cross-zone load balancing.
-        # 
-        # *   Cross-zone load balancing can be disabled for server groups of the server and IP type, but not for server groups of the Function Compute type.
-        # 
-        # *   When cross-zone load balancing is disabled, session persistence cannot be enabled.
+        # > *   Basic ALB instances do not support server groups that have cross-zone load balancing disabled. Only Standard and WAF-enabled ALB instances support server groups that have cross-zone load balancing.
+        # > *   Cross-zone load balancing can be disabled for server groups of the server and IP type, but not for server groups of the Function Compute type.
+        # > *   When cross-zone load balancing is disabled, session persistence cannot be enabled.
         self.cross_zone_enabled = cross_zone_enabled
         # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
@@ -6762,6 +6776,7 @@ class CreateServerGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.health_check_config = health_check_config
+        # Specifies whether to enable Ipv6.
         self.ipv_6enabled = ipv_6enabled
         # The backend protocol. Valid values:
         # 
@@ -9444,6 +9459,7 @@ class EnableLoadBalancerAccessLogResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the asynchronous job.
         self.job_id = job_id
         # The request ID.
         self.request_id = request_id
@@ -9721,6 +9737,7 @@ class GetHealthCheckTemplateAttributeResponseBody(TeaModel):
         health_check_timeout: int = None,
         healthy_threshold: int = None,
         request_id: str = None,
+        resource_group_id: str = None,
         tags: List[GetHealthCheckTemplateAttributeResponseBodyTags] = None,
         unhealthy_threshold: int = None,
     ):
@@ -9782,6 +9799,7 @@ class GetHealthCheckTemplateAttributeResponseBody(TeaModel):
         self.healthy_threshold = healthy_threshold
         # The request ID.
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
         # The tags.
         self.tags = tags
         # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
@@ -9827,6 +9845,8 @@ class GetHealthCheckTemplateAttributeResponseBody(TeaModel):
             result['HealthyThreshold'] = self.healthy_threshold
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         result['Tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -9863,6 +9883,8 @@ class GetHealthCheckTemplateAttributeResponseBody(TeaModel):
             self.healthy_threshold = m.get('HealthyThreshold')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         self.tags = []
         if m.get('Tags') is not None:
             for k in m.get('Tags'):
@@ -10471,12 +10493,28 @@ class GetListenerAttributeResponseBodyXForwardedForConfig(TeaModel):
         self.xforwarded_for_client_src_port_enabled = xforwarded_for_client_src_port_enabled
         # Indicates whether the `X-Forwarded-For` header is used to retrieve the client IP address. Valid values:
         # 
-        # *   **true**\
+        # *   **true** (default)
         # *   **false**\
         # 
-        # > This parameter is available only when you create an HTTP or HTTPS listener.
+        # > *   If this parameter is set to **true**, the default value of the **XForwardedForProcessingMode** parameter is **append**. You can change it to **remove**.
+        # > *   If this parameter is set to **false**, the `X-Forwarded-For` header in the request is not modified in any way before the request is sent to backend servers.
+        # > *   This parameter is only available for HTTP and HTTPS listeners.
         self.xforwarded_for_enabled = xforwarded_for_enabled
+        # Specifies whether to use the `X-Forwarded-Host` header to retrieve the client domain name. Valid values:
+        # 
+        # *   **true**\
+        # *   **false** (default)
+        # 
+        # >  This parameter is available for HTTP, HTTPS, and QUIC listeners.
         self.xforwarded_for_host_enabled = xforwarded_for_host_enabled
+        # Specifies how the `X-Forwarded-For` header is processed. This parameter takes effect only when **XForwardedForEnabled** is set to **true**. Valid values:
+        # 
+        # *   **append** (default)
+        # *   **remove**\
+        # 
+        # > *   If this parameter is set to **append**, ALB appends the IP address of the last hop to the existing `X-Forwarded-For` header in the request before the request is sent to backend servers.
+        # > *   If this parameter is set to **remove**, ALB removes the `X-Forwarded-For` header in the request before the request is sent to backend servers, no matter whether the request carries the `X-Forwarded-For` header.
+        # > *   This parameter is only available for HTTP and HTTPS listeners.
         self.xforwarded_for_processing_mode = xforwarded_for_processing_mode
         # Indicates whether the `X-Forwarded-Proto` header is used to retrieve the listening protocol. Valid values:
         # 
@@ -13580,6 +13618,7 @@ class ListHealthCheckTemplatesRequest(TeaModel):
         health_check_template_names: List[str] = None,
         max_results: int = None,
         next_token: str = None,
+        resource_group_id: str = None,
         tag: List[ListHealthCheckTemplatesRequestTag] = None,
     ):
         # The IDs of health check templates.
@@ -13593,6 +13632,7 @@ class ListHealthCheckTemplatesRequest(TeaModel):
         # *   You do not need to specify this parameter for the first request.
         # *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
         self.next_token = next_token
+        self.resource_group_id = resource_group_id
         # The tags.
         self.tag = tag
 
@@ -13616,6 +13656,8 @@ class ListHealthCheckTemplatesRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -13632,6 +13674,8 @@ class ListHealthCheckTemplatesRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -13690,6 +13734,7 @@ class ListHealthCheckTemplatesResponseBodyHealthCheckTemplates(TeaModel):
         health_check_template_name: str = None,
         health_check_timeout: int = None,
         healthy_threshold: int = None,
+        resource_group_id: str = None,
         tags: List[ListHealthCheckTemplatesResponseBodyHealthCheckTemplatesTags] = None,
         unhealthy_threshold: int = None,
     ):
@@ -13755,6 +13800,7 @@ class ListHealthCheckTemplatesResponseBodyHealthCheckTemplates(TeaModel):
         # 
         # Default value: **3**.
         self.healthy_threshold = healthy_threshold
+        self.resource_group_id = resource_group_id
         # The tags.
         self.tags = tags
         # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from **success** to **fail**.
@@ -13800,6 +13846,8 @@ class ListHealthCheckTemplatesResponseBodyHealthCheckTemplates(TeaModel):
             result['HealthCheckTimeout'] = self.health_check_timeout
         if self.healthy_threshold is not None:
             result['HealthyThreshold'] = self.healthy_threshold
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         result['Tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -13834,6 +13882,8 @@ class ListHealthCheckTemplatesResponseBodyHealthCheckTemplates(TeaModel):
             self.health_check_timeout = m.get('HealthCheckTimeout')
         if m.get('HealthyThreshold') is not None:
             self.healthy_threshold = m.get('HealthyThreshold')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         self.tags = []
         if m.get('Tags') is not None:
             for k in m.get('Tags'):
@@ -14652,12 +14702,28 @@ class ListListenersResponseBodyListenersXForwardedForConfig(TeaModel):
         self.xforwarded_for_client_src_port_enabled = xforwarded_for_client_src_port_enabled
         # Specifies whether to use the `X-Forwarded-For` header to retrieve client IP addresses. Valid values:
         # 
-        # *   **true**\
+        # *   **true** (default)
         # *   **false**\
         # 
-        # >  This parameter is returned only for HTTP and HTTPS listeners.
+        # > *   If this parameter is set to **true**, the default value of the **XForwardedForProcessingMode** parameter is **append**. You can change it to **remove**.
+        # > *   If this parameter is set to **false**, the `X-Forwarded-For` header in the request is not modified in any way before the request is sent to backend servers.
+        # > *   Both HTTP and HTTPS listeners support this parameter.
         self.xforwarded_for_enabled = xforwarded_for_enabled
+        # Specifies whether to use the `X-Forwarded-Host` header to retrieve client domain names. Valid values:
+        # 
+        # *   **true**\
+        # *   **false** (default)
+        # 
+        # >  HTTP, HTTPS, and QUIC listeners all support this parameter.
         self.xforwarded_for_host_enabled = xforwarded_for_host_enabled
+        # Specifies how the `X-Forwarded-For` header is processed. This parameter takes effect only when **XForwardedForEnabled** is set to **true**. Valid values:
+        # 
+        # *   **append** (default)
+        # *   **remove**\
+        # 
+        # > *   If this parameter is set to **append**, ALB appends the IP address of the last hop to the existing `X-Forwarded-For` header in the request before the request is sent to backend servers.
+        # > *   If this parameter is set to **remove**, ALB removes the `X-Forwarded-For` header in the request before the request is sent to backend servers, no matter whether the request carries the `X-Forwarded-For` header.
+        # > *   Both HTTP and HTTPS listeners support this parameter.
         self.xforwarded_for_processing_mode = xforwarded_for_processing_mode
         # Indicates whether the `X-Forwarded-Proto` header is used to retrieve the listener protocol. Valid values:
         # 
@@ -22528,105 +22594,121 @@ class UpdateListenerAttributeRequestXForwardedForConfig(TeaModel):
         xforwarded_for_slbid_enabled: bool = None,
         xforwarded_for_slbport_enabled: bool = None,
     ):
-        # The name of the custom header. The header takes effect only when you set **XForwardedForClientCertClientVerifyEnabled** to **true**.
+        # The name of the custom header. The header takes effect only when you set **XForwardedForClientCertClientVerifyEnabled **to **true**.
         # 
-        # The name must be 1 to 40 characters in length. The name can contain lowercase letters, digits, hyphens (-), and underscores (-).
+        # The name must be 1 to 40 characters in length. It can contain lowercase letters, digits, hyphens (-), and underscores (_).
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # >  This parameter is only available for HTTPS listeners.
         self.xforwarded_for_client_cert_client_verify_alias = xforwarded_for_client_cert_client_verify_alias
         # Specifies whether to use the `X-Forwarded-Clientcert-clientverify` header to retrieve the verification result of the client certificate. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # >  This parameter is only available for HTTPS listeners.
         self.xforwarded_for_client_cert_client_verify_enabled = xforwarded_for_client_cert_client_verify_enabled
         # The name of the custom header. The header takes effect only when you set **XForwardedForClientCertFingerprintEnabled** to **true**.
         # 
-        # The name must be 1 to 40 characters in length. The name can contain lowercase letters, digits, hyphens (-), and underscores (-).
+        # The name must be 1 to 40 characters in length. It can contain lowercase letters, digits, hyphens (-), and underscores (_).
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # >  This parameter is only available for HTTPS listeners.
         self.xforwarded_for_client_cert_fingerprint_alias = xforwarded_for_client_cert_fingerprint_alias
         # Specifies whether to use the `X-Forwarded-Clientcert-fingerprint` header to retrieve the fingerprint of the client certificate. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # >  This parameter is only available for HTTPS listeners.
         self.xforwarded_for_client_cert_fingerprint_enabled = xforwarded_for_client_cert_fingerprint_enabled
         # The name of the custom header. The header takes effect only when you set **XForwardedForClientCertIssuerDNEnabled** to **true**.
         # 
-        # The name must be 1 to 40 characters in length. The name can contain lowercase letters, digits, hyphens (-), and underscores (-).
+        # The name must be 1 to 40 characters in length. It can contain lowercase letters, digits, hyphens (-), and underscores (_).
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # >  This parameter is only available for HTTPS listeners.
         self.xforwarded_for_client_cert_issuer_dnalias = xforwarded_for_client_cert_issuer_dnalias
         # Specifies whether to use the `X-Forwarded-Clientcert-issuerdn` header to retrieve information about the authority that issues the client certificate. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # >  This parameter is only available for HTTPS listeners.
         self.xforwarded_for_client_cert_issuer_dnenabled = xforwarded_for_client_cert_issuer_dnenabled
-        # The name of the custom header. This parameter is valid only if the **XForwardedForClientCertSubjectDNEnabled** parameter is set to true.****\
+        # The name of the custom header. This parameter is valid only if the **XForwardedForClientCertSubjectDNEnabled** parameter is set to **true**.
         # 
-        # The name must be 1 to 40 characters in length, The name can contain lowercase letters, digits, hyphens (-), and underscores (-).
+        # The name must be 1 to 40 characters in length. It can contain lowercase letters, digits, hyphens (-), and underscores (_).
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # >  This parameter is only available for HTTPS listeners.
         self.xforwarded_for_client_cert_subject_dnalias = xforwarded_for_client_cert_subject_dnalias
         # Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header to retrieve information about the owner of the client certificate. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # >  This parameter is only available for HTTPS listeners.
         self.xforwarded_for_client_cert_subject_dnenabled = xforwarded_for_client_cert_subject_dnenabled
         # Specifies whether to use the X-Forwarded-For header to preserve client IP addresses. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         # 
-        # >  HTTP and HTTPS listeners support this parameter.
+        # >  This parameter is only available for HTTP and HTTPS listeners.
         self.xforwarded_for_client_source_ips_enabled = xforwarded_for_client_source_ips_enabled
         # The trusted proxy IP address.
         # 
         # ALB instances traverse the IP addresses in the `X-Forwarded-For` header from the rightmost IP address to the leftmost IP address. The first IP address that is not on the trusted IP address list is considered the client IP address. Requests from the client IP address are throttled.
         self.xforwarded_for_client_source_ips_trusted = xforwarded_for_client_source_ips_trusted
-        # Specifies whether to use the `XForwardedFor_ClientSrcPort` header to retrieve the client port. Valid values:
+        # Specifies whether to use the `X-Forwarded-Client-srcport` header to retrieve the client port. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         # 
-        # >  HTTP and HTTPS listeners support this parameter.
+        # >  This parameter is only available for HTTP and HTTPS listeners.
         self.xforwarded_for_client_src_port_enabled = xforwarded_for_client_src_port_enabled
-        # Specifies whether to use the `X-Forwarded-For` header to retrieve client IP addresses. Valid values:
+        # Specifies whether to use the `X-Forwarded-For` header to retrieve the client IP address. Valid values:
         # 
-        # *   **true**\
+        # *   **true** (default)
         # *   **false**\
         # 
-        # >  HTTP and HTTPS listeners support this parameter.
+        # > *   If this parameter is set to **true**, the default value of the **XForwardedForProcessingMode** parameter is **append**. You can change it to **remove**.
+        # > *   If this parameter is set to **false**, the `X-Forwarded-For` header in the request is not modified in any way before the request is sent to backend servers.
+        # > *   This parameter is only available for HTTP and HTTPS listeners.
         self.xforwarded_for_enabled = xforwarded_for_enabled
+        # Specifies whether to use the `X-Forwarded-Host` header to retrieve the client domain name. Valid values:
+        # 
+        # *   **true**\
+        # *   **false** (default)
+        # 
+        # >  This parameter is available for HTTP, HTTPS, and QUIC listeners.
         self.xforwarded_for_host_enabled = xforwarded_for_host_enabled
+        # Specifies how the `X-Forwarded-For` header is processed. This parameter takes effect only when **XForwardedForEnabled** is set to **true**. Valid values:
+        # 
+        # *   **append** (default)
+        # *   **remove**\
+        # 
+        # > *   If this parameter is set to **append**, ALB appends the IP address of the last hop to the existing `X-Forwarded-For` header in the request before the request is sent to backend servers.
+        # > *   If this parameter is set to **remove**, ALB removes the `X-Forwarded-For` header in the request before the request is sent to backend servers, no matter whether the request carries the `X-Forwarded-For` header.
+        # > *   This parameter is only available for HTTP and HTTPS listeners.
         self.xforwarded_for_processing_mode = xforwarded_for_processing_mode
         # Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         # 
-        # >  HTTP, HTTPS, and QUIC listeners support this parameter.
+        # >  This parameter is available for HTTP, HTTPS, and QUIC listeners.
         self.xforwarded_for_proto_enabled = xforwarded_for_proto_enabled
         # Specifies whether to use the `SLB-ID` header to retrieve the ID of the ALB instance. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         # 
-        # >  HTTP, HTTPS, and QUIC listeners support this parameter.
+        # >  This parameter is available for HTTP, HTTPS, and QUIC listeners.
         self.xforwarded_for_slbid_enabled = xforwarded_for_slbid_enabled
         # Specifies whether to use the `X-Forwarded-Port` header to retrieve the listener port of the ALB instance. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         # 
-        # >  HTTP, HTTPS, and QUIC listeners support this parameter.
+        # >  This parameter is available for HTTP, HTTPS, and QUIC listeners.
         self.xforwarded_for_slbport_enabled = xforwarded_for_slbport_enabled
 
     def validate(self):
@@ -27133,24 +27215,17 @@ class UpdateServerGroupAttributeRequest(TeaModel):
         # 
         # After connection draining is enabled, SLB remains data transmission for a period of time after a backend server is removed or declared unhealthy.
         # 
-        # > 
-        # 
-        # *   Basic SLB instances do not support connection draining. Standard and WAF-enabled SLB instances support connection draining.
-        # 
-        # *   Server groups of the server and IP types support connection draining. Server groups of the Function Compute type do not support connection draining.
+        # > *   Basic SLB instances do not support connection draining. Standard and WAF-enabled SLB instances support connection draining.
+        # > *   Server groups of the server and IP types support connection draining. Server groups of the Function Compute type do not support connection draining.
         self.connection_drain_config = connection_drain_config
         # Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
         # 
         # *   **true** (default)
         # *   **false**\
         # 
-        # > 
-        # 
-        # *   Basic ALB instances do not support server groups that have cross-zone load balancing disabled. Only Standard and WAF-enabled ALB instances support server groups that have cross-zone load balancing.
-        # 
-        # *   Cross-zone load balancing can be disabled for server groups of the server and IP type, but not for server groups of the Function Compute type.
-        # 
-        # *   When cross-zone load balancing is disabled, session persistence cannot be enabled.
+        # > *   Basic ALB instances do not support server groups that have cross-zone load balancing disabled. Only Standard and WAF-enabled ALB instances support server groups that have cross-zone load balancing.
+        # >*   Cross-zone load balancing can be disabled for server groups of the server and IP type, but not for server groups of the Function Compute type.
+        # >*   When cross-zone load balancing is disabled, session persistence cannot be enabled.
         self.cross_zone_enabled = cross_zone_enabled
         # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
