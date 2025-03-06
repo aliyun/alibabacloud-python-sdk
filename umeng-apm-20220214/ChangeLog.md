@@ -1,3 +1,6 @@
+2025-03-06 Version: 1.2.2
+- Generated python 2022-02-14 for umeng-apm.
+
 2025-02-19 Version: 1.2.1
 - Update API GetSymUploadParam: update param fileType.
 - Update API UploadSymbolFile: update param fileType.
