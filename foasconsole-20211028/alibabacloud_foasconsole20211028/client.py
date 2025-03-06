@@ -41,6 +41,130 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def convert_hybrid_instance_with_options(
+        self,
+        tmp_req: foasconsole_20211028_models.ConvertHybridInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> foasconsole_20211028_models.ConvertHybridInstanceResponse:
+        """
+        @summary 开通弹性计算
+        
+        @param tmp_req: ConvertHybridInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConvertHybridInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = foasconsole_20211028_models.ConvertHybridInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_spec):
+            request.resource_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_spec, 'ResourceSpec', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_spec_shrink):
+            query['ResourceSpec'] = request.resource_spec_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConvertHybridInstance',
+            version='2021-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ConvertHybridInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ConvertHybridInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def convert_hybrid_instance_with_options_async(
+        self,
+        tmp_req: foasconsole_20211028_models.ConvertHybridInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> foasconsole_20211028_models.ConvertHybridInstanceResponse:
+        """
+        @summary 开通弹性计算
+        
+        @param tmp_req: ConvertHybridInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConvertHybridInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = foasconsole_20211028_models.ConvertHybridInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_spec):
+            request.resource_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_spec, 'ResourceSpec', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_spec_shrink):
+            query['ResourceSpec'] = request.resource_spec_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConvertHybridInstance',
+            version='2021-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ConvertHybridInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ConvertHybridInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def convert_hybrid_instance(
+        self,
+        request: foasconsole_20211028_models.ConvertHybridInstanceRequest,
+    ) -> foasconsole_20211028_models.ConvertHybridInstanceResponse:
+        """
+        @summary 开通弹性计算
+        
+        @param request: ConvertHybridInstanceRequest
+        @return: ConvertHybridInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.convert_hybrid_instance_with_options(request, runtime)
+
+    async def convert_hybrid_instance_async(
+        self,
+        request: foasconsole_20211028_models.ConvertHybridInstanceRequest,
+    ) -> foasconsole_20211028_models.ConvertHybridInstanceResponse:
+        """
+        @summary 开通弹性计算
+        
+        @param request: ConvertHybridInstanceRequest
+        @return: ConvertHybridInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.convert_hybrid_instance_with_options_async(request, runtime)
+
     def convert_instance_with_options(
         self,
         tmp_req: foasconsole_20211028_models.ConvertInstanceRequest,
@@ -176,6 +300,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.convert_instance_with_options_async(request, runtime)
+
+    def convert_prepay_instance_with_options(
+        self,
+        request: foasconsole_20211028_models.ConvertPrepayInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> foasconsole_20211028_models.ConvertPrepayInstanceResponse:
+        """
+        @summary 包年包月转按量付费
+        
+        @param request: ConvertPrepayInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConvertPrepayInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region):
+            body['Region'] = request.region
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConvertPrepayInstance',
+            version='2021-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ConvertPrepayInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ConvertPrepayInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def convert_prepay_instance_with_options_async(
+        self,
+        request: foasconsole_20211028_models.ConvertPrepayInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> foasconsole_20211028_models.ConvertPrepayInstanceResponse:
+        """
+        @summary 包年包月转按量付费
+        
+        @param request: ConvertPrepayInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConvertPrepayInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region):
+            body['Region'] = request.region
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConvertPrepayInstance',
+            version='2021-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ConvertPrepayInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ConvertPrepayInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def convert_prepay_instance(
+        self,
+        request: foasconsole_20211028_models.ConvertPrepayInstanceRequest,
+    ) -> foasconsole_20211028_models.ConvertPrepayInstanceResponse:
+        """
+        @summary 包年包月转按量付费
+        
+        @param request: ConvertPrepayInstanceRequest
+        @return: ConvertPrepayInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.convert_prepay_instance_with_options(request, runtime)
+
+    async def convert_prepay_instance_async(
+        self,
+        request: foasconsole_20211028_models.ConvertPrepayInstanceRequest,
+    ) -> foasconsole_20211028_models.ConvertPrepayInstanceResponse:
+        """
+        @summary 包年包月转按量付费
+        
+        @param request: ConvertPrepayInstanceRequest
+        @return: ConvertPrepayInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.convert_prepay_instance_with_options_async(request, runtime)
 
     def create_instance_with_options(
         self,
@@ -1287,6 +1523,402 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
+    def modify_elastic_resource_spec_with_options(
+        self,
+        tmp_req: foasconsole_20211028_models.ModifyElasticResourceSpecRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> foasconsole_20211028_models.ModifyElasticResourceSpecResponse:
+        """
+        @summary 对按量弹性实例修改resource quota
+        
+        @param tmp_req: ModifyElasticResourceSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyElasticResourceSpecResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = foasconsole_20211028_models.ModifyElasticResourceSpecShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_spec):
+            request.resource_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_spec, 'ResourceSpec', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region):
+            body['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_spec_shrink):
+            body['ResourceSpec'] = request.resource_spec_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyElasticResourceSpec',
+            version='2021-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ModifyElasticResourceSpecResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ModifyElasticResourceSpecResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_elastic_resource_spec_with_options_async(
+        self,
+        tmp_req: foasconsole_20211028_models.ModifyElasticResourceSpecRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> foasconsole_20211028_models.ModifyElasticResourceSpecResponse:
+        """
+        @summary 对按量弹性实例修改resource quota
+        
+        @param tmp_req: ModifyElasticResourceSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyElasticResourceSpecResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = foasconsole_20211028_models.ModifyElasticResourceSpecShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_spec):
+            request.resource_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_spec, 'ResourceSpec', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region):
+            body['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_spec_shrink):
+            body['ResourceSpec'] = request.resource_spec_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyElasticResourceSpec',
+            version='2021-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ModifyElasticResourceSpecResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ModifyElasticResourceSpecResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_elastic_resource_spec(
+        self,
+        request: foasconsole_20211028_models.ModifyElasticResourceSpecRequest,
+    ) -> foasconsole_20211028_models.ModifyElasticResourceSpecResponse:
+        """
+        @summary 对按量弹性实例修改resource quota
+        
+        @param request: ModifyElasticResourceSpecRequest
+        @return: ModifyElasticResourceSpecResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_elastic_resource_spec_with_options(request, runtime)
+
+    async def modify_elastic_resource_spec_async(
+        self,
+        request: foasconsole_20211028_models.ModifyElasticResourceSpecRequest,
+    ) -> foasconsole_20211028_models.ModifyElasticResourceSpecResponse:
+        """
+        @summary 对按量弹性实例修改resource quota
+        
+        @param request: ModifyElasticResourceSpecRequest
+        @return: ModifyElasticResourceSpecResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_elastic_resource_spec_with_options_async(request, runtime)
+
+    def modify_instance_vswitch_with_options(
+        self,
+        tmp_req: foasconsole_20211028_models.ModifyInstanceVswitchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> foasconsole_20211028_models.ModifyInstanceVswitchResponse:
+        """
+        @summary 修改集群交换机
+        
+        @param tmp_req: ModifyInstanceVswitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceVswitchResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = foasconsole_20211028_models.ModifyInstanceVswitchShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ha_vswitch_ids):
+            request.ha_vswitch_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ha_vswitch_ids, 'HaVSwitchIds', 'json')
+        if not UtilClient.is_unset(tmp_req.v_switch_ids):
+            request.v_switch_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.v_switch_ids, 'VSwitchIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.ha_vswitch_ids_shrink):
+            body['HaVSwitchIds'] = request.ha_vswitch_ids_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.v_switch_ids_shrink):
+            body['VSwitchIds'] = request.v_switch_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceVswitch',
+            version='2021-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ModifyInstanceVswitchResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ModifyInstanceVswitchResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_instance_vswitch_with_options_async(
+        self,
+        tmp_req: foasconsole_20211028_models.ModifyInstanceVswitchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> foasconsole_20211028_models.ModifyInstanceVswitchResponse:
+        """
+        @summary 修改集群交换机
+        
+        @param tmp_req: ModifyInstanceVswitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceVswitchResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = foasconsole_20211028_models.ModifyInstanceVswitchShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ha_vswitch_ids):
+            request.ha_vswitch_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ha_vswitch_ids, 'HaVSwitchIds', 'json')
+        if not UtilClient.is_unset(tmp_req.v_switch_ids):
+            request.v_switch_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.v_switch_ids, 'VSwitchIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.ha_vswitch_ids_shrink):
+            body['HaVSwitchIds'] = request.ha_vswitch_ids_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.v_switch_ids_shrink):
+            body['VSwitchIds'] = request.v_switch_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceVswitch',
+            version='2021-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ModifyInstanceVswitchResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ModifyInstanceVswitchResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_instance_vswitch(
+        self,
+        request: foasconsole_20211028_models.ModifyInstanceVswitchRequest,
+    ) -> foasconsole_20211028_models.ModifyInstanceVswitchResponse:
+        """
+        @summary 修改集群交换机
+        
+        @param request: ModifyInstanceVswitchRequest
+        @return: ModifyInstanceVswitchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_instance_vswitch_with_options(request, runtime)
+
+    async def modify_instance_vswitch_async(
+        self,
+        request: foasconsole_20211028_models.ModifyInstanceVswitchRequest,
+    ) -> foasconsole_20211028_models.ModifyInstanceVswitchResponse:
+        """
+        @summary 修改集群交换机
+        
+        @param request: ModifyInstanceVswitchRequest
+        @return: ModifyInstanceVswitchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_instance_vswitch_with_options_async(request, runtime)
+
+    def modify_namespace_spec_v2with_options(
+        self,
+        tmp_req: foasconsole_20211028_models.ModifyNamespaceSpecV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> foasconsole_20211028_models.ModifyNamespaceSpecV2Response:
+        """
+        @summary 修改namespace资源，包含按量和包年包月、混合计费
+        
+        @param tmp_req: ModifyNamespaceSpecV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyNamespaceSpecV2Response
+        """
+        UtilClient.validate_model(tmp_req)
+        request = foasconsole_20211028_models.ModifyNamespaceSpecV2ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.elastic_resource_spec):
+            request.elastic_resource_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.elastic_resource_spec, 'ElasticResourceSpec', 'json')
+        if not UtilClient.is_unset(tmp_req.guaranteed_resource_spec):
+            request.guaranteed_resource_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.guaranteed_resource_spec, 'GuaranteedResourceSpec', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ha):
+            query['Ha'] = request.ha
+        body = {}
+        if not UtilClient.is_unset(request.elastic_resource_spec_shrink):
+            body['ElasticResourceSpec'] = request.elastic_resource_spec_shrink
+        if not UtilClient.is_unset(request.guaranteed_resource_spec_shrink):
+            body['GuaranteedResourceSpec'] = request.guaranteed_resource_spec_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.region):
+            body['Region'] = request.region
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyNamespaceSpecV2',
+            version='2021-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ModifyNamespaceSpecV2Response(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ModifyNamespaceSpecV2Response(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_namespace_spec_v2with_options_async(
+        self,
+        tmp_req: foasconsole_20211028_models.ModifyNamespaceSpecV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> foasconsole_20211028_models.ModifyNamespaceSpecV2Response:
+        """
+        @summary 修改namespace资源，包含按量和包年包月、混合计费
+        
+        @param tmp_req: ModifyNamespaceSpecV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyNamespaceSpecV2Response
+        """
+        UtilClient.validate_model(tmp_req)
+        request = foasconsole_20211028_models.ModifyNamespaceSpecV2ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.elastic_resource_spec):
+            request.elastic_resource_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.elastic_resource_spec, 'ElasticResourceSpec', 'json')
+        if not UtilClient.is_unset(tmp_req.guaranteed_resource_spec):
+            request.guaranteed_resource_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.guaranteed_resource_spec, 'GuaranteedResourceSpec', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ha):
+            query['Ha'] = request.ha
+        body = {}
+        if not UtilClient.is_unset(request.elastic_resource_spec_shrink):
+            body['ElasticResourceSpec'] = request.elastic_resource_spec_shrink
+        if not UtilClient.is_unset(request.guaranteed_resource_spec_shrink):
+            body['GuaranteedResourceSpec'] = request.guaranteed_resource_spec_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.region):
+            body['Region'] = request.region
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyNamespaceSpecV2',
+            version='2021-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ModifyNamespaceSpecV2Response(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ModifyNamespaceSpecV2Response(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_namespace_spec_v2(
+        self,
+        request: foasconsole_20211028_models.ModifyNamespaceSpecV2Request,
+    ) -> foasconsole_20211028_models.ModifyNamespaceSpecV2Response:
+        """
+        @summary 修改namespace资源，包含按量和包年包月、混合计费
+        
+        @param request: ModifyNamespaceSpecV2Request
+        @return: ModifyNamespaceSpecV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_namespace_spec_v2with_options(request, runtime)
+
+    async def modify_namespace_spec_v2_async(
+        self,
+        request: foasconsole_20211028_models.ModifyNamespaceSpecV2Request,
+    ) -> foasconsole_20211028_models.ModifyNamespaceSpecV2Response:
+        """
+        @summary 修改namespace资源，包含按量和包年包月、混合计费
+        
+        @param request: ModifyNamespaceSpecV2Request
+        @return: ModifyNamespaceSpecV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_namespace_spec_v2with_options_async(request, runtime)
+
     def modify_prepay_instance_spec_with_options(
         self,
         tmp_req: foasconsole_20211028_models.ModifyPrepayInstanceSpecRequest,
@@ -1722,6 +2354,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.query_convert_instance_price_with_options_async(request, runtime)
+
+    def query_convert_prepay_instance_price_with_options(
+        self,
+        request: foasconsole_20211028_models.QueryConvertPrepayInstancePriceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> foasconsole_20211028_models.QueryConvertPrepayInstancePriceResponse:
+        """
+        @summary 包年包月转按量付费询价
+        
+        @param request: QueryConvertPrepayInstancePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryConvertPrepayInstancePriceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region):
+            body['Region'] = request.region
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryConvertPrepayInstancePrice',
+            version='2021-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.QueryConvertPrepayInstancePriceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.QueryConvertPrepayInstancePriceResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def query_convert_prepay_instance_price_with_options_async(
+        self,
+        request: foasconsole_20211028_models.QueryConvertPrepayInstancePriceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> foasconsole_20211028_models.QueryConvertPrepayInstancePriceResponse:
+        """
+        @summary 包年包月转按量付费询价
+        
+        @param request: QueryConvertPrepayInstancePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryConvertPrepayInstancePriceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region):
+            body['Region'] = request.region
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryConvertPrepayInstancePrice',
+            version='2021-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.QueryConvertPrepayInstancePriceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.QueryConvertPrepayInstancePriceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def query_convert_prepay_instance_price(
+        self,
+        request: foasconsole_20211028_models.QueryConvertPrepayInstancePriceRequest,
+    ) -> foasconsole_20211028_models.QueryConvertPrepayInstancePriceResponse:
+        """
+        @summary 包年包月转按量付费询价
+        
+        @param request: QueryConvertPrepayInstancePriceRequest
+        @return: QueryConvertPrepayInstancePriceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_convert_prepay_instance_price_with_options(request, runtime)
+
+    async def query_convert_prepay_instance_price_async(
+        self,
+        request: foasconsole_20211028_models.QueryConvertPrepayInstancePriceRequest,
+    ) -> foasconsole_20211028_models.QueryConvertPrepayInstancePriceResponse:
+        """
+        @summary 包年包月转按量付费询价
+        
+        @param request: QueryConvertPrepayInstancePriceRequest
+        @return: QueryConvertPrepayInstancePriceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_convert_prepay_instance_price_with_options_async(request, runtime)
 
     def query_create_instance_price_with_options(
         self,

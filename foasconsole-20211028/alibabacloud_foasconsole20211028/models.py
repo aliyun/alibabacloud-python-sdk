@@ -1,7 +1,255 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict
+from typing import Dict, List
+
+
+class ConvertHybridInstanceRequestResourceSpec(TeaModel):
+    def __init__(
+        self,
+        cpu: int = None,
+        memory_gb: int = None,
+    ):
+        # This parameter is required.
+        self.cpu = cpu
+        # This parameter is required.
+        self.memory_gb = memory_gb
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        if self.memory_gb is not None:
+            result['MemoryGB'] = self.memory_gb
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        if m.get('MemoryGB') is not None:
+            self.memory_gb = m.get('MemoryGB')
+        return self
+
+
+class ConvertHybridInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        region: str = None,
+        resource_spec: ConvertHybridInstanceRequestResourceSpec = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.region = region
+        # This parameter is required.
+        self.resource_spec = resource_spec
+
+    def validate(self):
+        if self.resource_spec:
+            self.resource_spec.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.resource_spec is not None:
+            result['ResourceSpec'] = self.resource_spec.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResourceSpec') is not None:
+            temp_model = ConvertHybridInstanceRequestResourceSpec()
+            self.resource_spec = temp_model.from_map(m['ResourceSpec'])
+        return self
+
+
+class ConvertHybridInstanceShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        region: str = None,
+        resource_spec_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.region = region
+        # This parameter is required.
+        self.resource_spec_shrink = resource_spec_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.resource_spec_shrink is not None:
+            result['ResourceSpec'] = self.resource_spec_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResourceSpec') is not None:
+            self.resource_spec_shrink = m.get('ResourceSpec')
+        return self
+
+
+class ConvertHybridInstanceResponseBodyOrderInfo(TeaModel):
+    def __init__(
+        self,
+        elastic_instance_id: str = None,
+        instance_id: str = None,
+        order_id: int = None,
+    ):
+        self.elastic_instance_id = elastic_instance_id
+        self.instance_id = instance_id
+        self.order_id = order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.elastic_instance_id is not None:
+            result['ElasticInstanceId'] = self.elastic_instance_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ElasticInstanceId') is not None:
+            self.elastic_instance_id = m.get('ElasticInstanceId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        return self
+
+
+class ConvertHybridInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        err_code: str = None,
+        order_info: ConvertHybridInstanceResponseBodyOrderInfo = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.err_code = err_code
+        self.order_info = order_info
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.order_info:
+            self.order_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.order_info is not None:
+            result['OrderInfo'] = self.order_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('OrderInfo') is not None:
+            temp_model = ConvertHybridInstanceResponseBodyOrderInfo()
+            self.order_info = temp_model.from_map(m['OrderInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ConvertHybridInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ConvertHybridInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ConvertHybridInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
 
 
 class ConvertInstanceRequestNamespaceResourceSpecsResourceSpec(TeaModel):
@@ -286,6 +534,121 @@ class ConvertInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ConvertInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ConvertPrepayInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        region: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region is not None:
+            result['Region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        return self
+
+
+class ConvertPrepayInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        order_id: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.order_id = order_id
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ConvertPrepayInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ConvertPrepayInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ConvertPrepayInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3895,6 +4258,638 @@ class ListTagResourcesResponse(TeaModel):
         return self
 
 
+class ModifyElasticResourceSpecRequestResourceSpec(TeaModel):
+    def __init__(
+        self,
+        cpu: int = None,
+        memory_gb: int = None,
+    ):
+        # This parameter is required.
+        self.cpu = cpu
+        # This parameter is required.
+        self.memory_gb = memory_gb
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        if self.memory_gb is not None:
+            result['MemoryGB'] = self.memory_gb
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        if m.get('MemoryGB') is not None:
+            self.memory_gb = m.get('MemoryGB')
+        return self
+
+
+class ModifyElasticResourceSpecRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        region: str = None,
+        resource_spec: ModifyElasticResourceSpecRequestResourceSpec = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.region = region
+        # This parameter is required.
+        self.resource_spec = resource_spec
+
+    def validate(self):
+        if self.resource_spec:
+            self.resource_spec.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.resource_spec is not None:
+            result['ResourceSpec'] = self.resource_spec.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResourceSpec') is not None:
+            temp_model = ModifyElasticResourceSpecRequestResourceSpec()
+            self.resource_spec = temp_model.from_map(m['ResourceSpec'])
+        return self
+
+
+class ModifyElasticResourceSpecShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        region: str = None,
+        resource_spec_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.region = region
+        # This parameter is required.
+        self.resource_spec_shrink = resource_spec_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.resource_spec_shrink is not None:
+            result['ResourceSpec'] = self.resource_spec_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResourceSpec') is not None:
+            self.resource_spec_shrink = m.get('ResourceSpec')
+        return self
+
+
+class ModifyElasticResourceSpecResponseBody(TeaModel):
+    def __init__(
+        self,
+        order_id: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.order_id = order_id
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyElasticResourceSpecResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyElasticResourceSpecResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyElasticResourceSpecResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyInstanceVswitchRequest(TeaModel):
+    def __init__(
+        self,
+        ha_vswitch_ids: List[str] = None,
+        instance_id: str = None,
+        v_switch_ids: List[str] = None,
+    ):
+        self.ha_vswitch_ids = ha_vswitch_ids
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.v_switch_ids = v_switch_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ha_vswitch_ids is not None:
+            result['HaVSwitchIds'] = self.ha_vswitch_ids
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HaVSwitchIds') is not None:
+            self.ha_vswitch_ids = m.get('HaVSwitchIds')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        return self
+
+
+class ModifyInstanceVswitchShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        ha_vswitch_ids_shrink: str = None,
+        instance_id: str = None,
+        v_switch_ids_shrink: str = None,
+    ):
+        self.ha_vswitch_ids_shrink = ha_vswitch_ids_shrink
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.v_switch_ids_shrink = v_switch_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ha_vswitch_ids_shrink is not None:
+            result['HaVSwitchIds'] = self.ha_vswitch_ids_shrink
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.v_switch_ids_shrink is not None:
+            result['VSwitchIds'] = self.v_switch_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HaVSwitchIds') is not None:
+            self.ha_vswitch_ids_shrink = m.get('HaVSwitchIds')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids_shrink = m.get('VSwitchIds')
+        return self
+
+
+class ModifyInstanceVswitchResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyInstanceVswitchResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyInstanceVswitchResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyInstanceVswitchResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyNamespaceSpecV2RequestElasticResourceSpec(TeaModel):
+    def __init__(
+        self,
+        cpu: int = None,
+        memory_gb: int = None,
+    ):
+        # This parameter is required.
+        self.cpu = cpu
+        # This parameter is required.
+        self.memory_gb = memory_gb
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        if self.memory_gb is not None:
+            result['MemoryGB'] = self.memory_gb
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        if m.get('MemoryGB') is not None:
+            self.memory_gb = m.get('MemoryGB')
+        return self
+
+
+class ModifyNamespaceSpecV2RequestGuaranteedResourceSpec(TeaModel):
+    def __init__(
+        self,
+        cpu: int = None,
+        memory_gb: int = None,
+    ):
+        # This parameter is required.
+        self.cpu = cpu
+        # This parameter is required.
+        self.memory_gb = memory_gb
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        if self.memory_gb is not None:
+            result['MemoryGB'] = self.memory_gb
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        if m.get('MemoryGB') is not None:
+            self.memory_gb = m.get('MemoryGB')
+        return self
+
+
+class ModifyNamespaceSpecV2Request(TeaModel):
+    def __init__(
+        self,
+        elastic_resource_spec: ModifyNamespaceSpecV2RequestElasticResourceSpec = None,
+        guaranteed_resource_spec: ModifyNamespaceSpecV2RequestGuaranteedResourceSpec = None,
+        ha: bool = None,
+        instance_id: str = None,
+        namespace: str = None,
+        region: str = None,
+    ):
+        self.elastic_resource_spec = elastic_resource_spec
+        self.guaranteed_resource_spec = guaranteed_resource_spec
+        # This parameter is required.
+        self.ha = ha
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.namespace = namespace
+        # This parameter is required.
+        self.region = region
+
+    def validate(self):
+        if self.elastic_resource_spec:
+            self.elastic_resource_spec.validate()
+        if self.guaranteed_resource_spec:
+            self.guaranteed_resource_spec.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.elastic_resource_spec is not None:
+            result['ElasticResourceSpec'] = self.elastic_resource_spec.to_map()
+        if self.guaranteed_resource_spec is not None:
+            result['GuaranteedResourceSpec'] = self.guaranteed_resource_spec.to_map()
+        if self.ha is not None:
+            result['Ha'] = self.ha
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.region is not None:
+            result['Region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ElasticResourceSpec') is not None:
+            temp_model = ModifyNamespaceSpecV2RequestElasticResourceSpec()
+            self.elastic_resource_spec = temp_model.from_map(m['ElasticResourceSpec'])
+        if m.get('GuaranteedResourceSpec') is not None:
+            temp_model = ModifyNamespaceSpecV2RequestGuaranteedResourceSpec()
+            self.guaranteed_resource_spec = temp_model.from_map(m['GuaranteedResourceSpec'])
+        if m.get('Ha') is not None:
+            self.ha = m.get('Ha')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        return self
+
+
+class ModifyNamespaceSpecV2ShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        elastic_resource_spec_shrink: str = None,
+        guaranteed_resource_spec_shrink: str = None,
+        ha: bool = None,
+        instance_id: str = None,
+        namespace: str = None,
+        region: str = None,
+    ):
+        self.elastic_resource_spec_shrink = elastic_resource_spec_shrink
+        self.guaranteed_resource_spec_shrink = guaranteed_resource_spec_shrink
+        # This parameter is required.
+        self.ha = ha
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.namespace = namespace
+        # This parameter is required.
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.elastic_resource_spec_shrink is not None:
+            result['ElasticResourceSpec'] = self.elastic_resource_spec_shrink
+        if self.guaranteed_resource_spec_shrink is not None:
+            result['GuaranteedResourceSpec'] = self.guaranteed_resource_spec_shrink
+        if self.ha is not None:
+            result['Ha'] = self.ha
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.region is not None:
+            result['Region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ElasticResourceSpec') is not None:
+            self.elastic_resource_spec_shrink = m.get('ElasticResourceSpec')
+        if m.get('GuaranteedResourceSpec') is not None:
+            self.guaranteed_resource_spec_shrink = m.get('GuaranteedResourceSpec')
+        if m.get('Ha') is not None:
+            self.ha = m.get('Ha')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        return self
+
+
+class ModifyNamespaceSpecV2ResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyNamespaceSpecV2Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyNamespaceSpecV2ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyNamespaceSpecV2ResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyPrepayInstanceSpecRequestHaResourceSpec(TeaModel):
     def __init__(
         self,
@@ -4921,6 +5916,371 @@ class QueryConvertInstancePriceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryConvertInstancePriceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryConvertPrepayInstancePriceRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        region: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region is not None:
+            result['Region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        return self
+
+
+class QueryConvertPrepayInstancePriceResponseBodyPriceInfoDepreciateInfo(TeaModel):
+    def __init__(
+        self,
+        cheap_rate: str = None,
+        cheap_stand_amount: str = None,
+        is_show: bool = None,
+        month_price: str = None,
+        original_stand_amount: str = None,
+        start_time: str = None,
+    ):
+        self.cheap_rate = cheap_rate
+        self.cheap_stand_amount = cheap_stand_amount
+        self.is_show = is_show
+        self.month_price = month_price
+        self.original_stand_amount = original_stand_amount
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cheap_rate is not None:
+            result['CheapRate'] = self.cheap_rate
+        if self.cheap_stand_amount is not None:
+            result['CheapStandAmount'] = self.cheap_stand_amount
+        if self.is_show is not None:
+            result['IsShow'] = self.is_show
+        if self.month_price is not None:
+            result['MonthPrice'] = self.month_price
+        if self.original_stand_amount is not None:
+            result['OriginalStandAmount'] = self.original_stand_amount
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheapRate') is not None:
+            self.cheap_rate = m.get('CheapRate')
+        if m.get('CheapStandAmount') is not None:
+            self.cheap_stand_amount = m.get('CheapStandAmount')
+        if m.get('IsShow') is not None:
+            self.is_show = m.get('IsShow')
+        if m.get('MonthPrice') is not None:
+            self.month_price = m.get('MonthPrice')
+        if m.get('OriginalStandAmount') is not None:
+            self.original_stand_amount = m.get('OriginalStandAmount')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions(TeaModel):
+    def __init__(
+        self,
+        promotion_desc: str = None,
+        promotion_name: str = None,
+        promotion_option_no: str = None,
+        selected: bool = None,
+    ):
+        self.promotion_desc = promotion_desc
+        self.promotion_name = promotion_name
+        self.promotion_option_no = promotion_option_no
+        self.selected = selected
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.promotion_desc is not None:
+            result['PromotionDesc'] = self.promotion_desc
+        if self.promotion_name is not None:
+            result['PromotionName'] = self.promotion_name
+        if self.promotion_option_no is not None:
+            result['PromotionOptionNo'] = self.promotion_option_no
+        if self.selected is not None:
+            result['Selected'] = self.selected
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PromotionDesc') is not None:
+            self.promotion_desc = m.get('PromotionDesc')
+        if m.get('PromotionName') is not None:
+            self.promotion_name = m.get('PromotionName')
+        if m.get('PromotionOptionNo') is not None:
+            self.promotion_option_no = m.get('PromotionOptionNo')
+        if m.get('Selected') is not None:
+            self.selected = m.get('Selected')
+        return self
+
+
+class QueryConvertPrepayInstancePriceResponseBodyPriceInfoRules(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        rule_id: int = None,
+    ):
+        self.description = description
+        self.rule_id = rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        return self
+
+
+class QueryConvertPrepayInstancePriceResponseBodyPriceInfo(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        currency: str = None,
+        depreciate_info: QueryConvertPrepayInstancePriceResponseBodyPriceInfoDepreciateInfo = None,
+        discount_amount: float = None,
+        is_contract_activity: bool = None,
+        message: str = None,
+        optional_promotions: List[QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions] = None,
+        original_amount: float = None,
+        rules: List[QueryConvertPrepayInstancePriceResponseBodyPriceInfoRules] = None,
+        stand_discount_price: str = None,
+        stand_price: str = None,
+        trade_amount: float = None,
+    ):
+        self.code = code
+        self.currency = currency
+        self.depreciate_info = depreciate_info
+        self.discount_amount = discount_amount
+        self.is_contract_activity = is_contract_activity
+        self.message = message
+        self.optional_promotions = optional_promotions
+        self.original_amount = original_amount
+        self.rules = rules
+        self.stand_discount_price = stand_discount_price
+        self.stand_price = stand_price
+        self.trade_amount = trade_amount
+
+    def validate(self):
+        if self.depreciate_info:
+            self.depreciate_info.validate()
+        if self.optional_promotions:
+            for k in self.optional_promotions:
+                if k:
+                    k.validate()
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.currency is not None:
+            result['Currency'] = self.currency
+        if self.depreciate_info is not None:
+            result['DepreciateInfo'] = self.depreciate_info.to_map()
+        if self.discount_amount is not None:
+            result['DiscountAmount'] = self.discount_amount
+        if self.is_contract_activity is not None:
+            result['IsContractActivity'] = self.is_contract_activity
+        if self.message is not None:
+            result['Message'] = self.message
+        result['OptionalPromotions'] = []
+        if self.optional_promotions is not None:
+            for k in self.optional_promotions:
+                result['OptionalPromotions'].append(k.to_map() if k else None)
+        if self.original_amount is not None:
+            result['OriginalAmount'] = self.original_amount
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
+        if self.stand_discount_price is not None:
+            result['StandDiscountPrice'] = self.stand_discount_price
+        if self.stand_price is not None:
+            result['StandPrice'] = self.stand_price
+        if self.trade_amount is not None:
+            result['TradeAmount'] = self.trade_amount
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Currency') is not None:
+            self.currency = m.get('Currency')
+        if m.get('DepreciateInfo') is not None:
+            temp_model = QueryConvertPrepayInstancePriceResponseBodyPriceInfoDepreciateInfo()
+            self.depreciate_info = temp_model.from_map(m['DepreciateInfo'])
+        if m.get('DiscountAmount') is not None:
+            self.discount_amount = m.get('DiscountAmount')
+        if m.get('IsContractActivity') is not None:
+            self.is_contract_activity = m.get('IsContractActivity')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        self.optional_promotions = []
+        if m.get('OptionalPromotions') is not None:
+            for k in m.get('OptionalPromotions'):
+                temp_model = QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions()
+                self.optional_promotions.append(temp_model.from_map(k))
+        if m.get('OriginalAmount') is not None:
+            self.original_amount = m.get('OriginalAmount')
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = QueryConvertPrepayInstancePriceResponseBodyPriceInfoRules()
+                self.rules.append(temp_model.from_map(k))
+        if m.get('StandDiscountPrice') is not None:
+            self.stand_discount_price = m.get('StandDiscountPrice')
+        if m.get('StandPrice') is not None:
+            self.stand_price = m.get('StandPrice')
+        if m.get('TradeAmount') is not None:
+            self.trade_amount = m.get('TradeAmount')
+        return self
+
+
+class QueryConvertPrepayInstancePriceResponseBody(TeaModel):
+    def __init__(
+        self,
+        price_info: QueryConvertPrepayInstancePriceResponseBodyPriceInfo = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.price_info = price_info
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.price_info:
+            self.price_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.price_info is not None:
+            result['PriceInfo'] = self.price_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PriceInfo') is not None:
+            temp_model = QueryConvertPrepayInstancePriceResponseBodyPriceInfo()
+            self.price_info = temp_model.from_map(m['PriceInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryConvertPrepayInstancePriceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryConvertPrepayInstancePriceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryConvertPrepayInstancePriceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

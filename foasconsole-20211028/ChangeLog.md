@@ -1,3 +1,12 @@
+2025-03-06 Version: 2.1.0
+- Support API ConvertHybridInstance.
+- Support API ConvertPrepayInstance.
+- Support API ModifyElasticResourceSpec.
+- Support API ModifyInstanceVswitch.
+- Support API ModifyNamespaceSpecV2.
+- Support API QueryConvertPrepayInstancePrice.
+
+
 2025-02-13 Version: 2.0.0
 - Update API CreateInstance: delete param HaZoneId.
 - Update API CreateInstance: delete param ZoneId.
