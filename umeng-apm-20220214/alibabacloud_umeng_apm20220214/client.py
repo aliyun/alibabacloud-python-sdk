@@ -179,6 +179,130 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_sym_records_with_options_async(request, headers, runtime)
 
+    def get_error_minute_stat_trend_with_options(
+        self,
+        request: umeng_apm_20220214_models.GetErrorMinuteStatTrendRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> umeng_apm_20220214_models.GetErrorMinuteStatTrendResponse:
+        """
+        @summary 获取分钟粒度稳定性统计数据
+        
+        @param request: GetErrorMinuteStatTrendRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetErrorMinuteStatTrendResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_source_id):
+            query['dataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetErrorMinuteStatTrend',
+            version='2022-02-14',
+            protocol='HTTPS',
+            pathname=f'/stat/GetErrorMinuteStatTrend',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetErrorMinuteStatTrendResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetErrorMinuteStatTrendResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_error_minute_stat_trend_with_options_async(
+        self,
+        request: umeng_apm_20220214_models.GetErrorMinuteStatTrendRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> umeng_apm_20220214_models.GetErrorMinuteStatTrendResponse:
+        """
+        @summary 获取分钟粒度稳定性统计数据
+        
+        @param request: GetErrorMinuteStatTrendRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetErrorMinuteStatTrendResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_source_id):
+            query['dataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetErrorMinuteStatTrend',
+            version='2022-02-14',
+            protocol='HTTPS',
+            pathname=f'/stat/GetErrorMinuteStatTrend',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetErrorMinuteStatTrendResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetErrorMinuteStatTrendResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_error_minute_stat_trend(
+        self,
+        request: umeng_apm_20220214_models.GetErrorMinuteStatTrendRequest,
+    ) -> umeng_apm_20220214_models.GetErrorMinuteStatTrendResponse:
+        """
+        @summary 获取分钟粒度稳定性统计数据
+        
+        @param request: GetErrorMinuteStatTrendRequest
+        @return: GetErrorMinuteStatTrendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_error_minute_stat_trend_with_options(request, headers, runtime)
+
+    async def get_error_minute_stat_trend_async(
+        self,
+        request: umeng_apm_20220214_models.GetErrorMinuteStatTrendRequest,
+    ) -> umeng_apm_20220214_models.GetErrorMinuteStatTrendResponse:
+        """
+        @summary 获取分钟粒度稳定性统计数据
+        
+        @param request: GetErrorMinuteStatTrendRequest
+        @return: GetErrorMinuteStatTrendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_error_minute_stat_trend_with_options_async(request, headers, runtime)
+
     def get_h5page_trend_with_options(
         self,
         request: umeng_apm_20220214_models.GetH5PageTrendRequest,
@@ -574,6 +698,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_native_page_trend_with_options_async(request, headers, runtime)
+
+    def get_network_minute_trend_with_options(
+        self,
+        request: umeng_apm_20220214_models.GetNetworkMinuteTrendRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> umeng_apm_20220214_models.GetNetworkMinuteTrendResponse:
+        """
+        @summary 获取分钟粒度网络统计数据
+        
+        @param request: GetNetworkMinuteTrendRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNetworkMinuteTrendResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_source_id):
+            query['dataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetNetworkMinuteTrend',
+            version='2022-02-14',
+            protocol='HTTPS',
+            pathname=f'/stat/getNetworkMinuteTrend',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetNetworkMinuteTrendResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetNetworkMinuteTrendResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_network_minute_trend_with_options_async(
+        self,
+        request: umeng_apm_20220214_models.GetNetworkMinuteTrendRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> umeng_apm_20220214_models.GetNetworkMinuteTrendResponse:
+        """
+        @summary 获取分钟粒度网络统计数据
+        
+        @param request: GetNetworkMinuteTrendRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNetworkMinuteTrendResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_source_id):
+            query['dataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetNetworkMinuteTrend',
+            version='2022-02-14',
+            protocol='HTTPS',
+            pathname=f'/stat/getNetworkMinuteTrend',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetNetworkMinuteTrendResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                umeng_apm_20220214_models.GetNetworkMinuteTrendResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_network_minute_trend(
+        self,
+        request: umeng_apm_20220214_models.GetNetworkMinuteTrendRequest,
+    ) -> umeng_apm_20220214_models.GetNetworkMinuteTrendResponse:
+        """
+        @summary 获取分钟粒度网络统计数据
+        
+        @param request: GetNetworkMinuteTrendRequest
+        @return: GetNetworkMinuteTrendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_network_minute_trend_with_options(request, headers, runtime)
+
+    async def get_network_minute_trend_async(
+        self,
+        request: umeng_apm_20220214_models.GetNetworkMinuteTrendRequest,
+    ) -> umeng_apm_20220214_models.GetNetworkMinuteTrendResponse:
+        """
+        @summary 获取分钟粒度网络统计数据
+        
+        @param request: GetNetworkMinuteTrendRequest
+        @return: GetNetworkMinuteTrendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_network_minute_trend_with_options_async(request, headers, runtime)
 
     def get_network_trend_with_options(
         self,

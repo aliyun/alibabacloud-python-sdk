@@ -182,6 +182,181 @@ class DeleteSymRecordsResponse(TeaModel):
         return self
 
 
+class GetErrorMinuteStatTrendRequest(TeaModel):
+    def __init__(
+        self,
+        data_source_id: str = None,
+        start_time: str = None,
+        type: int = None,
+    ):
+        # This parameter is required.
+        self.data_source_id = data_source_id
+        # This parameter is required.
+        self.start_time = start_time
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_source_id is not None:
+            result['dataSourceId'] = self.data_source_id
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('dataSourceId') is not None:
+            self.data_source_id = m.get('dataSourceId')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class GetErrorMinuteStatTrendResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        error_count: int = None,
+        launch_count: int = None,
+        time_point: str = None,
+    ):
+        self.error_count = error_count
+        self.launch_count = launch_count
+        self.time_point = time_point
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_count is not None:
+            result['errorCount'] = self.error_count
+        if self.launch_count is not None:
+            result['launchCount'] = self.launch_count
+        if self.time_point is not None:
+            result['timePoint'] = self.time_point
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCount') is not None:
+            self.error_count = m.get('errorCount')
+        if m.get('launchCount') is not None:
+            self.launch_count = m.get('launchCount')
+        if m.get('timePoint') is not None:
+            self.time_point = m.get('timePoint')
+        return self
+
+
+class GetErrorMinuteStatTrendResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: List[GetErrorMinuteStatTrendResponseBodyData] = None,
+        msg: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.msg = msg
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.msg is not None:
+            result['msg'] = self.msg
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = GetErrorMinuteStatTrendResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('msg') is not None:
+            self.msg = m.get('msg')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetErrorMinuteStatTrendResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetErrorMinuteStatTrendResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetErrorMinuteStatTrendResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetH5PageTrendRequest(TeaModel):
     def __init__(
         self,
@@ -892,6 +1067,174 @@ class GetNativePageTrendResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetNativePageTrendResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetNetworkMinuteTrendRequest(TeaModel):
+    def __init__(
+        self,
+        data_source_id: str = None,
+        start_time: str = None,
+    ):
+        # This parameter is required.
+        self.data_source_id = data_source_id
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_source_id is not None:
+            result['dataSourceId'] = self.data_source_id
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('dataSourceId') is not None:
+            self.data_source_id = m.get('dataSourceId')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        return self
+
+
+class GetNetworkMinuteTrendResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        error_count: int = None,
+        request_count: int = None,
+        time_point: str = None,
+    ):
+        self.error_count = error_count
+        self.request_count = request_count
+        self.time_point = time_point
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_count is not None:
+            result['errorCount'] = self.error_count
+        if self.request_count is not None:
+            result['requestCount'] = self.request_count
+        if self.time_point is not None:
+            result['timePoint'] = self.time_point
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCount') is not None:
+            self.error_count = m.get('errorCount')
+        if m.get('requestCount') is not None:
+            self.request_count = m.get('requestCount')
+        if m.get('timePoint') is not None:
+            self.time_point = m.get('timePoint')
+        return self
+
+
+class GetNetworkMinuteTrendResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: List[GetNetworkMinuteTrendResponseBodyData] = None,
+        msg: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.msg = msg
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.msg is not None:
+            result['msg'] = self.msg
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = GetNetworkMinuteTrendResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('msg') is not None:
+            self.msg = m.get('msg')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetNetworkMinuteTrendResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetNetworkMinuteTrendResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetNetworkMinuteTrendResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

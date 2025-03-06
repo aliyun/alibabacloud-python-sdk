@@ -1,3 +1,8 @@
+2025-03-06 Version: 1.3.0
+- Support API GetErrorMinuteStatTrend.
+- Support API GetNetworkMinuteTrend.
+
+
 2025-03-06 Version: 1.2.2
 - Generated python 2022-02-14 for umeng-apm.
 
