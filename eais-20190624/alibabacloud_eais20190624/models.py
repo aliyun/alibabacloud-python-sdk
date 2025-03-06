@@ -2455,6 +2455,7 @@ class DescribeEaisResponseBodyInstancesInstance(TeaModel):
         instance_name: str = None,
         instance_type: str = None,
         jupyter_url: str = None,
+        payment_type: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         security_group_id: str = None,
@@ -2474,6 +2475,7 @@ class DescribeEaisResponseBodyInstancesInstance(TeaModel):
         self.instance_name = instance_name
         self.instance_type = instance_type
         self.jupyter_url = jupyter_url
+        self.payment_type = payment_type
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.security_group_id = security_group_id
@@ -2513,6 +2515,8 @@ class DescribeEaisResponseBodyInstancesInstance(TeaModel):
             result['InstanceType'] = self.instance_type
         if self.jupyter_url is not None:
             result['JupyterUrl'] = self.jupyter_url
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -2553,6 +2557,8 @@ class DescribeEaisResponseBodyInstancesInstance(TeaModel):
             self.instance_type = m.get('InstanceType')
         if m.get('JupyterUrl') is not None:
             self.jupyter_url = m.get('JupyterUrl')
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:

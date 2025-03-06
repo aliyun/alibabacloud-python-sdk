@@ -1,3 +1,7 @@
+2025-03-06 Version: 3.0.4
+- Update API DescribeEais: update response param.
+
+
 2025-02-06 Version: 3.0.3
 - Generated python 2019-06-24 for eais.
 
