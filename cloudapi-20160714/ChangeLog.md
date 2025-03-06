@@ -1,3 +1,10 @@
+2025-03-06 Version: 4.8.0
+- Support API AttachGroupPlugin.
+- Support API DescribePluginGroups.
+- Support API DescribePluginsByGroup.
+- Support API DetachGroupPlugin.
+
+
 2025-02-14 Version: 4.7.3
 - Update API ListPrivateDNS: add param PageNumber.
 - Update API ListPrivateDNS: add param PageSize.

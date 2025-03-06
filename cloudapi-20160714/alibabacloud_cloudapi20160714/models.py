@@ -840,6 +840,133 @@ class AttachApiProductResponse(TeaModel):
         return self
 
 
+class AttachGroupPluginRequest(TeaModel):
+    def __init__(
+        self,
+        group_id: str = None,
+        plugin_id: str = None,
+        security_token: str = None,
+        stage_name: str = None,
+    ):
+        # The ID of the API group.
+        # 
+        # This parameter is required.
+        self.group_id = group_id
+        # The ID of the plug-in to be bound.
+        # 
+        # This parameter is required.
+        self.plugin_id = plugin_id
+        self.security_token = security_token
+        # The environment in which the API is requested. Valid values:
+        # 
+        # *   **RELEASE**: the production environment
+        # *   **PRE**: the pre-release environment
+        # *   **TEST**: the test environment
+        # 
+        # This parameter is required.
+        self.stage_name = stage_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.plugin_id is not None:
+            result['PluginId'] = self.plugin_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.stage_name is not None:
+            result['StageName'] = self.stage_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('PluginId') is not None:
+            self.plugin_id = m.get('PluginId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('StageName') is not None:
+            self.stage_name = m.get('StageName')
+        return self
+
+
+class AttachGroupPluginResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AttachGroupPluginResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AttachGroupPluginResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AttachGroupPluginResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AttachPluginRequest(TeaModel):
     def __init__(
         self,
@@ -32936,6 +33063,285 @@ class DescribePluginApisResponse(TeaModel):
         return self
 
 
+class DescribePluginGroupsRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        group_id: str = None,
+        group_name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        plugin_id: str = None,
+        security_token: str = None,
+    ):
+        # API group description
+        self.description = description
+        # API group ID
+        self.group_id = group_id
+        # API group name
+        self.group_name = group_name
+        # Pagination parameter: current page number
+        self.page_number = page_number
+        # Pagination parameter: number of items per page
+        self.page_size = page_size
+        # API Gateway plugin ID
+        # 
+        # This parameter is required.
+        self.plugin_id = plugin_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.plugin_id is not None:
+            result['PluginId'] = self.plugin_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PluginId') is not None:
+            self.plugin_id = m.get('PluginId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DescribePluginGroupsResponseBodyGroupSummarysGroupPluginSummary(TeaModel):
+    def __init__(
+        self,
+        base_path: str = None,
+        description: str = None,
+        group_id: str = None,
+        group_name: str = None,
+        region_id: str = None,
+        stage_alias: str = None,
+        stage_name: str = None,
+    ):
+        # API root path
+        self.base_path = base_path
+        # Description
+        self.description = description
+        # API group ID
+        self.group_id = group_id
+        # API group name
+        self.group_name = group_name
+        # Region ID where the API group is located
+        self.region_id = region_id
+        # Stage name Alias
+        self.stage_alias = stage_alias
+        # Environment name, possible values:
+        # 
+        # - **RELEASE**: Production
+        # - **PRE**: Pre-release
+        # - **TEST**: Testing
+        self.stage_name = stage_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.base_path is not None:
+            result['BasePath'] = self.base_path
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.stage_alias is not None:
+            result['StageAlias'] = self.stage_alias
+        if self.stage_name is not None:
+            result['StageName'] = self.stage_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BasePath') is not None:
+            self.base_path = m.get('BasePath')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StageAlias') is not None:
+            self.stage_alias = m.get('StageAlias')
+        if m.get('StageName') is not None:
+            self.stage_name = m.get('StageName')
+        return self
+
+
+class DescribePluginGroupsResponseBodyGroupSummarys(TeaModel):
+    def __init__(
+        self,
+        group_plugin_summary: List[DescribePluginGroupsResponseBodyGroupSummarysGroupPluginSummary] = None,
+    ):
+        self.group_plugin_summary = group_plugin_summary
+
+    def validate(self):
+        if self.group_plugin_summary:
+            for k in self.group_plugin_summary:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['GroupPluginSummary'] = []
+        if self.group_plugin_summary is not None:
+            for k in self.group_plugin_summary:
+                result['GroupPluginSummary'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.group_plugin_summary = []
+        if m.get('GroupPluginSummary') is not None:
+            for k in m.get('GroupPluginSummary'):
+                temp_model = DescribePluginGroupsResponseBodyGroupSummarysGroupPluginSummary()
+                self.group_plugin_summary.append(temp_model.from_map(k))
+        return self
+
+
+class DescribePluginGroupsResponseBody(TeaModel):
+    def __init__(
+        self,
+        group_summarys: DescribePluginGroupsResponseBodyGroupSummarys = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        # Collection of group information
+        self.group_summarys = group_summarys
+        # Pagination parameter: current page number
+        self.page_number = page_number
+        # Pagination parameter: number of items per page, default value 10
+        self.page_size = page_size
+        # Request ID
+        self.request_id = request_id
+        # Total number of returned results
+        self.total_count = total_count
+
+    def validate(self):
+        if self.group_summarys:
+            self.group_summarys.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_summarys is not None:
+            result['GroupSummarys'] = self.group_summarys.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupSummarys') is not None:
+            temp_model = DescribePluginGroupsResponseBodyGroupSummarys()
+            self.group_summarys = temp_model.from_map(m['GroupSummarys'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribePluginGroupsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribePluginGroupsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribePluginGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribePluginSchemasRequest(TeaModel):
     def __init__(
         self,
@@ -34030,6 +34436,280 @@ class DescribePluginsByApiResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribePluginsByApiResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribePluginsByGroupRequest(TeaModel):
+    def __init__(
+        self,
+        group_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        security_token: str = None,
+        stage_name: str = None,
+    ):
+        # Group ID
+        # 
+        # This parameter is required.
+        self.group_id = group_id
+        # Pagination parameter: current page number
+        self.page_number = page_number
+        # Pagination parameter: number of items per page.
+        self.page_size = page_size
+        self.security_token = security_token
+        # Specifies the environment of the API to operate on.
+        # 
+        # - **RELEASE**: Production
+        # - **PRE**: Pre-release
+        # - **TEST**: Test
+        # 
+        # This parameter is required.
+        self.stage_name = stage_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.stage_name is not None:
+            result['StageName'] = self.stage_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('StageName') is not None:
+            self.stage_name = m.get('StageName')
+        return self
+
+
+class DescribePluginsByGroupResponseBodyPluginsPluginAttribute(TeaModel):
+    def __init__(
+        self,
+        created_time: str = None,
+        description: str = None,
+        modified_time: str = None,
+        plugin_data: str = None,
+        plugin_id: str = None,
+        plugin_name: str = None,
+        plugin_type: str = None,
+        region_id: str = None,
+    ):
+        # Creation time, in GMT
+        self.created_time = created_time
+        # Plugin description
+        self.description = description
+        # Last modified time, in GMT
+        self.modified_time = modified_time
+        # Plugin definition statement
+        self.plugin_data = plugin_data
+        # Plugin ID
+        self.plugin_id = plugin_id
+        # Plugin name
+        self.plugin_name = plugin_name
+        # Plugin type
+        self.plugin_type = plugin_type
+        # 插件所在Region
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.plugin_data is not None:
+            result['PluginData'] = self.plugin_data
+        if self.plugin_id is not None:
+            result['PluginId'] = self.plugin_id
+        if self.plugin_name is not None:
+            result['PluginName'] = self.plugin_name
+        if self.plugin_type is not None:
+            result['PluginType'] = self.plugin_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('PluginData') is not None:
+            self.plugin_data = m.get('PluginData')
+        if m.get('PluginId') is not None:
+            self.plugin_id = m.get('PluginId')
+        if m.get('PluginName') is not None:
+            self.plugin_name = m.get('PluginName')
+        if m.get('PluginType') is not None:
+            self.plugin_type = m.get('PluginType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribePluginsByGroupResponseBodyPlugins(TeaModel):
+    def __init__(
+        self,
+        plugin_attribute: List[DescribePluginsByGroupResponseBodyPluginsPluginAttribute] = None,
+    ):
+        self.plugin_attribute = plugin_attribute
+
+    def validate(self):
+        if self.plugin_attribute:
+            for k in self.plugin_attribute:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PluginAttribute'] = []
+        if self.plugin_attribute is not None:
+            for k in self.plugin_attribute:
+                result['PluginAttribute'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.plugin_attribute = []
+        if m.get('PluginAttribute') is not None:
+            for k in m.get('PluginAttribute'):
+                temp_model = DescribePluginsByGroupResponseBodyPluginsPluginAttribute()
+                self.plugin_attribute.append(temp_model.from_map(k))
+        return self
+
+
+class DescribePluginsByGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        plugins: DescribePluginsByGroupResponseBodyPlugins = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        # Pagination parameter: current page number
+        self.page_number = page_number
+        # Pagination parameter: number of items per page.
+        self.page_size = page_size
+        # Returns information about the plugins
+        self.plugins = plugins
+        # Request ID
+        self.request_id = request_id
+        # Total number of results returned
+        self.total_count = total_count
+
+    def validate(self):
+        if self.plugins:
+            self.plugins.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.plugins is not None:
+            result['Plugins'] = self.plugins.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Plugins') is not None:
+            temp_model = DescribePluginsByGroupResponseBodyPlugins()
+            self.plugins = temp_model.from_map(m['Plugins'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribePluginsByGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribePluginsByGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribePluginsByGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -37711,6 +38391,133 @@ class DetachApiProductResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetachApiProductResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DetachGroupPluginRequest(TeaModel):
+    def __init__(
+        self,
+        group_id: str = None,
+        plugin_id: str = None,
+        security_token: str = None,
+        stage_name: str = None,
+    ):
+        # API group ID
+        # 
+        # This parameter is required.
+        self.group_id = group_id
+        # API Gateway plugin ID
+        # 
+        # This parameter is required.
+        self.plugin_id = plugin_id
+        self.security_token = security_token
+        # Specify the environment of the API to operate on.
+        # 
+        # - **RELEASE**: Production
+        # - **PRE**: Pre-release
+        # - **TEST**: Test
+        # 
+        # This parameter is required.
+        self.stage_name = stage_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.plugin_id is not None:
+            result['PluginId'] = self.plugin_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.stage_name is not None:
+            result['StageName'] = self.stage_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('PluginId') is not None:
+            self.plugin_id = m.get('PluginId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('StageName') is not None:
+            self.stage_name = m.get('StageName')
+        return self
+
+
+class DetachGroupPluginResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Request ID
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DetachGroupPluginResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DetachGroupPluginResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DetachGroupPluginResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

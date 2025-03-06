@@ -889,6 +889,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.attach_api_product_with_options_async(request, runtime)
 
+    def attach_group_plugin_with_options(
+        self,
+        request: cloud_api20160714_models.AttachGroupPluginRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.AttachGroupPluginResponse:
+        """
+        @summary Attach plugin to API group.
+        
+        @param request: AttachGroupPluginRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachGroupPluginResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.stage_name):
+            query['StageName'] = request.stage_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachGroupPlugin',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cloud_api20160714_models.AttachGroupPluginResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cloud_api20160714_models.AttachGroupPluginResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def attach_group_plugin_with_options_async(
+        self,
+        request: cloud_api20160714_models.AttachGroupPluginRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.AttachGroupPluginResponse:
+        """
+        @summary Attach plugin to API group.
+        
+        @param request: AttachGroupPluginRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachGroupPluginResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.stage_name):
+            query['StageName'] = request.stage_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachGroupPlugin',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cloud_api20160714_models.AttachGroupPluginResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cloud_api20160714_models.AttachGroupPluginResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def attach_group_plugin(
+        self,
+        request: cloud_api20160714_models.AttachGroupPluginRequest,
+    ) -> cloud_api20160714_models.AttachGroupPluginResponse:
+        """
+        @summary Attach plugin to API group.
+        
+        @param request: AttachGroupPluginRequest
+        @return: AttachGroupPluginResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.attach_group_plugin_with_options(request, runtime)
+
+    async def attach_group_plugin_async(
+        self,
+        request: cloud_api20160714_models.AttachGroupPluginRequest,
+    ) -> cloud_api20160714_models.AttachGroupPluginResponse:
+        """
+        @summary Attach plugin to API group.
+        
+        @param request: AttachGroupPluginRequest
+        @return: AttachGroupPluginResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.attach_group_plugin_with_options_async(request, runtime)
+
     def attach_plugin_with_options(
         self,
         request: cloud_api20160714_models.AttachPluginRequest,
@@ -16077,6 +16197,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_plugin_apis_with_options_async(request, runtime)
 
+    def describe_plugin_groups_with_options(
+        self,
+        request: cloud_api20160714_models.DescribePluginGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DescribePluginGroupsResponse:
+        """
+        @summary Query the list of groups bound to a plugin based on the plugin ID
+        
+        @param request: DescribePluginGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePluginGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePluginGroups',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cloud_api20160714_models.DescribePluginGroupsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cloud_api20160714_models.DescribePluginGroupsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_plugin_groups_with_options_async(
+        self,
+        request: cloud_api20160714_models.DescribePluginGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DescribePluginGroupsResponse:
+        """
+        @summary Query the list of groups bound to a plugin based on the plugin ID
+        
+        @param request: DescribePluginGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePluginGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePluginGroups',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cloud_api20160714_models.DescribePluginGroupsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cloud_api20160714_models.DescribePluginGroupsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_plugin_groups(
+        self,
+        request: cloud_api20160714_models.DescribePluginGroupsRequest,
+    ) -> cloud_api20160714_models.DescribePluginGroupsResponse:
+        """
+        @summary Query the list of groups bound to a plugin based on the plugin ID
+        
+        @param request: DescribePluginGroupsRequest
+        @return: DescribePluginGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_plugin_groups_with_options(request, runtime)
+
+    async def describe_plugin_groups_async(
+        self,
+        request: cloud_api20160714_models.DescribePluginGroupsRequest,
+    ) -> cloud_api20160714_models.DescribePluginGroupsResponse:
+        """
+        @summary Query the list of groups bound to a plugin based on the plugin ID
+        
+        @param request: DescribePluginGroupsRequest
+        @return: DescribePluginGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_plugin_groups_with_options_async(request, runtime)
+
     def describe_plugin_schemas_with_options(
         self,
         request: cloud_api20160714_models.DescribePluginSchemasRequest,
@@ -16596,6 +16848,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_plugins_by_api_with_options_async(request, runtime)
+
+    def describe_plugins_by_group_with_options(
+        self,
+        request: cloud_api20160714_models.DescribePluginsByGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DescribePluginsByGroupResponse:
+        """
+        @summary Query Plugins Bound to API Group
+        
+        @param request: DescribePluginsByGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePluginsByGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.stage_name):
+            query['StageName'] = request.stage_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePluginsByGroup',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cloud_api20160714_models.DescribePluginsByGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cloud_api20160714_models.DescribePluginsByGroupResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_plugins_by_group_with_options_async(
+        self,
+        request: cloud_api20160714_models.DescribePluginsByGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DescribePluginsByGroupResponse:
+        """
+        @summary Query Plugins Bound to API Group
+        
+        @param request: DescribePluginsByGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePluginsByGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.stage_name):
+            query['StageName'] = request.stage_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePluginsByGroup',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cloud_api20160714_models.DescribePluginsByGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cloud_api20160714_models.DescribePluginsByGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_plugins_by_group(
+        self,
+        request: cloud_api20160714_models.DescribePluginsByGroupRequest,
+    ) -> cloud_api20160714_models.DescribePluginsByGroupResponse:
+        """
+        @summary Query Plugins Bound to API Group
+        
+        @param request: DescribePluginsByGroupRequest
+        @return: DescribePluginsByGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_plugins_by_group_with_options(request, runtime)
+
+    async def describe_plugins_by_group_async(
+        self,
+        request: cloud_api20160714_models.DescribePluginsByGroupRequest,
+    ) -> cloud_api20160714_models.DescribePluginsByGroupResponse:
+        """
+        @summary Query Plugins Bound to API Group
+        
+        @param request: DescribePluginsByGroupRequest
+        @return: DescribePluginsByGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_plugins_by_group_with_options_async(request, runtime)
 
     def describe_purchased_api_group_with_options(
         self,
@@ -18452,6 +18828,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.detach_api_product_with_options_async(request, runtime)
+
+    def detach_group_plugin_with_options(
+        self,
+        request: cloud_api20160714_models.DetachGroupPluginRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DetachGroupPluginResponse:
+        """
+        @summary Unbind group plugin
+        
+        @param request: DetachGroupPluginRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachGroupPluginResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.stage_name):
+            query['StageName'] = request.stage_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetachGroupPlugin',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cloud_api20160714_models.DetachGroupPluginResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cloud_api20160714_models.DetachGroupPluginResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def detach_group_plugin_with_options_async(
+        self,
+        request: cloud_api20160714_models.DetachGroupPluginRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DetachGroupPluginResponse:
+        """
+        @summary Unbind group plugin
+        
+        @param request: DetachGroupPluginRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachGroupPluginResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.stage_name):
+            query['StageName'] = request.stage_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetachGroupPlugin',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                cloud_api20160714_models.DetachGroupPluginResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                cloud_api20160714_models.DetachGroupPluginResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def detach_group_plugin(
+        self,
+        request: cloud_api20160714_models.DetachGroupPluginRequest,
+    ) -> cloud_api20160714_models.DetachGroupPluginResponse:
+        """
+        @summary Unbind group plugin
+        
+        @param request: DetachGroupPluginRequest
+        @return: DetachGroupPluginResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.detach_group_plugin_with_options(request, runtime)
+
+    async def detach_group_plugin_async(
+        self,
+        request: cloud_api20160714_models.DetachGroupPluginRequest,
+    ) -> cloud_api20160714_models.DetachGroupPluginResponse:
+        """
+        @summary Unbind group plugin
+        
+        @param request: DetachGroupPluginRequest
+        @return: DetachGroupPluginResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.detach_group_plugin_with_options_async(request, runtime)
 
     def detach_plugin_with_options(
         self,
