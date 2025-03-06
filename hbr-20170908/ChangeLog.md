@@ -1,3 +1,8 @@
+2025-03-06 Version: 2.1.5
+- Update API DescribeClients: update response param.
+- Update API UpdatePolicyV2: update param Rules.
+
+
 2025-03-02 Version: 2.1.4
 - Update API DescribeVaults: add param VaultName.
 

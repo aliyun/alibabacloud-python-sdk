@@ -3851,11 +3851,11 @@ class CreatePolicyV2RequestRulesDataSourceFilters(TeaModel):
         self.data_source_ids = data_source_ids
         # The type of the data source. Valid value:
         # 
-        # *   **UDM_ECS**: Elastic Compute Service (ECS) instance This type of data source is supported only if the **RuleType** parameter is set to **UDM_ECS_ONLY**.
-        # *   **OSS**: Object Storage Service (OSS) bucket This type of data source is supported only if the **RuleType** parameter is set to **STANDARD**.
-        # *   **NAS**: File Storage NAS (NAS) file system This type of data source is supported only if the **RuleType** parameter is set to **STANDARD**.
-        # *   **ECS_FILE**: ECS file This type of data source is supported only if the **RuleType** parameter is set to **STANDARD**.
-        # *   **OTS**: Tablestore instance This type of data source is supported only if the **RuleType** parameter is set to **STANDARD**.
+        # *   **UDM_ECS**: Elastic Compute Service (ECS) instance This type of data source is supported only if the **PolicyType** parameter is set to **UDM_ECS_ONLY**.
+        # *   **OSS**: Object Storage Service (OSS) bucket This type of data source is supported only if the **PolicyType** parameter is set to **STANDARD**.
+        # *   **NAS**: File Storage NAS (NAS) file system This type of data source is supported only if the **PolicyType** parameter is set to **STANDARD**.
+        # *   **ECS_FILE**: ECS file This type of data source is supported only if the **PolicyType** parameter is set to **STANDARD**.
+        # *   **OTS**: Tablestore instance This type of data source is supported only if the **PolicyType** parameter is set to **STANDARD**.
         self.source_type = source_type
 
     def validate(self):
@@ -4002,8 +4002,9 @@ class CreatePolicyV2RequestRules(TeaModel):
         self.keep_latest_snapshots = keep_latest_snapshots
         # This parameter is required only if the **RuleType** parameter is set to **REPLICATION**. This parameter specifies the ID of the destination region.
         self.replication_region_id = replication_region_id
-        # This parameter is required only if the **RuleType** parameter is set to **TRANSITION** or **REPLICATION**.
+        # This parameter is required only if the **RuleType** parameter is set to **BACKUP**, **TRANSITION** or **REPLICATION**.
         # 
+        # *   If the **RuleType** parameter is set to **BACKUP**, this parameter specifies the retention period of the backup data. The priority is lower than the Retention field of the rule with RuleType=TRANSITION. Minimum value: 1. Maximum value: 364635. Unit: days.
         # *   If the **RuleType** parameter is set to **TRANSITION**, this parameter specifies the retention period of the backup data. Minimum value: 1. Maximum value: 364635. Unit: days.
         # *   If the **RuleType** parameter is set to **REPLICATION**, this parameter specifies the retention period of remote backups. Minimum value: 1. Maximum value: 364635. Unit: days.
         self.retention = retention
@@ -4014,6 +4015,7 @@ class CreatePolicyV2RequestRules(TeaModel):
         # *   **BACKUP**: backup rule
         # *   **TRANSITION**: lifecycle rule
         # *   **REPLICATION**: replication rule
+        # *   **TAG**: tag rule
         # 
         # This parameter is required.
         self.rule_type = rule_type
@@ -5294,7 +5296,11 @@ class CreateVaultRequest(TeaModel):
         # 
         # This parameter is required.
         self.vault_region_id = vault_region_id
-        # The storage type of the backup vault. Valid value: **STANDARD**, which indicates standard storage.
+        # The storage type of the backup vault. Valid value: 
+        # - **STANDARD**: standard storage.
+        # - **ARCHIVE**: deprected.
+        # - **COLD_ARCHIVE**: deprected.
+        # - **IA**: deprected.
         self.vault_storage_class = vault_storage_class
         # The type of the backup vault. Valid values:
         # 
@@ -10171,6 +10177,7 @@ class DescribeClientsResponseBodyClientsClient(TeaModel):
         client_version: str = None,
         cluster_id: str = None,
         created_time: int = None,
+        heart_beat_time: int = None,
         instance_id: str = None,
         instance_name: str = None,
         max_version: str = None,
@@ -10195,6 +10202,7 @@ class DescribeClientsResponseBodyClientsClient(TeaModel):
         self.cluster_id = cluster_id
         # The time when the Cloud Backup client was created.
         self.created_time = created_time
+        self.heart_beat_time = heart_beat_time
         # The instance ID.
         self.instance_id = instance_id
         # The name of the ECS instance.
@@ -10256,6 +10264,8 @@ class DescribeClientsResponseBodyClientsClient(TeaModel):
             result['ClusterId'] = self.cluster_id
         if self.created_time is not None:
             result['CreatedTime'] = self.created_time
+        if self.heart_beat_time is not None:
+            result['HeartBeatTime'] = self.heart_beat_time
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.instance_name is not None:
@@ -10292,6 +10302,8 @@ class DescribeClientsResponseBodyClientsClient(TeaModel):
             self.cluster_id = m.get('ClusterId')
         if m.get('CreatedTime') is not None:
             self.created_time = m.get('CreatedTime')
+        if m.get('HeartBeatTime') is not None:
+            self.heart_beat_time = m.get('HeartBeatTime')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceName') is not None:
@@ -23866,6 +23878,7 @@ class UpdatePolicyV2RequestRules(TeaModel):
         rule_type: str = None,
         schedule: str = None,
         tag_filters: List[UpdatePolicyV2RequestRulesTagFilters] = None,
+        vault_id: str = None,
     ):
         # This parameter is required only if the **RuleType** parameter is set to **TRANSITION**. This parameter specifies the time when data is dumped from a backup vault to an archive vault. Unit: days.
         self.archive_days = archive_days
@@ -23906,6 +23919,8 @@ class UpdatePolicyV2RequestRules(TeaModel):
         self.schedule = schedule
         # This parameter is required only if the **RuleType** parameter is set to **TAG**. This parameter specifies the resource tag filter rule.
         self.tag_filters = tag_filters
+        # This parameter is required only if the RuleType parameter is set to BACKUP. The ID of the backup vault.
+        self.vault_id = vault_id
 
     def validate(self):
         if self.data_source_filters:
@@ -23959,6 +23974,8 @@ class UpdatePolicyV2RequestRules(TeaModel):
         if self.tag_filters is not None:
             for k in self.tag_filters:
                 result['TagFilters'].append(k.to_map() if k else None)
+        if self.vault_id is not None:
+            result['VaultId'] = self.vault_id
         return result
 
     def from_map(self, m: dict = None):
@@ -23998,6 +24015,8 @@ class UpdatePolicyV2RequestRules(TeaModel):
             for k in m.get('TagFilters'):
                 temp_model = UpdatePolicyV2RequestRulesTagFilters()
                 self.tag_filters.append(temp_model.from_map(k))
+        if m.get('VaultId') is not None:
+            self.vault_id = m.get('VaultId')
         return self
 
 
