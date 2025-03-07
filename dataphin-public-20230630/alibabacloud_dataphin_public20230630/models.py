@@ -17521,6 +17521,199 @@ class GetQueueEngineVersionByEnvResponse(TeaModel):
         return self
 
 
+class GetSparkLocalClientInfoRequest(TeaModel):
+    def __init__(
+        self,
+        env_enum: str = None,
+        op_tenant_id: int = None,
+        project_id: str = None,
+    ):
+        # This parameter is required.
+        self.env_enum = env_enum
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+        # This parameter is required.
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.env_enum is not None:
+            result['EnvEnum'] = self.env_enum
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnvEnum') is not None:
+            self.env_enum = m.get('EnvEnum')
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class GetSparkLocalClientInfoResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        client_file_resource_id: str = None,
+        client_file_resource_name: str = None,
+        client_name: str = None,
+        editable: bool = None,
+    ):
+        self.client_file_resource_id = client_file_resource_id
+        self.client_file_resource_name = client_file_resource_name
+        self.client_name = client_name
+        self.editable = editable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_file_resource_id is not None:
+            result['ClientFileResourceId'] = self.client_file_resource_id
+        if self.client_file_resource_name is not None:
+            result['ClientFileResourceName'] = self.client_file_resource_name
+        if self.client_name is not None:
+            result['ClientName'] = self.client_name
+        if self.editable is not None:
+            result['Editable'] = self.editable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientFileResourceId') is not None:
+            self.client_file_resource_id = m.get('ClientFileResourceId')
+        if m.get('ClientFileResourceName') is not None:
+            self.client_file_resource_name = m.get('ClientFileResourceName')
+        if m.get('ClientName') is not None:
+            self.client_name = m.get('ClientName')
+        if m.get('Editable') is not None:
+            self.editable = m.get('Editable')
+        return self
+
+
+class GetSparkLocalClientInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[GetSparkLocalClientInfoResponseBodyData] = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetSparkLocalClientInfoResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetSparkLocalClientInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSparkLocalClientInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSparkLocalClientInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetSupplementDagrunRequest(TeaModel):
     def __init__(
         self,
@@ -21087,6 +21280,464 @@ class ListAlertNotificationsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListAlertNotificationsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAuthorizedDataServiceApiDetailsRequestListQuery(TeaModel):
+    def __init__(
+        self,
+        app_key: int = None,
+        page: int = None,
+        page_size: int = None,
+    ):
+        # AppKey
+        # 
+        # This parameter is required.
+        self.app_key = app_key
+        # This parameter is required.
+        self.page = page
+        # This parameter is required.
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.page is not None:
+            result['Page'] = self.page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('Page') is not None:
+            self.page = m.get('Page')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListAuthorizedDataServiceApiDetailsRequest(TeaModel):
+    def __init__(
+        self,
+        list_query: ListAuthorizedDataServiceApiDetailsRequestListQuery = None,
+        op_tenant_id: int = None,
+    ):
+        # This parameter is required.
+        self.list_query = list_query
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+
+    def validate(self):
+        if self.list_query:
+            self.list_query.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.list_query is not None:
+            result['ListQuery'] = self.list_query.to_map()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ListQuery') is not None:
+            temp_model = ListAuthorizedDataServiceApiDetailsRequestListQuery()
+            self.list_query = temp_model.from_map(m['ListQuery'])
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        return self
+
+
+class ListAuthorizedDataServiceApiDetailsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        list_query_shrink: str = None,
+        op_tenant_id: int = None,
+    ):
+        # This parameter is required.
+        self.list_query_shrink = list_query_shrink
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.list_query_shrink is not None:
+            result['ListQuery'] = self.list_query_shrink
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ListQuery') is not None:
+            self.list_query_shrink = m.get('ListQuery')
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        return self
+
+
+class ListAuthorizedDataServiceApiDetailsResponseBodyResultDataAuthorizedDevReturnParameters(TeaModel):
+    def __init__(
+        self,
+        example_value: str = None,
+        is_authorized: int = None,
+        parameter_data_type: int = None,
+        parameter_description: str = None,
+        parameter_name: str = None,
+    ):
+        self.example_value = example_value
+        self.is_authorized = is_authorized
+        self.parameter_data_type = parameter_data_type
+        self.parameter_description = parameter_description
+        self.parameter_name = parameter_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.example_value is not None:
+            result['ExampleValue'] = self.example_value
+        if self.is_authorized is not None:
+            result['IsAuthorized'] = self.is_authorized
+        if self.parameter_data_type is not None:
+            result['ParameterDataType'] = self.parameter_data_type
+        if self.parameter_description is not None:
+            result['ParameterDescription'] = self.parameter_description
+        if self.parameter_name is not None:
+            result['ParameterName'] = self.parameter_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExampleValue') is not None:
+            self.example_value = m.get('ExampleValue')
+        if m.get('IsAuthorized') is not None:
+            self.is_authorized = m.get('IsAuthorized')
+        if m.get('ParameterDataType') is not None:
+            self.parameter_data_type = m.get('ParameterDataType')
+        if m.get('ParameterDescription') is not None:
+            self.parameter_description = m.get('ParameterDescription')
+        if m.get('ParameterName') is not None:
+            self.parameter_name = m.get('ParameterName')
+        return self
+
+
+class ListAuthorizedDataServiceApiDetailsResponseBodyResultDataAuthorizedProdReturnParameters(TeaModel):
+    def __init__(
+        self,
+        example_value: str = None,
+        is_authorized: int = None,
+        parameter_data_type: int = None,
+        parameter_description: str = None,
+        parameter_name: str = None,
+    ):
+        self.example_value = example_value
+        self.is_authorized = is_authorized
+        self.parameter_data_type = parameter_data_type
+        self.parameter_description = parameter_description
+        self.parameter_name = parameter_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.example_value is not None:
+            result['ExampleValue'] = self.example_value
+        if self.is_authorized is not None:
+            result['IsAuthorized'] = self.is_authorized
+        if self.parameter_data_type is not None:
+            result['ParameterDataType'] = self.parameter_data_type
+        if self.parameter_description is not None:
+            result['ParameterDescription'] = self.parameter_description
+        if self.parameter_name is not None:
+            result['ParameterName'] = self.parameter_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExampleValue') is not None:
+            self.example_value = m.get('ExampleValue')
+        if m.get('IsAuthorized') is not None:
+            self.is_authorized = m.get('IsAuthorized')
+        if m.get('ParameterDataType') is not None:
+            self.parameter_data_type = m.get('ParameterDataType')
+        if m.get('ParameterDescription') is not None:
+            self.parameter_description = m.get('ParameterDescription')
+        if m.get('ParameterName') is not None:
+            self.parameter_name = m.get('ParameterName')
+        return self
+
+
+class ListAuthorizedDataServiceApiDetailsResponseBodyResultData(TeaModel):
+    def __init__(
+        self,
+        api_id: int = None,
+        api_name: str = None,
+        app_id: int = None,
+        auth_type: str = None,
+        authorized_dev_return_parameters: List[ListAuthorizedDataServiceApiDetailsResponseBodyResultDataAuthorizedDevReturnParameters] = None,
+        authorized_prod_return_parameters: List[ListAuthorizedDataServiceApiDetailsResponseBodyResultDataAuthorizedProdReturnParameters] = None,
+        description: str = None,
+        dev_auth_period: str = None,
+        prod_auth_period: str = None,
+        project_id: int = None,
+    ):
+        # API_ID
+        self.api_id = api_id
+        self.api_name = api_name
+        self.app_id = app_id
+        self.auth_type = auth_type
+        self.authorized_dev_return_parameters = authorized_dev_return_parameters
+        self.authorized_prod_return_parameters = authorized_prod_return_parameters
+        self.description = description
+        self.dev_auth_period = dev_auth_period
+        self.prod_auth_period = prod_auth_period
+        self.project_id = project_id
+
+    def validate(self):
+        if self.authorized_dev_return_parameters:
+            for k in self.authorized_dev_return_parameters:
+                if k:
+                    k.validate()
+        if self.authorized_prod_return_parameters:
+            for k in self.authorized_prod_return_parameters:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_id is not None:
+            result['ApiId'] = self.api_id
+        if self.api_name is not None:
+            result['ApiName'] = self.api_name
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.auth_type is not None:
+            result['AuthType'] = self.auth_type
+        result['AuthorizedDevReturnParameters'] = []
+        if self.authorized_dev_return_parameters is not None:
+            for k in self.authorized_dev_return_parameters:
+                result['AuthorizedDevReturnParameters'].append(k.to_map() if k else None)
+        result['AuthorizedProdReturnParameters'] = []
+        if self.authorized_prod_return_parameters is not None:
+            for k in self.authorized_prod_return_parameters:
+                result['AuthorizedProdReturnParameters'].append(k.to_map() if k else None)
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.dev_auth_period is not None:
+            result['DevAuthPeriod'] = self.dev_auth_period
+        if self.prod_auth_period is not None:
+            result['ProdAuthPeriod'] = self.prod_auth_period
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiId') is not None:
+            self.api_id = m.get('ApiId')
+        if m.get('ApiName') is not None:
+            self.api_name = m.get('ApiName')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AuthType') is not None:
+            self.auth_type = m.get('AuthType')
+        self.authorized_dev_return_parameters = []
+        if m.get('AuthorizedDevReturnParameters') is not None:
+            for k in m.get('AuthorizedDevReturnParameters'):
+                temp_model = ListAuthorizedDataServiceApiDetailsResponseBodyResultDataAuthorizedDevReturnParameters()
+                self.authorized_dev_return_parameters.append(temp_model.from_map(k))
+        self.authorized_prod_return_parameters = []
+        if m.get('AuthorizedProdReturnParameters') is not None:
+            for k in m.get('AuthorizedProdReturnParameters'):
+                temp_model = ListAuthorizedDataServiceApiDetailsResponseBodyResultDataAuthorizedProdReturnParameters()
+                self.authorized_prod_return_parameters.append(temp_model.from_map(k))
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DevAuthPeriod') is not None:
+            self.dev_auth_period = m.get('DevAuthPeriod')
+        if m.get('ProdAuthPeriod') is not None:
+            self.prod_auth_period = m.get('ProdAuthPeriod')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class ListAuthorizedDataServiceApiDetailsResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        data: List[ListAuthorizedDataServiceApiDetailsResponseBodyResultData] = None,
+        total_count: int = None,
+    ):
+        self.data = data
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListAuthorizedDataServiceApiDetailsResponseBodyResultData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListAuthorizedDataServiceApiDetailsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        result: ListAuthorizedDataServiceApiDetailsResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = ListAuthorizedDataServiceApiDetailsResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListAuthorizedDataServiceApiDetailsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAuthorizedDataServiceApiDetailsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAuthorizedDataServiceApiDetailsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

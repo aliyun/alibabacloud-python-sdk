@@ -1,3 +1,9 @@
+2025-03-07 Version: 1.2.0
+- Support API GetSparkLocalClientInfo.
+- Support API ListAuthorizedDataServiceApiDetails.
+- Update API OperateInstance: update param OperateCommand.
+
+
 2024-12-30 Version: 1.1.0
 - Support API CreateBatchTask.
 - Support API CreateBizEntity.
