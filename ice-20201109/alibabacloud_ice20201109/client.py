@@ -106,7 +106,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AddAdInsertionResponse:
         """
-        @summary 添加广告插入配置
+        @summary Adds an ad insertion configuration.
         
         @param request: AddAdInsertionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -165,7 +165,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AddAdInsertionResponse:
         """
-        @summary 添加广告插入配置
+        @summary Adds an ad insertion configuration.
         
         @param request: AddAdInsertionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -223,7 +223,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.AddAdInsertionRequest,
     ) -> ice20201109_models.AddAdInsertionResponse:
         """
-        @summary 添加广告插入配置
+        @summary Adds an ad insertion configuration.
         
         @param request: AddAdInsertionRequest
         @return: AddAdInsertionResponse
@@ -236,7 +236,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.AddAdInsertionRequest,
     ) -> ice20201109_models.AddAdInsertionResponse:
         """
-        @summary 添加广告插入配置
+        @summary Adds an ad insertion configuration.
         
         @param request: AddAdInsertionRequest
         @return: AddAdInsertionResponse
@@ -594,16 +594,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AddMediaConnectFlowInputResponse:
         """
-        @summary Add input for MediaConnect instance
+        @summary Creates a source for a MediaConnect flow.
         
-        @description - If the provided Flow instance ID does not exist, the interface will return an error.
-        - A Flow instance can only have one Input.
-        ### Description of Input Types
-        - RTMP-PUSH: Creates an input of the RTMP listening type. You can push to the URL returned by the interface using the RTMP protocol.
-        - RTMP-PULL: Creates an input of the RTMP origin-pull type. The Flow will pull the RTMP live stream from the source you specify.
-        - SRT-Listener: Creates an input of the SRT listening type. You can push to the URL returned by the interface using the SRT protocol.
-        - SRT-Caller: Creates an input of the SRT origin-pull type. The Flow will pull the SRT live stream from the source you specify.
-        - Flow: Uses the output of another upstream Flow instance as the input. You need to specify both the instance ID and the output name of the paired Flow. The output of the upstream Flow instance must be of the SRT-Listener/RTMP-PULL type. When cascading between Flow instances, a dedicated line is used by default, which can be utilized for cross-regional distribution among multiple Flows.
+        @description    When the specified flow ID is not available, an error code is returned.
+        A flow can have only one source.
+        ### [](#)Source type
+        RTMP-PUSH: An input that you can push to the returned URL over the RTMP protocol.
+        RTMP-PULL: An input that the MediaConnect flow pulls from the specified server over the RTMP protocol.
+        SRT-Listener: An input that you can push to the returned URL over the SRT protocol.
+        SRT-Caller: An input that the MediaConnect flow pulls from the specified server over the SRT protocol.
+        Flow: An input that uses the output of another upstream flow. You must specify an upstream flow and its output. The output type of the upstream flow must be SRT-Listener or RTMP-PULL. By default, a dedicated line is used when flows are cascaded. This allows for cross-region distribution among multiple flows.
         
         @param request: AddMediaConnectFlowInputRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -664,16 +664,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AddMediaConnectFlowInputResponse:
         """
-        @summary Add input for MediaConnect instance
+        @summary Creates a source for a MediaConnect flow.
         
-        @description - If the provided Flow instance ID does not exist, the interface will return an error.
-        - A Flow instance can only have one Input.
-        ### Description of Input Types
-        - RTMP-PUSH: Creates an input of the RTMP listening type. You can push to the URL returned by the interface using the RTMP protocol.
-        - RTMP-PULL: Creates an input of the RTMP origin-pull type. The Flow will pull the RTMP live stream from the source you specify.
-        - SRT-Listener: Creates an input of the SRT listening type. You can push to the URL returned by the interface using the SRT protocol.
-        - SRT-Caller: Creates an input of the SRT origin-pull type. The Flow will pull the SRT live stream from the source you specify.
-        - Flow: Uses the output of another upstream Flow instance as the input. You need to specify both the instance ID and the output name of the paired Flow. The output of the upstream Flow instance must be of the SRT-Listener/RTMP-PULL type. When cascading between Flow instances, a dedicated line is used by default, which can be utilized for cross-regional distribution among multiple Flows.
+        @description    When the specified flow ID is not available, an error code is returned.
+        A flow can have only one source.
+        ### [](#)Source type
+        RTMP-PUSH: An input that you can push to the returned URL over the RTMP protocol.
+        RTMP-PULL: An input that the MediaConnect flow pulls from the specified server over the RTMP protocol.
+        SRT-Listener: An input that you can push to the returned URL over the SRT protocol.
+        SRT-Caller: An input that the MediaConnect flow pulls from the specified server over the SRT protocol.
+        Flow: An input that uses the output of another upstream flow. You must specify an upstream flow and its output. The output type of the upstream flow must be SRT-Listener or RTMP-PULL. By default, a dedicated line is used when flows are cascaded. This allows for cross-region distribution among multiple flows.
         
         @param request: AddMediaConnectFlowInputRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -733,16 +733,16 @@ class Client(OpenApiClient):
         request: ice20201109_models.AddMediaConnectFlowInputRequest,
     ) -> ice20201109_models.AddMediaConnectFlowInputResponse:
         """
-        @summary Add input for MediaConnect instance
+        @summary Creates a source for a MediaConnect flow.
         
-        @description - If the provided Flow instance ID does not exist, the interface will return an error.
-        - A Flow instance can only have one Input.
-        ### Description of Input Types
-        - RTMP-PUSH: Creates an input of the RTMP listening type. You can push to the URL returned by the interface using the RTMP protocol.
-        - RTMP-PULL: Creates an input of the RTMP origin-pull type. The Flow will pull the RTMP live stream from the source you specify.
-        - SRT-Listener: Creates an input of the SRT listening type. You can push to the URL returned by the interface using the SRT protocol.
-        - SRT-Caller: Creates an input of the SRT origin-pull type. The Flow will pull the SRT live stream from the source you specify.
-        - Flow: Uses the output of another upstream Flow instance as the input. You need to specify both the instance ID and the output name of the paired Flow. The output of the upstream Flow instance must be of the SRT-Listener/RTMP-PULL type. When cascading between Flow instances, a dedicated line is used by default, which can be utilized for cross-regional distribution among multiple Flows.
+        @description    When the specified flow ID is not available, an error code is returned.
+        A flow can have only one source.
+        ### [](#)Source type
+        RTMP-PUSH: An input that you can push to the returned URL over the RTMP protocol.
+        RTMP-PULL: An input that the MediaConnect flow pulls from the specified server over the RTMP protocol.
+        SRT-Listener: An input that you can push to the returned URL over the SRT protocol.
+        SRT-Caller: An input that the MediaConnect flow pulls from the specified server over the SRT protocol.
+        Flow: An input that uses the output of another upstream flow. You must specify an upstream flow and its output. The output type of the upstream flow must be SRT-Listener or RTMP-PULL. By default, a dedicated line is used when flows are cascaded. This allows for cross-region distribution among multiple flows.
         
         @param request: AddMediaConnectFlowInputRequest
         @return: AddMediaConnectFlowInputResponse
@@ -755,16 +755,16 @@ class Client(OpenApiClient):
         request: ice20201109_models.AddMediaConnectFlowInputRequest,
     ) -> ice20201109_models.AddMediaConnectFlowInputResponse:
         """
-        @summary Add input for MediaConnect instance
+        @summary Creates a source for a MediaConnect flow.
         
-        @description - If the provided Flow instance ID does not exist, the interface will return an error.
-        - A Flow instance can only have one Input.
-        ### Description of Input Types
-        - RTMP-PUSH: Creates an input of the RTMP listening type. You can push to the URL returned by the interface using the RTMP protocol.
-        - RTMP-PULL: Creates an input of the RTMP origin-pull type. The Flow will pull the RTMP live stream from the source you specify.
-        - SRT-Listener: Creates an input of the SRT listening type. You can push to the URL returned by the interface using the SRT protocol.
-        - SRT-Caller: Creates an input of the SRT origin-pull type. The Flow will pull the SRT live stream from the source you specify.
-        - Flow: Uses the output of another upstream Flow instance as the input. You need to specify both the instance ID and the output name of the paired Flow. The output of the upstream Flow instance must be of the SRT-Listener/RTMP-PULL type. When cascading between Flow instances, a dedicated line is used by default, which can be utilized for cross-regional distribution among multiple Flows.
+        @description    When the specified flow ID is not available, an error code is returned.
+        A flow can have only one source.
+        ### [](#)Source type
+        RTMP-PUSH: An input that you can push to the returned URL over the RTMP protocol.
+        RTMP-PULL: An input that the MediaConnect flow pulls from the specified server over the RTMP protocol.
+        SRT-Listener: An input that you can push to the returned URL over the SRT protocol.
+        SRT-Caller: An input that the MediaConnect flow pulls from the specified server over the SRT protocol.
+        Flow: An input that uses the output of another upstream flow. You must specify an upstream flow and its output. The output type of the upstream flow must be SRT-Listener or RTMP-PULL. By default, a dedicated line is used when flows are cascaded. This allows for cross-region distribution among multiple flows.
         
         @param request: AddMediaConnectFlowInputRequest
         @return: AddMediaConnectFlowInputResponse
@@ -778,18 +778,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AddMediaConnectFlowOutputResponse:
         """
-        @summary Add output for MediaConnect instance
+        @summary Creates an output for a MediaConnect flow.
         
-        @description - If the provided Flow instance ID does not exist, the interface will return an error.
-        - A Flow instance can have up to 4 outputs.
-        - The output names under the same Flow instance cannot be duplicated.
-        - You can set a maximum number of simultaneous players for each output. New plays will fail once this limit is exceeded. Each output supports up to 5 streams.
-        ### Description of Output Types
-        - RTMP-PUSH: Creates an output of the RTMP push type. The Flow will use the RTMP protocol to push the live stream to the origin you set.
-        - RTMP-PULL: Creates an output of the RTMP pull type. You can use the RTMP protocol to pull the stream from the URL returned by the interface.
-        - SRT-Caller: Creates an output of the SRT push type. The Flow will use the SRT protocol to push the live stream to the origin you set.
-        - SRT-Listener: Creates an output of the SRT pull type. You can use the SRT protocol to pull the stream from the URL returned by the interface.
-        - Flow: Uses the input of another downstream Flow instance as the output. You need to specify both the instance ID and the input name of the paired Flow. The input type of the downstream Flow instance must be a listening type, i.e., SRT-Listener/RTMP-PUSH. This instance will push the live stream to the downstream Flow. When cascading between Flow instances, a dedicated line is used by default, which can be used for cross-regional distribution among multiple Flows.
+        @description    When the specified flow ID is not available, an error code is returned.
+        A flow can have a maximum of four outputs.
+        The output names in the same flow cannot be duplicated.
+        You can set an upper limit on the number of concurrent viewers for each output. If this limit is exceeded, any new playback requests will fail. Each output supports up to five streams.
+        ### [](#)Output types
+        RTMP-PUSH: An output that the MediaConnect flow pushes to the server you specified over the RTMP protocol.
+        RTMP-PULL: An output that you can pull using the returned streaming URL over the RTMP protocol.
+        SRT-Caller: An output that the MediaConnect flow pushes to the server you specified over the SRT protocol.
+        SRT-Listener: An output that you can pull using the returned streaming URL over the SRT protocol.
+        Flow: An output that is pushed to the source URL of another MediaConnect flow. The source type of the destination flow must be SRT-Listener or RTMP-PUSH. By default, a dedicated line is used when flows are cascaded. This allows for cross-region distribution among multiple flows.
         
         @param request: AddMediaConnectFlowOutputRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -850,18 +850,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AddMediaConnectFlowOutputResponse:
         """
-        @summary Add output for MediaConnect instance
+        @summary Creates an output for a MediaConnect flow.
         
-        @description - If the provided Flow instance ID does not exist, the interface will return an error.
-        - A Flow instance can have up to 4 outputs.
-        - The output names under the same Flow instance cannot be duplicated.
-        - You can set a maximum number of simultaneous players for each output. New plays will fail once this limit is exceeded. Each output supports up to 5 streams.
-        ### Description of Output Types
-        - RTMP-PUSH: Creates an output of the RTMP push type. The Flow will use the RTMP protocol to push the live stream to the origin you set.
-        - RTMP-PULL: Creates an output of the RTMP pull type. You can use the RTMP protocol to pull the stream from the URL returned by the interface.
-        - SRT-Caller: Creates an output of the SRT push type. The Flow will use the SRT protocol to push the live stream to the origin you set.
-        - SRT-Listener: Creates an output of the SRT pull type. You can use the SRT protocol to pull the stream from the URL returned by the interface.
-        - Flow: Uses the input of another downstream Flow instance as the output. You need to specify both the instance ID and the input name of the paired Flow. The input type of the downstream Flow instance must be a listening type, i.e., SRT-Listener/RTMP-PUSH. This instance will push the live stream to the downstream Flow. When cascading between Flow instances, a dedicated line is used by default, which can be used for cross-regional distribution among multiple Flows.
+        @description    When the specified flow ID is not available, an error code is returned.
+        A flow can have a maximum of four outputs.
+        The output names in the same flow cannot be duplicated.
+        You can set an upper limit on the number of concurrent viewers for each output. If this limit is exceeded, any new playback requests will fail. Each output supports up to five streams.
+        ### [](#)Output types
+        RTMP-PUSH: An output that the MediaConnect flow pushes to the server you specified over the RTMP protocol.
+        RTMP-PULL: An output that you can pull using the returned streaming URL over the RTMP protocol.
+        SRT-Caller: An output that the MediaConnect flow pushes to the server you specified over the SRT protocol.
+        SRT-Listener: An output that you can pull using the returned streaming URL over the SRT protocol.
+        Flow: An output that is pushed to the source URL of another MediaConnect flow. The source type of the destination flow must be SRT-Listener or RTMP-PUSH. By default, a dedicated line is used when flows are cascaded. This allows for cross-region distribution among multiple flows.
         
         @param request: AddMediaConnectFlowOutputRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -921,18 +921,18 @@ class Client(OpenApiClient):
         request: ice20201109_models.AddMediaConnectFlowOutputRequest,
     ) -> ice20201109_models.AddMediaConnectFlowOutputResponse:
         """
-        @summary Add output for MediaConnect instance
+        @summary Creates an output for a MediaConnect flow.
         
-        @description - If the provided Flow instance ID does not exist, the interface will return an error.
-        - A Flow instance can have up to 4 outputs.
-        - The output names under the same Flow instance cannot be duplicated.
-        - You can set a maximum number of simultaneous players for each output. New plays will fail once this limit is exceeded. Each output supports up to 5 streams.
-        ### Description of Output Types
-        - RTMP-PUSH: Creates an output of the RTMP push type. The Flow will use the RTMP protocol to push the live stream to the origin you set.
-        - RTMP-PULL: Creates an output of the RTMP pull type. You can use the RTMP protocol to pull the stream from the URL returned by the interface.
-        - SRT-Caller: Creates an output of the SRT push type. The Flow will use the SRT protocol to push the live stream to the origin you set.
-        - SRT-Listener: Creates an output of the SRT pull type. You can use the SRT protocol to pull the stream from the URL returned by the interface.
-        - Flow: Uses the input of another downstream Flow instance as the output. You need to specify both the instance ID and the input name of the paired Flow. The input type of the downstream Flow instance must be a listening type, i.e., SRT-Listener/RTMP-PUSH. This instance will push the live stream to the downstream Flow. When cascading between Flow instances, a dedicated line is used by default, which can be used for cross-regional distribution among multiple Flows.
+        @description    When the specified flow ID is not available, an error code is returned.
+        A flow can have a maximum of four outputs.
+        The output names in the same flow cannot be duplicated.
+        You can set an upper limit on the number of concurrent viewers for each output. If this limit is exceeded, any new playback requests will fail. Each output supports up to five streams.
+        ### [](#)Output types
+        RTMP-PUSH: An output that the MediaConnect flow pushes to the server you specified over the RTMP protocol.
+        RTMP-PULL: An output that you can pull using the returned streaming URL over the RTMP protocol.
+        SRT-Caller: An output that the MediaConnect flow pushes to the server you specified over the SRT protocol.
+        SRT-Listener: An output that you can pull using the returned streaming URL over the SRT protocol.
+        Flow: An output that is pushed to the source URL of another MediaConnect flow. The source type of the destination flow must be SRT-Listener or RTMP-PUSH. By default, a dedicated line is used when flows are cascaded. This allows for cross-region distribution among multiple flows.
         
         @param request: AddMediaConnectFlowOutputRequest
         @return: AddMediaConnectFlowOutputResponse
@@ -945,18 +945,18 @@ class Client(OpenApiClient):
         request: ice20201109_models.AddMediaConnectFlowOutputRequest,
     ) -> ice20201109_models.AddMediaConnectFlowOutputResponse:
         """
-        @summary Add output for MediaConnect instance
+        @summary Creates an output for a MediaConnect flow.
         
-        @description - If the provided Flow instance ID does not exist, the interface will return an error.
-        - A Flow instance can have up to 4 outputs.
-        - The output names under the same Flow instance cannot be duplicated.
-        - You can set a maximum number of simultaneous players for each output. New plays will fail once this limit is exceeded. Each output supports up to 5 streams.
-        ### Description of Output Types
-        - RTMP-PUSH: Creates an output of the RTMP push type. The Flow will use the RTMP protocol to push the live stream to the origin you set.
-        - RTMP-PULL: Creates an output of the RTMP pull type. You can use the RTMP protocol to pull the stream from the URL returned by the interface.
-        - SRT-Caller: Creates an output of the SRT push type. The Flow will use the SRT protocol to push the live stream to the origin you set.
-        - SRT-Listener: Creates an output of the SRT pull type. You can use the SRT protocol to pull the stream from the URL returned by the interface.
-        - Flow: Uses the input of another downstream Flow instance as the output. You need to specify both the instance ID and the input name of the paired Flow. The input type of the downstream Flow instance must be a listening type, i.e., SRT-Listener/RTMP-PUSH. This instance will push the live stream to the downstream Flow. When cascading between Flow instances, a dedicated line is used by default, which can be used for cross-regional distribution among multiple Flows.
+        @description    When the specified flow ID is not available, an error code is returned.
+        A flow can have a maximum of four outputs.
+        The output names in the same flow cannot be duplicated.
+        You can set an upper limit on the number of concurrent viewers for each output. If this limit is exceeded, any new playback requests will fail. Each output supports up to five streams.
+        ### [](#)Output types
+        RTMP-PUSH: An output that the MediaConnect flow pushes to the server you specified over the RTMP protocol.
+        RTMP-PULL: An output that you can pull using the returned streaming URL over the RTMP protocol.
+        SRT-Caller: An output that the MediaConnect flow pushes to the server you specified over the SRT protocol.
+        SRT-Listener: An output that you can pull using the returned streaming URL over the SRT protocol.
+        Flow: An output that is pushed to the source URL of another MediaConnect flow. The source type of the destination flow must be SRT-Listener or RTMP-PUSH. By default, a dedicated line is used when flows are cascaded. This allows for cross-region distribution among multiple flows.
         
         @param request: AddMediaConnectFlowOutputRequest
         @return: AddMediaConnectFlowOutputResponse
@@ -1358,7 +1358,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.BatchCreateVodPackagingAssetResponse:
         """
-        @summary 批量创建vod打包资产
+        @summary Ingests multiple assets for VOD packaging.
         
         @param tmp_req: BatchCreateVodPackagingAssetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1405,7 +1405,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.BatchCreateVodPackagingAssetResponse:
         """
-        @summary 批量创建vod打包资产
+        @summary Ingests multiple assets for VOD packaging.
         
         @param tmp_req: BatchCreateVodPackagingAssetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1451,7 +1451,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.BatchCreateVodPackagingAssetRequest,
     ) -> ice20201109_models.BatchCreateVodPackagingAssetResponse:
         """
-        @summary 批量创建vod打包资产
+        @summary Ingests multiple assets for VOD packaging.
         
         @param request: BatchCreateVodPackagingAssetRequest
         @return: BatchCreateVodPackagingAssetResponse
@@ -1464,7 +1464,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.BatchCreateVodPackagingAssetRequest,
     ) -> ice20201109_models.BatchCreateVodPackagingAssetResponse:
         """
-        @summary 批量创建vod打包资产
+        @summary Ingests multiple assets for VOD packaging.
         
         @param request: BatchCreateVodPackagingAssetRequest
         @return: BatchCreateVodPackagingAssetResponse
@@ -2074,7 +2074,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateChannelResponse:
         """
-        @summary 创建一个新的频道
+        @summary Creates a channel in MediaWeaver.
         
         @param request: CreateChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2129,7 +2129,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateChannelResponse:
         """
-        @summary 创建一个新的频道
+        @summary Creates a channel in MediaWeaver.
         
         @param request: CreateChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2183,7 +2183,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateChannelRequest,
     ) -> ice20201109_models.CreateChannelResponse:
         """
-        @summary 创建一个新的频道
+        @summary Creates a channel in MediaWeaver.
         
         @param request: CreateChannelRequest
         @return: CreateChannelResponse
@@ -2196,7 +2196,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateChannelRequest,
     ) -> ice20201109_models.CreateChannelResponse:
         """
-        @summary 创建一个新的频道
+        @summary Creates a channel in MediaWeaver.
         
         @param request: CreateChannelRequest
         @return: CreateChannelResponse
@@ -2742,7 +2742,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateLivePackageChannelResponse:
         """
-        @summary 创建实时打包频道
+        @summary Creates a live package channel.
+        
+        @description ## [](#)Usage notes
+        After you call this operation to create a live package channel, the system will automatically generate the ingest endpoint URL, and username and password required for authentication.
+        ### [](#)Precautions
+        Channel group names and channel names can contain only letters, digits, underscores (_), and hyphens (-).
+        Only `HLS` is supported.
+        The segment duration must be from 1 to 30 seconds.
+        The number of M3U8 segments must be from 2 to 100.
+        If the request succeeds, the system will return the details of the newly created channel, including the channel name, creation time, modification time, and ingest endpoint details.
         
         @param request: CreateLivePackageChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2797,7 +2806,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateLivePackageChannelResponse:
         """
-        @summary 创建实时打包频道
+        @summary Creates a live package channel.
+        
+        @description ## [](#)Usage notes
+        After you call this operation to create a live package channel, the system will automatically generate the ingest endpoint URL, and username and password required for authentication.
+        ### [](#)Precautions
+        Channel group names and channel names can contain only letters, digits, underscores (_), and hyphens (-).
+        Only `HLS` is supported.
+        The segment duration must be from 1 to 30 seconds.
+        The number of M3U8 segments must be from 2 to 100.
+        If the request succeeds, the system will return the details of the newly created channel, including the channel name, creation time, modification time, and ingest endpoint details.
         
         @param request: CreateLivePackageChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2851,7 +2869,16 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateLivePackageChannelRequest,
     ) -> ice20201109_models.CreateLivePackageChannelResponse:
         """
-        @summary 创建实时打包频道
+        @summary Creates a live package channel.
+        
+        @description ## [](#)Usage notes
+        After you call this operation to create a live package channel, the system will automatically generate the ingest endpoint URL, and username and password required for authentication.
+        ### [](#)Precautions
+        Channel group names and channel names can contain only letters, digits, underscores (_), and hyphens (-).
+        Only `HLS` is supported.
+        The segment duration must be from 1 to 30 seconds.
+        The number of M3U8 segments must be from 2 to 100.
+        If the request succeeds, the system will return the details of the newly created channel, including the channel name, creation time, modification time, and ingest endpoint details.
         
         @param request: CreateLivePackageChannelRequest
         @return: CreateLivePackageChannelResponse
@@ -2864,7 +2891,16 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateLivePackageChannelRequest,
     ) -> ice20201109_models.CreateLivePackageChannelResponse:
         """
-        @summary 创建实时打包频道
+        @summary Creates a live package channel.
+        
+        @description ## [](#)Usage notes
+        After you call this operation to create a live package channel, the system will automatically generate the ingest endpoint URL, and username and password required for authentication.
+        ### [](#)Precautions
+        Channel group names and channel names can contain only letters, digits, underscores (_), and hyphens (-).
+        Only `HLS` is supported.
+        The segment duration must be from 1 to 30 seconds.
+        The number of M3U8 segments must be from 2 to 100.
+        If the request succeeds, the system will return the details of the newly created channel, including the channel name, creation time, modification time, and ingest endpoint details.
         
         @param request: CreateLivePackageChannelRequest
         @return: CreateLivePackageChannelResponse
@@ -2878,7 +2914,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateLivePackageChannelGroupResponse:
         """
-        @summary 添加实时打包频道组
+        @summary Creates a live package channel group with a custom name and description.
+        
+        @description After you create a channel group, the assigned origin domain is returned.
         
         @param request: CreateLivePackageChannelGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2925,7 +2963,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateLivePackageChannelGroupResponse:
         """
-        @summary 添加实时打包频道组
+        @summary Creates a live package channel group with a custom name and description.
+        
+        @description After you create a channel group, the assigned origin domain is returned.
         
         @param request: CreateLivePackageChannelGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2971,7 +3011,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateLivePackageChannelGroupRequest,
     ) -> ice20201109_models.CreateLivePackageChannelGroupResponse:
         """
-        @summary 添加实时打包频道组
+        @summary Creates a live package channel group with a custom name and description.
+        
+        @description After you create a channel group, the assigned origin domain is returned.
         
         @param request: CreateLivePackageChannelGroupRequest
         @return: CreateLivePackageChannelGroupResponse
@@ -2984,7 +3026,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateLivePackageChannelGroupRequest,
     ) -> ice20201109_models.CreateLivePackageChannelGroupResponse:
         """
-        @summary 添加实时打包频道组
+        @summary Creates a live package channel group with a custom name and description.
+        
+        @description After you create a channel group, the assigned origin domain is returned.
         
         @param request: CreateLivePackageChannelGroupRequest
         @return: CreateLivePackageChannelGroupResponse
@@ -2998,7 +3042,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateLivePackageOriginEndpointResponse:
         """
-        @summary 创建实时打包源站端点
+        @summary Creates an origin endpoint for a live package channel to deliver live streams in HLS format.
+        
+        @description ## [](#)Usage notes
+        This API operation is mainly used to configure origin settings, security policies including the IP address blacklist and whitelist and authorization code, and time shifting settings for channels. Before you create an origin endpoint, you must create a live package channel group and channel. After you create the endpoint, the endpoint URL and other configuration details are returned.
         
         @param request: CreateLivePackageOriginEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3061,7 +3108,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateLivePackageOriginEndpointResponse:
         """
-        @summary 创建实时打包源站端点
+        @summary Creates an origin endpoint for a live package channel to deliver live streams in HLS format.
+        
+        @description ## [](#)Usage notes
+        This API operation is mainly used to configure origin settings, security policies including the IP address blacklist and whitelist and authorization code, and time shifting settings for channels. Before you create an origin endpoint, you must create a live package channel group and channel. After you create the endpoint, the endpoint URL and other configuration details are returned.
         
         @param request: CreateLivePackageOriginEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3123,7 +3173,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateLivePackageOriginEndpointRequest,
     ) -> ice20201109_models.CreateLivePackageOriginEndpointResponse:
         """
-        @summary 创建实时打包源站端点
+        @summary Creates an origin endpoint for a live package channel to deliver live streams in HLS format.
+        
+        @description ## [](#)Usage notes
+        This API operation is mainly used to configure origin settings, security policies including the IP address blacklist and whitelist and authorization code, and time shifting settings for channels. Before you create an origin endpoint, you must create a live package channel group and channel. After you create the endpoint, the endpoint URL and other configuration details are returned.
         
         @param request: CreateLivePackageOriginEndpointRequest
         @return: CreateLivePackageOriginEndpointResponse
@@ -3136,7 +3189,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateLivePackageOriginEndpointRequest,
     ) -> ice20201109_models.CreateLivePackageOriginEndpointResponse:
         """
-        @summary 创建实时打包源站端点
+        @summary Creates an origin endpoint for a live package channel to deliver live streams in HLS format.
+        
+        @description ## [](#)Usage notes
+        This API operation is mainly used to configure origin settings, security policies including the IP address blacklist and whitelist and authorization code, and time shifting settings for channels. Before you create an origin endpoint, you must create a live package channel group and channel. After you create the endpoint, the endpoint URL and other configuration details are returned.
         
         @param request: CreateLivePackageOriginEndpointRequest
         @return: CreateLivePackageOriginEndpointResponse
@@ -3522,10 +3578,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateMediaConnectFlowResponse:
         """
-        @summary Create MediaConnect Flow
+        @summary Creates a MediaConnect flow.
         
-        @description - The name of the Flow cannot be duplicated within the same region.
-        - When the interface responds normally, it will return the Flow instance ID. Please keep it properly.
+        @description    The flow names cannot be duplicated in the same region.
+        Take note of the returned flow ID. You may reference it in other API operations.
         
         @param request: CreateMediaConnectFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3568,10 +3624,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateMediaConnectFlowResponse:
         """
-        @summary Create MediaConnect Flow
+        @summary Creates a MediaConnect flow.
         
-        @description - The name of the Flow cannot be duplicated within the same region.
-        - When the interface responds normally, it will return the Flow instance ID. Please keep it properly.
+        @description    The flow names cannot be duplicated in the same region.
+        Take note of the returned flow ID. You may reference it in other API operations.
         
         @param request: CreateMediaConnectFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3613,10 +3669,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateMediaConnectFlowRequest,
     ) -> ice20201109_models.CreateMediaConnectFlowResponse:
         """
-        @summary Create MediaConnect Flow
+        @summary Creates a MediaConnect flow.
         
-        @description - The name of the Flow cannot be duplicated within the same region.
-        - When the interface responds normally, it will return the Flow instance ID. Please keep it properly.
+        @description    The flow names cannot be duplicated in the same region.
+        Take note of the returned flow ID. You may reference it in other API operations.
         
         @param request: CreateMediaConnectFlowRequest
         @return: CreateMediaConnectFlowResponse
@@ -3629,16 +3685,460 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateMediaConnectFlowRequest,
     ) -> ice20201109_models.CreateMediaConnectFlowResponse:
         """
-        @summary Create MediaConnect Flow
+        @summary Creates a MediaConnect flow.
         
-        @description - The name of the Flow cannot be duplicated within the same region.
-        - When the interface responds normally, it will return the Flow instance ID. Please keep it properly.
+        @description    The flow names cannot be duplicated in the same region.
+        Take note of the returned flow ID. You may reference it in other API operations.
         
         @param request: CreateMediaConnectFlowRequest
         @return: CreateMediaConnectFlowResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_media_connect_flow_with_options_async(request, runtime)
+
+    def create_media_live_channel_with_options(
+        self,
+        tmp_req: ice20201109_models.CreateMediaLiveChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CreateMediaLiveChannelResponse:
+        """
+        @summary Creates a MediaLive channel.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param tmp_req: CreateMediaLiveChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMediaLiveChannelResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.CreateMediaLiveChannelShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.audio_settings):
+            request.audio_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.audio_settings, 'AudioSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.input_attachments):
+            request.input_attachments_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_attachments, 'InputAttachments', 'json')
+        if not UtilClient.is_unset(tmp_req.output_groups):
+            request.output_groups_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.output_groups, 'OutputGroups', 'json')
+        if not UtilClient.is_unset(tmp_req.video_settings):
+            request.video_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_settings, 'VideoSettings', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.audio_settings_shrink):
+            body['AudioSettings'] = request.audio_settings_shrink
+        if not UtilClient.is_unset(request.input_attachments_shrink):
+            body['InputAttachments'] = request.input_attachments_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.output_groups_shrink):
+            body['OutputGroups'] = request.output_groups_shrink
+        if not UtilClient.is_unset(request.video_settings_shrink):
+            body['VideoSettings'] = request.video_settings_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMediaLiveChannel',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.CreateMediaLiveChannelResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.CreateMediaLiveChannelResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_media_live_channel_with_options_async(
+        self,
+        tmp_req: ice20201109_models.CreateMediaLiveChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CreateMediaLiveChannelResponse:
+        """
+        @summary Creates a MediaLive channel.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param tmp_req: CreateMediaLiveChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMediaLiveChannelResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.CreateMediaLiveChannelShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.audio_settings):
+            request.audio_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.audio_settings, 'AudioSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.input_attachments):
+            request.input_attachments_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_attachments, 'InputAttachments', 'json')
+        if not UtilClient.is_unset(tmp_req.output_groups):
+            request.output_groups_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.output_groups, 'OutputGroups', 'json')
+        if not UtilClient.is_unset(tmp_req.video_settings):
+            request.video_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_settings, 'VideoSettings', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.audio_settings_shrink):
+            body['AudioSettings'] = request.audio_settings_shrink
+        if not UtilClient.is_unset(request.input_attachments_shrink):
+            body['InputAttachments'] = request.input_attachments_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.output_groups_shrink):
+            body['OutputGroups'] = request.output_groups_shrink
+        if not UtilClient.is_unset(request.video_settings_shrink):
+            body['VideoSettings'] = request.video_settings_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMediaLiveChannel',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.CreateMediaLiveChannelResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.CreateMediaLiveChannelResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_media_live_channel(
+        self,
+        request: ice20201109_models.CreateMediaLiveChannelRequest,
+    ) -> ice20201109_models.CreateMediaLiveChannelResponse:
+        """
+        @summary Creates a MediaLive channel.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: CreateMediaLiveChannelRequest
+        @return: CreateMediaLiveChannelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_media_live_channel_with_options(request, runtime)
+
+    async def create_media_live_channel_async(
+        self,
+        request: ice20201109_models.CreateMediaLiveChannelRequest,
+    ) -> ice20201109_models.CreateMediaLiveChannelResponse:
+        """
+        @summary Creates a MediaLive channel.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: CreateMediaLiveChannelRequest
+        @return: CreateMediaLiveChannelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_media_live_channel_with_options_async(request, runtime)
+
+    def create_media_live_input_with_options(
+        self,
+        tmp_req: ice20201109_models.CreateMediaLiveInputRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CreateMediaLiveInputResponse:
+        """
+        @summary Creates a MediaLive input.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param tmp_req: CreateMediaLiveInputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMediaLiveInputResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.CreateMediaLiveInputShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.input_settings):
+            request.input_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_settings, 'InputSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.security_group_ids):
+            request.security_group_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.security_group_ids, 'SecurityGroupIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.input_settings_shrink):
+            body['InputSettings'] = request.input_settings_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.security_group_ids_shrink):
+            body['SecurityGroupIds'] = request.security_group_ids_shrink
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMediaLiveInput',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.CreateMediaLiveInputResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.CreateMediaLiveInputResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_media_live_input_with_options_async(
+        self,
+        tmp_req: ice20201109_models.CreateMediaLiveInputRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CreateMediaLiveInputResponse:
+        """
+        @summary Creates a MediaLive input.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param tmp_req: CreateMediaLiveInputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMediaLiveInputResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.CreateMediaLiveInputShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.input_settings):
+            request.input_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_settings, 'InputSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.security_group_ids):
+            request.security_group_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.security_group_ids, 'SecurityGroupIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.input_settings_shrink):
+            body['InputSettings'] = request.input_settings_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.security_group_ids_shrink):
+            body['SecurityGroupIds'] = request.security_group_ids_shrink
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMediaLiveInput',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.CreateMediaLiveInputResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.CreateMediaLiveInputResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_media_live_input(
+        self,
+        request: ice20201109_models.CreateMediaLiveInputRequest,
+    ) -> ice20201109_models.CreateMediaLiveInputResponse:
+        """
+        @summary Creates a MediaLive input.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: CreateMediaLiveInputRequest
+        @return: CreateMediaLiveInputResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_media_live_input_with_options(request, runtime)
+
+    async def create_media_live_input_async(
+        self,
+        request: ice20201109_models.CreateMediaLiveInputRequest,
+    ) -> ice20201109_models.CreateMediaLiveInputResponse:
+        """
+        @summary Creates a MediaLive input.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: CreateMediaLiveInputRequest
+        @return: CreateMediaLiveInputResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_media_live_input_with_options_async(request, runtime)
+
+    def create_media_live_input_security_group_with_options(
+        self,
+        tmp_req: ice20201109_models.CreateMediaLiveInputSecurityGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CreateMediaLiveInputSecurityGroupResponse:
+        """
+        @summary Creates a security group in MediaLive.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param tmp_req: CreateMediaLiveInputSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMediaLiveInputSecurityGroupResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.CreateMediaLiveInputSecurityGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.whitelist_rules):
+            request.whitelist_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.whitelist_rules, 'WhitelistRules', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.whitelist_rules_shrink):
+            body['WhitelistRules'] = request.whitelist_rules_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMediaLiveInputSecurityGroup',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.CreateMediaLiveInputSecurityGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.CreateMediaLiveInputSecurityGroupResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_media_live_input_security_group_with_options_async(
+        self,
+        tmp_req: ice20201109_models.CreateMediaLiveInputSecurityGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CreateMediaLiveInputSecurityGroupResponse:
+        """
+        @summary Creates a security group in MediaLive.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param tmp_req: CreateMediaLiveInputSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMediaLiveInputSecurityGroupResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.CreateMediaLiveInputSecurityGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.whitelist_rules):
+            request.whitelist_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.whitelist_rules, 'WhitelistRules', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.whitelist_rules_shrink):
+            body['WhitelistRules'] = request.whitelist_rules_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMediaLiveInputSecurityGroup',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.CreateMediaLiveInputSecurityGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.CreateMediaLiveInputSecurityGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_media_live_input_security_group(
+        self,
+        request: ice20201109_models.CreateMediaLiveInputSecurityGroupRequest,
+    ) -> ice20201109_models.CreateMediaLiveInputSecurityGroupResponse:
+        """
+        @summary Creates a security group in MediaLive.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: CreateMediaLiveInputSecurityGroupRequest
+        @return: CreateMediaLiveInputSecurityGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_media_live_input_security_group_with_options(request, runtime)
+
+    async def create_media_live_input_security_group_async(
+        self,
+        request: ice20201109_models.CreateMediaLiveInputSecurityGroupRequest,
+    ) -> ice20201109_models.CreateMediaLiveInputSecurityGroupResponse:
+        """
+        @summary Creates a security group in MediaLive.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: CreateMediaLiveInputSecurityGroupRequest
+        @return: CreateMediaLiveInputSecurityGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_media_live_input_security_group_with_options_async(request, runtime)
 
     def create_pipeline_with_options(
         self,
@@ -3762,7 +4262,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateProgramResponse:
         """
-        @summary 创建一个新的节目
+        @summary Creates a program in a MediaWeaver channel.
         
         @param request: CreateProgramRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3817,7 +4317,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateProgramResponse:
         """
-        @summary 创建一个新的节目
+        @summary Creates a program in a MediaWeaver channel.
         
         @param request: CreateProgramRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3871,7 +4371,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateProgramRequest,
     ) -> ice20201109_models.CreateProgramResponse:
         """
-        @summary 创建一个新的节目
+        @summary Creates a program in a MediaWeaver channel.
         
         @param request: CreateProgramRequest
         @return: CreateProgramResponse
@@ -3884,7 +4384,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateProgramRequest,
     ) -> ice20201109_models.CreateProgramResponse:
         """
-        @summary 创建一个新的节目
+        @summary Creates a program in a MediaWeaver channel.
         
         @param request: CreateProgramRequest
         @return: CreateProgramResponse
@@ -4134,7 +4634,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateSourceResponse:
         """
-        @summary 创建一个新的源
+        @summary Creates a source in MediaWeaver.
         
         @param request: CreateSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4181,7 +4681,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateSourceResponse:
         """
-        @summary 创建一个新的源
+        @summary Creates a source in MediaWeaver.
         
         @param request: CreateSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4227,7 +4727,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateSourceRequest,
     ) -> ice20201109_models.CreateSourceResponse:
         """
-        @summary 创建一个新的源
+        @summary Creates a source in MediaWeaver.
         
         @param request: CreateSourceRequest
         @return: CreateSourceResponse
@@ -4240,7 +4740,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateSourceRequest,
     ) -> ice20201109_models.CreateSourceResponse:
         """
-        @summary 创建一个新的源
+        @summary Creates a source in MediaWeaver.
         
         @param request: CreateSourceRequest
         @return: CreateSourceResponse
@@ -4254,7 +4754,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateSourceLocationResponse:
         """
-        @summary 创建一个新的源位置
+        @summary Creates a source location.
         
         @param request: CreateSourceLocationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4301,7 +4801,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateSourceLocationResponse:
         """
-        @summary 创建一个新的源位置
+        @summary Creates a source location.
         
         @param request: CreateSourceLocationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4347,7 +4847,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateSourceLocationRequest,
     ) -> ice20201109_models.CreateSourceLocationResponse:
         """
-        @summary 创建一个新的源位置
+        @summary Creates a source location.
         
         @param request: CreateSourceLocationRequest
         @return: CreateSourceLocationResponse
@@ -4360,7 +4860,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateSourceLocationRequest,
     ) -> ice20201109_models.CreateSourceLocationResponse:
         """
-        @summary 创建一个新的源位置
+        @summary Creates a source location.
         
         @param request: CreateSourceLocationRequest
         @return: CreateSourceLocationResponse
@@ -4678,7 +5178,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateVodPackagingAssetResponse:
         """
-        @summary 创建vod打包资产
+        @summary Ingests an asset for VOD packaging.
         
         @param tmp_req: CreateVodPackagingAssetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4731,7 +5231,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateVodPackagingAssetResponse:
         """
-        @summary 创建vod打包资产
+        @summary Ingests an asset for VOD packaging.
         
         @param tmp_req: CreateVodPackagingAssetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4783,7 +5283,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateVodPackagingAssetRequest,
     ) -> ice20201109_models.CreateVodPackagingAssetResponse:
         """
-        @summary 创建vod打包资产
+        @summary Ingests an asset for VOD packaging.
         
         @param request: CreateVodPackagingAssetRequest
         @return: CreateVodPackagingAssetResponse
@@ -4796,7 +5296,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateVodPackagingAssetRequest,
     ) -> ice20201109_models.CreateVodPackagingAssetResponse:
         """
-        @summary 创建vod打包资产
+        @summary Ingests an asset for VOD packaging.
         
         @param request: CreateVodPackagingAssetRequest
         @return: CreateVodPackagingAssetResponse
@@ -4810,7 +5310,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateVodPackagingConfigurationResponse:
         """
-        @summary 创建点播打包配置
+        @summary Creates a packaging configuration.
         
         @param tmp_req: CreateVodPackagingConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4863,7 +5363,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateVodPackagingConfigurationResponse:
         """
-        @summary 创建点播打包配置
+        @summary Creates a packaging configuration.
         
         @param tmp_req: CreateVodPackagingConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4915,7 +5415,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateVodPackagingConfigurationRequest,
     ) -> ice20201109_models.CreateVodPackagingConfigurationResponse:
         """
-        @summary 创建点播打包配置
+        @summary Creates a packaging configuration.
         
         @param request: CreateVodPackagingConfigurationRequest
         @return: CreateVodPackagingConfigurationResponse
@@ -4928,7 +5428,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateVodPackagingConfigurationRequest,
     ) -> ice20201109_models.CreateVodPackagingConfigurationResponse:
         """
-        @summary 创建点播打包配置
+        @summary Creates a packaging configuration.
         
         @param request: CreateVodPackagingConfigurationRequest
         @return: CreateVodPackagingConfigurationResponse
@@ -4942,7 +5442,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateVodPackagingGroupResponse:
         """
-        @summary 创建点播打包组
+        @summary Creates a packaging group.
         
         @param request: CreateVodPackagingGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4985,7 +5485,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateVodPackagingGroupResponse:
         """
-        @summary 创建点播打包组
+        @summary Creates a packaging group.
         
         @param request: CreateVodPackagingGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5027,7 +5527,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateVodPackagingGroupRequest,
     ) -> ice20201109_models.CreateVodPackagingGroupResponse:
         """
-        @summary 创建点播打包组
+        @summary Creates a packaging group.
         
         @param request: CreateVodPackagingGroupRequest
         @return: CreateVodPackagingGroupResponse
@@ -5040,7 +5540,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateVodPackagingGroupRequest,
     ) -> ice20201109_models.CreateVodPackagingGroupResponse:
         """
-        @summary 创建点播打包组
+        @summary Creates a packaging group.
         
         @param request: CreateVodPackagingGroupRequest
         @return: CreateVodPackagingGroupResponse
@@ -5274,7 +5774,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteAdInsertionResponse:
         """
-        @summary 删除广告插入配置
+        @summary Deletes an ad insertion configuration.
         
         @param request: DeleteAdInsertionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5315,7 +5815,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteAdInsertionResponse:
         """
-        @summary 删除广告插入配置
+        @summary Deletes an ad insertion configuration.
         
         @param request: DeleteAdInsertionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5355,7 +5855,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteAdInsertionRequest,
     ) -> ice20201109_models.DeleteAdInsertionResponse:
         """
-        @summary 删除广告插入配置
+        @summary Deletes an ad insertion configuration.
         
         @param request: DeleteAdInsertionRequest
         @return: DeleteAdInsertionResponse
@@ -5368,7 +5868,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteAdInsertionRequest,
     ) -> ice20201109_models.DeleteAdInsertionResponse:
         """
-        @summary 删除广告插入配置
+        @summary Deletes an ad insertion configuration.
         
         @param request: DeleteAdInsertionRequest
         @return: DeleteAdInsertionResponse
@@ -5606,7 +6106,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteChannelResponse:
         """
-        @summary 删除频道
+        @summary Deletes a channel in MediaWeaver.
         
         @param request: DeleteChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5647,7 +6147,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteChannelResponse:
         """
-        @summary 删除频道
+        @summary Deletes a channel in MediaWeaver.
         
         @param request: DeleteChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5687,7 +6187,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteChannelRequest,
     ) -> ice20201109_models.DeleteChannelResponse:
         """
-        @summary 删除频道
+        @summary Deletes a channel in MediaWeaver.
         
         @param request: DeleteChannelRequest
         @return: DeleteChannelResponse
@@ -5700,7 +6200,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteChannelRequest,
     ) -> ice20201109_models.DeleteChannelResponse:
         """
-        @summary 删除频道
+        @summary Deletes a channel in MediaWeaver.
         
         @param request: DeleteChannelRequest
         @return: DeleteChannelResponse
@@ -6406,7 +6906,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteLivePackageChannelResponse:
         """
-        @summary 删除实时打包频道
+        @summary Deletes a live package channel by GroupName and ChannelName.
+        
+        @description ## [](#)Usage notes
+        You need to provide GroupName and ChannelName as parameters to specify exactly which channel to delete. Before you delete a channel, you must delete the origin endpoints associated with the channel.
         
         @param request: DeleteLivePackageChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6449,7 +6952,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteLivePackageChannelResponse:
         """
-        @summary 删除实时打包频道
+        @summary Deletes a live package channel by GroupName and ChannelName.
+        
+        @description ## [](#)Usage notes
+        You need to provide GroupName and ChannelName as parameters to specify exactly which channel to delete. Before you delete a channel, you must delete the origin endpoints associated with the channel.
         
         @param request: DeleteLivePackageChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6491,7 +6997,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteLivePackageChannelRequest,
     ) -> ice20201109_models.DeleteLivePackageChannelResponse:
         """
-        @summary 删除实时打包频道
+        @summary Deletes a live package channel by GroupName and ChannelName.
+        
+        @description ## [](#)Usage notes
+        You need to provide GroupName and ChannelName as parameters to specify exactly which channel to delete. Before you delete a channel, you must delete the origin endpoints associated with the channel.
         
         @param request: DeleteLivePackageChannelRequest
         @return: DeleteLivePackageChannelResponse
@@ -6504,7 +7013,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteLivePackageChannelRequest,
     ) -> ice20201109_models.DeleteLivePackageChannelResponse:
         """
-        @summary 删除实时打包频道
+        @summary Deletes a live package channel by GroupName and ChannelName.
+        
+        @description ## [](#)Usage notes
+        You need to provide GroupName and ChannelName as parameters to specify exactly which channel to delete. Before you delete a channel, you must delete the origin endpoints associated with the channel.
         
         @param request: DeleteLivePackageChannelRequest
         @return: DeleteLivePackageChannelResponse
@@ -6518,7 +7030,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteLivePackageChannelGroupResponse:
         """
-        @summary 删除直播打包频道组
+        @summary Deletes a live package channel group by name.
+        
+        @description ## [](#)Usage notes
+        Make sure that no channels are included in the channel group before you delete it.
         
         @param request: DeleteLivePackageChannelGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6559,7 +7074,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteLivePackageChannelGroupResponse:
         """
-        @summary 删除直播打包频道组
+        @summary Deletes a live package channel group by name.
+        
+        @description ## [](#)Usage notes
+        Make sure that no channels are included in the channel group before you delete it.
         
         @param request: DeleteLivePackageChannelGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6599,7 +7117,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteLivePackageChannelGroupRequest,
     ) -> ice20201109_models.DeleteLivePackageChannelGroupResponse:
         """
-        @summary 删除直播打包频道组
+        @summary Deletes a live package channel group by name.
+        
+        @description ## [](#)Usage notes
+        Make sure that no channels are included in the channel group before you delete it.
         
         @param request: DeleteLivePackageChannelGroupRequest
         @return: DeleteLivePackageChannelGroupResponse
@@ -6612,7 +7133,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteLivePackageChannelGroupRequest,
     ) -> ice20201109_models.DeleteLivePackageChannelGroupResponse:
         """
-        @summary 删除直播打包频道组
+        @summary Deletes a live package channel group by name.
+        
+        @description ## [](#)Usage notes
+        Make sure that no channels are included in the channel group before you delete it.
         
         @param request: DeleteLivePackageChannelGroupRequest
         @return: DeleteLivePackageChannelGroupResponse
@@ -6626,7 +7150,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteLivePackageOriginEndpointResponse:
         """
-        @summary 删除实时打包源站端点
+        @summary Deletes an origin endpoint associated with a live package channel.
+        
+        @description ## [](#)Usage notes
+        This API operation is used to delete an origin endpoint associated with a live package channel by specifying `GroupName`, `ChannelName`, and `EndpointName`. This operation will permanently delete the relevant configurations. Exercise caution when you perform this operation.
         
         @param request: DeleteLivePackageOriginEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6671,7 +7198,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteLivePackageOriginEndpointResponse:
         """
-        @summary 删除实时打包源站端点
+        @summary Deletes an origin endpoint associated with a live package channel.
+        
+        @description ## [](#)Usage notes
+        This API operation is used to delete an origin endpoint associated with a live package channel by specifying `GroupName`, `ChannelName`, and `EndpointName`. This operation will permanently delete the relevant configurations. Exercise caution when you perform this operation.
         
         @param request: DeleteLivePackageOriginEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6715,7 +7245,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteLivePackageOriginEndpointRequest,
     ) -> ice20201109_models.DeleteLivePackageOriginEndpointResponse:
         """
-        @summary 删除实时打包源站端点
+        @summary Deletes an origin endpoint associated with a live package channel.
+        
+        @description ## [](#)Usage notes
+        This API operation is used to delete an origin endpoint associated with a live package channel by specifying `GroupName`, `ChannelName`, and `EndpointName`. This operation will permanently delete the relevant configurations. Exercise caution when you perform this operation.
         
         @param request: DeleteLivePackageOriginEndpointRequest
         @return: DeleteLivePackageOriginEndpointResponse
@@ -6728,7 +7261,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteLivePackageOriginEndpointRequest,
     ) -> ice20201109_models.DeleteLivePackageOriginEndpointResponse:
         """
-        @summary 删除实时打包源站端点
+        @summary Deletes an origin endpoint associated with a live package channel.
+        
+        @description ## [](#)Usage notes
+        This API operation is used to delete an origin endpoint associated with a live package channel by specifying `GroupName`, `ChannelName`, and `EndpointName`. This operation will permanently delete the relevant configurations. Exercise caution when you perform this operation.
         
         @param request: DeleteLivePackageOriginEndpointRequest
         @return: DeleteLivePackageOriginEndpointResponse
@@ -7410,11 +7946,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteMediaConnectFlowResponse:
         """
-        @summary Delete MediaConnect instance by instance ID
+        @summary Deletes a MediaConnect flow.
         
-        @description - When the input Flow instance ID does not exist, the interface will return an error.
-        - When deleting a Flow instance, all Inputs and Outputs bound to this Flow will also be deleted.
-        - You cannot delete a Flow instance that is in the online state.
+        @description    When the specified flow ID is not available, an error code is returned.
+        When a flow is deleted, its source and outputs are also deleted.
+        When a flow is in the online state, it cannot be deleted.
         
         @param request: DeleteMediaConnectFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7455,11 +7991,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteMediaConnectFlowResponse:
         """
-        @summary Delete MediaConnect instance by instance ID
+        @summary Deletes a MediaConnect flow.
         
-        @description - When the input Flow instance ID does not exist, the interface will return an error.
-        - When deleting a Flow instance, all Inputs and Outputs bound to this Flow will also be deleted.
-        - You cannot delete a Flow instance that is in the online state.
+        @description    When the specified flow ID is not available, an error code is returned.
+        When a flow is deleted, its source and outputs are also deleted.
+        When a flow is in the online state, it cannot be deleted.
         
         @param request: DeleteMediaConnectFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7499,11 +8035,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteMediaConnectFlowRequest,
     ) -> ice20201109_models.DeleteMediaConnectFlowResponse:
         """
-        @summary Delete MediaConnect instance by instance ID
+        @summary Deletes a MediaConnect flow.
         
-        @description - When the input Flow instance ID does not exist, the interface will return an error.
-        - When deleting a Flow instance, all Inputs and Outputs bound to this Flow will also be deleted.
-        - You cannot delete a Flow instance that is in the online state.
+        @description    When the specified flow ID is not available, an error code is returned.
+        When a flow is deleted, its source and outputs are also deleted.
+        When a flow is in the online state, it cannot be deleted.
         
         @param request: DeleteMediaConnectFlowRequest
         @return: DeleteMediaConnectFlowResponse
@@ -7516,11 +8052,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteMediaConnectFlowRequest,
     ) -> ice20201109_models.DeleteMediaConnectFlowResponse:
         """
-        @summary Delete MediaConnect instance by instance ID
+        @summary Deletes a MediaConnect flow.
         
-        @description - When the input Flow instance ID does not exist, the interface will return an error.
-        - When deleting a Flow instance, all Inputs and Outputs bound to this Flow will also be deleted.
-        - You cannot delete a Flow instance that is in the online state.
+        @description    When the specified flow ID is not available, an error code is returned.
+        When a flow is deleted, its source and outputs are also deleted.
+        When a flow is in the online state, it cannot be deleted.
         
         @param request: DeleteMediaConnectFlowRequest
         @return: DeleteMediaConnectFlowResponse
@@ -7534,11 +8070,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteMediaConnectFlowInputResponse:
         """
-        @summary Delete the input of a specific MediaConnect instance
+        @summary Deletes the source of a MediaConnect flow.
         
-        @description - If the provided Flow instance ID does not exist, the interface will return an error.
-        - When the Flow instance status is online, the input cannot be deleted.
-        - Only after all outputs under the Flow instance have been deleted can the input be deleted.
+        @description    When the specified flow ID is not available, an error code is returned.
+        When a flow is in the online state, its source cannot be deleted.
+        You can delete the source only after all outputs of the flow have been deleted.
         
         @param request: DeleteMediaConnectFlowInputRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7579,11 +8115,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteMediaConnectFlowInputResponse:
         """
-        @summary Delete the input of a specific MediaConnect instance
+        @summary Deletes the source of a MediaConnect flow.
         
-        @description - If the provided Flow instance ID does not exist, the interface will return an error.
-        - When the Flow instance status is online, the input cannot be deleted.
-        - Only after all outputs under the Flow instance have been deleted can the input be deleted.
+        @description    When the specified flow ID is not available, an error code is returned.
+        When a flow is in the online state, its source cannot be deleted.
+        You can delete the source only after all outputs of the flow have been deleted.
         
         @param request: DeleteMediaConnectFlowInputRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7623,11 +8159,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteMediaConnectFlowInputRequest,
     ) -> ice20201109_models.DeleteMediaConnectFlowInputResponse:
         """
-        @summary Delete the input of a specific MediaConnect instance
+        @summary Deletes the source of a MediaConnect flow.
         
-        @description - If the provided Flow instance ID does not exist, the interface will return an error.
-        - When the Flow instance status is online, the input cannot be deleted.
-        - Only after all outputs under the Flow instance have been deleted can the input be deleted.
+        @description    When the specified flow ID is not available, an error code is returned.
+        When a flow is in the online state, its source cannot be deleted.
+        You can delete the source only after all outputs of the flow have been deleted.
         
         @param request: DeleteMediaConnectFlowInputRequest
         @return: DeleteMediaConnectFlowInputResponse
@@ -7640,11 +8176,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteMediaConnectFlowInputRequest,
     ) -> ice20201109_models.DeleteMediaConnectFlowInputResponse:
         """
-        @summary Delete the input of a specific MediaConnect instance
+        @summary Deletes the source of a MediaConnect flow.
         
-        @description - If the provided Flow instance ID does not exist, the interface will return an error.
-        - When the Flow instance status is online, the input cannot be deleted.
-        - Only after all outputs under the Flow instance have been deleted can the input be deleted.
+        @description    When the specified flow ID is not available, an error code is returned.
+        When a flow is in the online state, its source cannot be deleted.
+        You can delete the source only after all outputs of the flow have been deleted.
         
         @param request: DeleteMediaConnectFlowInputRequest
         @return: DeleteMediaConnectFlowInputResponse
@@ -7658,10 +8194,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteMediaConnectFlowOutputResponse:
         """
-        @summary Delete a specific MediaConnect output
+        @summary Deletes an output of a MediaConnect flow.
         
-        @description - When the provided Flow instance ID does not exist, the interface will return an error.
-        - When the Flow instance status is online, the output cannot be deleted.
+        @description    When the specified flow ID is not available, an error code is returned.
+        When a flow is in the online state, its outputs cannot be deleted.
         
         @param request: DeleteMediaConnectFlowOutputRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7704,10 +8240,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteMediaConnectFlowOutputResponse:
         """
-        @summary Delete a specific MediaConnect output
+        @summary Deletes an output of a MediaConnect flow.
         
-        @description - When the provided Flow instance ID does not exist, the interface will return an error.
-        - When the Flow instance status is online, the output cannot be deleted.
+        @description    When the specified flow ID is not available, an error code is returned.
+        When a flow is in the online state, its outputs cannot be deleted.
         
         @param request: DeleteMediaConnectFlowOutputRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7749,10 +8285,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteMediaConnectFlowOutputRequest,
     ) -> ice20201109_models.DeleteMediaConnectFlowOutputResponse:
         """
-        @summary Delete a specific MediaConnect output
+        @summary Deletes an output of a MediaConnect flow.
         
-        @description - When the provided Flow instance ID does not exist, the interface will return an error.
-        - When the Flow instance status is online, the output cannot be deleted.
+        @description    When the specified flow ID is not available, an error code is returned.
+        When a flow is in the online state, its outputs cannot be deleted.
         
         @param request: DeleteMediaConnectFlowOutputRequest
         @return: DeleteMediaConnectFlowOutputResponse
@@ -7765,10 +8301,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteMediaConnectFlowOutputRequest,
     ) -> ice20201109_models.DeleteMediaConnectFlowOutputResponse:
         """
-        @summary Delete a specific MediaConnect output
+        @summary Deletes an output of a MediaConnect flow.
         
-        @description - When the provided Flow instance ID does not exist, the interface will return an error.
-        - When the Flow instance status is online, the output cannot be deleted.
+        @description    When the specified flow ID is not available, an error code is returned.
+        When a flow is in the online state, its outputs cannot be deleted.
         
         @param request: DeleteMediaConnectFlowOutputRequest
         @return: DeleteMediaConnectFlowOutputResponse
@@ -8007,6 +8543,390 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_media_infos_with_options_async(request, runtime)
+
+    def delete_media_live_channel_with_options(
+        self,
+        request: ice20201109_models.DeleteMediaLiveChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteMediaLiveChannelResponse:
+        """
+        @summary Deletes a MediaLive channel.
+        
+        @description
+        You can only delete a channel that is not running.
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: DeleteMediaLiveChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMediaLiveChannelResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.channel_id):
+            body['ChannelId'] = request.channel_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteMediaLiveChannel',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.DeleteMediaLiveChannelResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.DeleteMediaLiveChannelResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_media_live_channel_with_options_async(
+        self,
+        request: ice20201109_models.DeleteMediaLiveChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteMediaLiveChannelResponse:
+        """
+        @summary Deletes a MediaLive channel.
+        
+        @description
+        You can only delete a channel that is not running.
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: DeleteMediaLiveChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMediaLiveChannelResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.channel_id):
+            body['ChannelId'] = request.channel_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteMediaLiveChannel',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.DeleteMediaLiveChannelResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.DeleteMediaLiveChannelResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_media_live_channel(
+        self,
+        request: ice20201109_models.DeleteMediaLiveChannelRequest,
+    ) -> ice20201109_models.DeleteMediaLiveChannelResponse:
+        """
+        @summary Deletes a MediaLive channel.
+        
+        @description
+        You can only delete a channel that is not running.
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: DeleteMediaLiveChannelRequest
+        @return: DeleteMediaLiveChannelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_media_live_channel_with_options(request, runtime)
+
+    async def delete_media_live_channel_async(
+        self,
+        request: ice20201109_models.DeleteMediaLiveChannelRequest,
+    ) -> ice20201109_models.DeleteMediaLiveChannelResponse:
+        """
+        @summary Deletes a MediaLive channel.
+        
+        @description
+        You can only delete a channel that is not running.
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: DeleteMediaLiveChannelRequest
+        @return: DeleteMediaLiveChannelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_media_live_channel_with_options_async(request, runtime)
+
+    def delete_media_live_input_with_options(
+        self,
+        request: ice20201109_models.DeleteMediaLiveInputRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteMediaLiveInputResponse:
+        """
+        @summary Deletes a MediaLive input.
+        
+        @description
+        You can delete an input only when it is not associated with a MediaLive channel.
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: DeleteMediaLiveInputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMediaLiveInputResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.input_id):
+            body['InputId'] = request.input_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteMediaLiveInput',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.DeleteMediaLiveInputResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.DeleteMediaLiveInputResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_media_live_input_with_options_async(
+        self,
+        request: ice20201109_models.DeleteMediaLiveInputRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteMediaLiveInputResponse:
+        """
+        @summary Deletes a MediaLive input.
+        
+        @description
+        You can delete an input only when it is not associated with a MediaLive channel.
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: DeleteMediaLiveInputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMediaLiveInputResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.input_id):
+            body['InputId'] = request.input_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteMediaLiveInput',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.DeleteMediaLiveInputResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.DeleteMediaLiveInputResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_media_live_input(
+        self,
+        request: ice20201109_models.DeleteMediaLiveInputRequest,
+    ) -> ice20201109_models.DeleteMediaLiveInputResponse:
+        """
+        @summary Deletes a MediaLive input.
+        
+        @description
+        You can delete an input only when it is not associated with a MediaLive channel.
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: DeleteMediaLiveInputRequest
+        @return: DeleteMediaLiveInputResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_media_live_input_with_options(request, runtime)
+
+    async def delete_media_live_input_async(
+        self,
+        request: ice20201109_models.DeleteMediaLiveInputRequest,
+    ) -> ice20201109_models.DeleteMediaLiveInputResponse:
+        """
+        @summary Deletes a MediaLive input.
+        
+        @description
+        You can delete an input only when it is not associated with a MediaLive channel.
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: DeleteMediaLiveInputRequest
+        @return: DeleteMediaLiveInputResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_media_live_input_with_options_async(request, runtime)
+
+    def delete_media_live_input_security_group_with_options(
+        self,
+        request: ice20201109_models.DeleteMediaLiveInputSecurityGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteMediaLiveInputSecurityGroupResponse:
+        """
+        @summary Deletes a security group in MediaLive.
+        
+        @description
+        You can only delete a security group not associated with an input.
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: DeleteMediaLiveInputSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMediaLiveInputSecurityGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.security_group_id):
+            body['SecurityGroupId'] = request.security_group_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteMediaLiveInputSecurityGroup',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.DeleteMediaLiveInputSecurityGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.DeleteMediaLiveInputSecurityGroupResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_media_live_input_security_group_with_options_async(
+        self,
+        request: ice20201109_models.DeleteMediaLiveInputSecurityGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteMediaLiveInputSecurityGroupResponse:
+        """
+        @summary Deletes a security group in MediaLive.
+        
+        @description
+        You can only delete a security group not associated with an input.
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: DeleteMediaLiveInputSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMediaLiveInputSecurityGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.security_group_id):
+            body['SecurityGroupId'] = request.security_group_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteMediaLiveInputSecurityGroup',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.DeleteMediaLiveInputSecurityGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.DeleteMediaLiveInputSecurityGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_media_live_input_security_group(
+        self,
+        request: ice20201109_models.DeleteMediaLiveInputSecurityGroupRequest,
+    ) -> ice20201109_models.DeleteMediaLiveInputSecurityGroupResponse:
+        """
+        @summary Deletes a security group in MediaLive.
+        
+        @description
+        You can only delete a security group not associated with an input.
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: DeleteMediaLiveInputSecurityGroupRequest
+        @return: DeleteMediaLiveInputSecurityGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_media_live_input_security_group_with_options(request, runtime)
+
+    async def delete_media_live_input_security_group_async(
+        self,
+        request: ice20201109_models.DeleteMediaLiveInputSecurityGroupRequest,
+    ) -> ice20201109_models.DeleteMediaLiveInputSecurityGroupResponse:
+        """
+        @summary Deletes a security group in MediaLive.
+        
+        @description
+        You can only delete a security group not associated with an input.
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: DeleteMediaLiveInputSecurityGroupRequest
+        @return: DeleteMediaLiveInputSecurityGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_media_live_input_security_group_with_options_async(request, runtime)
 
     def delete_media_marks_with_options(
         self,
@@ -8358,7 +9278,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteProgramResponse:
         """
-        @summary 删除节目
+        @summary Deletes a program from a channel.
         
         @param request: DeleteProgramRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8401,7 +9321,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteProgramResponse:
         """
-        @summary 删除节目
+        @summary Deletes a program from a channel.
         
         @param request: DeleteProgramRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8443,7 +9363,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteProgramRequest,
     ) -> ice20201109_models.DeleteProgramResponse:
         """
-        @summary 删除节目
+        @summary Deletes a program from a channel.
         
         @param request: DeleteProgramRequest
         @return: DeleteProgramResponse
@@ -8456,7 +9376,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteProgramRequest,
     ) -> ice20201109_models.DeleteProgramResponse:
         """
-        @summary 删除节目
+        @summary Deletes a program from a channel.
         
         @param request: DeleteProgramRequest
         @return: DeleteProgramResponse
@@ -8578,7 +9498,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteSourceResponse:
         """
-        @summary 删除源
+        @summary Deletes a source from MediaWeaver.
         
         @param request: DeleteSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8625,7 +9545,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteSourceResponse:
         """
-        @summary 删除源
+        @summary Deletes a source from MediaWeaver.
         
         @param request: DeleteSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8671,7 +9591,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteSourceRequest,
     ) -> ice20201109_models.DeleteSourceResponse:
         """
-        @summary 删除源
+        @summary Deletes a source from MediaWeaver.
         
         @param request: DeleteSourceRequest
         @return: DeleteSourceResponse
@@ -8684,7 +9604,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteSourceRequest,
     ) -> ice20201109_models.DeleteSourceResponse:
         """
-        @summary 删除源
+        @summary Deletes a source from MediaWeaver.
         
         @param request: DeleteSourceRequest
         @return: DeleteSourceResponse
@@ -8698,7 +9618,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteSourceLocationResponse:
         """
-        @summary 删除源位置
+        @summary Deletes a source location.
         
         @param request: DeleteSourceLocationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8741,7 +9661,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteSourceLocationResponse:
         """
-        @summary 删除源位置
+        @summary Deletes a source location.
         
         @param request: DeleteSourceLocationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8783,7 +9703,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteSourceLocationRequest,
     ) -> ice20201109_models.DeleteSourceLocationResponse:
         """
-        @summary 删除源位置
+        @summary Deletes a source location.
         
         @param request: DeleteSourceLocationRequest
         @return: DeleteSourceLocationResponse
@@ -8796,7 +9716,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteSourceLocationRequest,
     ) -> ice20201109_models.DeleteSourceLocationResponse:
         """
-        @summary 删除源位置
+        @summary Deletes a source location.
         
         @param request: DeleteSourceLocationRequest
         @return: DeleteSourceLocationResponse
@@ -8930,7 +9850,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteVodPackagingAssetResponse:
         """
-        @summary 删除点播打包资产
+        @summary Deletes a VOD packaging asset.
         
         @param request: DeleteVodPackagingAssetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8971,7 +9891,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteVodPackagingAssetResponse:
         """
-        @summary 删除点播打包资产
+        @summary Deletes a VOD packaging asset.
         
         @param request: DeleteVodPackagingAssetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9011,7 +9931,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteVodPackagingAssetRequest,
     ) -> ice20201109_models.DeleteVodPackagingAssetResponse:
         """
-        @summary 删除点播打包资产
+        @summary Deletes a VOD packaging asset.
         
         @param request: DeleteVodPackagingAssetRequest
         @return: DeleteVodPackagingAssetResponse
@@ -9024,7 +9944,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteVodPackagingAssetRequest,
     ) -> ice20201109_models.DeleteVodPackagingAssetResponse:
         """
-        @summary 删除点播打包资产
+        @summary Deletes a VOD packaging asset.
         
         @param request: DeleteVodPackagingAssetRequest
         @return: DeleteVodPackagingAssetResponse
@@ -9038,7 +9958,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteVodPackagingConfigurationResponse:
         """
-        @summary 删除点播打包配置
+        @summary Deletes a packaging configuration.
         
         @param request: DeleteVodPackagingConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9079,7 +9999,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteVodPackagingConfigurationResponse:
         """
-        @summary 删除点播打包配置
+        @summary Deletes a packaging configuration.
         
         @param request: DeleteVodPackagingConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9119,7 +10039,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteVodPackagingConfigurationRequest,
     ) -> ice20201109_models.DeleteVodPackagingConfigurationResponse:
         """
-        @summary 删除点播打包配置
+        @summary Deletes a packaging configuration.
         
         @param request: DeleteVodPackagingConfigurationRequest
         @return: DeleteVodPackagingConfigurationResponse
@@ -9132,7 +10052,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteVodPackagingConfigurationRequest,
     ) -> ice20201109_models.DeleteVodPackagingConfigurationResponse:
         """
-        @summary 删除点播打包配置
+        @summary Deletes a packaging configuration.
         
         @param request: DeleteVodPackagingConfigurationRequest
         @return: DeleteVodPackagingConfigurationResponse
@@ -9146,7 +10066,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteVodPackagingGroupResponse:
         """
-        @summary 删除点播打包组
+        @summary Deletes a packaging group.
         
         @param request: DeleteVodPackagingGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9187,7 +10107,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteVodPackagingGroupResponse:
         """
-        @summary 删除点播打包组
+        @summary Deletes a packaging group.
         
         @param request: DeleteVodPackagingGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9227,7 +10147,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteVodPackagingGroupRequest,
     ) -> ice20201109_models.DeleteVodPackagingGroupResponse:
         """
-        @summary 删除点播打包组
+        @summary Deletes a packaging group.
         
         @param request: DeleteVodPackagingGroupRequest
         @return: DeleteVodPackagingGroupResponse
@@ -9240,7 +10160,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteVodPackagingGroupRequest,
     ) -> ice20201109_models.DeleteVodPackagingGroupResponse:
         """
-        @summary 删除点播打包组
+        @summary Deletes a packaging group.
         
         @param request: DeleteVodPackagingGroupRequest
         @return: DeleteVodPackagingGroupResponse
@@ -9254,7 +10174,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribeAIAgentInstanceResponse:
         """
-        @summary 查询实例
+        @summary Queries the information about an AI agent.
+        
+        @description ## [](#)Request description
+        **Feature**: You can call this operation to query the information about an AI agent.
+        **Scenario**: If you need to monitor or analyze the performance of an AI agent in a call or debug the agent configurations, you can call this operation to obtain required data.
         
         @param request: DescribeAIAgentInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9295,7 +10219,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribeAIAgentInstanceResponse:
         """
-        @summary 查询实例
+        @summary Queries the information about an AI agent.
+        
+        @description ## [](#)Request description
+        **Feature**: You can call this operation to query the information about an AI agent.
+        **Scenario**: If you need to monitor or analyze the performance of an AI agent in a call or debug the agent configurations, you can call this operation to obtain required data.
         
         @param request: DescribeAIAgentInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9335,7 +10263,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.DescribeAIAgentInstanceRequest,
     ) -> ice20201109_models.DescribeAIAgentInstanceResponse:
         """
-        @summary 查询实例
+        @summary Queries the information about an AI agent.
+        
+        @description ## [](#)Request description
+        **Feature**: You can call this operation to query the information about an AI agent.
+        **Scenario**: If you need to monitor or analyze the performance of an AI agent in a call or debug the agent configurations, you can call this operation to obtain required data.
         
         @param request: DescribeAIAgentInstanceRequest
         @return: DescribeAIAgentInstanceResponse
@@ -9348,7 +10280,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.DescribeAIAgentInstanceRequest,
     ) -> ice20201109_models.DescribeAIAgentInstanceResponse:
         """
-        @summary 查询实例
+        @summary Queries the information about an AI agent.
+        
+        @description ## [](#)Request description
+        **Feature**: You can call this operation to query the information about an AI agent.
+        **Scenario**: If you need to monitor or analyze the performance of an AI agent in a call or debug the agent configurations, you can call this operation to obtain required data.
         
         @param request: DescribeAIAgentInstanceRequest
         @return: DescribeAIAgentInstanceResponse
@@ -9958,7 +10894,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribeNotifyConfigResponse:
         """
-        @summary 描述回调配置
+        @summary Queries the event callback configurations of an AI agent.
+        
+        @description You can call this operation to query the detailed callback configurations of an AI agent.
         
         @param request: DescribeNotifyConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9999,7 +10937,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribeNotifyConfigResponse:
         """
-        @summary 描述回调配置
+        @summary Queries the event callback configurations of an AI agent.
+        
+        @description You can call this operation to query the detailed callback configurations of an AI agent.
         
         @param request: DescribeNotifyConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10039,7 +10979,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.DescribeNotifyConfigRequest,
     ) -> ice20201109_models.DescribeNotifyConfigResponse:
         """
-        @summary 描述回调配置
+        @summary Queries the event callback configurations of an AI agent.
+        
+        @description You can call this operation to query the detailed callback configurations of an AI agent.
         
         @param request: DescribeNotifyConfigRequest
         @return: DescribeNotifyConfigResponse
@@ -10052,7 +10994,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.DescribeNotifyConfigRequest,
     ) -> ice20201109_models.DescribeNotifyConfigResponse:
         """
-        @summary 描述回调配置
+        @summary Queries the event callback configurations of an AI agent.
+        
+        @description You can call this operation to query the detailed callback configurations of an AI agent.
         
         @param request: DescribeNotifyConfigRequest
         @return: DescribeNotifyConfigResponse
@@ -10642,7 +11586,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GenerateAIAgentCallResponse:
         """
-        @summary 创建一个智能体实例，返回智能体所在的频道、频道内名称以及进入频道所需的token。
+        @summary Creates an AI agent. This operation returns the channel in which the AI agent resides, the username of the AI agent in the channel, and the token that you can use to join the channel.
+        
+        @description ## [](#)Request description
+        You can call this operation to create an AI agent based on the provided ID. You can join the channel based on the returned information and talk to the agent.
+        *Note:** Make sure that the provided AI agent ID is valid and configure optional parameters based on your business requirements.
         
         @param tmp_req: GenerateAIAgentCallRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10651,11 +11599,15 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.GenerateAIAgentCallShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.chat_sync_config):
+            request.chat_sync_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.chat_sync_config, 'ChatSyncConfig', 'json')
         if not UtilClient.is_unset(tmp_req.template_config):
             request.template_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template_config, 'TemplateConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.aiagent_id):
             query['AIAgentId'] = request.aiagent_id
+        if not UtilClient.is_unset(request.chat_sync_config_shrink):
+            query['ChatSyncConfig'] = request.chat_sync_config_shrink
         if not UtilClient.is_unset(request.expire):
             query['Expire'] = request.expire
         if not UtilClient.is_unset(request.session_id):
@@ -10697,7 +11649,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GenerateAIAgentCallResponse:
         """
-        @summary 创建一个智能体实例，返回智能体所在的频道、频道内名称以及进入频道所需的token。
+        @summary Creates an AI agent. This operation returns the channel in which the AI agent resides, the username of the AI agent in the channel, and the token that you can use to join the channel.
+        
+        @description ## [](#)Request description
+        You can call this operation to create an AI agent based on the provided ID. You can join the channel based on the returned information and talk to the agent.
+        *Note:** Make sure that the provided AI agent ID is valid and configure optional parameters based on your business requirements.
         
         @param tmp_req: GenerateAIAgentCallRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10706,11 +11662,15 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.GenerateAIAgentCallShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.chat_sync_config):
+            request.chat_sync_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.chat_sync_config, 'ChatSyncConfig', 'json')
         if not UtilClient.is_unset(tmp_req.template_config):
             request.template_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template_config, 'TemplateConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.aiagent_id):
             query['AIAgentId'] = request.aiagent_id
+        if not UtilClient.is_unset(request.chat_sync_config_shrink):
+            query['ChatSyncConfig'] = request.chat_sync_config_shrink
         if not UtilClient.is_unset(request.expire):
             query['Expire'] = request.expire
         if not UtilClient.is_unset(request.session_id):
@@ -10751,7 +11711,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.GenerateAIAgentCallRequest,
     ) -> ice20201109_models.GenerateAIAgentCallResponse:
         """
-        @summary 创建一个智能体实例，返回智能体所在的频道、频道内名称以及进入频道所需的token。
+        @summary Creates an AI agent. This operation returns the channel in which the AI agent resides, the username of the AI agent in the channel, and the token that you can use to join the channel.
+        
+        @description ## [](#)Request description
+        You can call this operation to create an AI agent based on the provided ID. You can join the channel based on the returned information and talk to the agent.
+        *Note:** Make sure that the provided AI agent ID is valid and configure optional parameters based on your business requirements.
         
         @param request: GenerateAIAgentCallRequest
         @return: GenerateAIAgentCallResponse
@@ -10764,7 +11728,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.GenerateAIAgentCallRequest,
     ) -> ice20201109_models.GenerateAIAgentCallResponse:
         """
-        @summary 创建一个智能体实例，返回智能体所在的频道、频道内名称以及进入频道所需的token。
+        @summary Creates an AI agent. This operation returns the channel in which the AI agent resides, the username of the AI agent in the channel, and the token that you can use to join the channel.
+        
+        @description ## [](#)Request description
+        You can call this operation to create an AI agent based on the provided ID. You can join the channel based on the returned information and talk to the agent.
+        *Note:** Make sure that the provided AI agent ID is valid and configure optional parameters based on your business requirements.
         
         @param request: GenerateAIAgentCallRequest
         @return: GenerateAIAgentCallResponse
@@ -10984,7 +11952,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetAdInsertionResponse:
         """
-        @summary 获取广告插入配置
+        @summary Obtains details of an ad insertion configuration.
         
         @param request: GetAdInsertionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11025,7 +11993,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetAdInsertionResponse:
         """
-        @summary 获取广告插入配置
+        @summary Obtains details of an ad insertion configuration.
         
         @param request: GetAdInsertionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11065,7 +12033,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetAdInsertionRequest,
     ) -> ice20201109_models.GetAdInsertionResponse:
         """
-        @summary 获取广告插入配置
+        @summary Obtains details of an ad insertion configuration.
         
         @param request: GetAdInsertionRequest
         @return: GetAdInsertionResponse
@@ -11078,7 +12046,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetAdInsertionRequest,
     ) -> ice20201109_models.GetAdInsertionResponse:
         """
-        @summary 获取广告插入配置
+        @summary Obtains details of an ad insertion configuration.
         
         @param request: GetAdInsertionRequest
         @return: GetAdInsertionResponse
@@ -11548,7 +12516,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetChannelResponse:
         """
-        @summary 获取频道
+        @summary Queries information about a channel in MediaWeaver.
         
         @param request: GetChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11589,7 +12557,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetChannelResponse:
         """
-        @summary 获取频道
+        @summary Queries information about a channel in MediaWeaver.
         
         @param request: GetChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11629,7 +12597,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetChannelRequest,
     ) -> ice20201109_models.GetChannelResponse:
         """
-        @summary 获取频道
+        @summary Queries information about a channel in MediaWeaver.
         
         @param request: GetChannelRequest
         @return: GetChannelResponse
@@ -11642,7 +12610,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetChannelRequest,
     ) -> ice20201109_models.GetChannelResponse:
         """
-        @summary 获取频道
+        @summary Queries information about a channel in MediaWeaver.
         
         @param request: GetChannelRequest
         @return: GetChannelResponse
@@ -13026,7 +13994,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLivePackageChannelResponse:
         """
-        @summary 获取实时打包频道
+        @summary Queries the details of a live package channel.
+        
+        @description ## [](#)Usage notes
+        This API operation allows you to query the details of a live package channel, including the creation time, description, ingest endpoint, protocol, number of segments, and segment duration.
         
         @param request: GetLivePackageChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13069,7 +14040,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLivePackageChannelResponse:
         """
-        @summary 获取实时打包频道
+        @summary Queries the details of a live package channel.
+        
+        @description ## [](#)Usage notes
+        This API operation allows you to query the details of a live package channel, including the creation time, description, ingest endpoint, protocol, number of segments, and segment duration.
         
         @param request: GetLivePackageChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13111,7 +14085,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLivePackageChannelRequest,
     ) -> ice20201109_models.GetLivePackageChannelResponse:
         """
-        @summary 获取实时打包频道
+        @summary Queries the details of a live package channel.
+        
+        @description ## [](#)Usage notes
+        This API operation allows you to query the details of a live package channel, including the creation time, description, ingest endpoint, protocol, number of segments, and segment duration.
         
         @param request: GetLivePackageChannelRequest
         @return: GetLivePackageChannelResponse
@@ -13124,7 +14101,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLivePackageChannelRequest,
     ) -> ice20201109_models.GetLivePackageChannelResponse:
         """
-        @summary 获取实时打包频道
+        @summary Queries the details of a live package channel.
+        
+        @description ## [](#)Usage notes
+        This API operation allows you to query the details of a live package channel, including the creation time, description, ingest endpoint, protocol, number of segments, and segment duration.
         
         @param request: GetLivePackageChannelRequest
         @return: GetLivePackageChannelResponse
@@ -13138,7 +14118,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLivePackageChannelGroupResponse:
         """
-        @summary 获取直播打包频道组
+        @summary Queries the details of a live package channel group by name.
+        
+        @description ## [](#)Usage notes
+        You can call this API operation to query the details of a specific channel group, including its name, description, origin domain, and creation and last modification timestamps.
         
         @param request: GetLivePackageChannelGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13179,7 +14162,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLivePackageChannelGroupResponse:
         """
-        @summary 获取直播打包频道组
+        @summary Queries the details of a live package channel group by name.
+        
+        @description ## [](#)Usage notes
+        You can call this API operation to query the details of a specific channel group, including its name, description, origin domain, and creation and last modification timestamps.
         
         @param request: GetLivePackageChannelGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13219,7 +14205,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLivePackageChannelGroupRequest,
     ) -> ice20201109_models.GetLivePackageChannelGroupResponse:
         """
-        @summary 获取直播打包频道组
+        @summary Queries the details of a live package channel group by name.
+        
+        @description ## [](#)Usage notes
+        You can call this API operation to query the details of a specific channel group, including its name, description, origin domain, and creation and last modification timestamps.
         
         @param request: GetLivePackageChannelGroupRequest
         @return: GetLivePackageChannelGroupResponse
@@ -13232,7 +14221,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLivePackageChannelGroupRequest,
     ) -> ice20201109_models.GetLivePackageChannelGroupResponse:
         """
-        @summary 获取直播打包频道组
+        @summary Queries the details of a live package channel group by name.
+        
+        @description ## [](#)Usage notes
+        You can call this API operation to query the details of a specific channel group, including its name, description, origin domain, and creation and last modification timestamps.
         
         @param request: GetLivePackageChannelGroupRequest
         @return: GetLivePackageChannelGroupResponse
@@ -13246,7 +14238,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLivePackageOriginEndpointResponse:
         """
-        @summary 获取实时打包源站端点
+        @summary Queries origin endpoints associated with a live package channel.
+        
+        @description ## [](#)Usage notes
         
         @param request: GetLivePackageOriginEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13291,7 +14285,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLivePackageOriginEndpointResponse:
         """
-        @summary 获取实时打包源站端点
+        @summary Queries origin endpoints associated with a live package channel.
+        
+        @description ## [](#)Usage notes
         
         @param request: GetLivePackageOriginEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13335,7 +14331,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLivePackageOriginEndpointRequest,
     ) -> ice20201109_models.GetLivePackageOriginEndpointResponse:
         """
-        @summary 获取实时打包源站端点
+        @summary Queries origin endpoints associated with a live package channel.
+        
+        @description ## [](#)Usage notes
         
         @param request: GetLivePackageOriginEndpointRequest
         @return: GetLivePackageOriginEndpointResponse
@@ -13348,7 +14346,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLivePackageOriginEndpointRequest,
     ) -> ice20201109_models.GetLivePackageOriginEndpointResponse:
         """
-        @summary 获取实时打包源站端点
+        @summary Queries origin endpoints associated with a live package channel.
+        
+        @description ## [](#)Usage notes
         
         @param request: GetLivePackageOriginEndpointRequest
         @return: GetLivePackageOriginEndpointResponse
@@ -13994,10 +14994,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetMediaConnectFlowResponse:
         """
-        @summary Retrieve detailed information of the corresponding MediaConnect based on the instance ID
+        @summary Obtains information about a specific MediaConnect flow.
         
-        @description - When the input Flow instance ID does not exist, the interface will return an error.
-        - The StartTime returned by the interface is only valid when the Flow status is online.
+        @description    When the specified flow ID is not available, an error code is returned.
+        The returned StartTime is valid only when the flow is in the online state.
         
         @param request: GetMediaConnectFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14038,10 +15038,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetMediaConnectFlowResponse:
         """
-        @summary Retrieve detailed information of the corresponding MediaConnect based on the instance ID
+        @summary Obtains information about a specific MediaConnect flow.
         
-        @description - When the input Flow instance ID does not exist, the interface will return an error.
-        - The StartTime returned by the interface is only valid when the Flow status is online.
+        @description    When the specified flow ID is not available, an error code is returned.
+        The returned StartTime is valid only when the flow is in the online state.
         
         @param request: GetMediaConnectFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14081,10 +15081,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetMediaConnectFlowRequest,
     ) -> ice20201109_models.GetMediaConnectFlowResponse:
         """
-        @summary Retrieve detailed information of the corresponding MediaConnect based on the instance ID
+        @summary Obtains information about a specific MediaConnect flow.
         
-        @description - When the input Flow instance ID does not exist, the interface will return an error.
-        - The StartTime returned by the interface is only valid when the Flow status is online.
+        @description    When the specified flow ID is not available, an error code is returned.
+        The returned StartTime is valid only when the flow is in the online state.
         
         @param request: GetMediaConnectFlowRequest
         @return: GetMediaConnectFlowResponse
@@ -14097,10 +15097,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetMediaConnectFlowRequest,
     ) -> ice20201109_models.GetMediaConnectFlowResponse:
         """
-        @summary Retrieve detailed information of the corresponding MediaConnect based on the instance ID
+        @summary Obtains information about a specific MediaConnect flow.
         
-        @description - When the input Flow instance ID does not exist, the interface will return an error.
-        - The StartTime returned by the interface is only valid when the Flow status is online.
+        @description    When the specified flow ID is not available, an error code is returned.
+        The returned StartTime is valid only when the flow is in the online state.
         
         @param request: GetMediaConnectFlowRequest
         @return: GetMediaConnectFlowResponse
@@ -14114,9 +15114,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetMediaConnectFlowInputResponse:
         """
-        @summary Get input information under a MediaConnect instance
+        @summary Obtains information about the source of a MediaConnect flow.
         
-        @description - When the provided Flow instance ID does not exist, the interface will return an error.
+        @description    When the specified flow ID is not available, an error code is returned.
         
         @param request: GetMediaConnectFlowInputRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14157,9 +15157,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetMediaConnectFlowInputResponse:
         """
-        @summary Get input information under a MediaConnect instance
+        @summary Obtains information about the source of a MediaConnect flow.
         
-        @description - When the provided Flow instance ID does not exist, the interface will return an error.
+        @description    When the specified flow ID is not available, an error code is returned.
         
         @param request: GetMediaConnectFlowInputRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14199,9 +15199,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetMediaConnectFlowInputRequest,
     ) -> ice20201109_models.GetMediaConnectFlowInputResponse:
         """
-        @summary Get input information under a MediaConnect instance
+        @summary Obtains information about the source of a MediaConnect flow.
         
-        @description - When the provided Flow instance ID does not exist, the interface will return an error.
+        @description    When the specified flow ID is not available, an error code is returned.
         
         @param request: GetMediaConnectFlowInputRequest
         @return: GetMediaConnectFlowInputResponse
@@ -14214,9 +15214,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetMediaConnectFlowInputRequest,
     ) -> ice20201109_models.GetMediaConnectFlowInputResponse:
         """
-        @summary Get input information under a MediaConnect instance
+        @summary Obtains information about the source of a MediaConnect flow.
         
-        @description - When the provided Flow instance ID does not exist, the interface will return an error.
+        @description    When the specified flow ID is not available, an error code is returned.
         
         @param request: GetMediaConnectFlowInputRequest
         @return: GetMediaConnectFlowInputResponse
@@ -14230,9 +15230,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetMediaConnectFlowOutputResponse:
         """
-        @summary Retrieve detailed information of a specific output based on outputName
+        @summary Obtains information about an output of a MediaConnect flow.
         
-        @description - When the provided Flow instance ID does not exist, the interface will return an error.
+        @description    When the specified flow ID is not available, an error code is returned.
         
         @param request: GetMediaConnectFlowOutputRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14275,9 +15275,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetMediaConnectFlowOutputResponse:
         """
-        @summary Retrieve detailed information of a specific output based on outputName
+        @summary Obtains information about an output of a MediaConnect flow.
         
-        @description - When the provided Flow instance ID does not exist, the interface will return an error.
+        @description    When the specified flow ID is not available, an error code is returned.
         
         @param request: GetMediaConnectFlowOutputRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14319,9 +15319,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetMediaConnectFlowOutputRequest,
     ) -> ice20201109_models.GetMediaConnectFlowOutputResponse:
         """
-        @summary Retrieve detailed information of a specific output based on outputName
+        @summary Obtains information about an output of a MediaConnect flow.
         
-        @description - When the provided Flow instance ID does not exist, the interface will return an error.
+        @description    When the specified flow ID is not available, an error code is returned.
         
         @param request: GetMediaConnectFlowOutputRequest
         @return: GetMediaConnectFlowOutputResponse
@@ -14334,9 +15334,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetMediaConnectFlowOutputRequest,
     ) -> ice20201109_models.GetMediaConnectFlowOutputResponse:
         """
-        @summary Retrieve detailed information of a specific output based on outputName
+        @summary Obtains information about an output of a MediaConnect flow.
         
-        @description - When the provided Flow instance ID does not exist, the interface will return an error.
+        @description    When the specified flow ID is not available, an error code is returned.
         
         @param request: GetMediaConnectFlowOutputRequest
         @return: GetMediaConnectFlowOutputResponse
@@ -14350,7 +15350,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetMediaConvertJobResponse:
         """
-        @summary 获取 MediaConvert 任务详情
+        @summary Obtains the details of a transcoding task.
         
         @param request: GetMediaConvertJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14391,7 +15391,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetMediaConvertJobResponse:
         """
-        @summary 获取 MediaConvert 任务详情
+        @summary Obtains the details of a transcoding task.
         
         @param request: GetMediaConvertJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14431,7 +15431,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetMediaConvertJobRequest,
     ) -> ice20201109_models.GetMediaConvertJobResponse:
         """
-        @summary 获取 MediaConvert 任务详情
+        @summary Obtains the details of a transcoding task.
         
         @param request: GetMediaConvertJobRequest
         @return: GetMediaConvertJobResponse
@@ -14444,7 +15444,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetMediaConvertJobRequest,
     ) -> ice20201109_models.GetMediaConvertJobResponse:
         """
-        @summary 获取 MediaConvert 任务详情
+        @summary Obtains the details of a transcoding task.
         
         @param request: GetMediaConvertJobRequest
         @return: GetMediaConvertJobResponse
@@ -14687,6 +15687,378 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_media_info_job_with_options_async(request, runtime)
+
+    def get_media_live_channel_with_options(
+        self,
+        request: ice20201109_models.GetMediaLiveChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetMediaLiveChannelResponse:
+        """
+        @summary Queries a MediaLive channel.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: GetMediaLiveChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMediaLiveChannelResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.channel_id):
+            body['ChannelId'] = request.channel_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetMediaLiveChannel',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.GetMediaLiveChannelResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.GetMediaLiveChannelResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_media_live_channel_with_options_async(
+        self,
+        request: ice20201109_models.GetMediaLiveChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetMediaLiveChannelResponse:
+        """
+        @summary Queries a MediaLive channel.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: GetMediaLiveChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMediaLiveChannelResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.channel_id):
+            body['ChannelId'] = request.channel_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetMediaLiveChannel',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.GetMediaLiveChannelResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.GetMediaLiveChannelResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_media_live_channel(
+        self,
+        request: ice20201109_models.GetMediaLiveChannelRequest,
+    ) -> ice20201109_models.GetMediaLiveChannelResponse:
+        """
+        @summary Queries a MediaLive channel.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: GetMediaLiveChannelRequest
+        @return: GetMediaLiveChannelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_media_live_channel_with_options(request, runtime)
+
+    async def get_media_live_channel_async(
+        self,
+        request: ice20201109_models.GetMediaLiveChannelRequest,
+    ) -> ice20201109_models.GetMediaLiveChannelResponse:
+        """
+        @summary Queries a MediaLive channel.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: GetMediaLiveChannelRequest
+        @return: GetMediaLiveChannelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_media_live_channel_with_options_async(request, runtime)
+
+    def get_media_live_input_with_options(
+        self,
+        request: ice20201109_models.GetMediaLiveInputRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetMediaLiveInputResponse:
+        """
+        @summary Queries the details of a MediaLive input.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: GetMediaLiveInputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMediaLiveInputResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.input_id):
+            body['InputId'] = request.input_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetMediaLiveInput',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.GetMediaLiveInputResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.GetMediaLiveInputResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_media_live_input_with_options_async(
+        self,
+        request: ice20201109_models.GetMediaLiveInputRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetMediaLiveInputResponse:
+        """
+        @summary Queries the details of a MediaLive input.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: GetMediaLiveInputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMediaLiveInputResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.input_id):
+            body['InputId'] = request.input_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetMediaLiveInput',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.GetMediaLiveInputResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.GetMediaLiveInputResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_media_live_input(
+        self,
+        request: ice20201109_models.GetMediaLiveInputRequest,
+    ) -> ice20201109_models.GetMediaLiveInputResponse:
+        """
+        @summary Queries the details of a MediaLive input.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: GetMediaLiveInputRequest
+        @return: GetMediaLiveInputResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_media_live_input_with_options(request, runtime)
+
+    async def get_media_live_input_async(
+        self,
+        request: ice20201109_models.GetMediaLiveInputRequest,
+    ) -> ice20201109_models.GetMediaLiveInputResponse:
+        """
+        @summary Queries the details of a MediaLive input.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: GetMediaLiveInputRequest
+        @return: GetMediaLiveInputResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_media_live_input_with_options_async(request, runtime)
+
+    def get_media_live_input_security_group_with_options(
+        self,
+        request: ice20201109_models.GetMediaLiveInputSecurityGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetMediaLiveInputSecurityGroupResponse:
+        """
+        @summary Queries the details of a security group in MediaLive.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: GetMediaLiveInputSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMediaLiveInputSecurityGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.security_group_id):
+            body['SecurityGroupId'] = request.security_group_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetMediaLiveInputSecurityGroup',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.GetMediaLiveInputSecurityGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.GetMediaLiveInputSecurityGroupResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_media_live_input_security_group_with_options_async(
+        self,
+        request: ice20201109_models.GetMediaLiveInputSecurityGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetMediaLiveInputSecurityGroupResponse:
+        """
+        @summary Queries the details of a security group in MediaLive.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: GetMediaLiveInputSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMediaLiveInputSecurityGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.security_group_id):
+            body['SecurityGroupId'] = request.security_group_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetMediaLiveInputSecurityGroup',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.GetMediaLiveInputSecurityGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.GetMediaLiveInputSecurityGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_media_live_input_security_group(
+        self,
+        request: ice20201109_models.GetMediaLiveInputSecurityGroupRequest,
+    ) -> ice20201109_models.GetMediaLiveInputSecurityGroupResponse:
+        """
+        @summary Queries the details of a security group in MediaLive.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: GetMediaLiveInputSecurityGroupRequest
+        @return: GetMediaLiveInputSecurityGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_media_live_input_security_group_with_options(request, runtime)
+
+    async def get_media_live_input_security_group_async(
+        self,
+        request: ice20201109_models.GetMediaLiveInputSecurityGroupRequest,
+    ) -> ice20201109_models.GetMediaLiveInputSecurityGroupResponse:
+        """
+        @summary Queries the details of a security group in MediaLive.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: GetMediaLiveInputSecurityGroupRequest
+        @return: GetMediaLiveInputSecurityGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_media_live_input_security_group_with_options_async(request, runtime)
 
     def get_media_marks_with_options(
         self,
@@ -15246,7 +16618,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetProgramResponse:
         """
-        @summary 获取节目
+        @summary Queries a program.
         
         @param request: GetProgramRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15289,7 +16661,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetProgramResponse:
         """
-        @summary 获取节目
+        @summary Queries a program.
         
         @param request: GetProgramRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15331,7 +16703,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetProgramRequest,
     ) -> ice20201109_models.GetProgramResponse:
         """
-        @summary 获取节目
+        @summary Queries a program.
         
         @param request: GetProgramRequest
         @return: GetProgramResponse
@@ -15344,7 +16716,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetProgramRequest,
     ) -> ice20201109_models.GetProgramResponse:
         """
-        @summary 获取节目
+        @summary Queries a program.
         
         @param request: GetProgramRequest
         @return: GetProgramResponse
@@ -15914,7 +17286,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetSourceResponse:
         """
-        @summary 获取源
+        @summary Queries a source in MediaWeaver.
         
         @param request: GetSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15959,7 +17331,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetSourceResponse:
         """
-        @summary 获取源
+        @summary Queries a source in MediaWeaver.
         
         @param request: GetSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16003,7 +17375,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetSourceRequest,
     ) -> ice20201109_models.GetSourceResponse:
         """
-        @summary 获取源
+        @summary Queries a source in MediaWeaver.
         
         @param request: GetSourceRequest
         @return: GetSourceResponse
@@ -16016,7 +17388,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetSourceRequest,
     ) -> ice20201109_models.GetSourceResponse:
         """
-        @summary 获取源
+        @summary Queries a source in MediaWeaver.
         
         @param request: GetSourceRequest
         @return: GetSourceResponse
@@ -16030,7 +17402,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetSourceLocationResponse:
         """
-        @summary 获取源位置
+        @summary Queries a source location.
         
         @param request: GetSourceLocationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16071,7 +17443,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetSourceLocationResponse:
         """
-        @summary 获取源位置
+        @summary Queries a source location.
         
         @param request: GetSourceLocationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16111,7 +17483,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetSourceLocationRequest,
     ) -> ice20201109_models.GetSourceLocationResponse:
         """
-        @summary 获取源位置
+        @summary Queries a source location.
         
         @param request: GetSourceLocationRequest
         @return: GetSourceLocationResponse
@@ -16124,7 +17496,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetSourceLocationRequest,
     ) -> ice20201109_models.GetSourceLocationResponse:
         """
-        @summary 获取源位置
+        @summary Queries a source location.
         
         @param request: GetSourceLocationRequest
         @return: GetSourceLocationResponse
@@ -17078,7 +18450,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetVodPackagingAssetResponse:
         """
-        @summary 查询点播打包资产
+        @summary Queries a VOD packaging asset.
         
         @param request: GetVodPackagingAssetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17119,7 +18491,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetVodPackagingAssetResponse:
         """
-        @summary 查询点播打包资产
+        @summary Queries a VOD packaging asset.
         
         @param request: GetVodPackagingAssetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17159,7 +18531,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetVodPackagingAssetRequest,
     ) -> ice20201109_models.GetVodPackagingAssetResponse:
         """
-        @summary 查询点播打包资产
+        @summary Queries a VOD packaging asset.
         
         @param request: GetVodPackagingAssetRequest
         @return: GetVodPackagingAssetResponse
@@ -17172,7 +18544,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetVodPackagingAssetRequest,
     ) -> ice20201109_models.GetVodPackagingAssetResponse:
         """
-        @summary 查询点播打包资产
+        @summary Queries a VOD packaging asset.
         
         @param request: GetVodPackagingAssetRequest
         @return: GetVodPackagingAssetResponse
@@ -17186,7 +18558,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetVodPackagingConfigurationResponse:
         """
-        @summary 查询打包模板配置
+        @summary Queries a packaging configuration.
         
         @param request: GetVodPackagingConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17227,7 +18599,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetVodPackagingConfigurationResponse:
         """
-        @summary 查询打包模板配置
+        @summary Queries a packaging configuration.
         
         @param request: GetVodPackagingConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17267,7 +18639,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetVodPackagingConfigurationRequest,
     ) -> ice20201109_models.GetVodPackagingConfigurationResponse:
         """
-        @summary 查询打包模板配置
+        @summary Queries a packaging configuration.
         
         @param request: GetVodPackagingConfigurationRequest
         @return: GetVodPackagingConfigurationResponse
@@ -17280,7 +18652,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetVodPackagingConfigurationRequest,
     ) -> ice20201109_models.GetVodPackagingConfigurationResponse:
         """
-        @summary 查询打包模板配置
+        @summary Queries a packaging configuration.
         
         @param request: GetVodPackagingConfigurationRequest
         @return: GetVodPackagingConfigurationResponse
@@ -17294,7 +18666,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetVodPackagingGroupResponse:
         """
-        @summary 获取点播打包组
+        @summary Queries a packaging group.
         
         @param request: GetVodPackagingGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17335,7 +18707,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetVodPackagingGroupResponse:
         """
-        @summary 获取点播打包组
+        @summary Queries a packaging group.
         
         @param request: GetVodPackagingGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17375,7 +18747,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetVodPackagingGroupRequest,
     ) -> ice20201109_models.GetVodPackagingGroupResponse:
         """
-        @summary 获取点播打包组
+        @summary Queries a packaging group.
         
         @param request: GetVodPackagingGroupRequest
         @return: GetVodPackagingGroupResponse
@@ -17388,7 +18760,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetVodPackagingGroupRequest,
     ) -> ice20201109_models.GetVodPackagingGroupResponse:
         """
-        @summary 获取点播打包组
+        @summary Queries a packaging group.
         
         @param request: GetVodPackagingGroupRequest
         @return: GetVodPackagingGroupResponse
@@ -17762,7 +19134,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListAIAgentInstanceResponse:
         """
-        @summary 列出实例
+        @summary Queries a list of AI agents.
+        
+        @description ## [](#)Request description
+        You can call this operation to query a list of AI agents based on the `AIAgentId`. The optional parameters include `StartTime`, `EndTime`, `PageSize`, and `PageNumber`. The returned result includes the status, runtime configurations, template configurations, custom information, and the URL of call log file for each AI agent.
+        *Note**:
+        The default value of `PageSize` is 10, and the default value of `PageNumber` is 1.
         
         @param request: ListAIAgentInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17811,7 +19188,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListAIAgentInstanceResponse:
         """
-        @summary 列出实例
+        @summary Queries a list of AI agents.
+        
+        @description ## [](#)Request description
+        You can call this operation to query a list of AI agents based on the `AIAgentId`. The optional parameters include `StartTime`, `EndTime`, `PageSize`, and `PageNumber`. The returned result includes the status, runtime configurations, template configurations, custom information, and the URL of call log file for each AI agent.
+        *Note**:
+        The default value of `PageSize` is 10, and the default value of `PageNumber` is 1.
         
         @param request: ListAIAgentInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17859,7 +19241,12 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListAIAgentInstanceRequest,
     ) -> ice20201109_models.ListAIAgentInstanceResponse:
         """
-        @summary 列出实例
+        @summary Queries a list of AI agents.
+        
+        @description ## [](#)Request description
+        You can call this operation to query a list of AI agents based on the `AIAgentId`. The optional parameters include `StartTime`, `EndTime`, `PageSize`, and `PageNumber`. The returned result includes the status, runtime configurations, template configurations, custom information, and the URL of call log file for each AI agent.
+        *Note**:
+        The default value of `PageSize` is 10, and the default value of `PageNumber` is 1.
         
         @param request: ListAIAgentInstanceRequest
         @return: ListAIAgentInstanceResponse
@@ -17872,7 +19259,12 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListAIAgentInstanceRequest,
     ) -> ice20201109_models.ListAIAgentInstanceResponse:
         """
-        @summary 列出实例
+        @summary Queries a list of AI agents.
+        
+        @description ## [](#)Request description
+        You can call this operation to query a list of AI agents based on the `AIAgentId`. The optional parameters include `StartTime`, `EndTime`, `PageSize`, and `PageNumber`. The returned result includes the status, runtime configurations, template configurations, custom information, and the URL of call log file for each AI agent.
+        *Note**:
+        The default value of `PageSize` is 10, and the default value of `PageNumber` is 1.
         
         @param request: ListAIAgentInstanceRequest
         @return: ListAIAgentInstanceResponse
@@ -17886,7 +19278,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListAdInsertionsResponse:
         """
-        @summary 获取广告插入配置列表
+        @summary Obtains ad insertion configurations.
         
         @param request: ListAdInsertionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17937,7 +19329,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListAdInsertionsResponse:
         """
-        @summary 获取广告插入配置列表
+        @summary Obtains ad insertion configurations.
         
         @param request: ListAdInsertionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17987,7 +19379,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListAdInsertionsRequest,
     ) -> ice20201109_models.ListAdInsertionsResponse:
         """
-        @summary 获取广告插入配置列表
+        @summary Obtains ad insertion configurations.
         
         @param request: ListAdInsertionsRequest
         @return: ListAdInsertionsResponse
@@ -18000,7 +19392,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListAdInsertionsRequest,
     ) -> ice20201109_models.ListAdInsertionsResponse:
         """
-        @summary 获取广告插入配置列表
+        @summary Obtains ad insertion configurations.
         
         @param request: ListAdInsertionsRequest
         @return: ListAdInsertionsResponse
@@ -18014,7 +19406,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListAlertsResponse:
         """
-        @summary 获取警告
+        @summary Lists alerts received in MediaWeaver.
         
         @param request: ListAlertsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18069,7 +19461,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListAlertsResponse:
         """
-        @summary 获取警告
+        @summary Lists alerts received in MediaWeaver.
         
         @param request: ListAlertsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18123,7 +19515,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListAlertsRequest,
     ) -> ice20201109_models.ListAlertsResponse:
         """
-        @summary 获取警告
+        @summary Lists alerts received in MediaWeaver.
         
         @param request: ListAlertsRequest
         @return: ListAlertsResponse
@@ -18136,7 +19528,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListAlertsRequest,
     ) -> ice20201109_models.ListAlertsResponse:
         """
-        @summary 获取警告
+        @summary Lists alerts received in MediaWeaver.
         
         @param request: ListAlertsRequest
         @return: ListAlertsResponse
@@ -18630,7 +20022,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListChannelAlertsResponse:
         """
-        @summary 获取频道警告
+        @summary Lists alerts for resources in a MediaWeaver channel.
         
         @param request: ListChannelAlertsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18683,7 +20075,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListChannelAlertsResponse:
         """
-        @summary 获取频道警告
+        @summary Lists alerts for resources in a MediaWeaver channel.
         
         @param request: ListChannelAlertsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18735,7 +20127,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListChannelAlertsRequest,
     ) -> ice20201109_models.ListChannelAlertsResponse:
         """
-        @summary 获取频道警告
+        @summary Lists alerts for resources in a MediaWeaver channel.
         
         @param request: ListChannelAlertsRequest
         @return: ListChannelAlertsResponse
@@ -18748,7 +20140,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListChannelAlertsRequest,
     ) -> ice20201109_models.ListChannelAlertsResponse:
         """
-        @summary 获取频道警告
+        @summary Lists alerts for resources in a MediaWeaver channel.
         
         @param request: ListChannelAlertsRequest
         @return: ListChannelAlertsResponse
@@ -18762,7 +20154,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListChannelsResponse:
         """
-        @summary 获取频道列表
+        @summary Lists MediaWeaver channels.
         
         @param request: ListChannelsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18817,7 +20209,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListChannelsResponse:
         """
-        @summary 获取频道列表
+        @summary Lists MediaWeaver channels.
         
         @param request: ListChannelsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18871,7 +20263,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListChannelsRequest,
     ) -> ice20201109_models.ListChannelsResponse:
         """
-        @summary 获取频道列表
+        @summary Lists MediaWeaver channels.
         
         @param request: ListChannelsRequest
         @return: ListChannelsResponse
@@ -18884,7 +20276,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListChannelsRequest,
     ) -> ice20201109_models.ListChannelsResponse:
         """
-        @summary 获取频道列表
+        @summary Lists MediaWeaver channels.
         
         @param request: ListChannelsRequest
         @return: ListChannelsResponse
@@ -19802,7 +21194,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLivePackageChannelGroupsResponse:
         """
-        @summary 查询实时打包频道组
+        @summary Queries live package channel groups by page. Fuzzy search by name or description and sorting are supported.
+        
+        @description ## [](#)Usage notes
         
         @param request: ListLivePackageChannelGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19849,7 +21243,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLivePackageChannelGroupsResponse:
         """
-        @summary 查询实时打包频道组
+        @summary Queries live package channel groups by page. Fuzzy search by name or description and sorting are supported.
+        
+        @description ## [](#)Usage notes
         
         @param request: ListLivePackageChannelGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19895,7 +21291,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLivePackageChannelGroupsRequest,
     ) -> ice20201109_models.ListLivePackageChannelGroupsResponse:
         """
-        @summary 查询实时打包频道组
+        @summary Queries live package channel groups by page. Fuzzy search by name or description and sorting are supported.
+        
+        @description ## [](#)Usage notes
         
         @param request: ListLivePackageChannelGroupsRequest
         @return: ListLivePackageChannelGroupsResponse
@@ -19908,7 +21306,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLivePackageChannelGroupsRequest,
     ) -> ice20201109_models.ListLivePackageChannelGroupsResponse:
         """
-        @summary 查询实时打包频道组
+        @summary Queries live package channel groups by page. Fuzzy search by name or description and sorting are supported.
+        
+        @description ## [](#)Usage notes
         
         @param request: ListLivePackageChannelGroupsRequest
         @return: ListLivePackageChannelGroupsResponse
@@ -19922,7 +21322,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLivePackageChannelsResponse:
         """
-        @summary 查询实时打包频道
+        @summary Queries live package channels by channel group and keyword. Paging and sorting are supported.
+        
+        @description ## [](#)Usage notes
+        This API operation allows you to query live package channels by *GroupName** and **Keyword**. Keyword is optional. You can sort the channels by creation time in ascending or descending order and paginate the results. This facilitates the management of channels and retrieval of channel information.
+        **GroupName** is required to specify the channel group to which the channel belongs.
+        **Keyword** supports fuzzy match of channel names or descriptions, which helps quickly filter desired channels.
+        **PageNo** and **PageSize** can help control the paging of returned results to facilitate batch processing of data.
+        **SortBy** allows you to customize how the results are sorted. By default, the results are sorted in descending order.
+        *RequestId** in the response is used for subsequent troubleshooting. **TotalCount** indicates the total number of channels that meet the conditions.
         
         @param request: ListLivePackageChannelsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19971,7 +21379,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLivePackageChannelsResponse:
         """
-        @summary 查询实时打包频道
+        @summary Queries live package channels by channel group and keyword. Paging and sorting are supported.
+        
+        @description ## [](#)Usage notes
+        This API operation allows you to query live package channels by *GroupName** and **Keyword**. Keyword is optional. You can sort the channels by creation time in ascending or descending order and paginate the results. This facilitates the management of channels and retrieval of channel information.
+        **GroupName** is required to specify the channel group to which the channel belongs.
+        **Keyword** supports fuzzy match of channel names or descriptions, which helps quickly filter desired channels.
+        **PageNo** and **PageSize** can help control the paging of returned results to facilitate batch processing of data.
+        **SortBy** allows you to customize how the results are sorted. By default, the results are sorted in descending order.
+        *RequestId** in the response is used for subsequent troubleshooting. **TotalCount** indicates the total number of channels that meet the conditions.
         
         @param request: ListLivePackageChannelsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20019,7 +21435,15 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLivePackageChannelsRequest,
     ) -> ice20201109_models.ListLivePackageChannelsResponse:
         """
-        @summary 查询实时打包频道
+        @summary Queries live package channels by channel group and keyword. Paging and sorting are supported.
+        
+        @description ## [](#)Usage notes
+        This API operation allows you to query live package channels by *GroupName** and **Keyword**. Keyword is optional. You can sort the channels by creation time in ascending or descending order and paginate the results. This facilitates the management of channels and retrieval of channel information.
+        **GroupName** is required to specify the channel group to which the channel belongs.
+        **Keyword** supports fuzzy match of channel names or descriptions, which helps quickly filter desired channels.
+        **PageNo** and **PageSize** can help control the paging of returned results to facilitate batch processing of data.
+        **SortBy** allows you to customize how the results are sorted. By default, the results are sorted in descending order.
+        *RequestId** in the response is used for subsequent troubleshooting. **TotalCount** indicates the total number of channels that meet the conditions.
         
         @param request: ListLivePackageChannelsRequest
         @return: ListLivePackageChannelsResponse
@@ -20032,7 +21456,15 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLivePackageChannelsRequest,
     ) -> ice20201109_models.ListLivePackageChannelsResponse:
         """
-        @summary 查询实时打包频道
+        @summary Queries live package channels by channel group and keyword. Paging and sorting are supported.
+        
+        @description ## [](#)Usage notes
+        This API operation allows you to query live package channels by *GroupName** and **Keyword**. Keyword is optional. You can sort the channels by creation time in ascending or descending order and paginate the results. This facilitates the management of channels and retrieval of channel information.
+        **GroupName** is required to specify the channel group to which the channel belongs.
+        **Keyword** supports fuzzy match of channel names or descriptions, which helps quickly filter desired channels.
+        **PageNo** and **PageSize** can help control the paging of returned results to facilitate batch processing of data.
+        **SortBy** allows you to customize how the results are sorted. By default, the results are sorted in descending order.
+        *RequestId** in the response is used for subsequent troubleshooting. **TotalCount** indicates the total number of channels that meet the conditions.
         
         @param request: ListLivePackageChannelsRequest
         @return: ListLivePackageChannelsResponse
@@ -20046,7 +21478,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLivePackageOriginEndpointsResponse:
         """
-        @summary 查询实时打包源站端点
+        @summary Queries origin endpoints by channel group and channel name. Paging and sorting are supported.
+        
+        @description ## [](#)Usage notes
+        This API operation allows you to query origin endpoints associated with a live package channel. The results include detailed configurations about the origin endpoints, such as access URL, protocol, and security policies. Paging and sorting by creation time are supported.
         
         @param request: ListLivePackageOriginEndpointsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20097,7 +21532,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLivePackageOriginEndpointsResponse:
         """
-        @summary 查询实时打包源站端点
+        @summary Queries origin endpoints by channel group and channel name. Paging and sorting are supported.
+        
+        @description ## [](#)Usage notes
+        This API operation allows you to query origin endpoints associated with a live package channel. The results include detailed configurations about the origin endpoints, such as access URL, protocol, and security policies. Paging and sorting by creation time are supported.
         
         @param request: ListLivePackageOriginEndpointsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20147,7 +21585,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLivePackageOriginEndpointsRequest,
     ) -> ice20201109_models.ListLivePackageOriginEndpointsResponse:
         """
-        @summary 查询实时打包源站端点
+        @summary Queries origin endpoints by channel group and channel name. Paging and sorting are supported.
+        
+        @description ## [](#)Usage notes
+        This API operation allows you to query origin endpoints associated with a live package channel. The results include detailed configurations about the origin endpoints, such as access URL, protocol, and security policies. Paging and sorting by creation time are supported.
         
         @param request: ListLivePackageOriginEndpointsRequest
         @return: ListLivePackageOriginEndpointsResponse
@@ -20160,7 +21601,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLivePackageOriginEndpointsRequest,
     ) -> ice20201109_models.ListLivePackageOriginEndpointsResponse:
         """
-        @summary 查询实时打包源站端点
+        @summary Queries origin endpoints by channel group and channel name. Paging and sorting are supported.
+        
+        @description ## [](#)Usage notes
+        This API operation allows you to query origin endpoints associated with a live package channel. The results include detailed configurations about the origin endpoints, such as access URL, protocol, and security policies. Paging and sorting by creation time are supported.
         
         @param request: ListLivePackageOriginEndpointsRequest
         @return: ListLivePackageOriginEndpointsResponse
@@ -21344,6 +22788,434 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_media_info_jobs_with_options_async(request, runtime)
 
+    def list_media_live_channels_with_options(
+        self,
+        request: ice20201109_models.ListMediaLiveChannelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListMediaLiveChannelsResponse:
+        """
+        @summary Queries MediaLive channels.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: ListMediaLiveChannelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMediaLiveChannelsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.skip):
+            body['Skip'] = request.skip
+        if not UtilClient.is_unset(request.sort_order):
+            body['SortOrder'] = request.sort_order
+        if not UtilClient.is_unset(request.states):
+            body['States'] = request.states
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListMediaLiveChannels',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.ListMediaLiveChannelsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.ListMediaLiveChannelsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_media_live_channels_with_options_async(
+        self,
+        request: ice20201109_models.ListMediaLiveChannelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListMediaLiveChannelsResponse:
+        """
+        @summary Queries MediaLive channels.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: ListMediaLiveChannelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMediaLiveChannelsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.skip):
+            body['Skip'] = request.skip
+        if not UtilClient.is_unset(request.sort_order):
+            body['SortOrder'] = request.sort_order
+        if not UtilClient.is_unset(request.states):
+            body['States'] = request.states
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListMediaLiveChannels',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.ListMediaLiveChannelsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.ListMediaLiveChannelsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_media_live_channels(
+        self,
+        request: ice20201109_models.ListMediaLiveChannelsRequest,
+    ) -> ice20201109_models.ListMediaLiveChannelsResponse:
+        """
+        @summary Queries MediaLive channels.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: ListMediaLiveChannelsRequest
+        @return: ListMediaLiveChannelsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_media_live_channels_with_options(request, runtime)
+
+    async def list_media_live_channels_async(
+        self,
+        request: ice20201109_models.ListMediaLiveChannelsRequest,
+    ) -> ice20201109_models.ListMediaLiveChannelsResponse:
+        """
+        @summary Queries MediaLive channels.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: ListMediaLiveChannelsRequest
+        @return: ListMediaLiveChannelsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_media_live_channels_with_options_async(request, runtime)
+
+    def list_media_live_input_security_groups_with_options(
+        self,
+        request: ice20201109_models.ListMediaLiveInputSecurityGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListMediaLiveInputSecurityGroupsResponse:
+        """
+        @summary Queries the security groups in MediaLive.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: ListMediaLiveInputSecurityGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMediaLiveInputSecurityGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.skip):
+            body['Skip'] = request.skip
+        if not UtilClient.is_unset(request.sort_order):
+            body['SortOrder'] = request.sort_order
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListMediaLiveInputSecurityGroups',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.ListMediaLiveInputSecurityGroupsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.ListMediaLiveInputSecurityGroupsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_media_live_input_security_groups_with_options_async(
+        self,
+        request: ice20201109_models.ListMediaLiveInputSecurityGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListMediaLiveInputSecurityGroupsResponse:
+        """
+        @summary Queries the security groups in MediaLive.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: ListMediaLiveInputSecurityGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMediaLiveInputSecurityGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.skip):
+            body['Skip'] = request.skip
+        if not UtilClient.is_unset(request.sort_order):
+            body['SortOrder'] = request.sort_order
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListMediaLiveInputSecurityGroups',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.ListMediaLiveInputSecurityGroupsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.ListMediaLiveInputSecurityGroupsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_media_live_input_security_groups(
+        self,
+        request: ice20201109_models.ListMediaLiveInputSecurityGroupsRequest,
+    ) -> ice20201109_models.ListMediaLiveInputSecurityGroupsResponse:
+        """
+        @summary Queries the security groups in MediaLive.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: ListMediaLiveInputSecurityGroupsRequest
+        @return: ListMediaLiveInputSecurityGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_media_live_input_security_groups_with_options(request, runtime)
+
+    async def list_media_live_input_security_groups_async(
+        self,
+        request: ice20201109_models.ListMediaLiveInputSecurityGroupsRequest,
+    ) -> ice20201109_models.ListMediaLiveInputSecurityGroupsResponse:
+        """
+        @summary Queries the security groups in MediaLive.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: ListMediaLiveInputSecurityGroupsRequest
+        @return: ListMediaLiveInputSecurityGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_media_live_input_security_groups_with_options_async(request, runtime)
+
+    def list_media_live_inputs_with_options(
+        self,
+        request: ice20201109_models.ListMediaLiveInputsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListMediaLiveInputsResponse:
+        """
+        @summary Queries MediaLive inputs.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: ListMediaLiveInputsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMediaLiveInputsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.skip):
+            body['Skip'] = request.skip
+        if not UtilClient.is_unset(request.sort_order):
+            body['SortOrder'] = request.sort_order
+        if not UtilClient.is_unset(request.types):
+            body['Types'] = request.types
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListMediaLiveInputs',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.ListMediaLiveInputsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.ListMediaLiveInputsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_media_live_inputs_with_options_async(
+        self,
+        request: ice20201109_models.ListMediaLiveInputsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListMediaLiveInputsResponse:
+        """
+        @summary Queries MediaLive inputs.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: ListMediaLiveInputsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMediaLiveInputsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.skip):
+            body['Skip'] = request.skip
+        if not UtilClient.is_unset(request.sort_order):
+            body['SortOrder'] = request.sort_order
+        if not UtilClient.is_unset(request.types):
+            body['Types'] = request.types
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListMediaLiveInputs',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.ListMediaLiveInputsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.ListMediaLiveInputsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_media_live_inputs(
+        self,
+        request: ice20201109_models.ListMediaLiveInputsRequest,
+    ) -> ice20201109_models.ListMediaLiveInputsResponse:
+        """
+        @summary Queries MediaLive inputs.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: ListMediaLiveInputsRequest
+        @return: ListMediaLiveInputsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_media_live_inputs_with_options(request, runtime)
+
+    async def list_media_live_inputs_async(
+        self,
+        request: ice20201109_models.ListMediaLiveInputsRequest,
+    ) -> ice20201109_models.ListMediaLiveInputsResponse:
+        """
+        @summary Queries MediaLive inputs.
+        
+        @description
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: ListMediaLiveInputsRequest
+        @return: ListMediaLiveInputsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_media_live_inputs_with_options_async(request, runtime)
+
     def list_media_marks_with_options(
         self,
         request: ice20201109_models.ListMediaMarksRequest,
@@ -21846,7 +23718,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListProgramsResponse:
         """
-        @summary 获取节目列表
+        @summary Lists programs.
         
         @param request: ListProgramsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21895,7 +23767,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListProgramsResponse:
         """
-        @summary 获取节目列表
+        @summary Lists programs.
         
         @param request: ListProgramsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21943,7 +23815,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListProgramsRequest,
     ) -> ice20201109_models.ListProgramsResponse:
         """
-        @summary 获取节目列表
+        @summary Lists programs.
         
         @param request: ListProgramsRequest
         @return: ListProgramsResponse
@@ -21956,7 +23828,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListProgramsRequest,
     ) -> ice20201109_models.ListProgramsResponse:
         """
-        @summary 获取节目列表
+        @summary Lists programs.
         
         @param request: ListProgramsRequest
         @return: ListProgramsResponse
@@ -22102,7 +23974,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSchedulesResponse:
         """
-        @summary 获取节目单
+        @summary Lists the program schedule of a MediaWeaver channel.
         
         @param request: ListSchedulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22149,7 +24021,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSchedulesResponse:
         """
-        @summary 获取节目单
+        @summary Lists the program schedule of a MediaWeaver channel.
         
         @param request: ListSchedulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22195,7 +24067,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListSchedulesRequest,
     ) -> ice20201109_models.ListSchedulesResponse:
         """
-        @summary 获取节目单
+        @summary Lists the program schedule of a MediaWeaver channel.
         
         @param request: ListSchedulesRequest
         @return: ListSchedulesResponse
@@ -22208,7 +24080,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListSchedulesRequest,
     ) -> ice20201109_models.ListSchedulesResponse:
         """
-        @summary 获取节目单
+        @summary Lists the program schedule of a MediaWeaver channel.
         
         @param request: ListSchedulesRequest
         @return: ListSchedulesResponse
@@ -22772,7 +24644,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSourceLocationsResponse:
         """
-        @summary 列举源位置
+        @summary Lists source locations.
         
         @param request: ListSourceLocationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22823,7 +24695,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSourceLocationsResponse:
         """
-        @summary 列举源位置
+        @summary Lists source locations.
         
         @param request: ListSourceLocationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22873,7 +24745,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListSourceLocationsRequest,
     ) -> ice20201109_models.ListSourceLocationsResponse:
         """
-        @summary 列举源位置
+        @summary Lists source locations.
         
         @param request: ListSourceLocationsRequest
         @return: ListSourceLocationsResponse
@@ -22886,7 +24758,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListSourceLocationsRequest,
     ) -> ice20201109_models.ListSourceLocationsResponse:
         """
-        @summary 列举源位置
+        @summary Lists source locations.
         
         @param request: ListSourceLocationsRequest
         @return: ListSourceLocationsResponse
@@ -22900,7 +24772,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSourcesResponse:
         """
-        @summary 列举源
+        @summary Lists sources in MediaWeaver.
         
         @param request: ListSourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22955,7 +24827,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSourcesResponse:
         """
-        @summary 列举源
+        @summary Lists sources in MediaWeaver.
         
         @param request: ListSourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23009,7 +24881,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListSourcesRequest,
     ) -> ice20201109_models.ListSourcesResponse:
         """
-        @summary 列举源
+        @summary Lists sources in MediaWeaver.
         
         @param request: ListSourcesRequest
         @return: ListSourcesResponse
@@ -23022,7 +24894,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListSourcesRequest,
     ) -> ice20201109_models.ListSourcesResponse:
         """
-        @summary 列举源
+        @summary Lists sources in MediaWeaver.
         
         @param request: ListSourcesRequest
         @return: ListSourcesResponse
@@ -23560,7 +25432,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListVodPackagingAssetsResponse:
         """
-        @summary 列举点播打包资产
+        @summary Lists VOD packaging assets.
         
         @param request: ListVodPackagingAssetsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23609,7 +25481,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListVodPackagingAssetsResponse:
         """
-        @summary 列举点播打包资产
+        @summary Lists VOD packaging assets.
         
         @param request: ListVodPackagingAssetsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23657,7 +25529,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListVodPackagingAssetsRequest,
     ) -> ice20201109_models.ListVodPackagingAssetsResponse:
         """
-        @summary 列举点播打包资产
+        @summary Lists VOD packaging assets.
         
         @param request: ListVodPackagingAssetsRequest
         @return: ListVodPackagingAssetsResponse
@@ -23670,7 +25542,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListVodPackagingAssetsRequest,
     ) -> ice20201109_models.ListVodPackagingAssetsResponse:
         """
-        @summary 列举点播打包资产
+        @summary Lists VOD packaging assets.
         
         @param request: ListVodPackagingAssetsRequest
         @return: ListVodPackagingAssetsResponse
@@ -23684,7 +25556,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListVodPackagingConfigurationsResponse:
         """
-        @summary 列举点播打包配置列表
+        @summary Lists packaging configurations.
         
         @param request: ListVodPackagingConfigurationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23733,7 +25605,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListVodPackagingConfigurationsResponse:
         """
-        @summary 列举点播打包配置列表
+        @summary Lists packaging configurations.
         
         @param request: ListVodPackagingConfigurationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23781,7 +25653,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListVodPackagingConfigurationsRequest,
     ) -> ice20201109_models.ListVodPackagingConfigurationsResponse:
         """
-        @summary 列举点播打包配置列表
+        @summary Lists packaging configurations.
         
         @param request: ListVodPackagingConfigurationsRequest
         @return: ListVodPackagingConfigurationsResponse
@@ -23794,7 +25666,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListVodPackagingConfigurationsRequest,
     ) -> ice20201109_models.ListVodPackagingConfigurationsResponse:
         """
-        @summary 列举点播打包配置列表
+        @summary Lists packaging configurations.
         
         @param request: ListVodPackagingConfigurationsRequest
         @return: ListVodPackagingConfigurationsResponse
@@ -23808,7 +25680,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListVodPackagingGroupsResponse:
         """
-        @summary 列举点播打包组
+        @summary Lists packaging groups.
         
         @param request: ListVodPackagingGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23855,7 +25727,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListVodPackagingGroupsResponse:
         """
-        @summary 列举点播打包组
+        @summary Lists packaging groups.
         
         @param request: ListVodPackagingGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23901,7 +25773,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListVodPackagingGroupsRequest,
     ) -> ice20201109_models.ListVodPackagingGroupsResponse:
         """
-        @summary 列举点播打包组
+        @summary Lists packaging groups.
         
         @param request: ListVodPackagingGroupsRequest
         @return: ListVodPackagingGroupsResponse
@@ -23914,7 +25786,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListVodPackagingGroupsRequest,
     ) -> ice20201109_models.ListVodPackagingGroupsResponse:
         """
-        @summary 列举点播打包组
+        @summary Lists packaging groups.
         
         @param request: ListVodPackagingGroupsRequest
         @return: ListVodPackagingGroupsResponse
@@ -27132,7 +29004,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SendAIAgentDataChannelMessageResponse:
         """
-        @summary 向智能体通话发送datachannel消息
+        @summary Sends a DataChannel message to an AI agent.
         
         @param request: SendAIAgentDataChannelMessageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27175,7 +29047,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SendAIAgentDataChannelMessageResponse:
         """
-        @summary 向智能体通话发送datachannel消息
+        @summary Sends a DataChannel message to an AI agent.
         
         @param request: SendAIAgentDataChannelMessageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27217,7 +29089,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SendAIAgentDataChannelMessageRequest,
     ) -> ice20201109_models.SendAIAgentDataChannelMessageResponse:
         """
-        @summary 向智能体通话发送datachannel消息
+        @summary Sends a DataChannel message to an AI agent.
         
         @param request: SendAIAgentDataChannelMessageRequest
         @return: SendAIAgentDataChannelMessageResponse
@@ -27230,7 +29102,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SendAIAgentDataChannelMessageRequest,
     ) -> ice20201109_models.SendAIAgentDataChannelMessageResponse:
         """
-        @summary 向智能体通话发送datachannel消息
+        @summary Sends a DataChannel message to an AI agent.
         
         @param request: SendAIAgentDataChannelMessageRequest
         @return: SendAIAgentDataChannelMessageResponse
@@ -27244,7 +29116,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SendAIAgentSpeechResponse:
         """
-        @summary 用来立即让某个智能体实例播报指定的文本。
+        @summary Instructs an AI agent to immediately broadcast a text message and supports interruption settings.
+        
+        @description You can call this operation to instruct an AI agent to broadcast the content that you specify. You can determine whether this broadcast can immediately interrupt the ongoing speech. The interruption is allowed by default.
+        *Note**\
+        Make sure that the `InstanceId` is valid and corresponds to an existing AI agent.
+        The content of `Text` must comply with the specifications and does not contain sensitive or inappropriate information.
+        If you do not want the new broadcast to interrupt the ongoing speech, you must set `EnableInterrupt` to `false`.
         
         @param request: SendAIAgentSpeechRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27289,7 +29167,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SendAIAgentSpeechResponse:
         """
-        @summary 用来立即让某个智能体实例播报指定的文本。
+        @summary Instructs an AI agent to immediately broadcast a text message and supports interruption settings.
+        
+        @description You can call this operation to instruct an AI agent to broadcast the content that you specify. You can determine whether this broadcast can immediately interrupt the ongoing speech. The interruption is allowed by default.
+        *Note**\
+        Make sure that the `InstanceId` is valid and corresponds to an existing AI agent.
+        The content of `Text` must comply with the specifications and does not contain sensitive or inappropriate information.
+        If you do not want the new broadcast to interrupt the ongoing speech, you must set `EnableInterrupt` to `false`.
         
         @param request: SendAIAgentSpeechRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27333,7 +29217,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SendAIAgentSpeechRequest,
     ) -> ice20201109_models.SendAIAgentSpeechResponse:
         """
-        @summary 用来立即让某个智能体实例播报指定的文本。
+        @summary Instructs an AI agent to immediately broadcast a text message and supports interruption settings.
+        
+        @description You can call this operation to instruct an AI agent to broadcast the content that you specify. You can determine whether this broadcast can immediately interrupt the ongoing speech. The interruption is allowed by default.
+        *Note**\
+        Make sure that the `InstanceId` is valid and corresponds to an existing AI agent.
+        The content of `Text` must comply with the specifications and does not contain sensitive or inappropriate information.
+        If you do not want the new broadcast to interrupt the ongoing speech, you must set `EnableInterrupt` to `false`.
         
         @param request: SendAIAgentSpeechRequest
         @return: SendAIAgentSpeechResponse
@@ -27346,7 +29236,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SendAIAgentSpeechRequest,
     ) -> ice20201109_models.SendAIAgentSpeechResponse:
         """
-        @summary 用来立即让某个智能体实例播报指定的文本。
+        @summary Instructs an AI agent to immediately broadcast a text message and supports interruption settings.
+        
+        @description You can call this operation to instruct an AI agent to broadcast the content that you specify. You can determine whether this broadcast can immediately interrupt the ongoing speech. The interruption is allowed by default.
+        *Note**\
+        Make sure that the `InstanceId` is valid and corresponds to an existing AI agent.
+        The content of `Text` must comply with the specifications and does not contain sensitive or inappropriate information.
+        If you do not want the new broadcast to interrupt the ongoing speech, you must set `EnableInterrupt` to `false`.
         
         @param request: SendAIAgentSpeechRequest
         @return: SendAIAgentSpeechResponse
@@ -27689,6 +29585,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.send_live_transcode_job_command_with_options_async(request, runtime)
+
+    def send_message_chat_text_with_options(
+        self,
+        request: ice20201109_models.SendMessageChatTextRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SendMessageChatTextResponse:
+        """
+        @summary 向IM客户端发送消息。
+        
+        @param request: SendMessageChatTextRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendMessageChatTextResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aiagent_id):
+            query['AIAgentId'] = request.aiagent_id
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.need_archiving):
+            query['NeedArchiving'] = request.need_archiving
+        if not UtilClient.is_unset(request.receiver_id):
+            query['ReceiverId'] = request.receiver_id
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.text):
+            query['Text'] = request.text
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendMessageChatText',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.SendMessageChatTextResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.SendMessageChatTextResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def send_message_chat_text_with_options_async(
+        self,
+        request: ice20201109_models.SendMessageChatTextRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SendMessageChatTextResponse:
+        """
+        @summary 向IM客户端发送消息。
+        
+        @param request: SendMessageChatTextRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendMessageChatTextResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aiagent_id):
+            query['AIAgentId'] = request.aiagent_id
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.need_archiving):
+            query['NeedArchiving'] = request.need_archiving
+        if not UtilClient.is_unset(request.receiver_id):
+            query['ReceiverId'] = request.receiver_id
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.text):
+            query['Text'] = request.text
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendMessageChatText',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.SendMessageChatTextResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.SendMessageChatTextResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def send_message_chat_text(
+        self,
+        request: ice20201109_models.SendMessageChatTextRequest,
+    ) -> ice20201109_models.SendMessageChatTextResponse:
+        """
+        @summary 向IM客户端发送消息。
+        
+        @param request: SendMessageChatTextRequest
+        @return: SendMessageChatTextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.send_message_chat_text_with_options(request, runtime)
+
+    async def send_message_chat_text_async(
+        self,
+        request: ice20201109_models.SendMessageChatTextRequest,
+    ) -> ice20201109_models.SendMessageChatTextResponse:
+        """
+        @summary 向IM客户端发送消息。
+        
+        @param request: SendMessageChatTextRequest
+        @return: SendMessageChatTextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.send_message_chat_text_with_options_async(request, runtime)
 
     def set_content_analyze_config_with_options(
         self,
@@ -28164,7 +30192,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SetNotifyConfigResponse:
         """
-        @summary 更新回调配置
+        @summary Enables or disables event notifications for an AI agent and configures the callback URL and event types.
+        
+        @description ## [](#)Request description
+        You can call this operation to configure event notifications for an AI agent. You can configure `EnableNotify` to enable or disable event notifications, configure `CallbackUrl` to specify a callback URL, and configure `EventTypes` to specify event types. You can also configure `Token` to specify an authentication token for enhanced security. The system returns a unique `RequestId` for subsequent tracing after a successful request.
         
         @param request: SetNotifyConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28213,7 +30244,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SetNotifyConfigResponse:
         """
-        @summary 更新回调配置
+        @summary Enables or disables event notifications for an AI agent and configures the callback URL and event types.
+        
+        @description ## [](#)Request description
+        You can call this operation to configure event notifications for an AI agent. You can configure `EnableNotify` to enable or disable event notifications, configure `CallbackUrl` to specify a callback URL, and configure `EventTypes` to specify event types. You can also configure `Token` to specify an authentication token for enhanced security. The system returns a unique `RequestId` for subsequent tracing after a successful request.
         
         @param request: SetNotifyConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28261,7 +30295,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.SetNotifyConfigRequest,
     ) -> ice20201109_models.SetNotifyConfigResponse:
         """
-        @summary 更新回调配置
+        @summary Enables or disables event notifications for an AI agent and configures the callback URL and event types.
+        
+        @description ## [](#)Request description
+        You can call this operation to configure event notifications for an AI agent. You can configure `EnableNotify` to enable or disable event notifications, configure `CallbackUrl` to specify a callback URL, and configure `EventTypes` to specify event types. You can also configure `Token` to specify an authentication token for enhanced security. The system returns a unique `RequestId` for subsequent tracing after a successful request.
         
         @param request: SetNotifyConfigRequest
         @return: SetNotifyConfigResponse
@@ -28274,7 +30311,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.SetNotifyConfigRequest,
     ) -> ice20201109_models.SetNotifyConfigResponse:
         """
-        @summary 更新回调配置
+        @summary Enables or disables event notifications for an AI agent and configures the callback URL and event types.
+        
+        @description ## [](#)Request description
+        You can call this operation to configure event notifications for an AI agent. You can configure `EnableNotify` to enable or disable event notifications, configure `CallbackUrl` to specify a callback URL, and configure `EventTypes` to specify event types. You can also configure `Token` to specify an authentication token for enhanced security. The system returns a unique `RequestId` for subsequent tracing after a successful request.
         
         @param request: SetNotifyConfigRequest
         @return: SetNotifyConfigResponse
@@ -28288,7 +30328,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.StartAIAgentInstanceResponse:
         """
-        @summary 启动一个智能体实例，并加入通话。
+        @summary Starts an AI agent that is configured in the Intelligent Media Services (IMS) console.
+        
+        @description You can call this operation to start an AI agent instance for a conversation. ````````When the AI agent is started, the system returns a unique `InstanceId` for subsequent tracking and operations.
         
         @param tmp_req: StartAIAgentInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28297,6 +30339,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.StartAIAgentInstanceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.chat_sync_config):
+            request.chat_sync_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.chat_sync_config, 'ChatSyncConfig', 'json')
         if not UtilClient.is_unset(tmp_req.runtime_config):
             request.runtime_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.runtime_config, 'RuntimeConfig', 'json')
         if not UtilClient.is_unset(tmp_req.template_config):
@@ -28304,6 +30348,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.aiagent_id):
             query['AIAgentId'] = request.aiagent_id
+        if not UtilClient.is_unset(request.chat_sync_config_shrink):
+            query['ChatSyncConfig'] = request.chat_sync_config_shrink
         if not UtilClient.is_unset(request.runtime_config_shrink):
             query['RuntimeConfig'] = request.runtime_config_shrink
         if not UtilClient.is_unset(request.session_id):
@@ -28343,7 +30389,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.StartAIAgentInstanceResponse:
         """
-        @summary 启动一个智能体实例，并加入通话。
+        @summary Starts an AI agent that is configured in the Intelligent Media Services (IMS) console.
+        
+        @description You can call this operation to start an AI agent instance for a conversation. ````````When the AI agent is started, the system returns a unique `InstanceId` for subsequent tracking and operations.
         
         @param tmp_req: StartAIAgentInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28352,6 +30400,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.StartAIAgentInstanceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.chat_sync_config):
+            request.chat_sync_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.chat_sync_config, 'ChatSyncConfig', 'json')
         if not UtilClient.is_unset(tmp_req.runtime_config):
             request.runtime_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.runtime_config, 'RuntimeConfig', 'json')
         if not UtilClient.is_unset(tmp_req.template_config):
@@ -28359,6 +30409,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.aiagent_id):
             query['AIAgentId'] = request.aiagent_id
+        if not UtilClient.is_unset(request.chat_sync_config_shrink):
+            query['ChatSyncConfig'] = request.chat_sync_config_shrink
         if not UtilClient.is_unset(request.runtime_config_shrink):
             query['RuntimeConfig'] = request.runtime_config_shrink
         if not UtilClient.is_unset(request.session_id):
@@ -28397,7 +30449,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.StartAIAgentInstanceRequest,
     ) -> ice20201109_models.StartAIAgentInstanceResponse:
         """
-        @summary 启动一个智能体实例，并加入通话。
+        @summary Starts an AI agent that is configured in the Intelligent Media Services (IMS) console.
+        
+        @description You can call this operation to start an AI agent instance for a conversation. ````````When the AI agent is started, the system returns a unique `InstanceId` for subsequent tracking and operations.
         
         @param request: StartAIAgentInstanceRequest
         @return: StartAIAgentInstanceResponse
@@ -28410,7 +30464,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.StartAIAgentInstanceRequest,
     ) -> ice20201109_models.StartAIAgentInstanceResponse:
         """
-        @summary 启动一个智能体实例，并加入通话。
+        @summary Starts an AI agent that is configured in the Intelligent Media Services (IMS) console.
+        
+        @description You can call this operation to start an AI agent instance for a conversation. ````````When the AI agent is started, the system returns a unique `InstanceId` for subsequent tracking and operations.
         
         @param request: StartAIAgentInstanceRequest
         @return: StartAIAgentInstanceResponse
@@ -28424,7 +30480,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.StartChannelResponse:
         """
-        @summary 启动频道
+        @summary Starts a channel.
         
         @param request: StartChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28465,7 +30521,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.StartChannelResponse:
         """
-        @summary 启动频道
+        @summary Starts a channel.
         
         @param request: StartChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28505,7 +30561,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.StartChannelRequest,
     ) -> ice20201109_models.StartChannelResponse:
         """
-        @summary 启动频道
+        @summary Starts a channel.
         
         @param request: StartChannelRequest
         @return: StartChannelResponse
@@ -28518,13 +30574,141 @@ class Client(OpenApiClient):
         request: ice20201109_models.StartChannelRequest,
     ) -> ice20201109_models.StartChannelResponse:
         """
-        @summary 启动频道
+        @summary Starts a channel.
         
         @param request: StartChannelRequest
         @return: StartChannelResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.start_channel_with_options_async(request, runtime)
+
+    def start_media_live_channel_with_options(
+        self,
+        request: ice20201109_models.StartMediaLiveChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.StartMediaLiveChannelResponse:
+        """
+        @summary Starts a MediaLive channel.
+        
+        @description
+        You can call this operation only when the channel is idle. You cannot start a channel repeatedly.
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: StartMediaLiveChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartMediaLiveChannelResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.channel_id):
+            body['ChannelId'] = request.channel_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartMediaLiveChannel',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.StartMediaLiveChannelResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.StartMediaLiveChannelResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def start_media_live_channel_with_options_async(
+        self,
+        request: ice20201109_models.StartMediaLiveChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.StartMediaLiveChannelResponse:
+        """
+        @summary Starts a MediaLive channel.
+        
+        @description
+        You can call this operation only when the channel is idle. You cannot start a channel repeatedly.
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: StartMediaLiveChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartMediaLiveChannelResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.channel_id):
+            body['ChannelId'] = request.channel_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartMediaLiveChannel',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.StartMediaLiveChannelResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.StartMediaLiveChannelResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def start_media_live_channel(
+        self,
+        request: ice20201109_models.StartMediaLiveChannelRequest,
+    ) -> ice20201109_models.StartMediaLiveChannelResponse:
+        """
+        @summary Starts a MediaLive channel.
+        
+        @description
+        You can call this operation only when the channel is idle. You cannot start a channel repeatedly.
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: StartMediaLiveChannelRequest
+        @return: StartMediaLiveChannelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.start_media_live_channel_with_options(request, runtime)
+
+    async def start_media_live_channel_async(
+        self,
+        request: ice20201109_models.StartMediaLiveChannelRequest,
+    ) -> ice20201109_models.StartMediaLiveChannelResponse:
+        """
+        @summary Starts a MediaLive channel.
+        
+        @description
+        You can call this operation only when the channel is idle. You cannot start a channel repeatedly.
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: StartMediaLiveChannelRequest
+        @return: StartMediaLiveChannelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.start_media_live_channel_with_options_async(request, runtime)
 
     def start_rtc_robot_instance_with_options(
         self,
@@ -28796,7 +30980,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.StopAIAgentInstanceResponse:
         """
-        @summary 停止一个智能体实例。
+        @summary Stops an AI agent instance.
+        
+        @description    When you no longer need an AI agent to participate in a conversation or task, you can call this operation to stop the running agent and release relevant resources.****\
+        You must specify the unique ID of the AI agent that you want to stop by using InstanceId.****\
+        ****\
         
         @param request: StopAIAgentInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28837,7 +31025,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.StopAIAgentInstanceResponse:
         """
-        @summary 停止一个智能体实例。
+        @summary Stops an AI agent instance.
+        
+        @description    When you no longer need an AI agent to participate in a conversation or task, you can call this operation to stop the running agent and release relevant resources.****\
+        You must specify the unique ID of the AI agent that you want to stop by using InstanceId.****\
+        ****\
         
         @param request: StopAIAgentInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28877,7 +31069,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.StopAIAgentInstanceRequest,
     ) -> ice20201109_models.StopAIAgentInstanceResponse:
         """
-        @summary 停止一个智能体实例。
+        @summary Stops an AI agent instance.
+        
+        @description    When you no longer need an AI agent to participate in a conversation or task, you can call this operation to stop the running agent and release relevant resources.****\
+        You must specify the unique ID of the AI agent that you want to stop by using InstanceId.****\
+        ****\
         
         @param request: StopAIAgentInstanceRequest
         @return: StopAIAgentInstanceResponse
@@ -28890,7 +31086,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.StopAIAgentInstanceRequest,
     ) -> ice20201109_models.StopAIAgentInstanceResponse:
         """
-        @summary 停止一个智能体实例。
+        @summary Stops an AI agent instance.
+        
+        @description    When you no longer need an AI agent to participate in a conversation or task, you can call this operation to stop the running agent and release relevant resources.****\
+        You must specify the unique ID of the AI agent that you want to stop by using InstanceId.****\
+        ****\
         
         @param request: StopAIAgentInstanceRequest
         @return: StopAIAgentInstanceResponse
@@ -28904,7 +31104,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.StopChannelResponse:
         """
-        @summary 停止频道
+        @summary Stops a MediaWeaver channel.
         
         @param request: StopChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28945,7 +31145,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.StopChannelResponse:
         """
-        @summary 停止频道
+        @summary Stops a MediaWeaver channel.
         
         @param request: StopChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28985,7 +31185,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.StopChannelRequest,
     ) -> ice20201109_models.StopChannelResponse:
         """
-        @summary 停止频道
+        @summary Stops a MediaWeaver channel.
         
         @param request: StopChannelRequest
         @return: StopChannelResponse
@@ -28998,13 +31198,141 @@ class Client(OpenApiClient):
         request: ice20201109_models.StopChannelRequest,
     ) -> ice20201109_models.StopChannelResponse:
         """
-        @summary 停止频道
+        @summary Stops a MediaWeaver channel.
         
         @param request: StopChannelRequest
         @return: StopChannelResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.stop_channel_with_options_async(request, runtime)
+
+    def stop_media_live_channel_with_options(
+        self,
+        request: ice20201109_models.StopMediaLiveChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.StopMediaLiveChannelResponse:
+        """
+        @summary Stops a MediaLive channel.
+        
+        @description
+        
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: StopMediaLiveChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopMediaLiveChannelResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.channel_id):
+            body['ChannelId'] = request.channel_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StopMediaLiveChannel',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.StopMediaLiveChannelResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.StopMediaLiveChannelResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def stop_media_live_channel_with_options_async(
+        self,
+        request: ice20201109_models.StopMediaLiveChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.StopMediaLiveChannelResponse:
+        """
+        @summary Stops a MediaLive channel.
+        
+        @description
+        
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: StopMediaLiveChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopMediaLiveChannelResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.channel_id):
+            body['ChannelId'] = request.channel_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StopMediaLiveChannel',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.StopMediaLiveChannelResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.StopMediaLiveChannelResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def stop_media_live_channel(
+        self,
+        request: ice20201109_models.StopMediaLiveChannelRequest,
+    ) -> ice20201109_models.StopMediaLiveChannelResponse:
+        """
+        @summary Stops a MediaLive channel.
+        
+        @description
+        
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: StopMediaLiveChannelRequest
+        @return: StopMediaLiveChannelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.stop_media_live_channel_with_options(request, runtime)
+
+    async def stop_media_live_channel_async(
+        self,
+        request: ice20201109_models.StopMediaLiveChannelRequest,
+    ) -> ice20201109_models.StopMediaLiveChannelResponse:
+        """
+        @summary Stops a MediaLive channel.
+        
+        @description
+        
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: StopMediaLiveChannelRequest
+        @return: StopMediaLiveChannelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_media_live_channel_with_options_async(request, runtime)
 
     def stop_rtc_robot_instance_with_options(
         self,
@@ -31816,7 +34144,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitMediaConvertJobResponse:
         """
-        @summary 提交媒体处理任务
+        @summary Submits a transcoding task.
         
         @param request: SubmitMediaConvertJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31863,7 +34191,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitMediaConvertJobResponse:
         """
-        @summary 提交媒体处理任务
+        @summary Submits a transcoding task.
         
         @param request: SubmitMediaConvertJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31909,7 +34237,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitMediaConvertJobRequest,
     ) -> ice20201109_models.SubmitMediaConvertJobResponse:
         """
-        @summary 提交媒体处理任务
+        @summary Submits a transcoding task.
         
         @param request: SubmitMediaConvertJobRequest
         @return: SubmitMediaConvertJobResponse
@@ -31922,7 +34250,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitMediaConvertJobRequest,
     ) -> ice20201109_models.SubmitMediaConvertJobResponse:
         """
-        @summary 提交媒体处理任务
+        @summary Submits a transcoding task.
         
         @param request: SubmitMediaConvertJobRequest
         @return: SubmitMediaConvertJobResponse
@@ -34212,7 +36540,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.TakeoverAIAgentCallResponse:
         """
-        @summary 切换真人客服接管模式
+        @summary Hands off a conversation to a human agent.
         
         @param request: TakeoverAIAgentCallRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34257,7 +36585,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.TakeoverAIAgentCallResponse:
         """
-        @summary 切换真人客服接管模式
+        @summary Hands off a conversation to a human agent.
         
         @param request: TakeoverAIAgentCallRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34301,7 +36629,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.TakeoverAIAgentCallRequest,
     ) -> ice20201109_models.TakeoverAIAgentCallResponse:
         """
-        @summary 切换真人客服接管模式
+        @summary Hands off a conversation to a human agent.
         
         @param request: TakeoverAIAgentCallRequest
         @return: TakeoverAIAgentCallResponse
@@ -34314,7 +36642,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.TakeoverAIAgentCallRequest,
     ) -> ice20201109_models.TakeoverAIAgentCallResponse:
         """
-        @summary 切换真人客服接管模式
+        @summary Hands off a conversation to a human agent.
         
         @param request: TakeoverAIAgentCallRequest
         @return: TakeoverAIAgentCallResponse
@@ -34328,7 +36656,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateAIAgentInstanceResponse:
         """
-        @summary 修改实例的配置
+        @summary Updates the configurations of an AI agent.
+        
+        @description ## [](#)Request description
+        You can call this operation to update the configurations of an AI agent, such as the tone, by specifying the agent ID and configurations.
         
         @param tmp_req: UpdateAIAgentInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34377,7 +36708,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateAIAgentInstanceResponse:
         """
-        @summary 修改实例的配置
+        @summary Updates the configurations of an AI agent.
+        
+        @description ## [](#)Request description
+        You can call this operation to update the configurations of an AI agent, such as the tone, by specifying the agent ID and configurations.
         
         @param tmp_req: UpdateAIAgentInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34425,7 +36759,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateAIAgentInstanceRequest,
     ) -> ice20201109_models.UpdateAIAgentInstanceResponse:
         """
-        @summary 修改实例的配置
+        @summary Updates the configurations of an AI agent.
+        
+        @description ## [](#)Request description
+        You can call this operation to update the configurations of an AI agent, such as the tone, by specifying the agent ID and configurations.
         
         @param request: UpdateAIAgentInstanceRequest
         @return: UpdateAIAgentInstanceResponse
@@ -34438,7 +36775,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateAIAgentInstanceRequest,
     ) -> ice20201109_models.UpdateAIAgentInstanceResponse:
         """
-        @summary 修改实例的配置
+        @summary Updates the configurations of an AI agent.
+        
+        @description ## [](#)Request description
+        You can call this operation to update the configurations of an AI agent, such as the tone, by specifying the agent ID and configurations.
         
         @param request: UpdateAIAgentInstanceRequest
         @return: UpdateAIAgentInstanceResponse
@@ -34452,7 +36792,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateAdInsertionResponse:
         """
-        @summary 更新广告插入配置
+        @summary Modifies an ad insertion configuration.
         
         @param request: UpdateAdInsertionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34509,7 +36849,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateAdInsertionResponse:
         """
-        @summary 更新广告插入配置
+        @summary Modifies an ad insertion configuration.
         
         @param request: UpdateAdInsertionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34565,7 +36905,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateAdInsertionRequest,
     ) -> ice20201109_models.UpdateAdInsertionResponse:
         """
-        @summary 更新广告插入配置
+        @summary Modifies an ad insertion configuration.
         
         @param request: UpdateAdInsertionRequest
         @return: UpdateAdInsertionResponse
@@ -34578,7 +36918,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateAdInsertionRequest,
     ) -> ice20201109_models.UpdateAdInsertionResponse:
         """
-        @summary 更新广告插入配置
+        @summary Modifies an ad insertion configuration.
         
         @param request: UpdateAdInsertionRequest
         @return: UpdateAdInsertionResponse
@@ -34844,7 +37184,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateChannelResponse:
         """
-        @summary 更新频道
+        @summary Modifies a MediaWeaver channel.
         
         @param request: UpdateChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34895,7 +37235,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateChannelResponse:
         """
-        @summary 更新频道
+        @summary Modifies a MediaWeaver channel.
         
         @param request: UpdateChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34945,7 +37285,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateChannelRequest,
     ) -> ice20201109_models.UpdateChannelResponse:
         """
-        @summary 更新频道
+        @summary Modifies a MediaWeaver channel.
         
         @param request: UpdateChannelRequest
         @return: UpdateChannelResponse
@@ -34958,7 +37298,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateChannelRequest,
     ) -> ice20201109_models.UpdateChannelResponse:
         """
-        @summary 更新频道
+        @summary Modifies a MediaWeaver channel.
         
         @param request: UpdateChannelRequest
         @return: UpdateChannelResponse
@@ -35340,7 +37680,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateLivePackageChannelResponse:
         """
-        @summary 更新实时打包频道
+        @summary Updates the configuration of a live package channel, including the protocol, segment duration, and number of segments.
+        
+        @description ## [](#)Usage notes
+        You need to provide the name of the channel group to which the channel belongs, channel name, protocol, segment duration, and number of segments to update. In addition, you can choose to add or modify the description of the channel. Make sure that the provided channel group name and channel name conform to the naming conventions.
         
         @param request: UpdateLivePackageChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35391,7 +37734,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateLivePackageChannelResponse:
         """
-        @summary 更新实时打包频道
+        @summary Updates the configuration of a live package channel, including the protocol, segment duration, and number of segments.
+        
+        @description ## [](#)Usage notes
+        You need to provide the name of the channel group to which the channel belongs, channel name, protocol, segment duration, and number of segments to update. In addition, you can choose to add or modify the description of the channel. Make sure that the provided channel group name and channel name conform to the naming conventions.
         
         @param request: UpdateLivePackageChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35441,7 +37787,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateLivePackageChannelRequest,
     ) -> ice20201109_models.UpdateLivePackageChannelResponse:
         """
-        @summary 更新实时打包频道
+        @summary Updates the configuration of a live package channel, including the protocol, segment duration, and number of segments.
+        
+        @description ## [](#)Usage notes
+        You need to provide the name of the channel group to which the channel belongs, channel name, protocol, segment duration, and number of segments to update. In addition, you can choose to add or modify the description of the channel. Make sure that the provided channel group name and channel name conform to the naming conventions.
         
         @param request: UpdateLivePackageChannelRequest
         @return: UpdateLivePackageChannelResponse
@@ -35454,7 +37803,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateLivePackageChannelRequest,
     ) -> ice20201109_models.UpdateLivePackageChannelResponse:
         """
-        @summary 更新实时打包频道
+        @summary Updates the configuration of a live package channel, including the protocol, segment duration, and number of segments.
+        
+        @description ## [](#)Usage notes
+        You need to provide the name of the channel group to which the channel belongs, channel name, protocol, segment duration, and number of segments to update. In addition, you can choose to add or modify the description of the channel. Make sure that the provided channel group name and channel name conform to the naming conventions.
         
         @param request: UpdateLivePackageChannelRequest
         @return: UpdateLivePackageChannelResponse
@@ -35468,7 +37820,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateLivePackageChannelCredentialsResponse:
         """
-        @summary 更新实时打包频道
+        @summary Updates the credentials of ingest endpoints associated with a live package channel.
+        
+        @description ## [](#)Usage notes
+        You can choose to update the primary endpoint, secondary endpoint, or both. The response includes the updated ingest endpoint URL, username, and password for the ingest device to reconfigure.
         
         @param request: UpdateLivePackageChannelCredentialsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35513,7 +37868,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateLivePackageChannelCredentialsResponse:
         """
-        @summary 更新实时打包频道
+        @summary Updates the credentials of ingest endpoints associated with a live package channel.
+        
+        @description ## [](#)Usage notes
+        You can choose to update the primary endpoint, secondary endpoint, or both. The response includes the updated ingest endpoint URL, username, and password for the ingest device to reconfigure.
         
         @param request: UpdateLivePackageChannelCredentialsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35557,7 +37915,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateLivePackageChannelCredentialsRequest,
     ) -> ice20201109_models.UpdateLivePackageChannelCredentialsResponse:
         """
-        @summary 更新实时打包频道
+        @summary Updates the credentials of ingest endpoints associated with a live package channel.
+        
+        @description ## [](#)Usage notes
+        You can choose to update the primary endpoint, secondary endpoint, or both. The response includes the updated ingest endpoint URL, username, and password for the ingest device to reconfigure.
         
         @param request: UpdateLivePackageChannelCredentialsRequest
         @return: UpdateLivePackageChannelCredentialsResponse
@@ -35570,7 +37931,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateLivePackageChannelCredentialsRequest,
     ) -> ice20201109_models.UpdateLivePackageChannelCredentialsResponse:
         """
-        @summary 更新实时打包频道
+        @summary Updates the credentials of ingest endpoints associated with a live package channel.
+        
+        @description ## [](#)Usage notes
+        You can choose to update the primary endpoint, secondary endpoint, or both. The response includes the updated ingest endpoint URL, username, and password for the ingest device to reconfigure.
         
         @param request: UpdateLivePackageChannelCredentialsRequest
         @return: UpdateLivePackageChannelCredentialsResponse
@@ -35584,7 +37948,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateLivePackageChannelGroupResponse:
         """
-        @summary 修改直播打包频道组
+        @summary Updates the information about a live package channel group including its description.
+        
+        @description ## [](#)Usage notes
+        This API operation allows you to modify the name and description of a live package channel group. The channel group name must conform to the naming conventions and can be up to 1,000 characters. The API response includes the updated channel group details and unique identifier of the request.
         
         @param request: UpdateLivePackageChannelGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35627,7 +37994,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateLivePackageChannelGroupResponse:
         """
-        @summary 修改直播打包频道组
+        @summary Updates the information about a live package channel group including its description.
+        
+        @description ## [](#)Usage notes
+        This API operation allows you to modify the name and description of a live package channel group. The channel group name must conform to the naming conventions and can be up to 1,000 characters. The API response includes the updated channel group details and unique identifier of the request.
         
         @param request: UpdateLivePackageChannelGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35669,7 +38039,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateLivePackageChannelGroupRequest,
     ) -> ice20201109_models.UpdateLivePackageChannelGroupResponse:
         """
-        @summary 修改直播打包频道组
+        @summary Updates the information about a live package channel group including its description.
+        
+        @description ## [](#)Usage notes
+        This API operation allows you to modify the name and description of a live package channel group. The channel group name must conform to the naming conventions and can be up to 1,000 characters. The API response includes the updated channel group details and unique identifier of the request.
         
         @param request: UpdateLivePackageChannelGroupRequest
         @return: UpdateLivePackageChannelGroupResponse
@@ -35682,7 +38055,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateLivePackageChannelGroupRequest,
     ) -> ice20201109_models.UpdateLivePackageChannelGroupResponse:
         """
-        @summary 修改直播打包频道组
+        @summary Updates the information about a live package channel group including its description.
+        
+        @description ## [](#)Usage notes
+        This API operation allows you to modify the name and description of a live package channel group. The channel group name must conform to the naming conventions and can be up to 1,000 characters. The API response includes the updated channel group details and unique identifier of the request.
         
         @param request: UpdateLivePackageChannelGroupRequest
         @return: UpdateLivePackageChannelGroupResponse
@@ -35696,7 +38072,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateLivePackageOriginEndpointResponse:
         """
-        @summary 修改实时打包源站端点
+        @summary Updates the origin endpoint settings including the protocol, time shifting, and access control settings.
+        
+        @description ## [](#)Usage notes
+        You can call this operation to modify the origin protocol, set the number of days that time-shifted content is available, define playlist names, and configure the IP address blacklist and whitelist, allowing for fine-grained control over streaming media distribution. Some parameters are required. You must configure IpWhitelist, AuthorizationCode, or both.
         
         @param request: UpdateLivePackageOriginEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35755,7 +38134,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateLivePackageOriginEndpointResponse:
         """
-        @summary 修改实时打包源站端点
+        @summary Updates the origin endpoint settings including the protocol, time shifting, and access control settings.
+        
+        @description ## [](#)Usage notes
+        You can call this operation to modify the origin protocol, set the number of days that time-shifted content is available, define playlist names, and configure the IP address blacklist and whitelist, allowing for fine-grained control over streaming media distribution. Some parameters are required. You must configure IpWhitelist, AuthorizationCode, or both.
         
         @param request: UpdateLivePackageOriginEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35813,7 +38195,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateLivePackageOriginEndpointRequest,
     ) -> ice20201109_models.UpdateLivePackageOriginEndpointResponse:
         """
-        @summary 修改实时打包源站端点
+        @summary Updates the origin endpoint settings including the protocol, time shifting, and access control settings.
+        
+        @description ## [](#)Usage notes
+        You can call this operation to modify the origin protocol, set the number of days that time-shifted content is available, define playlist names, and configure the IP address blacklist and whitelist, allowing for fine-grained control over streaming media distribution. Some parameters are required. You must configure IpWhitelist, AuthorizationCode, or both.
         
         @param request: UpdateLivePackageOriginEndpointRequest
         @return: UpdateLivePackageOriginEndpointResponse
@@ -35826,7 +38211,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateLivePackageOriginEndpointRequest,
     ) -> ice20201109_models.UpdateLivePackageOriginEndpointResponse:
         """
-        @summary 修改实时打包源站端点
+        @summary Updates the origin endpoint settings including the protocol, time shifting, and access control settings.
+        
+        @description ## [](#)Usage notes
+        You can call this operation to modify the origin protocol, set the number of days that time-shifted content is available, define playlist names, and configure the IP address blacklist and whitelist, allowing for fine-grained control over streaming media distribution. Some parameters are required. You must configure IpWhitelist, AuthorizationCode, or both.
         
         @param request: UpdateLivePackageOriginEndpointRequest
         @return: UpdateLivePackageOriginEndpointResponse
@@ -36372,10 +38760,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateMediaConnectFlowInputResponse:
         """
-        @summary Modify the input information of a specific MediaConnect flow
+        @summary Modifies the source of a MediaConnect flow.
         
-        @description - The input can only be modified when the Flow instance status is offline.
-        - The input type cannot be modified.
+        @description    You can modify the source only when the flow is in the offline state.
+        The source type cannot be modified.
         
         @param request: UpdateMediaConnectFlowInputRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -36428,10 +38816,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateMediaConnectFlowInputResponse:
         """
-        @summary Modify the input information of a specific MediaConnect flow
+        @summary Modifies the source of a MediaConnect flow.
         
-        @description - The input can only be modified when the Flow instance status is offline.
-        - The input type cannot be modified.
+        @description    You can modify the source only when the flow is in the offline state.
+        The source type cannot be modified.
         
         @param request: UpdateMediaConnectFlowInputRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -36483,10 +38871,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateMediaConnectFlowInputRequest,
     ) -> ice20201109_models.UpdateMediaConnectFlowInputResponse:
         """
-        @summary Modify the input information of a specific MediaConnect flow
+        @summary Modifies the source of a MediaConnect flow.
         
-        @description - The input can only be modified when the Flow instance status is offline.
-        - The input type cannot be modified.
+        @description    You can modify the source only when the flow is in the offline state.
+        The source type cannot be modified.
         
         @param request: UpdateMediaConnectFlowInputRequest
         @return: UpdateMediaConnectFlowInputResponse
@@ -36499,10 +38887,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateMediaConnectFlowInputRequest,
     ) -> ice20201109_models.UpdateMediaConnectFlowInputResponse:
         """
-        @summary Modify the input information of a specific MediaConnect flow
+        @summary Modifies the source of a MediaConnect flow.
         
-        @description - The input can only be modified when the Flow instance status is offline.
-        - The input type cannot be modified.
+        @description    You can modify the source only when the flow is in the offline state.
+        The source type cannot be modified.
         
         @param request: UpdateMediaConnectFlowInputRequest
         @return: UpdateMediaConnectFlowInputResponse
@@ -36516,10 +38904,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateMediaConnectFlowOutputResponse:
         """
-        @summary Modify information of a specific output in MediaConnect
+        @summary Modifies an output of a MediaConnect flow.
         
-        @description - The output can only be modified when the Flow instance status is offline.
-        - The output type cannot be modified.
+        @description    You can modify an output only when the flow is in the offline state.
+        The output type cannot be modified.
         
         @param request: UpdateMediaConnectFlowOutputRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -36574,10 +38962,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateMediaConnectFlowOutputResponse:
         """
-        @summary Modify information of a specific output in MediaConnect
+        @summary Modifies an output of a MediaConnect flow.
         
-        @description - The output can only be modified when the Flow instance status is offline.
-        - The output type cannot be modified.
+        @description    You can modify an output only when the flow is in the offline state.
+        The output type cannot be modified.
         
         @param request: UpdateMediaConnectFlowOutputRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -36631,10 +39019,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateMediaConnectFlowOutputRequest,
     ) -> ice20201109_models.UpdateMediaConnectFlowOutputResponse:
         """
-        @summary Modify information of a specific output in MediaConnect
+        @summary Modifies an output of a MediaConnect flow.
         
-        @description - The output can only be modified when the Flow instance status is offline.
-        - The output type cannot be modified.
+        @description    You can modify an output only when the flow is in the offline state.
+        The output type cannot be modified.
         
         @param request: UpdateMediaConnectFlowOutputRequest
         @return: UpdateMediaConnectFlowOutputResponse
@@ -36647,10 +39035,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateMediaConnectFlowOutputRequest,
     ) -> ice20201109_models.UpdateMediaConnectFlowOutputResponse:
         """
-        @summary Modify information of a specific output in MediaConnect
+        @summary Modifies an output of a MediaConnect flow.
         
-        @description - The output can only be modified when the Flow instance status is offline.
-        - The output type cannot be modified.
+        @description    You can modify an output only when the flow is in the offline state.
+        The output type cannot be modified.
         
         @param request: UpdateMediaConnectFlowOutputRequest
         @return: UpdateMediaConnectFlowOutputResponse
@@ -36664,7 +39052,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateMediaConnectFlowStatusResponse:
         """
-        @summary Modify MediaConnect Instance Status
+        @summary Modifies the state of a MediaConnect flow.
         
         @param request: UpdateMediaConnectFlowStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -36707,7 +39095,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateMediaConnectFlowStatusResponse:
         """
-        @summary Modify MediaConnect Instance Status
+        @summary Modifies the state of a MediaConnect flow.
         
         @param request: UpdateMediaConnectFlowStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -36749,7 +39137,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateMediaConnectFlowStatusRequest,
     ) -> ice20201109_models.UpdateMediaConnectFlowStatusResponse:
         """
-        @summary Modify MediaConnect Instance Status
+        @summary Modifies the state of a MediaConnect flow.
         
         @param request: UpdateMediaConnectFlowStatusRequest
         @return: UpdateMediaConnectFlowStatusResponse
@@ -36762,7 +39150,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateMediaConnectFlowStatusRequest,
     ) -> ice20201109_models.UpdateMediaConnectFlowStatusResponse:
         """
-        @summary Modify MediaConnect Instance Status
+        @summary Modifies the state of a MediaConnect flow.
         
         @param request: UpdateMediaConnectFlowStatusRequest
         @return: UpdateMediaConnectFlowStatusResponse
@@ -36929,6 +39317,474 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_media_info_with_options_async(request, runtime)
+
+    def update_media_live_channel_with_options(
+        self,
+        tmp_req: ice20201109_models.UpdateMediaLiveChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.UpdateMediaLiveChannelResponse:
+        """
+        @summary Modifies a MediaLive channel.
+        
+        @description
+        You can modify a MediaLive channel only when it is not running.
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param tmp_req: UpdateMediaLiveChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMediaLiveChannelResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.UpdateMediaLiveChannelShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.audio_settings):
+            request.audio_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.audio_settings, 'AudioSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.input_attachments):
+            request.input_attachments_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_attachments, 'InputAttachments', 'json')
+        if not UtilClient.is_unset(tmp_req.output_groups):
+            request.output_groups_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.output_groups, 'OutputGroups', 'json')
+        if not UtilClient.is_unset(tmp_req.video_settings):
+            request.video_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_settings, 'VideoSettings', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.audio_settings_shrink):
+            body['AudioSettings'] = request.audio_settings_shrink
+        if not UtilClient.is_unset(request.channel_id):
+            body['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.input_attachments_shrink):
+            body['InputAttachments'] = request.input_attachments_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.output_groups_shrink):
+            body['OutputGroups'] = request.output_groups_shrink
+        if not UtilClient.is_unset(request.video_settings_shrink):
+            body['VideoSettings'] = request.video_settings_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateMediaLiveChannel',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.UpdateMediaLiveChannelResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.UpdateMediaLiveChannelResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_media_live_channel_with_options_async(
+        self,
+        tmp_req: ice20201109_models.UpdateMediaLiveChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.UpdateMediaLiveChannelResponse:
+        """
+        @summary Modifies a MediaLive channel.
+        
+        @description
+        You can modify a MediaLive channel only when it is not running.
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param tmp_req: UpdateMediaLiveChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMediaLiveChannelResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.UpdateMediaLiveChannelShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.audio_settings):
+            request.audio_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.audio_settings, 'AudioSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.input_attachments):
+            request.input_attachments_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_attachments, 'InputAttachments', 'json')
+        if not UtilClient.is_unset(tmp_req.output_groups):
+            request.output_groups_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.output_groups, 'OutputGroups', 'json')
+        if not UtilClient.is_unset(tmp_req.video_settings):
+            request.video_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_settings, 'VideoSettings', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.audio_settings_shrink):
+            body['AudioSettings'] = request.audio_settings_shrink
+        if not UtilClient.is_unset(request.channel_id):
+            body['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.input_attachments_shrink):
+            body['InputAttachments'] = request.input_attachments_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.output_groups_shrink):
+            body['OutputGroups'] = request.output_groups_shrink
+        if not UtilClient.is_unset(request.video_settings_shrink):
+            body['VideoSettings'] = request.video_settings_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateMediaLiveChannel',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.UpdateMediaLiveChannelResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.UpdateMediaLiveChannelResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_media_live_channel(
+        self,
+        request: ice20201109_models.UpdateMediaLiveChannelRequest,
+    ) -> ice20201109_models.UpdateMediaLiveChannelResponse:
+        """
+        @summary Modifies a MediaLive channel.
+        
+        @description
+        You can modify a MediaLive channel only when it is not running.
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: UpdateMediaLiveChannelRequest
+        @return: UpdateMediaLiveChannelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_media_live_channel_with_options(request, runtime)
+
+    async def update_media_live_channel_async(
+        self,
+        request: ice20201109_models.UpdateMediaLiveChannelRequest,
+    ) -> ice20201109_models.UpdateMediaLiveChannelResponse:
+        """
+        @summary Modifies a MediaLive channel.
+        
+        @description
+        You can modify a MediaLive channel only when it is not running.
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: UpdateMediaLiveChannelRequest
+        @return: UpdateMediaLiveChannelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_media_live_channel_with_options_async(request, runtime)
+
+    def update_media_live_input_with_options(
+        self,
+        tmp_req: ice20201109_models.UpdateMediaLiveInputRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.UpdateMediaLiveInputResponse:
+        """
+        @summary Modifies an input of MediaLive.
+        
+        @description
+        You can modify an input only when it is not associated with a MediaLive channel.
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param tmp_req: UpdateMediaLiveInputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMediaLiveInputResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.UpdateMediaLiveInputShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.input_settings):
+            request.input_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_settings, 'InputSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.security_group_ids):
+            request.security_group_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.security_group_ids, 'SecurityGroupIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.input_settings_shrink):
+            query['InputSettings'] = request.input_settings_shrink
+        if not UtilClient.is_unset(request.security_group_ids_shrink):
+            query['SecurityGroupIds'] = request.security_group_ids_shrink
+        body = {}
+        if not UtilClient.is_unset(request.input_id):
+            body['InputId'] = request.input_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateMediaLiveInput',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.UpdateMediaLiveInputResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.UpdateMediaLiveInputResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_media_live_input_with_options_async(
+        self,
+        tmp_req: ice20201109_models.UpdateMediaLiveInputRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.UpdateMediaLiveInputResponse:
+        """
+        @summary Modifies an input of MediaLive.
+        
+        @description
+        You can modify an input only when it is not associated with a MediaLive channel.
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param tmp_req: UpdateMediaLiveInputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMediaLiveInputResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.UpdateMediaLiveInputShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.input_settings):
+            request.input_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_settings, 'InputSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.security_group_ids):
+            request.security_group_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.security_group_ids, 'SecurityGroupIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.input_settings_shrink):
+            query['InputSettings'] = request.input_settings_shrink
+        if not UtilClient.is_unset(request.security_group_ids_shrink):
+            query['SecurityGroupIds'] = request.security_group_ids_shrink
+        body = {}
+        if not UtilClient.is_unset(request.input_id):
+            body['InputId'] = request.input_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateMediaLiveInput',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.UpdateMediaLiveInputResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.UpdateMediaLiveInputResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_media_live_input(
+        self,
+        request: ice20201109_models.UpdateMediaLiveInputRequest,
+    ) -> ice20201109_models.UpdateMediaLiveInputResponse:
+        """
+        @summary Modifies an input of MediaLive.
+        
+        @description
+        You can modify an input only when it is not associated with a MediaLive channel.
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: UpdateMediaLiveInputRequest
+        @return: UpdateMediaLiveInputResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_media_live_input_with_options(request, runtime)
+
+    async def update_media_live_input_async(
+        self,
+        request: ice20201109_models.UpdateMediaLiveInputRequest,
+    ) -> ice20201109_models.UpdateMediaLiveInputResponse:
+        """
+        @summary Modifies an input of MediaLive.
+        
+        @description
+        You can modify an input only when it is not associated with a MediaLive channel.
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: UpdateMediaLiveInputRequest
+        @return: UpdateMediaLiveInputResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_media_live_input_with_options_async(request, runtime)
+
+    def update_media_live_input_security_group_with_options(
+        self,
+        tmp_req: ice20201109_models.UpdateMediaLiveInputSecurityGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.UpdateMediaLiveInputSecurityGroupResponse:
+        """
+        @summary Modifies a security group created in MediaLive.
+        
+        @description
+        You can modify a security group only when it is not associated with a MediaLive input.
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param tmp_req: UpdateMediaLiveInputSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMediaLiveInputSecurityGroupResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.UpdateMediaLiveInputSecurityGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.whitelist_rules):
+            request.whitelist_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.whitelist_rules, 'WhitelistRules', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.security_group_id):
+            body['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.whitelist_rules_shrink):
+            body['WhitelistRules'] = request.whitelist_rules_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateMediaLiveInputSecurityGroup',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.UpdateMediaLiveInputSecurityGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.UpdateMediaLiveInputSecurityGroupResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_media_live_input_security_group_with_options_async(
+        self,
+        tmp_req: ice20201109_models.UpdateMediaLiveInputSecurityGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.UpdateMediaLiveInputSecurityGroupResponse:
+        """
+        @summary Modifies a security group created in MediaLive.
+        
+        @description
+        You can modify a security group only when it is not associated with a MediaLive input.
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param tmp_req: UpdateMediaLiveInputSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMediaLiveInputSecurityGroupResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.UpdateMediaLiveInputSecurityGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.whitelist_rules):
+            request.whitelist_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.whitelist_rules, 'WhitelistRules', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.security_group_id):
+            body['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.whitelist_rules_shrink):
+            body['WhitelistRules'] = request.whitelist_rules_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateMediaLiveInputSecurityGroup',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.UpdateMediaLiveInputSecurityGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.UpdateMediaLiveInputSecurityGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_media_live_input_security_group(
+        self,
+        request: ice20201109_models.UpdateMediaLiveInputSecurityGroupRequest,
+    ) -> ice20201109_models.UpdateMediaLiveInputSecurityGroupResponse:
+        """
+        @summary Modifies a security group created in MediaLive.
+        
+        @description
+        You can modify a security group only when it is not associated with a MediaLive input.
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: UpdateMediaLiveInputSecurityGroupRequest
+        @return: UpdateMediaLiveInputSecurityGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_media_live_input_security_group_with_options(request, runtime)
+
+    async def update_media_live_input_security_group_async(
+        self,
+        request: ice20201109_models.UpdateMediaLiveInputSecurityGroupRequest,
+    ) -> ice20201109_models.UpdateMediaLiveInputSecurityGroupResponse:
+        """
+        @summary Modifies a security group created in MediaLive.
+        
+        @description
+        You can modify a security group only when it is not associated with a MediaLive input.
+        ## [](#qps-)QPS limit
+        This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: UpdateMediaLiveInputSecurityGroupRequest
+        @return: UpdateMediaLiveInputSecurityGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_media_live_input_security_group_with_options_async(request, runtime)
 
     def update_media_marks_with_options(
         self,
@@ -37284,7 +40140,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateProgramResponse:
         """
-        @summary 更新节目
+        @summary Modifies a program in a MediaWeaver channel.
         
         @param request: UpdateProgramRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -37339,7 +40195,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateProgramResponse:
         """
-        @summary 更新节目
+        @summary Modifies a program in a MediaWeaver channel.
         
         @param request: UpdateProgramRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -37393,7 +40249,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateProgramRequest,
     ) -> ice20201109_models.UpdateProgramResponse:
         """
-        @summary 更新节目
+        @summary Modifies a program in a MediaWeaver channel.
         
         @param request: UpdateProgramRequest
         @return: UpdateProgramResponse
@@ -37406,7 +40262,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateProgramRequest,
     ) -> ice20201109_models.UpdateProgramResponse:
         """
-        @summary 更新节目
+        @summary Modifies a program in a MediaWeaver channel.
         
         @param request: UpdateProgramRequest
         @return: UpdateProgramResponse
@@ -37540,7 +40396,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateSourceResponse:
         """
-        @summary 更新源
+        @summary Modifies a source in MediaWeaver.
         
         @param request: UpdateSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -37587,7 +40443,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateSourceResponse:
         """
-        @summary 更新源
+        @summary Modifies a source in MediaWeaver.
         
         @param request: UpdateSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -37633,7 +40489,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateSourceRequest,
     ) -> ice20201109_models.UpdateSourceResponse:
         """
-        @summary 更新源
+        @summary Modifies a source in MediaWeaver.
         
         @param request: UpdateSourceRequest
         @return: UpdateSourceResponse
@@ -37646,7 +40502,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateSourceRequest,
     ) -> ice20201109_models.UpdateSourceResponse:
         """
-        @summary 更新源
+        @summary Modifies a source in MediaWeaver.
         
         @param request: UpdateSourceRequest
         @return: UpdateSourceResponse
@@ -37660,7 +40516,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateSourceLocationResponse:
         """
-        @summary 更新源位置
+        @summary Modifies a source location.
         
         @param request: UpdateSourceLocationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -37707,7 +40563,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateSourceLocationResponse:
         """
-        @summary 更新源位置
+        @summary Modifies a source location.
         
         @param request: UpdateSourceLocationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -37753,7 +40609,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateSourceLocationRequest,
     ) -> ice20201109_models.UpdateSourceLocationResponse:
         """
-        @summary 更新源位置
+        @summary Modifies a source location.
         
         @param request: UpdateSourceLocationRequest
         @return: UpdateSourceLocationResponse
@@ -37766,7 +40622,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateSourceLocationRequest,
     ) -> ice20201109_models.UpdateSourceLocationResponse:
         """
-        @summary 更新源位置
+        @summary Modifies a source location.
         
         @param request: UpdateSourceLocationRequest
         @return: UpdateSourceLocationResponse

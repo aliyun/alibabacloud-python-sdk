@@ -1,3 +1,29 @@
+2025-03-07 Version: 4.1.0
+- Support API CreateMediaLiveChannel.
+- Support API CreateMediaLiveInput.
+- Support API CreateMediaLiveInputSecurityGroup.
+- Support API DeleteMediaLiveChannel.
+- Support API DeleteMediaLiveInput.
+- Support API DeleteMediaLiveInputSecurityGroup.
+- Support API GetMediaLiveChannel.
+- Support API GetMediaLiveInput.
+- Support API GetMediaLiveInputSecurityGroup.
+- Support API ListMediaLiveChannels.
+- Support API ListMediaLiveInputSecurityGroups.
+- Support API ListMediaLiveInputs.
+- Support API SendMessageChatText.
+- Support API StartMediaLiveChannel.
+- Support API StopMediaLiveChannel.
+- Support API UpdateMediaLiveChannel.
+- Support API UpdateMediaLiveInput.
+- Support API UpdateMediaLiveInputSecurityGroup.
+- Update API GenerateAIAgentCall: add param ChatSyncConfig.
+- Update API GenerateAIAgentCall: update param SessionId.
+- Update API ListAIAgentDialogues: update response param.
+- Update API StartAIAgentInstance: add param ChatSyncConfig.
+- Update API StartAIAgentInstance: update param SessionId.
+
+
 2025-02-14 Version: 4.0.0
 - Support API AddAdInsertion.
 - Support API AddMediaConnectFlowInput.

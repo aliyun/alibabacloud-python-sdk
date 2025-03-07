@@ -213,12 +213,15 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
         enable_voice_interrupt: bool = None,
         graceful_shutdown: bool = None,
         greeting: str = None,
+        interrupt_words: List[str] = None,
         llm_history: List[AIAgentTemplateConfigAvatarChat3DLlmHistory] = None,
         llm_history_limit: int = None,
+        llm_system_prompt: str = None,
         max_idle_time: int = None,
         use_voiceprint: bool = None,
         user_offline_timeout: int = None,
         user_online_timeout: int = None,
+        vad_level: int = None,
         voice_id: str = None,
         voice_id_list: List[str] = None,
         voiceprint_id: str = None,
@@ -235,12 +238,15 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
         self.enable_voice_interrupt = enable_voice_interrupt
         self.graceful_shutdown = graceful_shutdown
         self.greeting = greeting
+        self.interrupt_words = interrupt_words
         self.llm_history = llm_history
         self.llm_history_limit = llm_history_limit
+        self.llm_system_prompt = llm_system_prompt
         self.max_idle_time = max_idle_time
         self.use_voiceprint = use_voiceprint
         self.user_offline_timeout = user_offline_timeout
         self.user_online_timeout = user_online_timeout
+        self.vad_level = vad_level
         self.voice_id = voice_id
         self.voice_id_list = voice_id_list
         self.voiceprint_id = voiceprint_id
@@ -278,12 +284,16 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
             result['GracefulShutdown'] = self.graceful_shutdown
         if self.greeting is not None:
             result['Greeting'] = self.greeting
+        if self.interrupt_words is not None:
+            result['InterruptWords'] = self.interrupt_words
         result['LlmHistory'] = []
         if self.llm_history is not None:
             for k in self.llm_history:
                 result['LlmHistory'].append(k.to_map() if k else None)
         if self.llm_history_limit is not None:
             result['LlmHistoryLimit'] = self.llm_history_limit
+        if self.llm_system_prompt is not None:
+            result['LlmSystemPrompt'] = self.llm_system_prompt
         if self.max_idle_time is not None:
             result['MaxIdleTime'] = self.max_idle_time
         if self.use_voiceprint is not None:
@@ -292,6 +302,8 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
             result['UserOfflineTimeout'] = self.user_offline_timeout
         if self.user_online_timeout is not None:
             result['UserOnlineTimeout'] = self.user_online_timeout
+        if self.vad_level is not None:
+            result['VadLevel'] = self.vad_level
         if self.voice_id is not None:
             result['VoiceId'] = self.voice_id
         if self.voice_id_list is not None:
@@ -326,6 +338,8 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
             self.graceful_shutdown = m.get('GracefulShutdown')
         if m.get('Greeting') is not None:
             self.greeting = m.get('Greeting')
+        if m.get('InterruptWords') is not None:
+            self.interrupt_words = m.get('InterruptWords')
         self.llm_history = []
         if m.get('LlmHistory') is not None:
             for k in m.get('LlmHistory'):
@@ -333,6 +347,8 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
                 self.llm_history.append(temp_model.from_map(k))
         if m.get('LlmHistoryLimit') is not None:
             self.llm_history_limit = m.get('LlmHistoryLimit')
+        if m.get('LlmSystemPrompt') is not None:
+            self.llm_system_prompt = m.get('LlmSystemPrompt')
         if m.get('MaxIdleTime') is not None:
             self.max_idle_time = m.get('MaxIdleTime')
         if m.get('UseVoiceprint') is not None:
@@ -341,6 +357,8 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
             self.user_offline_timeout = m.get('UserOfflineTimeout')
         if m.get('UserOnlineTimeout') is not None:
             self.user_online_timeout = m.get('UserOnlineTimeout')
+        if m.get('VadLevel') is not None:
+            self.vad_level = m.get('VadLevel')
         if m.get('VoiceId') is not None:
             self.voice_id = m.get('VoiceId')
         if m.get('VoiceIdList') is not None:
@@ -400,12 +418,15 @@ class AIAgentTemplateConfigVisionChat(TeaModel):
         enable_voice_interrupt: bool = None,
         graceful_shutdown: bool = None,
         greeting: str = None,
+        interrupt_words: List[str] = None,
         llm_history: List[AIAgentTemplateConfigVisionChatLlmHistory] = None,
         llm_history_limit: int = None,
+        llm_system_prompt: str = None,
         max_idle_time: int = None,
         use_voiceprint: bool = None,
         user_offline_timeout: int = None,
         user_online_timeout: int = None,
+        vad_level: int = None,
         voice_id: str = None,
         voice_id_list: List[str] = None,
         voiceprint_id: str = None,
@@ -421,12 +442,15 @@ class AIAgentTemplateConfigVisionChat(TeaModel):
         self.enable_voice_interrupt = enable_voice_interrupt
         self.graceful_shutdown = graceful_shutdown
         self.greeting = greeting
+        self.interrupt_words = interrupt_words
         self.llm_history = llm_history
         self.llm_history_limit = llm_history_limit
+        self.llm_system_prompt = llm_system_prompt
         self.max_idle_time = max_idle_time
         self.use_voiceprint = use_voiceprint
         self.user_offline_timeout = user_offline_timeout
         self.user_online_timeout = user_online_timeout
+        self.vad_level = vad_level
         self.voice_id = voice_id
         self.voice_id_list = voice_id_list
         self.voiceprint_id = voiceprint_id
@@ -462,12 +486,16 @@ class AIAgentTemplateConfigVisionChat(TeaModel):
             result['GracefulShutdown'] = self.graceful_shutdown
         if self.greeting is not None:
             result['Greeting'] = self.greeting
+        if self.interrupt_words is not None:
+            result['InterruptWords'] = self.interrupt_words
         result['LlmHistory'] = []
         if self.llm_history is not None:
             for k in self.llm_history:
                 result['LlmHistory'].append(k.to_map() if k else None)
         if self.llm_history_limit is not None:
             result['LlmHistoryLimit'] = self.llm_history_limit
+        if self.llm_system_prompt is not None:
+            result['LlmSystemPrompt'] = self.llm_system_prompt
         if self.max_idle_time is not None:
             result['MaxIdleTime'] = self.max_idle_time
         if self.use_voiceprint is not None:
@@ -476,6 +504,8 @@ class AIAgentTemplateConfigVisionChat(TeaModel):
             result['UserOfflineTimeout'] = self.user_offline_timeout
         if self.user_online_timeout is not None:
             result['UserOnlineTimeout'] = self.user_online_timeout
+        if self.vad_level is not None:
+            result['VadLevel'] = self.vad_level
         if self.voice_id is not None:
             result['VoiceId'] = self.voice_id
         if self.voice_id_list is not None:
@@ -508,6 +538,8 @@ class AIAgentTemplateConfigVisionChat(TeaModel):
             self.graceful_shutdown = m.get('GracefulShutdown')
         if m.get('Greeting') is not None:
             self.greeting = m.get('Greeting')
+        if m.get('InterruptWords') is not None:
+            self.interrupt_words = m.get('InterruptWords')
         self.llm_history = []
         if m.get('LlmHistory') is not None:
             for k in m.get('LlmHistory'):
@@ -515,6 +547,8 @@ class AIAgentTemplateConfigVisionChat(TeaModel):
                 self.llm_history.append(temp_model.from_map(k))
         if m.get('LlmHistoryLimit') is not None:
             self.llm_history_limit = m.get('LlmHistoryLimit')
+        if m.get('LlmSystemPrompt') is not None:
+            self.llm_system_prompt = m.get('LlmSystemPrompt')
         if m.get('MaxIdleTime') is not None:
             self.max_idle_time = m.get('MaxIdleTime')
         if m.get('UseVoiceprint') is not None:
@@ -523,6 +557,8 @@ class AIAgentTemplateConfigVisionChat(TeaModel):
             self.user_offline_timeout = m.get('UserOfflineTimeout')
         if m.get('UserOnlineTimeout') is not None:
             self.user_online_timeout = m.get('UserOnlineTimeout')
+        if m.get('VadLevel') is not None:
+            self.vad_level = m.get('VadLevel')
         if m.get('VoiceId') is not None:
             self.voice_id = m.get('VoiceId')
         if m.get('VoiceIdList') is not None:
@@ -584,12 +620,15 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
         enable_voice_interrupt: bool = None,
         graceful_shutdown: bool = None,
         greeting: str = None,
+        interrupt_words: List[str] = None,
         llm_history: List[AIAgentTemplateConfigVoiceChatLlmHistory] = None,
         llm_history_limit: int = None,
+        llm_system_prompt: str = None,
         max_idle_time: int = None,
         use_voiceprint: bool = None,
         user_offline_timeout: int = None,
         user_online_timeout: int = None,
+        vad_level: int = None,
         voice_id: str = None,
         voice_id_list: List[str] = None,
         voiceprint_id: str = None,
@@ -607,12 +646,15 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
         self.enable_voice_interrupt = enable_voice_interrupt
         self.graceful_shutdown = graceful_shutdown
         self.greeting = greeting
+        self.interrupt_words = interrupt_words
         self.llm_history = llm_history
         self.llm_history_limit = llm_history_limit
+        self.llm_system_prompt = llm_system_prompt
         self.max_idle_time = max_idle_time
         self.use_voiceprint = use_voiceprint
         self.user_offline_timeout = user_offline_timeout
         self.user_online_timeout = user_online_timeout
+        self.vad_level = vad_level
         self.voice_id = voice_id
         self.voice_id_list = voice_id_list
         self.voiceprint_id = voiceprint_id
@@ -652,12 +694,16 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
             result['GracefulShutdown'] = self.graceful_shutdown
         if self.greeting is not None:
             result['Greeting'] = self.greeting
+        if self.interrupt_words is not None:
+            result['InterruptWords'] = self.interrupt_words
         result['LlmHistory'] = []
         if self.llm_history is not None:
             for k in self.llm_history:
                 result['LlmHistory'].append(k.to_map() if k else None)
         if self.llm_history_limit is not None:
             result['LlmHistoryLimit'] = self.llm_history_limit
+        if self.llm_system_prompt is not None:
+            result['LlmSystemPrompt'] = self.llm_system_prompt
         if self.max_idle_time is not None:
             result['MaxIdleTime'] = self.max_idle_time
         if self.use_voiceprint is not None:
@@ -666,6 +712,8 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
             result['UserOfflineTimeout'] = self.user_offline_timeout
         if self.user_online_timeout is not None:
             result['UserOnlineTimeout'] = self.user_online_timeout
+        if self.vad_level is not None:
+            result['VadLevel'] = self.vad_level
         if self.voice_id is not None:
             result['VoiceId'] = self.voice_id
         if self.voice_id_list is not None:
@@ -702,6 +750,8 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
             self.graceful_shutdown = m.get('GracefulShutdown')
         if m.get('Greeting') is not None:
             self.greeting = m.get('Greeting')
+        if m.get('InterruptWords') is not None:
+            self.interrupt_words = m.get('InterruptWords')
         self.llm_history = []
         if m.get('LlmHistory') is not None:
             for k in m.get('LlmHistory'):
@@ -709,6 +759,8 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
                 self.llm_history.append(temp_model.from_map(k))
         if m.get('LlmHistoryLimit') is not None:
             self.llm_history_limit = m.get('LlmHistoryLimit')
+        if m.get('LlmSystemPrompt') is not None:
+            self.llm_system_prompt = m.get('LlmSystemPrompt')
         if m.get('MaxIdleTime') is not None:
             self.max_idle_time = m.get('MaxIdleTime')
         if m.get('UseVoiceprint') is not None:
@@ -717,6 +769,8 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
             self.user_offline_timeout = m.get('UserOfflineTimeout')
         if m.get('UserOnlineTimeout') is not None:
             self.user_online_timeout = m.get('UserOnlineTimeout')
+        if m.get('VadLevel') is not None:
+            self.vad_level = m.get('VadLevel')
         if m.get('VoiceId') is not None:
             self.voice_id = m.get('VoiceId')
         if m.get('VoiceIdList') is not None:
@@ -3350,30 +3404,36 @@ class AddAdInsertionRequest(TeaModel):
         personalization_threshold: int = None,
         slate_ad_url: str = None,
     ):
-        # 内容URL前缀
+        # Specifies whether to enable ad marker passthrough. Default value: OFF.
+        # 
+        # Valid values:
+        # 
+        # *   OFF: Disable.
+        # *   ON: Enable.
         self.ad_marker_passthrough = ad_marker_passthrough
-        # 广告策略服务器URL
+        # The request URL of the ad decision server (ADS). HTTP and HTTPS are supported. The maximum length is 2,048 characters.
         # 
         # This parameter is required.
         self.ads_url = ads_url
-        # 广告分片的CDN前缀
+        # The CDN prefix for ad segments. HTTP and HTTPS are supported. The maximum length is 512 characters.
         self.cdn_ad_segment_url_prefix = cdn_ad_segment_url_prefix
-        # 视频内容分片的CDN前缀
+        # The CDN prefix for content segments. HTTP and HTTPS are supported. The maximum length is 512 characters.
         self.cdn_content_segment_url_prefix = cdn_content_segment_url_prefix
+        # The idempotency key that is used to avoid repeated submission. The value can be up to 200 characters in length.
         self.client_token = client_token
-        # 动态配置别名
+        # A JSON string that specifies the player parameter variables and aliases. You can add up to 20 player_params.{name} entries. The name field can be up to 150 characters in length. Each player parameter can include up to 50 key-value pairs. A key can be up to 150 characters long, and a value can be up to 500 characters. Example: { "player_params.{name}": { "{key}": "{value}" } }
         self.config_aliases = config_aliases
-        # 内容URL前缀
+        # The URL prefix for the source content. HTTP and HTTPS are supported. The maximum length is 512 characters.
         # 
         # This parameter is required.
         self.content_url_prefix = content_url_prefix
-        # 代表资源一级ID的资源属性字段
+        # The name of the configuration. The name must be unique and can be up to 128 characters in length. Letters, digits, underscores (_), and hyphens (-) are supported.
         # 
         # This parameter is required.
         self.name = name
-        # 个性化配置阈值
+        # Specifies the maximum duration of underfilled time allowed in an ad break. Unit: seconds. Default value: 8 seconds.
         self.personalization_threshold = personalization_threshold
-        # slate广告URL
+        # The HTTP or HTTPS URL of the slate ad. Only MP4 format is supported. The maximum length is 2,048 characters.
         self.slate_ad_url = slate_ad_url
 
     def validate(self):
@@ -3438,9 +3498,9 @@ class AddAdInsertionResponseBodyConfigCdnConfig(TeaModel):
         ad_segment_url_prefix: str = None,
         content_segment_url_prefix: str = None,
     ):
-        # 广告分片的CDN前缀
+        # The CDN prefix for ad segments.
         self.ad_segment_url_prefix = ad_segment_url_prefix
-        # 视频内容分片的CDN前缀
+        # The CDN prefix for content segments.
         self.content_segment_url_prefix = content_segment_url_prefix
 
     def validate(self):
@@ -3472,7 +3532,7 @@ class AddAdInsertionResponseBodyConfigManifestEndpointConfig(TeaModel):
         self,
         hls_prefix: str = None,
     ):
-        # HLS清单播放端点前缀
+        # The prefix of the playback endpoint for HLS manifests.
         self.hls_prefix = hls_prefix
 
     def validate(self):
@@ -3510,27 +3570,27 @@ class AddAdInsertionResponseBodyConfig(TeaModel):
         personalization_threshold: int = None,
         slate_ad_url: str = None,
     ):
-        # 广告标记透传
+        # Indicates whether ad marker passthrough is enabled.
         self.ad_marker_passthrough = ad_marker_passthrough
-        # 广告策略服务器URL
+        # The request URL of ADS.
         self.ads_url = ads_url
-        # CDN配置
+        # The CDN configurations.
         self.cdn_config = cdn_config
-        # 动态配置别名
+        # The player parameter variables and aliases.
         self.config_aliases = config_aliases
-        # 内容URL前缀
+        # The URL prefix for the source content.
         self.content_url_prefix = content_url_prefix
-        # 创建时间
+        # The time when the configuration was created.
         self.create_time = create_time
-        # 修改时间
+        # The time when the configuration was last modified.
         self.last_modified = last_modified
-        # 清单播放端点配置
+        # The playback endpoint configuration.
         self.manifest_endpoint_config = manifest_endpoint_config
-        # 广告插入配置名称
+        # The name of the ad insertion configuration.
         self.name = name
-        # 个性化配置阈值
+        # The personalization threshold.
         self.personalization_threshold = personalization_threshold
-        # slate广告URL
+        # The URL of the slate ad.
         self.slate_ad_url = slate_ad_url
 
     def validate(self):
@@ -3604,7 +3664,9 @@ class AddAdInsertionResponseBody(TeaModel):
         config: AddAdInsertionResponseBodyConfig = None,
         request_id: str = None,
     ):
+        # The ad insertion configuration.
         self.config = config
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4531,33 +4593,48 @@ class AddMediaConnectFlowInputRequest(TeaModel):
         srt_passphrase: str = None,
         srt_pbkey_len: str = None,
     ):
-        # IP whitelist, in CIDR format, separated by commas if multiple IP ranges are specified
+        # The IP address whitelist in CIDR format. Separate multiple CIDR blocks with commas (,).
         self.cidrs = cidrs
-        # Flow instance ID
+        # The flow ID.
         # 
         # This parameter is required.
         self.flow_id = flow_id
-        # Input URL, required when the input type is RTMP-PULL/SRT-Listener
+        # The source URL. This parameter is required when the source type is RTMP-PULL or SRT-Listener.
         self.input_from_url = input_from_url
-        # Input name
+        # The source name.
         # 
         # This parameter is required.
         self.input_name = input_name
-        # Input type
+        # The source type.
+        # 
+        # Valid values:
+        # 
+        # *   RTMP-PUSH
+        # *   SRT-Caller
+        # *   RTMP-PULL
+        # *   SRT-Listener
+        # *   Flow
         # 
         # This parameter is required.
         self.input_protocol = input_protocol
-        # Input bitrate, in bps
+        # The maximum bitrate. Unit: bit/s.
         self.max_bitrate = max_bitrate
-        # Paired Flow ID, required when the input type is Flow
+        # The ID of the source flow. This parameter is required when the source type is Flow.
         self.pair_flow_id = pair_flow_id
-        # Output name of the paired Flow, required when the input type is Flow
+        # The output of the source flow. This parameter is required when the source type is Flow.
         self.pair_output_name = pair_output_name
-        # SRT latency, required when the input type is SRT-Listener/SRT-Caller
+        # The latency for the SRT stream. This parameter is required the source type is SRT-Listener or SRT-Caller.
         self.srt_latency = srt_latency
-        # SRT encryption key, required when the input type is SRT-Listener/SRT-Caller
+        # The SRT key. This parameter is required when the source type is SRT-Listener or SRT-Caller.
         self.srt_passphrase = srt_passphrase
-        # SRT encryption length, required when the input type is SRT-Listener/SRT-Caller
+        # The encryption key length. This parameter is required when the source type is SRT-Listener or SRT-Caller.
+        # 
+        # Valid values:
+        # 
+        # *   0
+        # *   16
+        # *   24
+        # *   32
         self.srt_pbkey_len = srt_pbkey_len
 
     def validate(self):
@@ -4625,7 +4702,7 @@ class AddMediaConnectFlowInputResponseBodyContent(TeaModel):
         self,
         input_url: str = None,
     ):
-        # Input URL
+        # The source URL.
         self.input_url = input_url
 
     def validate(self):
@@ -4656,13 +4733,13 @@ class AddMediaConnectFlowInputResponseBody(TeaModel):
         request_id: str = None,
         ret_code: int = None,
     ):
-        # Response body
+        # The response body.
         self.content = content
-        # Description of the API call
+        # The call description.
         self.description = description
-        # 请求ID
+        # The ID of the request.
         self.request_id = request_id
-        # Returned error code, 0 indicates success
+        # The returned error code. A value of 0 indicates the call is successful.
         self.ret_code = ret_code
 
     def validate(self):
@@ -4755,33 +4832,41 @@ class AddMediaConnectFlowOutputRequest(TeaModel):
         srt_passphrase: str = None,
         srt_pbkey_len: str = None,
     ):
-        # IP whitelist, in CIDR format, separated by commas if multiple IP segments are provided
+        # The IP address whitelist in CIDR format. Separate multiple CIDR blocks with commas (,).
         self.cidrs = cidrs
-        # Flow instance ID
+        # The flow ID.
         # 
         # This parameter is required.
         self.flow_id = flow_id
-        # Output name
+        # The output name.
         # 
         # This parameter is required.
         self.output_name = output_name
-        # Output protocol
+        # The output type.
+        # 
+        # Valid values:
+        # 
+        # *   RTMP-PUSH
+        # *   SRT-Caller
+        # *   RTMP-PULL
+        # *   SRT-Listener
+        # *   Flow
         # 
         # This parameter is required.
         self.output_protocol = output_protocol
-        # Output address, required when the output type is RTMP-PUSH/SRT-Caller mode
+        # The output URL. This parameter is required when OutputProtocol is set to RTMP-PUSH or SRT-Caller.
         self.output_to_url = output_to_url
-        # Paired Flow instance ID, required when the output type is Flow
+        # The ID of the destination flow. This parameter is required when OutputProtocol is set to Flow.
         self.pair_flow_id = pair_flow_id
-        # Input name of the paired Flow, required when the output type is Flow
+        # The source name of the destination flow. This parameter is required when OutputProtocol is set to Flow.
         self.pair_input_name = pair_input_name
-        # Maximum number of players
+        # The maximum number of viewers.
         self.player_limit = player_limit
-        # SRT latency, required only when the input type is SRT-Listener/SRT-Caller
+        # The latency for the SRT stream. This parameter is required when the source type is SRT-Listener or SRT-Caller.
         self.srt_latency = srt_latency
-        # SRT passphrase, required only when the input type is SRT-Listener/SRT-Caller
+        # The SRT key. This parameter is required when the source type is SRT-Listener or SRT-Caller.
         self.srt_passphrase = srt_passphrase
-        # SRT encryption length, required only when the input type is SRT-Listener/SRT-Caller
+        # The encryption key length. This parameter is required when the source type is SRT-Listener or SRT-Caller.
         self.srt_pbkey_len = srt_pbkey_len
 
     def validate(self):
@@ -4849,7 +4934,7 @@ class AddMediaConnectFlowOutputResponseBodyContent(TeaModel):
         self,
         output_url: str = None,
     ):
-        # Output address
+        # The output URL.
         self.output_url = output_url
 
     def validate(self):
@@ -4880,13 +4965,13 @@ class AddMediaConnectFlowOutputResponseBody(TeaModel):
         request_id: str = None,
         ret_code: int = None,
     ):
-        # Response body
+        # The response body.
         self.content = content
-        # Description of the API call
+        # The call description.
         self.description = description
-        # 请求ID
+        # The ID of the request.
         self.request_id = request_id
-        # Returned error code, 0 indicates success
+        # The returned error code. A value of 0 indicates that the call is successful.
         self.ret_code = ret_code
 
     def validate(self):
@@ -5527,7 +5612,9 @@ class BatchCreateVodPackagingAssetRequestAssetsInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The URL of the media file. You can only specify a M3U8 file stored in Object Storage Service (OSS).
         self.media = media
+        # The input type. Only OSS is supported.
         self.type = type
 
     def validate(self):
@@ -5561,8 +5648,11 @@ class BatchCreateVodPackagingAssetRequestAssets(TeaModel):
         content_id: str = None,
         input: BatchCreateVodPackagingAssetRequestAssetsInput = None,
     ):
+        # The name of the asset. The name must be unique and can be up to 128 characters in length. Letters, digits, underscores (_), and hyphens (-) are supported.
         self.asset_name = asset_name
+        # The content ID in the digital rights management (DRM) system. The maximum length is 256 characters. Letters, digits, underscores (_), and hyphens (-) are supported.
         self.content_id = content_id
+        # The asset input configurations.
         self.input = input
 
     def validate(self):
@@ -5601,7 +5691,9 @@ class BatchCreateVodPackagingAssetRequest(TeaModel):
         assets: List[BatchCreateVodPackagingAssetRequestAssets] = None,
         group_name: str = None,
     ):
+        # The assets that you want to ingest.
         self.assets = assets
+        # The name of the packaging group.
         self.group_name = group_name
 
     def validate(self):
@@ -5642,7 +5734,9 @@ class BatchCreateVodPackagingAssetShrinkRequest(TeaModel):
         assets_shrink: str = None,
         group_name: str = None,
     ):
+        # The assets that you want to ingest.
         self.assets_shrink = assets_shrink
+        # The name of the packaging group.
         self.group_name = group_name
 
     def validate(self):
@@ -5676,8 +5770,11 @@ class BatchCreateVodPackagingAssetResponseBodyResultList(TeaModel):
         code: str = None,
         message: str = None,
     ):
+        # The information about the ingested asset.
         self.asset = asset
+        # The error code for failed ingestion.
         self.code = code
+        # The error message for failed ingestion.
         self.message = message
 
     def validate(self):
@@ -5717,8 +5814,11 @@ class BatchCreateVodPackagingAssetResponseBody(TeaModel):
         request_id: str = None,
         result_list: List[BatchCreateVodPackagingAssetResponseBodyResultList] = None,
     ):
+        # The name of the packaging group.
         self.group_name = group_name
+        # The ID of the request.
         self.request_id = request_id
+        # The results of asset ingestion.
         self.result_list = result_list
 
     def validate(self):
@@ -6802,16 +6902,28 @@ class CreateChannelRequest(TeaModel):
         out_put_config_list: str = None,
         playback_mode: str = None,
     ):
+        # Specifies whether to enable access control.
         self.access_policy = access_policy
+        # The token for accessing the channel.
         self.access_token = access_token
+        # The name of the channel.
+        # 
         # This parameter is required.
         self.channel_name = channel_name
+        # The tier of the channel. Valid values: basic and standard.
+        # 
         # This parameter is required.
         self.channel_tier = channel_tier
+        # The source location of the filler slate.
         self.filler_source_location_name = filler_source_location_name
+        # The name of the filler slate.
         self.filler_source_name = filler_source_name
+        # The channel output configurations.
+        # 
         # This parameter is required.
         self.out_put_config_list = out_put_config_list
+        # The playback mode. Valid values: loop and linear.
+        # 
         # This parameter is required.
         self.playback_mode = playback_mode
 
@@ -6869,7 +6981,9 @@ class CreateChannelResponseBody(TeaModel):
         channel: ChannelAssemblyChannel = None,
         request_id: str = None,
     ):
+        # The channel information.
         self.channel = channel
+        # **Request ID**\
         self.request_id = request_id
 
     def validate(self):
@@ -7989,28 +8103,27 @@ class CreateLivePackageChannelRequest(TeaModel):
         segment_count: int = None,
         segment_duration: int = None,
     ):
-        # 频道名称，字符必须为大小写英文字母或-、_。
-        # 1 ~ 200个字符。
-        # 格式：[A-Za-z0-9_-]+\
+        # The channel name. It can contain letters, digits, hyphens (-), and underscores (_). The name must be 1 to 200 characters in length. Format: [A-Za-z0-9_-]+\
         # 
         # This parameter is required.
         self.channel_name = channel_name
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
-        # 频道描述，最大1000个字符
+        # The channel description. It can be up to 1,000 characters in length.
         self.description = description
-        # 频道组名称
+        # The channel group name. It can contain letters, digits, hyphens (-), and underscores (_). The name must be 1 to 200 characters in length. Format: [A-Za-z0-9_-]+\
         # 
         # This parameter is required.
         self.group_name = group_name
-        # 输入协议，目前仅支持HLS
+        # The ingest protocol. Only HLS is supported.
         # 
         # This parameter is required.
         self.protocol = protocol
-        # 输入流m3u8切片个数，2～100
+        # The number of M3U8 segments. Valid values: 2 to 100.
         # 
         # This parameter is required.
         self.segment_count = segment_count
-        # 输入流切片时长，1～30
+        # The segment duration. Valid values: 1 to 30.
         # 
         # This parameter is required.
         self.segment_duration = segment_duration
@@ -8067,9 +8180,13 @@ class CreateLivePackageChannelResponseBodyLivePackageChannelIngestEndpoints(TeaM
         url: str = None,
         username: str = None,
     ):
+        # The ingest endpoint ID.
         self.id = id
+        # The password.
         self.password = password
+        # The ingest endpoint URL.
         self.url = url
+        # The username.
         self.username = username
 
     def validate(self):
@@ -8117,24 +8234,23 @@ class CreateLivePackageChannelResponseBodyLivePackageChannel(TeaModel):
         segment_count: int = None,
         segment_duration: int = None,
     ):
-        # 频道名称，字符必须为大小写英文字母或-、_。
-        # 1 ~ 200个字符。
-        # 格式：[A-Za-z0-9_-]+\
+        # The channel name.
         self.channel_name = channel_name
-        # 代表创建时间的资源属性字段
+        # The time when the channel was created. It is in the yyyy-MM-ddTHH:mm:ssZ format and displayed in UTC.
         self.create_time = create_time
-        # 频道描述，最大1000个字符
+        # The channel description.
         self.description = description
-        # 频道组名称
+        # The channel group name.
         self.group_name = group_name
+        # The ingest endpoints.
         self.ingest_endpoints = ingest_endpoints
-        # 最后修改时间
+        # The time when the channel was last modified. It is in the yyyy-MM-ddTHH:mm:ssZ format and displayed in UTC.
         self.last_modified = last_modified
-        # 输入协议，目前仅支持HLS
+        # The ingest protocol. Only HLS is supported.
         self.protocol = protocol
-        # 输入流m3u8切片个数，2～100
+        # The number of M3U8 segments.
         self.segment_count = segment_count
-        # 输入流切片时长，1～30
+        # The segment duration.
         self.segment_duration = segment_duration
 
     def validate(self):
@@ -8203,7 +8319,9 @@ class CreateLivePackageChannelResponseBody(TeaModel):
         live_package_channel: CreateLivePackageChannelResponseBodyLivePackageChannel = None,
         request_id: str = None,
     ):
+        # The information about the live package channel.
         self.live_package_channel = live_package_channel
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8280,9 +8398,11 @@ class CreateLivePackageChannelGroupRequest(TeaModel):
         description: str = None,
         group_name: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The channel group description. It can be up to 1,000 characters in length.
         self.description = description
-        # 代表资源一级ID的资源属性字段
+        # The channel group name. It can contain letters, digits, hyphens (-), and underscores (_). The name must be 1 to 200 characters in length. Format: [A-Za-z0-9_-]+\
         # 
         # This parameter is required.
         self.group_name = group_name
@@ -8324,15 +8444,15 @@ class CreateLivePackageChannelGroupResponseBodyLivePackageChannelGroup(TeaModel)
         last_modified: str = None,
         origin_domain: str = None,
     ):
-        # 创建时间
+        # The time when the channel group was created. It is in the yyyy-MM-ddTHH:mm:ssZ format and displayed in UTC.
         self.create_time = create_time
-        # 描述
+        # The channel group description.
         self.description = description
-        # 频道组名称
+        # The channel group name.
         self.group_name = group_name
-        # 修改时间
+        # The time when the channel group was last modified. It is in the yyyy-MM-ddTHH:mm:ssZ format and displayed in UTC.
         self.last_modified = last_modified
-        # 源站域名
+        # The origin domain.
         self.origin_domain = origin_domain
 
     def validate(self):
@@ -8377,7 +8497,9 @@ class CreateLivePackageChannelGroupResponseBody(TeaModel):
         live_package_channel_group: CreateLivePackageChannelGroupResponseBodyLivePackageChannelGroup = None,
         request_id: str = None,
     ):
+        # The information about the channel group.
         self.live_package_channel_group = live_package_channel_group
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8462,42 +8584,35 @@ class CreateLivePackageOriginEndpointRequest(TeaModel):
         protocol: str = None,
         timeshift_vision: int = None,
     ):
-        # 回源授权码，与IpWhitelist必选其一
+        # The authorization code. It can be up to 200 characters in length. You must configure AuthorizationCode, IpWhitelist, or both. Format: [A-Za-z0-9-_.]+\
         self.authorization_code = authorization_code
-        # 频道名称。
-        # 1 ~ 200个字符。
-        # 正则匹配输入：[A-Za-z0-9_-]+\
+        # The channel name.
         # 
         # This parameter is required.
         self.channel_name = channel_name
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
-        # 端点描述，最大1000个字符
+        # The endpoint description.
         self.description = description
-        # 端点名称，要求在单个频道中唯一。
-        # 1 ~ 200个字符。
-        # 正则匹配输入：[A-Za-z0-9_-]+\
+        # The origin endpoint name. It can contain letters, digits, hyphens (-), and underscores (_). The name must be 1 to 200 characters in length. Format: [A-Za-z0-9_-]+\
         # 
         # This parameter is required.
         self.endpoint_name = endpoint_name
-        # 频道组名称。
-        # 1 ~ 200个字符。
-        # 正则匹配输入：[A-Za-z0-9_-]+\
+        # The channel group name.
         # 
         # This parameter is required.
         self.group_name = group_name
-        # IP黑名单，支持无类别域间路由（CIDR），逗号分隔
+        # The IP address blacklist. It supports subnet masks. 0.0.0.0/0 is not allowed. It can be up to 1,000 characters in length. Separate multiple IP addresses with commas (,).
         self.ip_blacklist = ip_blacklist
-        # IP白名单，支持无类别域间路由（CIDR），逗号分隔，与AuthorizationCode必选其一
+        # The IP address whitelist. It supports subnet masks. 0.0.0.0/0 is not allowed. It can be up to 1,000 characters in length. Separate multiple IP addresses with commas (,). You must configure AuthorizationCode, IpWhitelist, or both.
         self.ip_whitelist = ip_whitelist
-        # 播放列表名，缺省为manifest。
-        # 1 ~ 100个字符。
-        # 正则匹配输入：[A-Za-z0-9_]+\
+        # The playlist name. Default value: manifest.
         self.manifest_name = manifest_name
-        # 端点分发协议，暂只支持HLS
+        # The distribution protocol.
         # 
         # This parameter is required.
         self.protocol = protocol
-        # 时移天数，最大30天，0表示不支持时移
+        # The number of days that time-shifted content is available. Maximum value: 30. Default value: 0, which indicates that time shifting is not supported.
         self.timeshift_vision = timeshift_vision
 
     def validate(self):
@@ -8577,31 +8692,31 @@ class CreateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint(TeaMo
         protocol: str = None,
         timeshift_vision: int = None,
     ):
-        # 回源授权码，与IpWhitelist必选其一
+        # The authorization code.
         self.authorization_code = authorization_code
-        # 频道名称
+        # The channel name.
         self.channel_name = channel_name
-        # 创建时间
+        # The time when the endpoint was created.
         self.create_time = create_time
-        # 端点描述
+        # The endpoint description.
         self.description = description
-        # 端点名称
+        # The endpoint name.
         self.endpoint_name = endpoint_name
-        # 源站端点回源播放地址
+        # The endpoint URL.
         self.endpoint_url = endpoint_url
-        # 频道组名称
+        # The channel group name.
         self.group_name = group_name
-        # IP黑名单，支持无类别域间路由（CIDR），逗号分隔
+        # The IP address blacklist.
         self.ip_blacklist = ip_blacklist
-        # IP白名单，支持无类别域间路由（CIDR），逗号分隔，与AuthorizationCode必选其一
+        # The IP address whitelist.
         self.ip_whitelist = ip_whitelist
-        # 最后修改时间
+        # The time when the endpoint was last modified.
         self.last_modified = last_modified
-        # 播放列表名
+        # The playlist name.
         self.manifest_name = manifest_name
-        # 端点分发协议，暂只支持HLS
+        # The protocol. Only HLS is supported.
         self.protocol = protocol
-        # 时移天数，最大30天，0表示不支持时移
+        # The number of days that time-shifted content is available. Maximum value: 30.
         self.timeshift_vision = timeshift_vision
 
     def validate(self):
@@ -8678,7 +8793,9 @@ class CreateLivePackageOriginEndpointResponseBody(TeaModel):
         live_package_origin_endpoint: CreateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint = None,
         request_id: str = None,
     ):
+        # The information about the origin endpoint.
         self.live_package_origin_endpoint = live_package_origin_endpoint
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9501,11 +9618,11 @@ class CreateMediaConnectFlowRequest(TeaModel):
         flow_name: str = None,
         flow_region: str = None,
     ):
-        # Flow instance name
+        # The flow name.
         # 
         # This parameter is required.
         self.flow_name = flow_name
-        # Region to which the Flow instance belongs
+        # The region in which the flow resides.
         # 
         # This parameter is required.
         self.flow_region = flow_region
@@ -9539,7 +9656,7 @@ class CreateMediaConnectFlowResponseBodyContent(TeaModel):
         self,
         flow_id: str = None,
     ):
-        # Flow instance ID
+        # The flow ID.
         self.flow_id = flow_id
 
     def validate(self):
@@ -9570,13 +9687,13 @@ class CreateMediaConnectFlowResponseBody(TeaModel):
         request_id: str = None,
         ret_code: int = None,
     ):
-        # Response body
+        # The response body.
         self.content = content
-        # Description information returned by the interface
+        # The returned message.
         self.description = description
-        # Request ID
+        # The ID of the request.
         self.request_id = request_id
-        # Returned error code, 0 indicates success
+        # The returned error code. A value of 0 indicates the call is successful.
         self.ret_code = ret_code
 
     def validate(self):
@@ -9650,6 +9767,1456 @@ class CreateMediaConnectFlowResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateMediaConnectFlowResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateMediaLiveChannelRequestAudioSettingsAudioCodecSetting(TeaModel):
+    def __init__(
+        self,
+        bitrate: int = None,
+        profile: str = None,
+        sample_rate: int = None,
+    ):
+        # The audio bitrate. Unit: bit/s. Valid values: 8000 to 1000000. The value must be divisible by 1000.
+        self.bitrate = bitrate
+        # The audio codec profile. When AudioCodec is set to aac, AAC-LOW and AAC-MAIN are supported. When AudioCodec is set to libfdk_aac, AAC-LOW, AAC-HE, and AAC-HEV2 are supported.
+        self.profile = profile
+        # The audio sample rate. Unit: Hz. Valid values: 22050, 32000, 44100, 48000, and 96000.
+        self.sample_rate = sample_rate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
+        if self.profile is not None:
+            result['Profile'] = self.profile
+        if self.sample_rate is not None:
+            result['SampleRate'] = self.sample_rate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
+        if m.get('Profile') is not None:
+            self.profile = m.get('Profile')
+        if m.get('SampleRate') is not None:
+            self.sample_rate = m.get('SampleRate')
+        return self
+
+
+class CreateMediaLiveChannelRequestAudioSettings(TeaModel):
+    def __init__(
+        self,
+        audio_codec: str = None,
+        audio_codec_setting: CreateMediaLiveChannelRequestAudioSettingsAudioCodecSetting = None,
+        audio_selector_name: str = None,
+        language_code: str = None,
+        language_name: str = None,
+        name: str = None,
+    ):
+        # The audio codec. If it is not specified, the source specification is used. Valid values: aac and libfdk_aac.
+        self.audio_codec = audio_codec
+        # The audio encoding settings.
+        self.audio_codec_setting = audio_codec_setting
+        # The name of the audio selector.
+        self.audio_selector_name = audio_selector_name
+        # Enter a three-letter ISO 639-2 language code. If the audio track selected by the audio selector has a language code, the language code specified in the audio selector is used. If the selected audio track does not have a language code, or if the audio selector cannot find a track that matches its criteria, this language code is used.
+        self.language_code = language_code
+        # The tag that identifies the language of the RTMP input. It can be referenced by the output. The maximum length is 32 characters. Supported characters:
+        # 
+        # *   Unicode letters
+        # *   Digits (0-9)
+        # *   Underscore (_)
+        # *   Hyphen (-)
+        # *   Space (a space cannot be at the beginning or end)
+        self.language_name = language_name
+        # The name of the audio settings. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+        # 
+        # This parameter is required.
+        self.name = name
+
+    def validate(self):
+        if self.audio_codec_setting:
+            self.audio_codec_setting.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_codec is not None:
+            result['AudioCodec'] = self.audio_codec
+        if self.audio_codec_setting is not None:
+            result['AudioCodecSetting'] = self.audio_codec_setting.to_map()
+        if self.audio_selector_name is not None:
+            result['AudioSelectorName'] = self.audio_selector_name
+        if self.language_code is not None:
+            result['LanguageCode'] = self.language_code
+        if self.language_name is not None:
+            result['LanguageName'] = self.language_name
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioCodec') is not None:
+            self.audio_codec = m.get('AudioCodec')
+        if m.get('AudioCodecSetting') is not None:
+            temp_model = CreateMediaLiveChannelRequestAudioSettingsAudioCodecSetting()
+            self.audio_codec_setting = temp_model.from_map(m['AudioCodecSetting'])
+        if m.get('AudioSelectorName') is not None:
+            self.audio_selector_name = m.get('AudioSelectorName')
+        if m.get('LanguageCode') is not None:
+            self.language_code = m.get('LanguageCode')
+        if m.get('LanguageName') is not None:
+            self.language_name = m.get('LanguageName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioLanguageSelection(TeaModel):
+    def __init__(
+        self,
+        language_code: str = None,
+    ):
+        # Enter a three-letter ISO 639-2 language code from within an audio source.
+        # 
+        # This parameter is required.
+        self.language_code = language_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.language_code is not None:
+            result['LanguageCode'] = self.language_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LanguageCode') is not None:
+            self.language_code = m.get('LanguageCode')
+        return self
+
+
+class CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioPidSelection(TeaModel):
+    def __init__(
+        self,
+        pid: int = None,
+    ):
+        # Enter a specific PID from within a source.
+        # 
+        # This parameter is required.
+        self.pid = pid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pid is not None:
+            result['Pid'] = self.pid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
+        return self
+
+
+class CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioTrackSelection(TeaModel):
+    def __init__(
+        self,
+        track_id: int = None,
+    ):
+        # Specify one or more audio tracks from within a source using Track ID.
+        # 
+        # This parameter is required.
+        self.track_id = track_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.track_id is not None:
+            result['TrackId'] = self.track_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TrackId') is not None:
+            self.track_id = m.get('TrackId')
+        return self
+
+
+class CreateMediaLiveChannelRequestInputAttachmentsAudioSelectors(TeaModel):
+    def __init__(
+        self,
+        audio_language_selection: CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioLanguageSelection = None,
+        audio_pid_selection: CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioPidSelection = None,
+        audio_track_selection: List[CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioTrackSelection] = None,
+        name: str = None,
+    ):
+        # The audio language selection.
+        self.audio_language_selection = audio_language_selection
+        # The audio PID selection.
+        self.audio_pid_selection = audio_pid_selection
+        # The audio track selection.
+        self.audio_track_selection = audio_track_selection
+        # The name of the audio selector. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+        # 
+        # This parameter is required.
+        self.name = name
+
+    def validate(self):
+        if self.audio_language_selection:
+            self.audio_language_selection.validate()
+        if self.audio_pid_selection:
+            self.audio_pid_selection.validate()
+        if self.audio_track_selection:
+            for k in self.audio_track_selection:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_language_selection is not None:
+            result['AudioLanguageSelection'] = self.audio_language_selection.to_map()
+        if self.audio_pid_selection is not None:
+            result['AudioPidSelection'] = self.audio_pid_selection.to_map()
+        result['AudioTrackSelection'] = []
+        if self.audio_track_selection is not None:
+            for k in self.audio_track_selection:
+                result['AudioTrackSelection'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioLanguageSelection') is not None:
+            temp_model = CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioLanguageSelection()
+            self.audio_language_selection = temp_model.from_map(m['AudioLanguageSelection'])
+        if m.get('AudioPidSelection') is not None:
+            temp_model = CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioPidSelection()
+            self.audio_pid_selection = temp_model.from_map(m['AudioPidSelection'])
+        self.audio_track_selection = []
+        if m.get('AudioTrackSelection') is not None:
+            for k in m.get('AudioTrackSelection'):
+                temp_model = CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioTrackSelection()
+                self.audio_track_selection.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class CreateMediaLiveChannelRequestInputAttachments(TeaModel):
+    def __init__(
+        self,
+        audio_selectors: List[CreateMediaLiveChannelRequestInputAttachmentsAudioSelectors] = None,
+        input_id: str = None,
+        language_name: str = None,
+    ):
+        # The audio selectors.
+        self.audio_selectors = audio_selectors
+        # The ID of the associated input.
+        # 
+        # This parameter is required.
+        self.input_id = input_id
+        # The tag that identifies the language of the RTMP input. It can be referenced by the output. The maximum length is 32 characters. Supported characters:
+        # 
+        # *   Unicode letters
+        # *   Digits (0-9)
+        # *   Underscore (_)
+        # *   Hyphen (-)
+        # *   Space (a space cannot be at the beginning or end)
+        self.language_name = language_name
+
+    def validate(self):
+        if self.audio_selectors:
+            for k in self.audio_selectors:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AudioSelectors'] = []
+        if self.audio_selectors is not None:
+            for k in self.audio_selectors:
+                result['AudioSelectors'].append(k.to_map() if k else None)
+        if self.input_id is not None:
+            result['InputId'] = self.input_id
+        if self.language_name is not None:
+            result['LanguageName'] = self.language_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.audio_selectors = []
+        if m.get('AudioSelectors') is not None:
+            for k in m.get('AudioSelectors'):
+                temp_model = CreateMediaLiveChannelRequestInputAttachmentsAudioSelectors()
+                self.audio_selectors.append(temp_model.from_map(k))
+        if m.get('InputId') is not None:
+            self.input_id = m.get('InputId')
+        if m.get('LanguageName') is not None:
+            self.language_name = m.get('LanguageName')
+        return self
+
+
+class CreateMediaLiveChannelRequestOutputGroupsMediaPackageGroupSetting(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        group_name: str = None,
+    ):
+        # ChannelName in MediaPackage.
+        # 
+        # This parameter is required.
+        self.channel_name = channel_name
+        # GroupName in MediaPackage.
+        # 
+        # This parameter is required.
+        self.group_name = group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        return self
+
+
+class CreateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetting(TeaModel):
+    def __init__(
+        self,
+        audio_group_id: str = None,
+        name_modifier: str = None,
+    ):
+        # The manifest audio group ID. To associate several audio tracks into one group, assign the same audio group ID. Viewers can select a track as needed. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 40 characters in length.
+        self.audio_group_id = audio_group_id
+        # The manifest name modifier. The child manifests include this modifier in their M3U8 file names. Letters, digits, hyphens (-), and underscores (_) are supported. The maximum length is 40 characters.
+        self.name_modifier = name_modifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_group_id is not None:
+            result['AudioGroupId'] = self.audio_group_id
+        if self.name_modifier is not None:
+            result['NameModifier'] = self.name_modifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioGroupId') is not None:
+            self.audio_group_id = m.get('AudioGroupId')
+        if m.get('NameModifier') is not None:
+            self.name_modifier = m.get('NameModifier')
+        return self
+
+
+class CreateMediaLiveChannelRequestOutputGroupsOutputs(TeaModel):
+    def __init__(
+        self,
+        audio_setting_names: List[str] = None,
+        media_package_output_setting: CreateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetting = None,
+        media_type: int = None,
+        name: str = None,
+        video_setting_name: str = None,
+    ):
+        # The referenced AudioSettings.
+        self.audio_setting_names = audio_setting_names
+        # The settings of the output delivered to MediaPackage.
+        self.media_package_output_setting = media_package_output_setting
+        # The media type of the output. Valid values:
+        # 
+        # *   0: Audio and Video.
+        # *   1: Audio. If you set the value to 1, you cannot reference VideoSettings.
+        # *   2: Video. If you set the value to 2, you cannot reference AudioSettings.
+        self.media_type = media_type
+        # The name of the output. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The name of the referenced VideoSettings.
+        self.video_setting_name = video_setting_name
+
+    def validate(self):
+        if self.media_package_output_setting:
+            self.media_package_output_setting.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_setting_names is not None:
+            result['AudioSettingNames'] = self.audio_setting_names
+        if self.media_package_output_setting is not None:
+            result['MediaPackageOutputSetting'] = self.media_package_output_setting.to_map()
+        if self.media_type is not None:
+            result['MediaType'] = self.media_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.video_setting_name is not None:
+            result['VideoSettingName'] = self.video_setting_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioSettingNames') is not None:
+            self.audio_setting_names = m.get('AudioSettingNames')
+        if m.get('MediaPackageOutputSetting') is not None:
+            temp_model = CreateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetting()
+            self.media_package_output_setting = temp_model.from_map(m['MediaPackageOutputSetting'])
+        if m.get('MediaType') is not None:
+            self.media_type = m.get('MediaType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('VideoSettingName') is not None:
+            self.video_setting_name = m.get('VideoSettingName')
+        return self
+
+
+class CreateMediaLiveChannelRequestOutputGroups(TeaModel):
+    def __init__(
+        self,
+        media_package_group_setting: CreateMediaLiveChannelRequestOutputGroupsMediaPackageGroupSetting = None,
+        name: str = None,
+        outputs: List[CreateMediaLiveChannelRequestOutputGroupsOutputs] = None,
+        type: str = None,
+    ):
+        # The MediaPackage destination.
+        self.media_package_group_setting = media_package_group_setting
+        # The name of the output group. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The outputs in the output group.
+        # 
+        # This parameter is required.
+        self.outputs = outputs
+        # The output group type. Only MediaPackage is supported.
+        # 
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        if self.media_package_group_setting:
+            self.media_package_group_setting.validate()
+        if self.outputs:
+            for k in self.outputs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.media_package_group_setting is not None:
+            result['MediaPackageGroupSetting'] = self.media_package_group_setting.to_map()
+        if self.name is not None:
+            result['Name'] = self.name
+        result['Outputs'] = []
+        if self.outputs is not None:
+            for k in self.outputs:
+                result['Outputs'].append(k.to_map() if k else None)
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MediaPackageGroupSetting') is not None:
+            temp_model = CreateMediaLiveChannelRequestOutputGroupsMediaPackageGroupSetting()
+            self.media_package_group_setting = temp_model.from_map(m['MediaPackageGroupSetting'])
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.outputs = []
+        if m.get('Outputs') is not None:
+            for k in m.get('Outputs'):
+                temp_model = CreateMediaLiveChannelRequestOutputGroupsOutputs()
+                self.outputs.append(temp_model.from_map(k))
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingCodecDetail(TeaModel):
+    def __init__(
+        self,
+        level: str = None,
+        profile: str = None,
+    ):
+        # The video encoding level. It is not supported yet.
+        self.level = level
+        # The H.264 profile. Valid values: BASELINE, HIGH, and MAIN. Default value: MAIN. The parameter takes effect only when the codec is H.264.
+        self.profile = profile
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.profile is not None:
+            result['Profile'] = self.profile
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Profile') is not None:
+            self.profile = m.get('Profile')
+        return self
+
+
+class CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate(TeaModel):
+    def __init__(
+        self,
+        framerate_control: str = None,
+        framerate_denominator: int = None,
+        framerate_numerator: int = None,
+    ):
+        # The frame rate mode. Valid values: SPECIFIED (fixed frame rate) and FROM_SOURCE (use source specification).
+        self.framerate_control = framerate_control
+        # The denominator of the fixed frame rate. The parameter is required when FramerateControl is set to SPECIFIED. Valid values: 1 to 60. The numerator must be divisible by the denominator.
+        self.framerate_denominator = framerate_denominator
+        # The numerator of the fixed frame rate. The parameter is required when FramerateControl is set to SPECIFIED. Valid values: 1 to 60. The numerator must be divisible by the denominator.
+        self.framerate_numerator = framerate_numerator
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.framerate_control is not None:
+            result['FramerateControl'] = self.framerate_control
+        if self.framerate_denominator is not None:
+            result['FramerateDenominator'] = self.framerate_denominator
+        if self.framerate_numerator is not None:
+            result['FramerateNumerator'] = self.framerate_numerator
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FramerateControl') is not None:
+            self.framerate_control = m.get('FramerateControl')
+        if m.get('FramerateDenominator') is not None:
+            self.framerate_denominator = m.get('FramerateDenominator')
+        if m.get('FramerateNumerator') is not None:
+            self.framerate_numerator = m.get('FramerateNumerator')
+        return self
+
+
+class CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop(TeaModel):
+    def __init__(
+        self,
+        bframes_num: int = None,
+        gop_size: int = None,
+        gop_size_units: str = None,
+    ):
+        # The number of B frames. Valid values: 1 to 3.
+        self.bframes_num = bframes_num
+        # The GOP size. When GopSizeUnits is set to SECONDS, the value range is from 1 to 20. When GopSizeUnits is set to FRAMES, the value range is from 1 to 3000.
+        self.gop_size = gop_size
+        # The GOP size unit. Valid values: FRAMES and SECONDS.
+        self.gop_size_units = gop_size_units
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bframes_num is not None:
+            result['BframesNum'] = self.bframes_num
+        if self.gop_size is not None:
+            result['GopSize'] = self.gop_size
+        if self.gop_size_units is not None:
+            result['GopSizeUnits'] = self.gop_size_units
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BframesNum') is not None:
+            self.bframes_num = m.get('BframesNum')
+        if m.get('GopSize') is not None:
+            self.gop_size = m.get('GopSize')
+        if m.get('GopSizeUnits') is not None:
+            self.gop_size_units = m.get('GopSizeUnits')
+        return self
+
+
+class CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate(TeaModel):
+    def __init__(
+        self,
+        bitrate: int = None,
+        buffer_size: int = None,
+        max_bitrate: int = None,
+        rate_control_mode: str = None,
+    ):
+        # The video bitrate. Unit: bit/s. If you set it to 0 or leave it empty, the source specification is used. Valid values: 50000 to 6000000. The value must be divisible by 1000.
+        self.bitrate = bitrate
+        # The video buffer size. Unit: bit/s. Valid values: 100000 to 6000000. The value must be divisible by 1000.
+        self.buffer_size = buffer_size
+        # The maximum bitrate. Unit: bit/s. Valid values: 100000 to 6000000. The value must be divisible by 1000.
+        self.max_bitrate = max_bitrate
+        # The bitrate control mode. Valid values: CBR, ABR, and VBR.
+        self.rate_control_mode = rate_control_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
+        if self.buffer_size is not None:
+            result['BufferSize'] = self.buffer_size
+        if self.max_bitrate is not None:
+            result['MaxBitrate'] = self.max_bitrate
+        if self.rate_control_mode is not None:
+            result['RateControlMode'] = self.rate_control_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
+        if m.get('BufferSize') is not None:
+            self.buffer_size = m.get('BufferSize')
+        if m.get('MaxBitrate') is not None:
+            self.max_bitrate = m.get('MaxBitrate')
+        if m.get('RateControlMode') is not None:
+            self.rate_control_mode = m.get('RateControlMode')
+        return self
+
+
+class CreateMediaLiveChannelRequestVideoSettingsVideoCodecSetting(TeaModel):
+    def __init__(
+        self,
+        codec_detail: CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingCodecDetail = None,
+        framerate: CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate = None,
+        gop: CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop = None,
+        rate: CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate = None,
+    ):
+        # The video encoding settings.
+        self.codec_detail = codec_detail
+        # The frame rate. If it is not specified, the source specification is used.
+        self.framerate = framerate
+        # The GOP setting. If it is not specified, the source specification is used.
+        self.gop = gop
+        # The video encoding rate. If it is not specified, the source specification is used.
+        self.rate = rate
+
+    def validate(self):
+        if self.codec_detail:
+            self.codec_detail.validate()
+        if self.framerate:
+            self.framerate.validate()
+        if self.gop:
+            self.gop.validate()
+        if self.rate:
+            self.rate.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.codec_detail is not None:
+            result['CodecDetail'] = self.codec_detail.to_map()
+        if self.framerate is not None:
+            result['Framerate'] = self.framerate.to_map()
+        if self.gop is not None:
+            result['Gop'] = self.gop.to_map()
+        if self.rate is not None:
+            result['Rate'] = self.rate.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CodecDetail') is not None:
+            temp_model = CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingCodecDetail()
+            self.codec_detail = temp_model.from_map(m['CodecDetail'])
+        if m.get('Framerate') is not None:
+            temp_model = CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate()
+            self.framerate = temp_model.from_map(m['Framerate'])
+        if m.get('Gop') is not None:
+            temp_model = CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop()
+            self.gop = temp_model.from_map(m['Gop'])
+        if m.get('Rate') is not None:
+            temp_model = CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate()
+            self.rate = temp_model.from_map(m['Rate'])
+        return self
+
+
+class CreateMediaLiveChannelRequestVideoSettings(TeaModel):
+    def __init__(
+        self,
+        height: int = None,
+        name: str = None,
+        video_codec: str = None,
+        video_codec_setting: CreateMediaLiveChannelRequestVideoSettingsVideoCodecSetting = None,
+        width: int = None,
+    ):
+        # The height of the output. Valid values: 0 to 2000. If you set it to 0 or leave it empty, the height automatically adapts to the specified width to maintain the original aspect ratio.
+        self.height = height
+        # The name of the video settings. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The video codec. Valid values: H264 and H265.
+        self.video_codec = video_codec
+        # The video encoding settings.
+        self.video_codec_setting = video_codec_setting
+        # The width of the output. Valid values: 0 to 2000. If you set it to 0 or leave it empty, the width automatically adapts to the specified height to maintain the original aspect ratio.
+        self.width = width
+
+    def validate(self):
+        if self.video_codec_setting:
+            self.video_codec_setting.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.video_codec is not None:
+            result['VideoCodec'] = self.video_codec
+        if self.video_codec_setting is not None:
+            result['VideoCodecSetting'] = self.video_codec_setting.to_map()
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('VideoCodec') is not None:
+            self.video_codec = m.get('VideoCodec')
+        if m.get('VideoCodecSetting') is not None:
+            temp_model = CreateMediaLiveChannelRequestVideoSettingsVideoCodecSetting()
+            self.video_codec_setting = temp_model.from_map(m['VideoCodecSetting'])
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class CreateMediaLiveChannelRequest(TeaModel):
+    def __init__(
+        self,
+        audio_settings: List[CreateMediaLiveChannelRequestAudioSettings] = None,
+        input_attachments: List[CreateMediaLiveChannelRequestInputAttachments] = None,
+        name: str = None,
+        output_groups: List[CreateMediaLiveChannelRequestOutputGroups] = None,
+        video_settings: List[CreateMediaLiveChannelRequestVideoSettings] = None,
+    ):
+        # The audio settings.
+        self.audio_settings = audio_settings
+        # The associated inputs.
+        # 
+        # This parameter is required.
+        self.input_attachments = input_attachments
+        # The name of the channel. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The output groups.
+        # 
+        # This parameter is required.
+        self.output_groups = output_groups
+        # The video settings.
+        self.video_settings = video_settings
+
+    def validate(self):
+        if self.audio_settings:
+            for k in self.audio_settings:
+                if k:
+                    k.validate()
+        if self.input_attachments:
+            for k in self.input_attachments:
+                if k:
+                    k.validate()
+        if self.output_groups:
+            for k in self.output_groups:
+                if k:
+                    k.validate()
+        if self.video_settings:
+            for k in self.video_settings:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AudioSettings'] = []
+        if self.audio_settings is not None:
+            for k in self.audio_settings:
+                result['AudioSettings'].append(k.to_map() if k else None)
+        result['InputAttachments'] = []
+        if self.input_attachments is not None:
+            for k in self.input_attachments:
+                result['InputAttachments'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        result['OutputGroups'] = []
+        if self.output_groups is not None:
+            for k in self.output_groups:
+                result['OutputGroups'].append(k.to_map() if k else None)
+        result['VideoSettings'] = []
+        if self.video_settings is not None:
+            for k in self.video_settings:
+                result['VideoSettings'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.audio_settings = []
+        if m.get('AudioSettings') is not None:
+            for k in m.get('AudioSettings'):
+                temp_model = CreateMediaLiveChannelRequestAudioSettings()
+                self.audio_settings.append(temp_model.from_map(k))
+        self.input_attachments = []
+        if m.get('InputAttachments') is not None:
+            for k in m.get('InputAttachments'):
+                temp_model = CreateMediaLiveChannelRequestInputAttachments()
+                self.input_attachments.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.output_groups = []
+        if m.get('OutputGroups') is not None:
+            for k in m.get('OutputGroups'):
+                temp_model = CreateMediaLiveChannelRequestOutputGroups()
+                self.output_groups.append(temp_model.from_map(k))
+        self.video_settings = []
+        if m.get('VideoSettings') is not None:
+            for k in m.get('VideoSettings'):
+                temp_model = CreateMediaLiveChannelRequestVideoSettings()
+                self.video_settings.append(temp_model.from_map(k))
+        return self
+
+
+class CreateMediaLiveChannelShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        audio_settings_shrink: str = None,
+        input_attachments_shrink: str = None,
+        name: str = None,
+        output_groups_shrink: str = None,
+        video_settings_shrink: str = None,
+    ):
+        # The audio settings.
+        self.audio_settings_shrink = audio_settings_shrink
+        # The associated inputs.
+        # 
+        # This parameter is required.
+        self.input_attachments_shrink = input_attachments_shrink
+        # The name of the channel. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The output groups.
+        # 
+        # This parameter is required.
+        self.output_groups_shrink = output_groups_shrink
+        # The video settings.
+        self.video_settings_shrink = video_settings_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_settings_shrink is not None:
+            result['AudioSettings'] = self.audio_settings_shrink
+        if self.input_attachments_shrink is not None:
+            result['InputAttachments'] = self.input_attachments_shrink
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.output_groups_shrink is not None:
+            result['OutputGroups'] = self.output_groups_shrink
+        if self.video_settings_shrink is not None:
+            result['VideoSettings'] = self.video_settings_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioSettings') is not None:
+            self.audio_settings_shrink = m.get('AudioSettings')
+        if m.get('InputAttachments') is not None:
+            self.input_attachments_shrink = m.get('InputAttachments')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OutputGroups') is not None:
+            self.output_groups_shrink = m.get('OutputGroups')
+        if m.get('VideoSettings') is not None:
+            self.video_settings_shrink = m.get('VideoSettings')
+        return self
+
+
+class CreateMediaLiveChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        channel_id: str = None,
+        request_id: str = None,
+    ):
+        # The ID of the channel.
+        self.channel_id = channel_id
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateMediaLiveChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateMediaLiveChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateMediaLiveChannelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateMediaLiveInputRequestInputSettings(TeaModel):
+    def __init__(
+        self,
+        flow_id: str = None,
+        flow_output_name: str = None,
+        source_url: str = None,
+        stream_name: str = None,
+    ):
+        self.flow_id = flow_id
+        self.flow_output_name = flow_output_name
+        # The source URL where the stream is pulled from. This parameter is required for PULL inputs.
+        self.source_url = source_url
+        # The name of the pushed stream. This parameter is required for PUSH inputs. It can be up to 255 characters in length.
+        self.stream_name = stream_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.flow_id is not None:
+            result['FlowId'] = self.flow_id
+        if self.flow_output_name is not None:
+            result['FlowOutputName'] = self.flow_output_name
+        if self.source_url is not None:
+            result['SourceUrl'] = self.source_url
+        if self.stream_name is not None:
+            result['StreamName'] = self.stream_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FlowId') is not None:
+            self.flow_id = m.get('FlowId')
+        if m.get('FlowOutputName') is not None:
+            self.flow_output_name = m.get('FlowOutputName')
+        if m.get('SourceUrl') is not None:
+            self.source_url = m.get('SourceUrl')
+        if m.get('StreamName') is not None:
+            self.stream_name = m.get('StreamName')
+        return self
+
+
+class CreateMediaLiveInputRequest(TeaModel):
+    def __init__(
+        self,
+        input_settings: List[CreateMediaLiveInputRequestInputSettings] = None,
+        name: str = None,
+        security_group_ids: List[str] = None,
+        type: str = None,
+    ):
+        # The input settings. An input can have up to two sources: primary and backup sources.
+        # 
+        # This parameter is required.
+        self.input_settings = input_settings
+        # The name of the input. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The IDs of the security groups to be associated with the input. This parameter is required for PUSH inputs.
+        self.security_group_ids = security_group_ids
+        # The input type. Valid values: RTMP_PUSH, RTMP_PULL, SRT_PUSH, and SRT_PULL.
+        # 
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        if self.input_settings:
+            for k in self.input_settings:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InputSettings'] = []
+        if self.input_settings is not None:
+            for k in self.input_settings:
+                result['InputSettings'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.security_group_ids is not None:
+            result['SecurityGroupIds'] = self.security_group_ids
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.input_settings = []
+        if m.get('InputSettings') is not None:
+            for k in m.get('InputSettings'):
+                temp_model = CreateMediaLiveInputRequestInputSettings()
+                self.input_settings.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SecurityGroupIds') is not None:
+            self.security_group_ids = m.get('SecurityGroupIds')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreateMediaLiveInputShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        input_settings_shrink: str = None,
+        name: str = None,
+        security_group_ids_shrink: str = None,
+        type: str = None,
+    ):
+        # The input settings. An input can have up to two sources: primary and backup sources.
+        # 
+        # This parameter is required.
+        self.input_settings_shrink = input_settings_shrink
+        # The name of the input. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The IDs of the security groups to be associated with the input. This parameter is required for PUSH inputs.
+        self.security_group_ids_shrink = security_group_ids_shrink
+        # The input type. Valid values: RTMP_PUSH, RTMP_PULL, SRT_PUSH, and SRT_PULL.
+        # 
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_settings_shrink is not None:
+            result['InputSettings'] = self.input_settings_shrink
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.security_group_ids_shrink is not None:
+            result['SecurityGroupIds'] = self.security_group_ids_shrink
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputSettings') is not None:
+            self.input_settings_shrink = m.get('InputSettings')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SecurityGroupIds') is not None:
+            self.security_group_ids_shrink = m.get('SecurityGroupIds')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreateMediaLiveInputResponseBody(TeaModel):
+    def __init__(
+        self,
+        input_id: str = None,
+        request_id: str = None,
+    ):
+        # The ID of the input.
+        self.input_id = input_id
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_id is not None:
+            result['InputId'] = self.input_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputId') is not None:
+            self.input_id = m.get('InputId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateMediaLiveInputResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateMediaLiveInputResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateMediaLiveInputResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateMediaLiveInputSecurityGroupRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        whitelist_rules: List[str] = None,
+    ):
+        # The name of the security group. Letters, digits, hyphens (-), and underscores (_) are supported. The maximum length is 64 characters.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The security group rules.
+        # 
+        # This parameter is required.
+        self.whitelist_rules = whitelist_rules
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.whitelist_rules is not None:
+            result['WhitelistRules'] = self.whitelist_rules
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('WhitelistRules') is not None:
+            self.whitelist_rules = m.get('WhitelistRules')
+        return self
+
+
+class CreateMediaLiveInputSecurityGroupShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        whitelist_rules_shrink: str = None,
+    ):
+        # The name of the security group. Letters, digits, hyphens (-), and underscores (_) are supported. The maximum length is 64 characters.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The security group rules.
+        # 
+        # This parameter is required.
+        self.whitelist_rules_shrink = whitelist_rules_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.whitelist_rules_shrink is not None:
+            result['WhitelistRules'] = self.whitelist_rules_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('WhitelistRules') is not None:
+            self.whitelist_rules_shrink = m.get('WhitelistRules')
+        return self
+
+
+class CreateMediaLiveInputSecurityGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        security_group_id: str = None,
+    ):
+        # The ID of the request.
+        self.request_id = request_id
+        # The ID of the security group.
+        self.security_group_id = security_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        return self
+
+
+class CreateMediaLiveInputSecurityGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateMediaLiveInputSecurityGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateMediaLiveInputSecurityGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9875,18 +11442,32 @@ class CreateProgramRequest(TeaModel):
         source_type: str = None,
         transition: str = None,
     ):
+        # The information about ad breaks.
         self.ad_breaks = ad_breaks
+        # The name of the channel.
+        # 
         # This parameter is required.
         self.channel_name = channel_name
+        # Extracts a clip from the source.
         self.clip_range = clip_range
+        # The name of the program.
+        # 
         # This parameter is required.
         self.program_name = program_name
+        # The source location.
+        # 
         # This parameter is required.
         self.source_location_name = source_location_name
+        # The name of the source.
+        # 
         # This parameter is required.
         self.source_name = source_name
+        # The source type of the program.
+        # 
         # This parameter is required.
         self.source_type = source_type
+        # The program transition method.
+        # 
         # This parameter is required.
         self.transition = transition
 
@@ -9944,7 +11525,9 @@ class CreateProgramResponseBody(TeaModel):
         program: ChannelAssemblyProgram = None,
         request_id: str = None,
     ):
+        # The information about the program.
         self.program = program
+        # **Request ID**\
         self.request_id = request_id
 
     def validate(self):
@@ -10280,12 +11863,20 @@ class CreateSourceRequest(TeaModel):
         source_name: str = None,
         source_type: str = None,
     ):
+        # The source configurations.
+        # 
         # This parameter is required.
         self.http_package_configurations = http_package_configurations
+        # The name of the source location.
+        # 
         # This parameter is required.
         self.source_location_name = source_location_name
+        # The name of the source.
+        # 
         # This parameter is required.
         self.source_name = source_name
+        # The source type. Valid values: vodSource and liveSource.
+        # 
         # This parameter is required.
         self.source_type = source_type
 
@@ -10327,7 +11918,9 @@ class CreateSourceResponseBody(TeaModel):
         request_id: str = None,
         source: ChannelAssemblySource = None,
     ):
+        # **Request ID**\
         self.request_id = request_id
+        # The source information.
         self.source = source
 
     def validate(self):
@@ -10405,10 +11998,16 @@ class CreateSourceLocationRequest(TeaModel):
         segment_delivery_url: str = None,
         source_location_name: str = None,
     ):
+        # The protocol and hostname of the source location.
+        # 
         # This parameter is required.
         self.base_url = base_url
+        # Specifies whether to use an independent domain name to access the segments.
         self.enable_segment_delivery = enable_segment_delivery
+        # The domain name used to access the segments.
         self.segment_delivery_url = segment_delivery_url
+        # The name of the source location.
+        # 
         # This parameter is required.
         self.source_location_name = source_location_name
 
@@ -10450,7 +12049,9 @@ class CreateSourceLocationResponseBody(TeaModel):
         request_id: str = None,
         source_location: ChannelAssemblySourceLocation = None,
     ):
+        # **Request ID**\
         self.request_id = request_id
+        # The source location information.
         self.source_location = source_location
 
     def validate(self):
@@ -10921,7 +12522,9 @@ class CreateVodPackagingAssetRequestInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The URL of the media file. Only M3U8 files stored in OSS are supported.
         self.media = media
+        # The input type. Only Object Storage Service (OSS) is supported.
         self.type = type
 
     def validate(self):
@@ -10957,10 +12560,15 @@ class CreateVodPackagingAssetRequest(TeaModel):
         group_name: str = None,
         input: CreateVodPackagingAssetRequestInput = None,
     ):
+        # The name of the asset. The name must be unique and can be up to 128 characters in length. Letters, digits, underscores (_), and hyphens (-) are supported.
         self.asset_name = asset_name
+        # The content ID in the digital rights management (DRM) system. The maximum length is 256 characters. Letters, digits, underscores (_), and hyphens (-) are supported.
         self.content_id = content_id
+        # The asset description.
         self.description = description
+        # The name of the packaging group.
         self.group_name = group_name
+        # The asset input configurations.
         self.input = input
 
     def validate(self):
@@ -11010,10 +12618,15 @@ class CreateVodPackagingAssetShrinkRequest(TeaModel):
         group_name: str = None,
         input_shrink: str = None,
     ):
+        # The name of the asset. The name must be unique and can be up to 128 characters in length. Letters, digits, underscores (_), and hyphens (-) are supported.
         self.asset_name = asset_name
+        # The content ID in the digital rights management (DRM) system. The maximum length is 256 characters. Letters, digits, underscores (_), and hyphens (-) are supported.
         self.content_id = content_id
+        # The asset description.
         self.description = description
+        # The name of the packaging group.
         self.group_name = group_name
+        # The asset input configurations.
         self.input_shrink = input_shrink
 
     def validate(self):
@@ -11058,7 +12671,9 @@ class CreateVodPackagingAssetResponseBody(TeaModel):
         asset: VodPackagingAsset = None,
         request_id: str = None,
     ):
+        # The information about the asset.
         self.asset = asset
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -11136,9 +12751,26 @@ class CreateVodPackagingConfigurationRequestPackageConfigDrmProvider(TeaModel):
         system_ids: List[str] = None,
         url: str = None,
     ):
+        # The encryption method. Valid values:
+        # 
+        # *   AES_128: Advanced Encryption Standard (AES) with 128-bit key length.
+        # *   SAMPLE_AES: an encryption method that encrypts individual media samples.
         self.encryption_method = encryption_method
+        # A 128-bit, 16-byte hex value represented by a 32-character string that is used with the key for encrypting data blocks. If you leave this parameter empty, MediaPackage creates a constant initialization vector (IV). If it is specified, the value is passed to the DRM service.
         self.iv = iv
+        # The ID of the DRM system. The maximum number of system IDs allowed is determined by the protocol type. Limits:
+        # 
+        # *   DASH: 2
+        # *   HLS: 1
+        # *   HLS_CMAF: 2
+        # 
+        # Apple FairPlay, Google Widevine, and Microsoft PlayReady are supported. Their system IDs are as follows:
+        # 
+        # *   Apple FairPlay: 94ce86fb-07ff-4f43-adb8-93d2fa968ca2
+        # *   Google Widevine: edef8ba9-79d6-4ace-a3c8-27dcd51d21e
+        # *   Microsoft PlayReady: 9a04f079-9840-4286-ab92-e65be0885f95
         self.system_ids = system_ids
+        # The URL of the DRM key provider.
         self.url = url
 
     def validate(self):
@@ -11180,8 +12812,15 @@ class CreateVodPackagingConfigurationRequestPackageConfigStreamSelection(TeaMode
         min_video_bits_per_second: int = None,
         stream_order: str = None,
     ):
+        # The maximum bitrate of the video stream. Unit: bit/s.
         self.max_video_bits_per_second = max_video_bits_per_second
+        # The minimum bitrate of the video stream. Unit: bit/s.
         self.min_video_bits_per_second = min_video_bits_per_second
+        # The order of manifest files in the master playlist. Valid values:
+        # 
+        # *   ORIGINAL: sorts the manifest files in the same order as the source.
+        # *   VIDEO_BITRATE_ASCENDING: sorts the manifest files in ascending order of bitrates, from lowest to highest.
+        # *   VIDEO_BITRATE_DESCENDING: sorts the manifest files in descending order of bitrates, from highest to lowest.
         self.stream_order = stream_order
 
     def validate(self):
@@ -11220,9 +12859,13 @@ class CreateVodPackagingConfigurationRequestPackageConfig(TeaModel):
         segment_duration: int = None,
         stream_selection: CreateVodPackagingConfigurationRequestPackageConfigStreamSelection = None,
     ):
+        # The settings of digital rights management (DRM) encryption.
         self.drm_provider = drm_provider
+        # The manifest name. The name can be up to 128 characters in length. Letters, digits, underscores (_), and hyphens (-) are supported.
         self.manifest_name = manifest_name
+        # The duration of each segment in a packaged stream. Unit: seconds. MediaPackage rounds segments to the nearest multiple of the input segment duration. Valid values: 1 to 30.
         self.segment_duration = segment_duration
+        # The settings of stream selection.
         self.stream_selection = stream_selection
 
     def validate(self):
@@ -11271,10 +12914,19 @@ class CreateVodPackagingConfigurationRequest(TeaModel):
         package_config: CreateVodPackagingConfigurationRequestPackageConfig = None,
         protocol: str = None,
     ):
+        # The name of the packaging configuration. The name must be unique in an account and can be up to 128 characters in length. Letters, digits, underscores (_), and hyphens (-) are supported.
         self.configuration_name = configuration_name
+        # The description of the packaging configuration.
         self.description = description
+        # The name of the packaging group. The name can be up to 128 characters in length. Letters, digits, underscores (_), and hyphens (-) are supported.
         self.group_name = group_name
+        # The packaging configuration.
         self.package_config = package_config
+        # The package type.
+        # 
+        # *   HLS: packages content into TS segments for delivery over the HLS protocol.
+        # *   HLS_CMAF: packages content into CMAF segments for delivery over the HLS protocol.
+        # *   DASH: packages content for delivery over the DASH protocol.
         self.protocol = protocol
 
     def validate(self):
@@ -11324,10 +12976,19 @@ class CreateVodPackagingConfigurationShrinkRequest(TeaModel):
         package_config_shrink: str = None,
         protocol: str = None,
     ):
+        # The name of the packaging configuration. The name must be unique in an account and can be up to 128 characters in length. Letters, digits, underscores (_), and hyphens (-) are supported.
         self.configuration_name = configuration_name
+        # The description of the packaging configuration.
         self.description = description
+        # The name of the packaging group. The name can be up to 128 characters in length. Letters, digits, underscores (_), and hyphens (-) are supported.
         self.group_name = group_name
+        # The packaging configuration.
         self.package_config_shrink = package_config_shrink
+        # The package type.
+        # 
+        # *   HLS: packages content into TS segments for delivery over the HLS protocol.
+        # *   HLS_CMAF: packages content into CMAF segments for delivery over the HLS protocol.
+        # *   DASH: packages content for delivery over the DASH protocol.
         self.protocol = protocol
 
     def validate(self):
@@ -11372,7 +13033,9 @@ class CreateVodPackagingConfigurationResponseBody(TeaModel):
         packaging_configuration: VodPackagingConfiguration = None,
         request_id: str = None,
     ):
+        # The packaging configuration.
         self.packaging_configuration = packaging_configuration
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -11448,7 +13111,9 @@ class CreateVodPackagingGroupRequest(TeaModel):
         description: str = None,
         group_name: str = None,
     ):
+        # The packaging group description.
         self.description = description
+        # The name of the packaging group. The name must be unique in an account and can be up to 128 characters in length. Letters, digits, underscores (_), and hyphens (-) are supported.
         self.group_name = group_name
 
     def validate(self):
@@ -11481,7 +13146,9 @@ class CreateVodPackagingGroupResponseBody(TeaModel):
         packaging_group: VodPackagingGroup = None,
         request_id: str = None,
     ):
+        # The packaging group information.
         self.packaging_group = packaging_group
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -11802,7 +13469,7 @@ class DeleteAdInsertionRequest(TeaModel):
         self,
         name: str = None,
     ):
-        # 代表资源一级ID的资源属性字段
+        # The name of the configuration that you want to delete.
         # 
         # This parameter is required.
         self.name = name
@@ -11832,6 +13499,7 @@ class DeleteAdInsertionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -12149,6 +13817,8 @@ class DeleteChannelRequest(TeaModel):
         self,
         channel_name: str = None,
     ):
+        # The name of the channel.
+        # 
         # This parameter is required.
         self.channel_name = channel_name
 
@@ -12178,7 +13848,12 @@ class DeleteChannelResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # **Request ID**\
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -12946,11 +14621,11 @@ class DeleteLivePackageChannelRequest(TeaModel):
         channel_name: str = None,
         group_name: str = None,
     ):
-        # 频道名称
+        # The channel name.
         # 
         # This parameter is required.
         self.channel_name = channel_name
-        # 频道组名称
+        # The channel group name.
         # 
         # This parameter is required.
         self.group_name = group_name
@@ -12984,6 +14659,7 @@ class DeleteLivePackageChannelResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -13052,7 +14728,7 @@ class DeleteLivePackageChannelGroupRequest(TeaModel):
         self,
         group_name: str = None,
     ):
-        # 代表资源一级ID的资源属性字段
+        # The channel group name.
         # 
         # This parameter is required.
         self.group_name = group_name
@@ -13082,7 +14758,7 @@ class DeleteLivePackageChannelGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # 代表资源一级ID的资源属性字段
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -13153,15 +14829,15 @@ class DeleteLivePackageOriginEndpointRequest(TeaModel):
         endpoint_name: str = None,
         group_name: str = None,
     ):
-        # 频道名称
+        # The channel name.
         # 
         # This parameter is required.
         self.channel_name = channel_name
-        # 端点名称
+        # The endpoint name.
         # 
         # This parameter is required.
         self.endpoint_name = endpoint_name
-        # 频道组名称
+        # The channel group name.
         # 
         # This parameter is required.
         self.group_name = group_name
@@ -13199,6 +14875,7 @@ class DeleteLivePackageOriginEndpointResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14049,7 +15726,7 @@ class DeleteMediaConnectFlowRequest(TeaModel):
         self,
         flow_id: str = None,
     ):
-        # Flow instance ID
+        # The flow ID.
         # 
         # This parameter is required.
         self.flow_id = flow_id
@@ -14082,13 +15759,13 @@ class DeleteMediaConnectFlowResponseBody(TeaModel):
         request_id: str = None,
         ret_code: int = None,
     ):
-        # Response body
+        # The response body.
         self.content = content
-        # Description of the API call
+        # The call description.
         self.description = description
-        # Request ID
+        # The ID of the request.
         self.request_id = request_id
-        # Returned error code, where `0` indicates success
+        # The returned error code. A value of `0` indicates the call is successful.
         self.ret_code = ret_code
 
     def validate(self):
@@ -14169,7 +15846,7 @@ class DeleteMediaConnectFlowInputRequest(TeaModel):
         self,
         flow_id: str = None,
     ):
-        # Flow instance ID
+        # The flow ID.
         # 
         # This parameter is required.
         self.flow_id = flow_id
@@ -14202,13 +15879,13 @@ class DeleteMediaConnectFlowInputResponseBody(TeaModel):
         request_id: str = None,
         ret_code: int = None,
     ):
-        # Response body
+        # The response body.
         self.content = content
-        # Description of the API call
+        # The call description.
         self.description = description
-        # 请求ID
+        # The ID of the request.
         self.request_id = request_id
-        # Returned error code, 0 indicates success
+        # The returned error code. A value of 0 indicates the call is successful.
         self.ret_code = ret_code
 
     def validate(self):
@@ -14290,11 +15967,11 @@ class DeleteMediaConnectFlowOutputRequest(TeaModel):
         flow_id: str = None,
         output_name: str = None,
     ):
-        # Flow instance ID
+        # The flow ID.
         # 
         # This parameter is required.
         self.flow_id = flow_id
-        # Output name
+        # The name of the output that you want to delete.
         # 
         # This parameter is required.
         self.output_name = output_name
@@ -14331,13 +16008,13 @@ class DeleteMediaConnectFlowOutputResponseBody(TeaModel):
         request_id: str = None,
         ret_code: int = None,
     ):
-        # Response body
+        # The response body.
         self.content = content
-        # Description of the API call
+        # The call description.
         self.description = description
-        # Request ID
+        # The ID of the request.
         self.request_id = request_id
-        # Returned error code, 0 indicates success
+        # The returned error code. A value of 0 indicates the call is successful.
         self.ret_code = ret_code
 
     def validate(self):
@@ -14681,6 +16358,303 @@ class DeleteMediaInfosResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteMediaInfosResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteMediaLiveChannelRequest(TeaModel):
+    def __init__(
+        self,
+        channel_id: str = None,
+    ):
+        # The ID of the channel.
+        # 
+        # This parameter is required.
+        self.channel_id = channel_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        return self
+
+
+class DeleteMediaLiveChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteMediaLiveChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteMediaLiveChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteMediaLiveChannelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteMediaLiveInputRequest(TeaModel):
+    def __init__(
+        self,
+        input_id: str = None,
+    ):
+        # The ID of the input.
+        # 
+        # This parameter is required.
+        self.input_id = input_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_id is not None:
+            result['InputId'] = self.input_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputId') is not None:
+            self.input_id = m.get('InputId')
+        return self
+
+
+class DeleteMediaLiveInputResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteMediaLiveInputResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteMediaLiveInputResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteMediaLiveInputResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteMediaLiveInputSecurityGroupRequest(TeaModel):
+    def __init__(
+        self,
+        security_group_id: str = None,
+    ):
+        # The ID of the security group.
+        # 
+        # This parameter is required.
+        self.security_group_id = security_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        return self
+
+
+class DeleteMediaLiveInputSecurityGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteMediaLiveInputSecurityGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteMediaLiveInputSecurityGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteMediaLiveInputSecurityGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15046,8 +17020,12 @@ class DeleteProgramRequest(TeaModel):
         channel_name: str = None,
         program_name: str = None,
     ):
+        # The name of the channel.
+        # 
         # This parameter is required.
         self.channel_name = channel_name
+        # The name of the program.
+        # 
         # This parameter is required.
         self.program_name = program_name
 
@@ -15081,7 +17059,9 @@ class DeleteProgramResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # **Request ID**\
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -15254,11 +17234,18 @@ class DeleteSourceRequest(TeaModel):
         source_name: str = None,
         source_type: str = None,
     ):
+        # Specifies whether to use delete markers.
         self.soft_delete = soft_delete
+        # The name of the source location.
+        # 
         # This parameter is required.
         self.source_location_name = source_location_name
+        # The name of the source.
+        # 
         # This parameter is required.
         self.source_name = source_name
+        # The source type. Valid values: vodSource and liveSource.
+        # 
         # This parameter is required.
         self.source_type = source_type
 
@@ -15300,7 +17287,12 @@ class DeleteSourceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # **Request ID**\
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -15374,7 +17366,10 @@ class DeleteSourceLocationRequest(TeaModel):
         soft_delete: bool = None,
         source_location_name: str = None,
     ):
+        # Specifies whether to use delete markers.
         self.soft_delete = soft_delete
+        # The name of the source location.
+        # 
         # This parameter is required.
         self.source_location_name = source_location_name
 
@@ -15408,7 +17403,12 @@ class DeleteSourceLocationResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # **Request ID**\
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid value:
+        # 
+        # *   true: The request succeeded.
+        # *   false: The request failed.
         self.success = success
 
     def validate(self):
@@ -15578,6 +17578,7 @@ class DeleteVodPackagingAssetRequest(TeaModel):
         self,
         asset_name: str = None,
     ):
+        # The name of the VOD packaging asset.
         self.asset_name = asset_name
 
     def validate(self):
@@ -15605,6 +17606,7 @@ class DeleteVodPackagingAssetResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -15673,6 +17675,7 @@ class DeleteVodPackagingConfigurationRequest(TeaModel):
         self,
         configuration_name: str = None,
     ):
+        # The name of the packaging configuration.
         self.configuration_name = configuration_name
 
     def validate(self):
@@ -15700,6 +17703,7 @@ class DeleteVodPackagingConfigurationResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -15768,6 +17772,7 @@ class DeleteVodPackagingGroupRequest(TeaModel):
         self,
         group_name: str = None,
     ):
+        # The name of the packaging group.
         self.group_name = group_name
 
     def validate(self):
@@ -15795,6 +17800,7 @@ class DeleteVodPackagingGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -15863,6 +17869,8 @@ class DescribeAIAgentInstanceRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # The ID of the AI agent that you want to query.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 
@@ -15896,11 +17904,16 @@ class DescribeAIAgentInstanceResponseBodyInstance(TeaModel):
         template_config: AIAgentTemplateConfig = None,
         user_data: str = None,
     ):
+        # The URL of the call log file.
         self.call_log_url = call_log_url
+        # The runtime configurations of the AI agent.
         self.runtime_config = runtime_config
         self.session_id = session_id
+        # The state of the AI agent. Valid values: Finished and Executing.
         self.status = status
+        # The template configurations of the AI agent.
         self.template_config = template_config
+        # The custom information.
         self.user_data = user_data
 
     def validate(self):
@@ -15954,7 +17967,9 @@ class DescribeAIAgentInstanceResponseBody(TeaModel):
         instance: DescribeAIAgentInstanceResponseBodyInstance = None,
         request_id: str = None,
     ):
+        # The information about the AI agent.
         self.instance = instance
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16994,6 +19009,11 @@ class DescribeNotifyConfigResponseBody(TeaModel):
     ):
         self.callback_url = callback_url
         self.enable_notify = enable_notify
+        # The event types. If this parameter is empty, all event types are selected.
+        # 
+        # *   agent_start: The agent is started.
+        # *   agent_stop: The agent is stopped.
+        # *   error: An error occurred.
         self.event_types = event_types
         self.request_id = request_id
         self.token = token
@@ -17930,25 +19950,67 @@ class DropSearchLibResponse(TeaModel):
         return self
 
 
+class GenerateAIAgentCallRequestChatSyncConfig(TeaModel):
+    def __init__(
+        self,
+        imaiagent_id: str = None,
+        receiver_id: str = None,
+    ):
+        self.imaiagent_id = imaiagent_id
+        self.receiver_id = receiver_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.imaiagent_id is not None:
+            result['IMAIAgentId'] = self.imaiagent_id
+        if self.receiver_id is not None:
+            result['ReceiverId'] = self.receiver_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IMAIAgentId') is not None:
+            self.imaiagent_id = m.get('IMAIAgentId')
+        if m.get('ReceiverId') is not None:
+            self.receiver_id = m.get('ReceiverId')
+        return self
+
+
 class GenerateAIAgentCallRequest(TeaModel):
     def __init__(
         self,
         aiagent_id: str = None,
+        chat_sync_config: GenerateAIAgentCallRequestChatSyncConfig = None,
         expire: int = None,
         session_id: str = None,
         template_config: AIAgentTemplateConfig = None,
         user_data: str = None,
         user_id: str = None,
     ):
+        # The ID of the AI agent.
+        # 
         # This parameter is required.
         self.aiagent_id = aiagent_id
+        self.chat_sync_config = chat_sync_config
+        # The time when the token expires. Unit: seconds. Default value: 3600. Valid values: 0 to 604800.
         self.expire = expire
         self.session_id = session_id
+        # The template configurations of the AI agent. The specified configurations are merged with the template configurations that are specified in the console. If you do not specify this parameter, the system uses the default configurations for an AI agent created in the console.
         self.template_config = template_config
         self.user_data = user_data
+        # The username of the AI agent in the channel. If you do not specify this parameter, the system automatically generates a username. The value can be up to 64 characters in length.
         self.user_id = user_id
 
     def validate(self):
+        if self.chat_sync_config:
+            self.chat_sync_config.validate()
         if self.template_config:
             self.template_config.validate()
 
@@ -17960,6 +20022,8 @@ class GenerateAIAgentCallRequest(TeaModel):
         result = dict()
         if self.aiagent_id is not None:
             result['AIAgentId'] = self.aiagent_id
+        if self.chat_sync_config is not None:
+            result['ChatSyncConfig'] = self.chat_sync_config.to_map()
         if self.expire is not None:
             result['Expire'] = self.expire
         if self.session_id is not None:
@@ -17976,6 +20040,9 @@ class GenerateAIAgentCallRequest(TeaModel):
         m = m or dict()
         if m.get('AIAgentId') is not None:
             self.aiagent_id = m.get('AIAgentId')
+        if m.get('ChatSyncConfig') is not None:
+            temp_model = GenerateAIAgentCallRequestChatSyncConfig()
+            self.chat_sync_config = temp_model.from_map(m['ChatSyncConfig'])
         if m.get('Expire') is not None:
             self.expire = m.get('Expire')
         if m.get('SessionId') is not None:
@@ -17994,18 +20061,25 @@ class GenerateAIAgentCallShrinkRequest(TeaModel):
     def __init__(
         self,
         aiagent_id: str = None,
+        chat_sync_config_shrink: str = None,
         expire: int = None,
         session_id: str = None,
         template_config_shrink: str = None,
         user_data: str = None,
         user_id: str = None,
     ):
+        # The ID of the AI agent.
+        # 
         # This parameter is required.
         self.aiagent_id = aiagent_id
+        self.chat_sync_config_shrink = chat_sync_config_shrink
+        # The time when the token expires. Unit: seconds. Default value: 3600. Valid values: 0 to 604800.
         self.expire = expire
         self.session_id = session_id
+        # The template configurations of the AI agent. The specified configurations are merged with the template configurations that are specified in the console. If you do not specify this parameter, the system uses the default configurations for an AI agent created in the console.
         self.template_config_shrink = template_config_shrink
         self.user_data = user_data
+        # The username of the AI agent in the channel. If you do not specify this parameter, the system automatically generates a username. The value can be up to 64 characters in length.
         self.user_id = user_id
 
     def validate(self):
@@ -18019,6 +20093,8 @@ class GenerateAIAgentCallShrinkRequest(TeaModel):
         result = dict()
         if self.aiagent_id is not None:
             result['AIAgentId'] = self.aiagent_id
+        if self.chat_sync_config_shrink is not None:
+            result['ChatSyncConfig'] = self.chat_sync_config_shrink
         if self.expire is not None:
             result['Expire'] = self.expire
         if self.session_id is not None:
@@ -18035,6 +20111,8 @@ class GenerateAIAgentCallShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('AIAgentId') is not None:
             self.aiagent_id = m.get('AIAgentId')
+        if m.get('ChatSyncConfig') is not None:
+            self.chat_sync_config_shrink = m.get('ChatSyncConfig')
         if m.get('Expire') is not None:
             self.expire = m.get('Expire')
         if m.get('SessionId') is not None:
@@ -18058,11 +20136,17 @@ class GenerateAIAgentCallResponseBody(TeaModel):
         token: str = None,
         user_id: str = None,
     ):
+        # The username of the AI agent in the Alibaba Real-Time Communication (ARTC) channel.
         self.aiagent_user_id = aiagent_user_id
+        # The ARTC channel ID.
         self.channel_id = channel_id
+        # The ID of the AI agent.
         self.instance_id = instance_id
+        # The request ID.
         self.request_id = request_id
+        # The ARTC token of the client.
         self.token = token
+        # The username in the ARTC channel.
         self.user_id = user_id
 
     def validate(self):
@@ -18428,7 +20512,7 @@ class GetAdInsertionRequest(TeaModel):
         self,
         name: str = None,
     ):
-        # 代表资源一级ID的资源属性字段
+        # The name of the ad insertion configuration that you want to query.
         # 
         # This parameter is required.
         self.name = name
@@ -18459,9 +20543,9 @@ class GetAdInsertionResponseBodyConfigCdnConfig(TeaModel):
         ad_segment_url_prefix: str = None,
         content_segment_url_prefix: str = None,
     ):
-        # 广告分片的CDN前缀
+        # The CDN prefix for accessing ad segments.
         self.ad_segment_url_prefix = ad_segment_url_prefix
-        # 视频内容分片的CDN前缀
+        # The CDN prefix for accessing content segments.
         self.content_segment_url_prefix = content_segment_url_prefix
 
     def validate(self):
@@ -18493,7 +20577,7 @@ class GetAdInsertionResponseBodyConfigManifestEndpointConfig(TeaModel):
         self,
         hls_prefix: str = None,
     ):
-        # HLS清单播放端点前缀
+        # The playback endpoint prefix for accessing HLS manifests.
         self.hls_prefix = hls_prefix
 
     def validate(self):
@@ -18531,27 +20615,27 @@ class GetAdInsertionResponseBodyConfig(TeaModel):
         personalization_threshold: int = None,
         slate_ad_url: str = None,
     ):
-        # 广告标记透传
+        # Indicates whether ad marker passthrough is enabled.
         self.ad_marker_passthrough = ad_marker_passthrough
-        # 广告策略服务器URL
+        # The URL of the ad decision server (ADS).
         self.ads_url = ads_url
-        # CDN配置
+        # The CDN configurations.
         self.cdn_config = cdn_config
-        # 动态配置别名
+        # The aliases for dynamic variable replacement.
         self.config_aliases = config_aliases
-        # 内容URL前缀
+        # The prefix of the source URL.
         self.content_url_prefix = content_url_prefix
-        # 创建时间
+        # The time when the configuration was created.
         self.create_time = create_time
-        # 修改时间
+        # The time when the configuration was last modified.
         self.last_modified = last_modified
-        # 清单播放端点配置
+        # The playback endpoint prefix for accessing manifests.
         self.manifest_endpoint_config = manifest_endpoint_config
-        # 广告插入配置名称
+        # The name of the configuration.
         self.name = name
-        # 个性化配置阈值
+        # The personalization threshold.
         self.personalization_threshold = personalization_threshold
-        # slate广告URL
+        # The URL of the slate ad.
         self.slate_ad_url = slate_ad_url
 
     def validate(self):
@@ -18625,7 +20709,9 @@ class GetAdInsertionResponseBody(TeaModel):
         config: GetAdInsertionResponseBodyConfig = None,
         request_id: str = None,
     ):
+        # The ad insertion configuration.
         self.config = config
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -19824,6 +21910,8 @@ class GetChannelRequest(TeaModel):
         self,
         channel_name: str = None,
     ):
+        # The name of the channel.
+        # 
         # This parameter is required.
         self.channel_name = channel_name
 
@@ -19853,7 +21941,9 @@ class GetChannelResponseBody(TeaModel):
         channel: ChannelAssemblyChannel = None,
         request_id: str = None,
     ):
+        # The channel information.
         self.channel = channel
+        # **Request ID**\
         self.request_id = request_id
 
     def validate(self):
@@ -23027,11 +25117,11 @@ class GetLivePackageChannelRequest(TeaModel):
         channel_name: str = None,
         group_name: str = None,
     ):
-        # 频道名称
+        # The channel name.
         # 
         # This parameter is required.
         self.channel_name = channel_name
-        # 频道组名称
+        # The channel group name.
         # 
         # This parameter is required.
         self.group_name = group_name
@@ -23068,9 +25158,13 @@ class GetLivePackageChannelResponseBodyLivePackageChannelIngestEndpoints(TeaMode
         url: str = None,
         username: str = None,
     ):
+        # The ingest endpoint ID.
         self.id = id
+        # The password.
         self.password = password
+        # The ingest endpoint URL.
         self.url = url
+        # The username.
         self.username = username
 
     def validate(self):
@@ -23118,24 +25212,23 @@ class GetLivePackageChannelResponseBodyLivePackageChannel(TeaModel):
         segment_count: int = None,
         segment_duration: int = None,
     ):
-        # 频道名称，字符必须为大小写英文字母或-、_。
-        # 1 ~ 200个字符。
-        # 格式：[A-Za-z0-9_-]+\
+        # The channel name.
         self.channel_name = channel_name
-        # 代表创建时间的资源属性字段
+        # The time when the channel was created.
         self.create_time = create_time
-        # 频道描述，最大1000个字符
+        # The channel description.
         self.description = description
-        # 频道组名称
+        # The channel group name.
         self.group_name = group_name
+        # The ingest endpoints.
         self.ingest_endpoints = ingest_endpoints
-        # 最后修改时间
+        # The time when the endpoint was last modified.
         self.last_modified = last_modified
-        # 输入协议，目前仅支持HLS
+        # The ingest protocol. Only HLS is supported.
         self.protocol = protocol
-        # 输入流m3u8切片个数，2～100
+        # The number of M3U8 segments.
         self.segment_count = segment_count
-        # 输入流切片时长，1～30
+        # The segment duration.
         self.segment_duration = segment_duration
 
     def validate(self):
@@ -23204,7 +25297,9 @@ class GetLivePackageChannelResponseBody(TeaModel):
         live_package_channel: GetLivePackageChannelResponseBodyLivePackageChannel = None,
         request_id: str = None,
     ):
+        # Details of the live package channel.
         self.live_package_channel = live_package_channel
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -23279,7 +25374,7 @@ class GetLivePackageChannelGroupRequest(TeaModel):
         self,
         group_name: str = None,
     ):
-        # 频道组名称
+        # The channel group name.
         # 
         # This parameter is required.
         self.group_name = group_name
@@ -23313,15 +25408,15 @@ class GetLivePackageChannelGroupResponseBodyLivePackageChannelGroup(TeaModel):
         last_modified: str = None,
         origin_domain: str = None,
     ):
-        # 创建时间
+        # The time when the channel group was created. It is in the yyyy-MM-ddTHH:mm:ssZ format and displayed in UTC.
         self.create_time = create_time
-        # 描述
+        # The channel group description.
         self.description = description
-        # 频道组名称
+        # The channel group name.
         self.group_name = group_name
-        # 修改时间
+        # The time when the channel group was last modified. It is in the yyyy-MM-ddTHH:mm:ssZ format and displayed in UTC.
         self.last_modified = last_modified
-        # 源站域名
+        # The origin domain.
         self.origin_domain = origin_domain
 
     def validate(self):
@@ -23366,7 +25461,9 @@ class GetLivePackageChannelGroupResponseBody(TeaModel):
         live_package_channel_group: GetLivePackageChannelGroupResponseBodyLivePackageChannelGroup = None,
         request_id: str = None,
     ):
+        # Details of the channel group.
         self.live_package_channel_group = live_package_channel_group
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -23443,15 +25540,15 @@ class GetLivePackageOriginEndpointRequest(TeaModel):
         endpoint_name: str = None,
         group_name: str = None,
     ):
-        # 频道名称
+        # The channel name.
         # 
         # This parameter is required.
         self.channel_name = channel_name
-        # 端点名称
+        # The endpoint name.
         # 
         # This parameter is required.
         self.endpoint_name = endpoint_name
-        # 频道组名称
+        # The channel group name.
         # 
         # This parameter is required.
         self.group_name = group_name
@@ -23501,31 +25598,31 @@ class GetLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint(TeaModel
         protocol: str = None,
         timeshift_vision: int = None,
     ):
-        # 回源授权码，与IpWhitelist必选其一
+        # The authorization code.
         self.authorization_code = authorization_code
-        # 频道名称
+        # The channel name.
         self.channel_name = channel_name
-        # 创建时间
+        # The time when the endpoint was created.
         self.create_time = create_time
-        # 端点描述
+        # The endpoint description.
         self.description = description
-        # 端点名称
+        # The endpoint name.
         self.endpoint_name = endpoint_name
-        # 源站端点回源播放地址
+        # The endpoint URL.
         self.endpoint_url = endpoint_url
-        # 频道组名称
+        # The channel group name.
         self.group_name = group_name
-        # IP黑名单，支持无类别域间路由（CIDR），逗号分隔
+        # The IP address blacklist.
         self.ip_blacklist = ip_blacklist
-        # IP白名单，支持无类别域间路由（CIDR），逗号分隔，与AuthorizationCode必选其一
+        # The IP address whitelist.
         self.ip_whitelist = ip_whitelist
-        # 最后修改时间
+        # The time when the endpoint was last modified.
         self.last_modified = last_modified
-        # 播放列表名
+        # The playlist name.
         self.manifest_name = manifest_name
-        # 端点分发协议，暂只支持HLS
+        # The distribution protocol.
         self.protocol = protocol
-        # 时移天数，最大30天，0表示不支持时移
+        # The number of days that time-shifted content is available.
         self.timeshift_vision = timeshift_vision
 
     def validate(self):
@@ -23602,7 +25699,9 @@ class GetLivePackageOriginEndpointResponseBody(TeaModel):
         live_package_origin_endpoint: GetLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint = None,
         request_id: str = None,
     ):
+        # The information about the origin endpoints.
         self.live_package_origin_endpoint = live_package_origin_endpoint
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -25309,7 +27408,7 @@ class GetMediaConnectFlowRequest(TeaModel):
         self,
         flow_id: str = None,
     ):
-        # Flow instance ID
+        # The flow ID.
         # 
         # This parameter is required.
         self.flow_id = flow_id
@@ -25343,15 +27442,15 @@ class GetMediaConnectFlowResponseBodyContent(TeaModel):
         flow_status: str = None,
         start_time: str = None,
     ):
-        # Flow creation time
+        # The time when the flow was created.
         self.create_time = create_time
-        # Flow instance ID
+        # The flow ID.
         self.flow_id = flow_id
-        # Flow instance name
+        # The flow name.
         self.flow_name = flow_name
-        # Flow status
+        # The state of the flow.
         self.flow_status = flow_status
-        # Flow start time
+        # The time when the flow is started.
         self.start_time = start_time
 
     def validate(self):
@@ -25398,13 +27497,13 @@ class GetMediaConnectFlowResponseBody(TeaModel):
         request_id: str = None,
         retcode: int = None,
     ):
-        # Response body
+        # The response body.
         self.content = content
-        # Interface call description information
+        # The call description.
         self.description = description
-        # 请求ID
+        # The ID of the request.
         self.request_id = request_id
-        # Return status code, 0 indicates success
+        # The returned code. A value of 0 indicates the call is successful.
         self.retcode = retcode
 
     def validate(self):
@@ -25487,7 +27586,7 @@ class GetMediaConnectFlowInputRequest(TeaModel):
         self,
         flow_id: str = None,
     ):
-        # Flow instance ID
+        # The flow ID.
         # 
         # This parameter is required.
         self.flow_id = flow_id
@@ -25527,27 +27626,42 @@ class GetMediaConnectFlowInputResponseBodyContent(TeaModel):
         srt_passphrase: str = None,
         srt_pbkey_len: int = None,
     ):
-        # IP whitelist, in CIDR format, multiple IP segments separated by commas
+        # The IP address whitelist in CIDR format. CIDR blocks are separated with commas (,).
         self.cidrs = cidrs
-        # Flow creation time
+        # The time when the flow was created.
         self.create_time = create_time
-        # Input name
+        # The source name.
         self.input_name = input_name
-        # Input type
+        # The source type.
+        # 
+        # Valid values:
+        # 
+        # *   RTMP-PUSH
+        # *   SRT-Caller
+        # *   RTMP-PULL
+        # *   SRT-Listener
+        # *   Flow
         self.input_protocol = input_protocol
-        # Input URL
+        # The source URL.
         self.input_url = input_url
-        # Input bitrate, in bps
+        # The maximum bitrate. Unit: bit/s.
         self.max_bitrate = max_bitrate
-        # Peer Flow instance ID, required when the output type is Flow
+        # The ID of the source flow. This parameter is returned when the source type is Flow.
         self.pair_flow_id = pair_flow_id
-        # Peer Flow output name, required only when the input type is Flow
+        # The output of the source flow. This parameter is returned when the source type is Flow.
         self.pair_output_name = pair_output_name
-        # SRT latency, in ms, required only when the input type is SRT-Listener/SRT-Caller
+        # The latency for the SRT stream. Unit: milliseconds. This parameter is returned when the source type is SRT-Listener or SRT-Caller.
         self.srt_latency = srt_latency
-        # SRT encryption key, required only when the input type is SRT-Listener/SRT-Caller
+        # The SRT key. This parameter is returned when the source type is SRT-Listener or SRT-Caller.
         self.srt_passphrase = srt_passphrase
-        # SRT encryption length, required only when the input type is SRT-Listener/SRT-Caller
+        # The encryption key length. This parameter is returned when the source type is SRT-Listener or SRT-Caller.
+        # 
+        # Valid values:
+        # 
+        # *   0
+        # *   16
+        # *   24
+        # *   32
         self.srt_pbkey_len = srt_pbkey_len
 
     def validate(self):
@@ -25618,13 +27732,13 @@ class GetMediaConnectFlowInputResponseBody(TeaModel):
         request_id: str = None,
         ret_code: int = None,
     ):
-        # Response body
+        # The response body.
         self.content = content
-        # Interface call description
+        # The call description.
         self.description = description
-        # 请求ID
+        # The ID of the request.
         self.request_id = request_id
-        # Returned error code, 0 indicates success
+        # The returned error code. A value of 0 indicates the call is successful.
         self.ret_code = ret_code
 
     def validate(self):
@@ -25708,11 +27822,11 @@ class GetMediaConnectFlowOutputRequest(TeaModel):
         flow_id: str = None,
         output_name: str = None,
     ):
-        # Flow instance ID
+        # The flow ID.
         # 
         # This parameter is required.
         self.flow_id = flow_id
-        # Output name
+        # The name of the output that you want to query.
         # 
         # This parameter is required.
         self.output_name = output_name
@@ -25756,27 +27870,42 @@ class GetMediaConnectFlowOutputResponseBodyContent(TeaModel):
         srt_passphrase: str = None,
         srt_pbkey_len: int = None,
     ):
-        # IP whitelist in CIDR format, multiple IP segments separated by commas
+        # The IP address whitelist in CIDR format. CIDR blocks are separated with commas (,).
         self.cidrs = cidrs
-        # Flow creation time
+        # The time when the flow was created.
         self.create_time = create_time
-        # Output name
+        # The output name.
         self.output_name = output_name
-        # Output protocol
+        # The output type.
+        # 
+        # Valid values:
+        # 
+        # *   RTMP-PUSH
+        # *   SRT-Caller
+        # *   RTMP-PULL
+        # *   SRT-Listener
+        # *   Flow
         self.output_protocol = output_protocol
-        # Output URL
+        # The output URL.
         self.output_url = output_url
-        # Peer Flow instance ID, required when the output type is Flow
+        # The ID of the destination flow. This parameter is returned when the output type is Flow.
         self.pair_flow_id = pair_flow_id
-        # Peer Flow\\"s input name, required when the output type is Flow
+        # The source name of the destination flow. This parameter is returned when the output type is Flow.
         self.pair_input_name = pair_input_name
-        # Player limit
+        # The maximum number of viewers.
         self.player_limit = player_limit
-        # SRT latency, in milliseconds, required only when the input type is SRT-Listener/SRT-Caller
+        # The latency for the SRT stream. Unit: milliseconds. This parameter is returned when the source type is SRT-Listener or SRT-Caller.
         self.srt_latency = srt_latency
-        # SRT encryption key, required only when the input type is SRT-Listener/SRT-Caller
+        # The SRT key. This parameter is returned when the source type is SRT-Listener or SRT-Caller.
         self.srt_passphrase = srt_passphrase
-        # SRT encryption length, required only when the input type is SRT-Listener/SRT-Caller
+        # The encryption key length. This parameter is returned when the source type is SRT-Listener or SRT-Caller.
+        # 
+        # Valid values:
+        # 
+        # *   0
+        # *   16
+        # *   24
+        # *   32
         self.srt_pbkey_len = srt_pbkey_len
 
     def validate(self):
@@ -25847,13 +27976,13 @@ class GetMediaConnectFlowOutputResponseBody(TeaModel):
         request_id: str = None,
         ret_code: int = None,
     ):
-        # Response body
+        # The response body.
         self.content = content
-        # API call description
+        # The call description.
         self.description = description
-        # Request ID
+        # The ID of the request.
         self.request_id = request_id
-        # Returned error code, 0 indicates success
+        # The returned error code. A value of 0 indicates the call is successful.
         self.ret_code = ret_code
 
     def validate(self):
@@ -25936,6 +28065,7 @@ class GetMediaConvertJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The ID of the transcoding task.
         self.job_id = job_id
 
     def validate(self):
@@ -25965,8 +28095,11 @@ class GetMediaConvertJobResponseBodyJobConfig(TeaModel):
         output_groups: List[MediaConvertOutputGroup] = None,
         outputs: List[MediaConvertOutput] = None,
     ):
+        # The inputs of the transcoding task.
         self.inputs = inputs
+        # The output group configurations.
         self.output_groups = output_groups
+        # The output configurations.
         self.outputs = outputs
 
     def validate(self):
@@ -26038,16 +28171,33 @@ class GetMediaConvertJobResponseBodyJob(TeaModel):
         state: str = None,
         user_data: str = None,
     ):
+        # The idempotency key of the request for creating the transcoding task.
         self.client_token = client_token
+        # The error code returned when the transcoding task failed.
         self.code = code
+        # The configurations of the transcoding task.
         self.config = config
+        # The ID of the transcoding task, which is a 32-bit string.
         self.job_id = job_id
+        # The error message returned when the transcoding task failed.
         self.message = message
+        # The details of the transcoded outputs, each corresponding to an output configuration.
         self.output_details = output_details
+        # The details of the output groups, each corresponding to an output group configuration.
         self.output_group_details = output_group_details
+        # The ID of the queue.
         self.pipeline_id = pipeline_id
+        # The ID of the request for creating the transcoding task.
         self.request_id = request_id
+        # The status of the transcoding task. Valid values:
+        # 
+        # *   Inited: The task is initialized.
+        # *   Running
+        # *   Success
+        # *   Failed
+        # *   Cancelled
         self.state = state
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -26136,8 +28286,9 @@ class GetMediaConvertJobResponseBody(TeaModel):
         job: GetMediaConvertJobResponseBodyJob = None,
         request_id: str = None,
     ):
+        # The transcoding task.
         self.job = job
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -28162,6 +30313,1453 @@ class GetMediaInfoJobResponse(TeaModel):
         return self
 
 
+class GetMediaLiveChannelRequest(TeaModel):
+    def __init__(
+        self,
+        channel_id: str = None,
+    ):
+        # The ID of the channel.
+        # 
+        # This parameter is required.
+        self.channel_id = channel_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        return self
+
+
+class GetMediaLiveChannelResponseBodyChannelAudioSettingsAudioCodecSetting(TeaModel):
+    def __init__(
+        self,
+        bitrate: int = None,
+        profile: str = None,
+        sample_rate: int = None,
+    ):
+        # The audio bitrate. Unit: bit/s.
+        self.bitrate = bitrate
+        # The audio codec profile.
+        self.profile = profile
+        # The audio sample rate. Unit: Hz.
+        self.sample_rate = sample_rate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
+        if self.profile is not None:
+            result['Profile'] = self.profile
+        if self.sample_rate is not None:
+            result['SampleRate'] = self.sample_rate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
+        if m.get('Profile') is not None:
+            self.profile = m.get('Profile')
+        if m.get('SampleRate') is not None:
+            self.sample_rate = m.get('SampleRate')
+        return self
+
+
+class GetMediaLiveChannelResponseBodyChannelAudioSettings(TeaModel):
+    def __init__(
+        self,
+        audio_codec: str = None,
+        audio_codec_setting: GetMediaLiveChannelResponseBodyChannelAudioSettingsAudioCodecSetting = None,
+        audio_selector_name: str = None,
+        language_code: str = None,
+        language_name: str = None,
+        name: str = None,
+    ):
+        # The audio codec.
+        self.audio_codec = audio_codec
+        # The audio encoding settings.
+        self.audio_codec_setting = audio_codec_setting
+        # The name of the audio selector.
+        self.audio_selector_name = audio_selector_name
+        # A three-letter ISO 639-2 language code.
+        self.language_code = language_code
+        # The name of the language.
+        self.language_name = language_name
+        # The name of the audio settings.
+        self.name = name
+
+    def validate(self):
+        if self.audio_codec_setting:
+            self.audio_codec_setting.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_codec is not None:
+            result['AudioCodec'] = self.audio_codec
+        if self.audio_codec_setting is not None:
+            result['AudioCodecSetting'] = self.audio_codec_setting.to_map()
+        if self.audio_selector_name is not None:
+            result['AudioSelectorName'] = self.audio_selector_name
+        if self.language_code is not None:
+            result['LanguageCode'] = self.language_code
+        if self.language_name is not None:
+            result['LanguageName'] = self.language_name
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioCodec') is not None:
+            self.audio_codec = m.get('AudioCodec')
+        if m.get('AudioCodecSetting') is not None:
+            temp_model = GetMediaLiveChannelResponseBodyChannelAudioSettingsAudioCodecSetting()
+            self.audio_codec_setting = temp_model.from_map(m['AudioCodecSetting'])
+        if m.get('AudioSelectorName') is not None:
+            self.audio_selector_name = m.get('AudioSelectorName')
+        if m.get('LanguageCode') is not None:
+            self.language_code = m.get('LanguageCode')
+        if m.get('LanguageName') is not None:
+            self.language_name = m.get('LanguageName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioLanguageSelection(TeaModel):
+    def __init__(
+        self,
+        language_code: str = None,
+    ):
+        # A three-letter ISO 639-2 language code from within an audio source.
+        # 
+        # This parameter is required.
+        self.language_code = language_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.language_code is not None:
+            result['LanguageCode'] = self.language_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LanguageCode') is not None:
+            self.language_code = m.get('LanguageCode')
+        return self
+
+
+class GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioPidSelection(TeaModel):
+    def __init__(
+        self,
+        pid: int = None,
+    ):
+        # A PID from within a source.
+        # 
+        # This parameter is required.
+        self.pid = pid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pid is not None:
+            result['Pid'] = self.pid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
+        return self
+
+
+class GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioTrackSelection(TeaModel):
+    def __init__(
+        self,
+        track_id: int = None,
+    ):
+        # The track ID from within a source.
+        # 
+        # This parameter is required.
+        self.track_id = track_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.track_id is not None:
+            result['TrackId'] = self.track_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TrackId') is not None:
+            self.track_id = m.get('TrackId')
+        return self
+
+
+class GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectors(TeaModel):
+    def __init__(
+        self,
+        audio_language_selection: GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioLanguageSelection = None,
+        audio_pid_selection: GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioPidSelection = None,
+        audio_track_selection: List[GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioTrackSelection] = None,
+        name: str = None,
+    ):
+        # The audio language selection.
+        self.audio_language_selection = audio_language_selection
+        # The audio PID selection.
+        self.audio_pid_selection = audio_pid_selection
+        # The audio track selection.
+        self.audio_track_selection = audio_track_selection
+        # The name of the audio selector.
+        # 
+        # This parameter is required.
+        self.name = name
+
+    def validate(self):
+        if self.audio_language_selection:
+            self.audio_language_selection.validate()
+        if self.audio_pid_selection:
+            self.audio_pid_selection.validate()
+        if self.audio_track_selection:
+            for k in self.audio_track_selection:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_language_selection is not None:
+            result['AudioLanguageSelection'] = self.audio_language_selection.to_map()
+        if self.audio_pid_selection is not None:
+            result['AudioPidSelection'] = self.audio_pid_selection.to_map()
+        result['AudioTrackSelection'] = []
+        if self.audio_track_selection is not None:
+            for k in self.audio_track_selection:
+                result['AudioTrackSelection'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioLanguageSelection') is not None:
+            temp_model = GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioLanguageSelection()
+            self.audio_language_selection = temp_model.from_map(m['AudioLanguageSelection'])
+        if m.get('AudioPidSelection') is not None:
+            temp_model = GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioPidSelection()
+            self.audio_pid_selection = temp_model.from_map(m['AudioPidSelection'])
+        self.audio_track_selection = []
+        if m.get('AudioTrackSelection') is not None:
+            for k in m.get('AudioTrackSelection'):
+                temp_model = GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioTrackSelection()
+                self.audio_track_selection.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class GetMediaLiveChannelResponseBodyChannelInputAttachments(TeaModel):
+    def __init__(
+        self,
+        audio_selectors: List[GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectors] = None,
+        input_id: str = None,
+        input_name: str = None,
+        language_name: str = None,
+    ):
+        # The audio selectors.
+        self.audio_selectors = audio_selectors
+        # The ID of the associated input.
+        # 
+        # This parameter is required.
+        self.input_id = input_id
+        # The name of the input.
+        self.input_name = input_name
+        # The language name.
+        self.language_name = language_name
+
+    def validate(self):
+        if self.audio_selectors:
+            for k in self.audio_selectors:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AudioSelectors'] = []
+        if self.audio_selectors is not None:
+            for k in self.audio_selectors:
+                result['AudioSelectors'].append(k.to_map() if k else None)
+        if self.input_id is not None:
+            result['InputId'] = self.input_id
+        if self.input_name is not None:
+            result['InputName'] = self.input_name
+        if self.language_name is not None:
+            result['LanguageName'] = self.language_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.audio_selectors = []
+        if m.get('AudioSelectors') is not None:
+            for k in m.get('AudioSelectors'):
+                temp_model = GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectors()
+                self.audio_selectors.append(temp_model.from_map(k))
+        if m.get('InputId') is not None:
+            self.input_id = m.get('InputId')
+        if m.get('InputName') is not None:
+            self.input_name = m.get('InputName')
+        if m.get('LanguageName') is not None:
+            self.language_name = m.get('LanguageName')
+        return self
+
+
+class GetMediaLiveChannelResponseBodyChannelOutputGroupsMediaPackageGroupSetting(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        group_name: str = None,
+    ):
+        # ChannelName in MediaPackage.
+        self.channel_name = channel_name
+        # GroupName in MediaPackage.
+        self.group_name = group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        return self
+
+
+class GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputsMediaPackageOutputSetting(TeaModel):
+    def __init__(
+        self,
+        audio_group_id: str = None,
+        name_modifier: str = None,
+    ):
+        # The manifest audio group ID.
+        self.audio_group_id = audio_group_id
+        # The manifest name modifier. The child manifests include this modifier in their M3U8 file names.
+        self.name_modifier = name_modifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_group_id is not None:
+            result['AudioGroupId'] = self.audio_group_id
+        if self.name_modifier is not None:
+            result['NameModifier'] = self.name_modifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioGroupId') is not None:
+            self.audio_group_id = m.get('AudioGroupId')
+        if m.get('NameModifier') is not None:
+            self.name_modifier = m.get('NameModifier')
+        return self
+
+
+class GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputs(TeaModel):
+    def __init__(
+        self,
+        audio_setting_names: List[str] = None,
+        media_package_output_setting: GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputsMediaPackageOutputSetting = None,
+        media_type: int = None,
+        name: str = None,
+        video_setting_name: str = None,
+    ):
+        # The referenced AudioSettings.
+        self.audio_setting_names = audio_setting_names
+        # The settings of the output delivered to MediaPackage.
+        self.media_package_output_setting = media_package_output_setting
+        # The media type of the output.
+        self.media_type = media_type
+        # The name of the output.
+        self.name = name
+        # The name of the referenced VideoSettings.
+        self.video_setting_name = video_setting_name
+
+    def validate(self):
+        if self.media_package_output_setting:
+            self.media_package_output_setting.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_setting_names is not None:
+            result['AudioSettingNames'] = self.audio_setting_names
+        if self.media_package_output_setting is not None:
+            result['MediaPackageOutputSetting'] = self.media_package_output_setting.to_map()
+        if self.media_type is not None:
+            result['MediaType'] = self.media_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.video_setting_name is not None:
+            result['VideoSettingName'] = self.video_setting_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioSettingNames') is not None:
+            self.audio_setting_names = m.get('AudioSettingNames')
+        if m.get('MediaPackageOutputSetting') is not None:
+            temp_model = GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputsMediaPackageOutputSetting()
+            self.media_package_output_setting = temp_model.from_map(m['MediaPackageOutputSetting'])
+        if m.get('MediaType') is not None:
+            self.media_type = m.get('MediaType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('VideoSettingName') is not None:
+            self.video_setting_name = m.get('VideoSettingName')
+        return self
+
+
+class GetMediaLiveChannelResponseBodyChannelOutputGroups(TeaModel):
+    def __init__(
+        self,
+        media_package_group_setting: GetMediaLiveChannelResponseBodyChannelOutputGroupsMediaPackageGroupSetting = None,
+        monitor_url: str = None,
+        name: str = None,
+        outputs: List[GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputs] = None,
+        type: str = None,
+    ):
+        # The MediaPackage destination.
+        self.media_package_group_setting = media_package_group_setting
+        # The URL for monitoring the output group. The parameter is returned only when the output gourp type is MediaPackage.
+        self.monitor_url = monitor_url
+        # The name of the output group.
+        self.name = name
+        # The outputs in the output group.
+        self.outputs = outputs
+        # The output group type.
+        self.type = type
+
+    def validate(self):
+        if self.media_package_group_setting:
+            self.media_package_group_setting.validate()
+        if self.outputs:
+            for k in self.outputs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.media_package_group_setting is not None:
+            result['MediaPackageGroupSetting'] = self.media_package_group_setting.to_map()
+        if self.monitor_url is not None:
+            result['MonitorUrl'] = self.monitor_url
+        if self.name is not None:
+            result['Name'] = self.name
+        result['Outputs'] = []
+        if self.outputs is not None:
+            for k in self.outputs:
+                result['Outputs'].append(k.to_map() if k else None)
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MediaPackageGroupSetting') is not None:
+            temp_model = GetMediaLiveChannelResponseBodyChannelOutputGroupsMediaPackageGroupSetting()
+            self.media_package_group_setting = temp_model.from_map(m['MediaPackageGroupSetting'])
+        if m.get('MonitorUrl') is not None:
+            self.monitor_url = m.get('MonitorUrl')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.outputs = []
+        if m.get('Outputs') is not None:
+            for k in m.get('Outputs'):
+                temp_model = GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputs()
+                self.outputs.append(temp_model.from_map(k))
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingCodecDetail(TeaModel):
+    def __init__(
+        self,
+        level: str = None,
+        profile: str = None,
+    ):
+        # The video encoding level. It is not supported yet.
+        self.level = level
+        # The H.264 profile.
+        self.profile = profile
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.profile is not None:
+            result['Profile'] = self.profile
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Profile') is not None:
+            self.profile = m.get('Profile')
+        return self
+
+
+class GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingFramerate(TeaModel):
+    def __init__(
+        self,
+        framerate_control: str = None,
+        framerate_denominator: int = None,
+        framerate_numerator: int = None,
+    ):
+        # The frame rate mode.
+        self.framerate_control = framerate_control
+        # The denominator of the fixed frame rate.
+        self.framerate_denominator = framerate_denominator
+        # The numerator of the fixed frame rate.
+        self.framerate_numerator = framerate_numerator
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.framerate_control is not None:
+            result['FramerateControl'] = self.framerate_control
+        if self.framerate_denominator is not None:
+            result['FramerateDenominator'] = self.framerate_denominator
+        if self.framerate_numerator is not None:
+            result['FramerateNumerator'] = self.framerate_numerator
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FramerateControl') is not None:
+            self.framerate_control = m.get('FramerateControl')
+        if m.get('FramerateDenominator') is not None:
+            self.framerate_denominator = m.get('FramerateDenominator')
+        if m.get('FramerateNumerator') is not None:
+            self.framerate_numerator = m.get('FramerateNumerator')
+        return self
+
+
+class GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingGop(TeaModel):
+    def __init__(
+        self,
+        bframes_num: int = None,
+        gop_size: int = None,
+        gop_size_units: str = None,
+    ):
+        # The number of B frames.
+        self.bframes_num = bframes_num
+        # The GOP size.
+        self.gop_size = gop_size
+        # The GOP size unit.
+        self.gop_size_units = gop_size_units
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bframes_num is not None:
+            result['BframesNum'] = self.bframes_num
+        if self.gop_size is not None:
+            result['GopSize'] = self.gop_size
+        if self.gop_size_units is not None:
+            result['GopSizeUnits'] = self.gop_size_units
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BframesNum') is not None:
+            self.bframes_num = m.get('BframesNum')
+        if m.get('GopSize') is not None:
+            self.gop_size = m.get('GopSize')
+        if m.get('GopSizeUnits') is not None:
+            self.gop_size_units = m.get('GopSizeUnits')
+        return self
+
+
+class GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingRate(TeaModel):
+    def __init__(
+        self,
+        bitrate: int = None,
+        buffer_size: int = None,
+        max_bitrate: int = None,
+        rate_control_mode: str = None,
+    ):
+        # The video bitrate. Unit: bit/s.
+        self.bitrate = bitrate
+        # The video buffer size. Unit: bit/s.
+        self.buffer_size = buffer_size
+        # The maximum bitrate. Unit: bit/s.
+        self.max_bitrate = max_bitrate
+        # The bitrate control mode.
+        self.rate_control_mode = rate_control_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
+        if self.buffer_size is not None:
+            result['BufferSize'] = self.buffer_size
+        if self.max_bitrate is not None:
+            result['MaxBitrate'] = self.max_bitrate
+        if self.rate_control_mode is not None:
+            result['RateControlMode'] = self.rate_control_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
+        if m.get('BufferSize') is not None:
+            self.buffer_size = m.get('BufferSize')
+        if m.get('MaxBitrate') is not None:
+            self.max_bitrate = m.get('MaxBitrate')
+        if m.get('RateControlMode') is not None:
+            self.rate_control_mode = m.get('RateControlMode')
+        return self
+
+
+class GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSetting(TeaModel):
+    def __init__(
+        self,
+        codec_detail: GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingCodecDetail = None,
+        framerate: GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingFramerate = None,
+        gop: GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingGop = None,
+        rate: GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingRate = None,
+    ):
+        # The video encoding settings.
+        self.codec_detail = codec_detail
+        # The frame rate.
+        self.framerate = framerate
+        # The GOP setting.
+        self.gop = gop
+        # The video encoding rate.
+        self.rate = rate
+
+    def validate(self):
+        if self.codec_detail:
+            self.codec_detail.validate()
+        if self.framerate:
+            self.framerate.validate()
+        if self.gop:
+            self.gop.validate()
+        if self.rate:
+            self.rate.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.codec_detail is not None:
+            result['CodecDetail'] = self.codec_detail.to_map()
+        if self.framerate is not None:
+            result['Framerate'] = self.framerate.to_map()
+        if self.gop is not None:
+            result['Gop'] = self.gop.to_map()
+        if self.rate is not None:
+            result['Rate'] = self.rate.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CodecDetail') is not None:
+            temp_model = GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingCodecDetail()
+            self.codec_detail = temp_model.from_map(m['CodecDetail'])
+        if m.get('Framerate') is not None:
+            temp_model = GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingFramerate()
+            self.framerate = temp_model.from_map(m['Framerate'])
+        if m.get('Gop') is not None:
+            temp_model = GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingGop()
+            self.gop = temp_model.from_map(m['Gop'])
+        if m.get('Rate') is not None:
+            temp_model = GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingRate()
+            self.rate = temp_model.from_map(m['Rate'])
+        return self
+
+
+class GetMediaLiveChannelResponseBodyChannelVideoSettings(TeaModel):
+    def __init__(
+        self,
+        height: int = None,
+        name: str = None,
+        video_codec: str = None,
+        video_codec_setting: GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSetting = None,
+        width: int = None,
+    ):
+        # The height of the video in pixels.
+        self.height = height
+        # The name of the video settings.
+        self.name = name
+        # The video codec.
+        self.video_codec = video_codec
+        # The video encoding settings.
+        self.video_codec_setting = video_codec_setting
+        # The width of the video in pixels.
+        self.width = width
+
+    def validate(self):
+        if self.video_codec_setting:
+            self.video_codec_setting.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.video_codec is not None:
+            result['VideoCodec'] = self.video_codec
+        if self.video_codec_setting is not None:
+            result['VideoCodecSetting'] = self.video_codec_setting.to_map()
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('VideoCodec') is not None:
+            self.video_codec = m.get('VideoCodec')
+        if m.get('VideoCodecSetting') is not None:
+            temp_model = GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSetting()
+            self.video_codec_setting = temp_model.from_map(m['VideoCodecSetting'])
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class GetMediaLiveChannelResponseBodyChannel(TeaModel):
+    def __init__(
+        self,
+        audio_settings: List[GetMediaLiveChannelResponseBodyChannelAudioSettings] = None,
+        channel_id: str = None,
+        create_time: str = None,
+        input_attachments: List[GetMediaLiveChannelResponseBodyChannelInputAttachments] = None,
+        last_start_time: str = None,
+        last_stop_time: str = None,
+        name: str = None,
+        output_groups: List[GetMediaLiveChannelResponseBodyChannelOutputGroups] = None,
+        state: str = None,
+        video_settings: List[GetMediaLiveChannelResponseBodyChannelVideoSettings] = None,
+    ):
+        # The audio settings.
+        self.audio_settings = audio_settings
+        # The ID of the channel.
+        self.channel_id = channel_id
+        # The time when the channel was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        self.create_time = create_time
+        # The inputs associated with the channel.
+        self.input_attachments = input_attachments
+        # The time when the channel was last started. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. If the channel has never been started since it was created, an empty string is returned.
+        self.last_start_time = last_start_time
+        # The time when the channel was last stopped. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. If the channel has never stopped since it was created, an empty string is returned.
+        self.last_stop_time = last_stop_time
+        # The channel name.
+        self.name = name
+        # The output groups.
+        self.output_groups = output_groups
+        # The state of the channel. Valid values: IDLE, STARTING, RUNNING, RECOVERING, and STOPPING.
+        self.state = state
+        # The video settings.
+        self.video_settings = video_settings
+
+    def validate(self):
+        if self.audio_settings:
+            for k in self.audio_settings:
+                if k:
+                    k.validate()
+        if self.input_attachments:
+            for k in self.input_attachments:
+                if k:
+                    k.validate()
+        if self.output_groups:
+            for k in self.output_groups:
+                if k:
+                    k.validate()
+        if self.video_settings:
+            for k in self.video_settings:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AudioSettings'] = []
+        if self.audio_settings is not None:
+            for k in self.audio_settings:
+                result['AudioSettings'].append(k.to_map() if k else None)
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        result['InputAttachments'] = []
+        if self.input_attachments is not None:
+            for k in self.input_attachments:
+                result['InputAttachments'].append(k.to_map() if k else None)
+        if self.last_start_time is not None:
+            result['LastStartTime'] = self.last_start_time
+        if self.last_stop_time is not None:
+            result['LastStopTime'] = self.last_stop_time
+        if self.name is not None:
+            result['Name'] = self.name
+        result['OutputGroups'] = []
+        if self.output_groups is not None:
+            for k in self.output_groups:
+                result['OutputGroups'].append(k.to_map() if k else None)
+        if self.state is not None:
+            result['State'] = self.state
+        result['VideoSettings'] = []
+        if self.video_settings is not None:
+            for k in self.video_settings:
+                result['VideoSettings'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.audio_settings = []
+        if m.get('AudioSettings') is not None:
+            for k in m.get('AudioSettings'):
+                temp_model = GetMediaLiveChannelResponseBodyChannelAudioSettings()
+                self.audio_settings.append(temp_model.from_map(k))
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        self.input_attachments = []
+        if m.get('InputAttachments') is not None:
+            for k in m.get('InputAttachments'):
+                temp_model = GetMediaLiveChannelResponseBodyChannelInputAttachments()
+                self.input_attachments.append(temp_model.from_map(k))
+        if m.get('LastStartTime') is not None:
+            self.last_start_time = m.get('LastStartTime')
+        if m.get('LastStopTime') is not None:
+            self.last_stop_time = m.get('LastStopTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.output_groups = []
+        if m.get('OutputGroups') is not None:
+            for k in m.get('OutputGroups'):
+                temp_model = GetMediaLiveChannelResponseBodyChannelOutputGroups()
+                self.output_groups.append(temp_model.from_map(k))
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        self.video_settings = []
+        if m.get('VideoSettings') is not None:
+            for k in m.get('VideoSettings'):
+                temp_model = GetMediaLiveChannelResponseBodyChannelVideoSettings()
+                self.video_settings.append(temp_model.from_map(k))
+        return self
+
+
+class GetMediaLiveChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        channel: GetMediaLiveChannelResponseBodyChannel = None,
+        request_id: str = None,
+    ):
+        # The channel information.
+        self.channel = channel
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.channel:
+            self.channel.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel is not None:
+            result['Channel'] = self.channel.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Channel') is not None:
+            temp_model = GetMediaLiveChannelResponseBodyChannel()
+            self.channel = temp_model.from_map(m['Channel'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetMediaLiveChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetMediaLiveChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetMediaLiveChannelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetMediaLiveInputRequest(TeaModel):
+    def __init__(
+        self,
+        input_id: str = None,
+    ):
+        # The ID of the input.
+        # 
+        # This parameter is required.
+        self.input_id = input_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_id is not None:
+            result['InputId'] = self.input_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputId') is not None:
+            self.input_id = m.get('InputId')
+        return self
+
+
+class GetMediaLiveInputResponseBodyInputInputInfos(TeaModel):
+    def __init__(
+        self,
+        dest_host: str = None,
+        flow_id: str = None,
+        flow_output_name: str = None,
+        monitor_url: str = None,
+        source_url: str = None,
+        stream_name: str = None,
+    ):
+        # The endpoint that the stream is pushed to. This parameter is returned for PUSH inputs.
+        self.dest_host = dest_host
+        self.flow_id = flow_id
+        self.flow_output_name = flow_output_name
+        # The URL for input monitoring.
+        self.monitor_url = monitor_url
+        # The source URL where the stream is pulled from. This parameter is returned for PULL inputs.
+        self.source_url = source_url
+        # The name of the pushed stream. This parameter is returned for PUSH inputs.
+        self.stream_name = stream_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dest_host is not None:
+            result['DestHost'] = self.dest_host
+        if self.flow_id is not None:
+            result['FlowId'] = self.flow_id
+        if self.flow_output_name is not None:
+            result['FlowOutputName'] = self.flow_output_name
+        if self.monitor_url is not None:
+            result['MonitorUrl'] = self.monitor_url
+        if self.source_url is not None:
+            result['SourceUrl'] = self.source_url
+        if self.stream_name is not None:
+            result['StreamName'] = self.stream_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestHost') is not None:
+            self.dest_host = m.get('DestHost')
+        if m.get('FlowId') is not None:
+            self.flow_id = m.get('FlowId')
+        if m.get('FlowOutputName') is not None:
+            self.flow_output_name = m.get('FlowOutputName')
+        if m.get('MonitorUrl') is not None:
+            self.monitor_url = m.get('MonitorUrl')
+        if m.get('SourceUrl') is not None:
+            self.source_url = m.get('SourceUrl')
+        if m.get('StreamName') is not None:
+            self.stream_name = m.get('StreamName')
+        return self
+
+
+class GetMediaLiveInputResponseBodyInput(TeaModel):
+    def __init__(
+        self,
+        channel_ids: List[str] = None,
+        create_time: str = None,
+        input_id: str = None,
+        input_infos: List[GetMediaLiveInputResponseBodyInputInputInfos] = None,
+        name: str = None,
+        security_group_ids: List[str] = None,
+        type: str = None,
+    ):
+        # The IDs of the channels associated with the input.
+        self.channel_ids = channel_ids
+        # The time when the input was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        self.create_time = create_time
+        # The ID of the input.
+        self.input_id = input_id
+        # The input configurations.
+        self.input_infos = input_infos
+        # The name of the input.
+        self.name = name
+        # The IDs of the security groups associated with the input.
+        self.security_group_ids = security_group_ids
+        # The input type.
+        self.type = type
+
+    def validate(self):
+        if self.input_infos:
+            for k in self.input_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_ids is not None:
+            result['ChannelIds'] = self.channel_ids
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.input_id is not None:
+            result['InputId'] = self.input_id
+        result['InputInfos'] = []
+        if self.input_infos is not None:
+            for k in self.input_infos:
+                result['InputInfos'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.security_group_ids is not None:
+            result['SecurityGroupIds'] = self.security_group_ids
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelIds') is not None:
+            self.channel_ids = m.get('ChannelIds')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('InputId') is not None:
+            self.input_id = m.get('InputId')
+        self.input_infos = []
+        if m.get('InputInfos') is not None:
+            for k in m.get('InputInfos'):
+                temp_model = GetMediaLiveInputResponseBodyInputInputInfos()
+                self.input_infos.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SecurityGroupIds') is not None:
+            self.security_group_ids = m.get('SecurityGroupIds')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetMediaLiveInputResponseBody(TeaModel):
+    def __init__(
+        self,
+        input: GetMediaLiveInputResponseBodyInput = None,
+        request_id: str = None,
+    ):
+        # The input information.
+        self.input = input
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.input:
+            self.input.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input is not None:
+            result['Input'] = self.input.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Input') is not None:
+            temp_model = GetMediaLiveInputResponseBodyInput()
+            self.input = temp_model.from_map(m['Input'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetMediaLiveInputResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetMediaLiveInputResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetMediaLiveInputResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetMediaLiveInputSecurityGroupRequest(TeaModel):
+    def __init__(
+        self,
+        security_group_id: str = None,
+    ):
+        # The ID of the security group.
+        # 
+        # This parameter is required.
+        self.security_group_id = security_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        return self
+
+
+class GetMediaLiveInputSecurityGroupResponseBodySecurityGroup(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        input_ids: List[str] = None,
+        name: str = None,
+        security_group_id: str = None,
+        whitelist_rules: List[str] = None,
+    ):
+        # The time when the security group was created. It follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        self.create_time = create_time
+        # The IDs of the inputs associated with the security group.
+        self.input_ids = input_ids
+        # The name of the security group.
+        self.name = name
+        # The ID of the security group.
+        self.security_group_id = security_group_id
+        # The security group rules.
+        self.whitelist_rules = whitelist_rules
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.input_ids is not None:
+            result['InputIds'] = self.input_ids
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.whitelist_rules is not None:
+            result['WhitelistRules'] = self.whitelist_rules
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('InputIds') is not None:
+            self.input_ids = m.get('InputIds')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('WhitelistRules') is not None:
+            self.whitelist_rules = m.get('WhitelistRules')
+        return self
+
+
+class GetMediaLiveInputSecurityGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        security_group: GetMediaLiveInputSecurityGroupResponseBodySecurityGroup = None,
+    ):
+        # The ID of the request.
+        self.request_id = request_id
+        # The security group information.
+        self.security_group = security_group
+
+    def validate(self):
+        if self.security_group:
+            self.security_group.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.security_group is not None:
+            result['SecurityGroup'] = self.security_group.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SecurityGroup') is not None:
+            temp_model = GetMediaLiveInputSecurityGroupResponseBodySecurityGroup()
+            self.security_group = temp_model.from_map(m['SecurityGroup'])
+        return self
+
+
+class GetMediaLiveInputSecurityGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetMediaLiveInputSecurityGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetMediaLiveInputSecurityGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetMediaMarksRequest(TeaModel):
     def __init__(
         self,
@@ -29582,8 +33180,12 @@ class GetProgramRequest(TeaModel):
         channel_name: str = None,
         program_name: str = None,
     ):
+        # The name of the channel.
+        # 
         # This parameter is required.
         self.channel_name = channel_name
+        # The name of the program.
+        # 
         # This parameter is required.
         self.program_name = program_name
 
@@ -29617,7 +33219,9 @@ class GetProgramResponseBody(TeaModel):
         program: ChannelAssemblyProgram = None,
         request_id: str = None,
     ):
+        # The information about the program.
         self.program = program
+        # **Request ID**\
         self.request_id = request_id
 
     def validate(self):
@@ -31707,10 +35311,16 @@ class GetSourceRequest(TeaModel):
         source_name: str = None,
         source_type: str = None,
     ):
+        # The source location.
+        # 
         # This parameter is required.
         self.source_location_name = source_location_name
+        # The name of the source.
+        # 
         # This parameter is required.
         self.source_name = source_name
+        # The source type. Valid values: vodSource and liveSource.
+        # 
         # This parameter is required.
         self.source_type = source_type
 
@@ -31748,7 +35358,9 @@ class GetSourceResponseBody(TeaModel):
         request_id: str = None,
         source: ChannelAssemblySource = None,
     ):
+        # **Request ID**\
         self.request_id = request_id
+        # The source information.
         self.source = source
 
     def validate(self):
@@ -31823,6 +35435,8 @@ class GetSourceLocationRequest(TeaModel):
         self,
         source_location_name: str = None,
     ):
+        # The name of the source location.
+        # 
         # This parameter is required.
         self.source_location_name = source_location_name
 
@@ -31852,7 +35466,9 @@ class GetSourceLocationResponseBody(TeaModel):
         request_id: str = None,
         source_location: ChannelAssemblySourceLocation = None,
     ):
+        # **Request ID**\
         self.request_id = request_id
+        # The source location information.
         self.source_location = source_location
 
     def validate(self):
@@ -37204,6 +40820,7 @@ class GetVodPackagingAssetRequest(TeaModel):
         self,
         asset_name: str = None,
     ):
+        # The name of the VOD packaging asset.
         self.asset_name = asset_name
 
     def validate(self):
@@ -37233,8 +40850,15 @@ class GetVodPackagingAssetResponseBodyAssetEgressEndpoints(TeaModel):
         status: str = None,
         url: str = None,
     ):
+        # The name of the packaging configuration.
         self.configuration_name = configuration_name
+        # The asset status. Valid values:
+        # 
+        # *   Queuing: The asset is waiting for packaging.
+        # *   Playable: The asset is packaged and playable.
+        # *   Failed: The asset fails to be packaged.
         self.status = status
+        # The playback URL. If the asset fails to be packaged, no playback URL is returned.
         self.url = url
 
     def validate(self):
@@ -37271,7 +40895,9 @@ class GetVodPackagingAssetResponseBodyAssetInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The URL of the media file. Only M3U8 files stored in OSS are supported.
         self.media = media
+        # The input type. Only Object Storage Service (OSS) is supported.
         self.type = type
 
     def validate(self):
@@ -37308,11 +40934,17 @@ class GetVodPackagingAssetResponseBodyAsset(TeaModel):
         group_name: str = None,
         input: GetVodPackagingAssetResponseBodyAssetInput = None,
     ):
+        # The name of the asset.
         self.asset_name = asset_name
+        # The content ID in the DRM system. The maximum length is 256 characters. Letters, digits, underscores (_), and hyphens (-) are supported.
         self.content_id = content_id
+        # The time when the asset was created. It follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The egress endpoints, each corresponding to a packaging configuration.
         self.egress_endpoints = egress_endpoints
+        # The name of the packaging group.
         self.group_name = group_name
+        # The asset input configurations.
         self.input = input
 
     def validate(self):
@@ -37372,7 +41004,9 @@ class GetVodPackagingAssetResponseBody(TeaModel):
         asset: GetVodPackagingAssetResponseBodyAsset = None,
         request_id: str = None,
     ):
+        # The information about the asset.
         self.asset = asset
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -37447,6 +41081,7 @@ class GetVodPackagingConfigurationRequest(TeaModel):
         self,
         configuration_name: str = None,
     ):
+        # The name of the packaging configuration.
         self.configuration_name = configuration_name
 
     def validate(self):
@@ -37475,7 +41110,9 @@ class GetVodPackagingConfigurationResponseBody(TeaModel):
         packaging_configuration: VodPackagingConfiguration = None,
         request_id: str = None,
     ):
+        # The information about the packaging configuration.
         self.packaging_configuration = packaging_configuration
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -37550,6 +41187,7 @@ class GetVodPackagingGroupRequest(TeaModel):
         self,
         group_name: str = None,
     ):
+        # The name of the packaging group. The name must be unique and can be up to 128 characters in length. Letters, digits, underscores (_), and hyphens (-) are supported.
         self.group_name = group_name
 
     def validate(self):
@@ -37578,7 +41216,9 @@ class GetVodPackagingGroupResponseBody(TeaModel):
         packaging_group: VodPackagingGroup = None,
         request_id: str = None,
     ):
+        # The information about the packaging group.
         self.packaging_group = packaging_group
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -38141,15 +41781,21 @@ class ListAIAgentDialoguesResponseBodyDialogues(TeaModel):
         self,
         dialogue_id: str = None,
         producer: str = None,
+        reasoning_text: str = None,
         round_id: str = None,
+        source: str = None,
         text: str = None,
         time: int = None,
+        type: str = None,
     ):
         self.dialogue_id = dialogue_id
         self.producer = producer
+        self.reasoning_text = reasoning_text
         self.round_id = round_id
+        self.source = source
         self.text = text
         self.time = time
+        self.type = type
 
     def validate(self):
         pass
@@ -38164,12 +41810,18 @@ class ListAIAgentDialoguesResponseBodyDialogues(TeaModel):
             result['DialogueId'] = self.dialogue_id
         if self.producer is not None:
             result['Producer'] = self.producer
+        if self.reasoning_text is not None:
+            result['ReasoningText'] = self.reasoning_text
         if self.round_id is not None:
             result['RoundId'] = self.round_id
+        if self.source is not None:
+            result['Source'] = self.source
         if self.text is not None:
             result['Text'] = self.text
         if self.time is not None:
             result['Time'] = self.time
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
@@ -38178,12 +41830,18 @@ class ListAIAgentDialoguesResponseBodyDialogues(TeaModel):
             self.dialogue_id = m.get('DialogueId')
         if m.get('Producer') is not None:
             self.producer = m.get('Producer')
+        if m.get('ReasoningText') is not None:
+            self.reasoning_text = m.get('ReasoningText')
         if m.get('RoundId') is not None:
             self.round_id = m.get('RoundId')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
         if m.get('Text') is not None:
             self.text = m.get('Text')
         if m.get('Time') is not None:
             self.time = m.get('Time')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
@@ -38278,11 +41936,17 @@ class ListAIAgentInstanceRequest(TeaModel):
         page_size: int = None,
         start_time: str = None,
     ):
+        # The ID of the AI agent.
+        # 
         # This parameter is required.
         self.aiagent_id = aiagent_id
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. This parameter does not have a default value.
         self.end_time = end_time
+        # The page number. Default value: 1. Valid values: 1 to 100.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10. Valid values: 0 to 100.
         self.page_size = page_size
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. This parameter does not have a default value.
         self.start_time = start_time
 
     def validate(self):
@@ -38330,10 +41994,18 @@ class ListAIAgentInstanceResponseBodyInstances(TeaModel):
         template_config: AIAgentTemplateConfig = None,
         user_data: str = None,
     ):
+        # The URL of the call log file for the AI agent. The structure of the file is CallLog in the JSON format.
         self.call_log_url = call_log_url
+        # The runtime configurations of the AI agent.
         self.runtime_config = runtime_config
+        # The state of the instance. Valid values:
+        # 
+        # *   Executing
+        # *   Finished
         self.status = status
+        # The template configurations of the AI agent.
         self.template_config = template_config
+        # The custom information.
         self.user_data = user_data
 
     def validate(self):
@@ -38383,7 +42055,9 @@ class ListAIAgentInstanceResponseBody(TeaModel):
         instances: List[ListAIAgentInstanceResponseBodyInstances] = None,
         request_id: str = None,
     ):
+        # The list of the AI agents.
         self.instances = instances
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -38469,17 +42143,17 @@ class ListAdInsertionsRequest(TeaModel):
         page_size: int = None,
         sort_by: str = None,
     ):
-        # 按广告名称查询，支持模糊匹配
+        # The configuration name. Fuzzy match is supported.
         self.keyword = keyword
-        # 获取后续数据的最大记录数，使用此方式获取数据时分页参数将无效
+        # The maximum number of entries to retrieve in a subsequent request. If this parameter is used, the pagination parameters become invalid. Default value: 10.
         self.max_results = max_results
-        # 获取后续数据的Token，使用此方式获取数据时分页参数将无效
+        # The token that is used in the next request to retrieve a new page of results. If this parameter is used, the pagination parameters become invalid.
         self.next_token = next_token
-        # 分页参数，页码
+        # The page number. Default value: 1.
         self.page_no = page_no
-        # 分页参数，页宽
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # 分页参数，排序方式，asc:按创建时间升序，desc:按创建时间降序
+        # The sorting order of the configurations by creation time. asc: ascending. desc: descending.
         self.sort_by = sort_by
 
     def validate(self):
@@ -38528,9 +42202,9 @@ class ListAdInsertionsResponseBodyConfigsCdnConfig(TeaModel):
         ad_segment_url_prefix: str = None,
         content_segment_url_prefix: str = None,
     ):
-        # 广告分片的CDN前缀
+        # The CDN prefix for ad segments.
         self.ad_segment_url_prefix = ad_segment_url_prefix
-        # 视频内容分片的CDN前缀
+        # The CDN prefix for content segments.
         self.content_segment_url_prefix = content_segment_url_prefix
 
     def validate(self):
@@ -38562,7 +42236,7 @@ class ListAdInsertionsResponseBodyConfigsManifestEndpointConfig(TeaModel):
         self,
         hls_prefix: str = None,
     ):
-        # HLS清单播放端点前缀
+        # The prefix of the playback endpoint for HLS manifests.
         self.hls_prefix = hls_prefix
 
     def validate(self):
@@ -38600,27 +42274,27 @@ class ListAdInsertionsResponseBodyConfigs(TeaModel):
         personalization_threshold: int = None,
         slate_ad_url: str = None,
     ):
-        # 广告标记透传
+        # Indicates whether ad marker passthrough is enabled.
         self.ad_marker_passthrough = ad_marker_passthrough
-        # 广告策略服务器URL
+        # The request URL of the ad decision server (ADS).
         self.ads_url = ads_url
-        # CDN配置
+        # The CDN configurations.
         self.cdn_config = cdn_config
-        # 动态配置别名
+        # The player parameter variables and aliases.
         self.config_aliases = config_aliases
-        # 内容URL前缀
+        # The URL prefix for the source content.
         self.content_url_prefix = content_url_prefix
-        # 创建时间
+        # The time when the configuration was created.
         self.create_time = create_time
-        # 修改时间
+        # The time when the configuration was last modified.
         self.last_modified = last_modified
-        # 清单播放端点配置
+        # The playback endpoint configuration.
         self.manifest_endpoint_config = manifest_endpoint_config
-        # 广告插入配置名称
+        # The name of the ad insertion configuration.
         self.name = name
-        # 个性化配置阈值
+        # The personalization threshold that defines the maximum duration of underfilled time allowed in an ad break.
         self.personalization_threshold = personalization_threshold
-        # slate广告URL
+        # The URL of the slate ad.
         self.slate_ad_url = slate_ad_url
 
     def validate(self):
@@ -38700,20 +42374,21 @@ class ListAdInsertionsResponseBody(TeaModel):
         sort_by: str = None,
         total_count: int = None,
     ):
+        # Array
         self.configs = configs
-        # 获取后续数据的最大记录数，使用此方式获取数据时分页参数将无效
+        # The maximum number of entries to retrieve in a subsequent request. If this parameter is used, the pagination parameters become invalid.
         self.max_results = max_results
-        # 获取后续数据的Token，使用此方式获取数据时分页参数将无效
+        # The token that is used in the next request to retrieve a new page of results. If this parameter is used, the pagination parameters become invalid.
         self.next_token = next_token
-        # 分页参数，页码
+        # The page number.
         self.page_no = page_no
-        # 分页参数，页宽
+        # The number of entries per page.
         self.page_size = page_size
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
-        # 分页参数，排序方式，asc:按创建时间升序，desc:按创建时间降序
+        # The sorting order of the configurations by creation time. asc: ascending. desc: descending.
         self.sort_by = sort_by
-        # 总记录数
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -38825,14 +42500,23 @@ class ListAlertsRequest(TeaModel):
         sort_by: str = None,
         sort_by_modified_time: str = None,
     ):
+        # The alert type.
         self.category = category
+        # The end of the time range to query.
         self.gmt_end = gmt_end
+        # The beginning of the time range to query.
         self.gmt_start = gmt_start
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The ARN of the source or program.
+        # 
         # This parameter is required.
         self.resource_arn = resource_arn
+        # The sorting order. By default, the query results are sorted by creation time in descending order. Valid values: asc and desc.
         self.sort_by = sort_by
+        # The sorting order by modification time. Valid values: asc and desc.
         self.sort_by_modified_time = sort_by_modified_time
 
     def validate(self):
@@ -38894,12 +42578,19 @@ class ListAlertsResponseBodyAlerts(TeaModel):
         related_resource_arns: str = None,
         resource_arn: str = None,
     ):
+        # The alert type.
         self.category = category
+        # The error code.
         self.code = code
+        # The time when the alert was received in UTC.
         self.gmt_create = gmt_create
+        # The time when the alert was modified in UTC.
         self.gmt_modified = gmt_modified
+        # The error message.
         self.message = message
+        # The ARN of the related resource.
         self.related_resource_arns = related_resource_arns
+        # The ARN of the resource.
         self.resource_arn = resource_arn
 
     def validate(self):
@@ -38955,10 +42646,15 @@ class ListAlertsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The alerts.
         self.alerts = alerts
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10. Valid values: 1 to 100.
         self.page_size = page_size
+        # **Request ID**\
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -40105,13 +43801,21 @@ class ListChannelAlertsRequest(TeaModel):
         resource_arn: str = None,
         sort_by_modified_time: str = None,
     ):
+        # The alert type.
         self.category = category
+        # The end of the time range to query.
         self.gmt_end = gmt_end
+        # The beginning of the time range to query.
         self.gmt_start = gmt_start
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The ARN of the channel.
+        # 
         # This parameter is required.
         self.resource_arn = resource_arn
+        # The sorting order by modification time. Valid values: asc and desc.
         self.sort_by_modified_time = sort_by_modified_time
 
     def validate(self):
@@ -40167,10 +43871,15 @@ class ListChannelAlertsResponseBodyProgramAlerts(TeaModel):
         gmt_modified: str = None,
         program_name: str = None,
     ):
+        # The ARN of the program.
         self.arn = arn
+        # The alert type.
         self.category = category
+        # The number of alerts.
         self.count = count
+        # The time when the alert was last modified in UTC.
         self.gmt_modified = gmt_modified
+        # The name of the program.
         self.program_name = program_name
 
     def validate(self):
@@ -40218,10 +43927,15 @@ class ListChannelAlertsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The alerts.
         self.program_alerts = program_alerts
+        # **Request ID**\
         self.request_id = request_id
+        # The total number of alerts returned.
         self.total_count = total_count
 
     def validate(self):
@@ -40321,13 +44035,21 @@ class ListChannelsRequest(TeaModel):
         sort_by_modified_time: str = None,
         state: int = None,
     ):
+        # The name of the channel.
         self.channel_name = channel_name
+        # The tier of the channel. Valid values: basic and standard.
         self.channel_tier = channel_tier
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
+        # The playback mode. Valid values: loop and linear.
         self.playback_mode = playback_mode
+        # The sorting order by creation time. Valid values: asc and desc.
         self.sort_by = sort_by
+        # The sorting order by modification time. Valid values: asc and desc.
         self.sort_by_modified_time = sort_by_modified_time
+        # The channel status. A value of 0 specifies stopped. A value of 1 specifies started.
         self.state = state
 
     def validate(self):
@@ -40387,10 +44109,15 @@ class ListChannelsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The channels.
         self.channel_list = channel_list
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
+        # **Request ID**\
         self.request_id = request_id
+        # The total number of channels returned.
         self.total_count = total_count
 
     def validate(self):
@@ -42590,10 +46317,13 @@ class ListLivePackageChannelGroupsRequest(TeaModel):
         page_size: int = None,
         sort_by: str = None,
     ):
-        # 描述
+        # The channel group name or description. Fuzzy match is supported.
         self.keyword = keyword
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
+        # The sort order by creation time. Default value: desc.
         self.sort_by = sort_by
 
     def validate(self):
@@ -42637,15 +46367,15 @@ class ListLivePackageChannelGroupsResponseBodyLivePackageChannelGroups(TeaModel)
         last_modified: str = None,
         origin_domain: str = None,
     ):
-        # 创建时间
+        # The time when the channel group was created. It is in the `yyyy-MM-ddTHH:mm:ssZ` format and displayed in UTC.
         self.create_time = create_time
-        # 描述
+        # The channel group description.
         self.description = description
-        # 代表资源一级ID的资源属性字段
+        # The channel group name.
         self.group_name = group_name
-        # 修改时间
+        # The time when the channel group was last modified. It is in the `yyyy-MM-ddTHH:mm:ssZ` format and displayed in UTC.
         self.last_modified = last_modified
-        # 源站域名
+        # The origin domain.
         self.origin_domain = origin_domain
 
     def validate(self):
@@ -42694,11 +46424,17 @@ class ListLivePackageChannelGroupsResponseBody(TeaModel):
         sort_by: str = None,
         total_count: int = None,
     ):
+        # The channel groups returned.
         self.live_package_channel_groups = live_package_channel_groups
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The sort order.
         self.sort_by = sort_by
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -42799,12 +46535,22 @@ class ListLivePackageChannelsRequest(TeaModel):
         page_size: int = None,
         sort_by: str = None,
     ):
+        # The channel group name.
+        # 
         # This parameter is required.
         self.group_name = group_name
-        # 列表操作私有参数
+        # The channel name or description. Fuzzy match is supported.
         self.keyword = keyword
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The sort order by creation time. Default value: desc.
+        # 
+        # Valid values:
+        # 
+        # *   asc
+        # *   desc
         self.sort_by = sort_by
 
     def validate(self):
@@ -42851,9 +46597,13 @@ class ListLivePackageChannelsResponseBodyLivePackageChannelsIngestEndpoints(TeaM
         url: str = None,
         username: str = None,
     ):
+        # The ingest endpoint ID.
         self.id = id
+        # The password.
         self.password = password
+        # The ingest endpoint URL.
         self.url = url
+        # The username.
         self.username = username
 
     def validate(self):
@@ -42901,24 +46651,23 @@ class ListLivePackageChannelsResponseBodyLivePackageChannels(TeaModel):
         segment_count: int = None,
         segment_duration: int = None,
     ):
-        # 频道名称，字符必须为大小写英文字母或-、_。
-        # 1 ~ 200个字符。
-        # 格式：[A-Za-z0-9_-]+\
+        # The channel name.
         self.channel_name = channel_name
-        # 代表创建时间的资源属性字段
+        # The time when the channel was created.
         self.create_time = create_time
-        # 频道描述，最大1000个字符
+        # The channel description.
         self.description = description
-        # 频道组名称
+        # The channel group name.
         self.group_name = group_name
+        # The ingest endpoints.
         self.ingest_endpoints = ingest_endpoints
-        # 最后修改时间
+        # The time when the channel was last modified.
         self.last_modified = last_modified
-        # 输入协议，目前仅支持HLS
+        # The ingest protocol. Only HLS is supported.
         self.protocol = protocol
-        # 输入流m3u8切片个数，2～100
+        # The number of M3U8 segments.
         self.segment_count = segment_count
-        # 输入流切片时长，1～30
+        # The segment duration.
         self.segment_duration = segment_duration
 
     def validate(self):
@@ -42991,11 +46740,17 @@ class ListLivePackageChannelsResponseBody(TeaModel):
         sort_by: str = None,
         total_count: int = None,
     ):
+        # The live package channels.
         self.live_package_channels = live_package_channels
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The sort order. Valid values: asc and desc (default).
         self.sort_by = sort_by
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -43097,13 +46852,21 @@ class ListLivePackageOriginEndpointsRequest(TeaModel):
         page_size: int = None,
         sort_by: str = None,
     ):
+        # The channel name.
+        # 
         # This parameter is required.
         self.channel_name = channel_name
+        # The channel group name.
+        # 
         # This parameter is required.
         self.group_name = group_name
+        # The endpoint name or description. Fuzzy match is supported.
         self.keyword = keyword
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The sort order by creation time. Valid values: asc and desc (default).
         self.sort_by = sort_by
 
     def validate(self):
@@ -43163,31 +46926,31 @@ class ListLivePackageOriginEndpointsResponseBodyLivePackageOriginEndpoints(TeaMo
         protocol: str = None,
         timeshift_vision: int = None,
     ):
-        # 回源授权码，与IpWhitelist必选其一
+        # The authorization code.
         self.authorization_code = authorization_code
-        # 频道名称
+        # The channel name.
         self.channel_name = channel_name
-        # 创建时间
+        # The time when the endpoint was created.
         self.create_time = create_time
-        # 端点描述
+        # The endpoint description.
         self.description = description
-        # 端点名称
+        # The endpoint name.
         self.endpoint_name = endpoint_name
-        # 源站端点回源播放地址
+        # The endpoint URL.
         self.endpoint_url = endpoint_url
-        # 频道组名称
+        # The channel group name.
         self.group_name = group_name
-        # IP黑名单，支持无类别域间路由（CIDR），逗号分隔
+        # The IP address blacklist.
         self.ip_blacklist = ip_blacklist
-        # IP白名单，支持无类别域间路由（CIDR），逗号分隔，与AuthorizationCode必选其一
+        # The IP address whitelist.
         self.ip_whitelist = ip_whitelist
-        # 最后修改时间
+        # The time when the endpoint was last modified.
         self.last_modified = last_modified
-        # 播放列表名
+        # The playlist name.
         self.manifest_name = manifest_name
-        # 端点分发协议，暂只支持HLS
+        # The distribution protocol.
         self.protocol = protocol
-        # 时移天数，最大30天，0表示不支持时移
+        # The number of days that time-shifted content is available.
         self.timeshift_vision = timeshift_vision
 
     def validate(self):
@@ -43268,11 +47031,17 @@ class ListLivePackageOriginEndpointsResponseBody(TeaModel):
         sort_by: str = None,
         total_count: int = None,
     ):
+        # The origin endpoints returned.
         self.live_package_origin_endpoints = live_package_origin_endpoints
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The sort order. Valid values: `asc` and `desc` (default).
         self.sort_by = sort_by
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -47413,6 +51182,1629 @@ class ListMediaInfoJobsResponse(TeaModel):
         return self
 
 
+class ListMediaLiveChannelsRequest(TeaModel):
+    def __init__(
+        self,
+        keyword: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        skip: int = None,
+        sort_order: str = None,
+        states: str = None,
+    ):
+        # The keyword of the query. You can perform a fuzzy search on channel ID or name.
+        self.keyword = keyword
+        # The number of entries per page. Valid values: 1 to 100. Default value:
+        # 
+        # *   If you do not specify this parameter or if you set a value smaller than 10, the default value is 10.
+        # *   If you set a value greater than 100, the default value is 100.
+        self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        self.next_token = next_token
+        # The number of entries to be skipped in the query. If the number of entries you attempt to skip exceeds the number of entries that meet the condition, an empty list is returned.
+        self.skip = skip
+        # The sorting order of the channels by creation time. Default value: asc. Valid values: desc and asc. asc indicates the ascending order, and desc indicates the descending order.
+        self.sort_order = sort_order
+        # The state of channels you want to query. You can separate multiple states with commas (,) in a JSON array.
+        self.states = states
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.skip is not None:
+            result['Skip'] = self.skip
+        if self.sort_order is not None:
+            result['SortOrder'] = self.sort_order
+        if self.states is not None:
+            result['States'] = self.states
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Skip') is not None:
+            self.skip = m.get('Skip')
+        if m.get('SortOrder') is not None:
+            self.sort_order = m.get('SortOrder')
+        if m.get('States') is not None:
+            self.states = m.get('States')
+        return self
+
+
+class ListMediaLiveChannelsResponseBodyChannelsAudioSettingsAudioCodecSetting(TeaModel):
+    def __init__(
+        self,
+        bitrate: int = None,
+        profile: str = None,
+        sample_rate: int = None,
+    ):
+        # The audio bitrate. Unit: bit/s.
+        self.bitrate = bitrate
+        # The audio codec profile.
+        self.profile = profile
+        # The audio sample rate. Unit: Hz.
+        self.sample_rate = sample_rate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
+        if self.profile is not None:
+            result['Profile'] = self.profile
+        if self.sample_rate is not None:
+            result['SampleRate'] = self.sample_rate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
+        if m.get('Profile') is not None:
+            self.profile = m.get('Profile')
+        if m.get('SampleRate') is not None:
+            self.sample_rate = m.get('SampleRate')
+        return self
+
+
+class ListMediaLiveChannelsResponseBodyChannelsAudioSettings(TeaModel):
+    def __init__(
+        self,
+        audio_codec: str = None,
+        audio_codec_setting: ListMediaLiveChannelsResponseBodyChannelsAudioSettingsAudioCodecSetting = None,
+        audio_selector_name: str = None,
+        language_code: str = None,
+        language_name: str = None,
+        name: str = None,
+    ):
+        # The audio codec.
+        self.audio_codec = audio_codec
+        # The audio encoding settings.
+        self.audio_codec_setting = audio_codec_setting
+        # The name of the audio selector.
+        self.audio_selector_name = audio_selector_name
+        # A three-letter ISO 639-2 language code.
+        self.language_code = language_code
+        # The name of the language.
+        self.language_name = language_name
+        # The name of the audio settings.
+        self.name = name
+
+    def validate(self):
+        if self.audio_codec_setting:
+            self.audio_codec_setting.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_codec is not None:
+            result['AudioCodec'] = self.audio_codec
+        if self.audio_codec_setting is not None:
+            result['AudioCodecSetting'] = self.audio_codec_setting.to_map()
+        if self.audio_selector_name is not None:
+            result['AudioSelectorName'] = self.audio_selector_name
+        if self.language_code is not None:
+            result['LanguageCode'] = self.language_code
+        if self.language_name is not None:
+            result['LanguageName'] = self.language_name
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioCodec') is not None:
+            self.audio_codec = m.get('AudioCodec')
+        if m.get('AudioCodecSetting') is not None:
+            temp_model = ListMediaLiveChannelsResponseBodyChannelsAudioSettingsAudioCodecSetting()
+            self.audio_codec_setting = temp_model.from_map(m['AudioCodecSetting'])
+        if m.get('AudioSelectorName') is not None:
+            self.audio_selector_name = m.get('AudioSelectorName')
+        if m.get('LanguageCode') is not None:
+            self.language_code = m.get('LanguageCode')
+        if m.get('LanguageName') is not None:
+            self.language_name = m.get('LanguageName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioLanguageSelection(TeaModel):
+    def __init__(
+        self,
+        language_code: str = None,
+    ):
+        # A three-letter ISO 639-2 language code from within an audio source.
+        # 
+        # This parameter is required.
+        self.language_code = language_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.language_code is not None:
+            result['LanguageCode'] = self.language_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LanguageCode') is not None:
+            self.language_code = m.get('LanguageCode')
+        return self
+
+
+class ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioPidSelection(TeaModel):
+    def __init__(
+        self,
+        pid: int = None,
+    ):
+        # A PID from within a source.
+        # 
+        # This parameter is required.
+        self.pid = pid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pid is not None:
+            result['Pid'] = self.pid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
+        return self
+
+
+class ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioTrackSelection(TeaModel):
+    def __init__(
+        self,
+        track_id: int = None,
+    ):
+        # The track ID from within a source.
+        # 
+        # This parameter is required.
+        self.track_id = track_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.track_id is not None:
+            result['TrackId'] = self.track_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TrackId') is not None:
+            self.track_id = m.get('TrackId')
+        return self
+
+
+class ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectors(TeaModel):
+    def __init__(
+        self,
+        audio_language_selection: ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioLanguageSelection = None,
+        audio_pid_selection: ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioPidSelection = None,
+        audio_track_selection: List[ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioTrackSelection] = None,
+        name: str = None,
+    ):
+        # The audio language selection.
+        self.audio_language_selection = audio_language_selection
+        # The audio PID selection.
+        self.audio_pid_selection = audio_pid_selection
+        # The audio track selection.
+        self.audio_track_selection = audio_track_selection
+        # The name of the audio selector.
+        # 
+        # This parameter is required.
+        self.name = name
+
+    def validate(self):
+        if self.audio_language_selection:
+            self.audio_language_selection.validate()
+        if self.audio_pid_selection:
+            self.audio_pid_selection.validate()
+        if self.audio_track_selection:
+            for k in self.audio_track_selection:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_language_selection is not None:
+            result['AudioLanguageSelection'] = self.audio_language_selection.to_map()
+        if self.audio_pid_selection is not None:
+            result['AudioPidSelection'] = self.audio_pid_selection.to_map()
+        result['AudioTrackSelection'] = []
+        if self.audio_track_selection is not None:
+            for k in self.audio_track_selection:
+                result['AudioTrackSelection'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioLanguageSelection') is not None:
+            temp_model = ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioLanguageSelection()
+            self.audio_language_selection = temp_model.from_map(m['AudioLanguageSelection'])
+        if m.get('AudioPidSelection') is not None:
+            temp_model = ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioPidSelection()
+            self.audio_pid_selection = temp_model.from_map(m['AudioPidSelection'])
+        self.audio_track_selection = []
+        if m.get('AudioTrackSelection') is not None:
+            for k in m.get('AudioTrackSelection'):
+                temp_model = ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioTrackSelection()
+                self.audio_track_selection.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ListMediaLiveChannelsResponseBodyChannelsInputAttachments(TeaModel):
+    def __init__(
+        self,
+        audio_selectors: List[ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectors] = None,
+        input_id: str = None,
+        input_name: str = None,
+        language_name: str = None,
+    ):
+        # The audio selectors.
+        self.audio_selectors = audio_selectors
+        # The ID of the input.
+        # 
+        # This parameter is required.
+        self.input_id = input_id
+        # The name of the input.
+        self.input_name = input_name
+        # The name of the language.
+        self.language_name = language_name
+
+    def validate(self):
+        if self.audio_selectors:
+            for k in self.audio_selectors:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AudioSelectors'] = []
+        if self.audio_selectors is not None:
+            for k in self.audio_selectors:
+                result['AudioSelectors'].append(k.to_map() if k else None)
+        if self.input_id is not None:
+            result['InputId'] = self.input_id
+        if self.input_name is not None:
+            result['InputName'] = self.input_name
+        if self.language_name is not None:
+            result['LanguageName'] = self.language_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.audio_selectors = []
+        if m.get('AudioSelectors') is not None:
+            for k in m.get('AudioSelectors'):
+                temp_model = ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectors()
+                self.audio_selectors.append(temp_model.from_map(k))
+        if m.get('InputId') is not None:
+            self.input_id = m.get('InputId')
+        if m.get('InputName') is not None:
+            self.input_name = m.get('InputName')
+        if m.get('LanguageName') is not None:
+            self.language_name = m.get('LanguageName')
+        return self
+
+
+class ListMediaLiveChannelsResponseBodyChannelsOutputGroupsMediaPackageGroupSetting(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        group_name: str = None,
+    ):
+        # ChannelName in MediaPackage.
+        self.channel_name = channel_name
+        # GroupName in MediaPackage.
+        self.group_name = group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        return self
+
+
+class ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputsMediaPackageOutputSetting(TeaModel):
+    def __init__(
+        self,
+        audio_group_id: str = None,
+        name_modifier: str = None,
+    ):
+        # The manifest audio group ID.
+        self.audio_group_id = audio_group_id
+        # The manifest name modifier. The child manifests include this modifier in their M3U8 file names.
+        self.name_modifier = name_modifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_group_id is not None:
+            result['AudioGroupId'] = self.audio_group_id
+        if self.name_modifier is not None:
+            result['NameModifier'] = self.name_modifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioGroupId') is not None:
+            self.audio_group_id = m.get('AudioGroupId')
+        if m.get('NameModifier') is not None:
+            self.name_modifier = m.get('NameModifier')
+        return self
+
+
+class ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputs(TeaModel):
+    def __init__(
+        self,
+        audio_setting_names: List[str] = None,
+        media_package_output_setting: ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputsMediaPackageOutputSetting = None,
+        media_type: int = None,
+        name: str = None,
+        video_setting_name: str = None,
+    ):
+        # The referenced AudioSettings.
+        self.audio_setting_names = audio_setting_names
+        # The settings of the output delivered to MediaPackage.
+        self.media_package_output_setting = media_package_output_setting
+        # The media type of the output.
+        self.media_type = media_type
+        # The name of the output.
+        self.name = name
+        # The name of the referenced VideoSettings.
+        self.video_setting_name = video_setting_name
+
+    def validate(self):
+        if self.media_package_output_setting:
+            self.media_package_output_setting.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_setting_names is not None:
+            result['AudioSettingNames'] = self.audio_setting_names
+        if self.media_package_output_setting is not None:
+            result['MediaPackageOutputSetting'] = self.media_package_output_setting.to_map()
+        if self.media_type is not None:
+            result['MediaType'] = self.media_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.video_setting_name is not None:
+            result['VideoSettingName'] = self.video_setting_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioSettingNames') is not None:
+            self.audio_setting_names = m.get('AudioSettingNames')
+        if m.get('MediaPackageOutputSetting') is not None:
+            temp_model = ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputsMediaPackageOutputSetting()
+            self.media_package_output_setting = temp_model.from_map(m['MediaPackageOutputSetting'])
+        if m.get('MediaType') is not None:
+            self.media_type = m.get('MediaType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('VideoSettingName') is not None:
+            self.video_setting_name = m.get('VideoSettingName')
+        return self
+
+
+class ListMediaLiveChannelsResponseBodyChannelsOutputGroups(TeaModel):
+    def __init__(
+        self,
+        media_package_group_setting: ListMediaLiveChannelsResponseBodyChannelsOutputGroupsMediaPackageGroupSetting = None,
+        monitor_url: str = None,
+        name: str = None,
+        outputs: List[ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputs] = None,
+        type: str = None,
+    ):
+        # The MediaPackage destination.
+        self.media_package_group_setting = media_package_group_setting
+        # The URL for monitoring the output group. The parameter is returned only when the output gourp type is MediaPackage.
+        self.monitor_url = monitor_url
+        # The name of the output group.
+        self.name = name
+        # The outputs in the output group.
+        self.outputs = outputs
+        # The output group type.
+        self.type = type
+
+    def validate(self):
+        if self.media_package_group_setting:
+            self.media_package_group_setting.validate()
+        if self.outputs:
+            for k in self.outputs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.media_package_group_setting is not None:
+            result['MediaPackageGroupSetting'] = self.media_package_group_setting.to_map()
+        if self.monitor_url is not None:
+            result['MonitorUrl'] = self.monitor_url
+        if self.name is not None:
+            result['Name'] = self.name
+        result['Outputs'] = []
+        if self.outputs is not None:
+            for k in self.outputs:
+                result['Outputs'].append(k.to_map() if k else None)
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MediaPackageGroupSetting') is not None:
+            temp_model = ListMediaLiveChannelsResponseBodyChannelsOutputGroupsMediaPackageGroupSetting()
+            self.media_package_group_setting = temp_model.from_map(m['MediaPackageGroupSetting'])
+        if m.get('MonitorUrl') is not None:
+            self.monitor_url = m.get('MonitorUrl')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.outputs = []
+        if m.get('Outputs') is not None:
+            for k in m.get('Outputs'):
+                temp_model = ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputs()
+                self.outputs.append(temp_model.from_map(k))
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingCodecDetail(TeaModel):
+    def __init__(
+        self,
+        level: str = None,
+        profile: str = None,
+    ):
+        # The video encoding level. It is not supported yet.
+        self.level = level
+        # The H.264 profile.
+        self.profile = profile
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.profile is not None:
+            result['Profile'] = self.profile
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Profile') is not None:
+            self.profile = m.get('Profile')
+        return self
+
+
+class ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingFramerate(TeaModel):
+    def __init__(
+        self,
+        framerate_control: str = None,
+        framerate_denominator: int = None,
+        framerate_numerator: int = None,
+    ):
+        # The frame rate mode.
+        self.framerate_control = framerate_control
+        # The denominator of the fixed frame rate.
+        self.framerate_denominator = framerate_denominator
+        # The numerator of the fixed frame rate.
+        self.framerate_numerator = framerate_numerator
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.framerate_control is not None:
+            result['FramerateControl'] = self.framerate_control
+        if self.framerate_denominator is not None:
+            result['FramerateDenominator'] = self.framerate_denominator
+        if self.framerate_numerator is not None:
+            result['FramerateNumerator'] = self.framerate_numerator
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FramerateControl') is not None:
+            self.framerate_control = m.get('FramerateControl')
+        if m.get('FramerateDenominator') is not None:
+            self.framerate_denominator = m.get('FramerateDenominator')
+        if m.get('FramerateNumerator') is not None:
+            self.framerate_numerator = m.get('FramerateNumerator')
+        return self
+
+
+class ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingGop(TeaModel):
+    def __init__(
+        self,
+        bframes_num: int = None,
+        gop_size: int = None,
+        gop_size_units: str = None,
+    ):
+        # The number of B frames.
+        self.bframes_num = bframes_num
+        # The GOP size.
+        self.gop_size = gop_size
+        # The GOP size unit.
+        self.gop_size_units = gop_size_units
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bframes_num is not None:
+            result['BframesNum'] = self.bframes_num
+        if self.gop_size is not None:
+            result['GopSize'] = self.gop_size
+        if self.gop_size_units is not None:
+            result['GopSizeUnits'] = self.gop_size_units
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BframesNum') is not None:
+            self.bframes_num = m.get('BframesNum')
+        if m.get('GopSize') is not None:
+            self.gop_size = m.get('GopSize')
+        if m.get('GopSizeUnits') is not None:
+            self.gop_size_units = m.get('GopSizeUnits')
+        return self
+
+
+class ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingRate(TeaModel):
+    def __init__(
+        self,
+        bitrate: int = None,
+        buffer_size: int = None,
+        max_bitrate: int = None,
+        rate_control_mode: str = None,
+    ):
+        # The video bitrate. Unit: bit/s.
+        self.bitrate = bitrate
+        # The video buffer size. Unit: bit/s.
+        self.buffer_size = buffer_size
+        # The maximum bitrate. Unit: bit/s.
+        self.max_bitrate = max_bitrate
+        # The bitrate control mode.
+        self.rate_control_mode = rate_control_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
+        if self.buffer_size is not None:
+            result['BufferSize'] = self.buffer_size
+        if self.max_bitrate is not None:
+            result['MaxBitrate'] = self.max_bitrate
+        if self.rate_control_mode is not None:
+            result['RateControlMode'] = self.rate_control_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
+        if m.get('BufferSize') is not None:
+            self.buffer_size = m.get('BufferSize')
+        if m.get('MaxBitrate') is not None:
+            self.max_bitrate = m.get('MaxBitrate')
+        if m.get('RateControlMode') is not None:
+            self.rate_control_mode = m.get('RateControlMode')
+        return self
+
+
+class ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSetting(TeaModel):
+    def __init__(
+        self,
+        codec_detail: ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingCodecDetail = None,
+        framerate: ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingFramerate = None,
+        gop: ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingGop = None,
+        rate: ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingRate = None,
+    ):
+        # The video encoding settings.
+        self.codec_detail = codec_detail
+        # The frame rate.
+        self.framerate = framerate
+        # The GOP setting.
+        self.gop = gop
+        # The video encoding rate.
+        self.rate = rate
+
+    def validate(self):
+        if self.codec_detail:
+            self.codec_detail.validate()
+        if self.framerate:
+            self.framerate.validate()
+        if self.gop:
+            self.gop.validate()
+        if self.rate:
+            self.rate.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.codec_detail is not None:
+            result['CodecDetail'] = self.codec_detail.to_map()
+        if self.framerate is not None:
+            result['Framerate'] = self.framerate.to_map()
+        if self.gop is not None:
+            result['Gop'] = self.gop.to_map()
+        if self.rate is not None:
+            result['Rate'] = self.rate.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CodecDetail') is not None:
+            temp_model = ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingCodecDetail()
+            self.codec_detail = temp_model.from_map(m['CodecDetail'])
+        if m.get('Framerate') is not None:
+            temp_model = ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingFramerate()
+            self.framerate = temp_model.from_map(m['Framerate'])
+        if m.get('Gop') is not None:
+            temp_model = ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingGop()
+            self.gop = temp_model.from_map(m['Gop'])
+        if m.get('Rate') is not None:
+            temp_model = ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingRate()
+            self.rate = temp_model.from_map(m['Rate'])
+        return self
+
+
+class ListMediaLiveChannelsResponseBodyChannelsVideoSettings(TeaModel):
+    def __init__(
+        self,
+        height: int = None,
+        name: str = None,
+        video_codec: str = None,
+        video_codec_setting: ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSetting = None,
+        width: int = None,
+    ):
+        # The height of the video in pixels.
+        self.height = height
+        # The name of the video settings.
+        self.name = name
+        # The video codec.
+        self.video_codec = video_codec
+        # The video encoding settings.
+        self.video_codec_setting = video_codec_setting
+        # The width of the video in pixels.
+        self.width = width
+
+    def validate(self):
+        if self.video_codec_setting:
+            self.video_codec_setting.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.video_codec is not None:
+            result['VideoCodec'] = self.video_codec
+        if self.video_codec_setting is not None:
+            result['VideoCodecSetting'] = self.video_codec_setting.to_map()
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('VideoCodec') is not None:
+            self.video_codec = m.get('VideoCodec')
+        if m.get('VideoCodecSetting') is not None:
+            temp_model = ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSetting()
+            self.video_codec_setting = temp_model.from_map(m['VideoCodecSetting'])
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class ListMediaLiveChannelsResponseBodyChannels(TeaModel):
+    def __init__(
+        self,
+        audio_settings: List[ListMediaLiveChannelsResponseBodyChannelsAudioSettings] = None,
+        channel_id: str = None,
+        create_time: str = None,
+        input_attachments: List[ListMediaLiveChannelsResponseBodyChannelsInputAttachments] = None,
+        last_start_time: str = None,
+        last_stop_time: str = None,
+        name: str = None,
+        output_groups: List[ListMediaLiveChannelsResponseBodyChannelsOutputGroups] = None,
+        state: str = None,
+        video_settings: List[ListMediaLiveChannelsResponseBodyChannelsVideoSettings] = None,
+    ):
+        # The audio settings.
+        self.audio_settings = audio_settings
+        # The ID of the channel.
+        self.channel_id = channel_id
+        # The time when the channel was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        self.create_time = create_time
+        # The inputs associated with the channel.
+        self.input_attachments = input_attachments
+        # The time when the channel was last started. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. If the channel has never been started since it was created, an empty string is returned.
+        self.last_start_time = last_start_time
+        # The time when the channel was last stopped. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. If the channel has never stopped since it was created, an empty string is returned.
+        self.last_stop_time = last_stop_time
+        # The name of the channel.
+        self.name = name
+        # The output groups.
+        self.output_groups = output_groups
+        # The state of the channel. Valid values: IDLE, STARTING, RUNNING, RECOVERING, and STOPPING.
+        self.state = state
+        # The video settings.
+        self.video_settings = video_settings
+
+    def validate(self):
+        if self.audio_settings:
+            for k in self.audio_settings:
+                if k:
+                    k.validate()
+        if self.input_attachments:
+            for k in self.input_attachments:
+                if k:
+                    k.validate()
+        if self.output_groups:
+            for k in self.output_groups:
+                if k:
+                    k.validate()
+        if self.video_settings:
+            for k in self.video_settings:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AudioSettings'] = []
+        if self.audio_settings is not None:
+            for k in self.audio_settings:
+                result['AudioSettings'].append(k.to_map() if k else None)
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        result['InputAttachments'] = []
+        if self.input_attachments is not None:
+            for k in self.input_attachments:
+                result['InputAttachments'].append(k.to_map() if k else None)
+        if self.last_start_time is not None:
+            result['LastStartTime'] = self.last_start_time
+        if self.last_stop_time is not None:
+            result['LastStopTime'] = self.last_stop_time
+        if self.name is not None:
+            result['Name'] = self.name
+        result['OutputGroups'] = []
+        if self.output_groups is not None:
+            for k in self.output_groups:
+                result['OutputGroups'].append(k.to_map() if k else None)
+        if self.state is not None:
+            result['State'] = self.state
+        result['VideoSettings'] = []
+        if self.video_settings is not None:
+            for k in self.video_settings:
+                result['VideoSettings'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.audio_settings = []
+        if m.get('AudioSettings') is not None:
+            for k in m.get('AudioSettings'):
+                temp_model = ListMediaLiveChannelsResponseBodyChannelsAudioSettings()
+                self.audio_settings.append(temp_model.from_map(k))
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        self.input_attachments = []
+        if m.get('InputAttachments') is not None:
+            for k in m.get('InputAttachments'):
+                temp_model = ListMediaLiveChannelsResponseBodyChannelsInputAttachments()
+                self.input_attachments.append(temp_model.from_map(k))
+        if m.get('LastStartTime') is not None:
+            self.last_start_time = m.get('LastStartTime')
+        if m.get('LastStopTime') is not None:
+            self.last_stop_time = m.get('LastStopTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.output_groups = []
+        if m.get('OutputGroups') is not None:
+            for k in m.get('OutputGroups'):
+                temp_model = ListMediaLiveChannelsResponseBodyChannelsOutputGroups()
+                self.output_groups.append(temp_model.from_map(k))
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        self.video_settings = []
+        if m.get('VideoSettings') is not None:
+            for k in m.get('VideoSettings'):
+                temp_model = ListMediaLiveChannelsResponseBodyChannelsVideoSettings()
+                self.video_settings.append(temp_model.from_map(k))
+        return self
+
+
+class ListMediaLiveChannelsResponseBody(TeaModel):
+    def __init__(
+        self,
+        channels: List[ListMediaLiveChannelsResponseBodyChannels] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        # The channels.
+        self.channels = channels
+        # The number of entries returned per page.
+        self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        self.next_token = next_token
+        # The ID of the request.
+        self.request_id = request_id
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.channels:
+            for k in self.channels:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Channels'] = []
+        if self.channels is not None:
+            for k in self.channels:
+                result['Channels'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.channels = []
+        if m.get('Channels') is not None:
+            for k in m.get('Channels'):
+                temp_model = ListMediaLiveChannelsResponseBodyChannels()
+                self.channels.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListMediaLiveChannelsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListMediaLiveChannelsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListMediaLiveChannelsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListMediaLiveInputSecurityGroupsRequest(TeaModel):
+    def __init__(
+        self,
+        keyword: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        skip: int = None,
+        sort_order: str = None,
+    ):
+        # The keyword of the query. You can perform a fuzzy search on security group ID or name.
+        self.keyword = keyword
+        # The number of entries per page. Valid values: 1 to 100. Default value: If you do not specify this parameter or if you set a value smaller than 10, the default value is 10. If you set a value greater than 100, the default value is 100.
+        self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        self.next_token = next_token
+        # The number of entries to be skipped in the query. If the number of entries you attempt to skip exceeds the number of entries that meet the condition, an empty list is returned.
+        self.skip = skip
+        # The sorting order of the security groups by creation time. Default value: asc. Valid values: desc and asc. asc indicates the ascending order, and desc indicates the descending order.
+        self.sort_order = sort_order
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.skip is not None:
+            result['Skip'] = self.skip
+        if self.sort_order is not None:
+            result['SortOrder'] = self.sort_order
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Skip') is not None:
+            self.skip = m.get('Skip')
+        if m.get('SortOrder') is not None:
+            self.sort_order = m.get('SortOrder')
+        return self
+
+
+class ListMediaLiveInputSecurityGroupsResponseBodySecurityGroups(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        input_ids: List[str] = None,
+        name: str = None,
+        security_group_id: str = None,
+        whitelist_rules: List[str] = None,
+    ):
+        # The time when the security group was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        self.create_time = create_time
+        # The IDs of the inputs associated with the security group.
+        self.input_ids = input_ids
+        # The security group name.
+        self.name = name
+        # The ID of the security group.
+        self.security_group_id = security_group_id
+        # The security group rules.
+        self.whitelist_rules = whitelist_rules
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.input_ids is not None:
+            result['InputIds'] = self.input_ids
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.whitelist_rules is not None:
+            result['WhitelistRules'] = self.whitelist_rules
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('InputIds') is not None:
+            self.input_ids = m.get('InputIds')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('WhitelistRules') is not None:
+            self.whitelist_rules = m.get('WhitelistRules')
+        return self
+
+
+class ListMediaLiveInputSecurityGroupsResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        security_groups: List[ListMediaLiveInputSecurityGroupsResponseBodySecurityGroups] = None,
+        total_count: int = None,
+    ):
+        # The number of entries returned per page.
+        self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        self.next_token = next_token
+        # The ID of the request.
+        self.request_id = request_id
+        # The security groups.
+        self.security_groups = security_groups
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.security_groups:
+            for k in self.security_groups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SecurityGroups'] = []
+        if self.security_groups is not None:
+            for k in self.security_groups:
+                result['SecurityGroups'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.security_groups = []
+        if m.get('SecurityGroups') is not None:
+            for k in m.get('SecurityGroups'):
+                temp_model = ListMediaLiveInputSecurityGroupsResponseBodySecurityGroups()
+                self.security_groups.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListMediaLiveInputSecurityGroupsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListMediaLiveInputSecurityGroupsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListMediaLiveInputSecurityGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListMediaLiveInputsRequest(TeaModel):
+    def __init__(
+        self,
+        keyword: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        skip: int = None,
+        sort_order: str = None,
+        types: str = None,
+    ):
+        # The keyword of the query. You can perform a fuzzy search on input ID or name.
+        self.keyword = keyword
+        # The number of entries per page. Valid values: 1 to 100. Default value: If you do not specify this parameter or if you set a value smaller than 10, the default value is 10. If you set a value greater than 100, the default value is 100.
+        self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        self.next_token = next_token
+        # The number of entries to be skipped in the query. If the number of entries you attempt to skip exceeds the number of entries that meet the condition, an empty list is returned.
+        self.skip = skip
+        # The sorting order of the inputs by creation time. Default value: asc. Valid values: desc and asc. asc indicates the ascending order, and desc indicates the descending order.
+        self.sort_order = sort_order
+        # The type of inputs you want to query. You can separate multiple input types with commas (,) in a JSON array.
+        self.types = types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.skip is not None:
+            result['Skip'] = self.skip
+        if self.sort_order is not None:
+            result['SortOrder'] = self.sort_order
+        if self.types is not None:
+            result['Types'] = self.types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Skip') is not None:
+            self.skip = m.get('Skip')
+        if m.get('SortOrder') is not None:
+            self.sort_order = m.get('SortOrder')
+        if m.get('Types') is not None:
+            self.types = m.get('Types')
+        return self
+
+
+class ListMediaLiveInputsResponseBodyInputsInputInfos(TeaModel):
+    def __init__(
+        self,
+        dest_host: str = None,
+        flow_id: str = None,
+        flow_output_name: str = None,
+        monitor_url: str = None,
+        source_url: str = None,
+        stream_name: str = None,
+    ):
+        # The endpoint that the stream is pushed to. This parameter is returned for PUSH inputs.
+        self.dest_host = dest_host
+        self.flow_id = flow_id
+        self.flow_output_name = flow_output_name
+        # The URL for input monitoring.
+        self.monitor_url = monitor_url
+        # The source URL where the stream is pulled from. This parameter is returned for PULL inputs.
+        self.source_url = source_url
+        # The name of the pushed stream. This parameter is returned for PUSH inputs.
+        self.stream_name = stream_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dest_host is not None:
+            result['DestHost'] = self.dest_host
+        if self.flow_id is not None:
+            result['FlowId'] = self.flow_id
+        if self.flow_output_name is not None:
+            result['FlowOutputName'] = self.flow_output_name
+        if self.monitor_url is not None:
+            result['MonitorUrl'] = self.monitor_url
+        if self.source_url is not None:
+            result['SourceUrl'] = self.source_url
+        if self.stream_name is not None:
+            result['StreamName'] = self.stream_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestHost') is not None:
+            self.dest_host = m.get('DestHost')
+        if m.get('FlowId') is not None:
+            self.flow_id = m.get('FlowId')
+        if m.get('FlowOutputName') is not None:
+            self.flow_output_name = m.get('FlowOutputName')
+        if m.get('MonitorUrl') is not None:
+            self.monitor_url = m.get('MonitorUrl')
+        if m.get('SourceUrl') is not None:
+            self.source_url = m.get('SourceUrl')
+        if m.get('StreamName') is not None:
+            self.stream_name = m.get('StreamName')
+        return self
+
+
+class ListMediaLiveInputsResponseBodyInputs(TeaModel):
+    def __init__(
+        self,
+        channel_ids: List[str] = None,
+        create_time: str = None,
+        input_id: str = None,
+        input_infos: List[ListMediaLiveInputsResponseBodyInputsInputInfos] = None,
+        name: str = None,
+        security_group_ids: List[str] = None,
+        type: str = None,
+    ):
+        # The IDs of the channels associated with the input.
+        self.channel_ids = channel_ids
+        # The time when the input was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        self.create_time = create_time
+        # The ID of the input.
+        self.input_id = input_id
+        # The input configurations.
+        self.input_infos = input_infos
+        # The name of the input.
+        self.name = name
+        # The IDs of the security groups associated with the input.
+        self.security_group_ids = security_group_ids
+        # The input type.
+        self.type = type
+
+    def validate(self):
+        if self.input_infos:
+            for k in self.input_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_ids is not None:
+            result['ChannelIds'] = self.channel_ids
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.input_id is not None:
+            result['InputId'] = self.input_id
+        result['InputInfos'] = []
+        if self.input_infos is not None:
+            for k in self.input_infos:
+                result['InputInfos'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.security_group_ids is not None:
+            result['SecurityGroupIds'] = self.security_group_ids
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelIds') is not None:
+            self.channel_ids = m.get('ChannelIds')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('InputId') is not None:
+            self.input_id = m.get('InputId')
+        self.input_infos = []
+        if m.get('InputInfos') is not None:
+            for k in m.get('InputInfos'):
+                temp_model = ListMediaLiveInputsResponseBodyInputsInputInfos()
+                self.input_infos.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SecurityGroupIds') is not None:
+            self.security_group_ids = m.get('SecurityGroupIds')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListMediaLiveInputsResponseBody(TeaModel):
+    def __init__(
+        self,
+        inputs: List[ListMediaLiveInputsResponseBodyInputs] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        # The inputs.
+        self.inputs = inputs
+        # The number of entries returned per page.
+        self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        self.next_token = next_token
+        # The ID of the request.
+        self.request_id = request_id
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.inputs:
+            for k in self.inputs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Inputs'] = []
+        if self.inputs is not None:
+            for k in self.inputs:
+                result['Inputs'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.inputs = []
+        if m.get('Inputs') is not None:
+            for k in m.get('Inputs'):
+                temp_model = ListMediaLiveInputsResponseBodyInputs()
+                self.inputs.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListMediaLiveInputsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListMediaLiveInputsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListMediaLiveInputsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListMediaMarksRequest(TeaModel):
     def __init__(
         self,
@@ -48514,11 +53906,20 @@ class ListProgramsRequest(TeaModel):
         program_name: str = None,
         sort_by: str = None,
     ):
+        # The name of the channel.
+        # 
         # This parameter is required.
         self.channel_name = channel_name
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 20. Valid values: 1 to 100.
         self.page_size = page_size
+        # The name of the program.
         self.program_name = program_name
+        # The sorting order. By default, the query results are sorted by creation time in descending order. Valid values:
+        # 
+        # *   asc: ascending order.
+        # *   desc: descending order.
         self.sort_by = sort_by
 
     def validate(self):
@@ -48566,10 +53967,15 @@ class ListProgramsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 20. Valid values: 1 to 100.
         self.page_size = page_size
+        # The programs.
         self.programs = programs
+        # **Request ID**\
         self.request_id = request_id
+        # The total number of programs returned.
         self.total_count = total_count
 
     def validate(self):
@@ -49193,10 +54599,16 @@ class ListSchedulesRequest(TeaModel):
         page_size: int = None,
         window_duration_seconds: int = None,
     ):
+        # The name of the channel.
+        # 
         # This parameter is required.
         self.channel_name = channel_name
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The time window of the program schedule.
+        # 
         # This parameter is required.
         self.window_duration_seconds = window_duration_seconds
 
@@ -49241,10 +54653,15 @@ class ListSchedulesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 20. Valid values: 1 to 100.
         self.page_size = page_size
+        # The program schedule.
         self.programs = programs
+        # **Request ID**\
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -50785,11 +56202,18 @@ class ListSourceLocationsRequest(TeaModel):
         sort_by_modified_time: str = None,
         source_location_name: str = None,
     ):
+        # Specifies whether to ignore source locations marked as deleted. A value of true means ignoring source locations marked as deleted.
         self.filter_state = filter_state
+        # *   The page number.
+        # *   Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 20. Valid values: 1 to 100.
         self.page_size = page_size
+        # The sorting order. By default, the query results are sorted by creation time in descending order.
         self.sort_by = sort_by
+        # The sorting order of the source locations based on the time when they were last modified.
         self.sort_by_modified_time = sort_by_modified_time
+        # The name of the source location.
         self.source_location_name = source_location_name
 
     def validate(self):
@@ -50841,10 +56265,15 @@ class ListSourceLocationsResponseBody(TeaModel):
         source_location_list: List[ChannelAssemblySourceLocation] = None,
         total_count: int = None,
     ):
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 20. Valid values: 1 to 100.
         self.page_size = page_size
+        # **Request ID**\
         self.request_id = request_id
+        # The source locations.
         self.source_location_list = source_location_list
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -50944,13 +56373,21 @@ class ListSourcesRequest(TeaModel):
         source_name: str = None,
         source_type: str = None,
     ):
+        # Specifies whether to ignore sources marked as deleted.
         self.filter_state = filter_state
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The sorting order. By default, the query results are sorted by creation time in descending order. Valid values: asc and desc.
         self.sort_by = sort_by
+        # The sorting order by modification time. Valid values: asc and desc.
         self.sort_by_modified_time = sort_by_modified_time
+        # The name of the source location.
         self.source_location_name = source_location_name
+        # The name of the source.
         self.source_name = source_name
+        # The source type. Valid values: vodSource and liveSource.
         self.source_type = source_type
 
     def validate(self):
@@ -51010,10 +56447,15 @@ class ListSourcesResponseBody(TeaModel):
         source_list: List[ChannelAssemblySource] = None,
         total_count: int = None,
     ):
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 20. Valid values: 1 to 100.
         self.page_size = page_size
+        # **Request ID**\
         self.request_id = request_id
+        # The sources.
         self.source_list = source_list
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -53315,10 +58757,18 @@ class ListVodPackagingAssetsRequest(TeaModel):
         page_size: int = None,
         sort_by: str = None,
     ):
+        # The name of the packaging group.
         self.group_name = group_name
+        # The search keyword. The names of the returned assets are prefixed with this keyword.
         self.keyword = keyword
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The sorting order of the assets based on the time when they were ingested. Valid values:
+        # 
+        # *   desc (default): descending order.
+        # *   asc: ascending order.
         self.sort_by = sort_by
 
     def validate(self):
@@ -53363,7 +58813,9 @@ class ListVodPackagingAssetsResponseBodyAssetsInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # The URL of the media file. Only M3U8 files stored in OSS are supported.
         self.media = media
+        # The input type. Only Object Storage Service (OSS) is supported.
         self.type = type
 
     def validate(self):
@@ -53399,10 +58851,15 @@ class ListVodPackagingAssetsResponseBodyAssets(TeaModel):
         group_name: str = None,
         input: ListVodPackagingAssetsResponseBodyAssetsInput = None,
     ):
+        # The name of the VOD packaging asset.
         self.asset_name = asset_name
+        # The time when the asset was ingested. It follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The asset description.
         self.description = description
+        # The name of the packaging group.
         self.group_name = group_name
+        # The asset input configurations.
         self.input = input
 
     def validate(self):
@@ -53453,11 +58910,20 @@ class ListVodPackagingAssetsResponseBody(TeaModel):
         sort_by: str = None,
         total_count: int = None,
     ):
+        # The VOD packaging assets.
         self.assets = assets
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The sorting order of the assets based on the time when they were ingested. Valid values:
+        # 
+        # *   desc: descending order.
+        # *   asc: ascending order.
         self.sort_by = sort_by
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -53558,10 +59024,18 @@ class ListVodPackagingConfigurationsRequest(TeaModel):
         page_size: int = None,
         sort_by: str = None,
     ):
+        # The name of the packaging group.
         self.group_name = group_name
+        # The search keyword. The names of the returned packaging configurations contain the keyword.
         self.keyword = keyword
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The sorting order of the packaging configurations based on the time when they were created. Valid values:
+        # 
+        # *   desc (default): descending order.
+        # *   asc: ascending order.
         self.sort_by = sort_by
 
     def validate(self):
@@ -53610,11 +59084,20 @@ class ListVodPackagingConfigurationsResponseBody(TeaModel):
         sort_by: str = None,
         total_count: int = None,
     ):
+        # The packaging configurations.
         self.packaging_configurations = packaging_configurations
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The sorting order of the packaging configurations based on the time when they were created. Valid values:
+        # 
+        # *   desc: descending order.
+        # *   asc: ascending order.
         self.sort_by = sort_by
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -53714,9 +59197,16 @@ class ListVodPackagingGroupsRequest(TeaModel):
         page_size: int = None,
         sort_by: str = None,
     ):
+        # The search keyword. The names of the returned packaging groups contain the keyword.
         self.keyword = keyword
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The sorting order of the packaging groups based on the time when they were created. Valid values:
+        # 
+        # *   desc (default): descending order.
+        # *   asc: ascending order.
         self.sort_by = sort_by
 
     def validate(self):
@@ -53761,11 +59251,20 @@ class ListVodPackagingGroupsResponseBody(TeaModel):
         sort_by: str = None,
         total_count: int = None,
     ):
+        # The packaging groups.
         self.packaging_groups = packaging_groups
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The sorting order of the packaging groups based on the time when they were created. Valid values:
+        # 
+        # *   desc: descending order.
+        # *   asc: ascending order.
         self.sort_by = sort_by
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -63498,8 +68997,12 @@ class SendAIAgentDataChannelMessageRequest(TeaModel):
         instance_id: str = None,
         message: str = None,
     ):
+        # The ID of the AI agent in the conversation.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The DataChannel message you want to send. You must specify a JSON string. The value can be up to 8,192 characters in length.
+        # 
         # This parameter is required.
         self.message = message
 
@@ -63532,6 +69035,7 @@ class SendAIAgentDataChannelMessageResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -63602,6 +69106,7 @@ class SendAIAgentSpeechRequest(TeaModel):
         instance_id: str = None,
         text: str = None,
     ):
+        # Specifies whether the broadcast can interrupt the ongoing speech. Default value: true
         self.enable_interrupt = enable_interrupt
         # This parameter is required.
         self.instance_id = instance_id
@@ -64025,6 +69530,142 @@ class SendLiveTranscodeJobCommandResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SendLiveTranscodeJobCommandResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SendMessageChatTextRequest(TeaModel):
+    def __init__(
+        self,
+        aiagent_id: str = None,
+        mode: str = None,
+        need_archiving: bool = None,
+        receiver_id: str = None,
+        session_id: str = None,
+        text: str = None,
+        type: str = None,
+    ):
+        # This parameter is required.
+        self.aiagent_id = aiagent_id
+        self.mode = mode
+        self.need_archiving = need_archiving
+        # This parameter is required.
+        self.receiver_id = receiver_id
+        # This parameter is required.
+        self.session_id = session_id
+        # This parameter is required.
+        self.text = text
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aiagent_id is not None:
+            result['AIAgentId'] = self.aiagent_id
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.need_archiving is not None:
+            result['NeedArchiving'] = self.need_archiving
+        if self.receiver_id is not None:
+            result['ReceiverId'] = self.receiver_id
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AIAgentId') is not None:
+            self.aiagent_id = m.get('AIAgentId')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('NeedArchiving') is not None:
+            self.need_archiving = m.get('NeedArchiving')
+        if m.get('ReceiverId') is not None:
+            self.receiver_id = m.get('ReceiverId')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class SendMessageChatTextResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SendMessageChatTextResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SendMessageChatTextResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SendMessageChatTextResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -64515,12 +70156,23 @@ class SetNotifyConfigRequest(TeaModel):
         event_types: str = None,
         token: str = None,
     ):
+        # The ID of the AI agent.
+        # 
         # This parameter is required.
         self.aiagent_id = aiagent_id
+        # The URL for receiving callback notifications. By default, this parameter is left empty.
         self.callback_url = callback_url
+        # Specifies whether to enable event notifications.
+        # 
         # This parameter is required.
         self.enable_notify = enable_notify
+        # The event types. If you do not specify this parameter, all event types are selected.
+        # 
+        # *   agent_start
+        # *   agent_stop
+        # *   error
         self.event_types = event_types
+        # The authentication token for callback. The token is carried in the Authorization header of a callback request. By default, this parameter is left empty.
         self.token = token
 
     def validate(self):
@@ -64564,6 +70216,7 @@ class SetNotifyConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -64627,17 +70280,57 @@ class SetNotifyConfigResponse(TeaModel):
         return self
 
 
+class StartAIAgentInstanceRequestChatSyncConfig(TeaModel):
+    def __init__(
+        self,
+        imaiagent_id: str = None,
+        receiver_id: str = None,
+    ):
+        # IM的智能体Id。
+        self.imaiagent_id = imaiagent_id
+        # 接收用户Id。
+        self.receiver_id = receiver_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.imaiagent_id is not None:
+            result['IMAIAgentId'] = self.imaiagent_id
+        if self.receiver_id is not None:
+            result['ReceiverId'] = self.receiver_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IMAIAgentId') is not None:
+            self.imaiagent_id = m.get('IMAIAgentId')
+        if m.get('ReceiverId') is not None:
+            self.receiver_id = m.get('ReceiverId')
+        return self
+
+
 class StartAIAgentInstanceRequest(TeaModel):
     def __init__(
         self,
         aiagent_id: str = None,
+        chat_sync_config: StartAIAgentInstanceRequestChatSyncConfig = None,
         runtime_config: AIAgentRuntimeConfig = None,
         session_id: str = None,
         template_config: AIAgentTemplateConfig = None,
         user_data: str = None,
     ):
+        # The ID of the AI agent created in the [IMS](https://ims.console.aliyun.com/ai/robot/list) console.
+        # 
         # This parameter is required.
         self.aiagent_id = aiagent_id
+        # 同步聊天记录配置。
+        self.chat_sync_config = chat_sync_config
         # This parameter is required.
         self.runtime_config = runtime_config
         self.session_id = session_id
@@ -64645,6 +70338,8 @@ class StartAIAgentInstanceRequest(TeaModel):
         self.user_data = user_data
 
     def validate(self):
+        if self.chat_sync_config:
+            self.chat_sync_config.validate()
         if self.runtime_config:
             self.runtime_config.validate()
         if self.template_config:
@@ -64658,6 +70353,8 @@ class StartAIAgentInstanceRequest(TeaModel):
         result = dict()
         if self.aiagent_id is not None:
             result['AIAgentId'] = self.aiagent_id
+        if self.chat_sync_config is not None:
+            result['ChatSyncConfig'] = self.chat_sync_config.to_map()
         if self.runtime_config is not None:
             result['RuntimeConfig'] = self.runtime_config.to_map()
         if self.session_id is not None:
@@ -64672,6 +70369,9 @@ class StartAIAgentInstanceRequest(TeaModel):
         m = m or dict()
         if m.get('AIAgentId') is not None:
             self.aiagent_id = m.get('AIAgentId')
+        if m.get('ChatSyncConfig') is not None:
+            temp_model = StartAIAgentInstanceRequestChatSyncConfig()
+            self.chat_sync_config = temp_model.from_map(m['ChatSyncConfig'])
         if m.get('RuntimeConfig') is not None:
             temp_model = AIAgentRuntimeConfig()
             self.runtime_config = temp_model.from_map(m['RuntimeConfig'])
@@ -64689,13 +70389,18 @@ class StartAIAgentInstanceShrinkRequest(TeaModel):
     def __init__(
         self,
         aiagent_id: str = None,
+        chat_sync_config_shrink: str = None,
         runtime_config_shrink: str = None,
         session_id: str = None,
         template_config_shrink: str = None,
         user_data: str = None,
     ):
+        # The ID of the AI agent created in the [IMS](https://ims.console.aliyun.com/ai/robot/list) console.
+        # 
         # This parameter is required.
         self.aiagent_id = aiagent_id
+        # 同步聊天记录配置。
+        self.chat_sync_config_shrink = chat_sync_config_shrink
         # This parameter is required.
         self.runtime_config_shrink = runtime_config_shrink
         self.session_id = session_id
@@ -64713,6 +70418,8 @@ class StartAIAgentInstanceShrinkRequest(TeaModel):
         result = dict()
         if self.aiagent_id is not None:
             result['AIAgentId'] = self.aiagent_id
+        if self.chat_sync_config_shrink is not None:
+            result['ChatSyncConfig'] = self.chat_sync_config_shrink
         if self.runtime_config_shrink is not None:
             result['RuntimeConfig'] = self.runtime_config_shrink
         if self.session_id is not None:
@@ -64727,6 +70434,8 @@ class StartAIAgentInstanceShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('AIAgentId') is not None:
             self.aiagent_id = m.get('AIAgentId')
+        if m.get('ChatSyncConfig') is not None:
+            self.chat_sync_config_shrink = m.get('ChatSyncConfig')
         if m.get('RuntimeConfig') is not None:
             self.runtime_config_shrink = m.get('RuntimeConfig')
         if m.get('SessionId') is not None:
@@ -64817,6 +70526,8 @@ class StartChannelRequest(TeaModel):
         self,
         channel_name: str = None,
     ):
+        # The name of the channel.
+        # 
         # This parameter is required.
         self.channel_name = channel_name
 
@@ -64846,7 +70557,9 @@ class StartChannelResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # **Request ID**\
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -64910,6 +70623,105 @@ class StartChannelResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StartChannelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StartMediaLiveChannelRequest(TeaModel):
+    def __init__(
+        self,
+        channel_id: str = None,
+    ):
+        # The ID of the channel.
+        # 
+        # This parameter is required.
+        self.channel_id = channel_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        return self
+
+
+class StartMediaLiveChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StartMediaLiveChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartMediaLiveChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartMediaLiveChannelResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -65407,6 +71219,8 @@ class StopChannelRequest(TeaModel):
         self,
         channel_name: str = None,
     ):
+        # The name of the channel.
+        # 
         # This parameter is required.
         self.channel_name = channel_name
 
@@ -65436,7 +71250,12 @@ class StopChannelResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # **Request ID**\
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -65500,6 +71319,105 @@ class StopChannelResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StopChannelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StopMediaLiveChannelRequest(TeaModel):
+    def __init__(
+        self,
+        channel_id: str = None,
+    ):
+        # The ID of the channel.
+        # 
+        # This parameter is required.
+        self.channel_id = channel_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        return self
+
+
+class StopMediaLiveChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StopMediaLiveChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopMediaLiveChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopMediaLiveChannelResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -70330,10 +76248,15 @@ class SubmitMediaConvertJobRequest(TeaModel):
         pipeline_id: str = None,
         user_data: str = None,
     ):
+        # The idempotency key that is used to ensure repeated requests have the same effect as a single request.
         self.client_token = client_token
+        # The configurations of the transcoding task.
+        # 
         # This parameter is required.
         self.config = config
+        # The ID of the queue.
         self.pipeline_id = pipeline_id
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -70375,8 +76298,11 @@ class SubmitMediaConvertJobResponseBodyJobConfig(TeaModel):
         output_groups: List[MediaConvertOutputGroup] = None,
         outputs: List[MediaConvertOutput] = None,
     ):
+        # The inputs of the transcoding task.
         self.inputs = inputs
+        # The output group configurations.
         self.output_groups = output_groups
+        # The output configurations.
         self.outputs = outputs
 
     def validate(self):
@@ -70448,16 +76374,33 @@ class SubmitMediaConvertJobResponseBodyJob(TeaModel):
         state: str = None,
         user_data: str = None,
     ):
+        # The idempotency key of the request for creating the transcoding task.
         self.client_token = client_token
+        # The error code returned when the transcoding task failed.
         self.code = code
+        # The configurations of the transcoding task.
         self.config = config
+        # The ID of the transcoding task.
         self.job_id = job_id
+        # The error message returned when the transcoding task failed.
         self.message = message
+        # The details of the transcoded outputs.
         self.output_details = output_details
+        # The details of the output groups.
         self.output_group_details = output_group_details
+        # The ID of the queue.
         self.pipeline_id = pipeline_id
+        # The ID of the request.
         self.request_id = request_id
+        # The status of the transcoding task. Valid values:
+        # 
+        # *   Inited: The task is initialized.
+        # *   Running
+        # *   Success
+        # *   Failed
+        # *   Cancelled
         self.state = state
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -70546,8 +76489,9 @@ class SubmitMediaConvertJobResponseBody(TeaModel):
         job: SubmitMediaConvertJobResponseBodyJob = None,
         request_id: str = None,
     ):
+        # The transcoding task.
         self.job = job
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -81289,8 +87233,11 @@ class TakeoverAIAgentCallRequest(TeaModel):
         instance_id: str = None,
         require_token: bool = None,
     ):
+        # The ID of the human agent that will take over the AI agent (UserId in ARTC). If you do not specify this parameter, it is automatically generated and returned.
         self.human_agent_user_id = human_agent_user_id
+        # The ID of the AI agent that will be taken over.
         self.instance_id = instance_id
+        # Specifies whether to return the ARTC token. Default value: false.
         self.require_token = require_token
 
     def validate(self):
@@ -81329,9 +87276,13 @@ class TakeoverAIAgentCallResponseBody(TeaModel):
         request_id: str = None,
         token: str = None,
     ):
+        # The ID of the ARTC channel.
         self.channel_id = channel_id
+        # The ID of the human agent.
         self.human_agent_user_id = human_agent_user_id
+        # The ID of the request.
         self.request_id = request_id
+        # The ARTC token.
         self.token = token
 
     def validate(self):
@@ -81414,8 +87365,11 @@ class UpdateAIAgentInstanceRequest(TeaModel):
         template_config: AIAgentTemplateConfig = None,
         user_data: str = None,
     ):
+        # The ID of the AI agent that you want to update.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The template configurations of the AI agent. The configurations are merged with the template configurations that are used to start the AI agent. For more information, see the definition of TemplateConfig.
         self.template_config = template_config
         self.user_data = user_data
 
@@ -81456,8 +87410,11 @@ class UpdateAIAgentInstanceShrinkRequest(TeaModel):
         template_config_shrink: str = None,
         user_data: str = None,
     ):
+        # The ID of the AI agent that you want to update.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The template configurations of the AI agent. The configurations are merged with the template configurations that are used to start the AI agent. For more information, see the definition of TemplateConfig.
         self.template_config_shrink = template_config_shrink
         self.user_data = user_data
 
@@ -81494,6 +87451,7 @@ class UpdateAIAgentInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -81570,29 +87528,34 @@ class UpdateAdInsertionRequest(TeaModel):
         personalization_threshold: int = None,
         slate_ad_url: str = None,
     ):
-        # 内容URL前缀
+        # Specifies whether to enable ad marker passthrough. Default value: OFF.
+        # 
+        # Valid values:
+        # 
+        # *   OFF: Disable.
+        # *   ON: Enable.
         self.ad_marker_passthrough = ad_marker_passthrough
-        # 广告策略服务器URL
+        # The request URL of the ad decision server (ADS). HTTP and HTTPS are supported. The maximum length is 2,048 characters.
         # 
         # This parameter is required.
         self.ads_url = ads_url
-        # 广告分片的CDN前缀
+        # The CDN prefix for ad segments. HTTP and HTTPS are supported. The maximum length is 512 characters.
         self.cdn_ad_segment_url_prefix = cdn_ad_segment_url_prefix
-        # 视频内容分片的CDN前缀
+        # The CDN prefix for content segments. HTTP and HTTPS are supported. The maximum length is 512 characters.
         self.cdn_content_segment_url_prefix = cdn_content_segment_url_prefix
-        # 动态配置别名
+        # A JSON string that specifies the player parameter variables and aliases. Format: { "player_params.{name}": { "{key}": "{value}" } }. You can add up to 20 player_params.{name} entries. The name field can be up to 150 characters in length. Each player parameter can include up to 50 key-value pairs. A key can be up to 150 characters long, and a value can be up to 500 characters.
         self.config_aliases = config_aliases
-        # 内容URL前缀
+        # The URL prefix for the source content. HTTP and HTTPS are supported. The maximum length is 512 characters.
         # 
         # This parameter is required.
         self.content_url_prefix = content_url_prefix
-        # 代表资源一级ID的资源属性字段
+        # The configuration name, which cannot be modified.
         # 
         # This parameter is required.
         self.name = name
-        # 个性化配置阈值
+        # Specifies the maximum duration of underfilled time allowed in an ad break. Unit: seconds. Default value: 8 seconds.
         self.personalization_threshold = personalization_threshold
-        # slate广告URL
+        # The HTTP or HTTPS URL of the slate ad. Only MP4 format is supported. The maximum length is 2,048 characters.
         self.slate_ad_url = slate_ad_url
 
     def validate(self):
@@ -81653,9 +87616,9 @@ class UpdateAdInsertionResponseBodyConfigCdnConfig(TeaModel):
         ad_segment_url_prefix: str = None,
         content_segment_url_prefix: str = None,
     ):
-        # 广告分片的CDN前缀
+        # The CDN prefix for ad segments.
         self.ad_segment_url_prefix = ad_segment_url_prefix
-        # 视频内容分片的CDN前缀
+        # The CDN prefix for content segments.
         self.content_segment_url_prefix = content_segment_url_prefix
 
     def validate(self):
@@ -81687,7 +87650,7 @@ class UpdateAdInsertionResponseBodyConfigManifestEndpointConfig(TeaModel):
         self,
         hls_prefix: str = None,
     ):
-        # HLS清单播放端点前缀
+        # The prefix of the playback endpoint for HLS manifests.
         self.hls_prefix = hls_prefix
 
     def validate(self):
@@ -81725,27 +87688,27 @@ class UpdateAdInsertionResponseBodyConfig(TeaModel):
         personalization_threshold: int = None,
         slate_ad_url: str = None,
     ):
-        # 广告标记透传
+        # Indicates whether ad marker passthrough is enabled.
         self.ad_marker_passthrough = ad_marker_passthrough
-        # 广告策略服务器URL
+        # The request URL of ADS.
         self.ads_url = ads_url
-        # CDN配置
+        # The CDN configurations.
         self.cdn_config = cdn_config
-        # 动态配置别名
+        # The player parameter variables and aliases.
         self.config_aliases = config_aliases
-        # 内容URL前缀
+        # The URL prefix for the source content.
         self.content_url_prefix = content_url_prefix
-        # 创建时间
+        # The time when the configuration was created.
         self.create_time = create_time
-        # 修改时间
+        # The time when the configuration was last modified.
         self.last_modified = last_modified
-        # 清单播放端点配置
+        # The playback endpoint configuration.
         self.manifest_endpoint_config = manifest_endpoint_config
-        # 广告插入配置名称
+        # The name of the ad insertion configuration.
         self.name = name
-        # 个性化配置阈值
+        # The personalization threshold.
         self.personalization_threshold = personalization_threshold
-        # slate广告URL
+        # The URL of the slate ad.
         self.slate_ad_url = slate_ad_url
 
     def validate(self):
@@ -81819,7 +87782,9 @@ class UpdateAdInsertionResponseBody(TeaModel):
         config: UpdateAdInsertionResponseBodyConfig = None,
         request_id: str = None,
     ):
+        # The ad insertion configuration.
         self.config = config
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -82216,12 +88181,20 @@ class UpdateChannelRequest(TeaModel):
         filler_source_name: str = None,
         out_put_config_list: str = None,
     ):
+        # Specifies whether to enable access control.
         self.access_policy = access_policy
+        # The token for accessing the channel.
         self.access_token = access_token
+        # The name of the channel.
+        # 
         # This parameter is required.
         self.channel_name = channel_name
+        # The source location of the filler slate.
         self.filler_source_location_name = filler_source_location_name
+        # The name of the filler slate.
         self.filler_source_name = filler_source_name
+        # The channel output configurations.
+        # 
         # This parameter is required.
         self.out_put_config_list = out_put_config_list
 
@@ -82271,7 +88244,9 @@ class UpdateChannelResponseBody(TeaModel):
         channel: ChannelAssemblyChannel = None,
         request_id: str = None,
     ):
+        # The channel information.
         self.channel = channel
+        # **Request ID**\
         self.request_id = request_id
 
     def validate(self):
@@ -82737,27 +88712,25 @@ class UpdateLivePackageChannelRequest(TeaModel):
         segment_count: int = None,
         segment_duration: int = None,
     ):
-        # 频道名称，字符必须为大小写英文字母或-、_。
-        # 1 ~ 200个字符。
-        # 格式：[A-Za-z0-9_-]+\
+        # The channel name. It can contain letters, digits, hyphens (-), and underscores (_). The name must be 1 to 200 characters in length. Format: [A-Za-z0-9_-]+\
         # 
         # This parameter is required.
         self.channel_name = channel_name
-        # 频道描述，最大1000个字符
+        # The channel description. It can be up to 1,000 characters in length.
         self.description = description
-        # 频道组名称
+        # The channel group name. It can contain letters, digits, hyphens (-), and underscores (_). The name must be 1 to 200 characters in length. Format: [A-Za-z0-9_-]+\
         # 
         # This parameter is required.
         self.group_name = group_name
-        # 输入协议，目前仅支持HLS
+        # The ingest protocol. Only HLS is supported.
         # 
         # This parameter is required.
         self.protocol = protocol
-        # 输入流m3u8切片个数，2～100
+        # The number of M3U8 segments. Valid values: 2 to 100.
         # 
         # This parameter is required.
         self.segment_count = segment_count
-        # 输入流切片时长，1～30
+        # The segment duration. Valid values: 1 to 30.
         # 
         # This parameter is required.
         self.segment_duration = segment_duration
@@ -82810,9 +88783,13 @@ class UpdateLivePackageChannelResponseBodyLivePackageChannelIngestEndpoints(TeaM
         url: str = None,
         username: str = None,
     ):
+        # The ingest endpoint ID.
         self.id = id
+        # The password.
         self.password = password
+        # The ingest endpoint URL.
         self.url = url
+        # The username.
         self.username = username
 
     def validate(self):
@@ -82860,24 +88837,23 @@ class UpdateLivePackageChannelResponseBodyLivePackageChannel(TeaModel):
         segment_count: int = None,
         segment_duration: int = None,
     ):
-        # 频道名称，字符必须为大小写英文字母或-、_。
-        # 1 ~ 200个字符。
-        # 格式：[A-Za-z0-9_-]+\
+        # The channel name.
         self.channel_name = channel_name
-        # 代表创建时间的资源属性字段
+        # The time when the channel was created.
         self.create_time = create_time
-        # 频道描述，最大1000个字符
+        # The channel description. It can be up to 1,000 characters in length.
         self.description = description
-        # 频道组名称
+        # The channel group name.
         self.group_name = group_name
+        # The ingest endpoints.
         self.ingest_endpoints = ingest_endpoints
-        # 最后修改时间
+        # The time when the channel was last modified.
         self.last_modified = last_modified
-        # 输入协议，目前仅支持HLS
+        # The ingest protocol. Only HLS is supported.
         self.protocol = protocol
-        # 输入流m3u8切片个数，2～100
+        # The number of segments.
         self.segment_count = segment_count
-        # 输入流切片时长，1～30
+        # The segment duration.
         self.segment_duration = segment_duration
 
     def validate(self):
@@ -82946,7 +88922,9 @@ class UpdateLivePackageChannelResponseBody(TeaModel):
         live_package_channel: UpdateLivePackageChannelResponseBodyLivePackageChannel = None,
         request_id: str = None,
     ):
+        # The information about the live package channel.
         self.live_package_channel = live_package_channel
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -83023,17 +89001,15 @@ class UpdateLivePackageChannelCredentialsRequest(TeaModel):
         group_name: str = None,
         rotate_credentials: int = None,
     ):
-        # 频道名称，字符必须为大小写英文字母或-、_。
-        # 1 ~ 200个字符。
-        # 格式：[A-Za-z0-9_-]+\
+        # The channel name.
         # 
         # This parameter is required.
         self.channel_name = channel_name
-        # 频道组名称
+        # The channel group name.
         # 
         # This parameter is required.
         self.group_name = group_name
-        # 刷新密钥选项, 1: 刷新endpoint1，2:刷新endpoint2，3: 刷新endpoint1&2
+        # Specifies whether to update the credentials. 1: updates the credentials of endpoint 1. 2: updates the credentials of endpoint 2. 3: updates the credentials of endpoints 1 and 2.
         # 
         # This parameter is required.
         self.rotate_credentials = rotate_credentials
@@ -83074,9 +89050,13 @@ class UpdateLivePackageChannelCredentialsResponseBodyIngestEndpoints(TeaModel):
         url: str = None,
         username: str = None,
     ):
+        # The ingest endpoint ID. `input1` indicates primary and `input2` indicates secondary.
         self.id = id
+        # The password.
         self.password = password
+        # The ingest endpoint URL.
         self.url = url
+        # The username.
         self.username = username
 
     def validate(self):
@@ -83117,7 +89097,9 @@ class UpdateLivePackageChannelCredentialsResponseBody(TeaModel):
         ingest_endpoints: List[UpdateLivePackageChannelCredentialsResponseBodyIngestEndpoints] = None,
         request_id: str = None,
     ):
+        # The information about the ingest endpoint.
         self.ingest_endpoints = ingest_endpoints
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -83199,9 +89181,9 @@ class UpdateLivePackageChannelGroupRequest(TeaModel):
         description: str = None,
         group_name: str = None,
     ):
-        # 频道组描述
+        # The channel group description. It can be up to 1,000 characters in length.
         self.description = description
-        # 代表资源一级ID的资源属性字段
+        # The channel group name. It can contain letters, digits, hyphens (-), and underscores (_). The name must be 1 to 200 characters in length. Format: [A-Za-z0-9_-]+\
         # 
         # This parameter is required.
         self.group_name = group_name
@@ -83239,15 +89221,15 @@ class UpdateLivePackageChannelGroupResponseBodyLivePackageChannelGroup(TeaModel)
         last_modified: str = None,
         origin_domain: str = None,
     ):
-        # 创建时间
+        # The time when the channel group was created. It is in the yyyy-MM-ddTHH:mm:ssZ format and displayed in UTC.
         self.create_time = create_time
-        # 描述
+        # The channel group description.
         self.description = description
-        # 频道组名称
+        # The channel group name.
         self.group_name = group_name
-        # 修改时间
+        # The time when the channel group was last modified. It is in the yyyy-MM-ddTHH:mm:ssZ format and displayed in UTC.
         self.last_modified = last_modified
-        # 源站域名
+        # The origin domain.
         self.origin_domain = origin_domain
 
     def validate(self):
@@ -83292,7 +89274,9 @@ class UpdateLivePackageChannelGroupResponseBody(TeaModel):
         live_package_channel_group: UpdateLivePackageChannelGroupResponseBodyLivePackageChannelGroup = None,
         request_id: str = None,
     ):
+        # The information about the channel group.
         self.live_package_channel_group = live_package_channel_group
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -83376,41 +89360,33 @@ class UpdateLivePackageOriginEndpointRequest(TeaModel):
         protocol: str = None,
         timeshift_vision: int = None,
     ):
-        # 回源授权码，与IpWhitelist必选其一
+        # The authorization code. It can be up to 200 characters in length. You must configure AuthorizationCode, IpWhitelist, or both. Format: [A-Za-z0-9-_.]+\
         self.authorization_code = authorization_code
-        # 频道名称。
-        # 1 ~ 200个字符。
-        # 正则匹配输入：[A-Za-z0-9_-]+\
+        # The channel name.
         # 
         # This parameter is required.
         self.channel_name = channel_name
-        # 端点描述，最大1000个字符
+        # The endpoint description.
         self.description = description
-        # 端点名称，要求在单个频道中唯一。
-        # 1 ~ 200个字符。
-        # 正则匹配输入：[A-Za-z0-9_-]+\
+        # The origin endpoint name. It can contain letters, digits, hyphens (-), and underscores (_). The name must be 1 to 200 characters in length. Format: [A-Za-z0-9_-]+\
         # 
         # This parameter is required.
         self.endpoint_name = endpoint_name
-        # 频道组名称。
-        # 1 ~ 200个字符。
-        # 正则匹配输入：[A-Za-z0-9_-]+\
+        # The channel group name.
         # 
         # This parameter is required.
         self.group_name = group_name
-        # IP黑名单，支持无类别域间路由（CIDR），逗号分隔
+        # The IP address blacklist. It supports subnet masks. Separate multiple IP addresses with commas (,).
         self.ip_blacklist = ip_blacklist
-        # IP白名单，支持无类别域间路由（CIDR），逗号分隔，与AuthorizationCode必选其一
+        # The IP address whitelist. It supports subnet masks. 0.0.0.0/0 is not allowed. It can be up to 1,000 characters in length. Separate multiple IP addresses with commas (,). You must configure AuthorizationCode, IpWhitelist, or both.
         self.ip_whitelist = ip_whitelist
-        # 播放列表名，缺省为manifest。
-        # 1 ~ 100个字符。
-        # 正则匹配输入：[A-Za-z0-9_]+\
+        # The playlist name. Default value: manifest.
         self.manifest_name = manifest_name
-        # 端点分发协议，暂只支持HLS
+        # The protocol. Only HLS is supported.
         # 
         # This parameter is required.
         self.protocol = protocol
-        # 时移天数，最大30天，0表示不支持时移
+        # The number of days that time-shifted content is available. Maximum value: 30.
         self.timeshift_vision = timeshift_vision
 
     def validate(self):
@@ -83486,31 +89462,31 @@ class UpdateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint(TeaMo
         protocol: str = None,
         timeshift_vision: int = None,
     ):
-        # 回源授权码，与IpWhitelist必选其一
+        # The authorization code.
         self.authorization_code = authorization_code
-        # 频道名称
+        # The channel name.
         self.channel_name = channel_name
-        # 创建时间
+        # The time when the endpoint was created.
         self.create_time = create_time
-        # 端点描述
+        # The endpoint description.
         self.description = description
-        # 端点名称
+        # The endpoint name.
         self.endpoint_name = endpoint_name
-        # 源站端点回源播放地址
+        # The endpoint URL.
         self.endpoint_url = endpoint_url
-        # 频道组名称
+        # The channel group name.
         self.group_name = group_name
-        # IP黑名单，支持无类别域间路由（CIDR），逗号分隔
+        # The IP address blacklist. It supports subnet masks. Multiple IP addresses are separated by commas (,).
         self.ip_blacklist = ip_blacklist
-        # IP白名单，支持无类别域间路由（CIDR），逗号分隔，与AuthorizationCode必选其一
+        # The IP address whitelist. It supports subnet masks. Multiple IP addresses are separated by commas (,).
         self.ip_whitelist = ip_whitelist
-        # 最后修改时间
+        # The time when the endpoint was last modified.
         self.last_modified = last_modified
-        # 播放列表名
+        # The playlist name. Default value: manifest.
         self.manifest_name = manifest_name
-        # 端点分发协议，暂只支持HLS
+        # The protocol. Only HLS is supported.
         self.protocol = protocol
-        # 时移天数，最大30天，0表示不支持时移
+        # The number of days that time-shifted content is available. Maximum value: 30.
         self.timeshift_vision = timeshift_vision
 
     def validate(self):
@@ -83587,7 +89563,9 @@ class UpdateLivePackageOriginEndpointResponseBody(TeaModel):
         live_package_origin_endpoint: UpdateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint = None,
         request_id: str = None,
     ):
+        # The information about the origin endpoint.
         self.live_package_origin_endpoint = live_package_origin_endpoint
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84721,21 +90699,21 @@ class UpdateMediaConnectFlowInputRequest(TeaModel):
         srt_passphrase: str = None,
         srt_pbkey_len: int = None,
     ):
-        # IP whitelist
+        # The IP address whitelist.
         self.cidrs = cidrs
-        # Flow instance ID
+        # The flow ID.
         # 
         # This parameter is required.
         self.flow_id = flow_id
-        # Input URL, modifiable when the input type is RTMP-PULL/SRT-Listener
+        # The source URL. You can modify this parameter only when the source type is RTMP-PULL or SRT-Listener.
         self.input_from_url = input_from_url
-        # Input bitrate
+        # The maximum bitrate. Unit: bit/s.
         self.max_bitrate = max_bitrate
-        # SRT latency, modifiable when the input type is SRT-Listener/SRT-Caller
+        # The latency for the SRT stream. You can modify this parameter only when the source type is SRT-Listener or SRT-Caller.
         self.srt_latency = srt_latency
-        # SRT encryption key, modifiable when the input type is SRT-Listener/SRT-Caller
+        # The SRT key. You can modify this parameter only when the source type is SRT-Listener or SRT-Caller.
         self.srt_passphrase = srt_passphrase
-        # SRT encryption length, modifiable when the input type is SRT-Listener/SRT-Caller
+        # The encryption key length. You can modify this parameter only when the source type is SRT-Listener or SRT-Caller.
         self.srt_pbkey_len = srt_pbkey_len
 
     def validate(self):
@@ -84790,13 +90768,13 @@ class UpdateMediaConnectFlowInputResponseBody(TeaModel):
         request_id: str = None,
         ret_code: int = None,
     ):
-        # Response body
+        # The response body.
         self.content = content
-        # Description of the API call
+        # The call description.
         self.description = description
-        # 请求 ID
+        # The ID of the request.
         self.request_id = request_id
-        # Returned error code, 0 indicates success
+        # The returned error code. A value of 0 indicates the call is successful.
         self.ret_code = ret_code
 
     def validate(self):
@@ -84884,25 +90862,25 @@ class UpdateMediaConnectFlowOutputRequest(TeaModel):
         srt_passphrase: str = None,
         srt_pbkey_len: str = None,
     ):
-        # IP whitelist
+        # The IP address whitelist.
         self.cidrs = cidrs
-        # Flow instance ID
+        # The flow ID.
         # 
         # This parameter is required.
         self.flow_id = flow_id
-        # Output name
+        # The output name.
         # 
         # This parameter is required.
         self.output_name = output_name
-        # Output address, modifiable when the output type is RTMP-PUSH/SRT-Caller mode
+        # The output URL. You can modify this parameter only when the output type is RTMP-PUSH or SRT-Caller.
         self.output_to_url = output_to_url
-        # Player limit
+        # The maximum number of viewers.
         self.player_limit = player_limit
-        # SRT latency, modifiable when the input type is SRT-Listener/SRT-Caller
+        # The latency for the SRT stream. You can modify this parameter only when the source type is SRT-Listener or SRT-Caller.
         self.srt_latency = srt_latency
-        # SRT encryption key, modifiable when the input type is SRT-Listener/SRT-Caller
+        # The SRT key. You can modify this parameter only when the source type is SRT-Listener or SRT-Caller.
         self.srt_passphrase = srt_passphrase
-        # SRT encryption length, modifiable when the input type is SRT-Listener/SRT-Caller
+        # The encryption key length. You can modify this parameter only when the source type is SRT-Listener or SRT-Caller.
         self.srt_pbkey_len = srt_pbkey_len
 
     def validate(self):
@@ -84961,13 +90939,13 @@ class UpdateMediaConnectFlowOutputResponseBody(TeaModel):
         request_id: str = None,
         ret_code: int = None,
     ):
-        # Response body
+        # The response body.
         self.content = content
-        # Description of the API call
+        # The call description.
         self.description = description
-        # Request ID
+        # The ID of the request.
         self.request_id = request_id
-        # Returned error code, 0 indicates success
+        # The returned error code. A value of 0 indicates the call is successful.
         self.ret_code = ret_code
 
     def validate(self):
@@ -85049,13 +91027,14 @@ class UpdateMediaConnectFlowStatusRequest(TeaModel):
         flow_id: str = None,
         status: str = None,
     ):
-        # Flow instance ID
+        # The flow ID.
         # 
         # This parameter is required.
         self.flow_id = flow_id
-        # Flow status:
-        # - online: Start Flow
-        # - offline: Stop Flow
+        # The flow state. Valid values:
+        # 
+        # *   online: starts the flow.
+        # *   offline: stops the flow.
         # 
         # This parameter is required.
         self.status = status
@@ -85092,13 +91071,13 @@ class UpdateMediaConnectFlowStatusResponseBody(TeaModel):
         request_id: str = None,
         ret_code: int = None,
     ):
-        # Response body
+        # The response body.
         self.content = content
-        # Description of the API call
+        # The call description.
         self.description = description
-        # Request ID
+        # The ID of the request.
         self.request_id = request_id
-        # 返回的错误码，0表示成功
+        # The returned error code. A value of 0 indicates that the call is successful.
         self.ret_code = ret_code
 
     def validate(self):
@@ -85383,6 +91362,1471 @@ class UpdateMediaInfoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateMediaInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateMediaLiveChannelRequestAudioSettingsAudioCodecSetting(TeaModel):
+    def __init__(
+        self,
+        bitrate: int = None,
+        profile: str = None,
+        sample_rate: int = None,
+    ):
+        # The audio bitrate. Unit: bit/s. Valid values: 8000 to 1000000. The value must be divisible by 1000.
+        self.bitrate = bitrate
+        # The audio codec profile. When AudioCodec is set to aac, AAC-LOW and AAC-MAIN are supported. When AudioCodec is set to libfdk_aac, AAC-LOW, AAC-HE, and AAC-HEV2 are supported.
+        self.profile = profile
+        # The audio sample rate. Unit: Hz. Valid values: 22050, 32000, 44100, 48000, and 96000.
+        self.sample_rate = sample_rate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
+        if self.profile is not None:
+            result['Profile'] = self.profile
+        if self.sample_rate is not None:
+            result['SampleRate'] = self.sample_rate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
+        if m.get('Profile') is not None:
+            self.profile = m.get('Profile')
+        if m.get('SampleRate') is not None:
+            self.sample_rate = m.get('SampleRate')
+        return self
+
+
+class UpdateMediaLiveChannelRequestAudioSettings(TeaModel):
+    def __init__(
+        self,
+        audio_codec: str = None,
+        audio_codec_setting: UpdateMediaLiveChannelRequestAudioSettingsAudioCodecSetting = None,
+        audio_selector_name: str = None,
+        language_code: str = None,
+        language_name: str = None,
+        name: str = None,
+    ):
+        # The audio codec. If it is not specified, the source specification is used. Valid values: aac and libfdk_aac.
+        self.audio_codec = audio_codec
+        # The audio encoding settings.
+        self.audio_codec_setting = audio_codec_setting
+        # The name of the audio selector.
+        self.audio_selector_name = audio_selector_name
+        # Enter a three-letter ISO 639-2 language code. If the audio track selected by the audio selector has a language code, the language code specified in the audio selector is used. If the selected audio track does not have a language code, or if the audio selector cannot find a track that matches its criteria, this language code is used.
+        self.language_code = language_code
+        # The tag that identifies the language of the RTMP input. It can be referenced by the output. The maximum length is 32 characters. Supported characters:
+        # 
+        # *   Unicode letters
+        # *   Digits (0-9)
+        # *   Underscore (_)
+        # *   Hyphen (-)
+        # *   Space (a space cannot be at the beginning or end)
+        self.language_name = language_name
+        # The name of the audio settings. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+        # 
+        # This parameter is required.
+        self.name = name
+
+    def validate(self):
+        if self.audio_codec_setting:
+            self.audio_codec_setting.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_codec is not None:
+            result['AudioCodec'] = self.audio_codec
+        if self.audio_codec_setting is not None:
+            result['AudioCodecSetting'] = self.audio_codec_setting.to_map()
+        if self.audio_selector_name is not None:
+            result['AudioSelectorName'] = self.audio_selector_name
+        if self.language_code is not None:
+            result['LanguageCode'] = self.language_code
+        if self.language_name is not None:
+            result['LanguageName'] = self.language_name
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioCodec') is not None:
+            self.audio_codec = m.get('AudioCodec')
+        if m.get('AudioCodecSetting') is not None:
+            temp_model = UpdateMediaLiveChannelRequestAudioSettingsAudioCodecSetting()
+            self.audio_codec_setting = temp_model.from_map(m['AudioCodecSetting'])
+        if m.get('AudioSelectorName') is not None:
+            self.audio_selector_name = m.get('AudioSelectorName')
+        if m.get('LanguageCode') is not None:
+            self.language_code = m.get('LanguageCode')
+        if m.get('LanguageName') is not None:
+            self.language_name = m.get('LanguageName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioLanguageSelection(TeaModel):
+    def __init__(
+        self,
+        language_code: str = None,
+    ):
+        # Enter a three-letter ISO 639-2 language code from within an audio source.
+        # 
+        # This parameter is required.
+        self.language_code = language_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.language_code is not None:
+            result['LanguageCode'] = self.language_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LanguageCode') is not None:
+            self.language_code = m.get('LanguageCode')
+        return self
+
+
+class UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioPidSelection(TeaModel):
+    def __init__(
+        self,
+        pid: int = None,
+    ):
+        # Enter a specific PID from within a source.
+        # 
+        # This parameter is required.
+        self.pid = pid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pid is not None:
+            result['Pid'] = self.pid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
+        return self
+
+
+class UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioTrackSelection(TeaModel):
+    def __init__(
+        self,
+        track_id: int = None,
+    ):
+        # Specify one or more audio tracks from within a source using Track ID.
+        # 
+        # This parameter is required.
+        self.track_id = track_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.track_id is not None:
+            result['TrackId'] = self.track_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TrackId') is not None:
+            self.track_id = m.get('TrackId')
+        return self
+
+
+class UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectors(TeaModel):
+    def __init__(
+        self,
+        audio_language_selection: UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioLanguageSelection = None,
+        audio_pid_selection: UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioPidSelection = None,
+        audio_track_selection: List[UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioTrackSelection] = None,
+        name: str = None,
+    ):
+        # The audio language selection.
+        self.audio_language_selection = audio_language_selection
+        # The audio PID selection.
+        self.audio_pid_selection = audio_pid_selection
+        # The audio track selection.
+        self.audio_track_selection = audio_track_selection
+        # The name of the audio selector. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+        # 
+        # This parameter is required.
+        self.name = name
+
+    def validate(self):
+        if self.audio_language_selection:
+            self.audio_language_selection.validate()
+        if self.audio_pid_selection:
+            self.audio_pid_selection.validate()
+        if self.audio_track_selection:
+            for k in self.audio_track_selection:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_language_selection is not None:
+            result['AudioLanguageSelection'] = self.audio_language_selection.to_map()
+        if self.audio_pid_selection is not None:
+            result['AudioPidSelection'] = self.audio_pid_selection.to_map()
+        result['AudioTrackSelection'] = []
+        if self.audio_track_selection is not None:
+            for k in self.audio_track_selection:
+                result['AudioTrackSelection'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioLanguageSelection') is not None:
+            temp_model = UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioLanguageSelection()
+            self.audio_language_selection = temp_model.from_map(m['AudioLanguageSelection'])
+        if m.get('AudioPidSelection') is not None:
+            temp_model = UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioPidSelection()
+            self.audio_pid_selection = temp_model.from_map(m['AudioPidSelection'])
+        self.audio_track_selection = []
+        if m.get('AudioTrackSelection') is not None:
+            for k in m.get('AudioTrackSelection'):
+                temp_model = UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioTrackSelection()
+                self.audio_track_selection.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class UpdateMediaLiveChannelRequestInputAttachments(TeaModel):
+    def __init__(
+        self,
+        audio_selectors: List[UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectors] = None,
+        input_id: str = None,
+        language_name: str = None,
+    ):
+        # The audio selectors.
+        self.audio_selectors = audio_selectors
+        # The ID of the associated input.
+        # 
+        # This parameter is required.
+        self.input_id = input_id
+        # The tag that identifies the language of the RTMP input. It can be referenced by the output. The maximum length is 32 characters. Supported characters:
+        # 
+        # *   Unicode letters
+        # *   Digits (0-9)
+        # *   Underscore (_)
+        # *   Hyphen (-)
+        # *   Space (a space cannot be at the beginning or end)
+        self.language_name = language_name
+
+    def validate(self):
+        if self.audio_selectors:
+            for k in self.audio_selectors:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AudioSelectors'] = []
+        if self.audio_selectors is not None:
+            for k in self.audio_selectors:
+                result['AudioSelectors'].append(k.to_map() if k else None)
+        if self.input_id is not None:
+            result['InputId'] = self.input_id
+        if self.language_name is not None:
+            result['LanguageName'] = self.language_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.audio_selectors = []
+        if m.get('AudioSelectors') is not None:
+            for k in m.get('AudioSelectors'):
+                temp_model = UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectors()
+                self.audio_selectors.append(temp_model.from_map(k))
+        if m.get('InputId') is not None:
+            self.input_id = m.get('InputId')
+        if m.get('LanguageName') is not None:
+            self.language_name = m.get('LanguageName')
+        return self
+
+
+class UpdateMediaLiveChannelRequestOutputGroupsMediaPackageGroupSetting(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        group_name: str = None,
+    ):
+        # ChannelName in MediaPackage.
+        # 
+        # This parameter is required.
+        self.channel_name = channel_name
+        # GroupName in MediaPackage.
+        # 
+        # This parameter is required.
+        self.group_name = group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        return self
+
+
+class UpdateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetting(TeaModel):
+    def __init__(
+        self,
+        audio_group_id: str = None,
+        name_modifier: str = None,
+    ):
+        # The manifest audio group ID. To associate several audio tracks into one group, assign the same audio group ID. Viewers can select a track as needed. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 40 characters in length.
+        self.audio_group_id = audio_group_id
+        # The manifest name modifier. The child manifests include this modifier in their M3U8 file names. Letters, digits, hyphens (-), and underscores (_) are supported. The maximum length is 40 characters.
+        self.name_modifier = name_modifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_group_id is not None:
+            result['AudioGroupId'] = self.audio_group_id
+        if self.name_modifier is not None:
+            result['NameModifier'] = self.name_modifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioGroupId') is not None:
+            self.audio_group_id = m.get('AudioGroupId')
+        if m.get('NameModifier') is not None:
+            self.name_modifier = m.get('NameModifier')
+        return self
+
+
+class UpdateMediaLiveChannelRequestOutputGroupsOutputs(TeaModel):
+    def __init__(
+        self,
+        audio_setting_names: List[str] = None,
+        media_package_output_setting: UpdateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetting = None,
+        media_type: int = None,
+        name: str = None,
+        video_setting_name: str = None,
+    ):
+        # The referenced AudioSettings.
+        self.audio_setting_names = audio_setting_names
+        # The settings of the output delivered to MediaPackage.
+        self.media_package_output_setting = media_package_output_setting
+        # The media type of the output. Valid values:
+        # 
+        # *   0: Audio and Video
+        # *   1: Audio If you set the value to 1, you cannot reference VideoSettings.
+        # *   2: Video. If you set the value to 2, you cannot reference AudioSettings.
+        self.media_type = media_type
+        # The name of the output. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The name of the referenced VideoSettings.
+        self.video_setting_name = video_setting_name
+
+    def validate(self):
+        if self.media_package_output_setting:
+            self.media_package_output_setting.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_setting_names is not None:
+            result['AudioSettingNames'] = self.audio_setting_names
+        if self.media_package_output_setting is not None:
+            result['MediaPackageOutputSetting'] = self.media_package_output_setting.to_map()
+        if self.media_type is not None:
+            result['MediaType'] = self.media_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.video_setting_name is not None:
+            result['VideoSettingName'] = self.video_setting_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioSettingNames') is not None:
+            self.audio_setting_names = m.get('AudioSettingNames')
+        if m.get('MediaPackageOutputSetting') is not None:
+            temp_model = UpdateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetting()
+            self.media_package_output_setting = temp_model.from_map(m['MediaPackageOutputSetting'])
+        if m.get('MediaType') is not None:
+            self.media_type = m.get('MediaType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('VideoSettingName') is not None:
+            self.video_setting_name = m.get('VideoSettingName')
+        return self
+
+
+class UpdateMediaLiveChannelRequestOutputGroups(TeaModel):
+    def __init__(
+        self,
+        media_package_group_setting: UpdateMediaLiveChannelRequestOutputGroupsMediaPackageGroupSetting = None,
+        name: str = None,
+        outputs: List[UpdateMediaLiveChannelRequestOutputGroupsOutputs] = None,
+        type: str = None,
+    ):
+        # The MediaPackage destination.
+        self.media_package_group_setting = media_package_group_setting
+        # The name of the output group. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The outputs in the output group.
+        # 
+        # This parameter is required.
+        self.outputs = outputs
+        # The output group type. Only MediaPackage is supported.
+        # 
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        if self.media_package_group_setting:
+            self.media_package_group_setting.validate()
+        if self.outputs:
+            for k in self.outputs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.media_package_group_setting is not None:
+            result['MediaPackageGroupSetting'] = self.media_package_group_setting.to_map()
+        if self.name is not None:
+            result['Name'] = self.name
+        result['Outputs'] = []
+        if self.outputs is not None:
+            for k in self.outputs:
+                result['Outputs'].append(k.to_map() if k else None)
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MediaPackageGroupSetting') is not None:
+            temp_model = UpdateMediaLiveChannelRequestOutputGroupsMediaPackageGroupSetting()
+            self.media_package_group_setting = temp_model.from_map(m['MediaPackageGroupSetting'])
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.outputs = []
+        if m.get('Outputs') is not None:
+            for k in m.get('Outputs'):
+                temp_model = UpdateMediaLiveChannelRequestOutputGroupsOutputs()
+                self.outputs.append(temp_model.from_map(k))
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingCodecDetail(TeaModel):
+    def __init__(
+        self,
+        level: str = None,
+        profile: str = None,
+    ):
+        # The video encoding level. It is not supported yet.
+        self.level = level
+        # The H.264 profile. Valid values: BASELINE, HIGH, and MAIN. Default value: MAIN. The parameter takes effect only when the codec is H.264.
+        self.profile = profile
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.profile is not None:
+            result['Profile'] = self.profile
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Profile') is not None:
+            self.profile = m.get('Profile')
+        return self
+
+
+class UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate(TeaModel):
+    def __init__(
+        self,
+        framerate_control: str = None,
+        framerate_denominator: int = None,
+        framerate_numerator: int = None,
+    ):
+        # The frame rate mode. Valid values: SPECIFIED (fixed frame rate) and FROM_SOURCE (use source specification).
+        self.framerate_control = framerate_control
+        # The denominator of the fixed frame rate. The parameter is required when FramerateControl is set to SPECIFIED. Valid values: 1 to 60. The numerator must be divisible by the denominator.
+        self.framerate_denominator = framerate_denominator
+        # The numerator of the fixed frame rate. The parameter is required when FramerateControl is set to SPECIFIED. Valid values: 1 to 60. The numerator must be divisible by the denominator.
+        self.framerate_numerator = framerate_numerator
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.framerate_control is not None:
+            result['FramerateControl'] = self.framerate_control
+        if self.framerate_denominator is not None:
+            result['FramerateDenominator'] = self.framerate_denominator
+        if self.framerate_numerator is not None:
+            result['FramerateNumerator'] = self.framerate_numerator
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FramerateControl') is not None:
+            self.framerate_control = m.get('FramerateControl')
+        if m.get('FramerateDenominator') is not None:
+            self.framerate_denominator = m.get('FramerateDenominator')
+        if m.get('FramerateNumerator') is not None:
+            self.framerate_numerator = m.get('FramerateNumerator')
+        return self
+
+
+class UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop(TeaModel):
+    def __init__(
+        self,
+        bframes_num: int = None,
+        gop_size: int = None,
+        gop_size_units: str = None,
+    ):
+        # The number of B frames. Valid values: 1 to 3.
+        self.bframes_num = bframes_num
+        # The GOP size. When GopSizeUnits is set to SECONDS, the value range is from 1 to 20. When GopSizeUnits is set to FRAMES, the value range is from 1 to 3000.
+        self.gop_size = gop_size
+        # The GOP size unit. Valid values: FRAMES and SECONDS.
+        self.gop_size_units = gop_size_units
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bframes_num is not None:
+            result['BframesNum'] = self.bframes_num
+        if self.gop_size is not None:
+            result['GopSize'] = self.gop_size
+        if self.gop_size_units is not None:
+            result['GopSizeUnits'] = self.gop_size_units
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BframesNum') is not None:
+            self.bframes_num = m.get('BframesNum')
+        if m.get('GopSize') is not None:
+            self.gop_size = m.get('GopSize')
+        if m.get('GopSizeUnits') is not None:
+            self.gop_size_units = m.get('GopSizeUnits')
+        return self
+
+
+class UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate(TeaModel):
+    def __init__(
+        self,
+        bitrate: int = None,
+        buffer_size: int = None,
+        max_bitrate: int = None,
+        rate_control_mode: str = None,
+    ):
+        # The video bitrate. Unit: bit/s. If you set it to 0 or leave it empty, the source specification is used. Valid values: 50000 to 6000000. The value must be divisible by 1000.
+        self.bitrate = bitrate
+        # The video buffer size. Unit: bit/s. Valid values: 100000 to 6000000. The value must be divisible by 1000.
+        self.buffer_size = buffer_size
+        # The maximum bitrate. Unit: bit/s. Valid values: 100000 to 6000000. The value must be divisible by 1000.
+        self.max_bitrate = max_bitrate
+        # The bitrate control mode. Valid values: CBR, ABR, and VBR.
+        self.rate_control_mode = rate_control_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
+        if self.buffer_size is not None:
+            result['BufferSize'] = self.buffer_size
+        if self.max_bitrate is not None:
+            result['MaxBitrate'] = self.max_bitrate
+        if self.rate_control_mode is not None:
+            result['RateControlMode'] = self.rate_control_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
+        if m.get('BufferSize') is not None:
+            self.buffer_size = m.get('BufferSize')
+        if m.get('MaxBitrate') is not None:
+            self.max_bitrate = m.get('MaxBitrate')
+        if m.get('RateControlMode') is not None:
+            self.rate_control_mode = m.get('RateControlMode')
+        return self
+
+
+class UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSetting(TeaModel):
+    def __init__(
+        self,
+        codec_detail: UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingCodecDetail = None,
+        framerate: UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate = None,
+        gop: UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop = None,
+        rate: UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate = None,
+    ):
+        # The video encoding settings.
+        self.codec_detail = codec_detail
+        # The frame rate. If it is not specified, the source specification is used.
+        self.framerate = framerate
+        # The GOP setting. If it is not specified, the source specification is used.
+        self.gop = gop
+        # The video encoding rate. If it is not specified, the source specification is used.
+        self.rate = rate
+
+    def validate(self):
+        if self.codec_detail:
+            self.codec_detail.validate()
+        if self.framerate:
+            self.framerate.validate()
+        if self.gop:
+            self.gop.validate()
+        if self.rate:
+            self.rate.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.codec_detail is not None:
+            result['CodecDetail'] = self.codec_detail.to_map()
+        if self.framerate is not None:
+            result['Framerate'] = self.framerate.to_map()
+        if self.gop is not None:
+            result['Gop'] = self.gop.to_map()
+        if self.rate is not None:
+            result['Rate'] = self.rate.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CodecDetail') is not None:
+            temp_model = UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingCodecDetail()
+            self.codec_detail = temp_model.from_map(m['CodecDetail'])
+        if m.get('Framerate') is not None:
+            temp_model = UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate()
+            self.framerate = temp_model.from_map(m['Framerate'])
+        if m.get('Gop') is not None:
+            temp_model = UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop()
+            self.gop = temp_model.from_map(m['Gop'])
+        if m.get('Rate') is not None:
+            temp_model = UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate()
+            self.rate = temp_model.from_map(m['Rate'])
+        return self
+
+
+class UpdateMediaLiveChannelRequestVideoSettings(TeaModel):
+    def __init__(
+        self,
+        height: int = None,
+        name: str = None,
+        video_codec: str = None,
+        video_codec_setting: UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSetting = None,
+        width: int = None,
+    ):
+        # The height of the output. Valid values: 0 to 2000. If you set it to 0 or leave it empty, the height automatically adapts to the specified width to maintain the original aspect ratio.
+        self.height = height
+        # The name of the video settings. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The video codec. Valid values: H264 and H265.
+        self.video_codec = video_codec
+        # The video encoding settings.
+        self.video_codec_setting = video_codec_setting
+        # The width of the output. Valid values: 0 to 2000. If you set it to 0 or leave it empty, the width automatically adapts to the specified height to maintain the original aspect ratio.
+        self.width = width
+
+    def validate(self):
+        if self.video_codec_setting:
+            self.video_codec_setting.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.video_codec is not None:
+            result['VideoCodec'] = self.video_codec
+        if self.video_codec_setting is not None:
+            result['VideoCodecSetting'] = self.video_codec_setting.to_map()
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('VideoCodec') is not None:
+            self.video_codec = m.get('VideoCodec')
+        if m.get('VideoCodecSetting') is not None:
+            temp_model = UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSetting()
+            self.video_codec_setting = temp_model.from_map(m['VideoCodecSetting'])
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class UpdateMediaLiveChannelRequest(TeaModel):
+    def __init__(
+        self,
+        audio_settings: List[UpdateMediaLiveChannelRequestAudioSettings] = None,
+        channel_id: str = None,
+        input_attachments: List[UpdateMediaLiveChannelRequestInputAttachments] = None,
+        name: str = None,
+        output_groups: List[UpdateMediaLiveChannelRequestOutputGroups] = None,
+        video_settings: List[UpdateMediaLiveChannelRequestVideoSettings] = None,
+    ):
+        # The audio settings.
+        self.audio_settings = audio_settings
+        # The ID of the channel.
+        # 
+        # This parameter is required.
+        self.channel_id = channel_id
+        # The inputs associated with the channel.
+        # 
+        # This parameter is required.
+        self.input_attachments = input_attachments
+        # The name of the channel. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The output groups.
+        # 
+        # This parameter is required.
+        self.output_groups = output_groups
+        # The video settings.
+        self.video_settings = video_settings
+
+    def validate(self):
+        if self.audio_settings:
+            for k in self.audio_settings:
+                if k:
+                    k.validate()
+        if self.input_attachments:
+            for k in self.input_attachments:
+                if k:
+                    k.validate()
+        if self.output_groups:
+            for k in self.output_groups:
+                if k:
+                    k.validate()
+        if self.video_settings:
+            for k in self.video_settings:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AudioSettings'] = []
+        if self.audio_settings is not None:
+            for k in self.audio_settings:
+                result['AudioSettings'].append(k.to_map() if k else None)
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        result['InputAttachments'] = []
+        if self.input_attachments is not None:
+            for k in self.input_attachments:
+                result['InputAttachments'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        result['OutputGroups'] = []
+        if self.output_groups is not None:
+            for k in self.output_groups:
+                result['OutputGroups'].append(k.to_map() if k else None)
+        result['VideoSettings'] = []
+        if self.video_settings is not None:
+            for k in self.video_settings:
+                result['VideoSettings'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.audio_settings = []
+        if m.get('AudioSettings') is not None:
+            for k in m.get('AudioSettings'):
+                temp_model = UpdateMediaLiveChannelRequestAudioSettings()
+                self.audio_settings.append(temp_model.from_map(k))
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        self.input_attachments = []
+        if m.get('InputAttachments') is not None:
+            for k in m.get('InputAttachments'):
+                temp_model = UpdateMediaLiveChannelRequestInputAttachments()
+                self.input_attachments.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.output_groups = []
+        if m.get('OutputGroups') is not None:
+            for k in m.get('OutputGroups'):
+                temp_model = UpdateMediaLiveChannelRequestOutputGroups()
+                self.output_groups.append(temp_model.from_map(k))
+        self.video_settings = []
+        if m.get('VideoSettings') is not None:
+            for k in m.get('VideoSettings'):
+                temp_model = UpdateMediaLiveChannelRequestVideoSettings()
+                self.video_settings.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateMediaLiveChannelShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        audio_settings_shrink: str = None,
+        channel_id: str = None,
+        input_attachments_shrink: str = None,
+        name: str = None,
+        output_groups_shrink: str = None,
+        video_settings_shrink: str = None,
+    ):
+        # The audio settings.
+        self.audio_settings_shrink = audio_settings_shrink
+        # The ID of the channel.
+        # 
+        # This parameter is required.
+        self.channel_id = channel_id
+        # The inputs associated with the channel.
+        # 
+        # This parameter is required.
+        self.input_attachments_shrink = input_attachments_shrink
+        # The name of the channel. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The output groups.
+        # 
+        # This parameter is required.
+        self.output_groups_shrink = output_groups_shrink
+        # The video settings.
+        self.video_settings_shrink = video_settings_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_settings_shrink is not None:
+            result['AudioSettings'] = self.audio_settings_shrink
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.input_attachments_shrink is not None:
+            result['InputAttachments'] = self.input_attachments_shrink
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.output_groups_shrink is not None:
+            result['OutputGroups'] = self.output_groups_shrink
+        if self.video_settings_shrink is not None:
+            result['VideoSettings'] = self.video_settings_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioSettings') is not None:
+            self.audio_settings_shrink = m.get('AudioSettings')
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('InputAttachments') is not None:
+            self.input_attachments_shrink = m.get('InputAttachments')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OutputGroups') is not None:
+            self.output_groups_shrink = m.get('OutputGroups')
+        if m.get('VideoSettings') is not None:
+            self.video_settings_shrink = m.get('VideoSettings')
+        return self
+
+
+class UpdateMediaLiveChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateMediaLiveChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateMediaLiveChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateMediaLiveChannelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateMediaLiveInputRequestInputSettings(TeaModel):
+    def __init__(
+        self,
+        flow_id: str = None,
+        flow_output_name: str = None,
+        source_url: str = None,
+        stream_name: str = None,
+    ):
+        self.flow_id = flow_id
+        self.flow_output_name = flow_output_name
+        # The source URL where the stream is pulled from. This parameter is required for PULL inputs.
+        self.source_url = source_url
+        # The name of the pushed stream. This parameter is required for PUSH inputs. It can be up to 255 characters in length.
+        self.stream_name = stream_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.flow_id is not None:
+            result['FlowId'] = self.flow_id
+        if self.flow_output_name is not None:
+            result['FlowOutputName'] = self.flow_output_name
+        if self.source_url is not None:
+            result['SourceUrl'] = self.source_url
+        if self.stream_name is not None:
+            result['StreamName'] = self.stream_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FlowId') is not None:
+            self.flow_id = m.get('FlowId')
+        if m.get('FlowOutputName') is not None:
+            self.flow_output_name = m.get('FlowOutputName')
+        if m.get('SourceUrl') is not None:
+            self.source_url = m.get('SourceUrl')
+        if m.get('StreamName') is not None:
+            self.stream_name = m.get('StreamName')
+        return self
+
+
+class UpdateMediaLiveInputRequest(TeaModel):
+    def __init__(
+        self,
+        input_id: str = None,
+        input_settings: List[UpdateMediaLiveInputRequestInputSettings] = None,
+        name: str = None,
+        security_group_ids: List[str] = None,
+    ):
+        # The ID of the input.
+        # 
+        # This parameter is required.
+        self.input_id = input_id
+        # The input settings. An input can have up to two sources: primary and backup sources.
+        # 
+        # This parameter is required.
+        self.input_settings = input_settings
+        # The name of the input. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The IDs of the security groups to be associated with the input. This parameter is required for PUSH inputs.
+        self.security_group_ids = security_group_ids
+
+    def validate(self):
+        if self.input_settings:
+            for k in self.input_settings:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_id is not None:
+            result['InputId'] = self.input_id
+        result['InputSettings'] = []
+        if self.input_settings is not None:
+            for k in self.input_settings:
+                result['InputSettings'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.security_group_ids is not None:
+            result['SecurityGroupIds'] = self.security_group_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputId') is not None:
+            self.input_id = m.get('InputId')
+        self.input_settings = []
+        if m.get('InputSettings') is not None:
+            for k in m.get('InputSettings'):
+                temp_model = UpdateMediaLiveInputRequestInputSettings()
+                self.input_settings.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SecurityGroupIds') is not None:
+            self.security_group_ids = m.get('SecurityGroupIds')
+        return self
+
+
+class UpdateMediaLiveInputShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        input_id: str = None,
+        input_settings_shrink: str = None,
+        name: str = None,
+        security_group_ids_shrink: str = None,
+    ):
+        # The ID of the input.
+        # 
+        # This parameter is required.
+        self.input_id = input_id
+        # The input settings. An input can have up to two sources: primary and backup sources.
+        # 
+        # This parameter is required.
+        self.input_settings_shrink = input_settings_shrink
+        # The name of the input. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The IDs of the security groups to be associated with the input. This parameter is required for PUSH inputs.
+        self.security_group_ids_shrink = security_group_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_id is not None:
+            result['InputId'] = self.input_id
+        if self.input_settings_shrink is not None:
+            result['InputSettings'] = self.input_settings_shrink
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.security_group_ids_shrink is not None:
+            result['SecurityGroupIds'] = self.security_group_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputId') is not None:
+            self.input_id = m.get('InputId')
+        if m.get('InputSettings') is not None:
+            self.input_settings_shrink = m.get('InputSettings')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SecurityGroupIds') is not None:
+            self.security_group_ids_shrink = m.get('SecurityGroupIds')
+        return self
+
+
+class UpdateMediaLiveInputResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateMediaLiveInputResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateMediaLiveInputResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateMediaLiveInputResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateMediaLiveInputSecurityGroupRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        security_group_id: str = None,
+        whitelist_rules: List[str] = None,
+    ):
+        # The name of the security group. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The ID of the security group.
+        # 
+        # This parameter is required.
+        self.security_group_id = security_group_id
+        # The security group rules.
+        # 
+        # This parameter is required.
+        self.whitelist_rules = whitelist_rules
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.whitelist_rules is not None:
+            result['WhitelistRules'] = self.whitelist_rules
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('WhitelistRules') is not None:
+            self.whitelist_rules = m.get('WhitelistRules')
+        return self
+
+
+class UpdateMediaLiveInputSecurityGroupShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        security_group_id: str = None,
+        whitelist_rules_shrink: str = None,
+    ):
+        # The name of the security group. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The ID of the security group.
+        # 
+        # This parameter is required.
+        self.security_group_id = security_group_id
+        # The security group rules.
+        # 
+        # This parameter is required.
+        self.whitelist_rules_shrink = whitelist_rules_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.whitelist_rules_shrink is not None:
+            result['WhitelistRules'] = self.whitelist_rules_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('WhitelistRules') is not None:
+            self.whitelist_rules_shrink = m.get('WhitelistRules')
+        return self
+
+
+class UpdateMediaLiveInputSecurityGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateMediaLiveInputSecurityGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateMediaLiveInputSecurityGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateMediaLiveInputSecurityGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -85792,15 +93236,25 @@ class UpdateProgramRequest(TeaModel):
         source_type: str = None,
         transition: str = None,
     ):
+        # The information about ad breaks.
         self.ad_breaks = ad_breaks
+        # The name of the channel.
+        # 
         # This parameter is required.
         self.channel_name = channel_name
+        # Extracts a clip from the source.
         self.clip_range = clip_range
+        # The name of the program.
+        # 
         # This parameter is required.
         self.program_name = program_name
+        # The name of the source location.
         self.source_location_name = source_location_name
+        # The name of the source.
         self.source_name = source_name
+        # The source type of the program. Valid values: vodSource and liveSource.
         self.source_type = source_type
+        # The program transition method.
         self.transition = transition
 
     def validate(self):
@@ -85857,7 +93311,9 @@ class UpdateProgramResponseBody(TeaModel):
         program: ChannelAssemblyProgram = None,
         request_id: str = None,
     ):
+        # The information about the program.
         self.program = program
+        # **Request ID**\
         self.request_id = request_id
 
     def validate(self):
@@ -86113,12 +93569,20 @@ class UpdateSourceRequest(TeaModel):
         source_name: str = None,
         source_type: str = None,
     ):
+        # The source configurations.
+        # 
         # This parameter is required.
         self.http_package_configurations = http_package_configurations
+        # The name of the source location.
+        # 
         # This parameter is required.
         self.source_location_name = source_location_name
+        # The name of the source.
+        # 
         # This parameter is required.
         self.source_name = source_name
+        # The source type. Valid values: vodSource and liveSource.
+        # 
         # This parameter is required.
         self.source_type = source_type
 
@@ -86160,7 +93624,9 @@ class UpdateSourceResponseBody(TeaModel):
         request_id: str = None,
         source: ChannelAssemblySource = None,
     ):
+        # **Request ID**\
         self.request_id = request_id
+        # The source information.
         self.source = source
 
     def validate(self):
@@ -86238,9 +93704,14 @@ class UpdateSourceLocationRequest(TeaModel):
         segment_delivery_url: str = None,
         source_location_name: str = None,
     ):
+        # The protocol and hostname of the source location.
         self.base_url = base_url
+        # Specifies whether to use an independent domain name to access the segments.
         self.enable_segment_delivery = enable_segment_delivery
+        # The domain name used to access the segments.
         self.segment_delivery_url = segment_delivery_url
+        # The name of the source location.
+        # 
         # This parameter is required.
         self.source_location_name = source_location_name
 
@@ -86282,7 +93753,9 @@ class UpdateSourceLocationResponseBody(TeaModel):
         request_id: str = None,
         source_location: ChannelAssemblySourceLocation = None,
     ):
+        # **Request ID**\
         self.request_id = request_id
+        # The source location information.
         self.source_location = source_location
 
     def validate(self):
