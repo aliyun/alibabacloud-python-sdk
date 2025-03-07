@@ -1,3 +1,8 @@
+2025-03-07 Version: 4.7.1
+- Update API CreateDocumentCollection: add param Dimension.
+- Update API CreateDocumentCollection: update param EmbeddingModel.
+
+
 2025-02-19 Version: 4.7.0
 - Support API CancelCreateIndexJob.
 - Support API CloneDBInstance.

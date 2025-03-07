@@ -2380,6 +2380,8 @@ class Client(OpenApiClient):
             query['Collection'] = request.collection
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dimension):
+            query['Dimension'] = request.dimension
         if not UtilClient.is_unset(request.embedding_model):
             query['EmbeddingModel'] = request.embedding_model
         if not UtilClient.is_unset(request.external_storage):
@@ -2453,6 +2455,8 @@ class Client(OpenApiClient):
             query['Collection'] = request.collection
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dimension):
+            query['Dimension'] = request.dimension
         if not UtilClient.is_unset(request.embedding_model):
             query['EmbeddingModel'] = request.embedding_model
         if not UtilClient.is_unset(request.external_storage):

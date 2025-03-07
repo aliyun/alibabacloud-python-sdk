@@ -3300,6 +3300,7 @@ class CreateDocumentCollectionRequest(TeaModel):
         self,
         collection: str = None,
         dbinstance_id: str = None,
+        dimension: int = None,
         embedding_model: str = None,
         external_storage: int = None,
         full_text_retrieval_fields: str = None,
@@ -3328,6 +3329,7 @@ class CreateDocumentCollectionRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        self.dimension = dimension
         # The vectorization algorithm.
         # 
         # >  Supported algorithms:
@@ -3440,6 +3442,8 @@ class CreateDocumentCollectionRequest(TeaModel):
             result['Collection'] = self.collection
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+        if self.dimension is not None:
+            result['Dimension'] = self.dimension
         if self.embedding_model is not None:
             result['EmbeddingModel'] = self.embedding_model
         if self.external_storage is not None:
@@ -3478,6 +3482,8 @@ class CreateDocumentCollectionRequest(TeaModel):
             self.collection = m.get('Collection')
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('Dimension') is not None:
+            self.dimension = m.get('Dimension')
         if m.get('EmbeddingModel') is not None:
             self.embedding_model = m.get('EmbeddingModel')
         if m.get('ExternalStorage') is not None:
