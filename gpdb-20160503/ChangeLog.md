@@ -1,3 +1,7 @@
+2025-03-08 Version: 4.8.0
+- Support API GetStatementResult.
+
+
 2025-03-07 Version: 4.7.1
 - Update API CreateDocumentCollection: add param Dimension.
 - Update API CreateDocumentCollection: update param EmbeddingModel.

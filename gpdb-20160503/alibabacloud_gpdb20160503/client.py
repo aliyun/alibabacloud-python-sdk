@@ -16606,6 +16606,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_secret_value_with_options_async(request, runtime)
 
+    def get_statement_result_with_options(
+        self,
+        request: gpdb_20160503_models.GetStatementResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.GetStatementResultResponse:
+        """
+        @summary Get Asynchronous SQL Execution Result
+        
+        @param request: GetStatementResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStatementResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.secret_arn):
+            query['SecretArn'] = request.secret_arn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetStatementResult',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.GetStatementResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.GetStatementResultResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_statement_result_with_options_async(
+        self,
+        request: gpdb_20160503_models.GetStatementResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.GetStatementResultResponse:
+        """
+        @summary Get Asynchronous SQL Execution Result
+        
+        @param request: GetStatementResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStatementResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.secret_arn):
+            query['SecretArn'] = request.secret_arn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetStatementResult',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.GetStatementResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.GetStatementResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_statement_result(
+        self,
+        request: gpdb_20160503_models.GetStatementResultRequest,
+    ) -> gpdb_20160503_models.GetStatementResultResponse:
+        """
+        @summary Get Asynchronous SQL Execution Result
+        
+        @param request: GetStatementResultRequest
+        @return: GetStatementResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_statement_result_with_options(request, runtime)
+
+    async def get_statement_result_async(
+        self,
+        request: gpdb_20160503_models.GetStatementResultRequest,
+    ) -> gpdb_20160503_models.GetStatementResultResponse:
+        """
+        @summary Get Asynchronous SQL Execution Result
+        
+        @param request: GetStatementResultRequest
+        @return: GetStatementResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_statement_result_with_options_async(request, runtime)
+
     def get_upload_document_job_with_options(
         self,
         request: gpdb_20160503_models.GetUploadDocumentJobRequest,
