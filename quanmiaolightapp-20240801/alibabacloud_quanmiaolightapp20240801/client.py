@@ -305,6 +305,126 @@ class Client(OpenApiClient):
         headers = {}
         return await self.generate_output_format_with_options_async(workspace_id, request, headers, runtime)
 
+    def get_tag_mining_analysis_task_with_options(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.GetTagMiningAnalysisTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.GetTagMiningAnalysisTaskResponse:
+        """
+        @summary 获取挖掘分析任务结果
+        
+        @param request: GetTagMiningAnalysisTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTagMiningAnalysisTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTagMiningAnalysisTask',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/getTagMiningAnalysisTask',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.GetTagMiningAnalysisTaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.GetTagMiningAnalysisTaskResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_tag_mining_analysis_task_with_options_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.GetTagMiningAnalysisTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.GetTagMiningAnalysisTaskResponse:
+        """
+        @summary 获取挖掘分析任务结果
+        
+        @param request: GetTagMiningAnalysisTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTagMiningAnalysisTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTagMiningAnalysisTask',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/getTagMiningAnalysisTask',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.GetTagMiningAnalysisTaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.GetTagMiningAnalysisTaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_tag_mining_analysis_task(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.GetTagMiningAnalysisTaskRequest,
+    ) -> quan_miao_light_app_20240801_models.GetTagMiningAnalysisTaskResponse:
+        """
+        @summary 获取挖掘分析任务结果
+        
+        @param request: GetTagMiningAnalysisTaskRequest
+        @return: GetTagMiningAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_tag_mining_analysis_task_with_options(workspace_id, request, headers, runtime)
+
+    async def get_tag_mining_analysis_task_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.GetTagMiningAnalysisTaskRequest,
+    ) -> quan_miao_light_app_20240801_models.GetTagMiningAnalysisTaskResponse:
+        """
+        @summary 获取挖掘分析任务结果
+        
+        @param request: GetTagMiningAnalysisTaskRequest
+        @return: GetTagMiningAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_tag_mining_analysis_task_with_options_async(workspace_id, request, headers, runtime)
+
     def get_video_analysis_config_with_options(
         self,
         workspace_id: str,
@@ -2430,6 +2550,166 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.run_video_analysis_with_options_async(workspace_id, request, headers, runtime)
+
+    def submit_tag_mining_analysis_task_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: quan_miao_light_app_20240801_models.SubmitTagMiningAnalysisTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.SubmitTagMiningAnalysisTaskResponse:
+        """
+        @summary 轻应用-标签挖掘
+        
+        @param tmp_req: SubmitTagMiningAnalysisTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitTagMiningAnalysisTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = quan_miao_light_app_20240801_models.SubmitTagMiningAnalysisTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.contents):
+            request.contents_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.contents, 'contents', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.business_type):
+            body['businessType'] = request.business_type
+        if not UtilClient.is_unset(request.contents_shrink):
+            body['contents'] = request.contents_shrink
+        if not UtilClient.is_unset(request.extra_info):
+            body['extraInfo'] = request.extra_info
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.output_format):
+            body['outputFormat'] = request.output_format
+        if not UtilClient.is_unset(request.tags_shrink):
+            body['tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.task_description):
+            body['taskDescription'] = request.task_description
+        if not UtilClient.is_unset(request.url):
+            body['url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitTagMiningAnalysisTask',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/submitTagMiningAnalysisTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.SubmitTagMiningAnalysisTaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.SubmitTagMiningAnalysisTaskResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def submit_tag_mining_analysis_task_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: quan_miao_light_app_20240801_models.SubmitTagMiningAnalysisTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.SubmitTagMiningAnalysisTaskResponse:
+        """
+        @summary 轻应用-标签挖掘
+        
+        @param tmp_req: SubmitTagMiningAnalysisTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitTagMiningAnalysisTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = quan_miao_light_app_20240801_models.SubmitTagMiningAnalysisTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.contents):
+            request.contents_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.contents, 'contents', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.business_type):
+            body['businessType'] = request.business_type
+        if not UtilClient.is_unset(request.contents_shrink):
+            body['contents'] = request.contents_shrink
+        if not UtilClient.is_unset(request.extra_info):
+            body['extraInfo'] = request.extra_info
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.output_format):
+            body['outputFormat'] = request.output_format
+        if not UtilClient.is_unset(request.tags_shrink):
+            body['tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.task_description):
+            body['taskDescription'] = request.task_description
+        if not UtilClient.is_unset(request.url):
+            body['url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitTagMiningAnalysisTask',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/submitTagMiningAnalysisTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.SubmitTagMiningAnalysisTaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.SubmitTagMiningAnalysisTaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def submit_tag_mining_analysis_task(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.SubmitTagMiningAnalysisTaskRequest,
+    ) -> quan_miao_light_app_20240801_models.SubmitTagMiningAnalysisTaskResponse:
+        """
+        @summary 轻应用-标签挖掘
+        
+        @param request: SubmitTagMiningAnalysisTaskRequest
+        @return: SubmitTagMiningAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.submit_tag_mining_analysis_task_with_options(workspace_id, request, headers, runtime)
+
+    async def submit_tag_mining_analysis_task_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.SubmitTagMiningAnalysisTaskRequest,
+    ) -> quan_miao_light_app_20240801_models.SubmitTagMiningAnalysisTaskResponse:
+        """
+        @summary 轻应用-标签挖掘
+        
+        @param request: SubmitTagMiningAnalysisTaskRequest
+        @return: SubmitTagMiningAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.submit_tag_mining_analysis_task_with_options_async(workspace_id, request, headers, runtime)
 
     def submit_video_analysis_task_with_options(
         self,

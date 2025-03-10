@@ -604,6 +604,380 @@ class GenerateOutputFormatResponse(TeaModel):
         return self
 
 
+class GetTagMiningAnalysisTaskRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class GetTagMiningAnalysisTaskResponseBodyDataResultsHeader(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        event: str = None,
+        request_id: str = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.event = event
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.event is not None:
+            result['event'] = self.event
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('event') is not None:
+            self.event = m.get('event')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetTagMiningAnalysisTaskResponseBodyDataResultsPayloadOutput(TeaModel):
+    def __init__(
+        self,
+        text: str = None,
+    ):
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.text is not None:
+            result['text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        return self
+
+
+class GetTagMiningAnalysisTaskResponseBodyDataResultsPayloadUsage(TeaModel):
+    def __init__(
+        self,
+        input_token: int = None,
+        output_token: int = None,
+        total_token: int = None,
+    ):
+        self.input_token = input_token
+        self.output_token = output_token
+        self.total_token = total_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_token is not None:
+            result['inputToken'] = self.input_token
+        if self.output_token is not None:
+            result['outputToken'] = self.output_token
+        if self.total_token is not None:
+            result['totalToken'] = self.total_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('inputToken') is not None:
+            self.input_token = m.get('inputToken')
+        if m.get('outputToken') is not None:
+            self.output_token = m.get('outputToken')
+        if m.get('totalToken') is not None:
+            self.total_token = m.get('totalToken')
+        return self
+
+
+class GetTagMiningAnalysisTaskResponseBodyDataResultsPayload(TeaModel):
+    def __init__(
+        self,
+        output: GetTagMiningAnalysisTaskResponseBodyDataResultsPayloadOutput = None,
+        usage: GetTagMiningAnalysisTaskResponseBodyDataResultsPayloadUsage = None,
+    ):
+        self.output = output
+        self.usage = usage
+
+    def validate(self):
+        if self.output:
+            self.output.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output is not None:
+            result['output'] = self.output.to_map()
+        if self.usage is not None:
+            result['usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('output') is not None:
+            temp_model = GetTagMiningAnalysisTaskResponseBodyDataResultsPayloadOutput()
+            self.output = temp_model.from_map(m['output'])
+        if m.get('usage') is not None:
+            temp_model = GetTagMiningAnalysisTaskResponseBodyDataResultsPayloadUsage()
+            self.usage = temp_model.from_map(m['usage'])
+        return self
+
+
+class GetTagMiningAnalysisTaskResponseBodyDataResults(TeaModel):
+    def __init__(
+        self,
+        custom_id: str = None,
+        header: GetTagMiningAnalysisTaskResponseBodyDataResultsHeader = None,
+        payload: GetTagMiningAnalysisTaskResponseBodyDataResultsPayload = None,
+    ):
+        self.custom_id = custom_id
+        self.header = header
+        self.payload = payload
+
+    def validate(self):
+        if self.header:
+            self.header.validate()
+        if self.payload:
+            self.payload.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_id is not None:
+            result['customId'] = self.custom_id
+        if self.header is not None:
+            result['header'] = self.header.to_map()
+        if self.payload is not None:
+            result['payload'] = self.payload.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('customId') is not None:
+            self.custom_id = m.get('customId')
+        if m.get('header') is not None:
+            temp_model = GetTagMiningAnalysisTaskResponseBodyDataResultsHeader()
+            self.header = temp_model.from_map(m['header'])
+        if m.get('payload') is not None:
+            temp_model = GetTagMiningAnalysisTaskResponseBodyDataResultsPayload()
+            self.payload = temp_model.from_map(m['payload'])
+        return self
+
+
+class GetTagMiningAnalysisTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        results: List[GetTagMiningAnalysisTaskResponseBodyDataResults] = None,
+        status: str = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.results = results
+        self.status = status
+
+    def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        result['results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['results'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        self.results = []
+        if m.get('results') is not None:
+            for k in m.get('results'):
+                temp_model = GetTagMiningAnalysisTaskResponseBodyDataResults()
+                self.results.append(temp_model.from_map(k))
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class GetTagMiningAnalysisTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetTagMiningAnalysisTaskResponseBodyData = None,
+        http_status_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # requestId
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = GetTagMiningAnalysisTaskResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetTagMiningAnalysisTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTagMiningAnalysisTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTagMiningAnalysisTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetVideoAnalysisConfigResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -7856,6 +8230,313 @@ class RunVideoAnalysisResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RunVideoAnalysisResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitTagMiningAnalysisTaskRequestTags(TeaModel):
+    def __init__(
+        self,
+        tag_define_prompt: str = None,
+        tag_name: str = None,
+    ):
+        self.tag_define_prompt = tag_define_prompt
+        self.tag_name = tag_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_define_prompt is not None:
+            result['tagDefinePrompt'] = self.tag_define_prompt
+        if self.tag_name is not None:
+            result['tagName'] = self.tag_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tagDefinePrompt') is not None:
+            self.tag_define_prompt = m.get('tagDefinePrompt')
+        if m.get('tagName') is not None:
+            self.tag_name = m.get('tagName')
+        return self
+
+
+class SubmitTagMiningAnalysisTaskRequest(TeaModel):
+    def __init__(
+        self,
+        business_type: str = None,
+        contents: List[str] = None,
+        extra_info: str = None,
+        model_id: str = None,
+        output_format: str = None,
+        tags: List[SubmitTagMiningAnalysisTaskRequestTags] = None,
+        task_description: str = None,
+        url: str = None,
+    ):
+        self.business_type = business_type
+        self.contents = contents
+        self.extra_info = extra_info
+        self.model_id = model_id
+        self.output_format = output_format
+        self.tags = tags
+        self.task_description = task_description
+        self.url = url
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_type is not None:
+            result['businessType'] = self.business_type
+        if self.contents is not None:
+            result['contents'] = self.contents
+        if self.extra_info is not None:
+            result['extraInfo'] = self.extra_info
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        if self.output_format is not None:
+            result['outputFormat'] = self.output_format
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
+        if self.task_description is not None:
+            result['taskDescription'] = self.task_description
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('businessType') is not None:
+            self.business_type = m.get('businessType')
+        if m.get('contents') is not None:
+            self.contents = m.get('contents')
+        if m.get('extraInfo') is not None:
+            self.extra_info = m.get('extraInfo')
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        if m.get('outputFormat') is not None:
+            self.output_format = m.get('outputFormat')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = SubmitTagMiningAnalysisTaskRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('taskDescription') is not None:
+            self.task_description = m.get('taskDescription')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class SubmitTagMiningAnalysisTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        business_type: str = None,
+        contents_shrink: str = None,
+        extra_info: str = None,
+        model_id: str = None,
+        output_format: str = None,
+        tags_shrink: str = None,
+        task_description: str = None,
+        url: str = None,
+    ):
+        self.business_type = business_type
+        self.contents_shrink = contents_shrink
+        self.extra_info = extra_info
+        self.model_id = model_id
+        self.output_format = output_format
+        self.tags_shrink = tags_shrink
+        self.task_description = task_description
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_type is not None:
+            result['businessType'] = self.business_type
+        if self.contents_shrink is not None:
+            result['contents'] = self.contents_shrink
+        if self.extra_info is not None:
+            result['extraInfo'] = self.extra_info
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        if self.output_format is not None:
+            result['outputFormat'] = self.output_format
+        if self.tags_shrink is not None:
+            result['tags'] = self.tags_shrink
+        if self.task_description is not None:
+            result['taskDescription'] = self.task_description
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('businessType') is not None:
+            self.business_type = m.get('businessType')
+        if m.get('contents') is not None:
+            self.contents_shrink = m.get('contents')
+        if m.get('extraInfo') is not None:
+            self.extra_info = m.get('extraInfo')
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        if m.get('outputFormat') is not None:
+            self.output_format = m.get('outputFormat')
+        if m.get('tags') is not None:
+            self.tags_shrink = m.get('tags')
+        if m.get('taskDescription') is not None:
+            self.task_description = m.get('taskDescription')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class SubmitTagMiningAnalysisTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class SubmitTagMiningAnalysisTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: SubmitTagMiningAnalysisTaskResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = SubmitTagMiningAnalysisTaskResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class SubmitTagMiningAnalysisTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitTagMiningAnalysisTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitTagMiningAnalysisTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

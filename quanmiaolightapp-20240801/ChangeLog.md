@@ -1,3 +1,8 @@
+2025-03-10 Version: 2.6.0
+- Support API GetTagMiningAnalysisTask.
+- Support API SubmitTagMiningAnalysisTask.
+
+
 2025-01-23 Version: 2.5.1
 - Update API RunStyleWriting: add param processStage.
 - Update API RunStyleWriting: add param useSearch.
