@@ -1,7 +1,127 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List
+from typing import List, Dict
+
+
+class AssociateSourceServersRequest(TeaModel):
+    def __init__(
+        self,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        source_id: List[str] = None,
+        workgroup_id: str = None,
+    ):
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        # The IDs of migration sources. You can specify up to 50 IDs.
+        # 
+        # This parameter is required.
+        self.source_id = source_id
+        # The ID of the workgroup.
+        # 
+        # This parameter is required.
+        self.workgroup_id = workgroup_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
+        if self.workgroup_id is not None:
+            result['WorkgroupId'] = self.workgroup_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
+        if m.get('WorkgroupId') is not None:
+            self.workgroup_id = m.get('WorkgroupId')
+        return self
+
+
+class AssociateSourceServersResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AssociateSourceServersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AssociateSourceServersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AssociateSourceServersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
 
 
 class CreateAccessTokenRequest(TeaModel):
@@ -20,7 +140,7 @@ class CreateAccessTokenRequest(TeaModel):
         self.count = count
         # The description of the activation code.
         self.description = description
-        # The name of the activation code. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain digits, colons (:), underscores (\_), and hyphens (-).
+        # The name of the activation code. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain digits, colons (:), underscores (_), and hyphens (-).
         self.name = name
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -123,9 +243,6 @@ class CreateAccessTokenResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -151,6 +268,240 @@ class CreateAccessTokenResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateAccessTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateCrossZoneMigrationJobRequestDisk(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        disk_id: str = None,
+        performance_level: str = None,
+    ):
+        # The disk category. A value of cloud_essd indicates enhanced SSD (ESSD).
+        self.category = category
+        # The disk ID.
+        self.disk_id = disk_id
+        # The performance level of the ESSD. Valid values:
+        # 
+        # *   PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
+        # *   PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
+        # *   PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
+        # *   PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+        self.performance_level = performance_level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.disk_id is not None:
+            result['DiskId'] = self.disk_id
+        if self.performance_level is not None:
+            result['PerformanceLevel'] = self.performance_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('DiskId') is not None:
+            self.disk_id = m.get('DiskId')
+        if m.get('PerformanceLevel') is not None:
+            self.performance_level = m.get('PerformanceLevel')
+        return self
+
+
+class CreateCrossZoneMigrationJobRequest(TeaModel):
+    def __init__(
+        self,
+        auto_pay: bool = None,
+        client_token: str = None,
+        disk: List[CreateCrossZoneMigrationJobRequestDisk] = None,
+        instance_id: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        target_instance_type: str = None,
+        target_vswitch_id: str = None,
+        target_zone_id: str = None,
+    ):
+        # Specifies whether to enable automatic payment. Valid values:
+        # 
+        # *   **true** (default): enables automatic payment. Make sure that you have sufficient balance within your account.
+        # *   **false**: disables automatic payment. In this case, you must manually pay for the instance. For more information, see [Renew a subscription instance](https://help.aliyun.com/document_detail/85052.html).
+        self.auto_pay = auto_pay
+        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        self.client_token = client_token
+        # The disk list.
+        self.disk = disk
+        # The instance ID.
+        self.instance_id = instance_id
+        self.owner_id = owner_id
+        # The ID of the destination Alibaba Cloud region.
+        # 
+        # For example, if you want to migrate the source server to the China (Hangzhou) region, set this parameter to `cn-hangzhou`. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        # The type of the new instance.
+        self.target_instance_type = target_instance_type
+        # The vSwitch ID of the destination Elastic Compute Service (ECS) instance.
+        self.target_vswitch_id = target_vswitch_id
+        # The ID of the destination zone.
+        self.target_zone_id = target_zone_id
+
+    def validate(self):
+        if self.disk:
+            for k in self.disk:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        result['Disk'] = []
+        if self.disk is not None:
+            for k in self.disk:
+                result['Disk'].append(k.to_map() if k else None)
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.target_instance_type is not None:
+            result['TargetInstanceType'] = self.target_instance_type
+        if self.target_vswitch_id is not None:
+            result['TargetVSwitchId'] = self.target_vswitch_id
+        if self.target_zone_id is not None:
+            result['TargetZoneId'] = self.target_zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        self.disk = []
+        if m.get('Disk') is not None:
+            for k in m.get('Disk'):
+                temp_model = CreateCrossZoneMigrationJobRequestDisk()
+                self.disk.append(temp_model.from_map(k))
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('TargetInstanceType') is not None:
+            self.target_instance_type = m.get('TargetInstanceType')
+        if m.get('TargetVSwitchId') is not None:
+            self.target_vswitch_id = m.get('TargetVSwitchId')
+        if m.get('TargetZoneId') is not None:
+            self.target_zone_id = m.get('TargetZoneId')
+        return self
+
+
+class CreateCrossZoneMigrationJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        request_id: str = None,
+    ):
+        # The ID of the migration job.
+        self.job_id = job_id
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateCrossZoneMigrationJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateCrossZoneMigrationJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateCrossZoneMigrationJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -264,6 +615,264 @@ class CreateReplicationJobRequestDataDisk(TeaModel):
         return self
 
 
+class CreateReplicationJobRequestDisksDataPart(TeaModel):
+    def __init__(
+        self,
+        block: bool = None,
+        path: str = None,
+        size_bytes: int = None,
+    ):
+        # Whether block replication is enabled for the data disk partition. Valid values:
+        # 
+        # *   true: Block replication is enabled for the data disk partition.
+        # *   false: Block replication is disabled for the data disk partition.
+        self.block = block
+        # The path of the data disk partition.
+        self.path = path
+        # The size of the data disk partition. Unit: bytes.
+        self.size_bytes = size_bytes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.block is not None:
+            result['Block'] = self.block
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.size_bytes is not None:
+            result['SizeBytes'] = self.size_bytes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Block') is not None:
+            self.block = m.get('Block')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('SizeBytes') is not None:
+            self.size_bytes = m.get('SizeBytes')
+        return self
+
+
+class CreateReplicationJobRequestDisksData(TeaModel):
+    def __init__(
+        self,
+        disk_id: str = None,
+        lvm: bool = None,
+        part: List[CreateReplicationJobRequestDisksDataPart] = None,
+        size: int = None,
+    ):
+        # The ID of the data disk.
+        self.disk_id = disk_id
+        # Specifies whether the data disk uses LVM. Valid values:
+        # 
+        # *   true: Use LVM.
+        # *   false: Not use LVM.
+        self.lvm = lvm
+        # The information about the data disk partition.
+        self.part = part
+        # The size of the data disk of the migration source. Unit: GiB.
+        self.size = size
+
+    def validate(self):
+        if self.part:
+            for k in self.part:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disk_id is not None:
+            result['DiskId'] = self.disk_id
+        if self.lvm is not None:
+            result['LVM'] = self.lvm
+        result['Part'] = []
+        if self.part is not None:
+            for k in self.part:
+                result['Part'].append(k.to_map() if k else None)
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiskId') is not None:
+            self.disk_id = m.get('DiskId')
+        if m.get('LVM') is not None:
+            self.lvm = m.get('LVM')
+        self.part = []
+        if m.get('Part') is not None:
+            for k in m.get('Part'):
+                temp_model = CreateReplicationJobRequestDisksDataPart()
+                self.part.append(temp_model.from_map(k))
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class CreateReplicationJobRequestDisksSystemPart(TeaModel):
+    def __init__(
+        self,
+        block: bool = None,
+        path: str = None,
+        size_bytes: int = None,
+    ):
+        # Specifies whether block replication is enabled for the system disk partition.
+        self.block = block
+        # The path of the system disk partition.
+        self.path = path
+        # The size of the system disk partition. Unit: bytes.
+        self.size_bytes = size_bytes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.block is not None:
+            result['Block'] = self.block
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.size_bytes is not None:
+            result['SizeBytes'] = self.size_bytes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Block') is not None:
+            self.block = m.get('Block')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('SizeBytes') is not None:
+            self.size_bytes = m.get('SizeBytes')
+        return self
+
+
+class CreateReplicationJobRequestDisksSystem(TeaModel):
+    def __init__(
+        self,
+        lvm: bool = None,
+        part: List[CreateReplicationJobRequestDisksSystemPart] = None,
+        size: int = None,
+    ):
+        # Specifies whether to use LVM. Valid values:
+        # 
+        # *   true: Use LVM.
+        # *   false: Not use LVM.
+        # 
+        # LVM is not supported:
+        # 
+        # *   If your source server runs Windows, LVM is not supported.
+        # *   The system disk does not have a boot partition, and LVM is not supported.
+        # 
+        # After LVM is enabled, this feature does not take effect in the following scenarios:
+        # 
+        # *   LVM2 is not supported on your source server and the software package is not installed.
+        # *   Your source server runs Debian with a kernel version of 3.x or earlier and XFS file systems are mounted.
+        self.lvm = lvm
+        # The information about the system disk partition.
+        self.part = part
+        # The size of the source system disk. Unit: GiB. Valid values: 20 to 32768.
+        # 
+        # >  The parameter value must be greater than the actual used space of the data disk on the source server. For example, if the size of the source disk is 500 GiB but the actual used space is 100 GiB, you must set this parameter to a value greater than 100 GiB.
+        self.size = size
+
+    def validate(self):
+        if self.part:
+            for k in self.part:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lvm is not None:
+            result['LVM'] = self.lvm
+        result['Part'] = []
+        if self.part is not None:
+            for k in self.part:
+                result['Part'].append(k.to_map() if k else None)
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LVM') is not None:
+            self.lvm = m.get('LVM')
+        self.part = []
+        if m.get('Part') is not None:
+            for k in m.get('Part'):
+                temp_model = CreateReplicationJobRequestDisksSystemPart()
+                self.part.append(temp_model.from_map(k))
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class CreateReplicationJobRequestDisks(TeaModel):
+    def __init__(
+        self,
+        data: List[CreateReplicationJobRequestDisksData] = None,
+        system: CreateReplicationJobRequestDisksSystem = None,
+    ):
+        # The information about the data disk partition.
+        self.data = data
+        # The information about the system disk.
+        self.system = system
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+        if self.system:
+            self.system.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.system is not None:
+            result['System'] = self.system.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = CreateReplicationJobRequestDisksData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('System') is not None:
+            temp_model = CreateReplicationJobRequestDisksSystem()
+            self.system = temp_model.from_map(m['System'])
+        return self
+
+
 class CreateReplicationJobRequestSystemDiskPart(TeaModel):
     def __init__(
         self,
@@ -367,6 +976,7 @@ class CreateReplicationJobRequest(TeaModel):
         container_tag: str = None,
         data_disk: List[CreateReplicationJobRequestDataDisk] = None,
         description: str = None,
+        disks: CreateReplicationJobRequestDisks = None,
         frequency: int = None,
         image_name: str = None,
         instance_id: str = None,
@@ -395,20 +1005,22 @@ class CreateReplicationJobRequest(TeaModel):
         valid_time: str = None,
         vpc_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The namespace of the destination Docker container image. For more information about Docker container images, see [Terms](~~60744~~).
+        # The namespace of the destination Docker container image. For more information about Docker container images, see [Terms](https://help.aliyun.com/document_detail/60744.html).
         self.container_namespace = container_namespace
-        # The repository that stores the destination Docker container image. For more information about Docker container images, see [Terms](~~60744~~).
+        # The repository that stores the destination Docker container image. For more information about Docker container images, see [Terms](https://help.aliyun.com/document_detail/60744.html).
         self.container_repository = container_repository
-        # The tag of the destination Docker container image. For more information about Docker container images, see [Terms](~~60744~~).
+        # The tag of the destination Docker container image. For more information about Docker container images, see [Terms](https://help.aliyun.com/document_detail/60744.html).
         self.container_tag = container_tag
         # The data disks.
         self.data_disk = data_disk
         # The description of the migration job.
         # 
-        # The description must be 2 to 128 characters in length, and can contain digits, colons (:), underscores (\_), and hyphens (-). The description must start with a letter, but cannot start with `http://` or `https://`.
+        # The description must be 2 to 128 characters in length, and can contain digits, colons (:), underscores (_), and hyphens (-). The description must start with a letter, but cannot start with `http://` or `https://`.
         self.description = description
+        # The information about the disk.
+        self.disks = disks
         # The interval at which SMC synchronizes incremental data to Alibaba Cloud. Unit: hour. Valid values: 1 to 168.
         # 
         # This parameter is required if you set the `RunOnce` parameter to false.
@@ -418,7 +1030,7 @@ class CreateReplicationJobRequest(TeaModel):
         # The name of the destination image. The name must meet the following requirements:
         # 
         # *   The name must be unique within an Alibaba Cloud region.
-        # *   The name must be 2 to 128 characters in length, and can contain digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter, but cannot start with `http://` or `https://`.
+        # *   The name must be 2 to 128 characters in length, and can contain digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with `http://` or `https://`.
         # 
         # >  If you specify an image name that already exists in the destination region, the migration job ID is appended to the image name as a suffix. Example: ImageName_j-2zexxxxxxxxxxxxx.
         self.image_name = image_name
@@ -428,10 +1040,10 @@ class CreateReplicationJobRequest(TeaModel):
         self.instance_ram_role = instance_ram_role
         # The type of the intermediate instance.
         # 
-        # You can call the [DescribeInstanceTypes](~~25620~~) operation to query the ECS instance types.
+        # You can call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation to obtain the ECS instance types.
         # 
-        # *   If you specify this parameter, SMC creates an intermediate instance of the specified instance type. If the specified instance type is unavailable, the migration job fails to be created.
-        # *   If you do not specify this parameter, SMC selects an available instance type in a specific order to create an intermediate instance. For more information, see the "How does SMC create an intermediate instance?" section of the SMC FAQ topic.
+        # *   If you specify this parameter, SMC creates an intermediate instance of the specified instance type. If the specified instance type is unavailable, you cannot create the migration job.
+        # *   If you do not specify this parameter, SMC selects an available instance type in a specific order to create an intermediate instance. For more information, see [SMC FAQ](https://help.aliyun.com/document_detail/121707.html).
         self.instance_type = instance_type
         # The type of the migration job. Valid values:
         # 
@@ -449,7 +1061,7 @@ class CreateReplicationJobRequest(TeaModel):
         # *   An empty value specifies no license.
         # *   A value of BYOL specifies Bring Your Own License (BYOL).
         # 
-        # For more information, see [SMC FAQ](~~121707~~).
+        # For more information, see [SMC FAQ](https://help.aliyun.com/document_detail/121707.html).
         self.license_type = license_type
         # The maximum number of images retained for the incremental migration job. Valid values: 1 to 10.
         # 
@@ -460,7 +1072,7 @@ class CreateReplicationJobRequest(TeaModel):
         # The name of the migration job. The name must meet the following requirements:
         # 
         # *   The name must be unique.
-        # *   The name must be 2 to 128 characters in length, and can contain digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter, but cannot start with `http://` or `https://`.
+        # *   The name must be 2 to 128 characters in length, and can contain digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with `http://` or `https://`.
         self.name = name
         # The network mode for data transmission. Valid values:
         # 
@@ -472,7 +1084,9 @@ class CreateReplicationJobRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the Alibaba Cloud region to which you want to migrate the source server.
         # 
-        # For example, if you want to migrate the source server to the China (Hangzhou) region, set this parameter to `cn-hangzhou`. You can call the [DescribeRegions](~~25609~~) operation to query the latest regions.
+        # For example, if you want to migrate the source server to the China (Hangzhou) region, set this parameter to `cn-hangzhou`. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the latest regions.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The parameters of the replication driver. The parameters must be specified as key-value pairs in the JSON format. The keys are fixed for each type of replication driver. The JSON string can be up to 2,048 characters in length.
         # 
@@ -482,7 +1096,7 @@ class CreateReplicationJobRequest(TeaModel):
         # *   compress_level: the compression ratio of data to be transmitted.
         # *   checksum: specifies whether to enable checksum verification.
         # 
-        # For more information about replication drivers, see the response parameter `SourceServers.ReplicationDriver` of the [DescribeSourceServers](~~121818~~) operation.
+        # For more information about replication drivers, see the response parameter `SourceServers.ReplicationDriver` of the [DescribeSourceServers](https://help.aliyun.com/document_detail/121818.html) operation.
         self.replication_parameters = replication_parameters
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -499,9 +1113,11 @@ class CreateReplicationJobRequest(TeaModel):
         # *   The time must be specified in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. For example, 2018-01-01T12:00:00Z specifies 20:00:00 on January 1, 2018 (UTC+8).
         # *   The value must be within 30 days after the current time.
         # 
-        # >  If you do not specify this parameter, you must manually start the migration job after the job is created. You can call the [StartReplicationJob](~~121823~~) operation to start the migration job.
+        # >  If you do not specify this parameter, you must manually start the migration job after the job is created. You can call the [StartReplicationJob](https://help.aliyun.com/document_detail/121823.html) operation to start the migration job.
         self.scheduled_start_time = scheduled_start_time
         # The ID of the source server.
+        # 
+        # This parameter is required.
         self.source_id = source_id
         # The information about system disk partitions.
         self.system_disk_part = system_disk_part
@@ -537,6 +1153,8 @@ class CreateReplicationJobRequest(TeaModel):
             for k in self.data_disk:
                 if k:
                     k.validate()
+        if self.disks:
+            self.disks.validate()
         if self.system_disk_part:
             for k in self.system_disk_part:
                 if k:
@@ -566,6 +1184,8 @@ class CreateReplicationJobRequest(TeaModel):
                 result['DataDisk'].append(k.to_map() if k else None)
         if self.description is not None:
             result['Description'] = self.description
+        if self.disks is not None:
+            result['Disks'] = self.disks.to_map()
         if self.frequency is not None:
             result['Frequency'] = self.frequency
         if self.image_name is not None:
@@ -643,6 +1263,9 @@ class CreateReplicationJobRequest(TeaModel):
                 self.data_disk.append(temp_model.from_map(k))
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Disks') is not None:
+            temp_model = CreateReplicationJobRequestDisks()
+            self.disks = temp_model.from_map(m['Disks'])
         if m.get('Frequency') is not None:
             self.frequency = m.get('Frequency')
         if m.get('ImageName') is not None:
@@ -753,9 +1376,6 @@ class CreateReplicationJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -785,6 +1405,195 @@ class CreateReplicationJobResponse(TeaModel):
         return self
 
 
+class CreateWorkgroupRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key of a specified workgroup.
+        # 
+        # You can specify an empty string as a tag key. The tag key can be up to 64 characters in length and cannot contain http:// or https://.
+        self.key = key
+        # The tag value of a specified workgroup.
+        # 
+        # You can specify an empty string as a tag value. The tag value can be up to 64 characters in length and cannot contain http:// or https://.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateWorkgroupRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        description: str = None,
+        name: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        tag: List[CreateWorkgroupRequestTag] = None,
+    ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        self.client_token = client_token
+        # The description of the workgroup.
+        # 
+        # The description must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        self.description = description
+        # The name of the workgroup. The name must meet the following requirements:
+        # 
+        # *   The name must be unique.
+        # *   The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        self.name = name
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        # The tag information of the workgroup.
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateWorkgroupRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class CreateWorkgroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        workgroup_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+        # The workgroup ID.
+        self.workgroup_id = workgroup_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.workgroup_id is not None:
+            result['WorkgroupId'] = self.workgroup_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('WorkgroupId') is not None:
+            self.workgroup_id = m.get('WorkgroupId')
+        return self
+
+
+class CreateWorkgroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateWorkgroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateWorkgroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CutOverReplicationJobRequest(TeaModel):
     def __init__(
         self,
@@ -794,6 +1603,8 @@ class CutOverReplicationJobRequest(TeaModel):
         sync_data: bool = None,
     ):
         # The ID of the incremental migration job.
+        # 
+        # This parameter is required.
         self.job_id = job_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -877,9 +1688,6 @@ class CutOverReplicationJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -917,6 +1725,8 @@ class DeleteAccessTokenRequest(TeaModel):
         resource_owner_account: str = None,
     ):
         # The ID of the activation code.
+        # 
+        # This parameter is required.
         self.access_token_id = access_token_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -989,9 +1799,6 @@ class DeleteAccessTokenResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1029,6 +1836,8 @@ class DeleteReplicationJobRequest(TeaModel):
         resource_owner_account: str = None,
     ):
         # The migration job ID.
+        # 
+        # This parameter is required.
         self.job_id = job_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -1101,9 +1910,6 @@ class DeleteReplicationJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1149,6 +1955,8 @@ class DeleteSourceServerRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         # The migration source ID.
+        # 
+        # This parameter is required.
         self.source_id = source_id
 
     def validate(self):
@@ -1223,9 +2031,6 @@ class DeleteSourceServerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1251,6 +2056,117 @@ class DeleteSourceServerResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteSourceServerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteWorkgroupRequest(TeaModel):
+    def __init__(
+        self,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        workgroup_id: str = None,
+    ):
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        # The workgroup ID.
+        # 
+        # This parameter is required.
+        self.workgroup_id = workgroup_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.workgroup_id is not None:
+            result['WorkgroupId'] = self.workgroup_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('WorkgroupId') is not None:
+            self.workgroup_id = m.get('WorkgroupId')
+        return self
+
+
+class DeleteWorkgroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteWorkgroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteWorkgroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteWorkgroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1333,17 +2249,17 @@ class DescribeReplicationJobsRequest(TeaModel):
         # The name of the migration job.
         self.name = name
         self.owner_id = owner_id
-        # The number of the page to return. Pages start from page 1.
+        # The page number. Minimum value: 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: 1 to 50.
+        # The number of entries per page. Valid values: 1 to 50.
         # 
         # Default value: 10.
         self.page_size = page_size
         # The ID of the Alibaba Cloud region to which you want to migrate the source server.
         # 
-        # For example, if you want to migrate a source server to the China (Hangzhou) region, set this parameter to `cn-hangzhou`. You can call the [DescribeRegions](~~25609~~) operation to query the latest regions.
+        # For example, if you want to migrate a source server to the China (Hangzhou) region, set this parameter to `cn-hangzhou`. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the latest regions.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -1600,6 +2516,353 @@ class DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDisks(
         return self
 
 
+class DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDisksDataDataPartsPart(TeaModel):
+    def __init__(
+        self,
+        block: bool = None,
+        path: str = None,
+        size_bytes: int = None,
+    ):
+        # Whether block replication is enabled for the data disk partition. Valid values:
+        # 
+        # *   true: Block replication is enabled for the data disk partition.
+        # *   false: Block replication is disabled for the data disk partition.
+        self.block = block
+        # The path of the data disk partition.
+        self.path = path
+        # The size of the data disk partition. Unit: bytes.
+        self.size_bytes = size_bytes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.block is not None:
+            result['Block'] = self.block
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.size_bytes is not None:
+            result['SizeBytes'] = self.size_bytes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Block') is not None:
+            self.block = m.get('Block')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('SizeBytes') is not None:
+            self.size_bytes = m.get('SizeBytes')
+        return self
+
+
+class DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDisksDataDataParts(TeaModel):
+    def __init__(
+        self,
+        part: List[DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDisksDataDataPartsPart] = None,
+    ):
+        self.part = part
+
+    def validate(self):
+        if self.part:
+            for k in self.part:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Part'] = []
+        if self.part is not None:
+            for k in self.part:
+                result['Part'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.part = []
+        if m.get('Part') is not None:
+            for k in m.get('Part'):
+                temp_model = DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDisksDataDataPartsPart()
+                self.part.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDisksDataData(TeaModel):
+    def __init__(
+        self,
+        disk_id: str = None,
+        lvm: bool = None,
+        parts: DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDisksDataDataParts = None,
+        size: int = None,
+    ):
+        # The ID of the data disk.
+        self.disk_id = disk_id
+        # Specifies whether to use LVM. Valid values:
+        # 
+        # *   true: Use LVM.
+        # *   false: Not use LVM.
+        self.lvm = lvm
+        # The information about the data disk partition.
+        self.parts = parts
+        # The size of a data disk on the destination ECS instance. Unit: GiB. Valid values: 20 to 32768.
+        # 
+        # >  The size of a destination data disk must be larger than the size of data in the corresponding source data disk. For example, if the size of the source disk is 500 GiB but the actual used space is 100 GiB, you must set this parameter to a value greater than 100 GiB.
+        self.size = size
+
+    def validate(self):
+        if self.parts:
+            self.parts.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disk_id is not None:
+            result['DiskId'] = self.disk_id
+        if self.lvm is not None:
+            result['LVM'] = self.lvm
+        if self.parts is not None:
+            result['Parts'] = self.parts.to_map()
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiskId') is not None:
+            self.disk_id = m.get('DiskId')
+        if m.get('LVM') is not None:
+            self.lvm = m.get('LVM')
+        if m.get('Parts') is not None:
+            temp_model = DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDisksDataDataParts()
+            self.parts = temp_model.from_map(m['Parts'])
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDisksData(TeaModel):
+    def __init__(
+        self,
+        data: List[DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDisksDataData] = None,
+    ):
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDisksDataData()
+                self.data.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDisksSystemPartsPart(TeaModel):
+    def __init__(
+        self,
+        block: bool = None,
+        path: str = None,
+        size_bytes: int = None,
+    ):
+        # Specifies whether block replication is enabled for the system disk partition. Valid values:
+        # 
+        # *   true: Block replication is enabled for the system disk partition.
+        # *   false: Block replication is disabled for the system disk partition.
+        self.block = block
+        # The path of the system disk partition.
+        self.path = path
+        # The size of the system disk partition. Unit: bytes.
+        self.size_bytes = size_bytes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.block is not None:
+            result['Block'] = self.block
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.size_bytes is not None:
+            result['SizeBytes'] = self.size_bytes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Block') is not None:
+            self.block = m.get('Block')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('SizeBytes') is not None:
+            self.size_bytes = m.get('SizeBytes')
+        return self
+
+
+class DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDisksSystemParts(TeaModel):
+    def __init__(
+        self,
+        part: List[DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDisksSystemPartsPart] = None,
+    ):
+        self.part = part
+
+    def validate(self):
+        if self.part:
+            for k in self.part:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Part'] = []
+        if self.part is not None:
+            for k in self.part:
+                result['Part'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.part = []
+        if m.get('Part') is not None:
+            for k in m.get('Part'):
+                temp_model = DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDisksSystemPartsPart()
+                self.part.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDisksSystem(TeaModel):
+    def __init__(
+        self,
+        disk_id: str = None,
+        lvm: bool = None,
+        parts: DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDisksSystemParts = None,
+        size: int = None,
+    ):
+        # The ID of the system disk.
+        self.disk_id = disk_id
+        # Specifies whether to use LVM. Valid values:
+        # 
+        # *   true: Use LVM.
+        # *   false: Not use LVM.
+        self.lvm = lvm
+        # The information about the system disk partition.
+        self.parts = parts
+        # The size of the source system disk. Unit: GiB. Valid values: 20 to 32768.
+        # 
+        # >  The parameter value must be greater than the actual used space of the data disk on the source server. For example, if the size of the source disk is 500 GiB but the actual used space is 100 GiB, you must set this parameter to a value greater than 100 GiB.
+        self.size = size
+
+    def validate(self):
+        if self.parts:
+            self.parts.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disk_id is not None:
+            result['DiskId'] = self.disk_id
+        if self.lvm is not None:
+            result['LVM'] = self.lvm
+        if self.parts is not None:
+            result['Parts'] = self.parts.to_map()
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiskId') is not None:
+            self.disk_id = m.get('DiskId')
+        if m.get('LVM') is not None:
+            self.lvm = m.get('LVM')
+        if m.get('Parts') is not None:
+            temp_model = DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDisksSystemParts()
+            self.parts = temp_model.from_map(m['Parts'])
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDisks(TeaModel):
+    def __init__(
+        self,
+        data: DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDisksData = None,
+        system: DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDisksSystem = None,
+    ):
+        # The information about the data disk.
+        self.data = data
+        # The information about the system disk.
+        self.system = system
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+        if self.system:
+            self.system.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.system is not None:
+            result['System'] = self.system.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDisksData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('System') is not None:
+            temp_model = DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDisksSystem()
+            self.system = temp_model.from_map(m['System'])
+        return self
+
+
 class DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobReplicationJobRunsReplicationJobRun(TeaModel):
     def __init__(
         self,
@@ -1608,13 +2871,13 @@ class DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobReplicatio
         start_time: str = None,
         type: str = None,
     ):
-        # The time when the migration job ended. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the migration job ended. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         # 
         # >  The time displayed in the SMC console is in the format of UTC+8.
         self.end_time = end_time
         # The ID of the destination image.
         self.image_id = image_id
-        # The time when the migration job was started. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the migration job was started. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         # 
         # >  The time displayed in the SMC console is in the format of UTC+8.
         self.start_time = start_time
@@ -1852,6 +3115,7 @@ class DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob(TeaModel)
         creation_time: str = None,
         data_disks: DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDisks = None,
         description: str = None,
+        disks: DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDisks = None,
         end_time: str = None,
         error_code: str = None,
         frequency: int = None,
@@ -1907,7 +3171,9 @@ class DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob(TeaModel)
         self.data_disks = data_disks
         # The description of the migration job.
         self.description = description
-        # The time when the migration job was complete. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The information about the disk.
+        self.disks = disks
+        # The time when the migration job was complete. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         # 
         # >  The time displayed in the SMC console is in the format of UTC+8.
         self.end_time = end_time
@@ -1964,14 +3230,14 @@ class DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob(TeaModel)
         # *   true: Incremental migration is disabled. A migration job runs only once after the job is created.
         # *   false: Incremental migration is enabled. For an incremental migration job, SMC synchronizes incremental data to Alibaba Cloud at the interval specified by the `Frequency` parameter.
         self.run_once = run_once
-        # The time when the migration job is scheduled to run. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. The time must meet the following requirements:
+        # The time when the migration job is scheduled to run. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. The time must meet the following requirements:
         # 
         # *   The value must be within 30 days after the current time.
-        # *   If you do not specify this parameter, you must manually start the migration job after the migration job is created. You can call the [StartReplicationJob](~~121823~~) operation to start the migration job.
+        # *   If you do not specify this parameter, you must manually start the migration job after the migration job is created. You can call the [StartReplicationJob](https://help.aliyun.com/document_detail/121823.html) operation to start the migration job.
         self.scheduled_start_time = scheduled_start_time
         # The ID of the source server.
         self.source_id = source_id
-        # The time when the migration job was started. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the migration job was started. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         # 
         # >  The time displayed in the SMC console is in the format of UTC+8.
         self.start_time = start_time
@@ -2004,7 +3270,7 @@ class DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob(TeaModel)
         self.transition_instance_id = transition_instance_id
         # The ID of the vSwitch in the specified VPC.
         self.v_switch_id = v_switch_id
-        # The time when the migration job expired. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the migration job expired. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         # 
         # >  The time displayed in the SMC console is in the format of UTC+8.
         self.valid_time = valid_time
@@ -2014,6 +3280,8 @@ class DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob(TeaModel)
     def validate(self):
         if self.data_disks:
             self.data_disks.validate()
+        if self.disks:
+            self.disks.validate()
         if self.replication_job_runs:
             self.replication_job_runs.validate()
         if self.system_disk_parts:
@@ -2041,6 +3309,8 @@ class DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob(TeaModel)
             result['DataDisks'] = self.data_disks.to_map()
         if self.description is not None:
             result['Description'] = self.description
+        if self.disks is not None:
+            result['Disks'] = self.disks.to_map()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.error_code is not None:
@@ -2130,6 +3400,9 @@ class DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob(TeaModel)
             self.data_disks = temp_model.from_map(m['DataDisks'])
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Disks') is not None:
+            temp_model = DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDisks()
+            self.disks = temp_model.from_map(m['Disks'])
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('ErrorCode') is not None:
@@ -2311,9 +3584,6 @@ class DescribeReplicationJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2349,13 +3619,13 @@ class DescribeSourceServersRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N that is added to the SMC resource. Valid values of N: 1 to 20.
+        # The key of tag N that is attached to the SMC resource. Valid values of N: 1 to 20.
         # 
-        # The tag key cannot be an empty string. It can be up to 64 characters in length and cannot start with acs: or aliyun. It cannot contain http:// or https://.
+        # You cannot specify an empty string as a tag key. The tag key can be up to 64 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
         self.key = key
-        # The value of tag N that is added to the SMC resource. Valid values of N: 1 to 20.
+        # The value of tag N that is attached to the SMC resource. Valid values of N: 1 to 20.
         # 
-        # The tag value can be an empty string. It can be up to 64 characters in length and cannot contain http:// or https://.
+        # You can specify an empty string as a tag key. The tag value can be up to 64 characters in length and cannot contain http:// or https://.
         self.value = value
 
     def validate(self):
@@ -2390,33 +3660,37 @@ class DescribeSourceServersRequest(TeaModel):
         owner_id: int = None,
         page_number: int = None,
         page_size: int = None,
+        related_job_type: List[str] = None,
         resource_group_id: str = None,
         resource_owner_account: str = None,
         source_id: List[str] = None,
         state: str = None,
         tag: List[DescribeSourceServersRequestTag] = None,
+        workgroup_id: str = None,
     ):
-        # The migration job ID.
+        # The ID of the migration job.
         self.job_id = job_id
-        # The name of the migration source. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain digits, colons (:), underscores (\_), and hyphens (-).
+        # The name of the migration source. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain digits, colons (:), underscores (_), and hyphens (-).
         # 
-        # Default value: null.
+        # This parameter is empty by default.
         self.name = name
         self.owner_id = owner_id
-        # The page number. Pages start from page 1.
+        # The page number. Minimum value: 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: 1 to 50.
+        # The number of entries per page. Valid values: 1 to 50.
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The ID of the resource group.
+        # The type of migration job that is associated with the migration source.
+        self.related_job_type = related_job_type
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
-        # The migration source IDs. You can specify multiple IDs.
+        # The migration source ID. You can specify multiple IDs.
         self.source_id = source_id
-        # The state of the migration source. Valid Values:
+        # The state of the migration source. Valid values:
         # 
         # *   Unavailable: The migration source is inactive, or an error occurs in the migration source.
         # *   Available: The migration source is active.
@@ -2425,6 +3699,8 @@ class DescribeSourceServersRequest(TeaModel):
         self.state = state
         # The tag.
         self.tag = tag
+        # The workgroup ID.
+        self.workgroup_id = workgroup_id
 
     def validate(self):
         if self.tag:
@@ -2448,6 +3724,8 @@ class DescribeSourceServersRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.related_job_type is not None:
+            result['RelatedJobType'] = self.related_job_type
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
@@ -2460,6 +3738,8 @@ class DescribeSourceServersRequest(TeaModel):
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
+        if self.workgroup_id is not None:
+            result['WorkgroupId'] = self.workgroup_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2474,6 +3754,8 @@ class DescribeSourceServersRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RelatedJobType') is not None:
+            self.related_job_type = m.get('RelatedJobType')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
@@ -2487,6 +3769,8 @@ class DescribeSourceServersRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = DescribeSourceServersRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        if m.get('WorkgroupId') is not None:
+            self.workgroup_id = m.get('WorkgroupId')
         return self
 
 
@@ -2507,7 +3791,7 @@ class DescribeSourceServersResponseBodySourceServersSourceServerDataDisksDataDis
         self.need = need
         # The path of the data disk partition.
         self.path = path
-        # The size of the data disk partition. Unit: byte.
+        # The size of the data disk partition. Unit: bytes.
         self.size_bytes = size_bytes
 
     def validate(self):
@@ -2593,9 +3877,9 @@ class DescribeSourceServersResponseBodySourceServersSourceServerDataDisksDataDis
         self.index = index
         # The information about the data disk partition.
         self.parts = parts
-        # The path of the data disk.
+        # The path of data disk N.
         self.path = path
-        # The size of the data disk. Unit: GiB.
+        # The size of data disk N. Unit: GiB.
         self.size = size
 
     def validate(self):
@@ -2667,6 +3951,353 @@ class DescribeSourceServersResponseBodySourceServersSourceServerDataDisks(TeaMod
         return self
 
 
+class DescribeSourceServersResponseBodySourceServersSourceServerDisksDataDataPartsPart(TeaModel):
+    def __init__(
+        self,
+        can_block: bool = None,
+        path: str = None,
+        size_bytes: int = None,
+        type: str = None,
+    ):
+        # Whether block replication is enabled for the data disk partition. Valid values:
+        # 
+        # *   true: Block replication is enabled for the data disk partition.
+        # *   false: Block replication is disabled for the data disk partition.
+        self.can_block = can_block
+        # The path of the data disk partition.
+        self.path = path
+        # The size of the data disk partition. Unit: bytes.
+        self.size_bytes = size_bytes
+        # The type of the data disk partition. Valid values:
+        # 
+        # *   Normal: normal partition.
+        # *   System: system partition.
+        # *   Boot: boot partition.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.can_block is not None:
+            result['CanBlock'] = self.can_block
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.size_bytes is not None:
+            result['SizeBytes'] = self.size_bytes
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CanBlock') is not None:
+            self.can_block = m.get('CanBlock')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('SizeBytes') is not None:
+            self.size_bytes = m.get('SizeBytes')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeSourceServersResponseBodySourceServersSourceServerDisksDataDataParts(TeaModel):
+    def __init__(
+        self,
+        part: List[DescribeSourceServersResponseBodySourceServersSourceServerDisksDataDataPartsPart] = None,
+    ):
+        self.part = part
+
+    def validate(self):
+        if self.part:
+            for k in self.part:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Part'] = []
+        if self.part is not None:
+            for k in self.part:
+                result['Part'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.part = []
+        if m.get('Part') is not None:
+            for k in m.get('Part'):
+                temp_model = DescribeSourceServersResponseBodySourceServersSourceServerDisksDataDataPartsPart()
+                self.part.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeSourceServersResponseBodySourceServersSourceServerDisksDataData(TeaModel):
+    def __init__(
+        self,
+        offset: int = None,
+        parts: DescribeSourceServersResponseBodySourceServersSourceServerDisksDataDataParts = None,
+        size: int = None,
+    ):
+        # The start offset of the first partition of the data disk. Unit: bytes.
+        self.offset = offset
+        # The information about the data disk partition.
+        self.parts = parts
+        # The data disk size of the migration source. Unit: GiB.
+        self.size = size
+
+    def validate(self):
+        if self.parts:
+            self.parts.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.offset is not None:
+            result['Offset'] = self.offset
+        if self.parts is not None:
+            result['Parts'] = self.parts.to_map()
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Offset') is not None:
+            self.offset = m.get('Offset')
+        if m.get('Parts') is not None:
+            temp_model = DescribeSourceServersResponseBodySourceServersSourceServerDisksDataDataParts()
+            self.parts = temp_model.from_map(m['Parts'])
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class DescribeSourceServersResponseBodySourceServersSourceServerDisksData(TeaModel):
+    def __init__(
+        self,
+        data: List[DescribeSourceServersResponseBodySourceServersSourceServerDisksDataData] = None,
+    ):
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DescribeSourceServersResponseBodySourceServersSourceServerDisksDataData()
+                self.data.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeSourceServersResponseBodySourceServersSourceServerDisksSystemPartsPart(TeaModel):
+    def __init__(
+        self,
+        can_block: bool = None,
+        path: str = None,
+        size_bytes: int = None,
+        type: str = None,
+    ):
+        # Indicates whether block replication is enabled for the system disk partition. Valid values:
+        # 
+        # *   true: Block replication is enabled for the system disk partition.
+        # *   false: Block replication is disabled for the system disk partition.
+        self.can_block = can_block
+        # The path of the system disk partition.
+        self.path = path
+        # The size of the system disk partition. Unit: bytes.
+        self.size_bytes = size_bytes
+        # The type of the system disk partition. Valid values:
+        # 
+        # *   Normal: normal partition.
+        # *   System: system partition.
+        # *   Boot: boot partition.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.can_block is not None:
+            result['CanBlock'] = self.can_block
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.size_bytes is not None:
+            result['SizeBytes'] = self.size_bytes
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CanBlock') is not None:
+            self.can_block = m.get('CanBlock')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('SizeBytes') is not None:
+            self.size_bytes = m.get('SizeBytes')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeSourceServersResponseBodySourceServersSourceServerDisksSystemParts(TeaModel):
+    def __init__(
+        self,
+        part: List[DescribeSourceServersResponseBodySourceServersSourceServerDisksSystemPartsPart] = None,
+    ):
+        self.part = part
+
+    def validate(self):
+        if self.part:
+            for k in self.part:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Part'] = []
+        if self.part is not None:
+            for k in self.part:
+                result['Part'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.part = []
+        if m.get('Part') is not None:
+            for k in m.get('Part'):
+                temp_model = DescribeSourceServersResponseBodySourceServersSourceServerDisksSystemPartsPart()
+                self.part.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeSourceServersResponseBodySourceServersSourceServerDisksSystem(TeaModel):
+    def __init__(
+        self,
+        offset: int = None,
+        parts: DescribeSourceServersResponseBodySourceServersSourceServerDisksSystemParts = None,
+        size: int = None,
+    ):
+        # The start offset of the first partition of the system disk. Unit: bytes.
+        self.offset = offset
+        # The information about the system disk partition.
+        self.parts = parts
+        # The size of the source system disk. Unit: GiB. Valid values: 20 to 32768.
+        # 
+        # >  The parameter value must be greater than the actual used space of the data disk on the source server. For example, if the size of the source disk is 500 GiB but the actual used space is 100 GiB, you must set this parameter to a value greater than 100 GiB.
+        self.size = size
+
+    def validate(self):
+        if self.parts:
+            self.parts.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.offset is not None:
+            result['Offset'] = self.offset
+        if self.parts is not None:
+            result['Parts'] = self.parts.to_map()
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Offset') is not None:
+            self.offset = m.get('Offset')
+        if m.get('Parts') is not None:
+            temp_model = DescribeSourceServersResponseBodySourceServersSourceServerDisksSystemParts()
+            self.parts = temp_model.from_map(m['Parts'])
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class DescribeSourceServersResponseBodySourceServersSourceServerDisks(TeaModel):
+    def __init__(
+        self,
+        data: DescribeSourceServersResponseBodySourceServersSourceServerDisksData = None,
+        system: DescribeSourceServersResponseBodySourceServersSourceServerDisksSystem = None,
+    ):
+        # The list of data disk information.
+        self.data = data
+        # The information about the system disk.
+        self.system = system
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+        if self.system:
+            self.system.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.system is not None:
+            result['System'] = self.system.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeSourceServersResponseBodySourceServersSourceServerDisksData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('System') is not None:
+            temp_model = DescribeSourceServersResponseBodySourceServersSourceServerDisksSystem()
+            self.system = temp_model.from_map(m['System'])
+        return self
+
+
 class DescribeSourceServersResponseBodySourceServersSourceServerSystemDiskPartsSystemDiskPart(TeaModel):
     def __init__(
         self,
@@ -2684,7 +4315,7 @@ class DescribeSourceServersResponseBodySourceServersSourceServerSystemDiskPartsS
         self.need = need
         # The path of the system disk partition.
         self.path = path
-        # The size of the system disk partition. Unit: byte.
+        # The size of the system disk partition. Unit: bytes.
         self.size_bytes = size_bytes
 
     def validate(self):
@@ -2764,13 +4395,13 @@ class DescribeSourceServersResponseBodySourceServersSourceServerTagsTag(TeaModel
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N that is added to the SMC resource. Valid values of N: 1 to 20
+        # The key of tag N that is attached to the SMC resource. Valid values of N: 1 to 20.
         # 
-        # You cannot specify empty strings as tag keys. It can be up to 64 characters in length and cannot start with acs: or aliyun. It cannot contain http:// or https://.
+        # You cannot specify an empty string as a tag key. The tag key can be up to 64 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
         self.key = key
-        # The value of tag N that is added to the SMC resource. Valid values of N: 1 to 20
+        # The value of tag N that is attached to the SMC resource. Valid values of N: 1 to 20.
         # 
-        # The tag key can be an empty string. It can be up to 64 characters in length and cannot contain http:// or https://.
+        # The tag key can be an empty string. The tag value can be up to 64 characters in length and cannot contain http:// or https://.
         self.value = value
 
     def validate(self):
@@ -2840,6 +4471,7 @@ class DescribeSourceServersResponseBodySourceServersSourceServer(TeaModel):
         creation_time: str = None,
         data_disks: DescribeSourceServersResponseBodySourceServersSourceServerDataDisks = None,
         description: str = None,
+        disks: DescribeSourceServersResponseBodySourceServersSourceServerDisks = None,
         error_code: str = None,
         heartbeat_rate: int = None,
         job_id: str = None,
@@ -2855,6 +4487,7 @@ class DescribeSourceServersResponseBodySourceServersSourceServer(TeaModel):
         system_disk_size: int = None,
         system_info: str = None,
         tags: DescribeSourceServersResponseBodySourceServersSourceServerTags = None,
+        workgroup_id: str = None,
     ):
         # The version number of the SMC client.
         self.agent_version = agent_version
@@ -2862,10 +4495,12 @@ class DescribeSourceServersResponseBodySourceServersSourceServer(TeaModel):
         self.architecture = architecture
         # The time when the migration source was created.
         self.creation_time = creation_time
-        # The data disk on the migration source.
+        # The data disks on the migration source.
         self.data_disks = data_disks
         # The description of the migration source.
         self.description = description
+        # The information about the disk.
+        self.disks = disks
         # The error code of the migration source.
         self.error_code = error_code
         # The interval at which heartbeats are sent from the SMC client. Unit: seconds.
@@ -2889,31 +4524,35 @@ class DescribeSourceServersResponseBodySourceServersSourceServer(TeaModel):
         # The status information of the migration source. This parameter is returned if the migration source is in the Unavailable state. The value of this parameter consists of key-value pairs in the JSON format. Sample keys:
         # 
         #     error_code: The error code.
-        #     error_msg: The error message.
+        #     error_msg: the error message.
         self.status_info = status_info
         # The information about the system disk partition.
         self.system_disk_parts = system_disk_parts
-        # The system disk size of the migration source. Unit: GiB.
+        # The system disk size of the migration source. Unit: GiB
         self.system_disk_size = system_disk_size
-        # The system information of the migration source. The value of this parameter consists of key-value pairs in the JSON format. The key-value pairs are extensible and have fixed keys. The JSON string does not exceed 1 KB in size. Sample keys:
+        # The system information of the migration source. The parameter must be specified as key-value pairs in the JSON format. The key-value pairs are extensible and have fixed keys. Maximum value: 1 KB. Example:
         # 
-        #     agent_mode: The migration mode.
-        #     agent_type: The migration type.
-        #     client_type: The client type.
-        #     hostname: The host name.
-        #     ipv4: The IPv4 address.
-        #     ipv6: The IPv6 address.
-        #     .cores: The number of CPU cores.
-        #     cpu_usage: The CPU utilization.
-        #     memory: The memory size.
-        #     memory_usage: The memory usage.
+        #     agent_mode: the running mode.
+        #     agent_type: the type of the run.
+        #     client_type: the type of the client.
+        #     hostname : the hostname.
+        #     ipv4:IPv4 address
+        #     ipv6: IPv6 address
+        #     cores: the number of CPU cores.
+        #     cpu_usage: the CPU utilization.
+        #     memory: the memory size.
+        #     memory_usage: the memory usage.
         self.system_info = system_info
-        # The information about the tags.
+        # The tag details.
         self.tags = tags
+        # The workgroup ID.
+        self.workgroup_id = workgroup_id
 
     def validate(self):
         if self.data_disks:
             self.data_disks.validate()
+        if self.disks:
+            self.disks.validate()
         if self.system_disk_parts:
             self.system_disk_parts.validate()
         if self.tags:
@@ -2935,6 +4574,8 @@ class DescribeSourceServersResponseBodySourceServersSourceServer(TeaModel):
             result['DataDisks'] = self.data_disks.to_map()
         if self.description is not None:
             result['Description'] = self.description
+        if self.disks is not None:
+            result['Disks'] = self.disks.to_map()
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
         if self.heartbeat_rate is not None:
@@ -2965,6 +4606,8 @@ class DescribeSourceServersResponseBodySourceServersSourceServer(TeaModel):
             result['SystemInfo'] = self.system_info
         if self.tags is not None:
             result['Tags'] = self.tags.to_map()
+        if self.workgroup_id is not None:
+            result['WorkgroupId'] = self.workgroup_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2980,6 +4623,9 @@ class DescribeSourceServersResponseBodySourceServersSourceServer(TeaModel):
             self.data_disks = temp_model.from_map(m['DataDisks'])
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Disks') is not None:
+            temp_model = DescribeSourceServersResponseBodySourceServersSourceServerDisks()
+            self.disks = temp_model.from_map(m['Disks'])
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
         if m.get('HeartbeatRate') is not None:
@@ -3012,6 +4658,8 @@ class DescribeSourceServersResponseBodySourceServersSourceServer(TeaModel):
         if m.get('Tags') is not None:
             temp_model = DescribeSourceServersResponseBodySourceServersSourceServerTags()
             self.tags = temp_model.from_map(m['Tags'])
+        if m.get('WorkgroupId') is not None:
+            self.workgroup_id = m.get('WorkgroupId')
         return self
 
 
@@ -3061,7 +4709,7 @@ class DescribeSourceServersResponseBody(TeaModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries returned on each page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -3120,9 +4768,6 @@ class DescribeSourceServersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3152,6 +4797,517 @@ class DescribeSourceServersResponse(TeaModel):
         return self
 
 
+class DescribeWorkgroupsRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key of the workgroup. Valid values of N: 1 to 20.
+        # 
+        # You cannot specify an empty string as a tag key. The tag key can be up to 64 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
+        self.key = key
+        # The tag value of the workgroup. Valid values of N: 1 to 20.
+        # 
+        # You can specify an empty string as a tag value. The tag value can be up to 64 characters in length and cannot contain http:// or https://.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeWorkgroupsRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        resource_owner_account: str = None,
+        status: str = None,
+        tag: List[DescribeWorkgroupsRequestTag] = None,
+        workgroup_id: List[str] = None,
+    ):
+        # The name of the workgroup.
+        self.name = name
+        self.owner_id = owner_id
+        # The page number. Minimum value: 1. Default value: 1.
+        self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 50. Default value: 10.
+        self.page_size = page_size
+        self.resource_owner_account = resource_owner_account
+        # The state of the workgroup. Valid values:
+        # 
+        # *   NotStarted
+        # *   InProgress
+        # *   Cutover
+        # *   Completed
+        self.status = status
+        # The list of tag information of workgroups.
+        self.tag = tag
+        # The workgroup IDs. You can specify up to 50 workgroup IDs.
+        self.workgroup_id = workgroup_id
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.status is not None:
+            result['Status'] = self.status
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        if self.workgroup_id is not None:
+            result['WorkgroupId'] = self.workgroup_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeWorkgroupsRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        if m.get('WorkgroupId') is not None:
+            self.workgroup_id = m.get('WorkgroupId')
+        return self
+
+
+class DescribeWorkgroupsResponseBodyWorkgroupsWorkgroupTagsTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key of the workgroup.
+        # 
+        # You can specify an empty string as a tag key. The tag key can be up to 64 characters in length and cannot contain http:// or https://.
+        self.key = key
+        # The tag value of the workgroup. Valid values of N: 1 to 20.
+        # 
+        # You can specify an empty string as a tag value. The tag value can be up to 64 characters in length and cannot contain http:// or https://.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeWorkgroupsResponseBodyWorkgroupsWorkgroupTags(TeaModel):
+    def __init__(
+        self,
+        tag: List[DescribeWorkgroupsResponseBodyWorkgroupsWorkgroupTagsTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeWorkgroupsResponseBodyWorkgroupsWorkgroupTagsTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeWorkgroupsResponseBodyWorkgroupsWorkgroupWarningsWarningSourceIds(TeaModel):
+    def __init__(
+        self,
+        source_id: List[str] = None,
+    ):
+        self.source_id = source_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
+        return self
+
+
+class DescribeWorkgroupsResponseBodyWorkgroupsWorkgroupWarningsWarning(TeaModel):
+    def __init__(
+        self,
+        source_ids: DescribeWorkgroupsResponseBodyWorkgroupsWorkgroupWarningsWarningSourceIds = None,
+        warning_type: str = None,
+    ):
+        # The migration sources for which alerts are generated.
+        self.source_ids = source_ids
+        # The type of the alert. Valid values:
+        # 
+        # *   InError: A migration job failed.
+        # *   UnRelated: No migration job is created for a migration source.
+        # *   NotPassed: A migration job failed to pass the migration test.
+        self.warning_type = warning_type
+
+    def validate(self):
+        if self.source_ids:
+            self.source_ids.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_ids is not None:
+            result['SourceIds'] = self.source_ids.to_map()
+        if self.warning_type is not None:
+            result['WarningType'] = self.warning_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceIds') is not None:
+            temp_model = DescribeWorkgroupsResponseBodyWorkgroupsWorkgroupWarningsWarningSourceIds()
+            self.source_ids = temp_model.from_map(m['SourceIds'])
+        if m.get('WarningType') is not None:
+            self.warning_type = m.get('WarningType')
+        return self
+
+
+class DescribeWorkgroupsResponseBodyWorkgroupsWorkgroupWarnings(TeaModel):
+    def __init__(
+        self,
+        warning: List[DescribeWorkgroupsResponseBodyWorkgroupsWorkgroupWarningsWarning] = None,
+    ):
+        self.warning = warning
+
+    def validate(self):
+        if self.warning:
+            for k in self.warning:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Warning'] = []
+        if self.warning is not None:
+            for k in self.warning:
+                result['Warning'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.warning = []
+        if m.get('Warning') is not None:
+            for k in m.get('Warning'):
+                temp_model = DescribeWorkgroupsResponseBodyWorkgroupsWorkgroupWarningsWarning()
+                self.warning.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeWorkgroupsResponseBodyWorkgroupsWorkgroup(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+        status: str = None,
+        tags: DescribeWorkgroupsResponseBodyWorkgroupsWorkgroupTags = None,
+        warnings: DescribeWorkgroupsResponseBodyWorkgroupsWorkgroupWarnings = None,
+        workgroup_id: str = None,
+    ):
+        # The description of the workgroup.
+        self.description = description
+        # The name of the workgroup.
+        self.name = name
+        # The state of the workgroup. Valid values:
+        # 
+        # *   NotStarted
+        # *   InProgress
+        # *   Cutover
+        # *   Completed
+        self.status = status
+        # The tag information of the workgroup.
+        self.tags = tags
+        # The alert information of the workgroup, which can contain multiple types of alerts.
+        self.warnings = warnings
+        # The workgroup ID.
+        self.workgroup_id = workgroup_id
+
+    def validate(self):
+        if self.tags:
+            self.tags.validate()
+        if self.warnings:
+            self.warnings.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
+        if self.warnings is not None:
+            result['Warnings'] = self.warnings.to_map()
+        if self.workgroup_id is not None:
+            result['WorkgroupId'] = self.workgroup_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            temp_model = DescribeWorkgroupsResponseBodyWorkgroupsWorkgroupTags()
+            self.tags = temp_model.from_map(m['Tags'])
+        if m.get('Warnings') is not None:
+            temp_model = DescribeWorkgroupsResponseBodyWorkgroupsWorkgroupWarnings()
+            self.warnings = temp_model.from_map(m['Warnings'])
+        if m.get('WorkgroupId') is not None:
+            self.workgroup_id = m.get('WorkgroupId')
+        return self
+
+
+class DescribeWorkgroupsResponseBodyWorkgroups(TeaModel):
+    def __init__(
+        self,
+        workgroup: List[DescribeWorkgroupsResponseBodyWorkgroupsWorkgroup] = None,
+    ):
+        self.workgroup = workgroup
+
+    def validate(self):
+        if self.workgroup:
+            for k in self.workgroup:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Workgroup'] = []
+        if self.workgroup is not None:
+            for k in self.workgroup:
+                result['Workgroup'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.workgroup = []
+        if m.get('Workgroup') is not None:
+            for k in m.get('Workgroup'):
+                temp_model = DescribeWorkgroupsResponseBodyWorkgroupsWorkgroup()
+                self.workgroup.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeWorkgroupsResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+        workgroups: DescribeWorkgroupsResponseBodyWorkgroups = None,
+    ):
+        # The page number.
+        self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 50. Default value: 10.
+        self.page_size = page_size
+        # The request ID.
+        self.request_id = request_id
+        # The total number of workgroups.
+        self.total_count = total_count
+        # The queried workgroups.
+        self.workgroups = workgroups
+
+    def validate(self):
+        if self.workgroups:
+            self.workgroups.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.workgroups is not None:
+            result['Workgroups'] = self.workgroups.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('Workgroups') is not None:
+            temp_model = DescribeWorkgroupsResponseBodyWorkgroups()
+            self.workgroups = temp_model.from_map(m['Workgroups'])
+        return self
+
+
+class DescribeWorkgroupsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeWorkgroupsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeWorkgroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DisableAccessTokenRequest(TeaModel):
     def __init__(
         self,
@@ -3160,6 +5316,8 @@ class DisableAccessTokenRequest(TeaModel):
         resource_owner_account: str = None,
     ):
         # The ID of the activation code.
+        # 
+        # This parameter is required.
         self.access_token_id = access_token_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -3232,9 +5390,6 @@ class DisableAccessTokenResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3260,6 +5415,126 @@ class DisableAccessTokenResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DisableAccessTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DisassociateSourceServersRequest(TeaModel):
+    def __init__(
+        self,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        source_id: List[str] = None,
+        workgroup_id: str = None,
+    ):
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        # The IDs of migration sources that you want to disassociate from the workgroup. You can specify up to 50 migration sources.
+        # 
+        # This parameter is required.
+        self.source_id = source_id
+        # The ID of the workgroup.
+        # 
+        # This parameter is required.
+        self.workgroup_id = workgroup_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
+        if self.workgroup_id is not None:
+            result['WorkgroupId'] = self.workgroup_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
+        if m.get('WorkgroupId') is not None:
+            self.workgroup_id = m.get('WorkgroupId')
+        return self
+
+
+class DisassociateSourceServersResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisassociateSourceServersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisassociateSourceServersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisassociateSourceServersResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3340,7 +5615,7 @@ class ListAccessTokensResponseBodyAccessTokensAccessToken(TeaModel):
         # 
         # Default value: 100.
         self.count = count
-        # The time when the activation code was created. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the activation code was created. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The description of the activation code.
         self.description = description
@@ -3516,9 +5791,6 @@ class ListAccessTokensResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3610,6 +5882,8 @@ class ListTagResourcesRequest(TeaModel):
         # 
         # *   sourceserver: migration source.
         # *   replicationjob: migration job.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags that are attached to SMC resources.
         self.tag = tag
@@ -3804,9 +6078,6 @@ class ListTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4006,7 +6277,6 @@ class ModifyReplicationJobAttributeRequest(TeaModel):
         job_id: str = None,
         launch_template_id: str = None,
         launch_template_version: str = None,
-        license_type: str = None,
         max_number_of_image_to_keep: int = None,
         name: str = None,
         net_mode: int = None,
@@ -4021,17 +6291,17 @@ class ModifyReplicationJobAttributeRequest(TeaModel):
         valid_time: str = None,
         vpc_id: str = None,
     ):
-        # The namespace of the destination Docker container image. For more information about Docker container images, see [Terms](~~60744~~).
+        # The namespace of the destination Docker container image. For more information about Docker container images, see [Terms](https://help.aliyun.com/document_detail/60744.html).
         self.container_namespace = container_namespace
-        # The repository that stores the destination Docker container image. For more information about Docker container images, see [Terms](~~60744~~).
+        # The repository that stores the destination Docker container image. For more information about Docker container images, see [Terms](https://help.aliyun.com/document_detail/60744.html).
         self.container_repository = container_repository
-        # The tag of the destination Docker container image. For more information about Docker container images, see [Terms](~~60744~~).
+        # The tag of the destination Docker container image. For more information about Docker container images, see [Terms](https://help.aliyun.com/document_detail/60744.html).
         self.container_tag = container_tag
         # The information about the data disk.
         self.data_disk = data_disk
         # The description of the migration job.
         # 
-        # The description must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        # The description must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
         self.description = description
         # The interval at which an incremental migration job runs. Unit: hour. Valid values: 1 to 168.
         # 
@@ -4040,7 +6310,7 @@ class ModifyReplicationJobAttributeRequest(TeaModel):
         # The name of the destination image. The name must meet the following requirements:
         # 
         # *   The name must be unique within an Alibaba Cloud region.
-        # *   The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        # *   The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
         # 
         # >  If an image whose name is the same as that of the destination image already exists in the current region when the migration job is in progress, the system adds the migration job ID to the end of the image name by default. Example: ImageName-JobId.
         self.image_name = image_name
@@ -4050,7 +6320,7 @@ class ModifyReplicationJobAttributeRequest(TeaModel):
         self.instance_ram_role = instance_ram_role
         # The type of the intermediate instance.
         # 
-        # You can call the [DescribeInstanceTypes](~~25620~~) operation to query the ECS instance types.
+        # You can call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation to query the ECS instance types.
         # 
         # *   If you specify this parameter, SMC creates an intermediate instance of the specified instance type. If the specified instance type is unavailable, you cannot create the migration job.
         # *   If you do not specify this parameter, SMC selects an available instance type in a specific order to create an intermediate instance. For more information,
@@ -4058,12 +6328,13 @@ class ModifyReplicationJobAttributeRequest(TeaModel):
         # see the "How does SMC create an intermediate instance?" section of the "FAQ" topic.
         self.instance_type = instance_type
         # The migration job ID.
+        # 
+        # This parameter is required.
         self.job_id = job_id
         # The launch template ID.
         self.launch_template_id = launch_template_id
         # The version number of the launch template.
         self.launch_template_version = launch_template_version
-        self.license_type = license_type
         # The maximum number of images that are retained for an incremental migration job. Valid values: 1 to 10.
         # 
         # This parameter is required if you set the `RunOnce` parameter to false.
@@ -4071,17 +6342,30 @@ class ModifyReplicationJobAttributeRequest(TeaModel):
         # The name of the migration job. The name must meet the following requirements:
         # 
         # *   The name must be unique.
-        # *   The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        # *   The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
         self.name = name
+        # The network mode for data transmission. Valid values:
+        # 
+        # *   0: Data is transmitted over the Internet. Make sure that the source server can access the Internet.
+        # *   2: Data is transmitted over a virtual private cloud (VPC). If you set this parameter to 2, you must specify the VSwitchId parameter. You can leave the VpcId parameter empty, the VPC ID can be queried by calling an operation.
         self.net_mode = net_mode
         self.owner_id = owner_id
+        # The parameters of the replication driver. The parameters are fixed key-value pairs of the JSON format. The value can be up to 2,048 characters in length.
+        # 
+        # A replication driver is a tool that is used to replicate the data of a source server to an intermediate instance. The parameters vary based on the replication driver type. If you use a Server Migration Tool (SMT) driver, you can set the following parameters:
+        # 
+        # *   bandwidth_limit: the maximum bandwidth for data transmission.
+        # *   compress_level: the compression ratio of data to be transmitted.
+        # *   checksum: specifies whether to enable checksum verification
+        # 
+        # For more information about the replication driver, see the response parameter `SourceServers.ReplicationDriver` of the [DescribeSourceServers](https://help.aliyun.com/document_detail/2402126.html) operation.
         self.replication_parameters = replication_parameters
         self.resource_owner_account = resource_owner_account
         # The time when the migration job is executed. SMC starts the migration job at the specified time.
         # 
         # Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC. For example, 2018-01-01T12:00:00Z indicates 20:00:00 on January 1, 2018 (UTC+8).
         # 
-        # >  If ScheduledStartTime is left empty, SMC does not automatically start the migration job. In this case, you must call the [StartReplicationJob](~~121823~~) operation to start the migration job.
+        # >  If ScheduledStartTime is left empty, SMC does not automatically start the migration job. In this case, you must call the [StartReplicationJob](https://help.aliyun.com/document_detail/121823.html) operation to start the migration job.
         self.scheduled_start_time = scheduled_start_time
         # The partition information of the system disk.
         self.system_disk_part = system_disk_part
@@ -4101,6 +6385,7 @@ class ModifyReplicationJobAttributeRequest(TeaModel):
         # 
         # *   SMC does not allow you to migrate Windows servers or servers that run operating systems on the ARM architecture to Container Registry.
         self.target_type = target_type
+        # The ID of the vSwitch in the VPC.
         self.v_switch_id = v_switch_id
         # The time when the migration job expires. You can schedule the migration job to expire 7 to 90 days after the job is created.
         # 
@@ -4111,6 +6396,7 @@ class ModifyReplicationJobAttributeRequest(TeaModel):
         # 
         # By default, a migration job is valid for 30 days after it is created.
         self.valid_time = valid_time
+        # The ID of the VPC for which an Express Connect circuit or VPN gateway is configured.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -4157,8 +6443,6 @@ class ModifyReplicationJobAttributeRequest(TeaModel):
             result['LaunchTemplateId'] = self.launch_template_id
         if self.launch_template_version is not None:
             result['LaunchTemplateVersion'] = self.launch_template_version
-        if self.license_type is not None:
-            result['LicenseType'] = self.license_type
         if self.max_number_of_image_to_keep is not None:
             result['MaxNumberOfImageToKeep'] = self.max_number_of_image_to_keep
         if self.name is not None:
@@ -4220,8 +6504,6 @@ class ModifyReplicationJobAttributeRequest(TeaModel):
             self.launch_template_id = m.get('LaunchTemplateId')
         if m.get('LaunchTemplateVersion') is not None:
             self.launch_template_version = m.get('LaunchTemplateVersion')
-        if m.get('LicenseType') is not None:
-            self.license_type = m.get('LicenseType')
         if m.get('MaxNumberOfImageToKeep') is not None:
             self.max_number_of_image_to_keep = m.get('MaxNumberOfImageToKeep')
         if m.get('Name') is not None:
@@ -4294,9 +6576,6 @@ class ModifyReplicationJobAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4337,11 +6616,13 @@ class ModifySourceServerAttributeRequest(TeaModel):
     ):
         # The description of the migration source. The description can be up to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The name of the migration source. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+        # The name of the migration source. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.name = name
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         # The migration source ID.
+        # 
+        # This parameter is required.
         self.source_id = source_id
 
     def validate(self):
@@ -4420,9 +6701,6 @@ class ModifySourceServerAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4452,6 +6730,133 @@ class ModifySourceServerAttributeResponse(TeaModel):
         return self
 
 
+class ModifyWorkgroupAttributeRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        workgroup_id: str = None,
+    ):
+        # The new description of the workgroup.
+        # 
+        # The description must be 2 to 128 characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        self.description = description
+        # The new name of the workgroup. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        self.name = name
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        # The workgroup ID.
+        # 
+        # This parameter is required.
+        self.workgroup_id = workgroup_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.workgroup_id is not None:
+            result['WorkgroupId'] = self.workgroup_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('WorkgroupId') is not None:
+            self.workgroup_id = m.get('WorkgroupId')
+        return self
+
+
+class ModifyWorkgroupAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyWorkgroupAttributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyWorkgroupAttributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyWorkgroupAttributeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StartReplicationJobRequest(TeaModel):
     def __init__(
         self,
@@ -4460,6 +6865,8 @@ class StartReplicationJobRequest(TeaModel):
         resource_owner_account: str = None,
     ):
         # The migration job ID.
+        # 
+        # This parameter is required.
         self.job_id = job_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -4532,9 +6939,6 @@ class StartReplicationJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4572,6 +6976,8 @@ class StopReplicationJobRequest(TeaModel):
         resource_owner_account: str = None,
     ):
         # The migration job ID.
+        # 
+        # This parameter is required.
         self.job_id = job_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -4644,9 +7050,6 @@ class StopReplicationJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4726,14 +7129,20 @@ class TagResourcesRequest(TeaModel):
     ):
         self.owner_id = owner_id
         # The IDs of N SMC resources. SMC resources include migration sources and jobs. Valid values of N: 1 to 50.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         # The type of the SMC resource. Valid values:
         # 
         # *   sourceserver: migration source.
         # *   replicationjob: migration job.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags.
+        # 
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -4820,9 +7229,6 @@ class TagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4871,12 +7277,16 @@ class UntagResourcesRequest(TeaModel):
         self.all = all
         self.owner_id = owner_id
         # The IDs of N SMC resources. SMC resources include migration sources and jobs. Valid values of N: 1 to 50.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         # The type of the SMC resource. Valid values:
         # 
         # *   sourceserver: migration source.
         # *   replicationjob: migration job.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The key of tag N that is added to the SMC resource. Tag keys are case-sensitive. Valid values of N: 1 to 20.
         self.tag_key = tag_key
@@ -4961,9 +7371,6 @@ class UntagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
