@@ -21,6 +21,7 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'pds'
         gateway_client = GatewayClientClient()
         self._spi = gateway_client
         self._disable_http_2 = True
@@ -8888,6 +8889,8 @@ class Client(OpenApiClient):
             body['limit'] = request.limit
         if not UtilClient.is_unset(request.marker):
             body['marker'] = request.marker
+        if not UtilClient.is_unset(request.thumbnail_processes):
+            body['thumbnail_processes'] = request.thumbnail_processes
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -8932,6 +8935,8 @@ class Client(OpenApiClient):
             body['limit'] = request.limit
         if not UtilClient.is_unset(request.marker):
             body['marker'] = request.marker
+        if not UtilClient.is_unset(request.thumbnail_processes):
+            body['thumbnail_processes'] = request.thumbnail_processes
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -10900,6 +10905,8 @@ class Client(OpenApiClient):
             body['recursive'] = request.recursive
         if not UtilClient.is_unset(request.return_total_count):
             body['return_total_count'] = request.return_total_count
+        if not UtilClient.is_unset(request.thumbnail_processes):
+            body['thumbnail_processes'] = request.thumbnail_processes
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -10952,6 +10959,8 @@ class Client(OpenApiClient):
             body['recursive'] = request.recursive
         if not UtilClient.is_unset(request.return_total_count):
             body['return_total_count'] = request.return_total_count
+        if not UtilClient.is_unset(request.thumbnail_processes):
+            body['thumbnail_processes'] = request.thumbnail_processes
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -13211,3 +13220,111 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_user_with_options_async(request, headers, runtime)
+
+    def video_drmlicense_with_options(
+        self,
+        request: pds_20220301_models.VideoDRMLicenseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.VideoDRMLicenseResponse:
+        """
+        @summary 获取视频的DRM License
+        
+        @param request: VideoDRMLicenseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VideoDRMLicenseResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.drm_type):
+            body['drmType'] = request.drm_type
+        if not UtilClient.is_unset(request.license_request):
+            body['licenseRequest'] = request.license_request
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='VideoDRMLicense',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/file/video_drm_license',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.VideoDRMLicenseResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def video_drmlicense_with_options_async(
+        self,
+        request: pds_20220301_models.VideoDRMLicenseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.VideoDRMLicenseResponse:
+        """
+        @summary 获取视频的DRM License
+        
+        @param request: VideoDRMLicenseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VideoDRMLicenseResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.drm_type):
+            body['drmType'] = request.drm_type
+        if not UtilClient.is_unset(request.license_request):
+            body['licenseRequest'] = request.license_request
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='VideoDRMLicense',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/file/video_drm_license',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.VideoDRMLicenseResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def video_drmlicense(
+        self,
+        request: pds_20220301_models.VideoDRMLicenseRequest,
+    ) -> pds_20220301_models.VideoDRMLicenseResponse:
+        """
+        @summary 获取视频的DRM License
+        
+        @param request: VideoDRMLicenseRequest
+        @return: VideoDRMLicenseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.video_drmlicense_with_options(request, headers, runtime)
+
+    async def video_drmlicense_async(
+        self,
+        request: pds_20220301_models.VideoDRMLicenseRequest,
+    ) -> pds_20220301_models.VideoDRMLicenseResponse:
+        """
+        @summary 获取视频的DRM License
+        
+        @param request: VideoDRMLicenseRequest
+        @return: VideoDRMLicenseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.video_drmlicense_with_options_async(request, headers, runtime)

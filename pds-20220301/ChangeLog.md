@@ -1,3 +1,9 @@
+2025-03-10 Version: 4.1.0
+- Support API VideoDRMLicense.
+- Update API ListRecyclebin: update param body.
+- Update API SearchFile: update param body.
+
+
 2025-01-10 Version: 4.0.3
 - Generated python 2022-03-01 for pds.
 

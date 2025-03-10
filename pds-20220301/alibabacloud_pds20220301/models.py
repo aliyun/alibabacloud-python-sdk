@@ -995,10 +995,44 @@ class VideoMediaMetadata(TeaModel):
         return self
 
 
+class FileDirSizeInfo(TeaModel):
+    def __init__(
+        self,
+        dir_count: int = None,
+        file_count: int = None,
+    ):
+        self.dir_count = dir_count
+        self.file_count = file_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dir_count is not None:
+            result['dir_count'] = self.dir_count
+        if self.file_count is not None:
+            result['file_count'] = self.file_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('dir_count') is not None:
+            self.dir_count = m.get('dir_count')
+        if m.get('file_count') is not None:
+            self.file_count = m.get('file_count')
+        return self
+
+
 class File(TeaModel):
     def __init__(
         self,
         action_list: List[str] = None,
+        auto_delete_left_sec: int = None,
         category: str = None,
         content_hash: str = None,
         content_hash_name: str = None,
@@ -1006,6 +1040,7 @@ class File(TeaModel):
         crc_64hash: str = None,
         created_at: str = None,
         description: str = None,
+        dir_size_info: FileDirSizeInfo = None,
         domain_id: str = None,
         download_url: str = None,
         drive_id: str = None,
@@ -1034,6 +1069,7 @@ class File(TeaModel):
         video_media_metadata: VideoMediaMetadata = None,
     ):
         self.action_list = action_list
+        self.auto_delete_left_sec = auto_delete_left_sec
         self.category = category
         self.content_hash = content_hash
         self.content_hash_name = content_hash_name
@@ -1041,6 +1077,7 @@ class File(TeaModel):
         self.crc_64hash = crc_64hash
         self.created_at = created_at
         self.description = description
+        self.dir_size_info = dir_size_info
         self.domain_id = domain_id
         self.download_url = download_url
         self.drive_id = drive_id
@@ -1069,6 +1106,8 @@ class File(TeaModel):
         self.video_media_metadata = video_media_metadata
 
     def validate(self):
+        if self.dir_size_info:
+            self.dir_size_info.validate()
         if self.image_media_metadata:
             self.image_media_metadata.validate()
         if self.video_media_metadata:
@@ -1082,6 +1121,8 @@ class File(TeaModel):
         result = dict()
         if self.action_list is not None:
             result['action_list'] = self.action_list
+        if self.auto_delete_left_sec is not None:
+            result['auto_delete_left_sec'] = self.auto_delete_left_sec
         if self.category is not None:
             result['category'] = self.category
         if self.content_hash is not None:
@@ -1096,6 +1137,8 @@ class File(TeaModel):
             result['created_at'] = self.created_at
         if self.description is not None:
             result['description'] = self.description
+        if self.dir_size_info is not None:
+            result['dir_size_info'] = self.dir_size_info.to_map()
         if self.domain_id is not None:
             result['domain_id'] = self.domain_id
         if self.download_url is not None:
@@ -1154,6 +1197,8 @@ class File(TeaModel):
         m = m or dict()
         if m.get('action_list') is not None:
             self.action_list = m.get('action_list')
+        if m.get('auto_delete_left_sec') is not None:
+            self.auto_delete_left_sec = m.get('auto_delete_left_sec')
         if m.get('category') is not None:
             self.category = m.get('category')
         if m.get('content_hash') is not None:
@@ -1168,6 +1213,9 @@ class File(TeaModel):
             self.created_at = m.get('created_at')
         if m.get('description') is not None:
             self.description = m.get('description')
+        if m.get('dir_size_info') is not None:
+            temp_model = FileDirSizeInfo()
+            self.dir_size_info = temp_model.from_map(m['dir_size_info'])
         if m.get('domain_id') is not None:
             self.domain_id = m.get('domain_id')
         if m.get('download_url') is not None:
@@ -11560,7 +11608,7 @@ class CreateFileRequest(TeaModel):
         self.local_created_at = local_created_at
         # The time when the local file was modified. By default, this parameter is left empty. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format based on the UTC+0 time zone.
         self.local_modified_at = local_modified_at
-        # The name of the file. The name can be up to 1,024 bytes in length based on the UTF-8 encoding rule and cannot end with a forward slash (/).
+        # The name of the file. The name can be up to 1,024 bytes in length based on the UTF-8 encoding rule and cannot contain forward slash (/).
         # 
         # This parameter is required.
         self.name = name
@@ -19722,6 +19770,7 @@ class ListRecyclebinRequest(TeaModel):
         fields: str = None,
         limit: int = None,
         marker: str = None,
+        thumbnail_processes: Dict[str, ImageProcess] = None,
     ):
         # The drive ID.
         # 
@@ -19741,9 +19790,13 @@ class ListRecyclebinRequest(TeaModel):
         self.limit = limit
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker. By default, this parameter is left empty.
         self.marker = marker
+        self.thumbnail_processes = thumbnail_processes
 
     def validate(self):
-        pass
+        if self.thumbnail_processes:
+            for v in self.thumbnail_processes.values():
+                if v:
+                    v.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -19759,6 +19812,10 @@ class ListRecyclebinRequest(TeaModel):
             result['limit'] = self.limit
         if self.marker is not None:
             result['marker'] = self.marker
+        result['thumbnail_processes'] = {}
+        if self.thumbnail_processes is not None:
+            for k, v in self.thumbnail_processes.items():
+                result['thumbnail_processes'][k] = v.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -19771,6 +19828,11 @@ class ListRecyclebinRequest(TeaModel):
             self.limit = m.get('limit')
         if m.get('marker') is not None:
             self.marker = m.get('marker')
+        self.thumbnail_processes = {}
+        if m.get('thumbnail_processes') is not None:
+            for k, v in m.get('thumbnail_processes').items():
+                temp_model = ImageProcess()
+                self.thumbnail_processes[k] = temp_model.from_map(v)
         return self
 
 
@@ -22063,6 +22125,7 @@ class SearchFileRequest(TeaModel):
         query: str = None,
         recursive: bool = None,
         return_total_count: bool = None,
+        thumbnail_processes: Dict[str, ImageProcess] = None,
     ):
         # The drive ID.
         self.drive_id = drive_id
@@ -22099,9 +22162,13 @@ class SearchFileRequest(TeaModel):
         self.recursive = recursive
         # Specifies whether to return the total number of retrieved files.
         self.return_total_count = return_total_count
+        self.thumbnail_processes = thumbnail_processes
 
     def validate(self):
-        pass
+        if self.thumbnail_processes:
+            for v in self.thumbnail_processes.values():
+                if v:
+                    v.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -22125,6 +22192,10 @@ class SearchFileRequest(TeaModel):
             result['recursive'] = self.recursive
         if self.return_total_count is not None:
             result['return_total_count'] = self.return_total_count
+        result['thumbnail_processes'] = {}
+        if self.thumbnail_processes is not None:
+            for k, v in self.thumbnail_processes.items():
+                result['thumbnail_processes'][k] = v.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -22145,6 +22216,11 @@ class SearchFileRequest(TeaModel):
             self.recursive = m.get('recursive')
         if m.get('return_total_count') is not None:
             self.return_total_count = m.get('return_total_count')
+        self.thumbnail_processes = {}
+        if m.get('thumbnail_processes') is not None:
+            for k, v in m.get('thumbnail_processes').items():
+                temp_model = ImageProcess()
+                self.thumbnail_processes[k] = temp_model.from_map(v)
         return self
 
 
@@ -24754,6 +24830,120 @@ class UpdateUserResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = User()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class VideoDRMLicenseRequest(TeaModel):
+    def __init__(
+        self,
+        drm_type: str = None,
+        license_request: str = None,
+    ):
+        # This parameter is required.
+        self.drm_type = drm_type
+        self.license_request = license_request
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.drm_type is not None:
+            result['drmType'] = self.drm_type
+        if self.license_request is not None:
+            result['licenseRequest'] = self.license_request
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('drmType') is not None:
+            self.drm_type = m.get('drmType')
+        if m.get('licenseRequest') is not None:
+            self.license_request = m.get('licenseRequest')
+        return self
+
+
+class VideoDRMLicenseResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        device_info: str = None,
+        states: str = None,
+    ):
+        self.data = data
+        self.device_info = device_info
+        self.states = states
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        if self.device_info is not None:
+            result['device_info'] = self.device_info
+        if self.states is not None:
+            result['states'] = self.states
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('device_info') is not None:
+            self.device_info = m.get('device_info')
+        if m.get('states') is not None:
+            self.states = m.get('states')
+        return self
+
+
+class VideoDRMLicenseResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: VideoDRMLicenseResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = VideoDRMLicenseResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
