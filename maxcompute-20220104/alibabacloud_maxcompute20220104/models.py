@@ -2820,6 +2820,430 @@ class GetComputeQuotaScheduleResponse(TeaModel):
         return self
 
 
+class GetJobInfoResponseBodyDataJobSubStatusList(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        description: str = None,
+        start_time: str = None,
+    ):
+        # The code of the sub-status.
+        self.code = code
+        # The description of the sub-status.
+        self.description = description
+        # The start time of the sub-status.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.description is not None:
+            result['description'] = self.description
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        return self
+
+
+class GetJobInfoResponseBodyDataSceneResults(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        params: Dict[str, str] = None,
+        scene: str = None,
+        scene_tag: str = None,
+        summary: str = None,
+        type: str = None,
+    ):
+        # The intelligent diagnostics result description.
+        self.description = description
+        # Information about the nodes where data skew or data expansion is detected. This parameter is returned only when the diagnostics scenario is data skew or data expansion.
+        self.params = params
+        # The intelligent diagnostics result scenario.
+        self.scene = scene
+        # The intelligent diagnostics result tag.
+        self.scene_tag = scene_tag
+        # The intelligent diagnostics result summary.
+        self.summary = summary
+        # The intelligent diagnostics result type.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.params is not None:
+            result['params'] = self.params
+        if self.scene is not None:
+            result['scene'] = self.scene
+        if self.scene_tag is not None:
+            result['sceneTag'] = self.scene_tag
+        if self.summary is not None:
+            result['summary'] = self.summary
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('params') is not None:
+            self.params = m.get('params')
+        if m.get('scene') is not None:
+            self.scene = m.get('scene')
+        if m.get('sceneTag') is not None:
+            self.scene_tag = m.get('sceneTag')
+        if m.get('summary') is not None:
+            self.summary = m.get('summary')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class GetJobInfoResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cu_usage: int = None,
+        end_at_time: int = None,
+        ext_node_id: str = None,
+        ext_node_on_duty: str = None,
+        ext_plant_from: str = None,
+        input_bytes: float = None,
+        instance_id: str = None,
+        job_owner: str = None,
+        job_sub_status_list: List[GetJobInfoResponseBodyDataJobSubStatusList] = None,
+        job_type: str = None,
+        memory_usage: int = None,
+        priority: int = None,
+        project: str = None,
+        quota_nickname: str = None,
+        quota_type: str = None,
+        region: str = None,
+        running_at_time: int = None,
+        running_time: int = None,
+        scene_results: List[GetJobInfoResponseBodyDataSceneResults] = None,
+        signature: str = None,
+        status: str = None,
+        submitted_at_time: int = None,
+        tenant_id: str = None,
+        total_time: int = None,
+        waiting_time: int = None,
+    ):
+        # CPU usage of the job at the snapshot time. Unit: Core.
+        self.cu_usage = cu_usage
+        # The time when the job was finished.
+        self.end_at_time = end_at_time
+        # The ID of the upstream node.
+        self.ext_node_id = ext_node_id
+        # The account ID of the task owner.
+        self.ext_node_on_duty = ext_node_on_duty
+        # The upstream platform.
+        self.ext_plant_from = ext_plant_from
+        # The amount of scanned data for the job. Unit: byte.
+        self.input_bytes = input_bytes
+        # The instance ID.
+        self.instance_id = instance_id
+        # The account that commits the job.
+        self.job_owner = job_owner
+        # The list of sub-status of the job.
+        self.job_sub_status_list = job_sub_status_list
+        # The type of the job.
+        self.job_type = job_type
+        # Memory usage of the job at the snapshot time. Unit: MB.
+        self.memory_usage = memory_usage
+        # The priority of the job.
+        self.priority = priority
+        # The name of the project.
+        self.project = project
+        # The nickname of the computing Quota used by the job.
+        self.quota_nickname = quota_nickname
+        # The type of the quota.
+        self.quota_type = quota_type
+        # The region ID.
+        self.region = region
+        # The start time of the job.
+        # > The time when the job received the first batch of computing resources.
+        self.running_at_time = running_at_time
+        # The running duration, which is the duration from the runningAtTime to the snapshotTime of the job. Unit: seconds (s).
+        self.running_time = running_time
+        # The intelligent diagnostics results.
+        self.scene_results = scene_results
+        # The signature of the SQL job.
+        self.signature = signature
+        # The status of the job.
+        self.status = status
+        # The time when the job was committed.
+        self.submitted_at_time = submitted_at_time
+        # The tenant ID.
+        self.tenant_id = tenant_id
+        # The interval from the time when the job was submitted to the snapshotTime .Unit: seconds (s).
+        self.total_time = total_time
+        # The duration from the time the job is submitted to the time the job starts to run. Unit: seconds (s).
+        self.waiting_time = waiting_time
+
+    def validate(self):
+        if self.job_sub_status_list:
+            for k in self.job_sub_status_list:
+                if k:
+                    k.validate()
+        if self.scene_results:
+            for k in self.scene_results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cu_usage is not None:
+            result['cuUsage'] = self.cu_usage
+        if self.end_at_time is not None:
+            result['endAtTime'] = self.end_at_time
+        if self.ext_node_id is not None:
+            result['extNodeId'] = self.ext_node_id
+        if self.ext_node_on_duty is not None:
+            result['extNodeOnDuty'] = self.ext_node_on_duty
+        if self.ext_plant_from is not None:
+            result['extPlantFrom'] = self.ext_plant_from
+        if self.input_bytes is not None:
+            result['inputBytes'] = self.input_bytes
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.job_owner is not None:
+            result['jobOwner'] = self.job_owner
+        result['jobSubStatusList'] = []
+        if self.job_sub_status_list is not None:
+            for k in self.job_sub_status_list:
+                result['jobSubStatusList'].append(k.to_map() if k else None)
+        if self.job_type is not None:
+            result['jobType'] = self.job_type
+        if self.memory_usage is not None:
+            result['memoryUsage'] = self.memory_usage
+        if self.priority is not None:
+            result['priority'] = self.priority
+        if self.project is not None:
+            result['project'] = self.project
+        if self.quota_nickname is not None:
+            result['quotaNickname'] = self.quota_nickname
+        if self.quota_type is not None:
+            result['quotaType'] = self.quota_type
+        if self.region is not None:
+            result['region'] = self.region
+        if self.running_at_time is not None:
+            result['runningAtTime'] = self.running_at_time
+        if self.running_time is not None:
+            result['runningTime'] = self.running_time
+        result['sceneResults'] = []
+        if self.scene_results is not None:
+            for k in self.scene_results:
+                result['sceneResults'].append(k.to_map() if k else None)
+        if self.signature is not None:
+            result['signature'] = self.signature
+        if self.status is not None:
+            result['status'] = self.status
+        if self.submitted_at_time is not None:
+            result['submittedAtTime'] = self.submitted_at_time
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        if self.total_time is not None:
+            result['totalTime'] = self.total_time
+        if self.waiting_time is not None:
+            result['waitingTime'] = self.waiting_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cuUsage') is not None:
+            self.cu_usage = m.get('cuUsage')
+        if m.get('endAtTime') is not None:
+            self.end_at_time = m.get('endAtTime')
+        if m.get('extNodeId') is not None:
+            self.ext_node_id = m.get('extNodeId')
+        if m.get('extNodeOnDuty') is not None:
+            self.ext_node_on_duty = m.get('extNodeOnDuty')
+        if m.get('extPlantFrom') is not None:
+            self.ext_plant_from = m.get('extPlantFrom')
+        if m.get('inputBytes') is not None:
+            self.input_bytes = m.get('inputBytes')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('jobOwner') is not None:
+            self.job_owner = m.get('jobOwner')
+        self.job_sub_status_list = []
+        if m.get('jobSubStatusList') is not None:
+            for k in m.get('jobSubStatusList'):
+                temp_model = GetJobInfoResponseBodyDataJobSubStatusList()
+                self.job_sub_status_list.append(temp_model.from_map(k))
+        if m.get('jobType') is not None:
+            self.job_type = m.get('jobType')
+        if m.get('memoryUsage') is not None:
+            self.memory_usage = m.get('memoryUsage')
+        if m.get('priority') is not None:
+            self.priority = m.get('priority')
+        if m.get('project') is not None:
+            self.project = m.get('project')
+        if m.get('quotaNickname') is not None:
+            self.quota_nickname = m.get('quotaNickname')
+        if m.get('quotaType') is not None:
+            self.quota_type = m.get('quotaType')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('runningAtTime') is not None:
+            self.running_at_time = m.get('runningAtTime')
+        if m.get('runningTime') is not None:
+            self.running_time = m.get('runningTime')
+        self.scene_results = []
+        if m.get('sceneResults') is not None:
+            for k in m.get('sceneResults'):
+                temp_model = GetJobInfoResponseBodyDataSceneResults()
+                self.scene_results.append(temp_model.from_map(k))
+        if m.get('signature') is not None:
+            self.signature = m.get('signature')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('submittedAtTime') is not None:
+            self.submitted_at_time = m.get('submittedAtTime')
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        if m.get('totalTime') is not None:
+            self.total_time = m.get('totalTime')
+        if m.get('waitingTime') is not None:
+            self.waiting_time = m.get('waitingTime')
+        return self
+
+
+class GetJobInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetJobInfoResponseBodyData = None,
+        error_code: str = None,
+        error_msg: str = None,
+        http_code: int = None,
+        request_id: str = None,
+    ):
+        # The returned data.
+        self.data = data
+        # The error code.
+        self.error_code = error_code
+        # The error message.
+        self.error_msg = error_msg
+        # The HTTP status code.
+        # 
+        # *   1xx: informational response. The request is received and is being processed.
+        # *   2xx: success. The request is successfully received, understood, and accepted by the server.
+        # *   3xx: redirection. The request is redirected, and further actions are required to complete the request.
+        # *   4xx: client error. The request contains invalid request parameters and syntaxes, or specific request conditions cannot be met.
+        # *   5xx: server error. The server cannot meet requirements due to other reasons.
+        self.http_code = http_code
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['errorMsg'] = self.error_msg
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = GetJobInfoResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMsg') is not None:
+            self.error_msg = m.get('errorMsg')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetJobInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetJobInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetJobInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetJobResourceUsageRequest(TeaModel):
     def __init__(
         self,
@@ -5960,8 +6384,11 @@ class GetProjectResponseBodyDataProperties(TeaModel):
     def __init__(
         self,
         allow_full_scan: bool = None,
+        auto_mv_quota_gb: int = None,
         elder_tunnel_quota: str = None,
+        enable_auto_mv: bool = None,
         enable_decimal_2: bool = None,
+        enable_dr: bool = None,
         enable_fdc_cache_force: bool = None,
         enable_tiered_storage: bool = None,
         enable_tunnel_quota_route: bool = None,
@@ -5979,10 +6406,13 @@ class GetProjectResponseBodyDataProperties(TeaModel):
     ):
         # Indicates whether a full table scan is allowed in the project. A full table scan occupies a large number of resources, which reduces data processing efficiency. By default, the full table scan feature is disabled.
         self.allow_full_scan = allow_full_scan
+        self.auto_mv_quota_gb = auto_mv_quota_gb
         # The Tunnel parent resource group that is bound to the project. You do not need to pay attention to this group.
         self.elder_tunnel_quota = elder_tunnel_quota
+        self.enable_auto_mv = enable_auto_mv
         # Indicates whether the DECIMAL type of the MaxCompute V2.0 data type edition is enabled.
         self.enable_decimal_2 = enable_decimal_2
+        self.enable_dr = enable_dr
         # Indicates whether external table caching is forcefully enabled.
         self.enable_fdc_cache_force = enable_fdc_cache_force
         # Indicates whether [tiered storage](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/tiered-storage) is enabled.
@@ -6044,10 +6474,16 @@ class GetProjectResponseBodyDataProperties(TeaModel):
         result = dict()
         if self.allow_full_scan is not None:
             result['allowFullScan'] = self.allow_full_scan
+        if self.auto_mv_quota_gb is not None:
+            result['autoMvQuotaGb'] = self.auto_mv_quota_gb
         if self.elder_tunnel_quota is not None:
             result['elderTunnelQuota'] = self.elder_tunnel_quota
+        if self.enable_auto_mv is not None:
+            result['enableAutoMv'] = self.enable_auto_mv
         if self.enable_decimal_2 is not None:
             result['enableDecimal2'] = self.enable_decimal_2
+        if self.enable_dr is not None:
+            result['enableDr'] = self.enable_dr
         if self.enable_fdc_cache_force is not None:
             result['enableFdcCacheForce'] = self.enable_fdc_cache_force
         if self.enable_tiered_storage is not None:
@@ -6082,10 +6518,16 @@ class GetProjectResponseBodyDataProperties(TeaModel):
         m = m or dict()
         if m.get('allowFullScan') is not None:
             self.allow_full_scan = m.get('allowFullScan')
+        if m.get('autoMvQuotaGb') is not None:
+            self.auto_mv_quota_gb = m.get('autoMvQuotaGb')
         if m.get('elderTunnelQuota') is not None:
             self.elder_tunnel_quota = m.get('elderTunnelQuota')
+        if m.get('enableAutoMv') is not None:
+            self.enable_auto_mv = m.get('enableAutoMv')
         if m.get('enableDecimal2') is not None:
             self.enable_decimal_2 = m.get('enableDecimal2')
+        if m.get('enableDr') is not None:
+            self.enable_dr = m.get('enableDr')
         if m.get('enableFdcCacheForce') is not None:
             self.enable_fdc_cache_force = m.get('enableFdcCacheForce')
         if m.get('enableTieredStorage') is not None:
@@ -12189,21 +12631,37 @@ class ListJobInfosRequest(TeaModel):
     ):
         # Specifies whether to sort query results in ascending or descending order.
         self.asc_order = asc_order
+        # The ancestor node IDs.
         self.ext_node_id_list = ext_node_id_list
+        # The start timestamp.
+        # 
         # This parameter is required.
         self.from_ = from_
+        # The job instance IDs.
         self.instance_id_list = instance_id_list
+        # The job owners.
         self.job_owner_list = job_owner_list
+        # The job priorities.
         self.priority_list = priority_list
+        # The project names.
         self.project_list = project_list
+        # The quota nickname.
         self.quota_nickname = quota_nickname
+        # The intelligent diagnostics tags.
         self.scene_tag_list = scene_tag_list
+        # The job signatures.
         self.signature_list = signature_list
+        # The sorting columns.
         self.sort_by_list = sort_by_list
+        # The orders for the sorting columns.
         self.sort_order_list = sort_order_list
+        # The job states.
         self.status_list = status_list
+        # The end timestamp.
+        # 
         # This parameter is required.
         self.to = to
+        # The job types.
         self.type_list = type_list
         # The column based on which you want to sort query results.
         self.order_column = order_column
@@ -12385,6 +12843,7 @@ class ListJobInfosResponseBodyDataJobInfoList(TeaModel):
         ext_node_id: str = None,
         ext_node_on_duty: str = None,
         ext_plant_from: str = None,
+        input_bytes: float = None,
         instance_id: str = None,
         job_owner: str = None,
         job_type: str = None,
@@ -12421,6 +12880,8 @@ class ListJobInfosResponseBodyDataJobInfoList(TeaModel):
         self.ext_node_on_duty = ext_node_on_duty
         # The upstream platform.
         self.ext_plant_from = ext_plant_from
+        # The amount of scanned data for the job. Unit: byte.
+        self.input_bytes = input_bytes
         # The instance ID.
         self.instance_id = instance_id
         # The account that commits the job.
@@ -12490,6 +12951,8 @@ class ListJobInfosResponseBodyDataJobInfoList(TeaModel):
             result['extNodeOnDuty'] = self.ext_node_on_duty
         if self.ext_plant_from is not None:
             result['extPlantFrom'] = self.ext_plant_from
+        if self.input_bytes is not None:
+            result['inputBytes'] = self.input_bytes
         if self.instance_id is not None:
             result['instanceId'] = self.instance_id
         if self.job_owner is not None:
@@ -12552,6 +13015,8 @@ class ListJobInfosResponseBodyDataJobInfoList(TeaModel):
             self.ext_node_on_duty = m.get('extNodeOnDuty')
         if m.get('extPlantFrom') is not None:
             self.ext_plant_from = m.get('extPlantFrom')
+        if m.get('inputBytes') is not None:
+            self.input_bytes = m.get('inputBytes')
         if m.get('instanceId') is not None:
             self.instance_id = m.get('instanceId')
         if m.get('jobOwner') is not None:
@@ -13048,7 +13513,7 @@ class ListJobSnapshotInfosRequest(TeaModel):
         region: str = None,
         tenant_id: str = None,
     ):
-        # Specifies whether to sort query results in ascending or descending order.
+        # Specifies whether to sort data in ascending order.
         self.asc_order = asc_order
         # The ID of the upstream node.
         self.ext_node_id_list = ext_node_id_list
@@ -13079,7 +13544,7 @@ class ListJobSnapshotInfosRequest(TeaModel):
         self.to = to
         # The type of the job.
         self.type_list = type_list
-        # The column based on which you want to sort query results.
+        # The sorting column.
         self.order_column = order_column
         # The page number.
         self.page_number = page_number
@@ -13216,9 +13681,11 @@ class ListJobSnapshotInfosResponseBodyDataJobInfoList(TeaModel):
         total_time: int = None,
         waiting_time: int = None,
     ):
+        # The CPU request amount of the job at the snapshot time point. Unit: Core.
         self.cpu_request = cpu_request
         # CPU usage of the job at the snapshot time. Unit: Core.
         self.cpu_usage = cpu_usage
+        # The CPU satisfaction ratio of the job at the snapshot time point (cpuUsage/cpuRequest).
         self.cpu_usage_to_request_ratio = cpu_usage_to_request_ratio
         # The ID of the upstream node.
         self.ext_node_id = ext_node_id
@@ -13236,9 +13703,11 @@ class ListJobSnapshotInfosResponseBodyDataJobInfoList(TeaModel):
         self.max_cpu_pct = max_cpu_pct
         # Not applicable.
         self.max_memory_pct = max_memory_pct
+        # The Memory request amount of the job at the snapshot time point. Unit: MB.
         self.memory_request = memory_request
         # Memory usage of the job at the snapshot time. Unit: MB.
         self.memory_usage = memory_usage
+        # The Memory satisfaction ratio of the job at the snapshot time point (memoryUsage/memoryRequest).
         self.memory_usage_to_request_ratio = memory_usage_to_request_ratio
         # The CPU usage ratio of the annual or monthly subscription job at the snapshot time (CPU usage / (reserved CPU guarantee + elastic reserved CPU)). This parameter is not available for pay-as-you-go jobs.
         self.min_cpu_pct = min_cpu_pct
@@ -13420,7 +13889,7 @@ class ListJobSnapshotInfosResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The list of jobs snapshot information
+        # The job snapshots.
         self.job_info_list = job_info_list
         # The page number.
         self.page_number = page_number
@@ -13478,7 +13947,7 @@ class ListJobSnapshotInfosResponseBody(TeaModel):
         http_code: int = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The returned data.
         self.data = data
         # The error code.
         self.error_code = error_code

@@ -2003,6 +2003,108 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_compute_quota_schedule_with_options_async(nickname, request, headers, runtime)
 
+    def get_job_info_with_options(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetJobInfoResponse:
+        """
+        @summary Get basic information about a single job.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobInfoResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetJobInfo',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/jobs/{OpenApiUtilClient.get_encode_param(instance_id)}/info',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                max_compute_20220104_models.GetJobInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                max_compute_20220104_models.GetJobInfoResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_job_info_with_options_async(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetJobInfoResponse:
+        """
+        @summary Get basic information about a single job.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobInfoResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetJobInfo',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/jobs/{OpenApiUtilClient.get_encode_param(instance_id)}/info',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                max_compute_20220104_models.GetJobInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                max_compute_20220104_models.GetJobInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_job_info(
+        self,
+        instance_id: str,
+    ) -> max_compute_20220104_models.GetJobInfoResponse:
+        """
+        @summary Get basic information about a single job.
+        
+        @return: GetJobInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_job_info_with_options(instance_id, headers, runtime)
+
+    async def get_job_info_async(
+        self,
+        instance_id: str,
+    ) -> max_compute_20220104_models.GetJobInfoResponse:
+        """
+        @summary Get basic information about a single job.
+        
+        @return: GetJobInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_job_info_with_options_async(instance_id, headers, runtime)
+
     def get_job_resource_usage_with_options(
         self,
         tmp_req: max_compute_20220104_models.GetJobResourceUsageRequest,
