@@ -1,3 +1,10 @@
+2025-03-10 Version: 4.2.0
+- Support API DescribeRegions.
+- Update API ModifyDBClusterConfig: add param ParallelOperation.
+- Update API RestartDBCluster: add param ParallelOperation.
+- Update API UpgradeDBInstanceEngineVersion: add param ParallelOperation.
+
+
 2025-01-03 Version: 4.1.2
 - Update API DescribeDBClusterConfigChangeLogs: update param ConfigKey.
 

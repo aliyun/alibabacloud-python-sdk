@@ -1155,16 +1155,32 @@ class CreateElasticRuleRequest(TeaModel):
         region_id: str = None,
         resource_owner_id: int = None,
     ):
+        # The rule for computing resources of the required cluster.
+        # 
         # This parameter is required.
         self.cluster_class = cluster_class
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.db_instance_id = db_instance_id
+        # The time when you want to execute the scheduled scaling rule.
+        # 
         # This parameter is required.
         self.elastic_rule_start_time = elastic_rule_start_time
+        # The execution cycle.
+        # 
+        # Valid value:
+        # 
+        # *   Day
+        # 
         # This parameter is required.
         self.execution_period = execution_period
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_id = resource_owner_id
@@ -1223,11 +1239,21 @@ class CreateElasticRuleResponseBodyData(TeaModel):
         execution_period: str = None,
         rule_id: int = None,
     ):
+        # The rule for computing resources of the required cluster.
         self.cluster_class = cluster_class
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The instance ID.
         self.db_instance_id = db_instance_id
+        # The time when the scheduled scaling rule is executed.
         self.elastic_rule_start_time = elastic_rule_start_time
+        # The execution cycle.
+        # 
+        # Valid value:
+        # 
+        # *   Day
         self.execution_period = execution_period
+        # The rule ID.
         self.rule_id = rule_id
 
     def validate(self):
@@ -1276,7 +1302,9 @@ class CreateElasticRuleResponseBody(TeaModel):
         data: CreateElasticRuleResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1732,14 +1760,23 @@ class DeleteElasticRuleRequest(TeaModel):
         resource_owner_id: int = None,
         rule_id: int = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.db_instance_id = db_instance_id
+        # The cloud service.
         self.product = product
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_id = resource_owner_id
+        # The rule ID.
+        # 
         # This parameter is required.
         self.rule_id = rule_id
 
@@ -1789,7 +1826,14 @@ class DeleteElasticRuleResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the deletion is successful.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -2346,18 +2390,23 @@ class DescribeDBClusterConfigChangeLogsRequest(TeaModel):
         region_id: str = None,
         start_time: str = None,
     ):
+        # The configuration file that you want to modify. For a compute cluster, set the value to be.conf. For a frontend (FE) cluster, set the value to fe.conf.
         self.config_key = config_key
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The end of the time range to query.
+        # The end of the time range to query. Format: yyyy-MM-dd HH:mm:ss.
         # 
         # This parameter is required.
         self.end_time = end_time
         # This parameter is required.
         self.region_id = region_id
-        # The beginning of the time range to query.
+        # The beginning of the time range to query. Format: yyyy-MM-dd HH:mm:ss.
         # 
         # This parameter is required.
         self.start_time = start_time
@@ -2477,8 +2526,10 @@ class DescribeDBClusterConfigChangeLogsResponseBodyData(TeaModel):
         param_change_logs: List[DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs] = None,
         task_id: int = None,
     ):
+        # The cluster ID.
         self.db_cluster_id = db_cluster_id
         self.db_instance_id = db_instance_id
+        # The instance ID.
         self.db_instance_name = db_instance_name
         # The parameter change logs.
         self.param_change_logs = param_change_logs
@@ -2539,7 +2590,7 @@ class DescribeDBClusterConfigChangeLogsResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.access_denied_detail = access_denied_detail
-        # The returned data.
+        # The information returned.
         self.data = data
         # The dynamic code. This parameter is not returned.
         self.dynamic_code = dynamic_code
@@ -4219,11 +4270,18 @@ class DescribeElasticRulesRequest(TeaModel):
         region_id: str = None,
         resource_owner_id: int = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.db_instance_id = db_instance_id
+        # The cloud service.
         self.product = product
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_id = resource_owner_id
@@ -4272,9 +4330,17 @@ class DescribeElasticRulesResponseBodyDataRules(TeaModel):
         execution_period: str = None,
         rule_id: int = None,
     ):
+        # The rule for computing resources of the required cluster.
         self.cluster_class = cluster_class
+        # The time when you want to execute the scheduled scaling rule.
         self.elastic_rule_start_time = elastic_rule_start_time
+        # The execution cycle.
+        # 
+        # Valid value:
+        # 
+        # *   Day
         self.execution_period = execution_period
+        # The rule ID.
         self.rule_id = rule_id
 
     def validate(self):
@@ -4316,8 +4382,11 @@ class DescribeElasticRulesResponseBodyData(TeaModel):
         db_instance_id: str = None,
         rules: List[DescribeElasticRulesResponseBodyDataRules] = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The instance ID.
         self.db_instance_id = db_instance_id
+        # The details of the rules.
         self.rules = rules
 
     def validate(self):
@@ -4362,7 +4431,9 @@ class DescribeElasticRulesResponseBody(TeaModel):
         data: DescribeElasticRulesResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4428,6 +4499,231 @@ class DescribeElasticRulesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeElasticRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeRegionsRequest(TeaModel):
+    def __init__(
+        self,
+        region: str = None,
+        zone_id: str = None,
+    ):
+        self.region = region
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeRegionsResponseBodyRegionModelListZones(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        disabled: bool = None,
+        label: str = None,
+        name: str = None,
+        region_id: str = None,
+        sub_domain: str = None,
+        vpc_enabled: bool = None,
+        zone_id: str = None,
+    ):
+        self.description = description
+        self.disabled = disabled
+        self.label = label
+        self.name = name
+        self.region_id = region_id
+        self.sub_domain = sub_domain
+        self.vpc_enabled = vpc_enabled
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.disabled is not None:
+            result['Disabled'] = self.disabled
+        if self.label is not None:
+            result['Label'] = self.label
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sub_domain is not None:
+            result['SubDomain'] = self.sub_domain
+        if self.vpc_enabled is not None:
+            result['VpcEnabled'] = self.vpc_enabled
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Disabled') is not None:
+            self.disabled = m.get('Disabled')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SubDomain') is not None:
+            self.sub_domain = m.get('SubDomain')
+        if m.get('VpcEnabled') is not None:
+            self.vpc_enabled = m.get('VpcEnabled')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeRegionsResponseBodyRegionModelList(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        zones: List[DescribeRegionsResponseBodyRegionModelListZones] = None,
+    ):
+        self.region_id = region_id
+        self.zones = zones
+
+    def validate(self):
+        if self.zones:
+            for k in self.zones:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        result['Zones'] = []
+        if self.zones is not None:
+            for k in self.zones:
+                result['Zones'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        self.zones = []
+        if m.get('Zones') is not None:
+            for k in m.get('Zones'):
+                temp_model = DescribeRegionsResponseBodyRegionModelListZones()
+                self.zones.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeRegionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        region_model_list: List[DescribeRegionsResponseBodyRegionModelList] = None,
+        request_id: str = None,
+    ):
+        self.region_model_list = region_model_list
+        self.request_id = request_id
+
+    def validate(self):
+        if self.region_model_list:
+            for k in self.region_model_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RegionModelList'] = []
+        if self.region_model_list is not None:
+            for k in self.region_model_list:
+                result['RegionModelList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.region_model_list = []
+        if m.get('RegionModelList') is not None:
+            for k in m.get('RegionModelList'):
+                temp_model = DescribeRegionsResponseBodyRegionModelList()
+                self.region_model_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeRegionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeRegionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeRegionsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4637,14 +4933,28 @@ class EnDisableScalingRulesRequest(TeaModel):
         resource_owner_id: int = None,
         scaling_rules_enable: bool = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.db_instance_id = db_instance_id
+        # The cloud service.
         self.product = product
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_id = resource_owner_id
+        # Specifies whether to enable the scheduled scaling policy.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
         # This parameter is required.
         self.scaling_rules_enable = scaling_rules_enable
 
@@ -4695,8 +5005,16 @@ class EnDisableScalingRulesResponseBodyData(TeaModel):
         db_instance_id: str = None,
         scaling_rules_enable: bool = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The instance ID.
         self.db_instance_id = db_instance_id
+        # Indicates whether the scheduled scaling policy is enabled.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.scaling_rules_enable = scaling_rules_enable
 
     def validate(self):
@@ -4733,7 +5051,9 @@ class EnDisableScalingRulesResponseBody(TeaModel):
         data: EnDisableScalingRulesResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5623,6 +5943,7 @@ class ModifyDBClusterConfigRequest(TeaModel):
         config_key: str = None,
         dbcluster_id: str = None,
         dbinstance_id: str = None,
+        parallel_operation: bool = None,
         parameters: str = None,
         region_id: str = None,
         switch_time_mode: str = None,
@@ -5633,6 +5954,8 @@ class ModifyDBClusterConfigRequest(TeaModel):
         self.dbcluster_id = dbcluster_id
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # Specifies whether to perform parallel operations on the cluster node.
+        self.parallel_operation = parallel_operation
         # This parameter is required.
         self.parameters = parameters
         self.region_id = region_id
@@ -5653,6 +5976,8 @@ class ModifyDBClusterConfigRequest(TeaModel):
             result['DBClusterId'] = self.dbcluster_id
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+        if self.parallel_operation is not None:
+            result['ParallelOperation'] = self.parallel_operation
         if self.parameters is not None:
             result['Parameters'] = self.parameters
         if self.region_id is not None:
@@ -5669,6 +5994,8 @@ class ModifyDBClusterConfigRequest(TeaModel):
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('ParallelOperation') is not None:
+            self.parallel_operation = m.get('ParallelOperation')
         if m.get('Parameters') is not None:
             self.parameters = m.get('Parameters')
         if m.get('RegionId') is not None:
@@ -5970,17 +6297,33 @@ class ModifyElasticRuleRequest(TeaModel):
         resource_owner_id: int = None,
         rule_id: int = None,
     ):
+        # The rule for computing resources of the required cluster.
         self.cluster_class = cluster_class
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.db_instance_id = db_instance_id
+        # The time when you want to execute the scheduled scaling rule.
         self.elastic_rule_start_time = elastic_rule_start_time
+        # The execution cycle.
+        # 
+        # Valid value:
+        # 
+        # *   Day
         self.execution_period = execution_period
+        # The cloud service.
         self.product = product
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_id = resource_owner_id
+        # The rule ID.
+        # 
         # This parameter is required.
         self.rule_id = rule_id
 
@@ -6046,11 +6389,21 @@ class ModifyElasticRuleResponseBodyData(TeaModel):
         execution_period: str = None,
         rule_id: int = None,
     ):
+        # The rule for computing resources of the required cluster.
         self.cluster_class = cluster_class
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The instance ID.
         self.db_instance_id = db_instance_id
+        # The time when the scheduled scaling rule is executed.
         self.elastic_rule_start_time = elastic_rule_start_time
+        # The execution cycle.
+        # 
+        # Valid value:
+        # 
+        # *   Day
         self.execution_period = execution_period
+        # The rule ID.
         self.rule_id = rule_id
 
     def validate(self):
@@ -6099,7 +6452,9 @@ class ModifyElasticRuleResponseBody(TeaModel):
         data: ModifyElasticRuleResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6627,6 +6982,7 @@ class RestartDBClusterRequest(TeaModel):
         self,
         dbcluster_id: str = None,
         dbinstance_id: str = None,
+        parallel_operation: bool = None,
         region_id: str = None,
         resource_group_id: str = None,
         resource_owner_id: int = None,
@@ -6639,7 +6995,9 @@ class RestartDBClusterRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The ID of the region in which the ApsaraDB for SelectDB instance resides.
+        # Specifies whether to perform parallel operations on the cluster node.
+        self.parallel_operation = parallel_operation
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -6660,6 +7018,8 @@ class RestartDBClusterRequest(TeaModel):
             result['DBClusterId'] = self.dbcluster_id
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+        if self.parallel_operation is not None:
+            result['ParallelOperation'] = self.parallel_operation
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -6674,6 +7034,8 @@ class RestartDBClusterRequest(TeaModel):
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('ParallelOperation') is not None:
+            self.parallel_operation = m.get('ParallelOperation')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -7033,6 +7395,7 @@ class UpgradeDBInstanceEngineVersionRequest(TeaModel):
         self,
         dbinstance_id: str = None,
         engine_version: str = None,
+        parallel_operation: bool = None,
         region_id: str = None,
         resource_owner_id: int = None,
         switch_time_mode: str = None,
@@ -7045,6 +7408,7 @@ class UpgradeDBInstanceEngineVersionRequest(TeaModel):
         # 
         # This parameter is required.
         self.engine_version = engine_version
+        self.parallel_operation = parallel_operation
         # The region ID of the instance.
         # 
         # This parameter is required.
@@ -7066,6 +7430,8 @@ class UpgradeDBInstanceEngineVersionRequest(TeaModel):
             result['DBInstanceId'] = self.dbinstance_id
         if self.engine_version is not None:
             result['EngineVersion'] = self.engine_version
+        if self.parallel_operation is not None:
+            result['ParallelOperation'] = self.parallel_operation
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_owner_id is not None:
@@ -7080,6 +7446,8 @@ class UpgradeDBInstanceEngineVersionRequest(TeaModel):
             self.dbinstance_id = m.get('DBInstanceId')
         if m.get('EngineVersion') is not None:
             self.engine_version = m.get('EngineVersion')
+        if m.get('ParallelOperation') is not None:
+            self.parallel_operation = m.get('ParallelOperation')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerId') is not None:

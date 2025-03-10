@@ -79,10 +79,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.AllocateInstancePublicConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.AllocateInstancePublicConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.AllocateInstancePublicConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def allocate_instance_public_connection_with_options_async(
         self,
@@ -122,10 +128,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.AllocateInstancePublicConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.AllocateInstancePublicConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.AllocateInstancePublicConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def allocate_instance_public_connection(
         self,
@@ -215,10 +227,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.CheckCreateDBInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.CheckCreateDBInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.CheckCreateDBInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def check_create_dbinstance_with_options_async(
         self,
@@ -282,10 +300,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.CheckCreateDBInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.CheckCreateDBInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.CheckCreateDBInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def check_create_dbinstance(
         self,
@@ -345,10 +369,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.CheckServiceLinkedRoleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.CheckServiceLinkedRoleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.CheckServiceLinkedRoleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def check_service_linked_role_with_options_async(
         self,
@@ -382,10 +412,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.CheckServiceLinkedRoleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.CheckServiceLinkedRoleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.CheckServiceLinkedRoleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def check_service_linked_role(
         self,
@@ -473,10 +509,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.CreateDBClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.CreateDBClusterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.CreateDBClusterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_dbcluster_with_options_async(
         self,
@@ -538,10 +580,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.CreateDBClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.CreateDBClusterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.CreateDBClusterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_dbcluster(
         self,
@@ -643,10 +691,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.CreateDBInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.CreateDBInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.CreateDBInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_dbinstance_with_options_async(
         self,
@@ -718,10 +772,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.CreateDBInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.CreateDBInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.CreateDBInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_dbinstance(
         self,
@@ -755,7 +815,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.CreateElasticRuleResponse:
         """
-        @summary 创建分时弹性规则
+        @summary Creates a scheduled scaling rule.
         
         @param request: CreateElasticRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -791,10 +851,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.CreateElasticRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.CreateElasticRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.CreateElasticRuleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_elastic_rule_with_options_async(
         self,
@@ -802,7 +868,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.CreateElasticRuleResponse:
         """
-        @summary 创建分时弹性规则
+        @summary Creates a scheduled scaling rule.
         
         @param request: CreateElasticRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -838,17 +904,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.CreateElasticRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.CreateElasticRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.CreateElasticRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_elastic_rule(
         self,
         request: selectdb_20230522_models.CreateElasticRuleRequest,
     ) -> selectdb_20230522_models.CreateElasticRuleResponse:
         """
-        @summary 创建分时弹性规则
+        @summary Creates a scheduled scaling rule.
         
         @param request: CreateElasticRuleRequest
         @return: CreateElasticRuleResponse
@@ -861,7 +933,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.CreateElasticRuleRequest,
     ) -> selectdb_20230522_models.CreateElasticRuleResponse:
         """
-        @summary 创建分时弹性规则
+        @summary Creates a scheduled scaling rule.
         
         @param request: CreateElasticRuleRequest
         @return: CreateElasticRuleResponse
@@ -901,10 +973,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.CreateServiceLinkedRoleForSelectDBResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.CreateServiceLinkedRoleForSelectDBResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.CreateServiceLinkedRoleForSelectDBResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_service_linked_role_for_select_dbwith_options_async(
         self,
@@ -938,10 +1016,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.CreateServiceLinkedRoleForSelectDBResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.CreateServiceLinkedRoleForSelectDBResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.CreateServiceLinkedRoleForSelectDBResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_service_linked_role_for_select_db(
         self,
@@ -1009,10 +1093,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.DeleteDBClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.DeleteDBClusterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.DeleteDBClusterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_dbcluster_with_options_async(
         self,
@@ -1054,10 +1144,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.DeleteDBClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.DeleteDBClusterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.DeleteDBClusterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_dbcluster(
         self,
@@ -1121,10 +1217,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.DeleteDBInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.DeleteDBInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.DeleteDBInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_dbinstance_with_options_async(
         self,
@@ -1162,10 +1264,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.DeleteDBInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.DeleteDBInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.DeleteDBInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_dbinstance(
         self,
@@ -1199,7 +1307,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.DeleteElasticRuleResponse:
         """
-        @summary 删除分时弹性规则
+        @summary Deletes a scheduled scaling rule.
         
         @param request: DeleteElasticRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1233,10 +1341,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.DeleteElasticRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.DeleteElasticRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.DeleteElasticRuleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_elastic_rule_with_options_async(
         self,
@@ -1244,7 +1358,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.DeleteElasticRuleResponse:
         """
-        @summary 删除分时弹性规则
+        @summary Deletes a scheduled scaling rule.
         
         @param request: DeleteElasticRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1278,17 +1392,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.DeleteElasticRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.DeleteElasticRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.DeleteElasticRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_elastic_rule(
         self,
         request: selectdb_20230522_models.DeleteElasticRuleRequest,
     ) -> selectdb_20230522_models.DeleteElasticRuleResponse:
         """
-        @summary 删除分时弹性规则
+        @summary Deletes a scheduled scaling rule.
         
         @param request: DeleteElasticRuleRequest
         @return: DeleteElasticRuleResponse
@@ -1301,7 +1421,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.DeleteElasticRuleRequest,
     ) -> selectdb_20230522_models.DeleteElasticRuleResponse:
         """
-        @summary 删除分时弹性规则
+        @summary Deletes a scheduled scaling rule.
         
         @param request: DeleteElasticRuleRequest
         @return: DeleteElasticRuleResponse
@@ -1341,10 +1461,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.DescribeAllDBInstanceClassResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeAllDBInstanceClassResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeAllDBInstanceClassResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_all_dbinstance_class_with_options_async(
         self,
@@ -1378,10 +1504,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.DescribeAllDBInstanceClassResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeAllDBInstanceClassResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeAllDBInstanceClassResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_all_dbinstance_class(
         self,
@@ -1445,10 +1577,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.DescribeDBClusterConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeDBClusterConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeDBClusterConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbcluster_config_with_options_async(
         self,
@@ -1486,10 +1624,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.DescribeDBClusterConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeDBClusterConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeDBClusterConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbcluster_config(
         self,
@@ -1557,10 +1701,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.DescribeDBClusterConfigChangeLogsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeDBClusterConfigChangeLogsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeDBClusterConfigChangeLogsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbcluster_config_change_logs_with_options_async(
         self,
@@ -1602,10 +1752,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.DescribeDBClusterConfigChangeLogsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeDBClusterConfigChangeLogsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeDBClusterConfigChangeLogsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbcluster_config_change_logs(
         self,
@@ -1667,10 +1823,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.DescribeDBInstanceAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeDBInstanceAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeDBInstanceAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbinstance_attribute_with_options_async(
         self,
@@ -1706,10 +1868,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.DescribeDBInstanceAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeDBInstanceAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeDBInstanceAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbinstance_attribute(
         self,
@@ -1771,10 +1939,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.DescribeDBInstanceNetInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeDBInstanceNetInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeDBInstanceNetInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbinstance_net_info_with_options_async(
         self,
@@ -1810,10 +1984,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.DescribeDBInstanceNetInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeDBInstanceNetInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeDBInstanceNetInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbinstance_net_info(
         self,
@@ -1891,10 +2071,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.DescribeDBInstancesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeDBInstancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeDBInstancesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbinstances_with_options_async(
         self,
@@ -1946,10 +2132,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.DescribeDBInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeDBInstancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeDBInstancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbinstances(
         self,
@@ -1983,7 +2175,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.DescribeElasticRulesResponse:
         """
-        @summary 查询分时弹性规则
+        @summary Queries scheduled scaling rules.
         
         @param request: DescribeElasticRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2005,10 +2197,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.DescribeElasticRulesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeElasticRulesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeElasticRulesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_elastic_rules_with_options_async(
         self,
@@ -2016,7 +2214,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.DescribeElasticRulesResponse:
         """
-        @summary 查询分时弹性规则
+        @summary Queries scheduled scaling rules.
         
         @param request: DescribeElasticRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2038,17 +2236,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.DescribeElasticRulesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeElasticRulesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeElasticRulesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_elastic_rules(
         self,
         request: selectdb_20230522_models.DescribeElasticRulesRequest,
     ) -> selectdb_20230522_models.DescribeElasticRulesResponse:
         """
-        @summary 查询分时弹性规则
+        @summary Queries scheduled scaling rules.
         
         @param request: DescribeElasticRulesRequest
         @return: DescribeElasticRulesResponse
@@ -2061,13 +2265,117 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.DescribeElasticRulesRequest,
     ) -> selectdb_20230522_models.DescribeElasticRulesResponse:
         """
-        @summary 查询分时弹性规则
+        @summary Queries scheduled scaling rules.
         
         @param request: DescribeElasticRulesRequest
         @return: DescribeElasticRulesResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_elastic_rules_with_options_async(request, runtime)
+
+    def describe_regions_with_options(
+        self,
+        request: selectdb_20230522_models.DescribeRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.DescribeRegionsResponse:
+        """
+        @summary 获取Region信息
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeRegionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeRegionsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_regions_with_options_async(
+        self,
+        request: selectdb_20230522_models.DescribeRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.DescribeRegionsResponse:
+        """
+        @summary 获取Region信息
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeRegionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeRegionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_regions(
+        self,
+        request: selectdb_20230522_models.DescribeRegionsRequest,
+    ) -> selectdb_20230522_models.DescribeRegionsResponse:
+        """
+        @summary 获取Region信息
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_regions_with_options(request, runtime)
+
+    async def describe_regions_async(
+        self,
+        request: selectdb_20230522_models.DescribeRegionsRequest,
+    ) -> selectdb_20230522_models.DescribeRegionsResponse:
+        """
+        @summary 获取Region信息
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_regions_with_options_async(request, runtime)
 
     def describe_security_iplist_with_options(
         self,
@@ -2103,10 +2411,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.DescribeSecurityIPListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeSecurityIPListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeSecurityIPListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_security_iplist_with_options_async(
         self,
@@ -2142,10 +2456,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.DescribeSecurityIPListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeSecurityIPListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.DescribeSecurityIPListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_security_iplist(
         self,
@@ -2179,7 +2499,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.EnDisableScalingRulesResponse:
         """
-        @summary 开关分时弹性策略
+        @summary Uses the scheduled scaling policy.
         
         @param request: EnDisableScalingRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2213,10 +2533,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.EnDisableScalingRulesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.EnDisableScalingRulesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.EnDisableScalingRulesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def en_disable_scaling_rules_with_options_async(
         self,
@@ -2224,7 +2550,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.EnDisableScalingRulesResponse:
         """
-        @summary 开关分时弹性策略
+        @summary Uses the scheduled scaling policy.
         
         @param request: EnDisableScalingRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2258,17 +2584,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.EnDisableScalingRulesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.EnDisableScalingRulesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.EnDisableScalingRulesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def en_disable_scaling_rules(
         self,
         request: selectdb_20230522_models.EnDisableScalingRulesRequest,
     ) -> selectdb_20230522_models.EnDisableScalingRulesResponse:
         """
-        @summary 开关分时弹性策略
+        @summary Uses the scheduled scaling policy.
         
         @param request: EnDisableScalingRulesRequest
         @return: EnDisableScalingRulesResponse
@@ -2281,7 +2613,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.EnDisableScalingRulesRequest,
     ) -> selectdb_20230522_models.EnDisableScalingRulesResponse:
         """
-        @summary 开关分时弹性策略
+        @summary Uses the scheduled scaling policy.
         
         @param request: EnDisableScalingRulesRequest
         @return: EnDisableScalingRulesResponse
@@ -2317,10 +2649,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.GetCreateBEClusterInquiryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.GetCreateBEClusterInquiryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.GetCreateBEClusterInquiryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_create_becluster_inquiry_with_options_async(
         self,
@@ -2350,10 +2688,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.GetCreateBEClusterInquiryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.GetCreateBEClusterInquiryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.GetCreateBEClusterInquiryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_create_becluster_inquiry(
         self,
@@ -2409,10 +2753,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.GetModifyBEClusterInquiryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.GetModifyBEClusterInquiryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.GetModifyBEClusterInquiryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_modify_becluster_inquiry_with_options_async(
         self,
@@ -2442,10 +2792,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.GetModifyBEClusterInquiryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.GetModifyBEClusterInquiryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.GetModifyBEClusterInquiryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_modify_becluster_inquiry(
         self,
@@ -2513,10 +2869,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.ModifyBEClusterAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.ModifyBEClusterAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.ModifyBEClusterAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_becluster_attribute_with_options_async(
         self,
@@ -2558,10 +2920,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.ModifyBEClusterAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.ModifyBEClusterAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.ModifyBEClusterAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_becluster_attribute(
         self,
@@ -2631,10 +2999,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.ModifyDBClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.ModifyDBClusterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.ModifyDBClusterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbcluster_with_options_async(
         self,
@@ -2678,10 +3052,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.ModifyDBClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.ModifyDBClusterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.ModifyDBClusterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbcluster(
         self,
@@ -2729,6 +3109,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.parallel_operation):
+            query['ParallelOperation'] = request.parallel_operation
         if not UtilClient.is_unset(request.parameters):
             query['Parameters'] = request.parameters
         if not UtilClient.is_unset(request.region_id):
@@ -2749,10 +3131,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.ModifyDBClusterConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.ModifyDBClusterConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.ModifyDBClusterConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbcluster_config_with_options_async(
         self,
@@ -2774,6 +3162,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.parallel_operation):
+            query['ParallelOperation'] = request.parallel_operation
         if not UtilClient.is_unset(request.parameters):
             query['Parameters'] = request.parameters
         if not UtilClient.is_unset(request.region_id):
@@ -2794,10 +3184,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.ModifyDBClusterConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.ModifyDBClusterConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.ModifyDBClusterConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbcluster_config(
         self,
@@ -2863,10 +3259,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.ModifyDBInstanceAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.ModifyDBInstanceAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.ModifyDBInstanceAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbinstance_attribute_with_options_async(
         self,
@@ -2906,10 +3308,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.ModifyDBInstanceAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.ModifyDBInstanceAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.ModifyDBInstanceAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbinstance_attribute(
         self,
@@ -2943,7 +3351,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.ModifyElasticRuleResponse:
         """
-        @summary 修改分时弹性规则
+        @summary Modifies a scheduled scaling rule.
         
         @param request: ModifyElasticRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2983,10 +3391,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.ModifyElasticRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.ModifyElasticRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.ModifyElasticRuleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_elastic_rule_with_options_async(
         self,
@@ -2994,7 +3408,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.ModifyElasticRuleResponse:
         """
-        @summary 修改分时弹性规则
+        @summary Modifies a scheduled scaling rule.
         
         @param request: ModifyElasticRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3034,17 +3448,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.ModifyElasticRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.ModifyElasticRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.ModifyElasticRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_elastic_rule(
         self,
         request: selectdb_20230522_models.ModifyElasticRuleRequest,
     ) -> selectdb_20230522_models.ModifyElasticRuleResponse:
         """
-        @summary 修改分时弹性规则
+        @summary Modifies a scheduled scaling rule.
         
         @param request: ModifyElasticRuleRequest
         @return: ModifyElasticRuleResponse
@@ -3057,7 +3477,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.ModifyElasticRuleRequest,
     ) -> selectdb_20230522_models.ModifyElasticRuleResponse:
         """
-        @summary 修改分时弹性规则
+        @summary Modifies a scheduled scaling rule.
         
         @param request: ModifyElasticRuleRequest
         @return: ModifyElasticRuleResponse
@@ -3105,10 +3525,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.ModifySecurityIPListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.ModifySecurityIPListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.ModifySecurityIPListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_security_iplist_with_options_async(
         self,
@@ -3150,10 +3576,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.ModifySecurityIPListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.ModifySecurityIPListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.ModifySecurityIPListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_security_iplist(
         self,
@@ -3217,10 +3649,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.ReleaseInstancePublicConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.ReleaseInstancePublicConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.ReleaseInstancePublicConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def release_instance_public_connection_with_options_async(
         self,
@@ -3258,10 +3696,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.ReleaseInstancePublicConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.ReleaseInstancePublicConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.ReleaseInstancePublicConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def release_instance_public_connection(
         self,
@@ -3317,10 +3761,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.ResetAccountPasswordResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.ResetAccountPasswordResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.ResetAccountPasswordResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def reset_account_password_with_options_async(
         self,
@@ -3350,10 +3800,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.ResetAccountPasswordResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.ResetAccountPasswordResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.ResetAccountPasswordResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def reset_account_password(
         self,
@@ -3397,6 +3853,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.parallel_operation):
+            query['ParallelOperation'] = request.parallel_operation
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         body = {}
@@ -3421,10 +3879,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.RestartDBClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.RestartDBClusterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.RestartDBClusterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def restart_dbcluster_with_options_async(
         self,
@@ -3442,6 +3906,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.parallel_operation):
+            query['ParallelOperation'] = request.parallel_operation
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         body = {}
@@ -3466,10 +3932,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.RestartDBClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.RestartDBClusterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.RestartDBClusterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def restart_dbcluster(
         self,
@@ -3533,10 +4005,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.StartBEClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.StartBEClusterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.StartBEClusterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def start_becluster_with_options_async(
         self,
@@ -3574,10 +4052,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.StartBEClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.StartBEClusterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.StartBEClusterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def start_becluster(
         self,
@@ -3641,10 +4125,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.StopBEClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.StopBEClusterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.StopBEClusterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def stop_becluster_with_options_async(
         self,
@@ -3682,10 +4172,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.StopBEClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.StopBEClusterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.StopBEClusterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def stop_becluster(
         self,
@@ -3731,6 +4227,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.engine_version):
             query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.parallel_operation):
+            query['ParallelOperation'] = request.parallel_operation
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -3751,10 +4249,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.UpgradeDBInstanceEngineVersionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.UpgradeDBInstanceEngineVersionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.UpgradeDBInstanceEngineVersionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def upgrade_dbinstance_engine_version_with_options_async(
         self,
@@ -3774,6 +4278,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.engine_version):
             query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.parallel_operation):
+            query['ParallelOperation'] = request.parallel_operation
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -3794,10 +4300,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            selectdb_20230522_models.UpgradeDBInstanceEngineVersionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                selectdb_20230522_models.UpgradeDBInstanceEngineVersionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                selectdb_20230522_models.UpgradeDBInstanceEngineVersionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def upgrade_dbinstance_engine_version(
         self,
