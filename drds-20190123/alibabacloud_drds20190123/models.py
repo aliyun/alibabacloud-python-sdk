@@ -12,10 +12,16 @@ class ChangeAccountPasswordRequest(TeaModel):
         password: str = None,
     ):
         # The name of the member account.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The ID of the DRDS instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The new password.
+        # 
+        # This parameter is required.
         self.password = password
 
     def validate(self):
@@ -134,13 +140,21 @@ class ChangeInstanceAzoneRequest(TeaModel):
     ):
         self.change_vswitch = change_vswitch
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.drds_region_id = drds_region_id
         self.new_vswitch = new_vswitch
         # The source zone of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.origin_azone_id = origin_azone_id
         # The destination zone to which you want to modify
+        # 
+        # This parameter is required.
         self.target_azone_id = target_azone_id
 
     def validate(self):
@@ -266,8 +280,12 @@ class CheckDrdsDbNameRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # DRDS database name
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # DRDS instance ID
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -384,8 +402,12 @@ class CheckExpandStatusRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The name of the PolarDB-X database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -539,8 +561,12 @@ class CheckSqlAuditEnableStatusRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The name of the database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -755,6 +781,8 @@ class CreateDrdsDBRequest(TeaModel):
         # The name of the PolarDB-X 1.0 database you want to create.
         self.db_name = db_name
         # The ID of the PolarDB-X 1.0 instance on which you want to create the database.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The encoding method that is used by the database.
         self.encode = encode
@@ -945,12 +973,16 @@ class CreateDrdsInstanceRequest(TeaModel):
         is_ha: bool = None,
     ):
         # Specifies the client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
+        # 
+        # This parameter is required.
         self.client_token = client_token
         # Specifies the description of the instance. The description must meet the following requirements:
         # 
         # *   The description cannot contain the prefix http:// or https://.
-        # *   The description must start with a letter or a Chinese character, and can contain uppercase and lowercase letters, Chinese characters, digits, underscores (\_), and hyphens (-).
+        # *   The description must start with a letter or a Chinese character, and can contain uppercase and lowercase letters, Chinese characters, digits, underscores (_), and hyphens (-).
         # *   The description must be 2 to 256 characters in length.
+        # 
+        # This parameter is required.
         self.description = description
         # Specifies the purchase duration of the subscription instance.
         # 
@@ -964,6 +996,8 @@ class CreateDrdsInstanceRequest(TeaModel):
         # *   **drds.sn2.4c16g**: The instance is of the Starter Edition.
         # *   **drds.sn2.8c32g**: The instance is of the Standard Edition
         # *   **drds.sn2.16c64g**: The instance is of the Enterprise Edition.
+        # 
+        # This parameter is required.
         self.instance_series = instance_series
         # Specifies whether to enable automatic renewal. Valid values:
         # 
@@ -986,6 +1020,8 @@ class CreateDrdsInstanceRequest(TeaModel):
         # *   **drdsPre**: The instance uses the subscription billing method.
         # *   **drdsPost**: The instance uses the pay-as-you-go billing method.
         # *   **drdsRo**: By default, the pay-as-you-go billing method is used when you create read-only instances.
+        # 
+        # This parameter is required.
         self.pay_type = pay_type
         # Specifies the unit of the subscription duration of the subscription instance. Valid values:
         # 
@@ -995,22 +1031,32 @@ class CreateDrdsInstanceRequest(TeaModel):
         # >  This parameter is required if you set the PayType parameter to drdsPre.
         self.pricing_cycle = pricing_cycle
         # Specifies the number of instances to be created. You can set the value only to 1. The value specifies that you can create one instance each time.
+        # 
+        # This parameter is required.
         self.quantity = quantity
         # Specifies the region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # Specifies the ID of the resource group.
         self.resource_group_id = resource_group_id
         # Specifies the specification code of the instance. The value consists of the instance type and the specified instance specification. For example, you can set the value to drds.sn2.4c16g.8c32g.
+        # 
+        # This parameter is required.
         self.specification = specification
         # Specifies the type of the instance. Set the value to PRIVATE. The value PRIVATE specifies that the instance is a dedicated instance.
         # 
         # >  You can also set the value to 1 to specify that the instance is a dedicated instance.
+        # 
+        # This parameter is required.
         self.type = type
         # Specifies the ID of the VPC.
         self.vpc_id = vpc_id
         # Specifies the ID of the vSwitch.
         self.vswitch_id = vswitch_id
         # Specifies the zone ID of the instance.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
         # Specifies whether the instance is a high-availability instance.
         self.is_ha = is_ha
@@ -1296,11 +1342,18 @@ class CreateInstanceAccountRequest(TeaModel):
         password: str = None,
     ):
         # The username of the account you want to create.
+        # 
+        # This parameter is required.
         self.account_name = account_name
+        # This parameter is required.
         self.db_privilege = db_privilege
         # The ID of the PolarDB-X 1.0 instance for which you want to create the account.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The password of the account you want to create.
+        # 
+        # This parameter is required.
         self.password = password
 
     def validate(self):
@@ -1426,6 +1479,8 @@ class CreateInstanceInternetAddressRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the DRDS instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The ID of the region to which the DRDS instance belongs.
         self.region_id = region_id
@@ -1552,7 +1607,9 @@ class CreateOrderForRdsRequest(TeaModel):
         params: str = None,
         region_id: str = None,
     ):
-        # The JSON string that contains the order details. For more information, see [CreateDBInstance](~~26228~~).
+        # The JSON string that contains the order details. For more information, see [CreateDBInstance](https://help.aliyun.com/document_detail/26228.html).
+        # 
+        # This parameter is required.
         self.params = params
         # The ID of the region.
         self.region_id = region_id
@@ -1675,16 +1732,26 @@ class CreateShardTaskRequest(TeaModel):
         task_type: str = None,
     ):
         # The name of the DRDS database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the DRDS instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The ID of the region where the resource group resides.
         self.region_id = region_id
         # The name of the source table.
+        # 
+        # This parameter is required.
         self.source_table_name = source_table_name
         # The name of the destination table.
+        # 
+        # This parameter is required.
         self.target_table_name = target_table_name
         # The type of the task. Valid values:`  SHARD_TO_SINGLE `,`  SINGLE_TO_SHARD `,`  SHARD_TO_SHARD `.
+        # 
+        # This parameter is required.
         self.task_type = task_type
 
     def validate(self):
@@ -1816,6 +1883,8 @@ class DescribeBackMenuRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The ID of the DRDS instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -2006,6 +2075,8 @@ class DescribeBackupDbsRequest(TeaModel):
         # Query by backup set ID
         self.backup_id = backup_id
         # The ID of a DRDS instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # Query by restoration time.
         self.preferred_restore_time = preferred_restore_time
@@ -2156,6 +2227,8 @@ class DescribeBackupLocalRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -2419,6 +2492,8 @@ class DescribeBackupPolicyRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -2701,12 +2776,18 @@ class DescribeBackupSetsRequest(TeaModel):
         start_time: str = None,
     ):
         # The ID of the DRDS instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The end of the query time which is in timestamp format (measured in millisecond) .
         # 
         # >  The end time must be later than the start time.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The beginning of the query time which is in timestamp format (measured in millisecond).
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -2812,7 +2893,7 @@ class DescribeBackupSetsResponseBodyBackupSetsBackupSet(TeaModel):
         self.id = id
         # The status of the backup instance. Valid values:
         # 
-        # *   \-1: Failed
+        # *   \\-1: Failed
         # *   0: Not started
         # *   1: The storage instance is running.
         # *   2: Success
@@ -3006,6 +3087,8 @@ class DescribeBackupTimesRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -3161,8 +3244,12 @@ class DescribeBroadcastTablesRequest(TeaModel):
         # The number of the page to return.
         self.current_page = current_page
         # The name of the database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The number of entries to return on each page.
         self.page_size = page_size
@@ -3417,8 +3504,12 @@ class DescribeDbInstanceDbsRequest(TeaModel):
         # The engine type of the storage-layer databases. Valid values: **POLARDB** and **RDS**.
         self.db_inst_type = db_inst_type
         # The ID of the instance in which the storage-layer databases are deployed.
+        # 
+        # This parameter is required.
         self.db_instance_id = db_instance_id
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The password of the privileged account. You do not need to specify this parameter if you have no privileged account.
         self.password = password
@@ -3645,6 +3736,8 @@ class DescribeDbInstancesRequest(TeaModel):
         # Storage layer type. Valid values: **POLARDB** or **RDS**.
         self.db_inst_type = db_inst_type
         # The ID of a DRDS instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The page number of the returned page.
         self.page_number = page_number
@@ -3952,8 +4045,12 @@ class DescribeDrdsDBRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The name of the database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -4152,10 +4249,16 @@ class DescribeDrdsDBClusterRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The ID of the PolarDB cluster.
+        # 
+        # This parameter is required.
         self.db_instance_id = db_instance_id
         # The name of the DRDS database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of a DRDS instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -4574,8 +4677,12 @@ class DescribeDrdsDBIpWhiteListRequest(TeaModel):
         region_id: str = None,
     ):
         # The database name.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The instance ID.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The name of the whitelist group.
         self.group_name = group_name
@@ -4734,6 +4841,8 @@ class DescribeDrdsDBsRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The number of the page to return. The value of this parameter must be an integer that is greater than 0. Default value: **1**.
         self.page_number = page_number
@@ -4742,6 +4851,8 @@ class DescribeDrdsDBsRequest(TeaModel):
         # Default value: **30**.
         self.page_size = page_size
         # The ID of the region in which the PolarDB-X 1.0 instance is created.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -4991,10 +5102,16 @@ class DescribeDrdsDbInstanceRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The ID of the custom ApsaraDB RDS for MySQL instance that you want to query.
+        # 
+        # This parameter is required.
         self.db_instance_id = db_instance_id
         # The name of the database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The name of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -5416,8 +5533,12 @@ class DescribeDrdsDbInstancesRequest(TeaModel):
         page_size: int = None,
     ):
         # The name of the database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The number of the page to return.
         self.page_number = page_number
@@ -5933,8 +6054,12 @@ class DescribeDrdsDbRdsNameListRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The name of the database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -6080,6 +6205,8 @@ class DescribeDrdsInstanceRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the instance that you want to query.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The ID of the region in which the instance is created.
         self.region_id = region_id
@@ -6141,6 +6268,7 @@ class DescribeDrdsInstanceResponseBodyDataVipsVip(TeaModel):
         dns: str = None,
         expire_days: int = None,
         port: str = None,
+        remove_weight: bool = None,
         type: str = None,
         vpc_id: str = None,
         vswitch_id: str = None,
@@ -6151,6 +6279,7 @@ class DescribeDrdsInstanceResponseBodyDataVipsVip(TeaModel):
         self.expire_days = expire_days
         # The ports that are opened on the VIP.
         self.port = port
+        self.remove_weight = remove_weight
         # The type of the VIP. Valid values: intranet and internet.
         self.type = type
         # The ID of the VPC.
@@ -6173,6 +6302,8 @@ class DescribeDrdsInstanceResponseBodyDataVipsVip(TeaModel):
             result['ExpireDays'] = self.expire_days
         if self.port is not None:
             result['Port'] = self.port
+        if self.remove_weight is not None:
+            result['RemoveWeight'] = self.remove_weight
         if self.type is not None:
             result['Type'] = self.type
         if self.vpc_id is not None:
@@ -6189,6 +6320,8 @@ class DescribeDrdsInstanceResponseBodyDataVipsVip(TeaModel):
             self.expire_days = m.get('ExpireDays')
         if m.get('Port') is not None:
             self.port = m.get('Port')
+        if m.get('RemoveWeight') is not None:
+            self.remove_weight = m.get('RemoveWeight')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('VpcId') is not None:
@@ -6547,18 +6680,28 @@ class DescribeDrdsInstanceDbMonitorRequest(TeaModel):
         start_time: int = None,
     ):
         # The name of the database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the Distributed Relational Database Service (DRDS) instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The end time. Specify the time in the UNIX timestamp format. The time must be in UTC. Unit: ms.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The performance monitoring metrics. You can specify one or more metrics for a query at a time. Separate multiple metric parameters with commas (,).
         # 
-        # >  For more information about the details of performance monitoring metrics, see [Database monitoring](~~186704~~).
+        # >  For more information about the details of performance monitoring metrics, see [Database monitoring](https://help.aliyun.com/document_detail/186704.html).
+        # 
+        # This parameter is required.
         self.key = key
         # The ID of the region.
         self.region_id = region_id
         # The start time. Specify the time in the UNIX timestamp format. The time must be in UTC. Unit: ms.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -6783,6 +6926,8 @@ class DescribeDrdsInstanceLevelTasksRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The ID of the PolarDB-X 1.0 instance of which the unfinished tasks you want to query.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -7039,20 +7184,28 @@ class DescribeDrdsInstanceMonitorRequest(TeaModel):
         start_time: int = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The end time of the query. Specify the value in the UNIX timestamp format. The timestamp must be in UTC. Unit: ms.
         # 
         # >  If the time range that you specify is less than 1 hour, the monitoring data that is collected in a 1-hour period before the end time is returned.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The performance monitoring metrics. You can specify one or more metrics. Separate multiple metric names with commas (,).
         # 
-        # >  For more information about performance monitoring metrics, see [Monitor instances](~~186703~~).
+        # >  For more information about performance monitoring metrics, see [Monitor instances](https://help.aliyun.com/document_detail/186703.html).
+        # 
+        # This parameter is required.
         self.key = key
         # The multiple of the default time interval that you want to use to collect monitoring data. By default, the system collects monitoring data of resources at an interval of 1 minute. If you set the value of this parameter to 2, the system collects monitoring data of the instance at an interval of 2 minutes.
         self.period_multiple = period_multiple
         # The ID of the region where the instance is deployed.
         self.region_id = region_id
         # The start time of the query. Specify the value in the UNIX timestamp format. The timestamp must be in UTC. Unit: ms.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -7278,6 +7431,8 @@ class DescribeDrdsInstanceVersionRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the PolarDB-X 1.0 instance whose version you want to query.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The ID of the region.
         self.region_id = region_id
@@ -7488,6 +7643,8 @@ class DescribeDrdsInstancesRequest(TeaModel):
         # The version of the service.
         self.product_version = product_version
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the instances you want to query belong. The value of this parameter can be NULL.
         self.resource_group_id = resource_group_id
@@ -8061,11 +8218,15 @@ class DescribeDrdsParamsRequest(TeaModel):
         # The name of the database.
         self.db_name = db_name
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The type of nodes whose parameters you want to query. Valid values:
         # 
         # *   **INSTANCE: the instance level.**\
         # *   **DB**: the database level.
+        # 
+        # This parameter is required.
         self.param_level = param_level
         # The ID of the region where the PolarDB-X 1.0 instance is created.
         self.region_id = region_id
@@ -8298,7 +8459,9 @@ class DescribeDrdsRdsInstancesRequest(TeaModel):
     ):
         # The ID of the PolarDB-X instance.
         # 
-        # > You can call the [DescribeDrdsInstances](~~139284~~) operation to query the information about instances in the specified account, such as the IDs of the instances.
+        # > You can call the [DescribeDrdsInstances](https://help.aliyun.com/document_detail/139284.html) operation to query the information about instances in the specified account, such as the IDs of the instances.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -8639,10 +8802,14 @@ class DescribeDrdsShardingDbsRequest(TeaModel):
         page_size: int = None,
     ):
         # The name of the database whose shards you want to query.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The matching pattern of the database name.
         self.db_name_pattern = db_name_pattern
         # The ID of the PolarDB-X 1.0 instance whose database shards you want to query.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The page number of the returned page.
         self.page_number = page_number
@@ -8947,21 +9114,33 @@ class DescribeDrdsSlowSqlsRequest(TeaModel):
         exe_time: int = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         start_time: int = None,
     ):
         # The name of the database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The start time of the SQL query. Specify the time in the UNIX timestamp format. The time must be in UTC. Unit: ms.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The SQL execution time. Unit: ms.
+        # 
+        # This parameter is required.
         self.exe_time = exe_time
         # The number of the page to return.
         self.page_number = page_number
         # The number of entries to return on each page.
         self.page_size = page_size
+        self.region_id = region_id
         # The end time of the SQL query. Specify the time in the UNIX timestamp format. The time must be in UTC. Unit: ms.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -8985,6 +9164,8 @@ class DescribeDrdsSlowSqlsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -9003,6 +9184,8 @@ class DescribeDrdsSlowSqlsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -9211,6 +9394,8 @@ class DescribeDrdsSqlAuditStatusRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -9439,6 +9624,8 @@ class DescribeDrdsTasksRequest(TeaModel):
         # The name of the database.
         self.db_name = db_name
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The type of tasks.
         self.task_type = task_type
@@ -9640,8 +9827,12 @@ class DescribeExpandLogicTableInfoListRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The name of the database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -9837,8 +10028,12 @@ class DescribeHotDbListRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The name of the database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -10099,8 +10294,12 @@ class DescribeInstDbLogInfoRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The name of the DRDS database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the DRDS instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -10254,8 +10453,12 @@ class DescribeInstDbSlsInfoRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The name of the database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -10408,6 +10611,8 @@ class DescribeInstanceAccountsRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -10525,7 +10730,7 @@ class DescribeInstanceAccountsResponseBodyInstanceAccountsInstanceAccount(TeaMod
         self.db_privileges = db_privileges
         # Indicates the description of an account. By default, if 0 is the value of the AccountType parameter, **Created by DRDS** is returned as the value of the Description parameter. If 1 is the value of the AccountType parameter, an empty string is returned as the value of the Description parameter. You can modify the description of an account on the Accounts page in the PolarDB-X console.
         self.description = description
-        # Indicates an IP address that is allowed to access the database. The value **%** indicates that each IP address is allowed to access the database. \</note>
+        # Indicates an IP address that is allowed to access the database. The value **%** indicates that each IP address is allowed to access the database. \\</note>
         self.host = host
 
     def validate(self):
@@ -10692,6 +10897,8 @@ class DescribeInstanceSwitchAzoneRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The ID of the DRDS instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -10883,6 +11090,8 @@ class DescribeInstanceSwitchNetworkRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -11175,10 +11384,14 @@ class DescribePreCheckResultRequest(TeaModel):
         task_id: str = None,
     ):
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The ID of the region.
         self.region_id = region_id
         # The ID of the precheck task.
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -11406,14 +11619,20 @@ class DescribeRDSPerformanceRequest(TeaModel):
         # The type of the database engine.
         self.db_inst_type = db_inst_type
         # The ID of the Distributed Relational Database Service (DRDS) instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The end time of the query. Specify the time in the UNIX timestamp format. The time must be in UTC. Unit: ms.
         self.end_time = end_time
         # The performance monitoring metrics. You can specify one or more metrics for a query at a time. Separate multiple metric parameters with commas (,).
         # 
-        # >  For more information about the details of performance monitoring metrics, see [Storage monitoring](~~186705~~).
+        # >  For more information about the details of performance monitoring metrics, see [Storage monitoring](https://help.aliyun.com/document_detail/186705.html).
+        # 
+        # This parameter is required.
         self.keys = keys
         # The ID of the storage-layer ApsaraDB RDS for MySQL instance.
+        # 
+        # This parameter is required.
         self.rds_instance_id = rds_instance_id
         # The start time of the query. Specify the time in the UNIX timestamp format. The time must be in UTC. Unit: ms.
         self.start_time = start_time
@@ -11658,8 +11877,12 @@ class DescribeRdsCommodityRequest(TeaModel):
         order_type: str = None,
     ):
         # The commodity code of the service.
+        # 
+        # This parameter is required.
         self.commodity_code = commodity_code
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The type of the order.
         self.order_type = order_type
@@ -11783,7 +12006,10 @@ class DescribeRdsPerformanceSummaryRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of a DRDS instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
+        # This parameter is required.
         self.rds_instance_id = rds_instance_id
         # The ID of the region where the streaming domain resides.
         self.region_id = region_id
@@ -11980,7 +12206,10 @@ class DescribeRdsSuperAccountInstancesRequest(TeaModel):
         # The type of the ApsaraDB RDS for MySQL instances. Default value: **RDS**.
         self.db_inst_type = db_inst_type
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
+        # This parameter is required.
         self.rds_instance = rds_instance
 
     def validate(self):
@@ -12124,8 +12353,12 @@ class DescribeRecycleBinStatusRequest(TeaModel):
         region_id: str = None,
     ):
         # The name of the database that is created in the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The ID of the region.
         self.region_id = region_id
@@ -12252,8 +12485,12 @@ class DescribeRecycleBinTablesRequest(TeaModel):
         region_id: str = None,
     ):
         # The name of the database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The ID of the region.
         self.region_id = region_id
@@ -12441,6 +12678,8 @@ class DescribeRestoreOrderRequest(TeaModel):
         # The backup mode. Valid values: **logic** or **phy**.
         self.backup_mode = backup_mode
         # The ID of the instance for which to modify the backup policy.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The preferred backup time.
         self.preferred_backup_time = preferred_backup_time
@@ -12959,14 +13198,22 @@ class DescribeShardTaskInfoRequest(TeaModel):
         target_table_name: str = None,
     ):
         # The name of the database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The ID of the region.
         self.region_id = region_id
         # The name of the table that you want to convert or shard.
+        # 
+        # This parameter is required.
         self.source_table_name = source_table_name
         # The name of the table that is generated after you convert or shard the table.
+        # 
+        # This parameter is required.
         self.target_table_name = target_table_name
 
     def validate(self):
@@ -13474,6 +13721,8 @@ class DescribeSqlFlashbakTaskRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -13778,12 +14027,18 @@ class DescribeTableRequest(TeaModel):
         table_name: str = None,
     ):
         # The name of the database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The ID of the region where the PolarDB-X 1.0 instance is created.
         self.region_id = region_id
         # The name of the table.
+        # 
+        # This parameter is required.
         self.table_name = table_name
 
     def validate(self):
@@ -14016,8 +14271,12 @@ class DescribeTableListByTypeRequest(TeaModel):
         # The number of the page to return.
         self.current_page = current_page
         # The name of the database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The number of entries to return on each page.
         self.page_size = page_size
@@ -14026,6 +14285,8 @@ class DescribeTableListByTypeRequest(TeaModel):
         # The ID of the region.
         self.region_id = region_id
         # The type of tables. Valid values:
+        # 
+        # This parameter is required.
         self.table_type = table_type
 
     def validate(self):
@@ -14232,14 +14493,20 @@ class DescribeTablesRequest(TeaModel):
         # The page number of the returned page.
         self.current_page = current_page
         # The name of the database whose tables you want to query.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The number of tables returned on each page.
         self.page_size = page_size
         # The query condition. The value of this parameter is the ID of the PolarDB-X 1.0 instance.
         self.query = query
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -14484,8 +14751,12 @@ class DisableSqlAuditRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The name of the database for which you want to disable the SQL audit feature.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -14602,6 +14873,8 @@ class EnableInstanceIpv6AddressRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The ID of the region in which the instance resides.
         self.region_id = region_id
@@ -14716,8 +14989,12 @@ class EnableSqlAuditRequest(TeaModel):
         recall_start_timestamp: str = None,
     ):
         # The name of the database for which you want to enable the SQL audit feature.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # Specifies whether to backtrack historical SQL statements for auditing.
         self.is_recall = is_recall
@@ -14854,8 +15131,12 @@ class EnableSqlFlashbackMatchSwitchRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The name of the database you want to back up.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the ApsaraDB RDS for PostgreSQL instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -14974,12 +15255,18 @@ class FlashbackRecycleBinTableRequest(TeaModel):
         table_name: str = None,
     ):
         # The name of the database to which the table belongs.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the instance to which the table belongs.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The ID of the region.
         self.region_id = region_id
         # The name of the logical table to be restored.
+        # 
+        # This parameter is required.
         self.table_name = table_name
 
     def validate(self):
@@ -15104,8 +15391,12 @@ class GetDrdsDbRdsRelationInfoRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The name of the DRDS database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the DRDS instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -15319,9 +15610,13 @@ class ListTagResourcesRequest(TeaModel):
         # Specify the token that is used to display the returned tags on multiple pages.
         self.next_token = next_token
         # The ID of the region in which the resource is located.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_id = resource_id
         # The resource type. Set the value to INSTANCE.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         self.tag = tag
 
@@ -15556,24 +15851,28 @@ class ManagePrivateRdsRequest(TeaModel):
     ):
         # The ID of the custom ApsaraDB RDS instance at the storage layer.
         # 
-        # > You can call the [DescribeDrdsRdsInstances](~~215526~~) operation to query the details of all ApsaraDB RDS instances, including the ID of the instance.
+        # > You can call the [DescribeDrdsRdsInstances](https://help.aliyun.com/document_detail/215526.html) operation to query the details of all ApsaraDB RDS instances, including the ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The ID of the PolarDB-X 1.0 instance.
         # 
-        # > You can call the [DescribeDrdsInstances](~~139284~~) operation to query the details of all PolarDB-X 1.0 instances within an Alibaba Cloud account, including the IDs of the instances.
+        # > You can call the [DescribeDrdsInstances](https://help.aliyun.com/document_detail/139284.html) operation to query the details of all PolarDB-X 1.0 instances within an Alibaba Cloud account, including the IDs of the instances.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The JSON string that consists of request parameters and the values of the request parameters of an operation that you need to call for the custom ApsaraDB RDS instance. The value of a request parameter is of the STRING type. Example: `{NodeId:"1797****"}`.
         # 
         # For more information about the request parameters and valid values of the request parameters of each operation, see the request parameter sections in the following topics:
         # 
-        # *   [DescribeDBInstanceAttribute](~~26231~~)
-        # *   [DescribeAvailableClasses](~~196546~~)
-        # *   [DescribeSQLCollectorPolicy](~~26292~~)
-        # *   [ModifySQLCollectorPolicy](~~26293~~)
-        # *   [DescribeParameters](~~26285~~)
-        # *   [ModifyParameter](~~26286~~)
-        # *   [DescribeDBInstanceHAConfig](~~26244~~)
-        # *   [SwitchDBInstanceHA](~~26251~~)
+        # *   [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/26231.html)
+        # *   [DescribeAvailableClasses](https://help.aliyun.com/document_detail/196546.html)
+        # *   [DescribeSQLCollectorPolicy](https://help.aliyun.com/document_detail/26292.html)
+        # *   [ModifySQLCollectorPolicy](https://help.aliyun.com/document_detail/26293.html)
+        # *   [DescribeParameters](https://help.aliyun.com/document_detail/26285.html)
+        # *   [ModifyParameter](https://help.aliyun.com/document_detail/26286.html)
+        # *   [DescribeDBInstanceHAConfig](https://help.aliyun.com/document_detail/26244.html)
+        # *   [SwitchDBInstanceHA](https://help.aliyun.com/document_detail/26251.html)
         # 
         # > Among the required request parameters of the preceding operations, you do not need to specify the `Action` and `DBInstanceId` parameters. You must specify all the other required request parameters.
         self.params = params
@@ -15587,10 +15886,12 @@ class ManagePrivateRdsRequest(TeaModel):
         # *   **ModifyParameter**: modifies the parameters of the custom ApsaraDB RDS instance.
         # *   **DescribeDBInstanceHAConfig**: queries the high availability mode and data replication mode of the custom ApsaraDB RDS instance.
         # *   **SwitchDBInstanceHA**: switches workloads between the primary and secondary custom ApsaraDB RDS instances.
+        # 
+        # This parameter is required.
         self.rds_action = rds_action
         # The ID of the region in which the PolarDB-X 1.0 instance resides.
         # 
-        # > You can call the [DescribeDrdsInstances](~~139284~~) operation to query the details of all PolarDB-X 1.0 instances within an Alibaba Cloud account, including the IDs of regions in which the instances reside.
+        # > You can call the [DescribeDrdsInstances](https://help.aliyun.com/document_detail/139284.html) operation to query the details of all PolarDB-X 1.0 instances within an Alibaba Cloud account, including the IDs of regions in which the instances reside.
         self.region_id = region_id
 
     def validate(self):
@@ -15720,10 +16021,16 @@ class ModifyAccountDescriptionRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The name of the member account.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The description of the account.
+        # 
+        # This parameter is required.
         self.description = description
         # The ID of the ApsaraDB RDS for PostgreSQL instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -15874,9 +16181,13 @@ class ModifyAccountPrivilegeRequest(TeaModel):
         region_id: str = None,
     ):
         # The username of the account that you want to modify.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         self.db_privilege = db_privilege
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The ID of the region in which the PolarDB-X 1.0 instance is located.
         self.region_id = region_id
@@ -16004,8 +16315,12 @@ class ModifyDrdsInstanceDescriptionRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The description of the DRDS instance.
+        # 
+        # This parameter is required.
         self.description = description
         # The ID of the DRDS instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -16119,14 +16434,20 @@ class ModifyDrdsIpWhiteListRequest(TeaModel):
         mode: bool = None,
     ):
         # The name of the DRDS database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the Message Queue for Apache Kafka instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The attribute of the IP address whitelist group.
         self.group_attribute = group_attribute
         # The name of the IP address whitelist group.
         self.group_name = group_name
         # The modified whitelist. Separate multiple IP addresses with commas (,).
+        # 
+        # This parameter is required.
         self.ip_white_list = ip_white_list
         # Specifies the mode. Valid values:
         # 
@@ -16260,14 +16581,24 @@ class ModifyPolarDbReadWeightRequest(TeaModel):
         weights: str = None,
     ):
         # Polar cluster ID.
+        # 
+        # This parameter is required.
         self.db_instance_id = db_instance_id
         # The name of the database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The node list in the destination apsaradb for PolarDB cluster. The nodes in each cluster are separated with commas (,) and colons (:).
+        # 
+        # This parameter is required.
         self.db_node_ids = db_node_ids
         # The ID of a DRDS instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The weight of the PolarDB cluster. Separate multiple weights with commas (,).
+        # 
+        # This parameter is required.
         self.weights = weights
 
     def validate(self):
@@ -16391,12 +16722,20 @@ class ModifyRdsReadWeightRequest(TeaModel):
         weights: str = None,
     ):
         # The name of the database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The names of the ApsaraDB RDS for MySQL instances. Separate the names with commas (,).
+        # 
+        # This parameter is required.
         self.instance_names = instance_names
         # The weights of the ApsaraDB RDS for MySQL instances. Separate the weights with commas (,).
+        # 
+        # This parameter is required.
         self.weights = weights
 
     def validate(self):
@@ -16522,12 +16861,14 @@ class PutStartBackupRequest(TeaModel):
         # *   instance: instance
         # *   db: The database type.
         self.backup_level = backup_level
-        # The backup mode. For more information, see [backup mode](~~108631~~) and the valid values are as follows:
+        # The backup mode. For more information, see [backup mode](https://help.aliyun.com/document_detail/108631.html) and the valid values are as follows:
         # 
         # *   phy: fast backup
         # *   logic: Consistent backup
         self.backup_mode = backup_mode
         # The ID of the DRDS instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -16652,8 +16993,12 @@ class RefreshDrdsAtomUrlRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The name of the DRDS database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the DRDS instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -16770,6 +17115,8 @@ class ReleaseInstanceInternetAddressRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the DRDS instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The region where the instance is located.
         self.region_id = region_id
@@ -16880,9 +17227,13 @@ class RemoveBackupsSetRequest(TeaModel):
         backup_id: str = None,
         drds_instance_id: str = None,
     ):
-        # The ID of the backup set. You can call the [DescribeBackupSets](~~139331~~) interface to query the ID of a backup set.
+        # The ID of the backup set. You can call the [DescribeBackupSets](https://help.aliyun.com/document_detail/139331.html) interface to query the ID of a backup set.
+        # 
+        # This parameter is required.
         self.backup_id = backup_id
         # The ID of the DRDS instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -16999,8 +17350,12 @@ class RemoveDrdsDbRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The name of the database you want to back up.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the DRDS instance to which the destination database belongs.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -17110,8 +17465,12 @@ class RemoveDrdsDbFailedRecordRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The name of the DRDS database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the ApsaraDB RDS for PostgreSQL instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -17227,6 +17586,8 @@ class RemoveDrdsInstanceRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -17332,8 +17693,12 @@ class RemoveInstanceAccountRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The name of the member account.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The ID of the DRDS instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -17445,8 +17810,12 @@ class RemoveRecycleBinTableRequest(TeaModel):
         table_name: str = None,
     ):
         # The name of the database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The ID of the region.
         self.region_id = region_id
@@ -17574,6 +17943,8 @@ class RestartDrdsInstanceRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The ID of a DRDS instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -17686,6 +18057,8 @@ class RollbackInstanceVersionRequest(TeaModel):
         region_id: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The region ID.
         self.region_id = region_id
@@ -17799,6 +18172,8 @@ class SetBackupLocalRequest(TeaModel):
         local_log_retention_space: str = None,
     ):
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # Specifies whether to enable the feature to forcibly delete binary log files if the used storage space reaches 90% of the total storage space or the remaining storage space is less than 5 GB. Valid values: 1 and 0. A value of 1 specifies to enable this feature. A value of 0 specifies not to enable this feature.
         self.high_space_usage_protection = high_space_usage_protection
@@ -17958,6 +18333,8 @@ class SetBackupPolicyRequest(TeaModel):
         # The retention period of the backup data. Value range: 7 to 730.
         self.data_backup_retention_period = data_backup_retention_period
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The log retention period. Valid values: 7 to 730. This value must be less than or equal to the number of data backup days.
         self.log_backup_retention_period = log_backup_retention_period
@@ -18125,14 +18502,22 @@ class SetupBroadcastTablesRequest(TeaModel):
         table_name: List[str] = None,
     ):
         # Specifies whether to activate a broadcast table for the database.
+        # 
+        # This parameter is required.
         self.active = active
         # The name of the database for which you want to configure a broadcast table.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The ID of the region in which the PolarDB-X 1.0 instance resides.
         self.region_id = region_id
         # The name of the table.
+        # 
+        # This parameter is required.
         self.table_name = table_name
 
     def validate(self):
@@ -18322,13 +18707,18 @@ class SetupDrdsParamsRequest(TeaModel):
         param_level: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.data = data
         # The ID of the PolarDB-X 1.0 instance for which you want to configure parameters.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The resource for which you want to configure parameters. Valid values:
         # 
         # *   **INSTANCE**: Configure parameters for the instance.
         # *   **DB**: Configure parameters for the databases of the instance.
+        # 
+        # This parameter is required.
         self.param_level = param_level
         # The ID of the region in which the PolarDB-X 1.0 instance is located.
         self.region_id = region_id
@@ -18465,8 +18855,12 @@ class SetupRecycleBinStatusRequest(TeaModel):
         status_action: str = None,
     ):
         # The name of the database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The ID of the region.
         self.region_id = region_id
@@ -18474,6 +18868,8 @@ class SetupRecycleBinStatusRequest(TeaModel):
         # 
         # *   enable: The table recycle bin is enabled.
         # *   disable: The table recycle bin is disabled.
+        # 
+        # This parameter is required.
         self.status_action = status_action
 
     def validate(self):
@@ -18601,13 +18997,20 @@ class SetupTableRequest(TeaModel):
         table_name: List[str] = None,
     ):
         # Specifies whether to enable full table scan.
+        # 
+        # This parameter is required.
         self.allow_full_table_scan = allow_full_table_scan
         # The name of the database in which the table resides.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the DRDS instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The ID of the region where the streaming domain resides.
         self.region_id = region_id
+        # This parameter is required.
         self.table_name = table_name
 
     def validate(self):
@@ -18758,6 +19161,8 @@ class StartRestoreRequest(TeaModel):
         # *   phy: fast backup
         self.backup_mode = backup_mode
         # The ID of the DRDS instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The restoration time of the instance, in the format of`  yyyy-MM-dd HH:mm:ss `.
         self.preferred_backup_time = preferred_backup_time
@@ -18895,17 +19300,27 @@ class SubmitCleanTaskRequest(TeaModel):
         parent_job_id: str = None,
     ):
         # The name of the database that is scaled out.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The scale-out type. Valid values:
         # 
         # *   smooth_expand: smooth scale-out
         # *   hot_expand: hot-spot scale-out
+        # 
+        # This parameter is required.
         self.expand_type = expand_type
         # The job ID of the scale-out task. The value of this parameter is the same as that of the ParentJobId parameter.
+        # 
+        # This parameter is required.
         self.job_id = job_id
         # The ID of the scale-out task. This parameter is returned if you send a request for the smooth scale-out task.
+        # 
+        # This parameter is required.
         self.parent_job_id = parent_job_id
 
     def validate(self):
@@ -19032,10 +19447,16 @@ class SubmitHotExpandPreCheckTaskRequest(TeaModel):
         # 
         # *   RDS
         # *   PolarDB
+        # 
+        # This parameter is required.
         self.db_inst_type = db_inst_type
         # The name of the PolarDB-X database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The name of the table.
         self.table_list = table_list
@@ -19204,6 +19625,8 @@ class SubmitHotExpandTaskRequestInstanceDbMapping(TeaModel):
         instance_name: str = None,
     ):
         # The name of the hot-spot database.
+        # 
+        # This parameter is required.
         self.db_list = db_list
         # The name of the ApsaraDB RDS instance to which the hot-spot database belongs.
         self.instance_name = instance_name
@@ -19357,14 +19780,24 @@ class SubmitHotExpandTaskRequest(TeaModel):
         task_name: str = None,
     ):
         # The name of the database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The information about the database on which you want to perform hot-spot scale-out.
+        # 
+        # This parameter is required.
         self.extended_mapping = extended_mapping
         # The information about the instance to which the hot-spot database belongs.
+        # 
+        # This parameter is required.
         self.instance_db_mapping = instance_db_mapping
         # The information about the hot-spot database.
+        # 
+        # This parameter is required.
         self.mapping = mapping
         # The information about the privileged account.
         self.supper_account_mapping = supper_account_mapping
@@ -19543,10 +19976,16 @@ class SubmitSmoothExpandPreCheckRequest(TeaModel):
         # 
         # *   RDS
         # *   POLARDB
+        # 
+        # This parameter is required.
         self.db_inst_type = db_inst_type
         # The name of the PolarDB-X database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -19674,8 +20113,12 @@ class SubmitSmoothExpandPreCheckTaskRequest(TeaModel):
         drds_instance_id: str = None,
     ):
         # The name of the PolarDB-X 1.0 database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
 
     def validate(self):
@@ -19807,15 +20250,23 @@ class SubmitSqlFlashbackTaskRequest(TeaModel):
         trace_id: str = None,
     ):
         # The name of the DRDS database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of a DRDS instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The time when the SQL flashback task ends.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The restoration type. Valid values:
         # 
         # *   1: Image restoration
         # *   0: reverse recovery
+        # 
+        # This parameter is required.
         self.recall_restore_type = recall_restore_type
         # Exact match or fuzzy match. Valid values:
         # 
@@ -19827,6 +20278,8 @@ class SubmitSqlFlashbackTaskRequest(TeaModel):
         # The type of the SQL statement. Valid values: INSERT, UPDATE, and DELETE. Separate multiple types with commas (,).
         self.sql_type = sql_type
         # The start time of the flashback SQL statement.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The name of the table where the flashback SQL operation was performed.
         self.table_name = table_name
@@ -19980,8 +20433,12 @@ class SwitchGlobalBroadcastTypeRequest(TeaModel):
         region_id: str = None,
     ):
         # The name of the database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The ID of the region.
         self.region_id = region_id
@@ -20141,10 +20598,16 @@ class TagResourcesRequest(TeaModel):
         tag: List[TagResourcesRequestTag] = None,
     ):
         # The ID of the region in which the resource is located.
+        # 
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.resource_id = resource_id
         # The resource type. Set the value to INSTANCE.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -20275,9 +20738,14 @@ class UntagResourcesRequest(TeaModel):
         # Specifies whether to delete all tags of the resource.
         self.all = all
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource. Set the value to INSTANCE.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         self.tag_key = tag_key
 
@@ -20404,6 +20872,8 @@ class UpdateInstanceNetworkRequest(TeaModel):
         # Specifies the retention period of the classic network endpoint. Unit: days.
         self.classic_expired_days = classic_expired_days
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # Specifies whether to retain the classic network endpoint.
         self.retain_classic = retain_classic
@@ -20411,6 +20881,8 @@ class UpdateInstanceNetworkRequest(TeaModel):
         # 
         # *   vpc: Virtual Private Cloud (VPC)
         # *   classic: classic network
+        # 
+        # This parameter is required.
         self.src_instance_network_type = src_instance_network_type
 
     def validate(self):
@@ -20538,20 +21010,24 @@ class UpdatePrivateRdsClassRequest(TeaModel):
         # The ID of the custom ApsaraDB RDS instance at the storage layer.
         # 
         # > You can call the [DescribeDrdsRdsInstances](~~xxxx~~) operation to query the details of all ApsaraDB RDS instances at the storage layer of a PolarDB-X 1.0 instance, including the IDs of the ApsaraDB RDS instances.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The ID of the PolarDB-X 1.0 instance.
         # 
-        # > You can call the [DescribeDrdsInstances](~~139284~~) operation to query the details of all PolarDB-X 1.0 instances within an Alibaba Cloud account, including the IDs of the instances.
+        # > You can call the [DescribeDrdsInstances](https://help.aliyun.com/document_detail/139284.html) operation to query the details of all PolarDB-X 1.0 instances within an Alibaba Cloud account, including the IDs of the instances.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # This parameter is discontinued.
         self.pre_pay_duration = pre_pay_duration
         # The new instance type of the custom ApsaraDB RDS instance at the storage layer.
         # 
-        # > You can call the [DescribeAvailableClasses](~~196546~~) operation to view the specifications that are supported for a custom ApsaraDB RDS instance. The specifications include the instance type and the storage capacity.
+        # > You can call the [DescribeAvailableClasses](https://help.aliyun.com/document_detail/196546.html) operation to view the specifications that are supported for a custom ApsaraDB RDS instance. The specifications include the instance type and the storage capacity.
         self.rds_class = rds_class
         # The new storage capacity of the custom ApsaraDB RDS instance at the storage layer.
         # 
-        # > You can call the [DescribeAvailableClasses](~~196546~~) operation to view the specifications that are supported for a custom ApsaraDB RDS instance. The specifications include the instance type and the storage capacity.
+        # > You can call the [DescribeAvailableClasses](https://help.aliyun.com/document_detail/196546.html) operation to view the specifications that are supported for a custom ApsaraDB RDS instance. The specifications include the instance type and the storage capacity.
         self.storage = storage
 
     def validate(self):
@@ -20686,15 +21162,21 @@ class UpdateResourceGroupAttributeRequest(TeaModel):
     ):
         # The ID of the instance that you want to transfer.
         # 
-        # >  You can call the [DescribeDrdsInstances](~~139284~~) operation to view the details of the instances under the account, including the instance IDs.
+        # >  You can call the [DescribeDrdsInstances](https://help.aliyun.com/document_detail/139284.html) operation to view the details of the instances under the account, including the instance IDs.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The ID of the resource group that you want to specify.
         # 
-        # >  You can call the [ListResourceGroups](~~158855~~) operation to view the details of the resource groups, including the resource group IDs.
+        # >  You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to view the details of the resource groups, including the resource group IDs.
+        # 
+        # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
         # The ID of the region where the instance you want to transfer is located.
         # 
-        # >  You can call the [DescribeDrdsInstances](~~139284~~) operation to view the details of the instances under the account, including the region IDs.
+        # >  You can call the [DescribeDrdsInstances](https://help.aliyun.com/document_detail/139284.html) operation to view the details of the instances under the account, including the region IDs.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -20802,8 +21284,12 @@ class UpgradeHiStoreInstanceRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The ID of the column-oriented storage instance.
+        # 
+        # This parameter is required.
         self.histore_instance_id = histore_instance_id
         # The ID of the region.
         self.region_id = region_id
@@ -20920,6 +21406,8 @@ class UpgradeInstanceVersionRequest(TeaModel):
         rpm: str = None,
     ):
         # The ID of the PolarDB-X 1.0 instance that you want to upgrade.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The ID of the region.
         self.region_id = region_id
@@ -21041,20 +21529,30 @@ class ValidateShardTaskRequest(TeaModel):
         task_type: str = None,
     ):
         # The name of the database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
         # The ID of the PolarDB-X 1.0 instance.
+        # 
+        # This parameter is required.
         self.drds_instance_id = drds_instance_id
         # The ID of the region where the PolarDB-X 1.0 instance is created.
         self.region_id = region_id
         # The name of the table or table shard on which you want to perform the task.
+        # 
+        # This parameter is required.
         self.source_table_name = source_table_name
         # The name of the table or table shard on which you perform the task.
+        # 
+        # This parameter is required.
         self.target_table_name = target_table_name
         # The type of the task. Valid values:
         # 
         # *   **SINGLE_TO_SHARD**: converts a single table to a table shard.
         # *   **SHARD_TO_SINGLE**: converts a table shard to a single table.
         # *   **SHARD_TO_SHARD**: converts a table shard to another table shard.
+        # 
+        # This parameter is required.
         self.task_type = task_type
 
     def validate(self):

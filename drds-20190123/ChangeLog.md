@@ -1,3 +1,10 @@
+2025-03-11 Version: 1.0.15
+- Update API DescribeDrdsInstance: update response param.
+- Update API DescribeDrdsInstances: update param RegionId.
+- Update API DescribeDrdsRdsInstances: update response param.
+- Update API DescribeDrdsSlowSqls: add param RegionId.
+
+
 2024-04-24 Version: 1.0.14
 - Update API DescribeDbInstances: update response param.
 - Update API DescribeDrdsInstances: update param RegionId.
