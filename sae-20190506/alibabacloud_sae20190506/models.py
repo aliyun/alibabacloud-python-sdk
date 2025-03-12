@@ -17470,6 +17470,7 @@ class DeployApplicationRequest(TeaModel):
         service_tags: str = None,
         sidecar_containers_config: List[SidecarContainerConfig] = None,
         sls_configs: str = None,
+        swimlane_pvtz_discovery_svc: str = None,
         termination_grace_period_seconds: int = None,
         timezone: str = None,
         tomcat_config: str = None,
@@ -17719,6 +17720,7 @@ class DeployApplicationRequest(TeaModel):
         # 
         # > A Log Service project that is automatically created by SAE when you create an application is deleted when the application is deleted. Therefore, when you create an application, you cannot select a Log Service project that is automatically created by SAE for log collection.
         self.sls_configs = sls_configs
+        self.swimlane_pvtz_discovery_svc = swimlane_pvtz_discovery_svc
         # The timeout period for a graceful shutdown. Default value: 30. Unit: seconds. Valid values: 1 to 300.
         self.termination_grace_period_seconds = termination_grace_period_seconds
         # The time zone. Default value: **Asia/Shanghai**.
@@ -17896,6 +17898,8 @@ class DeployApplicationRequest(TeaModel):
                 result['SidecarContainersConfig'].append(k.to_map() if k else None)
         if self.sls_configs is not None:
             result['SlsConfigs'] = self.sls_configs
+        if self.swimlane_pvtz_discovery_svc is not None:
+            result['SwimlanePvtzDiscoverySvc'] = self.swimlane_pvtz_discovery_svc
         if self.termination_grace_period_seconds is not None:
             result['TerminationGracePeriodSeconds'] = self.termination_grace_period_seconds
         if self.timezone is not None:
@@ -18039,6 +18043,8 @@ class DeployApplicationRequest(TeaModel):
                 self.sidecar_containers_config.append(temp_model.from_map(k))
         if m.get('SlsConfigs') is not None:
             self.sls_configs = m.get('SlsConfigs')
+        if m.get('SwimlanePvtzDiscoverySvc') is not None:
+            self.swimlane_pvtz_discovery_svc = m.get('SwimlanePvtzDiscoverySvc')
         if m.get('TerminationGracePeriodSeconds') is not None:
             self.termination_grace_period_seconds = m.get('TerminationGracePeriodSeconds')
         if m.get('Timezone') is not None:
@@ -18120,6 +18126,7 @@ class DeployApplicationShrinkRequest(TeaModel):
         service_tags: str = None,
         sidecar_containers_config_shrink: str = None,
         sls_configs: str = None,
+        swimlane_pvtz_discovery_svc: str = None,
         termination_grace_period_seconds: int = None,
         timezone: str = None,
         tomcat_config: str = None,
@@ -18369,6 +18376,7 @@ class DeployApplicationShrinkRequest(TeaModel):
         # 
         # > A Log Service project that is automatically created by SAE when you create an application is deleted when the application is deleted. Therefore, when you create an application, you cannot select a Log Service project that is automatically created by SAE for log collection.
         self.sls_configs = sls_configs
+        self.swimlane_pvtz_discovery_svc = swimlane_pvtz_discovery_svc
         # The timeout period for a graceful shutdown. Default value: 30. Unit: seconds. Valid values: 1 to 300.
         self.termination_grace_period_seconds = termination_grace_period_seconds
         # The time zone. Default value: **Asia/Shanghai**.
@@ -18541,6 +18549,8 @@ class DeployApplicationShrinkRequest(TeaModel):
             result['SidecarContainersConfig'] = self.sidecar_containers_config_shrink
         if self.sls_configs is not None:
             result['SlsConfigs'] = self.sls_configs
+        if self.swimlane_pvtz_discovery_svc is not None:
+            result['SwimlanePvtzDiscoverySvc'] = self.swimlane_pvtz_discovery_svc
         if self.termination_grace_period_seconds is not None:
             result['TerminationGracePeriodSeconds'] = self.termination_grace_period_seconds
         if self.timezone is not None:
@@ -18681,6 +18691,8 @@ class DeployApplicationShrinkRequest(TeaModel):
             self.sidecar_containers_config_shrink = m.get('SidecarContainersConfig')
         if m.get('SlsConfigs') is not None:
             self.sls_configs = m.get('SlsConfigs')
+        if m.get('SwimlanePvtzDiscoverySvc') is not None:
+            self.swimlane_pvtz_discovery_svc = m.get('SwimlanePvtzDiscoverySvc')
         if m.get('TerminationGracePeriodSeconds') is not None:
             self.termination_grace_period_seconds = m.get('TerminationGracePeriodSeconds')
         if m.get('Timezone') is not None:
@@ -19762,7 +19774,9 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         app_name: str = None,
         app_source: str = None,
         associate_eip: bool = None,
+        base_app_id: str = None,
         batch_wait_time: int = None,
+        cluster_id: str = None,
         command: str = None,
         command_args: str = None,
         config_map_mount_desc: List[DescribeApplicationConfigResponseBodyDataConfigMapMountDesc] = None,
@@ -19776,7 +19790,6 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         enable_grey_tag_route: bool = None,
         enable_idle: bool = None,
         enable_new_arms: bool = None,
-        enabledle: bool = None,
         envs: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
@@ -19788,6 +19801,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         memory: int = None,
         micro_registration: str = None,
         micro_registration_config: str = None,
+        microservice_engine_config: str = None,
         min_ready_instance_ratio: int = None,
         min_ready_instances: int = None,
         mount_desc: List[DescribeApplicationConfigResponseBodyDataMountDesc] = None,
@@ -19797,6 +19811,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         namespace_id: str = None,
         nas_configs: str = None,
         nas_id: str = None,
+        new_sae_version: str = None,
         oidc_role_name: str = None,
         oss_ak_id: str = None,
         oss_ak_secret: str = None,
@@ -19823,6 +19838,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         service_tags: Dict[str, str] = None,
         sidecar_containers_config: List[DescribeApplicationConfigResponseBodyDataSidecarContainersConfig] = None,
         sls_configs: str = None,
+        swimlane_pvtz_discovery: str = None,
         tags: List[DescribeApplicationConfigResponseBodyDataTags] = None,
         termination_grace_period_seconds: int = None,
         timezone: str = None,
@@ -19850,8 +19866,10 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         # *   **true**: The EIP is associated with the application instance.
         # *   **false**: The EIP is not associated with the application instance.
         self.associate_eip = associate_eip
+        self.base_app_id = base_app_id
         # The interval between batches in a phased release. Unit: seconds.
         self.batch_wait_time = batch_wait_time
+        self.cluster_id = cluster_id
         # The command that is used to start the image. The command must be an existing executable object in the container. Example:
         # 
         # ```
@@ -19905,7 +19923,6 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self.enable_grey_tag_route = enable_grey_tag_route
         self.enable_idle = enable_idle
         self.enable_new_arms = enable_new_arms
-        self.enabledle = enabledle
         # The environment variables. Variable description:
         # 
         # *   **name**: the name of the environment variable.
@@ -19985,6 +20002,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self.memory = memory
         self.micro_registration = micro_registration
         self.micro_registration_config = micro_registration_config
+        self.microservice_engine_config = microservice_engine_config
         # The percentage of the minimum number of available instances. Valid values:
         # 
         # *   **-1**: the default value. This value indicates that the minimum number of available instances is not measured by percentage. If you do not configure this parameter, the default value **-1** is used.
@@ -20011,6 +20029,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self.nas_configs = nas_configs
         # The ID of the NAS file system.
         self.nas_id = nas_id
+        self.new_sae_version = new_sae_version
         self.oidc_role_name = oidc_role_name
         # The AccessKey ID that is used to read data from and write data to Object Storage Service (OSS) buckets.
         self.oss_ak_id = oss_ak_id
@@ -20095,6 +20114,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         # 
         # If you do not need to modify the logging configurations when you deploy the application, configure the **SlsConfigs** parameter only in the first request. You do not need to include this parameter in subsequent requests. If you no longer need to use Log Service, leave the **SlsConfigs** parameter empty in the request.
         self.sls_configs = sls_configs
+        self.swimlane_pvtz_discovery = swimlane_pvtz_discovery
         # The details of the tags.
         self.tags = tags
         # The timeout period for a graceful shutdown. Default value: 30. Unit: seconds. Valid values: 1 to 300.
@@ -20187,8 +20207,12 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['AppSource'] = self.app_source
         if self.associate_eip is not None:
             result['AssociateEip'] = self.associate_eip
+        if self.base_app_id is not None:
+            result['BaseAppId'] = self.base_app_id
         if self.batch_wait_time is not None:
             result['BatchWaitTime'] = self.batch_wait_time
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
         if self.command is not None:
             result['Command'] = self.command
         if self.command_args is not None:
@@ -20217,8 +20241,6 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['EnableIdle'] = self.enable_idle
         if self.enable_new_arms is not None:
             result['EnableNewArms'] = self.enable_new_arms
-        if self.enabledle is not None:
-            result['Enabledle'] = self.enabledle
         if self.envs is not None:
             result['Envs'] = self.envs
         if self.image_pull_secrets is not None:
@@ -20241,6 +20263,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['MicroRegistration'] = self.micro_registration
         if self.micro_registration_config is not None:
             result['MicroRegistrationConfig'] = self.micro_registration_config
+        if self.microservice_engine_config is not None:
+            result['MicroserviceEngineConfig'] = self.microservice_engine_config
         if self.min_ready_instance_ratio is not None:
             result['MinReadyInstanceRatio'] = self.min_ready_instance_ratio
         if self.min_ready_instances is not None:
@@ -20261,6 +20285,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['NasConfigs'] = self.nas_configs
         if self.nas_id is not None:
             result['NasId'] = self.nas_id
+        if self.new_sae_version is not None:
+            result['NewSaeVersion'] = self.new_sae_version
         if self.oidc_role_name is not None:
             result['OidcRoleName'] = self.oidc_role_name
         if self.oss_ak_id is not None:
@@ -20319,6 +20345,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
                 result['SidecarContainersConfig'].append(k.to_map() if k else None)
         if self.sls_configs is not None:
             result['SlsConfigs'] = self.sls_configs
+        if self.swimlane_pvtz_discovery is not None:
+            result['SwimlanePvtzDiscovery'] = self.swimlane_pvtz_discovery
         result['Tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -20357,8 +20385,12 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.app_source = m.get('AppSource')
         if m.get('AssociateEip') is not None:
             self.associate_eip = m.get('AssociateEip')
+        if m.get('BaseAppId') is not None:
+            self.base_app_id = m.get('BaseAppId')
         if m.get('BatchWaitTime') is not None:
             self.batch_wait_time = m.get('BatchWaitTime')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
         if m.get('Command') is not None:
             self.command = m.get('Command')
         if m.get('CommandArgs') is not None:
@@ -20388,8 +20420,6 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.enable_idle = m.get('EnableIdle')
         if m.get('EnableNewArms') is not None:
             self.enable_new_arms = m.get('EnableNewArms')
-        if m.get('Enabledle') is not None:
-            self.enabledle = m.get('Enabledle')
         if m.get('Envs') is not None:
             self.envs = m.get('Envs')
         if m.get('ImagePullSecrets') is not None:
@@ -20412,6 +20442,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.micro_registration = m.get('MicroRegistration')
         if m.get('MicroRegistrationConfig') is not None:
             self.micro_registration_config = m.get('MicroRegistrationConfig')
+        if m.get('MicroserviceEngineConfig') is not None:
+            self.microservice_engine_config = m.get('MicroserviceEngineConfig')
         if m.get('MinReadyInstanceRatio') is not None:
             self.min_ready_instance_ratio = m.get('MinReadyInstanceRatio')
         if m.get('MinReadyInstances') is not None:
@@ -20433,6 +20465,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.nas_configs = m.get('NasConfigs')
         if m.get('NasId') is not None:
             self.nas_id = m.get('NasId')
+        if m.get('NewSaeVersion') is not None:
+            self.new_sae_version = m.get('NewSaeVersion')
         if m.get('OidcRoleName') is not None:
             self.oidc_role_name = m.get('OidcRoleName')
         if m.get('OssAkId') is not None:
@@ -20494,6 +20528,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
                 self.sidecar_containers_config.append(temp_model.from_map(k))
         if m.get('SlsConfigs') is not None:
             self.sls_configs = m.get('SlsConfigs')
+        if m.get('SwimlanePvtzDiscovery') is not None:
+            self.swimlane_pvtz_discovery = m.get('SwimlanePvtzDiscovery')
         self.tags = []
         if m.get('Tags') is not None:
             for k in m.get('Tags'):
@@ -23351,6 +23387,7 @@ class DescribeApplicationSlbsResponseBodyDataInternet(TeaModel):
         self,
         cookie: str = None,
         cookie_timeout: int = None,
+        create_time: int = None,
         https_ca_cert_id: str = None,
         https_cert_id: str = None,
         port: int = None,
@@ -23361,6 +23398,7 @@ class DescribeApplicationSlbsResponseBodyDataInternet(TeaModel):
     ):
         self.cookie = cookie
         self.cookie_timeout = cookie_timeout
+        self.create_time = create_time
         self.https_ca_cert_id = https_ca_cert_id
         # The supported protocol.
         self.https_cert_id = https_cert_id
@@ -23386,6 +23424,8 @@ class DescribeApplicationSlbsResponseBodyDataInternet(TeaModel):
             result['Cookie'] = self.cookie
         if self.cookie_timeout is not None:
             result['CookieTimeout'] = self.cookie_timeout
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
         if self.https_ca_cert_id is not None:
             result['HttpsCaCertId'] = self.https_ca_cert_id
         if self.https_cert_id is not None:
@@ -23408,6 +23448,8 @@ class DescribeApplicationSlbsResponseBodyDataInternet(TeaModel):
             self.cookie = m.get('Cookie')
         if m.get('CookieTimeout') is not None:
             self.cookie_timeout = m.get('CookieTimeout')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
         if m.get('HttpsCaCertId') is not None:
             self.https_ca_cert_id = m.get('HttpsCaCertId')
         if m.get('HttpsCertId') is not None:
@@ -23430,6 +23472,7 @@ class DescribeApplicationSlbsResponseBodyDataIntranet(TeaModel):
         self,
         cookie: str = None,
         cookie_timeout: int = None,
+        create_time: int = None,
         https_ca_cert_id: str = None,
         https_cert_id: str = None,
         port: int = None,
@@ -23440,6 +23483,7 @@ class DescribeApplicationSlbsResponseBodyDataIntranet(TeaModel):
     ):
         self.cookie = cookie
         self.cookie_timeout = cookie_timeout
+        self.create_time = create_time
         self.https_ca_cert_id = https_ca_cert_id
         # The supported protocol.
         self.https_cert_id = https_cert_id
@@ -23465,6 +23509,8 @@ class DescribeApplicationSlbsResponseBodyDataIntranet(TeaModel):
             result['Cookie'] = self.cookie
         if self.cookie_timeout is not None:
             result['CookieTimeout'] = self.cookie_timeout
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
         if self.https_ca_cert_id is not None:
             result['HttpsCaCertId'] = self.https_ca_cert_id
         if self.https_cert_id is not None:
@@ -23487,6 +23533,8 @@ class DescribeApplicationSlbsResponseBodyDataIntranet(TeaModel):
             self.cookie = m.get('Cookie')
         if m.get('CookieTimeout') is not None:
             self.cookie_timeout = m.get('CookieTimeout')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
         if m.get('HttpsCaCertId') is not None:
             self.https_ca_cert_id = m.get('HttpsCaCertId')
         if m.get('HttpsCertId') is not None:
@@ -24960,12 +25008,14 @@ class DescribeConfigurationPriceRequest(TeaModel):
         self,
         cpu: int = None,
         memory: int = None,
+        resource_type: str = None,
         workload: str = None,
     ):
         # This parameter is required.
         self.cpu = cpu
         # This parameter is required.
         self.memory = memory
+        self.resource_type = resource_type
         self.workload = workload
 
     def validate(self):
@@ -24981,6 +25031,8 @@ class DescribeConfigurationPriceRequest(TeaModel):
             result['Cpu'] = self.cpu
         if self.memory is not None:
             result['Memory'] = self.memory
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         if self.workload is not None:
             result['Workload'] = self.workload
         return result
@@ -24991,6 +25043,8 @@ class DescribeConfigurationPriceRequest(TeaModel):
             self.cpu = m.get('Cpu')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         if m.get('Workload') is not None:
             self.workload = m.get('Workload')
         return self
@@ -34108,6 +34162,298 @@ class ListAppEventsResponse(TeaModel):
         return self
 
 
+class ListAppServicesRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        nacos_instance_id: str = None,
+        nacos_namespace_id: str = None,
+        namespace_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        registry_type: str = None,
+        service_type: str = None,
+        vpc_id: str = None,
+    ):
+        self.app_id = app_id
+        self.nacos_instance_id = nacos_instance_id
+        self.nacos_namespace_id = nacos_namespace_id
+        self.namespace_id = namespace_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.registry_type = registry_type
+        self.service_type = service_type
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.nacos_instance_id is not None:
+            result['NacosInstanceId'] = self.nacos_instance_id
+        if self.nacos_namespace_id is not None:
+            result['NacosNamespaceId'] = self.nacos_namespace_id
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.registry_type is not None:
+            result['RegistryType'] = self.registry_type
+        if self.service_type is not None:
+            result['ServiceType'] = self.service_type
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('NacosInstanceId') is not None:
+            self.nacos_instance_id = m.get('NacosInstanceId')
+        if m.get('NacosNamespaceId') is not None:
+            self.nacos_namespace_id = m.get('NacosNamespaceId')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegistryType') is not None:
+            self.registry_type = m.get('RegistryType')
+        if m.get('ServiceType') is not None:
+            self.service_type = m.get('ServiceType')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class ListAppServicesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        app_name: str = None,
+        instance_count: str = None,
+        namespace_id: str = None,
+        namespace_name: str = None,
+        registry_type: str = None,
+        security_group_id: str = None,
+        service_group: str = None,
+        service_name: str = None,
+        service_port_and_protocol: Dict[str, str] = None,
+        service_ports: List[int] = None,
+        service_protocol: str = None,
+        service_type: str = None,
+        service_version: str = None,
+    ):
+        self.app_id = app_id
+        self.app_name = app_name
+        self.instance_count = instance_count
+        self.namespace_id = namespace_id
+        self.namespace_name = namespace_name
+        self.registry_type = registry_type
+        self.security_group_id = security_group_id
+        self.service_group = service_group
+        self.service_name = service_name
+        self.service_port_and_protocol = service_port_and_protocol
+        self.service_ports = service_ports
+        self.service_protocol = service_protocol
+        self.service_type = service_type
+        self.service_version = service_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.instance_count is not None:
+            result['InstanceCount'] = self.instance_count
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.namespace_name is not None:
+            result['NamespaceName'] = self.namespace_name
+        if self.registry_type is not None:
+            result['RegistryType'] = self.registry_type
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.service_group is not None:
+            result['ServiceGroup'] = self.service_group
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
+        if self.service_port_and_protocol is not None:
+            result['ServicePortAndProtocol'] = self.service_port_and_protocol
+        if self.service_ports is not None:
+            result['ServicePorts'] = self.service_ports
+        if self.service_protocol is not None:
+            result['ServiceProtocol'] = self.service_protocol
+        if self.service_type is not None:
+            result['ServiceType'] = self.service_type
+        if self.service_version is not None:
+            result['ServiceVersion'] = self.service_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('InstanceCount') is not None:
+            self.instance_count = m.get('InstanceCount')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('NamespaceName') is not None:
+            self.namespace_name = m.get('NamespaceName')
+        if m.get('RegistryType') is not None:
+            self.registry_type = m.get('RegistryType')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('ServiceGroup') is not None:
+            self.service_group = m.get('ServiceGroup')
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
+        if m.get('ServicePortAndProtocol') is not None:
+            self.service_port_and_protocol = m.get('ServicePortAndProtocol')
+        if m.get('ServicePorts') is not None:
+            self.service_ports = m.get('ServicePorts')
+        if m.get('ServiceProtocol') is not None:
+            self.service_protocol = m.get('ServiceProtocol')
+        if m.get('ServiceType') is not None:
+            self.service_type = m.get('ServiceType')
+        if m.get('ServiceVersion') is not None:
+            self.service_version = m.get('ServiceVersion')
+        return self
+
+
+class ListAppServicesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListAppServicesResponseBodyData] = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListAppServicesResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class ListAppServicesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAppServicesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAppServicesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListAppServicesPageRequest(TeaModel):
     def __init__(
         self,
@@ -34772,12 +35118,15 @@ class ListApplicationsResponseBodyDataApplicationsChildren(TeaModel):
         app_description: str = None,
         app_id: str = None,
         app_name: str = None,
+        app_type: str = None,
         base_app_id: str = None,
         cpu: int = None,
         instances: int = None,
         mem: int = None,
         mse_enabled: bool = None,
         namespace_id: str = None,
+        namespace_name: str = None,
+        new_sae_version: str = None,
         programming_language: str = None,
         region_id: str = None,
         running_instances: int = None,
@@ -34789,12 +35138,15 @@ class ListApplicationsResponseBodyDataApplicationsChildren(TeaModel):
         self.app_description = app_description
         self.app_id = app_id
         self.app_name = app_name
+        self.app_type = app_type
         self.base_app_id = base_app_id
         self.cpu = cpu
         self.instances = instances
         self.mem = mem
         self.mse_enabled = mse_enabled
         self.namespace_id = namespace_id
+        self.namespace_name = namespace_name
+        self.new_sae_version = new_sae_version
         self.programming_language = programming_language
         self.region_id = region_id
         self.running_instances = running_instances
@@ -34822,6 +35174,8 @@ class ListApplicationsResponseBodyDataApplicationsChildren(TeaModel):
             result['AppId'] = self.app_id
         if self.app_name is not None:
             result['AppName'] = self.app_name
+        if self.app_type is not None:
+            result['AppType'] = self.app_type
         if self.base_app_id is not None:
             result['BaseAppId'] = self.base_app_id
         if self.cpu is not None:
@@ -34834,6 +35188,10 @@ class ListApplicationsResponseBodyDataApplicationsChildren(TeaModel):
             result['MseEnabled'] = self.mse_enabled
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
+        if self.namespace_name is not None:
+            result['NamespaceName'] = self.namespace_name
+        if self.new_sae_version is not None:
+            result['NewSaeVersion'] = self.new_sae_version
         if self.programming_language is not None:
             result['ProgrammingLanguage'] = self.programming_language
         if self.region_id is not None:
@@ -34860,6 +35218,8 @@ class ListApplicationsResponseBodyDataApplicationsChildren(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
+        if m.get('AppType') is not None:
+            self.app_type = m.get('AppType')
         if m.get('BaseAppId') is not None:
             self.base_app_id = m.get('BaseAppId')
         if m.get('Cpu') is not None:
@@ -34872,6 +35232,10 @@ class ListApplicationsResponseBodyDataApplicationsChildren(TeaModel):
             self.mse_enabled = m.get('MseEnabled')
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')
+        if m.get('NamespaceName') is not None:
+            self.namespace_name = m.get('NamespaceName')
+        if m.get('NewSaeVersion') is not None:
+            self.new_sae_version = m.get('NewSaeVersion')
         if m.get('ProgrammingLanguage') is not None:
             self.programming_language = m.get('ProgrammingLanguage')
         if m.get('RegionId') is not None:
@@ -34932,6 +35296,7 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
         app_description: str = None,
         app_id: str = None,
         app_name: str = None,
+        app_type: str = None,
         base_app_id: str = None,
         children: List[ListApplicationsResponseBodyDataApplicationsChildren] = None,
         cpu: int = None,
@@ -34941,6 +35306,8 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
         mse_enabled: bool = None,
         mse_namespace_id: str = None,
         namespace_id: str = None,
+        namespace_name: str = None,
+        new_sae_version: str = None,
         package_url: str = None,
         programming_language: str = None,
         region_id: str = None,
@@ -34958,6 +35325,7 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
         self.app_id = app_id
         # The application name.
         self.app_name = app_name
+        self.app_type = app_type
         self.base_app_id = base_app_id
         self.children = children
         # The CPU specifications that are required for each instance. Unit: millicores. This parameter cannot be set to 0. Valid values:
@@ -34990,6 +35358,8 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
         self.mse_namespace_id = mse_namespace_id
         # The namespace ID.
         self.namespace_id = namespace_id
+        self.namespace_name = namespace_name
+        self.new_sae_version = new_sae_version
         self.package_url = package_url
         self.programming_language = programming_language
         # The region ID.
@@ -35023,6 +35393,8 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
             result['AppId'] = self.app_id
         if self.app_name is not None:
             result['AppName'] = self.app_name
+        if self.app_type is not None:
+            result['AppType'] = self.app_type
         if self.base_app_id is not None:
             result['BaseAppId'] = self.base_app_id
         result['Children'] = []
@@ -35043,6 +35415,10 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
             result['MseNamespaceId'] = self.mse_namespace_id
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
+        if self.namespace_name is not None:
+            result['NamespaceName'] = self.namespace_name
+        if self.new_sae_version is not None:
+            result['NewSaeVersion'] = self.new_sae_version
         if self.package_url is not None:
             result['PackageUrl'] = self.package_url
         if self.programming_language is not None:
@@ -35067,6 +35443,8 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
+        if m.get('AppType') is not None:
+            self.app_type = m.get('AppType')
         if m.get('BaseAppId') is not None:
             self.base_app_id = m.get('BaseAppId')
         self.children = []
@@ -35088,6 +35466,10 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
             self.mse_namespace_id = m.get('MseNamespaceId')
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')
+        if m.get('NamespaceName') is not None:
+            self.namespace_name = m.get('NamespaceName')
+        if m.get('NewSaeVersion') is not None:
+            self.new_sae_version = m.get('NewSaeVersion')
         if m.get('PackageUrl') is not None:
             self.package_url = m.get('PackageUrl')
         if m.get('ProgrammingLanguage') is not None:
@@ -36676,13 +37058,171 @@ class ListIngressesRequest(TeaModel):
         return self
 
 
+class ListIngressesResponseBodyDataIngressListDefaultRule(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        app_name: str = None,
+        backend_protocol: str = None,
+        container_port: int = None,
+    ):
+        self.app_id = app_id
+        self.app_name = app_name
+        self.backend_protocol = backend_protocol
+        self.container_port = container_port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.backend_protocol is not None:
+            result['BackendProtocol'] = self.backend_protocol
+        if self.container_port is not None:
+            result['ContainerPort'] = self.container_port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('BackendProtocol') is not None:
+            self.backend_protocol = m.get('BackendProtocol')
+        if m.get('ContainerPort') is not None:
+            self.container_port = m.get('ContainerPort')
+        return self
+
+
+class ListIngressesResponseBodyDataIngressListRulesRuleActions(TeaModel):
+    def __init__(
+        self,
+        action_config: str = None,
+        action_type: str = None,
+    ):
+        self.action_config = action_config
+        self.action_type = action_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_config is not None:
+            result['ActionConfig'] = self.action_config
+        if self.action_type is not None:
+            result['ActionType'] = self.action_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionConfig') is not None:
+            self.action_config = m.get('ActionConfig')
+        if m.get('ActionType') is not None:
+            self.action_type = m.get('ActionType')
+        return self
+
+
+class ListIngressesResponseBodyDataIngressListRules(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        app_name: str = None,
+        backend_protocol: str = None,
+        container_port: int = None,
+        domain: str = None,
+        path: str = None,
+        rewrite_path: str = None,
+        rule_actions: List[ListIngressesResponseBodyDataIngressListRulesRuleActions] = None,
+    ):
+        self.app_id = app_id
+        self.app_name = app_name
+        self.backend_protocol = backend_protocol
+        self.container_port = container_port
+        self.domain = domain
+        self.path = path
+        self.rewrite_path = rewrite_path
+        self.rule_actions = rule_actions
+
+    def validate(self):
+        if self.rule_actions:
+            for k in self.rule_actions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.backend_protocol is not None:
+            result['BackendProtocol'] = self.backend_protocol
+        if self.container_port is not None:
+            result['ContainerPort'] = self.container_port
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.rewrite_path is not None:
+            result['RewritePath'] = self.rewrite_path
+        result['RuleActions'] = []
+        if self.rule_actions is not None:
+            for k in self.rule_actions:
+                result['RuleActions'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('BackendProtocol') is not None:
+            self.backend_protocol = m.get('BackendProtocol')
+        if m.get('ContainerPort') is not None:
+            self.container_port = m.get('ContainerPort')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('RewritePath') is not None:
+            self.rewrite_path = m.get('RewritePath')
+        self.rule_actions = []
+        if m.get('RuleActions') is not None:
+            for k in m.get('RuleActions'):
+                temp_model = ListIngressesResponseBodyDataIngressListRulesRuleActions()
+                self.rule_actions.append(temp_model.from_map(k))
+        return self
+
+
 class ListIngressesResponseBodyDataIngressList(TeaModel):
     def __init__(
         self,
         cert_id: str = None,
         cert_ids: str = None,
+        create_time: int = None,
+        default_rule: ListIngressesResponseBodyDataIngressListDefaultRule = None,
         description: str = None,
         id: int = None,
+        idle_timeout: int = None,
         listener_port: str = None,
         listener_protocol: str = None,
         load_balance_type: str = None,
@@ -36691,6 +37231,8 @@ class ListIngressesResponseBodyDataIngressList(TeaModel):
         mse_gateway_protocol: str = None,
         name: str = None,
         namespace_id: str = None,
+        request_timeout: int = None,
+        rules: List[ListIngressesResponseBodyDataIngressListRules] = None,
         slb_id: str = None,
         slb_type: str = None,
     ):
@@ -36700,6 +37242,8 @@ class ListIngressesResponseBodyDataIngressList(TeaModel):
         # - The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.cert_id = cert_id
         self.cert_ids = cert_ids
+        self.create_time = create_time
+        self.default_rule = default_rule
         # The ID of the routing rule.
         self.description = description
         # Indicates whether the list of routing rules was obtained. Valid values:
@@ -36707,6 +37251,7 @@ class ListIngressesResponseBodyDataIngressList(TeaModel):
         # *   **true**: indicates that the list was obtained.
         # *   **false**: indicates that the list could not be obtained.
         self.id = id
+        self.idle_timeout = idle_timeout
         # The type of the SLB instance based on the processing capabilities. Valid values:
         # 
         # *   **clb**: the Classic Load Balancer (CLB) instance.
@@ -36726,6 +37271,8 @@ class ListIngressesResponseBodyDataIngressList(TeaModel):
         self.name = name
         # The name of the routing rule.
         self.namespace_id = namespace_id
+        self.request_timeout = request_timeout
+        self.rules = rules
         # The ID of the certificate.
         self.slb_id = slb_id
         # The protocol used to forward requests. Valid values:
@@ -36735,7 +37282,12 @@ class ListIngressesResponseBodyDataIngressList(TeaModel):
         self.slb_type = slb_type
 
     def validate(self):
-        pass
+        if self.default_rule:
+            self.default_rule.validate()
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -36747,10 +37299,16 @@ class ListIngressesResponseBodyDataIngressList(TeaModel):
             result['CertId'] = self.cert_id
         if self.cert_ids is not None:
             result['CertIds'] = self.cert_ids
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.default_rule is not None:
+            result['DefaultRule'] = self.default_rule.to_map()
         if self.description is not None:
             result['Description'] = self.description
         if self.id is not None:
             result['Id'] = self.id
+        if self.idle_timeout is not None:
+            result['IdleTimeout'] = self.idle_timeout
         if self.listener_port is not None:
             result['ListenerPort'] = self.listener_port
         if self.listener_protocol is not None:
@@ -36767,6 +37325,12 @@ class ListIngressesResponseBodyDataIngressList(TeaModel):
             result['Name'] = self.name
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
+        if self.request_timeout is not None:
+            result['RequestTimeout'] = self.request_timeout
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
         if self.slb_id is not None:
             result['SlbId'] = self.slb_id
         if self.slb_type is not None:
@@ -36779,10 +37343,17 @@ class ListIngressesResponseBodyDataIngressList(TeaModel):
             self.cert_id = m.get('CertId')
         if m.get('CertIds') is not None:
             self.cert_ids = m.get('CertIds')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DefaultRule') is not None:
+            temp_model = ListIngressesResponseBodyDataIngressListDefaultRule()
+            self.default_rule = temp_model.from_map(m['DefaultRule'])
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('IdleTimeout') is not None:
+            self.idle_timeout = m.get('IdleTimeout')
         if m.get('ListenerPort') is not None:
             self.listener_port = m.get('ListenerPort')
         if m.get('ListenerProtocol') is not None:
@@ -36799,6 +37370,13 @@ class ListIngressesResponseBodyDataIngressList(TeaModel):
             self.name = m.get('Name')
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')
+        if m.get('RequestTimeout') is not None:
+            self.request_timeout = m.get('RequestTimeout')
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = ListIngressesResponseBodyDataIngressListRules()
+                self.rules.append(temp_model.from_map(k))
         if m.get('SlbId') is not None:
             self.slb_id = m.get('SlbId')
         if m.get('SlbType') is not None:

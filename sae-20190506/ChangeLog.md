@@ -1,3 +1,13 @@
+2025-03-12 Version: 1.26.0
+- Support API ListAppServices.
+- Update API DeployApplication: add param SwimlanePvtzDiscoverySvc.
+- Update API DescribeApplicationConfig: update response param.
+- Update API DescribeApplicationSlbs: update response param.
+- Update API DescribeConfigurationPrice: add param ResourceType.
+- Update API ListApplications: update response param.
+- Update API ListIngresses: update response param.
+
+
 2025-01-13 Version: 1.25.2
 - Update API CreateApplication: add param CustomImageNetworkType.
 - Update API CreateApplication: add param ResourceType.
