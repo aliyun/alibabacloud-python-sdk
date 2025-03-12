@@ -1289,7 +1289,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateAPSJobResponse:
         """
-        @summary 创建一站式链路
+        @summary Creates an AnalyticDB Pipeline Service (APS) job.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: CreateAPSJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1352,7 +1354,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateAPSJobResponse:
         """
-        @summary 创建一站式链路
+        @summary Creates an AnalyticDB Pipeline Service (APS) job.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: CreateAPSJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1414,7 +1418,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateAPSJobRequest,
     ) -> adb_20211201_models.CreateAPSJobResponse:
         """
-        @summary 创建一站式链路
+        @summary Creates an AnalyticDB Pipeline Service (APS) job.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: CreateAPSJobRequest
         @return: CreateAPSJobResponse
@@ -1427,7 +1433,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateAPSJobRequest,
     ) -> adb_20211201_models.CreateAPSJobResponse:
         """
-        @summary 创建一站式链路
+        @summary Creates an AnalyticDB Pipeline Service (APS) job.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: CreateAPSJobRequest
         @return: CreateAPSJobResponse
@@ -1577,7 +1585,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateApsCopyWorkloadResponse:
         """
-        @summary 创建工作负载复制链路
+        @summary Creates an AnalyticDB Pipeline Service (APS) replication job.
         
         @param request: CreateApsCopyWorkloadRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1630,7 +1638,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateApsCopyWorkloadResponse:
         """
-        @summary 创建工作负载复制链路
+        @summary Creates an AnalyticDB Pipeline Service (APS) replication job.
         
         @param request: CreateApsCopyWorkloadRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1682,7 +1690,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateApsCopyWorkloadRequest,
     ) -> adb_20211201_models.CreateApsCopyWorkloadResponse:
         """
-        @summary 创建工作负载复制链路
+        @summary Creates an AnalyticDB Pipeline Service (APS) replication job.
         
         @param request: CreateApsCopyWorkloadRequest
         @return: CreateApsCopyWorkloadResponse
@@ -1695,7 +1703,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateApsCopyWorkloadRequest,
     ) -> adb_20211201_models.CreateApsCopyWorkloadResponse:
         """
-        @summary 创建工作负载复制链路
+        @summary Creates an AnalyticDB Pipeline Service (APS) replication job.
         
         @param request: CreateApsCopyWorkloadRequest
         @return: CreateApsCopyWorkloadResponse
@@ -1709,7 +1717,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateApsDatasoureResponse:
         """
-        @summary 创建APS数据源。
+        @summary Creates an AnalyticDB Pipeline Service (APS) data source.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param tmp_req: CreateApsDatasoureRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1790,7 +1800,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateApsDatasoureResponse:
         """
-        @summary 创建APS数据源。
+        @summary Creates an AnalyticDB Pipeline Service (APS) data source.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param tmp_req: CreateApsDatasoureRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1870,7 +1882,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateApsDatasoureRequest,
     ) -> adb_20211201_models.CreateApsDatasoureResponse:
         """
-        @summary 创建APS数据源。
+        @summary Creates an AnalyticDB Pipeline Service (APS) data source.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: CreateApsDatasoureRequest
         @return: CreateApsDatasoureResponse
@@ -1883,7 +1897,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateApsDatasoureRequest,
     ) -> adb_20211201_models.CreateApsDatasoureResponse:
         """
-        @summary 创建APS数据源。
+        @summary Creates an AnalyticDB Pipeline Service (APS) data source.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: CreateApsDatasoureRequest
         @return: CreateApsDatasoureResponse
@@ -1897,7 +1913,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateApsHiveJobResponse:
         """
-        @summary 创建Hive数据迁移链路。
+        @summary Creates an AnalyticDB Pipeline Service (APS) job from a Hive data source.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: CreateApsHiveJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1962,7 +1980,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateApsHiveJobResponse:
         """
-        @summary 创建Hive数据迁移链路。
+        @summary Creates an AnalyticDB Pipeline Service (APS) job from a Hive data source.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: CreateApsHiveJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2026,7 +2046,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateApsHiveJobRequest,
     ) -> adb_20211201_models.CreateApsHiveJobResponse:
         """
-        @summary 创建Hive数据迁移链路。
+        @summary Creates an AnalyticDB Pipeline Service (APS) job from a Hive data source.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: CreateApsHiveJobRequest
         @return: CreateApsHiveJobResponse
@@ -2039,7 +2061,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateApsHiveJobRequest,
     ) -> adb_20211201_models.CreateApsHiveJobResponse:
         """
-        @summary 创建Hive数据迁移链路。
+        @summary Creates an AnalyticDB Pipeline Service (APS) job from a Hive data source.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: CreateApsHiveJobRequest
         @return: CreateApsHiveJobResponse
@@ -2053,7 +2077,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateApsSlsADBJobResponse:
         """
-        @summary 创建一个SLS到ADB数仓的APS链路
+        @summary Creates an AnalyticDB Pipeline Service (APS) job from Simple Log Service (SLS) to an AnalyticDB for MySQL Data Warehouse Edition cluster.
         
         @param tmp_req: CreateApsSlsADBJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2164,7 +2188,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateApsSlsADBJobResponse:
         """
-        @summary 创建一个SLS到ADB数仓的APS链路
+        @summary Creates an AnalyticDB Pipeline Service (APS) job from Simple Log Service (SLS) to an AnalyticDB for MySQL Data Warehouse Edition cluster.
         
         @param tmp_req: CreateApsSlsADBJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2274,7 +2298,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateApsSlsADBJobRequest,
     ) -> adb_20211201_models.CreateApsSlsADBJobResponse:
         """
-        @summary 创建一个SLS到ADB数仓的APS链路
+        @summary Creates an AnalyticDB Pipeline Service (APS) job from Simple Log Service (SLS) to an AnalyticDB for MySQL Data Warehouse Edition cluster.
         
         @param request: CreateApsSlsADBJobRequest
         @return: CreateApsSlsADBJobResponse
@@ -2287,7 +2311,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateApsSlsADBJobRequest,
     ) -> adb_20211201_models.CreateApsSlsADBJobResponse:
         """
-        @summary 创建一个SLS到ADB数仓的APS链路
+        @summary Creates an AnalyticDB Pipeline Service (APS) job from Simple Log Service (SLS) to an AnalyticDB for MySQL Data Warehouse Edition cluster.
         
         @param request: CreateApsSlsADBJobRequest
         @return: CreateApsSlsADBJobResponse
@@ -2301,7 +2325,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateDBClusterResponse:
         """
-        @summary The request ID.
+        @summary Creates an AnalyticDB for MySQL Data Lakehouse Edition cluster.
         
         @description CreateDBCluster
         
@@ -2335,6 +2359,8 @@ class Client(OpenApiClient):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.product_form):
             query['ProductForm'] = request.product_form
+        if not UtilClient.is_unset(request.product_version):
+            query['ProductVersion'] = request.product_version
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.reserved_node_count):
@@ -2347,6 +2373,10 @@ class Client(OpenApiClient):
             query['RestoreToTime'] = request.restore_to_time
         if not UtilClient.is_unset(request.restore_type):
             query['RestoreType'] = request.restore_type
+        if not UtilClient.is_unset(request.secondary_vswitch_id):
+            query['SecondaryVSwitchId'] = request.secondary_vswitch_id
+        if not UtilClient.is_unset(request.secondary_zone_id):
+            query['SecondaryZoneId'] = request.secondary_zone_id
         if not UtilClient.is_unset(request.source_db_cluster_id):
             query['SourceDbClusterId'] = request.source_db_cluster_id
         if not UtilClient.is_unset(request.storage_resource):
@@ -2392,7 +2422,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateDBClusterResponse:
         """
-        @summary The request ID.
+        @summary Creates an AnalyticDB for MySQL Data Lakehouse Edition cluster.
         
         @description CreateDBCluster
         
@@ -2426,6 +2456,8 @@ class Client(OpenApiClient):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.product_form):
             query['ProductForm'] = request.product_form
+        if not UtilClient.is_unset(request.product_version):
+            query['ProductVersion'] = request.product_version
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.reserved_node_count):
@@ -2438,6 +2470,10 @@ class Client(OpenApiClient):
             query['RestoreToTime'] = request.restore_to_time
         if not UtilClient.is_unset(request.restore_type):
             query['RestoreType'] = request.restore_type
+        if not UtilClient.is_unset(request.secondary_vswitch_id):
+            query['SecondaryVSwitchId'] = request.secondary_vswitch_id
+        if not UtilClient.is_unset(request.secondary_zone_id):
+            query['SecondaryZoneId'] = request.secondary_zone_id
         if not UtilClient.is_unset(request.source_db_cluster_id):
             query['SourceDbClusterId'] = request.source_db_cluster_id
         if not UtilClient.is_unset(request.storage_resource):
@@ -2482,7 +2518,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateDBClusterRequest,
     ) -> adb_20211201_models.CreateDBClusterResponse:
         """
-        @summary The request ID.
+        @summary Creates an AnalyticDB for MySQL Data Lakehouse Edition cluster.
         
         @description CreateDBCluster
         
@@ -2497,7 +2533,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateDBClusterRequest,
     ) -> adb_20211201_models.CreateDBClusterResponse:
         """
-        @summary The request ID.
+        @summary Creates an AnalyticDB for MySQL Data Lakehouse Edition cluster.
         
         @description CreateDBCluster
         
@@ -3669,7 +3705,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DeleteApsJobResponse:
         """
-        @summary 删除aps任务
+        @summary Deletes an AnalyticDB Pipeline Service (APS) job.
+        
+        @description    Deleting backup sets is an asynchronous operation and may require 10 to 20 minutes to complete.
+        You can delete up to 100 backup sets at a time. If you want to delete more than 100 backup sets, call this operation twice.
+        To ensure data security, the system forcibly retains one valid backup set. If you want to delete the last backup set, the system prohibits your operation.
         
         @param request: DeleteApsJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3712,7 +3752,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DeleteApsJobResponse:
         """
-        @summary 删除aps任务
+        @summary Deletes an AnalyticDB Pipeline Service (APS) job.
+        
+        @description    Deleting backup sets is an asynchronous operation and may require 10 to 20 minutes to complete.
+        You can delete up to 100 backup sets at a time. If you want to delete more than 100 backup sets, call this operation twice.
+        To ensure data security, the system forcibly retains one valid backup set. If you want to delete the last backup set, the system prohibits your operation.
         
         @param request: DeleteApsJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3754,7 +3798,11 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DeleteApsJobRequest,
     ) -> adb_20211201_models.DeleteApsJobResponse:
         """
-        @summary 删除aps任务
+        @summary Deletes an AnalyticDB Pipeline Service (APS) job.
+        
+        @description    Deleting backup sets is an asynchronous operation and may require 10 to 20 minutes to complete.
+        You can delete up to 100 backup sets at a time. If you want to delete more than 100 backup sets, call this operation twice.
+        To ensure data security, the system forcibly retains one valid backup set. If you want to delete the last backup set, the system prohibits your operation.
         
         @param request: DeleteApsJobRequest
         @return: DeleteApsJobResponse
@@ -3767,7 +3815,11 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DeleteApsJobRequest,
     ) -> adb_20211201_models.DeleteApsJobResponse:
         """
-        @summary 删除aps任务
+        @summary Deletes an AnalyticDB Pipeline Service (APS) job.
+        
+        @description    Deleting backup sets is an asynchronous operation and may require 10 to 20 minutes to complete.
+        You can delete up to 100 backup sets at a time. If you want to delete more than 100 backup sets, call this operation twice.
+        To ensure data security, the system forcibly retains one valid backup set. If you want to delete the last backup set, the system prohibits your operation.
         
         @param request: DeleteApsJobRequest
         @return: DeleteApsJobResponse
@@ -4941,7 +4993,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeAPSADBInstancesResponse:
         """
-        @summary 获取APS联邦分析ADB实例列表
+        @summary Queries a list of AnalyticDB for MySQL clusters for AnalyticDB Pipeline Service (APS) federated analytics.
+        
+        @description You can call this operation to query the performance data of a cluster over a time range based on performance metrics. The collection granularity is 30 seconds. This operation allows you to query information about slow queries, such as the SQL query duration, number of scanned rows, and amount of scanned data.
         
         @param request: DescribeAPSADBInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4980,7 +5034,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeAPSADBInstancesResponse:
         """
-        @summary 获取APS联邦分析ADB实例列表
+        @summary Queries a list of AnalyticDB for MySQL clusters for AnalyticDB Pipeline Service (APS) federated analytics.
+        
+        @description You can call this operation to query the performance data of a cluster over a time range based on performance metrics. The collection granularity is 30 seconds. This operation allows you to query information about slow queries, such as the SQL query duration, number of scanned rows, and amount of scanned data.
         
         @param request: DescribeAPSADBInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5018,7 +5074,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeAPSADBInstancesRequest,
     ) -> adb_20211201_models.DescribeAPSADBInstancesResponse:
         """
-        @summary 获取APS联邦分析ADB实例列表
+        @summary Queries a list of AnalyticDB for MySQL clusters for AnalyticDB Pipeline Service (APS) federated analytics.
+        
+        @description You can call this operation to query the performance data of a cluster over a time range based on performance metrics. The collection granularity is 30 seconds. This operation allows you to query information about slow queries, such as the SQL query duration, number of scanned rows, and amount of scanned data.
         
         @param request: DescribeAPSADBInstancesRequest
         @return: DescribeAPSADBInstancesResponse
@@ -5031,7 +5089,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeAPSADBInstancesRequest,
     ) -> adb_20211201_models.DescribeAPSADBInstancesResponse:
         """
-        @summary 获取APS联邦分析ADB实例列表
+        @summary Queries a list of AnalyticDB for MySQL clusters for AnalyticDB Pipeline Service (APS) federated analytics.
+        
+        @description You can call this operation to query the performance data of a cluster over a time range based on performance metrics. The collection granularity is 30 seconds. This operation allows you to query information about slow queries, such as the SQL query duration, number of scanned rows, and amount of scanned data.
         
         @param request: DescribeAPSADBInstancesRequest
         @return: DescribeAPSADBInstancesResponse
@@ -6941,7 +7001,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeApsHiveWorkloadResponse:
         """
-        @summary 查询APS Hive工作负载
+        @summary Queries the information about an AnalyticDB Pipeline Service (APS) job from a Hive data source.
         
         @param request: DescribeApsHiveWorkloadRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6986,7 +7046,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeApsHiveWorkloadResponse:
         """
-        @summary 查询APS Hive工作负载
+        @summary Queries the information about an AnalyticDB Pipeline Service (APS) job from a Hive data source.
         
         @param request: DescribeApsHiveWorkloadRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7030,7 +7090,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeApsHiveWorkloadRequest,
     ) -> adb_20211201_models.DescribeApsHiveWorkloadResponse:
         """
-        @summary 查询APS Hive工作负载
+        @summary Queries the information about an AnalyticDB Pipeline Service (APS) job from a Hive data source.
         
         @param request: DescribeApsHiveWorkloadRequest
         @return: DescribeApsHiveWorkloadResponse
@@ -7043,7 +7103,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeApsHiveWorkloadRequest,
     ) -> adb_20211201_models.DescribeApsHiveWorkloadResponse:
         """
-        @summary 查询APS Hive工作负载
+        @summary Queries the information about an AnalyticDB Pipeline Service (APS) job from a Hive data source.
         
         @param request: DescribeApsHiveWorkloadRequest
         @return: DescribeApsHiveWorkloadResponse
@@ -7169,7 +7229,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeApsJobsResponse:
         """
-        @summary 查询一站式链路列表
+        @summary Queries a list of AnalyticDB Pipeline Service (APS) jobs.
         
         @param request: DescribeApsJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7220,7 +7280,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeApsJobsResponse:
         """
-        @summary 查询一站式链路列表
+        @summary Queries a list of AnalyticDB Pipeline Service (APS) jobs.
         
         @param request: DescribeApsJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7270,7 +7330,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeApsJobsRequest,
     ) -> adb_20211201_models.DescribeApsJobsResponse:
         """
-        @summary 查询一站式链路列表
+        @summary Queries a list of AnalyticDB Pipeline Service (APS) jobs.
         
         @param request: DescribeApsJobsRequest
         @return: DescribeApsJobsResponse
@@ -7283,7 +7343,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeApsJobsRequest,
     ) -> adb_20211201_models.DescribeApsJobsResponse:
         """
-        @summary 查询一站式链路列表
+        @summary Queries a list of AnalyticDB Pipeline Service (APS) jobs.
         
         @param request: DescribeApsJobsRequest
         @return: DescribeApsJobsResponse
@@ -7429,7 +7489,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeApsProgressResponse:
         """
-        @summary 查询aps任务进展。
+        @summary Queries the progress of an AnalyticDB Pipeline Service (APS) job.
         
         @param request: DescribeApsProgressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7474,7 +7534,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeApsProgressResponse:
         """
-        @summary 查询aps任务进展。
+        @summary Queries the progress of an AnalyticDB Pipeline Service (APS) job.
         
         @param request: DescribeApsProgressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7518,7 +7578,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeApsProgressRequest,
     ) -> adb_20211201_models.DescribeApsProgressResponse:
         """
-        @summary 查询aps任务进展。
+        @summary Queries the progress of an AnalyticDB Pipeline Service (APS) job.
         
         @param request: DescribeApsProgressRequest
         @return: DescribeApsProgressResponse
@@ -7531,7 +7591,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeApsProgressRequest,
     ) -> adb_20211201_models.DescribeApsProgressResponse:
         """
-        @summary 查询aps任务进展。
+        @summary Queries the progress of an AnalyticDB Pipeline Service (APS) job.
         
         @param request: DescribeApsProgressRequest
         @return: DescribeApsProgressResponse
@@ -14113,6 +14173,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeSparkSQLDiagnosisAttributeResponse:
         """
+        @summary Queries the diagnostic information about a Spark SQL query.
+        
         @param request: DescribeSparkSQLDiagnosisAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSparkSQLDiagnosisAttributeResponse
@@ -14160,6 +14222,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeSparkSQLDiagnosisAttributeResponse:
         """
+        @summary Queries the diagnostic information about a Spark SQL query.
+        
         @param request: DescribeSparkSQLDiagnosisAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSparkSQLDiagnosisAttributeResponse
@@ -14206,6 +14270,8 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeSparkSQLDiagnosisAttributeRequest,
     ) -> adb_20211201_models.DescribeSparkSQLDiagnosisAttributeResponse:
         """
+        @summary Queries the diagnostic information about a Spark SQL query.
+        
         @param request: DescribeSparkSQLDiagnosisAttributeRequest
         @return: DescribeSparkSQLDiagnosisAttributeResponse
         """
@@ -14217,6 +14283,8 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeSparkSQLDiagnosisAttributeRequest,
     ) -> adb_20211201_models.DescribeSparkSQLDiagnosisAttributeResponse:
         """
+        @summary Queries the diagnostic information about a Spark SQL query.
+        
         @param request: DescribeSparkSQLDiagnosisAttributeRequest
         @return: DescribeSparkSQLDiagnosisAttributeResponse
         """
@@ -14229,6 +14297,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeSparkSQLDiagnosisListResponse:
         """
+        @summary Queries the diagnostic information about Spark SQL queries.
+        
         @param request: DescribeSparkSQLDiagnosisListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSparkSQLDiagnosisListResponse
@@ -14282,6 +14352,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeSparkSQLDiagnosisListResponse:
         """
+        @summary Queries the diagnostic information about Spark SQL queries.
+        
         @param request: DescribeSparkSQLDiagnosisListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSparkSQLDiagnosisListResponse
@@ -14334,6 +14406,8 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeSparkSQLDiagnosisListRequest,
     ) -> adb_20211201_models.DescribeSparkSQLDiagnosisListResponse:
         """
+        @summary Queries the diagnostic information about Spark SQL queries.
+        
         @param request: DescribeSparkSQLDiagnosisListRequest
         @return: DescribeSparkSQLDiagnosisListResponse
         """
@@ -14345,6 +14419,8 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeSparkSQLDiagnosisListRequest,
     ) -> adb_20211201_models.DescribeSparkSQLDiagnosisListResponse:
         """
+        @summary Queries the diagnostic information about Spark SQL queries.
+        
         @param request: DescribeSparkSQLDiagnosisListRequest
         @return: DescribeSparkSQLDiagnosisListResponse
         """
@@ -20641,7 +20717,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ListApsOptimizationStrategyResponse:
         """
-        @summary 获取当前ADB实例湖存储优化策略列表。
+        @summary Queries a list of lake storage optimization policies for an AnalyticDB for MySQL cluster.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: ListApsOptimizationStrategyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20684,7 +20762,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ListApsOptimizationStrategyResponse:
         """
-        @summary 获取当前ADB实例湖存储优化策略列表。
+        @summary Queries a list of lake storage optimization policies for an AnalyticDB for MySQL cluster.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: ListApsOptimizationStrategyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20726,7 +20806,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ListApsOptimizationStrategyRequest,
     ) -> adb_20211201_models.ListApsOptimizationStrategyResponse:
         """
-        @summary 获取当前ADB实例湖存储优化策略列表。
+        @summary Queries a list of lake storage optimization policies for an AnalyticDB for MySQL cluster.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: ListApsOptimizationStrategyRequest
         @return: ListApsOptimizationStrategyResponse
@@ -20739,7 +20821,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ListApsOptimizationStrategyRequest,
     ) -> adb_20211201_models.ListApsOptimizationStrategyResponse:
         """
-        @summary 获取当前ADB实例湖存储优化策略列表。
+        @summary Queries a list of lake storage optimization policies for an AnalyticDB for MySQL cluster.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: ListApsOptimizationStrategyRequest
         @return: ListApsOptimizationStrategyResponse
@@ -20885,7 +20969,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ListLakeStoragesResponse:
         """
-        @summary 列取湖存储
+        @summary Queries a list of lake storages.
         
         @param request: ListLakeStoragesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20924,7 +21008,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ListLakeStoragesResponse:
         """
-        @summary 列取湖存储
+        @summary Queries a list of lake storages.
         
         @param request: ListLakeStoragesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20962,7 +21046,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ListLakeStoragesRequest,
     ) -> adb_20211201_models.ListLakeStoragesResponse:
         """
-        @summary 列取湖存储
+        @summary Queries a list of lake storages.
         
         @param request: ListLakeStoragesRequest
         @return: ListLakeStoragesResponse
@@ -20975,7 +21059,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ListLakeStoragesRequest,
     ) -> adb_20211201_models.ListLakeStoragesResponse:
         """
-        @summary 列取湖存储
+        @summary Queries a list of lake storages.
         
         @param request: ListLakeStoragesRequest
         @return: ListLakeStoragesResponse
@@ -22485,7 +22569,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyApsJobResponse:
         """
-        @summary 修改aps任务
+        @summary Modifies an AnalyticDB Pipeline Service (APS) job.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: ModifyApsJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22532,7 +22618,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyApsJobResponse:
         """
-        @summary 修改aps任务
+        @summary Modifies an AnalyticDB Pipeline Service (APS) job.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: ModifyApsJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22578,7 +22666,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyApsJobRequest,
     ) -> adb_20211201_models.ModifyApsJobResponse:
         """
-        @summary 修改aps任务
+        @summary Modifies an AnalyticDB Pipeline Service (APS) job.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: ModifyApsJobRequest
         @return: ModifyApsJobResponse
@@ -22591,7 +22681,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyApsJobRequest,
     ) -> adb_20211201_models.ModifyApsJobResponse:
         """
-        @summary 修改aps任务
+        @summary Modifies an AnalyticDB Pipeline Service (APS) job.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: ModifyApsJobRequest
         @return: ModifyApsJobResponse
@@ -22605,7 +22697,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyApsSlsADBJobResponse:
         """
-        @summary 修改sls投递adb数仓任务
+        @summary Modifies an AnalyticDB Pipeline Service (APS) job from Simple Log Service (SLS) to an AnalyticDB for MySQL Data Warehouse Edition cluster.
         
         @param tmp_req: ModifyApsSlsADBJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22674,7 +22766,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyApsSlsADBJobResponse:
         """
-        @summary 修改sls投递adb数仓任务
+        @summary Modifies an AnalyticDB Pipeline Service (APS) job from Simple Log Service (SLS) to an AnalyticDB for MySQL Data Warehouse Edition cluster.
         
         @param tmp_req: ModifyApsSlsADBJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22742,7 +22834,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyApsSlsADBJobRequest,
     ) -> adb_20211201_models.ModifyApsSlsADBJobResponse:
         """
-        @summary 修改sls投递adb数仓任务
+        @summary Modifies an AnalyticDB Pipeline Service (APS) job from Simple Log Service (SLS) to an AnalyticDB for MySQL Data Warehouse Edition cluster.
         
         @param request: ModifyApsSlsADBJobRequest
         @return: ModifyApsSlsADBJobResponse
@@ -22755,7 +22847,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyApsSlsADBJobRequest,
     ) -> adb_20211201_models.ModifyApsSlsADBJobResponse:
         """
-        @summary 修改sls投递adb数仓任务
+        @summary Modifies an AnalyticDB Pipeline Service (APS) job from Simple Log Service (SLS) to an AnalyticDB for MySQL Data Warehouse Edition cluster.
         
         @param request: ModifyApsSlsADBJobRequest
         @return: ModifyApsSlsADBJobResponse
@@ -22770,6 +22862,8 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.ModifyApsWorkloadNameResponse:
         """
         @summary Modifies the AnalyticDB Pipeline Service (APS) workload name.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: ModifyApsWorkloadNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22818,6 +22912,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies the AnalyticDB Pipeline Service (APS) workload name.
         
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
         @param request: ModifyApsWorkloadNameRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyApsWorkloadNameResponse
@@ -22864,6 +22960,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies the AnalyticDB Pipeline Service (APS) workload name.
         
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
         @param request: ModifyApsWorkloadNameRequest
         @return: ModifyApsWorkloadNameResponse
         """
@@ -22876,6 +22974,8 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.ModifyApsWorkloadNameResponse:
         """
         @summary Modifies the AnalyticDB Pipeline Service (APS) workload name.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: ModifyApsWorkloadNameRequest
         @return: ModifyApsWorkloadNameResponse
@@ -25833,7 +25933,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.StartApsJobResponse:
         """
-        @summary 启动aps任务
+        @summary Starts an AnalyticDB Pipeline Service (APS) job.
         
         @param request: StartApsJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25876,7 +25976,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.StartApsJobResponse:
         """
-        @summary 启动aps任务
+        @summary Starts an AnalyticDB Pipeline Service (APS) job.
         
         @param request: StartApsJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25918,7 +26018,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.StartApsJobRequest,
     ) -> adb_20211201_models.StartApsJobResponse:
         """
-        @summary 启动aps任务
+        @summary Starts an AnalyticDB Pipeline Service (APS) job.
         
         @param request: StartApsJobRequest
         @return: StartApsJobResponse
@@ -25931,7 +26031,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.StartApsJobRequest,
     ) -> adb_20211201_models.StartApsJobResponse:
         """
-        @summary 启动aps任务
+        @summary Starts an AnalyticDB Pipeline Service (APS) job.
         
         @param request: StartApsJobRequest
         @return: StartApsJobResponse
@@ -26617,7 +26717,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.SuspendApsJobResponse:
         """
-        @summary 暂停aps任务
+        @summary Suspends an AnalyticDB Pipeline Service (APS) job.
         
         @param request: SuspendApsJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26660,7 +26760,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.SuspendApsJobResponse:
         """
-        @summary 暂停aps任务
+        @summary Suspends an AnalyticDB Pipeline Service (APS) job.
         
         @param request: SuspendApsJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26702,7 +26802,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.SuspendApsJobRequest,
     ) -> adb_20211201_models.SuspendApsJobResponse:
         """
-        @summary 暂停aps任务
+        @summary Suspends an AnalyticDB Pipeline Service (APS) job.
         
         @param request: SuspendApsJobRequest
         @return: SuspendApsJobResponse
@@ -26715,7 +26815,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.SuspendApsJobRequest,
     ) -> adb_20211201_models.SuspendApsJobResponse:
         """
-        @summary 暂停aps任务
+        @summary Suspends an AnalyticDB Pipeline Service (APS) job.
         
         @param request: SuspendApsJobRequest
         @return: SuspendApsJobResponse
@@ -27234,3 +27334,135 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_spark_template_file_with_options_async(request, runtime)
+
+    def upgrade_kernel_version_with_options(
+        self,
+        request: adb_20211201_models.UpgradeKernelVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.UpgradeKernelVersionResponse:
+        """
+        @summary Updates the minor version of an AnalyticDB for MySQL cluster.
+        
+        @param request: UpgradeKernelVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeKernelVersionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbversion):
+            query['DBVersion'] = request.dbversion
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.switch_mode):
+            query['SwitchMode'] = request.switch_mode
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpgradeKernelVersion',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.UpgradeKernelVersionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.UpgradeKernelVersionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def upgrade_kernel_version_with_options_async(
+        self,
+        request: adb_20211201_models.UpgradeKernelVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.UpgradeKernelVersionResponse:
+        """
+        @summary Updates the minor version of an AnalyticDB for MySQL cluster.
+        
+        @param request: UpgradeKernelVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeKernelVersionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbversion):
+            query['DBVersion'] = request.dbversion
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.switch_mode):
+            query['SwitchMode'] = request.switch_mode
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpgradeKernelVersion',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.UpgradeKernelVersionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.UpgradeKernelVersionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def upgrade_kernel_version(
+        self,
+        request: adb_20211201_models.UpgradeKernelVersionRequest,
+    ) -> adb_20211201_models.UpgradeKernelVersionResponse:
+        """
+        @summary Updates the minor version of an AnalyticDB for MySQL cluster.
+        
+        @param request: UpgradeKernelVersionRequest
+        @return: UpgradeKernelVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.upgrade_kernel_version_with_options(request, runtime)
+
+    async def upgrade_kernel_version_async(
+        self,
+        request: adb_20211201_models.UpgradeKernelVersionRequest,
+    ) -> adb_20211201_models.UpgradeKernelVersionResponse:
+        """
+        @summary Updates the minor version of an AnalyticDB for MySQL cluster.
+        
+        @param request: UpgradeKernelVersionRequest
+        @return: UpgradeKernelVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.upgrade_kernel_version_with_options_async(request, runtime)

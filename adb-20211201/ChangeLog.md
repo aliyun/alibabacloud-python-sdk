@@ -1,3 +1,11 @@
+2025-03-12 Version: 2.2.0
+- Support API UpgradeKernelVersion.
+- Update API CreateDBCluster: add param ProductVersion.
+- Update API CreateDBCluster: add param SecondaryVSwitchId.
+- Update API CreateDBCluster: add param SecondaryZoneId.
+- Update API DescribeDBClusterAttribute: update response param.
+
+
 2025-02-18 Version: 2.1.0
 - Support API ApplyAdviceById.
 - Support API BatchApplyAdviceByIdList.

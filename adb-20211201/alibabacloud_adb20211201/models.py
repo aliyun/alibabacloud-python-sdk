@@ -1141,6 +1141,7 @@ class SparkAttemptInfo(TeaModel):
 class SparkBatchSQLStatement(TeaModel):
     def __init__(
         self,
+        app_id: str = None,
         code: str = None,
         end_time: int = None,
         error: str = None,
@@ -1150,6 +1151,7 @@ class SparkBatchSQLStatement(TeaModel):
         state: str = None,
         statement_id: str = None,
     ):
+        self.app_id = app_id
         self.code = code
         self.end_time = end_time
         self.error = error
@@ -1168,6 +1170,8 @@ class SparkBatchSQLStatement(TeaModel):
             return _map
 
         result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
         if self.code is not None:
             result['Code'] = self.code
         if self.end_time is not None:
@@ -1188,6 +1192,8 @@ class SparkBatchSQLStatement(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('EndTime') is not None:
@@ -3110,6 +3116,7 @@ class CancelSparkWarehouseBatchSQLResponseBody(TeaModel):
         data: SparkBatchSQL = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
         self.request_id = request_id
 
@@ -3423,22 +3430,41 @@ class CreateAPSJobRequest(TeaModel):
         source_endpoint_user_name: str = None,
         target_table_mode: str = None,
     ):
+        # The name of the synchronization job.
+        # 
         # This parameter is required.
         self.aps_job_name = aps_job_name
+        # The objects to be synchronized.
+        # 
         # This parameter is required.
         self.db_list = db_list
+        # The name of the database account of the destination cluster.
+        # 
         # This parameter is required.
         self.destination_endpoint_instance_id = destination_endpoint_instance_id
+        # The password of the database account of the destination cluster.
         self.destination_endpoint_password = destination_endpoint_password
+        # The name of the database account of the destination cluster.
         self.destination_endpoint_user_name = destination_endpoint_user_name
+        # The partitions.
         self.partition_list = partition_list
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the source instance or cluster.
+        # 
         # This parameter is required.
         self.source_endpoint_instance_id = source_endpoint_instance_id
+        # The password of the database account of the source instance.
         self.source_endpoint_password = source_endpoint_password
+        # The region ID of the source instance.
         self.source_endpoint_region = source_endpoint_region
+        # The name of the database account of the source instance.
         self.source_endpoint_user_name = source_endpoint_user_name
+        # The mode of the destination table.
         self.target_table_mode = target_table_mode
 
     def validate(self):
@@ -3515,11 +3541,23 @@ class CreateAPSJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The job ID.
         self.aps_job_id = aps_job_id
+        # The HTTP status code or the error code.
         self.code = code
+        # The response code. The status code 200 indicates that the request was successful.
         self.http_status_code = http_status_code
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, a success message is returned.****\
+        # *   If the request failed, an error message is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -3772,14 +3810,24 @@ class CreateApsCopyWorkloadRequest(TeaModel):
         workload_id: str = None,
         workload_type: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The data source ID.
         self.datasource_id = datasource_id
+        # The name of the database.
         self.db_name = db_name
+        # The region ID.
         self.region_id = region_id
+        # The name of the table.
         self.table_name = table_name
+        # The job ID.
+        # 
         # This parameter is required.
         self.workload_id = workload_id
+        # The type of the job.
+        # 
         # This parameter is required.
         self.workload_type = workload_type
 
@@ -3837,11 +3885,23 @@ class CreateApsCopyWorkloadResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code or the error code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, a success message is returned.
+        # *   If the request failed, an error message is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -3931,7 +3991,9 @@ class CreateApsDatasoureRequestDatabricksInfo(TeaModel):
         access_token: str = None,
         workspace_url: str = None,
     ):
+        # The token that is used to access Databricks.
         self.access_token = access_token
+        # The URL of the workspace.
         self.workspace_url = workspace_url
 
     def validate(self):
@@ -3967,10 +4029,15 @@ class CreateApsDatasoureRequestHiveInfo(TeaModel):
         security_group: str = None,
         vswitch: str = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The configuration of the host.
         self.host_config = host_config
+        # The URL of the Hive Metastore.
         self.meta_store_uri = meta_store_uri
+        # The security group ID.
         self.security_group = security_group
+        # The vSwitch ID.
         self.vswitch = vswitch
 
     def validate(self):
@@ -4015,7 +4082,9 @@ class CreateApsDatasoureRequestKafkaInfo(TeaModel):
         kafka_cluster_id: str = None,
         kafka_topic: str = None,
     ):
+        # The ID of the Apache Kafka instance.
         self.kafka_cluster_id = kafka_cluster_id
+        # The topic of the Apache Kafka instance.
         self.kafka_topic = kafka_topic
 
     def validate(self):
@@ -4055,14 +4124,26 @@ class CreateApsDatasoureRequestPolarDBMysqlInfo(TeaModel):
         security_group: str = None,
         user_name: str = None,
     ):
+        # Specifies whether the data source is a cross-account resource. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.across = across
+        # The name of the cross-account role.
         self.across_role = across_role
+        # The cross-account UID.
         self.across_uid = across_uid
+        # The URL used to connect to the custom ApsaraDB RDS for MySQL instance.
         self.connect_url = connect_url
+        # The instance ID.
         self.instance_id = instance_id
+        # The password.
         self.password = password
+        # The region ID.
         self.region_id = region_id
+        # The security group ID.
         self.security_group = security_group
+        # The username used to access the instance.
         self.user_name = user_name
 
     def validate(self):
@@ -4122,6 +4203,7 @@ class CreateApsDatasoureRequestPolarDBXInfo(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):
@@ -4154,11 +4236,17 @@ class CreateApsDatasoureRequestRdsMysqlInfo(TeaModel):
         security_group: str = None,
         user_name: str = None,
     ):
+        # The URL used to connect to the read-only instance.
         self.connect_url = connect_url
+        # The instance ID.
         self.instance_id = instance_id
+        # The password of the database account of the instance.
         self.password = password
+        # The region ID.
         self.region_id = region_id
+        # The security group ID.
         self.security_group = security_group
+        # The name of the database account of the instance.
         self.user_name = user_name
 
     def validate(self):
@@ -4211,12 +4299,17 @@ class CreateApsDatasoureRequestSlsInfo(TeaModel):
         source_region_id: str = None,
         store: str = None,
     ):
+        # Specifies whether the data source is a cross-account resource.
         self.across = across
+        # The name of the cross-account role.
         self.across_role = across_role
+        # The cross-account UID.
         self.across_uid = across_uid
+        # The SLS project.
         self.project = project
+        # The region ID.
         self.source_region_id = source_region_id
-        # sls logstore。
+        # The name of the SLS Logstore.
         self.store = store
 
     def validate(self):
@@ -4276,22 +4369,39 @@ class CreateApsDatasoureRequest(TeaModel):
         region_id: str = None,
         sls_info: CreateApsDatasoureRequestSlsInfo = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The information about the Databricks data source.
         self.databricks_info = databricks_info
+        # The description of the data source.
         self.datasource_description = datasource_description
+        # The name of the data source.
+        # 
         # This parameter is required.
         self.datasource_name = datasource_name
+        # The type of the data source.
+        # 
         # This parameter is required.
         self.datasource_type = datasource_type
+        # The information about the Hive data source.
         self.hive_info = hive_info
+        # The information about the source Apache Kafka instance.
         self.kafka_info = kafka_info
+        # The mode.
         self.mode = mode
+        # The information about the source PolarDB for MySQL cluster.
         self.polar_dbmysql_info = polar_dbmysql_info
+        # The information about the source PolarDB-X instance.
         self.polar_dbxinfo = polar_dbxinfo
+        # The information about the source ApsaraDB RDS for MySQL instance.
         self.rds_mysql_info = rds_mysql_info
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The information about the source Simple Log Service (SLS) instance or cluster.
         self.sls_info = sls_info
 
     def validate(self):
@@ -4399,22 +4509,39 @@ class CreateApsDatasoureShrinkRequest(TeaModel):
         region_id: str = None,
         sls_info_shrink: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The information about the Databricks data source.
         self.databricks_info_shrink = databricks_info_shrink
+        # The description of the data source.
         self.datasource_description = datasource_description
+        # The name of the data source.
+        # 
         # This parameter is required.
         self.datasource_name = datasource_name
+        # The type of the data source.
+        # 
         # This parameter is required.
         self.datasource_type = datasource_type
+        # The information about the Hive data source.
         self.hive_info_shrink = hive_info_shrink
+        # The information about the source Apache Kafka instance.
         self.kafka_info_shrink = kafka_info_shrink
+        # The mode.
         self.mode = mode
+        # The information about the source PolarDB for MySQL cluster.
         self.polar_dbmysql_info_shrink = polar_dbmysql_info_shrink
+        # The information about the source PolarDB-X instance.
         self.polar_dbxinfo_shrink = polar_dbxinfo_shrink
+        # The information about the source ApsaraDB RDS for MySQL instance.
         self.rds_mysql_info_shrink = rds_mysql_info_shrink
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The information about the source Simple Log Service (SLS) instance or cluster.
         self.sls_info_shrink = sls_info_shrink
 
     def validate(self):
@@ -4496,12 +4623,25 @@ class CreateApsDatasoureResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code or the error code.
         self.code = code
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The information about the cluster resource usage.
         self.data = data
+        # The response code. The status code 200 indicates that the request was successful.
         self.http_status_code = http_status_code
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, a success message is returned.****\
+        # *   If the request failed, an error message is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the dry run succeeds. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -4606,23 +4746,44 @@ class CreateApsHiveJobRequest(TeaModel):
         target_type: str = None,
         workload_name: str = None,
     ):
+        # The advanced configurations.
         self.advanced_config = advanced_config
+        # The policy to handle tables with the same name in the destination cluster.
         self.conflict_strategy = conflict_strategy
+        # The ID of the AnalyticDB for MySQL cluster.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The data source ID.
         self.datasource_id = datasource_id
+        # The number of AnalyticDB compute units (ACUs) required for data migration.
+        # 
         # This parameter is required.
         self.full_compute_unit = full_compute_unit
+        # The path of the destination data lakehouse in an Object Storage Service (OSS) bucket.
+        # 
         # This parameter is required.
         self.oss_location = oss_location
+        # The number of tasks that are allowed in parallel.
         self.parallelism = parallelism
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The name of the resource group.
+        # 
         # This parameter is required.
         self.resource_group = resource_group
+        # The expression that allows objects to be synchronized.
         self.sync_allow_expression = sync_allow_expression
+        # The expression that denies objects to be synchronized.
         self.sync_deny_expression = sync_deny_expression
+        # The destination type.
         self.target_type = target_type
+        # The name of the workload.
+        # 
         # This parameter is required.
         self.workload_name = workload_name
 
@@ -4704,11 +4865,23 @@ class CreateApsHiveJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The response code. The status code 200 indicates that the request was successful.
         self.http_status_code = http_status_code
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, a success message is returned.
+        # *   If the request failed, an error message is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -4800,9 +4973,13 @@ class CreateApsSlsADBJobRequestColumns(TeaModel):
         name: str = None,
         type: str = None,
     ):
+        # The name of the mapping.
         self.map_name = map_name
+        # The type of the mapping.
         self.map_type = map_type
+        # The name of the column.
         self.name = name
+        # The data type of the column.
         self.type = type
 
     def validate(self):
@@ -4844,8 +5021,11 @@ class CreateApsSlsADBJobRequestUnixTimestampConvert(TeaModel):
         format: str = None,
         transform: bool = None,
     ):
+        # Specifies whether to enable the conversion of timestamps.
         self.convert = convert
+        # The format of the timestamp.
         self.format = format
+        # Specifies whether to enable the timestamp conversion.
         self.transform = transform
 
     def validate(self):
@@ -4912,48 +5092,88 @@ class CreateApsSlsADBJobRequest(TeaModel):
         user_name: str = None,
         workload_name: str = None,
     ):
+        # The name of the cross-account role.
         self.across_role = across_role
+        # The cross-account UID.
         self.across_uid = across_uid
+        # The advanced configurations.
         self.advanced_config = advanced_config
+        # The information about columns.
+        # 
         # This parameter is required.
         self.columns = columns
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The data source ID.
         self.datasource_id = datasource_id
+        # The name of the database.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The dirty data processing mode.
+        # 
         # This parameter is required.
         self.dirty_data_handle_mode = dirty_data_handle_mode
+        # The dirty data processing mode.
         self.dirty_data_process_pattern = dirty_data_process_pattern
+        # Specifies whether to enable the consistency check.
         self.exactly_once = exactly_once
+        # The number of full AnalyticDB compute units (ACUs).
         self.full_compute_unit = full_compute_unit
+        # The advanced configurations of Hudi.
         self.hudi_advanced_config = hudi_advanced_config
+        # The number of increment ACUs.
         self.incremental_compute_unit = incremental_compute_unit
-        # lakehosue ID。
+        # The lakehouse ID.
         self.lakehouse_id = lakehouse_id
+        # The latest offset.
         self.max_offsets_per_trigger = max_offsets_per_trigger
+        # The Object Storage Service (OSS) URL.
         self.oss_location = oss_location
+        # The format of the output file.
         self.output_format = output_format
+        # The information about partition.
         self.partition_specs = partition_specs
+        # The password of the database account.
+        # 
         # This parameter is required.
         self.password = password
+        # The definition of the primary key.
         self.primary_key_definition = primary_key_definition
+        # The name of the SLS project.
         self.project = project
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The name of the resource group.
         self.resource_group = resource_group
+        # 源集群所处地域ID。
         self.source_region_id = source_region_id
+        # The start offset.
+        # 
         # This parameter is required.
         self.starting_offsets = starting_offsets
-        # sls Store。
+        # The SLS Logstore.
         self.store = store
+        # The name of the table.
+        # 
         # This parameter is required.
         self.table_name = table_name
+        # The rules for generating the destination database.
         self.target_generate_rule = target_generate_rule
+        # The destination type.
         self.target_type = target_type
+        # The timestamp conversion.
         self.unix_timestamp_convert = unix_timestamp_convert
+        # The name of the database account.
+        # 
         # This parameter is required.
         self.user_name = user_name
+        # The name of the workload.
+        # 
         # This parameter is required.
         self.workload_name = workload_name
 
@@ -5148,48 +5368,88 @@ class CreateApsSlsADBJobShrinkRequest(TeaModel):
         user_name: str = None,
         workload_name: str = None,
     ):
+        # The name of the cross-account role.
         self.across_role = across_role
+        # The cross-account UID.
         self.across_uid = across_uid
+        # The advanced configurations.
         self.advanced_config = advanced_config
+        # The information about columns.
+        # 
         # This parameter is required.
         self.columns_shrink = columns_shrink
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The data source ID.
         self.datasource_id = datasource_id
+        # The name of the database.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The dirty data processing mode.
+        # 
         # This parameter is required.
         self.dirty_data_handle_mode = dirty_data_handle_mode
+        # The dirty data processing mode.
         self.dirty_data_process_pattern = dirty_data_process_pattern
+        # Specifies whether to enable the consistency check.
         self.exactly_once = exactly_once
+        # The number of full AnalyticDB compute units (ACUs).
         self.full_compute_unit = full_compute_unit
+        # The advanced configurations of Hudi.
         self.hudi_advanced_config = hudi_advanced_config
+        # The number of increment ACUs.
         self.incremental_compute_unit = incremental_compute_unit
-        # lakehosue ID。
+        # The lakehouse ID.
         self.lakehouse_id = lakehouse_id
+        # The latest offset.
         self.max_offsets_per_trigger = max_offsets_per_trigger
+        # The Object Storage Service (OSS) URL.
         self.oss_location = oss_location
+        # The format of the output file.
         self.output_format = output_format
+        # The information about partition.
         self.partition_specs_shrink = partition_specs_shrink
+        # The password of the database account.
+        # 
         # This parameter is required.
         self.password = password
+        # The definition of the primary key.
         self.primary_key_definition = primary_key_definition
+        # The name of the SLS project.
         self.project = project
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The name of the resource group.
         self.resource_group = resource_group
+        # 源集群所处地域ID。
         self.source_region_id = source_region_id
+        # The start offset.
+        # 
         # This parameter is required.
         self.starting_offsets = starting_offsets
-        # sls Store。
+        # The SLS Logstore.
         self.store = store
+        # The name of the table.
+        # 
         # This parameter is required.
         self.table_name = table_name
+        # The rules for generating the destination database.
         self.target_generate_rule = target_generate_rule
+        # The destination type.
         self.target_type = target_type
+        # The timestamp conversion.
         self.unix_timestamp_convert_shrink = unix_timestamp_convert_shrink
+        # The name of the database account.
+        # 
         # This parameter is required.
         self.user_name = user_name
+        # The name of the workload.
+        # 
         # This parameter is required.
         self.workload_name = workload_name
 
@@ -5347,11 +5607,23 @@ class CreateApsSlsADBJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code or the error code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The response code. The status code 200 indicates that the request was successful.
         self.http_status_code = http_status_code
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, a success message is returned.****\
+        # *   If the request failed, an error message is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the dry run succeeds. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -5441,14 +5713,13 @@ class CreateDBClusterRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The method that you want to use to restore data. Valid values:
+        # The key of tag N to add to the cluster. You can use tags to filter clusters. Valid values of N: 1 to 20. The values that you specify for N must be unique and consecutive integers that start from 1. Each value of `Tag.N.Key` is paired with a value of `Tag.N.Value`.
         # 
-        # *   **backup**: restores data from a backup set. You must also specify the **BackupSetId** and **SourceDBClusterId** parameters.
-        # *   **timepoint**: restores data to a point in time. You must also specify the **RestoreToTime** and **SourceDBClusterId** parameters.
+        # >  The tag key can be up to 64 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
         self.key = key
-        # The region ID of the source cluster.
+        # The value of tag N to add to the cluster. You can use tags to filter clusters. Valid values of N: 1 to 20. The values that you specify for N must be unique and consecutive integers that start from 1. Each value of `Tag.N.Key` is paired with a value of `Tag.N.Value`.
         # 
-        # >  This parameter must be specified for cloning clusters across regions.
+        # >  The tag value can be up to 64 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
         self.value = value
 
     def validate(self):
@@ -5490,12 +5761,15 @@ class CreateDBClusterRequest(TeaModel):
         pay_type: str = None,
         period: str = None,
         product_form: str = None,
+        product_version: str = None,
         region_id: str = None,
         reserved_node_count: int = None,
         reserved_node_size: str = None,
         resource_group_id: str = None,
         restore_to_time: str = None,
         restore_type: str = None,
+        secondary_vswitch_id: str = None,
+        secondary_zone_id: str = None,
         source_db_cluster_id: str = None,
         storage_resource: str = None,
         tag: List[CreateDBClusterRequestTag] = None,
@@ -5504,88 +5778,125 @@ class CreateDBClusterRequest(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # The default resource group ID.
+        # The ID of the backup set that you want to use to restore data.
+        # 
+        # >  You can call the [DescribeBackups](https://help.aliyun.com/document_detail/612318.html) operation to query the backup sets of the cluster.
         self.backup_set_id = backup_set_id
+        # The region ID of the source cluster.
+        # 
+        # >  This parameter must be specified for cloning clusters across regions.
         self.clone_source_region_id = clone_source_region_id
-        # The key of tag N to add to the cluster. You can use tags to filter clusters. Valid values of N: 1 to 20. The values that you specify for N must be unique and consecutive integers that start from 1. Each value of `Tag.N.Key` is paired with a value of `Tag.N.Value`.
+        # The amount of reserved computing resources. Valid values: 0ACU to 4096ACU. The value must be in increments of 16ACU. Each ACU is approximately equal to 1 core and 4 GB memory.
         # 
-        # >  The tag key can be up to 64 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+        # >  This parameter must be specified with a unit.
         self.compute_resource = compute_resource
-        # The virtual private cloud (VPC) ID of the cluster.
+        # The description of the cluster.
+        # 
+        # *   The description cannot start with `http://` or `https://`.
+        # *   The description must be 2 to 256 characters in length
         self.dbcluster_description = dbcluster_description
-        # The subscription duration of the subscription cluster.
-        # 
-        # *   Valid values when **Period** is set to Year: 1 to 3 (integer).
-        # *   Valid values when **Period** is set to Month: 1 to 9 (integer).
-        # 
-        # >  This parameter must be specified when PayType is set to **Prepaid**.
+        # The network type of the cluster. Set the value to **VPC**.
         self.dbcluster_network_type = dbcluster_network_type
+        # The version of the cluster. Set the value to **5.0**.
+        # 
+        # This parameter is required.
+        self.dbcluster_version = dbcluster_version
+        # Specifies whether to enable disk encryption.
+        self.disk_encryption = disk_encryption
+        # Specifies whether to allocate all reserved computing resources to the user_default resource group. Valid values:
+        # 
+        # *   **true** (default)
+        # *   **false**\
+        self.enable_default_resource_pool = enable_default_resource_pool
+        # The ID of the key that is used to encrypt disk data.
+        # 
+        # >  This parameter must be specified only when disk encryption is enabled.
+        self.kms_id = kms_id
+        # The billing method of the cluster. Valid values:
+        # 
+        # *   **Postpaid**: pay-as-you-go.
+        # *   **Prepaid**: subscription.
+        # 
+        # This parameter is required.
+        self.pay_type = pay_type
         # The subscription type of the subscription cluster. Valid values:
         # 
         # *   **Year**: subscription on a yearly basis.
         # *   **Month**: subscription on a monthly basis.
         # 
         # >  This parameter must be specified when PayType is set to Prepaid.
-        # 
-        # This parameter is required.
-        self.dbcluster_version = dbcluster_version
-        self.disk_encryption = disk_encryption
-        # The value of tag N to add to the cluster. You can use tags to filter clusters. Valid values of N: 1 to 20. The values that you specify for N must be unique and consecutive integers that start from 1. Each value of `Tag.N.Key` is paired with a value of `Tag.N.Value`.
-        # 
-        # >  The tag value can be up to 64 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
-        self.enable_default_resource_pool = enable_default_resource_pool
-        self.kms_id = kms_id
-        # The vSwitch ID of the cluster.
-        # 
-        # This parameter is required.
-        self.pay_type = pay_type
-        # The amount of reserved storage resources. Valid values: 0ACU to 2064ACU. The value must be in increments of 24ACU. Each ACU is approximately equal to 1 core and 4 GB memory.
-        # 
-        # >  This parameter must be specified with a unit.
         self.period = period
-        self.product_form = product_form
-        # The description of the cluster.
+        # The product form of the cluster. Valid values:
         # 
-        # *   The description cannot start with `http://` or `https://`.
-        # *   The description must be 2 to 256 characters in length
+        # *   **IntegrationForm**: integrated.
+        # *   **LegacyForm**: Data Lakehouse Edition.
+        self.product_form = product_form
+        # The edition of the cluster. Valid values:
+        # 
+        # *   **BasicVersion**: Basic Edition.
+        # *   **EnterpriseVersion**: Enterprise Edition.
+        # 
+        # >  This parameter must be specified only when ProductForm is set to IntegrationForm.
+        self.product_version = product_version
+        # The region ID of the cluster.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        self.reserved_node_count = reserved_node_count
-        self.reserved_node_size = reserved_node_size
-        # The ID of the backup set that you want to use to restore data.
+        # The number of reserved resource nodes.
         # 
-        # >  You can call the [DescribeBackups](https://help.aliyun.com/document_detail/612318.html) operation to query the backup sets of the cluster.
+        # *   For Enterprise Edition, the default value is 3 and the step size is 3.
+        # *   For Basic Edition, the default value is 1.
+        # 
+        # >  This parameter must be specified only when ProductForm is set to IntegrationForm.
+        self.reserved_node_count = reserved_node_count
+        # The specifications of reserved resource nodes. Unit: ACUs.
+        self.reserved_node_size = reserved_node_size
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
-        self.restore_to_time = restore_to_time
-        # The order ID.
-        self.restore_type = restore_type
-        # The request ID.
-        self.source_db_cluster_id = source_db_cluster_id
-        # The tags to add to the cluster.
-        self.storage_resource = storage_resource
         # The point in time to which you want to restore data from the backup set.
-        self.tag = tag
-        # The amount of reserved computing resources. Valid values: 0ACU to 4096ACU. The value must be in increments of 16ACU. Each ACU is approximately equal to 1 core and 4 GB memory.
+        self.restore_to_time = restore_to_time
+        # The method that you want to use to restore data. Valid values:
+        # 
+        # *   **backup**: restores data from a backup set. You must also specify the **BackupSetId** and **SourceDBClusterId** parameters.
+        # *   **timepoint**: restores data to a point in time. You must also specify the **RestoreToTime** and **SourceDBClusterId** parameters.
+        self.restore_type = restore_type
+        # The ID of the secondary vSwitch.
+        # 
+        # >  You cannot set this parameter to a value that is the same as that of the VSwitchId parameter.
+        self.secondary_vswitch_id = secondary_vswitch_id
+        # The ID of the secondary zone.
+        # 
+        # >  You cannot set this parameter to a value that is the same as that of the ZoneId parameter.
+        self.secondary_zone_id = secondary_zone_id
+        # The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
+        self.source_db_cluster_id = source_db_cluster_id
+        # The amount of reserved storage resources. Valid values: 0ACU to 2064ACU. The value must be in increments of 24ACU. Each ACU is approximately equal to 1 core and 4 GB memory.
         # 
         # >  This parameter must be specified with a unit.
-        self.used_time = used_time
-        # Specifies whether to allocate all reserved computing resources to the user_default resource group. Valid values:
+        self.storage_resource = storage_resource
+        # The tags to add to the cluster.
+        self.tag = tag
+        # The subscription period of the subscription cluster.
         # 
-        # *   **true** (default)
-        # *   **false**\
+        # *   Valid values when Period is set to Year: 1, 2, and 3 (integer)
+        # *   Valid values when Period is set to Month: 1 to 9 (integer)
+        # 
+        # > * This parameter is required if the PayType parameter is set to Prepaid.
+        # > * Longer subscription periods offer more savings. Purchasing a cluster for one year is more cost-effective than purchasing the cluster for 10 or 11 months.
+        self.used_time = used_time
+        # The virtual private cloud (VPC) ID of the cluster.
         # 
         # This parameter is required.
         self.vpcid = vpcid
-        # The resource group ID.
+        # The vSwitch ID of the cluster.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
-        # The billing method of the cluster. Valid values:
+        # The zone ID of the cluster.
         # 
-        # *   **Postpaid**: pay-as-you-go.
-        # *   **Prepaid**: subscription.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent zone list.
         # 
         # This parameter is required.
         self.zone_id = zone_id
@@ -5626,6 +5937,8 @@ class CreateDBClusterRequest(TeaModel):
             result['Period'] = self.period
         if self.product_form is not None:
             result['ProductForm'] = self.product_form
+        if self.product_version is not None:
+            result['ProductVersion'] = self.product_version
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.reserved_node_count is not None:
@@ -5638,6 +5951,10 @@ class CreateDBClusterRequest(TeaModel):
             result['RestoreToTime'] = self.restore_to_time
         if self.restore_type is not None:
             result['RestoreType'] = self.restore_type
+        if self.secondary_vswitch_id is not None:
+            result['SecondaryVSwitchId'] = self.secondary_vswitch_id
+        if self.secondary_zone_id is not None:
+            result['SecondaryZoneId'] = self.secondary_zone_id
         if self.source_db_cluster_id is not None:
             result['SourceDbClusterId'] = self.source_db_cluster_id
         if self.storage_resource is not None:
@@ -5682,6 +5999,8 @@ class CreateDBClusterRequest(TeaModel):
             self.period = m.get('Period')
         if m.get('ProductForm') is not None:
             self.product_form = m.get('ProductForm')
+        if m.get('ProductVersion') is not None:
+            self.product_version = m.get('ProductVersion')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ReservedNodeCount') is not None:
@@ -5694,6 +6013,10 @@ class CreateDBClusterRequest(TeaModel):
             self.restore_to_time = m.get('RestoreToTime')
         if m.get('RestoreType') is not None:
             self.restore_type = m.get('RestoreType')
+        if m.get('SecondaryVSwitchId') is not None:
+            self.secondary_vswitch_id = m.get('SecondaryVSwitchId')
+        if m.get('SecondaryZoneId') is not None:
+            self.secondary_zone_id = m.get('SecondaryZoneId')
         if m.get('SourceDbClusterId') is not None:
             self.source_db_cluster_id = m.get('SourceDbClusterId')
         if m.get('StorageResource') is not None:
@@ -5722,9 +6045,13 @@ class CreateDBClusterResponseBody(TeaModel):
         request_id: str = None,
         resource_group_id: str = None,
     ):
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         self.dbcluster_id = dbcluster_id
+        # The order ID.
         self.order_id = order_id
+        # The request ID.
         self.request_id = request_id
+        # The default resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -7844,8 +8171,14 @@ class DeleteApsJobRequest(TeaModel):
         aps_job_id: str = None,
         region_id: str = None,
     ):
+        # The job ID.
+        # 
         # This parameter is required.
         self.aps_job_id = aps_job_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -7885,13 +8218,24 @@ class DeleteApsJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The job ID.
         self.aps_job_id = aps_job_id
+        # The HTTP status code or the error code.
         self.code = code
+        # The error code returned when the request fails.
         self.err_code = err_code
+        # The error code returned when the request fails.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, a success message is returned.****\
+        # *   If the request failed, an error message is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -9233,10 +9577,16 @@ class DescribeAPSADBInstancesRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The page number.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -9279,12 +9629,19 @@ class DescribeAPSADBInstancesResponseBodyItems(TeaModel):
         storage_resource: int = None,
         zone_id: str = None,
     ):
+        # The specifications of the reserved computing resources.
         self.compute_resource = compute_resource
+        # The description of the cluster.
         self.dbcluster_description = dbcluster_description
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         self.dbcluster_id = dbcluster_id
+        # The status of the cluster.
         self.dbcluster_status = dbcluster_status
+        # The amount of remaining reserved computing resources that are available in the cluster.
         self.reserved_acu = reserved_acu
+        # The specifications of the reserved storage resources.
         self.storage_resource = storage_resource
+        # The zone ID of the cluster.
         self.zone_id = zone_id
 
     def validate(self):
@@ -9344,14 +9701,29 @@ class DescribeAPSADBInstancesResponseBody(TeaModel):
         success: bool = None,
         total_count: str = None,
     ):
+        # The HTTP status code or the error code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The queried clusters.
         self.items = items
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, a success message is returned.****\
+        # *   If the request failed, an error message is returned.
         self.message = message
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -13383,9 +13755,14 @@ class DescribeApsHiveWorkloadRequest(TeaModel):
         region_id: str = None,
         workload_id: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The region ID.
         self.region_id = region_id
+        # The job ID.
+        # 
         # This parameter is required.
         self.workload_id = workload_id
 
@@ -13442,27 +13819,47 @@ class DescribeApsHiveWorkloadResponseBodyApsWorkload(TeaModel):
         workload_name: str = None,
         workload_type_name: str = None,
     ):
+        # The advanced configurations.
         self.advanced_config = advanced_config
+        # The policy to handle tables with the same name in the destination cluster.
         self.conflict_strategy = conflict_strategy
+        # The time when the workload was created.
         self.create_time = create_time
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The data source ID.
         self.datasource_id = datasource_id
+        # The name of the data source.
         self.datasource_name = datasource_name
+        # The ID of the E-MapReduce (EMR) cluster.
         self.emr_cluster_id = emr_cluster_id
+        # The number of AnalyticDB compute units (ACUs) required for migration.
         self.full_compute_unit = full_compute_unit
-        # hive meta store url。
+        # The URL of the Hive Metastore.
         self.meta_store_uri = meta_store_uri
+        # The Object Storage Service (OSS) URL of the AnalyticDB for MySQL cluster data.
         self.oss_location = oss_location
+        # The number of tasks that are allowed in parallel.
         self.parallelism = parallelism
+        # The region ID.
         self.region_id = region_id
+        # The resource group to which the SQL statement belongs.
         self.resource_group = resource_group
+        # The status of the workload.
         self.state = state
+        # The expression that manually matches the source database table whitelist.
         self.sync_allow_expression = sync_allow_expression
+        # Manually match the blacklist expressions for source database tables.
         self.sync_deny_expression = sync_deny_expression
+        # The destination type.
         self.target_type = target_type
+        # The name of the vSwitch.
         self.vswitch = vswitch
+        # The job ID.
         self.workload_id = workload_id
+        # The name of the workload.
         self.workload_name = workload_name
+        # The name of the workload.
         self.workload_type_name = workload_type_name
 
     def validate(self):
@@ -13571,7 +13968,9 @@ class DescribeApsHiveWorkloadResponseBody(TeaModel):
         aps_workload: DescribeApsHiveWorkloadResponseBodyApsWorkload = None,
         request_id: str = None,
     ):
+        # The queried job.
         self.aps_workload = aps_workload
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -13843,13 +14242,21 @@ class DescribeApsJobsRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The name of the APS job.
         self.aps_job_name = aps_job_name
+        # The end of the time range to query.
         self.create_time_end = create_time_end
+        # The beginning of the time range to query.
         self.create_time_start = create_time_start
+        # The page number.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -13906,15 +14313,25 @@ class DescribeApsJobsResponseBodyAPSJobs(TeaModel):
         status: str = None,
         sub_status: str = None,
     ):
+        # The job ID.
         self.aps_job_id = aps_job_id
+        # The name of the APS job.
         self.aps_job_name = aps_job_name
+        # The time when the APS job was created.
         self.create_time = create_time
+        # The synchronization latency.
         self.delay = delay
+        # The destination cluster ID.
         self.destination_instance_id = destination_instance_id
+        # The error message.
         self.err_message = err_message
+        # The progress.
         self.projress = projress
+        # The ID of the source instance or cluster.
         self.source_instance_id = source_instance_id
+        # The status of the APS job.
         self.status = status
+        # The status of the task.
         self.sub_status = sub_status
 
     def validate(self):
@@ -13986,14 +14403,29 @@ class DescribeApsJobsResponseBody(TeaModel):
         success: bool = None,
         total_count: str = None,
     ):
+        # The queried APS jobs.
         self.apsjobs = apsjobs
+        # The HTTP status code.
         self.code = code
+        # The status code. A value of 200 indicates that the request was successful.
         self.http_status_code = http_status_code
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, a success message is returned.****\
+        # *   If the request failed, an error message is returned.
         self.message = message
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -14381,9 +14813,14 @@ class DescribeApsProgressRequest(TeaModel):
         region_id: str = None,
         workload_id: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The region ID.
         self.region_id = region_id
+        # The job ID.
+        # 
         # This parameter is required.
         self.workload_id = workload_id
 
@@ -14423,9 +14860,13 @@ class DescribeApsProgressResponseBodyApsHiveProgress(TeaModel):
         speed: str = None,
         tb_name: str = None,
     ):
+        # The name of the database.
         self.db_name = db_name
+        # The migration progress.
         self.progress = progress
+        # The migration speed.
         self.speed = speed
+        # The name of the table.
         self.tb_name = tb_name
 
     def validate(self):
@@ -14469,10 +14910,15 @@ class DescribeApsProgressResponseBody(TeaModel):
         success_table_count: int = None,
         total_table_count: int = None,
     ):
+        # The migration progress.
         self.aps_hive_progress = aps_hive_progress
+        # The request ID.
         self.request_id = request_id
+        # The success rate.
         self.success_percentage = success_percentage
+        # The total number of migrated tables returned.
         self.success_table_count = success_table_count
+        # The total number of tables to be migrated.
         self.total_table_count = total_table_count
 
     def validate(self):
@@ -18568,11 +19014,21 @@ class DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepListStepLi
         step_progress: str = None,
         step_status: str = None,
     ):
+        # The end time of the job step. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
+        # The start time of the job step. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
+        # The description of the job step.
         self.step_desc = step_desc
+        # The name of the job step.
         self.step_name = step_name
+        # The progress of the job step. Unit: %.
         self.step_progress = step_progress
+        # The status of the job step. Valid values:
+        # 
+        # *   NOT_RUN
+        # *   RUNNING
+        # *   SUCCEED
         self.step_status = step_status
 
     def validate(self):
@@ -18658,9 +19114,17 @@ class DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfo(TeaModel):
         status: str = None,
         step_list: DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepList = None,
     ):
+        # The name of the job.
         self.name = name
+        # The progress of the job. Unit: %.
         self.progress = progress
+        # The status of the job. Valid values:
+        # 
+        # *   NOT_RUN
+        # *   RUNNING
+        # *   SUCCEED
         self.status = status
+        # The job steps.
         self.step_list = step_list
 
     def validate(self):
@@ -18713,6 +19177,7 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         dbcluster_status: str = None,
         dbcluster_type: str = None,
         dbversion: str = None,
+        disk_encryption: bool = None,
         engine: str = None,
         engine_version: str = None,
         expire_time: str = None,
@@ -18731,6 +19196,8 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         reserved_node_count: int = None,
         reserved_node_size: str = None,
         resource_group_id: str = None,
+        secondary_vswitch_id: str = None,
+        secondary_zone_id: str = None,
         storage_resource: str = None,
         storage_resource_total: str = None,
         supported_features: Dict[str, str] = None,
@@ -18786,6 +19253,7 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         self.dbcluster_type = dbcluster_type
         # The engine version of the AnalyticDB for MySQL Data Lakehouse Edition cluster. **5.0** is returned.
         self.dbversion = dbversion
+        self.disk_encryption = disk_encryption
         # The engine of the cluster. **AnalyticDB** is returned.
         self.engine = engine
         # The minor version of the cluster.
@@ -18850,6 +19318,8 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         self.reserved_node_size = reserved_node_size
         # The resource group ID.
         self.resource_group_id = resource_group_id
+        self.secondary_vswitch_id = secondary_vswitch_id
+        self.secondary_zone_id = secondary_zone_id
         # The specifications of reserved storage resources. Each AnalyticDB compute unit (ACU) is approximately equal to 1 core and 4 GB memory. Storage resources are used to read and write data. The increase in the storage resources can improve the read and write performance of the cluster.
         self.storage_resource = storage_resource
         # The total amount of storage resources in the cluster. Each ACU is approximately equal to 1 core and 4 GB memory.
@@ -18858,14 +19328,18 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         self.supported_features = supported_features
         # The tags that are added to the cluster.
         self.tags = tags
+        # The job information.
         self.task_info = task_info
         # Indicates whether Elastic Network Interface (ENI) is enabled. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         self.user_enistatus = user_enistatus
+        # The vSwitch connected to the ENI. Separate multiple vSwitches with commas (,).
         self.user_enivswitch_options = user_enivswitch_options
+        # The VPC information of the ENI.
         self.user_enivpc_id = user_enivpc_id
+        # The zone associated with the ENI. Separate multiple zones with commas (,).
         self.user_enizone_options = user_enizone_options
         # The virtual private cloud (VPC) ID of the cluster.
         self.vpcid = vpcid
@@ -18912,6 +19386,8 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
             result['DBClusterType'] = self.dbcluster_type
         if self.dbversion is not None:
             result['DBVersion'] = self.dbversion
+        if self.disk_encryption is not None:
+            result['DiskEncryption'] = self.disk_encryption
         if self.engine is not None:
             result['Engine'] = self.engine
         if self.engine_version is not None:
@@ -18948,6 +19424,10 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
             result['ReservedNodeSize'] = self.reserved_node_size
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.secondary_vswitch_id is not None:
+            result['SecondaryVSwitchId'] = self.secondary_vswitch_id
+        if self.secondary_zone_id is not None:
+            result['SecondaryZoneId'] = self.secondary_zone_id
         if self.storage_resource is not None:
             result['StorageResource'] = self.storage_resource
         if self.storage_resource_total is not None:
@@ -19002,6 +19482,8 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
             self.dbcluster_type = m.get('DBClusterType')
         if m.get('DBVersion') is not None:
             self.dbversion = m.get('DBVersion')
+        if m.get('DiskEncryption') is not None:
+            self.disk_encryption = m.get('DiskEncryption')
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
         if m.get('EngineVersion') is not None:
@@ -19038,6 +19520,10 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
             self.reserved_node_size = m.get('ReservedNodeSize')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SecondaryVSwitchId') is not None:
+            self.secondary_vswitch_id = m.get('SecondaryVSwitchId')
+        if m.get('SecondaryZoneId') is not None:
+            self.secondary_zone_id = m.get('SecondaryZoneId')
         if m.get('StorageResource') is not None:
             self.storage_resource = m.get('StorageResource')
         if m.get('StorageResourceTotal') is not None:
@@ -19540,40 +20026,7 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
         # 
         # > The end time must be later than the start time. The maximum time range that can be specified is two days.
         self.end_time = end_time
-        # The performance metrics to be queried. Separate multiple values with commas (,). Valid values:
-        # 
-        # *   CPU
-        # 
-        #     *   **AnalyticDB_CPU_Usage_Percentage**: the average CPU utilization.
-        # 
-        # *   Connections
-        # 
-        #     *   **AnalyticDB_Instance_Connection_Count**: the number of database connections.
-        # 
-        # *   Writes
-        # 
-        #     *   **AnalyticDB_TPS**: the write transactions per second (TPS).
-        #     *   **AnalyticDB_InsertRT**: the write response time.
-        #     *   **AnalyticDB_InsertBytes**: the write throughput.
-        # 
-        # *   Queries
-        # 
-        #     *   **AnalyticDB_QPS**: the queries per second (QPS).
-        #     *   **AnalyticDB_QueryRT**: the query response time.
-        #     *   **AnalyticDB_QueryWaitTime**: the query wait time.
-        # 
-        # *   Disks
-        # 
-        #     *   **AnalyticDB_Disk_IO_Avg_Usage_Percentage**: the average I/O utilization.
-        #     *   **AnalyticDB_Disk_IO_Avg_Waiting_Time**: the average I/O wait time.
-        #     *   **AnalyticDB_IO_Throughput**: the disk throughput.
-        #     *   **AnalyticDB_IOPS**: the disk IOPS.
-        #     *   **AnalyticDB_Disk_Usage**: the disk space that is used.
-        #     *   **AnalyticDB_Disk_Usage_Percentage**: the disk usage.
-        #     *   **AnalyticDB_Hot_Data_Usage**: the disk space that is used by hot data.
-        #     *   **AnalyticDB_Cold_Data_Usage**: the disk space that is used by code data.
-        # 
-        # >  This parameter must be specified.
+        # The key of the performance metric that you want to query. Separate multiple keys with commas (,). For more information about the performance metrics, see [Metric overview](https://help.aliyun.com/document_detail/2863211.html).
         self.key = key
         # The region ID of the cluster.
         # 
@@ -19634,189 +20087,7 @@ class DescribeDBClusterPerformanceResponseBodyPerformancesSeries(TeaModel):
         translate_key: str = None,
         values: List[str] = None,
     ):
-        # *   CPU
-        # 
-        #     *   **AnalyticDB_CPU_Usage_Percentage**: the CPU utilization.
-        # 
-        #         *   AnalyticDB_Storage_CPU_Avg_Usage_Percentage: the average CPU utilization across storage nodes.
-        #         *   AnalyticDB_Storage_CPU_Max_Usage_Percentage: the maximum CPU utilization across storage nodes.
-        #         *   AnalyticDB_Compute_CPU_Max_Usage_Percentage: the average CPU utilization across compute nodes.
-        #         *   AnalyticDB_Compute_CPU_Max_Usage_Percentage: the maximum CPU utilization across compute nodes.
-        #         *   AnalyticDB_CS_CPU_Avg_Usage_Percentage: the average CPU utilization across access nodes.
-        #         *   AnalyticDB_CS_CPU_Max_Usage_Percentage: the maximum CPU utilization across access nodes.
-        # 
-        # *   Connections
-        # 
-        #     *   **AnalyticDB_Instance_Connection_Count**: the number of connections to the cluster.
-        # 
-        #         *   AnalyticDB_Instance_Connection_Count: the number of connections to the cluster.
-        # 
-        # *   Writes
-        # 
-        #     *   **AnalyticDB_TPS**: the write TPS.
-        # 
-        #         *   tps: the sum of the insert_tps, update_tps, delete_tps, and load_tps values.
-        #         *   insert_tps: the number of successful INSERT INTO VALUES operations per second.
-        #         *   update_tps: the number of successful UPDATE operations per second.
-        #         *   delete_tps: the number of successful DELETE operations per second.
-        #         *   load_tps: the number of successful INSERT OVERWRITE operations per second.
-        # 
-        #     *   **AnalyticDB_InsertRT**: the write response time.
-        # 
-        #         *   AnalyticDB_Avg_InsertRT: the average amount of time consumed by writes.
-        #         *   AnalyticDB_Max_InsertRT: the maximum amount of time consumed by a single write.
-        # 
-        #     *   **AnalyticDB_InsertBytes**: the write throughput.
-        # 
-        #         *   AnalyticDB_InsertBytes: the amount of written data.
-        # 
-        # *   Updates
-        # 
-        #     *   **AnalyticDB_UpdateRT**: the update response time.
-        # 
-        #         *   updateinto_avg_rt: the average amount of time consumed by updates.
-        #         *   updateinto_max_rt: the maximum amount of time consumed by a single update.
-        # 
-        # *   Deletes
-        # 
-        #     *   **AnalyticDB_DeleteRT**: the delete response time.
-        # 
-        #         *   delete_avg_rt: the average amount of time consumed by deletes.
-        #         *   delete_max_rt: the maximum amount of time consumed by a single delete.
-        # 
-        # *   Queries
-        # 
-        #     *   **AnalyticDB_QPS**: the QPS.
-        # 
-        #         *   AnalyticDB_QPS: the number of SELECT operations completed per second.
-        #         *   AnalyticDB_ETL_QPS: the number of INSERT OVERWRITE operations completed per second.
-        # 
-        #     *   **AnalyticDB_QueryRT**: the query response time.
-        # 
-        #         *   AnalyticDB_Avg_QueryRT: the average amount of time consumed by queries.
-        #         *   AnalyticDB_Max_QueryRT: the maximum amount of time consumed by a single query.
-        #         *   etl_avg_rt: the average amount of time consumed by extract, transform, load (ETL) operations.
-        #         *   etl_max_rt: the maximum amount of time consumed by a single ETL operation.
-        # 
-        #     *   **AnalyticDB_QueryWaitTime**: the query wait time.
-        # 
-        #         *   AnalyticDB_Avg_QueryWaitTime: the average wait time for SELECT and ETL operations.
-        #         *   AnalyticDB_Max_QueryWaitTime: the maximum wait time for SELECT and ETL operations.
-        # 
-        #     *   AnalyticDB_QueryFailedRatio: the query failure rate.
-        # 
-        #         *   query_failed_ratio: the failure rate of SELECT and ETL operations.
-        # 
-        # *   Disks
-        # 
-        #     *   **AnalyticDB_IO_Throughput**: the disk I/O throughput.
-        # 
-        #         *   AnalyticDB_Storage_Read_IO_Throughput: the average read throughput across storage nodes.
-        #         *   AnalyticDB_Storage_Write_IO_Throughput: the average write throughput across storage nodes.
-        #         *   AnalyticDB_Compute_Read_IO_Throughput: the average read throughput across compute nodes.
-        #         *   AnalyticDB_Compute_Write_IO_Throughput: the average write throughput across compute nodes.
-        # 
-        #     *   **AnalyticDB_Disk_IO_Avg_Usage_Percentage**: the average I/O usage.
-        # 
-        #         *   AnalyticDB_Disk_IO_Avg_Usage_Percentage: the average I/O usage across storage nodes.
-        # 
-        #     *   **AnalyticDB_Disk_IO_Avg_Waiting_Time**: the average I/O wait time.
-        # 
-        #         *   AnalyticDB_Disk_IO_Avg_Waiting_Time: the average I/O wait time of storage nodes.
-        # 
-        #     *   **AnalyticDB_IOPS**: the disk IOPS.
-        # 
-        #         *   AnalyticDB_Storage_Read_IOPS: the average read IOPS of storage nodes.
-        #         *   AnalyticDB_Storage_Write_IOPS: the average write IOPS of storage nodes.
-        #         *   AnalyticDB_Compute_Read_IOPS: the average read IOPS of compute nodes.
-        #         *   AnalyticDB_Compute_Write_IOPS: the average write IOPS of compute nodes.
-        # 
-        #     *   **AnalyticDB_DiskUsage**: the disk storage that is used.
-        # 
-        #         *   disk_used_ratio: the average disk usage across nodes.
-        #         *   worker_max_node_disk_used_ratio: the maximum disk usage across nodes.
-        # 
-        #     *   **AnalyticDB_Hot_Data_Usage**: the disk storage that is used by hot data.
-        # 
-        #         *   AnalyticDB_Hot_Data_Usage: the disk storage that is used by hot data.
-        # 
-        #     *   **AnalyticDB_Cold_Data_Usage**: the disk storage that is used by cold data.
-        # 
-        #         *   AnalyticDB_Cold_Data_Usage: the disk storage that is used by cold data.
-        # 
-        #     *   AnalyticDB_DiskUsedRatio: the node disk usage.
-        # 
-        #         *   disk_used_ratio: the average disk usage across nodes.
-        #         *   worker_max_node_disk_used_ratio: the maximum disk usage across nodes.
-        # 
-        #     *   AnalyticDB_DiskUsedSize: the total data size of the cluster.
-        # 
-        #         *   user_used_disk_max: the maximum hot data size across nodes.
-        #         *   user_used_disk_avg: the average hot data size across nodes.
-        #         *   hot_disk_used: the hot data size.
-        #         *   cold_disk_used: the cold data size.
-        # 
-        # *   Other
-        # 
-        #     *   **AnalyticDB_BuildTaskCount**: the number of BUILD jobs.
-        # 
-        #         *   max_build_task_count: the maximum number of running BUILD jobs across nodes.
-        #         *   avg_build_task_count: the average number of running BUILD jobs across nodes.
-        # 
-        #     *   **AnalyticDB_ComputeMemoryUsedRatio**: the compute memory usage.
-        # 
-        #         *   max_worker_compute_memory_used_ratio: the maximum compute memory usage across storage nodes.
-        #         *   avg_worker_compute_memory_used_ratio: the average compute memory usage across storage nodes.
-        #         *   max_executor_compute_memory_used_ratio: the maximum compute memory usage across compute nodes.
-        #         *   avg_executor_compute_memory_used_ratio: the average compute memory usage across compute nodes.
-        # 
-        #     *   AnalyticDB_UnavailableNodeCount: the number of unavailable nodes.
-        # 
-        #         *   worker_unavailable_node_count: the number of unavailable storage nodes.
-        #         *   executor_unavailable_node_count: the number of unavailable compute nodes.
-        # 
-        # *   WLM
-        # 
-        #     *   AnalyticDB_WLM_ResubmitQueries_Count: the number of resubmitted WLM queries.
-        # 
-        #         *   AnalyticDB_WLM_ResubmitQueries_Count: the number of resubmitted WLM queries.
-        # 
-        #     *   AnalyticDB_WLM_SQA_AvgRt_MS: the average amount of time consumed by accelerated short WLM queries.
-        # 
-        #         *   AnalyticDB_WLM_SQA_AvgRt_MS: the average amount of time consumed by accelerated short WLM queries.
-        # 
-        #     *   AnalyticDB_WLM_SQA_Queries_Count: the number of accelerated short WLM queries.
-        # 
-        #         *   AnalyticDB_WLM_SQA_Queries_Count: the number of accelerated short WLM queries.
-        # 
-        #     *   AnalyticDB_WLM_TotalQueries_Count: the total number of WLM queries.
-        # 
-        #         *   AnalyticDB_WLM_TotalQueries_Count: the total number of WLM queries.
-        # 
-        # *   AnalyticDB Pipeline Service (APS)
-        # 
-        #     *   AnalyticDB_APS_BPS: the bytes per second (BPS) of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition cluster.
-        # 
-        #         *   APS_Read_BPS: the read BPS of APS.
-        # 
-        #     *   AnalyticDB_APS_CPU: the CPU utilization of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition cluster.
-        # 
-        #         *   APS_CPU_Avg_Usage_Percentage: the average CPU utilization of APS.
-        #         *   APS_CPU_Max_Usage_Percentage: the maximum CPU utilization of APS.
-        # 
-        #     *   AnalyticDB_APS_Memory: the memory usage of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition cluster.
-        # 
-        #         *   APS_Memory_Avg_Usage_Percentage: the average memory usage of APS.
-        #         *   APS_Memory_Max_Usage_Percentage: the maximum memory usage of APS.
-        # 
-        #     *   AnalyticDB_APS_RPS: the number of records per second of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition cluster.
-        # 
-        #         *   APS_Read_RPS: the number of read records per second of APS.
-        # 
-        #     *   AnalyticDB_APS_RT: the response time of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition cluster.
-        # 
-        #         *   APS_Read_Avg_RT: the average response time of APS.
-        #         *   APS_Read_Max_RT: the maximum response time of APS.
+        # The name of the performance metric value. For more information about the performance metrics, see [Metric overview](https://help.aliyun.com/document_detail/2863211.html).
         self.name = name
         # The tags that are added to the cluster.
         self.tags = tags
@@ -29387,14 +29658,35 @@ class DescribeSparkSQLDiagnosisAttributeRequest(TeaModel):
         language: str = None,
         region_id: str = None,
     ):
+        # The application ID.
+        # 
+        # >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/612475.html) operation to query a list of Spark application IDs.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The cluster ID.
+        # 
+        # > 
+        # 
+        # *   You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The ID of the query executed within the Spark application.
+        # 
         # This parameter is required.
         self.inner_query_id = inner_query_id
+        # The language in which to return the query results. Valid values:
+        # 
+        # *   en: English.
+        # *   zh: Chinese.
+        # 
         # This parameter is required.
         self.language = language
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -29440,7 +29732,9 @@ class DescribeSparkSQLDiagnosisAttributeResponseBodyOperatorListSortedByMetrics(
         operator_list_sorted_by_exclusive_time: List[SparkOperatorInfo] = None,
         operator_list_sorted_by_max_memory: List[SparkOperatorInfo] = None,
     ):
+        # The operators sorted by the execution duration.
         self.operator_list_sorted_by_exclusive_time = operator_list_sorted_by_exclusive_time
+        # The operators sorted by the maximum memory used.
         self.operator_list_sorted_by_max_memory = operator_list_sorted_by_max_memory
 
     def validate(self):
@@ -29496,13 +29790,23 @@ class DescribeSparkSQLDiagnosisAttributeResponseBody(TeaModel):
         request_id: str = None,
         root: OperatorNode = None,
     ):
+        # The information about the request denial.
         self.access_denied_detail = access_denied_detail
+        # The application ID.
+        # 
+        # >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/612475.html) operation to query a list of Spark application IDs.
         self.app_id = app_id
+        # The queried diagnostic information.
         self.diagnosis_infos = diagnosis_infos
+        # The execution duration of the query. Unit: milliseconds.
         self.elapsed_time = elapsed_time
+        # The ID of the query executed within the Spark application.
         self.inner_query_id = inner_query_id
+        # The operators sorted by metrics.
         self.operator_list_sorted_by_metrics = operator_list_sorted_by_metrics
+        # The request ID.
         self.request_id = request_id
+        # The Spark execution plan tree.
         self.root = root
 
     def validate(self):
@@ -29620,15 +29924,45 @@ class DescribeSparkSQLDiagnosisListRequest(TeaModel):
         region_id: str = None,
         statement_id: int = None,
     ):
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region, including cluster IDs.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The latest start time.
         self.max_start_time = max_start_time
+        # The earliest start time.
         self.min_start_time = min_start_time
+        # The order by which to sort query results. Specify the parameter value in the JSON format. Example: `[{"Field":"MaxExclusiveTime","Type":"Asc"}]`.
+        # 
+        # *   `Field` specifies the field by which to sort the query results. Valid values:
+        # 
+        #     *   `MaxExclusiveTime`: the maximum execution duration.
+        #     *   `PeakMemory`: the peak memory.
+        #     *   `QueryStartTime`: the start time of the query.
+        #     *   `QueryWallclockTime`: the execution duration of the query.
+        # 
+        # *   `Type` specifies the sorting order. Valid values:
+        # 
+        #     *   `Asc`: ascending order.
+        #     *   `Desc`: descending order.
+        # 
+        # > 
+        # 
+        # *   If you do not specify this parameter, query results are sorted by `MaxExclusiveTime` in ascending order.
         self.order = order
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The unique ID of the code block in the Spark job.
         self.statement_id = statement_id
 
     def validate(self):
@@ -29693,15 +30027,32 @@ class DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList(TeaModel):
         state: str = None,
         statement_id: int = None,
     ):
+        # The application ID.
+        # 
+        # >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/612475.html) operation to query a list of Spark application IDs.
         self.app_id = app_id
+        # The execution duration of the query. Unit: milliseconds.
         self.elapsed_time = elapsed_time
+        # The ID of the query executed within the Spark application.
         self.inner_query_id = inner_query_id
+        # The maximum operator execution duration. Unit: milliseconds.
         self.max_exclusive_time = max_exclusive_time
+        # The maximum operator memory used. Unit: bytes.
         self.peak_memory = peak_memory
+        # The SQL statement.
         self.sql = sql
+        # The number of entries scanned.
         self.scan_row_count = scan_row_count
+        # The start time of the query. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time is displayed in UTC.
         self.start_time = start_time
+        # The execution status of the query. Valid values:
+        # 
+        # *   COMPLETED
+        # *   CANCELED
+        # *   ABORTED
+        # *   FAILED
         self.state = state
+        # The unique ID of the code block in the Spark job.
         self.statement_id = statement_id
 
     def validate(self):
@@ -29770,11 +30121,17 @@ class DescribeSparkSQLDiagnosisListResponseBody(TeaModel):
         sqldiagnosis_list: List[DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList] = None,
         total_count: int = None,
     ):
+        # The information about the request denial.
         self.access_denied_detail = access_denied_detail
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The queried diagnostic information.
         self.sqldiagnosis_list = sqldiagnosis_list
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -33635,10 +33992,13 @@ class ExecuteSparkWarehouseBatchSQLRequest(TeaModel):
         runtime_config: str = None,
         schema: str = None,
     ):
+        # The name of the client.
         self.agency = agency
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The maximum amount of execution result data that can be written to Object Storage Service (OSS). Unit: MB. Default value: 4096. The size of compressed objects is difficult to estimate. The data that is actually written to OSS is smaller than the specified value.
         self.execute_result_limit = execute_result_limit
+        # The maximum execution duration. Unit: seconds. If a set of SQL statements fail to be executed for the specified period of time after submission, they are marked as a timeout error. The default value is 360000 seconds, which is equivalent to 100 hours.
         self.execute_time_limit_in_seconds = execute_time_limit_in_seconds
         # This parameter is required.
         self.query = query
@@ -33701,6 +34061,7 @@ class ExecuteSparkWarehouseBatchSQLResponseBody(TeaModel):
         data: SparkBatchSQL = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
         self.request_id = request_id
 
@@ -37198,6 +37559,7 @@ class GetSparkWarehouseBatchSQLRequest(TeaModel):
         dbcluster_id: str = None,
         query_id: str = None,
     ):
+        # The name of the client, which can be up to 16 characters in length. Specify a descriptive name that makes it easy to identify.
         self.agency = agency
         self.dbcluster_id = dbcluster_id
         # This parameter is required.
@@ -37237,6 +37599,7 @@ class GetSparkWarehouseBatchSQLResponseBody(TeaModel):
         data: SparkBatchSQL = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
         self.request_id = request_id
 
@@ -39568,8 +39931,12 @@ class ListApsOptimizationStrategyRequest(TeaModel):
         dbcluster_id: str = None,
         region_id: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -39606,10 +39973,18 @@ class ListApsOptimizationStrategyResponseBodyData(TeaModel):
         strategy_name: str = None,
         strategy_type: str = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The status of the lifecycle management policy. Valid values:
+        # 
+        # 1.  on: enabled.
+        # 2.  off: disabled.
         self.status = status
+        # The description of the lifecycle management policy.
         self.strategy_desc = strategy_desc
+        # The name of the lifecycle management policy.
         self.strategy_name = strategy_name
+        # The type of the lifecycle management policy. Only StrategyValue is returned.
         self.strategy_type = strategy_type
 
     def validate(self):
@@ -39658,11 +40033,23 @@ class ListApsOptimizationStrategyResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The response code. The status code 200 indicates that the request was successful.
         self.http_status_code = http_status_code
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, a success message is returned.****\
+        # *   If the request failed, an error message is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -40075,11 +40462,18 @@ class ListLakeStoragesRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The filter parameters that you want to use to query lake storages. Specify multiple parameters in an AND relationship. For example, if you want to query lake storage whose names are in the range of i-a123, or i-b123, and in the Stopped state, set this parameter to \\&Filter. 1.Name=InstanceName\\&Filter. 1.Value.1=i-a123\\&Filter.1.Value.2=i-b123\\&Filter.2.Name=Status\\&Filter. 2.Value=Stopped.
         self.filter = filter
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -40127,13 +40521,13 @@ class ListLakeStoragesResponseBodyItemsPermissions(TeaModel):
         type: str = None,
         write: bool = None,
     ):
-        # 具有该权限的账户或RAM用户ID
+        # The database account ID.
         self.account = account
-        # 表示是否允许读取湖存储的权限
+        # The read permissions.
         self.read = read
-        # 指定权限的账户类型
+        # The type of the database account.
         self.type = type
-        # 表示是否允许向湖存储写入数据的权限
+        # The write permissions.
         self.write = write
 
     def validate(self):
@@ -40186,32 +40580,33 @@ class ListLakeStoragesResponseBodyItems(TeaModel):
         total_storage: str = None,
         update_time: str = None,
     ):
-        # 湖存储被创建的时间
+        # The time when the lake storage was created.
         self.create_time = create_time
-        # 创建湖存储的用户账号的唯一标识符
+        # The creator UID.
         self.creator_uid = creator_uid
-        # 用于指定和挂载到特定ADB主实例的湖存储
+        # The ID of the AnalyticDB for MySQL cluster.
         self.dbcluster_id = dbcluster_id
-        # 对湖存储的描述信息
+        # The description of the lake storage.
         self.description = description
+        # The size of data files.
         self.file_size = file_size
-        # 用于识别特定湖存储的唯一标识符
+        # The unique identifier of the lake storage.
         self.lake_storage_id = lake_storage_id
-        # 最后操作湖存储的用户账号的唯一标识符
+        # The operator UID.
         self.operator_uid = operator_uid
-        # 拥有湖存储资源的用户账号的唯一标识符
+        # The queried lake storage.
         self.owner_uid = owner_uid
-        # 设置湖存储的读/写权限和账户级别权限的数组
+        # The permissions on the lake storage.
         self.permissions = permissions
-        # 指定要操作的湖存储所在区域的ID
+        # The region ID.
         self.region_id = region_id
-        # 湖存储中库表的总数量
+        # The number of tables.
         self.table_count = table_count
-        # 湖存储中所有库表的总数据行数
+        # The total number of entries returned.
         self.total_rows = total_rows
-        # 湖存储中数据的总存储量
+        # The total storage size.
         self.total_storage = total_storage
-        # 湖存储最后一次更新的时间
+        # The time when the lake storage was last updated.
         self.update_time = update_time
 
     def validate(self):
@@ -40307,14 +40702,29 @@ class ListLakeStoragesResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The HTTP status code or the error code.
         self.code = code
+        # The response code. The status code 200 indicates that the request was successful.
         self.http_status_code = http_status_code
+        # The queried lake storages.
         self.items = items
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, a success message is returned.****\
+        # *   If the request failed, an error message is returned.
         self.message = message
+        # The token that is used for paging when the number of results is greater than the value of MaxResults.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the dry run succeeds. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -41783,7 +42193,9 @@ class ListSparkWarehouseBatchSQLRequest(TeaModel):
     ):
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
         # This parameter is required.
         self.resource_group_name = resource_group_name
@@ -41830,6 +42242,7 @@ class ListSparkWarehouseBatchSQLResponseBodyData(TeaModel):
     ):
         self.page_number = page_number
         self.page_size = page_size
+        # The queried Spark SQL statements.
         self.queries = queries
         self.total = total
 
@@ -41879,6 +42292,7 @@ class ListSparkWarehouseBatchSQLResponseBody(TeaModel):
         data: ListSparkWarehouseBatchSQLResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
         self.request_id = request_id
 
@@ -43319,11 +43733,18 @@ class ModifyApsJobRequest(TeaModel):
         partition_list: str = None,
         region_id: str = None,
     ):
+        # The job ID.
+        # 
         # This parameter is required.
         self.aps_job_id = aps_job_id
+        # The objects to be synchronized.
+        # 
         # This parameter is required.
         self.db_list = db_list
+        # The partitions.
         self.partition_list = partition_list
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -43371,13 +43792,27 @@ class ModifyApsJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The job ID.
         self.aps_job_id = aps_job_id
+        # The status code. A value of 200 indicates that the request is successful.
         self.code = code
+        # The error code.
         self.err_code = err_code
+        # The error message returned if the request failed.
         self.err_message = err_message
+        # The status code. A value of 200 indicates that the request was successful.
         self.http_status_code = http_status_code
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, a success message is returned.****\
+        # *   If the request failed, an error message is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -43477,9 +43912,13 @@ class ModifyApsSlsADBJobRequestColumns(TeaModel):
         name: str = None,
         type: str = None,
     ):
+        # The name of the mapping.
         self.map_name = map_name
+        # The type of the mapping.
         self.map_type = map_type
+        # The name of the column.
         self.name = name
+        # The data type of the column.
         self.type = type
 
     def validate(self):
@@ -43531,21 +43970,37 @@ class ModifyApsSlsADBJobRequest(TeaModel):
         workload_id: str = None,
         workload_name: str = None,
     ):
+        # The information about columns.
         self.columns = columns
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The name of the database.
         self.db_name = db_name
+        # The dirty data processing mode.
         self.dirty_data_process_pattern = dirty_data_process_pattern
+        # Specifies whether to enable the consistency check.
         self.exactly_once = exactly_once
+        # The password of the database account.
         self.password = password
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The start offset.
         self.starting_offsets = starting_offsets
+        # The name of the table.
         self.table_name = table_name
+        # The timestamp conversion.
         self.unix_timestamp_convert = unix_timestamp_convert
+        # The name of the database account.
         self.user_name = user_name
+        # The job ID.
+        # 
         # This parameter is required.
         self.workload_id = workload_id
+        # The name of the workload.
         self.workload_name = workload_name
 
     def validate(self):
@@ -43641,21 +44096,37 @@ class ModifyApsSlsADBJobShrinkRequest(TeaModel):
         workload_id: str = None,
         workload_name: str = None,
     ):
+        # The information about columns.
         self.columns_shrink = columns_shrink
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The name of the database.
         self.db_name = db_name
+        # The dirty data processing mode.
         self.dirty_data_process_pattern = dirty_data_process_pattern
+        # Specifies whether to enable the consistency check.
         self.exactly_once = exactly_once
+        # The password of the database account.
         self.password = password
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The start offset.
         self.starting_offsets = starting_offsets
+        # The name of the table.
         self.table_name = table_name
+        # The timestamp conversion.
         self.unix_timestamp_convert = unix_timestamp_convert
+        # The name of the database account.
         self.user_name = user_name
+        # The job ID.
+        # 
         # This parameter is required.
         self.workload_id = workload_id
+        # The name of the workload.
         self.workload_name = workload_name
 
     def validate(self):
@@ -43736,11 +44207,23 @@ class ModifyApsSlsADBJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code or the error code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The response code. The status code 200 indicates that the request was successful.
         self.http_status_code = http_status_code
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, a success message is returned.****\
+        # *   If the request failed, an error message is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -43832,12 +44315,20 @@ class ModifyApsWorkloadNameRequest(TeaModel):
         workload_id: str = None,
         workload_name: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The job ID.
+        # 
         # This parameter is required.
         self.workload_id = workload_id
+        # The name of the workload.
+        # 
         # This parameter is required.
         self.workload_name = workload_name
 
@@ -43883,11 +44374,23 @@ class ModifyApsWorkloadNameResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code or the error code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The status code. A value of 200 indicates that the request was successful.
         self.http_status_code = http_status_code
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, a success message is returned.****\
+        # *   If the request failed, an error message is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -45386,9 +45889,9 @@ class ModifyDBClusterVipRequest(TeaModel):
     ):
         # The endpoint of the cluster.
         self.connect_string = connect_string
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region, including cluster IDs.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -46913,7 +47416,7 @@ class ModifyUserEniVswitchOptionsResponseBody(TeaModel):
         self.http_status_code = http_status_code
         # The returned message. Valid values:
         # 
-        # *   If the request was successful, a **SUCCESS** message is returned.
+        # *   If the request was successful, a success message is returned.****\
         # *   If the request failed, an error message is returned.
         self.message = message
         # The request ID.
@@ -47773,8 +48276,12 @@ class StartApsJobRequest(TeaModel):
         aps_job_id: str = None,
         region_id: str = None,
     ):
+        # The job ID.
+        # 
         # This parameter is required.
         self.aps_job_id = aps_job_id
+        # The region ID
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -47814,13 +48321,27 @@ class StartApsJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The job ID.
         self.aps_job_id = aps_job_id
+        # The HTTP status code or the error code.
         self.code = code
+        # The error code returned when the request fails.
         self.err_code = err_code
+        # The error message returned if the request failed.
         self.err_message = err_message
+        # The response code. The status code 200 indicates that the request was successful.
         self.http_status_code = http_status_code
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, a success message is returned.****\
+        # *   If the request failed, an error message is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -48843,8 +49364,11 @@ class SuspendApsJobRequest(TeaModel):
         aps_job_id: str = None,
         region_id: str = None,
     ):
+        # The job ID.
+        # 
         # This parameter is required.
         self.aps_job_id = aps_job_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -48881,11 +49405,20 @@ class SuspendApsJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The job ID.
         self.aps_job_id = aps_job_id
+        # The HTTP status code or the error code.
         self.err_code = err_code
+        # The error code returned when the request fails.
         self.err_message = err_message
+        # The response code. The status code 200 indicates that the request was successful.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -49819,6 +50352,152 @@ class UpdateSparkTemplateFileResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateSparkTemplateFileResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpgradeKernelVersionRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        dbversion: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        switch_mode: int = None,
+    ):
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL Data Warehouse Edition clusters within a region, including cluster IDs.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The minor version to which you want to update.
+        # 
+        # >  You can call the **DescribeKernelVersion** operation to query the supported minor versions.
+        self.dbversion = dbversion
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # The time when to perform the update. Valid values:
+        # 
+        # *   **0** (default): immediately performs the update.
+        # *   **1**: performs the update during the maintenance window.
+        # 
+        # >  You can call the [ModifyDBClusterMaintainTime](https://help.aliyun.com/document_detail/612236.html) operation to modify the maintenance window of an AnalyticDB for MySQL cluster.
+        self.switch_mode = switch_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.dbversion is not None:
+            result['DBVersion'] = self.dbversion
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.switch_mode is not None:
+            result['SwitchMode'] = self.switch_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DBVersion') is not None:
+            self.dbversion = m.get('DBVersion')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SwitchMode') is not None:
+            self.switch_mode = m.get('SwitchMode')
+        return self
+
+
+class UpgradeKernelVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpgradeKernelVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpgradeKernelVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpgradeKernelVersionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
