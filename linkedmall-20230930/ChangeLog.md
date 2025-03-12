@@ -1,3 +1,9 @@
+2025-03-12 Version: 2.4.0
+- Support API SearchProducts.
+- Support API SelectionGroupAddProduct.
+- Support API SelectionGroupRemoveProduct.
+
+
 2025-02-18 Version: 2.3.0
 - Support API SearchProducts.
 - Support API SelectionGroupAddProduct.

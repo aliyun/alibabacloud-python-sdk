@@ -2475,6 +2475,7 @@ class Sku(TeaModel):
         quantity: int = None,
         rank_value: int = None,
         shop_id: str = None,
+        sku_alias: str = None,
         sku_id: str = None,
         sku_specs: List[SkuSpec] = None,
         sku_specs_code: str = None,
@@ -2495,6 +2496,7 @@ class Sku(TeaModel):
         self.quantity = quantity
         self.rank_value = rank_value
         self.shop_id = shop_id
+        self.sku_alias = sku_alias
         self.sku_id = sku_id
         self.sku_specs = sku_specs
         self.sku_specs_code = sku_specs_code
@@ -2540,6 +2542,8 @@ class Sku(TeaModel):
             result['rankValue'] = self.rank_value
         if self.shop_id is not None:
             result['shopId'] = self.shop_id
+        if self.sku_alias is not None:
+            result['skuAlias'] = self.sku_alias
         if self.sku_id is not None:
             result['skuId'] = self.sku_id
         result['skuSpecs'] = []
@@ -2584,6 +2588,8 @@ class Sku(TeaModel):
             self.rank_value = m.get('rankValue')
         if m.get('shopId') is not None:
             self.shop_id = m.get('shopId')
+        if m.get('skuAlias') is not None:
+            self.sku_alias = m.get('skuAlias')
         if m.get('skuId') is not None:
             self.sku_id = m.get('skuId')
         self.sku_specs = []
@@ -6056,12 +6062,15 @@ class SearchProductsRequest(TeaModel):
         self.modify_start_time = modify_start_time
         self.order_by = order_by
         self.order_direction = order_direction
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.platform = platform
         self.product_id = product_id
         self.product_name = product_name
         self.product_status = product_status
+        # This parameter is required.
         self.purchaser_id = purchaser_id
         self.tax_rate = tax_rate
         self.trade_mode_and_credit = trade_mode_and_credit
@@ -6520,7 +6529,9 @@ class SelectionGroupAddProductRequest(TeaModel):
         product_ids: List[str] = None,
         purchaser_id: str = None,
     ):
+        # This parameter is required.
         self.product_ids = product_ids
+        # This parameter is required.
         self.purchaser_id = purchaser_id
 
     def validate(self):
@@ -6621,7 +6632,9 @@ class SelectionGroupRemoveProductRequest(TeaModel):
         product_ids: List[str] = None,
         purchaser_id: str = None,
     ):
+        # This parameter is required.
         self.product_ids = product_ids
+        # This parameter is required.
         self.purchaser_id = purchaser_id
 
     def validate(self):
