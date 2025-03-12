@@ -15,9 +15,12 @@ class AddUserHdfsInfoRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.ext_info = ext_info
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -149,6 +152,7 @@ class AllocatePublicNetworkAddressRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -265,9 +269,12 @@ class CheckVersionsOfComponentsRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.components = components
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -471,6 +478,7 @@ class CloseBackupRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.owner_id = owner_id
         self.region_id = region_id
@@ -596,9 +604,12 @@ class ConvertClusterRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.duration = duration
         self.owner_id = owner_id
+        # This parameter is required.
         self.pricing_cycle = pricing_cycle
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -754,32 +765,46 @@ class CreateClusterRequest(TeaModel):
         self.auto_renew = auto_renew
         self.backup_id = backup_id
         self.client_token = client_token
+        # This parameter is required.
         self.cloud_type = cloud_type
+        # This parameter is required.
         self.cluster_name = cluster_name
         self.cold_storage_size = cold_storage_size
+        # This parameter is required.
         self.core_disk_quantity = core_disk_quantity
+        # This parameter is required.
         self.core_disk_size = core_disk_size
+        # This parameter is required.
         self.core_disk_type = core_disk_type
+        # This parameter is required.
         self.core_instance_quantity = core_instance_quantity
+        # This parameter is required.
         self.core_instance_type = core_instance_type
         self.db_instance_conn_type = db_instance_conn_type
         self.db_instance_type = db_instance_type
         self.db_type = db_type
         self.dep_mode = dep_mode
         self.duration = duration
+        # This parameter is required.
         self.engine = engine
+        # This parameter is required.
         self.engine_version = engine_version
         self.is_cold_storage = is_cold_storage
+        # This parameter is required.
         self.master_instance_type = master_instance_type
+        # This parameter is required.
         self.net_type = net_type
         self.pay_type = pay_type
         self.pricing_cycle = pricing_cycle
+        # This parameter is required.
         self.region_id = region_id
         self.restore_time = restore_time
+        # This parameter is required.
         self.security_iplist = security_iplist
         self.src_dbinstance_id = src_dbinstance_id
         self.v_switch_id = v_switch_id
         self.vpc_id = vpc_id
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1010,12 +1035,16 @@ class CreateGlobalResourceRequest(TeaModel):
         resource_type: str = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.resource_name = resource_name
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.resource_type = resource_type
         self.zone_id = zone_id
 
@@ -1146,11 +1175,14 @@ class CreateHbaseSlbServerRequest(TeaModel):
         slb_server: str = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.slb_server = slb_server
         self.zone_id = zone_id
 
@@ -1283,17 +1315,23 @@ class CreateSubscriptionRequest(TeaModel):
         subscription_type: str = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.destination_instance_id = destination_instance_id
+        # This parameter is required.
         self.destination_instance_region_id = destination_instance_region_id
         self.extra_context = extra_context
+        # This parameter is required.
         self.mapping = mapping
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.slb_server = slb_server
+        # This parameter is required.
         self.source_instance_id = source_instance_id
+        # This parameter is required.
         self.source_instance_region_id = source_instance_region_id
         self.subscription_description = subscription_description
+        # This parameter is required.
         self.subscription_type = subscription_type
         self.zone_id = zone_id
 
@@ -1451,8 +1489,10 @@ class DeleteClusterRequest(TeaModel):
         zone_id: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -1582,12 +1622,16 @@ class DeleteGlobalResourceRequest(TeaModel):
         resource_type: str = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.resource_name = resource_name
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.resource_type = resource_type
         self.zone_id = zone_id
 
@@ -1718,11 +1762,14 @@ class DeleteHbaseSlbServerRequest(TeaModel):
         slb_server: str = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.slb_server = slb_server
         self.zone_id = zone_id
 
@@ -1850,11 +1897,14 @@ class DeleteServerlessInstanceRequest(TeaModel):
         zone_id: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1980,9 +2030,12 @@ class DeleteUserHdfsInfoRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.name_service = name_service
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -2116,6 +2169,7 @@ class DescribeBackupPolicyRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.owner_id = owner_id
         self.region_id = region_id
@@ -2279,6 +2333,7 @@ class DescribeBackupsRequest(TeaModel):
         zone_id: str = None,
     ):
         self.backup_id = backup_id
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.end_time = end_time
         self.end_time_utc = end_time_utc
@@ -2598,8 +2653,10 @@ class DescribeClusterAttributeRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -3366,8 +3423,10 @@ class DescribeClusterConnectAddrsRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -3980,6 +4039,7 @@ class DescribeClusterListRequest(TeaModel):
         self.owner_id = owner_id
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -4409,8 +4469,10 @@ class DescribeClusterModelRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -4778,8 +4840,10 @@ class DescribeClusterWhiteListRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -4938,6 +5002,7 @@ class DescribeColdStorageRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.owner_id = owner_id
         self.region_id = region_id
@@ -5093,8 +5158,10 @@ class DescribeMultiModDbAttributeRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5755,8 +5822,11 @@ class DescribeServerlessInstanceRequest(TeaModel):
         zone_id: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -6009,6 +6079,7 @@ class DescribeSubscriptionInitializeProgressRequest(TeaModel):
         owner_id: int = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         subscription_id: str = None,
@@ -6016,8 +6087,10 @@ class DescribeSubscriptionInitializeProgressRequest(TeaModel):
         self.owner_id = owner_id
         self.page_number = page_number
         self.page_size = page_size
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.subscription_id = subscription_id
 
     def validate(self):
@@ -6035,6 +6108,8 @@ class DescribeSubscriptionInitializeProgressRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -6051,6 +6126,8 @@ class DescribeSubscriptionInitializeProgressRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -6211,19 +6288,26 @@ class DescribeSubscriptionPerformanceRequest(TeaModel):
         end_time: str = None,
         key: str = None,
         owner_id: int = None,
+        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         source_instance_id: str = None,
         start_time: str = None,
         subscription_id: str = None,
     ):
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.key = key
         self.owner_id = owner_id
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.source_instance_id = source_instance_id
+        # This parameter is required.
         self.start_time = start_time
+        # This parameter is required.
         self.subscription_id = subscription_id
 
     def validate(self):
@@ -6241,6 +6325,8 @@ class DescribeSubscriptionPerformanceRequest(TeaModel):
             result['Key'] = self.key
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -6261,6 +6347,8 @@ class DescribeSubscriptionPerformanceRequest(TeaModel):
             self.key = m.get('Key')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -6522,10 +6610,12 @@ class DescribeSubscriptionPermissionRequest(TeaModel):
     def __init__(
         self,
         owner_id: int = None,
+        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
         self.owner_id = owner_id
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -6540,6 +6630,8 @@ class DescribeSubscriptionPermissionRequest(TeaModel):
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -6550,6 +6642,8 @@ class DescribeSubscriptionPermissionRequest(TeaModel):
         m = m or dict()
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -6637,6 +6731,7 @@ class DescribeSubscriptionsRequest(TeaModel):
         owner_id: int = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         subscription_id: str = None,
@@ -6644,6 +6739,7 @@ class DescribeSubscriptionsRequest(TeaModel):
         self.owner_id = owner_id
         self.page_number = page_number
         self.page_size = page_size
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.subscription_id = subscription_id
@@ -6663,6 +6759,8 @@ class DescribeSubscriptionsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -6679,6 +6777,8 @@ class DescribeSubscriptionsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -6886,11 +6986,14 @@ class EnableServerlessPublicConnectionRequest(TeaModel):
         zone_id: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -7015,8 +7118,10 @@ class GetMultimodeCmsUrlRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -7419,6 +7524,7 @@ class ListClusterServiceConfigHistoryRequest(TeaModel):
         self.owner_id = owner_id
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -7914,10 +8020,12 @@ class ListTagResourcesRequest(TeaModel):
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.resource_type = resource_type
         self.tag = tag
 
@@ -8159,11 +8267,14 @@ class ModifyBackupPolicyRequest(TeaModel):
         zone_id: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.owner_id = owner_id
         self.preferred_backup_end_time_utc = preferred_backup_end_time_utc
+        # This parameter is required.
         self.preferred_backup_period = preferred_backup_period
         self.preferred_backup_start_time_utc = preferred_backup_start_time_utc
+        # This parameter is required.
         self.preferred_backup_time = preferred_backup_time
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -8309,9 +8420,12 @@ class ModifyClusterNameRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.cluster_name = cluster_name
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -8442,9 +8556,12 @@ class ModifyClusterNetTypeRequest(TeaModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.net_type = net_type
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -8583,11 +8700,14 @@ class ModifyClusterSecurityIpListRequest(TeaModel):
         security_ip_list: str = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.security_ip_list = security_ip_list
         self.zone_id = zone_id
 
@@ -8717,10 +8837,12 @@ class ModifyClusterServiceConfigRequest(TeaModel):
         value: str = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.name = name
         self.owner_id = owner_id
         self.parameters = parameters
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -8863,9 +8985,12 @@ class ModifyHasRootPasswordRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.has_password = has_password
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -8994,9 +9119,11 @@ class ModifyRestartClusterRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.components = components
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -9126,6 +9253,7 @@ class ModifyRollbackHasForHbaseRequest(TeaModel):
         zone_id: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.owner_id = owner_id
         self.region_id = region_id
@@ -9249,15 +9377,19 @@ class ModifySubscriptionDescriptionRequest(TeaModel):
     def __init__(
         self,
         owner_id: int = None,
+        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         subscription_description: str = None,
         subscription_id: str = None,
     ):
         self.owner_id = owner_id
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.subscription_description = subscription_description
+        # This parameter is required.
         self.subscription_id = subscription_id
 
     def validate(self):
@@ -9271,6 +9403,8 @@ class ModifySubscriptionDescriptionRequest(TeaModel):
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -9285,6 +9419,8 @@ class ModifySubscriptionDescriptionRequest(TeaModel):
         m = m or dict()
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -9369,14 +9505,18 @@ class ModifySubscriptionMappingRequest(TeaModel):
         self,
         mapping: str = None,
         owner_id: int = None,
+        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         subscription_id: str = None,
     ):
+        # This parameter is required.
         self.mapping = mapping
         self.owner_id = owner_id
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.subscription_id = subscription_id
 
     def validate(self):
@@ -9392,6 +9532,8 @@ class ModifySubscriptionMappingRequest(TeaModel):
             result['Mapping'] = self.mapping
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -9406,6 +9548,8 @@ class ModifySubscriptionMappingRequest(TeaModel):
             self.mapping = m.get('Mapping')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -9487,13 +9631,16 @@ class ModifySubscriptionPermissionRequest(TeaModel):
     def __init__(
         self,
         owner_id: int = None,
+        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         status: int = None,
     ):
         self.owner_id = owner_id
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -9507,6 +9654,8 @@ class ModifySubscriptionPermissionRequest(TeaModel):
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -9519,6 +9668,8 @@ class ModifySubscriptionPermissionRequest(TeaModel):
         m = m or dict()
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -9614,10 +9765,14 @@ class ModifyUIProxyAccountPasswordRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.account_name = account_name
+        # This parameter is required.
         self.account_password = account_password
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -9752,7 +9907,9 @@ class ModifyUpgradeToHasForHbaseRequest(TeaModel):
         zone_id: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.has_password = has_password
         self.owner_id = owner_id
         self.region_id = region_id
@@ -9887,9 +10044,12 @@ class MultimodAddComponentsRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.components = components
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -10014,6 +10174,7 @@ class OpenBackupRequest(TeaModel):
         region_id: str = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.region_id = region_id
         self.zone_id = zone_id
@@ -10124,6 +10285,7 @@ class QueryHBaseHaDBRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.owner_id = owner_id
         self.region_id = region_id
@@ -10355,6 +10517,7 @@ class QuerySparkRelateHBaseRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.owner_id = owner_id
         self.region_id = region_id
@@ -10653,9 +10816,11 @@ class QueryXpackRelatedDBRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.owner_id = owner_id
         self.region_id = region_id
+        # This parameter is required.
         self.relate_db_type = relate_db_type
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -10921,18 +11086,24 @@ class RelateDbForHBaseHaRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.ha_active = ha_active
         self.ha_active_cluster_key = ha_active_cluster_key
+        # This parameter is required.
         self.ha_active_dbtype = ha_active_dbtype
         self.ha_active_hbase_fs_dir = ha_active_hbase_fs_dir
         self.ha_active_hdfs_uri = ha_active_hdfs_uri
         self.ha_active_password = ha_active_password
         self.ha_active_user = ha_active_user
         self.ha_active_version = ha_active_version
+        # This parameter is required.
         self.ha_migrate_type = ha_migrate_type
+        # This parameter is required.
         self.ha_standby = ha_standby
         self.ha_standby_cluster_key = ha_standby_cluster_key
+        # This parameter is required.
         self.ha_standby_dbtype = ha_standby_dbtype
         self.ha_standby_hbase_fs_dir = ha_standby_hbase_fs_dir
         self.ha_standby_hdfs_uri = ha_standby_hdfs_uri
@@ -10940,7 +11111,9 @@ class RelateDbForHBaseHaRequest(TeaModel):
         self.ha_standby_user = ha_standby_user
         self.ha_standby_version = ha_standby_version
         self.ha_tables = ha_tables
+        # This parameter is required.
         self.is_active_standard = is_active_standard
+        # This parameter is required.
         self.is_standby_standard = is_standby_standard
         self.owner_id = owner_id
         self.region_id = region_id
@@ -11144,6 +11317,7 @@ class ReleasePublicNetworkAddressRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -11253,13 +11427,16 @@ class ReleaseSubscriptionRequest(TeaModel):
     def __init__(
         self,
         owner_id: int = None,
+        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         subscription_id: str = None,
     ):
         self.owner_id = owner_id
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.subscription_id = subscription_id
 
     def validate(self):
@@ -11273,6 +11450,8 @@ class ReleaseSubscriptionRequest(TeaModel):
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -11285,6 +11464,8 @@ class ReleaseSubscriptionRequest(TeaModel):
         m = m or dict()
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -11372,9 +11553,12 @@ class RenewClusterRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.duration = duration
         self.owner_id = owner_id
+        # This parameter is required.
         self.pricing_cycle = pricing_cycle
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -11513,19 +11697,26 @@ class ResizeClusterRequest(TeaModel):
         zone_id: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.cloud_type = cloud_type
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.cold_storage_size = cold_storage_size
         self.core_disk_quantity = core_disk_quantity
         self.core_disk_size = core_disk_size
         self.core_disk_type = core_disk_type
+        # This parameter is required.
         self.core_instance_quantity = core_instance_quantity
         self.core_instance_type = core_instance_type
+        # This parameter is required.
         self.engine = engine
         self.is_cold_storage = is_cold_storage
         self.pay_type = pay_type
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.upgrade_type = upgrade_type
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -11683,7 +11874,9 @@ class SparkRelateHBaseRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.hbase_cluster_ids = hbase_cluster_ids
         self.owner_id = owner_id
         self.region_id = region_id
@@ -11850,11 +12043,15 @@ class TagResourcesRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.resource_type = resource_type
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -11997,10 +12194,13 @@ class UntagResourcesRequest(TeaModel):
         self.all = all
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.resource_type = resource_type
         self.tag_key = tag_key
 
@@ -12138,6 +12338,7 @@ class UpgradeMinorVersionRequest(TeaModel):
         zone_id: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.components = components
         self.owner_id = owner_id
@@ -12291,10 +12492,13 @@ class XpackRelateDBRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.db_cluster_ids = db_cluster_ids
         self.owner_id = owner_id
         self.region_id = region_id
+        # This parameter is required.
         self.relate_db_type = relate_db_type
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
