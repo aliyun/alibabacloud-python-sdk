@@ -1982,6 +1982,39 @@ class CreateBackupResponse(TeaModel):
         return self
 
 
+class CreateCollectionRequestSparseVectorIndexConfig(TeaModel):
+    def __init__(
+        self,
+        hnsw_ef_construction: int = None,
+        hnsw_m: int = None,
+    ):
+        self.hnsw_ef_construction = hnsw_ef_construction
+        self.hnsw_m = hnsw_m
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hnsw_ef_construction is not None:
+            result['HnswEfConstruction'] = self.hnsw_ef_construction
+        if self.hnsw_m is not None:
+            result['HnswM'] = self.hnsw_m
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HnswEfConstruction') is not None:
+            self.hnsw_ef_construction = m.get('HnswEfConstruction')
+        if m.get('HnswM') is not None:
+            self.hnsw_m = m.get('HnswM')
+        return self
+
+
 class CreateCollectionRequest(TeaModel):
     def __init__(
         self,
@@ -2002,6 +2035,8 @@ class CreateCollectionRequest(TeaModel):
         parser: str = None,
         pq_enable: int = None,
         region_id: str = None,
+        sparse_vector_index_config: CreateCollectionRequestSparseVectorIndexConfig = None,
+        support_sparse: bool = None,
         workspace_id: str = None,
     ):
         # The name of the collection that you want to create.
@@ -2089,6 +2124,220 @@ class CreateCollectionRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.sparse_vector_index_config = sparse_vector_index_config
+        self.support_sparse = support_sparse
+        # The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.sparse_vector_index_config:
+            self.sparse_vector_index_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.collection is not None:
+            result['Collection'] = self.collection
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.dimension is not None:
+            result['Dimension'] = self.dimension
+        if self.external_storage is not None:
+            result['ExternalStorage'] = self.external_storage
+        if self.full_text_retrieval_fields is not None:
+            result['FullTextRetrievalFields'] = self.full_text_retrieval_fields
+        if self.hnsw_ef_construction is not None:
+            result['HnswEfConstruction'] = self.hnsw_ef_construction
+        if self.hnsw_m is not None:
+            result['HnswM'] = self.hnsw_m
+        if self.manager_account is not None:
+            result['ManagerAccount'] = self.manager_account
+        if self.manager_account_password is not None:
+            result['ManagerAccountPassword'] = self.manager_account_password
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata
+        if self.metadata_indices is not None:
+            result['MetadataIndices'] = self.metadata_indices
+        if self.metrics is not None:
+            result['Metrics'] = self.metrics
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.parser is not None:
+            result['Parser'] = self.parser
+        if self.pq_enable is not None:
+            result['PqEnable'] = self.pq_enable
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sparse_vector_index_config is not None:
+            result['SparseVectorIndexConfig'] = self.sparse_vector_index_config.to_map()
+        if self.support_sparse is not None:
+            result['SupportSparse'] = self.support_sparse
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Collection') is not None:
+            self.collection = m.get('Collection')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('Dimension') is not None:
+            self.dimension = m.get('Dimension')
+        if m.get('ExternalStorage') is not None:
+            self.external_storage = m.get('ExternalStorage')
+        if m.get('FullTextRetrievalFields') is not None:
+            self.full_text_retrieval_fields = m.get('FullTextRetrievalFields')
+        if m.get('HnswEfConstruction') is not None:
+            self.hnsw_ef_construction = m.get('HnswEfConstruction')
+        if m.get('HnswM') is not None:
+            self.hnsw_m = m.get('HnswM')
+        if m.get('ManagerAccount') is not None:
+            self.manager_account = m.get('ManagerAccount')
+        if m.get('ManagerAccountPassword') is not None:
+            self.manager_account_password = m.get('ManagerAccountPassword')
+        if m.get('Metadata') is not None:
+            self.metadata = m.get('Metadata')
+        if m.get('MetadataIndices') is not None:
+            self.metadata_indices = m.get('MetadataIndices')
+        if m.get('Metrics') is not None:
+            self.metrics = m.get('Metrics')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Parser') is not None:
+            self.parser = m.get('Parser')
+        if m.get('PqEnable') is not None:
+            self.pq_enable = m.get('PqEnable')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SparseVectorIndexConfig') is not None:
+            temp_model = CreateCollectionRequestSparseVectorIndexConfig()
+            self.sparse_vector_index_config = temp_model.from_map(m['SparseVectorIndexConfig'])
+        if m.get('SupportSparse') is not None:
+            self.support_sparse = m.get('SupportSparse')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class CreateCollectionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        collection: str = None,
+        dbinstance_id: str = None,
+        dimension: int = None,
+        external_storage: int = None,
+        full_text_retrieval_fields: str = None,
+        hnsw_ef_construction: str = None,
+        hnsw_m: int = None,
+        manager_account: str = None,
+        manager_account_password: str = None,
+        metadata: str = None,
+        metadata_indices: str = None,
+        metrics: str = None,
+        namespace: str = None,
+        owner_id: int = None,
+        parser: str = None,
+        pq_enable: int = None,
+        region_id: str = None,
+        sparse_vector_index_config_shrink: str = None,
+        support_sparse: bool = None,
+        workspace_id: str = None,
+    ):
+        # The name of the collection that you want to create.
+        # 
+        # >  The name must comply with the naming conventions of PostgreSQL objects.
+        # 
+        # This parameter is required.
+        self.collection = collection
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        self.dbinstance_id = dbinstance_id
+        # The number of vector dimensions.
+        # 
+        # >  If you specify this parameter, an index is created. When you call the [UpsertCollectionData](https://help.aliyun.com/document_detail/2401493.html) operation, make sure that the length of the Rows.Vector parameter is the same as the value of this parameter. If you do not specify this parameter, you can call the [CreateVectorIndex](https://help.aliyun.com/document_detail/2401499.html) operation to create an index.
+        self.dimension = dimension
+        # Specifies whether to use the memory mapping technology to create HNSW indexes. Valid values: 0 and 1. Default value: 0. We recommend that you set the value to 1 in scenarios that require upload speed but not data deletion.
+        # 
+        # > 
+        # 
+        # *   0: uses segmented paging storage to create indexes. This method uses the shared buffer of PostgreSQL for caching and supports the delete and update operations.
+        # 
+        # *   1: uses the memory mapping technology to create indexes. This method does not support the delete or update operation.
+        self.external_storage = external_storage
+        # The fields used for full-text search. Separate multiple fields with commas (,). These fields must be keys defined in Metadata.
+        self.full_text_retrieval_fields = full_text_retrieval_fields
+        self.hnsw_ef_construction = hnsw_ef_construction
+        # The maximum number of neighbors for the Hierarchical Navigable Small World (HNSW) algorithm. Valid values: 1 to 1000. In most cases, this parameter is automatically configured based on the value of the Dimension parameter. You do not need to configure this parameter.
+        # 
+        # >  We recommend that you configure this parameter based on the value of the Dimension parameter.
+        # 
+        # *If you set Dimension to a value less than or equal to 384, set the value of HnswM to 16.
+        # 
+        # *If you set Dimension to a value greater than 384 and less than or equal to 768, set the value of HnswM to 32.
+        # 
+        # *If you set Dimension to a value greater than 768 and less than or equal to 1024, set the value of HnswM to 64.
+        # 
+        # *If you set Dimension to a value greater than 1024, set the value of HnswM to 128.
+        self.hnsw_m = hnsw_m
+        # Name of the management account with rds_superuser permissions.
+        # 
+        # > You can create an account through the console -> Account Management, or by using the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) API.
+        # 
+        # This parameter is required.
+        self.manager_account = manager_account
+        # The password of the manager account.
+        # 
+        # This parameter is required.
+        self.manager_account_password = manager_account_password
+        # The metadata of the vector data, which is a JSON string in the MAP format. The key specifies the field name, and the value specifies the data type.
+        # 
+        # >  Supported data types:
+        # 
+        # *   For information about the supported data types, see [Data types](https://www.alibabacloud.com/help/zh/analyticdb/analyticdb-for-postgresql/developer-reference/data-types-1/).
+        # 
+        # *   The money data type is not supported.
+        # 
+        # **\
+        # 
+        # **Warning** Reserved fields such as id, vector, to_tsvector, and source cannot be used.
+        # 
+        # This parameter is required.
+        self.metadata = metadata
+        # The scalar index fields. Separate multiple fields with commas (,). These fields must be keys defined in Metadata.
+        self.metadata_indices = metadata_indices
+        # The method that is used to create vector indexes. Valid values:
+        # 
+        # *   l2: Euclidean distance.
+        # *   ip: inner product distance.
+        # *   cosine: cosine similarity.
+        self.metrics = metrics
+        # The name of the namespace.
+        # 
+        # >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
+        self.namespace = namespace
+        self.owner_id = owner_id
+        # The analyzer that is used for full-text search.
+        self.parser = parser
+        # Specifies whether to enable the product quantization (PQ) feature for index acceleration. We recommend that you enable this feature for more than 500,000 rows of data. Valid values:
+        # 
+        # *   0: no.
+        # *   1 (default): yes.
+        self.pq_enable = pq_enable
+        # The region ID of the instance.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        self.sparse_vector_index_config_shrink = sparse_vector_index_config_shrink
+        self.support_sparse = support_sparse
         # The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
         self.workspace_id = workspace_id
 
@@ -2135,6 +2384,10 @@ class CreateCollectionRequest(TeaModel):
             result['PqEnable'] = self.pq_enable
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.sparse_vector_index_config_shrink is not None:
+            result['SparseVectorIndexConfig'] = self.sparse_vector_index_config_shrink
+        if self.support_sparse is not None:
+            result['SupportSparse'] = self.support_sparse
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -2175,6 +2428,10 @@ class CreateCollectionRequest(TeaModel):
             self.pq_enable = m.get('PqEnable')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('SparseVectorIndexConfig') is not None:
+            self.sparse_vector_index_config_shrink = m.get('SparseVectorIndexConfig')
+        if m.get('SupportSparse') is not None:
+            self.support_sparse = m.get('SupportSparse')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -2440,9 +2697,10 @@ class CreateDBInstanceRequest(TeaModel):
         # > - If this parameter is not specified, the default value is single-zone deployment.
         # > - Currently, only single-zone deployment is supported.
         self.deploy_mode = deploy_mode
-        # Indicates whether to enable SSL encryption. The values are as follows:
-        # - **true**: Enable SSL encryption.
-        # - **false** (default): Do not enable SSL encryption.
+        # Specifies whether to enable SSL encryption. Valid values:
+        # 
+        # *   **true**\
+        # *   **false** (default)
         self.enable_ssl = enable_ssl
         # Key ID.
         # 
@@ -2493,6 +2751,12 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # > This parameter is required when creating an elastic storage mode instance or a Serverless mode instance.
         self.instance_spec = instance_spec
+        # This parameter must be specified if you want to change coordinator nodes to AI coordinator nodes.
+        # 
+        # >-  You cannot specify the MasterAISpec and MasterCU parameters at the same time.
+        # >- You can change coordinator nodes to AI coordinator nodes only in specific regions and zones.
+        # >- Only AnalyticDB for PostgreSQL V7.0 instances of Basic Edition support AI coordinator nodes.
+        # >- You can view the valid values of this parameter on the configuration change page of coordinator nodes.
         self.master_aispec = master_aispec
         # Master resources, with the following values: 
         # - 2 CU 
@@ -2505,13 +2769,16 @@ class CreateDBInstanceRequest(TeaModel):
         # This parameter is deprecated and should not be passed.
         self.master_node_num = master_node_num
         self.owner_id = owner_id
-        # Billing type. The values are as follows:
+        # The billing method of the instance. Valid values:
         # 
-        # - **Postpaid**: Pay-as-you-go
-        # - **Prepaid**: Subscription
+        # *   **Postpaid**: pay-as-you-go.
+        # *   **Prepaid**: subscription.
         # 
-        # > - If not specified, it will default to pay-as-you-go.
-        # > - When using the subscription billing model, there may be discounts for purchasing one year or longer at once. It is recommended to choose the billing type according to your needs.
+        # > 
+        # 
+        # *   If you do not specify this parameter, Postpaid is used.
+        # 
+        # *   You can obtain more cost savings if you create a subscription instance for one year or longer. We recommend that you select the billing method that best suits your needs.
         self.pay_type = pay_type
         # Unit of the duration for which resources are purchased. The values are as follows:
         # - **Month**: Month
@@ -2535,18 +2802,21 @@ class CreateDBInstanceRequest(TeaModel):
         self.region_id = region_id
         # The ID of the enterprise resource group where the instance is located.
         self.resource_group_id = resource_group_id
-        # IP whitelist.
+        # The IP address whitelist of the instance.
         # 
-        # 127.0.0.1 indicates that no external IP addresses are allowed to access. You can modify the IP whitelist by calling the [ModifySecurityIps](https://help.aliyun.com/document_detail/86928.html) interface after the instance is created.
+        # A value of 127.0.0.1 denies access from any external IP address. You can call the [ModifySecurityIps](https://help.aliyun.com/document_detail/86928.html) operation to modify the IP address whitelist after you create an instance.
         self.security_iplist = security_iplist
-        # ESSD cloud disk performance level. The values are as follows:
+        # The performance level of ESSDs. Valid values:
         # 
-        # - **pl0**: PL0 level.
-        # - **pl1**: PL1 level.
-        # - **pl2**: PL2 level.
+        # *   **pl0**\
+        # *   **pl1**\
+        # *   **pl2**\
         # 
-        # > - This parameter is effective only if the disk storage type is ESSD cloud disk.
-        # > - If not specified, it defaults to PL1 level.
+        # > 
+        # 
+        # *   This parameter takes effect only when SegStorageType is set to cloud_essd.
+        # 
+        # *   If you do not specify this parameter, pl1 is used.
         self.seg_disk_performance_level = seg_disk_performance_level
         # The number of compute nodes. The value description is as follows:
         # 
@@ -4878,7 +5148,7 @@ class CreateSampleDataRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/2361776.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
@@ -5012,12 +5282,11 @@ class CreateSecretRequest(TeaModel):
         secret_name: str = None,
         test_connection: bool = None,
         username: str = None,
+        workspace_id: str = None,
     ):
         # The instance ID.
         # 
         # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
-        # 
-        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The description of the access credential.
         self.description = description
@@ -5038,6 +5307,7 @@ class CreateSecretRequest(TeaModel):
         # 
         # This parameter is required.
         self.username = username
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -5064,6 +5334,8 @@ class CreateSecretRequest(TeaModel):
             result['TestConnection'] = self.test_connection
         if self.username is not None:
             result['Username'] = self.username
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5084,6 +5356,8 @@ class CreateSecretRequest(TeaModel):
             self.test_connection = m.get('TestConnection')
         if m.get('Username') is not None:
             self.username = m.get('Username')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -6069,6 +6343,7 @@ class CreateVectorIndexRequest(TeaModel):
         owner_id: int = None,
         pq_enable: int = None,
         region_id: str = None,
+        type: str = None,
     ):
         # Collection name.
         # > You can use the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) API to view the list.
@@ -6083,8 +6358,6 @@ class CreateVectorIndexRequest(TeaModel):
         self.dbinstance_id = dbinstance_id
         # Vector dimension.
         # > This value must be consistent with the length of the vector data (Rows. Vector) uploaded via the [UpsertCollectionData](https://help.aliyun.com/document_detail/2401493.html) API.
-        # 
-        # This parameter is required.
         self.dimension = dimension
         # Whether to use mmap to build the HNSW index, default is 0. If the data does not need to be deleted and there are performance requirements for uploading data, it is recommended to set this to 1.
         # 
@@ -6129,6 +6402,7 @@ class CreateVectorIndexRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.type = type
 
     def validate(self):
         pass
@@ -6165,6 +6439,8 @@ class CreateVectorIndexRequest(TeaModel):
             result['PqEnable'] = self.pq_enable
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
@@ -6195,6 +6471,8 @@ class CreateVectorIndexRequest(TeaModel):
             self.pq_enable = m.get('PqEnable')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
@@ -8496,12 +8774,11 @@ class DeleteSecretRequest(TeaModel):
         region_id: str = None,
         secret_arn: str = None,
         secret_name: str = None,
+        workspace_id: str = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         # 
         # >
-        # 
-        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # The region ID of the instance.
@@ -8516,6 +8793,7 @@ class DeleteSecretRequest(TeaModel):
         # 
         # >  You must specify one of the SecretArn and SecretName parameters.
         self.secret_name = secret_name
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -8536,6 +8814,8 @@ class DeleteSecretRequest(TeaModel):
             result['SecretArn'] = self.secret_arn
         if self.secret_name is not None:
             result['SecretName'] = self.secret_name
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -8550,6 +8830,8 @@ class DeleteSecretRequest(TeaModel):
             self.secret_arn = m.get('SecretArn')
         if m.get('SecretName') is not None:
             self.secret_name = m.get('SecretName')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -9017,6 +9299,7 @@ class DeleteVectorIndexRequest(TeaModel):
         namespace: str = None,
         owner_id: int = None,
         region_id: str = None,
+        type: str = None,
     ):
         # The name of the collection.
         # 
@@ -9049,6 +9332,7 @@ class DeleteVectorIndexRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.type = type
 
     def validate(self):
         pass
@@ -9073,6 +9357,8 @@ class DeleteVectorIndexRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
@@ -9091,6 +9377,8 @@ class DeleteVectorIndexRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
@@ -10477,7 +10765,9 @@ class DescribeCollectionResponseBody(TeaModel):
         parser: str = None,
         region_id: str = None,
         request_id: str = None,
+        sparse_vector_metrics: str = None,
         status: str = None,
+        support_sparse: bool = None,
     ):
         # The instance ID.
         self.dbinstance_id = dbinstance_id
@@ -10503,11 +10793,13 @@ class DescribeCollectionResponseBody(TeaModel):
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
+        self.sparse_vector_metrics = sparse_vector_metrics
         # Indicates whether the request was successful. Valid values:
         # 
         # *   **success**\
         # *   **fail**\
         self.status = status
+        self.support_sparse = support_sparse
 
     def validate(self):
         pass
@@ -10538,8 +10830,12 @@ class DescribeCollectionResponseBody(TeaModel):
             result['RegionId'] = self.region_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.sparse_vector_metrics is not None:
+            result['SparseVectorMetrics'] = self.sparse_vector_metrics
         if self.status is not None:
             result['Status'] = self.status
+        if self.support_sparse is not None:
+            result['SupportSparse'] = self.support_sparse
         return result
 
     def from_map(self, m: dict = None):
@@ -10564,8 +10860,12 @@ class DescribeCollectionResponseBody(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('SparseVectorMetrics') is not None:
+            self.sparse_vector_metrics = m.get('SparseVectorMetrics')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('SupportSparse') is not None:
+            self.support_sparse = m.get('SupportSparse')
         return self
 
 
@@ -11635,6 +11935,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.maintain_end_time = maintain_end_time
         # Maintenance start time.
         self.maintain_start_time = maintain_start_time
+        # The specifications of AI coordinator node resources of the instance. If the coordinator nodes of the instance are not AI nodes, null is returned.
         self.master_aispec = master_aispec
         # Master resources.
         self.master_cu = master_cu
@@ -11683,6 +11984,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # 
         # > This parameter applies only to instances in the storage elastic mode and Serverless manual scheduling mode.
         self.seg_node_num = seg_node_num
+        # The specifications of AI compute node resources of the instance. If the compute nodes of the instance are not AI nodes, null is returned.
         self.segment_aispec = segment_aispec
         # Number of compute groups.
         # 
@@ -19358,7 +19660,7 @@ class DescribeHadoopDataSourceRequest(TeaModel):
         self.data_source_id = data_source_id
         # The region ID of the instance.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2361846.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -19432,7 +19734,7 @@ class DescribeHadoopDataSourceResponseBody(TeaModel):
         self.data_source_type = data_source_type
         # The E-MapReduce (EMR) Hadoop cluster ID.
         self.emr_instance_id = emr_instance_id
-        # The Id of External Data Service
+        # The ID of the external data service.
         self.external_data_service_id = external_data_service_id
         # The content of the Hadoop hdfs-site.xml file.
         self.hdfsconf = hdfsconf
@@ -19449,7 +19751,7 @@ class DescribeHadoopDataSourceResponseBody(TeaModel):
         self.hive_conf = hive_conf
         # The content of the Hadoop mapred-site.xml file.
         self.map_reduce_conf = map_reduce_conf
-        # The time when the service was last modified.
+        # The time when the data source was last modified.
         self.modify_time = modify_time
         # The request ID.
         self.request_id = request_id
@@ -25048,12 +25350,11 @@ class DescribeTableRequest(TeaModel):
         schema: str = None,
         secret_arn: str = None,
         table: str = None,
+        workspace_id: str = None,
     ):
         # The instance ID.
         # 
         # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
-        # 
-        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
         # 
@@ -25078,6 +25379,7 @@ class DescribeTableRequest(TeaModel):
         # 
         # This parameter is required.
         self.table = table
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -25102,6 +25404,8 @@ class DescribeTableRequest(TeaModel):
             result['SecretArn'] = self.secret_arn
         if self.table is not None:
             result['Table'] = self.table
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -25120,6 +25424,8 @@ class DescribeTableRequest(TeaModel):
             self.secret_arn = m.get('SecretArn')
         if m.get('Table') is not None:
             self.table = m.get('Table')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -26751,6 +27057,39 @@ class EnableDBResourceGroupResponse(TeaModel):
         return self
 
 
+class ExecuteStatementRequestRagWorkspaceCollection(TeaModel):
+    def __init__(
+        self,
+        collection: str = None,
+        namespace: str = None,
+    ):
+        self.collection = collection
+        self.namespace = namespace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.collection is not None:
+            result['Collection'] = self.collection
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Collection') is not None:
+            self.collection = m.get('Collection')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        return self
+
+
 class ExecuteStatementRequest(TeaModel):
     def __init__(
         self,
@@ -26758,18 +27097,18 @@ class ExecuteStatementRequest(TeaModel):
         database: str = None,
         owner_id: int = None,
         parameters: List[Any] = None,
+        rag_workspace_collection: ExecuteStatementRequestRagWorkspaceCollection = None,
         region_id: str = None,
         run_type: str = None,
         secret_arn: str = None,
         sql: str = None,
         sqls: List[str] = None,
         statement_name: str = None,
+        workspace_id: str = None,
     ):
         # The instance ID.
         # 
         # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
-        # 
-        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
         # 
@@ -26778,6 +27117,7 @@ class ExecuteStatementRequest(TeaModel):
         self.owner_id = owner_id
         # The configuration parameters.
         self.parameters = parameters
+        self.rag_workspace_collection = rag_workspace_collection
         # The region ID of the instance.
         # 
         # This parameter is required.
@@ -26799,9 +27139,11 @@ class ExecuteStatementRequest(TeaModel):
         self.sqls = sqls
         # The name of the set of SQL statements that you want to execute. This parameter takes effect when the RunType parameter is set to asynchronous.
         self.statement_name = statement_name
+        self.workspace_id = workspace_id
 
     def validate(self):
-        pass
+        if self.rag_workspace_collection:
+            self.rag_workspace_collection.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -26817,6 +27159,8 @@ class ExecuteStatementRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.parameters is not None:
             result['Parameters'] = self.parameters
+        if self.rag_workspace_collection is not None:
+            result['RagWorkspaceCollection'] = self.rag_workspace_collection.to_map()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.run_type is not None:
@@ -26829,6 +27173,8 @@ class ExecuteStatementRequest(TeaModel):
             result['Sqls'] = self.sqls
         if self.statement_name is not None:
             result['StatementName'] = self.statement_name
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -26841,6 +27187,9 @@ class ExecuteStatementRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('Parameters') is not None:
             self.parameters = m.get('Parameters')
+        if m.get('RagWorkspaceCollection') is not None:
+            temp_model = ExecuteStatementRequestRagWorkspaceCollection()
+            self.rag_workspace_collection = temp_model.from_map(m['RagWorkspaceCollection'])
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('RunType') is not None:
@@ -26853,6 +27202,8 @@ class ExecuteStatementRequest(TeaModel):
             self.sqls = m.get('Sqls')
         if m.get('StatementName') is not None:
             self.statement_name = m.get('StatementName')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -26863,18 +27214,18 @@ class ExecuteStatementShrinkRequest(TeaModel):
         database: str = None,
         owner_id: int = None,
         parameters_shrink: str = None,
+        rag_workspace_collection_shrink: str = None,
         region_id: str = None,
         run_type: str = None,
         secret_arn: str = None,
         sql: str = None,
         sqls_shrink: str = None,
         statement_name: str = None,
+        workspace_id: str = None,
     ):
         # The instance ID.
         # 
         # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
-        # 
-        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
         # 
@@ -26883,6 +27234,7 @@ class ExecuteStatementShrinkRequest(TeaModel):
         self.owner_id = owner_id
         # The configuration parameters.
         self.parameters_shrink = parameters_shrink
+        self.rag_workspace_collection_shrink = rag_workspace_collection_shrink
         # The region ID of the instance.
         # 
         # This parameter is required.
@@ -26904,6 +27256,7 @@ class ExecuteStatementShrinkRequest(TeaModel):
         self.sqls_shrink = sqls_shrink
         # The name of the set of SQL statements that you want to execute. This parameter takes effect when the RunType parameter is set to asynchronous.
         self.statement_name = statement_name
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -26922,6 +27275,8 @@ class ExecuteStatementShrinkRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.parameters_shrink is not None:
             result['Parameters'] = self.parameters_shrink
+        if self.rag_workspace_collection_shrink is not None:
+            result['RagWorkspaceCollection'] = self.rag_workspace_collection_shrink
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.run_type is not None:
@@ -26934,6 +27289,8 @@ class ExecuteStatementShrinkRequest(TeaModel):
             result['Sqls'] = self.sqls_shrink
         if self.statement_name is not None:
             result['StatementName'] = self.statement_name
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -26946,6 +27303,8 @@ class ExecuteStatementShrinkRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('Parameters') is not None:
             self.parameters_shrink = m.get('Parameters')
+        if m.get('RagWorkspaceCollection') is not None:
+            self.rag_workspace_collection_shrink = m.get('RagWorkspaceCollection')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('RunType') is not None:
@@ -26958,6 +27317,8 @@ class ExecuteStatementShrinkRequest(TeaModel):
             self.sqls_shrink = m.get('Sqls')
         if m.get('StatementName') is not None:
             self.statement_name = m.get('StatementName')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -27413,12 +27774,11 @@ class GetSecretValueRequest(TeaModel):
         region_id: str = None,
         secret_arn: str = None,
         secret_name: str = None,
+        workspace_id: str = None,
     ):
         # The instance ID.
         # 
         # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
-        # 
-        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # The region ID of the instance.
@@ -27433,6 +27793,7 @@ class GetSecretValueRequest(TeaModel):
         # 
         # >  You must specify one of the SecretArn and SecretName parameters.
         self.secret_name = secret_name
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -27453,6 +27814,8 @@ class GetSecretValueRequest(TeaModel):
             result['SecretArn'] = self.secret_arn
         if self.secret_name is not None:
             result['SecretName'] = self.secret_name
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -27467,6 +27830,8 @@ class GetSecretValueRequest(TeaModel):
             self.secret_arn = m.get('SecretArn')
         if m.get('SecretName') is not None:
             self.secret_name = m.get('SecretName')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -31950,18 +32315,18 @@ class ListSecretsRequest(TeaModel):
         dbinstance_id: str = None,
         owner_id: int = None,
         region_id: str = None,
+        workspace_id: str = None,
     ):
         # The instance ID.
         # 
         # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
-        # 
-        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # The region ID of the instance.
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -31978,6 +32343,8 @@ class ListSecretsRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -31988,6 +32355,8 @@ class ListSecretsRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -35789,6 +36158,11 @@ class ModifyMasterSpecRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # This parameter must be specified if you want to change coordinator nodes to AI coordinator nodes.
+        # >-  You cannot specify the MasterAISpec and MasterCU parameters at the same time.
+        # >- You can change coordinator nodes to AI coordinator nodes only in specific regions and zones.
+        # >- Only AnalyticDB for PostgreSQL V7.0 instances of Basic Edition support AI coordinator nodes.
+        # >- You can view the valid values of this parameter on the configuration change page of coordinator nodes.
         self.master_aispec = master_aispec
         # The specifications of coordinator node resources. Valid values:
         # 
@@ -37688,6 +38062,39 @@ class QueryCollectionDataRequestRelationalTableFilter(TeaModel):
         return self
 
 
+class QueryCollectionDataRequestSparseVector(TeaModel):
+    def __init__(
+        self,
+        indices: List[int] = None,
+        values: List[float] = None,
+    ):
+        self.indices = indices
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.indices is not None:
+            result['Indices'] = self.indices
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Indices') is not None:
+            self.indices = m.get('Indices')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
 class QueryCollectionDataRequest(TeaModel):
     def __init__(
         self,
@@ -37707,6 +38114,7 @@ class QueryCollectionDataRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
         relational_table_filter: QueryCollectionDataRequestRelationalTableFilter = None,
+        sparse_vector: QueryCollectionDataRequestSparseVector = None,
         top_k: int = None,
         vector: List[float] = None,
         workspace_id: str = None,
@@ -37804,6 +38212,7 @@ class QueryCollectionDataRequest(TeaModel):
         # 
         # > Data from the relational table can be returned by setting the `IncludeMetadataFields` parameter. For example, `rds_table_name.id` indicates returning the `id` field from the relational table.
         self.relational_table_filter = relational_table_filter
+        self.sparse_vector = sparse_vector
         # Set the number of top results to return.
         # 
         # This parameter is required.
@@ -37817,6 +38226,8 @@ class QueryCollectionDataRequest(TeaModel):
     def validate(self):
         if self.relational_table_filter:
             self.relational_table_filter.validate()
+        if self.sparse_vector:
+            self.sparse_vector.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -37856,6 +38267,8 @@ class QueryCollectionDataRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.relational_table_filter is not None:
             result['RelationalTableFilter'] = self.relational_table_filter.to_map()
+        if self.sparse_vector is not None:
+            result['SparseVector'] = self.sparse_vector.to_map()
         if self.top_k is not None:
             result['TopK'] = self.top_k
         if self.vector is not None:
@@ -37899,6 +38312,9 @@ class QueryCollectionDataRequest(TeaModel):
         if m.get('RelationalTableFilter') is not None:
             temp_model = QueryCollectionDataRequestRelationalTableFilter()
             self.relational_table_filter = temp_model.from_map(m['RelationalTableFilter'])
+        if m.get('SparseVector') is not None:
+            temp_model = QueryCollectionDataRequestSparseVector()
+            self.sparse_vector = temp_model.from_map(m['SparseVector'])
         if m.get('TopK') is not None:
             self.top_k = m.get('TopK')
         if m.get('Vector') is not None:
@@ -37927,6 +38343,7 @@ class QueryCollectionDataShrinkRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
         relational_table_filter_shrink: str = None,
+        sparse_vector_shrink: str = None,
         top_k: int = None,
         vector_shrink: str = None,
         workspace_id: str = None,
@@ -38024,6 +38441,7 @@ class QueryCollectionDataShrinkRequest(TeaModel):
         # 
         # > Data from the relational table can be returned by setting the `IncludeMetadataFields` parameter. For example, `rds_table_name.id` indicates returning the `id` field from the relational table.
         self.relational_table_filter_shrink = relational_table_filter_shrink
+        self.sparse_vector_shrink = sparse_vector_shrink
         # Set the number of top results to return.
         # 
         # This parameter is required.
@@ -38075,6 +38493,8 @@ class QueryCollectionDataShrinkRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.relational_table_filter_shrink is not None:
             result['RelationalTableFilter'] = self.relational_table_filter_shrink
+        if self.sparse_vector_shrink is not None:
+            result['SparseVector'] = self.sparse_vector_shrink
         if self.top_k is not None:
             result['TopK'] = self.top_k
         if self.vector_shrink is not None:
@@ -38117,6 +38537,8 @@ class QueryCollectionDataShrinkRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('RelationalTableFilter') is not None:
             self.relational_table_filter_shrink = m.get('RelationalTableFilter')
+        if m.get('SparseVector') is not None:
+            self.sparse_vector_shrink = m.get('SparseVector')
         if m.get('TopK') is not None:
             self.top_k = m.get('TopK')
         if m.get('Vector') is not None:
@@ -41052,7 +41474,7 @@ class SwitchDBInstanceNetTypeRequest(TeaModel):
         self.connection_string_prefix = connection_string_prefix
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/2361776.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
@@ -44109,20 +44531,56 @@ class UpsertChunksResponse(TeaModel):
         return self
 
 
+class UpsertCollectionDataRequestRowsSparseVector(TeaModel):
+    def __init__(
+        self,
+        indices: List[int] = None,
+        values: List[float] = None,
+    ):
+        self.indices = indices
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.indices is not None:
+            result['Indices'] = self.indices
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Indices') is not None:
+            self.indices = m.get('Indices')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
 class UpsertCollectionDataRequestRows(TeaModel):
     def __init__(
         self,
         id: str = None,
         metadata: Dict[str, str] = None,
+        sparse_vector: UpsertCollectionDataRequestRowsSparseVector = None,
         vector: List[float] = None,
     ):
         self.id = id
         self.metadata = metadata
+        self.sparse_vector = sparse_vector
         # This parameter is required.
         self.vector = vector
 
     def validate(self):
-        pass
+        if self.sparse_vector:
+            self.sparse_vector.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -44134,6 +44592,8 @@ class UpsertCollectionDataRequestRows(TeaModel):
             result['Id'] = self.id
         if self.metadata is not None:
             result['Metadata'] = self.metadata
+        if self.sparse_vector is not None:
+            result['SparseVector'] = self.sparse_vector.to_map()
         if self.vector is not None:
             result['Vector'] = self.vector
         return result
@@ -44144,6 +44604,9 @@ class UpsertCollectionDataRequestRows(TeaModel):
             self.id = m.get('Id')
         if m.get('Metadata') is not None:
             self.metadata = m.get('Metadata')
+        if m.get('SparseVector') is not None:
+            temp_model = UpsertCollectionDataRequestRowsSparseVector()
+            self.sparse_vector = temp_model.from_map(m['SparseVector'])
         if m.get('Vector') is not None:
             self.vector = m.get('Vector')
         return self

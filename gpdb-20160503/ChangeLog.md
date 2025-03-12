@@ -1,3 +1,30 @@
+2025-03-12 Version: 4.8.1
+- Update API CreateCollection: add param SparseVectorIndexConfig.
+- Update API CreateCollection: add param SupportSparse.
+- Update API CreateCollection: update param MetadataIndices.
+- Update API CreateSecret: add param WorkspaceId.
+- Update API CreateSecret: update param DBInstanceId.
+- Update API CreateSecret: update param TestConnection.
+- Update API CreateVectorIndex: add param Type.
+- Update API CreateVectorIndex: update param Dimension.
+- Update API CreateVectorIndex: update param HnswEfConstruction.
+- Update API DeleteSecret: add param WorkspaceId.
+- Update API DeleteSecret: update param DBInstanceId.
+- Update API DeleteVectorIndex: add param Type.
+- Update API DescribeCollection: update response param.
+- Update API DescribeTable: add param WorkspaceId.
+- Update API DescribeTable: update param DBInstanceId.
+- Update API ExecuteStatement: add param RagWorkspaceCollection.
+- Update API ExecuteStatement: add param WorkspaceId.
+- Update API ExecuteStatement: update param DBInstanceId.
+- Update API GetSecretValue: add param WorkspaceId.
+- Update API GetSecretValue: update param DBInstanceId.
+- Update API ListSecrets: add param WorkspaceId.
+- Update API ListSecrets: update param DBInstanceId.
+- Update API QueryCollectionData: add param SparseVector.
+- Update API UpsertCollectionData: update param Rows.
+
+
 2025-03-08 Version: 4.8.0
 - Support API GetStatementResult.
 

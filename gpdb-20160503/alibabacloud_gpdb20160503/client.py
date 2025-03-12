@@ -1620,17 +1620,21 @@ class Client(OpenApiClient):
 
     def create_collection_with_options(
         self,
-        request: gpdb_20160503_models.CreateCollectionRequest,
+        tmp_req: gpdb_20160503_models.CreateCollectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateCollectionResponse:
         """
         @summary Creates a vector collection.
         
-        @param request: CreateCollectionRequest
+        @param tmp_req: CreateCollectionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateCollectionResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.CreateCollectionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sparse_vector_index_config):
+            request.sparse_vector_index_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sparse_vector_index_config, 'SparseVectorIndexConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.collection):
             query['Collection'] = request.collection
@@ -1666,6 +1670,10 @@ class Client(OpenApiClient):
             query['PqEnable'] = request.pq_enable
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sparse_vector_index_config_shrink):
+            query['SparseVectorIndexConfig'] = request.sparse_vector_index_config_shrink
+        if not UtilClient.is_unset(request.support_sparse):
+            query['SupportSparse'] = request.support_sparse
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -1695,17 +1703,21 @@ class Client(OpenApiClient):
 
     async def create_collection_with_options_async(
         self,
-        request: gpdb_20160503_models.CreateCollectionRequest,
+        tmp_req: gpdb_20160503_models.CreateCollectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateCollectionResponse:
         """
         @summary Creates a vector collection.
         
-        @param request: CreateCollectionRequest
+        @param tmp_req: CreateCollectionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateCollectionResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.CreateCollectionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sparse_vector_index_config):
+            request.sparse_vector_index_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sparse_vector_index_config, 'SparseVectorIndexConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.collection):
             query['Collection'] = request.collection
@@ -1741,6 +1753,10 @@ class Client(OpenApiClient):
             query['PqEnable'] = request.pq_enable
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sparse_vector_index_config_shrink):
+            query['SparseVectorIndexConfig'] = request.sparse_vector_index_config_shrink
+        if not UtilClient.is_unset(request.support_sparse):
+            query['SupportSparse'] = request.support_sparse
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -3506,8 +3522,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a sample dataset for an AnalyticDB for PostgreSQL instance.
         
-        @description    You can call this operation to create a sample dataset for an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to use or test your instance. For more information about query statements, see [Dataset information and query examples](https://help.aliyun.com/document_detail/452277.html).
-        This operation is supported only for AnalyticDB for PostgreSQL V6.3.8.8 and V6.3.10.3 or later, excluding the versions from V6.3.9.0 to V6.3.10.2.
+        @description    You can call this operation to create a sample dataset for an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to experience or test your instance. For more information about query statements, see [Dataset information and query examples](https://help.aliyun.com/document_detail/452277.html).
+        This operation is supported only for AnalyticDB for PostgreSQL V6.3.8.8 to 6.3.8.x, V6.3.10.3, and later.
+        Versions from V6.3.9.0 to V6.3.10.2 are not supported.
         
         @param request: CreateSampleDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3552,8 +3569,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a sample dataset for an AnalyticDB for PostgreSQL instance.
         
-        @description    You can call this operation to create a sample dataset for an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to use or test your instance. For more information about query statements, see [Dataset information and query examples](https://help.aliyun.com/document_detail/452277.html).
-        This operation is supported only for AnalyticDB for PostgreSQL V6.3.8.8 and V6.3.10.3 or later, excluding the versions from V6.3.9.0 to V6.3.10.2.
+        @description    You can call this operation to create a sample dataset for an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to experience or test your instance. For more information about query statements, see [Dataset information and query examples](https://help.aliyun.com/document_detail/452277.html).
+        This operation is supported only for AnalyticDB for PostgreSQL V6.3.8.8 to 6.3.8.x, V6.3.10.3, and later.
+        Versions from V6.3.9.0 to V6.3.10.2 are not supported.
         
         @param request: CreateSampleDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3597,8 +3615,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a sample dataset for an AnalyticDB for PostgreSQL instance.
         
-        @description    You can call this operation to create a sample dataset for an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to use or test your instance. For more information about query statements, see [Dataset information and query examples](https://help.aliyun.com/document_detail/452277.html).
-        This operation is supported only for AnalyticDB for PostgreSQL V6.3.8.8 and V6.3.10.3 or later, excluding the versions from V6.3.9.0 to V6.3.10.2.
+        @description    You can call this operation to create a sample dataset for an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to experience or test your instance. For more information about query statements, see [Dataset information and query examples](https://help.aliyun.com/document_detail/452277.html).
+        This operation is supported only for AnalyticDB for PostgreSQL V6.3.8.8 to 6.3.8.x, V6.3.10.3, and later.
+        Versions from V6.3.9.0 to V6.3.10.2 are not supported.
         
         @param request: CreateSampleDataRequest
         @return: CreateSampleDataResponse
@@ -3613,8 +3632,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a sample dataset for an AnalyticDB for PostgreSQL instance.
         
-        @description    You can call this operation to create a sample dataset for an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to use or test your instance. For more information about query statements, see [Dataset information and query examples](https://help.aliyun.com/document_detail/452277.html).
-        This operation is supported only for AnalyticDB for PostgreSQL V6.3.8.8 and V6.3.10.3 or later, excluding the versions from V6.3.9.0 to V6.3.10.2.
+        @description    You can call this operation to create a sample dataset for an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to experience or test your instance. For more information about query statements, see [Dataset information and query examples](https://help.aliyun.com/document_detail/452277.html).
+        This operation is supported only for AnalyticDB for PostgreSQL V6.3.8.8 to 6.3.8.x, V6.3.10.3, and later.
+        Versions from V6.3.9.0 to V6.3.10.2 are not supported.
         
         @param request: CreateSampleDataRequest
         @return: CreateSampleDataResponse
@@ -3652,6 +3672,8 @@ class Client(OpenApiClient):
             query['TestConnection'] = request.test_connection
         if not UtilClient.is_unset(request.username):
             query['Username'] = request.username
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3707,6 +3729,8 @@ class Client(OpenApiClient):
             query['TestConnection'] = request.test_connection
         if not UtilClient.is_unset(request.username):
             query['Username'] = request.username
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4378,6 +4402,8 @@ class Client(OpenApiClient):
             query['PqEnable'] = request.pq_enable
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4443,6 +4469,8 @@ class Client(OpenApiClient):
             query['PqEnable'] = request.pq_enable
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6514,6 +6542,8 @@ class Client(OpenApiClient):
             query['SecretArn'] = request.secret_arn
         if not UtilClient.is_unset(request.secret_name):
             query['SecretName'] = request.secret_name
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6563,6 +6593,8 @@ class Client(OpenApiClient):
             query['SecretArn'] = request.secret_arn
         if not UtilClient.is_unset(request.secret_name):
             query['SecretName'] = request.secret_name
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6990,6 +7022,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7043,6 +7077,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8272,7 +8308,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceAttributeResponse:
         """
-        @summary Query detailed information about the instance
+        @summary Query detailed information about the instance.
         
         @description ## Usage Instructions
         This interface is generally used to view information such as the specifications, network type, and instance status of AnalyticDB for PostgreSQL instances.
@@ -8323,7 +8359,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceAttributeResponse:
         """
-        @summary Query detailed information about the instance
+        @summary Query detailed information about the instance.
         
         @description ## Usage Instructions
         This interface is generally used to view information such as the specifications, network type, and instance status of AnalyticDB for PostgreSQL instances.
@@ -8373,7 +8409,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstanceAttributeRequest,
     ) -> gpdb_20160503_models.DescribeDBInstanceAttributeResponse:
         """
-        @summary Query detailed information about the instance
+        @summary Query detailed information about the instance.
         
         @description ## Usage Instructions
         This interface is generally used to view information such as the specifications, network type, and instance status of AnalyticDB for PostgreSQL instances.
@@ -8392,7 +8428,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstanceAttributeRequest,
     ) -> gpdb_20160503_models.DescribeDBInstanceAttributeResponse:
         """
-        @summary Query detailed information about the instance
+        @summary Query detailed information about the instance.
         
         @description ## Usage Instructions
         This interface is generally used to view information such as the specifications, network type, and instance status of AnalyticDB for PostgreSQL instances.
@@ -14986,6 +15022,8 @@ class Client(OpenApiClient):
             query['SecretArn'] = request.secret_arn
         if not UtilClient.is_unset(request.table):
             query['Table'] = request.table
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -15039,6 +15077,8 @@ class Client(OpenApiClient):
             query['SecretArn'] = request.secret_arn
         if not UtilClient.is_unset(request.table):
             query['Table'] = request.table
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -16227,6 +16267,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.parameters):
             request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        if not UtilClient.is_unset(tmp_req.rag_workspace_collection):
+            request.rag_workspace_collection_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rag_workspace_collection, 'RagWorkspaceCollection', 'json')
         if not UtilClient.is_unset(tmp_req.sqls):
             request.sqls_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sqls, 'Sqls', 'json')
         query = {}
@@ -16236,6 +16278,8 @@ class Client(OpenApiClient):
             query['Database'] = request.database
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.rag_workspace_collection_shrink):
+            query['RagWorkspaceCollection'] = request.rag_workspace_collection_shrink
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.run_type):
@@ -16244,6 +16288,8 @@ class Client(OpenApiClient):
             query['SecretArn'] = request.secret_arn
         if not UtilClient.is_unset(request.statement_name):
             query['StatementName'] = request.statement_name
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         body = {}
         if not UtilClient.is_unset(request.parameters_shrink):
             body['Parameters'] = request.parameters_shrink
@@ -16294,6 +16340,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.parameters):
             request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        if not UtilClient.is_unset(tmp_req.rag_workspace_collection):
+            request.rag_workspace_collection_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rag_workspace_collection, 'RagWorkspaceCollection', 'json')
         if not UtilClient.is_unset(tmp_req.sqls):
             request.sqls_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sqls, 'Sqls', 'json')
         query = {}
@@ -16303,6 +16351,8 @@ class Client(OpenApiClient):
             query['Database'] = request.database
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.rag_workspace_collection_shrink):
+            query['RagWorkspaceCollection'] = request.rag_workspace_collection_shrink
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.run_type):
@@ -16311,6 +16361,8 @@ class Client(OpenApiClient):
             query['SecretArn'] = request.secret_arn
         if not UtilClient.is_unset(request.statement_name):
             query['StatementName'] = request.statement_name
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         body = {}
         if not UtilClient.is_unset(request.parameters_shrink):
             body['Parameters'] = request.parameters_shrink
@@ -16506,6 +16558,8 @@ class Client(OpenApiClient):
             query['SecretArn'] = request.secret_arn
         if not UtilClient.is_unset(request.secret_name):
             query['SecretName'] = request.secret_name
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -16555,6 +16609,8 @@ class Client(OpenApiClient):
             query['SecretArn'] = request.secret_arn
         if not UtilClient.is_unset(request.secret_name):
             query['SecretName'] = request.secret_name
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -18954,6 +19010,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -18999,6 +19057,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -23133,6 +23193,8 @@ class Client(OpenApiClient):
             request.hybrid_search_args_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hybrid_search_args, 'HybridSearchArgs', 'json')
         if not UtilClient.is_unset(tmp_req.relational_table_filter):
             request.relational_table_filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.relational_table_filter, 'RelationalTableFilter', 'json')
+        if not UtilClient.is_unset(tmp_req.sparse_vector):
+            request.sparse_vector_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sparse_vector, 'SparseVector', 'json')
         if not UtilClient.is_unset(tmp_req.vector):
             request.vector_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vector, 'Vector', 'json')
         query = {}
@@ -23168,6 +23230,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.relational_table_filter_shrink):
             query['RelationalTableFilter'] = request.relational_table_filter_shrink
+        if not UtilClient.is_unset(request.sparse_vector_shrink):
+            query['SparseVector'] = request.sparse_vector_shrink
         if not UtilClient.is_unset(request.top_k):
             query['TopK'] = request.top_k
         if not UtilClient.is_unset(request.vector_shrink):
@@ -23218,6 +23282,8 @@ class Client(OpenApiClient):
             request.hybrid_search_args_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hybrid_search_args, 'HybridSearchArgs', 'json')
         if not UtilClient.is_unset(tmp_req.relational_table_filter):
             request.relational_table_filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.relational_table_filter, 'RelationalTableFilter', 'json')
+        if not UtilClient.is_unset(tmp_req.sparse_vector):
+            request.sparse_vector_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sparse_vector, 'SparseVector', 'json')
         if not UtilClient.is_unset(tmp_req.vector):
             request.vector_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vector, 'Vector', 'json')
         query = {}
@@ -23253,6 +23319,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.relational_table_filter_shrink):
             query['RelationalTableFilter'] = request.relational_table_filter_shrink
+        if not UtilClient.is_unset(request.sparse_vector_shrink):
+            query['SparseVector'] = request.sparse_vector_shrink
         if not UtilClient.is_unset(request.top_k):
             query['TopK'] = request.top_k
         if not UtilClient.is_unset(request.vector_shrink):
