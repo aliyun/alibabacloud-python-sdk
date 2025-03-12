@@ -1,3 +1,6 @@
+2025-03-12 Version: 7.0.2
+- Generated python 2021-05-21 for ComputeNestSupplier.
+
 2025-03-12 Version: 7.0.1
 - Update API CreateArtifact: update param ArtifactBuildProperty.
 - Update API ListServiceInstanceResources: update param NextToken.
