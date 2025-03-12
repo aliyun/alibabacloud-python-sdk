@@ -5052,9 +5052,11 @@ class CreateParentPlatformResponse(TeaModel):
 class CreateRenderingDataPackageRequest(TeaModel):
     def __init__(
         self,
+        category: str = None,
         description: str = None,
         rendering_instance_id: str = None,
     ):
+        self.category = category
         self.description = description
         # This parameter is required.
         self.rendering_instance_id = rendering_instance_id
@@ -5068,6 +5070,8 @@ class CreateRenderingDataPackageRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
         if self.description is not None:
             result['Description'] = self.description
         if self.rendering_instance_id is not None:
@@ -5076,6 +5080,8 @@ class CreateRenderingDataPackageRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('RenderingInstanceId') is not None:
@@ -6982,6 +6988,141 @@ class DeleteRenderingInstanceGatewayResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteRenderingInstanceGatewayResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteRenderingInstanceSettingsRequest(TeaModel):
+    def __init__(
+        self,
+        attribute_names: List[str] = None,
+        rendering_instance_id: str = None,
+    ):
+        self.attribute_names = attribute_names
+        self.rendering_instance_id = rendering_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attribute_names is not None:
+            result['AttributeNames'] = self.attribute_names
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AttributeNames') is not None:
+            self.attribute_names = m.get('AttributeNames')
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        return self
+
+
+class DeleteRenderingInstanceSettingsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        attribute_names_shrink: str = None,
+        rendering_instance_id: str = None,
+    ):
+        self.attribute_names_shrink = attribute_names_shrink
+        self.rendering_instance_id = rendering_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attribute_names_shrink is not None:
+            result['AttributeNames'] = self.attribute_names_shrink
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AttributeNames') is not None:
+            self.attribute_names_shrink = m.get('AttributeNames')
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        return self
+
+
+class DeleteRenderingInstanceSettingsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteRenderingInstanceSettingsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteRenderingInstanceSettingsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteRenderingInstanceSettingsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12371,6 +12512,188 @@ class DescribeRenderingInstanceConfigurationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeRenderingInstanceConfigurationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeRenderingInstanceSettingsRequest(TeaModel):
+    def __init__(
+        self,
+        attribute_names: List[str] = None,
+        rendering_instance_id: str = None,
+    ):
+        self.attribute_names = attribute_names
+        self.rendering_instance_id = rendering_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attribute_names is not None:
+            result['AttributeNames'] = self.attribute_names
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AttributeNames') is not None:
+            self.attribute_names = m.get('AttributeNames')
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        return self
+
+
+class DescribeRenderingInstanceSettingsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        attribute_names_shrink: str = None,
+        rendering_instance_id: str = None,
+    ):
+        self.attribute_names_shrink = attribute_names_shrink
+        self.rendering_instance_id = rendering_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attribute_names_shrink is not None:
+            result['AttributeNames'] = self.attribute_names_shrink
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AttributeNames') is not None:
+            self.attribute_names_shrink = m.get('AttributeNames')
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        return self
+
+
+class DescribeRenderingInstanceSettingsResponseBodySettings(TeaModel):
+    def __init__(
+        self,
+        attribute_name: str = None,
+        attribute_value: str = None,
+    ):
+        self.attribute_name = attribute_name
+        self.attribute_value = attribute_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attribute_name is not None:
+            result['AttributeName'] = self.attribute_name
+        if self.attribute_value is not None:
+            result['AttributeValue'] = self.attribute_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AttributeName') is not None:
+            self.attribute_name = m.get('AttributeName')
+        if m.get('AttributeValue') is not None:
+            self.attribute_value = m.get('AttributeValue')
+        return self
+
+
+class DescribeRenderingInstanceSettingsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        settings: List[DescribeRenderingInstanceSettingsResponseBodySettings] = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.settings = settings
+
+    def validate(self):
+        if self.settings:
+            for k in self.settings:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Settings'] = []
+        if self.settings is not None:
+            for k in self.settings:
+                result['Settings'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.settings = []
+        if m.get('Settings') is not None:
+            for k in m.get('Settings'):
+                temp_model = DescribeRenderingInstanceSettingsResponseBodySettings()
+                self.settings.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeRenderingInstanceSettingsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeRenderingInstanceSettingsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeRenderingInstanceSettingsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -20714,12 +21037,14 @@ class ListPublicKeysResponse(TeaModel):
 class ListRenderingDataPackagesRequest(TeaModel):
     def __init__(
         self,
+        category: str = None,
         data_package_id: str = None,
         page_number: int = None,
         page_size: int = None,
         size: int = None,
         status: str = None,
     ):
+        self.category = category
         self.data_package_id = data_package_id
         self.page_number = page_number
         self.page_size = page_size
@@ -20735,6 +21060,8 @@ class ListRenderingDataPackagesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
         if self.data_package_id is not None:
             result['DataPackageId'] = self.data_package_id
         if self.page_number is not None:
@@ -20749,6 +21076,8 @@ class ListRenderingDataPackagesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
         if m.get('DataPackageId') is not None:
             self.data_package_id = m.get('DataPackageId')
         if m.get('PageNumber') is not None:
@@ -20765,6 +21094,7 @@ class ListRenderingDataPackagesRequest(TeaModel):
 class ListRenderingDataPackagesResponseBodyDataPackages(TeaModel):
     def __init__(
         self,
+        category: str = None,
         creation_time: str = None,
         data_package_id: str = None,
         description: str = None,
@@ -20773,6 +21103,7 @@ class ListRenderingDataPackagesResponseBodyDataPackages(TeaModel):
         status: str = None,
         update_time: str = None,
     ):
+        self.category = category
         self.creation_time = creation_time
         self.data_package_id = data_package_id
         self.description = description
@@ -20790,6 +21121,8 @@ class ListRenderingDataPackagesResponseBodyDataPackages(TeaModel):
             return _map
 
         result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
         if self.data_package_id is not None:
@@ -20808,6 +21141,8 @@ class ListRenderingDataPackagesResponseBodyDataPackages(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
         if m.get('DataPackageId') is not None:
@@ -23313,6 +23648,208 @@ class RecoverRenderingDataPackageResponse(TeaModel):
         return self
 
 
+class RefreshRenderingInstanceStreamingRequestClientInfo(TeaModel):
+    def __init__(
+        self,
+        client_ip: str = None,
+        new_client: bool = None,
+    ):
+        self.client_ip = client_ip
+        self.new_client = new_client
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_ip is not None:
+            result['ClientIp'] = self.client_ip
+        if self.new_client is not None:
+            result['NewClient'] = self.new_client
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientIp') is not None:
+            self.client_ip = m.get('ClientIp')
+        if m.get('NewClient') is not None:
+            self.new_client = m.get('NewClient')
+        return self
+
+
+class RefreshRenderingInstanceStreamingRequest(TeaModel):
+    def __init__(
+        self,
+        client_info: RefreshRenderingInstanceStreamingRequestClientInfo = None,
+        rendering_instance_id: str = None,
+    ):
+        self.client_info = client_info
+        # This parameter is required.
+        self.rendering_instance_id = rendering_instance_id
+
+    def validate(self):
+        if self.client_info:
+            self.client_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_info is not None:
+            result['ClientInfo'] = self.client_info.to_map()
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientInfo') is not None:
+            temp_model = RefreshRenderingInstanceStreamingRequestClientInfo()
+            self.client_info = temp_model.from_map(m['ClientInfo'])
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        return self
+
+
+class RefreshRenderingInstanceStreamingShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        client_info_shrink: str = None,
+        rendering_instance_id: str = None,
+    ):
+        self.client_info_shrink = client_info_shrink
+        # This parameter is required.
+        self.rendering_instance_id = rendering_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_info_shrink is not None:
+            result['ClientInfo'] = self.client_info_shrink
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientInfo') is not None:
+            self.client_info_shrink = m.get('ClientInfo')
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        return self
+
+
+class RefreshRenderingInstanceStreamingResponseBody(TeaModel):
+    def __init__(
+        self,
+        flow_id: str = None,
+        gateway: str = None,
+        hostname: str = None,
+        port: str = None,
+        rendering_instance_id: str = None,
+        request_id: str = None,
+    ):
+        self.flow_id = flow_id
+        self.gateway = gateway
+        self.hostname = hostname
+        self.port = port
+        self.rendering_instance_id = rendering_instance_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.flow_id is not None:
+            result['FlowId'] = self.flow_id
+        if self.gateway is not None:
+            result['Gateway'] = self.gateway
+        if self.hostname is not None:
+            result['Hostname'] = self.hostname
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FlowId') is not None:
+            self.flow_id = m.get('FlowId')
+        if m.get('Gateway') is not None:
+            self.gateway = m.get('Gateway')
+        if m.get('Hostname') is not None:
+            self.hostname = m.get('Hostname')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RefreshRenderingInstanceStreamingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RefreshRenderingInstanceStreamingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RefreshRenderingInstanceStreamingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ReleaseRenderingDataPackageRequest(TeaModel):
     def __init__(
         self,
@@ -23612,6 +24149,114 @@ class RenewRenderingInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RenewRenderingInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ResetRenderingInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        action_name: str = None,
+        data_package_id: str = None,
+        rendering_instance_id: str = None,
+    ):
+        self.action_name = action_name
+        self.data_package_id = data_package_id
+        # This parameter is required.
+        self.rendering_instance_id = rendering_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_name is not None:
+            result['ActionName'] = self.action_name
+        if self.data_package_id is not None:
+            result['DataPackageId'] = self.data_package_id
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionName') is not None:
+            self.action_name = m.get('ActionName')
+        if m.get('DataPackageId') is not None:
+            self.data_package_id = m.get('DataPackageId')
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        return self
+
+
+class ResetRenderingInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ResetRenderingInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ResetRenderingInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ResetRenderingInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -26963,6 +27608,182 @@ class UpdateRenderingInstanceConfigurationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateRenderingInstanceConfigurationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateRenderingInstanceSettingsRequestSettings(TeaModel):
+    def __init__(
+        self,
+        attribute_name: str = None,
+        attribute_value: str = None,
+    ):
+        self.attribute_name = attribute_name
+        self.attribute_value = attribute_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attribute_name is not None:
+            result['AttributeName'] = self.attribute_name
+        if self.attribute_value is not None:
+            result['AttributeValue'] = self.attribute_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AttributeName') is not None:
+            self.attribute_name = m.get('AttributeName')
+        if m.get('AttributeValue') is not None:
+            self.attribute_value = m.get('AttributeValue')
+        return self
+
+
+class UpdateRenderingInstanceSettingsRequest(TeaModel):
+    def __init__(
+        self,
+        rendering_instance_id: str = None,
+        settings: List[UpdateRenderingInstanceSettingsRequestSettings] = None,
+    ):
+        self.rendering_instance_id = rendering_instance_id
+        self.settings = settings
+
+    def validate(self):
+        if self.settings:
+            for k in self.settings:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        result['Settings'] = []
+        if self.settings is not None:
+            for k in self.settings:
+                result['Settings'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        self.settings = []
+        if m.get('Settings') is not None:
+            for k in m.get('Settings'):
+                temp_model = UpdateRenderingInstanceSettingsRequestSettings()
+                self.settings.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateRenderingInstanceSettingsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        rendering_instance_id: str = None,
+        settings_shrink: str = None,
+    ):
+        self.rendering_instance_id = rendering_instance_id
+        self.settings_shrink = settings_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        if self.settings_shrink is not None:
+            result['Settings'] = self.settings_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        if m.get('Settings') is not None:
+            self.settings_shrink = m.get('Settings')
+        return self
+
+
+class UpdateRenderingInstanceSettingsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateRenderingInstanceSettingsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateRenderingInstanceSettingsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateRenderingInstanceSettingsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

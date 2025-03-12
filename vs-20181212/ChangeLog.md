@@ -1,3 +1,14 @@
+2025-03-12 Version: 3.2.0
+- Support API DeleteRenderingInstanceSettings.
+- Support API DescribeRenderingInstanceSettings.
+- Support API RefreshRenderingInstanceStreaming.
+- Support API ResetRenderingInstance.
+- Support API UpdateRenderingInstanceSettings.
+- Update API CreateRenderingDataPackage: add param Category.
+- Update API ListRenderingDataPackages: add param Category.
+- Update API ListRenderingDataPackages: update response param.
+
+
 2024-12-26 Version: 3.1.0
 - Support API ListRenderingDataPackages.
 - Support API RecoverRenderingDataPackage.
