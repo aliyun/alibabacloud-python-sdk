@@ -1,3 +1,7 @@
+2025-03-12 Version: 2.0.21
+- Update API DeleteTranscriptionPhrases: update response param.
+
+
 2025-03-03 Version: 2.0.20
 - Update API CreateTask: update param body.
 
