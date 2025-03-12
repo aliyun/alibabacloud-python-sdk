@@ -1,3 +1,84 @@
+2025-03-12 Version: 2.16.0
+- Support API ActivateVersionManagement.
+- Support API CheckAssumeSlrRole.
+- Support API CreateHttpsApplicationConfiguration.
+- Support API CreateImageTransform.
+- Support API CreateLoadBalancer.
+- Support API CreateNetworkOptimization.
+- Support API CreateSlrRoleForRealtimeLog.
+- Support API DeactivateVersionManagement.
+- Support API DeleteHttpsApplicationConfiguration.
+- Support API DeleteImageTransform.
+- Support API DeleteLoadBalancer.
+- Support API DeleteNetworkOptimization.
+- Support API DescribeEdgeContainerAppStats.
+- Support API DescribeRatePlanInstanceStatus.
+- Support API GetCacheTag.
+- Support API GetCnameFlattening.
+- Support API GetDevelopmentMode.
+- Support API GetEdgeContainerAppLogRiver.
+- Support API GetHttpsApplicationConfiguration.
+- Support API GetImageTransform.
+- Support API GetLoadBalancer.
+- Support API GetNetworkOptimization.
+- Support API GetSeoBypass.
+- Support API GetSiteNameExclusive.
+- Support API GetSitePause.
+- Support API ListHttpsApplicationConfigurations.
+- Support API ListImageTransforms.
+- Support API ListLoadBalancerOriginStatus.
+- Support API ListLoadBalancers.
+- Support API ListNetworkOptimizations.
+- Support API PurchaseRatePlan.
+- Support API UpdateCacheTag.
+- Support API UpdateCnameFlattening.
+- Support API UpdateDevelopmentMode.
+- Support API UpdateEdgeContainerAppLogRiver.
+- Support API UpdateHttpsApplicationConfiguration.
+- Support API UpdateImageTransform.
+- Support API UpdateLoadBalancer.
+- Support API UpdateNetworkOptimization.
+- Support API UpdateRatePlanSpec.
+- Support API UpdateSeoBypass.
+- Support API UpdateSiteNameExclusive.
+- Support API UpdateSitePause.
+- Update API CreateCompressionRule: add param Zstd.
+- Update API CreateOriginRule: add param OriginMtls.
+- Update API CreateOriginRule: add param OriginVerify.
+- Update API CreateSiteDeliveryTask: update response param.
+- Update API CreateWaitingRoom: update response param.
+- Update API CreateWaitingRoomEvent: update response param.
+- Update API CreateWaitingRoomRule: update response param.
+- Update API DeleteWaitingRoomEvent: update param WaitingRoomEventId.
+- Update API DeleteWaitingRoomRule: update param WaitingRoomRuleId.
+- Update API DescribeCustomScenePolicies: update param PageNumber.
+- Update API DescribePurgeTasks: update param Type.
+- Update API GetClientCaCertificate: update response param.
+- Update API GetClientCertificate: update response param.
+- Update API GetCompressionRule: update response param.
+- Update API GetOriginRule: update response param.
+- Update API GetPurgeQuota: update param Type.
+- Update API GetSite: update response param.
+- Update API GetWafFilter: update response param.
+- Update API ListCacheReserveInstances: update response param.
+- Update API ListClientCaCertificates: update response param.
+- Update API ListClientCertificates: update response param.
+- Update API ListCompressionRules: update response param.
+- Update API ListOriginRules: update response param.
+- Update API ListSites: update response param.
+- Update API ListUserRatePlanInstances: add param SubscribeType.
+- Update API ListUserRatePlanInstances: update response param.
+- Update API PurgeCaches: update param Content.
+- Update API UpdateCompressionRule: add param Zstd.
+- Update API UpdateCustomScenePolicy: update param Objects.
+- Update API UpdateOriginRule: add param OriginMtls.
+- Update API UpdateOriginRule: add param OriginVerify.
+- Update API UpdateScheduledPreloadExecution: update param EndTime.
+- Update API UpdateWaitingRoomEvent: update param WaitingRoomEventId.
+- Update API UpdateWaitingRoomRule: update param WaitingRoomRuleId.
+- Update API UploadClientCaCertificate: update param Name.
+
+
 2025-02-12 Version: 2.15.0
 - Support API ActivateVersionManagement.
 - Support API CheckAssumeSlrRole.
