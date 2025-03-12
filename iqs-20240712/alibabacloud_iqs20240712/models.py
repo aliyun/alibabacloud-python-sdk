@@ -703,11 +703,9 @@ class BicyclingDirectionNovaResponseBody(TeaModel):
         self,
         data: BicyclingDirectionNovaResponseBodyData = None,
         request_id: str = None,
-        success: bool = None,
     ):
         self.data = data
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         if self.data:
@@ -723,8 +721,6 @@ class BicyclingDirectionNovaResponseBody(TeaModel):
             result['data'] = self.data.to_map()
         if self.request_id is not None:
             result['requestId'] = self.request_id
-        if self.success is not None:
-            result['success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
@@ -734,8 +730,6 @@ class BicyclingDirectionNovaResponseBody(TeaModel):
             self.data = temp_model.from_map(m['data'])
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
-        if m.get('success') is not None:
-            self.success = m.get('success')
         return self
 
 
@@ -1599,11 +1593,9 @@ class DrivingDirectionNovaResponseBody(TeaModel):
         self,
         data: DrivingDirectionNovaResponseBodyData = None,
         request_id: str = None,
-        success: bool = None,
     ):
         self.data = data
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         if self.data:
@@ -1619,8 +1611,6 @@ class DrivingDirectionNovaResponseBody(TeaModel):
             result['data'] = self.data.to_map()
         if self.request_id is not None:
             result['requestId'] = self.request_id
-        if self.success is not None:
-            result['success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
@@ -1630,8 +1620,6 @@ class DrivingDirectionNovaResponseBody(TeaModel):
             self.data = temp_model.from_map(m['data'])
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
-        if m.get('success') is not None:
-            self.success = m.get('success')
         return self
 
 
@@ -2050,11 +2038,9 @@ class ElectrobikeDirectionNovaResponseBody(TeaModel):
         self,
         data: ElectrobikeDirectionNovaResponseBodyData = None,
         request_id: str = None,
-        success: bool = None,
     ):
         self.data = data
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         if self.data:
@@ -2070,8 +2056,6 @@ class ElectrobikeDirectionNovaResponseBody(TeaModel):
             result['data'] = self.data.to_map()
         if self.request_id is not None:
             result['requestId'] = self.request_id
-        if self.success is not None:
-            result['success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
@@ -2081,8 +2065,6 @@ class ElectrobikeDirectionNovaResponseBody(TeaModel):
             self.data = temp_model.from_map(m['data'])
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
-        if m.get('success') is not None:
-            self.success = m.get('success')
         return self
 
 
@@ -2287,11 +2269,9 @@ class GeoCodeResponseBody(TeaModel):
         self,
         data: List[GeoCodeResponseBodyData] = None,
         request_id: str = None,
-        success: bool = None,
     ):
         self.data = data
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         if self.data:
@@ -2311,8 +2291,6 @@ class GeoCodeResponseBody(TeaModel):
                 result['data'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['requestId'] = self.request_id
-        if self.success is not None:
-            result['success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
@@ -2324,8 +2302,6 @@ class GeoCodeResponseBody(TeaModel):
                 self.data.append(temp_model.from_map(k))
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
-        if m.get('success') is not None:
-            self.success = m.get('success')
         return self
 
 
@@ -2680,11 +2656,9 @@ class NearbySearchNovaResponseBody(TeaModel):
         self,
         data: List[NearbySearchNovaResponseBodyData] = None,
         request_id: str = None,
-        success: bool = None,
     ):
         self.data = data
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         if self.data:
@@ -2704,8 +2678,6 @@ class NearbySearchNovaResponseBody(TeaModel):
                 result['data'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['requestId'] = self.request_id
-        if self.success is not None:
-            result['success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
@@ -2717,8 +2689,6 @@ class NearbySearchNovaResponseBody(TeaModel):
                 self.data.append(temp_model.from_map(k))
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
-        if m.get('success') is not None:
-            self.success = m.get('success')
         return self
 
 
@@ -3055,11 +3025,9 @@ class PlaceSearchNovaResponseBody(TeaModel):
         self,
         data: List[PlaceSearchNovaResponseBodyData] = None,
         request_id: str = None,
-        success: bool = None,
     ):
         self.data = data
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         if self.data:
@@ -3079,8 +3047,6 @@ class PlaceSearchNovaResponseBody(TeaModel):
                 result['data'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['requestId'] = self.request_id
-        if self.success is not None:
-            result['success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
@@ -3092,8 +3058,6 @@ class PlaceSearchNovaResponseBody(TeaModel):
                 self.data.append(temp_model.from_map(k))
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
-        if m.get('success') is not None:
-            self.success = m.get('success')
         return self
 
 
@@ -3988,11 +3952,9 @@ class RgeoCodeResponseBody(TeaModel):
         self,
         data: RgeoCodeResponseBodyData = None,
         request_id: str = None,
-        success: bool = None,
     ):
         self.data = data
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         if self.data:
@@ -4008,8 +3970,6 @@ class RgeoCodeResponseBody(TeaModel):
             result['data'] = self.data.to_map()
         if self.request_id is not None:
             result['requestId'] = self.request_id
-        if self.success is not None:
-            result['success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
@@ -4019,8 +3979,6 @@ class RgeoCodeResponseBody(TeaModel):
             self.data = temp_model.from_map(m['data'])
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
-        if m.get('success') is not None:
-            self.success = m.get('success')
         return self
 
 
@@ -4964,6 +4922,33 @@ class TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway(TeaModel):
         return self
 
 
+class TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxiPolyline(TeaModel):
+    def __init__(
+        self,
+        polyline: str = None,
+    ):
+        self.polyline = polyline
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.polyline is not None:
+            result['polyline'] = self.polyline
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('polyline') is not None:
+            self.polyline = m.get('polyline')
+        return self
+
+
 class TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi(TeaModel):
     def __init__(
         self,
@@ -4974,6 +4959,7 @@ class TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi(TeaModel):
         index: str = None,
         origin_name: str = None,
         origin_point: str = None,
+        polyline: TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxiPolyline = None,
         price: str = None,
     ):
         self.destination_name = destination_name
@@ -4983,10 +4969,12 @@ class TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi(TeaModel):
         self.index = index
         self.origin_name = origin_name
         self.origin_point = origin_point
+        self.polyline = polyline
         self.price = price
 
     def validate(self):
-        pass
+        if self.polyline:
+            self.polyline.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5008,6 +4996,8 @@ class TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi(TeaModel):
             result['originName'] = self.origin_name
         if self.origin_point is not None:
             result['originPoint'] = self.origin_point
+        if self.polyline is not None:
+            result['polyline'] = self.polyline.to_map()
         if self.price is not None:
             result['price'] = self.price
         return result
@@ -5028,6 +5018,9 @@ class TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi(TeaModel):
             self.origin_name = m.get('originName')
         if m.get('originPoint') is not None:
             self.origin_point = m.get('originPoint')
+        if m.get('polyline') is not None:
+            temp_model = TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxiPolyline()
+            self.polyline = temp_model.from_map(m['polyline'])
         if m.get('price') is not None:
             self.price = m.get('price')
         return self
@@ -5519,11 +5512,9 @@ class TransitIntegratedDirectionResponseBody(TeaModel):
         self,
         data: TransitIntegratedDirectionResponseBodyData = None,
         request_id: str = None,
-        success: bool = None,
     ):
         self.data = data
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         if self.data:
@@ -5539,8 +5530,6 @@ class TransitIntegratedDirectionResponseBody(TeaModel):
             result['data'] = self.data.to_map()
         if self.request_id is not None:
             result['requestId'] = self.request_id
-        if self.success is not None:
-            result['success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
@@ -5550,8 +5539,6 @@ class TransitIntegratedDirectionResponseBody(TeaModel):
             self.data = temp_model.from_map(m['data'])
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
-        if m.get('success') is not None:
-            self.success = m.get('success')
         return self
 
 
@@ -5970,11 +5957,9 @@ class WalkingDirectionNovaResponseBody(TeaModel):
         self,
         data: WalkingDirectionNovaResponseBodyData = None,
         request_id: str = None,
-        success: bool = None,
     ):
         self.data = data
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         if self.data:
@@ -5990,8 +5975,6 @@ class WalkingDirectionNovaResponseBody(TeaModel):
             result['data'] = self.data.to_map()
         if self.request_id is not None:
             result['requestId'] = self.request_id
-        if self.success is not None:
-            result['success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
@@ -6001,8 +5984,6 @@ class WalkingDirectionNovaResponseBody(TeaModel):
             self.data = temp_model.from_map(m['data'])
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
-        if m.get('success') is not None:
-            self.success = m.get('success')
         return self
 
 
