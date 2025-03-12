@@ -5822,6 +5822,45 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo(TeaModel):
         return self
 
 
+class ListAppInstanceGroupResponseBodyAppInstanceGroupModelsResourceTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        scope: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.scope = scope
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.scope is not None:
+            result['Scope'] = self.scope
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
     def __init__(
         self,
@@ -5850,6 +5889,7 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
         reserve_max_amount: int = None,
         reserve_min_amount: int = None,
         resource_status: str = None,
+        resource_tags: List[ListAppInstanceGroupResponseBodyAppInstanceGroupModelsResourceTags] = None,
         scaling_down_after_idle_minutes: int = None,
         scaling_step: int = None,
         scaling_usage_threshold: str = None,
@@ -5884,6 +5924,7 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
         self.reserve_max_amount = reserve_max_amount
         self.reserve_min_amount = reserve_min_amount
         self.resource_status = resource_status
+        self.resource_tags = resource_tags
         self.scaling_down_after_idle_minutes = scaling_down_after_idle_minutes
         self.scaling_step = scaling_step
         self.scaling_usage_threshold = scaling_usage_threshold
@@ -5903,6 +5944,10 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
                     k.validate()
         if self.ota_info:
             self.ota_info.validate()
+        if self.resource_tags:
+            for k in self.resource_tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5964,6 +6009,10 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
             result['ReserveMinAmount'] = self.reserve_min_amount
         if self.resource_status is not None:
             result['ResourceStatus'] = self.resource_status
+        result['ResourceTags'] = []
+        if self.resource_tags is not None:
+            for k in self.resource_tags:
+                result['ResourceTags'].append(k.to_map() if k else None)
         if self.scaling_down_after_idle_minutes is not None:
             result['ScalingDownAfterIdleMinutes'] = self.scaling_down_after_idle_minutes
         if self.scaling_step is not None:
@@ -6039,6 +6088,11 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
             self.reserve_min_amount = m.get('ReserveMinAmount')
         if m.get('ResourceStatus') is not None:
             self.resource_status = m.get('ResourceStatus')
+        self.resource_tags = []
+        if m.get('ResourceTags') is not None:
+            for k in m.get('ResourceTags'):
+                temp_model = ListAppInstanceGroupResponseBodyAppInstanceGroupModelsResourceTags()
+                self.resource_tags.append(temp_model.from_map(k))
         if m.get('ScalingDownAfterIdleMinutes') is not None:
             self.scaling_down_after_idle_minutes = m.get('ScalingDownAfterIdleMinutes')
         if m.get('ScalingStep') is not None:
@@ -6285,6 +6339,7 @@ class ListAppInstancesResponseBodyAppInstanceModels(TeaModel):
         gmt_create: str = None,
         gmt_modified: str = None,
         main_eth_public_ip: str = None,
+        network_interface_ip: str = None,
         node_id: str = None,
         session_status: str = None,
         status: str = None,
@@ -6302,6 +6357,7 @@ class ListAppInstancesResponseBodyAppInstanceModels(TeaModel):
         self.gmt_modified = gmt_modified
         # The public IP address associated with the primary NIC. This value is returned only if `StrategyType` is set to `Mixed`.
         self.main_eth_public_ip = main_eth_public_ip
+        self.network_interface_ip = network_interface_ip
         self.node_id = node_id
         # The session status. This parameter is returned only if the application instance is in the `RUNNING` state.
         # 
@@ -6337,6 +6393,8 @@ class ListAppInstancesResponseBodyAppInstanceModels(TeaModel):
             result['GmtModified'] = self.gmt_modified
         if self.main_eth_public_ip is not None:
             result['MainEthPublicIp'] = self.main_eth_public_ip
+        if self.network_interface_ip is not None:
+            result['NetworkInterfaceIp'] = self.network_interface_ip
         if self.node_id is not None:
             result['NodeId'] = self.node_id
         if self.session_status is not None:
@@ -6362,6 +6420,8 @@ class ListAppInstancesResponseBodyAppInstanceModels(TeaModel):
             self.gmt_modified = m.get('GmtModified')
         if m.get('MainEthPublicIp') is not None:
             self.main_eth_public_ip = m.get('MainEthPublicIp')
+        if m.get('NetworkInterfaceIp') is not None:
+            self.network_interface_ip = m.get('NetworkInterfaceIp')
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
         if m.get('SessionStatus') is not None:
@@ -7275,6 +7335,7 @@ class ListRegionsRequest(TeaModel):
         biz_source: str = None,
         product_type: str = None,
     ):
+        # >  This parameter is not publicly available.
         self.biz_source = biz_source
         # The product type.
         # 
@@ -8187,7 +8248,14 @@ class ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfile(TeaModel):
         file_system_id: str = None,
         user_profile_switch: bool = None,
     ):
+        # The ID of the File Storage NAS (NAS) file system used to store user data.
         self.file_system_id = file_system_id
+        # Specifies whether user data roaming is enabled.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.user_profile_switch = user_profile_switch
 
     def validate(self):
@@ -8256,6 +8324,7 @@ class ModifyAppInstanceGroupAttributeRequestStoragePolicy(TeaModel):
     ):
         # The storage types.
         self.storage_type_list = storage_type_list
+        # The configurations of user data roaming.
         self.user_profile = user_profile
         self.user_profile_follow = user_profile_follow
 
@@ -8319,6 +8388,14 @@ class ModifyAppInstanceGroupAttributeRequest(TeaModel):
         self.network = network
         # The information about the resource group.
         self.node_pool = node_pool
+        # Specifies whether only one application can be opened in a session.
+        # 
+        # *   After you enable this feature, the system assigns a session to each application if you open multiple applications in a delivery group. This consumes a larger number of sessions.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.per_session_per_app = per_session_per_app
         # The application ID of the pre-open application. If you set `PreOpenMode` to `SINGLE_APP`, you cannot leave this parameter empty.``
         self.pre_open_app_id = pre_open_app_id
@@ -8442,6 +8519,14 @@ class ModifyAppInstanceGroupAttributeShrinkRequest(TeaModel):
         self.network_shrink = network_shrink
         # The information about the resource group.
         self.node_pool_shrink = node_pool_shrink
+        # Specifies whether only one application can be opened in a session.
+        # 
+        # *   After you enable this feature, the system assigns a session to each application if you open multiple applications in a delivery group. This consumes a larger number of sessions.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.per_session_per_app = per_session_per_app
         # The application ID of the pre-open application. If you set `PreOpenMode` to `SINGLE_APP`, you cannot leave this parameter empty.``
         self.pre_open_app_id = pre_open_app_id

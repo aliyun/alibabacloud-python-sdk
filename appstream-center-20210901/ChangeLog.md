@@ -1,40 +1,6 @@
-2025-02-24 Version: 3.0.2
-- Update API CreateAppInstanceGroup: add param AppPackageType.
-- Update API CreateAppInstanceGroup: add param ClusterId.
-- Update API CreateAppInstanceGroup: add param SubPayType.
-- Update API CreateAppInstanceGroup: update param RuntimePolicy.
-- Update API CreateAppInstanceGroup: update param StoragePolicy.
-- Update API ListAppInstances: add param UserIdList.
-- Update API ListAppInstances: update response param.
-- Update API ModifyAppInstanceGroupAttribute: update param StoragePolicy.
-
-
-2025-02-18 Version: 3.0.1
-- Update API ListAppInstances: update response param.
-- Update API ModifyAppInstanceGroupAttribute: update param StoragePolicy.
-
-
-2025-01-17 Version: 3.0.0
-- Support API ListBindInfo.
-- Delete API AccessPageGetAcl.
-- Delete API AskSessionPackageRenewPrice.
-- Delete API CancelOtaTask.
-- Delete API CreateProject.
-- Delete API DeleteProject.
-- Delete API GetProjectPolicies.
-- Delete API ListProjects.
-- Delete API MigrateSessionPackage.
-- Delete API ModifyProjectPolicy.
-- Delete API RefreshAccessUrl.
-- Delete API RenewSessionPackage.
-- Delete API UpdateAccessPageState.
-- Update API AuthorizeInstanceGroup: update param AuthorizeUserIds.
-- Update API AuthorizeInstanceGroup: update param UnAuthorizeUserIds.
-- Update API CreateAppInstanceGroup: add param AppPolicyId.
-- Update API GetAppInstanceGroup: update response param.
+2025-03-12 Version: 3.0.3
 - Update API ListAppInstanceGroup: update response param.
-- Update API ModifyAppInstanceGroupAttribute: add param PerSessionPerApp.
-- Update API ModifyAppInstanceGroupAttribute: update param StoragePolicy.
+- Update API ListAppInstances: update response param.
 
 
 2024-10-22 Version: 2.0.4
