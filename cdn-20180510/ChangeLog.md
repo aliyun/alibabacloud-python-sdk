@@ -1,3 +1,12 @@
+2025-03-12 Version: 5.0.0
+- Support API BatchSetGrayDomainFunction.
+- Support API GetGrayDomainFunction.
+- Support API PublishGrayDomainConfig.
+- Delete API BatchSetCdnDomainServerCertificate.
+- Delete API SetDomainServerCertificate.
+- Update API DescribeDomainPathData: update response param.
+
+
 2024-12-13 Version: 4.2.2
 - Update API DisableRealtimeLogDelivery: add param Logstore.
 - Update API DisableRealtimeLogDelivery: add param Project.

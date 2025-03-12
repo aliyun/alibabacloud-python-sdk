@@ -1165,50 +1165,16 @@ class BatchSetCdnDomainConfigResponse(TeaModel):
         return self
 
 
-class BatchSetCdnDomainServerCertificateRequest(TeaModel):
+class BatchSetGrayDomainFunctionRequest(TeaModel):
     def __init__(
         self,
-        cert_name: str = None,
-        cert_type: str = None,
-        domain_name: str = None,
-        force_set: str = None,
-        owner_id: int = None,
-        region: str = None,
-        sslpri: str = None,
-        sslprotocol: str = None,
-        sslpub: str = None,
-        security_token: str = None,
+        configs: str = None,
+        domain_names: str = None,
     ):
-        # The name of the certificate.
-        self.cert_name = cert_name
-        # The type of the SSL certificate. Valid values:
-        # 
-        # *   **upload**: a user-uploaded SSL certificate.
-        # *   **cas**: a certificate that is issued by SSL Certificates Service.
-        self.cert_type = cert_type
-        # The accelerated domain name to which the SSL certificate belongs. The type of request supported by the accelerated domain name must be HTTPS. You can specify multiple accelerated domain names and separate them with commas (,).
-        # 
-        # >  You can manage the SSL certificates of up to 50 accelerated domain names in each call.
-        # 
         # This parameter is required.
-        self.domain_name = domain_name
-        # Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information about the existing certificate that uses the same name.
-        self.force_set = force_set
-        self.owner_id = owner_id
-        # The region.
-        self.region = region
-        # The private key. Specify the private key only if you enable the SSL certificate.
-        self.sslpri = sslpri
-        # Specifies whether to enable the SSL certificate. Valid values:
-        # 
-        # *   **on**: enables the SSL certificate.
-        # *   **off**: disables the SSL certificate. This is the default value.
-        # 
+        self.configs = configs
         # This parameter is required.
-        self.sslprotocol = sslprotocol
-        # The content of the SSL certificate. Specify the content of the certificate only if you want to enable the SSL certificate.
-        self.sslpub = sslpub
-        self.security_token = security_token
+        self.domain_names = domain_names
 
     def validate(self):
         pass
@@ -1219,60 +1185,31 @@ class BatchSetCdnDomainServerCertificateRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.cert_name is not None:
-            result['CertName'] = self.cert_name
-        if self.cert_type is not None:
-            result['CertType'] = self.cert_type
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
-        if self.force_set is not None:
-            result['ForceSet'] = self.force_set
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.region is not None:
-            result['Region'] = self.region
-        if self.sslpri is not None:
-            result['SSLPri'] = self.sslpri
-        if self.sslprotocol is not None:
-            result['SSLProtocol'] = self.sslprotocol
-        if self.sslpub is not None:
-            result['SSLPub'] = self.sslpub
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
+        if self.configs is not None:
+            result['Configs'] = self.configs
+        if self.domain_names is not None:
+            result['DomainNames'] = self.domain_names
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CertName') is not None:
-            self.cert_name = m.get('CertName')
-        if m.get('CertType') is not None:
-            self.cert_type = m.get('CertType')
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
-        if m.get('ForceSet') is not None:
-            self.force_set = m.get('ForceSet')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('Region') is not None:
-            self.region = m.get('Region')
-        if m.get('SSLPri') is not None:
-            self.sslpri = m.get('SSLPri')
-        if m.get('SSLProtocol') is not None:
-            self.sslprotocol = m.get('SSLProtocol')
-        if m.get('SSLPub') is not None:
-            self.sslpub = m.get('SSLPub')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
+        if m.get('Configs') is not None:
+            self.configs = m.get('Configs')
+        if m.get('DomainNames') is not None:
+            self.domain_names = m.get('DomainNames')
         return self
 
 
-class BatchSetCdnDomainServerCertificateResponseBody(TeaModel):
+class BatchSetGrayDomainFunctionResponseBodyDomainConfigList(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
+        config_id: int = None,
+        domain_name: str = None,
+        function_name: str = None,
     ):
-        # The ID of the request.
-        self.request_id = request_id
+        self.config_id = config_id
+        self.domain_name = domain_name
+        self.function_name = function_name
 
     def validate(self):
         pass
@@ -1283,23 +1220,72 @@ class BatchSetCdnDomainServerCertificateResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.function_name is not None:
+            result['FunctionName'] = self.function_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('FunctionName') is not None:
+            self.function_name = m.get('FunctionName')
+        return self
+
+
+class BatchSetGrayDomainFunctionResponseBody(TeaModel):
+    def __init__(
+        self,
+        domain_config_list: List[BatchSetGrayDomainFunctionResponseBodyDomainConfigList] = None,
+        request_id: str = None,
+    ):
+        self.domain_config_list = domain_config_list
+        self.request_id = request_id
+
+    def validate(self):
+        if self.domain_config_list:
+            for k in self.domain_config_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DomainConfigList'] = []
+        if self.domain_config_list is not None:
+            for k in self.domain_config_list:
+                result['DomainConfigList'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.domain_config_list = []
+        if m.get('DomainConfigList') is not None:
+            for k in m.get('DomainConfigList'):
+                temp_model = BatchSetGrayDomainFunctionResponseBodyDomainConfigList()
+                self.domain_config_list.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
 
 
-class BatchSetCdnDomainServerCertificateResponse(TeaModel):
+class BatchSetGrayDomainFunctionResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        body: BatchSetCdnDomainServerCertificateResponseBody = None,
+        body: BatchSetGrayDomainFunctionResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
@@ -1330,7 +1316,7 @@ class BatchSetCdnDomainServerCertificateResponse(TeaModel):
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
-            temp_model = BatchSetCdnDomainServerCertificateResponseBody()
+            temp_model = BatchSetGrayDomainFunctionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -16842,6 +16828,7 @@ class DescribeDomainPathDataResponseBody(TeaModel):
         page_number: int = None,
         page_size: int = None,
         path_data_per_interval: DescribeDomainPathDataResponseBodyPathDataPerInterval = None,
+        request_id: str = None,
         start_time: str = None,
         total_count: int = None,
     ):
@@ -16857,6 +16844,8 @@ class DescribeDomainPathDataResponseBody(TeaModel):
         self.page_size = page_size
         # A list of bandwidth values collected at each time interval.
         self.path_data_per_interval = path_data_per_interval
+        # The ID of the request.
+        self.request_id = request_id
         # The start of the time range during which data was queried.
         self.start_time = start_time
         # The total number of entries returned.
@@ -16884,6 +16873,8 @@ class DescribeDomainPathDataResponseBody(TeaModel):
             result['PageSize'] = self.page_size
         if self.path_data_per_interval is not None:
             result['PathDataPerInterval'] = self.path_data_per_interval.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.total_count is not None:
@@ -16905,6 +16896,8 @@ class DescribeDomainPathDataResponseBody(TeaModel):
         if m.get('PathDataPerInterval') is not None:
             temp_model = DescribeDomainPathDataResponseBodyPathDataPerInterval()
             self.path_data_per_interval = temp_model.from_map(m['PathDataPerInterval'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('TotalCount') is not None:
@@ -30240,8 +30233,11 @@ class DisableRealtimeLogDeliveryRequest(TeaModel):
         # 
         # This parameter is required.
         self.domain = domain
+        # The name of the Logstore where log entries are stored.
         self.logstore = logstore
+        # The name of the Log Service project that is used for real-time log delivery.
         self.project = project
+        # The ID of the region where the Log Service project is deployed.
         self.region = region
 
     def validate(self):
@@ -30357,8 +30353,11 @@ class EnableRealtimeLogDeliveryRequest(TeaModel):
         # 
         # This parameter is required.
         self.domain = domain
+        # The name of the Logstore where log entries are stored.
         self.logstore = logstore
+        # The name of the Log Service project that is used for real-time log delivery.
         self.project = project
+        # The ID of the region where the Log Service project is deployed.
         self.region = region
 
     def validate(self):
@@ -30458,6 +30457,232 @@ class EnableRealtimeLogDeliveryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = EnableRealtimeLogDeliveryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetGrayDomainFunctionRequest(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        function_names: str = None,
+    ):
+        # This parameter is required.
+        self.domain_name = domain_name
+        self.function_names = function_names
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.function_names is not None:
+            result['FunctionNames'] = self.function_names
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('FunctionNames') is not None:
+            self.function_names = m.get('FunctionNames')
+        return self
+
+
+class GetGrayDomainFunctionResponseBodyDomainConfigListFunctionArgs(TeaModel):
+    def __init__(
+        self,
+        arg_name: str = None,
+        arg_value: str = None,
+    ):
+        self.arg_name = arg_name
+        self.arg_value = arg_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arg_name is not None:
+            result['ArgName'] = self.arg_name
+        if self.arg_value is not None:
+            result['ArgValue'] = self.arg_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ArgName') is not None:
+            self.arg_name = m.get('ArgName')
+        if m.get('ArgValue') is not None:
+            self.arg_value = m.get('ArgValue')
+        return self
+
+
+class GetGrayDomainFunctionResponseBodyDomainConfigList(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        function_args: List[GetGrayDomainFunctionResponseBodyDomainConfigListFunctionArgs] = None,
+        function_name: str = None,
+        parent_id: str = None,
+        status: str = None,
+    ):
+        self.config_id = config_id
+        self.function_args = function_args
+        self.function_name = function_name
+        self.parent_id = parent_id
+        self.status = status
+
+    def validate(self):
+        if self.function_args:
+            for k in self.function_args:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        result['FunctionArgs'] = []
+        if self.function_args is not None:
+            for k in self.function_args:
+                result['FunctionArgs'].append(k.to_map() if k else None)
+        if self.function_name is not None:
+            result['FunctionName'] = self.function_name
+        if self.parent_id is not None:
+            result['ParentId'] = self.parent_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        self.function_args = []
+        if m.get('FunctionArgs') is not None:
+            for k in m.get('FunctionArgs'):
+                temp_model = GetGrayDomainFunctionResponseBodyDomainConfigListFunctionArgs()
+                self.function_args.append(temp_model.from_map(k))
+        if m.get('FunctionName') is not None:
+            self.function_name = m.get('FunctionName')
+        if m.get('ParentId') is not None:
+            self.parent_id = m.get('ParentId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetGrayDomainFunctionResponseBody(TeaModel):
+    def __init__(
+        self,
+        domain_config_list: List[GetGrayDomainFunctionResponseBodyDomainConfigList] = None,
+        domain_name: str = None,
+        progression: str = None,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.domain_config_list = domain_config_list
+        self.domain_name = domain_name
+        self.progression = progression
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        if self.domain_config_list:
+            for k in self.domain_config_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DomainConfigList'] = []
+        if self.domain_config_list is not None:
+            for k in self.domain_config_list:
+                result['DomainConfigList'].append(k.to_map() if k else None)
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.progression is not None:
+            result['Progression'] = self.progression
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.domain_config_list = []
+        if m.get('DomainConfigList') is not None:
+            for k in m.get('DomainConfigList'):
+                temp_model = GetGrayDomainFunctionResponseBodyDomainConfigList()
+                self.domain_config_list.append(temp_model.from_map(k))
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('Progression') is not None:
+            self.progression = m.get('Progression')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetGrayDomainFunctionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetGrayDomainFunctionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetGrayDomainFunctionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -32537,6 +32762,127 @@ class OpenCdnServiceResponse(TeaModel):
         return self
 
 
+class PublishGrayDomainConfigRequest(TeaModel):
+    def __init__(
+        self,
+        custom_country_id: int = None,
+        custom_percent: int = None,
+        custom_province_id: int = None,
+        domain_name: str = None,
+        publish_mode: str = None,
+    ):
+        self.custom_country_id = custom_country_id
+        self.custom_percent = custom_percent
+        self.custom_province_id = custom_province_id
+        # This parameter is required.
+        self.domain_name = domain_name
+        # This parameter is required.
+        self.publish_mode = publish_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_country_id is not None:
+            result['CustomCountryId'] = self.custom_country_id
+        if self.custom_percent is not None:
+            result['CustomPercent'] = self.custom_percent
+        if self.custom_province_id is not None:
+            result['CustomProvinceId'] = self.custom_province_id
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.publish_mode is not None:
+            result['PublishMode'] = self.publish_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomCountryId') is not None:
+            self.custom_country_id = m.get('CustomCountryId')
+        if m.get('CustomPercent') is not None:
+            self.custom_percent = m.get('CustomPercent')
+        if m.get('CustomProvinceId') is not None:
+            self.custom_province_id = m.get('CustomProvinceId')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('PublishMode') is not None:
+            self.publish_mode = m.get('PublishMode')
+        return self
+
+
+class PublishGrayDomainConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class PublishGrayDomainConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PublishGrayDomainConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PublishGrayDomainConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class PublishStagingConfigToProductionRequest(TeaModel):
     def __init__(
         self,
@@ -33901,174 +34247,6 @@ class SetCdnFullDomainsBlockIPResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SetCdnFullDomainsBlockIPResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class SetDomainServerCertificateRequest(TeaModel):
-    def __init__(
-        self,
-        cert_name: str = None,
-        cert_type: str = None,
-        domain_name: str = None,
-        force_set: str = None,
-        owner_id: int = None,
-        private_key: str = None,
-        security_token: str = None,
-        server_certificate: str = None,
-        server_certificate_status: str = None,
-    ):
-        # The name of the SSL certificate. You can specify only one name.
-        self.cert_name = cert_name
-        # The type of the certificate. Valid values:
-        # 
-        # *   **upload**: a user-uploaded SSL certificate.
-        # *   **cas**: a certificate that is purchased from Alibaba Cloud SSL Certificates Service.
-        # 
-        # > If this parameter is set to **cas**, the **PrivateKey** parameter is optional.
-        self.cert_type = cert_type
-        # The accelerated domain name for which you want to configure the SSL certificate. The type of request supported by the domain name must be HTTPS.
-        # 
-        # You can specify one domain name in each call.
-        # 
-        # This parameter is required.
-        self.domain_name = domain_name
-        # Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information about the existing certificate that uses the same name.
-        self.force_set = force_set
-        self.owner_id = owner_id
-        # The private key. Specify the private key only if you want to enable the SSL certificate.
-        self.private_key = private_key
-        self.security_token = security_token
-        # The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate. You can use one of the following methods to obtain the content of the SSL certificate:
-        # 
-        # *   Method 1: Call the [DescribeDomainCertificateInfo](https://help.aliyun.com/document_detail/91182.html) API operation to query the information about the SSL certificate corresponding to the accelerated domain name and obtain the public key of the ServerCertificate certificate from the returned data.
-        # *   Method 2: Call the [DescribeCdnCertificateList](https://help.aliyun.com/document_detail/91181.html) API operation to query the SSL certificate list corresponding to the accelerated domain name, and obtain the value of CertName from the returned data. Then, Call the [DescribeCdnCertificateDetail](https://help.aliyun.com/document_detail/131905.html) API operation with CertName as a parameter to obtain the details about the certificate, and obtain the public key of the Cert certificate from the returned data.
-        self.server_certificate = server_certificate
-        # Specifies whether to enable the SSL certificate. Default value: off. Valid values:
-        # 
-        # *   **on** : enables the SSL certificate.
-        # *   **off**: disables the SSL certificate.
-        # 
-        # This parameter is required.
-        self.server_certificate_status = server_certificate_status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cert_name is not None:
-            result['CertName'] = self.cert_name
-        if self.cert_type is not None:
-            result['CertType'] = self.cert_type
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
-        if self.force_set is not None:
-            result['ForceSet'] = self.force_set
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.private_key is not None:
-            result['PrivateKey'] = self.private_key
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
-        if self.server_certificate is not None:
-            result['ServerCertificate'] = self.server_certificate
-        if self.server_certificate_status is not None:
-            result['ServerCertificateStatus'] = self.server_certificate_status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CertName') is not None:
-            self.cert_name = m.get('CertName')
-        if m.get('CertType') is not None:
-            self.cert_type = m.get('CertType')
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
-        if m.get('ForceSet') is not None:
-            self.force_set = m.get('ForceSet')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('PrivateKey') is not None:
-            self.private_key = m.get('PrivateKey')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
-        if m.get('ServerCertificate') is not None:
-            self.server_certificate = m.get('ServerCertificate')
-        if m.get('ServerCertificateStatus') is not None:
-            self.server_certificate_status = m.get('ServerCertificateStatus')
-        return self
-
-
-class SetDomainServerCertificateResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        # The ID of the request.
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class SetDomainServerCertificateResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: SetDomainServerCertificateResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = SetDomainServerCertificateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
