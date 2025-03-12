@@ -1,3 +1,10 @@
+2025-03-12 Version: 7.0.1
+- Update API CreateArtifact: update param ArtifactBuildProperty.
+- Update API ListServiceInstanceResources: update param NextToken.
+- Update API UpdateArtifact: update param ArtifactBuildProperty.
+- Update API UpgradeServiceInstance: update param ServiceInstanceId.
+
+
 2025-03-05 Version: 7.0.0
 - Update API ListServiceInstanceResources: delete param ResourceARN.
 

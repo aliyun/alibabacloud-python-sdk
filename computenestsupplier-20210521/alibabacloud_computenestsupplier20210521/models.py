@@ -674,12 +674,17 @@ class CreateArtifactRequestArtifactBuildPropertyCodeRepo(TeaModel):
     def __init__(
         self,
         branch: str = None,
+        endpoint: str = None,
+        org_id: str = None,
         owner: str = None,
         platform: str = None,
+        repo_id: int = None,
         repo_name: str = None,
     ):
         # The name of the branch in the code repository.
         self.branch = branch
+        self.endpoint = endpoint
+        self.org_id = org_id
         # The owner of the code repository.
         # 
         # >  This parameter is available only if the git repository is private.
@@ -690,6 +695,7 @@ class CreateArtifactRequestArtifactBuildPropertyCodeRepo(TeaModel):
         # 
         # - gitee
         self.platform = platform
+        self.repo_id = repo_id
         # The name of the repository.
         self.repo_name = repo_name
 
@@ -704,10 +710,16 @@ class CreateArtifactRequestArtifactBuildPropertyCodeRepo(TeaModel):
         result = dict()
         if self.branch is not None:
             result['Branch'] = self.branch
+        if self.endpoint is not None:
+            result['Endpoint'] = self.endpoint
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
         if self.owner is not None:
             result['Owner'] = self.owner
         if self.platform is not None:
             result['Platform'] = self.platform
+        if self.repo_id is not None:
+            result['RepoId'] = self.repo_id
         if self.repo_name is not None:
             result['RepoName'] = self.repo_name
         return result
@@ -716,10 +728,16 @@ class CreateArtifactRequestArtifactBuildPropertyCodeRepo(TeaModel):
         m = m or dict()
         if m.get('Branch') is not None:
             self.branch = m.get('Branch')
+        if m.get('Endpoint') is not None:
+            self.endpoint = m.get('Endpoint')
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
         if m.get('Owner') is not None:
             self.owner = m.get('Owner')
         if m.get('Platform') is not None:
             self.platform = m.get('Platform')
+        if m.get('RepoId') is not None:
+            self.repo_id = m.get('RepoId')
         if m.get('RepoName') is not None:
             self.repo_name = m.get('RepoName')
         return self
@@ -18519,18 +18537,24 @@ class UpdateArtifactRequestArtifactBuildPropertyCodeRepo(TeaModel):
     def __init__(
         self,
         branch: str = None,
+        endpoint: str = None,
+        org_id: str = None,
         owner: str = None,
         platform: str = None,
+        repo_id: int = None,
         repo_name: str = None,
     ):
         # The name of the branch in the code repository.
         self.branch = branch
+        self.endpoint = endpoint
+        self.org_id = org_id
         # The owner of the code repository.
         # 
         # >  This parameter is available only if the git repository is private.
         self.owner = owner
         # The platform where the code repository is hosted.
         self.platform = platform
+        self.repo_id = repo_id
         # The name of the repository.
         self.repo_name = repo_name
 
@@ -18545,10 +18569,16 @@ class UpdateArtifactRequestArtifactBuildPropertyCodeRepo(TeaModel):
         result = dict()
         if self.branch is not None:
             result['Branch'] = self.branch
+        if self.endpoint is not None:
+            result['Endpoint'] = self.endpoint
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
         if self.owner is not None:
             result['Owner'] = self.owner
         if self.platform is not None:
             result['Platform'] = self.platform
+        if self.repo_id is not None:
+            result['RepoId'] = self.repo_id
         if self.repo_name is not None:
             result['RepoName'] = self.repo_name
         return result
@@ -18557,10 +18587,16 @@ class UpdateArtifactRequestArtifactBuildPropertyCodeRepo(TeaModel):
         m = m or dict()
         if m.get('Branch') is not None:
             self.branch = m.get('Branch')
+        if m.get('Endpoint') is not None:
+            self.endpoint = m.get('Endpoint')
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
         if m.get('Owner') is not None:
             self.owner = m.get('Owner')
         if m.get('Platform') is not None:
             self.platform = m.get('Platform')
+        if m.get('RepoId') is not None:
+            self.repo_id = m.get('RepoId')
         if m.get('RepoName') is not None:
             self.repo_name = m.get('RepoName')
         return self
