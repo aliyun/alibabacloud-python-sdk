@@ -283,7 +283,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.AddUserToGroupResponse:
         """
-        @summary 将RAM用户添加到指定的用户组
+        @summary Adds a Resource Access Management (RAM) user to a RAM user group.
         
         @param request: AddUserToGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -326,7 +326,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.AddUserToGroupResponse:
         """
-        @summary 将RAM用户添加到指定的用户组
+        @summary Adds a Resource Access Management (RAM) user to a RAM user group.
         
         @param request: AddUserToGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -368,7 +368,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.AddUserToGroupRequest,
     ) -> ims_20190815_models.AddUserToGroupResponse:
         """
-        @summary 将RAM用户添加到指定的用户组
+        @summary Adds a Resource Access Management (RAM) user to a RAM user group.
         
         @param request: AddUserToGroupRequest
         @return: AddUserToGroupResponse
@@ -381,7 +381,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.AddUserToGroupRequest,
     ) -> ims_20190815_models.AddUserToGroupResponse:
         """
-        @summary 将RAM用户添加到指定的用户组
+        @summary Adds a Resource Access Management (RAM) user to a RAM user group.
         
         @param request: AddUserToGroupRequest
         @return: AddUserToGroupResponse
@@ -395,7 +395,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.BindMFADeviceResponse:
         """
-        @summary Binds a multi-factor authentication (MFA) device to a RAM user.
+        @summary Binds a multi-factor authentication (MFA) device to a Resource Access Management (RAM) user.
         
         @param request: BindMFADeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -442,7 +442,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.BindMFADeviceResponse:
         """
-        @summary Binds a multi-factor authentication (MFA) device to a RAM user.
+        @summary Binds a multi-factor authentication (MFA) device to a Resource Access Management (RAM) user.
         
         @param request: BindMFADeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -488,7 +488,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.BindMFADeviceRequest,
     ) -> ims_20190815_models.BindMFADeviceResponse:
         """
-        @summary Binds a multi-factor authentication (MFA) device to a RAM user.
+        @summary Binds a multi-factor authentication (MFA) device to a Resource Access Management (RAM) user.
         
         @param request: BindMFADeviceRequest
         @return: BindMFADeviceResponse
@@ -501,7 +501,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.BindMFADeviceRequest,
     ) -> ims_20190815_models.BindMFADeviceResponse:
         """
-        @summary Binds a multi-factor authentication (MFA) device to a RAM user.
+        @summary Binds a multi-factor authentication (MFA) device to a Resource Access Management (RAM) user.
         
         @param request: BindMFADeviceRequest
         @return: BindMFADeviceResponse
@@ -743,7 +743,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateAppSecretResponse:
         """
-        @summary Creates an application secret for the specified application.
+        @summary Creates an application secret for an application.
         
         @param request: CreateAppSecretRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -784,7 +784,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateAppSecretResponse:
         """
-        @summary Creates an application secret for the specified application.
+        @summary Creates an application secret for an application.
         
         @param request: CreateAppSecretRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -824,7 +824,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.CreateAppSecretRequest,
     ) -> ims_20190815_models.CreateAppSecretResponse:
         """
-        @summary Creates an application secret for the specified application.
+        @summary Creates an application secret for an application.
         
         @param request: CreateAppSecretRequest
         @return: CreateAppSecretResponse
@@ -837,7 +837,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.CreateAppSecretRequest,
     ) -> ims_20190815_models.CreateAppSecretResponse:
         """
-        @summary Creates an application secret for the specified application.
+        @summary Creates an application secret for an application.
         
         @param request: CreateAppSecretRequest
         @return: CreateAppSecretResponse
@@ -1865,6 +1865,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_access_key_with_options_async(request, runtime)
 
+    def delete_access_key_in_recycle_bin_with_options(
+        self,
+        request: ims_20190815_models.DeleteAccessKeyInRecycleBinRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.DeleteAccessKeyInRecycleBinResponse:
+        """
+        @summary Deletes a specific AccessKey pair that belongs to a Resource Access Management (RAM) user from the recycle bin.
+        
+        @param request: DeleteAccessKeyInRecycleBinRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccessKeyInRecycleBinResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_access_key_id):
+            query['UserAccessKeyId'] = request.user_access_key_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAccessKeyInRecycleBin',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteAccessKeyInRecycleBinResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteAccessKeyInRecycleBinResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_access_key_in_recycle_bin_with_options_async(
+        self,
+        request: ims_20190815_models.DeleteAccessKeyInRecycleBinRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.DeleteAccessKeyInRecycleBinResponse:
+        """
+        @summary Deletes a specific AccessKey pair that belongs to a Resource Access Management (RAM) user from the recycle bin.
+        
+        @param request: DeleteAccessKeyInRecycleBinRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccessKeyInRecycleBinResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_access_key_id):
+            query['UserAccessKeyId'] = request.user_access_key_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAccessKeyInRecycleBin',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteAccessKeyInRecycleBinResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteAccessKeyInRecycleBinResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_access_key_in_recycle_bin(
+        self,
+        request: ims_20190815_models.DeleteAccessKeyInRecycleBinRequest,
+    ) -> ims_20190815_models.DeleteAccessKeyInRecycleBinResponse:
+        """
+        @summary Deletes a specific AccessKey pair that belongs to a Resource Access Management (RAM) user from the recycle bin.
+        
+        @param request: DeleteAccessKeyInRecycleBinRequest
+        @return: DeleteAccessKeyInRecycleBinResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_access_key_in_recycle_bin_with_options(request, runtime)
+
+    async def delete_access_key_in_recycle_bin_async(
+        self,
+        request: ims_20190815_models.DeleteAccessKeyInRecycleBinRequest,
+    ) -> ims_20190815_models.DeleteAccessKeyInRecycleBinResponse:
+        """
+        @summary Deletes a specific AccessKey pair that belongs to a Resource Access Management (RAM) user from the recycle bin.
+        
+        @param request: DeleteAccessKeyInRecycleBinRequest
+        @return: DeleteAccessKeyInRecycleBinResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_access_key_in_recycle_bin_with_options_async(request, runtime)
+
     def delete_app_secret_with_options(
         self,
         request: ims_20190815_models.DeleteAppSecretRequest,
@@ -2435,7 +2547,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeletePasskeyResponse:
         """
-        @summary 删除Passkey
+        @summary Deletes a passkey for a Resource Access Management (RAM) user.
         
         @param request: DeletePasskeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2478,7 +2590,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeletePasskeyResponse:
         """
-        @summary 删除Passkey
+        @summary Deletes a passkey for a Resource Access Management (RAM) user.
         
         @param request: DeletePasskeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2520,7 +2632,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DeletePasskeyRequest,
     ) -> ims_20190815_models.DeletePasskeyResponse:
         """
-        @summary 删除Passkey
+        @summary Deletes a passkey for a Resource Access Management (RAM) user.
         
         @param request: DeletePasskeyRequest
         @return: DeletePasskeyResponse
@@ -2533,7 +2645,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DeletePasskeyRequest,
     ) -> ims_20190815_models.DeletePasskeyResponse:
         """
-        @summary 删除Passkey
+        @summary Deletes a passkey for a Resource Access Management (RAM) user.
         
         @param request: DeletePasskeyRequest
         @return: DeletePasskeyResponse
@@ -2761,6 +2873,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_user_with_options_async(request, runtime)
 
+    def delete_user_in_recycle_bin_with_options(
+        self,
+        request: ims_20190815_models.DeleteUserInRecycleBinRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.DeleteUserInRecycleBinResponse:
+        """
+        @summary Deletes a specific Resource Access Management (RAM) user from the recycle bin.
+        
+        @param request: DeleteUserInRecycleBinRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserInRecycleBinResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteUserInRecycleBin',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteUserInRecycleBinResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteUserInRecycleBinResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_user_in_recycle_bin_with_options_async(
+        self,
+        request: ims_20190815_models.DeleteUserInRecycleBinRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.DeleteUserInRecycleBinResponse:
+        """
+        @summary Deletes a specific Resource Access Management (RAM) user from the recycle bin.
+        
+        @param request: DeleteUserInRecycleBinRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserInRecycleBinResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteUserInRecycleBin',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteUserInRecycleBinResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteUserInRecycleBinResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_user_in_recycle_bin(
+        self,
+        request: ims_20190815_models.DeleteUserInRecycleBinRequest,
+    ) -> ims_20190815_models.DeleteUserInRecycleBinResponse:
+        """
+        @summary Deletes a specific Resource Access Management (RAM) user from the recycle bin.
+        
+        @param request: DeleteUserInRecycleBinRequest
+        @return: DeleteUserInRecycleBinResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_user_in_recycle_bin_with_options(request, runtime)
+
+    async def delete_user_in_recycle_bin_async(
+        self,
+        request: ims_20190815_models.DeleteUserInRecycleBinRequest,
+    ) -> ims_20190815_models.DeleteUserInRecycleBinResponse:
+        """
+        @summary Deletes a specific Resource Access Management (RAM) user from the recycle bin.
+        
+        @param request: DeleteUserInRecycleBinRequest
+        @return: DeleteUserInRecycleBinResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_user_in_recycle_bin_with_options_async(request, runtime)
+
     def delete_virtual_mfadevice_with_options(
         self,
         request: ims_20190815_models.DeleteVirtualMFADeviceRequest,
@@ -2868,6 +3088,234 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_virtual_mfadevice_with_options_async(request, runtime)
+
+    def deprovision_application_with_options(
+        self,
+        request: ims_20190815_models.DeprovisionApplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.DeprovisionApplicationResponse:
+        """
+        @summary Uninstalls an external application or an internal application of the ServerApp type.
+        
+        @description If you want to call this operation to uninstall an internal application, the type of the internal application must be *ServerApp**. Otherwise, an error occurs when you call this operation.
+        >  For *internal applications**, only internal applications of the ServerApp type need to be **installed or provisioned**. Therefore, only internal applications of the ServerApp type **can be uninstalled**. Internal applications of the WebApp and NativeApp types **do not need to and cannot be uninstalled**.
+        
+        @param request: DeprovisionApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeprovisionApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeprovisionApplication',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DeprovisionApplicationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DeprovisionApplicationResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def deprovision_application_with_options_async(
+        self,
+        request: ims_20190815_models.DeprovisionApplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.DeprovisionApplicationResponse:
+        """
+        @summary Uninstalls an external application or an internal application of the ServerApp type.
+        
+        @description If you want to call this operation to uninstall an internal application, the type of the internal application must be *ServerApp**. Otherwise, an error occurs when you call this operation.
+        >  For *internal applications**, only internal applications of the ServerApp type need to be **installed or provisioned**. Therefore, only internal applications of the ServerApp type **can be uninstalled**. Internal applications of the WebApp and NativeApp types **do not need to and cannot be uninstalled**.
+        
+        @param request: DeprovisionApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeprovisionApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeprovisionApplication',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DeprovisionApplicationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DeprovisionApplicationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def deprovision_application(
+        self,
+        request: ims_20190815_models.DeprovisionApplicationRequest,
+    ) -> ims_20190815_models.DeprovisionApplicationResponse:
+        """
+        @summary Uninstalls an external application or an internal application of the ServerApp type.
+        
+        @description If you want to call this operation to uninstall an internal application, the type of the internal application must be *ServerApp**. Otherwise, an error occurs when you call this operation.
+        >  For *internal applications**, only internal applications of the ServerApp type need to be **installed or provisioned**. Therefore, only internal applications of the ServerApp type **can be uninstalled**. Internal applications of the WebApp and NativeApp types **do not need to and cannot be uninstalled**.
+        
+        @param request: DeprovisionApplicationRequest
+        @return: DeprovisionApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.deprovision_application_with_options(request, runtime)
+
+    async def deprovision_application_async(
+        self,
+        request: ims_20190815_models.DeprovisionApplicationRequest,
+    ) -> ims_20190815_models.DeprovisionApplicationResponse:
+        """
+        @summary Uninstalls an external application or an internal application of the ServerApp type.
+        
+        @description If you want to call this operation to uninstall an internal application, the type of the internal application must be *ServerApp**. Otherwise, an error occurs when you call this operation.
+        >  For *internal applications**, only internal applications of the ServerApp type need to be **installed or provisioned**. Therefore, only internal applications of the ServerApp type **can be uninstalled**. Internal applications of the WebApp and NativeApp types **do not need to and cannot be uninstalled**.
+        
+        @param request: DeprovisionApplicationRequest
+        @return: DeprovisionApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.deprovision_application_with_options_async(request, runtime)
+
+    def deprovision_external_application_with_options(
+        self,
+        request: ims_20190815_models.DeprovisionExternalApplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.DeprovisionExternalApplicationResponse:
+        """
+        @summary Deletes an installed external application.
+        
+        @param request: DeprovisionExternalApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeprovisionExternalApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeprovisionExternalApplication',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DeprovisionExternalApplicationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DeprovisionExternalApplicationResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def deprovision_external_application_with_options_async(
+        self,
+        request: ims_20190815_models.DeprovisionExternalApplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.DeprovisionExternalApplicationResponse:
+        """
+        @summary Deletes an installed external application.
+        
+        @param request: DeprovisionExternalApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeprovisionExternalApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeprovisionExternalApplication',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DeprovisionExternalApplicationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DeprovisionExternalApplicationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def deprovision_external_application(
+        self,
+        request: ims_20190815_models.DeprovisionExternalApplicationRequest,
+    ) -> ims_20190815_models.DeprovisionExternalApplicationResponse:
+        """
+        @summary Deletes an installed external application.
+        
+        @param request: DeprovisionExternalApplicationRequest
+        @return: DeprovisionExternalApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.deprovision_external_application_with_options(request, runtime)
+
+    async def deprovision_external_application_async(
+        self,
+        request: ims_20190815_models.DeprovisionExternalApplicationRequest,
+    ) -> ims_20190815_models.DeprovisionExternalApplicationResponse:
+        """
+        @summary Deletes an installed external application.
+        
+        @param request: DeprovisionExternalApplicationRequest
+        @return: DeprovisionExternalApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.deprovision_external_application_with_options_async(request, runtime)
 
     def disable_virtual_mfawith_options(
         self,
@@ -3062,6 +3510,200 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.generate_credential_report_with_options_async(runtime)
+
+    def generate_governance_report_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.GenerateGovernanceReportResponse:
+        """
+        @summary Generates a check report for Cloud Governance.
+        
+        @param request: GenerateGovernanceReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateGovernanceReportResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GenerateGovernanceReport',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GenerateGovernanceReportResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GenerateGovernanceReportResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def generate_governance_report_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.GenerateGovernanceReportResponse:
+        """
+        @summary Generates a check report for Cloud Governance.
+        
+        @param request: GenerateGovernanceReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateGovernanceReportResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GenerateGovernanceReport',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GenerateGovernanceReportResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GenerateGovernanceReportResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def generate_governance_report(self) -> ims_20190815_models.GenerateGovernanceReportResponse:
+        """
+        @summary Generates a check report for Cloud Governance.
+        
+        @return: GenerateGovernanceReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.generate_governance_report_with_options(runtime)
+
+    async def generate_governance_report_async(self) -> ims_20190815_models.GenerateGovernanceReportResponse:
+        """
+        @summary Generates a check report for Cloud Governance.
+        
+        @return: GenerateGovernanceReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.generate_governance_report_with_options_async(runtime)
+
+    def get_access_key_info_in_recycle_bin_with_options(
+        self,
+        request: ims_20190815_models.GetAccessKeyInfoInRecycleBinRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.GetAccessKeyInfoInRecycleBinResponse:
+        """
+        @summary Queries information about a specific AccessKey pair of a Resource Access Management (RAM) user in the recycle bin.
+        
+        @param request: GetAccessKeyInfoInRecycleBinRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccessKeyInfoInRecycleBinResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_access_key_id):
+            query['UserAccessKeyId'] = request.user_access_key_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAccessKeyInfoInRecycleBin',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetAccessKeyInfoInRecycleBinResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetAccessKeyInfoInRecycleBinResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_access_key_info_in_recycle_bin_with_options_async(
+        self,
+        request: ims_20190815_models.GetAccessKeyInfoInRecycleBinRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.GetAccessKeyInfoInRecycleBinResponse:
+        """
+        @summary Queries information about a specific AccessKey pair of a Resource Access Management (RAM) user in the recycle bin.
+        
+        @param request: GetAccessKeyInfoInRecycleBinRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccessKeyInfoInRecycleBinResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_access_key_id):
+            query['UserAccessKeyId'] = request.user_access_key_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAccessKeyInfoInRecycleBin',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetAccessKeyInfoInRecycleBinResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetAccessKeyInfoInRecycleBinResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_access_key_info_in_recycle_bin(
+        self,
+        request: ims_20190815_models.GetAccessKeyInfoInRecycleBinRequest,
+    ) -> ims_20190815_models.GetAccessKeyInfoInRecycleBinResponse:
+        """
+        @summary Queries information about a specific AccessKey pair of a Resource Access Management (RAM) user in the recycle bin.
+        
+        @param request: GetAccessKeyInfoInRecycleBinRequest
+        @return: GetAccessKeyInfoInRecycleBinResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_access_key_info_in_recycle_bin_with_options(request, runtime)
+
+    async def get_access_key_info_in_recycle_bin_async(
+        self,
+        request: ims_20190815_models.GetAccessKeyInfoInRecycleBinRequest,
+    ) -> ims_20190815_models.GetAccessKeyInfoInRecycleBinResponse:
+        """
+        @summary Queries information about a specific AccessKey pair of a Resource Access Management (RAM) user in the recycle bin.
+        
+        @param request: GetAccessKeyInfoInRecycleBinRequest
+        @return: GetAccessKeyInfoInRecycleBinResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_access_key_info_in_recycle_bin_with_options_async(request, runtime)
 
     def get_access_key_last_used_with_options(
         self,
@@ -3661,6 +4303,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_application_with_options_async(request, runtime)
 
+    def get_application_provision_info_with_options(
+        self,
+        request: ims_20190815_models.GetApplicationProvisionInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.GetApplicationProvisionInfoResponse:
+        """
+        @summary Queries installation information about a specified installed application.
+        
+        @param request: GetApplicationProvisionInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApplicationProvisionInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetApplicationProvisionInfo',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetApplicationProvisionInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetApplicationProvisionInfoResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_application_provision_info_with_options_async(
+        self,
+        request: ims_20190815_models.GetApplicationProvisionInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.GetApplicationProvisionInfoResponse:
+        """
+        @summary Queries installation information about a specified installed application.
+        
+        @param request: GetApplicationProvisionInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApplicationProvisionInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetApplicationProvisionInfo',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetApplicationProvisionInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetApplicationProvisionInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_application_provision_info(
+        self,
+        request: ims_20190815_models.GetApplicationProvisionInfoRequest,
+    ) -> ims_20190815_models.GetApplicationProvisionInfoResponse:
+        """
+        @summary Queries installation information about a specified installed application.
+        
+        @param request: GetApplicationProvisionInfoRequest
+        @return: GetApplicationProvisionInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_application_provision_info_with_options(request, runtime)
+
+    async def get_application_provision_info_async(
+        self,
+        request: ims_20190815_models.GetApplicationProvisionInfoRequest,
+    ) -> ims_20190815_models.GetApplicationProvisionInfoResponse:
+        """
+        @summary Queries installation information about a specified installed application.
+        
+        @param request: GetApplicationProvisionInfoRequest
+        @return: GetApplicationProvisionInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_application_provision_info_with_options_async(request, runtime)
+
     def get_credential_report_with_options(
         self,
         request: ims_20190815_models.GetCredentialReportRequest,
@@ -3858,6 +4608,316 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_default_domain_with_options_async(runtime)
+
+    def get_external_application_with_options(
+        self,
+        request: ims_20190815_models.GetExternalApplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.GetExternalApplicationResponse:
+        """
+        @summary Queries information about an installed external application.
+        
+        @param request: GetExternalApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetExternalApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetExternalApplication',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetExternalApplicationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetExternalApplicationResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_external_application_with_options_async(
+        self,
+        request: ims_20190815_models.GetExternalApplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.GetExternalApplicationResponse:
+        """
+        @summary Queries information about an installed external application.
+        
+        @param request: GetExternalApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetExternalApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetExternalApplication',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetExternalApplicationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetExternalApplicationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_external_application(
+        self,
+        request: ims_20190815_models.GetExternalApplicationRequest,
+    ) -> ims_20190815_models.GetExternalApplicationResponse:
+        """
+        @summary Queries information about an installed external application.
+        
+        @param request: GetExternalApplicationRequest
+        @return: GetExternalApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_external_application_with_options(request, runtime)
+
+    async def get_external_application_async(
+        self,
+        request: ims_20190815_models.GetExternalApplicationRequest,
+    ) -> ims_20190815_models.GetExternalApplicationResponse:
+        """
+        @summary Queries information about an installed external application.
+        
+        @param request: GetExternalApplicationRequest
+        @return: GetExternalApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_external_application_with_options_async(request, runtime)
+
+    def get_governance_item_report_with_options(
+        self,
+        request: ims_20190815_models.GetGovernanceItemReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.GetGovernanceItemReportResponse:
+        """
+        @summary 查询用户的单项ram治理报告
+        
+        @param request: GetGovernanceItemReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGovernanceItemReportResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.governance_item_type):
+            query['GovernanceItemType'] = request.governance_item_type
+        if not UtilClient.is_unset(request.marker):
+            query['Marker'] = request.marker
+        if not UtilClient.is_unset(request.max_items):
+            query['MaxItems'] = request.max_items
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetGovernanceItemReport',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetGovernanceItemReportResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetGovernanceItemReportResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_governance_item_report_with_options_async(
+        self,
+        request: ims_20190815_models.GetGovernanceItemReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.GetGovernanceItemReportResponse:
+        """
+        @summary 查询用户的单项ram治理报告
+        
+        @param request: GetGovernanceItemReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGovernanceItemReportResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.governance_item_type):
+            query['GovernanceItemType'] = request.governance_item_type
+        if not UtilClient.is_unset(request.marker):
+            query['Marker'] = request.marker
+        if not UtilClient.is_unset(request.max_items):
+            query['MaxItems'] = request.max_items
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetGovernanceItemReport',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetGovernanceItemReportResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetGovernanceItemReportResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_governance_item_report(
+        self,
+        request: ims_20190815_models.GetGovernanceItemReportRequest,
+    ) -> ims_20190815_models.GetGovernanceItemReportResponse:
+        """
+        @summary 查询用户的单项ram治理报告
+        
+        @param request: GetGovernanceItemReportRequest
+        @return: GetGovernanceItemReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_governance_item_report_with_options(request, runtime)
+
+    async def get_governance_item_report_async(
+        self,
+        request: ims_20190815_models.GetGovernanceItemReportRequest,
+    ) -> ims_20190815_models.GetGovernanceItemReportResponse:
+        """
+        @summary 查询用户的单项ram治理报告
+        
+        @param request: GetGovernanceItemReportRequest
+        @return: GetGovernanceItemReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_governance_item_report_with_options_async(request, runtime)
+
+    def get_governance_report_status_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.GetGovernanceReportStatusResponse:
+        """
+        @summary 查询成熟度报告状态
+        
+        @param request: GetGovernanceReportStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGovernanceReportStatusResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetGovernanceReportStatus',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetGovernanceReportStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetGovernanceReportStatusResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_governance_report_status_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.GetGovernanceReportStatusResponse:
+        """
+        @summary 查询成熟度报告状态
+        
+        @param request: GetGovernanceReportStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGovernanceReportStatusResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetGovernanceReportStatus',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetGovernanceReportStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetGovernanceReportStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_governance_report_status(self) -> ims_20190815_models.GetGovernanceReportStatusResponse:
+        """
+        @summary 查询成熟度报告状态
+        
+        @return: GetGovernanceReportStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_governance_report_status_with_options(runtime)
+
+    async def get_governance_report_status_async(self) -> ims_20190815_models.GetGovernanceReportStatusResponse:
+        """
+        @summary 查询成熟度报告状态
+        
+        @return: GetGovernanceReportStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_governance_report_status_with_options_async(runtime)
 
     def get_group_with_options(
         self,
@@ -4599,13 +5659,125 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_user_with_options_async(request, runtime)
 
+    def get_user_in_recycle_bin_with_options(
+        self,
+        request: ims_20190815_models.GetUserInRecycleBinRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.GetUserInRecycleBinResponse:
+        """
+        @summary Queries information about a specific Resource Access Management (RAM) user in the recycle bin.
+        
+        @param request: GetUserInRecycleBinRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserInRecycleBinResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_access_key_id):
+            query['UserAccessKeyId'] = request.user_access_key_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUserInRecycleBin',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetUserInRecycleBinResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetUserInRecycleBinResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_user_in_recycle_bin_with_options_async(
+        self,
+        request: ims_20190815_models.GetUserInRecycleBinRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.GetUserInRecycleBinResponse:
+        """
+        @summary Queries information about a specific Resource Access Management (RAM) user in the recycle bin.
+        
+        @param request: GetUserInRecycleBinRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserInRecycleBinResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_access_key_id):
+            query['UserAccessKeyId'] = request.user_access_key_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUserInRecycleBin',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetUserInRecycleBinResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetUserInRecycleBinResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_user_in_recycle_bin(
+        self,
+        request: ims_20190815_models.GetUserInRecycleBinRequest,
+    ) -> ims_20190815_models.GetUserInRecycleBinResponse:
+        """
+        @summary Queries information about a specific Resource Access Management (RAM) user in the recycle bin.
+        
+        @param request: GetUserInRecycleBinRequest
+        @return: GetUserInRecycleBinResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_user_in_recycle_bin_with_options(request, runtime)
+
+    async def get_user_in_recycle_bin_async(
+        self,
+        request: ims_20190815_models.GetUserInRecycleBinRequest,
+    ) -> ims_20190815_models.GetUserInRecycleBinResponse:
+        """
+        @summary Queries information about a specific Resource Access Management (RAM) user in the recycle bin.
+        
+        @param request: GetUserInRecycleBinRequest
+        @return: GetUserInRecycleBinResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_user_in_recycle_bin_with_options_async(request, runtime)
+
     def get_user_mfainfo_with_options(
         self,
         request: ims_20190815_models.GetUserMFAInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetUserMFAInfoResponse:
         """
-        @summary 查询RAM用户多因素认证设备信息
+        @summary Queries information about the multi-factor authentication (MFA) device that is bound to a Resource Access Management (RAM) user.
         
         @param request: GetUserMFAInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4646,7 +5818,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetUserMFAInfoResponse:
         """
-        @summary 查询RAM用户多因素认证设备信息
+        @summary Queries information about the multi-factor authentication (MFA) device that is bound to a Resource Access Management (RAM) user.
         
         @param request: GetUserMFAInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4686,7 +5858,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetUserMFAInfoRequest,
     ) -> ims_20190815_models.GetUserMFAInfoResponse:
         """
-        @summary 查询RAM用户多因素认证设备信息
+        @summary Queries information about the multi-factor authentication (MFA) device that is bound to a Resource Access Management (RAM) user.
         
         @param request: GetUserMFAInfoRequest
         @return: GetUserMFAInfoResponse
@@ -4699,7 +5871,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetUserMFAInfoRequest,
     ) -> ims_20190815_models.GetUserMFAInfoResponse:
         """
-        @summary 查询RAM用户多因素认证设备信息
+        @summary Queries information about the multi-factor authentication (MFA) device that is bound to a Resource Access Management (RAM) user.
         
         @param request: GetUserMFAInfoRequest
         @return: GetUserMFAInfoResponse
@@ -4907,7 +6079,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListAccessKeysResponse:
         """
-        @summary 查询主账号或RAM用户访问密钥列表
+        @summary Queries the AccessKey pairs of an Alibaba Cloud account or a Resource Access Management (RAM) user.
         
         @param request: ListAccessKeysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4948,7 +6120,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListAccessKeysResponse:
         """
-        @summary 查询主账号或RAM用户访问密钥列表
+        @summary Queries the AccessKey pairs of an Alibaba Cloud account or a Resource Access Management (RAM) user.
         
         @param request: ListAccessKeysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4988,7 +6160,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListAccessKeysRequest,
     ) -> ims_20190815_models.ListAccessKeysResponse:
         """
-        @summary 查询主账号或RAM用户访问密钥列表
+        @summary Queries the AccessKey pairs of an Alibaba Cloud account or a Resource Access Management (RAM) user.
         
         @param request: ListAccessKeysRequest
         @return: ListAccessKeysResponse
@@ -5001,13 +6173,121 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListAccessKeysRequest,
     ) -> ims_20190815_models.ListAccessKeysResponse:
         """
-        @summary 查询主账号或RAM用户访问密钥列表
+        @summary Queries the AccessKey pairs of an Alibaba Cloud account or a Resource Access Management (RAM) user.
         
         @param request: ListAccessKeysRequest
         @return: ListAccessKeysResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_access_keys_with_options_async(request, runtime)
+
+    def list_access_keys_in_recycle_bin_with_options(
+        self,
+        request: ims_20190815_models.ListAccessKeysInRecycleBinRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.ListAccessKeysInRecycleBinResponse:
+        """
+        @summary Queries the AccessKey pairs of a specific Resource Access Management (RAM) user in the recycle bin.
+        
+        @param request: ListAccessKeysInRecycleBinRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccessKeysInRecycleBinResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAccessKeysInRecycleBin',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListAccessKeysInRecycleBinResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListAccessKeysInRecycleBinResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_access_keys_in_recycle_bin_with_options_async(
+        self,
+        request: ims_20190815_models.ListAccessKeysInRecycleBinRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.ListAccessKeysInRecycleBinResponse:
+        """
+        @summary Queries the AccessKey pairs of a specific Resource Access Management (RAM) user in the recycle bin.
+        
+        @param request: ListAccessKeysInRecycleBinRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccessKeysInRecycleBinResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAccessKeysInRecycleBin',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListAccessKeysInRecycleBinResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListAccessKeysInRecycleBinResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_access_keys_in_recycle_bin(
+        self,
+        request: ims_20190815_models.ListAccessKeysInRecycleBinRequest,
+    ) -> ims_20190815_models.ListAccessKeysInRecycleBinResponse:
+        """
+        @summary Queries the AccessKey pairs of a specific Resource Access Management (RAM) user in the recycle bin.
+        
+        @param request: ListAccessKeysInRecycleBinRequest
+        @return: ListAccessKeysInRecycleBinResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_access_keys_in_recycle_bin_with_options(request, runtime)
+
+    async def list_access_keys_in_recycle_bin_async(
+        self,
+        request: ims_20190815_models.ListAccessKeysInRecycleBinRequest,
+    ) -> ims_20190815_models.ListAccessKeysInRecycleBinResponse:
+        """
+        @summary Queries the AccessKey pairs of a specific Resource Access Management (RAM) user in the recycle bin.
+        
+        @param request: ListAccessKeysInRecycleBinRequest
+        @return: ListAccessKeysInRecycleBinResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_access_keys_in_recycle_bin_with_options_async(request, runtime)
 
     def list_app_secret_ids_with_options(
         self,
@@ -5117,6 +6397,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_app_secret_ids_with_options_async(request, runtime)
 
+    def list_application_provision_infos_with_options(
+        self,
+        request: ims_20190815_models.ListApplicationProvisionInfosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.ListApplicationProvisionInfosResponse:
+        """
+        @summary Queries installation information about all installed applications.
+        
+        @param request: ListApplicationProvisionInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationProvisionInfosResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApplicationProvisionInfos',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListApplicationProvisionInfosResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListApplicationProvisionInfosResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_application_provision_infos_with_options_async(
+        self,
+        request: ims_20190815_models.ListApplicationProvisionInfosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.ListApplicationProvisionInfosResponse:
+        """
+        @summary Queries installation information about all installed applications.
+        
+        @param request: ListApplicationProvisionInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationProvisionInfosResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApplicationProvisionInfos',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListApplicationProvisionInfosResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListApplicationProvisionInfosResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_application_provision_infos(
+        self,
+        request: ims_20190815_models.ListApplicationProvisionInfosRequest,
+    ) -> ims_20190815_models.ListApplicationProvisionInfosResponse:
+        """
+        @summary Queries installation information about all installed applications.
+        
+        @param request: ListApplicationProvisionInfosRequest
+        @return: ListApplicationProvisionInfosResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_application_provision_infos_with_options(request, runtime)
+
+    async def list_application_provision_infos_async(
+        self,
+        request: ims_20190815_models.ListApplicationProvisionInfosRequest,
+    ) -> ims_20190815_models.ListApplicationProvisionInfosResponse:
+        """
+        @summary Queries installation information about all installed applications.
+        
+        @param request: ListApplicationProvisionInfosRequest
+        @return: ListApplicationProvisionInfosResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_application_provision_infos_with_options_async(request, runtime)
+
     def list_applications_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -5210,6 +6598,92 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_applications_with_options_async(runtime)
+
+    def list_external_applications_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.ListExternalApplicationsResponse:
+        """
+        @summary Queries information about all installed external applications.
+        
+        @param request: ListExternalApplicationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExternalApplicationsResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListExternalApplications',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListExternalApplicationsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListExternalApplicationsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_external_applications_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.ListExternalApplicationsResponse:
+        """
+        @summary Queries information about all installed external applications.
+        
+        @param request: ListExternalApplicationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExternalApplicationsResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListExternalApplications',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListExternalApplicationsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListExternalApplicationsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_external_applications(self) -> ims_20190815_models.ListExternalApplicationsResponse:
+        """
+        @summary Queries information about all installed external applications.
+        
+        @return: ListExternalApplicationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_external_applications_with_options(runtime)
+
+    async def list_external_applications_async(self) -> ims_20190815_models.ListExternalApplicationsResponse:
+        """
+        @summary Queries information about all installed external applications.
+        
+        @return: ListExternalApplicationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_external_applications_with_options_async(runtime)
 
     def list_groups_with_options(
         self,
@@ -5329,7 +6803,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListGroupsForUserResponse:
         """
-        @summary Queries the RAM user groups to which a RAM user belongs.
+        @summary Queries the Resource Access Management (RAM) user groups to which a RAM user belongs.
         
         @param request: ListGroupsForUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5370,7 +6844,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListGroupsForUserResponse:
         """
-        @summary Queries the RAM user groups to which a RAM user belongs.
+        @summary Queries the Resource Access Management (RAM) user groups to which a RAM user belongs.
         
         @param request: ListGroupsForUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5410,7 +6884,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListGroupsForUserRequest,
     ) -> ims_20190815_models.ListGroupsForUserResponse:
         """
-        @summary Queries the RAM user groups to which a RAM user belongs.
+        @summary Queries the Resource Access Management (RAM) user groups to which a RAM user belongs.
         
         @param request: ListGroupsForUserRequest
         @return: ListGroupsForUserResponse
@@ -5423,7 +6897,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListGroupsForUserRequest,
     ) -> ims_20190815_models.ListGroupsForUserResponse:
         """
-        @summary Queries the RAM user groups to which a RAM user belongs.
+        @summary Queries the Resource Access Management (RAM) user groups to which a RAM user belongs.
         
         @param request: ListGroupsForUserRequest
         @return: ListGroupsForUserResponse
@@ -5561,7 +7035,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListPasskeysResponse:
         """
-        @summary 查询Passkey
+        @summary Queries the information about the passkeys that are bound to a Resource Access Management (RAM) user.
         
         @param request: ListPasskeysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5602,7 +7076,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListPasskeysResponse:
         """
-        @summary 查询Passkey
+        @summary Queries the information about the passkeys that are bound to a Resource Access Management (RAM) user.
         
         @param request: ListPasskeysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5642,7 +7116,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListPasskeysRequest,
     ) -> ims_20190815_models.ListPasskeysResponse:
         """
-        @summary 查询Passkey
+        @summary Queries the information about the passkeys that are bound to a Resource Access Management (RAM) user.
         
         @param request: ListPasskeysRequest
         @return: ListPasskeysResponse
@@ -5655,7 +7129,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListPasskeysRequest,
     ) -> ims_20190815_models.ListPasskeysResponse:
         """
-        @summary 查询Passkey
+        @summary Queries the information about the passkeys that are bound to a Resource Access Management (RAM) user.
         
         @param request: ListPasskeysRequest
         @return: ListPasskeysResponse
@@ -5770,6 +7244,92 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_predefined_scopes_with_options_async(request, runtime)
+
+    def list_recent_governance_metrics_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.ListRecentGovernanceMetricsResponse:
+        """
+        @summary Queries all metric values in the most recent governance check.
+        
+        @param request: ListRecentGovernanceMetricsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRecentGovernanceMetricsResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListRecentGovernanceMetrics',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListRecentGovernanceMetricsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListRecentGovernanceMetricsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_recent_governance_metrics_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.ListRecentGovernanceMetricsResponse:
+        """
+        @summary Queries all metric values in the most recent governance check.
+        
+        @param request: ListRecentGovernanceMetricsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRecentGovernanceMetricsResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListRecentGovernanceMetrics',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListRecentGovernanceMetricsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListRecentGovernanceMetricsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_recent_governance_metrics(self) -> ims_20190815_models.ListRecentGovernanceMetricsResponse:
+        """
+        @summary Queries all metric values in the most recent governance check.
+        
+        @return: ListRecentGovernanceMetricsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_recent_governance_metrics_with_options(runtime)
+
+    async def list_recent_governance_metrics_async(self) -> ims_20190815_models.ListRecentGovernanceMetricsResponse:
+        """
+        @summary Queries all metric values in the most recent governance check.
+        
+        @return: ListRecentGovernanceMetricsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_recent_governance_metrics_with_options_async(runtime)
 
     def list_samlproviders_with_options(
         self,
@@ -6041,9 +7601,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListUserBasicInfosResponse:
         """
-        @summary Queries the basic information about all RAM users.
+        @summary Queries the basic information about all Resource Access Management (RAM) users.
         
-        @description You can call the following API operations to query the information about all RAM users:
+        @description You can call the following API operations to query information about all RAM users:
         ListUsers: queries the details of all RAM users.
         ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
         
@@ -6092,9 +7652,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListUserBasicInfosResponse:
         """
-        @summary Queries the basic information about all RAM users.
+        @summary Queries the basic information about all Resource Access Management (RAM) users.
         
-        @description You can call the following API operations to query the information about all RAM users:
+        @description You can call the following API operations to query information about all RAM users:
         ListUsers: queries the details of all RAM users.
         ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
         
@@ -6142,9 +7702,9 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListUserBasicInfosRequest,
     ) -> ims_20190815_models.ListUserBasicInfosResponse:
         """
-        @summary Queries the basic information about all RAM users.
+        @summary Queries the basic information about all Resource Access Management (RAM) users.
         
-        @description You can call the following API operations to query the information about all RAM users:
+        @description You can call the following API operations to query information about all RAM users:
         ListUsers: queries the details of all RAM users.
         ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
         
@@ -6159,9 +7719,9 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListUserBasicInfosRequest,
     ) -> ims_20190815_models.ListUserBasicInfosResponse:
         """
-        @summary Queries the basic information about all RAM users.
+        @summary Queries the basic information about all Resource Access Management (RAM) users.
         
-        @description You can call the following API operations to query the information about all RAM users:
+        @description You can call the following API operations to query information about all RAM users:
         ListUsers: queries the details of all RAM users.
         ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
         
@@ -6177,7 +7737,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListUsersResponse:
         """
-        @summary Queries the details of all RAM users.
+        @summary Queries information about all Resource Access Management (RAM) users.
         
         @description ### [](#)
         You can call the following API operations to query the details of all RAM users:
@@ -6229,7 +7789,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListUsersResponse:
         """
-        @summary Queries the details of all RAM users.
+        @summary Queries information about all Resource Access Management (RAM) users.
         
         @description ### [](#)
         You can call the following API operations to query the details of all RAM users:
@@ -6280,7 +7840,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListUsersRequest,
     ) -> ims_20190815_models.ListUsersResponse:
         """
-        @summary Queries the details of all RAM users.
+        @summary Queries information about all Resource Access Management (RAM) users.
         
         @description ### [](#)
         You can call the following API operations to query the details of all RAM users:
@@ -6298,7 +7858,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListUsersRequest,
     ) -> ims_20190815_models.ListUsersResponse:
         """
-        @summary Queries the details of all RAM users.
+        @summary Queries information about all Resource Access Management (RAM) users.
         
         @description ### [](#)
         You can call the following API operations to query the details of all RAM users:
@@ -6427,6 +7987,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_users_for_group_with_options_async(request, runtime)
 
+    def list_users_in_recycle_bin_with_options(
+        self,
+        request: ims_20190815_models.ListUsersInRecycleBinRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.ListUsersInRecycleBinResponse:
+        """
+        @summary Queries the basic information about all Resource Access Management (RAM) users in the recycle bin.
+        
+        @param request: ListUsersInRecycleBinRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUsersInRecycleBinResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.marker):
+            query['Marker'] = request.marker
+        if not UtilClient.is_unset(request.max_items):
+            query['MaxItems'] = request.max_items
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUsersInRecycleBin',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListUsersInRecycleBinResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListUsersInRecycleBinResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_users_in_recycle_bin_with_options_async(
+        self,
+        request: ims_20190815_models.ListUsersInRecycleBinRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.ListUsersInRecycleBinResponse:
+        """
+        @summary Queries the basic information about all Resource Access Management (RAM) users in the recycle bin.
+        
+        @param request: ListUsersInRecycleBinRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUsersInRecycleBinResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.marker):
+            query['Marker'] = request.marker
+        if not UtilClient.is_unset(request.max_items):
+            query['MaxItems'] = request.max_items
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUsersInRecycleBin',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListUsersInRecycleBinResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListUsersInRecycleBinResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_users_in_recycle_bin(
+        self,
+        request: ims_20190815_models.ListUsersInRecycleBinRequest,
+    ) -> ims_20190815_models.ListUsersInRecycleBinResponse:
+        """
+        @summary Queries the basic information about all Resource Access Management (RAM) users in the recycle bin.
+        
+        @param request: ListUsersInRecycleBinRequest
+        @return: ListUsersInRecycleBinResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_users_in_recycle_bin_with_options(request, runtime)
+
+    async def list_users_in_recycle_bin_async(
+        self,
+        request: ims_20190815_models.ListUsersInRecycleBinRequest,
+    ) -> ims_20190815_models.ListUsersInRecycleBinResponse:
+        """
+        @summary Queries the basic information about all Resource Access Management (RAM) users in the recycle bin.
+        
+        @param request: ListUsersInRecycleBinRequest
+        @return: ListUsersInRecycleBinResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_users_in_recycle_bin_with_options_async(request, runtime)
+
     def list_virtual_mfadevices_with_options(
         self,
         request: ims_20190815_models.ListVirtualMFADevicesRequest,
@@ -6538,6 +8214,230 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_virtual_mfadevices_with_options_async(request, runtime)
+
+    def provision_application_with_options(
+        self,
+        request: ims_20190815_models.ProvisionApplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.ProvisionApplicationResponse:
+        """
+        @summary Installs an application.
+        
+        @param request: ProvisionApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ProvisionApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.scopes):
+            query['Scopes'] = request.scopes
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ProvisionApplication',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ProvisionApplicationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ProvisionApplicationResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def provision_application_with_options_async(
+        self,
+        request: ims_20190815_models.ProvisionApplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.ProvisionApplicationResponse:
+        """
+        @summary Installs an application.
+        
+        @param request: ProvisionApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ProvisionApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.scopes):
+            query['Scopes'] = request.scopes
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ProvisionApplication',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ProvisionApplicationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ProvisionApplicationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def provision_application(
+        self,
+        request: ims_20190815_models.ProvisionApplicationRequest,
+    ) -> ims_20190815_models.ProvisionApplicationResponse:
+        """
+        @summary Installs an application.
+        
+        @param request: ProvisionApplicationRequest
+        @return: ProvisionApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.provision_application_with_options(request, runtime)
+
+    async def provision_application_async(
+        self,
+        request: ims_20190815_models.ProvisionApplicationRequest,
+    ) -> ims_20190815_models.ProvisionApplicationResponse:
+        """
+        @summary Installs an application.
+        
+        @param request: ProvisionApplicationRequest
+        @return: ProvisionApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.provision_application_with_options_async(request, runtime)
+
+    def provision_external_application_with_options(
+        self,
+        request: ims_20190815_models.ProvisionExternalApplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.ProvisionExternalApplicationResponse:
+        """
+        @summary Installs an external application.
+        
+        @param request: ProvisionExternalApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ProvisionExternalApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.scopes):
+            query['Scopes'] = request.scopes
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ProvisionExternalApplication',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ProvisionExternalApplicationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ProvisionExternalApplicationResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def provision_external_application_with_options_async(
+        self,
+        request: ims_20190815_models.ProvisionExternalApplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.ProvisionExternalApplicationResponse:
+        """
+        @summary Installs an external application.
+        
+        @param request: ProvisionExternalApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ProvisionExternalApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.scopes):
+            query['Scopes'] = request.scopes
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ProvisionExternalApplication',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ProvisionExternalApplicationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ProvisionExternalApplicationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def provision_external_application(
+        self,
+        request: ims_20190815_models.ProvisionExternalApplicationRequest,
+    ) -> ims_20190815_models.ProvisionExternalApplicationResponse:
+        """
+        @summary Installs an external application.
+        
+        @param request: ProvisionExternalApplicationRequest
+        @return: ProvisionExternalApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.provision_external_application_with_options(request, runtime)
+
+    async def provision_external_application_async(
+        self,
+        request: ims_20190815_models.ProvisionExternalApplicationRequest,
+    ) -> ims_20190815_models.ProvisionExternalApplicationResponse:
+        """
+        @summary Installs an external application.
+        
+        @param request: ProvisionExternalApplicationRequest
+        @return: ProvisionExternalApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.provision_external_application_with_options_async(request, runtime)
 
     def remove_client_id_from_oidcprovider_with_options(
         self,
@@ -6899,6 +8799,226 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.remove_user_from_group_with_options_async(request, runtime)
 
+    def restore_access_key_from_recycle_bin_with_options(
+        self,
+        request: ims_20190815_models.RestoreAccessKeyFromRecycleBinRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.RestoreAccessKeyFromRecycleBinResponse:
+        """
+        @summary Restores a specific AccessKey pair that belongs to a Resource Access Management (RAM) user from the recycle bin.
+        
+        @param request: RestoreAccessKeyFromRecycleBinRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestoreAccessKeyFromRecycleBinResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_access_key_id):
+            query['UserAccessKeyId'] = request.user_access_key_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestoreAccessKeyFromRecycleBin',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.RestoreAccessKeyFromRecycleBinResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.RestoreAccessKeyFromRecycleBinResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def restore_access_key_from_recycle_bin_with_options_async(
+        self,
+        request: ims_20190815_models.RestoreAccessKeyFromRecycleBinRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.RestoreAccessKeyFromRecycleBinResponse:
+        """
+        @summary Restores a specific AccessKey pair that belongs to a Resource Access Management (RAM) user from the recycle bin.
+        
+        @param request: RestoreAccessKeyFromRecycleBinRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestoreAccessKeyFromRecycleBinResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_access_key_id):
+            query['UserAccessKeyId'] = request.user_access_key_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestoreAccessKeyFromRecycleBin',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.RestoreAccessKeyFromRecycleBinResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.RestoreAccessKeyFromRecycleBinResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def restore_access_key_from_recycle_bin(
+        self,
+        request: ims_20190815_models.RestoreAccessKeyFromRecycleBinRequest,
+    ) -> ims_20190815_models.RestoreAccessKeyFromRecycleBinResponse:
+        """
+        @summary Restores a specific AccessKey pair that belongs to a Resource Access Management (RAM) user from the recycle bin.
+        
+        @param request: RestoreAccessKeyFromRecycleBinRequest
+        @return: RestoreAccessKeyFromRecycleBinResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.restore_access_key_from_recycle_bin_with_options(request, runtime)
+
+    async def restore_access_key_from_recycle_bin_async(
+        self,
+        request: ims_20190815_models.RestoreAccessKeyFromRecycleBinRequest,
+    ) -> ims_20190815_models.RestoreAccessKeyFromRecycleBinResponse:
+        """
+        @summary Restores a specific AccessKey pair that belongs to a Resource Access Management (RAM) user from the recycle bin.
+        
+        @param request: RestoreAccessKeyFromRecycleBinRequest
+        @return: RestoreAccessKeyFromRecycleBinResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.restore_access_key_from_recycle_bin_with_options_async(request, runtime)
+
+    def restore_user_from_recycle_bin_with_options(
+        self,
+        request: ims_20190815_models.RestoreUserFromRecycleBinRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.RestoreUserFromRecycleBinResponse:
+        """
+        @summary Restores a specific Resource Access Management (RAM) user from the recycle bin.
+        
+        @param request: RestoreUserFromRecycleBinRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestoreUserFromRecycleBinResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestoreUserFromRecycleBin',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.RestoreUserFromRecycleBinResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.RestoreUserFromRecycleBinResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def restore_user_from_recycle_bin_with_options_async(
+        self,
+        request: ims_20190815_models.RestoreUserFromRecycleBinRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.RestoreUserFromRecycleBinResponse:
+        """
+        @summary Restores a specific Resource Access Management (RAM) user from the recycle bin.
+        
+        @param request: RestoreUserFromRecycleBinRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestoreUserFromRecycleBinResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestoreUserFromRecycleBin',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.RestoreUserFromRecycleBinResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.RestoreUserFromRecycleBinResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def restore_user_from_recycle_bin(
+        self,
+        request: ims_20190815_models.RestoreUserFromRecycleBinRequest,
+    ) -> ims_20190815_models.RestoreUserFromRecycleBinResponse:
+        """
+        @summary Restores a specific Resource Access Management (RAM) user from the recycle bin.
+        
+        @param request: RestoreUserFromRecycleBinRequest
+        @return: RestoreUserFromRecycleBinResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.restore_user_from_recycle_bin_with_options(request, runtime)
+
+    async def restore_user_from_recycle_bin_async(
+        self,
+        request: ims_20190815_models.RestoreUserFromRecycleBinRequest,
+    ) -> ims_20190815_models.RestoreUserFromRecycleBinResponse:
+        """
+        @summary Restores a specific Resource Access Management (RAM) user from the recycle bin.
+        
+        @param request: RestoreUserFromRecycleBinRequest
+        @return: RestoreUserFromRecycleBinResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.restore_user_from_recycle_bin_with_options_async(request, runtime)
+
     def set_default_domain_with_options(
         self,
         request: ims_20190815_models.SetDefaultDomainRequest,
@@ -7013,7 +9133,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.SetPasswordPolicyResponse:
         """
-        @summary Configures the password policy for RAM users.
+        @summary Configures the password policy for Resource Access Management (RAM) users.
         
         @param request: SetPasswordPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7074,7 +9194,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.SetPasswordPolicyResponse:
         """
-        @summary Configures the password policy for RAM users.
+        @summary Configures the password policy for Resource Access Management (RAM) users.
         
         @param request: SetPasswordPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7134,7 +9254,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.SetPasswordPolicyRequest,
     ) -> ims_20190815_models.SetPasswordPolicyResponse:
         """
-        @summary Configures the password policy for RAM users.
+        @summary Configures the password policy for Resource Access Management (RAM) users.
         
         @param request: SetPasswordPolicyRequest
         @return: SetPasswordPolicyResponse
@@ -7147,7 +9267,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.SetPasswordPolicyRequest,
     ) -> ims_20190815_models.SetPasswordPolicyResponse:
         """
-        @summary Configures the password policy for RAM users.
+        @summary Configures the password policy for Resource Access Management (RAM) users.
         
         @param request: SetPasswordPolicyRequest
         @return: SetPasswordPolicyResponse
@@ -7443,6 +9563,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.set_user_sso_settings_with_options_async(request, runtime)
 
+    def set_verification_info_with_options(
+        self,
+        request: ims_20190815_models.SetVerificationInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.SetVerificationInfoResponse:
+        """
+        @summary Binds a mobile phone or email to a Resource Access Management (RAM) user.
+        
+        @param request: SetVerificationInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetVerificationInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.email):
+            query['Email'] = request.email
+        if not UtilClient.is_unset(request.mobile_phone):
+            query['MobilePhone'] = request.mobile_phone
+        if not UtilClient.is_unset(request.user_principal_name):
+            query['UserPrincipalName'] = request.user_principal_name
+        if not UtilClient.is_unset(request.verify_type):
+            query['VerifyType'] = request.verify_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetVerificationInfo',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.SetVerificationInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.SetVerificationInfoResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def set_verification_info_with_options_async(
+        self,
+        request: ims_20190815_models.SetVerificationInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.SetVerificationInfoResponse:
+        """
+        @summary Binds a mobile phone or email to a Resource Access Management (RAM) user.
+        
+        @param request: SetVerificationInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetVerificationInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.email):
+            query['Email'] = request.email
+        if not UtilClient.is_unset(request.mobile_phone):
+            query['MobilePhone'] = request.mobile_phone
+        if not UtilClient.is_unset(request.user_principal_name):
+            query['UserPrincipalName'] = request.user_principal_name
+        if not UtilClient.is_unset(request.verify_type):
+            query['VerifyType'] = request.verify_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetVerificationInfo',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.SetVerificationInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.SetVerificationInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def set_verification_info(
+        self,
+        request: ims_20190815_models.SetVerificationInfoRequest,
+    ) -> ims_20190815_models.SetVerificationInfoResponse:
+        """
+        @summary Binds a mobile phone or email to a Resource Access Management (RAM) user.
+        
+        @param request: SetVerificationInfoRequest
+        @return: SetVerificationInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.set_verification_info_with_options(request, runtime)
+
+    async def set_verification_info_async(
+        self,
+        request: ims_20190815_models.SetVerificationInfoRequest,
+    ) -> ims_20190815_models.SetVerificationInfoResponse:
+        """
+        @summary Binds a mobile phone or email to a Resource Access Management (RAM) user.
+        
+        @param request: SetVerificationInfoRequest
+        @return: SetVerificationInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.set_verification_info_with_options_async(request, runtime)
+
     def tag_resources_with_options(
         self,
         request: ims_20190815_models.TagResourcesRequest,
@@ -7670,6 +9910,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.unbind_mfadevice_with_options_async(request, runtime)
+
+    def unbind_verification_with_options(
+        self,
+        request: ims_20190815_models.UnbindVerificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.UnbindVerificationResponse:
+        """
+        @summary Unbinds a mobile phone or email from a Resource Access Management (RAM) user.
+        
+        @param request: UnbindVerificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindVerificationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.email):
+            query['Email'] = request.email
+        if not UtilClient.is_unset(request.mobile_phone):
+            query['MobilePhone'] = request.mobile_phone
+        if not UtilClient.is_unset(request.user_principal_name):
+            query['UserPrincipalName'] = request.user_principal_name
+        if not UtilClient.is_unset(request.verify_type):
+            query['VerifyType'] = request.verify_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindVerification',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.UnbindVerificationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.UnbindVerificationResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def unbind_verification_with_options_async(
+        self,
+        request: ims_20190815_models.UnbindVerificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.UnbindVerificationResponse:
+        """
+        @summary Unbinds a mobile phone or email from a Resource Access Management (RAM) user.
+        
+        @param request: UnbindVerificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindVerificationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.email):
+            query['Email'] = request.email
+        if not UtilClient.is_unset(request.mobile_phone):
+            query['MobilePhone'] = request.mobile_phone
+        if not UtilClient.is_unset(request.user_principal_name):
+            query['UserPrincipalName'] = request.user_principal_name
+        if not UtilClient.is_unset(request.verify_type):
+            query['VerifyType'] = request.verify_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindVerification',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.UnbindVerificationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.UnbindVerificationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def unbind_verification(
+        self,
+        request: ims_20190815_models.UnbindVerificationRequest,
+    ) -> ims_20190815_models.UnbindVerificationResponse:
+        """
+        @summary Unbinds a mobile phone or email from a Resource Access Management (RAM) user.
+        
+        @param request: UnbindVerificationRequest
+        @return: UnbindVerificationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.unbind_verification_with_options(request, runtime)
+
+    async def unbind_verification_async(
+        self,
+        request: ims_20190815_models.UnbindVerificationRequest,
+    ) -> ims_20190815_models.UnbindVerificationResponse:
+        """
+        @summary Unbinds a mobile phone or email from a Resource Access Management (RAM) user.
+        
+        @param request: UnbindVerificationRequest
+        @return: UnbindVerificationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.unbind_verification_with_options_async(request, runtime)
 
     def untag_resources_with_options(
         self,
@@ -8433,7 +10793,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UpdatePasskeyResponse:
         """
-        @summary 更新Passkey
+        @summary Updates the name of a passkey.
         
         @param request: UpdatePasskeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8478,7 +10838,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UpdatePasskeyResponse:
         """
-        @summary 更新Passkey
+        @summary Updates the name of a passkey.
         
         @param request: UpdatePasskeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8522,7 +10882,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.UpdatePasskeyRequest,
     ) -> ims_20190815_models.UpdatePasskeyResponse:
         """
-        @summary 更新Passkey
+        @summary Updates the name of a passkey.
         
         @param request: UpdatePasskeyRequest
         @return: UpdatePasskeyResponse
@@ -8535,7 +10895,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.UpdatePasskeyRequest,
     ) -> ims_20190815_models.UpdatePasskeyResponse:
         """
-        @summary 更新Passkey
+        @summary Updates the name of a passkey.
         
         @param request: UpdatePasskeyRequest
         @return: UpdatePasskeyResponse

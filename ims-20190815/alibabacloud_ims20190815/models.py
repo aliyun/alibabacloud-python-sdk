@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List
+from typing import Dict, List, Any
 
 
 class AddClientIdToOIDCProviderRequest(TeaModel):
@@ -476,7 +476,7 @@ class AddUserToGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -602,7 +602,7 @@ class BindMFADeviceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -978,7 +978,7 @@ class CreateAppSecretResponseBodyAppSecret(TeaModel):
         self.app_id = app_id
         # The ID of the application secret.
         self.app_secret_id = app_secret_id
-        # The content of the application secret. This value can be used as the client secret for open authorization.
+        # The content of the application secret. This value can be used as the client secret for open authorization (OAuth).
         self.app_secret_value = app_secret_value
         # The creation time.
         self.create_date = create_date
@@ -1021,9 +1021,9 @@ class CreateAppSecretResponseBody(TeaModel):
         app_secret: CreateAppSecretResponseBodyAppSecret = None,
         request_id: str = None,
     ):
-        # The information of the application secret.
+        # The details of the application secret.
         self.app_secret = app_secret
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3037,6 +3037,113 @@ class DeleteAccessKeyResponse(TeaModel):
         return self
 
 
+class DeleteAccessKeyInRecycleBinRequest(TeaModel):
+    def __init__(
+        self,
+        user_access_key_id: str = None,
+        user_id: str = None,
+    ):
+        # The AccessKey ID of the RAM user.
+        self.user_access_key_id = user_access_key_id
+        # The ID of the RAM user.
+        # 
+        # > - If you use an Alibaba Cloud account to call the operation, you must specify the parameter.
+        # > - If you use a RAM user to call the operation, you can leave the parameter empty. In this case, the ID of the RAM user is used by default.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_access_key_id is not None:
+            result['UserAccessKeyId'] = self.user_access_key_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserAccessKeyId') is not None:
+            self.user_access_key_id = m.get('UserAccessKeyId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class DeleteAccessKeyInRecycleBinResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteAccessKeyInRecycleBinResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAccessKeyInRecycleBinResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAccessKeyInRecycleBinResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteAppSecretRequest(TeaModel):
     def __init__(
         self,
@@ -3543,7 +3650,9 @@ class DeletePasskeyRequest(TeaModel):
         passkey_id: str = None,
         user_principal_name: str = None,
     ):
+        # The ID of the passkey.
         self.passkey_id = passkey_id
+        # The logon name of the RAM user.
         self.user_principal_name = user_principal_name
 
     def validate(self):
@@ -3575,6 +3684,7 @@ class DeletePasskeyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3845,6 +3955,103 @@ class DeleteUserResponse(TeaModel):
         return self
 
 
+class DeleteUserInRecycleBinRequest(TeaModel):
+    def __init__(
+        self,
+        user_id: str = None,
+    ):
+        # The ID of the RAM user.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class DeleteUserInRecycleBinResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteUserInRecycleBinResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteUserInRecycleBinResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteUserInRecycleBinResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteVirtualMFADeviceRequest(TeaModel):
     def __init__(
         self,
@@ -3940,6 +4147,204 @@ class DeleteVirtualMFADeviceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteVirtualMFADeviceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeprovisionApplicationRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        # The ID of the application.
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class DeprovisionApplicationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeprovisionApplicationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeprovisionApplicationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeprovisionApplicationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeprovisionExternalApplicationRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        # The ID of the application.
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class DeprovisionExternalApplicationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeprovisionExternalApplicationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeprovisionExternalApplicationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeprovisionExternalApplicationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4119,6 +4524,267 @@ class GenerateCredentialReportResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GenerateCredentialReportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GenerateGovernanceReportResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        state: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+        # The report generation status. Valid values:
+        # 
+        # *   Started: The system starts to generate a governance report.
+        # *   Progressing: The system is generating a governance report.
+        # *   Completed: A governance report is generated.
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
+class GenerateGovernanceReportResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GenerateGovernanceReportResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GenerateGovernanceReportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAccessKeyInfoInRecycleBinRequest(TeaModel):
+    def __init__(
+        self,
+        user_access_key_id: str = None,
+    ):
+        # The AccessKey ID of the Resource Access Management (RAM) user.
+        # 
+        # This parameter is required.
+        self.user_access_key_id = user_access_key_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_access_key_id is not None:
+            result['UserAccessKeyId'] = self.user_access_key_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserAccessKeyId') is not None:
+            self.user_access_key_id = m.get('UserAccessKeyId')
+        return self
+
+
+class GetAccessKeyInfoInRecycleBinResponseBodyAccessKey(TeaModel):
+    def __init__(
+        self,
+        access_key_id: str = None,
+        create_date: str = None,
+        delete_date: str = None,
+        recycle_date: str = None,
+        user_id: str = None,
+        user_principal_name: str = None,
+        user_recycled: bool = None,
+    ):
+        # The AccessKey ID.
+        self.access_key_id = access_key_id
+        # The time when the AccessKey pair was created.
+        self.create_date = create_date
+        # The time when the AccessKey pair will be permanently deleted from the recycle bin.
+        self.delete_date = delete_date
+        # The time when the AccessKey pair was deleted and moved to the recycle bin.
+        self.recycle_date = recycle_date
+        # The ID of the RAM user.
+        self.user_id = user_id
+        # The logon name of the RAM user.
+        self.user_principal_name = user_principal_name
+        # Indicates whether the RAM user to which the AccessKey pair belongs is in the recycle bin. Valid values:
+        # 
+        # *   true
+        # *   false
+        self.user_recycled = user_recycled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_key_id is not None:
+            result['AccessKeyId'] = self.access_key_id
+        if self.create_date is not None:
+            result['CreateDate'] = self.create_date
+        if self.delete_date is not None:
+            result['DeleteDate'] = self.delete_date
+        if self.recycle_date is not None:
+            result['RecycleDate'] = self.recycle_date
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.user_principal_name is not None:
+            result['UserPrincipalName'] = self.user_principal_name
+        if self.user_recycled is not None:
+            result['UserRecycled'] = self.user_recycled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessKeyId') is not None:
+            self.access_key_id = m.get('AccessKeyId')
+        if m.get('CreateDate') is not None:
+            self.create_date = m.get('CreateDate')
+        if m.get('DeleteDate') is not None:
+            self.delete_date = m.get('DeleteDate')
+        if m.get('RecycleDate') is not None:
+            self.recycle_date = m.get('RecycleDate')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('UserPrincipalName') is not None:
+            self.user_principal_name = m.get('UserPrincipalName')
+        if m.get('UserRecycled') is not None:
+            self.user_recycled = m.get('UserRecycled')
+        return self
+
+
+class GetAccessKeyInfoInRecycleBinResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_key: GetAccessKeyInfoInRecycleBinResponseBodyAccessKey = None,
+        request_id: str = None,
+    ):
+        # The information about the AccessKey pair.
+        self.access_key = access_key
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.access_key:
+            self.access_key.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_key is not None:
+            result['AccessKey'] = self.access_key.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessKey') is not None:
+            temp_model = GetAccessKeyInfoInRecycleBinResponseBodyAccessKey()
+            self.access_key = temp_model.from_map(m['AccessKey'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetAccessKeyInfoInRecycleBinResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAccessKeyInfoInRecycleBinResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAccessKeyInfoInRecycleBinResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4601,6 +5267,7 @@ class GetAccountSummaryResponseBodySummaryMap(TeaModel):
         self.attached_system_policies_per_role_quota = attached_system_policies_per_role_quota
         # The maximum number of system policies that can be added to a RAM user.
         self.attached_system_policies_per_user_quota = attached_system_policies_per_user_quota
+        # The number of network access control policies that can be configured for an account or AccessKey pair.
         self.conditions_per_akpolicy_quota = conditions_per_akpolicy_quota
         # The number of RAM user groups.
         self.groups = groups
@@ -4608,6 +5275,7 @@ class GetAccountSummaryResponseBodySummaryMap(TeaModel):
         self.groups_per_user_quota = groups_per_user_quota
         # The maximum number of RAM user groups that can be created.
         self.groups_quota = groups_quota
+        # The total number of IP addresses that can be configured in a network access control policy of an account or AccessKey pair.
         self.ipitems_per_akpolicy_quota = ipitems_per_akpolicy_quota
         # The number of virtual multi-factor authentication (MFA) devices.
         self.mfadevices = mfadevices
@@ -4748,7 +5416,7 @@ class GetAccountSummaryResponseBody(TeaModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The overview information of the Alibaba Cloud account.
+        # The overview information about the Alibaba Cloud account.
         self.summary_map = summary_map
 
     def validate(self):
@@ -5352,6 +6020,286 @@ class GetApplicationResponse(TeaModel):
         return self
 
 
+class GetApplicationProvisionInfoRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        # The ID of the application.
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+    ):
+        # The description of the permission scope.
+        self.description = description
+        # The name of the permission scope.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopes(TeaModel):
+    def __init__(
+        self,
+        predefined_scope: List[GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope] = None,
+    ):
+        self.predefined_scope = predefined_scope
+
+    def validate(self):
+        if self.predefined_scope:
+            for k in self.predefined_scope:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PredefinedScope'] = []
+        if self.predefined_scope is not None:
+            for k in self.predefined_scope:
+                result['PredefinedScope'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.predefined_scope = []
+        if m.get('PredefinedScope') is not None:
+            for k in m.get('PredefinedScope'):
+                temp_model = GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope()
+                self.predefined_scope.append(temp_model.from_map(k))
+        return self
+
+
+class GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScope(TeaModel):
+    def __init__(
+        self,
+        predefined_scopes: GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopes = None,
+    ):
+        # The information about the scopes of permissions that are granted to the application.
+        self.predefined_scopes = predefined_scopes
+
+    def validate(self):
+        if self.predefined_scopes:
+            self.predefined_scopes.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.predefined_scopes is not None:
+            result['PredefinedScopes'] = self.predefined_scopes.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PredefinedScopes') is not None:
+            temp_model = GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopes()
+            self.predefined_scopes = temp_model.from_map(m['PredefinedScopes'])
+        return self
+
+
+class GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        app_id: str = None,
+        app_name: str = None,
+        create_date: str = None,
+        delegated_scope: GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScope = None,
+        display_name: str = None,
+        update_date: str = None,
+    ):
+        # The ID of the Alibaba Cloud account.
+        self.account_id = account_id
+        # The ID of the application.
+        self.app_id = app_id
+        # The name of the application.
+        self.app_name = app_name
+        # The time when the application was installed. The value is a timestamp.
+        self.create_date = create_date
+        # The information about the scopes of permissions that are granted to the application.
+        self.delegated_scope = delegated_scope
+        # The display name of the application.
+        self.display_name = display_name
+        # The update time. The value is a timestamp.
+        self.update_date = update_date
+
+    def validate(self):
+        if self.delegated_scope:
+            self.delegated_scope.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.create_date is not None:
+            result['CreateDate'] = self.create_date
+        if self.delegated_scope is not None:
+            result['DelegatedScope'] = self.delegated_scope.to_map()
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.update_date is not None:
+            result['UpdateDate'] = self.update_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('CreateDate') is not None:
+            self.create_date = m.get('CreateDate')
+        if m.get('DelegatedScope') is not None:
+            temp_model = GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScope()
+            self.delegated_scope = temp_model.from_map(m['DelegatedScope'])
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('UpdateDate') is not None:
+            self.update_date = m.get('UpdateDate')
+        return self
+
+
+class GetApplicationProvisionInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        application_provision_info: GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo = None,
+        request_id: str = None,
+    ):
+        # The installation information about the application.
+        self.application_provision_info = application_provision_info
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.application_provision_info:
+            self.application_provision_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_provision_info is not None:
+            result['ApplicationProvisionInfo'] = self.application_provision_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationProvisionInfo') is not None:
+            temp_model = GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo()
+            self.application_provision_info = temp_model.from_map(m['ApplicationProvisionInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetApplicationProvisionInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetApplicationProvisionInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetApplicationProvisionInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetCredentialReportRequest(TeaModel):
     def __init__(
         self,
@@ -5567,6 +6515,720 @@ class GetDefaultDomainResponse(TeaModel):
         return self
 
 
+class GetExternalApplicationRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        # The ID of the application.
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class GetExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopesPredefinedScope(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+    ):
+        # The description of the permission.
+        self.description = description
+        # The name of the permission.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class GetExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopes(TeaModel):
+    def __init__(
+        self,
+        predefined_scope: List[GetExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopesPredefinedScope] = None,
+    ):
+        self.predefined_scope = predefined_scope
+
+    def validate(self):
+        if self.predefined_scope:
+            for k in self.predefined_scope:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PredefinedScope'] = []
+        if self.predefined_scope is not None:
+            for k in self.predefined_scope:
+                result['PredefinedScope'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.predefined_scope = []
+        if m.get('PredefinedScope') is not None:
+            for k in m.get('PredefinedScope'):
+                temp_model = GetExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopesPredefinedScope()
+                self.predefined_scope.append(temp_model.from_map(k))
+        return self
+
+
+class GetExternalApplicationResponseBodyExternalApplicationDelegatedScope(TeaModel):
+    def __init__(
+        self,
+        predefined_scopes: GetExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopes = None,
+    ):
+        # The information about the permissions that are granted on the application.
+        self.predefined_scopes = predefined_scopes
+
+    def validate(self):
+        if self.predefined_scopes:
+            self.predefined_scopes.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.predefined_scopes is not None:
+            result['PredefinedScopes'] = self.predefined_scopes.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PredefinedScopes') is not None:
+            temp_model = GetExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopes()
+            self.predefined_scopes = temp_model.from_map(m['PredefinedScopes'])
+        return self
+
+
+class GetExternalApplicationResponseBodyExternalApplication(TeaModel):
+    def __init__(
+        self,
+        app_principal_name: str = None,
+        create_date: str = None,
+        delegated_scope: GetExternalApplicationResponseBodyExternalApplicationDelegatedScope = None,
+        display_name: str = None,
+        foreign_app_id: str = None,
+        tenant_id: str = None,
+        update_date: str = None,
+    ):
+        # The name of the application principal. The value is in the `<app_name>@app.<account_id>.onaliyun.com` format.
+        self.app_principal_name = app_principal_name
+        # The time when the application was installed. The value is a timestamp.
+        self.create_date = create_date
+        # The information about the permissions that are granted on the application.
+        self.delegated_scope = delegated_scope
+        # The display name of the application.
+        self.display_name = display_name
+        # The ID of the application.
+        self.foreign_app_id = foreign_app_id
+        # The ID of the Alibaba Cloud account for which the application is installed.
+        self.tenant_id = tenant_id
+        # The update time of the application. The value is a timestamp.
+        self.update_date = update_date
+
+    def validate(self):
+        if self.delegated_scope:
+            self.delegated_scope.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_principal_name is not None:
+            result['AppPrincipalName'] = self.app_principal_name
+        if self.create_date is not None:
+            result['CreateDate'] = self.create_date
+        if self.delegated_scope is not None:
+            result['DelegatedScope'] = self.delegated_scope.to_map()
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.foreign_app_id is not None:
+            result['ForeignAppId'] = self.foreign_app_id
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.update_date is not None:
+            result['UpdateDate'] = self.update_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppPrincipalName') is not None:
+            self.app_principal_name = m.get('AppPrincipalName')
+        if m.get('CreateDate') is not None:
+            self.create_date = m.get('CreateDate')
+        if m.get('DelegatedScope') is not None:
+            temp_model = GetExternalApplicationResponseBodyExternalApplicationDelegatedScope()
+            self.delegated_scope = temp_model.from_map(m['DelegatedScope'])
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('ForeignAppId') is not None:
+            self.foreign_app_id = m.get('ForeignAppId')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('UpdateDate') is not None:
+            self.update_date = m.get('UpdateDate')
+        return self
+
+
+class GetExternalApplicationResponseBody(TeaModel):
+    def __init__(
+        self,
+        external_application: GetExternalApplicationResponseBodyExternalApplication = None,
+        request_id: str = None,
+    ):
+        # The information about the external application.
+        self.external_application = external_application
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.external_application:
+            self.external_application.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_application is not None:
+            result['ExternalApplication'] = self.external_application.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExternalApplication') is not None:
+            temp_model = GetExternalApplicationResponseBodyExternalApplication()
+            self.external_application = temp_model.from_map(m['ExternalApplication'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetExternalApplicationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetExternalApplicationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetExternalApplicationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetGovernanceItemReportRequest(TeaModel):
+    def __init__(
+        self,
+        governance_item_type: str = None,
+        marker: str = None,
+        max_items: str = None,
+    ):
+        self.governance_item_type = governance_item_type
+        self.marker = marker
+        self.max_items = max_items
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.governance_item_type is not None:
+            result['GovernanceItemType'] = self.governance_item_type
+        if self.marker is not None:
+            result['Marker'] = self.marker
+        if self.max_items is not None:
+            result['MaxItems'] = self.max_items
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GovernanceItemType') is not None:
+            self.governance_item_type = m.get('GovernanceItemType')
+        if m.get('Marker') is not None:
+            self.marker = m.get('Marker')
+        if m.get('MaxItems') is not None:
+            self.max_items = m.get('MaxItems')
+        return self
+
+
+class GetGovernanceItemReportResponseBodyColumnsSchemaColumnSchema(TeaModel):
+    def __init__(
+        self,
+        column_name: str = None,
+        column_type: str = None,
+    ):
+        self.column_name = column_name
+        self.column_type = column_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column_name is not None:
+            result['ColumnName'] = self.column_name
+        if self.column_type is not None:
+            result['ColumnType'] = self.column_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ColumnName') is not None:
+            self.column_name = m.get('ColumnName')
+        if m.get('ColumnType') is not None:
+            self.column_type = m.get('ColumnType')
+        return self
+
+
+class GetGovernanceItemReportResponseBodyColumnsSchema(TeaModel):
+    def __init__(
+        self,
+        column_schema: List[GetGovernanceItemReportResponseBodyColumnsSchemaColumnSchema] = None,
+    ):
+        self.column_schema = column_schema
+
+    def validate(self):
+        if self.column_schema:
+            for k in self.column_schema:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ColumnSchema'] = []
+        if self.column_schema is not None:
+            for k in self.column_schema:
+                result['ColumnSchema'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.column_schema = []
+        if m.get('ColumnSchema') is not None:
+            for k in m.get('ColumnSchema'):
+                temp_model = GetGovernanceItemReportResponseBodyColumnsSchemaColumnSchema()
+                self.column_schema.append(temp_model.from_map(k))
+        return self
+
+
+class GetGovernanceItemReportResponseBodyColumnsValueColumnRow(TeaModel):
+    def __init__(
+        self,
+        column_value: List[Any] = None,
+    ):
+        self.column_value = column_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column_value is not None:
+            result['ColumnValue'] = self.column_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ColumnValue') is not None:
+            self.column_value = m.get('ColumnValue')
+        return self
+
+
+class GetGovernanceItemReportResponseBodyColumnsValue(TeaModel):
+    def __init__(
+        self,
+        column_row: List[GetGovernanceItemReportResponseBodyColumnsValueColumnRow] = None,
+    ):
+        self.column_row = column_row
+
+    def validate(self):
+        if self.column_row:
+            for k in self.column_row:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ColumnRow'] = []
+        if self.column_row is not None:
+            for k in self.column_row:
+                result['ColumnRow'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.column_row = []
+        if m.get('ColumnRow') is not None:
+            for k in m.get('ColumnRow'):
+                temp_model = GetGovernanceItemReportResponseBodyColumnsValueColumnRow()
+                self.column_row.append(temp_model.from_map(k))
+        return self
+
+
+class GetGovernanceItemReportResponseBody(TeaModel):
+    def __init__(
+        self,
+        columns_schema: GetGovernanceItemReportResponseBodyColumnsSchema = None,
+        columns_value: GetGovernanceItemReportResponseBodyColumnsValue = None,
+        generate_time: str = None,
+        is_truncated: bool = None,
+        marker: str = None,
+        metric_type: str = None,
+        metric_value: Any = None,
+        request_id: str = None,
+    ):
+        self.columns_schema = columns_schema
+        self.columns_value = columns_value
+        self.generate_time = generate_time
+        self.is_truncated = is_truncated
+        self.marker = marker
+        self.metric_type = metric_type
+        self.metric_value = metric_value
+        self.request_id = request_id
+
+    def validate(self):
+        if self.columns_schema:
+            self.columns_schema.validate()
+        if self.columns_value:
+            self.columns_value.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.columns_schema is not None:
+            result['ColumnsSchema'] = self.columns_schema.to_map()
+        if self.columns_value is not None:
+            result['ColumnsValue'] = self.columns_value.to_map()
+        if self.generate_time is not None:
+            result['GenerateTime'] = self.generate_time
+        if self.is_truncated is not None:
+            result['IsTruncated'] = self.is_truncated
+        if self.marker is not None:
+            result['Marker'] = self.marker
+        if self.metric_type is not None:
+            result['MetricType'] = self.metric_type
+        if self.metric_value is not None:
+            result['MetricValue'] = self.metric_value
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ColumnsSchema') is not None:
+            temp_model = GetGovernanceItemReportResponseBodyColumnsSchema()
+            self.columns_schema = temp_model.from_map(m['ColumnsSchema'])
+        if m.get('ColumnsValue') is not None:
+            temp_model = GetGovernanceItemReportResponseBodyColumnsValue()
+            self.columns_value = temp_model.from_map(m['ColumnsValue'])
+        if m.get('GenerateTime') is not None:
+            self.generate_time = m.get('GenerateTime')
+        if m.get('IsTruncated') is not None:
+            self.is_truncated = m.get('IsTruncated')
+        if m.get('Marker') is not None:
+            self.marker = m.get('Marker')
+        if m.get('MetricType') is not None:
+            self.metric_type = m.get('MetricType')
+        if m.get('MetricValue') is not None:
+            self.metric_value = m.get('MetricValue')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetGovernanceItemReportResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetGovernanceItemReportResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetGovernanceItemReportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetGovernanceReportStatusResponseBodyGovernanceItemsStatusGovernanceItemStatus(TeaModel):
+    def __init__(
+        self,
+        governance_item: str = None,
+        status: str = None,
+    ):
+        self.governance_item = governance_item
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.governance_item is not None:
+            result['GovernanceItem'] = self.governance_item
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GovernanceItem') is not None:
+            self.governance_item = m.get('GovernanceItem')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetGovernanceReportStatusResponseBodyGovernanceItemsStatus(TeaModel):
+    def __init__(
+        self,
+        governance_item_status: List[GetGovernanceReportStatusResponseBodyGovernanceItemsStatusGovernanceItemStatus] = None,
+    ):
+        self.governance_item_status = governance_item_status
+
+    def validate(self):
+        if self.governance_item_status:
+            for k in self.governance_item_status:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['GovernanceItemStatus'] = []
+        if self.governance_item_status is not None:
+            for k in self.governance_item_status:
+                result['GovernanceItemStatus'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.governance_item_status = []
+        if m.get('GovernanceItemStatus') is not None:
+            for k in m.get('GovernanceItemStatus'):
+                temp_model = GetGovernanceReportStatusResponseBodyGovernanceItemsStatusGovernanceItemStatus()
+                self.governance_item_status.append(temp_model.from_map(k))
+        return self
+
+
+class GetGovernanceReportStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        governance_items_status: GetGovernanceReportStatusResponseBodyGovernanceItemsStatus = None,
+        request_id: str = None,
+        whole_report_status: str = None,
+    ):
+        self.governance_items_status = governance_items_status
+        self.request_id = request_id
+        self.whole_report_status = whole_report_status
+
+    def validate(self):
+        if self.governance_items_status:
+            self.governance_items_status.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.governance_items_status is not None:
+            result['GovernanceItemsStatus'] = self.governance_items_status.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.whole_report_status is not None:
+            result['WholeReportStatus'] = self.whole_report_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GovernanceItemsStatus') is not None:
+            temp_model = GetGovernanceReportStatusResponseBodyGovernanceItemsStatus()
+            self.governance_items_status = temp_model.from_map(m['GovernanceItemsStatus'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('WholeReportStatus') is not None:
+            self.whole_report_status = m.get('WholeReportStatus')
+        return self
+
+
+class GetGovernanceReportStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetGovernanceReportStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetGovernanceReportStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetGroupRequest(TeaModel):
     def __init__(
         self,
@@ -5777,6 +7439,7 @@ class GetLoginProfileResponseBodyLoginProfile(TeaModel):
         update_date: str = None,
         user_principal_name: str = None,
     ):
+        # Indicates whether console logon is automatically disabled if a RAM user does not log on to the console in the previous specified number of days. The number of days is specified by MaxIdleDaysForUsers. The default value is true, and you cannot change the value.
         self.auto_disable_login_status = auto_disable_login_status
         # The time of the most recent logon. The time is displayed in UTC.
         self.last_login_time = last_login_time
@@ -6520,6 +8183,10 @@ class GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference(
         # *   true
         # *   false
         self.allow_user_to_change_password = allow_user_to_change_password
+        # Indicates whether a RAM user can use a passkey for logon. Valid values:
+        # 
+        # *   true
+        # *   false
         self.allow_user_to_login_with_passkey = allow_user_to_login_with_passkey
         # Indicates whether RAM users can remember the multi-factor authentication (MFA) devices for seven days. Valid values:
         # 
@@ -6623,7 +8290,9 @@ class GetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays(TeaModel):
         max_idle_days_for_access_keys: int = None,
         max_idle_days_for_users: int = None,
     ):
+        # The maximum number of days that the AccessKey pair of a RAM user can stay unused. If an AccessKey pair is not used in the previous specified number of days, the AccessKey pair is automatically disabled on the next day. The default value is 730. You cannot change the value.
         self.max_idle_days_for_access_keys = max_idle_days_for_access_keys
+        # The maximum number of days that a RAM user can stay idle. If a RAM user for whom console logon is enabled does not log on to the console in the previous specified number of days, console logon is automatically disabled for the RAM user on the next day. Single sign-on (SSO) is not involved. The default value is 730. You cannot change the value.
         self.max_idle_days_for_users = max_idle_days_for_users
 
     def validate(self):
@@ -6725,6 +8394,7 @@ class GetSecurityPreferenceResponseBodySecurityPreference(TeaModel):
         self.login_profile_preference = login_profile_preference
         # The MFA preference.
         self.mfapreference = mfapreference
+        # The maximum idle periods. Unit: days.
         self.max_idle_days = max_idle_days
         # The personal information preference.
         self.personal_info_preference = personal_info_preference
@@ -7001,6 +8671,7 @@ class GetUserResponseBodyUser(TeaModel):
         tags: GetUserResponseBodyUserTags = None,
         update_date: str = None,
         user_id: str = None,
+        user_name: str = None,
         user_principal_name: str = None,
     ):
         # The description.
@@ -7031,6 +8702,7 @@ class GetUserResponseBodyUser(TeaModel):
         self.update_date = update_date
         # The ID of the RAM user.
         self.user_id = user_id
+        self.user_name = user_name
         # The logon name of the RAM user.
         self.user_principal_name = user_principal_name
 
@@ -7064,6 +8736,8 @@ class GetUserResponseBodyUser(TeaModel):
             result['UpdateDate'] = self.update_date
         if self.user_id is not None:
             result['UserId'] = self.user_id
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
         if self.user_principal_name is not None:
             result['UserPrincipalName'] = self.user_principal_name
         return result
@@ -7091,6 +8765,8 @@ class GetUserResponseBodyUser(TeaModel):
             self.update_date = m.get('UpdateDate')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
         if m.get('UserPrincipalName') is not None:
             self.user_principal_name = m.get('UserPrincipalName')
         return self
@@ -7174,6 +8850,186 @@ class GetUserResponse(TeaModel):
         return self
 
 
+class GetUserInRecycleBinRequest(TeaModel):
+    def __init__(
+        self,
+        user_access_key_id: str = None,
+        user_id: str = None,
+    ):
+        # The AccessKey ID of the RAM user.
+        # 
+        # >  You must specify only one of the following parameters: `UserId` and `UserAccessKeyId`.
+        self.user_access_key_id = user_access_key_id
+        # The ID of the RAM user.
+        # 
+        # >  You must specify only one of the following parameters: `UserId` and `UserAccessKeyId`.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_access_key_id is not None:
+            result['UserAccessKeyId'] = self.user_access_key_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserAccessKeyId') is not None:
+            self.user_access_key_id = m.get('UserAccessKeyId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GetUserInRecycleBinResponseBodyUser(TeaModel):
+    def __init__(
+        self,
+        create_date: str = None,
+        delete_date: str = None,
+        display_name: str = None,
+        recycle_date: str = None,
+        user_id: str = None,
+        user_principal_name: str = None,
+    ):
+        # The time when the RAM user was created.
+        self.create_date = create_date
+        # The time when the RAM user will be permanently deleted from the recycle bin.
+        self.delete_date = delete_date
+        # The display name of the RAM user.
+        self.display_name = display_name
+        # The time when the RAM user was deleted and moved to the recycle bin.
+        self.recycle_date = recycle_date
+        # The ID of the RAM user.
+        self.user_id = user_id
+        # The logon name of the RAM user.
+        self.user_principal_name = user_principal_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_date is not None:
+            result['CreateDate'] = self.create_date
+        if self.delete_date is not None:
+            result['DeleteDate'] = self.delete_date
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.recycle_date is not None:
+            result['RecycleDate'] = self.recycle_date
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.user_principal_name is not None:
+            result['UserPrincipalName'] = self.user_principal_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateDate') is not None:
+            self.create_date = m.get('CreateDate')
+        if m.get('DeleteDate') is not None:
+            self.delete_date = m.get('DeleteDate')
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('RecycleDate') is not None:
+            self.recycle_date = m.get('RecycleDate')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('UserPrincipalName') is not None:
+            self.user_principal_name = m.get('UserPrincipalName')
+        return self
+
+
+class GetUserInRecycleBinResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        user: GetUserInRecycleBinResponseBodyUser = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+        # The information about the RAM user.
+        self.user = user
+
+    def validate(self):
+        if self.user:
+            self.user.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.user is not None:
+            result['User'] = self.user.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('User') is not None:
+            temp_model = GetUserInRecycleBinResponseBodyUser()
+            self.user = temp_model.from_map(m['User'])
+        return self
+
+
+class GetUserInRecycleBinResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetUserInRecycleBinResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetUserInRecycleBinResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetUserMFAInfoRequest(TeaModel):
     def __init__(
         self,
@@ -7181,7 +9037,7 @@ class GetUserMFAInfoRequest(TeaModel):
     ):
         # The logon name of the RAM user. This parameter is differently set in the following scenarios:
         # 
-        # *   If you use a RAM user to call this operation, this parameter can be left empty. If you do not specify this parameter, the information of the MFA device that is bound to the RAM user is queried.
+        # *   If you use a RAM user to call this operation, this parameter can be left empty. If you do not specify this parameter, information about the MFA device that is bound to the RAM user is queried.
         # *   If you use an Alibaba Cloud account to call this operation, you must set this parameter to the logon name of the RAM user that you want to query.
         self.user_principal_name = user_principal_name
 
@@ -7215,8 +9071,8 @@ class GetUserMFAInfoResponseBodyMFADevice(TeaModel):
         self.serial_number = serial_number
         # The type of the MFA device. Valid values:
         # 
-        # *   VMFA: virtual MFA device
-        # *   U2F: Universal 2nd Factor (U2F) security key
+        # *   VMFA: virtual MFA device.
+        # *   U2F: Universal 2nd Factor (U2F) security key.
         self.type = type
 
     def validate(self):
@@ -7257,7 +9113,7 @@ class GetUserMFAInfoResponseBody(TeaModel):
         self.is_mfaenable = is_mfaenable
         # The information about the MFA device.
         self.mfadevice = mfadevice
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7785,9 +9641,9 @@ class ListAccessKeysResponseBody(TeaModel):
         access_keys: ListAccessKeysResponseBodyAccessKeys = None,
         request_id: str = None,
     ):
-        # The list of AccessKey pairs.
+        # The information about the AccessKey pairs.
         self.access_keys = access_keys
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7853,6 +9709,196 @@ class ListAccessKeysResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListAccessKeysResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAccessKeysInRecycleBinRequest(TeaModel):
+    def __init__(
+        self,
+        user_id: str = None,
+    ):
+        # The ID of the Resource Access Management (RAM) user.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class ListAccessKeysInRecycleBinResponseBodyAccessKeysAccessKey(TeaModel):
+    def __init__(
+        self,
+        access_key_id: str = None,
+        create_date: str = None,
+        delete_date: str = None,
+        recycle_date: str = None,
+    ):
+        # The AccessKey ID.
+        self.access_key_id = access_key_id
+        # The time when the AccessKey pair was created.
+        self.create_date = create_date
+        # The time when the AccessKey pair will be permanently deleted from the recycle bin.
+        self.delete_date = delete_date
+        # The time when the AccessKey pair was deleted and moved to the recycle bin.
+        self.recycle_date = recycle_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_key_id is not None:
+            result['AccessKeyId'] = self.access_key_id
+        if self.create_date is not None:
+            result['CreateDate'] = self.create_date
+        if self.delete_date is not None:
+            result['DeleteDate'] = self.delete_date
+        if self.recycle_date is not None:
+            result['RecycleDate'] = self.recycle_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessKeyId') is not None:
+            self.access_key_id = m.get('AccessKeyId')
+        if m.get('CreateDate') is not None:
+            self.create_date = m.get('CreateDate')
+        if m.get('DeleteDate') is not None:
+            self.delete_date = m.get('DeleteDate')
+        if m.get('RecycleDate') is not None:
+            self.recycle_date = m.get('RecycleDate')
+        return self
+
+
+class ListAccessKeysInRecycleBinResponseBodyAccessKeys(TeaModel):
+    def __init__(
+        self,
+        access_key: List[ListAccessKeysInRecycleBinResponseBodyAccessKeysAccessKey] = None,
+    ):
+        self.access_key = access_key
+
+    def validate(self):
+        if self.access_key:
+            for k in self.access_key:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AccessKey'] = []
+        if self.access_key is not None:
+            for k in self.access_key:
+                result['AccessKey'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.access_key = []
+        if m.get('AccessKey') is not None:
+            for k in m.get('AccessKey'):
+                temp_model = ListAccessKeysInRecycleBinResponseBodyAccessKeysAccessKey()
+                self.access_key.append(temp_model.from_map(k))
+        return self
+
+
+class ListAccessKeysInRecycleBinResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_keys: ListAccessKeysInRecycleBinResponseBodyAccessKeys = None,
+        request_id: str = None,
+    ):
+        # The information about the AccessKey pairs.
+        self.access_keys = access_keys
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.access_keys:
+            self.access_keys.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_keys is not None:
+            result['AccessKeys'] = self.access_keys.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessKeys') is not None:
+            temp_model = ListAccessKeysInRecycleBinResponseBodyAccessKeys()
+            self.access_keys = temp_model.from_map(m['AccessKeys'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListAccessKeysInRecycleBinResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAccessKeysInRecycleBinResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAccessKeysInRecycleBinResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8038,6 +10084,322 @@ class ListAppSecretIdsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListAppSecretIdsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListApplicationProvisionInfosRequest(TeaModel):
+    def __init__(
+        self,
+        source_type: str = None,
+    ):
+        # The source of the applications. Valid values:
+        # 
+        # *   inner: The applications are from the current account.
+        # *   external: The applications are from other accounts.
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
+class ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+    ):
+        # The description of the permission.
+        self.description = description
+        # The name of the permission.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScopePredefinedScopes(TeaModel):
+    def __init__(
+        self,
+        predefined_scope: List[ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope] = None,
+    ):
+        self.predefined_scope = predefined_scope
+
+    def validate(self):
+        if self.predefined_scope:
+            for k in self.predefined_scope:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PredefinedScope'] = []
+        if self.predefined_scope is not None:
+            for k in self.predefined_scope:
+                result['PredefinedScope'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.predefined_scope = []
+        if m.get('PredefinedScope') is not None:
+            for k in m.get('PredefinedScope'):
+                temp_model = ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope()
+                self.predefined_scope.append(temp_model.from_map(k))
+        return self
+
+
+class ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScope(TeaModel):
+    def __init__(
+        self,
+        predefined_scopes: ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScopePredefinedScopes = None,
+    ):
+        # The information about the permissions that are granted to the application.
+        self.predefined_scopes = predefined_scopes
+
+    def validate(self):
+        if self.predefined_scopes:
+            self.predefined_scopes.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.predefined_scopes is not None:
+            result['PredefinedScopes'] = self.predefined_scopes.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PredefinedScopes') is not None:
+            temp_model = ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScopePredefinedScopes()
+            self.predefined_scopes = temp_model.from_map(m['PredefinedScopes'])
+        return self
+
+
+class ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        app_id: str = None,
+        app_name: str = None,
+        create_date: str = None,
+        delegated_scope: ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScope = None,
+        display_name: str = None,
+        update_date: str = None,
+    ):
+        # The ID of the Alibaba Cloud account.
+        self.account_id = account_id
+        # The ID of the application.
+        self.app_id = app_id
+        # The name of the application.
+        self.app_name = app_name
+        # The time when the application was installed. The value is a timestamp.
+        self.create_date = create_date
+        # The information about the permissions that are granted to the application.
+        self.delegated_scope = delegated_scope
+        # The display name of the application.
+        self.display_name = display_name
+        # The update time. The value is a timestamp.
+        self.update_date = update_date
+
+    def validate(self):
+        if self.delegated_scope:
+            self.delegated_scope.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.create_date is not None:
+            result['CreateDate'] = self.create_date
+        if self.delegated_scope is not None:
+            result['DelegatedScope'] = self.delegated_scope.to_map()
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.update_date is not None:
+            result['UpdateDate'] = self.update_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('CreateDate') is not None:
+            self.create_date = m.get('CreateDate')
+        if m.get('DelegatedScope') is not None:
+            temp_model = ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScope()
+            self.delegated_scope = temp_model.from_map(m['DelegatedScope'])
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('UpdateDate') is not None:
+            self.update_date = m.get('UpdateDate')
+        return self
+
+
+class ListApplicationProvisionInfosResponseBodyApplicationProvisionInfos(TeaModel):
+    def __init__(
+        self,
+        application_provision_info: List[ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo] = None,
+    ):
+        self.application_provision_info = application_provision_info
+
+    def validate(self):
+        if self.application_provision_info:
+            for k in self.application_provision_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ApplicationProvisionInfo'] = []
+        if self.application_provision_info is not None:
+            for k in self.application_provision_info:
+                result['ApplicationProvisionInfo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.application_provision_info = []
+        if m.get('ApplicationProvisionInfo') is not None:
+            for k in m.get('ApplicationProvisionInfo'):
+                temp_model = ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo()
+                self.application_provision_info.append(temp_model.from_map(k))
+        return self
+
+
+class ListApplicationProvisionInfosResponseBody(TeaModel):
+    def __init__(
+        self,
+        application_provision_infos: ListApplicationProvisionInfosResponseBodyApplicationProvisionInfos = None,
+        request_id: str = None,
+    ):
+        # The information about the installed applications.
+        self.application_provision_infos = application_provision_infos
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.application_provision_infos:
+            self.application_provision_infos.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_provision_infos is not None:
+            result['ApplicationProvisionInfos'] = self.application_provision_infos.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationProvisionInfos') is not None:
+            temp_model = ListApplicationProvisionInfosResponseBodyApplicationProvisionInfos()
+            self.application_provision_infos = temp_model.from_map(m['ApplicationProvisionInfos'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListApplicationProvisionInfosResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListApplicationProvisionInfosResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListApplicationProvisionInfosResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8415,6 +10777,310 @@ class ListApplicationsResponse(TeaModel):
         return self
 
 
+class ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScopePredefinedScopesPredefinedScope(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+    ):
+        # The description of the permission.
+        self.description = description
+        # The name of the permission.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScopePredefinedScopes(TeaModel):
+    def __init__(
+        self,
+        predefined_scope: List[ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScopePredefinedScopesPredefinedScope] = None,
+    ):
+        self.predefined_scope = predefined_scope
+
+    def validate(self):
+        if self.predefined_scope:
+            for k in self.predefined_scope:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PredefinedScope'] = []
+        if self.predefined_scope is not None:
+            for k in self.predefined_scope:
+                result['PredefinedScope'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.predefined_scope = []
+        if m.get('PredefinedScope') is not None:
+            for k in m.get('PredefinedScope'):
+                temp_model = ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScopePredefinedScopesPredefinedScope()
+                self.predefined_scope.append(temp_model.from_map(k))
+        return self
+
+
+class ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScope(TeaModel):
+    def __init__(
+        self,
+        predefined_scopes: ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScopePredefinedScopes = None,
+    ):
+        # The information about the permissions that are granted to the external application.
+        self.predefined_scopes = predefined_scopes
+
+    def validate(self):
+        if self.predefined_scopes:
+            self.predefined_scopes.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.predefined_scopes is not None:
+            result['PredefinedScopes'] = self.predefined_scopes.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PredefinedScopes') is not None:
+            temp_model = ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScopePredefinedScopes()
+            self.predefined_scopes = temp_model.from_map(m['PredefinedScopes'])
+        return self
+
+
+class ListExternalApplicationsResponseBodyExternalApplicationsExternalApplication(TeaModel):
+    def __init__(
+        self,
+        app_principal_name: str = None,
+        create_date: str = None,
+        delegated_scope: ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScope = None,
+        display_name: str = None,
+        foreign_app_id: str = None,
+        tenant_id: str = None,
+        update_date: str = None,
+    ):
+        # The name of the external application principal. The value is in the `<app_name>@app.<account_id>.onaliyun.com` format.
+        self.app_principal_name = app_principal_name
+        # The time when the external application was installed. The value is a timestamp.
+        self.create_date = create_date
+        # The information about the permissions that are granted to the external application.
+        self.delegated_scope = delegated_scope
+        # The display name of the external application.
+        self.display_name = display_name
+        # The ID of the external application.
+        self.foreign_app_id = foreign_app_id
+        # The ID of the Alibaba Cloud account for which the external application was installed.
+        self.tenant_id = tenant_id
+        # The update time of the external application. The value is a timestamp.
+        self.update_date = update_date
+
+    def validate(self):
+        if self.delegated_scope:
+            self.delegated_scope.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_principal_name is not None:
+            result['AppPrincipalName'] = self.app_principal_name
+        if self.create_date is not None:
+            result['CreateDate'] = self.create_date
+        if self.delegated_scope is not None:
+            result['DelegatedScope'] = self.delegated_scope.to_map()
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.foreign_app_id is not None:
+            result['ForeignAppId'] = self.foreign_app_id
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.update_date is not None:
+            result['UpdateDate'] = self.update_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppPrincipalName') is not None:
+            self.app_principal_name = m.get('AppPrincipalName')
+        if m.get('CreateDate') is not None:
+            self.create_date = m.get('CreateDate')
+        if m.get('DelegatedScope') is not None:
+            temp_model = ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScope()
+            self.delegated_scope = temp_model.from_map(m['DelegatedScope'])
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('ForeignAppId') is not None:
+            self.foreign_app_id = m.get('ForeignAppId')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('UpdateDate') is not None:
+            self.update_date = m.get('UpdateDate')
+        return self
+
+
+class ListExternalApplicationsResponseBodyExternalApplications(TeaModel):
+    def __init__(
+        self,
+        external_application: List[ListExternalApplicationsResponseBodyExternalApplicationsExternalApplication] = None,
+    ):
+        self.external_application = external_application
+
+    def validate(self):
+        if self.external_application:
+            for k in self.external_application:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ExternalApplication'] = []
+        if self.external_application is not None:
+            for k in self.external_application:
+                result['ExternalApplication'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.external_application = []
+        if m.get('ExternalApplication') is not None:
+            for k in m.get('ExternalApplication'):
+                temp_model = ListExternalApplicationsResponseBodyExternalApplicationsExternalApplication()
+                self.external_application.append(temp_model.from_map(k))
+        return self
+
+
+class ListExternalApplicationsResponseBody(TeaModel):
+    def __init__(
+        self,
+        external_applications: ListExternalApplicationsResponseBodyExternalApplications = None,
+        is_truncated: bool = None,
+        marker: str = None,
+        request_id: str = None,
+    ):
+        # The information about the external applications.
+        self.external_applications = external_applications
+        # Indicates whether the response is truncated. Valid values:
+        # 
+        # *   true
+        # *   false
+        self.is_truncated = is_truncated
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # 
+        # >  This parameter is returned only when `IsTruncated` is `true`.
+        self.marker = marker
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.external_applications:
+            self.external_applications.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_applications is not None:
+            result['ExternalApplications'] = self.external_applications.to_map()
+        if self.is_truncated is not None:
+            result['IsTruncated'] = self.is_truncated
+        if self.marker is not None:
+            result['Marker'] = self.marker
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExternalApplications') is not None:
+            temp_model = ListExternalApplicationsResponseBodyExternalApplications()
+            self.external_applications = temp_model.from_map(m['ExternalApplications'])
+        if m.get('IsTruncated') is not None:
+            self.is_truncated = m.get('IsTruncated')
+        if m.get('Marker') is not None:
+            self.marker = m.get('Marker')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListExternalApplicationsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListExternalApplicationsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListExternalApplicationsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListGroupsRequest(TeaModel):
     def __init__(
         self,
@@ -8772,9 +11438,9 @@ class ListGroupsForUserResponseBody(TeaModel):
         groups: ListGroupsForUserResponseBodyGroups = None,
         request_id: str = None,
     ):
-        # The information of the RAM user groups.
+        # The information about the RAM user groups.
         self.groups = groups
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9114,6 +11780,7 @@ class ListPasskeysRequest(TeaModel):
         self,
         user_principal_name: str = None,
     ):
+        # The logon name of the RAM user.
         self.user_principal_name = user_principal_name
 
     def validate(self):
@@ -9144,9 +11811,13 @@ class ListPasskeysResponseBodyPasskeys(TeaModel):
         passkey_id: str = None,
         passkey_name: str = None,
     ):
+        # The time when the passkey was created. The value is a timestamp.
         self.create_date = create_date
+        # The time when the passkey was last used. The value is a timestamp.
         self.last_use_date = last_use_date
+        # The ID of the passkey.
         self.passkey_id = passkey_id
+        # The name of the passkey.
         self.passkey_name = passkey_name
 
     def validate(self):
@@ -9187,7 +11858,9 @@ class ListPasskeysResponseBody(TeaModel):
         passkeys: List[ListPasskeysResponseBodyPasskeys] = None,
         request_id: str = None,
     ):
+        # The information about the passkeys.
         self.passkeys = passkeys
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9441,6 +12114,172 @@ class ListPredefinedScopesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListPredefinedScopesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListRecentGovernanceMetricsResponseBodyGovernanceMetricsGovernanceMetric(TeaModel):
+    def __init__(
+        self,
+        governance_item: str = None,
+        metric_type: str = None,
+        metric_value: Any = None,
+    ):
+        # The name of the governance item.
+        self.governance_item = governance_item
+        # The type of the metric value. Valid values:
+        # 
+        # *   Number
+        # *   String
+        # *   Boolean
+        self.metric_type = metric_type
+        # The metric value. The type of the metric value is determined by `MetricType`.
+        self.metric_value = metric_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.governance_item is not None:
+            result['GovernanceItem'] = self.governance_item
+        if self.metric_type is not None:
+            result['MetricType'] = self.metric_type
+        if self.metric_value is not None:
+            result['MetricValue'] = self.metric_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GovernanceItem') is not None:
+            self.governance_item = m.get('GovernanceItem')
+        if m.get('MetricType') is not None:
+            self.metric_type = m.get('MetricType')
+        if m.get('MetricValue') is not None:
+            self.metric_value = m.get('MetricValue')
+        return self
+
+
+class ListRecentGovernanceMetricsResponseBodyGovernanceMetrics(TeaModel):
+    def __init__(
+        self,
+        governance_metric: List[ListRecentGovernanceMetricsResponseBodyGovernanceMetricsGovernanceMetric] = None,
+    ):
+        self.governance_metric = governance_metric
+
+    def validate(self):
+        if self.governance_metric:
+            for k in self.governance_metric:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['GovernanceMetric'] = []
+        if self.governance_metric is not None:
+            for k in self.governance_metric:
+                result['GovernanceMetric'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.governance_metric = []
+        if m.get('GovernanceMetric') is not None:
+            for k in m.get('GovernanceMetric'):
+                temp_model = ListRecentGovernanceMetricsResponseBodyGovernanceMetricsGovernanceMetric()
+                self.governance_metric.append(temp_model.from_map(k))
+        return self
+
+
+class ListRecentGovernanceMetricsResponseBody(TeaModel):
+    def __init__(
+        self,
+        generate_time: str = None,
+        governance_metrics: ListRecentGovernanceMetricsResponseBodyGovernanceMetrics = None,
+        request_id: str = None,
+    ):
+        # The time when the report was generated.
+        self.generate_time = generate_time
+        # The metric values of all governance items. The value of the parameter is an array, and each row in the array contains the metric value of a governance item.
+        self.governance_metrics = governance_metrics
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.governance_metrics:
+            self.governance_metrics.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.generate_time is not None:
+            result['GenerateTime'] = self.generate_time
+        if self.governance_metrics is not None:
+            result['GovernanceMetrics'] = self.governance_metrics.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GenerateTime') is not None:
+            self.generate_time = m.get('GenerateTime')
+        if m.get('GovernanceMetrics') is not None:
+            temp_model = ListRecentGovernanceMetricsResponseBodyGovernanceMetrics()
+            self.governance_metrics = temp_model.from_map(m['GovernanceMetrics'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListRecentGovernanceMetricsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListRecentGovernanceMetricsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListRecentGovernanceMetricsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10024,8 +12863,9 @@ class ListUserBasicInfosRequest(TeaModel):
         # 
         # Valid values: 1 to 1000. Default value: 100.
         self.max_items = max_items
+        # The status of the RAM users that you want to query. Valid values: active, freeze, and active,freeze. If you set the value to active,freeze, RAM users in both active and freeze states are queried. If you leave the parameter empty, the value active is used by default. If the Tag parameter is specified, you cannot specify the Status parameter. In this case, RAM users in both states are queried.
         self.status = status
-        # The tag value.
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -10078,6 +12918,7 @@ class ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfo(TeaModel):
     ):
         # The display name of the RAM user.
         self.display_name = display_name
+        # The status of the RAM user.
         self.status = status
         # The ID of the RAM user.
         self.user_id = user_id
@@ -10159,16 +13000,16 @@ class ListUserBasicInfosResponseBody(TeaModel):
         request_id: str = None,
         user_basic_infos: ListUserBasicInfosResponseBodyUserBasicInfos = None,
     ):
-        # Indicates whether the response is truncated. Valid value:
+        # Indicates whether the response is truncated. Valid values:
         # 
         # *   true
         # *   false
         self.is_truncated = is_truncated
-        # The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
+        # The `marker`. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.``
         self.marker = marker
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # An array that consists of the information about the RAM user.
+        # The basic information about the RAM users.
         self.user_basic_infos = user_basic_infos
 
     def validate(self):
@@ -10299,6 +13140,7 @@ class ListUsersRequest(TeaModel):
         # 
         # Valid values: 1 to 1000. Default value: 1000.
         self.max_items = max_items
+        # The status of the RAM users that you want to query. Valid values: active, freeze, and active,freeze. If you leave the parameter empty, the value active is used by default. If you specify a value for the Tag parameter, users in both states are queried.
         self.status = status
         # The tags. A maximum number of 20 tags are supported.
         self.tag = tag
@@ -10451,6 +13293,7 @@ class ListUsersResponseBodyUsersUser(TeaModel):
         # *   SCIM: The RAM user is mapped by using System for Cross-domain Identity Management (SCIM).
         # *   CloudSSO: The RAM user is mapped from a CloudSSO user.
         self.provision_type = provision_type
+        # The status of the RAM user.
         self.status = status
         # The tags.
         self.tags = tags
@@ -10579,7 +13422,7 @@ class ListUsersResponseBody(TeaModel):
         self.marker = marker
         # The request ID.
         self.request_id = request_id
-        # The details of the RAM user.
+        # The information about the RAM users.
         self.users = users
 
     def validate(self):
@@ -10886,6 +13729,245 @@ class ListUsersForGroupResponse(TeaModel):
         return self
 
 
+class ListUsersInRecycleBinRequest(TeaModel):
+    def __init__(
+        self,
+        filter: str = None,
+        marker: str = None,
+        max_items: int = None,
+    ):
+        # The filter condition that is used to query information about a specified RAM user in the recycle bin.
+        # 
+        # You must specify this parameter in the `UserPrincipalName eq <username>@<AccountAlias>.onaliyun.com` format.
+        self.filter = filter
+        # The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
+        self.marker = marker
+        # The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be true.
+        # 
+        # Valid values: 1 to 100. Default value: 100.
+        self.max_items = max_items
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter is not None:
+            result['Filter'] = self.filter
+        if self.marker is not None:
+            result['Marker'] = self.marker
+        if self.max_items is not None:
+            result['MaxItems'] = self.max_items
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Filter') is not None:
+            self.filter = m.get('Filter')
+        if m.get('Marker') is not None:
+            self.marker = m.get('Marker')
+        if m.get('MaxItems') is not None:
+            self.max_items = m.get('MaxItems')
+        return self
+
+
+class ListUsersInRecycleBinResponseBodyUsersUser(TeaModel):
+    def __init__(
+        self,
+        create_date: str = None,
+        delete_date: str = None,
+        display_name: str = None,
+        recycle_date: str = None,
+        user_id: str = None,
+        user_principal_name: str = None,
+    ):
+        # The time when the RAM user was created.
+        self.create_date = create_date
+        # The time when the RAM user will be permanently deleted from the recycle bin.
+        self.delete_date = delete_date
+        # The display name of the RAM user.
+        self.display_name = display_name
+        # The time when the RAM user was deleted and moved to the recycle bin.
+        self.recycle_date = recycle_date
+        # The ID of the RAM user.
+        self.user_id = user_id
+        # The logon name of the RAM user.
+        self.user_principal_name = user_principal_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_date is not None:
+            result['CreateDate'] = self.create_date
+        if self.delete_date is not None:
+            result['DeleteDate'] = self.delete_date
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.recycle_date is not None:
+            result['RecycleDate'] = self.recycle_date
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.user_principal_name is not None:
+            result['UserPrincipalName'] = self.user_principal_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateDate') is not None:
+            self.create_date = m.get('CreateDate')
+        if m.get('DeleteDate') is not None:
+            self.delete_date = m.get('DeleteDate')
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('RecycleDate') is not None:
+            self.recycle_date = m.get('RecycleDate')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('UserPrincipalName') is not None:
+            self.user_principal_name = m.get('UserPrincipalName')
+        return self
+
+
+class ListUsersInRecycleBinResponseBodyUsers(TeaModel):
+    def __init__(
+        self,
+        user: List[ListUsersInRecycleBinResponseBodyUsersUser] = None,
+    ):
+        self.user = user
+
+    def validate(self):
+        if self.user:
+            for k in self.user:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['User'] = []
+        if self.user is not None:
+            for k in self.user:
+                result['User'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.user = []
+        if m.get('User') is not None:
+            for k in m.get('User'):
+                temp_model = ListUsersInRecycleBinResponseBodyUsersUser()
+                self.user.append(temp_model.from_map(k))
+        return self
+
+
+class ListUsersInRecycleBinResponseBody(TeaModel):
+    def __init__(
+        self,
+        is_truncated: bool = None,
+        marker: str = None,
+        request_id: str = None,
+        users: ListUsersInRecycleBinResponseBodyUsers = None,
+    ):
+        # Indicates whether the response is truncated. Valid values:
+        # 
+        # *   true
+        # *   false
+        self.is_truncated = is_truncated
+        # The parameter that is used to obtain the truncated part. It takes effect only when `IsTruncated` is set to `true`.
+        self.marker = marker
+        # The request ID.
+        self.request_id = request_id
+        # The information about the RAM users.
+        self.users = users
+
+    def validate(self):
+        if self.users:
+            self.users.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_truncated is not None:
+            result['IsTruncated'] = self.is_truncated
+        if self.marker is not None:
+            result['Marker'] = self.marker
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.users is not None:
+            result['Users'] = self.users.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsTruncated') is not None:
+            self.is_truncated = m.get('IsTruncated')
+        if m.get('Marker') is not None:
+            self.marker = m.get('Marker')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Users') is not None:
+            temp_model = ListUsersInRecycleBinResponseBodyUsers()
+            self.users = temp_model.from_map(m['Users'])
+        return self
+
+
+class ListUsersInRecycleBinResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListUsersInRecycleBinResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListUsersInRecycleBinResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListVirtualMFADevicesRequest(TeaModel):
     def __init__(
         self,
@@ -11141,6 +14223,598 @@ class ListVirtualMFADevicesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListVirtualMFADevicesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ProvisionApplicationRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        scopes: str = None,
+    ):
+        # The ID of the application.
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+        # The permissions that are granted to the application. Separate multiple permissions with a semicolon (;).
+        # 
+        # >  For more information about the supported permissions, see [Overview](https://help.aliyun.com/zh/ram/user-guide/overview-of-oauth-applications).
+        self.scopes = scopes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.scopes is not None:
+            result['Scopes'] = self.scopes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Scopes') is not None:
+            self.scopes = m.get('Scopes')
+        return self
+
+
+class ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+    ):
+        # The description of the permission.
+        self.description = description
+        # The name of the permission.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopes(TeaModel):
+    def __init__(
+        self,
+        predefined_scope: List[ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope] = None,
+    ):
+        self.predefined_scope = predefined_scope
+
+    def validate(self):
+        if self.predefined_scope:
+            for k in self.predefined_scope:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PredefinedScope'] = []
+        if self.predefined_scope is not None:
+            for k in self.predefined_scope:
+                result['PredefinedScope'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.predefined_scope = []
+        if m.get('PredefinedScope') is not None:
+            for k in m.get('PredefinedScope'):
+                temp_model = ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope()
+                self.predefined_scope.append(temp_model.from_map(k))
+        return self
+
+
+class ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScope(TeaModel):
+    def __init__(
+        self,
+        predefined_scopes: ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopes = None,
+    ):
+        # The information about the permissions that are granted to the application.
+        self.predefined_scopes = predefined_scopes
+
+    def validate(self):
+        if self.predefined_scopes:
+            self.predefined_scopes.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.predefined_scopes is not None:
+            result['PredefinedScopes'] = self.predefined_scopes.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PredefinedScopes') is not None:
+            temp_model = ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopes()
+            self.predefined_scopes = temp_model.from_map(m['PredefinedScopes'])
+        return self
+
+
+class ProvisionApplicationResponseBodyApplicationProvisionInfo(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        app_id: str = None,
+        app_name: str = None,
+        app_principal_name: str = None,
+        create_date: str = None,
+        delegated_scope: ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScope = None,
+        display_name: str = None,
+        tenant_id: str = None,
+        update_date: str = None,
+    ):
+        # The ID of the Alibaba Cloud account.
+        self.account_id = account_id
+        # The ID of the application.
+        self.app_id = app_id
+        # The name of the application.
+        self.app_name = app_name
+        # The name of the application principal. The value is in the `<app_name>@app.<account_id>.onaliyun.com` format.
+        self.app_principal_name = app_principal_name
+        # The time when the application was installed. The value is a timestamp.
+        self.create_date = create_date
+        # The information about the permissions that are granted to the application.
+        self.delegated_scope = delegated_scope
+        # The display name of the application.
+        self.display_name = display_name
+        # The ID of the Alibaba Cloud account for which the application was installed.
+        self.tenant_id = tenant_id
+        # The update time. The value is a timestamp.
+        self.update_date = update_date
+
+    def validate(self):
+        if self.delegated_scope:
+            self.delegated_scope.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.app_principal_name is not None:
+            result['AppPrincipalName'] = self.app_principal_name
+        if self.create_date is not None:
+            result['CreateDate'] = self.create_date
+        if self.delegated_scope is not None:
+            result['DelegatedScope'] = self.delegated_scope.to_map()
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.update_date is not None:
+            result['UpdateDate'] = self.update_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('AppPrincipalName') is not None:
+            self.app_principal_name = m.get('AppPrincipalName')
+        if m.get('CreateDate') is not None:
+            self.create_date = m.get('CreateDate')
+        if m.get('DelegatedScope') is not None:
+            temp_model = ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScope()
+            self.delegated_scope = temp_model.from_map(m['DelegatedScope'])
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('UpdateDate') is not None:
+            self.update_date = m.get('UpdateDate')
+        return self
+
+
+class ProvisionApplicationResponseBody(TeaModel):
+    def __init__(
+        self,
+        application_provision_info: ProvisionApplicationResponseBodyApplicationProvisionInfo = None,
+        request_id: str = None,
+    ):
+        # The installation information of the application.
+        self.application_provision_info = application_provision_info
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.application_provision_info:
+            self.application_provision_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_provision_info is not None:
+            result['ApplicationProvisionInfo'] = self.application_provision_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationProvisionInfo') is not None:
+            temp_model = ProvisionApplicationResponseBodyApplicationProvisionInfo()
+            self.application_provision_info = temp_model.from_map(m['ApplicationProvisionInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ProvisionApplicationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ProvisionApplicationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ProvisionApplicationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ProvisionExternalApplicationRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        scopes: str = None,
+    ):
+        # The ID of the application.
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+        # The information about the scope of permissions granted to the application. You can enter multiple scopes and separate them with semicolons (;).
+        # 
+        # >  For more information about the supported permission scopes, see the "OAuth scope" section in the [Overview](https://help.aliyun.com/zh/ram/user-guide/overview-of-oauth-applications) topic.
+        self.scopes = scopes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.scopes is not None:
+            result['Scopes'] = self.scopes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Scopes') is not None:
+            self.scopes = m.get('Scopes')
+        return self
+
+
+class ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopesPredefinedScope(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+    ):
+        # The description of the permission scope.
+        self.description = description
+        # The name of the permission scope.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopes(TeaModel):
+    def __init__(
+        self,
+        predefined_scope: List[ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopesPredefinedScope] = None,
+    ):
+        self.predefined_scope = predefined_scope
+
+    def validate(self):
+        if self.predefined_scope:
+            for k in self.predefined_scope:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PredefinedScope'] = []
+        if self.predefined_scope is not None:
+            for k in self.predefined_scope:
+                result['PredefinedScope'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.predefined_scope = []
+        if m.get('PredefinedScope') is not None:
+            for k in m.get('PredefinedScope'):
+                temp_model = ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopesPredefinedScope()
+                self.predefined_scope.append(temp_model.from_map(k))
+        return self
+
+
+class ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScope(TeaModel):
+    def __init__(
+        self,
+        predefined_scopes: ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopes = None,
+    ):
+        # The information about the scopes of permissions that are granted to the application.
+        self.predefined_scopes = predefined_scopes
+
+    def validate(self):
+        if self.predefined_scopes:
+            self.predefined_scopes.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.predefined_scopes is not None:
+            result['PredefinedScopes'] = self.predefined_scopes.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PredefinedScopes') is not None:
+            temp_model = ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopes()
+            self.predefined_scopes = temp_model.from_map(m['PredefinedScopes'])
+        return self
+
+
+class ProvisionExternalApplicationResponseBodyExternalApplication(TeaModel):
+    def __init__(
+        self,
+        app_principal_name: str = None,
+        create_date: str = None,
+        delegated_scope: ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScope = None,
+        display_name: str = None,
+        foreign_app_id: str = None,
+        tenant_id: str = None,
+        update_date: str = None,
+    ):
+        # The name of the application principal. The value is in the `<app_name>@app.<account_id>.onaliyun.com` format.
+        self.app_principal_name = app_principal_name
+        # The time when the application was installed. The value is a timestamp.
+        self.create_date = create_date
+        # The information about the scopes of permissions that are granted to the application.
+        self.delegated_scope = delegated_scope
+        # The display name of the application.
+        self.display_name = display_name
+        # The ID of the application.
+        self.foreign_app_id = foreign_app_id
+        # The ID of the Alibaba Cloud account to which the external application belongs.
+        self.tenant_id = tenant_id
+        # The update time. The value is a timestamp.
+        self.update_date = update_date
+
+    def validate(self):
+        if self.delegated_scope:
+            self.delegated_scope.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_principal_name is not None:
+            result['AppPrincipalName'] = self.app_principal_name
+        if self.create_date is not None:
+            result['CreateDate'] = self.create_date
+        if self.delegated_scope is not None:
+            result['DelegatedScope'] = self.delegated_scope.to_map()
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.foreign_app_id is not None:
+            result['ForeignAppId'] = self.foreign_app_id
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.update_date is not None:
+            result['UpdateDate'] = self.update_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppPrincipalName') is not None:
+            self.app_principal_name = m.get('AppPrincipalName')
+        if m.get('CreateDate') is not None:
+            self.create_date = m.get('CreateDate')
+        if m.get('DelegatedScope') is not None:
+            temp_model = ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScope()
+            self.delegated_scope = temp_model.from_map(m['DelegatedScope'])
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('ForeignAppId') is not None:
+            self.foreign_app_id = m.get('ForeignAppId')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('UpdateDate') is not None:
+            self.update_date = m.get('UpdateDate')
+        return self
+
+
+class ProvisionExternalApplicationResponseBody(TeaModel):
+    def __init__(
+        self,
+        external_application: ProvisionExternalApplicationResponseBodyExternalApplication = None,
+        request_id: str = None,
+    ):
+        # The information about the external application.
+        self.external_application = external_application
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.external_application:
+            self.external_application.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_application is not None:
+            result['ExternalApplication'] = self.external_application.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExternalApplication') is not None:
+            temp_model = ProvisionExternalApplicationResponseBodyExternalApplication()
+            self.external_application = temp_model.from_map(m['ExternalApplication'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ProvisionExternalApplicationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ProvisionExternalApplicationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ProvisionExternalApplicationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11677,6 +15351,207 @@ class RemoveUserFromGroupResponse(TeaModel):
         return self
 
 
+class RestoreAccessKeyFromRecycleBinRequest(TeaModel):
+    def __init__(
+        self,
+        user_access_key_id: str = None,
+        user_id: str = None,
+    ):
+        # The AccessKey ID of the RAM user.
+        self.user_access_key_id = user_access_key_id
+        # The ID of the Resource Access Management (RAM) user.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_access_key_id is not None:
+            result['UserAccessKeyId'] = self.user_access_key_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserAccessKeyId') is not None:
+            self.user_access_key_id = m.get('UserAccessKeyId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class RestoreAccessKeyFromRecycleBinResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RestoreAccessKeyFromRecycleBinResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RestoreAccessKeyFromRecycleBinResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RestoreAccessKeyFromRecycleBinResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RestoreUserFromRecycleBinRequest(TeaModel):
+    def __init__(
+        self,
+        user_id: str = None,
+    ):
+        # The ID of the RAM user.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class RestoreUserFromRecycleBinResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RestoreUserFromRecycleBinResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RestoreUserFromRecycleBinResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RestoreUserFromRecycleBinResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SetDefaultDomainRequest(TeaModel):
     def __init__(
         self,
@@ -11842,25 +15717,25 @@ class SetPasswordPolicyRequest(TeaModel):
         # 
         # The default value is 0, which indicates that RAM users can reuse previous passwords.
         self.password_reuse_prevention = password_reuse_prevention
-        # Specifies whether the password must contain lowercase letters. Default value: false. Valid values:
+        # Specifies whether the password must contain lowercase letters. Valid values:
         # 
         # *   true
-        # *   false
+        # *   false (default)
         self.require_lowercase_characters = require_lowercase_characters
-        # Specifies whether the password must contain digits. Default value: false. Valid values:
+        # Specifies whether the password must contain digits. Valid values:
         # 
         # *   true
-        # *   false
+        # *   false (default)
         self.require_numbers = require_numbers
-        # Specifies whether the password must contain special characters. Default value: false. Valid values:
+        # Specifies whether the password must contain special characters. Valid values:
         # 
         # *   true
-        # *   false
+        # *   false (default)
         self.require_symbols = require_symbols
-        # Specifies whether the password must contain uppercase letters. Default value: false. Valid values:
+        # Specifies whether the password must contain uppercase letters. Valid values:
         # 
         # *   true
-        # *   false
+        # *   false (default)
         self.require_uppercase_characters = require_uppercase_characters
 
     def validate(self):
@@ -12029,7 +15904,7 @@ class SetPasswordPolicyResponseBody(TeaModel):
     ):
         # The details of the password policy.
         self.password_policy = password_policy
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12119,6 +15994,11 @@ class SetSecurityPreferenceRequest(TeaModel):
         # *   true (default)
         # *   false
         self.allow_user_to_change_password = allow_user_to_change_password
+        # Allow direct login using passkey.
+        # 
+        # - true
+        # 
+        # - false
         self.allow_user_to_login_with_passkey = allow_user_to_login_with_passkey
         # Specifies whether RAM users can manage their AccessKey pairs. Valid values:
         # 
@@ -12249,6 +16129,11 @@ class SetSecurityPreferenceShrinkRequest(TeaModel):
         # *   true (default)
         # *   false
         self.allow_user_to_change_password = allow_user_to_change_password
+        # Allow direct login using passkey.
+        # 
+        # - true
+        # 
+        # - false
         self.allow_user_to_login_with_passkey = allow_user_to_login_with_passkey
         # Specifies whether RAM users can manage their AccessKey pairs. Valid values:
         # 
@@ -12400,6 +16285,11 @@ class SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference(
     ):
         # Indicates whether RAM users can change their passwords.
         self.allow_user_to_change_password = allow_user_to_change_password
+        # Allow direct login using passkey.
+        # 
+        # - true
+        # 
+        # - false
         self.allow_user_to_login_with_passkey = allow_user_to_login_with_passkey
         # Indicates whether RAM users can remember the MFA devices for seven days.
         self.enable_save_mfaticket = enable_save_mfaticket
@@ -12490,7 +16380,9 @@ class SetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays(TeaModel):
         max_idle_days_for_access_keys: int = None,
         max_idle_days_for_users: int = None,
     ):
+        # The maximum number of days that the AccessKey pair of a RAM user can stay unused. If an AccessKey pair is not used in the previous specified number of days, the AccessKey pair is automatically disabled on the next day. The default value is 730. You cannot change the value.
         self.max_idle_days_for_access_keys = max_idle_days_for_access_keys
+        # The maximum number of days that a RAM user can stay idle. If a RAM user for whom console logon is enabled does not log on to the console in the previous specified number of days, console logon is automatically disabled for the RAM user on the next day. SSO is not involved. The default value is 730. You cannot change the value.
         self.max_idle_days_for_users = max_idle_days_for_users
 
     def validate(self):
@@ -12589,6 +16481,7 @@ class SetSecurityPreferenceResponseBodySecurityPreference(TeaModel):
         self.login_profile_preference = login_profile_preference
         # The MFA preference.
         self.mfapreference = mfapreference
+        # The maximum idle periods. Unit: days.
         self.max_idle_days = max_idle_days
         # The personal information preference.
         self.personal_info_preference = personal_info_preference
@@ -12921,6 +16814,131 @@ class SetUserSsoSettingsResponse(TeaModel):
         return self
 
 
+class SetVerificationInfoRequest(TeaModel):
+    def __init__(
+        self,
+        email: str = None,
+        mobile_phone: str = None,
+        user_principal_name: str = None,
+        verify_type: str = None,
+    ):
+        # The email address.
+        # 
+        # >  If you set `VerifyType` to `email`, you must specify this parameter.
+        self.email = email
+        # The mobile phone number.
+        # 
+        # >  If you set `VerifyType` to `sms`, you must specify this parameter.
+        self.mobile_phone = mobile_phone
+        # The logon name of the RAM user.
+        self.user_principal_name = user_principal_name
+        # The multi-factor authentication (MFA) method. Valid values:
+        # 
+        # *   sms: mobile phone.
+        # *   email: email.
+        self.verify_type = verify_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.email is not None:
+            result['Email'] = self.email
+        if self.mobile_phone is not None:
+            result['MobilePhone'] = self.mobile_phone
+        if self.user_principal_name is not None:
+            result['UserPrincipalName'] = self.user_principal_name
+        if self.verify_type is not None:
+            result['VerifyType'] = self.verify_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Email') is not None:
+            self.email = m.get('Email')
+        if m.get('MobilePhone') is not None:
+            self.mobile_phone = m.get('MobilePhone')
+        if m.get('UserPrincipalName') is not None:
+            self.user_principal_name = m.get('UserPrincipalName')
+        if m.get('VerifyType') is not None:
+            self.verify_type = m.get('VerifyType')
+        return self
+
+
+class SetVerificationInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SetVerificationInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetVerificationInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetVerificationInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class TagResourcesRequestTag(TeaModel):
     def __init__(
         self,
@@ -13230,6 +17248,131 @@ class UnbindMFADeviceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UnbindMFADeviceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UnbindVerificationRequest(TeaModel):
+    def __init__(
+        self,
+        email: str = None,
+        mobile_phone: str = None,
+        user_principal_name: str = None,
+        verify_type: str = None,
+    ):
+        # The email address.
+        # 
+        # >  If you set `VerifyType` to `email`, you must specify this parameter.
+        self.email = email
+        # The mobile phone number.
+        # 
+        # >  If you set `VerifyType` to `sms`, you must specify this parameter.
+        self.mobile_phone = mobile_phone
+        # The logon name of the RAM user.
+        self.user_principal_name = user_principal_name
+        # The multi-factor authentication (MFA) method. Valid values:
+        # 
+        # *   sms: mobile phone.
+        # *   email: email.
+        self.verify_type = verify_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.email is not None:
+            result['Email'] = self.email
+        if self.mobile_phone is not None:
+            result['MobilePhone'] = self.mobile_phone
+        if self.user_principal_name is not None:
+            result['UserPrincipalName'] = self.user_principal_name
+        if self.verify_type is not None:
+            result['VerifyType'] = self.verify_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Email') is not None:
+            self.email = m.get('Email')
+        if m.get('MobilePhone') is not None:
+            self.mobile_phone = m.get('MobilePhone')
+        if m.get('UserPrincipalName') is not None:
+            self.user_principal_name = m.get('UserPrincipalName')
+        if m.get('VerifyType') is not None:
+            self.verify_type = m.get('VerifyType')
+        return self
+
+
+class UnbindVerificationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UnbindVerificationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UnbindVerificationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UnbindVerificationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -14224,6 +18367,7 @@ class UpdateLoginProfileResponseBodyLoginProfile(TeaModel):
         update_date: str = None,
         user_principal_name: str = None,
     ):
+        # Indicates whether console logon is automatically disabled if a RAM user does not log on to the console in the previous specified number of days. The number of days is specified by MaxIdleDaysForUsers. The default value is true, and you cannot change the value.
         self.auto_disable_login_status = auto_disable_login_status
         # Indicates whether MFA must be enabled.
         self.mfabind_required = mfabind_required
@@ -14594,8 +18738,11 @@ class UpdatePasskeyRequest(TeaModel):
         passkey_name: str = None,
         user_principal_name: str = None,
     ):
+        # The ID of the passkey.
         self.passkey_id = passkey_id
+        # The name of the passkey.
         self.passkey_name = passkey_name
+        # The logon name of the Resource Access Management (RAM) user.
         self.user_principal_name = user_principal_name
 
     def validate(self):
@@ -14631,6 +18778,7 @@ class UpdatePasskeyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
