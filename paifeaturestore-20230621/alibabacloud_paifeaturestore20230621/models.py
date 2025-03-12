@@ -4800,9 +4800,11 @@ class ListFeatureEntitiesResponse(TeaModel):
 class ListFeatureViewFieldRelationshipsResponseBodyRelationshipsModels(TeaModel):
     def __init__(
         self,
+        feature_alias_name: str = None,
         model_id: str = None,
         model_name: str = None,
     ):
+        self.feature_alias_name = feature_alias_name
         self.model_id = model_id
         self.model_name = model_name
 
@@ -4815,6 +4817,8 @@ class ListFeatureViewFieldRelationshipsResponseBodyRelationshipsModels(TeaModel)
             return _map
 
         result = dict()
+        if self.feature_alias_name is not None:
+            result['FeatureAliasName'] = self.feature_alias_name
         if self.model_id is not None:
             result['ModelId'] = self.model_id
         if self.model_name is not None:
@@ -4823,6 +4827,8 @@ class ListFeatureViewFieldRelationshipsResponseBodyRelationshipsModels(TeaModel)
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FeatureAliasName') is not None:
+            self.feature_alias_name = m.get('FeatureAliasName')
         if m.get('ModelId') is not None:
             self.model_id = m.get('ModelId')
         if m.get('ModelName') is not None:
