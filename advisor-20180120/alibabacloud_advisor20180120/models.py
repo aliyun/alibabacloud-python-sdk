@@ -199,6 +199,7 @@ class DescribeAdvicesRequest(TeaModel):
         self,
         advice_id: int = None,
         check_id: str = None,
+        check_plan_id: int = None,
         exclude_advice_id: int = None,
         language: str = None,
         product: str = None,
@@ -206,6 +207,7 @@ class DescribeAdvicesRequest(TeaModel):
     ):
         self.advice_id = advice_id
         self.check_id = check_id
+        self.check_plan_id = check_plan_id
         self.exclude_advice_id = exclude_advice_id
         self.language = language
         self.product = product
@@ -224,6 +226,8 @@ class DescribeAdvicesRequest(TeaModel):
             result['AdviceId'] = self.advice_id
         if self.check_id is not None:
             result['CheckId'] = self.check_id
+        if self.check_plan_id is not None:
+            result['CheckPlanId'] = self.check_plan_id
         if self.exclude_advice_id is not None:
             result['ExcludeAdviceId'] = self.exclude_advice_id
         if self.language is not None:
@@ -240,6 +244,8 @@ class DescribeAdvicesRequest(TeaModel):
             self.advice_id = m.get('AdviceId')
         if m.get('CheckId') is not None:
             self.check_id = m.get('CheckId')
+        if m.get('CheckPlanId') is not None:
+            self.check_plan_id = m.get('CheckPlanId')
         if m.get('ExcludeAdviceId') is not None:
             self.exclude_advice_id = m.get('ExcludeAdviceId')
         if m.get('Language') is not None:
@@ -257,6 +263,7 @@ class DescribeAdvicesResponseBodyDataAdvice(TeaModel):
         aliyun_id: int = None,
         check_id: str = None,
         check_name: str = None,
+        check_plan_id: int = None,
         content: str = None,
         description: str = None,
         gmt_created: str = None,
@@ -271,6 +278,7 @@ class DescribeAdvicesResponseBodyDataAdvice(TeaModel):
         self.aliyun_id = aliyun_id
         self.check_id = check_id
         self.check_name = check_name
+        self.check_plan_id = check_plan_id
         self.content = content
         self.description = description
         self.gmt_created = gmt_created
@@ -298,6 +306,8 @@ class DescribeAdvicesResponseBodyDataAdvice(TeaModel):
             result['CheckId'] = self.check_id
         if self.check_name is not None:
             result['CheckName'] = self.check_name
+        if self.check_plan_id is not None:
+            result['CheckPlanId'] = self.check_plan_id
         if self.content is not None:
             result['Content'] = self.content
         if self.description is not None:
@@ -328,6 +338,8 @@ class DescribeAdvicesResponseBodyDataAdvice(TeaModel):
             self.check_id = m.get('CheckId')
         if m.get('CheckName') is not None:
             self.check_name = m.get('CheckName')
+        if m.get('CheckPlanId') is not None:
+            self.check_plan_id = m.get('CheckPlanId')
         if m.get('Content') is not None:
             self.content = m.get('Content')
         if m.get('Description') is not None:
@@ -758,6 +770,7 @@ class DescribeAdvicesPageRequest(TeaModel):
         self,
         advice_id: int = None,
         check_id: str = None,
+        check_plan_id: int = None,
         language: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -766,6 +779,7 @@ class DescribeAdvicesPageRequest(TeaModel):
     ):
         self.advice_id = advice_id
         self.check_id = check_id
+        self.check_plan_id = check_plan_id
         self.language = language
         self.page_number = page_number
         self.page_size = page_size
@@ -785,6 +799,8 @@ class DescribeAdvicesPageRequest(TeaModel):
             result['AdviceId'] = self.advice_id
         if self.check_id is not None:
             result['CheckId'] = self.check_id
+        if self.check_plan_id is not None:
+            result['CheckPlanId'] = self.check_plan_id
         if self.language is not None:
             result['Language'] = self.language
         if self.page_number is not None:
@@ -803,6 +819,8 @@ class DescribeAdvicesPageRequest(TeaModel):
             self.advice_id = m.get('AdviceId')
         if m.get('CheckId') is not None:
             self.check_id = m.get('CheckId')
+        if m.get('CheckPlanId') is not None:
+            self.check_plan_id = m.get('CheckPlanId')
         if m.get('Language') is not None:
             self.language = m.get('Language')
         if m.get('PageNumber') is not None:
@@ -1548,6 +1566,39 @@ class DescribeAdvisorResourcesResponse(TeaModel):
         return self
 
 
+class DescribeCostCheckAdvicesRequestTagList(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: List[str] = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
 class DescribeCostCheckAdvicesRequest(TeaModel):
     def __init__(
         self,
@@ -1561,6 +1612,7 @@ class DescribeCostCheckAdvicesRequest(TeaModel):
         resource_name: str = None,
         severity: str = None,
         tag_keys: List[str] = None,
+        tag_list: List[DescribeCostCheckAdvicesRequestTagList] = None,
         tag_values: List[str] = None,
     ):
         self.assume_aliyun_id_list = assume_aliyun_id_list
@@ -1573,10 +1625,14 @@ class DescribeCostCheckAdvicesRequest(TeaModel):
         self.resource_name = resource_name
         self.severity = severity
         self.tag_keys = tag_keys
+        self.tag_list = tag_list
         self.tag_values = tag_values
 
     def validate(self):
-        pass
+        if self.tag_list:
+            for k in self.tag_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1604,6 +1660,10 @@ class DescribeCostCheckAdvicesRequest(TeaModel):
             result['Severity'] = self.severity
         if self.tag_keys is not None:
             result['TagKeys'] = self.tag_keys
+        result['TagList'] = []
+        if self.tag_list is not None:
+            for k in self.tag_list:
+                result['TagList'].append(k.to_map() if k else None)
         if self.tag_values is not None:
             result['TagValues'] = self.tag_values
         return result
@@ -1630,6 +1690,11 @@ class DescribeCostCheckAdvicesRequest(TeaModel):
             self.severity = m.get('Severity')
         if m.get('TagKeys') is not None:
             self.tag_keys = m.get('TagKeys')
+        self.tag_list = []
+        if m.get('TagList') is not None:
+            for k in m.get('TagList'):
+                temp_model = DescribeCostCheckAdvicesRequestTagList()
+                self.tag_list.append(temp_model.from_map(k))
         if m.get('TagValues') is not None:
             self.tag_values = m.get('TagValues')
         return self
@@ -1648,6 +1713,7 @@ class DescribeCostCheckAdvicesShrinkRequest(TeaModel):
         resource_name: str = None,
         severity: str = None,
         tag_keys_shrink: str = None,
+        tag_list_shrink: str = None,
         tag_values_shrink: str = None,
     ):
         self.assume_aliyun_id_list_shrink = assume_aliyun_id_list_shrink
@@ -1660,6 +1726,7 @@ class DescribeCostCheckAdvicesShrinkRequest(TeaModel):
         self.resource_name = resource_name
         self.severity = severity
         self.tag_keys_shrink = tag_keys_shrink
+        self.tag_list_shrink = tag_list_shrink
         self.tag_values_shrink = tag_values_shrink
 
     def validate(self):
@@ -1691,6 +1758,8 @@ class DescribeCostCheckAdvicesShrinkRequest(TeaModel):
             result['Severity'] = self.severity
         if self.tag_keys_shrink is not None:
             result['TagKeys'] = self.tag_keys_shrink
+        if self.tag_list_shrink is not None:
+            result['TagList'] = self.tag_list_shrink
         if self.tag_values_shrink is not None:
             result['TagValues'] = self.tag_values_shrink
         return result
@@ -1717,6 +1786,8 @@ class DescribeCostCheckAdvicesShrinkRequest(TeaModel):
             self.severity = m.get('Severity')
         if m.get('TagKeys') is not None:
             self.tag_keys_shrink = m.get('TagKeys')
+        if m.get('TagList') is not None:
+            self.tag_list_shrink = m.get('TagList')
         if m.get('TagValues') is not None:
             self.tag_values_shrink = m.get('TagValues')
         return self
@@ -2039,6 +2110,39 @@ class DescribeCostCheckAdvicesResponse(TeaModel):
         return self
 
 
+class DescribeCostCheckResultsRequestTagList(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: List[str] = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
 class DescribeCostCheckResultsRequest(TeaModel):
     def __init__(
         self,
@@ -2047,10 +2151,12 @@ class DescribeCostCheckResultsRequest(TeaModel):
         group_by: str = None,
         product: str = None,
         region_ids: List[str] = None,
+        resource_group_id_list: List[str] = None,
         resource_ids: List[str] = None,
         resource_name: str = None,
         severity: int = None,
         tag_keys: List[str] = None,
+        tag_list: List[DescribeCostCheckResultsRequestTagList] = None,
         tag_values: List[str] = None,
     ):
         self.assume_aliyun_id_list = assume_aliyun_id_list
@@ -2058,14 +2164,19 @@ class DescribeCostCheckResultsRequest(TeaModel):
         self.group_by = group_by
         self.product = product
         self.region_ids = region_ids
+        self.resource_group_id_list = resource_group_id_list
         self.resource_ids = resource_ids
         self.resource_name = resource_name
         self.severity = severity
         self.tag_keys = tag_keys
+        self.tag_list = tag_list
         self.tag_values = tag_values
 
     def validate(self):
-        pass
+        if self.tag_list:
+            for k in self.tag_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2083,6 +2194,8 @@ class DescribeCostCheckResultsRequest(TeaModel):
             result['Product'] = self.product
         if self.region_ids is not None:
             result['RegionIds'] = self.region_ids
+        if self.resource_group_id_list is not None:
+            result['ResourceGroupIdList'] = self.resource_group_id_list
         if self.resource_ids is not None:
             result['ResourceIds'] = self.resource_ids
         if self.resource_name is not None:
@@ -2091,6 +2204,10 @@ class DescribeCostCheckResultsRequest(TeaModel):
             result['Severity'] = self.severity
         if self.tag_keys is not None:
             result['TagKeys'] = self.tag_keys
+        result['TagList'] = []
+        if self.tag_list is not None:
+            for k in self.tag_list:
+                result['TagList'].append(k.to_map() if k else None)
         if self.tag_values is not None:
             result['TagValues'] = self.tag_values
         return result
@@ -2107,6 +2224,8 @@ class DescribeCostCheckResultsRequest(TeaModel):
             self.product = m.get('Product')
         if m.get('RegionIds') is not None:
             self.region_ids = m.get('RegionIds')
+        if m.get('ResourceGroupIdList') is not None:
+            self.resource_group_id_list = m.get('ResourceGroupIdList')
         if m.get('ResourceIds') is not None:
             self.resource_ids = m.get('ResourceIds')
         if m.get('ResourceName') is not None:
@@ -2115,6 +2234,11 @@ class DescribeCostCheckResultsRequest(TeaModel):
             self.severity = m.get('Severity')
         if m.get('TagKeys') is not None:
             self.tag_keys = m.get('TagKeys')
+        self.tag_list = []
+        if m.get('TagList') is not None:
+            for k in m.get('TagList'):
+                temp_model = DescribeCostCheckResultsRequestTagList()
+                self.tag_list.append(temp_model.from_map(k))
         if m.get('TagValues') is not None:
             self.tag_values = m.get('TagValues')
         return self
@@ -2128,10 +2252,12 @@ class DescribeCostCheckResultsShrinkRequest(TeaModel):
         group_by: str = None,
         product: str = None,
         region_ids_shrink: str = None,
+        resource_group_id_list_shrink: str = None,
         resource_ids_shrink: str = None,
         resource_name: str = None,
         severity: int = None,
         tag_keys_shrink: str = None,
+        tag_list_shrink: str = None,
         tag_values_shrink: str = None,
     ):
         self.assume_aliyun_id_list_shrink = assume_aliyun_id_list_shrink
@@ -2139,10 +2265,12 @@ class DescribeCostCheckResultsShrinkRequest(TeaModel):
         self.group_by = group_by
         self.product = product
         self.region_ids_shrink = region_ids_shrink
+        self.resource_group_id_list_shrink = resource_group_id_list_shrink
         self.resource_ids_shrink = resource_ids_shrink
         self.resource_name = resource_name
         self.severity = severity
         self.tag_keys_shrink = tag_keys_shrink
+        self.tag_list_shrink = tag_list_shrink
         self.tag_values_shrink = tag_values_shrink
 
     def validate(self):
@@ -2164,6 +2292,8 @@ class DescribeCostCheckResultsShrinkRequest(TeaModel):
             result['Product'] = self.product
         if self.region_ids_shrink is not None:
             result['RegionIds'] = self.region_ids_shrink
+        if self.resource_group_id_list_shrink is not None:
+            result['ResourceGroupIdList'] = self.resource_group_id_list_shrink
         if self.resource_ids_shrink is not None:
             result['ResourceIds'] = self.resource_ids_shrink
         if self.resource_name is not None:
@@ -2172,6 +2302,8 @@ class DescribeCostCheckResultsShrinkRequest(TeaModel):
             result['Severity'] = self.severity
         if self.tag_keys_shrink is not None:
             result['TagKeys'] = self.tag_keys_shrink
+        if self.tag_list_shrink is not None:
+            result['TagList'] = self.tag_list_shrink
         if self.tag_values_shrink is not None:
             result['TagValues'] = self.tag_values_shrink
         return result
@@ -2188,6 +2320,8 @@ class DescribeCostCheckResultsShrinkRequest(TeaModel):
             self.product = m.get('Product')
         if m.get('RegionIds') is not None:
             self.region_ids_shrink = m.get('RegionIds')
+        if m.get('ResourceGroupIdList') is not None:
+            self.resource_group_id_list_shrink = m.get('ResourceGroupIdList')
         if m.get('ResourceIds') is not None:
             self.resource_ids_shrink = m.get('ResourceIds')
         if m.get('ResourceName') is not None:
@@ -2196,6 +2330,8 @@ class DescribeCostCheckResultsShrinkRequest(TeaModel):
             self.severity = m.get('Severity')
         if m.get('TagKeys') is not None:
             self.tag_keys_shrink = m.get('TagKeys')
+        if m.get('TagList') is not None:
+            self.tag_list_shrink = m.get('TagList')
         if m.get('TagValues') is not None:
             self.tag_values_shrink = m.get('TagValues')
         return self
@@ -2922,18 +3058,24 @@ class GetTaskStatusByIdResponse(TeaModel):
         return self
 
 
-class RefreshAdvisorCheckRequest(TeaModel):
+class RefreshAdvisorCheckRequestResourceDimensionList(TeaModel):
     def __init__(
         self,
-        check_id: str = None,
-        language: str = None,
+        cost: bool = None,
+        performance: bool = None,
         product: str = None,
-        resource_id: str = None,
+        product_name: str = None,
+        reliablility: bool = None,
+        security: bool = None,
+        service: bool = None,
     ):
-        self.check_id = check_id
-        self.language = language
+        self.cost = cost
+        self.performance = performance
         self.product = product
-        self.resource_id = resource_id
+        self.product_name = product_name
+        self.reliablility = reliablility
+        self.security = security
+        self.service = service
 
     def validate(self):
         pass
@@ -2944,36 +3086,196 @@ class RefreshAdvisorCheckRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.check_id is not None:
-            result['CheckId'] = self.check_id
-        if self.language is not None:
-            result['Language'] = self.language
+        if self.cost is not None:
+            result['Cost'] = self.cost
+        if self.performance is not None:
+            result['Performance'] = self.performance
         if self.product is not None:
             result['Product'] = self.product
-        if self.resource_id is not None:
-            result['ResourceId'] = self.resource_id
+        if self.product_name is not None:
+            result['ProductName'] = self.product_name
+        if self.reliablility is not None:
+            result['Reliablility'] = self.reliablility
+        if self.security is not None:
+            result['Security'] = self.security
+        if self.service is not None:
+            result['Service'] = self.service
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Cost') is not None:
+            self.cost = m.get('Cost')
+        if m.get('Performance') is not None:
+            self.performance = m.get('Performance')
+        if m.get('Product') is not None:
+            self.product = m.get('Product')
+        if m.get('ProductName') is not None:
+            self.product_name = m.get('ProductName')
+        if m.get('Reliablility') is not None:
+            self.reliablility = m.get('Reliablility')
+        if m.get('Security') is not None:
+            self.security = m.get('Security')
+        if m.get('Service') is not None:
+            self.service = m.get('Service')
+        return self
+
+
+class RefreshAdvisorCheckRequest(TeaModel):
+    def __init__(
+        self,
+        assume_aliyun_id: int = None,
+        check_id: str = None,
+        check_plan_id: int = None,
+        language: str = None,
+        product: str = None,
+        resource_dimension_list: List[RefreshAdvisorCheckRequestResourceDimensionList] = None,
+        resource_id: str = None,
+        token: str = None,
+    ):
+        self.assume_aliyun_id = assume_aliyun_id
+        self.check_id = check_id
+        self.check_plan_id = check_plan_id
+        self.language = language
+        self.product = product
+        self.resource_dimension_list = resource_dimension_list
+        self.resource_id = resource_id
+        self.token = token
+
+    def validate(self):
+        if self.resource_dimension_list:
+            for k in self.resource_dimension_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assume_aliyun_id is not None:
+            result['AssumeAliyunId'] = self.assume_aliyun_id
+        if self.check_id is not None:
+            result['CheckId'] = self.check_id
+        if self.check_plan_id is not None:
+            result['CheckPlanId'] = self.check_plan_id
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.product is not None:
+            result['Product'] = self.product
+        result['ResourceDimensionList'] = []
+        if self.resource_dimension_list is not None:
+            for k in self.resource_dimension_list:
+                result['ResourceDimensionList'].append(k.to_map() if k else None)
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.token is not None:
+            result['Token'] = self.token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssumeAliyunId') is not None:
+            self.assume_aliyun_id = m.get('AssumeAliyunId')
         if m.get('CheckId') is not None:
             self.check_id = m.get('CheckId')
+        if m.get('CheckPlanId') is not None:
+            self.check_plan_id = m.get('CheckPlanId')
         if m.get('Language') is not None:
             self.language = m.get('Language')
         if m.get('Product') is not None:
             self.product = m.get('Product')
+        self.resource_dimension_list = []
+        if m.get('ResourceDimensionList') is not None:
+            for k in m.get('ResourceDimensionList'):
+                temp_model = RefreshAdvisorCheckRequestResourceDimensionList()
+                self.resource_dimension_list.append(temp_model.from_map(k))
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        return self
+
+
+class RefreshAdvisorCheckShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        assume_aliyun_id: int = None,
+        check_id: str = None,
+        check_plan_id: int = None,
+        language: str = None,
+        product: str = None,
+        resource_dimension_list_shrink: str = None,
+        resource_id: str = None,
+        token: str = None,
+    ):
+        self.assume_aliyun_id = assume_aliyun_id
+        self.check_id = check_id
+        self.check_plan_id = check_plan_id
+        self.language = language
+        self.product = product
+        self.resource_dimension_list_shrink = resource_dimension_list_shrink
+        self.resource_id = resource_id
+        self.token = token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assume_aliyun_id is not None:
+            result['AssumeAliyunId'] = self.assume_aliyun_id
+        if self.check_id is not None:
+            result['CheckId'] = self.check_id
+        if self.check_plan_id is not None:
+            result['CheckPlanId'] = self.check_plan_id
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.product is not None:
+            result['Product'] = self.product
+        if self.resource_dimension_list_shrink is not None:
+            result['ResourceDimensionList'] = self.resource_dimension_list_shrink
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.token is not None:
+            result['Token'] = self.token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssumeAliyunId') is not None:
+            self.assume_aliyun_id = m.get('AssumeAliyunId')
+        if m.get('CheckId') is not None:
+            self.check_id = m.get('CheckId')
+        if m.get('CheckPlanId') is not None:
+            self.check_plan_id = m.get('CheckPlanId')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('Product') is not None:
+            self.product = m.get('Product')
+        if m.get('ResourceDimensionList') is not None:
+            self.resource_dimension_list_shrink = m.get('ResourceDimensionList')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
         return self
 
 
 class RefreshAdvisorCheckResponseBodyData(TeaModel):
     def __init__(
         self,
+        message: str = None,
         success: bool = None,
         task_id: int = None,
         trace_id: str = None,
     ):
+        self.message = message
         self.success = success
         self.task_id = task_id
         self.trace_id = trace_id
@@ -2987,6 +3289,8 @@ class RefreshAdvisorCheckResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.success is not None:
             result['Success'] = self.success
         if self.task_id is not None:
@@ -2997,6 +3301,8 @@ class RefreshAdvisorCheckResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('Success') is not None:
             self.success = m.get('Success')
         if m.get('TaskId') is not None:
