@@ -12,6 +12,20 @@
 - Update API RefreshAdvisorCheck: update response param.
 
 
+2025-03-12 Version: 1.5.1
+- Update API DescribeAdvices: add param CheckPlanId.
+- Update API DescribeAdvices: update response param.
+- Update API DescribeAdvicesPage: add param CheckPlanId.
+- Update API DescribeCostCheckAdvices: add param TagList.
+- Update API DescribeCostCheckResults: add param ResourceGroupIdList.
+- Update API DescribeCostCheckResults: add param TagList.
+- Update API RefreshAdvisorCheck: add param AssumeAliyunId.
+- Update API RefreshAdvisorCheck: add param CheckPlanId.
+- Update API RefreshAdvisorCheck: add param ResourceDimensionList.
+- Update API RefreshAdvisorCheck: add param Token.
+- Update API RefreshAdvisorCheck: update response param.
+
+
 2024-06-13 Version: 1.5.0
 - Support API RefreshAdvisorCostCheck.
 - Update API DescribeCostCheckAdvices: add param AssumeAliyunIdList.
