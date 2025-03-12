@@ -2800,6 +2800,10 @@ class CreateProjectRequestFullTransferConfig(TeaModel):
         allow_dest_table_not_empty: bool = None,
         full_transfer_speed_mode: str = None,
         full_verify_speed_mode: str = None,
+        hbase_obj_check_mode: str = None,
+        hbase_obj_mig_mode: str = None,
+        index_ddlconcurrency_limit: int = None,
+        max_concurrent_index_ddls: int = None,
         none_pk_uk_truncate_dst_table: bool = None,
         read_worker_num: int = None,
         throttle_iops: int = None,
@@ -2809,6 +2813,10 @@ class CreateProjectRequestFullTransferConfig(TeaModel):
         self.allow_dest_table_not_empty = allow_dest_table_not_empty
         self.full_transfer_speed_mode = full_transfer_speed_mode
         self.full_verify_speed_mode = full_verify_speed_mode
+        self.hbase_obj_check_mode = hbase_obj_check_mode
+        self.hbase_obj_mig_mode = hbase_obj_mig_mode
+        self.index_ddlconcurrency_limit = index_ddlconcurrency_limit
+        self.max_concurrent_index_ddls = max_concurrent_index_ddls
         self.none_pk_uk_truncate_dst_table = none_pk_uk_truncate_dst_table
         self.read_worker_num = read_worker_num
         self.throttle_iops = throttle_iops
@@ -2830,6 +2838,14 @@ class CreateProjectRequestFullTransferConfig(TeaModel):
             result['FullTransferSpeedMode'] = self.full_transfer_speed_mode
         if self.full_verify_speed_mode is not None:
             result['FullVerifySpeedMode'] = self.full_verify_speed_mode
+        if self.hbase_obj_check_mode is not None:
+            result['HbaseObjCheckMode'] = self.hbase_obj_check_mode
+        if self.hbase_obj_mig_mode is not None:
+            result['HbaseObjMigMode'] = self.hbase_obj_mig_mode
+        if self.index_ddlconcurrency_limit is not None:
+            result['IndexDDLConcurrencyLimit'] = self.index_ddlconcurrency_limit
+        if self.max_concurrent_index_ddls is not None:
+            result['MaxConcurrentIndexDDLs'] = self.max_concurrent_index_ddls
         if self.none_pk_uk_truncate_dst_table is not None:
             result['NonePkUkTruncateDstTable'] = self.none_pk_uk_truncate_dst_table
         if self.read_worker_num is not None:
@@ -2850,6 +2866,14 @@ class CreateProjectRequestFullTransferConfig(TeaModel):
             self.full_transfer_speed_mode = m.get('FullTransferSpeedMode')
         if m.get('FullVerifySpeedMode') is not None:
             self.full_verify_speed_mode = m.get('FullVerifySpeedMode')
+        if m.get('HbaseObjCheckMode') is not None:
+            self.hbase_obj_check_mode = m.get('HbaseObjCheckMode')
+        if m.get('HbaseObjMigMode') is not None:
+            self.hbase_obj_mig_mode = m.get('HbaseObjMigMode')
+        if m.get('IndexDDLConcurrencyLimit') is not None:
+            self.index_ddlconcurrency_limit = m.get('IndexDDLConcurrencyLimit')
+        if m.get('MaxConcurrentIndexDDLs') is not None:
+            self.max_concurrent_index_ddls = m.get('MaxConcurrentIndexDDLs')
         if m.get('NonePkUkTruncateDstTable') is not None:
             self.none_pk_uk_truncate_dst_table = m.get('NonePkUkTruncateDstTable')
         if m.get('ReadWorkerNum') is not None:
@@ -3311,6 +3335,45 @@ class CreateProjectRequestTransferMappingDatabasesTablesAdbTableSchema(TeaModel)
         return self
 
 
+class CreateProjectRequestTransferMappingDatabasesTablesObkvPartitionConfig(TeaModel):
+    def __init__(
+        self,
+        partition_size: int = None,
+        partition_type: str = None,
+        virtual_column: str = None,
+    ):
+        self.partition_size = partition_size
+        self.partition_type = partition_type
+        self.virtual_column = virtual_column
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.partition_size is not None:
+            result['PartitionSize'] = self.partition_size
+        if self.partition_type is not None:
+            result['PartitionType'] = self.partition_type
+        if self.virtual_column is not None:
+            result['VirtualColumn'] = self.virtual_column
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PartitionSize') is not None:
+            self.partition_size = m.get('PartitionSize')
+        if m.get('PartitionType') is not None:
+            self.partition_type = m.get('PartitionType')
+        if m.get('VirtualColumn') is not None:
+            self.virtual_column = m.get('VirtualColumn')
+        return self
+
+
 class CreateProjectRequestTransferMappingDatabasesTables(TeaModel):
     def __init__(
         self,
@@ -3319,6 +3382,7 @@ class CreateProjectRequestTransferMappingDatabasesTables(TeaModel):
         id: str = None,
         mapped_name: str = None,
         name: str = None,
+        obkv_partition_config: CreateProjectRequestTransferMappingDatabasesTablesObkvPartitionConfig = None,
         shard_columns: List[str] = None,
         where_clause: str = None,
     ):
@@ -3327,12 +3391,15 @@ class CreateProjectRequestTransferMappingDatabasesTables(TeaModel):
         self.id = id
         self.mapped_name = mapped_name
         self.name = name
+        self.obkv_partition_config = obkv_partition_config
         self.shard_columns = shard_columns
         self.where_clause = where_clause
 
     def validate(self):
         if self.adb_table_schema:
             self.adb_table_schema.validate()
+        if self.obkv_partition_config:
+            self.obkv_partition_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3350,6 +3417,8 @@ class CreateProjectRequestTransferMappingDatabasesTables(TeaModel):
             result['MappedName'] = self.mapped_name
         if self.name is not None:
             result['Name'] = self.name
+        if self.obkv_partition_config is not None:
+            result['ObkvPartitionConfig'] = self.obkv_partition_config.to_map()
         if self.shard_columns is not None:
             result['ShardColumns'] = self.shard_columns
         if self.where_clause is not None:
@@ -3369,6 +3438,9 @@ class CreateProjectRequestTransferMappingDatabasesTables(TeaModel):
             self.mapped_name = m.get('MappedName')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('ObkvPartitionConfig') is not None:
+            temp_model = CreateProjectRequestTransferMappingDatabasesTablesObkvPartitionConfig()
+            self.obkv_partition_config = temp_model.from_map(m['ObkvPartitionConfig'])
         if m.get('ShardColumns') is not None:
             self.shard_columns = m.get('ShardColumns')
         if m.get('WhereClause') is not None:
@@ -5021,6 +5093,45 @@ class CreateProjectModifyRecordsRequestDatabasesTablesAdbTableSchema(TeaModel):
         return self
 
 
+class CreateProjectModifyRecordsRequestDatabasesTablesObkvPartitionConfig(TeaModel):
+    def __init__(
+        self,
+        partition_size: int = None,
+        partition_type: str = None,
+        virtual_column: str = None,
+    ):
+        self.partition_size = partition_size
+        self.partition_type = partition_type
+        self.virtual_column = virtual_column
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.partition_size is not None:
+            result['PartitionSize'] = self.partition_size
+        if self.partition_type is not None:
+            result['PartitionType'] = self.partition_type
+        if self.virtual_column is not None:
+            result['VirtualColumn'] = self.virtual_column
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PartitionSize') is not None:
+            self.partition_size = m.get('PartitionSize')
+        if m.get('PartitionType') is not None:
+            self.partition_type = m.get('PartitionType')
+        if m.get('VirtualColumn') is not None:
+            self.virtual_column = m.get('VirtualColumn')
+        return self
+
+
 class CreateProjectModifyRecordsRequestDatabasesTables(TeaModel):
     def __init__(
         self,
@@ -5029,6 +5140,7 @@ class CreateProjectModifyRecordsRequestDatabasesTables(TeaModel):
         id: str = None,
         mapped_name: str = None,
         name: str = None,
+        obkv_partition_config: CreateProjectModifyRecordsRequestDatabasesTablesObkvPartitionConfig = None,
         shard_columns: List[str] = None,
         where_clause: str = None,
     ):
@@ -5037,12 +5149,15 @@ class CreateProjectModifyRecordsRequestDatabasesTables(TeaModel):
         self.id = id
         self.mapped_name = mapped_name
         self.name = name
+        self.obkv_partition_config = obkv_partition_config
         self.shard_columns = shard_columns
         self.where_clause = where_clause
 
     def validate(self):
         if self.adb_table_schema:
             self.adb_table_schema.validate()
+        if self.obkv_partition_config:
+            self.obkv_partition_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5060,6 +5175,8 @@ class CreateProjectModifyRecordsRequestDatabasesTables(TeaModel):
             result['MappedName'] = self.mapped_name
         if self.name is not None:
             result['Name'] = self.name
+        if self.obkv_partition_config is not None:
+            result['ObkvPartitionConfig'] = self.obkv_partition_config.to_map()
         if self.shard_columns is not None:
             result['ShardColumns'] = self.shard_columns
         if self.where_clause is not None:
@@ -5079,6 +5196,9 @@ class CreateProjectModifyRecordsRequestDatabasesTables(TeaModel):
             self.mapped_name = m.get('MappedName')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('ObkvPartitionConfig') is not None:
+            temp_model = CreateProjectModifyRecordsRequestDatabasesTablesObkvPartitionConfig()
+            self.obkv_partition_config = temp_model.from_map(m['ObkvPartitionConfig'])
         if m.get('ShardColumns') is not None:
             self.shard_columns = m.get('ShardColumns')
         if m.get('WhereClause') is not None:
@@ -6333,6 +6453,7 @@ class CreateTenantRequest(TeaModel):
         # 
         # This parameter is required.
         self.cpu = cpu
+        # The initialization parameters.
         self.create_params = create_params
         # The description of the database.
         self.description = description
@@ -6386,6 +6507,7 @@ class CreateTenantRequest(TeaModel):
         # 
         # This parameter is required.
         self.user_vpc_id = user_vpc_id
+        # The ID of the VPC owner.
         self.user_vpc_owner_id = user_vpc_owner_id
 
     def validate(self):
@@ -6499,6 +6621,7 @@ class CreateTenantShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.cpu = cpu
+        # The initialization parameters.
         self.create_params_shrink = create_params_shrink
         # The description of the database.
         self.description = description
@@ -6552,6 +6675,7 @@ class CreateTenantShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.user_vpc_id = user_vpc_id
+        # The ID of the VPC owner.
         self.user_vpc_owner_id = user_vpc_owner_id
 
     def validate(self):
@@ -7028,6 +7152,7 @@ class CreateTenantUserRequest(TeaModel):
         self,
         description: str = None,
         encryption_type: str = None,
+        global_permissions: str = None,
         instance_id: str = None,
         roles: str = None,
         tenant_id: str = None,
@@ -7039,6 +7164,7 @@ class CreateTenantUserRequest(TeaModel):
         self.description = description
         # 加密方式。
         self.encryption_type = encryption_type
+        self.global_permissions = global_permissions
         # The ID of the OceanBase cluster.
         # 
         # This parameter is required.
@@ -7075,6 +7201,8 @@ class CreateTenantUserRequest(TeaModel):
             result['Description'] = self.description
         if self.encryption_type is not None:
             result['EncryptionType'] = self.encryption_type
+        if self.global_permissions is not None:
+            result['GlobalPermissions'] = self.global_permissions
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.roles is not None:
@@ -7095,6 +7223,8 @@ class CreateTenantUserRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('EncryptionType') is not None:
             self.encryption_type = m.get('EncryptionType')
+        if m.get('GlobalPermissions') is not None:
+            self.global_permissions = m.get('GlobalPermissions')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Roles') is not None:
@@ -7146,11 +7276,13 @@ class CreateTenantUserResponseBodyTenantUserRoles(TeaModel):
 class CreateTenantUserResponseBodyTenantUser(TeaModel):
     def __init__(
         self,
+        global_permissions: str = None,
         roles: List[CreateTenantUserResponseBodyTenantUserRoles] = None,
         user_name: str = None,
         user_status: str = None,
         user_type: str = None,
     ):
+        self.global_permissions = global_permissions
         self.roles = roles
         self.user_name = user_name
         self.user_status = user_status
@@ -7168,6 +7300,8 @@ class CreateTenantUserResponseBodyTenantUser(TeaModel):
             return _map
 
         result = dict()
+        if self.global_permissions is not None:
+            result['GlobalPermissions'] = self.global_permissions
         result['Roles'] = []
         if self.roles is not None:
             for k in self.roles:
@@ -7182,6 +7316,8 @@ class CreateTenantUserResponseBodyTenantUser(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('GlobalPermissions') is not None:
+            self.global_permissions = m.get('GlobalPermissions')
         self.roles = []
         if m.get('Roles') is not None:
             for k in m.get('Roles'):
@@ -11747,15 +11883,15 @@ class DescribeInstanceRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
-        max_connection_limit: str = None,
         page_number: int = None,
     ):
-        # The size of the data disk, in GB.
+        # The ID of the OceanBase cluster.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        self.max_connection_limit = max_connection_limit
-        # The information about the storage resources of the cluster.
+        # The number of the page to return.
+        # - Pages start from page 1.
+        # - Default value: 1.
         self.page_number = page_number
 
     def validate(self):
@@ -11769,8 +11905,6 @@ class DescribeInstanceRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.max_connection_limit is not None:
-            result['MaxConnectionLimit'] = self.max_connection_limit
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         return result
@@ -11779,8 +11913,6 @@ class DescribeInstanceRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('MaxConnectionLimit') is not None:
-            self.max_connection_limit = m.get('MaxConnectionLimit')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         return self
@@ -11799,14 +11931,23 @@ class DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig(TeaModel):
         upper_threshold: int = None,
         upperbound: int = None,
     ):
+        # Specifies whether to enable the automatic scaling of the data disk.
         self.auto_scale = auto_scale
+        # The maximum size of the disk, in GB.
         self.max_disk_size = max_disk_size
+        # The size of scaling step during a major compaction.
         self.scale_step_in_merge = scale_step_in_merge
+        # The size of scaling step during daily use.
         self.scale_step_in_normal = scale_step_in_normal
+        # The maximum usage of the data disk, in percentage, that triggers the scaling of the data disk for major compactions.
         self.upper_merge_threshold = upper_merge_threshold
+        # The step size of the scale-out.
         self.upper_scale_step = upper_scale_step
+        # The scale-out strategy. Valid values: RAW and PERCENTAGE.
         self.upper_scale_strategy = upper_scale_strategy
+        # The maximum usage of the data disk, in percentage, that triggers the scaling of the data disk for daily use.
         self.upper_threshold = upper_threshold
+        # The maximum space, in GB, to which the data disk can be scaled.
         self.upperbound = upperbound
 
     def validate(self):
@@ -11868,8 +12009,11 @@ class DescribeInstanceResponseBodyInstanceReadOnlyResourceCapacityUnit(TeaModel)
         min_capacity_unit: int = None,
         used_capacity_unit: str = None,
     ):
+        # The maximum number of capacity units.
         self.max_capacity_unit = max_capacity_unit
+        # The minimum number of capacity units.
         self.min_capacity_unit = min_capacity_unit
+        # The number of used capacity units.
         self.used_capacity_unit = used_capacity_unit
 
     def validate(self):
@@ -11908,9 +12052,13 @@ class DescribeInstanceResponseBodyInstanceReadOnlyResourceCpu(TeaModel):
         unit_cpu: int = None,
         used_cpu: int = None,
     ):
+        # The number of original CPU cores in the cluster.
         self.original_total_cpu = original_total_cpu
+        # The total number of CPU cores of the cluster.
         self.total_cpu = total_cpu
+        # The number of CPU cores of each replica node in the cluster.
         self.unit_cpu = unit_cpu
+        # The number of CPU cores used by the cluster.
         self.used_cpu = used_cpu
 
     def validate(self):
@@ -11957,13 +12105,21 @@ class DescribeInstanceResponseBodyInstanceReadOnlyResourceDiskSize(TeaModel):
         unit_disk_size: int = None,
         used_disk_size: int = None,
     ):
+        # The size of the data disk, in GB.
         self.data_used_size = data_used_size
+        # The maximum disk size that can be created.
         self.max_disk_size = max_disk_size
+        # The maximum disk usage of the OBServer node.
         self.max_disk_used_ob_server = max_disk_used_ob_server
+        # The maximum disk usage, in percentage.
         self.max_disk_used_percent = max_disk_used_percent
+        # The original size of the disk.
         self.original_total_disk_size = original_total_disk_size
+        # The total storage space of the cluster, in GB.
         self.total_disk_size = total_disk_size
+        # The storage space of each replica node in the cluster, in GB.
         self.unit_disk_size = unit_disk_size
+        # The size of used storage space of the cluster, in GB.
         self.used_disk_size = used_disk_size
 
     def validate(self):
@@ -12023,10 +12179,15 @@ class DescribeInstanceResponseBodyInstanceReadOnlyResourceLogDiskSize(TeaModel):
         total_disk_size: int = None,
         unit_disk_size: int = None,
     ):
+        # The allocated disk space for log storage, in GB.
         self.log_assigned_size = log_assigned_size
+        # The maximum storage space allocated for.
         self.max_log_assigned_ob_server = max_log_assigned_ob_server
+        # The maximum percentage of space allocated for log storage.
         self.max_log_assigned_percent = max_log_assigned_percent
+        # The information about the log disk space of the cluster.
         self.total_disk_size = total_disk_size
+        # The log disk space of each replica node in the cluster, in GB.
         self.unit_disk_size = unit_disk_size
 
     def validate(self):
@@ -12073,9 +12234,13 @@ class DescribeInstanceResponseBodyInstanceReadOnlyResourceMemory(TeaModel):
         unit_memory: int = None,
         used_memory: int = None,
     ):
+        # The original memory size of the cluster.
         self.original_total_memory = original_total_memory
+        # The total memory size of the cluster, in GB.
         self.total_memory = total_memory
+        # The memory size of each replica node in the cluster, in GB.
         self.unit_memory = unit_memory
+        # The size of memory used by the cluster, in GB.
         self.used_memory = used_memory
 
     def validate(self):
@@ -12120,11 +12285,17 @@ class DescribeInstanceResponseBodyInstanceReadOnlyResource(TeaModel):
         memory: DescribeInstanceResponseBodyInstanceReadOnlyResourceMemory = None,
         unit_count: int = None,
     ):
+        # The information about capacity units.
         self.capacity_unit = capacity_unit
+        # The information about the CPU resources of the cluster.
         self.cpu = cpu
+        # The information about the storage resources of the cluster.
         self.disk_size = disk_size
+        # The information about the log disk space of the cluster.
         self.log_disk_size = log_disk_size
+        # The information about the memory resources of the cluster.
         self.memory = memory
+        # The number of resource units in the cluster.
         self.unit_count = unit_count
 
     def validate(self):
@@ -12188,8 +12359,11 @@ class DescribeInstanceResponseBodyInstanceResourceCapacityUnit(TeaModel):
         min_capacity_unit: int = None,
         used_capacity_unit: str = None,
     ):
+        # The maximum number of capacity units.
         self.max_capacity_unit = max_capacity_unit
+        # The minimum number of capacity units.
         self.min_capacity_unit = min_capacity_unit
+        # The number of used capacity units.
         self.used_capacity_unit = used_capacity_unit
 
     def validate(self):
@@ -12228,16 +12402,13 @@ class DescribeInstanceResponseBodyInstanceResourceCpu(TeaModel):
         unit_cpu: int = None,
         used_cpu: int = None,
     ):
+        # The number of original CPU cores in the cluster.
         self.original_total_cpu = original_total_cpu
-        # The series of the OceanBase cluster. Valid values:   
-        # - NORMAL: the high availability edition.   
-        # - BASIC: the basic edition.
+        # The total number of CPU cores of the cluster.
         self.total_cpu = total_cpu
-        # The type of the storage disk where the cluster is deployed. 
-        # 
-        # The default value is cloud_essd_pl1, which indicates an ESSD cloud disk.
+        # The number of CPU cores of each replica node in the cluster.
         self.unit_cpu = unit_cpu
-        # Indicates whether automatic upgrade of the OBServer version is enabled.
+        # The number of CPU cores used in the cluster.
         self.used_cpu = used_cpu
 
     def validate(self):
@@ -12284,28 +12455,21 @@ class DescribeInstanceResponseBodyInstanceResourceDiskSize(TeaModel):
         unit_disk_size: int = None,
         used_disk_size: int = None,
     ):
-        # The ID of the OceanBase cluster.
+        # The size of the data disk, in GB.
         self.data_used_size = data_used_size
+        # The maximum disk size that can be created.
         self.max_disk_size = max_disk_size
-        # The time in UTC when the cluster expires.
+        # The maximum disk usage of the OBServer node.
         self.max_disk_used_ob_server = max_disk_used_ob_server
         # The maximum disk usage, in percentage.
         self.max_disk_used_percent = max_disk_used_percent
+        # The original size of the disk.
         self.original_total_disk_size = original_total_disk_size
-        # The data replica distribution mode of the cluster. Valid values: 
-        # - n: indicates the single-IDC mode. 
-        # - n-n: indicates the dual-IDC mode. 
-        # - n-n-n: indicates the multi-IDC mode. 
-        # 
-        # > <br>The integer n represents the number of OBServer nodes in each IDC.
+        # The total storage space of the cluster, in GB.
         self.total_disk_size = total_disk_size
-        # The list of zones.
+        # The storage space of each replica node in the cluster, in GB.
         self.unit_disk_size = unit_disk_size
-        # The specifications of the cluster.  You can specify one of the following four plans:    
-        # - 8C32G: indicates 8 CPU cores and 32 GB of memory. 
-        # - 14C70G: indicates 14 CPU cores and 70 GB of memory. 
-        # - 30C180G: indicates 30 CPU cores and 180 GB of memory. 
-        # - 62C400G: indicates 62 CPU cores and 400 GB of memory.
+        # The size of used storage space of the cluster, in GB.
         self.used_disk_size = used_disk_size
 
     def validate(self):
@@ -12366,13 +12530,17 @@ class DescribeInstanceResponseBodyInstanceResourceLogDiskSize(TeaModel):
         total_disk_size: int = None,
         unit_disk_size: int = None,
     ):
+        # The allocated disk space for log storage, in GB.
         self.log_assigned_size = log_assigned_size
+        # The maximum storage space allocated for.
         self.max_log_assigned_ob_server = max_log_assigned_ob_server
+        # The maximum percentage of space allocated for log storage.
         self.max_log_assigned_percent = max_log_assigned_percent
+        # The original size of the disk.
         self.original_total_disk_size = original_total_disk_size
-        # The ID of the region.
+        # The total log disk space of the cluster, in GB.
         self.total_disk_size = total_disk_size
-        # The request ID.
+        # The log disk space of each replica node in the cluster. Unit: GB.
         self.unit_disk_size = unit_disk_size
 
     def validate(self):
@@ -12423,12 +12591,13 @@ class DescribeInstanceResponseBodyInstanceResourceMemory(TeaModel):
         unit_memory: int = None,
         used_memory: int = None,
     ):
+        # The original memory size of the cluster, in GB.
         self.original_total_memory = original_total_memory
-        # Indicates whether trusted ECS instances are used.
+        # The total memory size of the cluster, in GB.
         self.total_memory = total_memory
-        # The log disk space of each replica node in the cluster. Unit: GB.
+        # The memory size of each replica node in the cluster, in GB.
         self.unit_memory = unit_memory
-        # The time in UTC when the cluster was created.
+        # The size of used memory in the cluster, in GB.
         self.used_memory = used_memory
 
     def validate(self):
@@ -12473,18 +12642,17 @@ class DescribeInstanceResponseBodyInstanceResource(TeaModel):
         memory: DescribeInstanceResponseBodyInstanceResourceMemory = None,
         unit_count: int = None,
     ):
+        # The information about capacity units.
         self.capacity_unit = capacity_unit
-        # The information of the OceanBase cluster.
+        # The information about the CPU resources of the cluster.
         self.cpu = cpu
-        # The number of the page to return. 
-        # - Start value: 1  
-        # - Default value: 1
+        # The information about the storage resources of the cluster.
         self.disk_size = disk_size
-        # The server with the highest disk usage.
+        # The information about the log disk space of the cluster.
         self.log_disk_size = log_disk_size
-        # The name of the OceanBase cluster.
+        # The information about the memory resources of the cluster.
         self.memory = memory
-        # The number of CPU cores used in the cluster.
+        # The number of resource units in the cluster.
         self.unit_count = unit_count
 
     def validate(self):
@@ -12547,7 +12715,9 @@ class DescribeInstanceResponseBodyInstanceTenantCreatable(TeaModel):
         disable_create_tenant_reason: str = None,
         enable_create_tenant: bool = None,
     ):
+        # The reason why you cannot create a tenant in the cluster.
         self.disable_create_tenant_reason = disable_create_tenant_reason
+        # Specifies whether a tenant can be created.
         self.enable_create_tenant = enable_create_tenant
 
     def validate(self):
@@ -12625,70 +12795,147 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
         version: str = None,
         zones: List[str] = None,
     ):
+        # Indicates whether the OceanBase Database Proxy (ODP) SQL firewall is supported.
         self.allow_create_proxy_sql_firewall_rule = allow_create_proxy_sql_firewall_rule
+        # Indicates whether the maximum number of public connections can be modified.
         self.allow_modify_internet_address_connection_limit = allow_modify_internet_address_connection_limit
-        # The operation that you want to perform. <br>Set the value to **DescribeInstance**.
+        # Indicates whether automatic renewal is enabled. 
+        # 
+        # This parameter is valid only for clusters whose billing methods are set to PREPAY.
         self.auto_renewal = auto_renewal
-        # Example 1
-        self.auto_upgrade_ob_version = auto_upgrade_ob_version
-        self.available_zones = available_zones
-        self.cpu_architecture = cpu_architecture
-        # Indicates whether the log disk specifications can be upgraded.
-        self.create_time = create_time
-        self.data_disk_auto_scale = data_disk_auto_scale
-        self.data_disk_auto_scale_config = data_disk_auto_scale_config
-        # The total number of CPU cores of the cluster.
-        self.data_merge_time = data_merge_time
-        # Alibaba Cloud CLI
-        self.deploy_mode = deploy_mode
-        # It is an online CLI tool that allows you to quickly retrieve and debug APIs. It can dynamically generate executable SDK code samples.
-        self.deploy_type = deploy_type
-        # The total storage space of the cluster, in GB.
-        self.disk_type = disk_type
-        self.enable_isolation_optimization = enable_isolation_optimization
-        self.enable_proxy_service = enable_proxy_service
-        self.enable_read_only_replica = enable_read_only_replica
-        self.enable_read_only_replica_management = enable_read_only_replica_management
-        self.enable_upgrade_log_disk = enable_upgrade_log_disk
-        self.exclusive_unit_num_limit = exclusive_unit_num_limit
-        # The information of the OceanBase cluster.
-        self.expire_time = expire_time
-        self.in_temp_capacity_status = in_temp_capacity_status
-        # The detailed information of the OBServer version.
-        self.instance_class = instance_class
-        # The information about the log disk space of the cluster.
-        self.instance_id = instance_id
         # Indicates whether automatic upgrade of the OBServer version is enabled.
-        self.instance_name = instance_name
-        self.instance_role = instance_role
-        self.is_latest_ob_version = is_latest_ob_version
-        # The information about the CPU resources of the cluster.
-        self.is_trust_ecs = is_trust_ecs
-        self.isolation_optimization = isolation_optimization
-        # The time when the major compaction of cluster data is performed.
-        self.maintain_time = maintain_time
-        self.node_num = node_num
-        self.ob_rpm_version = ob_rpm_version
+        self.auto_upgrade_ob_version = auto_upgrade_ob_version
         # The list of zones.
-        self.pay_type = pay_type
-        self.primary_instance = primary_instance
-        self.primary_region = primary_region
-        self.proxy_cluster_id = proxy_cluster_id
-        self.proxy_service_status = proxy_service_status
-        self.read_only_resource = read_only_resource
-        self.replica_mode = replica_mode
-        # The size of used memory in the cluster, in GB.
-        self.resource = resource
+        self.available_zones = available_zones
+        # The CPU architecture of the cluster.
+        self.cpu_architecture = cpu_architecture
+        # The time in UTC when the cluster was created.
+        self.create_time = create_time
+        # Specifies whether to enable automatic scaling of the data disk.
+        # > <br>This parameter is deprecated.
+        self.data_disk_auto_scale = data_disk_auto_scale
+        # Specifies parameters for the automatic scaling of the data disk.
+        self.data_disk_auto_scale_config = data_disk_auto_scale_config
+        # The time when the major compaction of cluster data is performed.
+        self.data_merge_time = data_merge_time
+        # The data replica distribution mode of the cluster. Valid values: 
+        # - n: indicates the single-IDC mode. 
+        # - n-n: indicates the dual-IDC mode. 
+        # - n-n-n: indicates the multi-IDC mode. 
+        # 
+        # > <br>The integer n represents the number of OBServer nodes in each IDC.
+        self.deploy_mode = deploy_mode
+        # The deployment type of the cluster. Valid values:  
+        # - multiple: multi-IDC deployment   
+        # - single: single-IDC deployment   
+        # - dual: dual-IDC deployment
+        self.deploy_type = deploy_type
+        # The type of the storage disk where the cluster is deployed. 
+        # 
+        # The default value is cloud_essd_pl1, which indicates an ESSD cloud disk.
+        self.disk_type = disk_type
+        # Specifies whether to enable isolation optimization.
+        self.enable_isolation_optimization = enable_isolation_optimization
+        # Specifies whether to enable the proxy service.
+        # - true
+        # - false
+        self.enable_proxy_service = enable_proxy_service
+        # Indicates whether read-only replicas are supported.
+        self.enable_read_only_replica = enable_read_only_replica
+        # Indicates whether read-only replicas can be purchased for the cluster.
+        self.enable_read_only_replica_management = enable_read_only_replica_management
+        # Indicates whether the log disk specifications can be upgraded.
+        self.enable_upgrade_log_disk = enable_upgrade_log_disk
+        # The maximum number of units of the proxy service in exclusive mode.
+        self.exclusive_unit_num_limit = exclusive_unit_num_limit
+        # The time in UTC when the cluster expires.
+        self.expire_time = expire_time
+        # Specifies whether to indicate the temporary status of the capacity.
+        self.in_temp_capacity_status = in_temp_capacity_status
+        # The specifications of the cluster.  You can specify one of the following four plans:    
+        # - 8C32G: indicates 8 CPU cores and 32 GB of memory. 
+        # - 14C70G: indicates 14 CPU cores and 70 GB of memory. 
+        # - 30C180G: indicates 30 CPU cores and 180 GB of memory. 
+        # - 62C400G: indicates 62 CPU cores and 400 GB of memory.
+        self.instance_class = instance_class
+        # The ID of the OceanBase cluster.
+        self.instance_id = instance_id
+        # The name of the OceanBase cluster.
+        self.instance_name = instance_name
+        # The role of the instance.
+        self.instance_role = instance_role
         # Indicates whether the OBServer version is the latest.
-        self.series = series
-        self.shared_unit_num_limit = shared_unit_num_limit
-        self.spec_type = spec_type
+        self.is_latest_ob_version = is_latest_ob_version
+        # Indicates whether trusted ECS instances are used.
+        self.is_trust_ecs = is_trust_ecs
+        # Specifies whether to enable the control group feature.
+        self.isolation_optimization = isolation_optimization
+        # The period in UTC for the daily routine maintenance of the cluster.
+        self.maintain_time = maintain_time
+        # The number of nodes in the cluster. If the cluster is deployed in n-n-n mode, the number of nodes in the cluster equals n × 3.
+        self.node_num = node_num
+        # The detailed information of the OBServer version.
+        self.ob_rpm_version = ob_rpm_version
+        # The billing method of the OceanBase cluster. Valid values: 
+        # - PREPAY: the subscription billing method. 
+        # - POSTPAY: the pay-as-you-go billing method.
+        self.pay_type = pay_type
+        # The ID of the primary cluster.
+        self.primary_instance = primary_instance
+        # The region of the primary cluster.
+        self.primary_region = primary_region
+        # The ID of the proxy cluster.
+        # > This parameter returns a value only if you set the **EnableProxyService** parameter to true.
+        self.proxy_cluster_id = proxy_cluster_id
+        # The status of the proxy service.
+        self.proxy_service_status = proxy_service_status
         # The information about cluster resources.
+        self.read_only_resource = read_only_resource
+        # The number of full-featured replicas. Return value: 3 or 2.
+        # - 3: three full-featured replicas.
+        # - 2: two full-featured replicas.
+        # 
+        # An OceanBase cluster deployed in three-zone mode supports only three full-featured replicas. An OceanBase cluster deployed in two-zone mode supports only two full-featured replicas. An OceanBase cluster deployed in one single zone supports two or three full-featured replicas.
+        self.replica_mode = replica_mode
+        # The information about cluster resources.
+        self.resource = resource
+        # The series of the instance. Valid values:
+        # 
+        # - normal: Standard Cluster Edition (Cloud Disk). This is the default value.
+        # 
+        # - normal_ssd: Standard Cluster Edition (Local Disk)
+        # 
+        # - history: History Database Cluster Edition
+        self.series = series
+        # The maximum number of units of the proxy service in shared mode.
+        self.shared_unit_num_limit = shared_unit_num_limit
+        # The specification type.
+        self.spec_type = spec_type
+        # The status of the cluster. Valid values: 
+        #  - PENDING_CREATE: The cluster is being created. 
+        #  - ONLINE: The cluster is running. 
+        #  - TENANT_CREATING: The tenant is being created. 
+        # - TENANT_SPEC_MODIFYING: The tenant specifications are being modified. 
+        # - EXPANDING: Nodes are being added to the cluster to increase its capacity. 
+        # - REDUCING: Nodes are being removed from the cluster to reduce its capacity. 
+        # - SPEC_UPGRADING: The service plan is being upgraded. 
+        # - DISK_UPGRADING: The storage space is being expanded. 
+        # - WHITE_LIST_MODIFYING: The whitelist is being modified. 
+        # - PARAMETER_MODIFYING: Parameters are being modified. 
+        # - SSL_MODIFYING: The SSL certificate is being changed. 
+        # - PREPAID_EXPIRE_CLOSED: The payment is overdue. This parameter is valid for a cluster whose billing method is set to PREPAY. 
+        # - ARREARS_CLOSED: The payment is overdue. This parameter is valid for a cluster whose billing method is set to POSTPAY. 
+        # - PENDING_DELETE: The cluster is being deleted.    
+        # Generally, the cluster is in the ONLINE state.
         self.status = status
+        # Specifies whether a tenant can be created.
         self.tenant_creatable = tenant_creatable
+        # The unit specification of the proxy service.
         self.unit_spec = unit_spec
-        # You can call this operation to query the detailed information of an OceanBase cluster.
+        # The version of OceanBase Database.
         self.version = version
+        # The ID of the zone to which the instance belongs.
+        # <props="intl">For more information about how to obtain the list of zones, see [DescribeZones](https://www.alibabacloud.com/help/en/apsaradb-for-oceanbase/latest/api-oceanbasepro-2019-09-01-describezones).
         self.zones = zones
 
     def validate(self):
@@ -12912,9 +13159,9 @@ class DescribeInstanceResponseBody(TeaModel):
         instance: DescribeInstanceResponseBodyInstance = None,
         request_id: str = None,
     ):
-        # The log disk space of each replica node in the cluster. Unit: GB.
+        # The information of the OceanBase cluster.
         self.instance = instance
-        # The total log disk space of the cluster, in GB.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -13017,10 +13264,16 @@ class DescribeInstanceCreatableZoneRequest(TeaModel):
 class DescribeInstanceCreatableZoneResponseBodyZoneList(TeaModel):
     def __init__(
         self,
+        full_copy_id: str = None,
         is_in_cluster: bool = None,
+        logical_zone_name: str = None,
+        replicate_zone_index: int = None,
         zone: str = None,
     ):
+        self.full_copy_id = full_copy_id
         self.is_in_cluster = is_in_cluster
+        self.logical_zone_name = logical_zone_name
+        self.replicate_zone_index = replicate_zone_index
         # DescribeInstanceCreatableZone
         self.zone = zone
 
@@ -13033,16 +13286,28 @@ class DescribeInstanceCreatableZoneResponseBodyZoneList(TeaModel):
             return _map
 
         result = dict()
+        if self.full_copy_id is not None:
+            result['FullCopyId'] = self.full_copy_id
         if self.is_in_cluster is not None:
             result['IsInCluster'] = self.is_in_cluster
+        if self.logical_zone_name is not None:
+            result['LogicalZoneName'] = self.logical_zone_name
+        if self.replicate_zone_index is not None:
+            result['ReplicateZoneIndex'] = self.replicate_zone_index
         if self.zone is not None:
             result['Zone'] = self.zone
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FullCopyId') is not None:
+            self.full_copy_id = m.get('FullCopyId')
         if m.get('IsInCluster') is not None:
             self.is_in_cluster = m.get('IsInCluster')
+        if m.get('LogicalZoneName') is not None:
+            self.logical_zone_name = m.get('LogicalZoneName')
+        if m.get('ReplicateZoneIndex') is not None:
+            self.replicate_zone_index = m.get('ReplicateZoneIndex')
         if m.get('Zone') is not None:
             self.zone = m.get('Zone')
         return self
@@ -13137,9 +13402,13 @@ class DescribeInstanceSSLRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
+        tenant_id: str = None,
     ):
+        # The ID of the OceanBase cluster.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.tenant_id = tenant_id
 
     def validate(self):
         pass
@@ -13152,32 +13421,56 @@ class DescribeInstanceSSLRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         return self
 
 
 class DescribeInstanceSSLResponseBodyInstanceSSL(TeaModel):
     def __init__(
         self,
+        auto_update: str = None,
         ca_url: str = None,
         enable_ssl: str = None,
         force_ssl: str = None,
         force_sslsupport: bool = None,
         instance_id: str = None,
         status: str = None,
+        tenant_id: str = None,
         valid_period: str = None,
     ):
+        # The status of automatic update of SSL certificates. Valid values: 
+        # * CLOSE: The automatic update of SSL certificates is disabled. 
+        # * OPEN: The automatic update of SSL certificates is enabled.
+        self.auto_update = auto_update
+        # The URL of the certificate authority (CA) node.
         self.ca_url = ca_url
+        # The operation to modify the SSL status. Valid values:
+        # 
+        # - open: Enable SSL encryption.
+        # 
+        # - update: Update the CA certificate.
+        # 
+        # - close: Disable SSL encryption.
         self.enable_ssl = enable_ssl
+        # The forced enabling status of SSL.
         self.force_ssl = force_ssl
+        # Indicates whether SSL can be forcibly enabled.
         self.force_sslsupport = force_sslsupport
+        # The ID of the OceanBase cluster.
         self.instance_id = instance_id
+        # The SSL status of the cluster.
         self.status = status
+        self.tenant_id = tenant_id
+        # The validity period of the SSL certificate.
         self.valid_period = valid_period
 
     def validate(self):
@@ -13189,6 +13482,8 @@ class DescribeInstanceSSLResponseBodyInstanceSSL(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_update is not None:
+            result['AutoUpdate'] = self.auto_update
         if self.ca_url is not None:
             result['CaUrl'] = self.ca_url
         if self.enable_ssl is not None:
@@ -13201,12 +13496,16 @@ class DescribeInstanceSSLResponseBodyInstanceSSL(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.status is not None:
             result['Status'] = self.status
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         if self.valid_period is not None:
             result['ValidPeriod'] = self.valid_period
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoUpdate') is not None:
+            self.auto_update = m.get('AutoUpdate')
         if m.get('CaUrl') is not None:
             self.ca_url = m.get('CaUrl')
         if m.get('EnableSSL') is not None:
@@ -13219,6 +13518,8 @@ class DescribeInstanceSSLResponseBodyInstanceSSL(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         if m.get('ValidPeriod') is not None:
             self.valid_period = m.get('ValidPeriod')
         return self
@@ -13230,7 +13531,9 @@ class DescribeInstanceSSLResponseBody(TeaModel):
         instance_ssl: DescribeInstanceSSLResponseBodyInstanceSSL = None,
         request_id: str = None,
     ):
+        # The SSL setting of the OceanBase cluster instance.
         self.instance_ssl = instance_ssl
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -13548,7 +13851,13 @@ class DescribeInstanceSummaryRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The number of the page to return.    
+        # - Start value: 1   
+        # - Default value: 1
         self.page_number = page_number
+        # The number of rows to return on each page.
+        # - Maximum value: 100.
+        # - Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -13578,18 +13887,24 @@ class DescribeInstanceSummaryRequest(TeaModel):
 class DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList(TeaModel):
     def __init__(
         self,
-        expired_instances_count: str = None,
-        immediately_expired_instances_count: str = None,
-        recent_created_instances_count: str = None,
+        expired_instances_count: int = None,
+        immediately_expired_instances_count: int = None,
+        recent_created_instances_count: int = None,
         region: str = None,
-        running_instances_count: str = None,
-        total_instances_count: str = None,
+        running_instances_count: int = None,
+        total_instances_count: int = None,
     ):
+        # The number of expired instances.
         self.expired_instances_count = expired_instances_count
+        # The number of instances about to expire.
         self.immediately_expired_instances_count = immediately_expired_instances_count
+        # The number of recently created instances.
         self.recent_created_instances_count = recent_created_instances_count
+        # The ID of the region.
         self.region = region
+        # The total number of running instances.
         self.running_instances_count = running_instances_count
+        # The total number of instances.
         self.total_instances_count = total_instances_count
 
     def validate(self):
@@ -13648,17 +13963,29 @@ class DescribeInstanceSummaryResponseBodyInstanceSummary(TeaModel):
         total_instances_count: int = None,
         total_oms_instances_count: int = None,
     ):
+        # The total number of alerts during the query period.
         self.alarm_summary_count = alarm_summary_count
+        # The total number of abnormal SQL statements.
         self.anomaly_sqlcount = anomaly_sqlcount
+        # The number of cluster instances.
         self.cluster_instances_count = cluster_instances_count
+        # The number of expired instances.
         self.expired_instances_count = expired_instances_count
+        # The total number of expired instances to be released.
         self.immediately_expired_instances_count = immediately_expired_instances_count
+        # The total number of clusters with capacity risks.
         self.insufficient_disk_instances_count = insufficient_disk_instances_count
+        # The number of overloaded instances.
         self.over_load_instances_count = over_load_instances_count
+        # A list of regional instances.
         self.regional_instance_summary_list = regional_instance_summary_list
+        # The number of running instances.
         self.running_instances_count = running_instances_count
+        # The number of tenant instances.
         self.tenant_instances_count = tenant_instances_count
+        # The total number of instances.
         self.total_instances_count = total_instances_count
+        # The number of data transmission instances.
         self.total_oms_instances_count = total_oms_instances_count
 
     def validate(self):
@@ -13739,7 +14066,9 @@ class DescribeInstanceSummaryResponseBody(TeaModel):
         instance_summary: DescribeInstanceSummaryResponseBodyInstanceSummary = None,
         request_id: str = None,
     ):
+        # The overview information about OceanBase instances.
         self.instance_summary = instance_summary
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14080,7 +14409,7 @@ class DescribeInstanceTopologyRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
-        # The status of the node.
+        # The ID of the OceanBase cluster.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -14111,7 +14440,9 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourc
         total_cpu: int = None,
         used_cpu: int = None,
     ):
+        # The total number of CPU cores of the replica.
         self.total_cpu = total_cpu
+        # The number of CPU cores used by the replica.
         self.used_cpu = used_cpu
 
     def validate(self):
@@ -14144,7 +14475,9 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourc
         total_disk_size: int = None,
         used_disk_size: float = None,
     ):
+        # The total disk space of the replica, in GB.
         self.total_disk_size = total_disk_size
+        # The disk space used by the replica, in GB.
         self.used_disk_size = used_disk_size
 
     def validate(self):
@@ -14177,7 +14510,9 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourc
         total_memory: int = None,
         used_memory: int = None,
     ):
+        # The total memory size of the replica, in GB.
         self.total_memory = total_memory
+        # The size of memory used by the replica, in GB.
         self.used_memory = used_memory
 
     def validate(self):
@@ -14211,8 +14546,11 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourc
         disk_size: DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceDiskSize = None,
         memory: DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceMemory = None,
     ):
+        # The information about the CPU resources of the replica.
         self.cpu = cpu
+        # The information about the data disk of the replica.
         self.disk_size = disk_size
+        # The information about the memory resources of the replica.
         self.memory = memory
 
     def validate(self):
@@ -14256,6 +14594,7 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas(TeaModel):
         self,
         logical_zone: str = None,
         node_num: int = None,
+        read_only_replica_type: str = None,
         replica_resource: DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResource = None,
         replica_type: str = None,
         status: str = None,
@@ -14263,13 +14602,23 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas(TeaModel):
         zone_logical_name: str = None,
         zone_region_name: str = None,
     ):
+        # The ID of the replica.
         self.logical_zone = logical_zone
+        # The number of nodes of the replica.
         self.node_num = node_num
+        # The type of the read-only replica.
+        self.read_only_replica_type = read_only_replica_type
+        # The information about the replica resources.
         self.replica_resource = replica_resource
+        # The type of the replica.
         self.replica_type = replica_type
+        # The status of the replica. Valid values: ACTIVE, INACTIVE, and UNKNOWN.
         self.status = status
+        # The serial number of the replica.
         self.zone_logical_id = zone_logical_id
+        # The region of the replica.
         self.zone_logical_name = zone_logical_name
+        # The zone of the replica.
         self.zone_region_name = zone_region_name
 
     def validate(self):
@@ -14286,6 +14635,8 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas(TeaModel):
             result['LogicalZone'] = self.logical_zone
         if self.node_num is not None:
             result['NodeNum'] = self.node_num
+        if self.read_only_replica_type is not None:
+            result['ReadOnlyReplicaType'] = self.read_only_replica_type
         if self.replica_resource is not None:
             result['ReplicaResource'] = self.replica_resource.to_map()
         if self.replica_type is not None:
@@ -14306,6 +14657,8 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas(TeaModel):
             self.logical_zone = m.get('LogicalZone')
         if m.get('NodeNum') is not None:
             self.node_num = m.get('NodeNum')
+        if m.get('ReadOnlyReplicaType') is not None:
+            self.read_only_replica_type = m.get('ReadOnlyReplicaType')
         if m.get('ReplicaResource') is not None:
             temp_model = DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResource()
             self.replica_resource = temp_model.from_map(m['ReplicaResource'])
@@ -14336,26 +14689,34 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZonesUnit
         unit_memory: float = None,
         unit_status: str = None,
     ):
-        # Indicates whether the migration can be canceled.   
-        # This field is valid only for units that are being manually immigrated or emigrated.
+        # Indicates whether the migration can be canceled. This parameter is valid only for resource units that are being manually immigrated or emigrated.
         self.enable_cancel_migrate_unit = enable_cancel_migrate_unit
-        # The return result of the request.
+        # Indicates whether the resource unit can be migrated.
         self.enable_migrate_unit = enable_migrate_unit
-        # The return result of the request.
+        # Indicates whether the resource unit is manually migrated.
         self.manual_migrate = manual_migrate
-        # It is an online CLI tool that allows you to quickly retrieve and debug APIs. It can dynamically generate executable SDK code samples.
+        # The ID of the OBServer node in which the resource unit resides.
         self.node_id = node_id
+        # The type of the replica. Node filtering conditions are configured based on the replica type when you query the monitoring data of the OceanBase cluster. 
+        # * By default, the replica type is not specified when you query the monitoring data of OceanBase clusters or the access proxy. If you do not specify the replica type when you query the monitoring data of an OceanBase cluster, the monitoring data of all nodes is queried. 
+        # * If you set the replica type to FULL when you query the monitoring data of an OceanBase cluster, the monitoring data of only the full-featured replica nodes is queried. 
+        # * If you set the replica type to READONLY when you query the monitoring data of an OceanBase cluster, the monitoring data of only the read-only replica nodes is queried.
         self.replica_type = replica_type
-        # Alibaba Cloud CLI
+        # The number of CPU cores of the resource unit.
         self.unit_cpu = unit_cpu
-        # The operation that you want to perform.   
-        # Set the value to **DescribeInstanceTopology**.
+        # The data size of the resource unit.
         self.unit_data_size = unit_data_size
-        # The topology of the cluster.
+        # The ID of the resource unit.
         self.unit_id = unit_id
-        # The ID of the tenant.
+        # The memory size of the resource unit, in GB.
         self.unit_memory = unit_memory
-        # You can call this operation to query the topology of an OceanBase cluster.
+        # The status of the resource unit. Valid values: 
+        # * ONLINE: The resource unit is running. 
+        # * IMMIGRATING: The resource unit is being immigrated. 
+        # * EMIGRATING: The resource unit is being emigrated. 
+        # * CANCEL_EMIGRATING: The immigration of the resource unit is being canceled. 
+        # * CANCEL_EMIGRATING: The emigration of the resource unit is being canceled. 
+        # * DELETING: The resource unit is being deleted.
         self.unit_status = unit_status
 
     def validate(self):
@@ -14419,20 +14780,27 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZones(Tea
         self,
         is_primary_tenant_zone: bool = None,
         logical_zone: str = None,
+        read_only_replica_type: str = None,
         replica_type: str = None,
         tenant_zone_id: str = None,
         tenant_zone_role: str = None,
         units: List[DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZonesUnits] = None,
     ):
-        # The maximum disk usage, in percentage.
+        # Indicates whether the zone is the primary zone.
         self.is_primary_tenant_zone = is_primary_tenant_zone
+        # The ID of the replica.
         self.logical_zone = logical_zone
+        # The type of the read-only replica.
+        self.read_only_replica_type = read_only_replica_type
+        # The replica type of the tenant.
         self.replica_type = replica_type
-        # The server with the highest disk usage.
+        # The ID of the zone.
         self.tenant_zone_id = tenant_zone_id
-        # The information of zones.
+        # The role to access the zone. Valid values: 
+        # * ReadWrite: a role that has the read and write privileges. 
+        # * ReadOnly: a role that has only the read-only privilege.
         self.tenant_zone_role = tenant_zone_role
-        # The information about the storage resources.
+        # The information about the resource units.
         self.units = units
 
     def validate(self):
@@ -14451,6 +14819,8 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZones(Tea
             result['IsPrimaryTenantZone'] = self.is_primary_tenant_zone
         if self.logical_zone is not None:
             result['LogicalZone'] = self.logical_zone
+        if self.read_only_replica_type is not None:
+            result['ReadOnlyReplicaType'] = self.read_only_replica_type
         if self.replica_type is not None:
             result['ReplicaType'] = self.replica_type
         if self.tenant_zone_id is not None:
@@ -14469,6 +14839,8 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZones(Tea
             self.is_primary_tenant_zone = m.get('IsPrimaryTenantZone')
         if m.get('LogicalZone') is not None:
             self.logical_zone = m.get('LogicalZone')
+        if m.get('ReadOnlyReplicaType') is not None:
+            self.read_only_replica_type = m.get('ReadOnlyReplicaType')
         if m.get('ReplicaType') is not None:
             self.replica_type = m.get('ReplicaType')
         if m.get('TenantZoneId') is not None:
@@ -14500,28 +14872,47 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyTenants(TeaModel):
         tenant_unit_num: int = None,
         tenant_zones: List[DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZones] = None,
     ):
-        # The server with the highest disk usage.
+        # The deployment mode of the primary zone. Valid values: 
+        # * RANDOM. 
+        # * STATIC.
         self.primary_zone_deploy_type = primary_zone_deploy_type
-        # The information about the memory resources of the node.
-        self.tenant_cpu = tenant_cpu
-        # The name of the tenant.
-        self.tenant_deploy_type = tenant_deploy_type
-        self.tenant_disk_size = tenant_disk_size
-        # The size of used memory of the node, in GB.
-        self.tenant_id = tenant_id
-        # The total storage space of the node, in GB.
-        self.tenant_memory = tenant_memory
-        # The size of used storage space of the node, in GB.
-        self.tenant_mode = tenant_mode
-        # The total memory size of the node, in GB.
-        self.tenant_name = tenant_name
-        # The size of used memory of the node, in GB.
-        self.tenant_status = tenant_status
-        self.tenant_unit_cpu = tenant_unit_cpu
-        self.tenant_unit_memory = tenant_unit_memory
         # The number of CPU cores of the tenant.
+        self.tenant_cpu = tenant_cpu
+        # The deployment type of the tenant. Valid values: 
+        # * multiple: multi-IDC deployment. 
+        # * single: single-IDC deployment. 
+        # * dual: dual-IDC deployment.
+        self.tenant_deploy_type = tenant_deploy_type
+        # The disk space of the tenant, in GB.
+        self.tenant_disk_size = tenant_disk_size
+        # The ID of the tenant.
+        self.tenant_id = tenant_id
+        # The memory size of the tenant, in GB.
+        self.tenant_memory = tenant_memory
+        # The mode of the tenant. Valid values: 
+        # * Oracle  
+        # * MySQL
+        self.tenant_mode = tenant_mode
+        # The name of the tenant.
+        self.tenant_name = tenant_name
+        # The status of the tenant. Valid values: 
+        # * PENDING_CREATE: The tenant is being created. 
+        # * RESTORE: The tenant is being restored. 
+        # * ONLINE: The tenant is running. 
+        # * SPEC_MODIFYING: The specification of the tenant is being modified. 
+        # * ALLOCATING_INTERNET_ADDRESS: A public IP address is being allocated to the tenant. 
+        # * PENDING_OFFLINE_INTERNET_ADDRESS: The public IP address is being disabled. 
+        # * PRIMARY_ZONE_MODIFYING: The tenant is being switched to a new primary zone. 
+        # * PARAMETER_MODIFYING: Parameters are being modified. 
+        # * WHITE_LIST_MODIFYING: The allowlist is being modified.
+        self.tenant_status = tenant_status
+        # The number of CPU cores of a single node in the tenant.
+        self.tenant_unit_cpu = tenant_unit_cpu
+        # The memory size of a single node in the tenant, in GB.
+        self.tenant_unit_memory = tenant_unit_memory
+        # The number of resource units in the tenant.
         self.tenant_unit_num = tenant_unit_num
-        # The information about the storage resources of the node.
+        # The information about the zones.
         self.tenant_zones = tenant_zones
 
     def validate(self):
@@ -14606,7 +14997,9 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResource
         total_cpu: int = None,
         used_cpu: float = None,
     ):
+        # The total number of CPU cores of the node.
         self.total_cpu = total_cpu
+        # The number of CPU cores used by the node.
         self.used_cpu = used_cpu
 
     def validate(self):
@@ -14639,7 +15032,9 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResource
         total_disk_size: float = None,
         used_disk_size: float = None,
     ):
+        # The total storage space of the node, in GB.
         self.total_disk_size = total_disk_size
+        # The size of storage space used by the node, in GB.
         self.used_disk_size = used_disk_size
 
     def validate(self):
@@ -14672,7 +15067,9 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResource
         total_memory: int = None,
         used_memory: float = None,
     ):
+        # The total memory size of the node, in GB.
         self.total_memory = total_memory
+        # The size of memory used by the node, in GB.
         self.used_memory = used_memory
 
     def validate(self):
@@ -14706,8 +15103,11 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResource
         disk_size: DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResourceDiskSize = None,
         memory: DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResourceMemory = None,
     ):
+        # The information about the CPU resources of the node.
         self.cpu = cpu
+        # The information about the storage resources of the node.
         self.disk_size = disk_size
+        # The information about the memory resources of the node.
         self.memory = memory
 
     def validate(self):
@@ -14756,19 +15156,28 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes(TeaModel):
         node_resource: DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResource = None,
         node_status: str = None,
         read_only_copy_id: int = None,
+        read_only_replica_type: str = None,
         replica_type: str = None,
     ):
+        # The ID of the full-featured replica.
         self.full_copy_id = full_copy_id
+        # The ID of the replica.
         self.logical_zone = logical_zone
-        # The information of zones.
+        # The ID of the replica node.
         self.node_copy_id = node_copy_id
-        # The ID of the resource unit.
-        self.node_id = node_id
         # The ID of the node.
+        self.node_id = node_id
+        # The information about node resources.
         self.node_resource = node_resource
-        # The ID of the OBServer where the resource unit resides.
+        # The status of the node.
         self.node_status = node_status
+        # The ID of the read-only replica.
         self.read_only_copy_id = read_only_copy_id
+        # The type of the read-only replica.
+        self.read_only_replica_type = read_only_replica_type
+        # The type of the replica. Valid values: 
+        # * FULL. 
+        # * READONLY.
         self.replica_type = replica_type
 
     def validate(self):
@@ -14795,6 +15204,8 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes(TeaModel):
             result['NodeStatus'] = self.node_status
         if self.read_only_copy_id is not None:
             result['ReadOnlyCopyId'] = self.read_only_copy_id
+        if self.read_only_replica_type is not None:
+            result['ReadOnlyReplicaType'] = self.read_only_replica_type
         if self.replica_type is not None:
             result['ReplicaType'] = self.replica_type
         return result
@@ -14816,6 +15227,8 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes(TeaModel):
             self.node_status = m.get('NodeStatus')
         if m.get('ReadOnlyCopyId') is not None:
             self.read_only_copy_id = m.get('ReadOnlyCopyId')
+        if m.get('ReadOnlyReplicaType') is not None:
+            self.read_only_replica_type = m.get('ReadOnlyReplicaType')
         if m.get('ReplicaType') is not None:
             self.replica_type = m.get('ReplicaType')
         return self
@@ -14827,8 +15240,9 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyZonesZoneResourceDiskS
         max_disk_used_ob_server: List[str] = None,
         max_disk_used_percent: float = None,
     ):
+        # The IDs of OBServer nodes that use the maximum disk space.
         self.max_disk_used_ob_server = max_disk_used_ob_server
-        # DescribeInstanceTopology
+        # The maximum disk usage, in percentage.
         self.max_disk_used_percent = max_disk_used_percent
 
     def validate(self):
@@ -14860,6 +15274,7 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyZonesZoneResource(TeaM
         self,
         disk_size: DescribeInstanceTopologyResponseBodyInstanceTopologyZonesZoneResourceDiskSize = None,
     ):
+        # The information about the storage resources of the node.
         self.disk_size = disk_size
 
     def validate(self):
@@ -14893,15 +15308,15 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyZones(TeaModel):
         zone_id: str = None,
         zone_resource: DescribeInstanceTopologyResponseBodyInstanceTopologyZonesZoneResource = None,
     ):
-        # The ID of the region.
+        # The information about the nodes.
         self.nodes = nodes
-        # The zone information of the cluster.
+        # The ID of the region.
         self.region = region
-        # The information about the memory resources of the node.
+        # The storage capacity of the zone.
         self.zone_disk = zone_disk
-        # The information of the tenant.
+        # The ID of the zone.
         self.zone_id = zone_id
-        # Example 1
+        # The information about zones.
         self.zone_resource = zone_resource
 
     def validate(self):
@@ -14958,10 +15373,11 @@ class DescribeInstanceTopologyResponseBodyInstanceTopology(TeaModel):
         tenants: List[DescribeInstanceTopologyResponseBodyInstanceTopologyTenants] = None,
         zones: List[DescribeInstanceTopologyResponseBodyInstanceTopologyZones] = None,
     ):
+        # The information about replicas.
         self.replicas = replicas
-        # The total number of CPU cores for the node.
+        # The information about the tenants.
         self.tenants = tenants
-        # The information about resource units.
+        # The information about the zones in which the cluster is deployed.
         self.zones = zones
 
     def validate(self):
@@ -15024,9 +15440,9 @@ class DescribeInstanceTopologyResponseBody(TeaModel):
         instance_topology: DescribeInstanceTopologyResponseBodyInstanceTopology = None,
         request_id: str = None,
     ):
-        # The number of CPU cores used by the node.
+        # The topology of the cluster.
         self.instance_topology = instance_topology
-        # The information about the CPU resources of the node.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -15507,7 +15923,7 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         data_disk_auto_scale_config: DescribeInstancesResponseBodyInstancesDataDiskAutoScaleConfig = None,
         deploy_mode: str = None,
         deploy_type: str = None,
-        disk_size: str = None,
+        disk_size: int = None,
         disk_type: str = None,
         enable_read_only_replica_management: bool = None,
         enable_upgrade_nodes: bool = None,
@@ -15523,6 +15939,7 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         mem: int = None,
         ob_rpm_version: str = None,
         pay_type: str = None,
+        replica_mode: str = None,
         resource: DescribeInstancesResponseBodyInstancesResource = None,
         resource_group_id: str = None,
         series: str = None,
@@ -15592,11 +16009,13 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         self.maintain_time = maintain_time
         # The memory size of the instance, in GB.
         self.mem = mem
+        # The version of the OceanBase Database RedHat Package Managerment (RPM) package.
         self.ob_rpm_version = ob_rpm_version
         # The billing method for the OceanBase cluster. Valid values:  
         # - PREPAY: the subscription billing method.  
         # - POSTPAY: the pay-as-you-go billing method.
         self.pay_type = pay_type
+        self.replica_mode = replica_mode
         # The information about cluster resources.
         self.resource = resource
         # The ID of the resource group.
@@ -15605,6 +16024,7 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         # - NORMAL: the high availability edition.   
         # - BASIC: the basic edition.
         self.series = series
+        # The specification type.
         self.spec_type = spec_type
         # The status of the cluster. Valid values:   
         # - ONLINE: The cluster is running.  
@@ -15718,6 +16138,8 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             result['ObRpmVersion'] = self.ob_rpm_version
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
+        if self.replica_mode is not None:
+            result['ReplicaMode'] = self.replica_mode
         if self.resource is not None:
             result['Resource'] = self.resource.to_map()
         if self.resource_group_id is not None:
@@ -15787,6 +16209,8 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             self.ob_rpm_version = m.get('ObRpmVersion')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
+        if m.get('ReplicaMode') is not None:
+            self.replica_mode = m.get('ReplicaMode')
         if m.get('Resource') is not None:
             temp_model = DescribeInstancesResponseBodyInstancesResource()
             self.resource = temp_model.from_map(m['Resource'])
@@ -16275,6 +16699,8 @@ class DescribeOasAnomalySQLListRequest(TeaModel):
         self.current = current
         # The name of the database.
         self.db_name = db_name
+        # Specifies whether the specified SQL statements are dynamic SQL statements.
+        # > This parameter specifies whether the values of the `SqlId` parameter are the IDs of dynamic SQL statements.
         self.dynamic_sql = dynamic_sql
         # The end time of the monitoring data.   
         # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
@@ -16287,6 +16713,9 @@ class DescribeOasAnomalySQLListRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Specifies whether to merge dynamic SQL statements in the return result. 
+        # 
+        # > This parameter specifies whether to aggregate the results of IN queries.
         self.merge_dynamic_sql = merge_dynamic_sql
         # The node IP.
         self.node_ip = node_ip
@@ -16419,7 +16848,7 @@ class DescribeOasAnomalySQLListResponseBodyDataSqlList(TeaModel):
         diag_types: List[str] = None,
         diagnosis: str = None,
         executions: float = None,
-        last_executed_time: float = None,
+        last_executed_time: str = None,
         risk_level: str = None,
         sql_id: str = None,
         sql_text_short: str = None,
@@ -16429,25 +16858,47 @@ class DescribeOasAnomalySQLListResponseBodyDataSqlList(TeaModel):
         sum_retry_count: float = None,
         user_name: str = None,
     ):
+        # The average CPU time.
         self.avg_cpu_time = avg_cpu_time
+        # The average DB time.
         self.avg_db_time = avg_db_time
+        # The average response time.
         self.avg_elapsed_time = avg_elapsed_time
+        # The average plan generation time.
         self.avg_get_plan_time = avg_get_plan_time
+        # The average number of logical reads.
         self.avg_logical_reads = avg_logical_reads
+        # The average number of retries.
         self.avg_retry_count = avg_retry_count
+        # The total CPU time.
         self.cpu_time = cpu_time
+        # The name of the database.
         self.db_name = db_name
+        # The diagnostic types.
         self.diag_types = diag_types
+        # The diagnostic details. 
+        # 
+        # > This parameter is deprecated.
         self.diagnosis = diagnosis
+        # The total number of executions.
         self.executions = executions
+        # The last execution time.
         self.last_executed_time = last_executed_time
+        # The risk level.
         self.risk_level = risk_level
+        # The ID of the SQL statement.
         self.sql_id = sql_id
+        # The prefix of the SQL text.
         self.sql_text_short = sql_text_short
+        # The suggestion on the suspicious SQL statement.
         self.suggestion = suggestion
+        # The total DB time.
         self.sum_db_time = sum_db_time
+        # The total response time.
         self.sum_elapsed_time = sum_elapsed_time
+        # The total number of retries.
         self.sum_retry_count = sum_retry_count
+        # The username.
         self.user_name = user_name
 
     def validate(self):
@@ -16574,12 +17025,15 @@ class DescribeOasAnomalySQLListResponseBodyData(TeaModel):
     ):
         # Average CPU time of the suspicious SQL.
         self.avg_cpu_time = avg_cpu_time
+        # The average DB time.
         self.avg_db_time = avg_db_time
         # Average response time of the suspicious SQL.
         self.avg_elapsed_time = avg_elapsed_time
         # Average time to obtain the execution plan of the suspicious SQL.
         self.avg_get_plan_time = avg_get_plan_time
+        # The average number of logical reads.
         self.avg_logical_reads = avg_logical_reads
+        # The average number of retries.
         self.avg_retry_count = avg_retry_count
         # CPU time of the suspicious SQL.
         self.cpu_time = cpu_time
@@ -16589,6 +17043,7 @@ class DescribeOasAnomalySQLListResponseBodyData(TeaModel):
         self.diag_types = diag_types
         # The details of diagnosis.
         self.diagnosis = diagnosis
+        # 是否动态SQL
         self.dynamic_sql = dynamic_sql
         # Total execution count of the suspicious SQL.
         self.executions = executions
@@ -16598,14 +17053,17 @@ class DescribeOasAnomalySQLListResponseBodyData(TeaModel):
         self.risk_level = risk_level
         # SQL ID.
         self.sql_id = sql_id
+        # The list of SQL statements.
         self.sql_list = sql_list
         # Prefix of the SQL text.
         self.sql_text_short = sql_text_short
         # Suggestion for the suspicious SQL.
         self.suggestion = suggestion
+        # The total DB time.
         self.sum_db_time = sum_db_time
         # Total response time of the suspicious SQL.
         self.sum_elapsed_time = sum_elapsed_time
+        # The total number of retries.
         self.sum_retry_count = sum_retry_count
         # Username.
         self.user_name = user_name
@@ -16729,7 +17187,7 @@ class DescribeOasAnomalySQLListResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of suspicious SQLs.
+        # The information about suspicious SQL statements.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -17055,6 +17513,7 @@ class DescribeOasSQLHistoryListRequest(TeaModel):
         self.accept_language = accept_language
         # The name of the database.
         self.db_name = db_name
+        # Specifies whether the SQL statement is a dynamic SQL statement.
         self.dynamic_sql = dynamic_sql
         # The end time of querying the execution history of the SQL statement.   
         # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
@@ -17204,6 +17663,7 @@ class DescribeOasSQLHistoryListResponseBodyData(TeaModel):
         table_scan_percentage: float = None,
         timestamp: str = None,
         user_name: str = None,
+        wait_event: str = None,
         weak_consistency_percentage: float = None,
     ):
         # Average updated rows during the execution period.
@@ -17220,6 +17680,7 @@ class DescribeOasSQLHistoryListResponseBodyData(TeaModel):
         self.avg_concurrency_wait_time = avg_concurrency_wait_time
         # Average CPU time (in milliseconds) during the execution period.
         self.avg_cpu_time = avg_cpu_time
+        # The average DB time, in milliseconds.
         self.avg_db_time = avg_db_time
         # Average syntax parsing time (in milliseconds) during the execution period.
         self.avg_decode_time = avg_decode_time
@@ -17327,6 +17788,7 @@ class DescribeOasSQLHistoryListResponseBodyData(TeaModel):
         self.server = server
         # Strong consistent transaction percentage during the execution period.
         self.strong_consistency_percentage = strong_consistency_percentage
+        # The total DB time, in milliseconds.
         self.sum_db_time = sum_db_time
         # Total response time (in milliseconds) during the execution period.
         self.sum_elapsed_time = sum_elapsed_time
@@ -17340,6 +17802,8 @@ class DescribeOasSQLHistoryListResponseBodyData(TeaModel):
         self.timestamp = timestamp
         # Username.
         self.user_name = user_name
+        # The wait event.
+        self.wait_event = wait_event
         # Eventually consistent transaction percentage during the execution period.
         self.weak_consistency_percentage = weak_consistency_percentage
 
@@ -17488,6 +17952,8 @@ class DescribeOasSQLHistoryListResponseBodyData(TeaModel):
             result['Timestamp'] = self.timestamp
         if self.user_name is not None:
             result['UserName'] = self.user_name
+        if self.wait_event is not None:
+            result['WaitEvent'] = self.wait_event
         if self.weak_consistency_percentage is not None:
             result['WeakConsistencyPercentage'] = self.weak_consistency_percentage
         return result
@@ -17630,6 +18096,8 @@ class DescribeOasSQLHistoryListResponseBodyData(TeaModel):
             self.timestamp = m.get('Timestamp')
         if m.get('UserName') is not None:
             self.user_name = m.get('UserName')
+        if m.get('WaitEvent') is not None:
+            self.wait_event = m.get('WaitEvent')
         if m.get('WeakConsistencyPercentage') is not None:
             self.weak_consistency_percentage = m.get('WeakConsistencyPercentage')
         return self
@@ -17741,6 +18209,7 @@ class DescribeOasSQLPlansRequest(TeaModel):
         # 
         # This parameter is required.
         self.db_name = db_name
+        # Specifies whether the SQL statement is dynamic.
         self.dynamic_sql = dynamic_sql
         # The end time of querying the SQL execution plan.   
         # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
@@ -17751,7 +18220,9 @@ class DescribeOasSQLPlansRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The unique identifier of the execution plan.
         self.plan_union_hash = plan_union_hash
+        # Specifies whether to return an overview of the execution plan.
         self.return_brief_info = return_brief_info
         # SQL ID.
         # 
@@ -17952,6 +18423,7 @@ class DescribeOasSQLPlansResponseBodyDataPlans(TeaModel):
         self.server = server
         # The ID of the backend server instance.
         self.server_id = server_id
+        # SQL ID.
         self.sql_id = sql_id
         # Whether a full table scan is performed.
         self.table_scan = table_scan
@@ -18150,7 +18622,11 @@ class DescribeOasSQLPlansResponseBodyData(TeaModel):
         self.hit_percentage = hit_percentage
         # Merge version.
         self.merged_version = merged_version
+        # The ID of the outline used by the execution plan.
         self.outline_id = outline_id
+        # The outline status of the execution plan. Valid values:
+        # * **Effective**: indicates that the outline_data and outlIne_content fields exactly match with each other. 
+        # * **Unknown**: indicates that the outline status is unknown.
         self.outline_status = outline_status
         # Execution plan.
         self.plan_explain = plan_explain
@@ -18164,6 +18640,7 @@ class DescribeOasSQLPlansResponseBodyData(TeaModel):
         self.plans = plans
         # The SQL for the query.
         self.query_sql = query_sql
+        # Indicates whether full table scan is performed.
         self.table_scan = table_scan
 
     def validate(self):
@@ -21026,7 +21503,7 @@ class DescribeOutlineBindingResponseBodyOutlineBinding(TeaModel):
         self.max_concurrent = max_concurrent
         # OutlineID.
         self.outline_id = outline_id
-        # 表名称
+        # The name of the tenant. The tenant name must start with a letter or an underscore (_), and contain 2 to 20 characters, which can be uppercase letters, lowercase letters, digits, and underscores (_). It cannot be set to sys.
         self.table_name = table_name
 
     def validate(self):
@@ -21401,15 +21878,16 @@ class DescribeParametersHistoryRequest(TeaModel):
         page_size: int = None,
         start_time: str = None,
     ):
-        # The type of the parameter.   
+        # The type of the parameter.    
         # Valid values: CLUSTER and TENANT.
         # 
         # This parameter is required.
         self.dimension = dimension
         # The resource ID of the parameter type.   
-        # You can leave this parameter unspecified when you call this operation to query the modification history of cluster parameters. In the case of tenant parameters, pass the tenant ID.
+        # You can leave this parameter unspecified when you call this operation to query cluster parameters. In the case of tenant parameters, pass the tenant ID.
         self.dimension_value = dimension_value
-        # The end time for the query of parameter modification history.
+        # The end time of the time range for querying the SQL execution history.   
+        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         # 
         # This parameter is required.
         self.end_time = end_time
@@ -21424,12 +21902,13 @@ class DescribeParametersHistoryRequest(TeaModel):
         # This parameter is required.
         self.page_number = page_number
         # The number of rows to return on each page.   
-        # - Maximum value: 100   
+        # - Maximum value: 100.
         # - Default value: 10
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The start time of the time range for querying the parameter modification history.
+        # The start time of querying the slow query execution.
+        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         # 
         # This parameter is required.
         self.start_time = start_time
@@ -21491,19 +21970,17 @@ class DescribeParametersHistoryResponseBodyRespondParameters(TeaModel):
     ):
         # The time when the parameter modification was initiated.
         self.create_time = create_time
-        # The resource ID of the parameter type.    
-        # - When you called this operation to query the modification history of cluster parameters, the value is DEFAULT_DIMENSION_VALUE.   
-        # - When you called this operation to query the modification history of tenant parameters, the value is the tenant ID.
+        # The resource ID of the parameter type. When you called this operation to query the modification history of cluster parameters, the value is DEFAULT_DIMENSION_VALUE. When you called this operation to query the modification history of tenant parameters, the value is the tenant ID.
         self.dimension_value = dimension_value
         # The name of the parameter.
         self.name = name
         # The value of the parameter after the modification.
         self.new_value = new_value
-        # The parameter value before modification.
+        # The value of the parameter before the modification.
         self.old_value = old_value
-        # The modification status. Valid values:    
-        # - APPLIED: The modification was successful.   
-        # - SCHEDULING: The modification was to be made.
+        # The modification status of the parameter. Valid values: 
+        # * APPLIED: The parameter was modified.
+        # * SCHEDULING: The parameter was to be modified.
         self.status = status
         # The time when the parameter modification took effect.
         self.update_time = update_time
@@ -21559,11 +22036,13 @@ class DescribeParametersHistoryResponseBodyRespond(TeaModel):
         parameters: List[DescribeParametersHistoryResponseBodyRespondParameters] = None,
         total_count: int = None,
     ):
-        # The number of returned entries on each page.
+        # The number of the page to return.    
+        # - Start value: 1   
+        # - Default value: 1
         self.page_number = page_number
-        # The parameter modification history.
+        # The information about parameters.
         self.parameters = parameters
-        # The number of parameter modification records.
+        # The total count, which takes effect in a pagination query.
         self.total_count = total_count
 
     def validate(self):
@@ -21606,18 +22085,16 @@ class DescribeParametersHistoryResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        respond: List[DescribeParametersHistoryResponseBodyRespond] = None,
+        respond: DescribeParametersHistoryResponseBodyRespond = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The list of parameter modification records.
         self.respond = respond
 
     def validate(self):
         if self.respond:
-            for k in self.respond:
-                if k:
-                    k.validate()
+            self.respond.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -21627,21 +22104,17 @@ class DescribeParametersHistoryResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        result['Respond'] = []
         if self.respond is not None:
-            for k in self.respond:
-                result['Respond'].append(k.to_map() if k else None)
+            result['Respond'] = self.respond.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        self.respond = []
         if m.get('Respond') is not None:
-            for k in m.get('Respond'):
-                temp_model = DescribeParametersHistoryResponseBodyRespond()
-                self.respond.append(temp_model.from_map(k))
+            temp_model = DescribeParametersHistoryResponseBodyRespond()
+            self.respond = temp_model.from_map(m['Respond'])
         return self
 
 
@@ -21706,15 +22179,15 @@ class DescribeProcessStatsCompositionRequest(TeaModel):
         self.instance_id = instance_id
         # The IP address of the server.
         self.server_ip = server_ip
-        # The SQL statement. It supports LIKE clauses, and you may specify only part of the clauses in the SQL statement.
+        # The SQL statement, which can contain LIKE clauses. You can specify only part of the clauses in the SQL statement.
         self.sql_text = sql_text
-        # The state of the session.
+        # The status of the session.
         self.status = status
         # The ID of the tenant.
         self.tenant_id = tenant_id
-        # The user identifier (UID) of OceanBase Database.
+        # The user identifier (UID) of the OceanBase database.
         self.uid = uid
-        # The username that you use to log in to the database.
+        # The username of the database.
         self.users = users
 
     def validate(self):
@@ -21784,20 +22257,39 @@ class DescribeProcessStatsCompositionResponseBodyDataAllProcessList(TeaModel):
         trace_id: str = None,
         user: str = None,
     ):
+        # The IP address of the client.
         self.client_ip = client_ip
+        # The type of the SQL statement being executed in the session.
         self.command = command
+        # The CPU time spent on executing the current SQL statement, in seconds. 
+        # 
+        # > This parameter is introduced since OceanBase Database V3.2.4 BP5.
         self.cpu_time = cpu_time
+        # The name of the database.
         self.database = database
+        # The definition of this parameter varies based on whether the SQL statement is executed.
+        # * When the request is accepted and the result is not returned to the client, this parameter indicates the time interval between the time when the request is accepted and the current time, in seconds.
+        # * When the request is not accepted, this parameter indicates the duration for which the current status lasts, in seconds.
         self.execute_time = execute_time
+        # The ID of the execution plan.
         self.plan_id = plan_id
+        # The session ID of the client. If an OceanBase Database Proxy (ODP) is used for connection, the session ID of the ODP is returned.
         self.proxy_sess_id = proxy_sess_id
+        # The IP address of the server.
         self.server_ip = server_ip
+        # The ID of the session.
         self.session_id = session_id
+        # The ID of the SQL statement.
         self.sql_id = sql_id
+        # The SQL text.
         self.sql_text = sql_text
+        # The status of the session.
         self.status = status
+        # The ID of the tenant.
         self.tenant_id = tenant_id
+        # The ID of the trace.
         self.trace_id = trace_id
+        # The user to which the session belongs.
         self.user = user
 
     def validate(self):
@@ -21884,9 +22376,13 @@ class DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsDataBaseSt
         total_count: int = None,
         type: str = None,
     ):
+        # The number of active sessions.
         self.active_count = active_count
+        # The name of the database.
         self.metric_value = metric_value
+        # The total number of entries returned.
         self.total_count = total_count
+        # The dimension. This value is fixed to database.
         self.type = type
 
     def validate(self):
@@ -21929,9 +22425,13 @@ class DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsSourceStat
         total_count: int = None,
         type: str = None,
     ):
+        # The number of active sessions.
         self.active_count = active_count
+        # The IP address of the client.
         self.metric_value = metric_value
+        # The total number of entries returned.
         self.total_count = total_count
+        # The dimension. This value is fixed to client.
         self.type = type
 
     def validate(self):
@@ -21974,9 +22474,13 @@ class DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsUserStatis
         total_count: int = None,
         type: str = None,
     ):
+        # The number of active sessions.
         self.active_count = active_count
+        # The username.
         self.metric_value = metric_value
+        # The total number of entries returned.
         self.total_count = total_count
+        # The dimension. This value is fixed to user.
         self.type = type
 
     def validate(self):
@@ -22018,8 +22522,11 @@ class DescribeProcessStatsCompositionResponseBodyDataSessionStatistics(TeaModel)
         source_statistics: List[DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsSourceStatistics] = None,
         user_statistics: List[DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsUserStatistics] = None,
     ):
+        # The session data in the database dimension.
         self.data_base_statistics = data_base_statistics
+        # The session data in the client dimension.
         self.source_statistics = source_statistics
+        # The session data in the user dimension.
         self.user_statistics = user_statistics
 
     def validate(self):
@@ -22086,11 +22593,17 @@ class DescribeProcessStatsCompositionResponseBodyData(TeaModel):
         session_statistics: DescribeProcessStatsCompositionResponseBodyDataSessionStatistics = None,
         total_session_count: int = None,
     ):
+        # The number of active sessions.
         self.active_session_count = active_session_count
+        # The details of all sessions.
         self.all_process_list = all_process_list
+        # The number of sessions in the SLEEP state.
         self.idle_session_count = idle_session_count
+        # The version of OceanBase Database.
         self.ob_version = ob_version
+        # The session data in different dimensions.
         self.session_statistics = session_statistics
+        # The total number of sessions.
         self.total_session_count = total_session_count
 
     def validate(self):
@@ -22152,7 +22665,7 @@ class DescribeProcessStatsCompositionResponseBody(TeaModel):
     ):
         # The return result.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -28085,6 +28598,209 @@ class DescribeProjectStepsResponse(TeaModel):
         return self
 
 
+class DescribeProxyServiceRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DescribeProxyServiceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        current_endpoint_num: int = None,
+        endpoint_num_quota: int = None,
+        expire_time: str = None,
+        proxy_cluster_id: str = None,
+        proxy_mode: str = None,
+        proxy_service_version: str = None,
+        proxy_version: str = None,
+        status: str = None,
+        unit_num: int = None,
+        unit_num_limit: int = None,
+        unit_spec: str = None,
+        zone: str = None,
+    ):
+        self.create_time = create_time
+        self.current_endpoint_num = current_endpoint_num
+        self.endpoint_num_quota = endpoint_num_quota
+        self.expire_time = expire_time
+        self.proxy_cluster_id = proxy_cluster_id
+        self.proxy_mode = proxy_mode
+        self.proxy_service_version = proxy_service_version
+        self.proxy_version = proxy_version
+        self.status = status
+        self.unit_num = unit_num
+        self.unit_num_limit = unit_num_limit
+        self.unit_spec = unit_spec
+        self.zone = zone
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.current_endpoint_num is not None:
+            result['CurrentEndpointNum'] = self.current_endpoint_num
+        if self.endpoint_num_quota is not None:
+            result['EndpointNumQuota'] = self.endpoint_num_quota
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.proxy_cluster_id is not None:
+            result['ProxyClusterId'] = self.proxy_cluster_id
+        if self.proxy_mode is not None:
+            result['ProxyMode'] = self.proxy_mode
+        if self.proxy_service_version is not None:
+            result['ProxyServiceVersion'] = self.proxy_service_version
+        if self.proxy_version is not None:
+            result['ProxyVersion'] = self.proxy_version
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.unit_num is not None:
+            result['UnitNum'] = self.unit_num
+        if self.unit_num_limit is not None:
+            result['UnitNumLimit'] = self.unit_num_limit
+        if self.unit_spec is not None:
+            result['UnitSpec'] = self.unit_spec
+        if self.zone is not None:
+            result['Zone'] = self.zone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CurrentEndpointNum') is not None:
+            self.current_endpoint_num = m.get('CurrentEndpointNum')
+        if m.get('EndpointNumQuota') is not None:
+            self.endpoint_num_quota = m.get('EndpointNumQuota')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('ProxyClusterId') is not None:
+            self.proxy_cluster_id = m.get('ProxyClusterId')
+        if m.get('ProxyMode') is not None:
+            self.proxy_mode = m.get('ProxyMode')
+        if m.get('ProxyServiceVersion') is not None:
+            self.proxy_service_version = m.get('ProxyServiceVersion')
+        if m.get('ProxyVersion') is not None:
+            self.proxy_version = m.get('ProxyVersion')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UnitNum') is not None:
+            self.unit_num = m.get('UnitNum')
+        if m.get('UnitNumLimit') is not None:
+            self.unit_num_limit = m.get('UnitNumLimit')
+        if m.get('UnitSpec') is not None:
+            self.unit_spec = m.get('UnitSpec')
+        if m.get('Zone') is not None:
+            self.zone = m.get('Zone')
+        return self
+
+
+class DescribeProxyServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeProxyServiceResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeProxyServiceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeProxyServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeProxyServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeProxyServiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeRecommendIndexRequest(TeaModel):
     def __init__(
         self,
@@ -28267,13 +28983,21 @@ class DescribeRestorableTenantsRequest(TeaModel):
         restore_object_type: str = None,
         set_id: str = None,
     ):
+        # The ID of the OceanBase cluster.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Specifies whether the target cluster is online. **Note** This parameter is used for compatibility with earlier versions and can be left empty. When left empty, it specifies negation for the value of `isRemote`.
         self.is_online = is_online
+        # This parameter is provided for compatibility with earlier versions and can be left empty.
         self.is_remote = is_remote
+        # The backup method.
         self.method = method
+        # The restore method. This parameter is required when `IsRemote` is set to `true`, and is optional otherwise.
         self.restore_mode = restore_mode
+        # The type of the restore object.
         self.restore_object_type = restore_object_type
+        # The ID of the backup set.
         self.set_id = set_id
 
     def validate(self):
@@ -28328,9 +29052,13 @@ class DescribeRestorableTenantsResponseBodyTenantsBackupSets(TeaModel):
         set_id: str = None,
         tenant_id: str = None,
     ):
+        # The ID of the full backup set used for restore.
         self.backup_set_id = backup_set_id
+        # The checkpoint of the backup set.
         self.checkpoint = checkpoint
+        # The ID of the backup set.
         self.set_id = set_id
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -28373,9 +29101,13 @@ class DescribeRestorableTenantsResponseBodyTenantsTimeIntervalList(TeaModel):
         start_time: str = None,
         storage_type: str = None,
     ):
+        # The end time of the restorable period.
         self.end_time = end_time
+        # Indicates whether the restore is based on archiving.
         self.from_archive = from_archive
+        # The start time of the restorable period.
         self.start_time = start_time
+        # The storage type of backup data.
         self.storage_type = storage_type
 
     def validate(self):
@@ -28433,24 +29165,43 @@ class DescribeRestorableTenantsResponseBodyTenants(TeaModel):
         unit_num: int = None,
         used_disk: int = None,
     ):
+        # The name of the backup directory.
         self.backup_bucket_name = backup_bucket_name
+        # The list of backup sets.
         self.backup_sets = backup_sets
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The name of the cluster.
         self.cluster_name = cluster_name
+        # The number of CPU cores.
         self.cpu_num = cpu_num
+        # The size of memory for the tenant.
         self.memory_num = memory_num
+        # The backup method.
         self.method = method
+        # The version of the OceanBase Database RPM package.
         self.ob_rpm_version = ob_rpm_version
+        # The ID of the tenant.
         self.ob_tenant_id = ob_tenant_id
+        # The major version of OceanBase Database.
         self.ob_version = ob_version
+        # The region of the cluster.
         self.source_region = source_region
+        # The alias of the tenant.
         self.tenant_alias = tenant_alias
+        # The remaining validity period, in days, of the backup data of the tenant.
         self.tenant_data_backup_remain_days = tenant_data_backup_remain_days
+        # The ID of the tenant.
         self.tenant_id = tenant_id
+        # The mode of the tenant.
         self.tenant_mode = tenant_mode
+        # The name of the tenant.
         self.tenant_name = tenant_name
+        # The list of restorable periods of the tenant.
         self.time_interval_list = time_interval_list
+        # The number of nodes of the tenant.
         self.unit_num = unit_num
+        # The size of disk space for the tenant.
         self.used_disk = used_disk
 
     def validate(self):
@@ -28569,8 +29320,11 @@ class DescribeRestorableTenantsResponseBody(TeaModel):
         tenants: List[DescribeRestorableTenantsResponseBodyTenants] = None,
         total_count: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The information about the tenants.
         self.tenants = tenants
+        # The total number.
         self.total_count = total_count
 
     def validate(self):
@@ -29578,6 +30332,7 @@ class DescribeSQLSamplesRequest(TeaModel):
         self.end_time = end_time
         # The instance ID.
         self.instance_id = instance_id
+        # Specifies whether to return the SQL text.
         self.return_sql_text = return_sql_text
         # SQL ID.
         # 
@@ -29727,6 +30482,9 @@ class DescribeSQLSamplesResponseBodyData(TeaModel):
         self.executor_rpc = executor_rpc
         # Degree of parallelism.
         self.expected_worker_count = expected_worker_count
+        # The full SQL text. 
+        # 
+        # > This parameter is unavailable.
         self.full_sql_text = full_sql_text
         # Plan generation time (in milliseconds).
         self.get_plan_time = get_plan_time
@@ -29746,6 +30504,7 @@ class DescribeSQLSamplesResponseBodyData(TeaModel):
         self.ob_server_id = ob_server_id
         # User ID.
         self.ob_user_id = ob_user_id
+        # The parameter value of the SQL statement.
         self.params_value = params_value
         # Average number of partition accessed during the execution period.
         self.partition_count = partition_count
@@ -29773,6 +30532,7 @@ class DescribeSQLSamplesResponseBodyData(TeaModel):
         self.schedule_time = schedule_time
         # The server where the SQL is executed.
         self.server = server
+        # The SQL text.
         self.sql_text = sql_text
         # SQL type.
         self.sql_type = sql_type
@@ -30607,6 +31367,7 @@ class DescribeSampleSqlRawTextsRequest(TeaModel):
     def __init__(
         self,
         db_name: str = None,
+        dynamic_sql: bool = None,
         end_time: str = None,
         instance_id: str = None,
         limit: str = None,
@@ -30617,6 +31378,7 @@ class DescribeSampleSqlRawTextsRequest(TeaModel):
     ):
         # This parameter is required.
         self.db_name = db_name
+        self.dynamic_sql = dynamic_sql
         # This parameter is required.
         self.end_time = end_time
         self.instance_id = instance_id
@@ -30641,6 +31403,8 @@ class DescribeSampleSqlRawTextsRequest(TeaModel):
         result = dict()
         if self.db_name is not None:
             result['DbName'] = self.db_name
+        if self.dynamic_sql is not None:
+            result['DynamicSql'] = self.dynamic_sql
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.instance_id is not None:
@@ -30661,6 +31425,8 @@ class DescribeSampleSqlRawTextsRequest(TeaModel):
         m = m or dict()
         if m.get('DbName') is not None:
             self.db_name = m.get('DbName')
+        if m.get('DynamicSql') is not None:
+            self.dynamic_sql = m.get('DynamicSql')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('InstanceId') is not None:
@@ -32509,15 +33275,11 @@ class DescribeTenantRequest(TeaModel):
         instance_id: str = None,
         tenant_id: str = None,
     ):
-        # The status of the Internet address for accessing the tenant. Valid values:   
-        # - CLOSED: The address is disabled.   
-        # - ALLOCATING_INTERNET_ADDRESS: An address is being applied for.   
-        # - PENDING_OFFLINE_INTERNET_ADDRESS: The address is being disabled.   
-        # - ONLINE: The address is in service.
+        # The ID of the OceanBase cluster.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Indicates whether to enable transaction splitting.
+        # The ID of the tenant.
         # 
         # This parameter is required.
         self.tenant_id = tenant_id
@@ -32553,8 +33315,11 @@ class DescribeTenantResponseBodyTenantReadOnlyResourceCapacityUnit(TeaModel):
         min_capacity_unit: int = None,
         used_capacit: int = None,
     ):
+        # The maximum number of capacity units.
         self.max_capacity_unit = max_capacity_unit
+        # The minimum number of capacity units.
         self.min_capacity_unit = min_capacity_unit
+        # The number of used capacity units.
         self.used_capacit = used_capacit
 
     def validate(self):
@@ -32592,8 +33357,11 @@ class DescribeTenantResponseBodyTenantReadOnlyResourceCpu(TeaModel):
         unit_cpu: float = None,
         used_cpu: float = None,
     ):
+        # The total number of CPU cores of the tenant.
         self.total_cpu = total_cpu
+        # The number of CPU cores in each resource unit of the tenant.
         self.unit_cpu = unit_cpu
+        # The number of CPU cores used by the cluster.
         self.used_cpu = used_cpu
 
     def validate(self):
@@ -32629,6 +33397,7 @@ class DescribeTenantResponseBodyTenantReadOnlyResourceDiskSize(TeaModel):
         self,
         used_disk_size: float = None,
     ):
+        # The size of disk space used by the tenant, in GB.
         self.used_disk_size = used_disk_size
 
     def validate(self):
@@ -32657,7 +33426,9 @@ class DescribeTenantResponseBodyTenantReadOnlyResourceLogDiskSize(TeaModel):
         total_log_disk: int = None,
         unit_log_disk: int = None,
     ):
+        # The total log disk size of the tenant, in GB.
         self.total_log_disk = total_log_disk
+        # The log disk size of each resource unit of the tenant, in GB.
         self.unit_log_disk = unit_log_disk
 
     def validate(self):
@@ -32691,8 +33462,11 @@ class DescribeTenantResponseBodyTenantReadOnlyResourceMemory(TeaModel):
         unit_memory: float = None,
         used_memory: float = None,
     ):
+        # The total memory size of the tenant, in GB.
         self.total_memory = total_memory
+        # The memory size of each resource unit of the tenant, in GB.
         self.unit_memory = unit_memory
+        # The size of memory used by the tenant, in GB.
         self.used_memory = used_memory
 
     def validate(self):
@@ -32733,11 +33507,17 @@ class DescribeTenantResponseBodyTenantReadOnlyResource(TeaModel):
         memory: DescribeTenantResponseBodyTenantReadOnlyResourceMemory = None,
         unit_num: int = None,
     ):
+        # The information about capacity units.
         self.capacity_unit = capacity_unit
+        # The number of CPU cores of each replica node in the cluster.
         self.cpu = cpu
+        # The size of the data disk.
         self.disk_size = disk_size
+        # The information about the log disk resources of the tenant.
         self.log_disk_size = log_disk_size
+        # The information about the memory resources of the cluster.
         self.memory = memory
+        # The number of resource units in the tenant.
         self.unit_num = unit_num
 
     def validate(self):
@@ -32825,51 +33605,69 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The primary zone of the tenant.
+        # The type of the address.
+        # 
+        # - MASTER: the primary address, which supports both data read and write.
+        # - READONLY: a read-only address.
+        # - READWRITE: a read/write splitting address.
+        # - CLOGSERVICE: a clog service address.
         self.address_type = address_type
+        # The logical zones of the endpoints.
         self.connection_logical_zones = connection_logical_zones
+        # The type of the replica corresponding to the tenant connection.
         self.connection_replica_type = connection_replica_type
-        # The Internet address for accessing the tenant.
+        # The list of zones corresponding to the tenant connection.
         self.connection_zones = connection_zones
+        # Specifies whether to enable transaction splitting.
         self.enable_transaction_split = enable_transaction_split
-        # The ID of the VPC.
+        # The Internet address for accessing the tenant.
         self.internet_address = internet_address
-        # 实例系列
+        # The status of the Internet address for accessing the tenant. Valid values:   
+        # - CLOSED: The address is disabled.   
+        # - ALLOCATING_INTERNET_ADDRESS: An address is being applied for.   
+        # - PENDING_OFFLINE_INTERNET_ADDRESS: The address is being disabled.   
+        # - ONLINE: The address is in service.
         self.internet_address_status = internet_address_status
+        # The upper limit of the maximum number of public connections.
         self.internet_max_connection_limit = internet_max_connection_limit
+        # The current value set for the maximum number of public connections.
         self.internet_max_connection_num = internet_max_connection_num
-        # 实例类型
+        # The Internet port for accessing the tenant.
         self.internet_port = internet_port
+        # The port for direct loads of public connections.
         self.internet_rpc_port = internet_rpc_port
-        # The deployment type of the cluster. Valid values:  
-        # - multiple: multi-IDC deployment   
-        # - single: single-IDC deployment   
-        # - dual: dual-IDC deployment
+        # The intranet address for accessing the tenant.
         self.intranet_address = intranet_address
-        # PayCore business database
-        self.intranet_address_master_zone_id = intranet_address_master_zone_id
-        # The total number of CPU cores of the tenant.
-        self.intranet_address_slave_zone_id = intranet_address_slave_zone_id
-        # 付费类型
-        self.intranet_address_status = intranet_address_status
-        # The ID of the tenant.
-        self.intranet_port = intranet_port
-        self.intranet_rpc_port = intranet_rpc_port
-        self.intranet_sql_port = intranet_sql_port
-        self.max_connection_limit = max_connection_limit
-        self.max_connection_num = max_connection_num
-        self.odp_version = odp_version
-        self.parallel_query_degree = parallel_query_degree
-        self.proxy_cluster_id = proxy_cluster_id
-        self.tenant_endpoint_id = tenant_endpoint_id
         # The primary zone corresponding to the address for accessing the tenant.
+        self.intranet_address_master_zone_id = intranet_address_master_zone_id
+        # The standby zone corresponding to the address for accessing the tenant.
+        self.intranet_address_slave_zone_id = intranet_address_slave_zone_id
+        # The status of the intranet address for accessing the tenant.  
+        # The value ONLINE indicates that the address is in service.
+        self.intranet_address_status = intranet_address_status
+        # The intranet port for accessing the tenant.
+        self.intranet_port = intranet_port
+        # The port for direct loads of private connections.
+        self.intranet_rpc_port = intranet_rpc_port
+        # The port of private SQL connections.
+        self.intranet_sql_port = intranet_sql_port
+        # The current value set for the maximum number of private connections.
+        self.max_connection_limit = max_connection_limit
+        # The maximum number of connections.
+        self.max_connection_num = max_connection_num
+        # The ODP version.
+        self.odp_version = odp_version
+        # The degree of parallelism (DOP).
+        self.parallel_query_degree = parallel_query_degree
+        # The ID of the OceanBase Database Proxy (ODP) cluster.
+        self.proxy_cluster_id = proxy_cluster_id
+        # The ID of the tenant endpoint.
+        self.tenant_endpoint_id = tenant_endpoint_id
+        # Specifies whether to enable transaction splitting.
         self.transaction_split = transaction_split
-        # The connection access information of the tenant.
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
-        # The service mode of the connection address. Valid values:  
-        # ReadWrite: provides strong-consistency read and write services.   
-        # ReadOnly: provides the read-only service to ensure ultimate consistency of data.   
-        # Clog: provides transaction log services.
+        # The ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -33003,8 +33801,11 @@ class DescribeTenantResponseBodyTenantTenantResourceCapacityUnit(TeaModel):
         min_capacity_unit: int = None,
         used_capacit: int = None,
     ):
+        # The maximum number of capacity units.
         self.max_capacity_unit = max_capacity_unit
+        # The minimum number of capacity units.
         self.min_capacity_unit = min_capacity_unit
+        # The number of used capacity units.
         self.used_capacit = used_capacit
 
     def validate(self):
@@ -33042,19 +33843,11 @@ class DescribeTenantResponseBodyTenantTenantResourceCpu(TeaModel):
         unit_cpu: float = None,
         used_cpu: float = None,
     ):
-        # The data replica distribution mode of the tenant.    
-        # 
-        # - For the high availability version, N-N-N indicates the three-zone mode, and N-N indicates the dual-zone or single-zone mode.
-        # - For the basic version, N indicates the single-zone mode. 
-        # 
-        # > <br>N represents the number of nodes in a single zone.
+        # The total number of CPU cores of the tenant.
         self.total_cpu = total_cpu
-        # The zone corresponding to the tenant connection.
+        # The number of CPU cores in each resource unit of the tenant.
         self.unit_cpu = unit_cpu
-        # The tenant mode.   
-        # Valid values: 
-        # Oracle   
-        # MySQL
+        # The number of used CPU cores of the tenant.
         self.used_cpu = used_cpu
 
     def validate(self):
@@ -33090,7 +33883,7 @@ class DescribeTenantResponseBodyTenantTenantResourceDiskSize(TeaModel):
         self,
         used_disk_size: float = None,
     ):
-        # The total memory size of the tenant, in GB.
+        # The size of used disk space of the tenant, in GB.
         self.used_disk_size = used_disk_size
 
     def validate(self):
@@ -33119,7 +33912,9 @@ class DescribeTenantResponseBodyTenantTenantResourceLogDiskSize(TeaModel):
         total_log_disk: int = None,
         unit_log_disk: int = None,
     ):
+        # The total size of log disk of the tenant, in GB.
         self.total_log_disk = total_log_disk
+        # The log disk size of each resource unit of the tenant, in GB.
         self.unit_log_disk = unit_log_disk
 
     def validate(self):
@@ -33153,15 +33948,11 @@ class DescribeTenantResponseBodyTenantTenantResourceMemory(TeaModel):
         unit_memory: float = None,
         used_memory: float = None,
     ):
-        # The information about the memory resources of the tenant.
+        # The total memory size of the tenant, in GB.
         self.total_memory = total_memory
-        # The time when the tenant was created.
+        # The memory size of each resource unit of the tenant, in GB.
         self.unit_memory = unit_memory
-        # The status of the Internet address for accessing the tenant. Valid values:   
-        # Closed: The address is disabled.   
-        # - ALLOCATING_INTERNET_ADDRESS: An address is being applied for.   
-        # - PENDING_OFFLINE_INTERNET_ADDRESS: The address is being disabled.   
-        # - ONLINE: The address is in service.
+        # The size of used memory of the tenant, in GB.
         self.used_memory = used_memory
 
     def validate(self):
@@ -33202,18 +33993,17 @@ class DescribeTenantResponseBodyTenantTenantResource(TeaModel):
         memory: DescribeTenantResponseBodyTenantTenantResourceMemory = None,
         unit_num: int = None,
     ):
+        # The information about capacity units.
         self.capacity_unit = capacity_unit
-        # The enabling status of the Clog service.  
-        # CLOSED: The Clog service is disabled.  
-        # - ONLINE: The Clog service is running.
+        # The information about the CPU resources of the tenant.
         self.cpu = cpu
-        # The status of the intranet address for accessing the tenant.  
-        # The value ONLINE indicates that the address is in service.
+        # The information about the disk resources of the tenant.
         self.disk_size = disk_size
+        # The information about the log disk resources of the tenant.
         self.log_disk_size = log_disk_size
-        # The description of the tenant.
+        # The information about the memory resources of the tenant.
         self.memory = memory
-        # Alibaba Cloud CLI
+        # The number of resource units for the tenant.
         self.unit_num = unit_num
 
     def validate(self):
@@ -33276,15 +34066,24 @@ class DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas(TeaModel):
         full_copy_id: int = None,
         logic_zone_name: str = None,
         read_only_copy_id: str = None,
+        read_only_replica_type: str = None,
         zone_copy_id: int = None,
-        zone_nodes: str = None,
+        zone_nodes: int = None,
         zone_replica_type: str = None,
     ):
+        # The ID of the full-featured replica.
         self.full_copy_id = full_copy_id
+        # The name of the logical zone.
         self.logic_zone_name = logic_zone_name
+        # The ID of the read-only replica.
         self.read_only_copy_id = read_only_copy_id
+        # The type of the read-only replica.
+        self.read_only_replica_type = read_only_replica_type
+        # The ID of the zone replica.
         self.zone_copy_id = zone_copy_id
+        # The number of nodes in the zone.
         self.zone_nodes = zone_nodes
+        # The type of the zone replica.
         self.zone_replica_type = zone_replica_type
 
     def validate(self):
@@ -33302,6 +34101,8 @@ class DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas(TeaModel):
             result['LogicZoneName'] = self.logic_zone_name
         if self.read_only_copy_id is not None:
             result['ReadOnlyCopyId'] = self.read_only_copy_id
+        if self.read_only_replica_type is not None:
+            result['ReadOnlyReplicaType'] = self.read_only_replica_type
         if self.zone_copy_id is not None:
             result['ZoneCopyId'] = self.zone_copy_id
         if self.zone_nodes is not None:
@@ -33318,6 +34119,8 @@ class DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas(TeaModel):
             self.logic_zone_name = m.get('LogicZoneName')
         if m.get('ReadOnlyCopyId') is not None:
             self.read_only_copy_id = m.get('ReadOnlyCopyId')
+        if m.get('ReadOnlyReplicaType') is not None:
+            self.read_only_replica_type = m.get('ReadOnlyReplicaType')
         if m.get('ZoneCopyId') is not None:
             self.zone_copy_id = m.get('ZoneCopyId')
         if m.get('ZoneNodes') is not None:
@@ -33335,12 +34138,13 @@ class DescribeTenantResponseBodyTenantTenantZones(TeaModel):
         tenant_zone_replicas: List[DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas] = None,
         tenant_zone_role: str = None,
     ):
-        # 是否允许开启读写分离地址
+        # The region where the zone of the tenant resides.
         self.region = region
-        # The intranet port for accessing the tenant.
+        # The ID of the zone.
         self.tenant_zone_id = tenant_zone_id
+        # The zone replicas of the tenant.
         self.tenant_zone_replicas = tenant_zone_replicas
-        # The character set.
+        # The role of the zone of the tenant.
         self.tenant_zone_role = tenant_zone_role
 
     def validate(self):
@@ -33407,6 +34211,7 @@ class DescribeTenantResponseBodyTenant(TeaModel):
         master_intranet_address_zone: str = None,
         max_parallel_query_degree: int = None,
         odp_version: str = None,
+        parameter_template: str = None,
         pay_type: str = None,
         primary_zone: str = None,
         primary_zone_deploy_type: str = None,
@@ -33416,6 +34221,7 @@ class DescribeTenantResponseBodyTenant(TeaModel):
         status: str = None,
         tenant_connections: List[DescribeTenantResponseBodyTenantTenantConnections] = None,
         tenant_id: str = None,
+        tenant_max_connections: str = None,
         tenant_mode: str = None,
         tenant_name: str = None,
         tenant_resource: DescribeTenantResponseBodyTenantTenantResource = None,
@@ -33424,189 +34230,140 @@ class DescribeTenantResponseBodyTenant(TeaModel):
         version: str = None,
         vpc_id: str = None,
     ):
-        # DescribeTenant
-        self.available_zones = available_zones
-        # The number of CPU cores in each resource unit of the tenant.
-        self.charset = charset
-        # 地址类型
-        self.clog_service_status = clog_service_status
-        # The request ID.
-        self.collation = collation
-        # You can call this operation to create a single tenant in a specific cluster.
-        self.create_time = create_time
-        self.data_merge_time = data_merge_time
         # The list of zones.
-        self.deploy_mode = deploy_mode
-        # The series of the instance.
-        self.deploy_type = deploy_type
-        # Indicates whether to enable read/write splitting endpoint.
-        self.description = description
-        # You can call this operation to query the information of a specific tenant in a specific cluster.
-        self.disk_type = disk_type
-        # 是否可以申请Binlog服务
-        self.enable_binlog_service = enable_binlog_service
-        # The intranet address for accessing the tenant.
-        self.enable_clog_service = enable_clog_service
-        # The deployment type of the primary zone.
-        self.enable_internet_address_service = enable_internet_address_service
-        self.enable_parallel_query = enable_parallel_query
-        self.enable_read_only_replica = enable_read_only_replica
-        self.enable_read_write_split = enable_read_write_split
-        # {
-        #     "RequestId": "EE205C00-30E4-XXXX-XXXX-87E3A8A2AA0C",
-        #     "Tenant": {
-        #         "TenantId": "t33h8y08k****",
-        #         "TenantName": "pay_online",
-        #         "TenantMode": "Oracle",
-        #         "VpcId": "vpc-bp1d2q3mhg9i23ofi****",
-        #         "Status": "ONLINE",
-        #         "PrimaryZone": "cn-hangzhou-i",
-        #         "DeployType": "multiple",
-        #         "DeployMode": "1-1-1",
-        #         "Description": "PayCore business database",
-        #         "CreateTime": "2021-09-17 15:52:17",
-        #         "TenantResource": {
-        #             "UnitNum": 1,
-        #             "Cpu": {
-        #                 "UsedCpu": 8,
-        #                 "TotalCpu": 10,
-        #                 "UnitCpu": 8
-        #             },
-        #             "Memory": {
-        #                 "UsedMemory": 30,
-        #                 "TotalMemory": 64,
-        #                 "UnitMemory": 32
-        #             },
-        #             "DiskSize": {
-        #                 "UsedDiskSize": 86
-        #             }
-        #         },
-        #         "TenantConnections": [
-        #             {
-        #                 "ConnectionRole": "ReadWrite",
-        #                 "IntranetAddress": "t32a7ru5u****.oceanbase.aliyuncs.com",
-        #                 "IntranetPort": 3306,
-        #                 "InternetAddress": "t32a7ru5u****mo.oceanbase.aliyuncs.com",
-        #                 "InternetPort": 3306,
-        #                 "VpcId": "vpc-bp1qiail1asmfe23t****",
-        #                 "VSwitchId": "vsw-bp11k1aypnzu1l3whi****",
-        #                 "IntranetAddressMasterZoneId": "cn-hangzhou-i",
-        #                 "IntranetAddressSlaveZoneId": "cn-hangzhou-j",
-        #                 "IntranetAddressStatus": "ONLINE",
-        #                 "ConnectionZones": [
-        #                     "cn-hangzhou-i"
-        #                 ],
-        #                 "InternetAddressStatus": "CLOSED"
-        #             }
-        #         ],
-        #         "TenantZones": [
-        #             {
-        #                 "TenantZoneId": "cn-hangzhou-i",
-        #                 "Region": "cn-hangzhou",
-        #                 "TenantZoneRole": "ReadOnly"
-        #             }
-        #         ],
-        #         "ClogServiceStatus": "CLOSED"
-        #     }
-        # }
-        self.instance_type = instance_type
-        self.lower_case_table_names = lower_case_table_names
-        # ```
-        # http(s)://[Endpoint]/?Action=DescribeTenant
-        # &InstanceId=ob317v4uif****\
-        # &TenantId=ob2mr3oae0****\
-        # &Common request parameters
-        # ```
-        self.master_intranet_address_zone = master_intranet_address_zone
-        self.max_parallel_query_degree = max_parallel_query_degree
-        self.odp_version = odp_version
-        self.pay_type = pay_type
-        # The type of the payment.
-        self.primary_zone = primary_zone
-        # Example 1
-        self.primary_zone_deploy_type = primary_zone_deploy_type
-        self.read_only_resource = read_only_resource
-        self.recycle_bin_status = recycle_bin_status
-        # <DescribeTenantResponse>
-        #     <RequestId>EE205C00-30E4-XXXX-XXXX-87E3A8A2AA0C</RequestId>
-        #     <Tenant>
-        #         <TenantId>t33h8y08k****</TenantId>
-        #         <TenantName>pay_online</TenantName>
-        #         <TenantMode>Oracle</TenantMode>
-        #         <VpcId>vpc-bp1d2q3mhg9i23ofi****</VpcId>
-        #         <Status>ONLINE</Status>
-        #         <PrimaryZone>cn-hangzhou-i</PrimaryZone>
-        #         <DeployType>multiple</DeployType>
-        #         <DeployMode>1-1-1</DeployMode>
-        #         <Description>PayCore business database</Description>
-        #         <CreateTime>2021-09-17 15:52:17</CreateTime>
-        #         <TenantResource>
-        #             <UnitNum>1</UnitNum>
-        #             <Cpu>
-        #                 <UsedCpu>8</UsedCpu>
-        #                 <TotalCpu>10</TotalCpu>
-        #                 <UnitCpu>8</UnitCpu>
-        #             </Cpu>
-        #             <Memory>
-        #                 <UsedMemory>30</UsedMemory>
-        #                 <TotalMemory>64</TotalMemory>
-        #                 <UnitMemory>32</UnitMemory>
-        #             </Memory>
-        #             <DiskSize>
-        #                 <UsedDiskSize>86</UsedDiskSize>
-        #             </DiskSize>
-        #         </TenantResource>
-        #         <TenantConnections>
-        #             <ConnectionRole>ReadWrite</ConnectionRole>
-        #             <IntranetAddress>t32a7ru5u****.oceanbase.aliyuncs.com</IntranetAddress>
-        #             <IntranetPort>3306</IntranetPort>
-        #             <InternetAddress>t32a7ru5u****mo.oceanbase.aliyuncs.com</InternetAddress>
-        #             <InternetPort>3306</InternetPort>
-        #             <VpcId>vpc-bp1qiail1asmfe23t****</VpcId>
-        #             <VSwitchId>vsw-bp11k1aypnzu1l3whi****</VSwitchId>
-        #             <IntranetAddressMasterZoneId>cn-hangzhou-i</IntranetAddressMasterZoneId>
-        #             <IntranetAddressSlaveZoneId>cn-hangzhou-j</IntranetAddressSlaveZoneId>
-        #             <IntranetAddressStatus>ONLINE</IntranetAddressStatus>
-        #             <ConnectionZones>cn-hangzhou-i</ConnectionZones>
-        #             <InternetAddressStatus>CLOSED</InternetAddressStatus>
-        #         </TenantConnections>
-        #         <TenantZones>
-        #             <TenantZoneId>cn-hangzhou-i</TenantZoneId>
-        #             <Region>cn-hangzhou</Region>
-        #             <TenantZoneRole>ReadOnly</TenantZoneRole>
-        #         </TenantZones>
-        #         <ClogServiceStatus>CLOSED</ClogServiceStatus>
-        #     </Tenant>
-        # </DescribeTenantResponse>
-        self.series = series
+        self.available_zones = available_zones
         # The character set.
-        self.status = status
-        # The status of the tenant.   
-        # - PENDING_CREATE: The tenant is being created.   
-        # - RESTORE: The tenant is being recovered.   
-        # - ONLINE: The tenant is running.   
-        # - SPEC_MODIFYING: The specification of the tenant is being modified.   
-        # - ALLOCATING_INTERNET_ADDRESS: An Internet address is being allocated.  
-        # - PENDING_OFFLINE_INTERNET_ADDRESS: The Internet address is being disabled.  
-        # - PRIMARY_ZONE_MODIFYING: The tenant is switching to a new primary zone.  
-        # - PARAMETER_MODIFYING: Parameters are being modified.   
-        # - WHITE_LIST_MODIFYING: The whitelist is being modified.
-        self.tenant_connections = tenant_connections
-        # The region where the zone of the tenant resides.
-        self.tenant_id = tenant_id
+        self.charset = charset
         # The enabling status of the clog service.  
         # - CLOSED: The clog service is disabled.  
         # - ONLINE: The clog service is running.
-        self.tenant_mode = tenant_mode
-        # The request type of the zone of the tenant.  ReadWrite: The zone supports data reads and writes. ReadOnly: The zone supports only data reads. For a high availability cluster with multiple IDCs, the primary zone provides ReadWrite services, and the standby zone provides ReadOnly services. For a high availability cluster with a single IDC, all zones provide ReadWrite services.
-        self.tenant_name = tenant_name
-        # It is an online CLI tool that allows you to quickly retrieve and debug APIs. It can dynamically generate executable SDK code samples.
-        self.tenant_resource = tenant_resource
-        # The standby zone corresponding to the address for accessing the tenant.
-        self.tenant_zones = tenant_zones
-        self.time_zone = time_zone
-        self.version = version
+        self.clog_service_status = clog_service_status
+        # The collation.
+        self.collation = collation
+        # The time when the tenant was created.
+        self.create_time = create_time
+        # The major compaction time of the tenant. This parameter is supported only in OceanBase Database V4.0.0 and later.
+        self.data_merge_time = data_merge_time
+        # The data replica distribution mode of the tenant.    
+        # 
+        # - For the high availability version, N-N-N indicates the three-zone mode, and N-N indicates the dual-zone or single-zone mode.
+        # - For the basic version, N indicates the single-zone mode. 
+        # 
+        # > <br>N represents the number of nodes in a single zone.
+        self.deploy_mode = deploy_mode
+        # The deployment type of the cluster. Valid values:  
+        # - multiple: multi-IDC deployment   
+        # - single: single-IDC deployment   
+        # - dual: dual-IDC deployment
+        self.deploy_type = deploy_type
+        # The description of the tenant.
+        self.description = description
+        # The type of the disk.
+        self.disk_type = disk_type
+        # Indicates whether the binlog service is available for application.
+        self.enable_binlog_service = enable_binlog_service
         # Indicates whether the clog service is available. To enable the clog service, submit a ticket.
+        self.enable_clog_service = enable_clog_service
+        # Indicates whether the Internet address can be enabled for the tenant.
+        self.enable_internet_address_service = enable_internet_address_service
+        # Indicates whether parallel query can be enabled.
+        self.enable_parallel_query = enable_parallel_query
+        # Indicates whether read-only replicas are supported.
+        self.enable_read_only_replica = enable_read_only_replica
+        # Indicates whether to enable read/write splitting endpoint.
+        self.enable_read_write_split = enable_read_write_split
+        # The type of the instance.
+        self.instance_type = instance_type
+        # Indicates whether the table name is case-sensitive. Valid values: 
+        # * **1**: The table name is case-insensitive. 
+        # * **0**: The table name is case-sensitive.
+        self.lower_case_table_names = lower_case_table_names
+        # The zone where the primary node is located.
+        self.master_intranet_address_zone = master_intranet_address_zone
+        # The maximum value of DOP.
+        self.max_parallel_query_degree = max_parallel_query_degree
+        # The ODP version.
+        self.odp_version = odp_version
+        # The parameter template.
+        self.parameter_template = parameter_template
+        # The type of the payment.
+        self.pay_type = pay_type
+        # The primary zone of the tenant.
+        self.primary_zone = primary_zone
+        # The deployment type of the primary zone.
+        self.primary_zone_deploy_type = primary_zone_deploy_type
+        # The information about read-only resources.
+        self.read_only_resource = read_only_resource
+        # The status of the recycle bin in the tenant. Valid values: 
+        # * ON: The recycly bin is enabled. 
+        # * OFF: The recycle bin is disabled.
+        self.recycle_bin_status = recycle_bin_status
+        # The series of the instance.
+        self.series = series
+        # The status of the tenant.
+        # 
+        # - ONLINE: The tenant is running.
+        # 
+        # - PENDING_CREATE: The tenant is being created.
+        # 
+        # - WAITING_ALLOCATE_MASTER_ADDRESS: The standby cluster is waiting for the primary address to be created.
+        # 
+        # - ALLOCATING_MASTER_ADDRESS: The primary address is being created.
+        # 
+        # - DELETING_MASTER_ADDRESS: The primary address is being deleted.
+        # 
+        # - ALLOCATING_INTERNET_ADDRESS: The Internet address is being created.
+        # 
+        # - PENDING_OFFLINE_INTERNET_ADDRESS: The Internet address is being deleted.
+        # 
+        # - ALLOCATING_READONLY_ADDRESS: The read-only address is being created.
+        # 
+        # - DELETING_READONLY_ADDRESS: The read-only address is being deleted.
+        # 
+        # - ALLOCATING_READWRITE_ADDRESS: The read/write splitting address is being created.
+        # 
+        # - DELETING_READWRITE_ADDRESS: The read/write splitting address is being deleted.
+        # 
+        # - ALLOCATING_CLOGSERVICE_ADDRESS: The clog address is being created.
+        # 
+        # - DELETING_CLOGSERVICE_ADDRESS: The clog address is being deleted.
+        # 
+        # - MODIFYING_ADDRESS: The domain name of the address is being modified.
+        # 
+        # - MODIFYING_PRIMARY_ZONE: The primary zone is being switched.
+        # 
+        # - MODIFYING_READONLY_ADDRESS: The read-only address is being modified.
+        # 
+        # - MODIFYING_READWRITE_ADDRESS: The read/write splitting address is being modified.
+        # 
+        # - SPEC_MODIFYING: The specifications of the tenant are being modified.
+        # 
+        # - WHITE_LIST_MODIFYING: The allowlist is being modified.
+        # 
+        # - CREATING_BINLOG: Binlogs are being created.
+        self.status = status
+        # The connection information of the tenant.
+        self.tenant_connections = tenant_connections
+        # The ID of the tenant.
+        self.tenant_id = tenant_id
+        # The maximum number of connections allowed in the tenant.
+        self.tenant_max_connections = tenant_max_connections
+        # The mode of the tenant.
+        # Valid values:
+        # - Oracle   
+        # - MySQL
+        self.tenant_mode = tenant_mode
+        # The name of the tenant.
+        self.tenant_name = tenant_name
+        # The resource information of the tenant.
+        self.tenant_resource = tenant_resource
+        # The information about zones in the tenant.
+        self.tenant_zones = tenant_zones
+        # The time zone.
+        self.time_zone = time_zone
+        # The version information.
+        self.version = version
+        # The Virtual Private Cloud (VPC) ID of the tenant. If no suitable VPC is available, create a VPC as prompted. For more information, see "What is a VPC".
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -33671,6 +34428,8 @@ class DescribeTenantResponseBodyTenant(TeaModel):
             result['MaxParallelQueryDegree'] = self.max_parallel_query_degree
         if self.odp_version is not None:
             result['OdpVersion'] = self.odp_version
+        if self.parameter_template is not None:
+            result['ParameterTemplate'] = self.parameter_template
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
         if self.primary_zone is not None:
@@ -33691,6 +34450,8 @@ class DescribeTenantResponseBodyTenant(TeaModel):
                 result['TenantConnections'].append(k.to_map() if k else None)
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
+        if self.tenant_max_connections is not None:
+            result['TenantMaxConnections'] = self.tenant_max_connections
         if self.tenant_mode is not None:
             result['TenantMode'] = self.tenant_mode
         if self.tenant_name is not None:
@@ -33753,6 +34514,8 @@ class DescribeTenantResponseBodyTenant(TeaModel):
             self.max_parallel_query_degree = m.get('MaxParallelQueryDegree')
         if m.get('OdpVersion') is not None:
             self.odp_version = m.get('OdpVersion')
+        if m.get('ParameterTemplate') is not None:
+            self.parameter_template = m.get('ParameterTemplate')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
         if m.get('PrimaryZone') is not None:
@@ -33775,6 +34538,8 @@ class DescribeTenantResponseBodyTenant(TeaModel):
                 self.tenant_connections.append(temp_model.from_map(k))
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
+        if m.get('TenantMaxConnections') is not None:
+            self.tenant_max_connections = m.get('TenantMaxConnections')
         if m.get('TenantMode') is not None:
             self.tenant_mode = m.get('TenantMode')
         if m.get('TenantName') is not None:
@@ -33802,9 +34567,9 @@ class DescribeTenantResponseBody(TeaModel):
         request_id: str = None,
         tenant: DescribeTenantResponseBodyTenant = None,
     ):
-        # The zone information of the tenant.
+        # The ID of the request.
         self.request_id = request_id
-        # The ID of the zone.
+        # The information about the tenant.
         self.tenant = tenant
 
     def validate(self):
@@ -35058,8 +35823,12 @@ class DescribeTenantTagsResponse(TeaModel):
 class DescribeTenantUserRolesRequest(TeaModel):
     def __init__(
         self,
+        instance_id: str = None,
         tenant_id: str = None,
     ):
+        # The ID of the OceanBase cluster.
+        self.instance_id = instance_id
+        # The ID of the tenant. If you specify the ID of a tenant in MySQL mode, the privilege configuration of the regular user in MySQL mode is returned. If you specify the ID of a tenant in Oracle mode, the privilege configuration of the regular user in Oracle mode is returned.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -35071,12 +35840,16 @@ class DescribeTenantUserRolesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         return self
@@ -35088,7 +35861,15 @@ class DescribeTenantUserRolesResponseBody(TeaModel):
         request_id: str = None,
         role: List[str] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of roles of the user.   
+        # Valid values: 
+        # 
+        # ReadWrite: a role that has the read and write privileges, namely ALL PRIVILEGES.
+        # ReadOnly: a role that has only the read-only privilege SELECT.
+        # DDL: a role that has DDL privileges such as CREATE, DROP, ALTER, SHOW VIEW, and CREATE VIEW.
+        # DML: a role that has DML privileges such as SELECT, INSERT, UPDATE, DELETE, and SHOW VIEW.
         self.role = role
 
     def validate(self):
@@ -35265,6 +36046,7 @@ class DescribeTenantUsersResponseBodyTenantUsers(TeaModel):
         self,
         databases: List[DescribeTenantUsersResponseBodyTenantUsersDatabases] = None,
         description: str = None,
+        global_permissions: str = None,
         instance_id: str = None,
         tenant_id: str = None,
         user_name: str = None,
@@ -35273,6 +36055,7 @@ class DescribeTenantUsersResponseBodyTenantUsers(TeaModel):
     ):
         self.databases = databases
         self.description = description
+        self.global_permissions = global_permissions
         # 所属集群Id
         self.instance_id = instance_id
         # 所属租户Id
@@ -35299,6 +36082,8 @@ class DescribeTenantUsersResponseBodyTenantUsers(TeaModel):
                 result['Databases'].append(k.to_map() if k else None)
         if self.description is not None:
             result['Description'] = self.description
+        if self.global_permissions is not None:
+            result['GlobalPermissions'] = self.global_permissions
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.tenant_id is not None:
@@ -35320,6 +36105,8 @@ class DescribeTenantUsersResponseBodyTenantUsers(TeaModel):
                 self.databases.append(temp_model.from_map(k))
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('GlobalPermissions') is not None:
+            self.global_permissions = m.get('GlobalPermissions')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('TenantId') is not None:
@@ -35615,19 +36402,24 @@ class DescribeTenantsRequest(TeaModel):
         tenant_id: str = None,
         tenant_name: str = None,
     ):
-        # The number of used disks of the tenant.
+        # The ID of the OceanBase cluster.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # It is an online CLI tool that allows you to quickly retrieve and debug APIs. It can dynamically generate executable SDK code samples.
+        # The number of the page to return.   
+        # Start value: 1
+        # - Default value: 1
         self.page_number = page_number
-        # You can call this operation to query the tenants in an OceanBase cluster.
+        # The number of rows to return on each page.   
+        # - Maximum value: 100.
+        # - Default value: 10
         self.page_size = page_size
-        # The primary zone of the tenant.
+        # The search keyword.
         self.search_key = search_key
-        # Alibaba Cloud CLI
+        # The ID of the tenant.
         self.tenant_id = tenant_id
-        # The information of tenants.
+        # The name of the tenant.   
+        # It must start with a letter or an underscore (_), and contain 2 to 20 characters, which can be uppercase letters, lowercase letters, digits, and underscores (_).  It cannot be set to sys.
         self.tenant_name = tenant_name
 
     def validate(self):
@@ -35682,6 +36474,7 @@ class DescribeTenantsResponseBodyTenants(TeaModel):
         description: str = None,
         enable_read_only_replica: bool = None,
         mem: int = None,
+        parameter_template: str = None,
         primary_zone: str = None,
         status: str = None,
         tenant_id: str = None,
@@ -35693,25 +36486,35 @@ class DescribeTenantsResponseBodyTenants(TeaModel):
         used_disk_size: float = None,
         vpc_id: str = None,
     ):
+        # The character set.
         self.charset = charset
+        # The collation.
         self.collation = collation
         # The total number of CPU cores of the tenant.
         self.cpu = cpu
-        # The number of CPU cores in each resource unit of the tenant.
+        # The time when the tenant was created.
         self.create_time = create_time
-        # The search keyword.
+        # The data replica distribution mode of the tenant.   
+        # 
+        # - For the high availability version, N-N-N indicates the three-zone mode, and N-N indicates the dual-zone or single-zone mode.
+        # - For the basic version, N indicates the single-zone mode. 
+        # 
+        # > <br>N represents the number of nodes in a single zone.
         self.deploy_mode = deploy_mode
-        # The name of the tenant.   
-        # It must start with a letter or an underscore (_), and contain 2 to 20 characters, which can be uppercase letters, lowercase letters, digits, and underscores (_).  It cannot be set to sys.
+        # The deployment type of the tenant. <br>
+        # - multiple: multi-IDC deployment
+        # - single: single-IDC deployment
+        # - dual: dual-IDC deployment
         self.deploy_type = deploy_type
-        # Example 1
+        # The description of the tenant.
         self.description = description
+        # Indicates whether read-only replicas are supported.
         self.enable_read_only_replica = enable_read_only_replica
-        # The number of the page to return.   
-        # Start value: 1
-        # - Default value: 1
+        # The total memory size of the tenant, in GB.
         self.mem = mem
-        # The return result of the request.
+        # The parameter template.
+        self.parameter_template = parameter_template
+        # The primary zone of the tenant.
         self.primary_zone = primary_zone
         # The status of the tenant.  <br>
         # - PENDING_CREATE: The tenant is being created.
@@ -35724,40 +36527,24 @@ class DescribeTenantsResponseBodyTenants(TeaModel):
         # - PARAMETER_MODIFYING: Parameters are being modified.
         # - WHITE_LIST_MODIFYING: The whitelist is being modified.
         self.status = status
-        # You can call this operation to query the tenants in an OceanBase cluster.
+        # The ID of the tenant.
         self.tenant_id = tenant_id
-        # {
-        #     "TotalCount": 1,
-        #     "RequestId": "EE205C00-30E4-XXXX-XXXX-87E3A8A2AA0C",
-        #     "Tenants": [
-        #         {
-        #             "VpcId": "vpc-bp1d2q3mhg9i23ofi****",
-        #             "Status": "ONLINE",
-        #             "PrimaryZone": "cn-hangzhou-i",
-        #             "DeployType": "multiple",
-        #             "DeployMode": "1-1-1",
-        #             "CreateTime": "2021-09-17 15:52:17.0",
-        #             "TenantName": "pay_online",
-        #             "Mem": 20,
-        #             "Cpu": 10,
-        #             "Description": "PayCore business database",
-        #             "TenantMode": "Oracle",
-        #             "TenantId": "t33h8y08k****",
-        #             "UnitCpu": 5,
-        #             "UnitMem": 10,
-        #             "UnitNum": 2,
-        #             "UsedDiskSize": 10
-        #         }
-        #     ]
-        # }
+        # The tenant mode.   
+        # Valid values:   
+        # Oracle
+        # MySQL
         self.tenant_mode = tenant_mode
-        # The information of tenants.
+        # The name of the tenant.
         self.tenant_name = tenant_name
+        # The number of CPU cores in each resource unit of the tenant.
         self.unit_cpu = unit_cpu
+        # The memory size of each resource unit of the tenant, in GB.
         self.unit_mem = unit_mem
+        # The number of resource units in the tenant.
         self.unit_num = unit_num
+        # The number of used disks of the tenant.
         self.used_disk_size = used_disk_size
-        # The time when the tenant was created.
+        # The ID of the VPC.   <br>If no suitable VPC is available, create a VPC as prompted. For more information, see "What is a VPC".
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -35787,6 +36574,8 @@ class DescribeTenantsResponseBodyTenants(TeaModel):
             result['EnableReadOnlyReplica'] = self.enable_read_only_replica
         if self.mem is not None:
             result['Mem'] = self.mem
+        if self.parameter_template is not None:
+            result['ParameterTemplate'] = self.parameter_template
         if self.primary_zone is not None:
             result['PrimaryZone'] = self.primary_zone
         if self.status is not None:
@@ -35829,6 +36618,8 @@ class DescribeTenantsResponseBodyTenants(TeaModel):
             self.enable_read_only_replica = m.get('EnableReadOnlyReplica')
         if m.get('Mem') is not None:
             self.mem = m.get('Mem')
+        if m.get('ParameterTemplate') is not None:
+            self.parameter_template = m.get('ParameterTemplate')
         if m.get('PrimaryZone') is not None:
             self.primary_zone = m.get('PrimaryZone')
         if m.get('Status') is not None:
@@ -35859,11 +36650,11 @@ class DescribeTenantsResponseBody(TeaModel):
         tenants: List[DescribeTenantsResponseBodyTenants] = None,
         total_count: int = None,
     ):
-        # The ID of the tenant.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the OceanBase cluster.
+        # The information of tenants.
         self.tenants = tenants
-        # The total memory size of the tenant, in GB.
+        # The total number of tenants in the specified OceanBase cluster.
         self.total_count = total_count
 
     def validate(self):
@@ -43851,6 +44642,7 @@ class ModifyInstanceSSLRequest(TeaModel):
         self,
         enable_ssl: str = None,
         instance_id: str = None,
+        tenant_id: str = None,
     ):
         # The operation to modify the SSL status. Valid values:
         # 
@@ -43866,6 +44658,7 @@ class ModifyInstanceSSLRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.tenant_id = tenant_id
 
     def validate(self):
         pass
@@ -43880,6 +44673,8 @@ class ModifyInstanceSSLRequest(TeaModel):
             result['EnableSSL'] = self.enable_ssl
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         return result
 
     def from_map(self, m: dict = None):
@@ -43888,6 +44683,8 @@ class ModifyInstanceSSLRequest(TeaModel):
             self.enable_ssl = m.get('EnableSSL')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         return self
 
 
@@ -43896,6 +44693,7 @@ class ModifyInstanceSSLResponseBodyInstanceSSL(TeaModel):
         self,
         enable_ssl: str = None,
         instance_id: str = None,
+        tenant_id: str = None,
     ):
         # The operation to modify the SSL status. Valid values:
         # 
@@ -43907,6 +44705,7 @@ class ModifyInstanceSSLResponseBodyInstanceSSL(TeaModel):
         self.enable_ssl = enable_ssl
         # The ID of the OceanBase cluster.
         self.instance_id = instance_id
+        self.tenant_id = tenant_id
 
     def validate(self):
         pass
@@ -43921,6 +44720,8 @@ class ModifyInstanceSSLResponseBodyInstanceSSL(TeaModel):
             result['EnableSSL'] = self.enable_ssl
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         return result
 
     def from_map(self, m: dict = None):
@@ -43929,6 +44730,8 @@ class ModifyInstanceSSLResponseBodyInstanceSSL(TeaModel):
             self.enable_ssl = m.get('EnableSSL')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         return self
 
 
@@ -46062,12 +46865,15 @@ class ModifyTenantUserPasswordResponse(TeaModel):
 class ModifyTenantUserRolesRequest(TeaModel):
     def __init__(
         self,
+        global_permissions: str = None,
         instance_id: str = None,
         modify_type: str = None,
         tenant_id: str = None,
         user_name: str = None,
         user_role: str = None,
+        user_type: str = None,
     ):
+        self.global_permissions = global_permissions
         # The type of the privilege modification operation.   
         # Valid values:  
         # update: updates all privileges. This is the default value.  
@@ -46093,6 +46899,7 @@ class ModifyTenantUserRolesRequest(TeaModel):
         # 
         # This parameter is required.
         self.user_role = user_role
+        self.user_type = user_type
 
     def validate(self):
         pass
@@ -46103,6 +46910,8 @@ class ModifyTenantUserRolesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.global_permissions is not None:
+            result['GlobalPermissions'] = self.global_permissions
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.modify_type is not None:
@@ -46113,10 +46922,14 @@ class ModifyTenantUserRolesRequest(TeaModel):
             result['UserName'] = self.user_name
         if self.user_role is not None:
             result['UserRole'] = self.user_role
+        if self.user_type is not None:
+            result['UserType'] = self.user_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('GlobalPermissions') is not None:
+            self.global_permissions = m.get('GlobalPermissions')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('ModifyType') is not None:
@@ -46127,6 +46940,8 @@ class ModifyTenantUserRolesRequest(TeaModel):
             self.user_name = m.get('UserName')
         if m.get('UserRole') is not None:
             self.user_role = m.get('UserRole')
+        if m.get('UserType') is not None:
+            self.user_type = m.get('UserType')
         return self
 
 
@@ -49198,11 +50013,15 @@ class UpdateProjectConfigRequestCommonTransferConfig(TeaModel):
 class UpdateProjectConfigRequestFullTransferConfig(TeaModel):
     def __init__(
         self,
+        index_ddlconcurrency_limit: int = None,
+        max_concurrent_index_ddls: int = None,
         read_worker_num: int = None,
         throttle_iops: int = None,
         throttle_rps: int = None,
         write_worker_num: int = None,
     ):
+        self.index_ddlconcurrency_limit = index_ddlconcurrency_limit
+        self.max_concurrent_index_ddls = max_concurrent_index_ddls
         self.read_worker_num = read_worker_num
         self.throttle_iops = throttle_iops
         self.throttle_rps = throttle_rps
@@ -49217,6 +50036,10 @@ class UpdateProjectConfigRequestFullTransferConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.index_ddlconcurrency_limit is not None:
+            result['IndexDDLConcurrencyLimit'] = self.index_ddlconcurrency_limit
+        if self.max_concurrent_index_ddls is not None:
+            result['MaxConcurrentIndexDDLs'] = self.max_concurrent_index_ddls
         if self.read_worker_num is not None:
             result['ReadWorkerNum'] = self.read_worker_num
         if self.throttle_iops is not None:
@@ -49229,6 +50052,10 @@ class UpdateProjectConfigRequestFullTransferConfig(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('IndexDDLConcurrencyLimit') is not None:
+            self.index_ddlconcurrency_limit = m.get('IndexDDLConcurrencyLimit')
+        if m.get('MaxConcurrentIndexDDLs') is not None:
+            self.max_concurrent_index_ddls = m.get('MaxConcurrentIndexDDLs')
         if m.get('ReadWorkerNum') is not None:
             self.read_worker_num = m.get('ReadWorkerNum')
         if m.get('ThrottleIOPS') is not None:

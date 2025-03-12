@@ -1,3 +1,34 @@
+2025-03-12 Version: 9.0.0
+- Support API DescribeProxyService.
+- Update API CreateProject: update param FullTransferConfig.
+- Update API CreateProject: update param IncrTransferConfig.
+- Update API CreateProject: update param ReverseIncrTransferConfig.
+- Update API CreateProject: update param TransferMapping.
+- Update API CreateProjectModifyRecords: update param Databases.
+- Update API CreateTenantUser: add param GlobalPermissions.
+- Update API CreateTenantUser: update response param.
+- Update API DescribeInstance: delete param MaxConnectionLimit.
+- Update API DescribeInstanceCreatableZone: update response param.
+- Update API DescribeInstanceSSL: add param TenantId.
+- Update API DescribeInstanceSSL: update response param.
+- Update API DescribeInstanceSummary: update response param.
+- Update API DescribeInstanceTopology: update response param.
+- Update API DescribeInstances: update response param.
+- Update API DescribeOasAnomalySQLList: update response param.
+- Update API DescribeOasSQLHistoryList: update response param.
+- Update API DescribeParametersHistory: update response param.
+- Update API DescribeSampleSqlRawTexts: add param DynamicSql.
+- Update API DescribeTenant: update response param.
+- Update API DescribeTenantUserRoles: add param InstanceId.
+- Update API DescribeTenantUsers: update response param.
+- Update API DescribeTenants: update response param.
+- Update API ModifyInstanceSSL: add param TenantId.
+- Update API ModifyInstanceSSL: update response param.
+- Update API ModifyTenantUserRoles: add param GlobalPermissions.
+- Update API ModifyTenantUserRoles: add param UserType.
+- Update API UpdateProjectConfig: update param FullTransferConfig.
+
+
 2024-09-13 Version: 8.1.0
 - Support API RemoveStandbyInstance.
 
