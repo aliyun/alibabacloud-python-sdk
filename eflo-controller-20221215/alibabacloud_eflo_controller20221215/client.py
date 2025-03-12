@@ -173,6 +173,8 @@ class Client(OpenApiClient):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_region_id):
             query['ResourceRegionId'] = request.resource_region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -218,6 +220,8 @@ class Client(OpenApiClient):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_region_id):
             query['ResourceRegionId'] = request.resource_region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -275,7 +279,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.CloseSessionResponse:
         """
-        @summary 断开连接
+        @summary Disconnect Connection
+        
+        @description An interface for creating a session, returning the front-end EndPoint, and initiating a periodic task to track the session status
         
         @param request: CloseSessionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -318,7 +324,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.CloseSessionResponse:
         """
-        @summary 断开连接
+        @summary Disconnect Connection
+        
+        @description An interface for creating a session, returning the front-end EndPoint, and initiating a periodic task to track the session status
         
         @param request: CloseSessionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -360,7 +368,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.CloseSessionRequest,
     ) -> eflo_controller_20221215_models.CloseSessionResponse:
         """
-        @summary 断开连接
+        @summary Disconnect Connection
+        
+        @description An interface for creating a session, returning the front-end EndPoint, and initiating a periodic task to track the session status
         
         @param request: CloseSessionRequest
         @return: CloseSessionResponse
@@ -373,7 +383,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.CloseSessionRequest,
     ) -> eflo_controller_20221215_models.CloseSessionResponse:
         """
-        @summary 断开连接
+        @summary Disconnect Connection
+        
+        @description An interface for creating a session, returning the front-end EndPoint, and initiating a periodic task to track the session status
         
         @param request: CloseSessionRequest
         @return: CloseSessionResponse
@@ -695,7 +707,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.CreateNetTestTaskResponse:
         """
-        @summary 创建网络测试任务
+        @summary Create Network Test Task
+        
+        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
         
         @param tmp_req: CreateNetTestTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -758,7 +772,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.CreateNetTestTaskResponse:
         """
-        @summary 创建网络测试任务
+        @summary Create Network Test Task
+        
+        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
         
         @param tmp_req: CreateNetTestTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -820,7 +836,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.CreateNetTestTaskRequest,
     ) -> eflo_controller_20221215_models.CreateNetTestTaskResponse:
         """
-        @summary 创建网络测试任务
+        @summary Create Network Test Task
+        
+        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
         
         @param request: CreateNetTestTaskRequest
         @return: CreateNetTestTaskResponse
@@ -833,7 +851,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.CreateNetTestTaskRequest,
     ) -> eflo_controller_20221215_models.CreateNetTestTaskResponse:
         """
-        @summary 创建网络测试任务
+        @summary Create Network Test Task
+        
+        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
         
         @param request: CreateNetTestTaskRequest
         @return: CreateNetTestTaskResponse
@@ -847,7 +867,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.CreateSessionResponse:
         """
-        @summary 创建Web Terminal会话
+        @summary Create Web Terminal Session
+        
+        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
         
         @param request: CreateSessionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -892,7 +914,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.CreateSessionResponse:
         """
-        @summary 创建Web Terminal会话
+        @summary Create Web Terminal Session
+        
+        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
         
         @param request: CreateSessionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -936,7 +960,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.CreateSessionRequest,
     ) -> eflo_controller_20221215_models.CreateSessionResponse:
         """
-        @summary 创建Web Terminal会话
+        @summary Create Web Terminal Session
+        
+        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
         
         @param request: CreateSessionRequest
         @return: CreateSessionResponse
@@ -949,7 +975,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.CreateSessionRequest,
     ) -> eflo_controller_20221215_models.CreateSessionResponse:
         """
-        @summary 创建Web Terminal会话
+        @summary Create Web Terminal Session
+        
+        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
         
         @param request: CreateSessionRequest
         @return: CreateSessionResponse
@@ -1299,7 +1327,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeNetTestResultResponse:
         """
-        @summary 查询网络测试结果
+        @summary Query Network Test Result
+        
+        @description An interface for creating a session, returning the front-end EndPoint, and initiating a periodic task to track the session status
         
         @param request: DescribeNetTestResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1340,7 +1370,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeNetTestResultResponse:
         """
-        @summary 查询网络测试结果
+        @summary Query Network Test Result
+        
+        @description An interface for creating a session, returning the front-end EndPoint, and initiating a periodic task to track the session status
         
         @param request: DescribeNetTestResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1380,7 +1412,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeNetTestResultRequest,
     ) -> eflo_controller_20221215_models.DescribeNetTestResultResponse:
         """
-        @summary 查询网络测试结果
+        @summary Query Network Test Result
+        
+        @description An interface for creating a session, returning the front-end EndPoint, and initiating a periodic task to track the session status
         
         @param request: DescribeNetTestResultRequest
         @return: DescribeNetTestResultResponse
@@ -1393,7 +1427,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeNetTestResultRequest,
     ) -> eflo_controller_20221215_models.DescribeNetTestResultResponse:
         """
-        @summary 查询网络测试结果
+        @summary Query Network Test Result
+        
+        @description An interface for creating a session, returning the front-end EndPoint, and initiating a periodic task to track the session status
         
         @param request: DescribeNetTestResultRequest
         @return: DescribeNetTestResultResponse
@@ -2331,7 +2367,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListDiagnosticResultsResponse:
         """
-        @summary 诊断任务列表
+        @summary List of Diagnostic Tasks
+        
+        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
         
         @param request: ListDiagnosticResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2378,7 +2416,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListDiagnosticResultsResponse:
         """
-        @summary 诊断任务列表
+        @summary List of Diagnostic Tasks
+        
+        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
         
         @param request: ListDiagnosticResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2424,7 +2464,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListDiagnosticResultsRequest,
     ) -> eflo_controller_20221215_models.ListDiagnosticResultsResponse:
         """
-        @summary 诊断任务列表
+        @summary List of Diagnostic Tasks
+        
+        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
         
         @param request: ListDiagnosticResultsRequest
         @return: ListDiagnosticResultsResponse
@@ -2437,7 +2479,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListDiagnosticResultsRequest,
     ) -> eflo_controller_20221215_models.ListDiagnosticResultsResponse:
         """
-        @summary 诊断任务列表
+        @summary List of Diagnostic Tasks
+        
+        @description An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
         
         @param request: ListDiagnosticResultsRequest
         @return: ListDiagnosticResultsResponse
@@ -2691,7 +2735,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListMachineNetworkInfoResponse:
         """
-        @summary 使用HPNZone和机型查询机型网络配置
+        @summary Query machine network configuration using HPNZone and machine type
+        
+        @description An interface for creating a session, returning the frontend EndPoint, and initiating a periodic task to track the session status
         
         @param tmp_req: ListMachineNetworkInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2736,7 +2782,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListMachineNetworkInfoResponse:
         """
-        @summary 使用HPNZone和机型查询机型网络配置
+        @summary Query machine network configuration using HPNZone and machine type
+        
+        @description An interface for creating a session, returning the frontend EndPoint, and initiating a periodic task to track the session status
         
         @param tmp_req: ListMachineNetworkInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2780,7 +2828,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListMachineNetworkInfoRequest,
     ) -> eflo_controller_20221215_models.ListMachineNetworkInfoResponse:
         """
-        @summary 使用HPNZone和机型查询机型网络配置
+        @summary Query machine network configuration using HPNZone and machine type
+        
+        @description An interface for creating a session, returning the frontend EndPoint, and initiating a periodic task to track the session status
         
         @param request: ListMachineNetworkInfoRequest
         @return: ListMachineNetworkInfoResponse
@@ -2793,7 +2843,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListMachineNetworkInfoRequest,
     ) -> eflo_controller_20221215_models.ListMachineNetworkInfoResponse:
         """
-        @summary 使用HPNZone和机型查询机型网络配置
+        @summary Query machine network configuration using HPNZone and machine type
+        
+        @description An interface for creating a session, returning the frontend EndPoint, and initiating a periodic task to track the session status
         
         @param request: ListMachineNetworkInfoRequest
         @return: ListMachineNetworkInfoResponse
@@ -2915,7 +2967,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListNetTestResultsResponse:
         """
-        @summary 网络测试列表
+        @summary Network Test List
+        
+        @description An interface for creating a session, returning the frontend EndPoint, and initiating a periodic task to track the session status.
         
         @param request: ListNetTestResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2962,7 +3016,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListNetTestResultsResponse:
         """
-        @summary 网络测试列表
+        @summary Network Test List
+        
+        @description An interface for creating a session, returning the frontend EndPoint, and initiating a periodic task to track the session status.
         
         @param request: ListNetTestResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3008,7 +3064,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListNetTestResultsRequest,
     ) -> eflo_controller_20221215_models.ListNetTestResultsResponse:
         """
-        @summary 网络测试列表
+        @summary Network Test List
+        
+        @description An interface for creating a session, returning the frontend EndPoint, and initiating a periodic task to track the session status.
         
         @param request: ListNetTestResultsRequest
         @return: ListNetTestResultsResponse
@@ -3021,7 +3079,9 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListNetTestResultsRequest,
     ) -> eflo_controller_20221215_models.ListNetTestResultsResponse:
         """
-        @summary 网络测试列表
+        @summary Network Test List
+        
+        @description An interface for creating a session, returning the frontend EndPoint, and initiating a periodic task to track the session status.
         
         @param request: ListNetTestResultsRequest
         @return: ListNetTestResultsResponse
@@ -3278,7 +3338,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListUserClusterTypesResponse:
         """
-        @summary 查询用户可以使用的集群类型
+        @summary Query the cluster types available to the user
+        
+        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status
         
         @param request: ListUserClusterTypesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3312,7 +3374,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListUserClusterTypesResponse:
         """
-        @summary 查询用户可以使用的集群类型
+        @summary Query the cluster types available to the user
+        
+        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status
         
         @param request: ListUserClusterTypesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3343,7 +3407,9 @@ class Client(OpenApiClient):
 
     def list_user_cluster_types(self) -> eflo_controller_20221215_models.ListUserClusterTypesResponse:
         """
-        @summary 查询用户可以使用的集群类型
+        @summary Query the cluster types available to the user
+        
+        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status
         
         @return: ListUserClusterTypesResponse
         """
@@ -3352,7 +3418,9 @@ class Client(OpenApiClient):
 
     async def list_user_cluster_types_async(self) -> eflo_controller_20221215_models.ListUserClusterTypesResponse:
         """
-        @summary 查询用户可以使用的集群类型
+        @summary Query the cluster types available to the user
+        
+        @description An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status
         
         @return: ListUserClusterTypesResponse
         """

@@ -121,6 +121,7 @@ class ChangeResourceGroupRequest(TeaModel):
         resource_group_id: str = None,
         resource_id: str = None,
         resource_region_id: str = None,
+        resource_type: str = None,
     ):
         # Target Resource Group
         # 
@@ -134,6 +135,7 @@ class ChangeResourceGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.resource_region_id = resource_region_id
+        self.resource_type = resource_type
 
     def validate(self):
         pass
@@ -150,6 +152,8 @@ class ChangeResourceGroupRequest(TeaModel):
             result['ResourceId'] = self.resource_id
         if self.resource_region_id is not None:
             result['ResourceRegionId'] = self.resource_region_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         return result
 
     def from_map(self, m: dict = None):
@@ -160,6 +164,8 @@ class ChangeResourceGroupRequest(TeaModel):
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceRegionId') is not None:
             self.resource_region_id = m.get('ResourceRegionId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         return self
 
 
@@ -238,7 +244,9 @@ class CloseSessionRequest(TeaModel):
         session_id: str = None,
         session_token: str = None,
     ):
+        # Session ID
         self.session_id = session_id
+        # Session token
         self.session_token = session_token
 
     def validate(self):
@@ -272,7 +280,9 @@ class CloseSessionResponseBody(TeaModel):
         session_id: str = None,
         state: str = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Session ID.
         self.session_id = session_id
         # ClosingActive
         self.state = state
@@ -1815,9 +1825,13 @@ class CreateNetTestTaskRequestCommTestHosts(TeaModel):
         resource_id: str = None,
         server_name: str = None,
     ):
+        # IP address.
         self.ip = ip
+        # Node ID.
         self.node_id = node_id
+        # Resource ID
         self.resource_id = resource_id
+        # Service name.
         self.server_name = server_name
 
     def validate(self):
@@ -1860,9 +1874,13 @@ class CreateNetTestTaskRequestCommTest(TeaModel):
         model: str = None,
         type: str = None,
     ):
+        # Number of GPUs
         self.gpunum = gpunum
+        # Resource ID
         self.hosts = hosts
+        # Communication library model
         self.model = model
+        # Communication library test category: ACCL or NCCL
         self.type = type
 
     def validate(self):
@@ -1914,10 +1932,15 @@ class CreateNetTestTaskRequestDelayTestHosts(TeaModel):
         resource_id: str = None,
         server_name: str = None,
     ):
+        # Network interface bond port
         self.bond = bond
+        # Node IP
         self.ip = ip
+        # Node ID.
         self.node_id = node_id
+        # Resource ID
         self.resource_id = resource_id
+        # Service name.
         self.server_name = server_name
 
     def validate(self):
@@ -1961,6 +1984,7 @@ class CreateNetTestTaskRequestDelayTest(TeaModel):
         self,
         hosts: List[CreateNetTestTaskRequestDelayTestHosts] = None,
     ):
+        # 输入测试节点的hosts
         self.hosts = hosts
 
     def validate(self):
@@ -2000,10 +2024,15 @@ class CreateNetTestTaskRequestTrafficTestClients(TeaModel):
         resource_id: str = None,
         server_name: str = None,
     ):
+        # Network card bond interface
         self.bond = bond
+        # Node IP
         self.ip = ip
+        # Node ID
         self.node_id = node_id
+        # Resource ID
         self.resource_id = resource_id
+        # Service name.
         self.server_name = server_name
 
     def validate(self):
@@ -2051,10 +2080,15 @@ class CreateNetTestTaskRequestTrafficTestServers(TeaModel):
         resource_id: str = None,
         server_name: str = None,
     ):
+        # Network card bond interface
         self.bond = bond
+        # Node IP
         self.ip = ip
+        # Node ID
         self.node_id = node_id
+        # Resource ID
         self.resource_id = resource_id
+        # Service name.
         self.server_name = server_name
 
     def validate(self):
@@ -2104,12 +2138,20 @@ class CreateNetTestTaskRequestTrafficTest(TeaModel):
         servers: List[CreateNetTestTaskRequestTrafficTestServers] = None,
         traffic_model: str = None,
     ):
+        # Resource ID.
         self.clients = clients
+        # The duration of the workflow task in seconds.
         self.duration = duration
+        # Enter True/False when the protocol is RDMA, 
+        # this field is empty when the protocol is TCP.
         self.gdr = gdr
+        # Network protocol, either RDMA or TCP.
         self.protocol = protocol
+        # Enter the number of concurrent connections when the protocol is TCP, or enter the configured QP value when the protocol is RDMA.
         self.qp = qp
+        # Service list
         self.servers = servers
+        # Traffic model, either MTON or Fullmesh.
         self.traffic_model = traffic_model
 
     def validate(self):
@@ -2185,13 +2227,22 @@ class CreateNetTestTaskRequest(TeaModel):
         port: str = None,
         traffic_test: CreateNetTestTaskRequestTrafficTest = None,
     ):
+        # Cluster ID
         self.cluster_id = cluster_id
+        # Cluster name
         self.cluster_name = cluster_name
+        # Required when the test type is communication library testing
         self.comm_test = comm_test
+        # Fill in this field when the network test type is delay testing.
         self.delay_test = delay_test
+        # Network test type.
+        # For example: DelayTest for latency testing, TrafficTest for traffic testing, CommTest for communication library testing.
         self.net_test_type = net_test_type
+        # Network mode
         self.network_mode = network_mode
+        # Test port number.
         self.port = port
+        # This field is empty if the TrafficModel is Fullmesh.
         self.traffic_test = traffic_test
 
     def validate(self):
@@ -2262,13 +2313,22 @@ class CreateNetTestTaskShrinkRequest(TeaModel):
         port: str = None,
         traffic_test_shrink: str = None,
     ):
+        # Cluster ID
         self.cluster_id = cluster_id
+        # Cluster name
         self.cluster_name = cluster_name
+        # Required when the test type is communication library testing
         self.comm_test_shrink = comm_test_shrink
+        # Fill in this field when the network test type is delay testing.
         self.delay_test_shrink = delay_test_shrink
+        # Network test type.
+        # For example: DelayTest for latency testing, TrafficTest for traffic testing, CommTest for communication library testing.
         self.net_test_type = net_test_type
+        # Network mode
         self.network_mode = network_mode
+        # Test port number.
         self.port = port
+        # This field is empty if the TrafficModel is Fullmesh.
         self.traffic_test_shrink = traffic_test_shrink
 
     def validate(self):
@@ -2325,8 +2385,9 @@ class CreateNetTestTaskResponseBody(TeaModel):
         request_id: str = None,
         test_id: str = None,
     ):
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # 启动测试任务ID，网络测试任务的唯一标志。
         self.test_id = test_id
 
     def validate(self):
@@ -2401,8 +2462,11 @@ class CreateSessionRequest(TeaModel):
         session_type: str = None,
         start_time: str = None,
     ):
+        # Instance ID.
         self.node_id = node_id
+        # Session type corresponding to the session package.
         self.session_type = session_type
+        # Initiation time, 13-digit timestamp.
         self.start_time = start_time
 
     def validate(self):
@@ -2442,11 +2506,15 @@ class CreateSessionResponseBody(TeaModel):
         session_token: str = None,
         wss_endpoint: str = None,
     ):
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # 节点  ID。
         self.server_sn = server_sn
+        # Session ID.
         self.session_id = session_id
+        # Session token.
         self.session_token = session_token
+        # WebSocket address
         self.wss_endpoint = wss_endpoint
 
     def validate(self):
@@ -3489,6 +3557,7 @@ class DescribeNetTestResultRequest(TeaModel):
         self,
         test_id: str = None,
     ):
+        # Test task ID.
         self.test_id = test_id
 
     def validate(self):
@@ -3518,8 +3587,11 @@ class DescribeNetTestResultResponseBodyCommTestHosts(TeaModel):
         resource_id: str = None,
         server_name: str = None,
     ):
+        # IP address
         self.ip = ip
+        # Resource ID
         self.resource_id = resource_id
+        # 服务名称。
         self.server_name = server_name
 
     def validate(self):
@@ -3558,9 +3630,13 @@ class DescribeNetTestResultResponseBodyCommTest(TeaModel):
         model: str = None,
         type: str = None,
     ):
+        # Number of GPUs
         self.gpunum = gpunum
+        # Resource ID
         self.hosts = hosts
+        # Communication library model
         self.model = model
+        # Communication library test category: ACCL or NCCL
         self.type = type
 
     def validate(self):
@@ -3611,9 +3687,13 @@ class DescribeNetTestResultResponseBodyDelayTestHosts(TeaModel):
         resource_id: str = None,
         server_name: str = None,
     ):
+        # Network card bond interface
         self.bond = bond
+        # Node IP
         self.ip = ip
+        # Resource ID
         self.resource_id = resource_id
+        # Service name
         self.server_name = server_name
 
     def validate(self):
@@ -3653,6 +3733,7 @@ class DescribeNetTestResultResponseBodyDelayTest(TeaModel):
         self,
         hosts: List[DescribeNetTestResultResponseBodyDelayTestHosts] = None,
     ):
+        # Input the hosts of the test nodes
         self.hosts = hosts
 
     def validate(self):
@@ -3691,9 +3772,13 @@ class DescribeNetTestResultResponseBodyTrafficTestClients(TeaModel):
         resource_id: str = None,
         server_name: str = None,
     ):
+        # Network card bond interface
         self.bond = bond
+        # Node IP
         self.ip = ip
+        # Resource ID
         self.resource_id = resource_id
+        # 服务名称。
         self.server_name = server_name
 
     def validate(self):
@@ -3736,9 +3821,13 @@ class DescribeNetTestResultResponseBodyTrafficTestServers(TeaModel):
         resource_id: str = None,
         server_name: str = None,
     ):
+        # Network card bond interface
         self.bond = bond
+        # Node IP
         self.ip = ip
+        # Resource ID
         self.resource_id = resource_id
+        # Service name
         self.server_name = server_name
 
     def validate(self):
@@ -3784,12 +3873,19 @@ class DescribeNetTestResultResponseBodyTrafficTest(TeaModel):
         servers: List[DescribeNetTestResultResponseBodyTrafficTestServers] = None,
         traffic_model: str = None,
     ):
+        # Resource ID.
         self.clients = clients
+        # Duration of the workflow task in seconds.
         self.duration = duration
+        # For RDMA, enter True/False; for TCP, this field is empty.
         self.gdr = gdr
+        # Network protocol, either RDMA or TCP.
         self.protocol = protocol
+        # For TCP, enter the number of concurrent test connections; for RDMA, enter the configured QP value.
         self.qp = qp
+        # List of servers
         self.servers = servers
+        # Traffic model, either MTON or Fullmesh.
         self.traffic_model = traffic_model
 
     def validate(self):
@@ -3870,18 +3966,34 @@ class DescribeNetTestResultResponseBody(TeaModel):
         test_id: str = None,
         traffic_test: DescribeNetTestResultResponseBodyTrafficTest = None,
     ):
+        # Cluster ID.
         self.cluster_id = cluster_id
+        # Cluster name.
         self.cluster_name = cluster_name
+        # Fill in when the traffic test type is communication library test
         self.comm_test = comm_test
+        # Diagnosis task creation time.
         self.creation_time = creation_time
+        # Fill in when the network test type is latency test
         self.delay_test = delay_test
+        # Diagnosis task completion time.
         self.finished_time = finished_time
+        # Network test type.
         self.net_test_type = net_test_type
+        # Test port number.
         self.port = port
+        # Request ID
         self.request_id = request_id
+        # Details of the diagnosis result. Returned as a JSON string.
         self.result_detial = result_detial
+        # Diagnosis task status. Possible values:
+        # - InProgress: Diagnosis in progress.
+        # - Finished: Diagnosis completed.
+        # - Failed: Diagnosis failed.
         self.status = status
+        # Initiated test task ID, which is the unique identifier for the network test task.
         self.test_id = test_id
+        # This field is empty if the traffic model (TrafficModel) is Fullmesh.
         self.traffic_test = traffic_test
 
     def validate(self):
@@ -6552,9 +6664,18 @@ class ListDiagnosticResultsRequest(TeaModel):
         next_token: str = None,
         resource_group_id: str = None,
     ):
+        # Type of diagnosis
         self.diag_type = diag_type
+        # Number of items per page in a paginated query. The maximum value is 100.
+        # 
+        # Default value:
+        # 
+        # - If no value is set or the set value is less than 20, the default is 20.
+        # - If the set value is greater than 100, the default is 100.
         self.max_results = max_results
+        # Query token (Token), the value should be the NextToken parameter value returned from the previous API call.
         self.next_token = next_token
+        # Resource group ID
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -6603,15 +6724,25 @@ class ListDiagnosticResultsResponseBodyDiagnosticResults(TeaModel):
         server_name: str = None,
         status: str = None,
     ):
+        # Cluster ID
         self.cluster_id = cluster_id
+        # Cluster name
         self.cluster_name = cluster_name
+        # Creation time of the diagnostic task.
         self.creation_time = creation_time
+        # Diagnosis content. For example, in network diagnosis, there are static configuration checks, dynamic operation checks, etc.
         self.diag_content = diag_content
+        # Diagnosis ID
         self.diag_id = diag_id
+        # Diagnosis result, success or failure.
         self.diag_result = diag_result
+        # Completion time of the diagnostic task.
         self.finished_time = finished_time
+        # Resource ID
         self.resource_id = resource_id
+        # Service name.
         self.server_name = server_name
+        # Governance status
         self.status = status
 
     def validate(self):
@@ -6678,10 +6809,19 @@ class ListDiagnosticResultsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # Diagnostic information
         self.diagnostic_results = diagnostic_results
+        # 分页查询时每页行数。最大值为100。
+        # 
+        # 默认值：
+        # 
+        # •当不设置值或设置的值小于20时，默认值为20。
+        # 
+        # •当设置的值大于100时，默认值为100。
         self.max_results = max_results
+        # NextToken for the next page. Include this value when requesting the next page.
         self.next_token = next_token
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -7220,8 +7360,11 @@ class ListMachineNetworkInfoRequestMachineHpnInfo(TeaModel):
         machine_type: str = None,
         region_id: str = None,
     ):
+        # Cluster ID
         self.hpn_zone = hpn_zone
+        # Machine type
         self.machine_type = machine_type
+        # Region ID
         self.region_id = region_id
 
     def validate(self):
@@ -7257,6 +7400,7 @@ class ListMachineNetworkInfoRequest(TeaModel):
         self,
         machine_hpn_info: List[ListMachineNetworkInfoRequestMachineHpnInfo] = None,
     ):
+        # Array
         self.machine_hpn_info = machine_hpn_info
 
     def validate(self):
@@ -7292,6 +7436,7 @@ class ListMachineNetworkInfoShrinkRequest(TeaModel):
         self,
         machine_hpn_info_shrink: str = None,
     ):
+        # Array
         self.machine_hpn_info_shrink = machine_hpn_info_shrink
 
     def validate(self):
@@ -7325,12 +7470,19 @@ class ListMachineNetworkInfoResponseBodyMachineNetworkInfo(TeaModel):
         net_arch: str = None,
         region_id: str = None,
     ):
+        # Cluster network
         self.cluster_net = cluster_net
+        # Whether jumbo frame capability is enabled
         self.enable_jumbo_frame = enable_jumbo_frame
+        # Cluster ID
         self.hpn_zone = hpn_zone
+        # Whether it is in DPU mode
         self.is_dpu_mode = is_dpu_mode
+        # Machine type
         self.machine_type = machine_type
+        # Network architecture
         self.net_arch = net_arch
+        # 地域ID。
         self.region_id = region_id
 
     def validate(self):
@@ -7383,8 +7535,9 @@ class ListMachineNetworkInfoResponseBody(TeaModel):
         machine_network_info: List[ListMachineNetworkInfoResponseBodyMachineNetworkInfo] = None,
         request_id: str = None,
     ):
+        # Array
         self.machine_network_info = machine_network_info
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -7678,9 +7831,19 @@ class ListNetTestResultsRequest(TeaModel):
         next_token: str = None,
         resource_group_id: str = None,
     ):
+        # Number of items per page in a paginated query. The maximum value is 100.
+        # 
+        # Default value:
+        # 
+        # - If no value is set or the set value is less than 20, the default is 20.
+        # 
+        # - If the set value is greater than 100, the default is 100.
         self.max_results = max_results
+        # Type of network test.
         self.net_test_type = net_test_type
+        # Query token (Token), which should be the value of the NextToken parameter returned from the previous API call.
         self.next_token = next_token
+        # Resource group ID
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -7722,8 +7885,11 @@ class ListNetTestResultsResponseBodyNetTestResultsCommTestHosts(TeaModel):
         resource_id: str = None,
         server_name: str = None,
     ):
+        # Node IP
         self.ip = ip
+        # Resource ID
         self.resource_id = resource_id
+        # Service name
         self.server_name = server_name
 
     def validate(self):
@@ -7762,9 +7928,13 @@ class ListNetTestResultsResponseBodyNetTestResultsCommTest(TeaModel):
         model: str = None,
         type: str = None,
     ):
+        # Number of GPUs
         self.gpunum = gpunum
+        # Input hosts for the test nodes
         self.hosts = hosts
+        # Communication library model
         self.model = model
+        # Communication library test category: ACCL or NCCL
         self.type = type
 
     def validate(self):
@@ -7815,9 +7985,13 @@ class ListNetTestResultsResponseBodyNetTestResultsDelayTestHosts(TeaModel):
         resource_id: str = None,
         server_name: str = None,
     ):
+        # Bond interface of the network card
         self.bond = bond
+        # Node IP
         self.ip = ip
+        # 资源id
         self.resource_id = resource_id
+        # Service name
         self.server_name = server_name
 
     def validate(self):
@@ -7857,6 +8031,7 @@ class ListNetTestResultsResponseBodyNetTestResultsDelayTest(TeaModel):
         self,
         hosts: List[ListNetTestResultsResponseBodyNetTestResultsDelayTestHosts] = None,
     ):
+        # Resource list
         self.hosts = hosts
 
     def validate(self):
@@ -7895,9 +8070,13 @@ class ListNetTestResultsResponseBodyNetTestResultsTrafficTestClients(TeaModel):
         resource_id: str = None,
         server_name: str = None,
     ):
+        # Network interface bond port
         self.bond = bond
+        # IP address.
         self.ip = ip
+        # Resource ID.
         self.resource_id = resource_id
+        # Service name.
         self.server_name = server_name
 
     def validate(self):
@@ -7940,9 +8119,13 @@ class ListNetTestResultsResponseBodyNetTestResultsTrafficTestServers(TeaModel):
         resource_id: str = None,
         server_name: str = None,
     ):
+        # Network interface bond port
         self.bond = bond
+        # Node IP
         self.ip = ip
+        # Resource ID.
         self.resource_id = resource_id
+        # Service name.
         self.server_name = server_name
 
     def validate(self):
@@ -7988,12 +8171,20 @@ class ListNetTestResultsResponseBodyNetTestResultsTrafficTest(TeaModel):
         servers: List[ListNetTestResultsResponseBodyNetTestResultsTrafficTestServers] = None,
         traffic_model: str = None,
     ):
+        # Clients
         self.clients = clients
+        # Duration of the workflow task, in seconds.
         self.duration = duration
+        # 协议为RDMA时，填写True/False，
+        # 协议为TCP时，此字段为空。
         self.gdr = gdr
+        # Network protocol, either RDMA or TCP.
         self.protocol = protocol
+        # For TCP, enter the number of concurrent connections; for RDMA, enter the configured QP value.
         self.qp = qp
+        # This field is empty when the traffic model (TrafficModel) is Fullmesh.
         self.servers = servers
+        # Traffic model, either MTON or Fullmesh.
         self.traffic_model = traffic_model
 
     def validate(self):
@@ -8073,17 +8264,32 @@ class ListNetTestResultsResponseBodyNetTestResults(TeaModel):
         test_id: str = None,
         traffic_test: ListNetTestResultsResponseBodyNetTestResultsTrafficTest = None,
     ):
+        # Cluster ID
         self.cluster_id = cluster_id
+        # Cluster name
         self.cluster_name = cluster_name
+        # To be filled when the network test type is communication library test
         self.comm_test = comm_test
+        # Creation time.
         self.creation_time = creation_time
+        # Fill in when the network test type is latency test
         self.delay_test = delay_test
+        # Completion time.
         self.finished_time = finished_time
+        # Type of network test.
         self.net_test_type = net_test_type
+        # Network mode
         self.network_mode = network_mode
+        # Test port number.
         self.port = port
+        # Status of the network test task. Possible values:</br>
+        # - InProgress: Testing in progress.</br>
+        # - Finished: Test completed.</br>
+        # - Failed: Test failed.
         self.status = status
+        # Test ID. A unique identifier for the resource test task.
         self.test_id = test_id
+        # Fill in when the network test type is traffic test.
         self.traffic_test = traffic_test
 
     def validate(self):
@@ -8166,10 +8372,19 @@ class ListNetTestResultsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # 分页查询时每页行数。最大值为100。
+        # 
+        # 默认值：
+        # 
+        # •当不设置值或设置的值小于20时，默认值为20。
+        # 
+        # •当设置的值大于100时，默认值为100。
         self.max_results = max_results
+        # List of nodes
         self.net_test_results = net_test_results
+        # NextToken for the next page, to be included in the request for the next page
         self.next_token = next_token
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -8783,7 +8998,9 @@ class ListUserClusterTypesResponseBodyClusterTypes(TeaModel):
         access_type: str = None,
         type_name: str = None,
     ):
+        # 访问类型。
         self.access_type = access_type
+        # Type name
         self.type_name = type_name
 
     def validate(self):
@@ -8817,7 +9034,9 @@ class ListUserClusterTypesResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # List of cluster types. The number of array elements N ranges from 1 to 100.
         self.cluster_types = cluster_types
+        # The NextToken for the next page. Include this value when requesting the next page.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id

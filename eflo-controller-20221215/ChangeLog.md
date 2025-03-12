@@ -1,3 +1,7 @@
+2025-03-12 Version: 2.3.1
+- Update API ChangeResourceGroup: add param ResourceType.
+
+
 2025-03-03 Version: 2.3.0
 - Support API CloseSession.
 - Support API CreateNetTestTask.
