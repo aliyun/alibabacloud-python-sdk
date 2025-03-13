@@ -441,6 +441,249 @@ class CreateDialogResponse(TeaModel):
         return self
 
 
+class CreateDialogAnalysisTaskRequestConversationListDialogueList(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        role: str = None,
+    ):
+        # This parameter is required.
+        self.content = content
+        # This parameter is required.
+        self.role = role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.role is not None:
+            result['role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        return self
+
+
+class CreateDialogAnalysisTaskRequestConversationList(TeaModel):
+    def __init__(
+        self,
+        dialogue_list: List[CreateDialogAnalysisTaskRequestConversationListDialogueList] = None,
+    ):
+        # This parameter is required.
+        self.dialogue_list = dialogue_list
+
+    def validate(self):
+        if self.dialogue_list:
+            for k in self.dialogue_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['dialogueList'] = []
+        if self.dialogue_list is not None:
+            for k in self.dialogue_list:
+                result['dialogueList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dialogue_list = []
+        if m.get('dialogueList') is not None:
+            for k in m.get('dialogueList'):
+                temp_model = CreateDialogAnalysisTaskRequestConversationListDialogueList()
+                self.dialogue_list.append(temp_model.from_map(k))
+        return self
+
+
+class CreateDialogAnalysisTaskRequest(TeaModel):
+    def __init__(
+        self,
+        analysis_nodes: List[str] = None,
+        conversation_list: List[CreateDialogAnalysisTaskRequestConversationList] = None,
+        meta_data: Dict[str, Any] = None,
+        play_code: str = None,
+        request_id: str = None,
+    ):
+        self.analysis_nodes = analysis_nodes
+        # This parameter is required.
+        self.conversation_list = conversation_list
+        self.meta_data = meta_data
+        # This parameter is required.
+        self.play_code = play_code
+        # This parameter is required.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.conversation_list:
+            for k in self.conversation_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.analysis_nodes is not None:
+            result['analysisNodes'] = self.analysis_nodes
+        result['conversationList'] = []
+        if self.conversation_list is not None:
+            for k in self.conversation_list:
+                result['conversationList'].append(k.to_map() if k else None)
+        if self.meta_data is not None:
+            result['metaData'] = self.meta_data
+        if self.play_code is not None:
+            result['playCode'] = self.play_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('analysisNodes') is not None:
+            self.analysis_nodes = m.get('analysisNodes')
+        self.conversation_list = []
+        if m.get('conversationList') is not None:
+            for k in m.get('conversationList'):
+                temp_model = CreateDialogAnalysisTaskRequestConversationList()
+                self.conversation_list.append(temp_model.from_map(k))
+        if m.get('metaData') is not None:
+            self.meta_data = m.get('metaData')
+        if m.get('playCode') is not None:
+            self.play_code = m.get('playCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreateDialogAnalysisTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        cost: int = None,
+        data: List[str] = None,
+        data_type: str = None,
+        err_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        time: str = None,
+    ):
+        self.cost = cost
+        self.data = data
+        self.data_type = data_type
+        self.err_code = err_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.time = time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost is not None:
+            result['cost'] = self.cost
+        if self.data is not None:
+            result['data'] = self.data
+        if self.data_type is not None:
+            result['dataType'] = self.data_type
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.time is not None:
+            result['time'] = self.time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cost') is not None:
+            self.cost = m.get('cost')
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('dataType') is not None:
+            self.data_type = m.get('dataType')
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('time') is not None:
+            self.time = m.get('time')
+        return self
+
+
+class CreateDialogAnalysisTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDialogAnalysisTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDialogAnalysisTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDocsSummaryTaskRequestDocInfos(TeaModel):
     def __init__(
         self,

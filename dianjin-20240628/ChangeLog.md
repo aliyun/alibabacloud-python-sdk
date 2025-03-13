@@ -1,3 +1,7 @@
+2025-03-13 Version: 1.11.0
+- Support API CreateDialogAnalysisTask.
+
+
 2025-02-25 Version: 1.10.2
 - Update API RealTimeDialog: update param body.
 - Update API RealTimeDialog: update response param.

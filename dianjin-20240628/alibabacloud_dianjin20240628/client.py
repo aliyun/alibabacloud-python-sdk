@@ -327,6 +327,142 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_dialog_with_options_async(workspace_id, request, headers, runtime)
 
+    def create_dialog_analysis_task_with_options(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateDialogAnalysisTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.CreateDialogAnalysisTaskResponse:
+        """
+        @summary 创建会话分析任务
+        
+        @param request: CreateDialogAnalysisTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDialogAnalysisTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.analysis_nodes):
+            body['analysisNodes'] = request.analysis_nodes
+        if not UtilClient.is_unset(request.conversation_list):
+            body['conversationList'] = request.conversation_list
+        if not UtilClient.is_unset(request.meta_data):
+            body['metaData'] = request.meta_data
+        if not UtilClient.is_unset(request.play_code):
+            body['playCode'] = request.play_code
+        if not UtilClient.is_unset(request.request_id):
+            body['requestId'] = request.request_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDialogAnalysisTask',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/virtualHuman/dialog/analysis/submit',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dian_jin_20240628_models.CreateDialogAnalysisTaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dian_jin_20240628_models.CreateDialogAnalysisTaskResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_dialog_analysis_task_with_options_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateDialogAnalysisTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.CreateDialogAnalysisTaskResponse:
+        """
+        @summary 创建会话分析任务
+        
+        @param request: CreateDialogAnalysisTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDialogAnalysisTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.analysis_nodes):
+            body['analysisNodes'] = request.analysis_nodes
+        if not UtilClient.is_unset(request.conversation_list):
+            body['conversationList'] = request.conversation_list
+        if not UtilClient.is_unset(request.meta_data):
+            body['metaData'] = request.meta_data
+        if not UtilClient.is_unset(request.play_code):
+            body['playCode'] = request.play_code
+        if not UtilClient.is_unset(request.request_id):
+            body['requestId'] = request.request_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDialogAnalysisTask',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/virtualHuman/dialog/analysis/submit',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dian_jin_20240628_models.CreateDialogAnalysisTaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dian_jin_20240628_models.CreateDialogAnalysisTaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_dialog_analysis_task(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateDialogAnalysisTaskRequest,
+    ) -> dian_jin_20240628_models.CreateDialogAnalysisTaskResponse:
+        """
+        @summary 创建会话分析任务
+        
+        @param request: CreateDialogAnalysisTaskRequest
+        @return: CreateDialogAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_dialog_analysis_task_with_options(workspace_id, request, headers, runtime)
+
+    async def create_dialog_analysis_task_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateDialogAnalysisTaskRequest,
+    ) -> dian_jin_20240628_models.CreateDialogAnalysisTaskResponse:
+        """
+        @summary 创建会话分析任务
+        
+        @param request: CreateDialogAnalysisTaskRequest
+        @return: CreateDialogAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_dialog_analysis_task_with_options_async(workspace_id, request, headers, runtime)
+
     def create_docs_summary_task_with_options(
         self,
         workspace_id: str,
