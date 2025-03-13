@@ -1466,10 +1466,18 @@ class GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResult(TeaMo
     def __init__(
         self,
         generate_finished: bool = None,
+        index: int = None,
+        model_id: str = None,
+        model_reduce: bool = None,
+        reason_text: str = None,
         text: str = None,
         usage: GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResultUsage = None,
     ):
         self.generate_finished = generate_finished
+        self.index = index
+        self.model_id = model_id
+        self.model_reduce = model_reduce
+        self.reason_text = reason_text
         self.text = text
         self.usage = usage
 
@@ -1485,6 +1493,14 @@ class GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResult(TeaMo
         result = dict()
         if self.generate_finished is not None:
             result['generateFinished'] = self.generate_finished
+        if self.index is not None:
+            result['index'] = self.index
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        if self.model_reduce is not None:
+            result['modelReduce'] = self.model_reduce
+        if self.reason_text is not None:
+            result['reasonText'] = self.reason_text
         if self.text is not None:
             result['text'] = self.text
         if self.usage is not None:
@@ -1495,10 +1511,116 @@ class GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResult(TeaMo
         m = m or dict()
         if m.get('generateFinished') is not None:
             self.generate_finished = m.get('generateFinished')
+        if m.get('index') is not None:
+            self.index = m.get('index')
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        if m.get('modelReduce') is not None:
+            self.model_reduce = m.get('modelReduce')
+        if m.get('reasonText') is not None:
+            self.reason_text = m.get('reasonText')
         if m.get('text') is not None:
             self.text = m.get('text')
         if m.get('usage') is not None:
             temp_model = GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResultUsage()
+            self.usage = temp_model.from_map(m['usage'])
+        return self
+
+
+class GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResultsUsage(TeaModel):
+    def __init__(
+        self,
+        input_tokens: int = None,
+        output_tokens: int = None,
+        total_tokens: int = None,
+    ):
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+        self.total_tokens = total_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_tokens is not None:
+            result['inputTokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['outputTokens'] = self.output_tokens
+        if self.total_tokens is not None:
+            result['totalTokens'] = self.total_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('inputTokens') is not None:
+            self.input_tokens = m.get('inputTokens')
+        if m.get('outputTokens') is not None:
+            self.output_tokens = m.get('outputTokens')
+        if m.get('totalTokens') is not None:
+            self.total_tokens = m.get('totalTokens')
+        return self
+
+
+class GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResults(TeaModel):
+    def __init__(
+        self,
+        generate_finished: bool = None,
+        index: int = None,
+        model_id: str = None,
+        reason_text: str = None,
+        text: str = None,
+        usage: GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResultsUsage = None,
+    ):
+        self.generate_finished = generate_finished
+        self.index = index
+        self.model_id = model_id
+        self.reason_text = reason_text
+        self.text = text
+        self.usage = usage
+
+    def validate(self):
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.generate_finished is not None:
+            result['generateFinished'] = self.generate_finished
+        if self.index is not None:
+            result['index'] = self.index
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        if self.reason_text is not None:
+            result['reasonText'] = self.reason_text
+        if self.text is not None:
+            result['text'] = self.text
+        if self.usage is not None:
+            result['usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('generateFinished') is not None:
+            self.generate_finished = m.get('generateFinished')
+        if m.get('index') is not None:
+            self.index = m.get('index')
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        if m.get('reasonText') is not None:
+            self.reason_text = m.get('reasonText')
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        if m.get('usage') is not None:
+            temp_model = GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResultsUsage()
             self.usage = temp_model.from_map(m['usage'])
         return self
 
@@ -1794,6 +1916,7 @@ class GetVideoAnalysisTaskResponseBodyDataPayloadOutput(TeaModel):
         video_analysis_result: GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResult = None,
         video_caption_result: GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResult = None,
         video_generate_result: GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResult = None,
+        video_generate_results: List[GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResults] = None,
         video_mind_mapping_generate_result: GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResult = None,
         video_title_generate_result: GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResult = None,
     ):
@@ -1801,6 +1924,7 @@ class GetVideoAnalysisTaskResponseBodyDataPayloadOutput(TeaModel):
         self.video_analysis_result = video_analysis_result
         self.video_caption_result = video_caption_result
         self.video_generate_result = video_generate_result
+        self.video_generate_results = video_generate_results
         self.video_mind_mapping_generate_result = video_mind_mapping_generate_result
         self.video_title_generate_result = video_title_generate_result
 
@@ -1811,6 +1935,10 @@ class GetVideoAnalysisTaskResponseBodyDataPayloadOutput(TeaModel):
             self.video_caption_result.validate()
         if self.video_generate_result:
             self.video_generate_result.validate()
+        if self.video_generate_results:
+            for k in self.video_generate_results:
+                if k:
+                    k.validate()
         if self.video_mind_mapping_generate_result:
             self.video_mind_mapping_generate_result.validate()
         if self.video_title_generate_result:
@@ -1830,6 +1958,10 @@ class GetVideoAnalysisTaskResponseBodyDataPayloadOutput(TeaModel):
             result['videoCaptionResult'] = self.video_caption_result.to_map()
         if self.video_generate_result is not None:
             result['videoGenerateResult'] = self.video_generate_result.to_map()
+        result['videoGenerateResults'] = []
+        if self.video_generate_results is not None:
+            for k in self.video_generate_results:
+                result['videoGenerateResults'].append(k.to_map() if k else None)
         if self.video_mind_mapping_generate_result is not None:
             result['videoMindMappingGenerateResult'] = self.video_mind_mapping_generate_result.to_map()
         if self.video_title_generate_result is not None:
@@ -1849,6 +1981,11 @@ class GetVideoAnalysisTaskResponseBodyDataPayloadOutput(TeaModel):
         if m.get('videoGenerateResult') is not None:
             temp_model = GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResult()
             self.video_generate_result = temp_model.from_map(m['videoGenerateResult'])
+        self.video_generate_results = []
+        if m.get('videoGenerateResults') is not None:
+            for k in m.get('videoGenerateResults'):
+                temp_model = GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResults()
+                self.video_generate_results.append(temp_model.from_map(k))
         if m.get('videoMindMappingGenerateResult') is not None:
             temp_model = GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResult()
             self.video_mind_mapping_generate_result = temp_model.from_map(m['videoMindMappingGenerateResult'])
@@ -6916,6 +7053,45 @@ class RunVideoAnalysisRequestFrameSampleMethod(TeaModel):
         return self
 
 
+class RunVideoAnalysisRequestTextProcessTasks(TeaModel):
+    def __init__(
+        self,
+        model_custom_prompt_template: str = None,
+        model_custom_prompt_template_id: str = None,
+        model_id: str = None,
+    ):
+        self.model_custom_prompt_template = model_custom_prompt_template
+        self.model_custom_prompt_template_id = model_custom_prompt_template_id
+        self.model_id = model_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.model_custom_prompt_template is not None:
+            result['modelCustomPromptTemplate'] = self.model_custom_prompt_template
+        if self.model_custom_prompt_template_id is not None:
+            result['modelCustomPromptTemplateId'] = self.model_custom_prompt_template_id
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('modelCustomPromptTemplate') is not None:
+            self.model_custom_prompt_template = m.get('modelCustomPromptTemplate')
+        if m.get('modelCustomPromptTemplateId') is not None:
+            self.model_custom_prompt_template_id = m.get('modelCustomPromptTemplateId')
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        return self
+
+
 class RunVideoAnalysisRequestVideoRoles(TeaModel):
     def __init__(
         self,
@@ -6958,6 +7134,7 @@ class RunVideoAnalysisRequestVideoRoles(TeaModel):
 class RunVideoAnalysisRequest(TeaModel):
     def __init__(
         self,
+        face_identity_similarity_min_score: float = None,
         frame_sample_method: RunVideoAnalysisRequestFrameSampleMethod = None,
         generate_options: List[str] = None,
         language: str = None,
@@ -6967,12 +7144,15 @@ class RunVideoAnalysisRequest(TeaModel):
         original_session_id: str = None,
         snapshot_interval: float = None,
         task_id: str = None,
+        text_process_tasks: List[RunVideoAnalysisRequestTextProcessTasks] = None,
         video_extra_info: str = None,
         video_model_custom_prompt_template: str = None,
         video_model_id: str = None,
         video_roles: List[RunVideoAnalysisRequestVideoRoles] = None,
+        video_shot_face_identity_count: int = None,
         video_url: str = None,
     ):
+        self.face_identity_similarity_min_score = face_identity_similarity_min_score
         self.frame_sample_method = frame_sample_method
         self.generate_options = generate_options
         self.language = language
@@ -6982,15 +7162,21 @@ class RunVideoAnalysisRequest(TeaModel):
         self.original_session_id = original_session_id
         self.snapshot_interval = snapshot_interval
         self.task_id = task_id
+        self.text_process_tasks = text_process_tasks
         self.video_extra_info = video_extra_info
         self.video_model_custom_prompt_template = video_model_custom_prompt_template
         self.video_model_id = video_model_id
         self.video_roles = video_roles
+        self.video_shot_face_identity_count = video_shot_face_identity_count
         self.video_url = video_url
 
     def validate(self):
         if self.frame_sample_method:
             self.frame_sample_method.validate()
+        if self.text_process_tasks:
+            for k in self.text_process_tasks:
+                if k:
+                    k.validate()
         if self.video_roles:
             for k in self.video_roles:
                 if k:
@@ -7002,6 +7188,8 @@ class RunVideoAnalysisRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.face_identity_similarity_min_score is not None:
+            result['faceIdentitySimilarityMinScore'] = self.face_identity_similarity_min_score
         if self.frame_sample_method is not None:
             result['frameSampleMethod'] = self.frame_sample_method.to_map()
         if self.generate_options is not None:
@@ -7020,6 +7208,10 @@ class RunVideoAnalysisRequest(TeaModel):
             result['snapshotInterval'] = self.snapshot_interval
         if self.task_id is not None:
             result['taskId'] = self.task_id
+        result['textProcessTasks'] = []
+        if self.text_process_tasks is not None:
+            for k in self.text_process_tasks:
+                result['textProcessTasks'].append(k.to_map() if k else None)
         if self.video_extra_info is not None:
             result['videoExtraInfo'] = self.video_extra_info
         if self.video_model_custom_prompt_template is not None:
@@ -7030,12 +7222,16 @@ class RunVideoAnalysisRequest(TeaModel):
         if self.video_roles is not None:
             for k in self.video_roles:
                 result['videoRoles'].append(k.to_map() if k else None)
+        if self.video_shot_face_identity_count is not None:
+            result['videoShotFaceIdentityCount'] = self.video_shot_face_identity_count
         if self.video_url is not None:
             result['videoUrl'] = self.video_url
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('faceIdentitySimilarityMinScore') is not None:
+            self.face_identity_similarity_min_score = m.get('faceIdentitySimilarityMinScore')
         if m.get('frameSampleMethod') is not None:
             temp_model = RunVideoAnalysisRequestFrameSampleMethod()
             self.frame_sample_method = temp_model.from_map(m['frameSampleMethod'])
@@ -7055,6 +7251,11 @@ class RunVideoAnalysisRequest(TeaModel):
             self.snapshot_interval = m.get('snapshotInterval')
         if m.get('taskId') is not None:
             self.task_id = m.get('taskId')
+        self.text_process_tasks = []
+        if m.get('textProcessTasks') is not None:
+            for k in m.get('textProcessTasks'):
+                temp_model = RunVideoAnalysisRequestTextProcessTasks()
+                self.text_process_tasks.append(temp_model.from_map(k))
         if m.get('videoExtraInfo') is not None:
             self.video_extra_info = m.get('videoExtraInfo')
         if m.get('videoModelCustomPromptTemplate') is not None:
@@ -7066,6 +7267,8 @@ class RunVideoAnalysisRequest(TeaModel):
             for k in m.get('videoRoles'):
                 temp_model = RunVideoAnalysisRequestVideoRoles()
                 self.video_roles.append(temp_model.from_map(k))
+        if m.get('videoShotFaceIdentityCount') is not None:
+            self.video_shot_face_identity_count = m.get('videoShotFaceIdentityCount')
         if m.get('videoUrl') is not None:
             self.video_url = m.get('videoUrl')
         return self
@@ -7074,6 +7277,7 @@ class RunVideoAnalysisRequest(TeaModel):
 class RunVideoAnalysisShrinkRequest(TeaModel):
     def __init__(
         self,
+        face_identity_similarity_min_score: float = None,
         frame_sample_method_shrink: str = None,
         generate_options_shrink: str = None,
         language: str = None,
@@ -7083,12 +7287,15 @@ class RunVideoAnalysisShrinkRequest(TeaModel):
         original_session_id: str = None,
         snapshot_interval: float = None,
         task_id: str = None,
+        text_process_tasks_shrink: str = None,
         video_extra_info: str = None,
         video_model_custom_prompt_template: str = None,
         video_model_id: str = None,
         video_roles_shrink: str = None,
+        video_shot_face_identity_count: int = None,
         video_url: str = None,
     ):
+        self.face_identity_similarity_min_score = face_identity_similarity_min_score
         self.frame_sample_method_shrink = frame_sample_method_shrink
         self.generate_options_shrink = generate_options_shrink
         self.language = language
@@ -7098,10 +7305,12 @@ class RunVideoAnalysisShrinkRequest(TeaModel):
         self.original_session_id = original_session_id
         self.snapshot_interval = snapshot_interval
         self.task_id = task_id
+        self.text_process_tasks_shrink = text_process_tasks_shrink
         self.video_extra_info = video_extra_info
         self.video_model_custom_prompt_template = video_model_custom_prompt_template
         self.video_model_id = video_model_id
         self.video_roles_shrink = video_roles_shrink
+        self.video_shot_face_identity_count = video_shot_face_identity_count
         self.video_url = video_url
 
     def validate(self):
@@ -7113,6 +7322,8 @@ class RunVideoAnalysisShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.face_identity_similarity_min_score is not None:
+            result['faceIdentitySimilarityMinScore'] = self.face_identity_similarity_min_score
         if self.frame_sample_method_shrink is not None:
             result['frameSampleMethod'] = self.frame_sample_method_shrink
         if self.generate_options_shrink is not None:
@@ -7131,6 +7342,8 @@ class RunVideoAnalysisShrinkRequest(TeaModel):
             result['snapshotInterval'] = self.snapshot_interval
         if self.task_id is not None:
             result['taskId'] = self.task_id
+        if self.text_process_tasks_shrink is not None:
+            result['textProcessTasks'] = self.text_process_tasks_shrink
         if self.video_extra_info is not None:
             result['videoExtraInfo'] = self.video_extra_info
         if self.video_model_custom_prompt_template is not None:
@@ -7139,12 +7352,16 @@ class RunVideoAnalysisShrinkRequest(TeaModel):
             result['videoModelId'] = self.video_model_id
         if self.video_roles_shrink is not None:
             result['videoRoles'] = self.video_roles_shrink
+        if self.video_shot_face_identity_count is not None:
+            result['videoShotFaceIdentityCount'] = self.video_shot_face_identity_count
         if self.video_url is not None:
             result['videoUrl'] = self.video_url
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('faceIdentitySimilarityMinScore') is not None:
+            self.face_identity_similarity_min_score = m.get('faceIdentitySimilarityMinScore')
         if m.get('frameSampleMethod') is not None:
             self.frame_sample_method_shrink = m.get('frameSampleMethod')
         if m.get('generateOptions') is not None:
@@ -7163,6 +7380,8 @@ class RunVideoAnalysisShrinkRequest(TeaModel):
             self.snapshot_interval = m.get('snapshotInterval')
         if m.get('taskId') is not None:
             self.task_id = m.get('taskId')
+        if m.get('textProcessTasks') is not None:
+            self.text_process_tasks_shrink = m.get('textProcessTasks')
         if m.get('videoExtraInfo') is not None:
             self.video_extra_info = m.get('videoExtraInfo')
         if m.get('videoModelCustomPromptTemplate') is not None:
@@ -7171,6 +7390,8 @@ class RunVideoAnalysisShrinkRequest(TeaModel):
             self.video_model_id = m.get('videoModelId')
         if m.get('videoRoles') is not None:
             self.video_roles_shrink = m.get('videoRoles')
+        if m.get('videoShotFaceIdentityCount') is not None:
+            self.video_shot_face_identity_count = m.get('videoShotFaceIdentityCount')
         if m.get('videoUrl') is not None:
             self.video_url = m.get('videoUrl')
         return self
@@ -7514,14 +7735,18 @@ class RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResult(TeaModel):
     def __init__(
         self,
         generate_finished: bool = None,
+        index: int = None,
         model_id: str = None,
         model_reduce: bool = None,
+        reason_text: str = None,
         text: str = None,
         usage: RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResultUsage = None,
     ):
         self.generate_finished = generate_finished
+        self.index = index
         self.model_id = model_id
         self.model_reduce = model_reduce
+        self.reason_text = reason_text
         self.text = text
         self.usage = usage
 
@@ -7537,10 +7762,14 @@ class RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResult(TeaModel):
         result = dict()
         if self.generate_finished is not None:
             result['generateFinished'] = self.generate_finished
+        if self.index is not None:
+            result['index'] = self.index
         if self.model_id is not None:
             result['modelId'] = self.model_id
         if self.model_reduce is not None:
             result['modelReduce'] = self.model_reduce
+        if self.reason_text is not None:
+            result['reasonText'] = self.reason_text
         if self.text is not None:
             result['text'] = self.text
         if self.usage is not None:
@@ -7551,14 +7780,116 @@ class RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResult(TeaModel):
         m = m or dict()
         if m.get('generateFinished') is not None:
             self.generate_finished = m.get('generateFinished')
+        if m.get('index') is not None:
+            self.index = m.get('index')
         if m.get('modelId') is not None:
             self.model_id = m.get('modelId')
         if m.get('modelReduce') is not None:
             self.model_reduce = m.get('modelReduce')
+        if m.get('reasonText') is not None:
+            self.reason_text = m.get('reasonText')
         if m.get('text') is not None:
             self.text = m.get('text')
         if m.get('usage') is not None:
             temp_model = RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResultUsage()
+            self.usage = temp_model.from_map(m['usage'])
+        return self
+
+
+class RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResultsUsage(TeaModel):
+    def __init__(
+        self,
+        input_tokens: int = None,
+        output_tokens: int = None,
+        total_tokens: int = None,
+    ):
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+        self.total_tokens = total_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_tokens is not None:
+            result['inputTokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['outputTokens'] = self.output_tokens
+        if self.total_tokens is not None:
+            result['totalTokens'] = self.total_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('inputTokens') is not None:
+            self.input_tokens = m.get('inputTokens')
+        if m.get('outputTokens') is not None:
+            self.output_tokens = m.get('outputTokens')
+        if m.get('totalTokens') is not None:
+            self.total_tokens = m.get('totalTokens')
+        return self
+
+
+class RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResults(TeaModel):
+    def __init__(
+        self,
+        generate_finished: bool = None,
+        index: int = None,
+        model_id: str = None,
+        reason_text: str = None,
+        text: str = None,
+        usage: RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResultsUsage = None,
+    ):
+        self.generate_finished = generate_finished
+        self.index = index
+        self.model_id = model_id
+        self.reason_text = reason_text
+        self.text = text
+        self.usage = usage
+
+    def validate(self):
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.generate_finished is not None:
+            result['generateFinished'] = self.generate_finished
+        if self.index is not None:
+            result['index'] = self.index
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        if self.reason_text is not None:
+            result['reasonText'] = self.reason_text
+        if self.text is not None:
+            result['text'] = self.text
+        if self.usage is not None:
+            result['usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('generateFinished') is not None:
+            self.generate_finished = m.get('generateFinished')
+        if m.get('index') is not None:
+            self.index = m.get('index')
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        if m.get('reasonText') is not None:
+            self.reason_text = m.get('reasonText')
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        if m.get('usage') is not None:
+            temp_model = RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResultsUsage()
             self.usage = temp_model.from_map(m['usage'])
         return self
 
@@ -7999,6 +8330,7 @@ class RunVideoAnalysisResponseBodyPayloadOutput(TeaModel):
         video_analysis_result: RunVideoAnalysisResponseBodyPayloadOutputVideoAnalysisResult = None,
         video_caption_result: RunVideoAnalysisResponseBodyPayloadOutputVideoCaptionResult = None,
         video_generate_result: RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResult = None,
+        video_generate_results: List[RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResults] = None,
         video_mind_mapping_generate_result: RunVideoAnalysisResponseBodyPayloadOutputVideoMindMappingGenerateResult = None,
         video_shot_snapshot_result: RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResult = None,
         video_title_generate_result: RunVideoAnalysisResponseBodyPayloadOutputVideoTitleGenerateResult = None,
@@ -8007,6 +8339,7 @@ class RunVideoAnalysisResponseBodyPayloadOutput(TeaModel):
         self.video_analysis_result = video_analysis_result
         self.video_caption_result = video_caption_result
         self.video_generate_result = video_generate_result
+        self.video_generate_results = video_generate_results
         self.video_mind_mapping_generate_result = video_mind_mapping_generate_result
         self.video_shot_snapshot_result = video_shot_snapshot_result
         self.video_title_generate_result = video_title_generate_result
@@ -8018,6 +8351,10 @@ class RunVideoAnalysisResponseBodyPayloadOutput(TeaModel):
             self.video_caption_result.validate()
         if self.video_generate_result:
             self.video_generate_result.validate()
+        if self.video_generate_results:
+            for k in self.video_generate_results:
+                if k:
+                    k.validate()
         if self.video_mind_mapping_generate_result:
             self.video_mind_mapping_generate_result.validate()
         if self.video_shot_snapshot_result:
@@ -8039,6 +8376,10 @@ class RunVideoAnalysisResponseBodyPayloadOutput(TeaModel):
             result['videoCaptionResult'] = self.video_caption_result.to_map()
         if self.video_generate_result is not None:
             result['videoGenerateResult'] = self.video_generate_result.to_map()
+        result['videoGenerateResults'] = []
+        if self.video_generate_results is not None:
+            for k in self.video_generate_results:
+                result['videoGenerateResults'].append(k.to_map() if k else None)
         if self.video_mind_mapping_generate_result is not None:
             result['videoMindMappingGenerateResult'] = self.video_mind_mapping_generate_result.to_map()
         if self.video_shot_snapshot_result is not None:
@@ -8060,6 +8401,11 @@ class RunVideoAnalysisResponseBodyPayloadOutput(TeaModel):
         if m.get('videoGenerateResult') is not None:
             temp_model = RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResult()
             self.video_generate_result = temp_model.from_map(m['videoGenerateResult'])
+        self.video_generate_results = []
+        if m.get('videoGenerateResults') is not None:
+            for k in m.get('videoGenerateResults'):
+                temp_model = RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResults()
+                self.video_generate_results.append(temp_model.from_map(k))
         if m.get('videoMindMappingGenerateResult') is not None:
             temp_model = RunVideoAnalysisResponseBodyPayloadOutputVideoMindMappingGenerateResult()
             self.video_mind_mapping_generate_result = temp_model.from_map(m['videoMindMappingGenerateResult'])
@@ -8580,6 +8926,45 @@ class SubmitVideoAnalysisTaskRequestFrameSampleMethod(TeaModel):
         return self
 
 
+class SubmitVideoAnalysisTaskRequestTextProcessTasks(TeaModel):
+    def __init__(
+        self,
+        model_custom_prompt_template: str = None,
+        model_custom_prompt_template_id: str = None,
+        model_id: str = None,
+    ):
+        self.model_custom_prompt_template = model_custom_prompt_template
+        self.model_custom_prompt_template_id = model_custom_prompt_template_id
+        self.model_id = model_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.model_custom_prompt_template is not None:
+            result['modelCustomPromptTemplate'] = self.model_custom_prompt_template
+        if self.model_custom_prompt_template_id is not None:
+            result['modelCustomPromptTemplateId'] = self.model_custom_prompt_template_id
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('modelCustomPromptTemplate') is not None:
+            self.model_custom_prompt_template = m.get('modelCustomPromptTemplate')
+        if m.get('modelCustomPromptTemplateId') is not None:
+            self.model_custom_prompt_template_id = m.get('modelCustomPromptTemplateId')
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        return self
+
+
 class SubmitVideoAnalysisTaskRequestVideoRoles(TeaModel):
     def __init__(
         self,
@@ -8622,6 +9007,7 @@ class SubmitVideoAnalysisTaskRequestVideoRoles(TeaModel):
 class SubmitVideoAnalysisTaskRequest(TeaModel):
     def __init__(
         self,
+        face_identity_similarity_min_score: float = None,
         frame_sample_method: SubmitVideoAnalysisTaskRequestFrameSampleMethod = None,
         generate_options: List[str] = None,
         language: str = None,
@@ -8629,12 +9015,15 @@ class SubmitVideoAnalysisTaskRequest(TeaModel):
         model_custom_prompt_template_id: str = None,
         model_id: str = None,
         snapshot_interval: float = None,
+        text_process_tasks: List[SubmitVideoAnalysisTaskRequestTextProcessTasks] = None,
         video_extra_info: str = None,
         video_model_custom_prompt_template: str = None,
         video_model_id: str = None,
         video_roles: List[SubmitVideoAnalysisTaskRequestVideoRoles] = None,
+        video_shot_face_identity_count: int = None,
         video_url: str = None,
     ):
+        self.face_identity_similarity_min_score = face_identity_similarity_min_score
         self.frame_sample_method = frame_sample_method
         self.generate_options = generate_options
         self.language = language
@@ -8642,16 +9031,22 @@ class SubmitVideoAnalysisTaskRequest(TeaModel):
         self.model_custom_prompt_template_id = model_custom_prompt_template_id
         self.model_id = model_id
         self.snapshot_interval = snapshot_interval
+        self.text_process_tasks = text_process_tasks
         self.video_extra_info = video_extra_info
         self.video_model_custom_prompt_template = video_model_custom_prompt_template
         self.video_model_id = video_model_id
         self.video_roles = video_roles
+        self.video_shot_face_identity_count = video_shot_face_identity_count
         # This parameter is required.
         self.video_url = video_url
 
     def validate(self):
         if self.frame_sample_method:
             self.frame_sample_method.validate()
+        if self.text_process_tasks:
+            for k in self.text_process_tasks:
+                if k:
+                    k.validate()
         if self.video_roles:
             for k in self.video_roles:
                 if k:
@@ -8663,6 +9058,8 @@ class SubmitVideoAnalysisTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.face_identity_similarity_min_score is not None:
+            result['faceIdentitySimilarityMinScore'] = self.face_identity_similarity_min_score
         if self.frame_sample_method is not None:
             result['frameSampleMethod'] = self.frame_sample_method.to_map()
         if self.generate_options is not None:
@@ -8677,6 +9074,10 @@ class SubmitVideoAnalysisTaskRequest(TeaModel):
             result['modelId'] = self.model_id
         if self.snapshot_interval is not None:
             result['snapshotInterval'] = self.snapshot_interval
+        result['textProcessTasks'] = []
+        if self.text_process_tasks is not None:
+            for k in self.text_process_tasks:
+                result['textProcessTasks'].append(k.to_map() if k else None)
         if self.video_extra_info is not None:
             result['videoExtraInfo'] = self.video_extra_info
         if self.video_model_custom_prompt_template is not None:
@@ -8687,12 +9088,16 @@ class SubmitVideoAnalysisTaskRequest(TeaModel):
         if self.video_roles is not None:
             for k in self.video_roles:
                 result['videoRoles'].append(k.to_map() if k else None)
+        if self.video_shot_face_identity_count is not None:
+            result['videoShotFaceIdentityCount'] = self.video_shot_face_identity_count
         if self.video_url is not None:
             result['videoUrl'] = self.video_url
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('faceIdentitySimilarityMinScore') is not None:
+            self.face_identity_similarity_min_score = m.get('faceIdentitySimilarityMinScore')
         if m.get('frameSampleMethod') is not None:
             temp_model = SubmitVideoAnalysisTaskRequestFrameSampleMethod()
             self.frame_sample_method = temp_model.from_map(m['frameSampleMethod'])
@@ -8708,6 +9113,11 @@ class SubmitVideoAnalysisTaskRequest(TeaModel):
             self.model_id = m.get('modelId')
         if m.get('snapshotInterval') is not None:
             self.snapshot_interval = m.get('snapshotInterval')
+        self.text_process_tasks = []
+        if m.get('textProcessTasks') is not None:
+            for k in m.get('textProcessTasks'):
+                temp_model = SubmitVideoAnalysisTaskRequestTextProcessTasks()
+                self.text_process_tasks.append(temp_model.from_map(k))
         if m.get('videoExtraInfo') is not None:
             self.video_extra_info = m.get('videoExtraInfo')
         if m.get('videoModelCustomPromptTemplate') is not None:
@@ -8719,6 +9129,8 @@ class SubmitVideoAnalysisTaskRequest(TeaModel):
             for k in m.get('videoRoles'):
                 temp_model = SubmitVideoAnalysisTaskRequestVideoRoles()
                 self.video_roles.append(temp_model.from_map(k))
+        if m.get('videoShotFaceIdentityCount') is not None:
+            self.video_shot_face_identity_count = m.get('videoShotFaceIdentityCount')
         if m.get('videoUrl') is not None:
             self.video_url = m.get('videoUrl')
         return self
@@ -8727,6 +9139,7 @@ class SubmitVideoAnalysisTaskRequest(TeaModel):
 class SubmitVideoAnalysisTaskShrinkRequest(TeaModel):
     def __init__(
         self,
+        face_identity_similarity_min_score: float = None,
         frame_sample_method_shrink: str = None,
         generate_options_shrink: str = None,
         language: str = None,
@@ -8734,12 +9147,15 @@ class SubmitVideoAnalysisTaskShrinkRequest(TeaModel):
         model_custom_prompt_template_id: str = None,
         model_id: str = None,
         snapshot_interval: float = None,
+        text_process_tasks_shrink: str = None,
         video_extra_info: str = None,
         video_model_custom_prompt_template: str = None,
         video_model_id: str = None,
         video_roles_shrink: str = None,
+        video_shot_face_identity_count: int = None,
         video_url: str = None,
     ):
+        self.face_identity_similarity_min_score = face_identity_similarity_min_score
         self.frame_sample_method_shrink = frame_sample_method_shrink
         self.generate_options_shrink = generate_options_shrink
         self.language = language
@@ -8747,10 +9163,12 @@ class SubmitVideoAnalysisTaskShrinkRequest(TeaModel):
         self.model_custom_prompt_template_id = model_custom_prompt_template_id
         self.model_id = model_id
         self.snapshot_interval = snapshot_interval
+        self.text_process_tasks_shrink = text_process_tasks_shrink
         self.video_extra_info = video_extra_info
         self.video_model_custom_prompt_template = video_model_custom_prompt_template
         self.video_model_id = video_model_id
         self.video_roles_shrink = video_roles_shrink
+        self.video_shot_face_identity_count = video_shot_face_identity_count
         # This parameter is required.
         self.video_url = video_url
 
@@ -8763,6 +9181,8 @@ class SubmitVideoAnalysisTaskShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.face_identity_similarity_min_score is not None:
+            result['faceIdentitySimilarityMinScore'] = self.face_identity_similarity_min_score
         if self.frame_sample_method_shrink is not None:
             result['frameSampleMethod'] = self.frame_sample_method_shrink
         if self.generate_options_shrink is not None:
@@ -8777,6 +9197,8 @@ class SubmitVideoAnalysisTaskShrinkRequest(TeaModel):
             result['modelId'] = self.model_id
         if self.snapshot_interval is not None:
             result['snapshotInterval'] = self.snapshot_interval
+        if self.text_process_tasks_shrink is not None:
+            result['textProcessTasks'] = self.text_process_tasks_shrink
         if self.video_extra_info is not None:
             result['videoExtraInfo'] = self.video_extra_info
         if self.video_model_custom_prompt_template is not None:
@@ -8785,12 +9207,16 @@ class SubmitVideoAnalysisTaskShrinkRequest(TeaModel):
             result['videoModelId'] = self.video_model_id
         if self.video_roles_shrink is not None:
             result['videoRoles'] = self.video_roles_shrink
+        if self.video_shot_face_identity_count is not None:
+            result['videoShotFaceIdentityCount'] = self.video_shot_face_identity_count
         if self.video_url is not None:
             result['videoUrl'] = self.video_url
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('faceIdentitySimilarityMinScore') is not None:
+            self.face_identity_similarity_min_score = m.get('faceIdentitySimilarityMinScore')
         if m.get('frameSampleMethod') is not None:
             self.frame_sample_method_shrink = m.get('frameSampleMethod')
         if m.get('generateOptions') is not None:
@@ -8805,6 +9231,8 @@ class SubmitVideoAnalysisTaskShrinkRequest(TeaModel):
             self.model_id = m.get('modelId')
         if m.get('snapshotInterval') is not None:
             self.snapshot_interval = m.get('snapshotInterval')
+        if m.get('textProcessTasks') is not None:
+            self.text_process_tasks_shrink = m.get('textProcessTasks')
         if m.get('videoExtraInfo') is not None:
             self.video_extra_info = m.get('videoExtraInfo')
         if m.get('videoModelCustomPromptTemplate') is not None:
@@ -8813,6 +9241,8 @@ class SubmitVideoAnalysisTaskShrinkRequest(TeaModel):
             self.video_model_id = m.get('videoModelId')
         if m.get('videoRoles') is not None:
             self.video_roles_shrink = m.get('videoRoles')
+        if m.get('videoShotFaceIdentityCount') is not None:
+            self.video_shot_face_identity_count = m.get('videoShotFaceIdentityCount')
         if m.get('videoUrl') is not None:
             self.video_url = m.get('videoUrl')
         return self

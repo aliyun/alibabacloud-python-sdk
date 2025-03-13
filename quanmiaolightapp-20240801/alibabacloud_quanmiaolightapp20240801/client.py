@@ -2385,9 +2385,13 @@ class Client(OpenApiClient):
             request.frame_sample_method_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.frame_sample_method, 'frameSampleMethod', 'json')
         if not UtilClient.is_unset(tmp_req.generate_options):
             request.generate_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.generate_options, 'generateOptions', 'json')
+        if not UtilClient.is_unset(tmp_req.text_process_tasks):
+            request.text_process_tasks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.text_process_tasks, 'textProcessTasks', 'json')
         if not UtilClient.is_unset(tmp_req.video_roles):
             request.video_roles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
         body = {}
+        if not UtilClient.is_unset(request.face_identity_similarity_min_score):
+            body['faceIdentitySimilarityMinScore'] = request.face_identity_similarity_min_score
         if not UtilClient.is_unset(request.frame_sample_method_shrink):
             body['frameSampleMethod'] = request.frame_sample_method_shrink
         if not UtilClient.is_unset(request.generate_options_shrink):
@@ -2406,6 +2410,8 @@ class Client(OpenApiClient):
             body['snapshotInterval'] = request.snapshot_interval
         if not UtilClient.is_unset(request.task_id):
             body['taskId'] = request.task_id
+        if not UtilClient.is_unset(request.text_process_tasks_shrink):
+            body['textProcessTasks'] = request.text_process_tasks_shrink
         if not UtilClient.is_unset(request.video_extra_info):
             body['videoExtraInfo'] = request.video_extra_info
         if not UtilClient.is_unset(request.video_model_custom_prompt_template):
@@ -2414,6 +2420,8 @@ class Client(OpenApiClient):
             body['videoModelId'] = request.video_model_id
         if not UtilClient.is_unset(request.video_roles_shrink):
             body['videoRoles'] = request.video_roles_shrink
+        if not UtilClient.is_unset(request.video_shot_face_identity_count):
+            body['videoShotFaceIdentityCount'] = request.video_shot_face_identity_count
         if not UtilClient.is_unset(request.video_url):
             body['videoUrl'] = request.video_url
         req = open_api_models.OpenApiRequest(
@@ -2464,9 +2472,13 @@ class Client(OpenApiClient):
             request.frame_sample_method_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.frame_sample_method, 'frameSampleMethod', 'json')
         if not UtilClient.is_unset(tmp_req.generate_options):
             request.generate_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.generate_options, 'generateOptions', 'json')
+        if not UtilClient.is_unset(tmp_req.text_process_tasks):
+            request.text_process_tasks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.text_process_tasks, 'textProcessTasks', 'json')
         if not UtilClient.is_unset(tmp_req.video_roles):
             request.video_roles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
         body = {}
+        if not UtilClient.is_unset(request.face_identity_similarity_min_score):
+            body['faceIdentitySimilarityMinScore'] = request.face_identity_similarity_min_score
         if not UtilClient.is_unset(request.frame_sample_method_shrink):
             body['frameSampleMethod'] = request.frame_sample_method_shrink
         if not UtilClient.is_unset(request.generate_options_shrink):
@@ -2485,6 +2497,8 @@ class Client(OpenApiClient):
             body['snapshotInterval'] = request.snapshot_interval
         if not UtilClient.is_unset(request.task_id):
             body['taskId'] = request.task_id
+        if not UtilClient.is_unset(request.text_process_tasks_shrink):
+            body['textProcessTasks'] = request.text_process_tasks_shrink
         if not UtilClient.is_unset(request.video_extra_info):
             body['videoExtraInfo'] = request.video_extra_info
         if not UtilClient.is_unset(request.video_model_custom_prompt_template):
@@ -2493,6 +2507,8 @@ class Client(OpenApiClient):
             body['videoModelId'] = request.video_model_id
         if not UtilClient.is_unset(request.video_roles_shrink):
             body['videoRoles'] = request.video_roles_shrink
+        if not UtilClient.is_unset(request.video_shot_face_identity_count):
+            body['videoShotFaceIdentityCount'] = request.video_shot_face_identity_count
         if not UtilClient.is_unset(request.video_url):
             body['videoUrl'] = request.video_url
         req = open_api_models.OpenApiRequest(
@@ -2733,9 +2749,13 @@ class Client(OpenApiClient):
             request.frame_sample_method_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.frame_sample_method, 'frameSampleMethod', 'json')
         if not UtilClient.is_unset(tmp_req.generate_options):
             request.generate_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.generate_options, 'generateOptions', 'json')
+        if not UtilClient.is_unset(tmp_req.text_process_tasks):
+            request.text_process_tasks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.text_process_tasks, 'textProcessTasks', 'json')
         if not UtilClient.is_unset(tmp_req.video_roles):
             request.video_roles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
         body = {}
+        if not UtilClient.is_unset(request.face_identity_similarity_min_score):
+            body['faceIdentitySimilarityMinScore'] = request.face_identity_similarity_min_score
         if not UtilClient.is_unset(request.frame_sample_method_shrink):
             body['frameSampleMethod'] = request.frame_sample_method_shrink
         if not UtilClient.is_unset(request.generate_options_shrink):
@@ -2750,6 +2770,8 @@ class Client(OpenApiClient):
             body['modelId'] = request.model_id
         if not UtilClient.is_unset(request.snapshot_interval):
             body['snapshotInterval'] = request.snapshot_interval
+        if not UtilClient.is_unset(request.text_process_tasks_shrink):
+            body['textProcessTasks'] = request.text_process_tasks_shrink
         if not UtilClient.is_unset(request.video_extra_info):
             body['videoExtraInfo'] = request.video_extra_info
         if not UtilClient.is_unset(request.video_model_custom_prompt_template):
@@ -2758,6 +2780,8 @@ class Client(OpenApiClient):
             body['videoModelId'] = request.video_model_id
         if not UtilClient.is_unset(request.video_roles_shrink):
             body['videoRoles'] = request.video_roles_shrink
+        if not UtilClient.is_unset(request.video_shot_face_identity_count):
+            body['videoShotFaceIdentityCount'] = request.video_shot_face_identity_count
         if not UtilClient.is_unset(request.video_url):
             body['videoUrl'] = request.video_url
         req = open_api_models.OpenApiRequest(
@@ -2808,9 +2832,13 @@ class Client(OpenApiClient):
             request.frame_sample_method_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.frame_sample_method, 'frameSampleMethod', 'json')
         if not UtilClient.is_unset(tmp_req.generate_options):
             request.generate_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.generate_options, 'generateOptions', 'json')
+        if not UtilClient.is_unset(tmp_req.text_process_tasks):
+            request.text_process_tasks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.text_process_tasks, 'textProcessTasks', 'json')
         if not UtilClient.is_unset(tmp_req.video_roles):
             request.video_roles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
         body = {}
+        if not UtilClient.is_unset(request.face_identity_similarity_min_score):
+            body['faceIdentitySimilarityMinScore'] = request.face_identity_similarity_min_score
         if not UtilClient.is_unset(request.frame_sample_method_shrink):
             body['frameSampleMethod'] = request.frame_sample_method_shrink
         if not UtilClient.is_unset(request.generate_options_shrink):
@@ -2825,6 +2853,8 @@ class Client(OpenApiClient):
             body['modelId'] = request.model_id
         if not UtilClient.is_unset(request.snapshot_interval):
             body['snapshotInterval'] = request.snapshot_interval
+        if not UtilClient.is_unset(request.text_process_tasks_shrink):
+            body['textProcessTasks'] = request.text_process_tasks_shrink
         if not UtilClient.is_unset(request.video_extra_info):
             body['videoExtraInfo'] = request.video_extra_info
         if not UtilClient.is_unset(request.video_model_custom_prompt_template):
@@ -2833,6 +2863,8 @@ class Client(OpenApiClient):
             body['videoModelId'] = request.video_model_id
         if not UtilClient.is_unset(request.video_roles_shrink):
             body['videoRoles'] = request.video_roles_shrink
+        if not UtilClient.is_unset(request.video_shot_face_identity_count):
+            body['videoShotFaceIdentityCount'] = request.video_shot_face_identity_count
         if not UtilClient.is_unset(request.video_url):
             body['videoUrl'] = request.video_url
         req = open_api_models.OpenApiRequest(

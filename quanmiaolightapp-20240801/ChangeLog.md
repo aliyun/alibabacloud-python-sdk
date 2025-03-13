@@ -1,3 +1,14 @@
+2025-03-13 Version: 2.6.1
+- Update API GetVideoAnalysisTask: update response param.
+- Update API RunVideoAnalysis: add param faceIdentitySimilarityMinScore.
+- Update API RunVideoAnalysis: add param textProcessTasks.
+- Update API RunVideoAnalysis: add param videoShotFaceIdentityCount.
+- Update API RunVideoAnalysis: update response param.
+- Update API SubmitVideoAnalysisTask: add param faceIdentitySimilarityMinScore.
+- Update API SubmitVideoAnalysisTask: add param textProcessTasks.
+- Update API SubmitVideoAnalysisTask: add param videoShotFaceIdentityCount.
+
+
 2025-03-10 Version: 2.6.0
 - Support API GetTagMiningAnalysisTask.
 - Support API SubmitTagMiningAnalysisTask.
