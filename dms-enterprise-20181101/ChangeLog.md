@@ -1,3 +1,33 @@
+2025-03-13 Version: 1.70.0
+- Support API TryRunTaskFlow.
+- Update API BatchCreateDataLakePartitions: add param WorkspaceId.
+- Update API BatchDeleteDataLakePartitions: add param WorkspaceId.
+- Update API BatchUpdateDataLakePartitions: add param WorkspaceId.
+- Update API CreateDataLakeDatabase: add param WorkspaceId.
+- Update API CreateDataLakePartition: add param WorkspaceId.
+- Update API CreateDataLakeTable: add param WorkspaceId.
+- Update API DeleteDataLakeDatabase: add param WorkspaceId.
+- Update API DeleteDataLakePartition: add param WorkspaceId.
+- Update API DeleteDataLakeTable: add param WorkspaceId.
+- Update API GetDataLakeCatalog: add param WorkspaceId.
+- Update API GetDataLakeDatabase: add param WorkspaceId.
+- Update API GetDataLakePartition: add param WorkspaceId.
+- Update API GetDataLakeTable: add param WorkspaceId.
+- Update API ListDataLakeCatalog: add param SessionToken.
+- Update API ListDataLakeDatabase: add param WorkspaceId.
+- Update API ListDataLakeFunction: add param WorkspaceId.
+- Update API ListDataLakeFunctionName: add param WorkspaceId.
+- Update API ListDataLakePartition: add param WorkspaceId.
+- Update API ListDataLakePartitionByFilter: add param WorkspaceId.
+- Update API ListDataLakePartitionName: add param WorkspaceId.
+- Update API ListDataLakeTable: add param WorkspaceId.
+- Update API ListDataLakeTableName: add param WorkspaceId.
+- Update API ListDataLakeTablebaseInfo: add param WorkspaceId.
+- Update API UpdateDataLakeDatabase: add param WorkspaceId.
+- Update API UpdateDataLakePartition: add param WorkspaceId.
+- Update API UpdateDataLakeTable: add param WorkspaceId.
+
+
 2025-02-28 Version: 1.69.1
 - Update API UpdateTaskContentV2: add param RegionId.
 - Update API UpdateTaskContentV2: update param NodeContent.

@@ -1411,6 +1411,8 @@ class Client(OpenApiClient):
             query['TableName'] = request.table_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         body = {}
         if not UtilClient.is_unset(request.partition_inputs_shrink):
             body['PartitionInputs'] = request.partition_inputs_shrink
@@ -1472,6 +1474,8 @@ class Client(OpenApiClient):
             query['TableName'] = request.table_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         body = {}
         if not UtilClient.is_unset(request.partition_inputs_shrink):
             body['PartitionInputs'] = request.partition_inputs_shrink
@@ -1555,6 +1559,8 @@ class Client(OpenApiClient):
             query['TableName'] = request.table_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1608,6 +1614,8 @@ class Client(OpenApiClient):
             query['TableName'] = request.table_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1687,6 +1695,8 @@ class Client(OpenApiClient):
             query['TableName'] = request.table_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         body = {}
         if not UtilClient.is_unset(request.partition_inputs_shrink):
             body['PartitionInputs'] = request.partition_inputs_shrink
@@ -1744,6 +1754,8 @@ class Client(OpenApiClient):
             query['TableName'] = request.table_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         body = {}
         if not UtilClient.is_unset(request.partition_inputs_shrink):
             body['PartitionInputs'] = request.partition_inputs_shrink
@@ -3563,6 +3575,8 @@ class Client(OpenApiClient):
             query['Parameters'] = request.parameters_shrink
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3620,6 +3634,8 @@ class Client(OpenApiClient):
             query['Parameters'] = request.parameters_shrink
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3843,6 +3859,8 @@ class Client(OpenApiClient):
             query['TableName'] = request.table_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         body = {}
         if not UtilClient.is_unset(request.partition_input_shrink):
             body['PartitionInput'] = request.partition_input_shrink
@@ -3904,6 +3922,8 @@ class Client(OpenApiClient):
             query['TableName'] = request.table_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         body = {}
         if not UtilClient.is_unset(request.partition_input_shrink):
             body['PartitionInput'] = request.partition_input_shrink
@@ -3985,6 +4005,8 @@ class Client(OpenApiClient):
             query['DbName'] = request.db_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         body = {}
         if not UtilClient.is_unset(request.table_input_shrink):
             body['TableInput'] = request.table_input_shrink
@@ -4040,6 +4062,8 @@ class Client(OpenApiClient):
             query['DbName'] = request.db_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         body = {}
         if not UtilClient.is_unset(request.table_input_shrink):
             body['TableInput'] = request.table_input_shrink
@@ -7233,6 +7257,8 @@ class Client(OpenApiClient):
             query['DbName'] = request.db_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7280,6 +7306,8 @@ class Client(OpenApiClient):
             query['DbName'] = request.db_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7491,6 +7519,8 @@ class Client(OpenApiClient):
             query['TableName'] = request.table_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7548,6 +7578,8 @@ class Client(OpenApiClient):
             query['TableName'] = request.table_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7623,6 +7655,8 @@ class Client(OpenApiClient):
             query['TableName'] = request.table_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7672,6 +7706,8 @@ class Client(OpenApiClient):
             query['TableName'] = request.table_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12807,6 +12843,8 @@ class Client(OpenApiClient):
             query['DataRegion'] = request.data_region
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12852,6 +12890,8 @@ class Client(OpenApiClient):
             query['DataRegion'] = request.data_region
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12925,6 +12965,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12972,6 +13014,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13181,6 +13225,8 @@ class Client(OpenApiClient):
             query['TableName'] = request.table_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13236,6 +13282,8 @@ class Client(OpenApiClient):
             query['TableName'] = request.table_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13311,6 +13359,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13360,6 +13410,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -20641,6 +20693,8 @@ class Client(OpenApiClient):
             query['DataRegion'] = request.data_region
         if not UtilClient.is_unset(request.search_key):
             query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.session_token):
+            query['SessionToken'] = request.session_token
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
@@ -20686,6 +20740,8 @@ class Client(OpenApiClient):
             query['DataRegion'] = request.data_region
         if not UtilClient.is_unset(request.search_key):
             query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.session_token):
+            query['SessionToken'] = request.session_token
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
@@ -20765,6 +20821,8 @@ class Client(OpenApiClient):
             query['SearchKey'] = request.search_key
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -20816,6 +20874,8 @@ class Client(OpenApiClient):
             query['SearchKey'] = request.search_key
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -20895,6 +20955,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -20948,6 +21010,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -21027,6 +21091,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -21080,6 +21146,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -21163,6 +21231,8 @@ class Client(OpenApiClient):
             query['TableName'] = request.table_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         body = {}
         if not UtilClient.is_unset(request.part_names_shrink):
             body['PartNames'] = request.part_names_shrink
@@ -21224,6 +21294,8 @@ class Client(OpenApiClient):
             query['TableName'] = request.table_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         body = {}
         if not UtilClient.is_unset(request.part_names_shrink):
             body['PartNames'] = request.part_names_shrink
@@ -21307,6 +21379,8 @@ class Client(OpenApiClient):
             query['TableName'] = request.table_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         body = {}
         if not UtilClient.is_unset(request.filter):
             body['Filter'] = request.filter
@@ -21364,6 +21438,8 @@ class Client(OpenApiClient):
             query['TableName'] = request.table_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         body = {}
         if not UtilClient.is_unset(request.filter):
             body['Filter'] = request.filter
@@ -21447,6 +21523,8 @@ class Client(OpenApiClient):
             query['TableName'] = request.table_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -21500,6 +21578,8 @@ class Client(OpenApiClient):
             query['TableName'] = request.table_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -21581,6 +21661,8 @@ class Client(OpenApiClient):
             query['TableType'] = request.table_type
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -21636,6 +21718,8 @@ class Client(OpenApiClient):
             query['TableType'] = request.table_type
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -21717,6 +21801,8 @@ class Client(OpenApiClient):
             query['TableType'] = request.table_type
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -21772,6 +21858,8 @@ class Client(OpenApiClient):
             query['TableType'] = request.table_type
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -21851,6 +21939,8 @@ class Client(OpenApiClient):
             query['SearchKey'] = request.search_key
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -21904,6 +21994,8 @@ class Client(OpenApiClient):
             query['SearchKey'] = request.search_key
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -31623,6 +31715,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.sync_instance_meta_with_options_async(request, runtime)
 
+    def try_run_task_flow_with_options(
+        self,
+        request: dms_enterprise_20181101_models.TryRunTaskFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.TryRunTaskFlowResponse:
+        """
+        @summary 任务编排试运行
+        
+        @param request: TryRunTaskFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TryRunTaskFlowResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TryRunTaskFlow',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.TryRunTaskFlowResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.TryRunTaskFlowResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def try_run_task_flow_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.TryRunTaskFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.TryRunTaskFlowResponse:
+        """
+        @summary 任务编排试运行
+        
+        @param request: TryRunTaskFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TryRunTaskFlowResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TryRunTaskFlow',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.TryRunTaskFlowResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.TryRunTaskFlowResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def try_run_task_flow(
+        self,
+        request: dms_enterprise_20181101_models.TryRunTaskFlowRequest,
+    ) -> dms_enterprise_20181101_models.TryRunTaskFlowResponse:
+        """
+        @summary 任务编排试运行
+        
+        @param request: TryRunTaskFlowRequest
+        @return: TryRunTaskFlowResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.try_run_task_flow_with_options(request, runtime)
+
+    async def try_run_task_flow_async(
+        self,
+        request: dms_enterprise_20181101_models.TryRunTaskFlowRequest,
+    ) -> dms_enterprise_20181101_models.TryRunTaskFlowResponse:
+        """
+        @summary 任务编排试运行
+        
+        @param request: TryRunTaskFlowRequest
+        @return: TryRunTaskFlowResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.try_run_task_flow_with_options_async(request, runtime)
+
     def update_abac_policy_with_options(
         self,
         request: dms_enterprise_20181101_models.UpdateAbacPolicyRequest,
@@ -31907,6 +32107,8 @@ class Client(OpenApiClient):
             query['Parameters'] = request.parameters_shrink
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -31964,6 +32166,8 @@ class Client(OpenApiClient):
             query['Parameters'] = request.parameters_shrink
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -32187,6 +32391,8 @@ class Client(OpenApiClient):
             query['TableName'] = request.table_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         body = {}
         if not UtilClient.is_unset(request.partition_input_shrink):
             body['PartitionInput'] = request.partition_input_shrink
@@ -32244,6 +32450,8 @@ class Client(OpenApiClient):
             query['TableName'] = request.table_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         body = {}
         if not UtilClient.is_unset(request.partition_input_shrink):
             body['PartitionInput'] = request.partition_input_shrink
@@ -32327,6 +32535,8 @@ class Client(OpenApiClient):
             query['TableName'] = request.table_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         body = {}
         if not UtilClient.is_unset(request.table_input_shrink):
             body['TableInput'] = request.table_input_shrink
@@ -32384,6 +32594,8 @@ class Client(OpenApiClient):
             query['TableName'] = request.table_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         body = {}
         if not UtilClient.is_unset(request.table_input_shrink):
             body['TableInput'] = request.table_input_shrink

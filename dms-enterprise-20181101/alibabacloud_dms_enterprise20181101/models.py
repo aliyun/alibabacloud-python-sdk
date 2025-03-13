@@ -4151,6 +4151,7 @@ class BatchCreateDataLakePartitionsRequest(TeaModel):
         partition_inputs: List[DLPartitionInput] = None,
         table_name: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -4165,6 +4166,7 @@ class BatchCreateDataLakePartitionsRequest(TeaModel):
         # This parameter is required.
         self.table_name = table_name
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         if self.partition_inputs:
@@ -4196,6 +4198,8 @@ class BatchCreateDataLakePartitionsRequest(TeaModel):
             result['TableName'] = self.table_name
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4219,6 +4223,8 @@ class BatchCreateDataLakePartitionsRequest(TeaModel):
             self.table_name = m.get('TableName')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -4233,6 +4239,7 @@ class BatchCreateDataLakePartitionsShrinkRequest(TeaModel):
         partition_inputs_shrink: str = None,
         table_name: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -4247,6 +4254,7 @@ class BatchCreateDataLakePartitionsShrinkRequest(TeaModel):
         # This parameter is required.
         self.table_name = table_name
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -4273,6 +4281,8 @@ class BatchCreateDataLakePartitionsShrinkRequest(TeaModel):
             result['TableName'] = self.table_name
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4293,6 +4303,8 @@ class BatchCreateDataLakePartitionsShrinkRequest(TeaModel):
             self.table_name = m.get('TableName')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -4406,6 +4418,7 @@ class BatchDeleteDataLakePartitionsRequest(TeaModel):
         partition_values_list: List[List[str]] = None,
         table_name: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -4419,6 +4432,7 @@ class BatchDeleteDataLakePartitionsRequest(TeaModel):
         # This parameter is required.
         self.table_name = table_name
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -4443,6 +4457,8 @@ class BatchDeleteDataLakePartitionsRequest(TeaModel):
             result['TableName'] = self.table_name
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4461,6 +4477,8 @@ class BatchDeleteDataLakePartitionsRequest(TeaModel):
             self.table_name = m.get('TableName')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -4573,6 +4591,7 @@ class BatchUpdateDataLakePartitionsRequest(TeaModel):
         partition_inputs: List[DLPartitionInput] = None,
         table_name: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -4585,6 +4604,7 @@ class BatchUpdateDataLakePartitionsRequest(TeaModel):
         # This parameter is required.
         self.table_name = table_name
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         if self.partition_inputs:
@@ -4612,6 +4632,8 @@ class BatchUpdateDataLakePartitionsRequest(TeaModel):
             result['TableName'] = self.table_name
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4631,6 +4653,8 @@ class BatchUpdateDataLakePartitionsRequest(TeaModel):
             self.table_name = m.get('TableName')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -4643,6 +4667,7 @@ class BatchUpdateDataLakePartitionsShrinkRequest(TeaModel):
         partition_inputs_shrink: str = None,
         table_name: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -4655,6 +4680,7 @@ class BatchUpdateDataLakePartitionsShrinkRequest(TeaModel):
         # This parameter is required.
         self.table_name = table_name
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -4677,6 +4703,8 @@ class BatchUpdateDataLakePartitionsShrinkRequest(TeaModel):
             result['TableName'] = self.table_name
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4693,6 +4721,8 @@ class BatchUpdateDataLakePartitionsShrinkRequest(TeaModel):
             self.table_name = m.get('TableName')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -8278,6 +8308,7 @@ class CreateDataLakeDatabaseRequest(TeaModel):
         location: str = None,
         parameters: Dict[str, str] = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -8290,6 +8321,7 @@ class CreateDataLakeDatabaseRequest(TeaModel):
         self.location = location
         self.parameters = parameters
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -8314,6 +8346,8 @@ class CreateDataLakeDatabaseRequest(TeaModel):
             result['Parameters'] = self.parameters
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -8332,6 +8366,8 @@ class CreateDataLakeDatabaseRequest(TeaModel):
             self.parameters = m.get('Parameters')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -8345,6 +8381,7 @@ class CreateDataLakeDatabaseShrinkRequest(TeaModel):
         location: str = None,
         parameters_shrink: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -8357,6 +8394,7 @@ class CreateDataLakeDatabaseShrinkRequest(TeaModel):
         self.location = location
         self.parameters_shrink = parameters_shrink
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -8381,6 +8419,8 @@ class CreateDataLakeDatabaseShrinkRequest(TeaModel):
             result['Parameters'] = self.parameters_shrink
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -8399,6 +8439,8 @@ class CreateDataLakeDatabaseShrinkRequest(TeaModel):
             self.parameters_shrink = m.get('Parameters')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -8717,6 +8759,7 @@ class CreateDataLakePartitionRequest(TeaModel):
         partition_input: DLPartitionInput = None,
         table_name: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -8731,6 +8774,7 @@ class CreateDataLakePartitionRequest(TeaModel):
         # This parameter is required.
         self.table_name = table_name
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         if self.partition_input:
@@ -8758,6 +8802,8 @@ class CreateDataLakePartitionRequest(TeaModel):
             result['TableName'] = self.table_name
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -8779,6 +8825,8 @@ class CreateDataLakePartitionRequest(TeaModel):
             self.table_name = m.get('TableName')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -8793,6 +8841,7 @@ class CreateDataLakePartitionShrinkRequest(TeaModel):
         partition_input_shrink: str = None,
         table_name: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -8807,6 +8856,7 @@ class CreateDataLakePartitionShrinkRequest(TeaModel):
         # This parameter is required.
         self.table_name = table_name
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -8833,6 +8883,8 @@ class CreateDataLakePartitionShrinkRequest(TeaModel):
             result['TableName'] = self.table_name
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -8853,6 +8905,8 @@ class CreateDataLakePartitionShrinkRequest(TeaModel):
             self.table_name = m.get('TableName')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -8958,6 +9012,7 @@ class CreateDataLakeTableRequest(TeaModel):
         db_name: str = None,
         table_input: OpenStructDLTableInput = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -8968,6 +9023,7 @@ class CreateDataLakeTableRequest(TeaModel):
         # This parameter is required.
         self.table_input = table_input
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         if self.table_input:
@@ -8989,6 +9045,8 @@ class CreateDataLakeTableRequest(TeaModel):
             result['TableInput'] = self.table_input.to_map()
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -9004,6 +9062,8 @@ class CreateDataLakeTableRequest(TeaModel):
             self.table_input = temp_model.from_map(m['TableInput'])
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -9015,6 +9075,7 @@ class CreateDataLakeTableShrinkRequest(TeaModel):
         db_name: str = None,
         table_input_shrink: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -9025,6 +9086,7 @@ class CreateDataLakeTableShrinkRequest(TeaModel):
         # This parameter is required.
         self.table_input_shrink = table_input_shrink
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -9045,6 +9107,8 @@ class CreateDataLakeTableShrinkRequest(TeaModel):
             result['TableInput'] = self.table_input_shrink
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -9059,6 +9123,8 @@ class CreateDataLakeTableShrinkRequest(TeaModel):
             self.table_input_shrink = m.get('TableInput')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -14472,6 +14538,7 @@ class DeleteDataLakeDatabaseRequest(TeaModel):
         data_region: str = None,
         db_name: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -14480,6 +14547,7 @@ class DeleteDataLakeDatabaseRequest(TeaModel):
         # This parameter is required.
         self.db_name = db_name
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -14498,6 +14566,8 @@ class DeleteDataLakeDatabaseRequest(TeaModel):
             result['DbName'] = self.db_name
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -14510,6 +14580,8 @@ class DeleteDataLakeDatabaseRequest(TeaModel):
             self.db_name = m.get('DbName')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -14756,6 +14828,7 @@ class DeleteDataLakePartitionRequest(TeaModel):
         partition_values: List[str] = None,
         table_name: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -14769,6 +14842,7 @@ class DeleteDataLakePartitionRequest(TeaModel):
         # This parameter is required.
         self.table_name = table_name
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -14793,6 +14867,8 @@ class DeleteDataLakePartitionRequest(TeaModel):
             result['TableName'] = self.table_name
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -14811,6 +14887,8 @@ class DeleteDataLakePartitionRequest(TeaModel):
             self.table_name = m.get('TableName')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -14824,6 +14902,7 @@ class DeleteDataLakePartitionShrinkRequest(TeaModel):
         partition_values_shrink: str = None,
         table_name: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -14837,6 +14916,7 @@ class DeleteDataLakePartitionShrinkRequest(TeaModel):
         # This parameter is required.
         self.table_name = table_name
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -14861,6 +14941,8 @@ class DeleteDataLakePartitionShrinkRequest(TeaModel):
             result['TableName'] = self.table_name
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -14879,6 +14961,8 @@ class DeleteDataLakePartitionShrinkRequest(TeaModel):
             self.table_name = m.get('TableName')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -14976,6 +15060,7 @@ class DeleteDataLakeTableRequest(TeaModel):
         db_name: str = None,
         table_name: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -14986,6 +15071,7 @@ class DeleteDataLakeTableRequest(TeaModel):
         # This parameter is required.
         self.table_name = table_name
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -15006,6 +15092,8 @@ class DeleteDataLakeTableRequest(TeaModel):
             result['TableName'] = self.table_name
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -15020,6 +15108,8 @@ class DeleteDataLakeTableRequest(TeaModel):
             self.table_name = m.get('TableName')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -24892,12 +24982,14 @@ class GetDataLakeCatalogRequest(TeaModel):
         catalog_name: str = None,
         data_region: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
         # This parameter is required.
         self.data_region = data_region
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -24914,6 +25006,8 @@ class GetDataLakeCatalogRequest(TeaModel):
             result['DataRegion'] = self.data_region
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -24924,6 +25018,8 @@ class GetDataLakeCatalogRequest(TeaModel):
             self.data_region = m.get('DataRegion')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -25028,6 +25124,7 @@ class GetDataLakeDatabaseRequest(TeaModel):
         data_region: str = None,
         name: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -25036,6 +25133,7 @@ class GetDataLakeDatabaseRequest(TeaModel):
         # This parameter is required.
         self.name = name
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -25054,6 +25152,8 @@ class GetDataLakeDatabaseRequest(TeaModel):
             result['Name'] = self.name
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -25066,6 +25166,8 @@ class GetDataLakeDatabaseRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -25327,6 +25429,7 @@ class GetDataLakePartitionRequest(TeaModel):
         partition_values: List[str] = None,
         table_name: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -25339,6 +25442,7 @@ class GetDataLakePartitionRequest(TeaModel):
         # This parameter is required.
         self.table_name = table_name
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -25361,6 +25465,8 @@ class GetDataLakePartitionRequest(TeaModel):
             result['TableName'] = self.table_name
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -25377,6 +25483,8 @@ class GetDataLakePartitionRequest(TeaModel):
             self.table_name = m.get('TableName')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -25389,6 +25497,7 @@ class GetDataLakePartitionShrinkRequest(TeaModel):
         partition_values_shrink: str = None,
         table_name: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -25401,6 +25510,7 @@ class GetDataLakePartitionShrinkRequest(TeaModel):
         # This parameter is required.
         self.table_name = table_name
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -25423,6 +25533,8 @@ class GetDataLakePartitionShrinkRequest(TeaModel):
             result['TableName'] = self.table_name
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -25439,6 +25551,8 @@ class GetDataLakePartitionShrinkRequest(TeaModel):
             self.table_name = m.get('TableName')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -25544,6 +25658,7 @@ class GetDataLakeTableRequest(TeaModel):
         db_name: str = None,
         name: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -25554,6 +25669,7 @@ class GetDataLakeTableRequest(TeaModel):
         # This parameter is required.
         self.name = name
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -25574,6 +25690,8 @@ class GetDataLakeTableRequest(TeaModel):
             result['Name'] = self.name
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -25588,6 +25706,8 @@ class GetDataLakeTableRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -42303,11 +42423,13 @@ class ListDataLakeCatalogRequest(TeaModel):
         self,
         data_region: str = None,
         search_key: str = None,
+        session_token: str = None,
         tid: int = None,
     ):
         # This parameter is required.
         self.data_region = data_region
         self.search_key = search_key
+        self.session_token = session_token
         self.tid = tid
 
     def validate(self):
@@ -42323,6 +42445,8 @@ class ListDataLakeCatalogRequest(TeaModel):
             result['DataRegion'] = self.data_region
         if self.search_key is not None:
             result['SearchKey'] = self.search_key
+        if self.session_token is not None:
+            result['SessionToken'] = self.session_token
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -42333,6 +42457,8 @@ class ListDataLakeCatalogRequest(TeaModel):
             self.data_region = m.get('DataRegion')
         if m.get('SearchKey') is not None:
             self.search_key = m.get('SearchKey')
+        if m.get('SessionToken') is not None:
+            self.session_token = m.get('SessionToken')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -42447,6 +42573,7 @@ class ListDataLakeDatabaseRequest(TeaModel):
         next_token: str = None,
         search_key: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -42456,6 +42583,7 @@ class ListDataLakeDatabaseRequest(TeaModel):
         self.next_token = next_token
         self.search_key = search_key
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -42478,6 +42606,8 @@ class ListDataLakeDatabaseRequest(TeaModel):
             result['SearchKey'] = self.search_key
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -42494,6 +42624,8 @@ class ListDataLakeDatabaseRequest(TeaModel):
             self.search_key = m.get('SearchKey')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -42619,6 +42751,7 @@ class ListDataLakeFunctionRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -42629,6 +42762,7 @@ class ListDataLakeFunctionRequest(TeaModel):
         self.max_results = max_results
         self.next_token = next_token
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -42653,6 +42787,8 @@ class ListDataLakeFunctionRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -42671,6 +42807,8 @@ class ListDataLakeFunctionRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -42796,6 +42934,7 @@ class ListDataLakeFunctionNameRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -42807,6 +42946,7 @@ class ListDataLakeFunctionNameRequest(TeaModel):
         self.max_results = max_results
         self.next_token = next_token
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -42831,6 +42971,8 @@ class ListDataLakeFunctionNameRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -42849,6 +42991,8 @@ class ListDataLakeFunctionNameRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -42967,6 +43111,7 @@ class ListDataLakePartitionRequest(TeaModel):
         part_names: List[str] = None,
         table_name: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -42980,6 +43125,7 @@ class ListDataLakePartitionRequest(TeaModel):
         # This parameter is required.
         self.table_name = table_name
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -43006,6 +43152,8 @@ class ListDataLakePartitionRequest(TeaModel):
             result['TableName'] = self.table_name
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -43026,6 +43174,8 @@ class ListDataLakePartitionRequest(TeaModel):
             self.table_name = m.get('TableName')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -43040,6 +43190,7 @@ class ListDataLakePartitionShrinkRequest(TeaModel):
         part_names_shrink: str = None,
         table_name: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -43053,6 +43204,7 @@ class ListDataLakePartitionShrinkRequest(TeaModel):
         # This parameter is required.
         self.table_name = table_name
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -43079,6 +43231,8 @@ class ListDataLakePartitionShrinkRequest(TeaModel):
             result['TableName'] = self.table_name
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -43099,6 +43253,8 @@ class ListDataLakePartitionShrinkRequest(TeaModel):
             self.table_name = m.get('TableName')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -43225,6 +43381,7 @@ class ListDataLakePartitionByFilterRequest(TeaModel):
         next_token: str = None,
         table_name: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -43239,6 +43396,7 @@ class ListDataLakePartitionByFilterRequest(TeaModel):
         # This parameter is required.
         self.table_name = table_name
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -43265,6 +43423,8 @@ class ListDataLakePartitionByFilterRequest(TeaModel):
             result['TableName'] = self.table_name
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -43285,6 +43445,8 @@ class ListDataLakePartitionByFilterRequest(TeaModel):
             self.table_name = m.get('TableName')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -43410,6 +43572,7 @@ class ListDataLakePartitionNameRequest(TeaModel):
         next_token: str = None,
         table_name: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -43422,6 +43585,7 @@ class ListDataLakePartitionNameRequest(TeaModel):
         # This parameter is required.
         self.table_name = table_name
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -43446,6 +43610,8 @@ class ListDataLakePartitionNameRequest(TeaModel):
             result['TableName'] = self.table_name
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -43464,6 +43630,8 @@ class ListDataLakePartitionNameRequest(TeaModel):
             self.table_name = m.get('TableName')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -43582,6 +43750,7 @@ class ListDataLakeTableRequest(TeaModel):
         table_name_pattern: str = None,
         table_type: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -43594,6 +43763,7 @@ class ListDataLakeTableRequest(TeaModel):
         self.table_name_pattern = table_name_pattern
         self.table_type = table_type
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -43620,6 +43790,8 @@ class ListDataLakeTableRequest(TeaModel):
             result['TableType'] = self.table_type
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -43640,6 +43812,8 @@ class ListDataLakeTableRequest(TeaModel):
             self.table_type = m.get('TableType')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -43766,6 +43940,7 @@ class ListDataLakeTableNameRequest(TeaModel):
         table_name_pattern: str = None,
         table_type: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -43778,6 +43953,7 @@ class ListDataLakeTableNameRequest(TeaModel):
         self.table_name_pattern = table_name_pattern
         self.table_type = table_type
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -43804,6 +43980,8 @@ class ListDataLakeTableNameRequest(TeaModel):
             result['TableType'] = self.table_type
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -43824,6 +44002,8 @@ class ListDataLakeTableNameRequest(TeaModel):
             self.table_type = m.get('TableType')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -43941,6 +44121,7 @@ class ListDataLakeTablebaseInfoRequest(TeaModel):
         rows: int = None,
         search_key: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -43952,6 +44133,7 @@ class ListDataLakeTablebaseInfoRequest(TeaModel):
         self.rows = rows
         self.search_key = search_key
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -43976,6 +44158,8 @@ class ListDataLakeTablebaseInfoRequest(TeaModel):
             result['SearchKey'] = self.search_key
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -43994,6 +44178,8 @@ class ListDataLakeTablebaseInfoRequest(TeaModel):
             self.search_key = m.get('SearchKey')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -64329,6 +64515,125 @@ class SyncInstanceMetaResponse(TeaModel):
         return self
 
 
+class TryRunTaskFlowRequest(TeaModel):
+    def __init__(
+        self,
+        dag_id: int = None,
+    ):
+        self.dag_id = dag_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dag_id is not None:
+            result['DagId'] = self.dag_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DagId') is not None:
+            self.dag_id = m.get('DagId')
+        return self
+
+
+class TryRunTaskFlowResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        instance_id: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.instance_id = instance_id
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class TryRunTaskFlowResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TryRunTaskFlowResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TryRunTaskFlowResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateAbacPolicyRequest(TeaModel):
     def __init__(
         self,
@@ -64700,6 +65005,7 @@ class UpdateDataLakeDatabaseRequest(TeaModel):
         location: str = None,
         parameters: Dict[str, str] = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -64712,6 +65018,7 @@ class UpdateDataLakeDatabaseRequest(TeaModel):
         self.location = location
         self.parameters = parameters
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -64736,6 +65043,8 @@ class UpdateDataLakeDatabaseRequest(TeaModel):
             result['Parameters'] = self.parameters
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -64754,6 +65063,8 @@ class UpdateDataLakeDatabaseRequest(TeaModel):
             self.parameters = m.get('Parameters')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -64767,6 +65078,7 @@ class UpdateDataLakeDatabaseShrinkRequest(TeaModel):
         location: str = None,
         parameters_shrink: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -64779,6 +65091,7 @@ class UpdateDataLakeDatabaseShrinkRequest(TeaModel):
         self.location = location
         self.parameters_shrink = parameters_shrink
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -64803,6 +65116,8 @@ class UpdateDataLakeDatabaseShrinkRequest(TeaModel):
             result['Parameters'] = self.parameters_shrink
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -64821,6 +65136,8 @@ class UpdateDataLakeDatabaseShrinkRequest(TeaModel):
             self.parameters_shrink = m.get('Parameters')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -65159,6 +65476,7 @@ class UpdateDataLakePartitionRequest(TeaModel):
         partition_input: DLPartitionInput = None,
         table_name: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -65171,6 +65489,7 @@ class UpdateDataLakePartitionRequest(TeaModel):
         # This parameter is required.
         self.table_name = table_name
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         if self.partition_input:
@@ -65194,6 +65513,8 @@ class UpdateDataLakePartitionRequest(TeaModel):
             result['TableName'] = self.table_name
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -65211,6 +65532,8 @@ class UpdateDataLakePartitionRequest(TeaModel):
             self.table_name = m.get('TableName')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -65223,6 +65546,7 @@ class UpdateDataLakePartitionShrinkRequest(TeaModel):
         partition_input_shrink: str = None,
         table_name: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -65235,6 +65559,7 @@ class UpdateDataLakePartitionShrinkRequest(TeaModel):
         # This parameter is required.
         self.table_name = table_name
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -65257,6 +65582,8 @@ class UpdateDataLakePartitionShrinkRequest(TeaModel):
             result['TableName'] = self.table_name
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -65273,6 +65600,8 @@ class UpdateDataLakePartitionShrinkRequest(TeaModel):
             self.table_name = m.get('TableName')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -65371,6 +65700,7 @@ class UpdateDataLakeTableRequest(TeaModel):
         table_input: OpenStructDLTableInput = None,
         table_name: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -65382,6 +65712,7 @@ class UpdateDataLakeTableRequest(TeaModel):
         self.table_input = table_input
         self.table_name = table_name
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         if self.table_input:
@@ -65405,6 +65736,8 @@ class UpdateDataLakeTableRequest(TeaModel):
             result['TableName'] = self.table_name
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -65422,6 +65755,8 @@ class UpdateDataLakeTableRequest(TeaModel):
             self.table_name = m.get('TableName')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -65434,6 +65769,7 @@ class UpdateDataLakeTableShrinkRequest(TeaModel):
         table_input_shrink: str = None,
         table_name: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.catalog_name = catalog_name
@@ -65445,6 +65781,7 @@ class UpdateDataLakeTableShrinkRequest(TeaModel):
         self.table_input_shrink = table_input_shrink
         self.table_name = table_name
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -65467,6 +65804,8 @@ class UpdateDataLakeTableShrinkRequest(TeaModel):
             result['TableName'] = self.table_name
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -65483,6 +65822,8 @@ class UpdateDataLakeTableShrinkRequest(TeaModel):
             self.table_name = m.get('TableName')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
