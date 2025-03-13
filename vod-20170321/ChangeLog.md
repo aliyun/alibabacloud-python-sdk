@@ -3,6 +3,11 @@
 - Update API GetVideoList: update response param.
 
 
+2025-03-13 Version: 3.6.0
+- Support API DescribeVodEditingUsageData.
+- Update API GetVideoList: update response param.
+
+
 2025-01-08 Version: 3.5.1
 - Update API BatchGetMediaInfos: update response param.
 
