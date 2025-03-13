@@ -165,6 +165,126 @@ class Client(OpenApiClient):
         headers = {}
         return await self.add_text_feedback_with_options_async(request, headers, runtime)
 
+    def batch_add_document_with_options(
+        self,
+        knowledge_base_id: str,
+        request: intelligent_creation_20240313_models.BatchAddDocumentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.BatchAddDocumentResponse:
+        """
+        @summary 批量添加知识文档
+        
+        @param request: BatchAddDocumentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchAddDocumentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.add_document_infos):
+            body['addDocumentInfos'] = request.add_document_infos
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchAddDocument',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/knowledge-base/{OpenApiUtilClient.get_encode_param(knowledge_base_id)}/documents',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.BatchAddDocumentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.BatchAddDocumentResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def batch_add_document_with_options_async(
+        self,
+        knowledge_base_id: str,
+        request: intelligent_creation_20240313_models.BatchAddDocumentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.BatchAddDocumentResponse:
+        """
+        @summary 批量添加知识文档
+        
+        @param request: BatchAddDocumentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchAddDocumentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.add_document_infos):
+            body['addDocumentInfos'] = request.add_document_infos
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchAddDocument',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/knowledge-base/{OpenApiUtilClient.get_encode_param(knowledge_base_id)}/documents',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.BatchAddDocumentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.BatchAddDocumentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def batch_add_document(
+        self,
+        knowledge_base_id: str,
+        request: intelligent_creation_20240313_models.BatchAddDocumentRequest,
+    ) -> intelligent_creation_20240313_models.BatchAddDocumentResponse:
+        """
+        @summary 批量添加知识文档
+        
+        @param request: BatchAddDocumentRequest
+        @return: BatchAddDocumentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.batch_add_document_with_options(knowledge_base_id, request, headers, runtime)
+
+    async def batch_add_document_async(
+        self,
+        knowledge_base_id: str,
+        request: intelligent_creation_20240313_models.BatchAddDocumentRequest,
+    ) -> intelligent_creation_20240313_models.BatchAddDocumentResponse:
+        """
+        @summary 批量添加知识文档
+        
+        @param request: BatchAddDocumentRequest
+        @return: BatchAddDocumentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.batch_add_document_with_options_async(knowledge_base_id, request, headers, runtime)
+
     def batch_create_aicoach_task_with_options(
         self,
         request: intelligent_creation_20240313_models.BatchCreateAICoachTaskRequest,
@@ -412,6 +532,258 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.batch_get_project_task_with_options_async(request, headers, runtime)
+
+    def batch_get_train_task_with_options(
+        self,
+        tmp_req: intelligent_creation_20240313_models.BatchGetTrainTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.BatchGetTrainTaskResponse:
+        """
+        @summary 批量查询声音复刻任务
+        
+        @param tmp_req: BatchGetTrainTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetTrainTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = intelligent_creation_20240313_models.BatchGetTrainTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.task_id_list):
+            request.task_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_id_list, 'taskIdList', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_main_id):
+            query['aliyunMainId'] = request.aliyun_main_id
+        if not UtilClient.is_unset(request.task_id_list_shrink):
+            query['taskIdList'] = request.task_id_list_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchGetTrainTask',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/train/task/batchGetTrainTaskInfo',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.BatchGetTrainTaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.BatchGetTrainTaskResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def batch_get_train_task_with_options_async(
+        self,
+        tmp_req: intelligent_creation_20240313_models.BatchGetTrainTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.BatchGetTrainTaskResponse:
+        """
+        @summary 批量查询声音复刻任务
+        
+        @param tmp_req: BatchGetTrainTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetTrainTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = intelligent_creation_20240313_models.BatchGetTrainTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.task_id_list):
+            request.task_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_id_list, 'taskIdList', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_main_id):
+            query['aliyunMainId'] = request.aliyun_main_id
+        if not UtilClient.is_unset(request.task_id_list_shrink):
+            query['taskIdList'] = request.task_id_list_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchGetTrainTask',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/train/task/batchGetTrainTaskInfo',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.BatchGetTrainTaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.BatchGetTrainTaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def batch_get_train_task(
+        self,
+        request: intelligent_creation_20240313_models.BatchGetTrainTaskRequest,
+    ) -> intelligent_creation_20240313_models.BatchGetTrainTaskResponse:
+        """
+        @summary 批量查询声音复刻任务
+        
+        @param request: BatchGetTrainTaskRequest
+        @return: BatchGetTrainTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.batch_get_train_task_with_options(request, headers, runtime)
+
+    async def batch_get_train_task_async(
+        self,
+        request: intelligent_creation_20240313_models.BatchGetTrainTaskRequest,
+    ) -> intelligent_creation_20240313_models.BatchGetTrainTaskResponse:
+        """
+        @summary 批量查询声音复刻任务
+        
+        @param request: BatchGetTrainTaskRequest
+        @return: BatchGetTrainTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.batch_get_train_task_with_options_async(request, headers, runtime)
+
+    def batch_get_video_clip_task_with_options(
+        self,
+        tmp_req: intelligent_creation_20240313_models.BatchGetVideoClipTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.BatchGetVideoClipTaskResponse:
+        """
+        @summary 批量查询视频切片任务信息
+        
+        @param tmp_req: BatchGetVideoClipTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetVideoClipTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = intelligent_creation_20240313_models.BatchGetVideoClipTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.task_id_list):
+            request.task_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_id_list, 'taskIdList', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.task_id_list_shrink):
+            query['taskIdList'] = request.task_id_list_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchGetVideoClipTask',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/video/clip/batchGetVideoClipTask',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.BatchGetVideoClipTaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.BatchGetVideoClipTaskResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def batch_get_video_clip_task_with_options_async(
+        self,
+        tmp_req: intelligent_creation_20240313_models.BatchGetVideoClipTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.BatchGetVideoClipTaskResponse:
+        """
+        @summary 批量查询视频切片任务信息
+        
+        @param tmp_req: BatchGetVideoClipTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetVideoClipTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = intelligent_creation_20240313_models.BatchGetVideoClipTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.task_id_list):
+            request.task_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_id_list, 'taskIdList', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.task_id_list_shrink):
+            query['taskIdList'] = request.task_id_list_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchGetVideoClipTask',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/video/clip/batchGetVideoClipTask',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.BatchGetVideoClipTaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.BatchGetVideoClipTaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def batch_get_video_clip_task(
+        self,
+        request: intelligent_creation_20240313_models.BatchGetVideoClipTaskRequest,
+    ) -> intelligent_creation_20240313_models.BatchGetVideoClipTaskResponse:
+        """
+        @summary 批量查询视频切片任务信息
+        
+        @param request: BatchGetVideoClipTaskRequest
+        @return: BatchGetVideoClipTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.batch_get_video_clip_task_with_options(request, headers, runtime)
+
+    async def batch_get_video_clip_task_async(
+        self,
+        request: intelligent_creation_20240313_models.BatchGetVideoClipTaskRequest,
+    ) -> intelligent_creation_20240313_models.BatchGetVideoClipTaskResponse:
+        """
+        @summary 批量查询视频切片任务信息
+        
+        @param request: BatchGetVideoClipTaskRequest
+        @return: BatchGetVideoClipTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.batch_get_video_clip_task_with_options_async(request, headers, runtime)
 
     def batch_query_individuation_text_with_options(
         self,
@@ -1925,6 +2297,278 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_text_task_with_options_async(request, headers, runtime)
 
+    def create_train_task_with_options(
+        self,
+        request: intelligent_creation_20240313_models.CreateTrainTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.CreateTrainTaskResponse:
+        """
+        @summary 提交声音复刻任务
+        
+        @param request: CreateTrainTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTrainTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aliyun_main_id):
+            body['aliyunMainId'] = request.aliyun_main_id
+        if not UtilClient.is_unset(request.res_spec_type):
+            body['resSpecType'] = request.res_spec_type
+        if not UtilClient.is_unset(request.task_type):
+            body['taskType'] = request.task_type
+        if not UtilClient.is_unset(request.use_scene):
+            body['useScene'] = request.use_scene
+        if not UtilClient.is_unset(request.voice_gender):
+            body['voiceGender'] = request.voice_gender
+        if not UtilClient.is_unset(request.voice_language):
+            body['voiceLanguage'] = request.voice_language
+        if not UtilClient.is_unset(request.voice_name):
+            body['voiceName'] = request.voice_name
+        if not UtilClient.is_unset(request.voice_path):
+            body['voicePath'] = request.voice_path
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTrainTask',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/train/task/createTrainTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.CreateTrainTaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.CreateTrainTaskResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_train_task_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.CreateTrainTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.CreateTrainTaskResponse:
+        """
+        @summary 提交声音复刻任务
+        
+        @param request: CreateTrainTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTrainTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aliyun_main_id):
+            body['aliyunMainId'] = request.aliyun_main_id
+        if not UtilClient.is_unset(request.res_spec_type):
+            body['resSpecType'] = request.res_spec_type
+        if not UtilClient.is_unset(request.task_type):
+            body['taskType'] = request.task_type
+        if not UtilClient.is_unset(request.use_scene):
+            body['useScene'] = request.use_scene
+        if not UtilClient.is_unset(request.voice_gender):
+            body['voiceGender'] = request.voice_gender
+        if not UtilClient.is_unset(request.voice_language):
+            body['voiceLanguage'] = request.voice_language
+        if not UtilClient.is_unset(request.voice_name):
+            body['voiceName'] = request.voice_name
+        if not UtilClient.is_unset(request.voice_path):
+            body['voicePath'] = request.voice_path
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTrainTask',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/train/task/createTrainTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.CreateTrainTaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.CreateTrainTaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_train_task(
+        self,
+        request: intelligent_creation_20240313_models.CreateTrainTaskRequest,
+    ) -> intelligent_creation_20240313_models.CreateTrainTaskResponse:
+        """
+        @summary 提交声音复刻任务
+        
+        @param request: CreateTrainTaskRequest
+        @return: CreateTrainTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_train_task_with_options(request, headers, runtime)
+
+    async def create_train_task_async(
+        self,
+        request: intelligent_creation_20240313_models.CreateTrainTaskRequest,
+    ) -> intelligent_creation_20240313_models.CreateTrainTaskResponse:
+        """
+        @summary 提交声音复刻任务
+        
+        @param request: CreateTrainTaskRequest
+        @return: CreateTrainTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_train_task_with_options_async(request, headers, runtime)
+
+    def create_video_clip_task_with_options(
+        self,
+        request: intelligent_creation_20240313_models.CreateVideoClipTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.CreateVideoClipTaskResponse:
+        """
+        @summary 提交视频切片任务
+        
+        @param request: CreateVideoClipTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVideoClipTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aliyun_main_id):
+            body['aliyunMainId'] = request.aliyun_main_id
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.oss_keys):
+            body['ossKeys'] = request.oss_keys
+        if not UtilClient.is_unset(request.requirement):
+            body['requirement'] = request.requirement
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateVideoClipTask',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/video/clip/createVideoClipTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.CreateVideoClipTaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.CreateVideoClipTaskResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_video_clip_task_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.CreateVideoClipTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.CreateVideoClipTaskResponse:
+        """
+        @summary 提交视频切片任务
+        
+        @param request: CreateVideoClipTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVideoClipTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aliyun_main_id):
+            body['aliyunMainId'] = request.aliyun_main_id
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.oss_keys):
+            body['ossKeys'] = request.oss_keys
+        if not UtilClient.is_unset(request.requirement):
+            body['requirement'] = request.requirement
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateVideoClipTask',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/video/clip/createVideoClipTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.CreateVideoClipTaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.CreateVideoClipTaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_video_clip_task(
+        self,
+        request: intelligent_creation_20240313_models.CreateVideoClipTaskRequest,
+    ) -> intelligent_creation_20240313_models.CreateVideoClipTaskResponse:
+        """
+        @summary 提交视频切片任务
+        
+        @param request: CreateVideoClipTaskRequest
+        @return: CreateVideoClipTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_video_clip_task_with_options(request, headers, runtime)
+
+    async def create_video_clip_task_async(
+        self,
+        request: intelligent_creation_20240313_models.CreateVideoClipTaskRequest,
+    ) -> intelligent_creation_20240313_models.CreateVideoClipTaskResponse:
+        """
+        @summary 提交视频切片任务
+        
+        @param request: CreateVideoClipTaskRequest
+        @return: CreateVideoClipTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_video_clip_task_with_options_async(request, headers, runtime)
+
     def delete_individuation_project_with_options(
         self,
         request: intelligent_creation_20240313_models.DeleteIndividuationProjectRequest,
@@ -2156,6 +2800,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_individuation_text_with_options_async(request, headers, runtime)
+
+    def describe_document_with_options(
+        self,
+        knowledge_base_id: str,
+        document_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.DescribeDocumentResponse:
+        """
+        @summary 查询文档信息与状态
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDocumentResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DescribeDocument',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/knowledge-base/{OpenApiUtilClient.get_encode_param(knowledge_base_id)}/documents/{OpenApiUtilClient.get_encode_param(document_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.DescribeDocumentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.DescribeDocumentResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_document_with_options_async(
+        self,
+        knowledge_base_id: str,
+        document_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.DescribeDocumentResponse:
+        """
+        @summary 查询文档信息与状态
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDocumentResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DescribeDocument',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/knowledge-base/{OpenApiUtilClient.get_encode_param(knowledge_base_id)}/documents/{OpenApiUtilClient.get_encode_param(document_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.DescribeDocumentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.DescribeDocumentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_document(
+        self,
+        knowledge_base_id: str,
+        document_id: str,
+    ) -> intelligent_creation_20240313_models.DescribeDocumentResponse:
+        """
+        @summary 查询文档信息与状态
+        
+        @return: DescribeDocumentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_document_with_options(knowledge_base_id, document_id, headers, runtime)
+
+    async def describe_document_async(
+        self,
+        knowledge_base_id: str,
+        document_id: str,
+    ) -> intelligent_creation_20240313_models.DescribeDocumentResponse:
+        """
+        @summary 查询文档信息与状态
+        
+        @return: DescribeDocumentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_document_with_options_async(knowledge_base_id, document_id, headers, runtime)
 
     def finish_aicoach_task_session_with_options(
         self,
@@ -2873,6 +3623,8 @@ class Client(OpenApiClient):
             query['fileName'] = request.file_name
         if not UtilClient.is_unset(request.file_type):
             query['fileType'] = request.file_type
+        if not UtilClient.is_unset(request.upload_type):
+            query['uploadType'] = request.upload_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2919,6 +3671,8 @@ class Client(OpenApiClient):
             query['fileName'] = request.file_name
         if not UtilClient.is_unset(request.file_type):
             query['fileType'] = request.file_type
+        if not UtilClient.is_unset(request.upload_type):
+            query['uploadType'] = request.upload_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -3801,6 +4555,142 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_aicoach_task_page_with_options_async(request, headers, runtime)
 
+    def list_agents_with_options(
+        self,
+        request: intelligent_creation_20240313_models.ListAgentsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.ListAgentsResponse:
+        """
+        @summary 分页查询智能体
+        
+        @param request: ListAgentsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAgentsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_id):
+            query['agentId'] = request.agent_id
+        if not UtilClient.is_unset(request.agent_scene):
+            query['agentScene'] = request.agent_scene
+        if not UtilClient.is_unset(request.owner):
+            query['owner'] = request.owner
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAgents',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/agent/listAgents',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.ListAgentsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.ListAgentsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_agents_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.ListAgentsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.ListAgentsResponse:
+        """
+        @summary 分页查询智能体
+        
+        @param request: ListAgentsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAgentsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_id):
+            query['agentId'] = request.agent_id
+        if not UtilClient.is_unset(request.agent_scene):
+            query['agentScene'] = request.agent_scene
+        if not UtilClient.is_unset(request.owner):
+            query['owner'] = request.owner
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAgents',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/agent/listAgents',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.ListAgentsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.ListAgentsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_agents(
+        self,
+        request: intelligent_creation_20240313_models.ListAgentsRequest,
+    ) -> intelligent_creation_20240313_models.ListAgentsResponse:
+        """
+        @summary 分页查询智能体
+        
+        @param request: ListAgentsRequest
+        @return: ListAgentsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_agents_with_options(request, headers, runtime)
+
+    async def list_agents_async(
+        self,
+        request: intelligent_creation_20240313_models.ListAgentsRequest,
+    ) -> intelligent_creation_20240313_models.ListAgentsResponse:
+        """
+        @summary 分页查询智能体
+        
+        @param request: ListAgentsRequest
+        @return: ListAgentsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_agents_with_options_async(request, headers, runtime)
+
     def list_anchor_with_options(
         self,
         request: intelligent_creation_20240313_models.ListAnchorRequest,
@@ -4068,6 +4958,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_avatar_project_with_options_async(request, headers, runtime)
+
+    def list_knowledge_base_with_options(
+        self,
+        request: intelligent_creation_20240313_models.ListKnowledgeBaseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.ListKnowledgeBaseResponse:
+        """
+        @summary 查询知识库
+        
+        @param request: ListKnowledgeBaseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListKnowledgeBaseResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.knowledge_base_id):
+            query['knowledgeBaseId'] = request.knowledge_base_id
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListKnowledgeBase',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/knowledge-base',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.ListKnowledgeBaseResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.ListKnowledgeBaseResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_knowledge_base_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.ListKnowledgeBaseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.ListKnowledgeBaseResponse:
+        """
+        @summary 查询知识库
+        
+        @param request: ListKnowledgeBaseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListKnowledgeBaseResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.knowledge_base_id):
+            query['knowledgeBaseId'] = request.knowledge_base_id
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListKnowledgeBase',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/knowledge-base',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.ListKnowledgeBaseResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                intelligent_creation_20240313_models.ListKnowledgeBaseResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_knowledge_base(
+        self,
+        request: intelligent_creation_20240313_models.ListKnowledgeBaseRequest,
+    ) -> intelligent_creation_20240313_models.ListKnowledgeBaseResponse:
+        """
+        @summary 查询知识库
+        
+        @param request: ListKnowledgeBaseRequest
+        @return: ListKnowledgeBaseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_knowledge_base_with_options(request, headers, runtime)
+
+    async def list_knowledge_base_async(
+        self,
+        request: intelligent_creation_20240313_models.ListKnowledgeBaseRequest,
+    ) -> intelligent_creation_20240313_models.ListKnowledgeBaseResponse:
+        """
+        @summary 查询知识库
+        
+        @param request: ListKnowledgeBaseRequest
+        @return: ListKnowledgeBaseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_knowledge_base_with_options_async(request, headers, runtime)
 
     def list_text_themes_with_options(
         self,
@@ -4353,6 +5367,8 @@ class Client(OpenApiClient):
             query['resSpecType'] = request.res_spec_type
         if not UtilClient.is_unset(request.use_scene):
             query['useScene'] = request.use_scene
+        if not UtilClient.is_unset(request.voice_language):
+            query['voiceLanguage'] = request.voice_language
         if not UtilClient.is_unset(request.voice_type):
             query['voiceType'] = request.voice_type
         req = open_api_models.OpenApiRequest(
@@ -4405,6 +5421,8 @@ class Client(OpenApiClient):
             query['resSpecType'] = request.res_spec_type
         if not UtilClient.is_unset(request.use_scene):
             query['useScene'] = request.use_scene
+        if not UtilClient.is_unset(request.voice_language):
+            query['voiceLanguage'] = request.voice_language
         if not UtilClient.is_unset(request.voice_type):
             query['voiceType'] = request.voice_type
         req = open_api_models.OpenApiRequest(
@@ -5193,6 +6211,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.agent_id):
             body['agentId'] = request.agent_id
+        if not UtilClient.is_unset(request.bit_rate):
+            body['bitRate'] = request.bit_rate
+        if not UtilClient.is_unset(request.frame_rate):
+            body['frameRate'] = request.frame_rate
         if not UtilClient.is_unset(request.frames):
             body['frames'] = request.frames
         if not UtilClient.is_unset(request.operate_type):
@@ -5207,6 +6229,8 @@ class Client(OpenApiClient):
             body['resolution'] = request.resolution
         if not UtilClient.is_unset(request.scale_type):
             body['scaleType'] = request.scale_type
+        if not UtilClient.is_unset(request.synchronized_display):
+            body['synchronizedDisplay'] = request.synchronized_display
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -5251,6 +6275,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.agent_id):
             body['agentId'] = request.agent_id
+        if not UtilClient.is_unset(request.bit_rate):
+            body['bitRate'] = request.bit_rate
+        if not UtilClient.is_unset(request.frame_rate):
+            body['frameRate'] = request.frame_rate
         if not UtilClient.is_unset(request.frames):
             body['frames'] = request.frames
         if not UtilClient.is_unset(request.operate_type):
@@ -5265,6 +6293,8 @@ class Client(OpenApiClient):
             body['resolution'] = request.resolution
         if not UtilClient.is_unset(request.scale_type):
             body['scaleType'] = request.scale_type
+        if not UtilClient.is_unset(request.synchronized_display):
+            body['synchronizedDisplay'] = request.synchronized_display
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)

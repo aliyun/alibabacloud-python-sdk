@@ -4,6 +4,140 @@ from Tea.model import TeaModel
 from typing import List, Dict
 
 
+class AddDocumentInfo(TeaModel):
+    def __init__(
+        self,
+        document_type: str = None,
+        name: str = None,
+        url: str = None,
+    ):
+        # This parameter is required.
+        self.document_type = document_type
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.document_type is not None:
+            result['documentType'] = self.document_type
+        if self.name is not None:
+            result['name'] = self.name
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('documentType') is not None:
+            self.document_type = m.get('documentType')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class DocumentInfo(TeaModel):
+    def __init__(
+        self,
+        document_type: str = None,
+        id: str = None,
+        name: str = None,
+        process_status: str = None,
+    ):
+        self.document_type = document_type
+        self.id = id
+        self.name = name
+        self.process_status = process_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.document_type is not None:
+            result['documentType'] = self.document_type
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.process_status is not None:
+            result['processStatus'] = self.process_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('documentType') is not None:
+            self.document_type = m.get('documentType')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('processStatus') is not None:
+            self.process_status = m.get('processStatus')
+        return self
+
+
+class AddDocumentResult(TeaModel):
+    def __init__(
+        self,
+        doc_name: str = None,
+        document_info: DocumentInfo = None,
+        error_message: str = None,
+        success: bool = None,
+    ):
+        self.doc_name = doc_name
+        self.document_info = document_info
+        self.error_message = error_message
+        self.success = success
+
+    def validate(self):
+        if self.document_info:
+            self.document_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.doc_name is not None:
+            result['docName'] = self.doc_name
+        if self.document_info is not None:
+            result['documentInfo'] = self.document_info.to_map()
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('docName') is not None:
+            self.doc_name = m.get('docName')
+        if m.get('documentInfo') is not None:
+            temp_model = DocumentInfo()
+            self.document_info = temp_model.from_map(m['documentInfo'])
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
 class AnchorResponse(TeaModel):
     def __init__(
         self,
@@ -112,6 +246,83 @@ class AnchorResponse(TeaModel):
             self.support_bg_change = m.get('supportBgChange')
         if m.get('useScene') is not None:
             self.use_scene = m.get('useScene')
+        return self
+
+
+class BatchAddDocumentResult(TeaModel):
+    def __init__(
+        self,
+        add_document_results: List[AddDocumentResult] = None,
+        request_id: str = None,
+    ):
+        # This parameter is required.
+        self.add_document_results = add_document_results
+        self.request_id = request_id
+
+    def validate(self):
+        if self.add_document_results:
+            for k in self.add_document_results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['addDocumentResults'] = []
+        if self.add_document_results is not None:
+            for k in self.add_document_results:
+                result['addDocumentResults'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.add_document_results = []
+        if m.get('addDocumentResults') is not None:
+            for k in m.get('addDocumentResults'):
+                temp_model = AddDocumentResult()
+                self.add_document_results.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DocumentResult(TeaModel):
+    def __init__(
+        self,
+        document_info: DocumentInfo = None,
+        request_id: str = None,
+    ):
+        self.document_info = document_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.document_info:
+            self.document_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.document_info is not None:
+            result['documentInfo'] = self.document_info.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('documentInfo') is not None:
+            temp_model = DocumentInfo()
+            self.document_info = temp_model.from_map(m['documentInfo'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         return self
 
 
@@ -439,6 +650,105 @@ class IllustrationTaskResult(TeaModel):
             self.illustration_task = temp_model.from_map(m['illustrationTask'])
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+        return self
+
+
+class KnowledgeBaseInfo(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        id: str = None,
+        industry: str = None,
+        knowledge_base_type: str = None,
+        name: str = None,
+    ):
+        self.description = description
+        self.id = id
+        self.industry = industry
+        self.knowledge_base_type = knowledge_base_type
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.id is not None:
+            result['id'] = self.id
+        if self.industry is not None:
+            result['industry'] = self.industry
+        if self.knowledge_base_type is not None:
+            result['knowledgeBaseType'] = self.knowledge_base_type
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('industry') is not None:
+            self.industry = m.get('industry')
+        if m.get('knowledgeBaseType') is not None:
+            self.knowledge_base_type = m.get('knowledgeBaseType')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class KnowledgeBaseListResult(TeaModel):
+    def __init__(
+        self,
+        knowledge_bases: List[KnowledgeBaseInfo] = None,
+        request_id: str = None,
+        total: int = None,
+    ):
+        self.knowledge_bases = knowledge_bases
+        self.request_id = request_id
+        # This parameter is required.
+        self.total = total
+
+    def validate(self):
+        if self.knowledge_bases:
+            for k in self.knowledge_bases:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['knowledgeBases'] = []
+        if self.knowledge_bases is not None:
+            for k in self.knowledge_bases:
+                result['knowledgeBases'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.knowledge_bases = []
+        if m.get('knowledgeBases') is not None:
+            for k in m.get('knowledgeBases'):
+                temp_model = KnowledgeBaseInfo()
+                self.knowledge_bases.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('total') is not None:
+            self.total = m.get('total')
         return self
 
 
@@ -1268,6 +1578,82 @@ class AddTextFeedbackResponse(TeaModel):
         return self
 
 
+class BatchAddDocumentRequest(TeaModel):
+    def __init__(
+        self,
+        add_document_infos: List[AddDocumentInfo] = None,
+    ):
+        self.add_document_infos = add_document_infos
+
+    def validate(self):
+        if self.add_document_infos:
+            for k in self.add_document_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['addDocumentInfos'] = []
+        if self.add_document_infos is not None:
+            for k in self.add_document_infos:
+                result['addDocumentInfos'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.add_document_infos = []
+        if m.get('addDocumentInfos') is not None:
+            for k in m.get('addDocumentInfos'):
+                temp_model = AddDocumentInfo()
+                self.add_document_infos.append(temp_model.from_map(k))
+        return self
+
+
+class BatchAddDocumentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BatchAddDocumentResult = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BatchAddDocumentResult()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class BatchCreateAICoachTaskRequest(TeaModel):
     def __init__(
         self,
@@ -1572,6 +1958,558 @@ class BatchGetProjectTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = BatchGetProjectTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class BatchGetTrainTaskRequest(TeaModel):
+    def __init__(
+        self,
+        aliyun_main_id: str = None,
+        task_id_list: List[str] = None,
+    ):
+        self.aliyun_main_id = aliyun_main_id
+        self.task_id_list = task_id_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_main_id is not None:
+            result['aliyunMainId'] = self.aliyun_main_id
+        if self.task_id_list is not None:
+            result['taskIdList'] = self.task_id_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aliyunMainId') is not None:
+            self.aliyun_main_id = m.get('aliyunMainId')
+        if m.get('taskIdList') is not None:
+            self.task_id_list = m.get('taskIdList')
+        return self
+
+
+class BatchGetTrainTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        aliyun_main_id: str = None,
+        task_id_list_shrink: str = None,
+    ):
+        self.aliyun_main_id = aliyun_main_id
+        self.task_id_list_shrink = task_id_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_main_id is not None:
+            result['aliyunMainId'] = self.aliyun_main_id
+        if self.task_id_list_shrink is not None:
+            result['taskIdList'] = self.task_id_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aliyunMainId') is not None:
+            self.aliyun_main_id = m.get('aliyunMainId')
+        if m.get('taskIdList') is not None:
+            self.task_id_list_shrink = m.get('taskIdList')
+        return self
+
+
+class BatchGetTrainTaskResponseBodyVoiceListVoiceMaterial(TeaModel):
+    def __init__(
+        self,
+        voice_id: int = None,
+        voice_language: str = None,
+        voice_url: str = None,
+    ):
+        self.voice_id = voice_id
+        self.voice_language = voice_language
+        self.voice_url = voice_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.voice_id is not None:
+            result['voiceId'] = self.voice_id
+        if self.voice_language is not None:
+            result['voiceLanguage'] = self.voice_language
+        if self.voice_url is not None:
+            result['voiceUrl'] = self.voice_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('voiceId') is not None:
+            self.voice_id = m.get('voiceId')
+        if m.get('voiceLanguage') is not None:
+            self.voice_language = m.get('voiceLanguage')
+        if m.get('voiceUrl') is not None:
+            self.voice_url = m.get('voiceUrl')
+        return self
+
+
+class BatchGetTrainTaskResponseBodyVoiceList(TeaModel):
+    def __init__(
+        self,
+        aliyun_sub_id: str = None,
+        audit_fail_message: str = None,
+        audit_status: str = None,
+        create_time: str = None,
+        gender: str = None,
+        name: str = None,
+        res_spec_type: str = None,
+        task_id: str = None,
+        task_type: str = None,
+        train_fail_message: str = None,
+        train_status: str = None,
+        use_scene: str = None,
+        voice_material: BatchGetTrainTaskResponseBodyVoiceListVoiceMaterial = None,
+    ):
+        self.aliyun_sub_id = aliyun_sub_id
+        self.audit_fail_message = audit_fail_message
+        self.audit_status = audit_status
+        self.create_time = create_time
+        self.gender = gender
+        self.name = name
+        self.res_spec_type = res_spec_type
+        self.task_id = task_id
+        self.task_type = task_type
+        self.train_fail_message = train_fail_message
+        self.train_status = train_status
+        self.use_scene = use_scene
+        self.voice_material = voice_material
+
+    def validate(self):
+        if self.voice_material:
+            self.voice_material.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_sub_id is not None:
+            result['aliyunSubId'] = self.aliyun_sub_id
+        if self.audit_fail_message is not None:
+            result['auditFailMessage'] = self.audit_fail_message
+        if self.audit_status is not None:
+            result['auditStatus'] = self.audit_status
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.gender is not None:
+            result['gender'] = self.gender
+        if self.name is not None:
+            result['name'] = self.name
+        if self.res_spec_type is not None:
+            result['resSpecType'] = self.res_spec_type
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        if self.task_type is not None:
+            result['taskType'] = self.task_type
+        if self.train_fail_message is not None:
+            result['trainFailMessage'] = self.train_fail_message
+        if self.train_status is not None:
+            result['trainStatus'] = self.train_status
+        if self.use_scene is not None:
+            result['useScene'] = self.use_scene
+        if self.voice_material is not None:
+            result['voiceMaterial'] = self.voice_material.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aliyunSubId') is not None:
+            self.aliyun_sub_id = m.get('aliyunSubId')
+        if m.get('auditFailMessage') is not None:
+            self.audit_fail_message = m.get('auditFailMessage')
+        if m.get('auditStatus') is not None:
+            self.audit_status = m.get('auditStatus')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('gender') is not None:
+            self.gender = m.get('gender')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('resSpecType') is not None:
+            self.res_spec_type = m.get('resSpecType')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        if m.get('taskType') is not None:
+            self.task_type = m.get('taskType')
+        if m.get('trainFailMessage') is not None:
+            self.train_fail_message = m.get('trainFailMessage')
+        if m.get('trainStatus') is not None:
+            self.train_status = m.get('trainStatus')
+        if m.get('useScene') is not None:
+            self.use_scene = m.get('useScene')
+        if m.get('voiceMaterial') is not None:
+            temp_model = BatchGetTrainTaskResponseBodyVoiceListVoiceMaterial()
+            self.voice_material = temp_model.from_map(m['voiceMaterial'])
+        return self
+
+
+class BatchGetTrainTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        voice_list: List[BatchGetTrainTaskResponseBodyVoiceList] = None,
+    ):
+        self.request_id = request_id
+        self.voice_list = voice_list
+
+    def validate(self):
+        if self.voice_list:
+            for k in self.voice_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['voiceList'] = []
+        if self.voice_list is not None:
+            for k in self.voice_list:
+                result['voiceList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.voice_list = []
+        if m.get('voiceList') is not None:
+            for k in m.get('voiceList'):
+                temp_model = BatchGetTrainTaskResponseBodyVoiceList()
+                self.voice_list.append(temp_model.from_map(k))
+        return self
+
+
+class BatchGetTrainTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BatchGetTrainTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BatchGetTrainTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class BatchGetVideoClipTaskRequest(TeaModel):
+    def __init__(
+        self,
+        task_id_list: List[str] = None,
+    ):
+        self.task_id_list = task_id_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id_list is not None:
+            result['taskIdList'] = self.task_id_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskIdList') is not None:
+            self.task_id_list = m.get('taskIdList')
+        return self
+
+
+class BatchGetVideoClipTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        task_id_list_shrink: str = None,
+    ):
+        self.task_id_list_shrink = task_id_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id_list_shrink is not None:
+            result['taskIdList'] = self.task_id_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskIdList') is not None:
+            self.task_id_list_shrink = m.get('taskIdList')
+        return self
+
+
+class BatchGetVideoClipTaskResponseBodyTaskListVideoList(TeaModel):
+    def __init__(
+        self,
+        begin_time: int = None,
+        description: str = None,
+        end_time: int = None,
+        error_msg: str = None,
+        title: str = None,
+        video_download_url: str = None,
+        video_name: str = None,
+        video_url: str = None,
+    ):
+        self.begin_time = begin_time
+        self.description = description
+        self.end_time = end_time
+        self.error_msg = error_msg
+        self.title = title
+        self.video_download_url = video_download_url
+        self.video_name = video_name
+        self.video_url = video_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.begin_time is not None:
+            result['beginTime'] = self.begin_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.error_msg is not None:
+            result['errorMsg'] = self.error_msg
+        if self.title is not None:
+            result['title'] = self.title
+        if self.video_download_url is not None:
+            result['videoDownloadUrl'] = self.video_download_url
+        if self.video_name is not None:
+            result['videoName'] = self.video_name
+        if self.video_url is not None:
+            result['videoUrl'] = self.video_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('beginTime') is not None:
+            self.begin_time = m.get('beginTime')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('errorMsg') is not None:
+            self.error_msg = m.get('errorMsg')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        if m.get('videoDownloadUrl') is not None:
+            self.video_download_url = m.get('videoDownloadUrl')
+        if m.get('videoName') is not None:
+            self.video_name = m.get('videoName')
+        if m.get('videoUrl') is not None:
+            self.video_url = m.get('videoUrl')
+        return self
+
+
+class BatchGetVideoClipTaskResponseBodyTaskList(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        task_id: str = None,
+        total_duration: float = None,
+        total_token: int = None,
+        video_list: List[BatchGetVideoClipTaskResponseBodyTaskListVideoList] = None,
+    ):
+        self.status = status
+        self.task_id = task_id
+        self.total_duration = total_duration
+        self.total_token = total_token
+        self.video_list = video_list
+
+    def validate(self):
+        if self.video_list:
+            for k in self.video_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['status'] = self.status
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        if self.total_duration is not None:
+            result['totalDuration'] = self.total_duration
+        if self.total_token is not None:
+            result['totalToken'] = self.total_token
+        result['videoList'] = []
+        if self.video_list is not None:
+            for k in self.video_list:
+                result['videoList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        if m.get('totalDuration') is not None:
+            self.total_duration = m.get('totalDuration')
+        if m.get('totalToken') is not None:
+            self.total_token = m.get('totalToken')
+        self.video_list = []
+        if m.get('videoList') is not None:
+            for k in m.get('videoList'):
+                temp_model = BatchGetVideoClipTaskResponseBodyTaskListVideoList()
+                self.video_list.append(temp_model.from_map(k))
+        return self
+
+
+class BatchGetVideoClipTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_list: List[BatchGetVideoClipTaskResponseBodyTaskList] = None,
+    ):
+        self.request_id = request_id
+        self.task_list = task_list
+
+    def validate(self):
+        if self.task_list:
+            for k in self.task_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['taskList'] = []
+        if self.task_list is not None:
+            for k in self.task_list:
+                result['taskList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.task_list = []
+        if m.get('taskList') is not None:
+            for k in m.get('taskList'):
+                temp_model = BatchGetVideoClipTaskResponseBodyTaskList()
+                self.task_list.append(temp_model.from_map(k))
+        return self
+
+
+class BatchGetVideoClipTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BatchGetVideoClipTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BatchGetVideoClipTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3251,6 +4189,268 @@ class CreateTextTaskResponse(TeaModel):
         return self
 
 
+class CreateTrainTaskRequest(TeaModel):
+    def __init__(
+        self,
+        aliyun_main_id: str = None,
+        res_spec_type: str = None,
+        task_type: str = None,
+        use_scene: str = None,
+        voice_gender: str = None,
+        voice_language: str = None,
+        voice_name: str = None,
+        voice_path: str = None,
+    ):
+        self.aliyun_main_id = aliyun_main_id
+        self.res_spec_type = res_spec_type
+        self.task_type = task_type
+        self.use_scene = use_scene
+        self.voice_gender = voice_gender
+        self.voice_language = voice_language
+        self.voice_name = voice_name
+        self.voice_path = voice_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_main_id is not None:
+            result['aliyunMainId'] = self.aliyun_main_id
+        if self.res_spec_type is not None:
+            result['resSpecType'] = self.res_spec_type
+        if self.task_type is not None:
+            result['taskType'] = self.task_type
+        if self.use_scene is not None:
+            result['useScene'] = self.use_scene
+        if self.voice_gender is not None:
+            result['voiceGender'] = self.voice_gender
+        if self.voice_language is not None:
+            result['voiceLanguage'] = self.voice_language
+        if self.voice_name is not None:
+            result['voiceName'] = self.voice_name
+        if self.voice_path is not None:
+            result['voicePath'] = self.voice_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aliyunMainId') is not None:
+            self.aliyun_main_id = m.get('aliyunMainId')
+        if m.get('resSpecType') is not None:
+            self.res_spec_type = m.get('resSpecType')
+        if m.get('taskType') is not None:
+            self.task_type = m.get('taskType')
+        if m.get('useScene') is not None:
+            self.use_scene = m.get('useScene')
+        if m.get('voiceGender') is not None:
+            self.voice_gender = m.get('voiceGender')
+        if m.get('voiceLanguage') is not None:
+            self.voice_language = m.get('voiceLanguage')
+        if m.get('voiceName') is not None:
+            self.voice_name = m.get('voiceName')
+        if m.get('voicePath') is not None:
+            self.voice_path = m.get('voicePath')
+        return self
+
+
+class CreateTrainTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class CreateTrainTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateTrainTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateTrainTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateVideoClipTaskRequest(TeaModel):
+    def __init__(
+        self,
+        aliyun_main_id: str = None,
+        description: str = None,
+        oss_keys: List[str] = None,
+        requirement: str = None,
+    ):
+        self.aliyun_main_id = aliyun_main_id
+        self.description = description
+        self.oss_keys = oss_keys
+        self.requirement = requirement
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_main_id is not None:
+            result['aliyunMainId'] = self.aliyun_main_id
+        if self.description is not None:
+            result['description'] = self.description
+        if self.oss_keys is not None:
+            result['ossKeys'] = self.oss_keys
+        if self.requirement is not None:
+            result['requirement'] = self.requirement
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aliyunMainId') is not None:
+            self.aliyun_main_id = m.get('aliyunMainId')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('ossKeys') is not None:
+            self.oss_keys = m.get('ossKeys')
+        if m.get('requirement') is not None:
+            self.requirement = m.get('requirement')
+        return self
+
+
+class CreateVideoClipTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class CreateVideoClipTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateVideoClipTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateVideoClipTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteIndividuationProjectRequest(TeaModel):
     def __init__(
         self,
@@ -3463,6 +4663,47 @@ class DeleteIndividuationTextResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteIndividuationTextResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDocumentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DocumentResult = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DocumentResult()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3740,11 +4981,15 @@ class GetAICoachScriptResponseBodyPointsAnswerList(TeaModel):
     def __init__(
         self,
         name: str = None,
+        name_list: List[str] = None,
+        operators: str = None,
         parameters: List[GetAICoachScriptResponseBodyPointsAnswerListParameters] = None,
         type: str = None,
         weight: int = None,
     ):
         self.name = name
+        self.name_list = name_list
+        self.operators = operators
         self.parameters = parameters
         self.type = type
         self.weight = weight
@@ -3763,6 +5008,10 @@ class GetAICoachScriptResponseBodyPointsAnswerList(TeaModel):
         result = dict()
         if self.name is not None:
             result['name'] = self.name
+        if self.name_list is not None:
+            result['nameList'] = self.name_list
+        if self.operators is not None:
+            result['operators'] = self.operators
         result['parameters'] = []
         if self.parameters is not None:
             for k in self.parameters:
@@ -3777,6 +5026,10 @@ class GetAICoachScriptResponseBodyPointsAnswerList(TeaModel):
         m = m or dict()
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('nameList') is not None:
+            self.name_list = m.get('nameList')
+        if m.get('operators') is not None:
+            self.operators = m.get('operators')
         self.parameters = []
         if m.get('parameters') is not None:
             for k in m.get('parameters'):
@@ -4285,12 +5538,14 @@ class GetAICoachTaskSessionHistoryResponseBodyConversationList(TeaModel):
     def __init__(
         self,
         audio_url: str = None,
+        evaluation_feedback: str = None,
         evaluation_result: str = None,
         message: str = None,
         record_id: str = None,
         role: str = None,
     ):
         self.audio_url = audio_url
+        self.evaluation_feedback = evaluation_feedback
         self.evaluation_result = evaluation_result
         self.message = message
         self.record_id = record_id
@@ -4307,6 +5562,8 @@ class GetAICoachTaskSessionHistoryResponseBodyConversationList(TeaModel):
         result = dict()
         if self.audio_url is not None:
             result['audioUrl'] = self.audio_url
+        if self.evaluation_feedback is not None:
+            result['evaluationFeedback'] = self.evaluation_feedback
         if self.evaluation_result is not None:
             result['evaluationResult'] = self.evaluation_result
         if self.message is not None:
@@ -4321,6 +5578,8 @@ class GetAICoachTaskSessionHistoryResponseBodyConversationList(TeaModel):
         m = m or dict()
         if m.get('audioUrl') is not None:
             self.audio_url = m.get('audioUrl')
+        if m.get('evaluationFeedback') is not None:
+            self.evaluation_feedback = m.get('evaluationFeedback')
         if m.get('evaluationResult') is not None:
             self.evaluation_result = m.get('evaluationResult')
         if m.get('message') is not None:
@@ -4704,11 +5963,13 @@ class GetOssUploadTokenRequest(TeaModel):
         self,
         file_name: str = None,
         file_type: str = None,
+        upload_type: int = None,
     ):
         # This parameter is required.
         self.file_name = file_name
         # This parameter is required.
         self.file_type = file_type
+        self.upload_type = upload_type
 
     def validate(self):
         pass
@@ -4723,6 +5984,8 @@ class GetOssUploadTokenRequest(TeaModel):
             result['fileName'] = self.file_name
         if self.file_type is not None:
             result['fileType'] = self.file_type
+        if self.upload_type is not None:
+            result['uploadType'] = self.upload_type
         return result
 
     def from_map(self, m: dict = None):
@@ -4731,6 +5994,8 @@ class GetOssUploadTokenRequest(TeaModel):
             self.file_name = m.get('fileName')
         if m.get('fileType') is not None:
             self.file_type = m.get('fileType')
+        if m.get('uploadType') is not None:
+            self.upload_type = m.get('uploadType')
         return self
 
 
@@ -6048,6 +7313,250 @@ class ListAICoachTaskPageResponse(TeaModel):
         return self
 
 
+class ListAgentsRequest(TeaModel):
+    def __init__(
+        self,
+        agent_id: str = None,
+        agent_scene: str = None,
+        owner: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        status: int = None,
+    ):
+        self.agent_id = agent_id
+        self.agent_scene = agent_scene
+        self.owner = owner
+        self.page_number = page_number
+        self.page_size = page_size
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_id is not None:
+            result['agentId'] = self.agent_id
+        if self.agent_scene is not None:
+            result['agentScene'] = self.agent_scene
+        if self.owner is not None:
+            result['owner'] = self.owner
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('agentId') is not None:
+            self.agent_id = m.get('agentId')
+        if m.get('agentScene') is not None:
+            self.agent_scene = m.get('agentScene')
+        if m.get('owner') is not None:
+            self.owner = m.get('owner')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class ListAgentsResponseBodyList(TeaModel):
+    def __init__(
+        self,
+        agent_id: str = None,
+        agent_name: str = None,
+        agent_scene: str = None,
+        characters_description: str = None,
+        enable_interaction: int = None,
+        industry: str = None,
+        online_search: bool = None,
+        owner: str = None,
+        reference_url: str = None,
+        status: int = None,
+        text_style: str = None,
+        viewer: str = None,
+    ):
+        self.agent_id = agent_id
+        self.agent_name = agent_name
+        self.agent_scene = agent_scene
+        self.characters_description = characters_description
+        self.enable_interaction = enable_interaction
+        self.industry = industry
+        self.online_search = online_search
+        self.owner = owner
+        self.reference_url = reference_url
+        self.status = status
+        self.text_style = text_style
+        self.viewer = viewer
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_id is not None:
+            result['agentId'] = self.agent_id
+        if self.agent_name is not None:
+            result['agentName'] = self.agent_name
+        if self.agent_scene is not None:
+            result['agentScene'] = self.agent_scene
+        if self.characters_description is not None:
+            result['charactersDescription'] = self.characters_description
+        if self.enable_interaction is not None:
+            result['enableInteraction'] = self.enable_interaction
+        if self.industry is not None:
+            result['industry'] = self.industry
+        if self.online_search is not None:
+            result['onlineSearch'] = self.online_search
+        if self.owner is not None:
+            result['owner'] = self.owner
+        if self.reference_url is not None:
+            result['referenceUrl'] = self.reference_url
+        if self.status is not None:
+            result['status'] = self.status
+        if self.text_style is not None:
+            result['textStyle'] = self.text_style
+        if self.viewer is not None:
+            result['viewer'] = self.viewer
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('agentId') is not None:
+            self.agent_id = m.get('agentId')
+        if m.get('agentName') is not None:
+            self.agent_name = m.get('agentName')
+        if m.get('agentScene') is not None:
+            self.agent_scene = m.get('agentScene')
+        if m.get('charactersDescription') is not None:
+            self.characters_description = m.get('charactersDescription')
+        if m.get('enableInteraction') is not None:
+            self.enable_interaction = m.get('enableInteraction')
+        if m.get('industry') is not None:
+            self.industry = m.get('industry')
+        if m.get('onlineSearch') is not None:
+            self.online_search = m.get('onlineSearch')
+        if m.get('owner') is not None:
+            self.owner = m.get('owner')
+        if m.get('referenceUrl') is not None:
+            self.reference_url = m.get('referenceUrl')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('textStyle') is not None:
+            self.text_style = m.get('textStyle')
+        if m.get('viewer') is not None:
+            self.viewer = m.get('viewer')
+        return self
+
+
+class ListAgentsResponseBody(TeaModel):
+    def __init__(
+        self,
+        list: List[ListAgentsResponseBodyList] = None,
+        request_id: str = None,
+        success: bool = None,
+        total: int = None,
+    ):
+        self.list = list
+        self.request_id = request_id
+        self.success = success
+        self.total = total
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['list'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['list'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('list') is not None:
+            for k in m.get('list'):
+                temp_model = ListAgentsResponseBodyList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListAgentsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAgentsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAgentsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListAnchorRequest(TeaModel):
     def __init__(
         self,
@@ -6418,6 +7927,86 @@ class ListAvatarProjectResponse(TeaModel):
         return self
 
 
+class ListKnowledgeBaseRequest(TeaModel):
+    def __init__(
+        self,
+        knowledge_base_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.knowledge_base_id = knowledge_base_id
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.knowledge_base_id is not None:
+            result['knowledgeBaseId'] = self.knowledge_base_id
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('knowledgeBaseId') is not None:
+            self.knowledge_base_id = m.get('knowledgeBaseId')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        return self
+
+
+class ListKnowledgeBaseResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: KnowledgeBaseListResult = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = KnowledgeBaseListResult()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListTextThemesRequest(TeaModel):
     def __init__(
         self,
@@ -6603,12 +8192,14 @@ class ListVoiceModelsRequest(TeaModel):
         page_size: int = None,
         res_spec_type: str = None,
         use_scene: str = None,
+        voice_language: str = None,
         voice_type: str = None,
     ):
         self.page_number = page_number
         self.page_size = page_size
         self.res_spec_type = res_spec_type
         self.use_scene = use_scene
+        self.voice_language = voice_language
         self.voice_type = voice_type
 
     def validate(self):
@@ -6628,6 +8219,8 @@ class ListVoiceModelsRequest(TeaModel):
             result['resSpecType'] = self.res_spec_type
         if self.use_scene is not None:
             result['useScene'] = self.use_scene
+        if self.voice_language is not None:
+            result['voiceLanguage'] = self.voice_language
         if self.voice_type is not None:
             result['voiceType'] = self.voice_type
         return result
@@ -6642,6 +8235,8 @@ class ListVoiceModelsRequest(TeaModel):
             self.res_spec_type = m.get('resSpecType')
         if m.get('useScene') is not None:
             self.use_scene = m.get('useScene')
+        if m.get('voiceLanguage') is not None:
+            self.voice_language = m.get('voiceLanguage')
         if m.get('voiceType') is not None:
             self.voice_type = m.get('voiceType')
         return self
@@ -7915,10 +9510,12 @@ class SaveAvatarProjectRequestFramesVideoScript(TeaModel):
     def __init__(
         self,
         speed_rate: str = None,
+        voice_language: str = None,
         voice_template_id: str = None,
         volume: str = None,
     ):
         self.speed_rate = speed_rate
+        self.voice_language = voice_language
         self.voice_template_id = voice_template_id
         self.volume = volume
 
@@ -7933,6 +9530,8 @@ class SaveAvatarProjectRequestFramesVideoScript(TeaModel):
         result = dict()
         if self.speed_rate is not None:
             result['speedRate'] = self.speed_rate
+        if self.voice_language is not None:
+            result['voiceLanguage'] = self.voice_language
         if self.voice_template_id is not None:
             result['voiceTemplateId'] = self.voice_template_id
         if self.volume is not None:
@@ -7943,6 +9542,8 @@ class SaveAvatarProjectRequestFramesVideoScript(TeaModel):
         m = m or dict()
         if m.get('speedRate') is not None:
             self.speed_rate = m.get('speedRate')
+        if m.get('voiceLanguage') is not None:
+            self.voice_language = m.get('voiceLanguage')
         if m.get('voiceTemplateId') is not None:
             self.voice_template_id = m.get('voiceTemplateId')
         if m.get('volume') is not None:
@@ -7998,6 +9599,8 @@ class SaveAvatarProjectRequest(TeaModel):
     def __init__(
         self,
         agent_id: str = None,
+        bit_rate: str = None,
+        frame_rate: str = None,
         frames: List[SaveAvatarProjectRequestFrames] = None,
         operate_type: str = None,
         project_id: str = None,
@@ -8005,8 +9608,11 @@ class SaveAvatarProjectRequest(TeaModel):
         res_spec_type: str = None,
         resolution: str = None,
         scale_type: str = None,
+        synchronized_display: str = None,
     ):
         self.agent_id = agent_id
+        self.bit_rate = bit_rate
+        self.frame_rate = frame_rate
         self.frames = frames
         self.operate_type = operate_type
         self.project_id = project_id
@@ -8014,6 +9620,7 @@ class SaveAvatarProjectRequest(TeaModel):
         self.res_spec_type = res_spec_type
         self.resolution = resolution
         self.scale_type = scale_type
+        self.synchronized_display = synchronized_display
 
     def validate(self):
         if self.frames:
@@ -8029,6 +9636,10 @@ class SaveAvatarProjectRequest(TeaModel):
         result = dict()
         if self.agent_id is not None:
             result['agentId'] = self.agent_id
+        if self.bit_rate is not None:
+            result['bitRate'] = self.bit_rate
+        if self.frame_rate is not None:
+            result['frameRate'] = self.frame_rate
         result['frames'] = []
         if self.frames is not None:
             for k in self.frames:
@@ -8045,12 +9656,18 @@ class SaveAvatarProjectRequest(TeaModel):
             result['resolution'] = self.resolution
         if self.scale_type is not None:
             result['scaleType'] = self.scale_type
+        if self.synchronized_display is not None:
+            result['synchronizedDisplay'] = self.synchronized_display
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('agentId') is not None:
             self.agent_id = m.get('agentId')
+        if m.get('bitRate') is not None:
+            self.bit_rate = m.get('bitRate')
+        if m.get('frameRate') is not None:
+            self.frame_rate = m.get('frameRate')
         self.frames = []
         if m.get('frames') is not None:
             for k in m.get('frames'):
@@ -8068,6 +9685,8 @@ class SaveAvatarProjectRequest(TeaModel):
             self.resolution = m.get('resolution')
         if m.get('scaleType') is not None:
             self.scale_type = m.get('scaleType')
+        if m.get('synchronizedDisplay') is not None:
+            self.synchronized_display = m.get('synchronizedDisplay')
         return self
 
 
@@ -9351,18 +10970,24 @@ class SubmitProjectTaskRequestFramesVideoScript(TeaModel):
     def __init__(
         self,
         audio_url: str = None,
+        emotion: str = None,
+        pitch_rate: str = None,
         speech_open: bool = None,
         speed_rate: str = None,
         text_content: str = None,
         type: str = None,
+        voice_language: str = None,
         voice_template_id: int = None,
         volume: int = None,
     ):
         self.audio_url = audio_url
+        self.emotion = emotion
+        self.pitch_rate = pitch_rate
         self.speech_open = speech_open
         self.speed_rate = speed_rate
         self.text_content = text_content
         self.type = type
+        self.voice_language = voice_language
         self.voice_template_id = voice_template_id
         self.volume = volume
 
@@ -9377,6 +11002,10 @@ class SubmitProjectTaskRequestFramesVideoScript(TeaModel):
         result = dict()
         if self.audio_url is not None:
             result['audioUrl'] = self.audio_url
+        if self.emotion is not None:
+            result['emotion'] = self.emotion
+        if self.pitch_rate is not None:
+            result['pitchRate'] = self.pitch_rate
         if self.speech_open is not None:
             result['speechOpen'] = self.speech_open
         if self.speed_rate is not None:
@@ -9385,6 +11014,8 @@ class SubmitProjectTaskRequestFramesVideoScript(TeaModel):
             result['textContent'] = self.text_content
         if self.type is not None:
             result['type'] = self.type
+        if self.voice_language is not None:
+            result['voiceLanguage'] = self.voice_language
         if self.voice_template_id is not None:
             result['voiceTemplateId'] = self.voice_template_id
         if self.volume is not None:
@@ -9395,6 +11026,10 @@ class SubmitProjectTaskRequestFramesVideoScript(TeaModel):
         m = m or dict()
         if m.get('audioUrl') is not None:
             self.audio_url = m.get('audioUrl')
+        if m.get('emotion') is not None:
+            self.emotion = m.get('emotion')
+        if m.get('pitchRate') is not None:
+            self.pitch_rate = m.get('pitchRate')
         if m.get('speechOpen') is not None:
             self.speech_open = m.get('speechOpen')
         if m.get('speedRate') is not None:
@@ -9403,6 +11038,8 @@ class SubmitProjectTaskRequestFramesVideoScript(TeaModel):
             self.text_content = m.get('textContent')
         if m.get('type') is not None:
             self.type = m.get('type')
+        if m.get('voiceLanguage') is not None:
+            self.voice_language = m.get('voiceLanguage')
         if m.get('voiceTemplateId') is not None:
             self.voice_template_id = m.get('voiceTemplateId')
         if m.get('volume') is not None:

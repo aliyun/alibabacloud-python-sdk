@@ -1,3 +1,20 @@
+2025-03-13 Version: 2.12.0
+- Support API BatchAddDocument.
+- Support API BatchGetTrainTask.
+- Support API BatchGetVideoClipTask.
+- Support API CreateTrainTask.
+- Support API CreateVideoClipTask.
+- Support API DescribeDocument.
+- Support API ListAgents.
+- Support API ListKnowledgeBase.
+- Update API GetAICoachScript: update response param.
+- Update API GetAICoachTaskSessionHistory: update response param.
+- Update API GetOssUploadToken: add param uploadType.
+- Update API ListVoiceModels: add param voiceLanguage.
+- Update API SaveAvatarProject: update param body.
+- Update API SubmitProjectTask: update param body.
+
+
 2025-02-25 Version: 2.11.1
 - Update API GetAICoachScript: update response param.
 
