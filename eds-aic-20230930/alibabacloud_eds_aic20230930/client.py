@@ -5090,6 +5090,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_app_with_options_async(request, runtime)
 
+    def modify_instance_charge_type_with_options(
+        self,
+        request: eds_aic_20230930_models.ModifyInstanceChargeTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.ModifyInstanceChargeTypeResponse:
+        """
+        @summary Modifies the billing method. Currently, this operation only allows you to change the billing method from pay-as-you-go to subscription.
+        
+        @param request: ModifyInstanceChargeTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceChargeTypeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.instance_group_ids):
+            query['InstanceGroupIds'] = request.instance_group_ids
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceChargeType',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eds_aic_20230930_models.ModifyInstanceChargeTypeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eds_aic_20230930_models.ModifyInstanceChargeTypeResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_instance_charge_type_with_options_async(
+        self,
+        request: eds_aic_20230930_models.ModifyInstanceChargeTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.ModifyInstanceChargeTypeResponse:
+        """
+        @summary Modifies the billing method. Currently, this operation only allows you to change the billing method from pay-as-you-go to subscription.
+        
+        @param request: ModifyInstanceChargeTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceChargeTypeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.instance_group_ids):
+            query['InstanceGroupIds'] = request.instance_group_ids
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceChargeType',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eds_aic_20230930_models.ModifyInstanceChargeTypeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eds_aic_20230930_models.ModifyInstanceChargeTypeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_instance_charge_type(
+        self,
+        request: eds_aic_20230930_models.ModifyInstanceChargeTypeRequest,
+    ) -> eds_aic_20230930_models.ModifyInstanceChargeTypeResponse:
+        """
+        @summary Modifies the billing method. Currently, this operation only allows you to change the billing method from pay-as-you-go to subscription.
+        
+        @param request: ModifyInstanceChargeTypeRequest
+        @return: ModifyInstanceChargeTypeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_instance_charge_type_with_options(request, runtime)
+
+    async def modify_instance_charge_type_async(
+        self,
+        request: eds_aic_20230930_models.ModifyInstanceChargeTypeRequest,
+    ) -> eds_aic_20230930_models.ModifyInstanceChargeTypeResponse:
+        """
+        @summary Modifies the billing method. Currently, this operation only allows you to change the billing method from pay-as-you-go to subscription.
+        
+        @param request: ModifyInstanceChargeTypeRequest
+        @return: ModifyInstanceChargeTypeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_instance_charge_type_with_options_async(request, runtime)
+
     def modify_key_pair_name_with_options(
         self,
         request: eds_aic_20230930_models.ModifyKeyPairNameRequest,

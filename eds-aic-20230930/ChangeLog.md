@@ -1,3 +1,7 @@
+2025-03-13 Version: 4.3.0
+- Support API ModifyInstanceChargeType.
+
+
 2025-02-26 Version: 4.2.0
 - Support API DisconnectAndroidInstance.
 - Support API EndCoordination.
