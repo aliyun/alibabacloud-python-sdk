@@ -7508,11 +7508,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteDesktopGroupResponse:
         """
-        @summary Releases a desktop group.
+        @summary Releases a cloud computer share.
         
-        @description    Before you delete a desktop group, make sure that cloud desktops in the desktop group are not connected and no users are authorized to use the cloud desktops.
-        You cannot delete a subscription desktop group when cloud desktops in the group are in valid period.
-        If you delete a pay-as-you-go desktop group, cloud desktops in the group are deleted.
+        @description    Before releasing a cloud computer share, ensure that no cloud computers within it are in the Connected state and that no end users have access permissions to it.
+        You cannot delete a cloud computer share with an active subscription if it contains cloud computers that have not yet expired.
+        Deleting a pay-as-you-go cloud computer share will release all pay-as-you-go cloud computers within it.
         
         @param request: DeleteDesktopGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7555,11 +7555,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteDesktopGroupResponse:
         """
-        @summary Releases a desktop group.
+        @summary Releases a cloud computer share.
         
-        @description    Before you delete a desktop group, make sure that cloud desktops in the desktop group are not connected and no users are authorized to use the cloud desktops.
-        You cannot delete a subscription desktop group when cloud desktops in the group are in valid period.
-        If you delete a pay-as-you-go desktop group, cloud desktops in the group are deleted.
+        @description    Before releasing a cloud computer share, ensure that no cloud computers within it are in the Connected state and that no end users have access permissions to it.
+        You cannot delete a cloud computer share with an active subscription if it contains cloud computers that have not yet expired.
+        Deleting a pay-as-you-go cloud computer share will release all pay-as-you-go cloud computers within it.
         
         @param request: DeleteDesktopGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7601,11 +7601,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteDesktopGroupRequest,
     ) -> ecd_20200930_models.DeleteDesktopGroupResponse:
         """
-        @summary Releases a desktop group.
+        @summary Releases a cloud computer share.
         
-        @description    Before you delete a desktop group, make sure that cloud desktops in the desktop group are not connected and no users are authorized to use the cloud desktops.
-        You cannot delete a subscription desktop group when cloud desktops in the group are in valid period.
-        If you delete a pay-as-you-go desktop group, cloud desktops in the group are deleted.
+        @description    Before releasing a cloud computer share, ensure that no cloud computers within it are in the Connected state and that no end users have access permissions to it.
+        You cannot delete a cloud computer share with an active subscription if it contains cloud computers that have not yet expired.
+        Deleting a pay-as-you-go cloud computer share will release all pay-as-you-go cloud computers within it.
         
         @param request: DeleteDesktopGroupRequest
         @return: DeleteDesktopGroupResponse
@@ -7618,11 +7618,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteDesktopGroupRequest,
     ) -> ecd_20200930_models.DeleteDesktopGroupResponse:
         """
-        @summary Releases a desktop group.
+        @summary Releases a cloud computer share.
         
-        @description    Before you delete a desktop group, make sure that cloud desktops in the desktop group are not connected and no users are authorized to use the cloud desktops.
-        You cannot delete a subscription desktop group when cloud desktops in the group are in valid period.
-        If you delete a pay-as-you-go desktop group, cloud desktops in the group are deleted.
+        @description    Before releasing a cloud computer share, ensure that no cloud computers within it are in the Connected state and that no end users have access permissions to it.
+        You cannot delete a cloud computer share with an active subscription if it contains cloud computers that have not yet expired.
+        Deleting a pay-as-you-go cloud computer share will release all pay-as-you-go cloud computers within it.
         
         @param request: DeleteDesktopGroupRequest
         @return: DeleteDesktopGroupResponse
@@ -11852,7 +11852,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDesktopsInGroupResponse:
         """
-        @summary Queries the cloud computers in a cloud computer pool by billing method.
+        @summary Queries the cloud computers in a share by billing method.
         
         @param request: DescribeDesktopsInGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11907,7 +11907,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDesktopsInGroupResponse:
         """
-        @summary Queries the cloud computers in a cloud computer pool by billing method.
+        @summary Queries the cloud computers in a share by billing method.
         
         @param request: DescribeDesktopsInGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11961,7 +11961,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDesktopsInGroupRequest,
     ) -> ecd_20200930_models.DescribeDesktopsInGroupResponse:
         """
-        @summary Queries the cloud computers in a cloud computer pool by billing method.
+        @summary Queries the cloud computers in a share by billing method.
         
         @param request: DescribeDesktopsInGroupRequest
         @return: DescribeDesktopsInGroupResponse
@@ -11974,7 +11974,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDesktopsInGroupRequest,
     ) -> ecd_20200930_models.DescribeDesktopsInGroupResponse:
         """
-        @summary Queries the cloud computers in a cloud computer pool by billing method.
+        @summary Queries the cloud computers in a share by billing method.
         
         @param request: DescribeDesktopsInGroupRequest
         @return: DescribeDesktopsInGroupResponse
@@ -16804,7 +16804,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DisableDesktopsInGroupResponse:
         """
-        @summary Disables cloud desktops in a desktop group.
+        @summary Disables specific cloud computers in a cloud computer share. After you call this operation to disable specific cloud computers, they enter the unavailable state.
         
         @param request: DisableDesktopsInGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16849,7 +16849,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DisableDesktopsInGroupResponse:
         """
-        @summary Disables cloud desktops in a desktop group.
+        @summary Disables specific cloud computers in a cloud computer share. After you call this operation to disable specific cloud computers, they enter the unavailable state.
         
         @param request: DisableDesktopsInGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16893,7 +16893,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DisableDesktopsInGroupRequest,
     ) -> ecd_20200930_models.DisableDesktopsInGroupResponse:
         """
-        @summary Disables cloud desktops in a desktop group.
+        @summary Disables specific cloud computers in a cloud computer share. After you call this operation to disable specific cloud computers, they enter the unavailable state.
         
         @param request: DisableDesktopsInGroupRequest
         @return: DisableDesktopsInGroupResponse
@@ -16906,7 +16906,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DisableDesktopsInGroupRequest,
     ) -> ecd_20200930_models.DisableDesktopsInGroupResponse:
         """
-        @summary Disables cloud desktops in a desktop group.
+        @summary Disables specific cloud computers in a cloud computer share. After you call this operation to disable specific cloud computers, they enter the unavailable state.
         
         @param request: DisableDesktopsInGroupRequest
         @return: DisableDesktopsInGroupResponse

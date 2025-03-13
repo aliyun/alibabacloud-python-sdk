@@ -13038,7 +13038,7 @@ class DeleteDesktopGroupRequest(TeaModel):
         desktop_group_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the desktop group.
+        # The ID of the cloud computer share.
         # 
         # This parameter is required.
         self.desktop_group_id = desktop_group_id
@@ -18295,6 +18295,7 @@ class DescribeDesktopGroupsRequest(TeaModel):
         self.bundle_id = bundle_id
         # The ID of the cloud computer pool.
         self.desktop_group_id = desktop_group_id
+        # The IDs of the cloud computer pool.
         self.desktop_group_ids = desktop_group_ids
         # The name of the cloud computer pool to query. Fuzzy search is supported.
         self.desktop_group_name = desktop_group_name
@@ -18306,6 +18307,12 @@ class DescribeDesktopGroupsRequest(TeaModel):
         self.image_id = image_id
         # The number of entries to return on each page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
+        # Specifies whether the shared group is a multi-cloud computer type.
+        # 
+        # Valid values:
+        # 
+        # - true: a multi-cloud computer type.
+        # - false: a single-cloud computer type.
         self.multi_resource = multi_resource
         # The pagination token that is used in the next request to retrieve a new page of results. If the NextToken parameter is empty, no next page exists.
         self.next_token = next_token
@@ -21397,6 +21404,99 @@ class DescribeDesktopsRequest(TeaModel):
         return self
 
 
+class DescribeDesktopsResponseBodyDesktopsDesktopDurationList(TeaModel):
+    def __init__(
+        self,
+        order_instance_id: str = None,
+        package_creation_time: str = None,
+        package_expired_time: str = None,
+        package_id: str = None,
+        package_status: str = None,
+        package_type: str = None,
+        package_used_up_strategy: str = None,
+        period_end_time: str = None,
+        period_start_time: str = None,
+        post_paid_limit_fee: float = None,
+        total_duration: int = None,
+        used_duration: int = None,
+    ):
+        self.order_instance_id = order_instance_id
+        self.package_creation_time = package_creation_time
+        self.package_expired_time = package_expired_time
+        self.package_id = package_id
+        self.package_status = package_status
+        self.package_type = package_type
+        self.package_used_up_strategy = package_used_up_strategy
+        self.period_end_time = period_end_time
+        self.period_start_time = period_start_time
+        self.post_paid_limit_fee = post_paid_limit_fee
+        self.total_duration = total_duration
+        self.used_duration = used_duration
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_instance_id is not None:
+            result['OrderInstanceId'] = self.order_instance_id
+        if self.package_creation_time is not None:
+            result['PackageCreationTime'] = self.package_creation_time
+        if self.package_expired_time is not None:
+            result['PackageExpiredTime'] = self.package_expired_time
+        if self.package_id is not None:
+            result['PackageId'] = self.package_id
+        if self.package_status is not None:
+            result['PackageStatus'] = self.package_status
+        if self.package_type is not None:
+            result['PackageType'] = self.package_type
+        if self.package_used_up_strategy is not None:
+            result['PackageUsedUpStrategy'] = self.package_used_up_strategy
+        if self.period_end_time is not None:
+            result['PeriodEndTime'] = self.period_end_time
+        if self.period_start_time is not None:
+            result['PeriodStartTime'] = self.period_start_time
+        if self.post_paid_limit_fee is not None:
+            result['PostPaidLimitFee'] = self.post_paid_limit_fee
+        if self.total_duration is not None:
+            result['TotalDuration'] = self.total_duration
+        if self.used_duration is not None:
+            result['UsedDuration'] = self.used_duration
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderInstanceId') is not None:
+            self.order_instance_id = m.get('OrderInstanceId')
+        if m.get('PackageCreationTime') is not None:
+            self.package_creation_time = m.get('PackageCreationTime')
+        if m.get('PackageExpiredTime') is not None:
+            self.package_expired_time = m.get('PackageExpiredTime')
+        if m.get('PackageId') is not None:
+            self.package_id = m.get('PackageId')
+        if m.get('PackageStatus') is not None:
+            self.package_status = m.get('PackageStatus')
+        if m.get('PackageType') is not None:
+            self.package_type = m.get('PackageType')
+        if m.get('PackageUsedUpStrategy') is not None:
+            self.package_used_up_strategy = m.get('PackageUsedUpStrategy')
+        if m.get('PeriodEndTime') is not None:
+            self.period_end_time = m.get('PeriodEndTime')
+        if m.get('PeriodStartTime') is not None:
+            self.period_start_time = m.get('PeriodStartTime')
+        if m.get('PostPaidLimitFee') is not None:
+            self.post_paid_limit_fee = m.get('PostPaidLimitFee')
+        if m.get('TotalDuration') is not None:
+            self.total_duration = m.get('TotalDuration')
+        if m.get('UsedDuration') is not None:
+            self.used_duration = m.get('UsedDuration')
+        return self
+
+
 class DescribeDesktopsResponseBodyDesktopsDisks(TeaModel):
     def __init__(
         self,
@@ -21671,6 +21771,7 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
         creation_time: str = None,
         data_disk_category: str = None,
         data_disk_size: str = None,
+        desktop_duration_list: List[DescribeDesktopsResponseBodyDesktopsDesktopDurationList] = None,
         desktop_group_id: str = None,
         desktop_id: str = None,
         desktop_name: str = None,
@@ -21773,6 +21874,7 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
         self.data_disk_category = data_disk_category
         # >  This parameter is in invitational preview and is not publicly available.
         self.data_disk_size = data_disk_size
+        self.desktop_duration_list = desktop_duration_list
         # The ID of the cloud computer pool to which cloud computers belong. Default value: null.``
         self.desktop_group_id = desktop_group_id
         # The cloud computer ID.
@@ -21928,6 +22030,10 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
         self.zone_type = zone_type
 
     def validate(self):
+        if self.desktop_duration_list:
+            for k in self.desktop_duration_list:
+                if k:
+                    k.validate()
         if self.disks:
             for k in self.disks:
                 if k:
@@ -21971,6 +22077,10 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
             result['DataDiskCategory'] = self.data_disk_category
         if self.data_disk_size is not None:
             result['DataDiskSize'] = self.data_disk_size
+        result['DesktopDurationList'] = []
+        if self.desktop_duration_list is not None:
+            for k in self.desktop_duration_list:
+                result['DesktopDurationList'].append(k.to_map() if k else None)
         if self.desktop_group_id is not None:
             result['DesktopGroupId'] = self.desktop_group_id
         if self.desktop_id is not None:
@@ -22105,6 +22215,11 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
             self.data_disk_category = m.get('DataDiskCategory')
         if m.get('DataDiskSize') is not None:
             self.data_disk_size = m.get('DataDiskSize')
+        self.desktop_duration_list = []
+        if m.get('DesktopDurationList') is not None:
+            for k in m.get('DesktopDurationList'):
+                temp_model = DescribeDesktopsResponseBodyDesktopsDesktopDurationList()
+                self.desktop_duration_list.append(temp_model.from_map(k))
         if m.get('DesktopGroupId') is not None:
             self.desktop_group_id = m.get('DesktopGroupId')
         if m.get('DesktopId') is not None:
@@ -22351,7 +22466,7 @@ class DescribeDesktopsInGroupRequest(TeaModel):
     ):
         self.custom_end_time_period = custom_end_time_period
         self.custom_start_time_period = custom_start_time_period
-        # The ID of the cloud computer pool.
+        # The ID of the cloud computer share.
         # 
         # This parameter is required.
         self.desktop_group_id = desktop_group_id
@@ -22362,11 +22477,14 @@ class DescribeDesktopsInGroupRequest(TeaModel):
         # *   true: ignores deletion flags. The cloud computers that were deleted are returned.
         # *   false: does not ignore deletion flags. The cloud computers that were deleted are not returned.
         self.ignore_deleted = ignore_deleted
-        # The number of entries to return on each page. Valid values: 1 to 100. Default value: 10.
+        # The maximum number of entries per page.
+        # 
+        # *   Default value: 10.
+        # *   Maximum value: 100.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. If the NextToken parameter is empty, no next page exists.
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
-        # The billing method of the desktop group.
+        # The billing method of the cloud computer share.
         self.pay_type = pay_type
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
         # 
@@ -22566,13 +22684,13 @@ class DescribeDesktopsInGroupResponseBodyPaidDesktops(TeaModel):
         # 
         #     <!-- -->
         self.disk_type = disk_type
-        # The ID of the authorized user of the cloud computer.
+        # The ID of the authorized user.
         self.end_user_id = end_user_id
-        # The IDs of the end users who are connected to the cloud computers in the cloud computer pool. If no end users are connected, no values are returned for this parameter.
+        # The IDs of the end users who are connected to the cloud computers in the cloud computer share. If no end users are connected, no values are returned for this parameter.
         self.end_user_ids = end_user_ids
         # The username of the authorized user.
         self.end_user_name = end_user_name
-        # The usernames of the end users who are connected to the cloud computers in the cloud computer pool. If no end users are connected, no values are returned for this parameter.
+        # The usernames of the end users who are connected to the cloud computers in the cloud computer share. If no end users are connected, no values are returned for this parameter.
         self.end_user_names = end_user_names
         # The image version.
         self.fota_version = fota_version
@@ -22809,7 +22927,7 @@ class DescribeDesktopsInGroupResponseBodyPostPaidDesktops(TeaModel):
         # 
         #     <!-- -->
         self.connection_status = connection_status
-        # The retention period of the cloud computer.
+        # The retention period. Unit: milliseconds.
         self.create_duration = create_duration
         # The time when the cloud computer was created.
         self.create_time = create_time
@@ -23121,17 +23239,18 @@ class DescribeDesktopsInGroupResponseBody(TeaModel):
         stoped_pre_paid_desktops_count: int = None,
         stopped_pre_paid_desktops_count: int = None,
     ):
-        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # If NextToken is empty, no next page exists.
         self.next_token = next_token
         # The number of subscription cloud computers that are in the Connected state.
         self.online_pre_paid_desktops_count = online_pre_paid_desktops_count
-        # The details about subscription cloud computers.
+        # The subscription cloud computers.
         self.paid_desktops = paid_desktops
-        # The total number of queried subscription cloud computers.
+        # The total number of subscription cloud computers.
         self.paid_desktops_count = paid_desktops_count
-        # The details about pay-as-you-go cloud computers.
+        # The pay-as-you-go cloud computers.
         self.post_paid_desktops = post_paid_desktops
-        # The total number of queried pay-as-you-go cloud computers.
+        # The total number of pay-as-you-go cloud computers.
         self.post_paid_desktops_count = post_paid_desktops_count
         # The total amount of bills for pay-as-you-go cloud computers.
         self.post_paid_desktops_total_amount = post_paid_desktops_total_amount
@@ -30996,35 +31115,14 @@ class DescribePriceRequest(TeaModel):
         # *   120: the 120-hour computing plan.
         # *   250: the 250-hour computing plan.
         self.duration = duration
-        # The number of cloud computers in the cloud computer pool. Default value: 1.
+        # The number of cloud computer shares. Default value: 1.
         # 
         # >  This parameter takes effect only if you set `ResourceType` to `DesktopGroup`.
         self.group_desktop_count = group_desktop_count
-        # The resource specifications.
+        # The specifications of the resource.
         # 
-        # *   If you set `ResourceType` to `Desktop`, you must specify this parameter.
-        # 
-        #     *   ecd.basic.small
-        #     *   ecd.basic.large
-        #     *   ecd.advanced.large
-        #     *   ecd.advanced.xlarge
-        #     *   ecd.performance.2xlarge
-        #     *   ecd.graphics.xlarge
-        #     *   ecd.graphics.2xlarge
-        #     *   ecd.advanced.xlarge_s8d2
-        #     *   ecd.advanced.xlarge_s8d7
-        #     *   ecd.graphics.1g72c
-        #     *   eds.general.2c2g
-        #     *   eds.general.2c4g
-        #     *   eds.general.2c8g
-        #     *   eds.general.4c8g
-        #     *   eds.general.4c16g
-        #     *   eds.general.8c16g
-        #     *   eds.general.8c32g
-        #     *   eds.general.16c32g
-        # 
+        # *   This parameter is required if you set `ResourceType` to `Desktop`. You can call the [DescribeDesktopTypes](~~DescribeDesktopTypes~~) to query the available cloud computer types that correspond to the value of `DesktopTypeId`.
         # *   If you set `ResourceType` to `DesktopGroup`, set the value of this parameter to `large`.
-        # 
         # *   If you set `ResourceType` to `Bandwidth`, you can leave this parameter empty.
         self.instance_type = instance_type
         # The metering method for network traffic.
@@ -31063,18 +31161,32 @@ class DescribePriceRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource type.
+        # The type of the resource.
         # 
         # Valid values:
         # 
-        # *   DesktopMonthPackage: the monthly subscription plan (also known as the 120-hour or 250-hour computing plan).
-        # *   Desktop (default): the pay-as-you-go cloud computer or the monthly subscription cloud computer (also known as the Unlimited computing plan).
-        # *   Bandwidth: the premium bandwidth plan.
-        # *   DesktopGroup: the cloud computer pool.
+        # *   DesktopMonthPackage: monthly subscription cloud computers that use hourly limit plans.
+        # *   Desktop (default): pay-as-you-go cloud computers/monthly subscription cloud computers that use unlimited plans.
+        # *   Bandwidth: premium bandwidth plans.
+        # *   DesktopGroup: cloud computer shares.
         self.resource_type = resource_type
+        # The category of the system disk.
+        # 
+        # Valid values:
+        # 
+        # *   cloud_efficiency: the ultra disk
+        # *   cloud_auto: the standard SSD.
+        # *   cloud_essd: the Enterprise SSD (ESSD). Take note that only specific cloud computer types support ESSDs.
         self.root_disk_category = root_disk_category
         # The size of the system disk. Unit: GiB. If you set `ResourceType` to `Desktop`, you must specify this parameter.
         self.root_disk_size_gib = root_disk_size_gib
+        # The category of the data disk.
+        # 
+        # Valid values:
+        # 
+        # *   cloud_efficiency: the ultra disk
+        # *   cloud_auto: the standard SSD.
+        # *   cloud_essd: the ESSD. Take note that only specific cloud computer types support ESSDs.
         self.user_disk_category = user_disk_category
         # The size of the data disk. Unit: GiB.
         self.user_disk_size_gib = user_disk_size_gib
@@ -31394,7 +31506,7 @@ class DescribePriceResponseBody(TeaModel):
         price_info: DescribePriceResponseBodyPriceInfo = None,
         request_id: str = None,
     ):
-        # The price information.
+        # The price details.
         self.price_info = price_info
         # The request ID.
         self.request_id = request_id
@@ -36052,15 +36164,15 @@ class DisableDesktopsInGroupRequest(TeaModel):
         desktop_ids: List[str] = None,
         region_id: str = None,
     ):
-        # The ID of the desktop group.
+        # The ID of the cloud computer share.
         # 
         # This parameter is required.
         self.desktop_group_id = desktop_group_id
-        # The IDs of cloud desktops.
+        # The IDs of the cloud computers.
         # 
         # This parameter is required.
         self.desktop_ids = desktop_ids
-        # The region ID.
+        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -36098,7 +36210,7 @@ class DisableDesktopsInGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

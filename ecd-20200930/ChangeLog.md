@@ -1,3 +1,7 @@
+2025-03-13 Version: 4.6.1
+- Update API DescribeDesktops: update response param.
+
+
 2025-03-04 Version: 4.6.0
 - Support API CreateBandwidthResourcePackages.
 - Update API DescribeDesktopsInGroup: add param CustomEndTimePeriod.
