@@ -1,3 +1,7 @@
+2025-03-13 Version: 2.20.1
+- Update API VideoModerationResult: update response param.
+
+
 2025-02-18 Version: 2.20.0
 - Support API ManualCallback.
 - Support API ManualModeration.

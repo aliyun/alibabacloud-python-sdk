@@ -6218,6 +6218,134 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage(T
         return self
 
 
+class VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLocation(TeaModel):
+    def __init__(
+        self,
+        h: int = None,
+        w: int = None,
+        x: int = None,
+        y: int = None,
+    ):
+        self.h = h
+        self.w = w
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.h is not None:
+            result['H'] = self.h
+        if self.w is not None:
+            result['W'] = self.w
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('H') is not None:
+            self.h = m.get('H')
+        if m.get('W') is not None:
+            self.w = m.get('W')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLogo(TeaModel):
+    def __init__(
+        self,
+        confidence: int = None,
+        label: str = None,
+        name: str = None,
+    ):
+        self.confidence = confidence
+        self.label = label
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['confidence'] = self.confidence
+        if self.label is not None:
+            result['label'] = self.label
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('confidence') is not None:
+            self.confidence = m.get('confidence')
+        if m.get('label') is not None:
+            self.label = m.get('label')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoData(TeaModel):
+    def __init__(
+        self,
+        location: VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLocation = None,
+        logo: List[VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLogo] = None,
+    ):
+        self.location = location
+        self.logo = logo
+
+    def validate(self):
+        if self.location:
+            self.location.validate()
+        if self.logo:
+            for k in self.logo:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.location is not None:
+            result['Location'] = self.location.to_map()
+        result['Logo'] = []
+        if self.logo is not None:
+            for k in self.logo:
+                result['Logo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Location') is not None:
+            temp_model = VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLocation()
+            self.location = temp_model.from_map(m['Location'])
+        self.logo = []
+        if m.get('Logo') is not None:
+            for k in m.get('Logo'):
+                temp_model = VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLogo()
+                self.logo.append(temp_model.from_map(k))
+        return self
+
+
 class VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure(TeaModel):
     def __init__(
         self,
@@ -6292,6 +6420,7 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResults(TeaModel):
     def __init__(
         self,
         custom_image: List[VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage] = None,
+        logo_data: List[VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoData] = None,
         public_figure: List[VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure] = None,
         result: List[VideoModerationResultResponseBodyDataFrameResultFramesResultsResult] = None,
         service: str = None,
@@ -6299,6 +6428,7 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResults(TeaModel):
     ):
         # If a custom image library is hit, information about the custom image library is returned.
         self.custom_image = custom_image
+        self.logo_data = logo_data
         # If the video contains a specific figure, the code of the identified figure is returned.
         self.public_figure = public_figure
         # The results of frame moderation parameters such as the label parameter and the confidence parameter.
@@ -6311,6 +6441,10 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResults(TeaModel):
     def validate(self):
         if self.custom_image:
             for k in self.custom_image:
+                if k:
+                    k.validate()
+        if self.logo_data:
+            for k in self.logo_data:
                 if k:
                     k.validate()
         if self.public_figure:
@@ -6332,6 +6466,10 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResults(TeaModel):
         if self.custom_image is not None:
             for k in self.custom_image:
                 result['CustomImage'].append(k.to_map() if k else None)
+        result['LogoData'] = []
+        if self.logo_data is not None:
+            for k in self.logo_data:
+                result['LogoData'].append(k.to_map() if k else None)
         result['PublicFigure'] = []
         if self.public_figure is not None:
             for k in self.public_figure:
@@ -6353,6 +6491,11 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResults(TeaModel):
             for k in m.get('CustomImage'):
                 temp_model = VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage()
                 self.custom_image.append(temp_model.from_map(k))
+        self.logo_data = []
+        if m.get('LogoData') is not None:
+            for k in m.get('LogoData'):
+                temp_model = VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoData()
+                self.logo_data.append(temp_model.from_map(k))
         self.public_figure = []
         if m.get('PublicFigure') is not None:
             for k in m.get('PublicFigure'):
