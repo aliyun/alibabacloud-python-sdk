@@ -1,3 +1,11 @@
+2025-03-13 Version: 3.1.0
+- Support API ListNodes.
+- Support API ListTagCloudResources.
+- Support API ModifyNodePoolAmount.
+- Support API TagCloudResources.
+- Support API UntagCloudResources.
+
+
 2025-03-12 Version: 3.0.3
 - Update API ListAppInstanceGroup: update response param.
 - Update API ListAppInstances: update response param.

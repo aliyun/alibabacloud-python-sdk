@@ -3132,6 +3132,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_node_instance_type_with_options_async(request, runtime)
 
+    def list_nodes_with_options(
+        self,
+        request: appstream_center_20210901_models.ListNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.ListNodesResponse:
+        """
+        @summary 查询节点列表
+        
+        @param request: ListNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListNodes',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListNodesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListNodesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_nodes_with_options_async(
+        self,
+        request: appstream_center_20210901_models.ListNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.ListNodesResponse:
+        """
+        @summary 查询节点列表
+        
+        @param request: ListNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListNodes',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListNodesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListNodesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_nodes(
+        self,
+        request: appstream_center_20210901_models.ListNodesRequest,
+    ) -> appstream_center_20210901_models.ListNodesResponse:
+        """
+        @summary 查询节点列表
+        
+        @param request: ListNodesRequest
+        @return: ListNodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_nodes_with_options(request, runtime)
+
+    async def list_nodes_async(
+        self,
+        request: appstream_center_20210901_models.ListNodesRequest,
+    ) -> appstream_center_20210901_models.ListNodesResponse:
+        """
+        @summary 查询节点列表
+        
+        @param request: ListNodesRequest
+        @return: ListNodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_nodes_with_options_async(request, runtime)
+
     def list_ota_task_with_options(
         self,
         request: appstream_center_20210901_models.ListOtaTaskRequest,
@@ -3503,6 +3623,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_session_packages_with_options_async(request, runtime)
+
+    def list_tag_cloud_resources_with_options(
+        self,
+        request: appstream_center_20210901_models.ListTagCloudResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.ListTagCloudResourcesResponse:
+        """
+        @summary Queries the tags added to one or more cloud resources.
+        
+        @param request: ListTagCloudResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagCloudResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_ids):
+            body['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.scope):
+            body['Scope'] = request.scope
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTagCloudResources',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListTagCloudResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListTagCloudResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_tag_cloud_resources_with_options_async(
+        self,
+        request: appstream_center_20210901_models.ListTagCloudResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.ListTagCloudResourcesResponse:
+        """
+        @summary Queries the tags added to one or more cloud resources.
+        
+        @param request: ListTagCloudResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagCloudResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_ids):
+            body['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.scope):
+            body['Scope'] = request.scope
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTagCloudResources',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListTagCloudResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListTagCloudResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_tag_cloud_resources(
+        self,
+        request: appstream_center_20210901_models.ListTagCloudResourcesRequest,
+    ) -> appstream_center_20210901_models.ListTagCloudResourcesResponse:
+        """
+        @summary Queries the tags added to one or more cloud resources.
+        
+        @param request: ListTagCloudResourcesRequest
+        @return: ListTagCloudResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_tag_cloud_resources_with_options(request, runtime)
+
+    async def list_tag_cloud_resources_async(
+        self,
+        request: appstream_center_20210901_models.ListTagCloudResourcesRequest,
+    ) -> appstream_center_20210901_models.ListTagCloudResourcesResponse:
+        """
+        @summary Queries the tags added to one or more cloud resources.
+        
+        @param request: ListTagCloudResourcesRequest
+        @return: ListTagCloudResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tag_cloud_resources_with_options_async(request, runtime)
 
     def list_tenant_config_with_options(
         self,
@@ -4006,6 +4250,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_app_policy_with_options_async(request, runtime)
 
+    def modify_node_pool_amount_with_options(
+        self,
+        tmp_req: appstream_center_20210901_models.ModifyNodePoolAmountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.ModifyNodePoolAmountResponse:
+        """
+        @summary 包年包月交付组节点数量升级
+        
+        @param tmp_req: ModifyNodePoolAmountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyNodePoolAmountResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = appstream_center_20210901_models.ModifyNodePoolAmountShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.node_pool):
+            request.node_pool_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_pool, 'NodePool', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.node_pool_shrink):
+            body['NodePool'] = request.node_pool_shrink
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyNodePoolAmount',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ModifyNodePoolAmountResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ModifyNodePoolAmountResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_node_pool_amount_with_options_async(
+        self,
+        tmp_req: appstream_center_20210901_models.ModifyNodePoolAmountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.ModifyNodePoolAmountResponse:
+        """
+        @summary 包年包月交付组节点数量升级
+        
+        @param tmp_req: ModifyNodePoolAmountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyNodePoolAmountResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = appstream_center_20210901_models.ModifyNodePoolAmountShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.node_pool):
+            request.node_pool_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_pool, 'NodePool', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.node_pool_shrink):
+            body['NodePool'] = request.node_pool_shrink
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyNodePoolAmount',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ModifyNodePoolAmountResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ModifyNodePoolAmountResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_node_pool_amount(
+        self,
+        request: appstream_center_20210901_models.ModifyNodePoolAmountRequest,
+    ) -> appstream_center_20210901_models.ModifyNodePoolAmountResponse:
+        """
+        @summary 包年包月交付组节点数量升级
+        
+        @param request: ModifyNodePoolAmountRequest
+        @return: ModifyNodePoolAmountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_node_pool_amount_with_options(request, runtime)
+
+    async def modify_node_pool_amount_async(
+        self,
+        request: appstream_center_20210901_models.ModifyNodePoolAmountRequest,
+    ) -> appstream_center_20210901_models.ModifyNodePoolAmountResponse:
+        """
+        @summary 包年包月交付组节点数量升级
+        
+        @param request: ModifyNodePoolAmountRequest
+        @return: ModifyNodePoolAmountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_node_pool_amount_with_options_async(request, runtime)
+
     def modify_node_pool_attribute_with_options(
         self,
         tmp_req: appstream_center_20210901_models.ModifyNodePoolAttributeRequest,
@@ -4494,6 +4862,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.renew_app_instance_group_with_options_async(request, runtime)
 
+    def tag_cloud_resources_with_options(
+        self,
+        request: appstream_center_20210901_models.TagCloudResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.TagCloudResourcesResponse:
+        """
+        @summary 为云资源创建并绑定标签
+        
+        @param request: TagCloudResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagCloudResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resource_ids):
+            body['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tags):
+            body['Tags'] = request.tags
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TagCloudResources',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.TagCloudResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.TagCloudResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def tag_cloud_resources_with_options_async(
+        self,
+        request: appstream_center_20210901_models.TagCloudResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.TagCloudResourcesResponse:
+        """
+        @summary 为云资源创建并绑定标签
+        
+        @param request: TagCloudResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagCloudResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resource_ids):
+            body['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tags):
+            body['Tags'] = request.tags
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TagCloudResources',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.TagCloudResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.TagCloudResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def tag_cloud_resources(
+        self,
+        request: appstream_center_20210901_models.TagCloudResourcesRequest,
+    ) -> appstream_center_20210901_models.TagCloudResourcesResponse:
+        """
+        @summary 为云资源创建并绑定标签
+        
+        @param request: TagCloudResourcesRequest
+        @return: TagCloudResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.tag_cloud_resources_with_options(request, runtime)
+
+    async def tag_cloud_resources_async(
+        self,
+        request: appstream_center_20210901_models.TagCloudResourcesRequest,
+    ) -> appstream_center_20210901_models.TagCloudResourcesResponse:
+        """
+        @summary 为云资源创建并绑定标签
+        
+        @param request: TagCloudResourcesRequest
+        @return: TagCloudResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.tag_cloud_resources_with_options_async(request, runtime)
+
     def unbind_with_options(
         self,
         request: appstream_center_20210901_models.UnbindRequest,
@@ -4617,6 +5101,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.unbind_with_options_async(request, runtime)
+
+    def untag_cloud_resources_with_options(
+        self,
+        request: appstream_center_20210901_models.UntagCloudResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.UntagCloudResourcesResponse:
+        """
+        @summary Removes tags from cloud resources.
+        
+        @param request: UntagCloudResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagCloudResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resource_ids):
+            body['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_keys):
+            body['TagKeys'] = request.tag_keys
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UntagCloudResources',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.UntagCloudResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.UntagCloudResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def untag_cloud_resources_with_options_async(
+        self,
+        request: appstream_center_20210901_models.UntagCloudResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.UntagCloudResourcesResponse:
+        """
+        @summary Removes tags from cloud resources.
+        
+        @param request: UntagCloudResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagCloudResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resource_ids):
+            body['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_keys):
+            body['TagKeys'] = request.tag_keys
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UntagCloudResources',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.UntagCloudResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.UntagCloudResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def untag_cloud_resources(
+        self,
+        request: appstream_center_20210901_models.UntagCloudResourcesRequest,
+    ) -> appstream_center_20210901_models.UntagCloudResourcesResponse:
+        """
+        @summary Removes tags from cloud resources.
+        
+        @param request: UntagCloudResourcesRequest
+        @return: UntagCloudResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.untag_cloud_resources_with_options(request, runtime)
+
+    async def untag_cloud_resources_async(
+        self,
+        request: appstream_center_20210901_models.UntagCloudResourcesRequest,
+    ) -> appstream_center_20210901_models.UntagCloudResourcesResponse:
+        """
+        @summary Removes tags from cloud resources.
+        
+        @param request: UntagCloudResourcesRequest
+        @return: UntagCloudResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.untag_cloud_resources_with_options_async(request, runtime)
 
     def update_app_instance_group_image_with_options(
         self,
