@@ -1,3 +1,7 @@
+2025-03-13 Version: 1.2.0
+- Support API DescribeSellerInstances.
+
+
 2025-03-04 Version: 1.1.0
 - Support API NoticeInstanceUser.
 

@@ -41,6 +41,130 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def describe_seller_instances_with_options(
+        self,
+        request: marketplace_intl_20221230_models.DescribeSellerInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> marketplace_intl_20221230_models.DescribeSellerInstancesResponse:
+        """
+        @summary 卖家查询实例列表
+        
+        @param request: DescribeSellerInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSellerInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_status):
+            query['InstanceStatus'] = request.instance_status
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSellerInstances',
+            version='2022-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                marketplace_intl_20221230_models.DescribeSellerInstancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                marketplace_intl_20221230_models.DescribeSellerInstancesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_seller_instances_with_options_async(
+        self,
+        request: marketplace_intl_20221230_models.DescribeSellerInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> marketplace_intl_20221230_models.DescribeSellerInstancesResponse:
+        """
+        @summary 卖家查询实例列表
+        
+        @param request: DescribeSellerInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSellerInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_status):
+            query['InstanceStatus'] = request.instance_status
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSellerInstances',
+            version='2022-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                marketplace_intl_20221230_models.DescribeSellerInstancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                marketplace_intl_20221230_models.DescribeSellerInstancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_seller_instances(
+        self,
+        request: marketplace_intl_20221230_models.DescribeSellerInstancesRequest,
+    ) -> marketplace_intl_20221230_models.DescribeSellerInstancesResponse:
+        """
+        @summary 卖家查询实例列表
+        
+        @param request: DescribeSellerInstancesRequest
+        @return: DescribeSellerInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_seller_instances_with_options(request, runtime)
+
+    async def describe_seller_instances_async(
+        self,
+        request: marketplace_intl_20221230_models.DescribeSellerInstancesRequest,
+    ) -> marketplace_intl_20221230_models.DescribeSellerInstancesResponse:
+        """
+        @summary 卖家查询实例列表
+        
+        @param request: DescribeSellerInstancesRequest
+        @return: DescribeSellerInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_seller_instances_with_options_async(request, runtime)
+
     def notice_instance_user_with_options(
         self,
         request: marketplace_intl_20221230_models.NoticeInstanceUserRequest,
