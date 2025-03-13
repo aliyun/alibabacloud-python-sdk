@@ -4720,7 +4720,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CopyImageResponse:
         """
-        @summary Copies a custom image from one region to another. You can deploy or copy Elastic Compute Service (ECS) instances across regions by copying custom images.
+        @summary Copies a custom image from one region to another region. You can copy custom images to deploy or copy Elastic Compute Service (ECS) instances across regions.
         
         @description ## [](#)Usage notes
         After you copy a custom image to the destination region, you can use the image copy (new image) to create ECS instances by calling the RunInstances operation or replace the system disks of instances by calling the ReplaceSystemDisk operation in the destination region.
@@ -4796,7 +4796,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CopyImageResponse:
         """
-        @summary Copies a custom image from one region to another. You can deploy or copy Elastic Compute Service (ECS) instances across regions by copying custom images.
+        @summary Copies a custom image from one region to another region. You can copy custom images to deploy or copy Elastic Compute Service (ECS) instances across regions.
         
         @description ## [](#)Usage notes
         After you copy a custom image to the destination region, you can use the image copy (new image) to create ECS instances by calling the RunInstances operation or replace the system disks of instances by calling the ReplaceSystemDisk operation in the destination region.
@@ -4871,7 +4871,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CopyImageRequest,
     ) -> ecs_20140526_models.CopyImageResponse:
         """
-        @summary Copies a custom image from one region to another. You can deploy or copy Elastic Compute Service (ECS) instances across regions by copying custom images.
+        @summary Copies a custom image from one region to another region. You can copy custom images to deploy or copy Elastic Compute Service (ECS) instances across regions.
         
         @description ## [](#)Usage notes
         After you copy a custom image to the destination region, you can use the image copy (new image) to create ECS instances by calling the RunInstances operation or replace the system disks of instances by calling the ReplaceSystemDisk operation in the destination region.
@@ -4893,7 +4893,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CopyImageRequest,
     ) -> ecs_20140526_models.CopyImageResponse:
         """
-        @summary Copies a custom image from one region to another. You can deploy or copy Elastic Compute Service (ECS) instances across regions by copying custom images.
+        @summary Copies a custom image from one region to another region. You can copy custom images to deploy or copy Elastic Compute Service (ECS) instances across regions.
         
         @description ## [](#)Usage notes
         After you copy a custom image to the destination region, you can use the image copy (new image) to create ECS instances by calling the RunInstances operation or replace the system disks of instances by calling the ReplaceSystemDisk operation in the destination region.
@@ -6564,7 +6564,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateDeploymentSetResponse:
         """
-        @summary Creates a deployment set in a region.
+        @summary Creates a deployment set in a region. Before you call this operation, you can specify parameters, such as OnUnableToRedeployFailedInstance, DeploymentSetName, and Strategy, in the request.
         
         @param request: CreateDeploymentSetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6629,7 +6629,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateDeploymentSetResponse:
         """
-        @summary Creates a deployment set in a region.
+        @summary Creates a deployment set in a region. Before you call this operation, you can specify parameters, such as OnUnableToRedeployFailedInstance, DeploymentSetName, and Strategy, in the request.
         
         @param request: CreateDeploymentSetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6693,7 +6693,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateDeploymentSetRequest,
     ) -> ecs_20140526_models.CreateDeploymentSetResponse:
         """
-        @summary Creates a deployment set in a region.
+        @summary Creates a deployment set in a region. Before you call this operation, you can specify parameters, such as OnUnableToRedeployFailedInstance, DeploymentSetName, and Strategy, in the request.
         
         @param request: CreateDeploymentSetRequest
         @return: CreateDeploymentSetResponse
@@ -6706,7 +6706,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateDeploymentSetRequest,
     ) -> ecs_20140526_models.CreateDeploymentSetResponse:
         """
-        @summary Creates a deployment set in a region.
+        @summary Creates a deployment set in a region. Before you call this operation, you can specify parameters, such as OnUnableToRedeployFailedInstance, DeploymentSetName, and Strategy, in the request.
         
         @param request: CreateDeploymentSetRequest
         @return: CreateDeploymentSetResponse
@@ -7216,12 +7216,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateElasticityAssuranceResponse:
         """
-        @summary Creates an elasticity assurance.
+        @summary Creates an elasticity assurance in a region. When you call this operation, you can specify parameters, such as ZoneId, InstanceType, Period, PeriodUnit, and AutoRenew, in the request.
         
-        @description Elasticity Assurance provides a new way to purchase and use resources with flexibility and assurance. It offers assured resource reservations for pay-as-you-go Elastic Compute Service (ECS) instances. For more information, see [Overview of Elasticity Assurance](https://help.aliyun.com/document_detail/193630.html).
-        Elasticity assurances are not refundable after purchase.
-        Elasticity assurances are applicable to only pay-as-you-go ECS instances.
-        Elasticity assurances support only the unlimited mode. Therefore, you can set `AssuranceTimes` only to `Unlimited`. Elasticity assurances in unlimited mode can be applied an unlimited number of times within their effective period and take effect immediately after they are purchased.
+        @description Elasticity Assurance provides a new method to purchase and use guaranteed resources in a flexible manner. Elasticity Assurance is a resource reservation service that provides assured access to resources for pay-as-you-go Elastic Compute Service (ECS) instances. For more information, see [Overview of Elasticity Assurance](https://help.aliyun.com/document_detail/193630.html).
+        After you purchase an elasticity assurance, you cannot request a refund for the elasticity assurance. For information about the billing of elasticity assurances, see [Resource assurance](https://help.aliyun.com/document_detail/432502.html).
+        Elasticity assurances can be used to create only pay-as-you-go ECS instances.
+        Elasticity assurances only support the unlimited mode. You can set `AssuranceTimes` only to `Unlimited`. Elasticity assurances in unlimited mode can be used for an unlimited number of times within their terms. Elasticity assurances in unlimited mode take effect immediately after creation.
         
         @param request: CreateElasticityAssuranceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7253,6 +7253,8 @@ class Client(OpenApiClient):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.period_unit):
             query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.recurrence_rules):
+            query['RecurrenceRules'] = request.recurrence_rules
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -7300,12 +7302,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateElasticityAssuranceResponse:
         """
-        @summary Creates an elasticity assurance.
+        @summary Creates an elasticity assurance in a region. When you call this operation, you can specify parameters, such as ZoneId, InstanceType, Period, PeriodUnit, and AutoRenew, in the request.
         
-        @description Elasticity Assurance provides a new way to purchase and use resources with flexibility and assurance. It offers assured resource reservations for pay-as-you-go Elastic Compute Service (ECS) instances. For more information, see [Overview of Elasticity Assurance](https://help.aliyun.com/document_detail/193630.html).
-        Elasticity assurances are not refundable after purchase.
-        Elasticity assurances are applicable to only pay-as-you-go ECS instances.
-        Elasticity assurances support only the unlimited mode. Therefore, you can set `AssuranceTimes` only to `Unlimited`. Elasticity assurances in unlimited mode can be applied an unlimited number of times within their effective period and take effect immediately after they are purchased.
+        @description Elasticity Assurance provides a new method to purchase and use guaranteed resources in a flexible manner. Elasticity Assurance is a resource reservation service that provides assured access to resources for pay-as-you-go Elastic Compute Service (ECS) instances. For more information, see [Overview of Elasticity Assurance](https://help.aliyun.com/document_detail/193630.html).
+        After you purchase an elasticity assurance, you cannot request a refund for the elasticity assurance. For information about the billing of elasticity assurances, see [Resource assurance](https://help.aliyun.com/document_detail/432502.html).
+        Elasticity assurances can be used to create only pay-as-you-go ECS instances.
+        Elasticity assurances only support the unlimited mode. You can set `AssuranceTimes` only to `Unlimited`. Elasticity assurances in unlimited mode can be used for an unlimited number of times within their terms. Elasticity assurances in unlimited mode take effect immediately after creation.
         
         @param request: CreateElasticityAssuranceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7337,6 +7339,8 @@ class Client(OpenApiClient):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.period_unit):
             query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.recurrence_rules):
+            query['RecurrenceRules'] = request.recurrence_rules
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -7383,12 +7387,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateElasticityAssuranceRequest,
     ) -> ecs_20140526_models.CreateElasticityAssuranceResponse:
         """
-        @summary Creates an elasticity assurance.
+        @summary Creates an elasticity assurance in a region. When you call this operation, you can specify parameters, such as ZoneId, InstanceType, Period, PeriodUnit, and AutoRenew, in the request.
         
-        @description Elasticity Assurance provides a new way to purchase and use resources with flexibility and assurance. It offers assured resource reservations for pay-as-you-go Elastic Compute Service (ECS) instances. For more information, see [Overview of Elasticity Assurance](https://help.aliyun.com/document_detail/193630.html).
-        Elasticity assurances are not refundable after purchase.
-        Elasticity assurances are applicable to only pay-as-you-go ECS instances.
-        Elasticity assurances support only the unlimited mode. Therefore, you can set `AssuranceTimes` only to `Unlimited`. Elasticity assurances in unlimited mode can be applied an unlimited number of times within their effective period and take effect immediately after they are purchased.
+        @description Elasticity Assurance provides a new method to purchase and use guaranteed resources in a flexible manner. Elasticity Assurance is a resource reservation service that provides assured access to resources for pay-as-you-go Elastic Compute Service (ECS) instances. For more information, see [Overview of Elasticity Assurance](https://help.aliyun.com/document_detail/193630.html).
+        After you purchase an elasticity assurance, you cannot request a refund for the elasticity assurance. For information about the billing of elasticity assurances, see [Resource assurance](https://help.aliyun.com/document_detail/432502.html).
+        Elasticity assurances can be used to create only pay-as-you-go ECS instances.
+        Elasticity assurances only support the unlimited mode. You can set `AssuranceTimes` only to `Unlimited`. Elasticity assurances in unlimited mode can be used for an unlimited number of times within their terms. Elasticity assurances in unlimited mode take effect immediately after creation.
         
         @param request: CreateElasticityAssuranceRequest
         @return: CreateElasticityAssuranceResponse
@@ -7401,12 +7405,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateElasticityAssuranceRequest,
     ) -> ecs_20140526_models.CreateElasticityAssuranceResponse:
         """
-        @summary Creates an elasticity assurance.
+        @summary Creates an elasticity assurance in a region. When you call this operation, you can specify parameters, such as ZoneId, InstanceType, Period, PeriodUnit, and AutoRenew, in the request.
         
-        @description Elasticity Assurance provides a new way to purchase and use resources with flexibility and assurance. It offers assured resource reservations for pay-as-you-go Elastic Compute Service (ECS) instances. For more information, see [Overview of Elasticity Assurance](https://help.aliyun.com/document_detail/193630.html).
-        Elasticity assurances are not refundable after purchase.
-        Elasticity assurances are applicable to only pay-as-you-go ECS instances.
-        Elasticity assurances support only the unlimited mode. Therefore, you can set `AssuranceTimes` only to `Unlimited`. Elasticity assurances in unlimited mode can be applied an unlimited number of times within their effective period and take effect immediately after they are purchased.
+        @description Elasticity Assurance provides a new method to purchase and use guaranteed resources in a flexible manner. Elasticity Assurance is a resource reservation service that provides assured access to resources for pay-as-you-go Elastic Compute Service (ECS) instances. For more information, see [Overview of Elasticity Assurance](https://help.aliyun.com/document_detail/193630.html).
+        After you purchase an elasticity assurance, you cannot request a refund for the elasticity assurance. For information about the billing of elasticity assurances, see [Resource assurance](https://help.aliyun.com/document_detail/432502.html).
+        Elasticity assurances can be used to create only pay-as-you-go ECS instances.
+        Elasticity assurances only support the unlimited mode. You can set `AssuranceTimes` only to `Unlimited`. Elasticity assurances in unlimited mode can be used for an unlimited number of times within their terms. Elasticity assurances in unlimited mode take effect immediately after creation.
         
         @param request: CreateElasticityAssuranceRequest
         @return: CreateElasticityAssuranceResponse
@@ -7858,20 +7862,19 @@ class Client(OpenApiClient):
         """
         @summary Creates a custom image. After you call this operation to create a custom image, you can call the RunInstances operation to create Elastic Compute Service (ECS) instances from the custom image or call the ReplaceSystemDisk operation to replace system disks by using the custom image.
         
-        @description ## [](#)Usage notes
+        @description Before you call this operation, read [Overview](https://help.aliyun.com/document_detail/172789.html).
         Take note of the following items:
-        You can use the created custom image only if the image is in the Available (Available) state.
-        If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of an instance, the instance is locked for security reasons. No operations are allowed on the instance.
-        To optimize the image, we recommend that you specify DetectionStrategy when you create the image. For more information, see [Overview of image check](https://help.aliyun.com/document_detail/439819.html).
-        You can call the CreateImage operation to create a custom image by using one of the following methods. The following request parameters are sorted by priority: `InstanceId` > `DiskDeviceMapping` > `SnapshotId`. If your request contains two or more of these parameters, the custom image is created based on the parameter that has a higher priority.
-        **Method 1**: Create a custom image from an instance. You need to only specify the ID of the instance by using `InstanceId`. The instance must be in the Running (`Running`) or Stopped (`Stopped`) state. After you call the CreateImage operation, a snapshot is created for each disk of the instance. When you create a custom image from a running instance, cache data may not be written to disks. In this case, the data of the custom image may be slightly different from the data of the instance. We recommend that you stop instances by calling the [StopInstances](https://help.aliyun.com/document_detail/155372.html) operation before you create custom images from the instances.
-        **Method 2**: Create a custom image from the system disk snapshot of an instance. You need to only specify the ID of the system disk snapshot by using `SnapshotId`. The specified system disk snapshot must be created after July 15, 2013.
-        **Method 3**: Create a custom image from multiple disk snapshots. You must specify data mappings between the snapshots and the disks to be created by using the parameters that start with `DiskDeviceMapping`.
-        When you use Method 3 to create a custom image, take note of the following items:
-        You can specify only one snapshot to use to create the system disk in the custom image. The device name of the system disk must be /dev/xvda.
-        You can specify up to 16 snapshots to use to create data disks in the custom image. The device names of the data disks are unique and range from /dev/xvdb to /dev/xvdz in alphabetical order.
+        If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query information about an ECS instance, the instance is locked for security reasons, and you cannot create a custom image from the instance.
+        To optimize the image, we recommend that you specify `DetectionStrategy` when you create a custom image. For more information, see [Overview](https://help.aliyun.com/document_detail/439819.html).
+        You can use the created custom image only if the image is in the Available (`Available`) state.
+        You can call the CreateImage operation to create a custom image by using one of the following methods. The following request parameters are sorted by priority from high to low: `InstanceId` > `DiskDeviceMapping` > `SnapshotId`. If your request contains two or more of the preceding parameters, the custom image is created based on the parameter that has a higher priority.
+        **Create a custom image from an ECS instance**. You need to only specify the instance ID by using `InstanceId`. The instance must be in the Running (`Running`) or Stopped (`Stopped`) state. After you call the CreateImage operation, a snapshot is created for each disk of the instance. When you create a custom image from a running ECS instance, cache data may not be written to disks. In this case, the data of the custom image may be slightly different from the data of the instance. Before you create a custom image from the instance, we recommend that you stop the instance by calling the [StopInstances](https://help.aliyun.com/document_detail/155372.html) operation.
+        **Create a custom image from a system disk snapshot of an ECS instance**. You need to only specify the ID of the system disk snapshot by using `SnapshotId`. The specified system disk snapshot must be created after July 15, 2013.
+        **Create a custom image from multiple snapshots**. You must specify data mappings between the snapshots and the disks to be created by using the parameters that start with `DiskDeviceMapping`. Take note of the following items:
+        You can specify only one snapshot to create the system disk in the custom image. The device name of the system disk must be /dev/xvda.
+        You can specify up to 16 snapshots to create data disks in the custom image. The device names of the data disks must be unique and range from /dev/xvdb to /dev/xvdz in alphabetical order.
         You can leave `SnapshotId` empty. In this case, an empty data disk with the specified size is created.
-        The specified disk snapshot must be created after July 15, 2013.
+        The specified snapshot must be created after July 15, 2013.
         
         @param request: CreateImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7952,20 +7955,19 @@ class Client(OpenApiClient):
         """
         @summary Creates a custom image. After you call this operation to create a custom image, you can call the RunInstances operation to create Elastic Compute Service (ECS) instances from the custom image or call the ReplaceSystemDisk operation to replace system disks by using the custom image.
         
-        @description ## [](#)Usage notes
+        @description Before you call this operation, read [Overview](https://help.aliyun.com/document_detail/172789.html).
         Take note of the following items:
-        You can use the created custom image only if the image is in the Available (Available) state.
-        If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of an instance, the instance is locked for security reasons. No operations are allowed on the instance.
-        To optimize the image, we recommend that you specify DetectionStrategy when you create the image. For more information, see [Overview of image check](https://help.aliyun.com/document_detail/439819.html).
-        You can call the CreateImage operation to create a custom image by using one of the following methods. The following request parameters are sorted by priority: `InstanceId` > `DiskDeviceMapping` > `SnapshotId`. If your request contains two or more of these parameters, the custom image is created based on the parameter that has a higher priority.
-        **Method 1**: Create a custom image from an instance. You need to only specify the ID of the instance by using `InstanceId`. The instance must be in the Running (`Running`) or Stopped (`Stopped`) state. After you call the CreateImage operation, a snapshot is created for each disk of the instance. When you create a custom image from a running instance, cache data may not be written to disks. In this case, the data of the custom image may be slightly different from the data of the instance. We recommend that you stop instances by calling the [StopInstances](https://help.aliyun.com/document_detail/155372.html) operation before you create custom images from the instances.
-        **Method 2**: Create a custom image from the system disk snapshot of an instance. You need to only specify the ID of the system disk snapshot by using `SnapshotId`. The specified system disk snapshot must be created after July 15, 2013.
-        **Method 3**: Create a custom image from multiple disk snapshots. You must specify data mappings between the snapshots and the disks to be created by using the parameters that start with `DiskDeviceMapping`.
-        When you use Method 3 to create a custom image, take note of the following items:
-        You can specify only one snapshot to use to create the system disk in the custom image. The device name of the system disk must be /dev/xvda.
-        You can specify up to 16 snapshots to use to create data disks in the custom image. The device names of the data disks are unique and range from /dev/xvdb to /dev/xvdz in alphabetical order.
+        If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query information about an ECS instance, the instance is locked for security reasons, and you cannot create a custom image from the instance.
+        To optimize the image, we recommend that you specify `DetectionStrategy` when you create a custom image. For more information, see [Overview](https://help.aliyun.com/document_detail/439819.html).
+        You can use the created custom image only if the image is in the Available (`Available`) state.
+        You can call the CreateImage operation to create a custom image by using one of the following methods. The following request parameters are sorted by priority from high to low: `InstanceId` > `DiskDeviceMapping` > `SnapshotId`. If your request contains two or more of the preceding parameters, the custom image is created based on the parameter that has a higher priority.
+        **Create a custom image from an ECS instance**. You need to only specify the instance ID by using `InstanceId`. The instance must be in the Running (`Running`) or Stopped (`Stopped`) state. After you call the CreateImage operation, a snapshot is created for each disk of the instance. When you create a custom image from a running ECS instance, cache data may not be written to disks. In this case, the data of the custom image may be slightly different from the data of the instance. Before you create a custom image from the instance, we recommend that you stop the instance by calling the [StopInstances](https://help.aliyun.com/document_detail/155372.html) operation.
+        **Create a custom image from a system disk snapshot of an ECS instance**. You need to only specify the ID of the system disk snapshot by using `SnapshotId`. The specified system disk snapshot must be created after July 15, 2013.
+        **Create a custom image from multiple snapshots**. You must specify data mappings between the snapshots and the disks to be created by using the parameters that start with `DiskDeviceMapping`. Take note of the following items:
+        You can specify only one snapshot to create the system disk in the custom image. The device name of the system disk must be /dev/xvda.
+        You can specify up to 16 snapshots to create data disks in the custom image. The device names of the data disks must be unique and range from /dev/xvdb to /dev/xvdz in alphabetical order.
         You can leave `SnapshotId` empty. In this case, an empty data disk with the specified size is created.
-        The specified disk snapshot must be created after July 15, 2013.
+        The specified snapshot must be created after July 15, 2013.
         
         @param request: CreateImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8045,20 +8047,19 @@ class Client(OpenApiClient):
         """
         @summary Creates a custom image. After you call this operation to create a custom image, you can call the RunInstances operation to create Elastic Compute Service (ECS) instances from the custom image or call the ReplaceSystemDisk operation to replace system disks by using the custom image.
         
-        @description ## [](#)Usage notes
+        @description Before you call this operation, read [Overview](https://help.aliyun.com/document_detail/172789.html).
         Take note of the following items:
-        You can use the created custom image only if the image is in the Available (Available) state.
-        If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of an instance, the instance is locked for security reasons. No operations are allowed on the instance.
-        To optimize the image, we recommend that you specify DetectionStrategy when you create the image. For more information, see [Overview of image check](https://help.aliyun.com/document_detail/439819.html).
-        You can call the CreateImage operation to create a custom image by using one of the following methods. The following request parameters are sorted by priority: `InstanceId` > `DiskDeviceMapping` > `SnapshotId`. If your request contains two or more of these parameters, the custom image is created based on the parameter that has a higher priority.
-        **Method 1**: Create a custom image from an instance. You need to only specify the ID of the instance by using `InstanceId`. The instance must be in the Running (`Running`) or Stopped (`Stopped`) state. After you call the CreateImage operation, a snapshot is created for each disk of the instance. When you create a custom image from a running instance, cache data may not be written to disks. In this case, the data of the custom image may be slightly different from the data of the instance. We recommend that you stop instances by calling the [StopInstances](https://help.aliyun.com/document_detail/155372.html) operation before you create custom images from the instances.
-        **Method 2**: Create a custom image from the system disk snapshot of an instance. You need to only specify the ID of the system disk snapshot by using `SnapshotId`. The specified system disk snapshot must be created after July 15, 2013.
-        **Method 3**: Create a custom image from multiple disk snapshots. You must specify data mappings between the snapshots and the disks to be created by using the parameters that start with `DiskDeviceMapping`.
-        When you use Method 3 to create a custom image, take note of the following items:
-        You can specify only one snapshot to use to create the system disk in the custom image. The device name of the system disk must be /dev/xvda.
-        You can specify up to 16 snapshots to use to create data disks in the custom image. The device names of the data disks are unique and range from /dev/xvdb to /dev/xvdz in alphabetical order.
+        If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query information about an ECS instance, the instance is locked for security reasons, and you cannot create a custom image from the instance.
+        To optimize the image, we recommend that you specify `DetectionStrategy` when you create a custom image. For more information, see [Overview](https://help.aliyun.com/document_detail/439819.html).
+        You can use the created custom image only if the image is in the Available (`Available`) state.
+        You can call the CreateImage operation to create a custom image by using one of the following methods. The following request parameters are sorted by priority from high to low: `InstanceId` > `DiskDeviceMapping` > `SnapshotId`. If your request contains two or more of the preceding parameters, the custom image is created based on the parameter that has a higher priority.
+        **Create a custom image from an ECS instance**. You need to only specify the instance ID by using `InstanceId`. The instance must be in the Running (`Running`) or Stopped (`Stopped`) state. After you call the CreateImage operation, a snapshot is created for each disk of the instance. When you create a custom image from a running ECS instance, cache data may not be written to disks. In this case, the data of the custom image may be slightly different from the data of the instance. Before you create a custom image from the instance, we recommend that you stop the instance by calling the [StopInstances](https://help.aliyun.com/document_detail/155372.html) operation.
+        **Create a custom image from a system disk snapshot of an ECS instance**. You need to only specify the ID of the system disk snapshot by using `SnapshotId`. The specified system disk snapshot must be created after July 15, 2013.
+        **Create a custom image from multiple snapshots**. You must specify data mappings between the snapshots and the disks to be created by using the parameters that start with `DiskDeviceMapping`. Take note of the following items:
+        You can specify only one snapshot to create the system disk in the custom image. The device name of the system disk must be /dev/xvda.
+        You can specify up to 16 snapshots to create data disks in the custom image. The device names of the data disks must be unique and range from /dev/xvdb to /dev/xvdz in alphabetical order.
         You can leave `SnapshotId` empty. In this case, an empty data disk with the specified size is created.
-        The specified disk snapshot must be created after July 15, 2013.
+        The specified snapshot must be created after July 15, 2013.
         
         @param request: CreateImageRequest
         @return: CreateImageResponse
@@ -8073,20 +8074,19 @@ class Client(OpenApiClient):
         """
         @summary Creates a custom image. After you call this operation to create a custom image, you can call the RunInstances operation to create Elastic Compute Service (ECS) instances from the custom image or call the ReplaceSystemDisk operation to replace system disks by using the custom image.
         
-        @description ## [](#)Usage notes
+        @description Before you call this operation, read [Overview](https://help.aliyun.com/document_detail/172789.html).
         Take note of the following items:
-        You can use the created custom image only if the image is in the Available (Available) state.
-        If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of an instance, the instance is locked for security reasons. No operations are allowed on the instance.
-        To optimize the image, we recommend that you specify DetectionStrategy when you create the image. For more information, see [Overview of image check](https://help.aliyun.com/document_detail/439819.html).
-        You can call the CreateImage operation to create a custom image by using one of the following methods. The following request parameters are sorted by priority: `InstanceId` > `DiskDeviceMapping` > `SnapshotId`. If your request contains two or more of these parameters, the custom image is created based on the parameter that has a higher priority.
-        **Method 1**: Create a custom image from an instance. You need to only specify the ID of the instance by using `InstanceId`. The instance must be in the Running (`Running`) or Stopped (`Stopped`) state. After you call the CreateImage operation, a snapshot is created for each disk of the instance. When you create a custom image from a running instance, cache data may not be written to disks. In this case, the data of the custom image may be slightly different from the data of the instance. We recommend that you stop instances by calling the [StopInstances](https://help.aliyun.com/document_detail/155372.html) operation before you create custom images from the instances.
-        **Method 2**: Create a custom image from the system disk snapshot of an instance. You need to only specify the ID of the system disk snapshot by using `SnapshotId`. The specified system disk snapshot must be created after July 15, 2013.
-        **Method 3**: Create a custom image from multiple disk snapshots. You must specify data mappings between the snapshots and the disks to be created by using the parameters that start with `DiskDeviceMapping`.
-        When you use Method 3 to create a custom image, take note of the following items:
-        You can specify only one snapshot to use to create the system disk in the custom image. The device name of the system disk must be /dev/xvda.
-        You can specify up to 16 snapshots to use to create data disks in the custom image. The device names of the data disks are unique and range from /dev/xvdb to /dev/xvdz in alphabetical order.
+        If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query information about an ECS instance, the instance is locked for security reasons, and you cannot create a custom image from the instance.
+        To optimize the image, we recommend that you specify `DetectionStrategy` when you create a custom image. For more information, see [Overview](https://help.aliyun.com/document_detail/439819.html).
+        You can use the created custom image only if the image is in the Available (`Available`) state.
+        You can call the CreateImage operation to create a custom image by using one of the following methods. The following request parameters are sorted by priority from high to low: `InstanceId` > `DiskDeviceMapping` > `SnapshotId`. If your request contains two or more of the preceding parameters, the custom image is created based on the parameter that has a higher priority.
+        **Create a custom image from an ECS instance**. You need to only specify the instance ID by using `InstanceId`. The instance must be in the Running (`Running`) or Stopped (`Stopped`) state. After you call the CreateImage operation, a snapshot is created for each disk of the instance. When you create a custom image from a running ECS instance, cache data may not be written to disks. In this case, the data of the custom image may be slightly different from the data of the instance. Before you create a custom image from the instance, we recommend that you stop the instance by calling the [StopInstances](https://help.aliyun.com/document_detail/155372.html) operation.
+        **Create a custom image from a system disk snapshot of an ECS instance**. You need to only specify the ID of the system disk snapshot by using `SnapshotId`. The specified system disk snapshot must be created after July 15, 2013.
+        **Create a custom image from multiple snapshots**. You must specify data mappings between the snapshots and the disks to be created by using the parameters that start with `DiskDeviceMapping`. Take note of the following items:
+        You can specify only one snapshot to create the system disk in the custom image. The device name of the system disk must be /dev/xvda.
+        You can specify up to 16 snapshots to create data disks in the custom image. The device names of the data disks must be unique and range from /dev/xvdb to /dev/xvdz in alphabetical order.
         You can leave `SnapshotId` empty. In this case, an empty data disk with the specified size is created.
-        The specified disk snapshot must be created after July 15, 2013.
+        The specified snapshot must be created after July 15, 2013.
         
         @param request: CreateImageRequest
         @return: CreateImageResponse
@@ -8334,6 +8334,8 @@ class Client(OpenApiClient):
             query['ImageFamily'] = request.image_family
         if not UtilClient.is_unset(request.image_name):
             query['ImageName'] = request.image_name
+        if not UtilClient.is_unset(request.image_options):
+            query['ImageOptions'] = request.image_options
         if not UtilClient.is_unset(request.import_image_options):
             query['ImportImageOptions'] = request.import_image_options
         if not UtilClient.is_unset(request.instance_type):
@@ -8441,6 +8443,8 @@ class Client(OpenApiClient):
             query['ImageFamily'] = request.image_family
         if not UtilClient.is_unset(request.image_name):
             query['ImageName'] = request.image_name
+        if not UtilClient.is_unset(request.image_options):
+            query['ImageOptions'] = request.image_options
         if not UtilClient.is_unset(request.import_image_options):
             query['ImportImageOptions'] = request.import_image_options
         if not UtilClient.is_unset(request.instance_type):
@@ -13646,11 +13650,9 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DeleteDemand is deprecated, please use Ecs::2014-05-26::ReleaseCapacityReservation instead.
         
-        @summary You can call this operation to delete requirement filing information of ECS resources.
-        This operation allows you to delete the resource requirement information that you
-        submitted.
+        @summary Deletes a demand for Elastic Compute Service (ECS) resources. You can call this operation to delete a demand that you submit for ECS resources.
         
-        @description >  This operation is in internal preview and has not been officially released. We recommend that you avoid using this operation.
+        @description >  This operation is in invitational preview and is not publicly available.
         
         @param request: DeleteDemandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13708,11 +13710,9 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DeleteDemand is deprecated, please use Ecs::2014-05-26::ReleaseCapacityReservation instead.
         
-        @summary You can call this operation to delete requirement filing information of ECS resources.
-        This operation allows you to delete the resource requirement information that you
-        submitted.
+        @summary Deletes a demand for Elastic Compute Service (ECS) resources. You can call this operation to delete a demand that you submit for ECS resources.
         
-        @description >  This operation is in internal preview and has not been officially released. We recommend that you avoid using this operation.
+        @description >  This operation is in invitational preview and is not publicly available.
         
         @param request: DeleteDemandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13769,11 +13769,9 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DeleteDemand is deprecated, please use Ecs::2014-05-26::ReleaseCapacityReservation instead.
         
-        @summary You can call this operation to delete requirement filing information of ECS resources.
-        This operation allows you to delete the resource requirement information that you
-        submitted.
+        @summary Deletes a demand for Elastic Compute Service (ECS) resources. You can call this operation to delete a demand that you submit for ECS resources.
         
-        @description >  This operation is in internal preview and has not been officially released. We recommend that you avoid using this operation.
+        @description >  This operation is in invitational preview and is not publicly available.
         
         @param request: DeleteDemandRequest
         @return: DeleteDemandResponse
@@ -13789,11 +13787,9 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DeleteDemand is deprecated, please use Ecs::2014-05-26::ReleaseCapacityReservation instead.
         
-        @summary You can call this operation to delete requirement filing information of ECS resources.
-        This operation allows you to delete the resource requirement information that you
-        submitted.
+        @summary Deletes a demand for Elastic Compute Service (ECS) resources. You can call this operation to delete a demand that you submit for ECS resources.
         
-        @description >  This operation is in internal preview and has not been officially released. We recommend that you avoid using this operation.
+        @description >  This operation is in invitational preview and is not publicly available.
         
         @param request: DeleteDemandRequest
         @return: DeleteDemandResponse
@@ -15158,11 +15154,11 @@ class Client(OpenApiClient):
         *Warning** After you release an instance, the physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
         After you release an instance, manual snapshots of the cloud disks attached to the instance are retained and continue to be billed. You can call the [DeleteSnapshot](https://help.aliyun.com/document_detail/2679824.html) operation to delete the snapshots.
         After you release an instance, whether the cloud disks attached to the instance and the automatic snapshots of the disks are released is determined by the disk attributes. Before you release an instance, you can call the [DescribeDisks](https://help.aliyun.com/document_detail/2679767.html) and [ModifyDiskAttribute](https://help.aliyun.com/document_detail/2679770.html) operations to query and modify disk attributes.
-        If `DeleteWithInstance` is set to false for a cloud disk attached to the instance, the cloud disk is changed to a pay-as-you-go disk and retained after the instance is released. If DeleteWithInstance is set to true for the cloud disk, the disk is released together with the instance.
-        If `DeleteAutoSnapshot` is set to false for a cloud disk attached to the instance, the automatic snapshots of the disk are retained when the instance is released. If DeleteAutoSnapshot is set to true for the cloud disk, the automatic snapshots of the disk are released together with the instance.
+        The cloud disks for which `DeleteWithInstance` is set to false are retained as pay-as-you-go disks after the instance is released. The cloud disks for which DeleteWithInstance is set to true are released along with the instance.
+        If `DeleteAutoSnapshot` is set to false for a cloud disk attached to the instance, the automatic snapshots of the cloud disk are retained when the instance is released. If DeleteAutoSnapshot is set to true for the cloud disk, the automatic snapshots of the disk are released along with the instance.
         Elastic IP addresses (EIPs) are not released together with instances. You can call the [ReleaseEipAddress](https://help.aliyun.com/document_detail/448702.html) operation to release EIPs.
         *\
-        *Note** When you release an instance that is locked for security reasons, the cloud disks attached to the instance are released together with the instance even if DeleteWithInstance is set to false for the disks.
+        *Note** When you release an instance that is locked for security reasons, the cloud disks attached to the instance are released even if DeleteWithInstance is set to false.
         
         @param request: DeleteInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15223,11 +15219,11 @@ class Client(OpenApiClient):
         *Warning** After you release an instance, the physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
         After you release an instance, manual snapshots of the cloud disks attached to the instance are retained and continue to be billed. You can call the [DeleteSnapshot](https://help.aliyun.com/document_detail/2679824.html) operation to delete the snapshots.
         After you release an instance, whether the cloud disks attached to the instance and the automatic snapshots of the disks are released is determined by the disk attributes. Before you release an instance, you can call the [DescribeDisks](https://help.aliyun.com/document_detail/2679767.html) and [ModifyDiskAttribute](https://help.aliyun.com/document_detail/2679770.html) operations to query and modify disk attributes.
-        If `DeleteWithInstance` is set to false for a cloud disk attached to the instance, the cloud disk is changed to a pay-as-you-go disk and retained after the instance is released. If DeleteWithInstance is set to true for the cloud disk, the disk is released together with the instance.
-        If `DeleteAutoSnapshot` is set to false for a cloud disk attached to the instance, the automatic snapshots of the disk are retained when the instance is released. If DeleteAutoSnapshot is set to true for the cloud disk, the automatic snapshots of the disk are released together with the instance.
+        The cloud disks for which `DeleteWithInstance` is set to false are retained as pay-as-you-go disks after the instance is released. The cloud disks for which DeleteWithInstance is set to true are released along with the instance.
+        If `DeleteAutoSnapshot` is set to false for a cloud disk attached to the instance, the automatic snapshots of the cloud disk are retained when the instance is released. If DeleteAutoSnapshot is set to true for the cloud disk, the automatic snapshots of the disk are released along with the instance.
         Elastic IP addresses (EIPs) are not released together with instances. You can call the [ReleaseEipAddress](https://help.aliyun.com/document_detail/448702.html) operation to release EIPs.
         *\
-        *Note** When you release an instance that is locked for security reasons, the cloud disks attached to the instance are released together with the instance even if DeleteWithInstance is set to false for the disks.
+        *Note** When you release an instance that is locked for security reasons, the cloud disks attached to the instance are released even if DeleteWithInstance is set to false.
         
         @param request: DeleteInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15287,11 +15283,11 @@ class Client(OpenApiClient):
         *Warning** After you release an instance, the physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
         After you release an instance, manual snapshots of the cloud disks attached to the instance are retained and continue to be billed. You can call the [DeleteSnapshot](https://help.aliyun.com/document_detail/2679824.html) operation to delete the snapshots.
         After you release an instance, whether the cloud disks attached to the instance and the automatic snapshots of the disks are released is determined by the disk attributes. Before you release an instance, you can call the [DescribeDisks](https://help.aliyun.com/document_detail/2679767.html) and [ModifyDiskAttribute](https://help.aliyun.com/document_detail/2679770.html) operations to query and modify disk attributes.
-        If `DeleteWithInstance` is set to false for a cloud disk attached to the instance, the cloud disk is changed to a pay-as-you-go disk and retained after the instance is released. If DeleteWithInstance is set to true for the cloud disk, the disk is released together with the instance.
-        If `DeleteAutoSnapshot` is set to false for a cloud disk attached to the instance, the automatic snapshots of the disk are retained when the instance is released. If DeleteAutoSnapshot is set to true for the cloud disk, the automatic snapshots of the disk are released together with the instance.
+        The cloud disks for which `DeleteWithInstance` is set to false are retained as pay-as-you-go disks after the instance is released. The cloud disks for which DeleteWithInstance is set to true are released along with the instance.
+        If `DeleteAutoSnapshot` is set to false for a cloud disk attached to the instance, the automatic snapshots of the cloud disk are retained when the instance is released. If DeleteAutoSnapshot is set to true for the cloud disk, the automatic snapshots of the disk are released along with the instance.
         Elastic IP addresses (EIPs) are not released together with instances. You can call the [ReleaseEipAddress](https://help.aliyun.com/document_detail/448702.html) operation to release EIPs.
         *\
-        *Note** When you release an instance that is locked for security reasons, the cloud disks attached to the instance are released together with the instance even if DeleteWithInstance is set to false for the disks.
+        *Note** When you release an instance that is locked for security reasons, the cloud disks attached to the instance are released even if DeleteWithInstance is set to false.
         
         @param request: DeleteInstanceRequest
         @return: DeleteInstanceResponse
@@ -15310,11 +15306,11 @@ class Client(OpenApiClient):
         *Warning** After you release an instance, the physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
         After you release an instance, manual snapshots of the cloud disks attached to the instance are retained and continue to be billed. You can call the [DeleteSnapshot](https://help.aliyun.com/document_detail/2679824.html) operation to delete the snapshots.
         After you release an instance, whether the cloud disks attached to the instance and the automatic snapshots of the disks are released is determined by the disk attributes. Before you release an instance, you can call the [DescribeDisks](https://help.aliyun.com/document_detail/2679767.html) and [ModifyDiskAttribute](https://help.aliyun.com/document_detail/2679770.html) operations to query and modify disk attributes.
-        If `DeleteWithInstance` is set to false for a cloud disk attached to the instance, the cloud disk is changed to a pay-as-you-go disk and retained after the instance is released. If DeleteWithInstance is set to true for the cloud disk, the disk is released together with the instance.
-        If `DeleteAutoSnapshot` is set to false for a cloud disk attached to the instance, the automatic snapshots of the disk are retained when the instance is released. If DeleteAutoSnapshot is set to true for the cloud disk, the automatic snapshots of the disk are released together with the instance.
+        The cloud disks for which `DeleteWithInstance` is set to false are retained as pay-as-you-go disks after the instance is released. The cloud disks for which DeleteWithInstance is set to true are released along with the instance.
+        If `DeleteAutoSnapshot` is set to false for a cloud disk attached to the instance, the automatic snapshots of the cloud disk are retained when the instance is released. If DeleteAutoSnapshot is set to true for the cloud disk, the automatic snapshots of the disk are released along with the instance.
         Elastic IP addresses (EIPs) are not released together with instances. You can call the [ReleaseEipAddress](https://help.aliyun.com/document_detail/448702.html) operation to release EIPs.
         *\
-        *Note** When you release an instance that is locked for security reasons, the cloud disks attached to the instance are released together with the instance even if DeleteWithInstance is set to false for the disks.
+        *Note** When you release an instance that is locked for security reasons, the cloud disks attached to the instance are released even if DeleteWithInstance is set to false.
         
         @param request: DeleteInstanceRequest
         @return: DeleteInstanceResponse
@@ -17548,7 +17544,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteVSwitchResponse:
         """
-        @deprecated OpenAPI DeleteVSwitch is deprecated
+        @deprecated OpenAPI DeleteVSwitch is deprecated, please use Vpc::2016-04-28::DeleteVSwitch instead.
         
         @param request: DeleteVSwitchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17600,7 +17596,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteVSwitchResponse:
         """
-        @deprecated OpenAPI DeleteVSwitch is deprecated
+        @deprecated OpenAPI DeleteVSwitch is deprecated, please use Vpc::2016-04-28::DeleteVSwitch instead.
         
         @param request: DeleteVSwitchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17651,7 +17647,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteVSwitchRequest,
     ) -> ecs_20140526_models.DeleteVSwitchResponse:
         """
-        @deprecated OpenAPI DeleteVSwitch is deprecated
+        @deprecated OpenAPI DeleteVSwitch is deprecated, please use Vpc::2016-04-28::DeleteVSwitch instead.
         
         @param request: DeleteVSwitchRequest
         @return: DeleteVSwitchResponse
@@ -17665,7 +17661,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteVSwitchRequest,
     ) -> ecs_20140526_models.DeleteVSwitchResponse:
         """
-        @deprecated OpenAPI DeleteVSwitch is deprecated
+        @deprecated OpenAPI DeleteVSwitch is deprecated, please use Vpc::2016-04-28::DeleteVSwitch instead.
         
         @param request: DeleteVSwitchRequest
         @return: DeleteVSwitchResponse
@@ -19652,7 +19648,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeCapacityReservationInstancesResponse:
         """
-        @summary The region ID of the capacity reservation. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        @summary Queries the Elastic Compute Service (ECS) instances that match a capacity reservation.
         
         @param request: DescribeCapacityReservationInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19707,7 +19703,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeCapacityReservationInstancesResponse:
         """
-        @summary The region ID of the capacity reservation. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        @summary Queries the Elastic Compute Service (ECS) instances that match a capacity reservation.
         
         @param request: DescribeCapacityReservationInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19761,7 +19757,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeCapacityReservationInstancesRequest,
     ) -> ecs_20140526_models.DescribeCapacityReservationInstancesResponse:
         """
-        @summary The region ID of the capacity reservation. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        @summary Queries the Elastic Compute Service (ECS) instances that match a capacity reservation.
         
         @param request: DescribeCapacityReservationInstancesRequest
         @return: DescribeCapacityReservationInstancesResponse
@@ -19774,7 +19770,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeCapacityReservationInstancesRequest,
     ) -> ecs_20140526_models.DescribeCapacityReservationInstancesResponse:
         """
-        @summary The region ID of the capacity reservation. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        @summary Queries the Elastic Compute Service (ECS) instances that match a capacity reservation.
         
         @param request: DescribeCapacityReservationInstancesRequest
         @return: DescribeCapacityReservationInstancesResponse
@@ -19952,7 +19948,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeClassicLinkInstancesResponse:
         """
-        @summary Queries instances located in the classic network that have established ClassicLink connections with virtual private clouds (VPCs).
+        @summary Queries instances located in the classic network that have established ClassicLink connections to virtual private clouds (VPCs).
         
         @description Take note of the following items:
         This operation applies only to instances that reside in the classic network.
@@ -20012,7 +20008,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeClassicLinkInstancesResponse:
         """
-        @summary Queries instances located in the classic network that have established ClassicLink connections with virtual private clouds (VPCs).
+        @summary Queries instances located in the classic network that have established ClassicLink connections to virtual private clouds (VPCs).
         
         @description Take note of the following items:
         This operation applies only to instances that reside in the classic network.
@@ -20071,7 +20067,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeClassicLinkInstancesRequest,
     ) -> ecs_20140526_models.DescribeClassicLinkInstancesResponse:
         """
-        @summary Queries instances located in the classic network that have established ClassicLink connections with virtual private clouds (VPCs).
+        @summary Queries instances located in the classic network that have established ClassicLink connections to virtual private clouds (VPCs).
         
         @description Take note of the following items:
         This operation applies only to instances that reside in the classic network.
@@ -20089,7 +20085,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeClassicLinkInstancesRequest,
     ) -> ecs_20140526_models.DescribeClassicLinkInstancesResponse:
         """
-        @summary Queries instances located in the classic network that have established ClassicLink connections with virtual private clouds (VPCs).
+        @summary Queries instances located in the classic network that have established ClassicLink connections to virtual private clouds (VPCs).
         
         @description Take note of the following items:
         This operation applies only to instances that reside in the classic network.
@@ -22576,16 +22572,21 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeDiskMonitorDataResponse:
         """
-        @summary Queries the monitoring data of a disk in a specific period of time. When you call this operation, you can specify parameters, such as DiskId, StartTime, and EndTime, in the request.
+        @summary Queries the monitoring data of a cloud disk within a specific period of time, such as the read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (microseconds), and write latency (microseconds).
         
-        @description ## [](#)Usage notes
-        You can query the following monitoring data of a disk: the read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (microseconds), and write latency (microseconds).
-        Take note of the following items:
+        @description Take note of the following items:
         Monitoring data of only disks that are in the In Use (`In_use`) state can be queried. For more information, see [Disk states](https://help.aliyun.com/document_detail/25689.html).
         *\
         *Note** Some information may be missing from the monitoring data of a disk because the disk is not in the In Use `(In_use)` state and the system cannot obtain the relevant information.
         Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
         You can query the monitoring data in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
+        ## [](#)Sample requests
+        For example, you want to query the monitoring data of a cloud disk whose ID is `d-bp14emm68wx98vjk***` in the China (Hangzhou) region every 600 seconds from `2025-02-17T00:00:00Z` to `2025-02-18T10:00:00Z`. Request parameters:
+        RegionId:"cn-hangzhou", // Set the region ID to cn-hangzhou, which specifies the China (Hangzhou) region.
+        DiskId:"d-bp14emm68wx98vjk***", // Specify the disk ID.
+        StartTime:"2025-02-15T00:00:00Z", // Specify the beginning of the time range to query.
+        EndTime:"2025-02-17T00:00:00Z", // Specify the end of the time range to query.
+        Period:"600", // Specify the interval at which to retrieve the monitoring data.
         
         @param request: DescribeDiskMonitorDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22640,16 +22641,21 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeDiskMonitorDataResponse:
         """
-        @summary Queries the monitoring data of a disk in a specific period of time. When you call this operation, you can specify parameters, such as DiskId, StartTime, and EndTime, in the request.
+        @summary Queries the monitoring data of a cloud disk within a specific period of time, such as the read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (microseconds), and write latency (microseconds).
         
-        @description ## [](#)Usage notes
-        You can query the following monitoring data of a disk: the read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (microseconds), and write latency (microseconds).
-        Take note of the following items:
+        @description Take note of the following items:
         Monitoring data of only disks that are in the In Use (`In_use`) state can be queried. For more information, see [Disk states](https://help.aliyun.com/document_detail/25689.html).
         *\
         *Note** Some information may be missing from the monitoring data of a disk because the disk is not in the In Use `(In_use)` state and the system cannot obtain the relevant information.
         Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
         You can query the monitoring data in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
+        ## [](#)Sample requests
+        For example, you want to query the monitoring data of a cloud disk whose ID is `d-bp14emm68wx98vjk***` in the China (Hangzhou) region every 600 seconds from `2025-02-17T00:00:00Z` to `2025-02-18T10:00:00Z`. Request parameters:
+        RegionId:"cn-hangzhou", // Set the region ID to cn-hangzhou, which specifies the China (Hangzhou) region.
+        DiskId:"d-bp14emm68wx98vjk***", // Specify the disk ID.
+        StartTime:"2025-02-15T00:00:00Z", // Specify the beginning of the time range to query.
+        EndTime:"2025-02-17T00:00:00Z", // Specify the end of the time range to query.
+        Period:"600", // Specify the interval at which to retrieve the monitoring data.
         
         @param request: DescribeDiskMonitorDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22703,16 +22709,21 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeDiskMonitorDataRequest,
     ) -> ecs_20140526_models.DescribeDiskMonitorDataResponse:
         """
-        @summary Queries the monitoring data of a disk in a specific period of time. When you call this operation, you can specify parameters, such as DiskId, StartTime, and EndTime, in the request.
+        @summary Queries the monitoring data of a cloud disk within a specific period of time, such as the read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (microseconds), and write latency (microseconds).
         
-        @description ## [](#)Usage notes
-        You can query the following monitoring data of a disk: the read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (microseconds), and write latency (microseconds).
-        Take note of the following items:
+        @description Take note of the following items:
         Monitoring data of only disks that are in the In Use (`In_use`) state can be queried. For more information, see [Disk states](https://help.aliyun.com/document_detail/25689.html).
         *\
         *Note** Some information may be missing from the monitoring data of a disk because the disk is not in the In Use `(In_use)` state and the system cannot obtain the relevant information.
         Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
         You can query the monitoring data in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
+        ## [](#)Sample requests
+        For example, you want to query the monitoring data of a cloud disk whose ID is `d-bp14emm68wx98vjk***` in the China (Hangzhou) region every 600 seconds from `2025-02-17T00:00:00Z` to `2025-02-18T10:00:00Z`. Request parameters:
+        RegionId:"cn-hangzhou", // Set the region ID to cn-hangzhou, which specifies the China (Hangzhou) region.
+        DiskId:"d-bp14emm68wx98vjk***", // Specify the disk ID.
+        StartTime:"2025-02-15T00:00:00Z", // Specify the beginning of the time range to query.
+        EndTime:"2025-02-17T00:00:00Z", // Specify the end of the time range to query.
+        Period:"600", // Specify the interval at which to retrieve the monitoring data.
         
         @param request: DescribeDiskMonitorDataRequest
         @return: DescribeDiskMonitorDataResponse
@@ -22725,16 +22736,21 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeDiskMonitorDataRequest,
     ) -> ecs_20140526_models.DescribeDiskMonitorDataResponse:
         """
-        @summary Queries the monitoring data of a disk in a specific period of time. When you call this operation, you can specify parameters, such as DiskId, StartTime, and EndTime, in the request.
+        @summary Queries the monitoring data of a cloud disk within a specific period of time, such as the read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (microseconds), and write latency (microseconds).
         
-        @description ## [](#)Usage notes
-        You can query the following monitoring data of a disk: the read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (microseconds), and write latency (microseconds).
-        Take note of the following items:
+        @description Take note of the following items:
         Monitoring data of only disks that are in the In Use (`In_use`) state can be queried. For more information, see [Disk states](https://help.aliyun.com/document_detail/25689.html).
         *\
         *Note** Some information may be missing from the monitoring data of a disk because the disk is not in the In Use `(In_use)` state and the system cannot obtain the relevant information.
         Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
         You can query the monitoring data in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
+        ## [](#)Sample requests
+        For example, you want to query the monitoring data of a cloud disk whose ID is `d-bp14emm68wx98vjk***` in the China (Hangzhou) region every 600 seconds from `2025-02-17T00:00:00Z` to `2025-02-18T10:00:00Z`. Request parameters:
+        RegionId:"cn-hangzhou", // Set the region ID to cn-hangzhou, which specifies the China (Hangzhou) region.
+        DiskId:"d-bp14emm68wx98vjk***", // Specify the disk ID.
+        StartTime:"2025-02-15T00:00:00Z", // Specify the beginning of the time range to query.
+        EndTime:"2025-02-17T00:00:00Z", // Specify the end of the time range to query.
+        Period:"600", // Specify the interval at which to retrieve the monitoring data.
         
         @param request: DescribeDiskMonitorDataRequest
         @return: DescribeDiskMonitorDataResponse
@@ -22750,15 +22766,11 @@ class Client(OpenApiClient):
         """
         @summary Queries block storage devices that you created, including cloud disks, local disks, and elastic ephemeral disks.
         
-        @description ### [](#)Usage notes
-        You can specify multiple request parameters such as `RegionId`, `ZoneId`, `DiskIds`, and `InstanceId` as filters. The specified parameters are evaluated by using the "AND" operator. If you specify more than one filter, the records that match all filters are returned.
-        The value of `DiskIds` is a JSON array. If you do not specify DiskIds, the parameter is not used as a filter condition. If you set `DiskIds` to an empty JSON array, the parameter is regarded as a valid filter, and an empty result is returned.
-        You can use one of the following methods to check the responses:
-        Method 1: Use `NextToken` to specify the pagination token. Set the value to the `NextToken` value that is obtained from the previous query. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
-        Method 2: Use `PageSize` to specify the number of entries to return on each page, and then use `PageNumber` to specify the number of the page to return.
-        You can use only one of the preceding methods. If a large number of entries are to be returned, we recommend that you use Method 1. If `NextToken` is specified, `PageSize` and `PageNumber` do not take effect and `TotalCount` in the response is invalid.
+        @description    You can specify multiple request parameters such as `RegionId`, `ZoneId`, `DiskIds`, and `InstanceId` as filters. The specified parameters are evaluated by using the "AND" operator. If you specify more than one filter, the records that match all filters are returned.
+        The value of `DiskIds` is a JSON array. If you do not specify DiskIds, the parameter is not used as a filter. If you set `DiskIds` to an empty JSON array, the parameter is regarded as a valid filter, and an empty result is returned.
+        Token-based paged query: Use `NextToken` to configure the query token. Set the value to the `NextToken` value returned in the previous call to the DescribeDisks operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
         You can attach a disk for which the multi-attach feature is enabled to multiple instances. You can query the attachment information of the disk based on the `Attachment` values in the response.
-        When you call an API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in the required formats. For more information, see [Parameter format overview](https://help.aliyun.com/document_detail/110340.html).
+        When you call the API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in the required formats. For more information, see [Parameter formats](https://help.aliyun.com/document_detail/110340.html).
         
         @param request: DescribeDisksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22867,15 +22879,11 @@ class Client(OpenApiClient):
         """
         @summary Queries block storage devices that you created, including cloud disks, local disks, and elastic ephemeral disks.
         
-        @description ### [](#)Usage notes
-        You can specify multiple request parameters such as `RegionId`, `ZoneId`, `DiskIds`, and `InstanceId` as filters. The specified parameters are evaluated by using the "AND" operator. If you specify more than one filter, the records that match all filters are returned.
-        The value of `DiskIds` is a JSON array. If you do not specify DiskIds, the parameter is not used as a filter condition. If you set `DiskIds` to an empty JSON array, the parameter is regarded as a valid filter, and an empty result is returned.
-        You can use one of the following methods to check the responses:
-        Method 1: Use `NextToken` to specify the pagination token. Set the value to the `NextToken` value that is obtained from the previous query. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
-        Method 2: Use `PageSize` to specify the number of entries to return on each page, and then use `PageNumber` to specify the number of the page to return.
-        You can use only one of the preceding methods. If a large number of entries are to be returned, we recommend that you use Method 1. If `NextToken` is specified, `PageSize` and `PageNumber` do not take effect and `TotalCount` in the response is invalid.
+        @description    You can specify multiple request parameters such as `RegionId`, `ZoneId`, `DiskIds`, and `InstanceId` as filters. The specified parameters are evaluated by using the "AND" operator. If you specify more than one filter, the records that match all filters are returned.
+        The value of `DiskIds` is a JSON array. If you do not specify DiskIds, the parameter is not used as a filter. If you set `DiskIds` to an empty JSON array, the parameter is regarded as a valid filter, and an empty result is returned.
+        Token-based paged query: Use `NextToken` to configure the query token. Set the value to the `NextToken` value returned in the previous call to the DescribeDisks operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
         You can attach a disk for which the multi-attach feature is enabled to multiple instances. You can query the attachment information of the disk based on the `Attachment` values in the response.
-        When you call an API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in the required formats. For more information, see [Parameter format overview](https://help.aliyun.com/document_detail/110340.html).
+        When you call the API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in the required formats. For more information, see [Parameter formats](https://help.aliyun.com/document_detail/110340.html).
         
         @param request: DescribeDisksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22983,15 +22991,11 @@ class Client(OpenApiClient):
         """
         @summary Queries block storage devices that you created, including cloud disks, local disks, and elastic ephemeral disks.
         
-        @description ### [](#)Usage notes
-        You can specify multiple request parameters such as `RegionId`, `ZoneId`, `DiskIds`, and `InstanceId` as filters. The specified parameters are evaluated by using the "AND" operator. If you specify more than one filter, the records that match all filters are returned.
-        The value of `DiskIds` is a JSON array. If you do not specify DiskIds, the parameter is not used as a filter condition. If you set `DiskIds` to an empty JSON array, the parameter is regarded as a valid filter, and an empty result is returned.
-        You can use one of the following methods to check the responses:
-        Method 1: Use `NextToken` to specify the pagination token. Set the value to the `NextToken` value that is obtained from the previous query. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
-        Method 2: Use `PageSize` to specify the number of entries to return on each page, and then use `PageNumber` to specify the number of the page to return.
-        You can use only one of the preceding methods. If a large number of entries are to be returned, we recommend that you use Method 1. If `NextToken` is specified, `PageSize` and `PageNumber` do not take effect and `TotalCount` in the response is invalid.
+        @description    You can specify multiple request parameters such as `RegionId`, `ZoneId`, `DiskIds`, and `InstanceId` as filters. The specified parameters are evaluated by using the "AND" operator. If you specify more than one filter, the records that match all filters are returned.
+        The value of `DiskIds` is a JSON array. If you do not specify DiskIds, the parameter is not used as a filter. If you set `DiskIds` to an empty JSON array, the parameter is regarded as a valid filter, and an empty result is returned.
+        Token-based paged query: Use `NextToken` to configure the query token. Set the value to the `NextToken` value returned in the previous call to the DescribeDisks operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
         You can attach a disk for which the multi-attach feature is enabled to multiple instances. You can query the attachment information of the disk based on the `Attachment` values in the response.
-        When you call an API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in the required formats. For more information, see [Parameter format overview](https://help.aliyun.com/document_detail/110340.html).
+        When you call the API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in the required formats. For more information, see [Parameter formats](https://help.aliyun.com/document_detail/110340.html).
         
         @param request: DescribeDisksRequest
         @return: DescribeDisksResponse
@@ -23006,15 +23010,11 @@ class Client(OpenApiClient):
         """
         @summary Queries block storage devices that you created, including cloud disks, local disks, and elastic ephemeral disks.
         
-        @description ### [](#)Usage notes
-        You can specify multiple request parameters such as `RegionId`, `ZoneId`, `DiskIds`, and `InstanceId` as filters. The specified parameters are evaluated by using the "AND" operator. If you specify more than one filter, the records that match all filters are returned.
-        The value of `DiskIds` is a JSON array. If you do not specify DiskIds, the parameter is not used as a filter condition. If you set `DiskIds` to an empty JSON array, the parameter is regarded as a valid filter, and an empty result is returned.
-        You can use one of the following methods to check the responses:
-        Method 1: Use `NextToken` to specify the pagination token. Set the value to the `NextToken` value that is obtained from the previous query. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
-        Method 2: Use `PageSize` to specify the number of entries to return on each page, and then use `PageNumber` to specify the number of the page to return.
-        You can use only one of the preceding methods. If a large number of entries are to be returned, we recommend that you use Method 1. If `NextToken` is specified, `PageSize` and `PageNumber` do not take effect and `TotalCount` in the response is invalid.
+        @description    You can specify multiple request parameters such as `RegionId`, `ZoneId`, `DiskIds`, and `InstanceId` as filters. The specified parameters are evaluated by using the "AND" operator. If you specify more than one filter, the records that match all filters are returned.
+        The value of `DiskIds` is a JSON array. If you do not specify DiskIds, the parameter is not used as a filter. If you set `DiskIds` to an empty JSON array, the parameter is regarded as a valid filter, and an empty result is returned.
+        Token-based paged query: Use `NextToken` to configure the query token. Set the value to the `NextToken` value returned in the previous call to the DescribeDisks operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
         You can attach a disk for which the multi-attach feature is enabled to multiple instances. You can query the attachment information of the disk based on the `Attachment` values in the response.
-        When you call an API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in the required formats. For more information, see [Parameter format overview](https://help.aliyun.com/document_detail/110340.html).
+        When you call the API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in the required formats. For more information, see [Parameter formats](https://help.aliyun.com/document_detail/110340.html).
         
         @param request: DescribeDisksRequest
         @return: DescribeDisksResponse
@@ -23518,13 +23518,141 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_eip_monitor_data_with_options_async(request, runtime)
 
+    def describe_elasticity_assurance_auto_renew_attribute_with_options(
+        self,
+        request: ecs_20140526_models.DescribeElasticityAssuranceAutoRenewAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeElasticityAssuranceAutoRenewAttributeResponse:
+        """
+        @summary Queries the auto-renewal attribute of elasticity assurances.
+        
+        @param request: DescribeElasticityAssuranceAutoRenewAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeElasticityAssuranceAutoRenewAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.private_pool_options):
+            query['PrivatePoolOptions'] = request.private_pool_options
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeElasticityAssuranceAutoRenewAttribute',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ecs_20140526_models.DescribeElasticityAssuranceAutoRenewAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ecs_20140526_models.DescribeElasticityAssuranceAutoRenewAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_elasticity_assurance_auto_renew_attribute_with_options_async(
+        self,
+        request: ecs_20140526_models.DescribeElasticityAssuranceAutoRenewAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeElasticityAssuranceAutoRenewAttributeResponse:
+        """
+        @summary Queries the auto-renewal attribute of elasticity assurances.
+        
+        @param request: DescribeElasticityAssuranceAutoRenewAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeElasticityAssuranceAutoRenewAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.private_pool_options):
+            query['PrivatePoolOptions'] = request.private_pool_options
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeElasticityAssuranceAutoRenewAttribute',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ecs_20140526_models.DescribeElasticityAssuranceAutoRenewAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ecs_20140526_models.DescribeElasticityAssuranceAutoRenewAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_elasticity_assurance_auto_renew_attribute(
+        self,
+        request: ecs_20140526_models.DescribeElasticityAssuranceAutoRenewAttributeRequest,
+    ) -> ecs_20140526_models.DescribeElasticityAssuranceAutoRenewAttributeResponse:
+        """
+        @summary Queries the auto-renewal attribute of elasticity assurances.
+        
+        @param request: DescribeElasticityAssuranceAutoRenewAttributeRequest
+        @return: DescribeElasticityAssuranceAutoRenewAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_elasticity_assurance_auto_renew_attribute_with_options(request, runtime)
+
+    async def describe_elasticity_assurance_auto_renew_attribute_async(
+        self,
+        request: ecs_20140526_models.DescribeElasticityAssuranceAutoRenewAttributeRequest,
+    ) -> ecs_20140526_models.DescribeElasticityAssuranceAutoRenewAttributeResponse:
+        """
+        @summary Queries the auto-renewal attribute of elasticity assurances.
+        
+        @param request: DescribeElasticityAssuranceAutoRenewAttributeRequest
+        @return: DescribeElasticityAssuranceAutoRenewAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_elasticity_assurance_auto_renew_attribute_with_options_async(request, runtime)
+
     def describe_elasticity_assurance_instances_with_options(
         self,
         request: ecs_20140526_models.DescribeElasticityAssuranceInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeElasticityAssuranceInstancesResponse:
         """
-        @summary Queries the running Elastic Compute Service (ECS) instances that match and use the elasticity assurance service.
+        @summary Queries the running Elastic Compute Service (ECS) instances that use an elasticity assurance.
         
         @description When an elasticity assurance expires, data about the association between the instances and the private pool generated by the elasticity assurance becomes invalid. When you call this operation to query the expired elasticity assurance, no value is returned.
         
@@ -23581,7 +23709,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeElasticityAssuranceInstancesResponse:
         """
-        @summary Queries the running Elastic Compute Service (ECS) instances that match and use the elasticity assurance service.
+        @summary Queries the running Elastic Compute Service (ECS) instances that use an elasticity assurance.
         
         @description When an elasticity assurance expires, data about the association between the instances and the private pool generated by the elasticity assurance becomes invalid. When you call this operation to query the expired elasticity assurance, no value is returned.
         
@@ -23637,7 +23765,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeElasticityAssuranceInstancesRequest,
     ) -> ecs_20140526_models.DescribeElasticityAssuranceInstancesResponse:
         """
-        @summary Queries the running Elastic Compute Service (ECS) instances that match and use the elasticity assurance service.
+        @summary Queries the running Elastic Compute Service (ECS) instances that use an elasticity assurance.
         
         @description When an elasticity assurance expires, data about the association between the instances and the private pool generated by the elasticity assurance becomes invalid. When you call this operation to query the expired elasticity assurance, no value is returned.
         
@@ -23652,7 +23780,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeElasticityAssuranceInstancesRequest,
     ) -> ecs_20140526_models.DescribeElasticityAssuranceInstancesResponse:
         """
-        @summary Queries the running Elastic Compute Service (ECS) instances that match and use the elasticity assurance service.
+        @summary Queries the running Elastic Compute Service (ECS) instances that use an elasticity assurance.
         
         @description When an elasticity assurance expires, data about the association between the instances and the private pool generated by the elasticity assurance becomes invalid. When you call this operation to query the expired elasticity assurance, no value is returned.
         
@@ -23688,6 +23816,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.package_type):
+            query['PackageType'] = request.package_type
         if not UtilClient.is_unset(request.platform):
             query['Platform'] = request.platform
         if not UtilClient.is_unset(request.region_id):
@@ -23757,6 +23887,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.package_type):
+            query['PackageType'] = request.package_type
         if not UtilClient.is_unset(request.platform):
             query['Platform'] = request.platform
         if not UtilClient.is_unset(request.region_id):
@@ -24916,7 +25048,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeImagePipelinesResponse:
         """
-        @summary Queries the information about one or more image templates.
+        @summary Queries the details of one or more image templates.
         
         @description You can use `NextToken` to configure the query token. Set the value to the `NextToken` value that is returned in the previous call to the `DescribeImagePipelines` operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
         
@@ -24983,7 +25115,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeImagePipelinesResponse:
         """
-        @summary Queries the information about one or more image templates.
+        @summary Queries the details of one or more image templates.
         
         @description You can use `NextToken` to configure the query token. Set the value to the `NextToken` value that is returned in the previous call to the `DescribeImagePipelines` operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
         
@@ -25049,7 +25181,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeImagePipelinesRequest,
     ) -> ecs_20140526_models.DescribeImagePipelinesResponse:
         """
-        @summary Queries the information about one or more image templates.
+        @summary Queries the details of one or more image templates.
         
         @description You can use `NextToken` to configure the query token. Set the value to the `NextToken` value that is returned in the previous call to the `DescribeImagePipelines` operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
         
@@ -25064,7 +25196,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeImagePipelinesRequest,
     ) -> ecs_20140526_models.DescribeImagePipelinesResponse:
         """
-        @summary Queries the information about one or more image templates.
+        @summary Queries the details of one or more image templates.
         
         @description You can use `NextToken` to configure the query token. Set the value to the `NextToken` value that is returned in the previous call to the `DescribeImagePipelines` operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
         
@@ -25216,7 +25348,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeImageSupportInstanceTypesResponse:
         """
-        @summary Queries the instance types supported by an image.
+        @summary Queries the ECS instance types supported by an image.
         
         @param request: DescribeImageSupportInstanceTypesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25269,7 +25401,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeImageSupportInstanceTypesResponse:
         """
-        @summary Queries the instance types supported by an image.
+        @summary Queries the ECS instance types supported by an image.
         
         @param request: DescribeImageSupportInstanceTypesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25321,7 +25453,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeImageSupportInstanceTypesRequest,
     ) -> ecs_20140526_models.DescribeImageSupportInstanceTypesResponse:
         """
-        @summary Queries the instance types supported by an image.
+        @summary Queries the ECS instance types supported by an image.
         
         @param request: DescribeImageSupportInstanceTypesRequest
         @return: DescribeImageSupportInstanceTypesResponse
@@ -25334,7 +25466,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeImageSupportInstanceTypesRequest,
     ) -> ecs_20140526_models.DescribeImageSupportInstanceTypesResponse:
         """
-        @summary Queries the instance types supported by an image.
+        @summary Queries the ECS instance types supported by an image.
         
         @param request: DescribeImageSupportInstanceTypesRequest
         @return: DescribeImageSupportInstanceTypesResponse
@@ -25348,7 +25480,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeImagesResponse:
         """
-        @summary Queries available images. When you call this operation, you can specify parameters, such as ImageId, ImageFamily, and InstanceType, in the request.
+        @summary Queries image resources that you can use. You can specify parameters, such as the image ID and the scenario in which the image is used in the request.
         
         @description ## [](#)Usage notes
         You can query your custom images, public images provided by Alibaba Cloud, Alibaba Cloud Marketplace images, and shared images from other Alibaba Cloud accounts.
@@ -25447,7 +25579,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeImagesResponse:
         """
-        @summary Queries available images. When you call this operation, you can specify parameters, such as ImageId, ImageFamily, and InstanceType, in the request.
+        @summary Queries image resources that you can use. You can specify parameters, such as the image ID and the scenario in which the image is used in the request.
         
         @description ## [](#)Usage notes
         You can query your custom images, public images provided by Alibaba Cloud, Alibaba Cloud Marketplace images, and shared images from other Alibaba Cloud accounts.
@@ -25545,7 +25677,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeImagesRequest,
     ) -> ecs_20140526_models.DescribeImagesResponse:
         """
-        @summary Queries available images. When you call this operation, you can specify parameters, such as ImageId, ImageFamily, and InstanceType, in the request.
+        @summary Queries image resources that you can use. You can specify parameters, such as the image ID and the scenario in which the image is used in the request.
         
         @description ## [](#)Usage notes
         You can query your custom images, public images provided by Alibaba Cloud, Alibaba Cloud Marketplace images, and shared images from other Alibaba Cloud accounts.
@@ -25564,7 +25696,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeImagesRequest,
     ) -> ecs_20140526_models.DescribeImagesResponse:
         """
-        @summary Queries available images. When you call this operation, you can specify parameters, such as ImageId, ImageFamily, and InstanceType, in the request.
+        @summary Queries image resources that you can use. You can specify parameters, such as the image ID and the scenario in which the image is used in the request.
         
         @description ## [](#)Usage notes
         You can query your custom images, public images provided by Alibaba Cloud, Alibaba Cloud Marketplace images, and shared images from other Alibaba Cloud accounts.
@@ -28894,9 +29026,6 @@ class Client(OpenApiClient):
         """
         @summary Queries the information of launch template versions, such as the total number of launch templates, launch template names, and launch template version numbers.
         
-        @description ## Debugging
-        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs\\&api=DescribeLaunchTemplateVersions\\&type=RPC\\&version=2014-05-26)
-        
         @param request: DescribeLaunchTemplateVersionsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeLaunchTemplateVersionsResponse
@@ -28964,9 +29093,6 @@ class Client(OpenApiClient):
         """
         @summary Queries the information of launch template versions, such as the total number of launch templates, launch template names, and launch template version numbers.
         
-        @description ## Debugging
-        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs\\&api=DescribeLaunchTemplateVersions\\&type=RPC\\&version=2014-05-26)
-        
         @param request: DescribeLaunchTemplateVersionsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeLaunchTemplateVersionsResponse
@@ -29033,9 +29159,6 @@ class Client(OpenApiClient):
         """
         @summary Queries the information of launch template versions, such as the total number of launch templates, launch template names, and launch template version numbers.
         
-        @description ## Debugging
-        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs\\&api=DescribeLaunchTemplateVersions\\&type=RPC\\&version=2014-05-26)
-        
         @param request: DescribeLaunchTemplateVersionsRequest
         @return: DescribeLaunchTemplateVersionsResponse
         """
@@ -29048,9 +29171,6 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DescribeLaunchTemplateVersionsResponse:
         """
         @summary Queries the information of launch template versions, such as the total number of launch templates, launch template names, and launch template version numbers.
-        
-        @description ## Debugging
-        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs\\&api=DescribeLaunchTemplateVersions\\&type=RPC\\&version=2014-05-26)
         
         @param request: DescribeLaunchTemplateVersionsRequest
         @return: DescribeLaunchTemplateVersionsResponse
@@ -30476,7 +30596,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribePrefixListAssociationsResponse:
         """
-        @summary The region ID of the prefix list. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        @summary Queries the information of resources that are associated with a specific prefix list.
         
         @param request: DescribePrefixListAssociationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30533,7 +30653,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribePrefixListAssociationsResponse:
         """
-        @summary The region ID of the prefix list. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        @summary Queries the information of resources that are associated with a specific prefix list.
         
         @param request: DescribePrefixListAssociationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30589,7 +30709,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribePrefixListAssociationsRequest,
     ) -> ecs_20140526_models.DescribePrefixListAssociationsResponse:
         """
-        @summary The region ID of the prefix list. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        @summary Queries the information of resources that are associated with a specific prefix list.
         
         @param request: DescribePrefixListAssociationsRequest
         @return: DescribePrefixListAssociationsResponse
@@ -30602,7 +30722,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribePrefixListAssociationsRequest,
     ) -> ecs_20140526_models.DescribePrefixListAssociationsResponse:
         """
-        @summary The region ID of the prefix list. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        @summary Queries the information of resources that are associated with a specific prefix list.
         
         @param request: DescribePrefixListAssociationsRequest
         @return: DescribePrefixListAssociationsResponse
@@ -30904,18 +31024,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribePriceResponse:
         """
-        @summary Queries information about the most recent prices of Elastic Compute Service (ECS) resources, such as the promotion rules, prices, and discounts. When you call this operation, you can specify parameters, such as ResourceType, ImageId, and InstanceType, in the request.
+        @summary Queries the most recent prices of specified resources. You can specify a resource type in the request, such as the Elastic Compute Service (ECS) instance, cloud disk, dedicated host, elasticity assurance, and capacity reservation. You can also query the activity rules, prices, and discounts of resources.
         
-        @description # [](#)Usage notes
-        The required parameters vary based on the types of resources whose prices you want to query.
-        When `ResourceType` is set to instance, you must specify `InstanceType`.
-        When `ResourceType` is set to disk, you must specify both `DataDisk.1.Category` and `DataDisk.1.Size`. When `ResourceType` is set to disk, only pay-as-you-go prices of cloud disks are returned. In this scenario, `PriceUnit` can be set only to `Hour`.
+        @description The required parameters vary based on the type of resource whose prices you want to query.
+        When `ResourceType` is set to instance, you must specify `InstanceType`. By default, `ChargeType` is set to `PostPaid`. You can specify `PriceUnit` to query the ECS resource prices in different billing cycles.
+        When `ResourceType` is set to disk, you must specify `DataDisk.1.Category` and `DataDisk.1.Size` in the same request. When `ResourceType` is set to disk, only pay-as-you-go prices of cloud disks are returned. In this scenario, `PriceUnit` can be set only to `Hour`.
+        When `ResourceType` is set to diskperformance, you must specify `DataDisk.1.Category` and `DataDisk.1.ProvisionedIops`.
         When `ResourceType` is set to ddh, you must specify `DedicatedHostType`.
         When `ResourceType` is set to ElasticityAssurance, you must specify `InstanceType`.
         When `ResourceType` is set to CapacityReservation, you must specify `InstanceType`.
-        When `ResourceType` is set to bandwidth, only the pay-by-traffic (`PayByTraffic`) price for network usage is returned.
-        When `ResourceType` is set to instance, the prices of up to four data disks can be queried.
-        By default, `ChargeType` is set to `PostPaid`. You can specify `PriceUnit` to query prices of ECS resources that have different billing cycles.
+        When `ResourceType` is set to bandwidth, only the pay-by-traffic (`PayByTraffic`) prices for network usage are returned.
         
         @param request: DescribePriceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30963,6 +31081,8 @@ class Client(OpenApiClient):
             query['Platform'] = request.platform
         if not UtilClient.is_unset(request.price_unit):
             query['PriceUnit'] = request.price_unit
+        if not UtilClient.is_unset(request.recurrence_rules):
+            query['RecurrenceRules'] = request.recurrence_rules
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -30977,6 +31097,8 @@ class Client(OpenApiClient):
             query['SpotDuration'] = request.spot_duration
         if not UtilClient.is_unset(request.spot_strategy):
             query['SpotStrategy'] = request.spot_strategy
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.zone_id):
             query['ZoneId'] = request.zone_id
         if not UtilClient.is_unset(request.data_disk):
@@ -31016,18 +31138,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribePriceResponse:
         """
-        @summary Queries information about the most recent prices of Elastic Compute Service (ECS) resources, such as the promotion rules, prices, and discounts. When you call this operation, you can specify parameters, such as ResourceType, ImageId, and InstanceType, in the request.
+        @summary Queries the most recent prices of specified resources. You can specify a resource type in the request, such as the Elastic Compute Service (ECS) instance, cloud disk, dedicated host, elasticity assurance, and capacity reservation. You can also query the activity rules, prices, and discounts of resources.
         
-        @description # [](#)Usage notes
-        The required parameters vary based on the types of resources whose prices you want to query.
-        When `ResourceType` is set to instance, you must specify `InstanceType`.
-        When `ResourceType` is set to disk, you must specify both `DataDisk.1.Category` and `DataDisk.1.Size`. When `ResourceType` is set to disk, only pay-as-you-go prices of cloud disks are returned. In this scenario, `PriceUnit` can be set only to `Hour`.
+        @description The required parameters vary based on the type of resource whose prices you want to query.
+        When `ResourceType` is set to instance, you must specify `InstanceType`. By default, `ChargeType` is set to `PostPaid`. You can specify `PriceUnit` to query the ECS resource prices in different billing cycles.
+        When `ResourceType` is set to disk, you must specify `DataDisk.1.Category` and `DataDisk.1.Size` in the same request. When `ResourceType` is set to disk, only pay-as-you-go prices of cloud disks are returned. In this scenario, `PriceUnit` can be set only to `Hour`.
+        When `ResourceType` is set to diskperformance, you must specify `DataDisk.1.Category` and `DataDisk.1.ProvisionedIops`.
         When `ResourceType` is set to ddh, you must specify `DedicatedHostType`.
         When `ResourceType` is set to ElasticityAssurance, you must specify `InstanceType`.
         When `ResourceType` is set to CapacityReservation, you must specify `InstanceType`.
-        When `ResourceType` is set to bandwidth, only the pay-by-traffic (`PayByTraffic`) price for network usage is returned.
-        When `ResourceType` is set to instance, the prices of up to four data disks can be queried.
-        By default, `ChargeType` is set to `PostPaid`. You can specify `PriceUnit` to query prices of ECS resources that have different billing cycles.
+        When `ResourceType` is set to bandwidth, only the pay-by-traffic (`PayByTraffic`) prices for network usage are returned.
         
         @param request: DescribePriceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31075,6 +31195,8 @@ class Client(OpenApiClient):
             query['Platform'] = request.platform
         if not UtilClient.is_unset(request.price_unit):
             query['PriceUnit'] = request.price_unit
+        if not UtilClient.is_unset(request.recurrence_rules):
+            query['RecurrenceRules'] = request.recurrence_rules
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -31089,6 +31211,8 @@ class Client(OpenApiClient):
             query['SpotDuration'] = request.spot_duration
         if not UtilClient.is_unset(request.spot_strategy):
             query['SpotStrategy'] = request.spot_strategy
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.zone_id):
             query['ZoneId'] = request.zone_id
         if not UtilClient.is_unset(request.data_disk):
@@ -31127,18 +31251,16 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribePriceRequest,
     ) -> ecs_20140526_models.DescribePriceResponse:
         """
-        @summary Queries information about the most recent prices of Elastic Compute Service (ECS) resources, such as the promotion rules, prices, and discounts. When you call this operation, you can specify parameters, such as ResourceType, ImageId, and InstanceType, in the request.
+        @summary Queries the most recent prices of specified resources. You can specify a resource type in the request, such as the Elastic Compute Service (ECS) instance, cloud disk, dedicated host, elasticity assurance, and capacity reservation. You can also query the activity rules, prices, and discounts of resources.
         
-        @description # [](#)Usage notes
-        The required parameters vary based on the types of resources whose prices you want to query.
-        When `ResourceType` is set to instance, you must specify `InstanceType`.
-        When `ResourceType` is set to disk, you must specify both `DataDisk.1.Category` and `DataDisk.1.Size`. When `ResourceType` is set to disk, only pay-as-you-go prices of cloud disks are returned. In this scenario, `PriceUnit` can be set only to `Hour`.
+        @description The required parameters vary based on the type of resource whose prices you want to query.
+        When `ResourceType` is set to instance, you must specify `InstanceType`. By default, `ChargeType` is set to `PostPaid`. You can specify `PriceUnit` to query the ECS resource prices in different billing cycles.
+        When `ResourceType` is set to disk, you must specify `DataDisk.1.Category` and `DataDisk.1.Size` in the same request. When `ResourceType` is set to disk, only pay-as-you-go prices of cloud disks are returned. In this scenario, `PriceUnit` can be set only to `Hour`.
+        When `ResourceType` is set to diskperformance, you must specify `DataDisk.1.Category` and `DataDisk.1.ProvisionedIops`.
         When `ResourceType` is set to ddh, you must specify `DedicatedHostType`.
         When `ResourceType` is set to ElasticityAssurance, you must specify `InstanceType`.
         When `ResourceType` is set to CapacityReservation, you must specify `InstanceType`.
-        When `ResourceType` is set to bandwidth, only the pay-by-traffic (`PayByTraffic`) price for network usage is returned.
-        When `ResourceType` is set to instance, the prices of up to four data disks can be queried.
-        By default, `ChargeType` is set to `PostPaid`. You can specify `PriceUnit` to query prices of ECS resources that have different billing cycles.
+        When `ResourceType` is set to bandwidth, only the pay-by-traffic (`PayByTraffic`) prices for network usage are returned.
         
         @param request: DescribePriceRequest
         @return: DescribePriceResponse
@@ -31151,18 +31273,16 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribePriceRequest,
     ) -> ecs_20140526_models.DescribePriceResponse:
         """
-        @summary Queries information about the most recent prices of Elastic Compute Service (ECS) resources, such as the promotion rules, prices, and discounts. When you call this operation, you can specify parameters, such as ResourceType, ImageId, and InstanceType, in the request.
+        @summary Queries the most recent prices of specified resources. You can specify a resource type in the request, such as the Elastic Compute Service (ECS) instance, cloud disk, dedicated host, elasticity assurance, and capacity reservation. You can also query the activity rules, prices, and discounts of resources.
         
-        @description # [](#)Usage notes
-        The required parameters vary based on the types of resources whose prices you want to query.
-        When `ResourceType` is set to instance, you must specify `InstanceType`.
-        When `ResourceType` is set to disk, you must specify both `DataDisk.1.Category` and `DataDisk.1.Size`. When `ResourceType` is set to disk, only pay-as-you-go prices of cloud disks are returned. In this scenario, `PriceUnit` can be set only to `Hour`.
+        @description The required parameters vary based on the type of resource whose prices you want to query.
+        When `ResourceType` is set to instance, you must specify `InstanceType`. By default, `ChargeType` is set to `PostPaid`. You can specify `PriceUnit` to query the ECS resource prices in different billing cycles.
+        When `ResourceType` is set to disk, you must specify `DataDisk.1.Category` and `DataDisk.1.Size` in the same request. When `ResourceType` is set to disk, only pay-as-you-go prices of cloud disks are returned. In this scenario, `PriceUnit` can be set only to `Hour`.
+        When `ResourceType` is set to diskperformance, you must specify `DataDisk.1.Category` and `DataDisk.1.ProvisionedIops`.
         When `ResourceType` is set to ddh, you must specify `DedicatedHostType`.
         When `ResourceType` is set to ElasticityAssurance, you must specify `InstanceType`.
         When `ResourceType` is set to CapacityReservation, you must specify `InstanceType`.
-        When `ResourceType` is set to bandwidth, only the pay-by-traffic (`PayByTraffic`) price for network usage is returned.
-        When `ResourceType` is set to instance, the prices of up to four data disks can be queried.
-        By default, `ChargeType` is set to `PostPaid`. You can specify `PriceUnit` to query prices of ECS resources that have different billing cycles.
+        When `ResourceType` is set to bandwidth, only the pay-by-traffic (`PayByTraffic`) prices for network usage are returned.
         
         @param request: DescribePriceRequest
         @return: DescribePriceResponse
@@ -31360,7 +31480,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeRegionsResponse:
         """
-        @summary The request ID.
+        @summary Queries Alibaba Cloud regions. When you call this operation, you can specify parameters, such as InstanceChargeType and ResourceType, in the request.
         
         @param request: DescribeRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31413,7 +31533,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeRegionsResponse:
         """
-        @summary The request ID.
+        @summary Queries Alibaba Cloud regions. When you call this operation, you can specify parameters, such as InstanceChargeType and ResourceType, in the request.
         
         @param request: DescribeRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31465,7 +31585,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeRegionsRequest,
     ) -> ecs_20140526_models.DescribeRegionsResponse:
         """
-        @summary The request ID.
+        @summary Queries Alibaba Cloud regions. When you call this operation, you can specify parameters, such as InstanceChargeType and ResourceType, in the request.
         
         @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse
@@ -31478,7 +31598,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeRegionsRequest,
     ) -> ecs_20140526_models.DescribeRegionsResponse:
         """
-        @summary The request ID.
+        @summary Queries Alibaba Cloud regions. When you call this operation, you can specify parameters, such as InstanceChargeType and ResourceType, in the request.
         
         @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse
@@ -34900,7 +35020,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSpotPriceHistoryResponse:
         """
-        @summary Queries the historical prices of preemptible instances within the previous 30 days.
+        @summary Queries the historical prices of preemptible instances within up to the previous 30 days. You can set the maximum price of a preemptible instance based on the historical prices.
+        
+        @description    This operation is applicable only to I/O optimized preemptible instances.
+        The data returned by the interface may be paginated. If the returned data contains the `NextOffset` parameter, you can set the `Offset` parameter in the request to the value of the `NextOffset` parameter for subsequent data query.
         
         @param request: DescribeSpotPriceHistoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34969,7 +35092,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSpotPriceHistoryResponse:
         """
-        @summary Queries the historical prices of preemptible instances within the previous 30 days.
+        @summary Queries the historical prices of preemptible instances within up to the previous 30 days. You can set the maximum price of a preemptible instance based on the historical prices.
+        
+        @description    This operation is applicable only to I/O optimized preemptible instances.
+        The data returned by the interface may be paginated. If the returned data contains the `NextOffset` parameter, you can set the `Offset` parameter in the request to the value of the `NextOffset` parameter for subsequent data query.
         
         @param request: DescribeSpotPriceHistoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35037,7 +35163,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSpotPriceHistoryRequest,
     ) -> ecs_20140526_models.DescribeSpotPriceHistoryResponse:
         """
-        @summary Queries the historical prices of preemptible instances within the previous 30 days.
+        @summary Queries the historical prices of preemptible instances within up to the previous 30 days. You can set the maximum price of a preemptible instance based on the historical prices.
+        
+        @description    This operation is applicable only to I/O optimized preemptible instances.
+        The data returned by the interface may be paginated. If the returned data contains the `NextOffset` parameter, you can set the `Offset` parameter in the request to the value of the `NextOffset` parameter for subsequent data query.
         
         @param request: DescribeSpotPriceHistoryRequest
         @return: DescribeSpotPriceHistoryResponse
@@ -35050,7 +35179,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSpotPriceHistoryRequest,
     ) -> ecs_20140526_models.DescribeSpotPriceHistoryResponse:
         """
-        @summary Queries the historical prices of preemptible instances within the previous 30 days.
+        @summary Queries the historical prices of preemptible instances within up to the previous 30 days. You can set the maximum price of a preemptible instance based on the historical prices.
+        
+        @description    This operation is applicable only to I/O optimized preemptible instances.
+        The data returned by the interface may be paginated. If the returned data contains the `NextOffset` parameter, you can set the `Offset` parameter in the request to the value of the `NextOffset` parameter for subsequent data query.
         
         @param request: DescribeSpotPriceHistoryRequest
         @return: DescribeSpotPriceHistoryResponse
@@ -35518,7 +35650,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DescribeTags is deprecated, please use Tag::2018-08-28::CountResourcesByTags instead.
         
-        @summary Queries tags that are available to you. You can specify multiple filter conditions, such as a resource type, a resource ID, a tag key, and a tag value, to query tags. The specified filter conditions have logical AND relations.
+        @summary Queries the available tags. You can specify multiple filter conditions, such as a resource type, a resource ID, a tag key, and a tag value, to query tags. The specified filter conditions have logical AND relations.
         
         @description If a tag key that has no tag value is specified, all tags that contain the tag key are returned. If a tag key-value pair is specified, only tags that exactly match the key-value pair are returned.
         
@@ -35582,7 +35714,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DescribeTags is deprecated, please use Tag::2018-08-28::CountResourcesByTags instead.
         
-        @summary Queries tags that are available to you. You can specify multiple filter conditions, such as a resource type, a resource ID, a tag key, and a tag value, to query tags. The specified filter conditions have logical AND relations.
+        @summary Queries the available tags. You can specify multiple filter conditions, such as a resource type, a resource ID, a tag key, and a tag value, to query tags. The specified filter conditions have logical AND relations.
         
         @description If a tag key that has no tag value is specified, all tags that contain the tag key are returned. If a tag key-value pair is specified, only tags that exactly match the key-value pair are returned.
         
@@ -35645,7 +35777,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DescribeTags is deprecated, please use Tag::2018-08-28::CountResourcesByTags instead.
         
-        @summary Queries tags that are available to you. You can specify multiple filter conditions, such as a resource type, a resource ID, a tag key, and a tag value, to query tags. The specified filter conditions have logical AND relations.
+        @summary Queries the available tags. You can specify multiple filter conditions, such as a resource type, a resource ID, a tag key, and a tag value, to query tags. The specified filter conditions have logical AND relations.
         
         @description If a tag key that has no tag value is specified, all tags that contain the tag key are returned. If a tag key-value pair is specified, only tags that exactly match the key-value pair are returned.
         
@@ -35663,7 +35795,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DescribeTags is deprecated, please use Tag::2018-08-28::CountResourcesByTags instead.
         
-        @summary Queries tags that are available to you. You can specify multiple filter conditions, such as a resource type, a resource ID, a tag key, and a tag value, to query tags. The specified filter conditions have logical AND relations.
+        @summary Queries the available tags. You can specify multiple filter conditions, such as a resource type, a resource ID, a tag key, and a tag value, to query tags. The specified filter conditions have logical AND relations.
         
         @description If a tag key that has no tag value is specified, all tags that contain the tag key are returned. If a tag key-value pair is specified, only tags that exactly match the key-value pair are returned.
         
@@ -36122,6 +36254,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DescribeUserBusinessBehavior is deprecated
         
+        @summary 获取用户级别默认属性
+        
         @param request: DescribeUserBusinessBehaviorRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeUserBusinessBehaviorResponse
@@ -36174,6 +36308,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DescribeUserBusinessBehavior is deprecated
         
+        @summary 获取用户级别默认属性
+        
         @param request: DescribeUserBusinessBehaviorRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeUserBusinessBehaviorResponse
@@ -36225,6 +36361,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DescribeUserBusinessBehavior is deprecated
         
+        @summary 获取用户级别默认属性
+        
         @param request: DescribeUserBusinessBehaviorRequest
         @return: DescribeUserBusinessBehaviorResponse
         Deprecated
@@ -36238,6 +36376,8 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DescribeUserBusinessBehaviorResponse:
         """
         @deprecated OpenAPI DescribeUserBusinessBehavior is deprecated
+        
+        @summary 获取用户级别默认属性
         
         @param request: DescribeUserBusinessBehaviorRequest
         @return: DescribeUserBusinessBehaviorResponse
@@ -37104,7 +37244,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeZonesResponse:
         """
-        @summary Queries the zones in a specific region.
+        @summary Queries Alibaba Cloud regions. You can specify parameters, such as InstanceChargeType and ResourceType, in the request.
         
         @description When you call this operation, only a list of zones and some resource information of each zone are returned. If you want to query instance types and disk categories that are available for purchase in a specific zone, we recommend that you call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) operation.
         
@@ -37163,7 +37303,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeZonesResponse:
         """
-        @summary Queries the zones in a specific region.
+        @summary Queries Alibaba Cloud regions. You can specify parameters, such as InstanceChargeType and ResourceType, in the request.
         
         @description When you call this operation, only a list of zones and some resource information of each zone are returned. If you want to query instance types and disk categories that are available for purchase in a specific zone, we recommend that you call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) operation.
         
@@ -37221,7 +37361,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeZonesRequest,
     ) -> ecs_20140526_models.DescribeZonesResponse:
         """
-        @summary Queries the zones in a specific region.
+        @summary Queries Alibaba Cloud regions. You can specify parameters, such as InstanceChargeType and ResourceType, in the request.
         
         @description When you call this operation, only a list of zones and some resource information of each zone are returned. If you want to query instance types and disk categories that are available for purchase in a specific zone, we recommend that you call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) operation.
         
@@ -37236,7 +37376,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeZonesRequest,
     ) -> ecs_20140526_models.DescribeZonesResponse:
         """
-        @summary Queries the zones in a specific region.
+        @summary Queries Alibaba Cloud regions. You can specify parameters, such as InstanceChargeType and ResourceType, in the request.
         
         @description When you call this operation, only a list of zones and some resource information of each zone are returned. If you want to query instance types and disk categories that are available for purchase in a specific zone, we recommend that you call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) operation.
         
@@ -39480,7 +39620,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ImportImageResponse:
         """
-        @summary Imports an on-premise image to Elastic Compute Service (ECS). The imported image exists as a custom image in the destination region. You can use the imported image to create ECS instances by calling the RunInstances operation or replace the system disks of ECS instances by calling the ReplaceSystemDisk operation.
+        @summary Imports an on-premise image to Elastic Compute Service (ECS). The imported image exists as a custom image in the destination region. You can use the imported image to create ECS instances by calling the RunInstances operation or replace the system disk of an ECS instance by calling the ReplaceSystemDisk operation.
         
         @description ### [](#)Usage notes
         Take note of the following items:
@@ -39646,7 +39786,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ImportImageResponse:
         """
-        @summary Imports an on-premise image to Elastic Compute Service (ECS). The imported image exists as a custom image in the destination region. You can use the imported image to create ECS instances by calling the RunInstances operation or replace the system disks of ECS instances by calling the ReplaceSystemDisk operation.
+        @summary Imports an on-premise image to Elastic Compute Service (ECS). The imported image exists as a custom image in the destination region. You can use the imported image to create ECS instances by calling the RunInstances operation or replace the system disk of an ECS instance by calling the ReplaceSystemDisk operation.
         
         @description ### [](#)Usage notes
         Take note of the following items:
@@ -39811,7 +39951,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ImportImageRequest,
     ) -> ecs_20140526_models.ImportImageResponse:
         """
-        @summary Imports an on-premise image to Elastic Compute Service (ECS). The imported image exists as a custom image in the destination region. You can use the imported image to create ECS instances by calling the RunInstances operation or replace the system disks of ECS instances by calling the ReplaceSystemDisk operation.
+        @summary Imports an on-premise image to Elastic Compute Service (ECS). The imported image exists as a custom image in the destination region. You can use the imported image to create ECS instances by calling the RunInstances operation or replace the system disk of an ECS instance by calling the ReplaceSystemDisk operation.
         
         @description ### [](#)Usage notes
         Take note of the following items:
@@ -39911,7 +40051,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ImportImageRequest,
     ) -> ecs_20140526_models.ImportImageResponse:
         """
-        @summary Imports an on-premise image to Elastic Compute Service (ECS). The imported image exists as a custom image in the destination region. You can use the imported image to create ECS instances by calling the RunInstances operation or replace the system disks of ECS instances by calling the ReplaceSystemDisk operation.
+        @summary Imports an on-premise image to Elastic Compute Service (ECS). The imported image exists as a custom image in the destination region. You can use the imported image to create ECS instances by calling the RunInstances operation or replace the system disk of an ECS instance by calling the ReplaceSystemDisk operation.
         
         @description ### [](#)Usage notes
         Take note of the following items:
@@ -43672,11 +43812,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDiskAttributeResponse:
         """
-        @summary Modifies the attributes of block storage devices, including the names and descriptions of the devices and whether to release the devices together with the associated instances.
+        @summary Modifies the attributes of one or more block storage devices, such as the names and descriptions of the devices and whether to release the devices together with the associated Elastic Compute Service (ECS) instances.
         
-        @description ## [](#)Usage notes
-        When you call this operation to modify the attributes of a disk, if you set DeleteWithInstance to false and the instance to which the disk is attached is locked for security reasons, the DeleteWithInstance settings of the disk are ignored and the disk is released together with the instance. If `"LockReason" : "security"` is displayed in the response when you query the information about an instance, the instance is locked for security reasons.
-        You can use `DiskIds.N` to specify multiple block storage devices and batch modify the attributes of the devices, including the names and descriptions of the devices and whether to release the devices together with the associated instances.
+        @description You can use `DiskId` to specify a block storage device and modify the attributes of the device, such as the name and description of the device and whether to release the device together with the associated instance. You can use `DiskIds.N` to specify multiple block storage devices and batch modify the attributes of the devices.
         
         @param request: ModifyDiskAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -43741,11 +43879,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDiskAttributeResponse:
         """
-        @summary Modifies the attributes of block storage devices, including the names and descriptions of the devices and whether to release the devices together with the associated instances.
+        @summary Modifies the attributes of one or more block storage devices, such as the names and descriptions of the devices and whether to release the devices together with the associated Elastic Compute Service (ECS) instances.
         
-        @description ## [](#)Usage notes
-        When you call this operation to modify the attributes of a disk, if you set DeleteWithInstance to false and the instance to which the disk is attached is locked for security reasons, the DeleteWithInstance settings of the disk are ignored and the disk is released together with the instance. If `"LockReason" : "security"` is displayed in the response when you query the information about an instance, the instance is locked for security reasons.
-        You can use `DiskIds.N` to specify multiple block storage devices and batch modify the attributes of the devices, including the names and descriptions of the devices and whether to release the devices together with the associated instances.
+        @description You can use `DiskId` to specify a block storage device and modify the attributes of the device, such as the name and description of the device and whether to release the device together with the associated instance. You can use `DiskIds.N` to specify multiple block storage devices and batch modify the attributes of the devices.
         
         @param request: ModifyDiskAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -43809,11 +43945,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyDiskAttributeRequest,
     ) -> ecs_20140526_models.ModifyDiskAttributeResponse:
         """
-        @summary Modifies the attributes of block storage devices, including the names and descriptions of the devices and whether to release the devices together with the associated instances.
+        @summary Modifies the attributes of one or more block storage devices, such as the names and descriptions of the devices and whether to release the devices together with the associated Elastic Compute Service (ECS) instances.
         
-        @description ## [](#)Usage notes
-        When you call this operation to modify the attributes of a disk, if you set DeleteWithInstance to false and the instance to which the disk is attached is locked for security reasons, the DeleteWithInstance settings of the disk are ignored and the disk is released together with the instance. If `"LockReason" : "security"` is displayed in the response when you query the information about an instance, the instance is locked for security reasons.
-        You can use `DiskIds.N` to specify multiple block storage devices and batch modify the attributes of the devices, including the names and descriptions of the devices and whether to release the devices together with the associated instances.
+        @description You can use `DiskId` to specify a block storage device and modify the attributes of the device, such as the name and description of the device and whether to release the device together with the associated instance. You can use `DiskIds.N` to specify multiple block storage devices and batch modify the attributes of the devices.
         
         @param request: ModifyDiskAttributeRequest
         @return: ModifyDiskAttributeResponse
@@ -43826,11 +43960,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyDiskAttributeRequest,
     ) -> ecs_20140526_models.ModifyDiskAttributeResponse:
         """
-        @summary Modifies the attributes of block storage devices, including the names and descriptions of the devices and whether to release the devices together with the associated instances.
+        @summary Modifies the attributes of one or more block storage devices, such as the names and descriptions of the devices and whether to release the devices together with the associated Elastic Compute Service (ECS) instances.
         
-        @description ## [](#)Usage notes
-        When you call this operation to modify the attributes of a disk, if you set DeleteWithInstance to false and the instance to which the disk is attached is locked for security reasons, the DeleteWithInstance settings of the disk are ignored and the disk is released together with the instance. If `"LockReason" : "security"` is displayed in the response when you query the information about an instance, the instance is locked for security reasons.
-        You can use `DiskIds.N` to specify multiple block storage devices and batch modify the attributes of the devices, including the names and descriptions of the devices and whether to release the devices together with the associated instances.
+        @description You can use `DiskId` to specify a block storage device and modify the attributes of the device, such as the name and description of the device and whether to release the device together with the associated instance. You can use `DiskIds.N` to specify multiple block storage devices and batch modify the attributes of the devices.
         
         @param request: ModifyDiskAttributeRequest
         @return: ModifyDiskAttributeResponse
@@ -44706,6 +44838,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.recurrence_rules):
+            query['RecurrenceRules'] = request.recurrence_rules
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -44763,6 +44897,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.recurrence_rules):
+            query['RecurrenceRules'] = request.recurrence_rules
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -44821,6 +44957,146 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_elasticity_assurance_with_options_async(request, runtime)
+
+    def modify_elasticity_assurance_auto_renew_attribute_with_options(
+        self,
+        request: ecs_20140526_models.ModifyElasticityAssuranceAutoRenewAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ModifyElasticityAssuranceAutoRenewAttributeResponse:
+        """
+        @summary Modifies the auto-renewal attribute of elasticity assurances.
+        
+        @param request: ModifyElasticityAssuranceAutoRenewAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyElasticityAssuranceAutoRenewAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.renewal_status):
+            query['RenewalStatus'] = request.renewal_status
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.private_pool_options):
+            query['PrivatePoolOptions'] = request.private_pool_options
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyElasticityAssuranceAutoRenewAttribute',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ecs_20140526_models.ModifyElasticityAssuranceAutoRenewAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ecs_20140526_models.ModifyElasticityAssuranceAutoRenewAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_elasticity_assurance_auto_renew_attribute_with_options_async(
+        self,
+        request: ecs_20140526_models.ModifyElasticityAssuranceAutoRenewAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ModifyElasticityAssuranceAutoRenewAttributeResponse:
+        """
+        @summary Modifies the auto-renewal attribute of elasticity assurances.
+        
+        @param request: ModifyElasticityAssuranceAutoRenewAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyElasticityAssuranceAutoRenewAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.renewal_status):
+            query['RenewalStatus'] = request.renewal_status
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.private_pool_options):
+            query['PrivatePoolOptions'] = request.private_pool_options
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyElasticityAssuranceAutoRenewAttribute',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ecs_20140526_models.ModifyElasticityAssuranceAutoRenewAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ecs_20140526_models.ModifyElasticityAssuranceAutoRenewAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_elasticity_assurance_auto_renew_attribute(
+        self,
+        request: ecs_20140526_models.ModifyElasticityAssuranceAutoRenewAttributeRequest,
+    ) -> ecs_20140526_models.ModifyElasticityAssuranceAutoRenewAttributeResponse:
+        """
+        @summary Modifies the auto-renewal attribute of elasticity assurances.
+        
+        @param request: ModifyElasticityAssuranceAutoRenewAttributeRequest
+        @return: ModifyElasticityAssuranceAutoRenewAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_elasticity_assurance_auto_renew_attribute_with_options(request, runtime)
+
+    async def modify_elasticity_assurance_auto_renew_attribute_async(
+        self,
+        request: ecs_20140526_models.ModifyElasticityAssuranceAutoRenewAttributeRequest,
+    ) -> ecs_20140526_models.ModifyElasticityAssuranceAutoRenewAttributeResponse:
+        """
+        @summary Modifies the auto-renewal attribute of elasticity assurances.
+        
+        @param request: ModifyElasticityAssuranceAutoRenewAttributeRequest
+        @return: ModifyElasticityAssuranceAutoRenewAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_elasticity_assurance_auto_renew_attribute_with_options_async(request, runtime)
 
     def modify_forward_entry_with_options(
         self,
@@ -45572,20 +45848,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyImageSharePermissionResponse:
         """
-        @summary Manages the share permissions on a custom image. You can share your custom images to other Alibaba Cloud accounts or publish the images as community images.
+        @summary Modifies the share permissions on an image. You can share your custom images with other Alibaba Cloud accounts or publish the images as community images.
         
-        @description ## [](#)Usage notes
-        Take note of the following items:
-        You can share only your own custom images to other Alibaba Cloud accounts.
-        You can share a custom image to up to 10 Alibaba Cloud accounts at a time. You can specify up to 10 Alibaba Cloud account IDs by using AddAccount.N or RemoveAccount.N. If you specify more than 10 account IDs, the system processes only the first 10 account IDs. The excess account IDs are ignored.
-        You can share a custom image to up to 50 Alibaba Cloud accounts.
+        @description Before you call this operation, read [Share custom images](https://help.aliyun.com/document_detail/25463.html).
+        When you call this operation, take note of the following sharing rules:
+        You can share only your custom images that were created in your Alibaba Cloud to other accounts.
+        You can share a custom image to up to 10 Alibaba Cloud accounts at a time. You can specify up to 10 Alibaba Cloud account IDs by using the AddAccount.N or RemoveAccount.N parameter. If you specify more than 10 account IDs, the system processes only the previous 10 account IDs. The excess account IDs are ignored.
+        You can share a custom image with up to 50 Alibaba Cloud accounts.
         If an Elastic Compute Service (ECS) instance was created ([RunInstances](https://help.aliyun.com/document_detail/63440.html)) from a shared image, you cannot re-initialize the instance ([ReInitDisk](https://help.aliyun.com/document_detail/25519.html)) after the image owner unshares or deletes the image ([DeleteImage](https://help.aliyun.com/document_detail/25537.html)).
         When you publish or unpublish a community image, take note of the following items:
         Alibaba Cloud provides only the platform on which community images can be published and managed. The owner of a community image is responsible for the quality and updates of the image. Make sure that you acknowledge and agree to the Community Image Agreement. Otherwise, you cannot publish community images. For more information, see [Publish a community image](https://help.aliyun.com/document_detail/208370.html).
         You cannot publish encrypted images as community images.
         Community images are publicly available. A community image is available to all Alibaba Cloud accounts in the region where the image resides.
         You cannot share, export, or copy community images.
-        After you unpublish a community image, the image is no longer available to other Alibaba Cloud accounts. If an image is shared to other Alibaba Cloud accounts before it is unpublished, the image remains available to the accounts.
+        After you unpublish a community image, the image is no longer available to other Alibaba Cloud accounts. If an image is shared with other Alibaba Cloud accounts before it is unpublished, the image remains available to the accounts.
         
         @param request: ModifyImageSharePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -45644,20 +45920,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyImageSharePermissionResponse:
         """
-        @summary Manages the share permissions on a custom image. You can share your custom images to other Alibaba Cloud accounts or publish the images as community images.
+        @summary Modifies the share permissions on an image. You can share your custom images with other Alibaba Cloud accounts or publish the images as community images.
         
-        @description ## [](#)Usage notes
-        Take note of the following items:
-        You can share only your own custom images to other Alibaba Cloud accounts.
-        You can share a custom image to up to 10 Alibaba Cloud accounts at a time. You can specify up to 10 Alibaba Cloud account IDs by using AddAccount.N or RemoveAccount.N. If you specify more than 10 account IDs, the system processes only the first 10 account IDs. The excess account IDs are ignored.
-        You can share a custom image to up to 50 Alibaba Cloud accounts.
+        @description Before you call this operation, read [Share custom images](https://help.aliyun.com/document_detail/25463.html).
+        When you call this operation, take note of the following sharing rules:
+        You can share only your custom images that were created in your Alibaba Cloud to other accounts.
+        You can share a custom image to up to 10 Alibaba Cloud accounts at a time. You can specify up to 10 Alibaba Cloud account IDs by using the AddAccount.N or RemoveAccount.N parameter. If you specify more than 10 account IDs, the system processes only the previous 10 account IDs. The excess account IDs are ignored.
+        You can share a custom image with up to 50 Alibaba Cloud accounts.
         If an Elastic Compute Service (ECS) instance was created ([RunInstances](https://help.aliyun.com/document_detail/63440.html)) from a shared image, you cannot re-initialize the instance ([ReInitDisk](https://help.aliyun.com/document_detail/25519.html)) after the image owner unshares or deletes the image ([DeleteImage](https://help.aliyun.com/document_detail/25537.html)).
         When you publish or unpublish a community image, take note of the following items:
         Alibaba Cloud provides only the platform on which community images can be published and managed. The owner of a community image is responsible for the quality and updates of the image. Make sure that you acknowledge and agree to the Community Image Agreement. Otherwise, you cannot publish community images. For more information, see [Publish a community image](https://help.aliyun.com/document_detail/208370.html).
         You cannot publish encrypted images as community images.
         Community images are publicly available. A community image is available to all Alibaba Cloud accounts in the region where the image resides.
         You cannot share, export, or copy community images.
-        After you unpublish a community image, the image is no longer available to other Alibaba Cloud accounts. If an image is shared to other Alibaba Cloud accounts before it is unpublished, the image remains available to the accounts.
+        After you unpublish a community image, the image is no longer available to other Alibaba Cloud accounts. If an image is shared with other Alibaba Cloud accounts before it is unpublished, the image remains available to the accounts.
         
         @param request: ModifyImageSharePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -45715,20 +45991,20 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyImageSharePermissionRequest,
     ) -> ecs_20140526_models.ModifyImageSharePermissionResponse:
         """
-        @summary Manages the share permissions on a custom image. You can share your custom images to other Alibaba Cloud accounts or publish the images as community images.
+        @summary Modifies the share permissions on an image. You can share your custom images with other Alibaba Cloud accounts or publish the images as community images.
         
-        @description ## [](#)Usage notes
-        Take note of the following items:
-        You can share only your own custom images to other Alibaba Cloud accounts.
-        You can share a custom image to up to 10 Alibaba Cloud accounts at a time. You can specify up to 10 Alibaba Cloud account IDs by using AddAccount.N or RemoveAccount.N. If you specify more than 10 account IDs, the system processes only the first 10 account IDs. The excess account IDs are ignored.
-        You can share a custom image to up to 50 Alibaba Cloud accounts.
+        @description Before you call this operation, read [Share custom images](https://help.aliyun.com/document_detail/25463.html).
+        When you call this operation, take note of the following sharing rules:
+        You can share only your custom images that were created in your Alibaba Cloud to other accounts.
+        You can share a custom image to up to 10 Alibaba Cloud accounts at a time. You can specify up to 10 Alibaba Cloud account IDs by using the AddAccount.N or RemoveAccount.N parameter. If you specify more than 10 account IDs, the system processes only the previous 10 account IDs. The excess account IDs are ignored.
+        You can share a custom image with up to 50 Alibaba Cloud accounts.
         If an Elastic Compute Service (ECS) instance was created ([RunInstances](https://help.aliyun.com/document_detail/63440.html)) from a shared image, you cannot re-initialize the instance ([ReInitDisk](https://help.aliyun.com/document_detail/25519.html)) after the image owner unshares or deletes the image ([DeleteImage](https://help.aliyun.com/document_detail/25537.html)).
         When you publish or unpublish a community image, take note of the following items:
         Alibaba Cloud provides only the platform on which community images can be published and managed. The owner of a community image is responsible for the quality and updates of the image. Make sure that you acknowledge and agree to the Community Image Agreement. Otherwise, you cannot publish community images. For more information, see [Publish a community image](https://help.aliyun.com/document_detail/208370.html).
         You cannot publish encrypted images as community images.
         Community images are publicly available. A community image is available to all Alibaba Cloud accounts in the region where the image resides.
         You cannot share, export, or copy community images.
-        After you unpublish a community image, the image is no longer available to other Alibaba Cloud accounts. If an image is shared to other Alibaba Cloud accounts before it is unpublished, the image remains available to the accounts.
+        After you unpublish a community image, the image is no longer available to other Alibaba Cloud accounts. If an image is shared with other Alibaba Cloud accounts before it is unpublished, the image remains available to the accounts.
         
         @param request: ModifyImageSharePermissionRequest
         @return: ModifyImageSharePermissionResponse
@@ -45741,20 +46017,20 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyImageSharePermissionRequest,
     ) -> ecs_20140526_models.ModifyImageSharePermissionResponse:
         """
-        @summary Manages the share permissions on a custom image. You can share your custom images to other Alibaba Cloud accounts or publish the images as community images.
+        @summary Modifies the share permissions on an image. You can share your custom images with other Alibaba Cloud accounts or publish the images as community images.
         
-        @description ## [](#)Usage notes
-        Take note of the following items:
-        You can share only your own custom images to other Alibaba Cloud accounts.
-        You can share a custom image to up to 10 Alibaba Cloud accounts at a time. You can specify up to 10 Alibaba Cloud account IDs by using AddAccount.N or RemoveAccount.N. If you specify more than 10 account IDs, the system processes only the first 10 account IDs. The excess account IDs are ignored.
-        You can share a custom image to up to 50 Alibaba Cloud accounts.
+        @description Before you call this operation, read [Share custom images](https://help.aliyun.com/document_detail/25463.html).
+        When you call this operation, take note of the following sharing rules:
+        You can share only your custom images that were created in your Alibaba Cloud to other accounts.
+        You can share a custom image to up to 10 Alibaba Cloud accounts at a time. You can specify up to 10 Alibaba Cloud account IDs by using the AddAccount.N or RemoveAccount.N parameter. If you specify more than 10 account IDs, the system processes only the previous 10 account IDs. The excess account IDs are ignored.
+        You can share a custom image with up to 50 Alibaba Cloud accounts.
         If an Elastic Compute Service (ECS) instance was created ([RunInstances](https://help.aliyun.com/document_detail/63440.html)) from a shared image, you cannot re-initialize the instance ([ReInitDisk](https://help.aliyun.com/document_detail/25519.html)) after the image owner unshares or deletes the image ([DeleteImage](https://help.aliyun.com/document_detail/25537.html)).
         When you publish or unpublish a community image, take note of the following items:
         Alibaba Cloud provides only the platform on which community images can be published and managed. The owner of a community image is responsible for the quality and updates of the image. Make sure that you acknowledge and agree to the Community Image Agreement. Otherwise, you cannot publish community images. For more information, see [Publish a community image](https://help.aliyun.com/document_detail/208370.html).
         You cannot publish encrypted images as community images.
         Community images are publicly available. A community image is available to all Alibaba Cloud accounts in the region where the image resides.
         You cannot share, export, or copy community images.
-        After you unpublish a community image, the image is no longer available to other Alibaba Cloud accounts. If an image is shared to other Alibaba Cloud accounts before it is unpublished, the image remains available to the accounts.
+        After you unpublish a community image, the image is no longer available to other Alibaba Cloud accounts. If an image is shared with other Alibaba Cloud accounts before it is unpublished, the image remains available to the accounts.
         
         @param request: ModifyImageSharePermissionRequest
         @return: ModifyImageSharePermissionResponse
@@ -45770,14 +46046,14 @@ class Client(OpenApiClient):
         """
         @summary Changes the type of the private pool for an Elastic Compute Service (ECS) instance.
         
-        @description A private pool is generated after an elasticity assurance or a capacity reservation is created. The private pool is associated with information about the instances that are created by using the resources in the private pool. When you create ECS instances, you can configure the instances to use private pool resources, matching them to active elasticity assurances or capacity reservations.
-        This operation does not require you to restart the instances for the changes to take effect.
-        When you call the following operations on an instance, the system attempts to match the instance with active private pools. If the instance is configured to a specific private pool. the call may fail because the private pool is no longer active or does not have sufficient resources. If the call fails, call the ModifyInstanceAttachmentAttributes operation to change the match mode of the private pool to `Open`.
-        StartInstance: starts an instance that is stopped in economical mode.
-        ReActivateInstances
-        ModifyInstanceChargeType
-        ModifyPrepayInstanceSpec
-        ReplaceSystemDisk
+        @description A private pool is generated after an elasticity assurance or a capacity reservation is created. The private pool is associated with information about the instances that use the private pool. You can specify whether to use a private pool when you create an ECS instance to match the instance with the associated elasticity assurance or capacity reservation.
+        After you call this operation to modify the private pool attributes of an ECS instance, you do not need to restart the instance for the changes to take effect.
+        When you call the following operations on an ECS instance, the system attempts to match the instance with active private pools. If the instance is already matched to a specified private pool, the call to an operation may fail when the private pool capacity is used up or the private pool expires. If the call fails, call the ModifyInstanceAttachmentAttributes operation to change the type of the private pool to `Open`.
+        [StartInstance](https://help.aliyun.com/document_detail/2679679.html): start an ECS instance that is stopped in economical mode.
+        [ReActivateInstances](https://help.aliyun.com/document_detail/2679707.html): reactivates an ECS instance that has expired or is reclaimed due to an overdue payment.
+        [ModifyInstanceChargeType](https://help.aliyun.com/document_detail/2679704.html): changes the billing method of an ECS instance.
+        [ModifyPrepayInstanceSpec](https://help.aliyun.com/document_detail/2679706.html): changes the instance type of an ECS instance.
+        [ReplaceSystemDisk](https://help.aliyun.com/document_detail/2679771.html): replaces the operating system of an ECS instance.
         
         @param request: ModifyInstanceAttachmentAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -45832,14 +46108,14 @@ class Client(OpenApiClient):
         """
         @summary Changes the type of the private pool for an Elastic Compute Service (ECS) instance.
         
-        @description A private pool is generated after an elasticity assurance or a capacity reservation is created. The private pool is associated with information about the instances that are created by using the resources in the private pool. When you create ECS instances, you can configure the instances to use private pool resources, matching them to active elasticity assurances or capacity reservations.
-        This operation does not require you to restart the instances for the changes to take effect.
-        When you call the following operations on an instance, the system attempts to match the instance with active private pools. If the instance is configured to a specific private pool. the call may fail because the private pool is no longer active or does not have sufficient resources. If the call fails, call the ModifyInstanceAttachmentAttributes operation to change the match mode of the private pool to `Open`.
-        StartInstance: starts an instance that is stopped in economical mode.
-        ReActivateInstances
-        ModifyInstanceChargeType
-        ModifyPrepayInstanceSpec
-        ReplaceSystemDisk
+        @description A private pool is generated after an elasticity assurance or a capacity reservation is created. The private pool is associated with information about the instances that use the private pool. You can specify whether to use a private pool when you create an ECS instance to match the instance with the associated elasticity assurance or capacity reservation.
+        After you call this operation to modify the private pool attributes of an ECS instance, you do not need to restart the instance for the changes to take effect.
+        When you call the following operations on an ECS instance, the system attempts to match the instance with active private pools. If the instance is already matched to a specified private pool, the call to an operation may fail when the private pool capacity is used up or the private pool expires. If the call fails, call the ModifyInstanceAttachmentAttributes operation to change the type of the private pool to `Open`.
+        [StartInstance](https://help.aliyun.com/document_detail/2679679.html): start an ECS instance that is stopped in economical mode.
+        [ReActivateInstances](https://help.aliyun.com/document_detail/2679707.html): reactivates an ECS instance that has expired or is reclaimed due to an overdue payment.
+        [ModifyInstanceChargeType](https://help.aliyun.com/document_detail/2679704.html): changes the billing method of an ECS instance.
+        [ModifyPrepayInstanceSpec](https://help.aliyun.com/document_detail/2679706.html): changes the instance type of an ECS instance.
+        [ReplaceSystemDisk](https://help.aliyun.com/document_detail/2679771.html): replaces the operating system of an ECS instance.
         
         @param request: ModifyInstanceAttachmentAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -45893,14 +46169,14 @@ class Client(OpenApiClient):
         """
         @summary Changes the type of the private pool for an Elastic Compute Service (ECS) instance.
         
-        @description A private pool is generated after an elasticity assurance or a capacity reservation is created. The private pool is associated with information about the instances that are created by using the resources in the private pool. When you create ECS instances, you can configure the instances to use private pool resources, matching them to active elasticity assurances or capacity reservations.
-        This operation does not require you to restart the instances for the changes to take effect.
-        When you call the following operations on an instance, the system attempts to match the instance with active private pools. If the instance is configured to a specific private pool. the call may fail because the private pool is no longer active or does not have sufficient resources. If the call fails, call the ModifyInstanceAttachmentAttributes operation to change the match mode of the private pool to `Open`.
-        StartInstance: starts an instance that is stopped in economical mode.
-        ReActivateInstances
-        ModifyInstanceChargeType
-        ModifyPrepayInstanceSpec
-        ReplaceSystemDisk
+        @description A private pool is generated after an elasticity assurance or a capacity reservation is created. The private pool is associated with information about the instances that use the private pool. You can specify whether to use a private pool when you create an ECS instance to match the instance with the associated elasticity assurance or capacity reservation.
+        After you call this operation to modify the private pool attributes of an ECS instance, you do not need to restart the instance for the changes to take effect.
+        When you call the following operations on an ECS instance, the system attempts to match the instance with active private pools. If the instance is already matched to a specified private pool, the call to an operation may fail when the private pool capacity is used up or the private pool expires. If the call fails, call the ModifyInstanceAttachmentAttributes operation to change the type of the private pool to `Open`.
+        [StartInstance](https://help.aliyun.com/document_detail/2679679.html): start an ECS instance that is stopped in economical mode.
+        [ReActivateInstances](https://help.aliyun.com/document_detail/2679707.html): reactivates an ECS instance that has expired or is reclaimed due to an overdue payment.
+        [ModifyInstanceChargeType](https://help.aliyun.com/document_detail/2679704.html): changes the billing method of an ECS instance.
+        [ModifyPrepayInstanceSpec](https://help.aliyun.com/document_detail/2679706.html): changes the instance type of an ECS instance.
+        [ReplaceSystemDisk](https://help.aliyun.com/document_detail/2679771.html): replaces the operating system of an ECS instance.
         
         @param request: ModifyInstanceAttachmentAttributesRequest
         @return: ModifyInstanceAttachmentAttributesResponse
@@ -45915,14 +46191,14 @@ class Client(OpenApiClient):
         """
         @summary Changes the type of the private pool for an Elastic Compute Service (ECS) instance.
         
-        @description A private pool is generated after an elasticity assurance or a capacity reservation is created. The private pool is associated with information about the instances that are created by using the resources in the private pool. When you create ECS instances, you can configure the instances to use private pool resources, matching them to active elasticity assurances or capacity reservations.
-        This operation does not require you to restart the instances for the changes to take effect.
-        When you call the following operations on an instance, the system attempts to match the instance with active private pools. If the instance is configured to a specific private pool. the call may fail because the private pool is no longer active or does not have sufficient resources. If the call fails, call the ModifyInstanceAttachmentAttributes operation to change the match mode of the private pool to `Open`.
-        StartInstance: starts an instance that is stopped in economical mode.
-        ReActivateInstances
-        ModifyInstanceChargeType
-        ModifyPrepayInstanceSpec
-        ReplaceSystemDisk
+        @description A private pool is generated after an elasticity assurance or a capacity reservation is created. The private pool is associated with information about the instances that use the private pool. You can specify whether to use a private pool when you create an ECS instance to match the instance with the associated elasticity assurance or capacity reservation.
+        After you call this operation to modify the private pool attributes of an ECS instance, you do not need to restart the instance for the changes to take effect.
+        When you call the following operations on an ECS instance, the system attempts to match the instance with active private pools. If the instance is already matched to a specified private pool, the call to an operation may fail when the private pool capacity is used up or the private pool expires. If the call fails, call the ModifyInstanceAttachmentAttributes operation to change the type of the private pool to `Open`.
+        [StartInstance](https://help.aliyun.com/document_detail/2679679.html): start an ECS instance that is stopped in economical mode.
+        [ReActivateInstances](https://help.aliyun.com/document_detail/2679707.html): reactivates an ECS instance that has expired or is reclaimed due to an overdue payment.
+        [ModifyInstanceChargeType](https://help.aliyun.com/document_detail/2679704.html): changes the billing method of an ECS instance.
+        [ModifyPrepayInstanceSpec](https://help.aliyun.com/document_detail/2679706.html): changes the instance type of an ECS instance.
+        [ReplaceSystemDisk](https://help.aliyun.com/document_detail/2679771.html): replaces the operating system of an ECS instance.
         
         @param request: ModifyInstanceAttachmentAttributesRequest
         @return: ModifyInstanceAttachmentAttributesResponse
@@ -46258,9 +46534,11 @@ class Client(OpenApiClient):
         """
         @summary Configures auto-renewal for subscription instances to help reduce the maintenance workloads on instance expiration.
         
-        @description Before you call this operation, make sure that you are familiar with the billing methods and pricing of Elastic Compute Service (ECS). For more information, see the [Elastic Compute Service](https://www.alibabacloud.com/product/ecs#pricing) product page.
+        @description *Before you call this operation, make sure that you are familiar with the billing methods and [pricing](https://www.alibabacloud.com/product/ecs#pricing) of Elastic Compute Service (ECS)**.
+        Make sure that your account balance or credit balance is sufficient.
+        Only subscription instances are supported. If you call this operation for a pay-as-you-go instance, an error is returned.
         The payment for auto-renewal of an instance is automatically deducted at 08:00:00 (UTC+8) nine days before the instance expires.
-        If the deduction fails, Alibaba Cloud attempts to deduct the payment every day until the payment is deducted or until the instance is locked after the nine-day period ends. Make sure that your account balance or credit balance is sufficient.
+        If the deduction fails, Alibaba Cloud attempts to deduct the payment every day until the payment is deducted or until the instance is locked on expiration.
         
         @param request: ModifyInstanceAutoRenewAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -46321,9 +46599,11 @@ class Client(OpenApiClient):
         """
         @summary Configures auto-renewal for subscription instances to help reduce the maintenance workloads on instance expiration.
         
-        @description Before you call this operation, make sure that you are familiar with the billing methods and pricing of Elastic Compute Service (ECS). For more information, see the [Elastic Compute Service](https://www.alibabacloud.com/product/ecs#pricing) product page.
+        @description *Before you call this operation, make sure that you are familiar with the billing methods and [pricing](https://www.alibabacloud.com/product/ecs#pricing) of Elastic Compute Service (ECS)**.
+        Make sure that your account balance or credit balance is sufficient.
+        Only subscription instances are supported. If you call this operation for a pay-as-you-go instance, an error is returned.
         The payment for auto-renewal of an instance is automatically deducted at 08:00:00 (UTC+8) nine days before the instance expires.
-        If the deduction fails, Alibaba Cloud attempts to deduct the payment every day until the payment is deducted or until the instance is locked after the nine-day period ends. Make sure that your account balance or credit balance is sufficient.
+        If the deduction fails, Alibaba Cloud attempts to deduct the payment every day until the payment is deducted or until the instance is locked on expiration.
         
         @param request: ModifyInstanceAutoRenewAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -46383,9 +46663,11 @@ class Client(OpenApiClient):
         """
         @summary Configures auto-renewal for subscription instances to help reduce the maintenance workloads on instance expiration.
         
-        @description Before you call this operation, make sure that you are familiar with the billing methods and pricing of Elastic Compute Service (ECS). For more information, see the [Elastic Compute Service](https://www.alibabacloud.com/product/ecs#pricing) product page.
+        @description *Before you call this operation, make sure that you are familiar with the billing methods and [pricing](https://www.alibabacloud.com/product/ecs#pricing) of Elastic Compute Service (ECS)**.
+        Make sure that your account balance or credit balance is sufficient.
+        Only subscription instances are supported. If you call this operation for a pay-as-you-go instance, an error is returned.
         The payment for auto-renewal of an instance is automatically deducted at 08:00:00 (UTC+8) nine days before the instance expires.
-        If the deduction fails, Alibaba Cloud attempts to deduct the payment every day until the payment is deducted or until the instance is locked after the nine-day period ends. Make sure that your account balance or credit balance is sufficient.
+        If the deduction fails, Alibaba Cloud attempts to deduct the payment every day until the payment is deducted or until the instance is locked on expiration.
         
         @param request: ModifyInstanceAutoRenewAttributeRequest
         @return: ModifyInstanceAutoRenewAttributeResponse
@@ -46400,9 +46682,11 @@ class Client(OpenApiClient):
         """
         @summary Configures auto-renewal for subscription instances to help reduce the maintenance workloads on instance expiration.
         
-        @description Before you call this operation, make sure that you are familiar with the billing methods and pricing of Elastic Compute Service (ECS). For more information, see the [Elastic Compute Service](https://www.alibabacloud.com/product/ecs#pricing) product page.
+        @description *Before you call this operation, make sure that you are familiar with the billing methods and [pricing](https://www.alibabacloud.com/product/ecs#pricing) of Elastic Compute Service (ECS)**.
+        Make sure that your account balance or credit balance is sufficient.
+        Only subscription instances are supported. If you call this operation for a pay-as-you-go instance, an error is returned.
         The payment for auto-renewal of an instance is automatically deducted at 08:00:00 (UTC+8) nine days before the instance expires.
-        If the deduction fails, Alibaba Cloud attempts to deduct the payment every day until the payment is deducted or until the instance is locked after the nine-day period ends. Make sure that your account balance or credit balance is sufficient.
+        If the deduction fails, Alibaba Cloud attempts to deduct the payment every day until the payment is deducted or until the instance is locked on expiration.
         
         @param request: ModifyInstanceAutoRenewAttributeRequest
         @return: ModifyInstanceAutoRenewAttributeResponse
@@ -46624,7 +46908,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceDeploymentResponse:
         """
-        @summary Changes the deployment set of an Elastic Compute Service (ECS) instance or migrates an ECS instance to a dedicated host. You can change the instance type of an instance when you migrate the instance.
+        @summary Changes the deployment set of an Elastic Compute Service (ECS) instance or migrates an ECS instance to a dedicated host. You can change the instance type of an ECS instance when you migrate the instance.
         
         @description Take note of the following items:
         The instance must be in the **Stopped** (Stopped) state. The instance is automatically restarted after it is migrated.
@@ -46703,7 +46987,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceDeploymentResponse:
         """
-        @summary Changes the deployment set of an Elastic Compute Service (ECS) instance or migrates an ECS instance to a dedicated host. You can change the instance type of an instance when you migrate the instance.
+        @summary Changes the deployment set of an Elastic Compute Service (ECS) instance or migrates an ECS instance to a dedicated host. You can change the instance type of an ECS instance when you migrate the instance.
         
         @description Take note of the following items:
         The instance must be in the **Stopped** (Stopped) state. The instance is automatically restarted after it is migrated.
@@ -46781,7 +47065,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceDeploymentRequest,
     ) -> ecs_20140526_models.ModifyInstanceDeploymentResponse:
         """
-        @summary Changes the deployment set of an Elastic Compute Service (ECS) instance or migrates an ECS instance to a dedicated host. You can change the instance type of an instance when you migrate the instance.
+        @summary Changes the deployment set of an Elastic Compute Service (ECS) instance or migrates an ECS instance to a dedicated host. You can change the instance type of an ECS instance when you migrate the instance.
         
         @description Take note of the following items:
         The instance must be in the **Stopped** (Stopped) state. The instance is automatically restarted after it is migrated.
@@ -46802,7 +47086,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceDeploymentRequest,
     ) -> ecs_20140526_models.ModifyInstanceDeploymentResponse:
         """
-        @summary Changes the deployment set of an Elastic Compute Service (ECS) instance or migrates an ECS instance to a dedicated host. You can change the instance type of an instance when you migrate the instance.
+        @summary Changes the deployment set of an Elastic Compute Service (ECS) instance or migrates an ECS instance to a dedicated host. You can change the instance type of an ECS instance when you migrate the instance.
         
         @description Take note of the following items:
         The instance must be in the **Stopped** (Stopped) state. The instance is automatically restarted after it is migrated.
@@ -50982,7 +51266,7 @@ class Client(OpenApiClient):
         You can archive only standard snapshots that have been retained for at least 14 days.
         You cannot archive encrypted snapshots.
         You cannot archive snapshots that are shared to you, snapshots managed by Cloud Backup, or snapshots in cloud boxes.
-        The Archive Snapshot feature is available only in the China (Hohhot) and Malaysia (Kuala Lumpur) regions. The availability of the feature in other regions is subject to notice.
+        The archive snapshot feature is available only in the China (Hohhot), Malaysia (Kuala Lumpur), South Korea (Seoul), Philippines (Manila), Thailand (Bangkok), and Mexico regions. The availability of the feature in other regions is subject to notice.
         
         @param request: ModifySnapshotCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -51041,7 +51325,7 @@ class Client(OpenApiClient):
         You can archive only standard snapshots that have been retained for at least 14 days.
         You cannot archive encrypted snapshots.
         You cannot archive snapshots that are shared to you, snapshots managed by Cloud Backup, or snapshots in cloud boxes.
-        The Archive Snapshot feature is available only in the China (Hohhot) and Malaysia (Kuala Lumpur) regions. The availability of the feature in other regions is subject to notice.
+        The archive snapshot feature is available only in the China (Hohhot), Malaysia (Kuala Lumpur), South Korea (Seoul), Philippines (Manila), Thailand (Bangkok), and Mexico regions. The availability of the feature in other regions is subject to notice.
         
         @param request: ModifySnapshotCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -51099,7 +51383,7 @@ class Client(OpenApiClient):
         You can archive only standard snapshots that have been retained for at least 14 days.
         You cannot archive encrypted snapshots.
         You cannot archive snapshots that are shared to you, snapshots managed by Cloud Backup, or snapshots in cloud boxes.
-        The Archive Snapshot feature is available only in the China (Hohhot) and Malaysia (Kuala Lumpur) regions. The availability of the feature in other regions is subject to notice.
+        The archive snapshot feature is available only in the China (Hohhot), Malaysia (Kuala Lumpur), South Korea (Seoul), Philippines (Manila), Thailand (Bangkok), and Mexico regions. The availability of the feature in other regions is subject to notice.
         
         @param request: ModifySnapshotCategoryRequest
         @return: ModifySnapshotCategoryResponse
@@ -51118,7 +51402,7 @@ class Client(OpenApiClient):
         You can archive only standard snapshots that have been retained for at least 14 days.
         You cannot archive encrypted snapshots.
         You cannot archive snapshots that are shared to you, snapshots managed by Cloud Backup, or snapshots in cloud boxes.
-        The Archive Snapshot feature is available only in the China (Hohhot) and Malaysia (Kuala Lumpur) regions. The availability of the feature in other regions is subject to notice.
+        The archive snapshot feature is available only in the China (Hohhot), Malaysia (Kuala Lumpur), South Korea (Seoul), Philippines (Manila), Thailand (Bangkok), and Mexico regions. The availability of the feature in other regions is subject to notice.
         
         @param request: ModifySnapshotCategoryRequest
         @return: ModifySnapshotCategoryResponse
@@ -51546,6 +51830,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI ModifyUserBusinessBehavior is deprecated
         
+        @summary 设置用户级别默认属性
+        
         @param request: ModifyUserBusinessBehaviorRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyUserBusinessBehaviorResponse
@@ -51600,6 +51886,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI ModifyUserBusinessBehavior is deprecated
         
+        @summary 设置用户级别默认属性
+        
         @param request: ModifyUserBusinessBehaviorRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyUserBusinessBehaviorResponse
@@ -51653,6 +51941,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI ModifyUserBusinessBehavior is deprecated
         
+        @summary 设置用户级别默认属性
+        
         @param request: ModifyUserBusinessBehaviorRequest
         @return: ModifyUserBusinessBehaviorResponse
         Deprecated
@@ -51666,6 +51956,8 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.ModifyUserBusinessBehaviorResponse:
         """
         @deprecated OpenAPI ModifyUserBusinessBehavior is deprecated
+        
+        @summary 设置用户级别默认属性
         
         @param request: ModifyUserBusinessBehaviorRequest
         @return: ModifyUserBusinessBehaviorResponse
@@ -52713,6 +53005,8 @@ class Client(OpenApiClient):
             query['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -52785,6 +53079,8 @@ class Client(OpenApiClient):
             query['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -53624,7 +53920,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RedeployDedicatedHostResponse:
         """
-        @summary Migrates Elastic Compute Service (ECS) instances away from a failed dedicated host.
+        @summary Migrates Elastic Compute Service (ECS) instances from a failed dedicated host.
         
         @description If a dedicated host is in the UnderAssessment state, we recommend that you call this operation to migrate ECS instances away from the dedicated host to prevent permanent failures. You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) operation to query the status of a dedicated host.
         
@@ -53679,7 +53975,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RedeployDedicatedHostResponse:
         """
-        @summary Migrates Elastic Compute Service (ECS) instances away from a failed dedicated host.
+        @summary Migrates Elastic Compute Service (ECS) instances from a failed dedicated host.
         
         @description If a dedicated host is in the UnderAssessment state, we recommend that you call this operation to migrate ECS instances away from the dedicated host to prevent permanent failures. You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) operation to query the status of a dedicated host.
         
@@ -53733,7 +54029,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RedeployDedicatedHostRequest,
     ) -> ecs_20140526_models.RedeployDedicatedHostResponse:
         """
-        @summary Migrates Elastic Compute Service (ECS) instances away from a failed dedicated host.
+        @summary Migrates Elastic Compute Service (ECS) instances from a failed dedicated host.
         
         @description If a dedicated host is in the UnderAssessment state, we recommend that you call this operation to migrate ECS instances away from the dedicated host to prevent permanent failures. You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) operation to query the status of a dedicated host.
         
@@ -53748,7 +54044,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RedeployDedicatedHostRequest,
     ) -> ecs_20140526_models.RedeployDedicatedHostResponse:
         """
-        @summary Migrates Elastic Compute Service (ECS) instances away from a failed dedicated host.
+        @summary Migrates Elastic Compute Service (ECS) instances from a failed dedicated host.
         
         @description If a dedicated host is in the UnderAssessment state, we recommend that you call this operation to migrate ECS instances away from the dedicated host to prevent permanent failures. You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) operation to query the status of a dedicated host.
         
@@ -53764,7 +54060,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RedeployInstanceResponse:
         """
-        @summary Redeploys an instance when the instance receives a system event notification.
+        @summary Redeploys an Elastic Compute Service (ECS) instance. You can call this operation to redeploy an ECS instance when the instance receives a system event notification.
         
         @description RedeployInstance is an asynchronous operation. This operation migrates data before it restarts the instance. After the instance is redeployed, the instance enters the `Running` state. If the instance fails to be redeployed, the instance returns to the original physical server and the state before redeployment.
         Take note of the following items:
@@ -53837,7 +54133,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RedeployInstanceResponse:
         """
-        @summary Redeploys an instance when the instance receives a system event notification.
+        @summary Redeploys an Elastic Compute Service (ECS) instance. You can call this operation to redeploy an ECS instance when the instance receives a system event notification.
         
         @description RedeployInstance is an asynchronous operation. This operation migrates data before it restarts the instance. After the instance is redeployed, the instance enters the `Running` state. If the instance fails to be redeployed, the instance returns to the original physical server and the state before redeployment.
         Take note of the following items:
@@ -53909,7 +54205,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RedeployInstanceRequest,
     ) -> ecs_20140526_models.RedeployInstanceResponse:
         """
-        @summary Redeploys an instance when the instance receives a system event notification.
+        @summary Redeploys an Elastic Compute Service (ECS) instance. You can call this operation to redeploy an ECS instance when the instance receives a system event notification.
         
         @description RedeployInstance is an asynchronous operation. This operation migrates data before it restarts the instance. After the instance is redeployed, the instance enters the `Running` state. If the instance fails to be redeployed, the instance returns to the original physical server and the state before redeployment.
         Take note of the following items:
@@ -53944,7 +54240,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RedeployInstanceRequest,
     ) -> ecs_20140526_models.RedeployInstanceResponse:
         """
-        @summary Redeploys an instance when the instance receives a system event notification.
+        @summary Redeploys an Elastic Compute Service (ECS) instance. You can call this operation to redeploy an ECS instance when the instance receives a system event notification.
         
         @description RedeployInstance is an asynchronous operation. This operation migrates data before it restarts the instance. After the instance is redeployed, the instance enters the `Running` state. If the instance fails to be redeployed, the instance returns to the original physical server and the state before redeployment.
         Take note of the following items:
@@ -54960,7 +55256,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RenewElasticityAssurancesResponse:
         """
-        @summary Renews one or more elasticity assurances that you purchased. When you call this operation, you can specify parameters, such as PrivatePoolOptionsId and Period, in the request.
+        @summary Renews elasticity assurances that you purchased.
         
         @param request: RenewElasticityAssurancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -55023,7 +55319,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RenewElasticityAssurancesResponse:
         """
-        @summary Renews one or more elasticity assurances that you purchased. When you call this operation, you can specify parameters, such as PrivatePoolOptionsId and Period, in the request.
+        @summary Renews elasticity assurances that you purchased.
         
         @param request: RenewElasticityAssurancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -55085,7 +55381,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RenewElasticityAssurancesRequest,
     ) -> ecs_20140526_models.RenewElasticityAssurancesResponse:
         """
-        @summary Renews one or more elasticity assurances that you purchased. When you call this operation, you can specify parameters, such as PrivatePoolOptionsId and Period, in the request.
+        @summary Renews elasticity assurances that you purchased.
         
         @param request: RenewElasticityAssurancesRequest
         @return: RenewElasticityAssurancesResponse
@@ -55098,7 +55394,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RenewElasticityAssurancesRequest,
     ) -> ecs_20140526_models.RenewElasticityAssurancesResponse:
         """
-        @summary Renews one or more elasticity assurances that you purchased. When you call this operation, you can specify parameters, such as PrivatePoolOptionsId and Period, in the request.
+        @summary Renews elasticity assurances that you purchased.
         
         @param request: RenewElasticityAssurancesRequest
         @return: RenewElasticityAssurancesResponse
@@ -56266,15 +56562,15 @@ class Client(OpenApiClient):
         """
         @summary Resizes a system disk or a data disk.
         
-        @description >  Before you call this operation to resize a disk, you must check the partition format of the disk. You cannot resize a master boot record (MBR) disk to a size that is larger than 2 TiB. If you resize an MBR disk to a size that is larger than 2 TiB, data may be lost. If you want to resize an MBR disk to a size that is larger than 2 TiB, we recommend that you perform the following steps: Create a new data disk that is larger than 2 TiB in size, partition and format the new data disk by using the GUID Partition Table (GPT) format, and then copy data from the MBR disk to the GPT data disk. For more information, see [Step 1: Resize a disk to extend the capacity of the disk](https://help.aliyun.com/document_detail/44986.html).
+        @description >  Before you call this operation to resize a disk, you must check the partition format of the disk. You cannot resize a master boot record (MBR) disk to a size that is larger than 2 TiB. If you resize an MBR disk to a size that is larger than 2 TiB, data may be lost. If you want to resize an MBR disk to a size that is larger than 2 TiB, we recommend that you perform the following steps: Create a new data disk that is larger than 2 TiB in size, partition and format the new data disk by using the GUID Partition Table (GPT) format, and then copy data from the MBR disk to the GPT data disk. For more information, see [Step 1: Resize a disk to extend the disk capacity](https://help.aliyun.com/document_detail/44986.html).
         You can resize disks of the following disk categories: basic disks (`cloud`), ultra disks (`cloud_efficiency`), standard SSDs (`cloud_ssd`), Enterprise SSDs (ESSDs) (`cloud_essd`), ESSD AutoPL disks (cloud_auto), standard elastic ephemeral disks (elastic_ephemeral_disk_standard), and premium elastic ephemeral disks (elastic_ephemeral_disk_premium).
-        You cannot resize a disk for which a snapshot is being created. Wait until the snapshot is created before you resize the disk.
-        You cannot call this operation to resize partitions or file systems on a disk. You must manually resize the partitions and file systems after the disk is resized. For more information, see [Step 2: Resize partitions and file systems](https://help.aliyun.com/document_detail/470068.html).
-        If the multi-attach feature is enabled for a disk, you can resize the disk online or offline. Make sure that the Elastic Compute Service (ECS) instances to which the disk is attached meet the following requirements:
+        You cannot resize a cloud disk when a snapshot is being created for the disk. Wait until the snapshot is created before you resize the cloud disk.
+        You cannot call this operation to resize partitions or file systems on a cloud disk. You must manually resize the partitions and file systems after the disk is resized. For more information, see [Step 2: Resize partitions and file systems](https://help.aliyun.com/document_detail/470068.html).
+        If the multi-attach feature is enabled for a cloud disk, you can resize the disk online or offline. Make sure that the Elastic Compute Service (ECS) instances to which the disk is attached meet the following requirements:
         If you want to resize the disk online, the ECS instances must be in the **Running** (`Running`) state.
         If you want to resize the disk offline, the ECS instances must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
-        The disk that you want to resize must meet the following requirements:
-        The disk is in the In_use (In Use) or Available (Unattached) state.
+        The cloud disk that you want to resize must meet the following requirements:
+        The disk is in the In Use (`In_use`) or Unattached (`Available`) state.
         (Recommended) Snapshots are created for the disk to back up disk data. For information about how to create snapshots for a disk, see [Create a snapshot](https://help.aliyun.com/document_detail/25455.html).
         If the disk is a new data disk, initialize the disk before you resize the disk. For more information, see [Overview](https://help.aliyun.com/document_detail/466323.html).
         
@@ -56333,15 +56629,15 @@ class Client(OpenApiClient):
         """
         @summary Resizes a system disk or a data disk.
         
-        @description >  Before you call this operation to resize a disk, you must check the partition format of the disk. You cannot resize a master boot record (MBR) disk to a size that is larger than 2 TiB. If you resize an MBR disk to a size that is larger than 2 TiB, data may be lost. If you want to resize an MBR disk to a size that is larger than 2 TiB, we recommend that you perform the following steps: Create a new data disk that is larger than 2 TiB in size, partition and format the new data disk by using the GUID Partition Table (GPT) format, and then copy data from the MBR disk to the GPT data disk. For more information, see [Step 1: Resize a disk to extend the capacity of the disk](https://help.aliyun.com/document_detail/44986.html).
+        @description >  Before you call this operation to resize a disk, you must check the partition format of the disk. You cannot resize a master boot record (MBR) disk to a size that is larger than 2 TiB. If you resize an MBR disk to a size that is larger than 2 TiB, data may be lost. If you want to resize an MBR disk to a size that is larger than 2 TiB, we recommend that you perform the following steps: Create a new data disk that is larger than 2 TiB in size, partition and format the new data disk by using the GUID Partition Table (GPT) format, and then copy data from the MBR disk to the GPT data disk. For more information, see [Step 1: Resize a disk to extend the disk capacity](https://help.aliyun.com/document_detail/44986.html).
         You can resize disks of the following disk categories: basic disks (`cloud`), ultra disks (`cloud_efficiency`), standard SSDs (`cloud_ssd`), Enterprise SSDs (ESSDs) (`cloud_essd`), ESSD AutoPL disks (cloud_auto), standard elastic ephemeral disks (elastic_ephemeral_disk_standard), and premium elastic ephemeral disks (elastic_ephemeral_disk_premium).
-        You cannot resize a disk for which a snapshot is being created. Wait until the snapshot is created before you resize the disk.
-        You cannot call this operation to resize partitions or file systems on a disk. You must manually resize the partitions and file systems after the disk is resized. For more information, see [Step 2: Resize partitions and file systems](https://help.aliyun.com/document_detail/470068.html).
-        If the multi-attach feature is enabled for a disk, you can resize the disk online or offline. Make sure that the Elastic Compute Service (ECS) instances to which the disk is attached meet the following requirements:
+        You cannot resize a cloud disk when a snapshot is being created for the disk. Wait until the snapshot is created before you resize the cloud disk.
+        You cannot call this operation to resize partitions or file systems on a cloud disk. You must manually resize the partitions and file systems after the disk is resized. For more information, see [Step 2: Resize partitions and file systems](https://help.aliyun.com/document_detail/470068.html).
+        If the multi-attach feature is enabled for a cloud disk, you can resize the disk online or offline. Make sure that the Elastic Compute Service (ECS) instances to which the disk is attached meet the following requirements:
         If you want to resize the disk online, the ECS instances must be in the **Running** (`Running`) state.
         If you want to resize the disk offline, the ECS instances must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
-        The disk that you want to resize must meet the following requirements:
-        The disk is in the In_use (In Use) or Available (Unattached) state.
+        The cloud disk that you want to resize must meet the following requirements:
+        The disk is in the In Use (`In_use`) or Unattached (`Available`) state.
         (Recommended) Snapshots are created for the disk to back up disk data. For information about how to create snapshots for a disk, see [Create a snapshot](https://help.aliyun.com/document_detail/25455.html).
         If the disk is a new data disk, initialize the disk before you resize the disk. For more information, see [Overview](https://help.aliyun.com/document_detail/466323.html).
         
@@ -56399,15 +56695,15 @@ class Client(OpenApiClient):
         """
         @summary Resizes a system disk or a data disk.
         
-        @description >  Before you call this operation to resize a disk, you must check the partition format of the disk. You cannot resize a master boot record (MBR) disk to a size that is larger than 2 TiB. If you resize an MBR disk to a size that is larger than 2 TiB, data may be lost. If you want to resize an MBR disk to a size that is larger than 2 TiB, we recommend that you perform the following steps: Create a new data disk that is larger than 2 TiB in size, partition and format the new data disk by using the GUID Partition Table (GPT) format, and then copy data from the MBR disk to the GPT data disk. For more information, see [Step 1: Resize a disk to extend the capacity of the disk](https://help.aliyun.com/document_detail/44986.html).
+        @description >  Before you call this operation to resize a disk, you must check the partition format of the disk. You cannot resize a master boot record (MBR) disk to a size that is larger than 2 TiB. If you resize an MBR disk to a size that is larger than 2 TiB, data may be lost. If you want to resize an MBR disk to a size that is larger than 2 TiB, we recommend that you perform the following steps: Create a new data disk that is larger than 2 TiB in size, partition and format the new data disk by using the GUID Partition Table (GPT) format, and then copy data from the MBR disk to the GPT data disk. For more information, see [Step 1: Resize a disk to extend the disk capacity](https://help.aliyun.com/document_detail/44986.html).
         You can resize disks of the following disk categories: basic disks (`cloud`), ultra disks (`cloud_efficiency`), standard SSDs (`cloud_ssd`), Enterprise SSDs (ESSDs) (`cloud_essd`), ESSD AutoPL disks (cloud_auto), standard elastic ephemeral disks (elastic_ephemeral_disk_standard), and premium elastic ephemeral disks (elastic_ephemeral_disk_premium).
-        You cannot resize a disk for which a snapshot is being created. Wait until the snapshot is created before you resize the disk.
-        You cannot call this operation to resize partitions or file systems on a disk. You must manually resize the partitions and file systems after the disk is resized. For more information, see [Step 2: Resize partitions and file systems](https://help.aliyun.com/document_detail/470068.html).
-        If the multi-attach feature is enabled for a disk, you can resize the disk online or offline. Make sure that the Elastic Compute Service (ECS) instances to which the disk is attached meet the following requirements:
+        You cannot resize a cloud disk when a snapshot is being created for the disk. Wait until the snapshot is created before you resize the cloud disk.
+        You cannot call this operation to resize partitions or file systems on a cloud disk. You must manually resize the partitions and file systems after the disk is resized. For more information, see [Step 2: Resize partitions and file systems](https://help.aliyun.com/document_detail/470068.html).
+        If the multi-attach feature is enabled for a cloud disk, you can resize the disk online or offline. Make sure that the Elastic Compute Service (ECS) instances to which the disk is attached meet the following requirements:
         If you want to resize the disk online, the ECS instances must be in the **Running** (`Running`) state.
         If you want to resize the disk offline, the ECS instances must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
-        The disk that you want to resize must meet the following requirements:
-        The disk is in the In_use (In Use) or Available (Unattached) state.
+        The cloud disk that you want to resize must meet the following requirements:
+        The disk is in the In Use (`In_use`) or Unattached (`Available`) state.
         (Recommended) Snapshots are created for the disk to back up disk data. For information about how to create snapshots for a disk, see [Create a snapshot](https://help.aliyun.com/document_detail/25455.html).
         If the disk is a new data disk, initialize the disk before you resize the disk. For more information, see [Overview](https://help.aliyun.com/document_detail/466323.html).
         
@@ -56424,15 +56720,15 @@ class Client(OpenApiClient):
         """
         @summary Resizes a system disk or a data disk.
         
-        @description >  Before you call this operation to resize a disk, you must check the partition format of the disk. You cannot resize a master boot record (MBR) disk to a size that is larger than 2 TiB. If you resize an MBR disk to a size that is larger than 2 TiB, data may be lost. If you want to resize an MBR disk to a size that is larger than 2 TiB, we recommend that you perform the following steps: Create a new data disk that is larger than 2 TiB in size, partition and format the new data disk by using the GUID Partition Table (GPT) format, and then copy data from the MBR disk to the GPT data disk. For more information, see [Step 1: Resize a disk to extend the capacity of the disk](https://help.aliyun.com/document_detail/44986.html).
+        @description >  Before you call this operation to resize a disk, you must check the partition format of the disk. You cannot resize a master boot record (MBR) disk to a size that is larger than 2 TiB. If you resize an MBR disk to a size that is larger than 2 TiB, data may be lost. If you want to resize an MBR disk to a size that is larger than 2 TiB, we recommend that you perform the following steps: Create a new data disk that is larger than 2 TiB in size, partition and format the new data disk by using the GUID Partition Table (GPT) format, and then copy data from the MBR disk to the GPT data disk. For more information, see [Step 1: Resize a disk to extend the disk capacity](https://help.aliyun.com/document_detail/44986.html).
         You can resize disks of the following disk categories: basic disks (`cloud`), ultra disks (`cloud_efficiency`), standard SSDs (`cloud_ssd`), Enterprise SSDs (ESSDs) (`cloud_essd`), ESSD AutoPL disks (cloud_auto), standard elastic ephemeral disks (elastic_ephemeral_disk_standard), and premium elastic ephemeral disks (elastic_ephemeral_disk_premium).
-        You cannot resize a disk for which a snapshot is being created. Wait until the snapshot is created before you resize the disk.
-        You cannot call this operation to resize partitions or file systems on a disk. You must manually resize the partitions and file systems after the disk is resized. For more information, see [Step 2: Resize partitions and file systems](https://help.aliyun.com/document_detail/470068.html).
-        If the multi-attach feature is enabled for a disk, you can resize the disk online or offline. Make sure that the Elastic Compute Service (ECS) instances to which the disk is attached meet the following requirements:
+        You cannot resize a cloud disk when a snapshot is being created for the disk. Wait until the snapshot is created before you resize the cloud disk.
+        You cannot call this operation to resize partitions or file systems on a cloud disk. You must manually resize the partitions and file systems after the disk is resized. For more information, see [Step 2: Resize partitions and file systems](https://help.aliyun.com/document_detail/470068.html).
+        If the multi-attach feature is enabled for a cloud disk, you can resize the disk online or offline. Make sure that the Elastic Compute Service (ECS) instances to which the disk is attached meet the following requirements:
         If you want to resize the disk online, the ECS instances must be in the **Running** (`Running`) state.
         If you want to resize the disk offline, the ECS instances must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
-        The disk that you want to resize must meet the following requirements:
-        The disk is in the In_use (In Use) or Available (Unattached) state.
+        The cloud disk that you want to resize must meet the following requirements:
+        The disk is in the In Use (`In_use`) or Unattached (`Available`) state.
         (Recommended) Snapshots are created for the disk to back up disk data. For information about how to create snapshots for a disk, see [Create a snapshot](https://help.aliyun.com/document_detail/25455.html).
         If the disk is a new data disk, initialize the disk before you resize the disk. For more information, see [Overview](https://help.aliyun.com/document_detail/466323.html).
         
@@ -57260,25 +57556,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RunCommandResponse:
         """
-        @summary Runs a Cloud Assistant command on one or more Elastic Compute Service (ECS) instances. Shell, PowerShell, and batch commands are supported.
+        @summary Creates and runs a Cloud Assistant command on one or more Elastic Compute Service (ECS) instances. Shell, PowerShell, and batch commands are supported. You can run the command based on a schedule, include custom parameters in the command, or run the command in containers on instances.
         
-        @description ## [](#)Usage notes
-        Unlike the [CreateCommand](https://help.aliyun.com/document_detail/64844.html) and [InvokeCommand](https://help.aliyun.com/document_detail/64841.html) operations, the RunCommand operation can be used to create and run a command in a single request.
-        Take note of the following items:
-        The instances on which you want to run a command must be in the Running (`Running`) state. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) operation to query the status of instances.
-        [Cloud Assistant Agent](https://help.aliyun.com/document_detail/64921.html) must be installed on the instances.
+        @description This operation is an asynchronous operation. After a request is sent, a response that contains a command ID and a command task ID is immediately returned. You can call the [DescribeInvocations](https://help.aliyun.com/document_detail/2679916.html) or [DescribeInvocationResults](https://help.aliyun.com/document_detail/2679916.html) operation with the command ID or task ID to query the execution results of the command.
+        ### [](#)Precautions
+        The instances on which you want to create and run a Cloud Assistant command must be in the Running (`Running`) state. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) operation to query the status of instances.
+        [Cloud Assistant Agent](https://help.aliyun.com/document_detail/64921.html) must be pre-installed on the instances on which you want to create and run a Cloud Assistant command. You can call the [InstallCloudAssistant](https://help.aliyun.com/document_detail/2679925.html) operation to install Cloud Assistant Agent on instances and the [DescribeCloudAssistantStatus](https://help.aliyun.com/document_detail/2679924.html) operation to query whether Cloud Assistant Agent is installed on instances.
+        *\
+        *Note** By default, Cloud Assistant Agent is pre-installed on instances created from public images on or after December 1, 2017.
         Before you run a PowerShell command on a Windows instance, make sure that the PowerShell module is installed on the instance.
+        ### [](#)Considerations
+        You can retain up to 500 to 50,000 Cloud Assistant commands in each region. You can also request a quota increase. For information about how to view quotas and request a quota increase, see [Manage quotas](https://help.aliyun.com/document_detail/184116.html).
+        To ensure that scheduled tasks can run as expected, make sure that the Cloud Assistant Agent version is not earlier than the following versions. A scheduled task can run a command at a specific interval, only once at a specific time, or at designated times based on a cron expression in a specific year or time zone. If the `ClientNeedUpgrade` error code is returned, you must update Cloud Assistant Agent to the latest version. For more information, see [Upgrade or disable upgrades of Cloud Assistant Agent](https://help.aliyun.com/document_detail/134383.html).
+        - Linux: 2.2.3.282
+        - Windows: 2.1.3.282
         When you use a cron expression to specify a schedule, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instances. Make sure that the time or time zone of the instances meets your business requirements. For information about time zones, see [Configure the NTP service for ECS instances that run CentOS 6](https://help.aliyun.com/document_detail/92803.html) or [Configure the NTP service for Windows instances](https://help.aliyun.com/document_detail/51890.html).
-        You can set `Timeout` to specify the timeout period for executions of the command on ECS instances. If an execution times out, Cloud Assistant Agent forcefully terminates the command process.
-        When the one-time execution of the command times out, the execution state ([InvokeRecordStatus](https://help.aliyun.com/document_detail/64845.html)) of the command becomes Failed.
-        For a scheduled task, the timeout period takes effect on each execution of the command. When a command execution times out, the subsequent executions of the command are not affected. When a scheduled execution of the command times out, the execution state ([InvokeRecordStatus](https://help.aliyun.com/document_detail/64845.html)) of the command becomes Failed.
-        To ensure that scheduled tasks can run as expected, make sure that the version of Cloud Assistant Agent is not earlier than the following ones. A scheduled task can run a command at a specified interval, only once at a specified time, or at designated times based on a cron expression in a specified year or time zone. If the `ClientNeedUpgrade` error code is returned, you must update Cloud Assistant Agent to the latest version. For more information, see [Upgrade or disable upgrades of Cloud Assistant Agent](https://help.aliyun.com/document_detail/134383.html).
-        - Linux: 2.2.3.282.
-        - Windows: 2.1.3.282.
-        Command executions may fail due to instance status exceptions, network exceptions, or exceptions on Cloud Assistant Agent. If a command execution fails, no execution information is generated. For more information, see the [Command errors and solutions](https://help.aliyun.com/document_detail/87029.html) section in the "Check execution results and troubleshoot common issues" topic.
-        If you set `EnableParameter` to true, the custom parameter feature is enabled. When you configure `CommandContent`, you can define custom parameters in the `{{parameter}}` format. Then, when the command is run, the key-value pairs of the custom parameters are passed in.
-        You can retain up to 500 to 50,000 Cloud Assistant commands in each region. You can also apply for a quota increase. For information about how to query and increase quotas, see [Manage quotas](https://help.aliyun.com/document_detail/184116.html).
-        Before you run a command on instances, especially new instances, we recommend that you call the [DescribeCloudAssistantStatus](https://help.aliyun.com/document_detail/87346.html) operation to query the status of Cloud Assistant Agent on the instances and run the command when the value of CloudAssistantStatus in the response is true for the instances.
+        ### [](#)Suggestions
+        **Timeout settings**: You can set `Timeout` to specify the timeout period for command executions on instances. If an execution times out, Cloud Assistant Agent forcefully terminates the command process.
+        When the one-time execution of the command times out, the execution status ([InvokeRecordStatus](https://help.aliyun.com/document_detail/64845.html)) of the command becomes Failed.
+        For a scheduled task, the timeout period takes effect on every execution of the command. When a command execution times out, the subsequent executions of the command are not affected. When a scheduled execution of the command times out, the execution status ([InvokeRecordStatus](https://help.aliyun.com/document_detail/64845.html)) of the command becomes Failed.
+        **Execution failure**: Command executions may fail due to instance status exceptions, network exceptions, or exceptions on Cloud Assistant Agent. If a command execution fails, no execution information is generated. For more information, see [Check execution results and troubleshoot common issues](https://help.aliyun.com/document_detail/87029.html).
+        **Custom parameters**: If you set `EnableParameter` to true, the custom parameter feature is enabled. When you specify `CommandContent`, you can define custom parameters in the `{{parameter}}` format. Then, the key-value pairs of the custom parameters are passed in when you run the command.
         
         @param tmp_req: RunCommandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -57381,25 +57679,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RunCommandResponse:
         """
-        @summary Runs a Cloud Assistant command on one or more Elastic Compute Service (ECS) instances. Shell, PowerShell, and batch commands are supported.
+        @summary Creates and runs a Cloud Assistant command on one or more Elastic Compute Service (ECS) instances. Shell, PowerShell, and batch commands are supported. You can run the command based on a schedule, include custom parameters in the command, or run the command in containers on instances.
         
-        @description ## [](#)Usage notes
-        Unlike the [CreateCommand](https://help.aliyun.com/document_detail/64844.html) and [InvokeCommand](https://help.aliyun.com/document_detail/64841.html) operations, the RunCommand operation can be used to create and run a command in a single request.
-        Take note of the following items:
-        The instances on which you want to run a command must be in the Running (`Running`) state. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) operation to query the status of instances.
-        [Cloud Assistant Agent](https://help.aliyun.com/document_detail/64921.html) must be installed on the instances.
+        @description This operation is an asynchronous operation. After a request is sent, a response that contains a command ID and a command task ID is immediately returned. You can call the [DescribeInvocations](https://help.aliyun.com/document_detail/2679916.html) or [DescribeInvocationResults](https://help.aliyun.com/document_detail/2679916.html) operation with the command ID or task ID to query the execution results of the command.
+        ### [](#)Precautions
+        The instances on which you want to create and run a Cloud Assistant command must be in the Running (`Running`) state. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) operation to query the status of instances.
+        [Cloud Assistant Agent](https://help.aliyun.com/document_detail/64921.html) must be pre-installed on the instances on which you want to create and run a Cloud Assistant command. You can call the [InstallCloudAssistant](https://help.aliyun.com/document_detail/2679925.html) operation to install Cloud Assistant Agent on instances and the [DescribeCloudAssistantStatus](https://help.aliyun.com/document_detail/2679924.html) operation to query whether Cloud Assistant Agent is installed on instances.
+        *\
+        *Note** By default, Cloud Assistant Agent is pre-installed on instances created from public images on or after December 1, 2017.
         Before you run a PowerShell command on a Windows instance, make sure that the PowerShell module is installed on the instance.
+        ### [](#)Considerations
+        You can retain up to 500 to 50,000 Cloud Assistant commands in each region. You can also request a quota increase. For information about how to view quotas and request a quota increase, see [Manage quotas](https://help.aliyun.com/document_detail/184116.html).
+        To ensure that scheduled tasks can run as expected, make sure that the Cloud Assistant Agent version is not earlier than the following versions. A scheduled task can run a command at a specific interval, only once at a specific time, or at designated times based on a cron expression in a specific year or time zone. If the `ClientNeedUpgrade` error code is returned, you must update Cloud Assistant Agent to the latest version. For more information, see [Upgrade or disable upgrades of Cloud Assistant Agent](https://help.aliyun.com/document_detail/134383.html).
+        - Linux: 2.2.3.282
+        - Windows: 2.1.3.282
         When you use a cron expression to specify a schedule, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instances. Make sure that the time or time zone of the instances meets your business requirements. For information about time zones, see [Configure the NTP service for ECS instances that run CentOS 6](https://help.aliyun.com/document_detail/92803.html) or [Configure the NTP service for Windows instances](https://help.aliyun.com/document_detail/51890.html).
-        You can set `Timeout` to specify the timeout period for executions of the command on ECS instances. If an execution times out, Cloud Assistant Agent forcefully terminates the command process.
-        When the one-time execution of the command times out, the execution state ([InvokeRecordStatus](https://help.aliyun.com/document_detail/64845.html)) of the command becomes Failed.
-        For a scheduled task, the timeout period takes effect on each execution of the command. When a command execution times out, the subsequent executions of the command are not affected. When a scheduled execution of the command times out, the execution state ([InvokeRecordStatus](https://help.aliyun.com/document_detail/64845.html)) of the command becomes Failed.
-        To ensure that scheduled tasks can run as expected, make sure that the version of Cloud Assistant Agent is not earlier than the following ones. A scheduled task can run a command at a specified interval, only once at a specified time, or at designated times based on a cron expression in a specified year or time zone. If the `ClientNeedUpgrade` error code is returned, you must update Cloud Assistant Agent to the latest version. For more information, see [Upgrade or disable upgrades of Cloud Assistant Agent](https://help.aliyun.com/document_detail/134383.html).
-        - Linux: 2.2.3.282.
-        - Windows: 2.1.3.282.
-        Command executions may fail due to instance status exceptions, network exceptions, or exceptions on Cloud Assistant Agent. If a command execution fails, no execution information is generated. For more information, see the [Command errors and solutions](https://help.aliyun.com/document_detail/87029.html) section in the "Check execution results and troubleshoot common issues" topic.
-        If you set `EnableParameter` to true, the custom parameter feature is enabled. When you configure `CommandContent`, you can define custom parameters in the `{{parameter}}` format. Then, when the command is run, the key-value pairs of the custom parameters are passed in.
-        You can retain up to 500 to 50,000 Cloud Assistant commands in each region. You can also apply for a quota increase. For information about how to query and increase quotas, see [Manage quotas](https://help.aliyun.com/document_detail/184116.html).
-        Before you run a command on instances, especially new instances, we recommend that you call the [DescribeCloudAssistantStatus](https://help.aliyun.com/document_detail/87346.html) operation to query the status of Cloud Assistant Agent on the instances and run the command when the value of CloudAssistantStatus in the response is true for the instances.
+        ### [](#)Suggestions
+        **Timeout settings**: You can set `Timeout` to specify the timeout period for command executions on instances. If an execution times out, Cloud Assistant Agent forcefully terminates the command process.
+        When the one-time execution of the command times out, the execution status ([InvokeRecordStatus](https://help.aliyun.com/document_detail/64845.html)) of the command becomes Failed.
+        For a scheduled task, the timeout period takes effect on every execution of the command. When a command execution times out, the subsequent executions of the command are not affected. When a scheduled execution of the command times out, the execution status ([InvokeRecordStatus](https://help.aliyun.com/document_detail/64845.html)) of the command becomes Failed.
+        **Execution failure**: Command executions may fail due to instance status exceptions, network exceptions, or exceptions on Cloud Assistant Agent. If a command execution fails, no execution information is generated. For more information, see [Check execution results and troubleshoot common issues](https://help.aliyun.com/document_detail/87029.html).
+        **Custom parameters**: If you set `EnableParameter` to true, the custom parameter feature is enabled. When you specify `CommandContent`, you can define custom parameters in the `{{parameter}}` format. Then, the key-value pairs of the custom parameters are passed in when you run the command.
         
         @param tmp_req: RunCommandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -57501,25 +57801,27 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RunCommandRequest,
     ) -> ecs_20140526_models.RunCommandResponse:
         """
-        @summary Runs a Cloud Assistant command on one or more Elastic Compute Service (ECS) instances. Shell, PowerShell, and batch commands are supported.
+        @summary Creates and runs a Cloud Assistant command on one or more Elastic Compute Service (ECS) instances. Shell, PowerShell, and batch commands are supported. You can run the command based on a schedule, include custom parameters in the command, or run the command in containers on instances.
         
-        @description ## [](#)Usage notes
-        Unlike the [CreateCommand](https://help.aliyun.com/document_detail/64844.html) and [InvokeCommand](https://help.aliyun.com/document_detail/64841.html) operations, the RunCommand operation can be used to create and run a command in a single request.
-        Take note of the following items:
-        The instances on which you want to run a command must be in the Running (`Running`) state. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) operation to query the status of instances.
-        [Cloud Assistant Agent](https://help.aliyun.com/document_detail/64921.html) must be installed on the instances.
+        @description This operation is an asynchronous operation. After a request is sent, a response that contains a command ID and a command task ID is immediately returned. You can call the [DescribeInvocations](https://help.aliyun.com/document_detail/2679916.html) or [DescribeInvocationResults](https://help.aliyun.com/document_detail/2679916.html) operation with the command ID or task ID to query the execution results of the command.
+        ### [](#)Precautions
+        The instances on which you want to create and run a Cloud Assistant command must be in the Running (`Running`) state. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) operation to query the status of instances.
+        [Cloud Assistant Agent](https://help.aliyun.com/document_detail/64921.html) must be pre-installed on the instances on which you want to create and run a Cloud Assistant command. You can call the [InstallCloudAssistant](https://help.aliyun.com/document_detail/2679925.html) operation to install Cloud Assistant Agent on instances and the [DescribeCloudAssistantStatus](https://help.aliyun.com/document_detail/2679924.html) operation to query whether Cloud Assistant Agent is installed on instances.
+        *\
+        *Note** By default, Cloud Assistant Agent is pre-installed on instances created from public images on or after December 1, 2017.
         Before you run a PowerShell command on a Windows instance, make sure that the PowerShell module is installed on the instance.
+        ### [](#)Considerations
+        You can retain up to 500 to 50,000 Cloud Assistant commands in each region. You can also request a quota increase. For information about how to view quotas and request a quota increase, see [Manage quotas](https://help.aliyun.com/document_detail/184116.html).
+        To ensure that scheduled tasks can run as expected, make sure that the Cloud Assistant Agent version is not earlier than the following versions. A scheduled task can run a command at a specific interval, only once at a specific time, or at designated times based on a cron expression in a specific year or time zone. If the `ClientNeedUpgrade` error code is returned, you must update Cloud Assistant Agent to the latest version. For more information, see [Upgrade or disable upgrades of Cloud Assistant Agent](https://help.aliyun.com/document_detail/134383.html).
+        - Linux: 2.2.3.282
+        - Windows: 2.1.3.282
         When you use a cron expression to specify a schedule, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instances. Make sure that the time or time zone of the instances meets your business requirements. For information about time zones, see [Configure the NTP service for ECS instances that run CentOS 6](https://help.aliyun.com/document_detail/92803.html) or [Configure the NTP service for Windows instances](https://help.aliyun.com/document_detail/51890.html).
-        You can set `Timeout` to specify the timeout period for executions of the command on ECS instances. If an execution times out, Cloud Assistant Agent forcefully terminates the command process.
-        When the one-time execution of the command times out, the execution state ([InvokeRecordStatus](https://help.aliyun.com/document_detail/64845.html)) of the command becomes Failed.
-        For a scheduled task, the timeout period takes effect on each execution of the command. When a command execution times out, the subsequent executions of the command are not affected. When a scheduled execution of the command times out, the execution state ([InvokeRecordStatus](https://help.aliyun.com/document_detail/64845.html)) of the command becomes Failed.
-        To ensure that scheduled tasks can run as expected, make sure that the version of Cloud Assistant Agent is not earlier than the following ones. A scheduled task can run a command at a specified interval, only once at a specified time, or at designated times based on a cron expression in a specified year or time zone. If the `ClientNeedUpgrade` error code is returned, you must update Cloud Assistant Agent to the latest version. For more information, see [Upgrade or disable upgrades of Cloud Assistant Agent](https://help.aliyun.com/document_detail/134383.html).
-        - Linux: 2.2.3.282.
-        - Windows: 2.1.3.282.
-        Command executions may fail due to instance status exceptions, network exceptions, or exceptions on Cloud Assistant Agent. If a command execution fails, no execution information is generated. For more information, see the [Command errors and solutions](https://help.aliyun.com/document_detail/87029.html) section in the "Check execution results and troubleshoot common issues" topic.
-        If you set `EnableParameter` to true, the custom parameter feature is enabled. When you configure `CommandContent`, you can define custom parameters in the `{{parameter}}` format. Then, when the command is run, the key-value pairs of the custom parameters are passed in.
-        You can retain up to 500 to 50,000 Cloud Assistant commands in each region. You can also apply for a quota increase. For information about how to query and increase quotas, see [Manage quotas](https://help.aliyun.com/document_detail/184116.html).
-        Before you run a command on instances, especially new instances, we recommend that you call the [DescribeCloudAssistantStatus](https://help.aliyun.com/document_detail/87346.html) operation to query the status of Cloud Assistant Agent on the instances and run the command when the value of CloudAssistantStatus in the response is true for the instances.
+        ### [](#)Suggestions
+        **Timeout settings**: You can set `Timeout` to specify the timeout period for command executions on instances. If an execution times out, Cloud Assistant Agent forcefully terminates the command process.
+        When the one-time execution of the command times out, the execution status ([InvokeRecordStatus](https://help.aliyun.com/document_detail/64845.html)) of the command becomes Failed.
+        For a scheduled task, the timeout period takes effect on every execution of the command. When a command execution times out, the subsequent executions of the command are not affected. When a scheduled execution of the command times out, the execution status ([InvokeRecordStatus](https://help.aliyun.com/document_detail/64845.html)) of the command becomes Failed.
+        **Execution failure**: Command executions may fail due to instance status exceptions, network exceptions, or exceptions on Cloud Assistant Agent. If a command execution fails, no execution information is generated. For more information, see [Check execution results and troubleshoot common issues](https://help.aliyun.com/document_detail/87029.html).
+        **Custom parameters**: If you set `EnableParameter` to true, the custom parameter feature is enabled. When you specify `CommandContent`, you can define custom parameters in the `{{parameter}}` format. Then, the key-value pairs of the custom parameters are passed in when you run the command.
         
         @param request: RunCommandRequest
         @return: RunCommandResponse
@@ -57532,25 +57834,27 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RunCommandRequest,
     ) -> ecs_20140526_models.RunCommandResponse:
         """
-        @summary Runs a Cloud Assistant command on one or more Elastic Compute Service (ECS) instances. Shell, PowerShell, and batch commands are supported.
+        @summary Creates and runs a Cloud Assistant command on one or more Elastic Compute Service (ECS) instances. Shell, PowerShell, and batch commands are supported. You can run the command based on a schedule, include custom parameters in the command, or run the command in containers on instances.
         
-        @description ## [](#)Usage notes
-        Unlike the [CreateCommand](https://help.aliyun.com/document_detail/64844.html) and [InvokeCommand](https://help.aliyun.com/document_detail/64841.html) operations, the RunCommand operation can be used to create and run a command in a single request.
-        Take note of the following items:
-        The instances on which you want to run a command must be in the Running (`Running`) state. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) operation to query the status of instances.
-        [Cloud Assistant Agent](https://help.aliyun.com/document_detail/64921.html) must be installed on the instances.
+        @description This operation is an asynchronous operation. After a request is sent, a response that contains a command ID and a command task ID is immediately returned. You can call the [DescribeInvocations](https://help.aliyun.com/document_detail/2679916.html) or [DescribeInvocationResults](https://help.aliyun.com/document_detail/2679916.html) operation with the command ID or task ID to query the execution results of the command.
+        ### [](#)Precautions
+        The instances on which you want to create and run a Cloud Assistant command must be in the Running (`Running`) state. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) operation to query the status of instances.
+        [Cloud Assistant Agent](https://help.aliyun.com/document_detail/64921.html) must be pre-installed on the instances on which you want to create and run a Cloud Assistant command. You can call the [InstallCloudAssistant](https://help.aliyun.com/document_detail/2679925.html) operation to install Cloud Assistant Agent on instances and the [DescribeCloudAssistantStatus](https://help.aliyun.com/document_detail/2679924.html) operation to query whether Cloud Assistant Agent is installed on instances.
+        *\
+        *Note** By default, Cloud Assistant Agent is pre-installed on instances created from public images on or after December 1, 2017.
         Before you run a PowerShell command on a Windows instance, make sure that the PowerShell module is installed on the instance.
+        ### [](#)Considerations
+        You can retain up to 500 to 50,000 Cloud Assistant commands in each region. You can also request a quota increase. For information about how to view quotas and request a quota increase, see [Manage quotas](https://help.aliyun.com/document_detail/184116.html).
+        To ensure that scheduled tasks can run as expected, make sure that the Cloud Assistant Agent version is not earlier than the following versions. A scheduled task can run a command at a specific interval, only once at a specific time, or at designated times based on a cron expression in a specific year or time zone. If the `ClientNeedUpgrade` error code is returned, you must update Cloud Assistant Agent to the latest version. For more information, see [Upgrade or disable upgrades of Cloud Assistant Agent](https://help.aliyun.com/document_detail/134383.html).
+        - Linux: 2.2.3.282
+        - Windows: 2.1.3.282
         When you use a cron expression to specify a schedule, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instances. Make sure that the time or time zone of the instances meets your business requirements. For information about time zones, see [Configure the NTP service for ECS instances that run CentOS 6](https://help.aliyun.com/document_detail/92803.html) or [Configure the NTP service for Windows instances](https://help.aliyun.com/document_detail/51890.html).
-        You can set `Timeout` to specify the timeout period for executions of the command on ECS instances. If an execution times out, Cloud Assistant Agent forcefully terminates the command process.
-        When the one-time execution of the command times out, the execution state ([InvokeRecordStatus](https://help.aliyun.com/document_detail/64845.html)) of the command becomes Failed.
-        For a scheduled task, the timeout period takes effect on each execution of the command. When a command execution times out, the subsequent executions of the command are not affected. When a scheduled execution of the command times out, the execution state ([InvokeRecordStatus](https://help.aliyun.com/document_detail/64845.html)) of the command becomes Failed.
-        To ensure that scheduled tasks can run as expected, make sure that the version of Cloud Assistant Agent is not earlier than the following ones. A scheduled task can run a command at a specified interval, only once at a specified time, or at designated times based on a cron expression in a specified year or time zone. If the `ClientNeedUpgrade` error code is returned, you must update Cloud Assistant Agent to the latest version. For more information, see [Upgrade or disable upgrades of Cloud Assistant Agent](https://help.aliyun.com/document_detail/134383.html).
-        - Linux: 2.2.3.282.
-        - Windows: 2.1.3.282.
-        Command executions may fail due to instance status exceptions, network exceptions, or exceptions on Cloud Assistant Agent. If a command execution fails, no execution information is generated. For more information, see the [Command errors and solutions](https://help.aliyun.com/document_detail/87029.html) section in the "Check execution results and troubleshoot common issues" topic.
-        If you set `EnableParameter` to true, the custom parameter feature is enabled. When you configure `CommandContent`, you can define custom parameters in the `{{parameter}}` format. Then, when the command is run, the key-value pairs of the custom parameters are passed in.
-        You can retain up to 500 to 50,000 Cloud Assistant commands in each region. You can also apply for a quota increase. For information about how to query and increase quotas, see [Manage quotas](https://help.aliyun.com/document_detail/184116.html).
-        Before you run a command on instances, especially new instances, we recommend that you call the [DescribeCloudAssistantStatus](https://help.aliyun.com/document_detail/87346.html) operation to query the status of Cloud Assistant Agent on the instances and run the command when the value of CloudAssistantStatus in the response is true for the instances.
+        ### [](#)Suggestions
+        **Timeout settings**: You can set `Timeout` to specify the timeout period for command executions on instances. If an execution times out, Cloud Assistant Agent forcefully terminates the command process.
+        When the one-time execution of the command times out, the execution status ([InvokeRecordStatus](https://help.aliyun.com/document_detail/64845.html)) of the command becomes Failed.
+        For a scheduled task, the timeout period takes effect on every execution of the command. When a command execution times out, the subsequent executions of the command are not affected. When a scheduled execution of the command times out, the execution status ([InvokeRecordStatus](https://help.aliyun.com/document_detail/64845.html)) of the command becomes Failed.
+        **Execution failure**: Command executions may fail due to instance status exceptions, network exceptions, or exceptions on Cloud Assistant Agent. If a command execution fails, no execution information is generated. For more information, see [Check execution results and troubleshoot common issues](https://help.aliyun.com/document_detail/87029.html).
+        **Custom parameters**: If you set `EnableParameter` to true, the custom parameter feature is enabled. When you specify `CommandContent`, you can define custom parameters in the `{{parameter}}` format. Then, the key-value pairs of the custom parameters are passed in when you run the command.
         
         @param request: RunCommandRequest
         @return: RunCommandResponse

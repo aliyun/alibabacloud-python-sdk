@@ -1,3 +1,32 @@
+2025-03-13 Version: 6.1.0
+- Support API DescribeElasticityAssuranceAutoRenewAttribute.
+- Support API ModifyElasticityAssuranceAutoRenewAttribute.
+- Update API AllocateDedicatedHosts: update response param.
+- Update API CreateElasticityAssurance: add param RecurrenceRules.
+- Update API CreateImagePipeline: add param ImageOptions.
+- Update API CreateImagePipeline: update param AdvancedOptions.
+- Update API CreateImagePipeline: update param ImageFamily.
+- Update API CreateImagePipeline: update param ImageName.
+- Update API CreateImagePipeline: update param ImportImageOptions.
+- Update API CreateImagePipeline: update param NvmeSupport.
+- Update API CreateLaunchTemplate: update param NetworkInterface.
+- Update API CreateLaunchTemplateVersion: update param NetworkInterface.
+- Update API DescribeCommands: update response param.
+- Update API DescribeElasticityAssurances: add param PackageType.
+- Update API DescribeElasticityAssurances: update response param.
+- Update API DescribeImagePipelines: update response param.
+- Update API DescribeInstanceAttribute: update response param.
+- Update API DescribeLaunchTemplateVersions: update response param.
+- Update API DescribePrice: add param RecurrenceRules.
+- Update API DescribePrice: add param StartTime.
+- Update API ModifyElasticityAssurance: add param RecurrenceRules.
+- Update API ModifyInstanceAttachmentAttributes: update response param.
+- Update API PurchaseReservedInstancesOffering: update response param.
+- Update API PurchaseStorageCapacityUnit: add param ResourceGroupId.
+- Update API RenewDedicatedHosts: update response param.
+- Update API RunInstances: update param SpotDuration.
+
+
 2025-02-17 Version: 6.0.0
 - Support API EndTerminalSession.
 - Support API ModifySnapshotCategory.
