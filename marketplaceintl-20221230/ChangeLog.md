@@ -1,3 +1,6 @@
+2025-03-14 Version: 1.2.1
+- Generated python 2022-12-30 for marketplaceIntl.
+
 2025-03-13 Version: 1.2.0
 - Support API DescribeSellerInstances.
 
