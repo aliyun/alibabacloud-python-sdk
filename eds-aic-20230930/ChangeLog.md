@@ -1,3 +1,11 @@
+2025-03-14 Version: 4.3.2
+- Update API DescribeAndroidInstanceGroups: update response param.
+- Update API DescribeAndroidInstances: update response param.
+- Update API DescribeImageList: update response param.
+- Update API DescribeSpec: update response param.
+- Update API SendFile: add param TargetFileName.
+
+
 2025-03-13 Version: 4.3.1
 - Generated python 2023-09-30 for eds-aic.
 

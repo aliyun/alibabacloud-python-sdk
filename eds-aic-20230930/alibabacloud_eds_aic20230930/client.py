@@ -6230,6 +6230,8 @@ class Client(OpenApiClient):
             query['AndroidInstanceIdList'] = request.android_instance_id_list
         if not UtilClient.is_unset(request.source_file_path):
             query['SourceFilePath'] = request.source_file_path
+        if not UtilClient.is_unset(request.target_file_name):
+            query['TargetFileName'] = request.target_file_name
         if not UtilClient.is_unset(request.upload_endpoint):
             query['UploadEndpoint'] = request.upload_endpoint
         if not UtilClient.is_unset(request.upload_type):
@@ -6281,6 +6283,8 @@ class Client(OpenApiClient):
             query['AndroidInstanceIdList'] = request.android_instance_id_list
         if not UtilClient.is_unset(request.source_file_path):
             query['SourceFilePath'] = request.source_file_path
+        if not UtilClient.is_unset(request.target_file_name):
+            query['TargetFileName'] = request.target_file_name
         if not UtilClient.is_unset(request.upload_endpoint):
             query['UploadEndpoint'] = request.upload_endpoint
         if not UtilClient.is_unset(request.upload_type):

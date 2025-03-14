@@ -3320,6 +3320,7 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
         charge_type: str = None,
         cpu: str = None,
         disks: List[DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks] = None,
+        enable_ipv_6: bool = None,
         error_code: str = None,
         gmt_create: str = None,
         gmt_expired: str = None,
@@ -3331,6 +3332,7 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
         instance_group_spec: str = None,
         instance_group_spec_describe: str = None,
         instance_group_status: str = None,
+        ipv_6bandwidth: int = None,
         memory: int = None,
         number_of_instances: str = None,
         office_site_id: str = None,
@@ -3355,6 +3357,7 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
         self.cpu = cpu
         # The disks.
         self.disks = disks
+        self.enable_ipv_6 = enable_ipv_6
         # The error code.
         self.error_code = error_code
         # The time when the instance group was created.
@@ -3377,6 +3380,7 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
         self.instance_group_spec_describe = instance_group_spec_describe
         # The status of the instance group.
         self.instance_group_status = instance_group_status
+        self.ipv_6bandwidth = ipv_6bandwidth
         # The memory size.
         self.memory = memory
         # The number of instances in the instance group.
@@ -3426,6 +3430,8 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
         if self.disks is not None:
             for k in self.disks:
                 result['Disks'].append(k.to_map() if k else None)
+        if self.enable_ipv_6 is not None:
+            result['EnableIpv6'] = self.enable_ipv_6
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
         if self.gmt_create is not None:
@@ -3448,6 +3454,8 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
             result['InstanceGroupSpecDescribe'] = self.instance_group_spec_describe
         if self.instance_group_status is not None:
             result['InstanceGroupStatus'] = self.instance_group_status
+        if self.ipv_6bandwidth is not None:
+            result['Ipv6Bandwidth'] = self.ipv_6bandwidth
         if self.memory is not None:
             result['Memory'] = self.memory
         if self.number_of_instances is not None:
@@ -3489,6 +3497,8 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
             for k in m.get('Disks'):
                 temp_model = DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks()
                 self.disks.append(temp_model.from_map(k))
+        if m.get('EnableIpv6') is not None:
+            self.enable_ipv_6 = m.get('EnableIpv6')
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
         if m.get('GmtCreate') is not None:
@@ -3511,6 +3521,8 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
             self.instance_group_spec_describe = m.get('InstanceGroupSpecDescribe')
         if m.get('InstanceGroupStatus') is not None:
             self.instance_group_status = m.get('InstanceGroupStatus')
+        if m.get('Ipv6Bandwidth') is not None:
+            self.ipv_6bandwidth = m.get('Ipv6Bandwidth')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
         if m.get('NumberOfInstances') is not None:
@@ -3918,6 +3930,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         gmt_create: str = None,
         gmt_expired: str = None,
         gmt_modified: str = None,
+        image_id: str = None,
         image_version: str = None,
         instance_type: str = None,
         key_pair_id: str = None,
@@ -3967,6 +3980,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         self.gmt_expired = gmt_expired
         # The time when the instance was modified.
         self.gmt_modified = gmt_modified
+        self.image_id = image_id
         # The version of the image.
         self.image_version = image_version
         # The type of the instance.
@@ -4051,6 +4065,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             result['GmtExpired'] = self.gmt_expired
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
         if self.image_version is not None:
             result['ImageVersion'] = self.image_version
         if self.instance_type is not None:
@@ -4124,6 +4140,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             self.gmt_expired = m.get('GmtExpired')
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
         if m.get('ImageVersion') is not None:
             self.image_version = m.get('ImageVersion')
         if m.get('InstanceType') is not None:
@@ -5061,6 +5079,7 @@ class DescribeImageListResponseBodyData(TeaModel):
         image_region_distribute_map: Dict[str, DataImageRegionDistributeMapValue] = None,
         image_region_list: List[str] = None,
         image_type: str = None,
+        image_version: str = None,
         language: str = None,
         release_time: str = None,
         rendering_type: str = None,
@@ -5090,6 +5109,7 @@ class DescribeImageListResponseBodyData(TeaModel):
         # *   User: custom images.
         # *   System: system images.
         self.image_type = image_type
+        self.image_version = image_version
         # The language of the image.
         self.language = language
         # The time when the image was published.
@@ -5147,6 +5167,8 @@ class DescribeImageListResponseBodyData(TeaModel):
             result['ImageRegionList'] = self.image_region_list
         if self.image_type is not None:
             result['ImageType'] = self.image_type
+        if self.image_version is not None:
+            result['ImageVersion'] = self.image_version
         if self.language is not None:
             result['Language'] = self.language
         if self.release_time is not None:
@@ -5182,6 +5204,8 @@ class DescribeImageListResponseBodyData(TeaModel):
             self.image_region_list = m.get('ImageRegionList')
         if m.get('ImageType') is not None:
             self.image_type = m.get('ImageType')
+        if m.get('ImageVersion') is not None:
+            self.image_version = m.get('ImageVersion')
         if m.get('Language') is not None:
             self.language = m.get('Language')
         if m.get('ReleaseTime') is not None:
@@ -5923,7 +5947,9 @@ class DescribeSpecResponseBodySpecInfoModel(TeaModel):
     def __init__(
         self,
         core: int = None,
+        max_phone_count: str = None,
         memory: int = None,
+        min_phone_count: str = None,
         phone_count: str = None,
         resolution: str = None,
         spec_id: str = None,
@@ -5933,8 +5959,10 @@ class DescribeSpecResponseBodySpecInfoModel(TeaModel):
     ):
         # Number of CPU cores.
         self.core = core
+        self.max_phone_count = max_phone_count
         # Memory size.
         self.memory = memory
+        self.min_phone_count = min_phone_count
         self.phone_count = phone_count
         self.resolution = resolution
         # Specification ID.
@@ -5957,8 +5985,12 @@ class DescribeSpecResponseBodySpecInfoModel(TeaModel):
         result = dict()
         if self.core is not None:
             result['Core'] = self.core
+        if self.max_phone_count is not None:
+            result['MaxPhoneCount'] = self.max_phone_count
         if self.memory is not None:
             result['Memory'] = self.memory
+        if self.min_phone_count is not None:
+            result['MinPhoneCount'] = self.min_phone_count
         if self.phone_count is not None:
             result['PhoneCount'] = self.phone_count
         if self.resolution is not None:
@@ -5977,8 +6009,12 @@ class DescribeSpecResponseBodySpecInfoModel(TeaModel):
         m = m or dict()
         if m.get('Core') is not None:
             self.core = m.get('Core')
+        if m.get('MaxPhoneCount') is not None:
+            self.max_phone_count = m.get('MaxPhoneCount')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
+        if m.get('MinPhoneCount') is not None:
+            self.min_phone_count = m.get('MinPhoneCount')
         if m.get('PhoneCount') is not None:
             self.phone_count = m.get('PhoneCount')
         if m.get('Resolution') is not None:
@@ -9912,6 +9948,7 @@ class SendFileRequest(TeaModel):
         self,
         android_instance_id_list: List[str] = None,
         source_file_path: str = None,
+        target_file_name: str = None,
         upload_endpoint: str = None,
         upload_type: str = None,
         upload_url: str = None,
@@ -9924,6 +9961,7 @@ class SendFileRequest(TeaModel):
         # 
         # This parameter is required.
         self.source_file_path = source_file_path
+        self.target_file_name = target_file_name
         # The endpoint of the OSS bucket in which the file is stored.
         # 
         # >  Set the value to an internal endpoint when the cloud phone instance and the OSS bucket are in the same region to improve transfer speed without incurring public traffic fees. Sample endpoint: `oss-cn-hangzhou-internal.aliyuncs.com`. For more information, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html).
@@ -9954,6 +9992,8 @@ class SendFileRequest(TeaModel):
             result['AndroidInstanceIdList'] = self.android_instance_id_list
         if self.source_file_path is not None:
             result['SourceFilePath'] = self.source_file_path
+        if self.target_file_name is not None:
+            result['TargetFileName'] = self.target_file_name
         if self.upload_endpoint is not None:
             result['UploadEndpoint'] = self.upload_endpoint
         if self.upload_type is not None:
@@ -9968,6 +10008,8 @@ class SendFileRequest(TeaModel):
             self.android_instance_id_list = m.get('AndroidInstanceIdList')
         if m.get('SourceFilePath') is not None:
             self.source_file_path = m.get('SourceFilePath')
+        if m.get('TargetFileName') is not None:
+            self.target_file_name = m.get('TargetFileName')
         if m.get('UploadEndpoint') is not None:
             self.upload_endpoint = m.get('UploadEndpoint')
         if m.get('UploadType') is not None:
