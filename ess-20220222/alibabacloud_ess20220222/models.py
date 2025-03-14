@@ -8690,16 +8690,16 @@ class CreateScalingGroupRequestTags(TeaModel):
         propagate: bool = None,
         value: str = None,
     ):
-        # The tag key.
+        # The tag key that you want to add to the scaling group.
         self.key = key
-        # Specifies whether to propagate the tag that you want to add. Valid values:
+        # Specifies whether to propagate the tag that you want to add to the scaling group. Valid values:
         # 
-        # *   true: propagates the tag to new instances.
-        # *   false: does not propagate the tag to any instance.
+        # *   true: propagates the tag to only instances that are newly created.
+        # *   false: does not propagate the tag to any instances.
         # 
         # Default value: false.
         self.propagate = propagate
-        # The tag value.
+        # The tag value that you want to add to the scaling group.
         self.value = value
 
     def validate(self):
@@ -16969,12 +16969,59 @@ class DescribeElasticStrengthResponseBodyElasticStrengthModels(TeaModel):
         return self
 
 
+class DescribeElasticStrengthResponseBodyResourcePoolsInventoryHealth(TeaModel):
+    def __init__(
+        self,
+        adequacy_score: int = None,
+        health_score: int = None,
+        hot_score: int = None,
+        supply_score: int = None,
+    ):
+        self.adequacy_score = adequacy_score
+        self.health_score = health_score
+        self.hot_score = hot_score
+        self.supply_score = supply_score
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adequacy_score is not None:
+            result['AdequacyScore'] = self.adequacy_score
+        if self.health_score is not None:
+            result['HealthScore'] = self.health_score
+        if self.hot_score is not None:
+            result['HotScore'] = self.hot_score
+        if self.supply_score is not None:
+            result['SupplyScore'] = self.supply_score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdequacyScore') is not None:
+            self.adequacy_score = m.get('AdequacyScore')
+        if m.get('HealthScore') is not None:
+            self.health_score = m.get('HealthScore')
+        if m.get('HotScore') is not None:
+            self.hot_score = m.get('HotScore')
+        if m.get('SupplyScore') is not None:
+            self.supply_score = m.get('SupplyScore')
+        return self
+
+
 class DescribeElasticStrengthResponseBodyResourcePools(TeaModel):
     def __init__(
         self,
         code: str = None,
         instance_type: str = None,
+        inventory_health: DescribeElasticStrengthResponseBodyResourcePoolsInventoryHealth = None,
         msg: str = None,
+        status: str = None,
         strength: float = None,
         v_switch_ids: List[str] = None,
         zone_id: str = None,
@@ -16983,8 +17030,10 @@ class DescribeElasticStrengthResponseBodyResourcePools(TeaModel):
         self.code = code
         # The instance type of the resource pool.
         self.instance_type = instance_type
+        self.inventory_health = inventory_health
         # The error message returned when the scaling strength is the weakest.
         self.msg = msg
+        self.status = status
         # The scaling strength of the resource pool.
         self.strength = strength
         # The IDs of the vSwitches in the zones of the resource pool.
@@ -16993,7 +17042,8 @@ class DescribeElasticStrengthResponseBodyResourcePools(TeaModel):
         self.zone_id = zone_id
 
     def validate(self):
-        pass
+        if self.inventory_health:
+            self.inventory_health.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -17005,8 +17055,12 @@ class DescribeElasticStrengthResponseBodyResourcePools(TeaModel):
             result['Code'] = self.code
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.inventory_health is not None:
+            result['InventoryHealth'] = self.inventory_health.to_map()
         if self.msg is not None:
             result['Msg'] = self.msg
+        if self.status is not None:
+            result['Status'] = self.status
         if self.strength is not None:
             result['Strength'] = self.strength
         if self.v_switch_ids is not None:
@@ -17021,8 +17075,13 @@ class DescribeElasticStrengthResponseBodyResourcePools(TeaModel):
             self.code = m.get('Code')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        if m.get('InventoryHealth') is not None:
+            temp_model = DescribeElasticStrengthResponseBodyResourcePoolsInventoryHealth()
+            self.inventory_health = temp_model.from_map(m['InventoryHealth'])
         if m.get('Msg') is not None:
             self.msg = m.get('Msg')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('Strength') is not None:
             self.strength = m.get('Strength')
         if m.get('VSwitchIds') is not None:
@@ -17035,11 +17094,13 @@ class DescribeElasticStrengthResponseBodyResourcePools(TeaModel):
 class DescribeElasticStrengthResponseBody(TeaModel):
     def __init__(
         self,
+        elastic_strength: str = None,
         elastic_strength_models: List[DescribeElasticStrengthResponseBodyElasticStrengthModels] = None,
         request_id: str = None,
         resource_pools: List[DescribeElasticStrengthResponseBodyResourcePools] = None,
         total_strength: float = None,
     ):
+        self.elastic_strength = elastic_strength
         # The scaling strength models.
         self.elastic_strength_models = elastic_strength_models
         # The request ID.
@@ -17069,6 +17130,8 @@ class DescribeElasticStrengthResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.elastic_strength is not None:
+            result['ElasticStrength'] = self.elastic_strength
         result['ElasticStrengthModels'] = []
         if self.elastic_strength_models is not None:
             for k in self.elastic_strength_models:
@@ -17085,6 +17148,8 @@ class DescribeElasticStrengthResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ElasticStrength') is not None:
+            self.elastic_strength = m.get('ElasticStrength')
         self.elastic_strength_models = []
         if m.get('ElasticStrengthModels') is not None:
             for k in m.get('ElasticStrengthModels'):
@@ -22559,7 +22624,7 @@ class DescribeScalingGroupsRequest(TeaModel):
         self.group_type = group_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Pages start from page 1.
+        # The page number. Minimum value: 1.
         # 
         # Default value: 1.
         self.page_number = page_number
@@ -22726,6 +22791,10 @@ class DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions(TeaModel):
         self.on_demand_base_capacity = on_demand_base_capacity
         # The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. `OnDemandBaseCapacity` specifies the minimum number of pay-as-you-go instances required in the scaling group. Valid values: 0 to 100.
         self.on_demand_percentage_above_base_capacity = on_demand_percentage_above_base_capacity
+        # The price comparison mode. Valid values:
+        # 
+        # *   PricePerUnit: compares prices based on capacity. The capacity of instances in a scaling group is determined by the weights of the instance types used. If no weight is specified, the default weight is 1.
+        # *   PricePerVCpu: compares prices based on the price per vCPU.
         self.price_comparison_mode = price_comparison_mode
         # Specifies whether to replace pay-as-you-go ECS instances with preemptible ECS instances. If you specify `CompensateWithOnDemand`, it may result in a higher percentage of pay-as-you-go instances compared to the value of `OnDemandPercentageAboveBaseCapacity`. In this scenario, Auto Scaling will try to deploy preemptible ECS instances to replace the surplus pay-as-you-go ECS instances. When `CompensateWithOnDemand` is specified, Auto Scaling creates pay-as-you-go ECS instances if there are not enough preemptible instance types available. To avoid keeping these pay-as-you-go ECS instances for long periods, Auto Scaling tries to replace them with preemptible instances as soon as enough of preemptible instance types become available. Valid values:
         # 
@@ -34756,21 +34825,30 @@ class ModifyScalingGroupRequestCapacityOptions(TeaModel):
         price_comparison_mode: str = None,
         spot_auto_replace_on_demand: bool = None,
     ):
-        # Specifies whether to automatically create pay-as-you-go instances to meet the requirements on the number of ECS instances in the scaling group when the number of preemptible instances cannot be reached due to reasons such as cost-related issues and insufficient resources. This parameter takes effect only if you set `MultiAZPolicy` in the `CreateScalingGroup` operation to `COST_OPTIMIZED`. Valid values:
+        # Specifies whether to automatically create pay-as-you-go ECS instances to reach the required number of ECS instances when preemptible ECS instances cannot be created due to high prices or insufficient inventory of resources. This parameter takes effect only if you set `MultiAZPolicy` in the `CreateScalingGroup` operation to `COST_OPTIMIZED`. Valid values:
         # 
         # *   true
         # *   false
         self.compensate_with_on_demand = compensate_with_on_demand
-        # The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000.
+        # The minimum number of pay-as-you-go instances required in the scaling group. When the number of pay-as-you-go instances drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000.
         # 
         # If you set `MultiAZPolicy` to `COMPOSABLE`, the default value is 0.
         self.on_demand_base_capacity = on_demand_base_capacity
-        # The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. `OnDemandBaseCapacity` specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100
+        # The percentage of additional pay-as-you-go instances beyond the minimum required by `OnDemandBaseCapacity` in the scaling group. Valid values: 0 to 100
         # 
         # If you set `MultiAZPolicy` to `COMPOSABLE`, the default value is 100.
         self.on_demand_percentage_above_base_capacity = on_demand_percentage_above_base_capacity
+        # The price comparison mode. Valid values:
+        # 
+        # *   PricePerUnit: compares prices based on capacity.
+        # 
+        #     The capacity of instances in a scaling group is determined by the weights of the instance types used. If no weight is specified, the default weight is 1, which specifies that each instance in the scaling group has a capacity of 1.
+        # 
+        # *   PricePerVCpu: compares prices based on the price per vCPU.
+        # 
+        # Default value: PricePerUnit.
         self.price_comparison_mode = price_comparison_mode
-        # Specifies whether to replace pay-as-you-go ECS instances with preemptible ECS instances. If you specify `CompensateWithOnDemand`, it may result in a higher percentage of pay-as-you-go instances compared to the value of `OnDemandPercentageAboveBaseCapacity`. In this scenario, Auto Scaling will try to deploy preemptible ECS instances to replace the surplus pay-as-you-go ECS instances. When `CompensateWithOnDemand` is specified, Auto Scaling creates pay-as-you-go ECS instances if there are not enough preemptible instance types. To avoid keeping these pay-as-you-go ECS instances for long periods, Auto Scaling tries to replace them with preemptible instances as soon as enough of preemptible instance types become available. Valid values:
+        # Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify `CompensateWithOnDemand`, it may result in a higher percentage of pay-as-you-go instances compared to the value of `OnDemandPercentageAboveBaseCapacity`. In this case, Auto Scaling will try to deploy preemptible instances to replace the surplus pay-as-you-go instances. When `CompensateWithOnDemand` is specified, Auto Scaling creates pay-as-you-go instances if there are not enough preemptible instance types. To avoid keeping these pay-as-you-go ECS instances for long periods, Auto Scaling tries to replace them with preemptible instances as soon as enough of preemptible instance types become available. Valid values:
         # 
         # *   true
         # *   false

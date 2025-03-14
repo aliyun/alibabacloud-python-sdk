@@ -1,3 +1,7 @@
+2025-03-14 Version: 1.10.10
+- Update API DescribeElasticStrength: update response param.
+
+
 2025-02-18 Version: 1.10.9
 - Update API CreateScalingGroup: update param CapacityOptions.
 - Update API DescribeScalingActivities: update response param.
