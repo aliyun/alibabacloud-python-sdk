@@ -1,3 +1,10 @@
+2025-03-14 Version: 1.9.1
+- Update API AddUser: update param AccountName.
+- Update API ListWorkspaceRoleUsers: update param WorkspaceId.
+- Update API QueryUserList: update response param.
+- Update API UpdateWorkspaceUserRole: update param RoleId.
+
+
 2024-12-30 Version: 1.9.0
 - Support API GetDataSourceConnectionInfo.
 - Support API ListDataSource.

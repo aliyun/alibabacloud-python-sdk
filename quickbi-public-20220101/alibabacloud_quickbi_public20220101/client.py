@@ -73,10 +73,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.AddDataLevelPermissionRuleUsersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddDataLevelPermissionRuleUsersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddDataLevelPermissionRuleUsersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_data_level_permission_rule_users_with_options_async(
         self,
@@ -110,10 +116,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.AddDataLevelPermissionRuleUsersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddDataLevelPermissionRuleUsersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddDataLevelPermissionRuleUsersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_data_level_permission_rule_users(
         self,
@@ -185,10 +197,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.AddDataLevelPermissionWhiteListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddDataLevelPermissionWhiteListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddDataLevelPermissionWhiteListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_data_level_permission_white_list_with_options_async(
         self,
@@ -230,10 +248,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.AddDataLevelPermissionWhiteListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddDataLevelPermissionWhiteListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddDataLevelPermissionWhiteListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_data_level_permission_white_list(
         self,
@@ -303,10 +327,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.AddShareReportResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddShareReportResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddShareReportResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_share_report_with_options_async(
         self,
@@ -346,10 +376,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.AddShareReportResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddShareReportResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddShareReportResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_share_report(
         self,
@@ -421,10 +457,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.AddUserResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddUserResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddUserResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_user_with_options_async(
         self,
@@ -470,10 +512,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.AddUserResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddUserResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddUserResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_user(
         self,
@@ -533,10 +581,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.AddUserGroupMemberResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddUserGroupMemberResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddUserGroupMemberResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_user_group_member_with_options_async(
         self,
@@ -570,10 +624,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.AddUserGroupMemberResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddUserGroupMemberResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddUserGroupMemberResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_user_group_member(
         self,
@@ -633,10 +693,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.AddUserGroupMembersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddUserGroupMembersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddUserGroupMembersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_user_group_members_with_options_async(
         self,
@@ -670,10 +736,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.AddUserGroupMembersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddUserGroupMembersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddUserGroupMembersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_user_group_members(
         self,
@@ -733,10 +805,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.AddUserTagMetaResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddUserTagMetaResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddUserTagMetaResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_user_tag_meta_with_options_async(
         self,
@@ -770,10 +848,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.AddUserTagMetaResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddUserTagMetaResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddUserTagMetaResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_user_tag_meta(
         self,
@@ -835,10 +919,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.AddUserToWorkspaceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddUserToWorkspaceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddUserToWorkspaceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_user_to_workspace_with_options_async(
         self,
@@ -874,10 +964,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.AddUserToWorkspaceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddUserToWorkspaceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddUserToWorkspaceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_user_to_workspace(
         self,
@@ -939,10 +1035,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.AddWorkspaceUsersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddWorkspaceUsersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddWorkspaceUsersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_workspace_users_with_options_async(
         self,
@@ -978,10 +1080,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.AddWorkspaceUsersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddWorkspaceUsersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AddWorkspaceUsersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_workspace_users(
         self,
@@ -1039,10 +1147,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.AllotDatasetAccelerationTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AllotDatasetAccelerationTaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AllotDatasetAccelerationTaskResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def allot_dataset_acceleration_task_with_options_async(
         self,
@@ -1074,10 +1188,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.AllotDatasetAccelerationTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AllotDatasetAccelerationTaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AllotDatasetAccelerationTaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def allot_dataset_acceleration_task(
         self,
@@ -1143,10 +1263,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.AuthorizeMenuResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AuthorizeMenuResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AuthorizeMenuResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def authorize_menu_with_options_async(
         self,
@@ -1186,10 +1312,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.AuthorizeMenuResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AuthorizeMenuResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.AuthorizeMenuResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def authorize_menu(
         self,
@@ -1255,10 +1387,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.BatchAddFeishuUsersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.BatchAddFeishuUsersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.BatchAddFeishuUsersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def batch_add_feishu_users_with_options_async(
         self,
@@ -1298,10 +1436,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.BatchAddFeishuUsersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.BatchAddFeishuUsersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.BatchAddFeishuUsersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def batch_add_feishu_users(
         self,
@@ -1365,10 +1509,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.CancelAuthorizationMenuResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.CancelAuthorizationMenuResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.CancelAuthorizationMenuResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def cancel_authorization_menu_with_options_async(
         self,
@@ -1406,10 +1556,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.CancelAuthorizationMenuResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.CancelAuthorizationMenuResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.CancelAuthorizationMenuResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def cancel_authorization_menu(
         self,
@@ -1469,10 +1625,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.CancelCollectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.CancelCollectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.CancelCollectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def cancel_collection_with_options_async(
         self,
@@ -1506,10 +1668,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.CancelCollectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.CancelCollectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.CancelCollectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def cancel_collection(
         self,
@@ -1571,10 +1739,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.CancelReportShareResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.CancelReportShareResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.CancelReportShareResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def cancel_report_share_with_options_async(
         self,
@@ -1610,10 +1784,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.CancelReportShareResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.CancelReportShareResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.CancelReportShareResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def cancel_report_share(
         self,
@@ -1675,10 +1855,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ChangeVisibilityModelResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ChangeVisibilityModelResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ChangeVisibilityModelResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def change_visibility_model_with_options_async(
         self,
@@ -1714,10 +1900,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ChangeVisibilityModelResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ChangeVisibilityModelResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ChangeVisibilityModelResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def change_visibility_model(
         self,
@@ -1777,10 +1969,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.CheckReadableResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.CheckReadableResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.CheckReadableResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def check_readable_with_options_async(
         self,
@@ -1814,10 +2012,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.CheckReadableResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.CheckReadableResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.CheckReadableResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def check_readable(
         self,
@@ -1851,7 +2055,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.CreateTicketResponse:
         """
-        @summary 生成三方嵌入的ticket。
+        @summary Generates a ticket for third-party embedding.
+        
+        @description For detailed usage, please refer to the [Report Embedding Data Permission Control and Parameter Passing Security Enhancement Solution](https://help.aliyun.com/document_detail/391291.html).
         
         @param request: CreateTicketRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1891,10 +2097,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.CreateTicketResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.CreateTicketResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.CreateTicketResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_ticket_with_options_async(
         self,
@@ -1902,7 +2114,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.CreateTicketResponse:
         """
-        @summary 生成三方嵌入的ticket。
+        @summary Generates a ticket for third-party embedding.
+        
+        @description For detailed usage, please refer to the [Report Embedding Data Permission Control and Parameter Passing Security Enhancement Solution](https://help.aliyun.com/document_detail/391291.html).
         
         @param request: CreateTicketRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1942,17 +2156,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.CreateTicketResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.CreateTicketResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.CreateTicketResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_ticket(
         self,
         request: quickbi_public_20220101_models.CreateTicketRequest,
     ) -> quickbi_public_20220101_models.CreateTicketResponse:
         """
-        @summary 生成三方嵌入的ticket。
+        @summary Generates a ticket for third-party embedding.
+        
+        @description For detailed usage, please refer to the [Report Embedding Data Permission Control and Parameter Passing Security Enhancement Solution](https://help.aliyun.com/document_detail/391291.html).
         
         @param request: CreateTicketRequest
         @return: CreateTicketResponse
@@ -1965,7 +2187,9 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.CreateTicketRequest,
     ) -> quickbi_public_20220101_models.CreateTicketResponse:
         """
-        @summary 生成三方嵌入的ticket。
+        @summary Generates a ticket for third-party embedding.
+        
+        @description For detailed usage, please refer to the [Report Embedding Data Permission Control and Parameter Passing Security Enhancement Solution](https://help.aliyun.com/document_detail/391291.html).
         
         @param request: CreateTicketRequest
         @return: CreateTicketResponse
@@ -2013,10 +2237,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.CreateTicket4CopilotResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.CreateTicket4CopilotResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.CreateTicket4CopilotResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_ticket_4copilot_with_options_async(
         self,
@@ -2058,10 +2288,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.CreateTicket4CopilotResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.CreateTicket4CopilotResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.CreateTicket4CopilotResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_ticket_4copilot(
         self,
@@ -2125,10 +2361,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.CreateUserGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.CreateUserGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.CreateUserGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_user_group_with_options_async(
         self,
@@ -2166,10 +2408,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.CreateUserGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.CreateUserGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.CreateUserGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_user_group(
         self,
@@ -2203,7 +2451,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DataSetBloodResponse:
         """
-        @summary 查询引用指定数据集下的作品信息。
+        @summary Query works information under the specified dataset.
         
         @param request: DataSetBloodRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2231,10 +2479,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.DataSetBloodResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DataSetBloodResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DataSetBloodResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def data_set_blood_with_options_async(
         self,
@@ -2242,7 +2496,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DataSetBloodResponse:
         """
-        @summary 查询引用指定数据集下的作品信息。
+        @summary Query works information under the specified dataset.
         
         @param request: DataSetBloodRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2270,17 +2524,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.DataSetBloodResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DataSetBloodResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DataSetBloodResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def data_set_blood(
         self,
         request: quickbi_public_20220101_models.DataSetBloodRequest,
     ) -> quickbi_public_20220101_models.DataSetBloodResponse:
         """
-        @summary 查询引用指定数据集下的作品信息。
+        @summary Query works information under the specified dataset.
         
         @param request: DataSetBloodRequest
         @return: DataSetBloodResponse
@@ -2293,7 +2553,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DataSetBloodRequest,
     ) -> quickbi_public_20220101_models.DataSetBloodResponse:
         """
-        @summary 查询引用指定数据集下的作品信息。
+        @summary Query works information under the specified dataset.
         
         @param request: DataSetBloodRequest
         @return: DataSetBloodResponse
@@ -2331,10 +2591,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.DataSourceBloodResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DataSourceBloodResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DataSourceBloodResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def data_source_blood_with_options_async(
         self,
@@ -2366,10 +2632,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.DataSourceBloodResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DataSourceBloodResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DataSourceBloodResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def data_source_blood(
         self,
@@ -2429,10 +2701,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.DelayTicketExpireTimeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DelayTicketExpireTimeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DelayTicketExpireTimeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delay_ticket_expire_time_with_options_async(
         self,
@@ -2466,10 +2744,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.DelayTicketExpireTimeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DelayTicketExpireTimeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DelayTicketExpireTimeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delay_ticket_expire_time(
         self,
@@ -2529,10 +2813,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.DeleteDataLevelPermissionRuleUsersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteDataLevelPermissionRuleUsersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteDataLevelPermissionRuleUsersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_data_level_permission_rule_users_with_options_async(
         self,
@@ -2566,10 +2856,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.DeleteDataLevelPermissionRuleUsersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteDataLevelPermissionRuleUsersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteDataLevelPermissionRuleUsersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_data_level_permission_rule_users(
         self,
@@ -2635,10 +2931,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.DeleteDataLevelRuleConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteDataLevelRuleConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteDataLevelRuleConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_data_level_rule_config_with_options_async(
         self,
@@ -2674,10 +2976,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.DeleteDataLevelRuleConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteDataLevelRuleConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteDataLevelRuleConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_data_level_rule_config(
         self,
@@ -2715,7 +3023,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DeleteTicketResponse:
         """
-        @summary auditing
+        @summary Deletes a specified ticket from an embedded report.
         
         @param request: DeleteTicketRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2739,10 +3047,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.DeleteTicketResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteTicketResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteTicketResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_ticket_with_options_async(
         self,
@@ -2750,7 +3064,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DeleteTicketResponse:
         """
-        @summary auditing
+        @summary Deletes a specified ticket from an embedded report.
         
         @param request: DeleteTicketRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2774,17 +3088,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.DeleteTicketResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteTicketResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteTicketResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_ticket(
         self,
         request: quickbi_public_20220101_models.DeleteTicketRequest,
     ) -> quickbi_public_20220101_models.DeleteTicketResponse:
         """
-        @summary auditing
+        @summary Deletes a specified ticket from an embedded report.
         
         @param request: DeleteTicketRequest
         @return: DeleteTicketResponse
@@ -2797,7 +3117,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DeleteTicketRequest,
     ) -> quickbi_public_20220101_models.DeleteTicketResponse:
         """
-        @summary auditing
+        @summary Deletes a specified ticket from an embedded report.
         
         @param request: DeleteTicketRequest
         @return: DeleteTicketResponse
@@ -2837,10 +3157,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.DeleteUserResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteUserResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteUserResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_user_with_options_async(
         self,
@@ -2874,10 +3200,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.DeleteUserResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteUserResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteUserResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_user(
         self,
@@ -2937,10 +3269,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.DeleteUserFromWorkspaceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteUserFromWorkspaceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteUserFromWorkspaceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_user_from_workspace_with_options_async(
         self,
@@ -2974,10 +3312,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.DeleteUserFromWorkspaceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteUserFromWorkspaceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteUserFromWorkspaceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_user_from_workspace(
         self,
@@ -3035,10 +3379,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.DeleteUserGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteUserGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteUserGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_user_group_with_options_async(
         self,
@@ -3070,10 +3420,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.DeleteUserGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteUserGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteUserGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_user_group(
         self,
@@ -3133,10 +3489,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.DeleteUserGroupMemberResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteUserGroupMemberResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteUserGroupMemberResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_user_group_member_with_options_async(
         self,
@@ -3170,10 +3532,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.DeleteUserGroupMemberResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteUserGroupMemberResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteUserGroupMemberResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_user_group_member(
         self,
@@ -3207,9 +3575,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DeleteUserGroupMembersResponse:
         """
-        @summary Indicates whether the request is successful. Valid values:
-        true: The request was successful.
-        false: The request failed.
+        @summary Batch remove specified users from user groups.
         
         @param request: DeleteUserGroupMembersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3235,10 +3601,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.DeleteUserGroupMembersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteUserGroupMembersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteUserGroupMembersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_user_group_members_with_options_async(
         self,
@@ -3246,9 +3618,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DeleteUserGroupMembersResponse:
         """
-        @summary Indicates whether the request is successful. Valid values:
-        true: The request was successful.
-        false: The request failed.
+        @summary Batch remove specified users from user groups.
         
         @param request: DeleteUserGroupMembersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3274,19 +3644,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.DeleteUserGroupMembersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteUserGroupMembersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteUserGroupMembersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_user_group_members(
         self,
         request: quickbi_public_20220101_models.DeleteUserGroupMembersRequest,
     ) -> quickbi_public_20220101_models.DeleteUserGroupMembersResponse:
         """
-        @summary Indicates whether the request is successful. Valid values:
-        true: The request was successful.
-        false: The request failed.
+        @summary Batch remove specified users from user groups.
         
         @param request: DeleteUserGroupMembersRequest
         @return: DeleteUserGroupMembersResponse
@@ -3299,9 +3673,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DeleteUserGroupMembersRequest,
     ) -> quickbi_public_20220101_models.DeleteUserGroupMembersResponse:
         """
-        @summary Indicates whether the request is successful. Valid values:
-        true: The request was successful.
-        false: The request failed.
+        @summary Batch remove specified users from user groups.
         
         @param request: DeleteUserGroupMembersRequest
         @return: DeleteUserGroupMembersResponse
@@ -3339,10 +3711,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.DeleteUserTagMetaResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteUserTagMetaResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteUserTagMetaResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_user_tag_meta_with_options_async(
         self,
@@ -3374,10 +3752,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.DeleteUserTagMetaResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteUserTagMetaResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.DeleteUserTagMetaResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_user_tag_meta(
         self,
@@ -3411,7 +3795,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.GetDataSourceConnectionInfoResponse:
         """
-        @summary 获取数据源信息
+        @summary Get Data Source Information
         
         @param request: GetDataSourceConnectionInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3435,10 +3819,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.GetDataSourceConnectionInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.GetDataSourceConnectionInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.GetDataSourceConnectionInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_data_source_connection_info_with_options_async(
         self,
@@ -3446,7 +3836,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.GetDataSourceConnectionInfoResponse:
         """
-        @summary 获取数据源信息
+        @summary Get Data Source Information
         
         @param request: GetDataSourceConnectionInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3470,17 +3860,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.GetDataSourceConnectionInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.GetDataSourceConnectionInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.GetDataSourceConnectionInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_data_source_connection_info(
         self,
         request: quickbi_public_20220101_models.GetDataSourceConnectionInfoRequest,
     ) -> quickbi_public_20220101_models.GetDataSourceConnectionInfoResponse:
         """
-        @summary 获取数据源信息
+        @summary Get Data Source Information
         
         @param request: GetDataSourceConnectionInfoRequest
         @return: GetDataSourceConnectionInfoResponse
@@ -3493,7 +3889,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.GetDataSourceConnectionInfoRequest,
     ) -> quickbi_public_20220101_models.GetDataSourceConnectionInfoResponse:
         """
-        @summary 获取数据源信息
+        @summary Get Data Source Information
         
         @param request: GetDataSourceConnectionInfoRequest
         @return: GetDataSourceConnectionInfoResponse
@@ -3507,7 +3903,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.GetMailTaskStatusResponse:
         """
-        @summary 组织内查看邮件任务运行状态
+        @summary Check the running status of mail tasks within an organization
         
         @param request: GetMailTaskStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3533,10 +3929,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.GetMailTaskStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.GetMailTaskStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.GetMailTaskStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_mail_task_status_with_options_async(
         self,
@@ -3544,7 +3946,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.GetMailTaskStatusResponse:
         """
-        @summary 组织内查看邮件任务运行状态
+        @summary Check the running status of mail tasks within an organization
         
         @param request: GetMailTaskStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3570,17 +3972,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.GetMailTaskStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.GetMailTaskStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.GetMailTaskStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_mail_task_status(
         self,
         request: quickbi_public_20220101_models.GetMailTaskStatusRequest,
     ) -> quickbi_public_20220101_models.GetMailTaskStatusResponse:
         """
-        @summary 组织内查看邮件任务运行状态
+        @summary Check the running status of mail tasks within an organization
         
         @param request: GetMailTaskStatusRequest
         @return: GetMailTaskStatusResponse
@@ -3593,7 +4001,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.GetMailTaskStatusRequest,
     ) -> quickbi_public_20220101_models.GetMailTaskStatusResponse:
         """
-        @summary 组织内查看邮件任务运行状态
+        @summary Check the running status of mail tasks within an organization
         
         @param request: GetMailTaskStatusRequest
         @return: GetMailTaskStatusResponse
@@ -3631,10 +4039,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.GetUserGroupInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.GetUserGroupInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.GetUserGroupInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_user_group_info_with_options_async(
         self,
@@ -3666,10 +4080,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.GetUserGroupInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.GetUserGroupInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.GetUserGroupInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_user_group_info(
         self,
@@ -3703,7 +4123,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.GetWorksEmbedListResponse:
         """
-        @summary 查询已嵌入报表列表
+        @summary Query the list of embedded reports
         
         @param request: GetWorksEmbedListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3735,10 +4155,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.GetWorksEmbedListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.GetWorksEmbedListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.GetWorksEmbedListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_works_embed_list_with_options_async(
         self,
@@ -3746,7 +4172,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.GetWorksEmbedListResponse:
         """
-        @summary 查询已嵌入报表列表
+        @summary Query the list of embedded reports
         
         @param request: GetWorksEmbedListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3778,17 +4204,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.GetWorksEmbedListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.GetWorksEmbedListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.GetWorksEmbedListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_works_embed_list(
         self,
         request: quickbi_public_20220101_models.GetWorksEmbedListRequest,
     ) -> quickbi_public_20220101_models.GetWorksEmbedListResponse:
         """
-        @summary 查询已嵌入报表列表
+        @summary Query the list of embedded reports
         
         @param request: GetWorksEmbedListRequest
         @return: GetWorksEmbedListResponse
@@ -3801,7 +4233,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.GetWorksEmbedListRequest,
     ) -> quickbi_public_20220101_models.GetWorksEmbedListResponse:
         """
-        @summary 查询已嵌入报表列表
+        @summary Query the list of embedded reports
         
         @param request: GetWorksEmbedListRequest
         @return: GetWorksEmbedListResponse
@@ -3815,7 +4247,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListApiDatasourceResponse:
         """
-        @summary 查询API数据源列表。
+        @summary Queries API data sources.
+        
+        @description For more information about the parameters, see [Create an API data source](https://help.aliyun.com/document_detail/409330.html).
         
         @param request: ListApiDatasourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3845,10 +4279,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListApiDatasourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListApiDatasourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListApiDatasourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_api_datasource_with_options_async(
         self,
@@ -3856,7 +4296,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListApiDatasourceResponse:
         """
-        @summary 查询API数据源列表。
+        @summary Queries API data sources.
+        
+        @description For more information about the parameters, see [Create an API data source](https://help.aliyun.com/document_detail/409330.html).
         
         @param request: ListApiDatasourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3886,17 +4328,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListApiDatasourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListApiDatasourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListApiDatasourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_api_datasource(
         self,
         request: quickbi_public_20220101_models.ListApiDatasourceRequest,
     ) -> quickbi_public_20220101_models.ListApiDatasourceResponse:
         """
-        @summary 查询API数据源列表。
+        @summary Queries API data sources.
+        
+        @description For more information about the parameters, see [Create an API data source](https://help.aliyun.com/document_detail/409330.html).
         
         @param request: ListApiDatasourceRequest
         @return: ListApiDatasourceResponse
@@ -3909,7 +4359,9 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListApiDatasourceRequest,
     ) -> quickbi_public_20220101_models.ListApiDatasourceResponse:
         """
-        @summary 查询API数据源列表。
+        @summary Queries API data sources.
+        
+        @description For more information about the parameters, see [Create an API data source](https://help.aliyun.com/document_detail/409330.html).
         
         @param request: ListApiDatasourceRequest
         @return: ListApiDatasourceResponse
@@ -3947,10 +4399,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListByUserGroupIdResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListByUserGroupIdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListByUserGroupIdResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_by_user_group_id_with_options_async(
         self,
@@ -3982,10 +4440,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListByUserGroupIdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListByUserGroupIdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListByUserGroupIdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_by_user_group_id(
         self,
@@ -4043,10 +4507,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListCollectionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListCollectionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListCollectionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_collections_with_options_async(
         self,
@@ -4078,10 +4548,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListCollectionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListCollectionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListCollectionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_collections(
         self,
@@ -4143,10 +4619,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListCubeDataLevelPermissionConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListCubeDataLevelPermissionConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListCubeDataLevelPermissionConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_cube_data_level_permission_config_with_options_async(
         self,
@@ -4182,10 +4664,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListCubeDataLevelPermissionConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListCubeDataLevelPermissionConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListCubeDataLevelPermissionConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_cube_data_level_permission_config(
         self,
@@ -4249,10 +4737,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListDataLevelPermissionWhiteListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListDataLevelPermissionWhiteListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListDataLevelPermissionWhiteListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_data_level_permission_white_list_with_options_async(
         self,
@@ -4286,10 +4780,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListDataLevelPermissionWhiteListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListDataLevelPermissionWhiteListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListDataLevelPermissionWhiteListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_data_level_permission_white_list(
         self,
@@ -4323,7 +4823,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListDataSourceResponse:
         """
-        @summary 查询指定空间下的所有数据源
+        @summary Query all data sources under the specified space
         
         @param request: ListDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4349,10 +4849,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListDataSourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListDataSourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListDataSourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_data_source_with_options_async(
         self,
@@ -4360,7 +4866,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListDataSourceResponse:
         """
-        @summary 查询指定空间下的所有数据源
+        @summary Query all data sources under the specified space
         
         @param request: ListDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4386,17 +4892,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListDataSourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListDataSourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListDataSourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_data_source(
         self,
         request: quickbi_public_20220101_models.ListDataSourceRequest,
     ) -> quickbi_public_20220101_models.ListDataSourceResponse:
         """
-        @summary 查询指定空间下的所有数据源
+        @summary Query all data sources under the specified space
         
         @param request: ListDataSourceRequest
         @return: ListDataSourceResponse
@@ -4409,7 +4921,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListDataSourceRequest,
     ) -> quickbi_public_20220101_models.ListDataSourceResponse:
         """
-        @summary 查询指定空间下的所有数据源
+        @summary Query all data sources under the specified space
         
         @param request: ListDataSourceRequest
         @return: ListDataSourceResponse
@@ -4453,10 +4965,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListFavoriteReportsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListFavoriteReportsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListFavoriteReportsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_favorite_reports_with_options_async(
         self,
@@ -4494,10 +5012,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListFavoriteReportsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListFavoriteReportsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListFavoriteReportsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_favorite_reports(
         self,
@@ -4531,7 +5055,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListOrganizationRoleUsersResponse:
         """
-        @summary 获取指定组织角色下的用户列表。
+        @summary Get user list under the specified organization role.
         
         @param request: ListOrganizationRoleUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4561,10 +5085,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListOrganizationRoleUsersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListOrganizationRoleUsersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListOrganizationRoleUsersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_organization_role_users_with_options_async(
         self,
@@ -4572,7 +5102,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListOrganizationRoleUsersResponse:
         """
-        @summary 获取指定组织角色下的用户列表。
+        @summary Get user list under the specified organization role.
         
         @param request: ListOrganizationRoleUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4602,17 +5132,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListOrganizationRoleUsersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListOrganizationRoleUsersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListOrganizationRoleUsersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_organization_role_users(
         self,
         request: quickbi_public_20220101_models.ListOrganizationRoleUsersRequest,
     ) -> quickbi_public_20220101_models.ListOrganizationRoleUsersResponse:
         """
-        @summary 获取指定组织角色下的用户列表。
+        @summary Get user list under the specified organization role.
         
         @param request: ListOrganizationRoleUsersRequest
         @return: ListOrganizationRoleUsersResponse
@@ -4625,7 +5161,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListOrganizationRoleUsersRequest,
     ) -> quickbi_public_20220101_models.ListOrganizationRoleUsersResponse:
         """
-        @summary 获取指定组织角色下的用户列表。
+        @summary Get user list under the specified organization role.
         
         @param request: ListOrganizationRoleUsersRequest
         @return: ListOrganizationRoleUsersResponse
@@ -4638,7 +5174,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListOrganizationRolesResponse:
         """
-        @summary 获取组织级别自定义角色列表。
+        @summary Retrieve the list of custom roles at the organization level.
         
         @param request: ListOrganizationRolesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4656,17 +5192,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListOrganizationRolesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListOrganizationRolesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListOrganizationRolesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_organization_roles_with_options_async(
         self,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListOrganizationRolesResponse:
         """
-        @summary 获取组织级别自定义角色列表。
+        @summary Retrieve the list of custom roles at the organization level.
         
         @param request: ListOrganizationRolesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4684,14 +5226,20 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListOrganizationRolesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListOrganizationRolesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListOrganizationRolesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_organization_roles(self) -> quickbi_public_20220101_models.ListOrganizationRolesResponse:
         """
-        @summary 获取组织级别自定义角色列表。
+        @summary Retrieve the list of custom roles at the organization level.
         
         @return: ListOrganizationRolesResponse
         """
@@ -4700,7 +5248,7 @@ class Client(OpenApiClient):
 
     async def list_organization_roles_async(self) -> quickbi_public_20220101_models.ListOrganizationRolesResponse:
         """
-        @summary 获取组织级别自定义角色列表。
+        @summary Retrieve the list of custom roles at the organization level.
         
         @return: ListOrganizationRolesResponse
         """
@@ -4737,10 +5285,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListPortalMenuAuthorizationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListPortalMenuAuthorizationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListPortalMenuAuthorizationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_portal_menu_authorization_with_options_async(
         self,
@@ -4772,10 +5326,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListPortalMenuAuthorizationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListPortalMenuAuthorizationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListPortalMenuAuthorizationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_portal_menu_authorization(
         self,
@@ -4835,10 +5395,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListPortalMenusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListPortalMenusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListPortalMenusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_portal_menus_with_options_async(
         self,
@@ -4872,10 +5438,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListPortalMenusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListPortalMenusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListPortalMenusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_portal_menus(
         self,
@@ -4943,10 +5515,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListRecentViewReportsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListRecentViewReportsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListRecentViewReportsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_recent_view_reports_with_options_async(
         self,
@@ -4988,10 +5566,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListRecentViewReportsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListRecentViewReportsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListRecentViewReportsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_recent_view_reports(
         self,
@@ -5055,10 +5639,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListSharedReportsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListSharedReportsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListSharedReportsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_shared_reports_with_options_async(
         self,
@@ -5096,10 +5686,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListSharedReportsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListSharedReportsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListSharedReportsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_shared_reports(
         self,
@@ -5157,10 +5753,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListUserGroupsByUserIdResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListUserGroupsByUserIdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListUserGroupsByUserIdResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_user_groups_by_user_id_with_options_async(
         self,
@@ -5192,10 +5794,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListUserGroupsByUserIdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListUserGroupsByUserIdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListUserGroupsByUserIdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_user_groups_by_user_id(
         self,
@@ -5229,7 +5837,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListWorkspaceRoleUsersResponse:
         """
-        @summary 获取指定空间角色下的用户列表。
+        @summary Get user list under the specified workspace role.
         
         @param request: ListWorkspaceRoleUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5261,10 +5869,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListWorkspaceRoleUsersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListWorkspaceRoleUsersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListWorkspaceRoleUsersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_workspace_role_users_with_options_async(
         self,
@@ -5272,7 +5886,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListWorkspaceRoleUsersResponse:
         """
-        @summary 获取指定空间角色下的用户列表。
+        @summary Get user list under the specified workspace role.
         
         @param request: ListWorkspaceRoleUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5304,17 +5918,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListWorkspaceRoleUsersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListWorkspaceRoleUsersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListWorkspaceRoleUsersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_workspace_role_users(
         self,
         request: quickbi_public_20220101_models.ListWorkspaceRoleUsersRequest,
     ) -> quickbi_public_20220101_models.ListWorkspaceRoleUsersResponse:
         """
-        @summary 获取指定空间角色下的用户列表。
+        @summary Get user list under the specified workspace role.
         
         @param request: ListWorkspaceRoleUsersRequest
         @return: ListWorkspaceRoleUsersResponse
@@ -5327,7 +5947,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListWorkspaceRoleUsersRequest,
     ) -> quickbi_public_20220101_models.ListWorkspaceRoleUsersResponse:
         """
-        @summary 获取指定空间角色下的用户列表。
+        @summary Get user list under the specified workspace role.
         
         @param request: ListWorkspaceRoleUsersRequest
         @return: ListWorkspaceRoleUsersResponse
@@ -5341,7 +5961,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListWorkspaceRolesResponse:
         """
-        @summary 获取空间角色列表。
+        @summary Get the list of workspace roles.
         
         @param request: ListWorkspaceRolesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5365,10 +5985,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListWorkspaceRolesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListWorkspaceRolesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListWorkspaceRolesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_workspace_roles_with_options_async(
         self,
@@ -5376,7 +6002,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListWorkspaceRolesResponse:
         """
-        @summary 获取空间角色列表。
+        @summary Get the list of workspace roles.
         
         @param request: ListWorkspaceRolesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5400,17 +6026,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ListWorkspaceRolesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListWorkspaceRolesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ListWorkspaceRolesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_workspace_roles(
         self,
         request: quickbi_public_20220101_models.ListWorkspaceRolesRequest,
     ) -> quickbi_public_20220101_models.ListWorkspaceRolesResponse:
         """
-        @summary 获取空间角色列表。
+        @summary Get the list of workspace roles.
         
         @param request: ListWorkspaceRolesRequest
         @return: ListWorkspaceRolesResponse
@@ -5423,7 +6055,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListWorkspaceRolesRequest,
     ) -> quickbi_public_20220101_models.ListWorkspaceRolesResponse:
         """
-        @summary 获取空间角色列表。
+        @summary Get the list of workspace roles.
         
         @param request: ListWorkspaceRolesRequest
         @return: ListWorkspaceRolesResponse
@@ -5437,7 +6069,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ManualRunMailTaskResponse:
         """
-        @summary 手动执行邮件任务
+        @summary Manually Execute Email Task
         
         @param request: ManualRunMailTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5461,10 +6093,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ManualRunMailTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ManualRunMailTaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ManualRunMailTaskResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def manual_run_mail_task_with_options_async(
         self,
@@ -5472,7 +6110,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ManualRunMailTaskResponse:
         """
-        @summary 手动执行邮件任务
+        @summary Manually Execute Email Task
         
         @param request: ManualRunMailTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5496,17 +6134,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ManualRunMailTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ManualRunMailTaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ManualRunMailTaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def manual_run_mail_task(
         self,
         request: quickbi_public_20220101_models.ManualRunMailTaskRequest,
     ) -> quickbi_public_20220101_models.ManualRunMailTaskResponse:
         """
-        @summary 手动执行邮件任务
+        @summary Manually Execute Email Task
         
         @param request: ManualRunMailTaskRequest
         @return: ManualRunMailTaskResponse
@@ -5519,7 +6163,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ManualRunMailTaskRequest,
     ) -> quickbi_public_20220101_models.ManualRunMailTaskResponse:
         """
-        @summary 手动执行邮件任务
+        @summary Manually Execute Email Task
         
         @param request: ManualRunMailTaskRequest
         @return: ManualRunMailTaskResponse
@@ -5533,7 +6177,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ModifyApiDatasourceParametersResponse:
         """
-        @summary 修改指定API数据源参数值。
+        @summary Modifies the configurations of a specified API data source.
+        
+        @description When you modify a query statement, you can modify only the top-level JsonObject. You cannot modify parameters that are nested in multiple layers. For more information about the parameters, see [Create an API data source](https://help.aliyun.com/document_detail/409330.html).
         
         @param request: ModifyApiDatasourceParametersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5561,10 +6207,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ModifyApiDatasourceParametersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ModifyApiDatasourceParametersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ModifyApiDatasourceParametersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_api_datasource_parameters_with_options_async(
         self,
@@ -5572,7 +6224,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ModifyApiDatasourceParametersResponse:
         """
-        @summary 修改指定API数据源参数值。
+        @summary Modifies the configurations of a specified API data source.
+        
+        @description When you modify a query statement, you can modify only the top-level JsonObject. You cannot modify parameters that are nested in multiple layers. For more information about the parameters, see [Create an API data source](https://help.aliyun.com/document_detail/409330.html).
         
         @param request: ModifyApiDatasourceParametersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5600,17 +6254,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ModifyApiDatasourceParametersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ModifyApiDatasourceParametersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ModifyApiDatasourceParametersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_api_datasource_parameters(
         self,
         request: quickbi_public_20220101_models.ModifyApiDatasourceParametersRequest,
     ) -> quickbi_public_20220101_models.ModifyApiDatasourceParametersResponse:
         """
-        @summary 修改指定API数据源参数值。
+        @summary Modifies the configurations of a specified API data source.
+        
+        @description When you modify a query statement, you can modify only the top-level JsonObject. You cannot modify parameters that are nested in multiple layers. For more information about the parameters, see [Create an API data source](https://help.aliyun.com/document_detail/409330.html).
         
         @param request: ModifyApiDatasourceParametersRequest
         @return: ModifyApiDatasourceParametersResponse
@@ -5623,7 +6285,9 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ModifyApiDatasourceParametersRequest,
     ) -> quickbi_public_20220101_models.ModifyApiDatasourceParametersResponse:
         """
-        @summary 修改指定API数据源参数值。
+        @summary Modifies the configurations of a specified API data source.
+        
+        @description When you modify a query statement, you can modify only the top-level JsonObject. You cannot modify parameters that are nested in multiple layers. For more information about the parameters, see [Create an API data source](https://help.aliyun.com/document_detail/409330.html).
         
         @param request: ModifyApiDatasourceParametersRequest
         @return: ModifyApiDatasourceParametersResponse
@@ -5667,10 +6331,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ModifyCopilotEmbedConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ModifyCopilotEmbedConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ModifyCopilotEmbedConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_copilot_embed_config_with_options_async(
         self,
@@ -5708,10 +6378,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ModifyCopilotEmbedConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ModifyCopilotEmbedConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ModifyCopilotEmbedConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_copilot_embed_config(
         self,
@@ -5745,7 +6421,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryApprovalInfoResponse:
         """
-        @summary 根据审批人获取相应的审批流信息。
+        @summary Get approval flow information based on the approver.
         
         @param request: QueryApprovalInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5775,10 +6451,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryApprovalInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryApprovalInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryApprovalInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_approval_info_with_options_async(
         self,
@@ -5786,7 +6468,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryApprovalInfoResponse:
         """
-        @summary 根据审批人获取相应的审批流信息。
+        @summary Get approval flow information based on the approver.
         
         @param request: QueryApprovalInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5816,17 +6498,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryApprovalInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryApprovalInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryApprovalInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_approval_info(
         self,
         request: quickbi_public_20220101_models.QueryApprovalInfoRequest,
     ) -> quickbi_public_20220101_models.QueryApprovalInfoResponse:
         """
-        @summary 根据审批人获取相应的审批流信息。
+        @summary Get approval flow information based on the approver.
         
         @param request: QueryApprovalInfoRequest
         @return: QueryApprovalInfoResponse
@@ -5839,7 +6527,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryApprovalInfoRequest,
     ) -> quickbi_public_20220101_models.QueryApprovalInfoResponse:
         """
-        @summary 根据审批人获取相应的审批流信息。
+        @summary Get approval flow information based on the approver.
         
         @param request: QueryApprovalInfoRequest
         @return: QueryApprovalInfoResponse
@@ -5889,10 +6577,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryAuditLogResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryAuditLogResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryAuditLogResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_audit_log_with_options_async(
         self,
@@ -5936,10 +6630,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryAuditLogResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryAuditLogResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryAuditLogResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_audit_log(
         self,
@@ -5973,7 +6673,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryComponentPerformanceResponse:
         """
-        @summary 查询组件性能列表。
+        @summary Queries component performance logs.
         
         @param request: QueryComponentPerformanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6009,10 +6709,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryComponentPerformanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryComponentPerformanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryComponentPerformanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_component_performance_with_options_async(
         self,
@@ -6020,7 +6726,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryComponentPerformanceResponse:
         """
-        @summary 查询组件性能列表。
+        @summary Queries component performance logs.
         
         @param request: QueryComponentPerformanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6056,17 +6762,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryComponentPerformanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryComponentPerformanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryComponentPerformanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_component_performance(
         self,
         request: quickbi_public_20220101_models.QueryComponentPerformanceRequest,
     ) -> quickbi_public_20220101_models.QueryComponentPerformanceResponse:
         """
-        @summary 查询组件性能列表。
+        @summary Queries component performance logs.
         
         @param request: QueryComponentPerformanceRequest
         @return: QueryComponentPerformanceResponse
@@ -6079,7 +6791,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryComponentPerformanceRequest,
     ) -> quickbi_public_20220101_models.QueryComponentPerformanceResponse:
         """
-        @summary 查询组件性能列表。
+        @summary Queries component performance logs.
         
         @param request: QueryComponentPerformanceRequest
         @return: QueryComponentPerformanceResponse
@@ -6117,10 +6829,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryCopilotEmbedConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryCopilotEmbedConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryCopilotEmbedConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_copilot_embed_config_with_options_async(
         self,
@@ -6152,10 +6870,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryCopilotEmbedConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryCopilotEmbedConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryCopilotEmbedConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_copilot_embed_config(
         self,
@@ -6189,7 +6913,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryCubeOptimizationResponse:
         """
-        @summary 查询数据集优化建议。
+        @summary Queries dataset optimization suggestions.
         
         @param request: QueryCubeOptimizationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6213,10 +6937,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryCubeOptimizationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryCubeOptimizationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryCubeOptimizationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_cube_optimization_with_options_async(
         self,
@@ -6224,7 +6954,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryCubeOptimizationResponse:
         """
-        @summary 查询数据集优化建议。
+        @summary Queries dataset optimization suggestions.
         
         @param request: QueryCubeOptimizationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6248,17 +6978,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryCubeOptimizationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryCubeOptimizationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryCubeOptimizationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_cube_optimization(
         self,
         request: quickbi_public_20220101_models.QueryCubeOptimizationRequest,
     ) -> quickbi_public_20220101_models.QueryCubeOptimizationResponse:
         """
-        @summary 查询数据集优化建议。
+        @summary Queries dataset optimization suggestions.
         
         @param request: QueryCubeOptimizationRequest
         @return: QueryCubeOptimizationResponse
@@ -6271,7 +7007,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryCubeOptimizationRequest,
     ) -> quickbi_public_20220101_models.QueryCubeOptimizationResponse:
         """
-        @summary 查询数据集优化建议。
+        @summary Queries dataset optimization suggestions.
         
         @param request: QueryCubeOptimizationRequest
         @return: QueryCubeOptimizationResponse
@@ -6319,10 +7055,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryCubePerformanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryCubePerformanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryCubePerformanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_cube_performance_with_options_async(
         self,
@@ -6364,10 +7106,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryCubePerformanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryCubePerformanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryCubePerformanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_cube_performance(
         self,
@@ -6401,7 +7149,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDataResponse:
         """
-        @summary 调用开放数据服务API。
+        @summary Invoke the open data service API.
+        
+        @description ### Prerequisites
+        You need to create a data service API through Quick BI\\"s data service. For more details, see: [Data Service](https://help.aliyun.com/document_detail/144980.html).
+        ### Usage Restrictions
+        The data service feature is only available to professional edition customers.
+        The timeout for data service API calls is 60s, and the QPS for a single API is 10 times/second.
+        If row-level permissions are enabled on the dataset referenced by the data service API, the API call will also be intercepted by the row-level permission policy.
         
         @param request: QueryDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6431,10 +7186,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryDataResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDataResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDataResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_data_with_options_async(
         self,
@@ -6442,7 +7203,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDataResponse:
         """
-        @summary 调用开放数据服务API。
+        @summary Invoke the open data service API.
+        
+        @description ### Prerequisites
+        You need to create a data service API through Quick BI\\"s data service. For more details, see: [Data Service](https://help.aliyun.com/document_detail/144980.html).
+        ### Usage Restrictions
+        The data service feature is only available to professional edition customers.
+        The timeout for data service API calls is 60s, and the QPS for a single API is 10 times/second.
+        If row-level permissions are enabled on the dataset referenced by the data service API, the API call will also be intercepted by the row-level permission policy.
         
         @param request: QueryDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6472,17 +7240,30 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryDataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDataResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDataResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_data(
         self,
         request: quickbi_public_20220101_models.QueryDataRequest,
     ) -> quickbi_public_20220101_models.QueryDataResponse:
         """
-        @summary 调用开放数据服务API。
+        @summary Invoke the open data service API.
+        
+        @description ### Prerequisites
+        You need to create a data service API through Quick BI\\"s data service. For more details, see: [Data Service](https://help.aliyun.com/document_detail/144980.html).
+        ### Usage Restrictions
+        The data service feature is only available to professional edition customers.
+        The timeout for data service API calls is 60s, and the QPS for a single API is 10 times/second.
+        If row-level permissions are enabled on the dataset referenced by the data service API, the API call will also be intercepted by the row-level permission policy.
         
         @param request: QueryDataRequest
         @return: QueryDataResponse
@@ -6495,7 +7276,14 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDataRequest,
     ) -> quickbi_public_20220101_models.QueryDataResponse:
         """
-        @summary 调用开放数据服务API。
+        @summary Invoke the open data service API.
+        
+        @description ### Prerequisites
+        You need to create a data service API through Quick BI\\"s data service. For more details, see: [Data Service](https://help.aliyun.com/document_detail/144980.html).
+        ### Usage Restrictions
+        The data service feature is only available to professional edition customers.
+        The timeout for data service API calls is 60s, and the QPS for a single API is 10 times/second.
+        If row-level permissions are enabled on the dataset referenced by the data service API, the API call will also be intercepted by the row-level permission policy.
         
         @param request: QueryDataRequest
         @return: QueryDataResponse
@@ -6535,10 +7323,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryDataRangeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDataRangeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDataRangeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_data_range_with_options_async(
         self,
@@ -6572,10 +7366,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryDataRangeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDataRangeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDataRangeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_data_range(
         self,
@@ -6609,9 +7409,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDataServiceResponse:
         """
-        @summary The operator for the aggregate operation. Metric fields are available, such as SUM, AVG, and MAX.
+        @summary Invoke an already created API in the data service.
         
-        @description f4cc43bc3**\
+        @description #### Prerequisites
+        You create the data service API through Quick BI\\"s data service. For more details, see [Data Service](https://help.aliyun.com/document_detail/144980.html).
+        #### Usage Restrictions
+        The data service feature is only available to professional edition customers.
+        The timeout for data service API calls is 60s, and the QPS for a single API is 10 times/second.
+        If row-level permissions are enabled on the dataset referenced by the data service API, the API call may be intercepted by the row-level permission policy.
         
         @param request: QueryDataServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6639,10 +7444,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryDataServiceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDataServiceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDataServiceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_data_service_with_options_async(
         self,
@@ -6650,9 +7461,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDataServiceResponse:
         """
-        @summary The operator for the aggregate operation. Metric fields are available, such as SUM, AVG, and MAX.
+        @summary Invoke an already created API in the data service.
         
-        @description f4cc43bc3**\
+        @description #### Prerequisites
+        You create the data service API through Quick BI\\"s data service. For more details, see [Data Service](https://help.aliyun.com/document_detail/144980.html).
+        #### Usage Restrictions
+        The data service feature is only available to professional edition customers.
+        The timeout for data service API calls is 60s, and the QPS for a single API is 10 times/second.
+        If row-level permissions are enabled on the dataset referenced by the data service API, the API call may be intercepted by the row-level permission policy.
         
         @param request: QueryDataServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6680,19 +7496,30 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryDataServiceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDataServiceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDataServiceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_data_service(
         self,
         request: quickbi_public_20220101_models.QueryDataServiceRequest,
     ) -> quickbi_public_20220101_models.QueryDataServiceResponse:
         """
-        @summary The operator for the aggregate operation. Metric fields are available, such as SUM, AVG, and MAX.
+        @summary Invoke an already created API in the data service.
         
-        @description f4cc43bc3**\
+        @description #### Prerequisites
+        You create the data service API through Quick BI\\"s data service. For more details, see [Data Service](https://help.aliyun.com/document_detail/144980.html).
+        #### Usage Restrictions
+        The data service feature is only available to professional edition customers.
+        The timeout for data service API calls is 60s, and the QPS for a single API is 10 times/second.
+        If row-level permissions are enabled on the dataset referenced by the data service API, the API call may be intercepted by the row-level permission policy.
         
         @param request: QueryDataServiceRequest
         @return: QueryDataServiceResponse
@@ -6705,9 +7532,14 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDataServiceRequest,
     ) -> quickbi_public_20220101_models.QueryDataServiceResponse:
         """
-        @summary The operator for the aggregate operation. Metric fields are available, such as SUM, AVG, and MAX.
+        @summary Invoke an already created API in the data service.
         
-        @description f4cc43bc3**\
+        @description #### Prerequisites
+        You create the data service API through Quick BI\\"s data service. For more details, see [Data Service](https://help.aliyun.com/document_detail/144980.html).
+        #### Usage Restrictions
+        The data service feature is only available to professional edition customers.
+        The timeout for data service API calls is 60s, and the QPS for a single API is 10 times/second.
+        If row-level permissions are enabled on the dataset referenced by the data service API, the API call may be intercepted by the row-level permission policy.
         
         @param request: QueryDataServiceRequest
         @return: QueryDataServiceResponse
@@ -6721,7 +7553,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDataServiceListResponse:
         """
-        @summary 查询数据服务API列表。
+        @summary Query Data Service API List
         
         @param request: QueryDataServiceListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6751,10 +7583,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryDataServiceListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDataServiceListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDataServiceListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_data_service_list_with_options_async(
         self,
@@ -6762,7 +7600,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDataServiceListResponse:
         """
-        @summary 查询数据服务API列表。
+        @summary Query Data Service API List
         
         @param request: QueryDataServiceListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6792,17 +7630,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryDataServiceListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDataServiceListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDataServiceListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_data_service_list(
         self,
         request: quickbi_public_20220101_models.QueryDataServiceListRequest,
     ) -> quickbi_public_20220101_models.QueryDataServiceListResponse:
         """
-        @summary 查询数据服务API列表。
+        @summary Query Data Service API List
         
         @param request: QueryDataServiceListRequest
         @return: QueryDataServiceListResponse
@@ -6815,7 +7659,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDataServiceListRequest,
     ) -> quickbi_public_20220101_models.QueryDataServiceListResponse:
         """
-        @summary 查询数据服务API列表。
+        @summary Query Data Service API List
         
         @param request: QueryDataServiceListRequest
         @return: QueryDataServiceListResponse
@@ -6855,10 +7699,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryDatasetDetailInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDatasetDetailInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDatasetDetailInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_dataset_detail_info_with_options_async(
         self,
@@ -6892,10 +7742,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryDatasetDetailInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDatasetDetailInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDatasetDetailInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_dataset_detail_info(
         self,
@@ -6959,10 +7815,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryDatasetInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDatasetInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDatasetInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_dataset_info_with_options_async(
         self,
@@ -6996,10 +7858,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryDatasetInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDatasetInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDatasetInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_dataset_info(
         self,
@@ -7071,10 +7939,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryDatasetListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDatasetListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDatasetListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_dataset_list_with_options_async(
         self,
@@ -7116,10 +7990,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryDatasetListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDatasetListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDatasetListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_dataset_list(
         self,
@@ -7177,10 +8057,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryDatasetSmartqStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDatasetSmartqStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDatasetSmartqStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_dataset_smartq_status_with_options_async(
         self,
@@ -7212,10 +8098,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryDatasetSmartqStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDatasetSmartqStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDatasetSmartqStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_dataset_smartq_status(
         self,
@@ -7273,10 +8165,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryDatasetSwitchInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDatasetSwitchInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDatasetSwitchInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_dataset_switch_info_with_options_async(
         self,
@@ -7308,10 +8206,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryDatasetSwitchInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDatasetSwitchInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryDatasetSwitchInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_dataset_switch_info(
         self,
@@ -7362,10 +8266,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryEmbeddedInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryEmbeddedInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryEmbeddedInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_embedded_info_with_options_async(
         self,
@@ -7390,10 +8300,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryEmbeddedInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryEmbeddedInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryEmbeddedInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_embedded_info(self) -> quickbi_public_20220101_models.QueryEmbeddedInfoResponse:
         """
@@ -7443,10 +8359,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryEmbeddedStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryEmbeddedStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryEmbeddedStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_embedded_status_with_options_async(
         self,
@@ -7478,10 +8400,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryEmbeddedStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryEmbeddedStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryEmbeddedStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_embedded_status(
         self,
@@ -7539,10 +8467,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryLlmCubeWithThemeListByUserIdResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryLlmCubeWithThemeListByUserIdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryLlmCubeWithThemeListByUserIdResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_llm_cube_with_theme_list_by_user_id_with_options_async(
         self,
@@ -7574,10 +8508,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryLlmCubeWithThemeListByUserIdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryLlmCubeWithThemeListByUserIdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryLlmCubeWithThemeListByUserIdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_llm_cube_with_theme_list_by_user_id(
         self,
@@ -7611,7 +8551,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryOrganizationRoleConfigResponse:
         """
-        @summary 获取指定组织角色的配置信息
+        @summary Retrieve Configuration Information for a Specified Organization Role
         
         @param request: QueryOrganizationRoleConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7635,10 +8575,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryOrganizationRoleConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryOrganizationRoleConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryOrganizationRoleConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_organization_role_config_with_options_async(
         self,
@@ -7646,7 +8592,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryOrganizationRoleConfigResponse:
         """
-        @summary 获取指定组织角色的配置信息
+        @summary Retrieve Configuration Information for a Specified Organization Role
         
         @param request: QueryOrganizationRoleConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7670,17 +8616,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryOrganizationRoleConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryOrganizationRoleConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryOrganizationRoleConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_organization_role_config(
         self,
         request: quickbi_public_20220101_models.QueryOrganizationRoleConfigRequest,
     ) -> quickbi_public_20220101_models.QueryOrganizationRoleConfigResponse:
         """
-        @summary 获取指定组织角色的配置信息
+        @summary Retrieve Configuration Information for a Specified Organization Role
         
         @param request: QueryOrganizationRoleConfigRequest
         @return: QueryOrganizationRoleConfigResponse
@@ -7693,7 +8645,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryOrganizationRoleConfigRequest,
     ) -> quickbi_public_20220101_models.QueryOrganizationRoleConfigResponse:
         """
-        @summary 获取指定组织角色的配置信息
+        @summary Retrieve Configuration Information for a Specified Organization Role
         
         @param request: QueryOrganizationRoleConfigRequest
         @return: QueryOrganizationRoleConfigResponse
@@ -7737,10 +8689,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryOrganizationWorkspaceListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryOrganizationWorkspaceListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryOrganizationWorkspaceListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_organization_workspace_list_with_options_async(
         self,
@@ -7778,10 +8736,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryOrganizationWorkspaceListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryOrganizationWorkspaceListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryOrganizationWorkspaceListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_organization_workspace_list(
         self,
@@ -7839,10 +8803,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryReadableResourcesListByUserIdResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryReadableResourcesListByUserIdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryReadableResourcesListByUserIdResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_readable_resources_list_by_user_id_with_options_async(
         self,
@@ -7874,10 +8844,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryReadableResourcesListByUserIdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryReadableResourcesListByUserIdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryReadableResourcesListByUserIdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_readable_resources_list_by_user_id(
         self,
@@ -7911,7 +8887,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryReportPerformanceResponse:
         """
-        @summary 查询报表性能列表
+        @summary Queries report performance logs.
         
         @param request: QueryReportPerformanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7947,10 +8923,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryReportPerformanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryReportPerformanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryReportPerformanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_report_performance_with_options_async(
         self,
@@ -7958,7 +8940,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryReportPerformanceResponse:
         """
-        @summary 查询报表性能列表
+        @summary Queries report performance logs.
         
         @param request: QueryReportPerformanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7994,17 +8976,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryReportPerformanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryReportPerformanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryReportPerformanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_report_performance(
         self,
         request: quickbi_public_20220101_models.QueryReportPerformanceRequest,
     ) -> quickbi_public_20220101_models.QueryReportPerformanceResponse:
         """
-        @summary 查询报表性能列表
+        @summary Queries report performance logs.
         
         @param request: QueryReportPerformanceRequest
         @return: QueryReportPerformanceResponse
@@ -8017,7 +9005,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryReportPerformanceRequest,
     ) -> quickbi_public_20220101_models.QueryReportPerformanceResponse:
         """
-        @summary 查询报表性能列表
+        @summary Queries report performance logs.
         
         @param request: QueryReportPerformanceRequest
         @return: QueryReportPerformanceResponse
@@ -8055,10 +9043,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryShareListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryShareListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryShareListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_share_list_with_options_async(
         self,
@@ -8090,10 +9084,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryShareListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryShareListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryShareListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_share_list(
         self,
@@ -8151,10 +9151,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QuerySharesToUserListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QuerySharesToUserListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QuerySharesToUserListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_shares_to_user_list_with_options_async(
         self,
@@ -8186,10 +9192,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QuerySharesToUserListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QuerySharesToUserListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QuerySharesToUserListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_shares_to_user_list(
         self,
@@ -8249,10 +9261,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QuerySmartqPermissionByCubeIdResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QuerySmartqPermissionByCubeIdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QuerySmartqPermissionByCubeIdResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_smartq_permission_by_cube_id_with_options_async(
         self,
@@ -8286,10 +9304,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QuerySmartqPermissionByCubeIdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QuerySmartqPermissionByCubeIdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QuerySmartqPermissionByCubeIdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_smartq_permission_by_cube_id(
         self,
@@ -8347,10 +9371,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryTicketInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryTicketInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryTicketInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_ticket_info_with_options_async(
         self,
@@ -8382,10 +9412,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryTicketInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryTicketInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryTicketInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_ticket_info(
         self,
@@ -8443,10 +9479,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryUserGroupListByParentIdResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserGroupListByParentIdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserGroupListByParentIdResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_user_group_list_by_parent_id_with_options_async(
         self,
@@ -8478,10 +9520,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryUserGroupListByParentIdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserGroupListByParentIdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserGroupListByParentIdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_user_group_list_by_parent_id(
         self,
@@ -8541,10 +9589,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryUserGroupMemberResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserGroupMemberResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserGroupMemberResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_user_group_member_with_options_async(
         self,
@@ -8578,10 +9632,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryUserGroupMemberResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserGroupMemberResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserGroupMemberResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_user_group_member(
         self,
@@ -8641,10 +9701,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryUserInfoByAccountResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserInfoByAccountResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserInfoByAccountResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_user_info_by_account_with_options_async(
         self,
@@ -8678,10 +9744,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryUserInfoByAccountResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserInfoByAccountResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserInfoByAccountResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_user_info_by_account(
         self,
@@ -8739,10 +9811,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryUserInfoByUserIdResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserInfoByUserIdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserInfoByUserIdResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_user_info_by_user_id_with_options_async(
         self,
@@ -8774,10 +9852,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryUserInfoByUserIdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserInfoByUserIdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserInfoByUserIdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_user_info_by_user_id(
         self,
@@ -8833,10 +9917,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryUserListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_user_list_with_options_async(
         self,
@@ -8866,10 +9956,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryUserListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_user_list(
         self,
@@ -8929,10 +10025,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryUserRoleInfoInWorkspaceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserRoleInfoInWorkspaceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserRoleInfoInWorkspaceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_user_role_info_in_workspace_with_options_async(
         self,
@@ -8966,10 +10068,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryUserRoleInfoInWorkspaceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserRoleInfoInWorkspaceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserRoleInfoInWorkspaceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_user_role_info_in_workspace(
         self,
@@ -9002,7 +10110,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryUserTagMetaListResponse:
         """
-        @summary auditing
+        @summary Queries the metadata list of member tags in an organization.
         
         @param request: QueryUserTagMetaListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9020,17 +10128,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryUserTagMetaListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserTagMetaListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserTagMetaListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_user_tag_meta_list_with_options_async(
         self,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryUserTagMetaListResponse:
         """
-        @summary auditing
+        @summary Queries the metadata list of member tags in an organization.
         
         @param request: QueryUserTagMetaListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9048,14 +10162,20 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryUserTagMetaListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserTagMetaListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserTagMetaListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_user_tag_meta_list(self) -> quickbi_public_20220101_models.QueryUserTagMetaListResponse:
         """
-        @summary auditing
+        @summary Queries the metadata list of member tags in an organization.
         
         @return: QueryUserTagMetaListResponse
         """
@@ -9064,7 +10184,7 @@ class Client(OpenApiClient):
 
     async def query_user_tag_meta_list_async(self) -> quickbi_public_20220101_models.QueryUserTagMetaListResponse:
         """
-        @summary auditing
+        @summary Queries the metadata list of member tags in an organization.
         
         @return: QueryUserTagMetaListResponse
         """
@@ -9077,7 +10197,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryUserTagValueListResponse:
         """
-        @summary Queries the list of tag values for a specific user.
+        @summary Query the list of specific user tag values.
         
         @param request: QueryUserTagValueListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9099,10 +10219,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryUserTagValueListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserTagValueListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserTagValueListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_user_tag_value_list_with_options_async(
         self,
@@ -9110,7 +10236,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryUserTagValueListResponse:
         """
-        @summary Queries the list of tag values for a specific user.
+        @summary Query the list of specific user tag values.
         
         @param request: QueryUserTagValueListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9132,17 +10258,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryUserTagValueListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserTagValueListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryUserTagValueListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_user_tag_value_list(
         self,
         request: quickbi_public_20220101_models.QueryUserTagValueListRequest,
     ) -> quickbi_public_20220101_models.QueryUserTagValueListResponse:
         """
-        @summary Queries the list of tag values for a specific user.
+        @summary Query the list of specific user tag values.
         
         @param request: QueryUserTagValueListRequest
         @return: QueryUserTagValueListResponse
@@ -9155,7 +10287,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryUserTagValueListRequest,
     ) -> quickbi_public_20220101_models.QueryUserTagValueListResponse:
         """
-        @summary Queries the list of tag values for a specific user.
+        @summary Query the list of specific user tag values.
         
         @param request: QueryUserTagValueListRequest
         @return: QueryUserTagValueListResponse
@@ -9193,10 +10325,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryWorksResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryWorksResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryWorksResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_works_with_options_async(
         self,
@@ -9228,10 +10366,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryWorksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryWorksResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryWorksResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_works(
         self,
@@ -9289,10 +10433,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryWorksBloodRelationshipResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryWorksBloodRelationshipResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryWorksBloodRelationshipResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_works_blood_relationship_with_options_async(
         self,
@@ -9324,10 +10474,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryWorksBloodRelationshipResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryWorksBloodRelationshipResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryWorksBloodRelationshipResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_works_blood_relationship(
         self,
@@ -9393,10 +10549,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryWorksByOrganizationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryWorksByOrganizationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryWorksByOrganizationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_works_by_organization_with_options_async(
         self,
@@ -9436,10 +10598,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryWorksByOrganizationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryWorksByOrganizationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryWorksByOrganizationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_works_by_organization(
         self,
@@ -9507,10 +10675,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryWorksByWorkspaceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryWorksByWorkspaceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryWorksByWorkspaceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_works_by_workspace_with_options_async(
         self,
@@ -9552,10 +10726,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryWorksByWorkspaceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryWorksByWorkspaceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryWorksByWorkspaceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_works_by_workspace(
         self,
@@ -9589,7 +10769,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryWorkspaceRoleConfigResponse:
         """
-        @summary 获取指定空间角色的配置信息
+        @summary Get Configuration Information for a Specified Workspace Role
         
         @param request: QueryWorkspaceRoleConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9613,10 +10793,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryWorkspaceRoleConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryWorkspaceRoleConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryWorkspaceRoleConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_workspace_role_config_with_options_async(
         self,
@@ -9624,7 +10810,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryWorkspaceRoleConfigResponse:
         """
-        @summary 获取指定空间角色的配置信息
+        @summary Get Configuration Information for a Specified Workspace Role
         
         @param request: QueryWorkspaceRoleConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9648,17 +10834,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryWorkspaceRoleConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryWorkspaceRoleConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryWorkspaceRoleConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_workspace_role_config(
         self,
         request: quickbi_public_20220101_models.QueryWorkspaceRoleConfigRequest,
     ) -> quickbi_public_20220101_models.QueryWorkspaceRoleConfigResponse:
         """
-        @summary 获取指定空间角色的配置信息
+        @summary Get Configuration Information for a Specified Workspace Role
         
         @param request: QueryWorkspaceRoleConfigRequest
         @return: QueryWorkspaceRoleConfigResponse
@@ -9671,7 +10863,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryWorkspaceRoleConfigRequest,
     ) -> quickbi_public_20220101_models.QueryWorkspaceRoleConfigResponse:
         """
-        @summary 获取指定空间角色的配置信息
+        @summary Get Configuration Information for a Specified Workspace Role
         
         @param request: QueryWorkspaceRoleConfigRequest
         @return: QueryWorkspaceRoleConfigResponse
@@ -9715,10 +10907,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryWorkspaceUserListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryWorkspaceUserListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryWorkspaceUserListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_workspace_user_list_with_options_async(
         self,
@@ -9756,10 +10954,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.QueryWorkspaceUserListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryWorkspaceUserListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.QueryWorkspaceUserListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_workspace_user_list(
         self,
@@ -9793,7 +10997,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ResultCallbackResponse:
         """
-        @summary 第三方资源审批回调接口
+        @summary You can customize the callback interface for approval processes to process Quick BI approval processes.
         
         @param request: ResultCallbackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9821,10 +11025,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ResultCallbackResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ResultCallbackResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ResultCallbackResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def result_callback_with_options_async(
         self,
@@ -9832,7 +11042,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ResultCallbackResponse:
         """
-        @summary 第三方资源审批回调接口
+        @summary You can customize the callback interface for approval processes to process Quick BI approval processes.
         
         @param request: ResultCallbackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9860,17 +11070,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.ResultCallbackResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ResultCallbackResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.ResultCallbackResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def result_callback(
         self,
         request: quickbi_public_20220101_models.ResultCallbackRequest,
     ) -> quickbi_public_20220101_models.ResultCallbackResponse:
         """
-        @summary 第三方资源审批回调接口
+        @summary You can customize the callback interface for approval processes to process Quick BI approval processes.
         
         @param request: ResultCallbackRequest
         @return: ResultCallbackResponse
@@ -9883,7 +11099,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ResultCallbackRequest,
     ) -> quickbi_public_20220101_models.ResultCallbackResponse:
         """
-        @summary 第三方资源审批回调接口
+        @summary You can customize the callback interface for approval processes to process Quick BI approval processes.
         
         @param request: ResultCallbackRequest
         @return: ResultCallbackResponse
@@ -9923,10 +11139,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.SaveFavoritesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.SaveFavoritesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.SaveFavoritesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def save_favorites_with_options_async(
         self,
@@ -9960,10 +11182,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.SaveFavoritesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.SaveFavoritesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.SaveFavoritesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def save_favorites(
         self,
@@ -10025,10 +11253,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.SetDataLevelPermissionExtraConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.SetDataLevelPermissionExtraConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.SetDataLevelPermissionExtraConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def set_data_level_permission_extra_config_with_options_async(
         self,
@@ -10064,10 +11298,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.SetDataLevelPermissionExtraConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.SetDataLevelPermissionExtraConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.SetDataLevelPermissionExtraConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def set_data_level_permission_extra_config(
         self,
@@ -10125,10 +11365,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def set_data_level_permission_rule_config_with_options_async(
         self,
@@ -10160,10 +11406,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def set_data_level_permission_rule_config(
         self,
@@ -10223,10 +11475,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.SetDataLevelPermissionWhiteListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.SetDataLevelPermissionWhiteListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.SetDataLevelPermissionWhiteListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def set_data_level_permission_white_list_with_options_async(
         self,
@@ -10260,10 +11518,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.SetDataLevelPermissionWhiteListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.SetDataLevelPermissionWhiteListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.SetDataLevelPermissionWhiteListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def set_data_level_permission_white_list(
         self,
@@ -10327,10 +11591,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.SmartqAuthTransferResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.SmartqAuthTransferResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.SmartqAuthTransferResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def smartq_auth_transfer_with_options_async(
         self,
@@ -10364,10 +11634,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.SmartqAuthTransferResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.SmartqAuthTransferResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.SmartqAuthTransferResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def smartq_auth_transfer(
         self,
@@ -10433,10 +11709,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.SmartqAuthorizeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.SmartqAuthorizeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.SmartqAuthorizeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def smartq_authorize_with_options_async(
         self,
@@ -10476,10 +11758,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.SmartqAuthorizeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.SmartqAuthorizeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.SmartqAuthorizeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def smartq_authorize(
         self,
@@ -10541,10 +11829,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.SmartqQueryAbilityResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.SmartqQueryAbilityResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.SmartqQueryAbilityResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def smartq_query_ability_with_options_async(
         self,
@@ -10580,10 +11874,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.SmartqQueryAbilityResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.SmartqQueryAbilityResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.SmartqQueryAbilityResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def smartq_query_ability(
         self,
@@ -10651,10 +11951,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.UpdateDataLevelPermissionStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateDataLevelPermissionStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateDataLevelPermissionStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_data_level_permission_status_with_options_async(
         self,
@@ -10696,10 +12002,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.UpdateDataLevelPermissionStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateDataLevelPermissionStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateDataLevelPermissionStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_data_level_permission_status(
         self,
@@ -10771,10 +12083,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.UpdateEmbeddedStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateEmbeddedStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateEmbeddedStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_embedded_status_with_options_async(
         self,
@@ -10808,10 +12126,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.UpdateEmbeddedStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateEmbeddedStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateEmbeddedStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_embedded_status(
         self,
@@ -10871,10 +12195,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.UpdateTicketNumResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateTicketNumResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateTicketNumResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_ticket_num_with_options_async(
         self,
@@ -10908,10 +12238,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.UpdateTicketNumResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateTicketNumResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateTicketNumResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_ticket_num(
         self,
@@ -10981,10 +12317,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.UpdateUserResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateUserResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateUserResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_user_with_options_async(
         self,
@@ -11028,10 +12370,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.UpdateUserResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateUserResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateUserResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_user(
         self,
@@ -11093,10 +12441,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.UpdateUserGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateUserGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateUserGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_user_group_with_options_async(
         self,
@@ -11132,10 +12486,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.UpdateUserGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateUserGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateUserGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_user_group(
         self,
@@ -11169,7 +12529,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateUserTagMetaResponse:
         """
-        @summary 用于更新组织成员标签元信息
+        @summary Used for updating the metadata of organization member tags
         
         @param request: UpdateUserTagMetaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11197,10 +12557,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.UpdateUserTagMetaResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateUserTagMetaResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateUserTagMetaResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_user_tag_meta_with_options_async(
         self,
@@ -11208,7 +12574,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateUserTagMetaResponse:
         """
-        @summary 用于更新组织成员标签元信息
+        @summary Used for updating the metadata of organization member tags
         
         @param request: UpdateUserTagMetaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11236,17 +12602,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.UpdateUserTagMetaResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateUserTagMetaResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateUserTagMetaResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_user_tag_meta(
         self,
         request: quickbi_public_20220101_models.UpdateUserTagMetaRequest,
     ) -> quickbi_public_20220101_models.UpdateUserTagMetaResponse:
         """
-        @summary 用于更新组织成员标签元信息
+        @summary Used for updating the metadata of organization member tags
         
         @param request: UpdateUserTagMetaRequest
         @return: UpdateUserTagMetaResponse
@@ -11259,7 +12631,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateUserTagMetaRequest,
     ) -> quickbi_public_20220101_models.UpdateUserTagMetaResponse:
         """
-        @summary 用于更新组织成员标签元信息
+        @summary Used for updating the metadata of organization member tags
         
         @param request: UpdateUserTagMetaRequest
         @return: UpdateUserTagMetaResponse
@@ -11273,7 +12645,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateUserTagValueResponse:
         """
-        @summary 更新组织成员标签值
+        @summary Update the tag value of an organization member.
         
         @param request: UpdateUserTagValueRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11301,10 +12673,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.UpdateUserTagValueResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateUserTagValueResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateUserTagValueResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_user_tag_value_with_options_async(
         self,
@@ -11312,7 +12690,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateUserTagValueResponse:
         """
-        @summary 更新组织成员标签值
+        @summary Update the tag value of an organization member.
         
         @param request: UpdateUserTagValueRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11340,17 +12718,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.UpdateUserTagValueResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateUserTagValueResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateUserTagValueResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_user_tag_value(
         self,
         request: quickbi_public_20220101_models.UpdateUserTagValueRequest,
     ) -> quickbi_public_20220101_models.UpdateUserTagValueResponse:
         """
-        @summary 更新组织成员标签值
+        @summary Update the tag value of an organization member.
         
         @param request: UpdateUserTagValueRequest
         @return: UpdateUserTagValueResponse
@@ -11363,7 +12747,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateUserTagValueRequest,
     ) -> quickbi_public_20220101_models.UpdateUserTagValueResponse:
         """
-        @summary 更新组织成员标签值
+        @summary Update the tag value of an organization member.
         
         @param request: UpdateUserTagValueRequest
         @return: UpdateUserTagValueResponse
@@ -11407,10 +12791,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.UpdateWorkspaceUserRoleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateWorkspaceUserRoleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateWorkspaceUserRoleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_workspace_user_role_with_options_async(
         self,
@@ -11448,10 +12838,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.UpdateWorkspaceUserRoleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateWorkspaceUserRoleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateWorkspaceUserRoleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_workspace_user_role(
         self,
@@ -11513,10 +12909,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.UpdateWorkspaceUsersRoleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateWorkspaceUsersRoleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateWorkspaceUsersRoleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_workspace_users_role_with_options_async(
         self,
@@ -11552,10 +12954,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.UpdateWorkspaceUsersRoleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateWorkspaceUsersRoleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.UpdateWorkspaceUsersRoleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_workspace_users_role(
         self,
@@ -11613,10 +13021,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.WithdrawAllUserGroupsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.WithdrawAllUserGroupsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.WithdrawAllUserGroupsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def withdraw_all_user_groups_with_options_async(
         self,
@@ -11648,10 +13062,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quickbi_public_20220101_models.WithdrawAllUserGroupsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.WithdrawAllUserGroupsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quickbi_public_20220101_models.WithdrawAllUserGroupsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def withdraw_all_user_groups(
         self,
