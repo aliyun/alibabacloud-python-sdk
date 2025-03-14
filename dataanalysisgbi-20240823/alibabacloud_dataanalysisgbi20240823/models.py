@@ -2562,6 +2562,7 @@ class RunDataAnalysisResponseBodyDataVisualization(TeaModel):
 class RunDataAnalysisResponseBodyData(TeaModel):
     def __init__(
         self,
+        attempts: List[Any] = None,
         error_message: str = None,
         event: str = None,
         evidence: str = None,
@@ -2575,6 +2576,7 @@ class RunDataAnalysisResponseBodyData(TeaModel):
         sql_error: str = None,
         visualization: RunDataAnalysisResponseBodyDataVisualization = None,
     ):
+        self.attempts = attempts
         self.error_message = error_message
         self.event = event
         self.evidence = evidence
@@ -2600,6 +2602,8 @@ class RunDataAnalysisResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.attempts is not None:
+            result['attempts'] = self.attempts
         if self.error_message is not None:
             result['errorMessage'] = self.error_message
         if self.event is not None:
@@ -2628,6 +2632,8 @@ class RunDataAnalysisResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('attempts') is not None:
+            self.attempts = m.get('attempts')
         if m.get('errorMessage') is not None:
             self.error_message = m.get('errorMessage')
         if m.get('event') is not None:
