@@ -1,3 +1,8 @@
+2025-03-14 Version: 1.2.2
+- Update API DescribeSellerInstances: update param PageIndex.
+- Update API DescribeSellerInstances: update param PageSize.
+
+
 2025-03-14 Version: 1.2.1
 - Generated python 2022-12-30 for marketplaceIntl.
 
