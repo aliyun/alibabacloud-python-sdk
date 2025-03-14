@@ -8058,7 +8058,7 @@ class DescribeInstancePasswordsSettingRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/2361076.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -8898,7 +8898,7 @@ class DescribeMonitorDataRequest(TeaModel):
         self.next_token = next_token
         # The interval at which the monitoring data is queried. Valid values: 60, 300, and 900. Unit: seconds.
         # 
-        # > If MetricName is set to FLOW_USED, Period is set to 3600 (one hour). In other cases, set Period based on your business requirements.
+        # >  If MetricName is set to FLOW_USED, set Period to 3600 (one hour). In other cases, set Period based on your business requirements.
         # 
         # This parameter is required.
         self.period = period
@@ -8983,7 +8983,7 @@ class DescribeMonitorDataResponseBody(TeaModel):
         self.next_token = next_token
         # The interval at which the monitoring data is queried. Valid values: 60, 300, and 900. Unit: seconds.
         # 
-        # > If MetricName is set to FLOW_USED, Period is set to 3600 (one hour). In other cases, set Period based on your business requirements.
+        # >  If you set the MetricName request parameter to FLOW_USED, the value of Period is 3600 (one hour).
         self.period = period
         # The request ID.
         self.request_id = request_id
@@ -11863,7 +11863,7 @@ class ListImagesResponseBody(TeaModel):
         images: List[ListImagesResponseBodyImages] = None,
         request_id: str = None,
     ):
-        # The information of the image.
+        # Details of the queried images.
         self.images = images
         # The request ID.
         self.request_id = request_id
@@ -12586,10 +12586,10 @@ class ListInstancesResponseBodyInstancesDisks(TeaModel):
         self.disk_name = disk_name
         # The tags that are added to the disk.
         self.disk_tags = disk_tags
-        # The disk type. Valid values:
+        # The type of the disk. Valid values:
         # 
-        # *   system: system disk
-        # *   data: data disk
+        # *   system: system disk.
+        # *   data: data disk.
         self.disk_type = disk_type
         # The region ID.
         self.region_id = region_id
@@ -12597,7 +12597,7 @@ class ListInstancesResponseBodyInstancesDisks(TeaModel):
         self.remark = remark
         # The ID of the resource group to which the disk belongs.
         self.resource_group_id = resource_group_id
-        # The disk size. Unit: GiB.
+        # The size of the disk. Unit: GiB.
         self.size = size
         # The status of the disk. Valid values:
         # 
@@ -12752,6 +12752,51 @@ class ListInstancesResponseBodyInstancesImage(TeaModel):
         return self
 
 
+class ListInstancesResponseBodyInstancesNetworkAttributes(TeaModel):
+    def __init__(
+        self,
+        peak_bandwidth: int = None,
+        private_ip_address: str = None,
+        public_ip_address: str = None,
+        public_ip_ddos_status: str = None,
+    ):
+        self.peak_bandwidth = peak_bandwidth
+        self.private_ip_address = private_ip_address
+        self.public_ip_address = public_ip_address
+        self.public_ip_ddos_status = public_ip_ddos_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.peak_bandwidth is not None:
+            result['PeakBandwidth'] = self.peak_bandwidth
+        if self.private_ip_address is not None:
+            result['PrivateIpAddress'] = self.private_ip_address
+        if self.public_ip_address is not None:
+            result['PublicIpAddress'] = self.public_ip_address
+        if self.public_ip_ddos_status is not None:
+            result['PublicIpDdosStatus'] = self.public_ip_ddos_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PeakBandwidth') is not None:
+            self.peak_bandwidth = m.get('PeakBandwidth')
+        if m.get('PrivateIpAddress') is not None:
+            self.private_ip_address = m.get('PrivateIpAddress')
+        if m.get('PublicIpAddress') is not None:
+            self.public_ip_address = m.get('PublicIpAddress')
+        if m.get('PublicIpDdosStatus') is not None:
+            self.public_ip_ddos_status = m.get('PublicIpDdosStatus')
+        return self
+
+
 class ListInstancesResponseBodyInstancesResourceSpec(TeaModel):
     def __init__(
         self,
@@ -12762,7 +12807,7 @@ class ListInstancesResponseBodyInstancesResourceSpec(TeaModel):
         flow: float = None,
         memory: float = None,
     ):
-        # The bandwidth of the server. Unit: Mbps.
+        # The bandwidth. Unit: Mbit/s.
         self.bandwidth = bandwidth
         # The number of vCPUs of the simple application server.
         self.cpu = cpu
@@ -12772,14 +12817,14 @@ class ListInstancesResponseBodyInstancesResourceSpec(TeaModel):
         # *   SSD: standard SSD
         # *   CLOUD_EFFICIENCY: ultra disk
         self.disk_category = disk_category
-        # The disk size. Unit: GiB.
+        # The size of the disk. Unit: GiB.
         self.disk_size = disk_size
         # The amount of the traffic.
         # 
         # *   A value of 0 indicates the traffic amount of a bandwidth-based simple application server.
         # *   A non-zero value indicates the traffic amount of a data transfer plan-based simple application server.
         self.flow = flow
-        # The memory size of the server. Unit: GiB.
+        # The size of the memory. Unit: GiB.
         self.memory = memory
 
     def validate(self):
@@ -12874,6 +12919,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         inner_ip_address: str = None,
         instance_id: str = None,
         instance_name: str = None,
+        network_attributes: List[ListInstancesResponseBodyInstancesNetworkAttributes] = None,
         plan_id: str = None,
         public_ip_address: str = None,
         region_id: str = None,
@@ -12909,7 +12955,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         # *   SECURITY: The server is locked for security reasons.
         # *   EXPIRED: The server is expired.
         self.disable_reason = disable_reason
-        # The disks that are attached to the simple application server.
+        # The information about the disks on the simple application server.
         self.disks = disks
         # The time when the simple application server expires. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.expired_time = expired_time
@@ -12923,6 +12969,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         self.instance_id = instance_id
         # The name of the simple application server.
         self.instance_name = instance_name
+        self.network_attributes = network_attributes
         # The ID of the instance plan.
         self.plan_id = plan_id
         # The public IP address.
@@ -12931,7 +12978,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         self.region_id = region_id
         # The ID of the resource group to which the server belongs.
         self.resource_group_id = resource_group_id
-        # The specifications of the resource.
+        # The specifications of the resources on the simple application server.
         self.resource_spec = resource_spec
         # The status of the simple application server. Valid values:
         # 
@@ -12956,6 +13003,10 @@ class ListInstancesResponseBodyInstances(TeaModel):
                     k.validate()
         if self.image:
             self.image.validate()
+        if self.network_attributes:
+            for k in self.network_attributes:
+                if k:
+                    k.validate()
         if self.resource_spec:
             self.resource_spec.validate()
         if self.tags:
@@ -12999,6 +13050,10 @@ class ListInstancesResponseBodyInstances(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
+        result['NetworkAttributes'] = []
+        if self.network_attributes is not None:
+            for k in self.network_attributes:
+                result['NetworkAttributes'].append(k.to_map() if k else None)
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
         if self.public_ip_address is not None:
@@ -13053,6 +13108,11 @@ class ListInstancesResponseBodyInstances(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
+        self.network_attributes = []
+        if m.get('NetworkAttributes') is not None:
+            for k in m.get('NetworkAttributes'):
+                temp_model = ListInstancesResponseBodyInstancesNetworkAttributes()
+                self.network_attributes.append(temp_model.from_map(k))
         if m.get('PlanId') is not None:
             self.plan_id = m.get('PlanId')
         if m.get('PublicIpAddress') is not None:
@@ -13085,7 +13145,7 @@ class ListInstancesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the simple application servers.
+        # Details about the queried simple application servers.
         self.instances = instances
         # The page number.
         self.page_number = page_number

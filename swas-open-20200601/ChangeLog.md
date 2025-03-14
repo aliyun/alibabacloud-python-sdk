@@ -1,3 +1,7 @@
+2025-03-14 Version: 3.0.4
+- Update API ListInstances: update response param.
+
+
 2025-02-11 Version: 3.0.3
 - Update API DescribeInstancePasswordsSetting: update response param.
 - Update API LoginInstance: update param Password.
