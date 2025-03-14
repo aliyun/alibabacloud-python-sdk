@@ -1,3 +1,7 @@
+2025-03-14 Version: 4.2.0
+- Support API SubmitSegmentationJob.
+
+
 2025-03-07 Version: 4.1.0
 - Support API CreateMediaLiveChannel.
 - Support API CreateMediaLiveInput.

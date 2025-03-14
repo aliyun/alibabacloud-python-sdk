@@ -35006,6 +35006,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_screen_media_highlights_job_with_options_async(request, runtime)
 
+    def submit_segmentation_job_with_options(
+        self,
+        request: ice20201109_models.SubmitSegmentationJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitSegmentationJobResponse:
+        """
+        @summary 提交拆条任务
+        
+        @param request: SubmitSegmentationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitSegmentationJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.job_params):
+            query['JobParams'] = request.job_params
+        if not UtilClient.is_unset(request.output_config):
+            query['OutputConfig'] = request.output_config
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        body = {}
+        if not UtilClient.is_unset(request.input_config):
+            body['InputConfig'] = request.input_config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitSegmentationJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.SubmitSegmentationJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.SubmitSegmentationJobResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def submit_segmentation_job_with_options_async(
+        self,
+        request: ice20201109_models.SubmitSegmentationJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitSegmentationJobResponse:
+        """
+        @summary 提交拆条任务
+        
+        @param request: SubmitSegmentationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitSegmentationJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.job_params):
+            query['JobParams'] = request.job_params
+        if not UtilClient.is_unset(request.output_config):
+            query['OutputConfig'] = request.output_config
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        body = {}
+        if not UtilClient.is_unset(request.input_config):
+            body['InputConfig'] = request.input_config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitSegmentationJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ice20201109_models.SubmitSegmentationJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ice20201109_models.SubmitSegmentationJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def submit_segmentation_job(
+        self,
+        request: ice20201109_models.SubmitSegmentationJobRequest,
+    ) -> ice20201109_models.SubmitSegmentationJobResponse:
+        """
+        @summary 提交拆条任务
+        
+        @param request: SubmitSegmentationJobRequest
+        @return: SubmitSegmentationJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_segmentation_job_with_options(request, runtime)
+
+    async def submit_segmentation_job_async(
+        self,
+        request: ice20201109_models.SubmitSegmentationJobRequest,
+    ) -> ice20201109_models.SubmitSegmentationJobResponse:
+        """
+        @summary 提交拆条任务
+        
+        @param request: SubmitSegmentationJobRequest
+        @return: SubmitSegmentationJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_segmentation_job_with_options_async(request, runtime)
+
     def submit_smarttag_job_with_options(
         self,
         tmp_req: ice20201109_models.SubmitSmarttagJobRequest,
