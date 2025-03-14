@@ -1,3 +1,10 @@
+2025-03-14 Version: 4.5.2
+- Update API CreateAntiBruteForceRule: add param ProtocolType.
+- Update API DescribeAntiBruteForceRules: update response param.
+- Update API ListCheckItemWarningMachine: update response param.
+- Update API ModifyAntiBruteForceRule: add param ProtocolType.
+
+
 2025-03-12 Version: 4.5.1
 - Update API DescribeCustomizedDictUploadInfo: update response param.
 - Update API GetHoneyPotUploadPolicyInfo: update response param.
