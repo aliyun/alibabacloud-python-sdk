@@ -1,3 +1,6 @@
+2025-03-14 Version: 2.4.1
+- Generated python 2023-09-30 for linkedmall.
+
 2025-03-12 Version: 2.4.0
 - Support API SearchProducts.
 - Support API SelectionGroupAddProduct.

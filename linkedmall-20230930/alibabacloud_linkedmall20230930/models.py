@@ -3019,6 +3019,7 @@ class ProductQuery(TeaModel):
 class SkuSaleInfo(TeaModel):
     def __init__(
         self,
+        can_not_sell_reason: str = None,
         can_sell: bool = None,
         division_code: str = None,
         fuzzy_quantity: str = None,
@@ -3031,6 +3032,7 @@ class SkuSaleInfo(TeaModel):
         sku_status: str = None,
         title: str = None,
     ):
+        self.can_not_sell_reason = can_not_sell_reason
         self.can_sell = can_sell
         self.division_code = division_code
         self.fuzzy_quantity = fuzzy_quantity
@@ -3052,6 +3054,8 @@ class SkuSaleInfo(TeaModel):
             return _map
 
         result = dict()
+        if self.can_not_sell_reason is not None:
+            result['canNotSellReason'] = self.can_not_sell_reason
         if self.can_sell is not None:
             result['canSell'] = self.can_sell
         if self.division_code is not None:
@@ -3078,6 +3082,8 @@ class SkuSaleInfo(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('canNotSellReason') is not None:
+            self.can_not_sell_reason = m.get('canNotSellReason')
         if m.get('canSell') is not None:
             self.can_sell = m.get('canSell')
         if m.get('divisionCode') is not None:
@@ -4448,9 +4454,11 @@ class ShopStatusChangeResult(TeaModel):
 class SkuQueryParam(TeaModel):
     def __init__(
         self,
+        buy_amount: int = None,
         product_id: str = None,
         sku_id: str = None,
     ):
+        self.buy_amount = buy_amount
         # This parameter is required.
         self.product_id = product_id
         # This parameter is required.
@@ -4465,6 +4473,8 @@ class SkuQueryParam(TeaModel):
             return _map
 
         result = dict()
+        if self.buy_amount is not None:
+            result['buyAmount'] = self.buy_amount
         if self.product_id is not None:
             result['productId'] = self.product_id
         if self.sku_id is not None:
@@ -4473,6 +4483,8 @@ class SkuQueryParam(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('buyAmount') is not None:
+            self.buy_amount = m.get('buyAmount')
         if m.get('productId') is not None:
             self.product_id = m.get('productId')
         if m.get('skuId') is not None:
