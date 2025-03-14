@@ -1154,6 +1154,7 @@ class CreateAccountRequest(TeaModel):
         client_token: str = None,
         dbcluster_id: str = None,
         dbname: str = None,
+        node_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
         priv_for_all_db: str = None,
@@ -1221,6 +1222,7 @@ class CreateAccountRequest(TeaModel):
         # 
         # >  This parameter is valid only for standard accounts of PolarDB for MySQL clusters.
         self.dbname = dbname
+        self.node_type = node_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.priv_for_all_db = priv_for_all_db
@@ -1252,6 +1254,8 @@ class CreateAccountRequest(TeaModel):
             result['DBClusterId'] = self.dbcluster_id
         if self.dbname is not None:
             result['DBName'] = self.dbname
+        if self.node_type is not None:
+            result['NodeType'] = self.node_type
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -1282,6 +1286,8 @@ class CreateAccountRequest(TeaModel):
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('DBName') is not None:
             self.dbname = m.get('DBName')
+        if m.get('NodeType') is not None:
+            self.node_type = m.get('NodeType')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -2084,8 +2090,6 @@ class CreateDBClusterRequest(TeaModel):
         # 
         # > - For a Serverless cluster in PolarDB MySQL, enter **polar.mysql.sl.small**.
         # <props="china">> - For a Serverless cluster in both PolarDB PostgreSQL (Oracle Compatible) and PolarDB PostgreSQL, enter **polar.pg.sl.small.c**.
-        # 
-        # This parameter is required.
         self.dbnode_class = dbnode_class
         # The number of nodes. This parameter is supported for Standard Edition clusters. Valid values:
         # 
@@ -2246,16 +2250,35 @@ class CreateDBClusterRequest(TeaModel):
         # - Enable: Enables automatic storage expansion.
         # - Disable: Disables automatic storage expansion.
         self.storage_auto_scale = storage_auto_scale
+        # Specifies whether to enable disk encryption. Valid values:
+        # 
+        # *   **true**\
+        # *   **false** (default)
+        # 
+        # >  This parameter takes effect only when **DBType** is set to **MySQL**.
+        # 
+        # >  This parameter takes effect only when **StorageType** is set to one of the Standard Edition storage types.
         self.storage_encryption = storage_encryption
+        # The ID of the custom key that is used for disk encryption in the region in which the instance resides. If this parameter is specified, disk encryption is automatically enabled and cannot be disabled afterwards. If you want to use the default service key for disk encryption, leave this parameter empty.
+        # 
+        # You can obtain the ID of the key in the KMS console or create a key.
+        # 
+        # >  This parameter takes effect only when **DBType** is set to **MySQL**.
+        # 
+        # >  This parameter takes effect only when **StorageType** is set to one of the Standard Edition storage types.
         self.storage_encryption_key = storage_encryption_key
         # The storage billing type, with valid values as follows:
         # 
         # - Postpaid: Pay-as-you-go (hourly).
         # - Prepaid: Pay-per-use based on space (subscription).
         self.storage_pay_type = storage_pay_type
-        # Storage space for pay-by-space (subscription) billing. Unit: GB.
-        # > - For PolarDB MySQL Standard Edition, the storage space range is 20 to 32000.
-        # > - When the Standard Edition storage type is ESSDAUTOPL, the storage space range is 40 to 64000, with a minimum step size of 10, meaning you can only enter values like 40, 50, 60, and so on.
+        # The storage that is billed based on the subscription billing method. Unit: GB.
+        # 
+        # > 
+        # 
+        # *   Valid values for the subscription storage capacity of a PolarDB for MySQL Standard Edition cluster: 20 to 32000.
+        # 
+        # *   Valid values for the subscription storage capacity of a Standard Edition cluster that uses the ESSD AUTOPL storage type: 40 to 64000, in increments of 10.
         self.storage_space = storage_space
         # Enterprise edition storage types include:
         # - **PSL5**\
@@ -2747,6 +2770,11 @@ class CreateDBClusterEndpointRequest(TeaModel):
         # 
         # *   **ON**\
         # *   **OFF**\
+        # 
+        # Enumerated values:
+        # 
+        # *   on
+        # *   off
         self.scc_mode = scc_mode
 
     def validate(self):
@@ -6444,6 +6472,7 @@ class DeleteMaskingRulesRequest(TeaModel):
     def __init__(
         self,
         dbcluster_id: str = None,
+        interface_version: str = None,
         rule_name_list: str = None,
     ):
         # The ID of the cluster.
@@ -6452,6 +6481,7 @@ class DeleteMaskingRulesRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        self.interface_version = interface_version
         # The name of the masking rule. You can specify multiple masking rules at a time. Separate the masking rules with commas (,).
         # 
         # > You can call the [DescribeMaskingRules](https://help.aliyun.com/document_detail/212573.html) operation to query details of all the masking rules for a specified cluster, such as the names of the masking rules.
@@ -6470,6 +6500,8 @@ class DeleteMaskingRulesRequest(TeaModel):
         result = dict()
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
+        if self.interface_version is not None:
+            result['InterfaceVersion'] = self.interface_version
         if self.rule_name_list is not None:
             result['RuleNameList'] = self.rule_name_list
         return result
@@ -6478,6 +6510,8 @@ class DeleteMaskingRulesRequest(TeaModel):
         m = m or dict()
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+        if m.get('InterfaceVersion') is not None:
+            self.interface_version = m.get('InterfaceVersion')
         if m.get('RuleNameList') is not None:
             self.rule_name_list = m.get('RuleNameList')
         return self
@@ -6881,6 +6915,7 @@ class DescribeAccountsRequest(TeaModel):
         self,
         account_name: str = None,
         dbcluster_id: str = None,
+        node_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
         page_number: int = None,
@@ -6894,6 +6929,7 @@ class DescribeAccountsRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        self.node_type = node_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The page number of the page to return. Set this parameter to an integer that is larger than 0. Default value: **1**.
@@ -6922,6 +6958,8 @@ class DescribeAccountsRequest(TeaModel):
             result['AccountName'] = self.account_name
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
+        if self.node_type is not None:
+            result['NodeType'] = self.node_type
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -6942,6 +6980,8 @@ class DescribeAccountsRequest(TeaModel):
             self.account_name = m.get('AccountName')
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+        if m.get('NodeType') is not None:
+            self.node_type = m.get('NodeType')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -10947,6 +10987,10 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         # *   `ON`: enabled
         # *   `OFF`: disabled
         self.imci_auto_index = imci_auto_index
+        # Indicates whether failover with hot replica is enabled. Valid values:
+        # 
+        # *   `true`
+        # *   `false` (default)
         self.imperceptible_switch = imperceptible_switch
         # Maximum number of inodes in the file system.
         self.inode_total = inode_total
@@ -12125,6 +12169,7 @@ class DescribeDBClusterEndpointsResponseBodyItemsAddressItems(TeaModel):
     def __init__(
         self,
         connection_string: str = None,
+        dashboard_used: bool = None,
         ipaddress: str = None,
         net_type: str = None,
         port: str = None,
@@ -12135,6 +12180,7 @@ class DescribeDBClusterEndpointsResponseBodyItemsAddressItems(TeaModel):
     ):
         # The endpoint.
         self.connection_string = connection_string
+        self.dashboard_used = dashboard_used
         # The IP address.
         self.ipaddress = ipaddress
         # The network type of the endpoint. Valid values:
@@ -12166,6 +12212,8 @@ class DescribeDBClusterEndpointsResponseBodyItemsAddressItems(TeaModel):
         result = dict()
         if self.connection_string is not None:
             result['ConnectionString'] = self.connection_string
+        if self.dashboard_used is not None:
+            result['DashboardUsed'] = self.dashboard_used
         if self.ipaddress is not None:
             result['IPAddress'] = self.ipaddress
         if self.net_type is not None:
@@ -12186,6 +12234,8 @@ class DescribeDBClusterEndpointsResponseBodyItemsAddressItems(TeaModel):
         m = m or dict()
         if m.get('ConnectionString') is not None:
             self.connection_string = m.get('ConnectionString')
+        if m.get('DashboardUsed') is not None:
+            self.dashboard_used = m.get('DashboardUsed')
         if m.get('IPAddress') is not None:
             self.ipaddress = m.get('IPAddress')
         if m.get('NetType') is not None:
@@ -12265,13 +12315,22 @@ class DescribeDBClusterEndpointsResponseBodyItems(TeaModel):
         self.node_with_roles = node_with_roles
         # The nodes in the endpoint.
         self.nodes = nodes
+        # The global consistency timeout policy. Valid values:
+        # 
+        # *   **0**: sends the request to the primary node.
+        # *   **2**: downgrades the consistency level of a query to inconsistent read when a global consistent read in the query times out. No error message is returned to the client.
         self.polar_scc_timeout_action = polar_scc_timeout_action
+        # Global consistency timeout.
         self.polar_scc_wait_timeout = polar_scc_wait_timeout
         # The read/write mode. Valid values:
         # 
         # *   **ReadWrite**: handles read and write requests. Automatic read/write splitting is enabled.
         # *   **ReadOnly**: handles read-only requests.
         self.read_write_mode = read_write_mode
+        # Indicates whether the global consistency (high-performance mode) feature is enabled for the node. Valid values:
+        # 
+        # *   **on**: enabled.
+        # *   **off**: disabled
         self.scc_mode = scc_mode
 
     def validate(self):
@@ -20797,6 +20856,7 @@ class DescribeMaskingRulesRequest(TeaModel):
     def __init__(
         self,
         dbcluster_id: str = None,
+        interface_version: str = None,
         rule_name_list: str = None,
     ):
         # The ID of the cluster.
@@ -20805,6 +20865,7 @@ class DescribeMaskingRulesRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        self.interface_version = interface_version
         # The name of the masking rule.
         self.rule_name_list = rule_name_list
 
@@ -20819,6 +20880,8 @@ class DescribeMaskingRulesRequest(TeaModel):
         result = dict()
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
+        if self.interface_version is not None:
+            result['InterfaceVersion'] = self.interface_version
         if self.rule_name_list is not None:
             result['RuleNameList'] = self.rule_name_list
         return result
@@ -20827,6 +20890,8 @@ class DescribeMaskingRulesRequest(TeaModel):
         m = m or dict()
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+        if m.get('InterfaceVersion') is not None:
+            self.interface_version = m.get('InterfaceVersion')
         if m.get('RuleNameList') is not None:
             self.rule_name_list = m.get('RuleNameList')
         return self
@@ -28196,6 +28261,131 @@ class ModifyDBClusterAndNodesParametersResponse(TeaModel):
         return self
 
 
+class ModifyDBClusterArchRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        hot_standby_cluster: str = None,
+        region_id: str = None,
+        standby_az: str = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        self.hot_standby_cluster = hot_standby_cluster
+        self.region_id = region_id
+        self.standby_az = standby_az
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.hot_standby_cluster is not None:
+            result['HotStandbyCluster'] = self.hot_standby_cluster
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.standby_az is not None:
+            result['StandbyAZ'] = self.standby_az
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('HotStandbyCluster') is not None:
+            self.hot_standby_cluster = m.get('HotStandbyCluster')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StandbyAZ') is not None:
+            self.standby_az = m.get('StandbyAZ')
+        return self
+
+
+class ModifyDBClusterArchResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        order_id: str = None,
+        request_id: str = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        self.order_id = order_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyDBClusterArchResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyDBClusterArchResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyDBClusterArchResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyDBClusterAuditLogCollectorRequest(TeaModel):
     def __init__(
         self,
@@ -32930,6 +33120,7 @@ class ModifyMaskingRulesRequest(TeaModel):
         self,
         dbcluster_id: str = None,
         enable: str = None,
+        interface_version: str = None,
         rule_config: str = None,
         rule_name: str = None,
         rule_name_list: str = None,
@@ -32948,6 +33139,7 @@ class ModifyMaskingRulesRequest(TeaModel):
         # 
         # > This parameter is valid only when the `RuleNameList` parameter is specfied.
         self.enable = enable
+        self.interface_version = interface_version
         # The parameter that is used to specify the masking rule that you want to modify and the value in the JSON format. All parameter values are of the string type. Example: `{"auto": {"databases": ["db1"], "tables": ["tb1"], "columns": ["c1,c2"] }, "description": "This rule will be applied to the columns c1 and c2 in table t1", "enabled": true, "applies_to": ["user"]}`. Parameters in the function:
         # 
         # *   `"auto"`: specifies that the dynamic masking algorithm is supported. This parameter is required.
@@ -32990,6 +33182,8 @@ class ModifyMaskingRulesRequest(TeaModel):
             result['DBClusterId'] = self.dbcluster_id
         if self.enable is not None:
             result['Enable'] = self.enable
+        if self.interface_version is not None:
+            result['InterfaceVersion'] = self.interface_version
         if self.rule_config is not None:
             result['RuleConfig'] = self.rule_config
         if self.rule_name is not None:
@@ -33006,6 +33200,8 @@ class ModifyMaskingRulesRequest(TeaModel):
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
+        if m.get('InterfaceVersion') is not None:
+            self.interface_version = m.get('InterfaceVersion')
         if m.get('RuleConfig') is not None:
             self.rule_config = m.get('RuleConfig')
         if m.get('RuleName') is not None:

@@ -1,3 +1,20 @@
+2025-03-14 Version: 5.5.0
+- Support API ModifyDBClusterArch.
+- Update API CreateAccount: add param NodeType.
+- Update API CreateDBCluster: update param DBNodeClass.
+- Update API CreateDBCluster: update param StorageSpace.
+- Update API DeleteMaskingRules: add param InterfaceVersion.
+- Update API DescribeAccounts: add param NodeType.
+- Update API DescribeAccounts: update response param.
+- Update API DescribeDBClusterEndpoints: update response param.
+- Update API DescribeMaskingRules: add param InterfaceVersion.
+- Update API ModifyDBCluster: update param FaultInjectionType.
+- Update API ModifyDBCluster: update param FaultSimulateMode.
+- Update API ModifyMaskingRules: add param InterfaceVersion.
+- Update API ModifyMaskingRules: update param RuleConfig.
+- Update API ModifyMaskingRules: update param RuleName.
+
+
 2025-02-06 Version: 5.4.1
 - Update API DescribeActivationCodes: add param MacAddress.
 - Update API DescribeActivationCodes: add param SystemIdentifier.

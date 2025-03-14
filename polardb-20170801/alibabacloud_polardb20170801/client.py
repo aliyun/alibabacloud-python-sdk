@@ -1161,6 +1161,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.dbname):
             query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.node_type):
+            query['NodeType'] = request.node_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -1226,6 +1228,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.dbname):
             query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.node_type):
+            query['NodeType'] = request.node_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -5103,6 +5107,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.interface_version):
+            query['InterfaceVersion'] = request.interface_version
         if not UtilClient.is_unset(request.rule_name_list):
             query['RuleNameList'] = request.rule_name_list
         req = open_api_models.OpenApiRequest(
@@ -5146,6 +5152,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.interface_version):
+            query['InterfaceVersion'] = request.interface_version
         if not UtilClient.is_unset(request.rule_name_list):
             query['RuleNameList'] = request.rule_name_list
         req = open_api_models.OpenApiRequest(
@@ -5465,6 +5473,8 @@ class Client(OpenApiClient):
             query['AccountName'] = request.account_name
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.node_type):
+            query['NodeType'] = request.node_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -5520,6 +5530,8 @@ class Client(OpenApiClient):
             query['AccountName'] = request.account_name
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.node_type):
+            query['NodeType'] = request.node_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -11283,6 +11295,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.interface_version):
+            query['InterfaceVersion'] = request.interface_version
         if not UtilClient.is_unset(request.rule_name_list):
             query['RuleNameList'] = request.rule_name_list
         req = open_api_models.OpenApiRequest(
@@ -11326,6 +11340,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.interface_version):
+            query['InterfaceVersion'] = request.interface_version
         if not UtilClient.is_unset(request.rule_name_list):
             query['RuleNameList'] = request.rule_name_list
         req = open_api_models.OpenApiRequest(
@@ -15731,6 +15747,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbcluster_and_nodes_parameters_with_options_async(request, runtime)
 
+    def modify_dbcluster_arch_with_options(
+        self,
+        request: polardb_20170801_models.ModifyDBClusterArchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyDBClusterArchResponse:
+        """
+        @summary 变更standby模式
+        
+        @param request: ModifyDBClusterArchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterArchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.hot_standby_cluster):
+            query['HotStandbyCluster'] = request.hot_standby_cluster
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.standby_az):
+            query['StandbyAZ'] = request.standby_az
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterArch',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterArchResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterArchResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_dbcluster_arch_with_options_async(
+        self,
+        request: polardb_20170801_models.ModifyDBClusterArchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyDBClusterArchResponse:
+        """
+        @summary 变更standby模式
+        
+        @param request: ModifyDBClusterArchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterArchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.hot_standby_cluster):
+            query['HotStandbyCluster'] = request.hot_standby_cluster
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.standby_az):
+            query['StandbyAZ'] = request.standby_az
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterArch',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterArchResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterArchResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_dbcluster_arch(
+        self,
+        request: polardb_20170801_models.ModifyDBClusterArchRequest,
+    ) -> polardb_20170801_models.ModifyDBClusterArchResponse:
+        """
+        @summary 变更standby模式
+        
+        @param request: ModifyDBClusterArchRequest
+        @return: ModifyDBClusterArchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dbcluster_arch_with_options(request, runtime)
+
+    async def modify_dbcluster_arch_async(
+        self,
+        request: polardb_20170801_models.ModifyDBClusterArchRequest,
+    ) -> polardb_20170801_models.ModifyDBClusterArchResponse:
+        """
+        @summary 变更standby模式
+        
+        @param request: ModifyDBClusterArchRequest
+        @return: ModifyDBClusterArchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dbcluster_arch_with_options_async(request, runtime)
+
     def modify_dbcluster_audit_log_collector_with_options(
         self,
         request: polardb_20170801_models.ModifyDBClusterAuditLogCollectorRequest,
@@ -19541,6 +19677,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.enable):
             query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.interface_version):
+            query['InterfaceVersion'] = request.interface_version
         if not UtilClient.is_unset(request.rule_config):
             query['RuleConfig'] = request.rule_config
         if not UtilClient.is_unset(request.rule_name):
@@ -19592,6 +19730,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.enable):
             query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.interface_version):
+            query['InterfaceVersion'] = request.interface_version
         if not UtilClient.is_unset(request.rule_config):
             query['RuleConfig'] = request.rule_config
         if not UtilClient.is_unset(request.rule_name):
