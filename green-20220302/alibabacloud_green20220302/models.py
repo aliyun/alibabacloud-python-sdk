@@ -771,6 +771,7 @@ class DescribeImageModerationResultResponseBodyDataResult(TeaModel):
         confidence: float = None,
         description: str = None,
         label: str = None,
+        risk_level: str = None,
     ):
         # The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places.
         self.confidence = confidence
@@ -778,6 +779,7 @@ class DescribeImageModerationResultResponseBodyDataResult(TeaModel):
         self.description = description
         # The labels returned after the image moderation.
         self.label = label
+        self.risk_level = risk_level
 
     def validate(self):
         pass
@@ -794,6 +796,8 @@ class DescribeImageModerationResultResponseBodyDataResult(TeaModel):
             result['Description'] = self.description
         if self.label is not None:
             result['Label'] = self.label
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
         return result
 
     def from_map(self, m: dict = None):
@@ -804,6 +808,8 @@ class DescribeImageModerationResultResponseBodyDataResult(TeaModel):
             self.description = m.get('Description')
         if m.get('Label') is not None:
             self.label = m.get('Label')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
         return self
 
 
@@ -4225,6 +4231,7 @@ class ImageModerationResponseBodyDataResult(TeaModel):
         confidence: float = None,
         description: str = None,
         label: str = None,
+        risk_level: str = None,
     ):
         # The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places. Some labels do not have scores of confidence levels.
         self.confidence = confidence
@@ -4232,6 +4239,7 @@ class ImageModerationResponseBodyDataResult(TeaModel):
         self.description = description
         # The labels returned after the image moderation. Multiple risk labels and the corresponding scores of confidence levels may be returned for an image.
         self.label = label
+        self.risk_level = risk_level
 
     def validate(self):
         pass
@@ -4248,6 +4256,8 @@ class ImageModerationResponseBodyDataResult(TeaModel):
             result['Description'] = self.description
         if self.label is not None:
             result['Label'] = self.label
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
         return result
 
     def from_map(self, m: dict = None):
@@ -4258,6 +4268,8 @@ class ImageModerationResponseBodyDataResult(TeaModel):
             self.description = m.get('Description')
         if m.get('Label') is not None:
             self.label = m.get('Label')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
         return self
 
 
