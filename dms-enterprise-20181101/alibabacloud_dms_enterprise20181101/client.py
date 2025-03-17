@@ -4472,6 +4472,8 @@ class Client(OpenApiClient):
             query['ModelId'] = request.model_id
         if not UtilClient.is_unset(request.model_option):
             query['ModelOption'] = request.model_option
+        if not UtilClient.is_unset(request.nat_gateway_option):
+            query['NatGatewayOption'] = request.nat_gateway_option
         if not UtilClient.is_unset(request.oss_path):
             query['OssPath'] = request.oss_path
         if not UtilClient.is_unset(request.oss_resource_id):
@@ -4626,6 +4628,8 @@ class Client(OpenApiClient):
             query['ModelId'] = request.model_id
         if not UtilClient.is_unset(request.model_option):
             query['ModelOption'] = request.model_option
+        if not UtilClient.is_unset(request.nat_gateway_option):
+            query['NatGatewayOption'] = request.nat_gateway_option
         if not UtilClient.is_unset(request.oss_path):
             query['OssPath'] = request.oss_path
         if not UtilClient.is_unset(request.oss_resource_id):
@@ -20693,10 +20697,10 @@ class Client(OpenApiClient):
             query['DataRegion'] = request.data_region
         if not UtilClient.is_unset(request.search_key):
             query['SearchKey'] = request.search_key
-        if not UtilClient.is_unset(request.session_token):
-            query['SessionToken'] = request.session_token
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -20740,10 +20744,10 @@ class Client(OpenApiClient):
             query['DataRegion'] = request.data_region
         if not UtilClient.is_unset(request.search_key):
             query['SearchKey'] = request.search_key
-        if not UtilClient.is_unset(request.session_token):
-            query['SessionToken'] = request.session_token
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

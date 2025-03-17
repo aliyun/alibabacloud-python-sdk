@@ -9961,6 +9961,7 @@ class CreateDifyInstanceRequest(TeaModel):
         kv_store_type: str = None,
         model_id: str = None,
         model_option: str = None,
+        nat_gateway_option: str = None,
         oss_path: str = None,
         oss_resource_id: int = None,
         pay_period: int = None,
@@ -10016,6 +10017,7 @@ class CreateDifyInstanceRequest(TeaModel):
         self.kv_store_type = kv_store_type
         self.model_id = model_id
         self.model_option = model_option
+        self.nat_gateway_option = nat_gateway_option
         self.oss_path = oss_path
         self.oss_resource_id = oss_resource_id
         self.pay_period = pay_period
@@ -10109,6 +10111,8 @@ class CreateDifyInstanceRequest(TeaModel):
             result['ModelId'] = self.model_id
         if self.model_option is not None:
             result['ModelOption'] = self.model_option
+        if self.nat_gateway_option is not None:
+            result['NatGatewayOption'] = self.nat_gateway_option
         if self.oss_path is not None:
             result['OssPath'] = self.oss_path
         if self.oss_resource_id is not None:
@@ -10219,6 +10223,8 @@ class CreateDifyInstanceRequest(TeaModel):
             self.model_id = m.get('ModelId')
         if m.get('ModelOption') is not None:
             self.model_option = m.get('ModelOption')
+        if m.get('NatGatewayOption') is not None:
+            self.nat_gateway_option = m.get('NatGatewayOption')
         if m.get('OssPath') is not None:
             self.oss_path = m.get('OssPath')
         if m.get('OssResourceId') is not None:
@@ -42423,14 +42429,14 @@ class ListDataLakeCatalogRequest(TeaModel):
         self,
         data_region: str = None,
         search_key: str = None,
-        session_token: str = None,
         tid: int = None,
+        workspace_id: int = None,
     ):
         # This parameter is required.
         self.data_region = data_region
         self.search_key = search_key
-        self.session_token = session_token
         self.tid = tid
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -42445,10 +42451,10 @@ class ListDataLakeCatalogRequest(TeaModel):
             result['DataRegion'] = self.data_region
         if self.search_key is not None:
             result['SearchKey'] = self.search_key
-        if self.session_token is not None:
-            result['SessionToken'] = self.session_token
         if self.tid is not None:
             result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -42457,10 +42463,10 @@ class ListDataLakeCatalogRequest(TeaModel):
             self.data_region = m.get('DataRegion')
         if m.get('SearchKey') is not None:
             self.search_key = m.get('SearchKey')
-        if m.get('SessionToken') is not None:
-            self.session_token = m.get('SessionToken')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 

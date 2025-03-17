@@ -1,3 +1,8 @@
+2025-03-17 Version: 1.70.2
+- Update API CreateDifyInstance: add param NatGatewayOption.
+- Update API ListDataLakeCatalog: add param WorkspaceId.
+
+
 2025-03-13 Version: 1.70.1
 - Generated python 2018-11-01 for dms-enterprise.
 
