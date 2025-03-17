@@ -1668,7 +1668,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddMigrationTaskResponse:
         """
-        @summary Adds a migration task.
+        @summary Create a new migration task
         
         @param request: AddMigrationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1729,7 +1729,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddMigrationTaskResponse:
         """
-        @summary Adds a migration task.
+        @summary Create a new migration task
         
         @param request: AddMigrationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1789,7 +1789,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.AddMigrationTaskRequest,
     ) -> mse_20190531_models.AddMigrationTaskResponse:
         """
-        @summary Adds a migration task.
+        @summary Create a new migration task
         
         @param request: AddMigrationTaskRequest
         @return: AddMigrationTaskResponse
@@ -1802,7 +1802,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.AddMigrationTaskRequest,
     ) -> mse_20190531_models.AddMigrationTaskResponse:
         """
-        @summary Adds a migration task.
+        @summary Create a new migration task
         
         @param request: AddMigrationTaskRequest
         @return: AddMigrationTaskResponse
@@ -2636,7 +2636,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.BindSentinelBlockFallbackDefinitionResponse:
         """
-        @summary 绑定流量防护行为
+        @summary Binds traffic protection behavior.
         
         @param request: BindSentinelBlockFallbackDefinitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2687,7 +2687,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.BindSentinelBlockFallbackDefinitionResponse:
         """
-        @summary 绑定流量防护行为
+        @summary Binds traffic protection behavior.
         
         @param request: BindSentinelBlockFallbackDefinitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2737,7 +2737,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.BindSentinelBlockFallbackDefinitionRequest,
     ) -> mse_20190531_models.BindSentinelBlockFallbackDefinitionResponse:
         """
-        @summary 绑定流量防护行为
+        @summary Binds traffic protection behavior.
         
         @param request: BindSentinelBlockFallbackDefinitionRequest
         @return: BindSentinelBlockFallbackDefinitionResponse
@@ -2750,7 +2750,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.BindSentinelBlockFallbackDefinitionRequest,
     ) -> mse_20190531_models.BindSentinelBlockFallbackDefinitionResponse:
         """
-        @summary 绑定流量防护行为
+        @summary Binds traffic protection behavior.
         
         @param request: BindSentinelBlockFallbackDefinitionRequest
         @return: BindSentinelBlockFallbackDefinitionResponse
@@ -2764,7 +2764,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ChangeResourceGroupResponse:
         """
-        @summary 资源转组
+        @summary Resource Transfer
         
         @param request: ChangeResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2813,7 +2813,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ChangeResourceGroupResponse:
         """
-        @summary 资源转组
+        @summary Resource Transfer
         
         @param request: ChangeResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2861,7 +2861,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ChangeResourceGroupRequest,
     ) -> mse_20190531_models.ChangeResourceGroupResponse:
         """
-        @summary 资源转组
+        @summary Resource Transfer
         
         @param request: ChangeResourceGroupRequest
         @return: ChangeResourceGroupResponse
@@ -2874,7 +2874,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ChangeResourceGroupRequest,
     ) -> mse_20190531_models.ChangeResourceGroupResponse:
         """
-        @summary 资源转组
+        @summary Resource Transfer
         
         @param request: ChangeResourceGroupRequest
         @return: ChangeResourceGroupResponse
@@ -2888,9 +2888,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CloneNacosConfigResponse:
         """
-        @summary Clones an existing Nacos configuration from a namespace to another namespace.
+        @summary Copy Nacos Configuration
         
-        @description mse-200-105
+        @description > This OpenAPI is not the Nacos-SDK API. For information related to the Nacos-SDK API, please refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: CloneNacosConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2943,9 +2943,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CloneNacosConfigResponse:
         """
-        @summary Clones an existing Nacos configuration from a namespace to another namespace.
+        @summary Copy Nacos Configuration
         
-        @description mse-200-105
+        @description > This OpenAPI is not the Nacos-SDK API. For information related to the Nacos-SDK API, please refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: CloneNacosConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2997,9 +2997,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CloneNacosConfigRequest,
     ) -> mse_20190531_models.CloneNacosConfigResponse:
         """
-        @summary Clones an existing Nacos configuration from a namespace to another namespace.
+        @summary Copy Nacos Configuration
         
-        @description mse-200-105
+        @description > This OpenAPI is not the Nacos-SDK API. For information related to the Nacos-SDK API, please refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: CloneNacosConfigRequest
         @return: CloneNacosConfigResponse
@@ -3012,9 +3012,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CloneNacosConfigRequest,
     ) -> mse_20190531_models.CloneNacosConfigResponse:
         """
-        @summary Clones an existing Nacos configuration from a namespace to another namespace.
+        @summary Copy Nacos Configuration
         
-        @description mse-200-105
+        @description > This OpenAPI is not the Nacos-SDK API. For information related to the Nacos-SDK API, please refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: CloneNacosConfigRequest
         @return: CloneNacosConfigResponse
@@ -3028,7 +3028,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CloneSentinelRuleFromAhasResponse:
         """
-        @summary 从AHAS侧复制规则
+        @summary Clones rules from Application High Availability Service.
         
         @param request: CloneSentinelRuleFromAhasRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3079,7 +3079,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CloneSentinelRuleFromAhasResponse:
         """
-        @summary 从AHAS侧复制规则
+        @summary Clones rules from Application High Availability Service.
         
         @param request: CloneSentinelRuleFromAhasRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3129,7 +3129,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CloneSentinelRuleFromAhasRequest,
     ) -> mse_20190531_models.CloneSentinelRuleFromAhasResponse:
         """
-        @summary 从AHAS侧复制规则
+        @summary Clones rules from Application High Availability Service.
         
         @param request: CloneSentinelRuleFromAhasRequest
         @return: CloneSentinelRuleFromAhasResponse
@@ -3142,7 +3142,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CloneSentinelRuleFromAhasRequest,
     ) -> mse_20190531_models.CloneSentinelRuleFromAhasResponse:
         """
-        @summary 从AHAS侧复制规则
+        @summary Clones rules from Application High Availability Service.
         
         @param request: CloneSentinelRuleFromAhasRequest
         @return: CloneSentinelRuleFromAhasResponse
@@ -3460,9 +3460,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateClusterResponse:
         """
-        @summary Creates a Microservices Engine (MSE) instance, such as an MSE ZooKeeper instance or an MSE Nacos instance.
+        @summary Create an MSE registration and configuration center instance
         
-        @description Before you call this API operation, you must make sure that you fully understand the billing methods and pricing of MSE.
+        @description Please ensure that you fully understand the billing method and pricing of the MSE (Microservice Engine) product before using this interface.
         
         @param request: CreateClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3545,9 +3545,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateClusterResponse:
         """
-        @summary Creates a Microservices Engine (MSE) instance, such as an MSE ZooKeeper instance or an MSE Nacos instance.
+        @summary Create an MSE registration and configuration center instance
         
-        @description Before you call this API operation, you must make sure that you fully understand the billing methods and pricing of MSE.
+        @description Please ensure that you fully understand the billing method and pricing of the MSE (Microservice Engine) product before using this interface.
         
         @param request: CreateClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3629,9 +3629,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateClusterRequest,
     ) -> mse_20190531_models.CreateClusterResponse:
         """
-        @summary Creates a Microservices Engine (MSE) instance, such as an MSE ZooKeeper instance or an MSE Nacos instance.
+        @summary Create an MSE registration and configuration center instance
         
-        @description Before you call this API operation, you must make sure that you fully understand the billing methods and pricing of MSE.
+        @description Please ensure that you fully understand the billing method and pricing of the MSE (Microservice Engine) product before using this interface.
         
         @param request: CreateClusterRequest
         @return: CreateClusterResponse
@@ -3644,9 +3644,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateClusterRequest,
     ) -> mse_20190531_models.CreateClusterResponse:
         """
-        @summary Creates a Microservices Engine (MSE) instance, such as an MSE ZooKeeper instance or an MSE Nacos instance.
+        @summary Create an MSE registration and configuration center instance
         
-        @description Before you call this API operation, you must make sure that you fully understand the billing methods and pricing of MSE.
+        @description Please ensure that you fully understand the billing method and pricing of the MSE (Microservice Engine) product before using this interface.
         
         @param request: CreateClusterRequest
         @return: CreateClusterResponse
@@ -8060,7 +8060,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteNacosConfigResponse:
         """
-        @summary 删除nacos指定配置
+        @summary Delete specified Nacos configuration
+        
+        @description > The current OpenAPI is not the Nacos-SDK API. For information related to the Nacos-SDK API, please refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: DeleteNacosConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8111,7 +8113,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteNacosConfigResponse:
         """
-        @summary 删除nacos指定配置
+        @summary Delete specified Nacos configuration
+        
+        @description > The current OpenAPI is not the Nacos-SDK API. For information related to the Nacos-SDK API, please refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: DeleteNacosConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8161,7 +8165,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteNacosConfigRequest,
     ) -> mse_20190531_models.DeleteNacosConfigResponse:
         """
-        @summary 删除nacos指定配置
+        @summary Delete specified Nacos configuration
+        
+        @description > The current OpenAPI is not the Nacos-SDK API. For information related to the Nacos-SDK API, please refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: DeleteNacosConfigRequest
         @return: DeleteNacosConfigResponse
@@ -8174,7 +8180,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteNacosConfigRequest,
     ) -> mse_20190531_models.DeleteNacosConfigResponse:
         """
-        @summary 删除nacos指定配置
+        @summary Delete specified Nacos configuration
+        
+        @description > The current OpenAPI is not the Nacos-SDK API. For information related to the Nacos-SDK API, please refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: DeleteNacosConfigRequest
         @return: DeleteNacosConfigResponse
@@ -12764,9 +12772,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetNacosConfigResponse:
         """
-        @summary Queries Nacos configurations.
+        @summary Get Nacos Configuration
         
-        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @description > This OpenAPI is not the Nacos-SDK API. For information related to the Nacos-SDK API, please refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: GetNacosConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12817,9 +12825,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetNacosConfigResponse:
         """
-        @summary Queries Nacos configurations.
+        @summary Get Nacos Configuration
         
-        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @description > This OpenAPI is not the Nacos-SDK API. For information related to the Nacos-SDK API, please refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: GetNacosConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12869,9 +12877,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetNacosConfigRequest,
     ) -> mse_20190531_models.GetNacosConfigResponse:
         """
-        @summary Queries Nacos configurations.
+        @summary Get Nacos Configuration
         
-        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @description > This OpenAPI is not the Nacos-SDK API. For information related to the Nacos-SDK API, please refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: GetNacosConfigRequest
         @return: GetNacosConfigResponse
@@ -12884,9 +12892,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetNacosConfigRequest,
     ) -> mse_20190531_models.GetNacosConfigResponse:
         """
-        @summary Queries Nacos configurations.
+        @summary Get Nacos Configuration
         
-        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @description > This OpenAPI is not the Nacos-SDK API. For information related to the Nacos-SDK API, please refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: GetNacosConfigRequest
         @return: GetNacosConfigResponse
@@ -20192,7 +20200,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListSentinelBlockFallbackDefinitionsResponse:
         """
-        @summary 查询流量防护行为
+        @summary Obtains the custom behavior of traffic protection.
         
         @param tmp_req: ListSentinelBlockFallbackDefinitionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20243,7 +20251,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListSentinelBlockFallbackDefinitionsResponse:
         """
-        @summary 查询流量防护行为
+        @summary Obtains the custom behavior of traffic protection.
         
         @param tmp_req: ListSentinelBlockFallbackDefinitionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20293,7 +20301,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListSentinelBlockFallbackDefinitionsRequest,
     ) -> mse_20190531_models.ListSentinelBlockFallbackDefinitionsResponse:
         """
-        @summary 查询流量防护行为
+        @summary Obtains the custom behavior of traffic protection.
         
         @param request: ListSentinelBlockFallbackDefinitionsRequest
         @return: ListSentinelBlockFallbackDefinitionsResponse
@@ -20306,7 +20314,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListSentinelBlockFallbackDefinitionsRequest,
     ) -> mse_20190531_models.ListSentinelBlockFallbackDefinitionsResponse:
         """
-        @summary 查询流量防护行为
+        @summary Obtains the custom behavior of traffic protection.
         
         @param request: ListSentinelBlockFallbackDefinitionsRequest
         @return: ListSentinelBlockFallbackDefinitionsResponse
@@ -26541,6 +26549,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_circuit_breaker_rule_with_options_async(request, runtime)
+
+    def update_gateway_config_with_options(
+        self,
+        request: mse_20190531_models.UpdateGatewayConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateGatewayConfigResponse:
+        """
+        @summary 更新网关配置
+        
+        @param request: UpdateGatewayConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.config_name):
+            query['ConfigName'] = request.config_name
+        if not UtilClient.is_unset(request.config_value):
+            query['ConfigValue'] = request.config_value
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGatewayConfig',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                mse_20190531_models.UpdateGatewayConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                mse_20190531_models.UpdateGatewayConfigResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_gateway_config_with_options_async(
+        self,
+        request: mse_20190531_models.UpdateGatewayConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateGatewayConfigResponse:
+        """
+        @summary 更新网关配置
+        
+        @param request: UpdateGatewayConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.config_name):
+            query['ConfigName'] = request.config_name
+        if not UtilClient.is_unset(request.config_value):
+            query['ConfigValue'] = request.config_value
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGatewayConfig',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                mse_20190531_models.UpdateGatewayConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                mse_20190531_models.UpdateGatewayConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_gateway_config(
+        self,
+        request: mse_20190531_models.UpdateGatewayConfigRequest,
+    ) -> mse_20190531_models.UpdateGatewayConfigResponse:
+        """
+        @summary 更新网关配置
+        
+        @param request: UpdateGatewayConfigRequest
+        @return: UpdateGatewayConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_gateway_config_with_options(request, runtime)
+
+    async def update_gateway_config_async(
+        self,
+        request: mse_20190531_models.UpdateGatewayConfigRequest,
+    ) -> mse_20190531_models.UpdateGatewayConfigResponse:
+        """
+        @summary 更新网关配置
+        
+        @param request: UpdateGatewayConfigRequest
+        @return: UpdateGatewayConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_gateway_config_with_options_async(request, runtime)
 
     def update_gateway_domain_with_options(
         self,
