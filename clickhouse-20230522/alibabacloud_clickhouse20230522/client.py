@@ -93,7 +93,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.CreateAccountResponse:
         """
-        @summary 创建账号
+        @summary Creates a database account for an ApsaraDB for ClickHouse Enterprise Edition cluster.
         
         @param tmp_req: CreateAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -152,7 +152,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.CreateAccountResponse:
         """
-        @summary 创建账号
+        @summary Creates a database account for an ApsaraDB for ClickHouse Enterprise Edition cluster.
         
         @param tmp_req: CreateAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -210,7 +210,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.CreateAccountRequest,
     ) -> clickhouse_20230522_models.CreateAccountResponse:
         """
-        @summary 创建账号
+        @summary Creates a database account for an ApsaraDB for ClickHouse Enterprise Edition cluster.
         
         @param request: CreateAccountRequest
         @return: CreateAccountResponse
@@ -223,7 +223,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.CreateAccountRequest,
     ) -> clickhouse_20230522_models.CreateAccountResponse:
         """
-        @summary 创建账号
+        @summary Creates a database account for an ApsaraDB for ClickHouse Enterprise Edition cluster.
         
         @param request: CreateAccountRequest
         @return: CreateAccountResponse
@@ -237,7 +237,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.CreateDBResponse:
         """
-        @summary 创建数据库
+        @summary Creates an ApsaraDB for ClickHouse database.
         
         @param request: CreateDBRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -284,7 +284,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.CreateDBResponse:
         """
-        @summary 创建数据库
+        @summary Creates an ApsaraDB for ClickHouse database.
         
         @param request: CreateDBRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -330,7 +330,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.CreateDBRequest,
     ) -> clickhouse_20230522_models.CreateDBResponse:
         """
-        @summary 创建数据库
+        @summary Creates an ApsaraDB for ClickHouse database.
         
         @param request: CreateDBRequest
         @return: CreateDBResponse
@@ -343,7 +343,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.CreateDBRequest,
     ) -> clickhouse_20230522_models.CreateDBResponse:
         """
-        @summary 创建数据库
+        @summary Creates an ApsaraDB for ClickHouse database.
         
         @param request: CreateDBRequest
         @return: CreateDBResponse
@@ -357,7 +357,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.CreateDBInstanceResponse:
         """
-        @summary 创建企业版Clickhouse实例
+        @summary Creates an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
         
         @param tmp_req: CreateDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -428,7 +428,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.CreateDBInstanceResponse:
         """
-        @summary 创建企业版Clickhouse实例
+        @summary Creates an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
         
         @param tmp_req: CreateDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -498,7 +498,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.CreateDBInstanceRequest,
     ) -> clickhouse_20230522_models.CreateDBInstanceResponse:
         """
-        @summary 创建企业版Clickhouse实例
+        @summary Creates an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
         
         @param request: CreateDBInstanceRequest
         @return: CreateDBInstanceResponse
@@ -511,7 +511,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.CreateDBInstanceRequest,
     ) -> clickhouse_20230522_models.CreateDBInstanceResponse:
         """
-        @summary 创建企业版Clickhouse实例
+        @summary Creates an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
         
         @param request: CreateDBInstanceRequest
         @return: CreateDBInstanceResponse
@@ -525,7 +525,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.CreateEndpointResponse:
         """
-        @summary 申请外网地址
+        @summary Applies for a public endpoint.
         
         @param request: CreateEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -572,7 +572,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.CreateEndpointResponse:
         """
-        @summary 申请外网地址
+        @summary Applies for a public endpoint.
         
         @param request: CreateEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -618,7 +618,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.CreateEndpointRequest,
     ) -> clickhouse_20230522_models.CreateEndpointResponse:
         """
-        @summary 申请外网地址
+        @summary Applies for a public endpoint.
         
         @param request: CreateEndpointRequest
         @return: CreateEndpointResponse
@@ -631,7 +631,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.CreateEndpointRequest,
     ) -> clickhouse_20230522_models.CreateEndpointResponse:
         """
-        @summary 申请外网地址
+        @summary Applies for a public endpoint.
         
         @param request: CreateEndpointRequest
         @return: CreateEndpointResponse
@@ -645,7 +645,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.DeleteAccountResponse:
         """
-        @summary 删除账号
+        @summary Deletes a database account from an ApsaraDB for ClickHouse cluster.
         
         @param request: DeleteAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -692,7 +692,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.DeleteAccountResponse:
         """
-        @summary 删除账号
+        @summary Deletes a database account from an ApsaraDB for ClickHouse cluster.
         
         @param request: DeleteAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -738,7 +738,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.DeleteAccountRequest,
     ) -> clickhouse_20230522_models.DeleteAccountResponse:
         """
-        @summary 删除账号
+        @summary Deletes a database account from an ApsaraDB for ClickHouse cluster.
         
         @param request: DeleteAccountRequest
         @return: DeleteAccountResponse
@@ -751,7 +751,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.DeleteAccountRequest,
     ) -> clickhouse_20230522_models.DeleteAccountResponse:
         """
-        @summary 删除账号
+        @summary Deletes a database account from an ApsaraDB for ClickHouse cluster.
         
         @param request: DeleteAccountRequest
         @return: DeleteAccountResponse
@@ -765,7 +765,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.DeleteDBResponse:
         """
-        @summary 删除数据库
+        @summary Deletes an ApsaraDB for ClickHouse database.
         
         @param request: DeleteDBRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -810,7 +810,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.DeleteDBResponse:
         """
-        @summary 删除数据库
+        @summary Deletes an ApsaraDB for ClickHouse database.
         
         @param request: DeleteDBRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -854,7 +854,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.DeleteDBRequest,
     ) -> clickhouse_20230522_models.DeleteDBResponse:
         """
-        @summary 删除数据库
+        @summary Deletes an ApsaraDB for ClickHouse database.
         
         @param request: DeleteDBRequest
         @return: DeleteDBResponse
@@ -867,7 +867,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.DeleteDBRequest,
     ) -> clickhouse_20230522_models.DeleteDBResponse:
         """
-        @summary 删除数据库
+        @summary Deletes an ApsaraDB for ClickHouse database.
         
         @param request: DeleteDBRequest
         @return: DeleteDBResponse
@@ -881,7 +881,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.DeleteDBInstanceResponse:
         """
-        @summary 释放实例
+        @summary Releases an ApsaraDB for ClickHouse Enterprise Edition cluster.
         
         @param request: DeleteDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -924,7 +924,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.DeleteDBInstanceResponse:
         """
-        @summary 释放实例
+        @summary Releases an ApsaraDB for ClickHouse Enterprise Edition cluster.
         
         @param request: DeleteDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -966,7 +966,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.DeleteDBInstanceRequest,
     ) -> clickhouse_20230522_models.DeleteDBInstanceResponse:
         """
-        @summary 释放实例
+        @summary Releases an ApsaraDB for ClickHouse Enterprise Edition cluster.
         
         @param request: DeleteDBInstanceRequest
         @return: DeleteDBInstanceResponse
@@ -979,7 +979,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.DeleteDBInstanceRequest,
     ) -> clickhouse_20230522_models.DeleteDBInstanceResponse:
         """
-        @summary 释放实例
+        @summary Releases an ApsaraDB for ClickHouse Enterprise Edition cluster.
         
         @param request: DeleteDBInstanceRequest
         @return: DeleteDBInstanceResponse
@@ -993,7 +993,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.DeleteEndpointResponse:
         """
-        @summary 删除链接地址
+        @summary Releases a public endpoint.
         
         @param request: DeleteEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1005,6 +1005,8 @@ class Client(OpenApiClient):
             query['ConnectionString'] = request.connection_string
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbinstance_net_type):
+            query['DBInstanceNetType'] = request.dbinstance_net_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -1038,7 +1040,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.DeleteEndpointResponse:
         """
-        @summary 删除链接地址
+        @summary Releases a public endpoint.
         
         @param request: DeleteEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1050,6 +1052,8 @@ class Client(OpenApiClient):
             query['ConnectionString'] = request.connection_string
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbinstance_net_type):
+            query['DBInstanceNetType'] = request.dbinstance_net_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -1082,7 +1086,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.DeleteEndpointRequest,
     ) -> clickhouse_20230522_models.DeleteEndpointResponse:
         """
-        @summary 删除链接地址
+        @summary Releases a public endpoint.
         
         @param request: DeleteEndpointRequest
         @return: DeleteEndpointResponse
@@ -1095,7 +1099,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.DeleteEndpointRequest,
     ) -> clickhouse_20230522_models.DeleteEndpointResponse:
         """
-        @summary 删除链接地址
+        @summary Releases a public endpoint.
         
         @param request: DeleteEndpointRequest
         @return: DeleteEndpointResponse
@@ -1109,7 +1113,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.DescribeAccountAuthorityResponse:
         """
-        @summary 查询账号的授权信息
+        @summary Queries the permissions of a database account.
         
         @param request: DescribeAccountAuthorityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1154,7 +1158,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.DescribeAccountAuthorityResponse:
         """
-        @summary 查询账号的授权信息
+        @summary Queries the permissions of a database account.
         
         @param request: DescribeAccountAuthorityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1198,7 +1202,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.DescribeAccountAuthorityRequest,
     ) -> clickhouse_20230522_models.DescribeAccountAuthorityResponse:
         """
-        @summary 查询账号的授权信息
+        @summary Queries the permissions of a database account.
         
         @param request: DescribeAccountAuthorityRequest
         @return: DescribeAccountAuthorityResponse
@@ -1211,7 +1215,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.DescribeAccountAuthorityRequest,
     ) -> clickhouse_20230522_models.DescribeAccountAuthorityResponse:
         """
-        @summary 查询账号的授权信息
+        @summary Queries the permissions of a database account.
         
         @param request: DescribeAccountAuthorityRequest
         @return: DescribeAccountAuthorityResponse
@@ -1225,7 +1229,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.DescribeAccountsResponse:
         """
-        @summary 查询账号列表
+        @summary Queries database accounts for an ApsaraDB for ClickHouse cluster.
         
         @param request: DescribeAccountsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1274,7 +1278,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.DescribeAccountsResponse:
         """
-        @summary 查询账号列表
+        @summary Queries database accounts for an ApsaraDB for ClickHouse cluster.
         
         @param request: DescribeAccountsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1322,7 +1326,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.DescribeAccountsRequest,
     ) -> clickhouse_20230522_models.DescribeAccountsResponse:
         """
-        @summary 查询账号列表
+        @summary Queries database accounts for an ApsaraDB for ClickHouse cluster.
         
         @param request: DescribeAccountsRequest
         @return: DescribeAccountsResponse
@@ -1335,7 +1339,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.DescribeAccountsRequest,
     ) -> clickhouse_20230522_models.DescribeAccountsResponse:
         """
-        @summary 查询账号列表
+        @summary Queries database accounts for an ApsaraDB for ClickHouse cluster.
         
         @param request: DescribeAccountsRequest
         @return: DescribeAccountsResponse
@@ -1349,7 +1353,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.DescribeDBInstanceAttributeResponse:
         """
-        @summary 查询实例详情
+        @summary Queries the details of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
         
         @param request: DescribeDBInstanceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1392,7 +1396,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.DescribeDBInstanceAttributeResponse:
         """
-        @summary 查询实例详情
+        @summary Queries the details of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
         
         @param request: DescribeDBInstanceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1434,7 +1438,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.DescribeDBInstanceAttributeRequest,
     ) -> clickhouse_20230522_models.DescribeDBInstanceAttributeResponse:
         """
-        @summary 查询实例详情
+        @summary Queries the details of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
         
         @param request: DescribeDBInstanceAttributeRequest
         @return: DescribeDBInstanceAttributeResponse
@@ -1447,7 +1451,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.DescribeDBInstanceAttributeRequest,
     ) -> clickhouse_20230522_models.DescribeDBInstanceAttributeResponse:
         """
-        @summary 查询实例详情
+        @summary Queries the details of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
         
         @param request: DescribeDBInstanceAttributeRequest
         @return: DescribeDBInstanceAttributeResponse
@@ -1461,7 +1465,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.DescribeDBInstanceDataSourcesResponse:
         """
-        @summary 查询DB或者Table数据结构
+        @summary Queries the schema of a database or a table.
         
         @param request: DescribeDBInstanceDataSourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1508,7 +1512,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.DescribeDBInstanceDataSourcesResponse:
         """
-        @summary 查询DB或者Table数据结构
+        @summary Queries the schema of a database or a table.
         
         @param request: DescribeDBInstanceDataSourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1554,7 +1558,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.DescribeDBInstanceDataSourcesRequest,
     ) -> clickhouse_20230522_models.DescribeDBInstanceDataSourcesResponse:
         """
-        @summary 查询DB或者Table数据结构
+        @summary Queries the schema of a database or a table.
         
         @param request: DescribeDBInstanceDataSourcesRequest
         @return: DescribeDBInstanceDataSourcesResponse
@@ -1567,7 +1571,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.DescribeDBInstanceDataSourcesRequest,
     ) -> clickhouse_20230522_models.DescribeDBInstanceDataSourcesResponse:
         """
-        @summary 查询DB或者Table数据结构
+        @summary Queries the schema of a database or a table.
         
         @param request: DescribeDBInstanceDataSourcesRequest
         @return: DescribeDBInstanceDataSourcesResponse
@@ -1581,7 +1585,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.DescribeDBInstancesResponse:
         """
-        @summary 查询实例列表
+        @summary Queries a list of ApsaraDB for ClickHouse clusters.
         
         @param request: DescribeDBInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1634,7 +1638,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.DescribeDBInstancesResponse:
         """
-        @summary 查询实例列表
+        @summary Queries a list of ApsaraDB for ClickHouse clusters.
         
         @param request: DescribeDBInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1686,7 +1690,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.DescribeDBInstancesRequest,
     ) -> clickhouse_20230522_models.DescribeDBInstancesResponse:
         """
-        @summary 查询实例列表
+        @summary Queries a list of ApsaraDB for ClickHouse clusters.
         
         @param request: DescribeDBInstancesRequest
         @return: DescribeDBInstancesResponse
@@ -1699,7 +1703,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.DescribeDBInstancesRequest,
     ) -> clickhouse_20230522_models.DescribeDBInstancesResponse:
         """
-        @summary 查询实例列表
+        @summary Queries a list of ApsaraDB for ClickHouse clusters.
         
         @param request: DescribeDBInstancesRequest
         @return: DescribeDBInstancesResponse
@@ -1713,7 +1717,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.DescribeEndpointsResponse:
         """
-        @summary 查询实例访问地址
+        @summary Queries the endpoint of an ApsaraDB for ClickHouse cluster.
         
         @param request: DescribeEndpointsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1756,7 +1760,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.DescribeEndpointsResponse:
         """
-        @summary 查询实例访问地址
+        @summary Queries the endpoint of an ApsaraDB for ClickHouse cluster.
         
         @param request: DescribeEndpointsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1798,7 +1802,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.DescribeEndpointsRequest,
     ) -> clickhouse_20230522_models.DescribeEndpointsResponse:
         """
-        @summary 查询实例访问地址
+        @summary Queries the endpoint of an ApsaraDB for ClickHouse cluster.
         
         @param request: DescribeEndpointsRequest
         @return: DescribeEndpointsResponse
@@ -1811,7 +1815,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.DescribeEndpointsRequest,
     ) -> clickhouse_20230522_models.DescribeEndpointsResponse:
         """
-        @summary 查询实例访问地址
+        @summary Queries the endpoint of an ApsaraDB for ClickHouse cluster.
         
         @param request: DescribeEndpointsRequest
         @return: DescribeEndpointsResponse
@@ -2209,7 +2213,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.DescribeSlowLogTrendResponse:
         """
-        @summary 慢查询趋势
+        @summary Queries the trend of slow query logs.
         
         @param request: DescribeSlowLogTrendRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2260,7 +2264,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.DescribeSlowLogTrendResponse:
         """
-        @summary 慢查询趋势
+        @summary Queries the trend of slow query logs.
         
         @param request: DescribeSlowLogTrendRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2310,7 +2314,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.DescribeSlowLogTrendRequest,
     ) -> clickhouse_20230522_models.DescribeSlowLogTrendResponse:
         """
-        @summary 慢查询趋势
+        @summary Queries the trend of slow query logs.
         
         @param request: DescribeSlowLogTrendRequest
         @return: DescribeSlowLogTrendResponse
@@ -2323,7 +2327,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.DescribeSlowLogTrendRequest,
     ) -> clickhouse_20230522_models.DescribeSlowLogTrendResponse:
         """
-        @summary 慢查询趋势
+        @summary Queries the trend of slow query logs.
         
         @param request: DescribeSlowLogTrendRequest
         @return: DescribeSlowLogTrendResponse
@@ -2453,7 +2457,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.ModifyAccountAuthorityResponse:
         """
-        @summary 修改账号的授权信息
+        @summary Modifies the permissions of a database account.
         
         @param tmp_req: ModifyAccountAuthorityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2504,7 +2508,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.ModifyAccountAuthorityResponse:
         """
-        @summary 修改账号的授权信息
+        @summary Modifies the permissions of a database account.
         
         @param tmp_req: ModifyAccountAuthorityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2554,7 +2558,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.ModifyAccountAuthorityRequest,
     ) -> clickhouse_20230522_models.ModifyAccountAuthorityResponse:
         """
-        @summary 修改账号的授权信息
+        @summary Modifies the permissions of a database account.
         
         @param request: ModifyAccountAuthorityRequest
         @return: ModifyAccountAuthorityResponse
@@ -2567,7 +2571,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.ModifyAccountAuthorityRequest,
     ) -> clickhouse_20230522_models.ModifyAccountAuthorityResponse:
         """
-        @summary 修改账号的授权信息
+        @summary Modifies the permissions of a database account.
         
         @param request: ModifyAccountAuthorityRequest
         @return: ModifyAccountAuthorityResponse
@@ -2581,7 +2585,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.ModifyAccountDescriptionResponse:
         """
-        @summary 修改账号备注
+        @summary Modifies the description of a database account.
         
         @param request: ModifyAccountDescriptionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2628,7 +2632,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.ModifyAccountDescriptionResponse:
         """
-        @summary 修改账号备注
+        @summary Modifies the description of a database account.
         
         @param request: ModifyAccountDescriptionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2674,7 +2678,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.ModifyAccountDescriptionRequest,
     ) -> clickhouse_20230522_models.ModifyAccountDescriptionResponse:
         """
-        @summary 修改账号备注
+        @summary Modifies the description of a database account.
         
         @param request: ModifyAccountDescriptionRequest
         @return: ModifyAccountDescriptionResponse
@@ -2687,7 +2691,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.ModifyAccountDescriptionRequest,
     ) -> clickhouse_20230522_models.ModifyAccountDescriptionResponse:
         """
-        @summary 修改账号备注
+        @summary Modifies the description of a database account.
         
         @param request: ModifyAccountDescriptionRequest
         @return: ModifyAccountDescriptionResponse
@@ -2701,7 +2705,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.ModifyDBInstanceAttributeResponse:
         """
-        @summary 修改实例的配置属性，包括名称、运维时间等
+        @summary Modifies the configurations of an ApsaraDB for ClickHouse cluster.
         
         @param request: ModifyDBInstanceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2750,7 +2754,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.ModifyDBInstanceAttributeResponse:
         """
-        @summary 修改实例的配置属性，包括名称、运维时间等
+        @summary Modifies the configurations of an ApsaraDB for ClickHouse cluster.
         
         @param request: ModifyDBInstanceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2798,7 +2802,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.ModifyDBInstanceAttributeRequest,
     ) -> clickhouse_20230522_models.ModifyDBInstanceAttributeResponse:
         """
-        @summary 修改实例的配置属性，包括名称、运维时间等
+        @summary Modifies the configurations of an ApsaraDB for ClickHouse cluster.
         
         @param request: ModifyDBInstanceAttributeRequest
         @return: ModifyDBInstanceAttributeResponse
@@ -2811,7 +2815,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.ModifyDBInstanceAttributeRequest,
     ) -> clickhouse_20230522_models.ModifyDBInstanceAttributeResponse:
         """
-        @summary 修改实例的配置属性，包括名称、运维时间等
+        @summary Modifies the configurations of an ApsaraDB for ClickHouse cluster.
         
         @param request: ModifyDBInstanceAttributeRequest
         @return: ModifyDBInstanceAttributeResponse
@@ -2825,14 +2829,22 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.ModifyDBInstanceClassResponse:
         """
-        @summary 修改实例弹性配置
+        @summary Modifies the elastic scaling settings of an ApsaraDB for ClickHouse cluster.
         
         @param request: ModifyDBInstanceClassRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyDBInstanceClassResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scale_max):
+            query['ScaleMax'] = request.scale_max
+        if not UtilClient.is_unset(request.scale_min):
+            query['ScaleMin'] = request.scale_min
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2841,7 +2853,7 @@ class Client(OpenApiClient):
             version='2023-05-22',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -2864,14 +2876,22 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.ModifyDBInstanceClassResponse:
         """
-        @summary 修改实例弹性配置
+        @summary Modifies the elastic scaling settings of an ApsaraDB for ClickHouse cluster.
         
         @param request: ModifyDBInstanceClassRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyDBInstanceClassResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scale_max):
+            query['ScaleMax'] = request.scale_max
+        if not UtilClient.is_unset(request.scale_min):
+            query['ScaleMin'] = request.scale_min
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2880,7 +2900,7 @@ class Client(OpenApiClient):
             version='2023-05-22',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -2902,7 +2922,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.ModifyDBInstanceClassRequest,
     ) -> clickhouse_20230522_models.ModifyDBInstanceClassResponse:
         """
-        @summary 修改实例弹性配置
+        @summary Modifies the elastic scaling settings of an ApsaraDB for ClickHouse cluster.
         
         @param request: ModifyDBInstanceClassRequest
         @return: ModifyDBInstanceClassResponse
@@ -2915,7 +2935,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.ModifyDBInstanceClassRequest,
     ) -> clickhouse_20230522_models.ModifyDBInstanceClassResponse:
         """
-        @summary 修改实例弹性配置
+        @summary Modifies the elastic scaling settings of an ApsaraDB for ClickHouse cluster.
         
         @param request: ModifyDBInstanceClassRequest
         @return: ModifyDBInstanceClassResponse
@@ -2943,6 +2963,8 @@ class Client(OpenApiClient):
             query['ConnectionStringPrefix'] = request.connection_string_prefix
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbinstance_net_type):
+            query['DBInstanceNetType'] = request.dbinstance_net_type
         if not UtilClient.is_unset(request.disable_ports):
             query['DisablePorts'] = request.disable_ports
         if not UtilClient.is_unset(request.region_id):
@@ -2992,6 +3014,8 @@ class Client(OpenApiClient):
             query['ConnectionStringPrefix'] = request.connection_string_prefix
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbinstance_net_type):
+            query['DBInstanceNetType'] = request.dbinstance_net_type
         if not UtilClient.is_unset(request.disable_ports):
             query['DisablePorts'] = request.disable_ports
         if not UtilClient.is_unset(request.region_id):
@@ -3053,7 +3077,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.ModifySecurityIPListResponse:
         """
-        @summary 变更白名单
+        @summary Modifies the whitelist settings of an ApsaraDB for ClickHouse cluster.
         
         @param request: ModifySecurityIPListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3102,7 +3126,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.ModifySecurityIPListResponse:
         """
-        @summary 变更白名单
+        @summary Modifies the whitelist settings of an ApsaraDB for ClickHouse cluster.
         
         @param request: ModifySecurityIPListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3150,7 +3174,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.ModifySecurityIPListRequest,
     ) -> clickhouse_20230522_models.ModifySecurityIPListResponse:
         """
-        @summary 变更白名单
+        @summary Modifies the whitelist settings of an ApsaraDB for ClickHouse cluster.
         
         @param request: ModifySecurityIPListRequest
         @return: ModifySecurityIPListResponse
@@ -3163,7 +3187,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.ModifySecurityIPListRequest,
     ) -> clickhouse_20230522_models.ModifySecurityIPListResponse:
         """
-        @summary 变更白名单
+        @summary Modifies the whitelist settings of an ApsaraDB for ClickHouse cluster.
         
         @param request: ModifySecurityIPListRequest
         @return: ModifySecurityIPListResponse
@@ -3177,7 +3201,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.ResetAccountPasswordResponse:
         """
-        @summary 重置账号密码
+        @summary Resets the password of a database account for an ApsaraDB for ClickHouse Enterprise Edition cluster.
         
         @param request: ResetAccountPasswordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3226,7 +3250,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.ResetAccountPasswordResponse:
         """
-        @summary 重置账号密码
+        @summary Resets the password of a database account for an ApsaraDB for ClickHouse Enterprise Edition cluster.
         
         @param request: ResetAccountPasswordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3274,7 +3298,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.ResetAccountPasswordRequest,
     ) -> clickhouse_20230522_models.ResetAccountPasswordResponse:
         """
-        @summary 重置账号密码
+        @summary Resets the password of a database account for an ApsaraDB for ClickHouse Enterprise Edition cluster.
         
         @param request: ResetAccountPasswordRequest
         @return: ResetAccountPasswordResponse
@@ -3287,7 +3311,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.ResetAccountPasswordRequest,
     ) -> clickhouse_20230522_models.ResetAccountPasswordResponse:
         """
-        @summary 重置账号密码
+        @summary Resets the password of a database account for an ApsaraDB for ClickHouse Enterprise Edition cluster.
         
         @param request: ResetAccountPasswordRequest
         @return: ResetAccountPasswordResponse
@@ -3637,7 +3661,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.UpgradeMinorVersionResponse:
         """
-        @summary 升级实例内核小版本
+        @summary Updates the minor engine version of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
         
         @param request: UpgradeMinorVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3686,7 +3710,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.UpgradeMinorVersionResponse:
         """
-        @summary 升级实例内核小版本
+        @summary Updates the minor engine version of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
         
         @param request: UpgradeMinorVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3734,7 +3758,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.UpgradeMinorVersionRequest,
     ) -> clickhouse_20230522_models.UpgradeMinorVersionResponse:
         """
-        @summary 升级实例内核小版本
+        @summary Updates the minor engine version of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
         
         @param request: UpgradeMinorVersionRequest
         @return: UpgradeMinorVersionResponse
@@ -3747,7 +3771,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.UpgradeMinorVersionRequest,
     ) -> clickhouse_20230522_models.UpgradeMinorVersionResponse:
         """
-        @summary 升级实例内核小版本
+        @summary Updates the minor engine version of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
         
         @param request: UpgradeMinorVersionRequest
         @return: UpgradeMinorVersionResponse

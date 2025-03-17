@@ -72,6 +72,8 @@ class CreateAccountRequest(TeaModel):
         product: str = None,
         region_id: str = None,
     ):
+        # The name of the account.
+        # 
         # This parameter is required.
         self.account = account
         # The type of the database account. Valid values:
@@ -81,15 +83,26 @@ class CreateAccountRequest(TeaModel):
         # 
         # This parameter is required.
         self.account_type = account_type
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The description of the account.
         self.description = description
         # The information about permissions.
         self.dml_auth_setting = dml_auth_setting
+        # The password of the database account. The password must meet the following requirements:
+        # 
+        # - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # - The following special characters are supported: ! @ # $ % ^ & * ( ) _ + - =\
+        # - The password must be 8 to 32 characters in length.
+        # 
         # This parameter is required.
         self.password = password
         # The code of the cloud service.
         self.product = product
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -155,6 +168,8 @@ class CreateAccountShrinkRequest(TeaModel):
         product: str = None,
         region_id: str = None,
     ):
+        # The name of the account.
+        # 
         # This parameter is required.
         self.account = account
         # The type of the database account. Valid values:
@@ -164,15 +179,26 @@ class CreateAccountShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.account_type = account_type
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The description of the account.
         self.description = description
         # The information about permissions.
         self.dml_auth_setting_shrink = dml_auth_setting_shrink
+        # The password of the database account. The password must meet the following requirements:
+        # 
+        # - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # - The following special characters are supported: ! @ # $ % ^ & * ( ) _ + - =\
+        # - The password must be 8 to 32 characters in length.
+        # 
         # This parameter is required.
         self.password = password
         # The code of the cloud service.
         self.product = product
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -230,7 +256,9 @@ class CreateAccountResponseBodyData(TeaModel):
         account: str = None,
         dbinstance_id: str = None,
     ):
+        # The name of the database account.
         self.account = account
+        # The cluster ID.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):
@@ -263,6 +291,7 @@ class CreateAccountResponseBody(TeaModel):
         data: CreateAccountResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -342,13 +371,16 @@ class CreateDBRequest(TeaModel):
         dbname: str = None,
         region_id: str = None,
     ):
+        # Database remark information.
         self.comment = comment
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The name of the database. The name must meet the following requirements:
+        # The database name. The name must meet the following requirements:
         # 
         # *   The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
-        # *   The name must start with a lowercase letter and end with a lowercase letter or a digit.
+        # *   The name must start with a lowercase letter and end with a lowercase letter or digit.
         # *   The name can be up to 64 characters in length.
         # 
         # >  An underscore (_) is counted as two characters.
@@ -398,7 +430,9 @@ class CreateDBResponseBodyData(TeaModel):
         dbinstance_id: str = None,
         dbname: str = None,
     ):
+        # The cluster ID.
         self.dbinstance_id = dbinstance_id
+        # The name of the database.
         self.dbname = dbname
 
     def validate(self):
@@ -431,7 +465,9 @@ class CreateDBResponseBody(TeaModel):
         data: CreateDBResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -507,7 +543,9 @@ class CreateDBInstanceRequestMultiZone(TeaModel):
         v_switch_ids: List[str] = None,
         zone_id: str = None,
     ):
+        # The vSwitch IDs.
         self.v_switch_ids = v_switch_ids
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -552,22 +590,39 @@ class CreateDBInstanceRequest(TeaModel):
         vswitch_id: str = None,
         zone_id: str = None,
     ):
+        # The backup set ID.
         self.backup_set_id = backup_set_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token. Make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The cluster description.
         self.dbinstance_description = dbinstance_description
+        # The deployment status of the cluster.
         self.deploy_schema = deploy_schema
         # The engine type.
+        # 
+        # Valid values:
+        # 
+        # *   clickhouse
         self.engine = engine
+        # The engine version.
         self.engine_version = engine_version
+        # The configurations of multi-zone deployment.
         self.multi_zone = multi_zone
+        # The region ID
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The maximum capacity for auto scaling.
         self.scale_max = scale_max
+        # The minimum capacity for auto scaling.
         self.scale_min = scale_min
+        # The cluster ID.
         self.source_dbinstance_id = source_dbinstance_id
-        # VPC ID。
+        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
+        # The vSwitch ID.
         self.vswitch_id = vswitch_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -668,22 +723,39 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         vswitch_id: str = None,
         zone_id: str = None,
     ):
+        # The backup set ID.
         self.backup_set_id = backup_set_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token. Make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The cluster description.
         self.dbinstance_description = dbinstance_description
+        # The deployment status of the cluster.
         self.deploy_schema = deploy_schema
         # The engine type.
+        # 
+        # Valid values:
+        # 
+        # *   clickhouse
         self.engine = engine
+        # The engine version.
         self.engine_version = engine_version
+        # The configurations of multi-zone deployment.
         self.multi_zone_shrink = multi_zone_shrink
+        # The region ID
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The maximum capacity for auto scaling.
         self.scale_max = scale_max
+        # The minimum capacity for auto scaling.
         self.scale_min = scale_min
+        # The cluster ID.
         self.source_dbinstance_id = source_dbinstance_id
-        # VPC ID。
+        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
+        # The vSwitch ID.
         self.vswitch_id = vswitch_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -765,8 +837,11 @@ class CreateDBInstanceResponseBodyData(TeaModel):
         dbinstance_id: str = None,
         order_id: int = None,
     ):
+        # The endpoint.
         self.connection_string = connection_string
+        # The cluster ID.
         self.dbinstance_id = dbinstance_id
+        # The order ID.
         self.order_id = order_id
 
     def validate(self):
@@ -803,7 +878,9 @@ class CreateDBInstanceResponseBody(TeaModel):
         data: CreateDBInstanceResponseBodyData = None,
         request_id: str = None,
     ):
+        # The response parameters.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -881,11 +958,20 @@ class CreateEndpointRequest(TeaModel):
         dbinstance_net_type: str = None,
         region_id: str = None,
     ):
+        # The prefix of the new endpoint. The prefix of the ConnectionString parameter.
         self.connection_prefix = connection_prefix
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The network type.
+        # 
+        # Valid values:
+        # 
+        # *   Public
         self.dbinstance_net_type = dbinstance_net_type
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -926,6 +1012,7 @@ class CreateEndpointResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -997,12 +1084,18 @@ class DeleteAccountRequest(TeaModel):
         product: str = None,
         region_id: str = None,
     ):
+        # The destination database account.
+        # 
         # This parameter is required.
         self.account = account
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The code of the cloud service.
         self.product = product
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -1044,7 +1137,9 @@ class DeleteAccountResponseBodyData(TeaModel):
         account: str = None,
         dbinstance_id: str = None,
     ):
+        # The name of the account.
         self.account = account
+        # The cluster ID.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):
@@ -1077,7 +1172,9 @@ class DeleteAccountResponseBody(TeaModel):
         data: DeleteAccountResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1154,9 +1251,11 @@ class DeleteDBRequest(TeaModel):
         dbname: str = None,
         region_id: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The name of the database.
+        # The name of the destination database.
         # 
         # This parameter is required.
         self.dbname = dbname
@@ -1199,7 +1298,9 @@ class DeleteDBResponseBodyData(TeaModel):
         dbinstance_id: str = None,
         dbname: str = None,
     ):
+        # The cluster ID.
         self.dbinstance_id = dbinstance_id
+        # The name of the database.
         self.dbname = dbname
 
     def validate(self):
@@ -1232,7 +1333,9 @@ class DeleteDBResponseBody(TeaModel):
         data: DeleteDBResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1308,8 +1411,11 @@ class DeleteDBInstanceRequest(TeaModel):
         dbinstance_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the destination cluster.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -1341,6 +1447,7 @@ class DeleteDBInstanceResponseBodyData(TeaModel):
         self,
         dbinstance_id: str = None,
     ):
+        # The cluster ID.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):
@@ -1369,7 +1476,9 @@ class DeleteDBInstanceResponseBody(TeaModel):
         data: DeleteDBInstanceResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1444,11 +1553,17 @@ class DeleteEndpointRequest(TeaModel):
         self,
         connection_string: str = None,
         dbinstance_id: str = None,
+        dbinstance_net_type: str = None,
         region_id: str = None,
     ):
+        # The prefix of the endpoint, which indicates the prefix of the value of the ConnectionString parameter.
         self.connection_string = connection_string
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        self.dbinstance_net_type = dbinstance_net_type
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -1464,6 +1579,8 @@ class DeleteEndpointRequest(TeaModel):
             result['ConnectionString'] = self.connection_string
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+        if self.dbinstance_net_type is not None:
+            result['DBInstanceNetType'] = self.dbinstance_net_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -1474,6 +1591,8 @@ class DeleteEndpointRequest(TeaModel):
             self.connection_string = m.get('ConnectionString')
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('DBInstanceNetType') is not None:
+            self.dbinstance_net_type = m.get('DBInstanceNetType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -1484,6 +1603,7 @@ class DeleteEndpointResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1554,10 +1674,16 @@ class DescribeAccountAuthorityRequest(TeaModel):
         dbinstance_id: str = None,
         region_id: str = None,
     ):
+        # The name of the database account.
+        # 
         # This parameter is required.
         self.account = account
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The region ID
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -1601,13 +1727,28 @@ class DescribeAccountAuthorityResponseBodyData(TeaModel):
         total_databases: List[str] = None,
         total_dictionaries: List[str] = None,
     ):
+        # The name of the database account.
         self.account = account
+        # The databases on which permissions are granted.
         self.allow_databases = allow_databases
+        # The dictionaries on which permissions are granted.
         self.allow_dictionaries = allow_dictionaries
+        # The cluster ID.
         self.dbinstance_id = dbinstance_id
+        # Indicates whether the DDL permissions are granted to the database account. Valid values:
+        # 
+        # *   **true**: The account has the permissions to execute DDL statements.
+        # *   **false**: The account does not have the permissions to execute DDL statements.
         self.ddl_authority = ddl_authority
+        # Indicates whether the DML permissions are granted to the database account. Valid values:
+        # 
+        # *   0: The account has the permissions to read data from the database, write data to the database, and modify the settings of the database.
+        # *   1: The account only has the permissions to read data from the database.
+        # *   2: The account only has the permissions to read data from the database and modify the settings of the database.
         self.dml_authority = dml_authority
+        # All databases.
         self.total_databases = total_databases
+        # The database.
         self.total_dictionaries = total_dictionaries
 
     def validate(self):
@@ -1664,7 +1805,9 @@ class DescribeAccountAuthorityResponseBody(TeaModel):
         data: DescribeAccountAuthorityResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned result.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1743,12 +1886,21 @@ class DescribeAccountsRequest(TeaModel):
         product: str = None,
         region_id: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # *   **30** (default)
+        # *   **50**\
+        # *   **100**\
         self.page_size = page_size
         # The code of the cloud service.
         self.product = product
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -1795,9 +1947,20 @@ class DescribeAccountsResponseBodyDataAccounts(TeaModel):
         description: str = None,
         status: str = None,
     ):
+        # The username of the database account.
         self.account = account
+        # The type of the database account. Valid values:
+        # 
+        # *   **1**: standard account
+        # *   **6**: privileged account
         self.account_type = account_type
+        # The description.
         self.description = description
+        # The state of the database account. Valid values:
+        # 
+        # *   **0**: The database account is being created.
+        # *   **1**: The database account is in use.
+        # *   **3**: The database account is being deleted.
         self.status = status
 
     def validate(self):
@@ -1840,9 +2003,17 @@ class DescribeAccountsResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The database accounts.
         self.accounts = accounts
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # *   **30** (default)
+        # *   **50**\
+        # *   **100**\
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -1891,7 +2062,9 @@ class DescribeAccountsResponseBody(TeaModel):
         data: DescribeAccountsResponseBodyData = None,
         request_id: str = None,
     ):
+        # The result returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1967,8 +2140,15 @@ class DescribeDBInstanceAttributeRequest(TeaModel):
         dbinstance_id: str = None,
         region_id: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The region ID.
+        # 
+        # Valid values:
+        # 
+        # *   cn-beijing
         self.region_id = region_id
 
     def validate(self):
@@ -1995,13 +2175,50 @@ class DescribeDBInstanceAttributeRequest(TeaModel):
         return self
 
 
+class DescribeDBInstanceAttributeResponseBodyDataMultiZones(TeaModel):
+    def __init__(
+        self,
+        v_switch_ids: List[str] = None,
+        zone_id: str = None,
+    ):
+        # The vSwitch IDs.
+        self.v_switch_ids = v_switch_ids
+        # The zone ID.
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
 class DescribeDBInstanceAttributeResponseBodyDataNodes(TeaModel):
     def __init__(
         self,
         node_status: str = None,
         zone_id: str = None,
     ):
+        # The node status.
         self.node_status = node_status
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -2034,7 +2251,9 @@ class DescribeDBInstanceAttributeResponseBodyDataTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -2070,6 +2289,7 @@ class DescribeDBInstanceAttributeResponseBodyData(TeaModel):
         create_time: str = None,
         dbinstance_id: str = None,
         deletion_protection: bool = None,
+        deploy_schema: str = None,
         description: str = None,
         disabled_ports: str = None,
         engine: str = None,
@@ -2081,6 +2301,7 @@ class DescribeDBInstanceAttributeResponseBodyData(TeaModel):
         lock_reason: str = None,
         maintain_end_time: str = None,
         maintain_start_time: str = None,
+        multi_zones: List[DescribeDBInstanceAttributeResponseBodyDataMultiZones] = None,
         nodes: List[DescribeDBInstanceAttributeResponseBodyDataNodes] = None,
         object_store_size: str = None,
         region_id: str = None,
@@ -2095,39 +2316,83 @@ class DescribeDBInstanceAttributeResponseBodyData(TeaModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
+        # The channel ID.
         self.bid = bid
+        # The billing method. Enterprise Edition clusters use the pay-as-you-go billing method.
         self.charge_type = charge_type
+        # The time when the cluster was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.create_time = create_time
+        # The cluster ID.
         self.dbinstance_id = dbinstance_id
+        # Indicates whether the release protection feature is enabled for the cluster.
         self.deletion_protection = deletion_protection
+        # The deployment mode of the cluster. Valid values: single_az and multi_az.
+        # 
+        # *   single_az: indicates that the server nodes are deployed in the primary zone. The ID of the primary zone is specified by the ZoneID parameter.
+        # *   multi_az: indicates that the server nodes are deployed in multiple zones. The information about the zones is specified by the MultiZones parameter.
+        # 
+        # The keeper nodes are deployed in multiple zones.
+        self.deploy_schema = deploy_schema
+        # The cluster description.
         self.description = description
+        # The disabled database ports. Multiple database ports are separated by commas (,).
         self.disabled_ports = disabled_ports
+        # The engine type.
         self.engine = engine
+        # The minor engine version of the cluster.
         self.engine_minor_version = engine_minor_version
+        # The engine version.
         self.engine_version = engine_version
+        # The time when the cluster expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+        # 
+        # >  Pay-as-you-go clusters never expire. If the cluster is a pay-as-you-go cluster, an empty string is returned for this parameter.
         self.expire_time = expire_time
+        # The latest minor engine version.
         self.latest_engine_minor_version = latest_engine_minor_version
+        # The lock mode of the cluster.
         self.lock_mode = lock_mode
+        # The reason why the cluster was locked.
         self.lock_reason = lock_reason
+        # The end time of the maintenance window.
         self.maintain_end_time = maintain_end_time
+        # The start time of the maintenance window.
         self.maintain_start_time = maintain_start_time
+        # The information about the zones.
+        self.multi_zones = multi_zones
+        # The nodes.
         self.nodes = nodes
+        # The size of the object storage space.
         self.object_store_size = object_store_size
+        # The region ID.
         self.region_id = region_id
+        # The resource ID.
         self.resource_group_id = resource_group_id
+        # The maximum capacity for elastic scaling.
         self.scale_max = scale_max
+        # The minimum capacity for elastic scaling.
         self.scale_min = scale_min
+        # The cluster status.
         self.status = status
+        # The size of the storage space. Unit: GB.
         self.storage_size = storage_size
+        # The storage type.
         self.storage_type = storage_type
+        # The details of the tags.
         self.tags = tags
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # VPC ID。
+        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
+        if self.multi_zones:
+            for k in self.multi_zones:
+                if k:
+                    k.validate()
         if self.nodes:
             for k in self.nodes:
                 if k:
@@ -2155,6 +2420,8 @@ class DescribeDBInstanceAttributeResponseBodyData(TeaModel):
             result['DBInstanceId'] = self.dbinstance_id
         if self.deletion_protection is not None:
             result['DeletionProtection'] = self.deletion_protection
+        if self.deploy_schema is not None:
+            result['DeploySchema'] = self.deploy_schema
         if self.description is not None:
             result['Description'] = self.description
         if self.disabled_ports is not None:
@@ -2177,6 +2444,10 @@ class DescribeDBInstanceAttributeResponseBodyData(TeaModel):
             result['MaintainEndTime'] = self.maintain_end_time
         if self.maintain_start_time is not None:
             result['MaintainStartTime'] = self.maintain_start_time
+        result['MultiZones'] = []
+        if self.multi_zones is not None:
+            for k in self.multi_zones:
+                result['MultiZones'].append(k.to_map() if k else None)
         result['Nodes'] = []
         if self.nodes is not None:
             for k in self.nodes:
@@ -2223,6 +2494,8 @@ class DescribeDBInstanceAttributeResponseBodyData(TeaModel):
             self.dbinstance_id = m.get('DBInstanceId')
         if m.get('DeletionProtection') is not None:
             self.deletion_protection = m.get('DeletionProtection')
+        if m.get('DeploySchema') is not None:
+            self.deploy_schema = m.get('DeploySchema')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('DisabledPorts') is not None:
@@ -2245,6 +2518,11 @@ class DescribeDBInstanceAttributeResponseBodyData(TeaModel):
             self.maintain_end_time = m.get('MaintainEndTime')
         if m.get('MaintainStartTime') is not None:
             self.maintain_start_time = m.get('MaintainStartTime')
+        self.multi_zones = []
+        if m.get('MultiZones') is not None:
+            for k in m.get('MultiZones'):
+                temp_model = DescribeDBInstanceAttributeResponseBodyDataMultiZones()
+                self.multi_zones.append(temp_model.from_map(k))
         self.nodes = []
         if m.get('Nodes') is not None:
             for k in m.get('Nodes'):
@@ -2288,6 +2566,7 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
     ):
         # The result returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2365,10 +2644,15 @@ class DescribeDBInstanceDataSourcesRequest(TeaModel):
         region_id: str = None,
         table_name: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The database name.
         self.dbname = dbname
+        # The region ID.
         self.region_id = region_id
+        # The table name.
         self.table_name = table_name
 
     def validate(self):
@@ -2413,11 +2697,20 @@ class DescribeDBInstanceDataSourcesResponseBodyDataColumns(TeaModel):
         table_name: str = None,
         type: str = None,
     ):
+        # The column name.
         self.column_name = column_name
+        # The description of the database account.
         self.comment = comment
+        # The database name.
         self.dbname = dbname
+        # Indicates whether the column is the primary key of the table. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.primary_key = primary_key
+        # The table name.
         self.table_name = table_name
+        # The type of the stored data.
         self.type = type
 
     def validate(self):
@@ -2468,9 +2761,13 @@ class DescribeDBInstanceDataSourcesResponseBodyData(TeaModel):
         schemas: str = None,
         tables: List[str] = None,
     ):
+        # The columns.
         self.columns = columns
+        # The cluster ID.
         self.dbinstance_id = dbinstance_id
+        # The account.
         self.schemas = schemas
+        # The tables.
         self.tables = tables
 
     def validate(self):
@@ -2519,7 +2816,9 @@ class DescribeDBInstanceDataSourcesResponseBody(TeaModel):
         data: DescribeDBInstanceDataSourcesResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned result.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2600,14 +2899,19 @@ class DescribeDBInstancesRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
+        # The cluster IDs. Separate multiple cluster IDs with commas (,).
         self.dbinstance_ids = dbinstance_ids
+        # The cluster status.
         self.dbinstance_status = dbinstance_status
+        # The cluster description.
         self.description = description
         # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
+        # The region ID.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -2660,7 +2964,9 @@ class DescribeDBInstancesResponseBodyDataDBInstancesTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -2714,29 +3020,54 @@ class DescribeDBInstancesResponseBodyDataDBInstances(TeaModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # The user ID.
         self.ali_uid = ali_uid
+        # The channel ID.
         self.bid = bid
+        # The billing method. Valid values:
+        # 
+        # *   PrePaid: subscription
+        # *   PostPaid: pay-as-you-go
         self.charge_type = charge_type
+        # The time when the cluster was created.
         self.create_time = create_time
+        # The cluster ID.
         self.dbinstance_id = dbinstance_id
+        # Indicates whether the release protection feature is enabled for the cluster.
         self.deletion_protection = deletion_protection
+        # The cluster description.
         self.description = description
+        # The engine type.
         self.engine = engine
+        # The engine version.
         self.engine_version = engine_version
+        # The time when the cluster expires.
         self.expire_time = expire_time
+        # The lock mode.
         self.lock_mode = lock_mode
+        # The reason why the cluster was locked.
         self.lock_reason = lock_reason
+        # The end time of the maintenance window.
         self.maintain_end_time = maintain_end_time
+        # The start time of the maintenance window.
         self.maintain_start_time = maintain_start_time
+        # The region ID.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The maximum capacity for elastic scaling.
         self.scale_max = scale_max
+        # The minimum capacity for elastic scaling.
         self.scale_min = scale_min
+        # The cluster status.
         self.status = status
+        # The tags.
         self.tags = tags
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # VPC ID。
+        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -2863,9 +3194,13 @@ class DescribeDBInstancesResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: str = None,
     ):
+        # The clusters.
         self.dbinstances = dbinstances
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -2914,7 +3249,9 @@ class DescribeDBInstancesResponseBody(TeaModel):
         data: DescribeDBInstancesResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned result.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2990,8 +3327,11 @@ class DescribeEndpointsRequest(TeaModel):
         dbinstance_id: str = None,
         region_id: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -3024,7 +3364,17 @@ class DescribeEndpointsResponseBodyDataEndpointsPorts(TeaModel):
         port: int = None,
         protocol: str = None,
     ):
+        # The port used to connect to the cluster. Valid values:
+        # 
+        # *   8123: This value is returned when the value of Protocol is HttpPort.
+        # *   8443: This value is returned when the value of Protocol is HttpsPort.
+        # *   9000: This value is returned when the value of Protocol is TcpPort.
         self.port = port
+        # The protocol type. Valid values:
+        # 
+        # *   HttpPort
+        # *   HttpsPort
+        # *   TcpPort
         self.protocol = protocol
 
     def validate(self):
@@ -3063,14 +3413,24 @@ class DescribeEndpointsResponseBodyDataEndpoints(TeaModel):
         vpc_id: str = None,
         vpc_instance_id: str = None,
     ):
+        # The endpoint of the cluster.
         self.connection_string = connection_string
+        # The IP address.
         self.ipaddress = ipaddress
+        # The network type of the endpoint. Valid values:
+        # 
+        # *   VPC
+        # *   PUBLIC
         self.net_type = net_type
+        # The details of the ports.
         self.ports = ports
+        # The state of the cluster.
         self.status = status
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # VPC ID。
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
+        # The VPC ID.
         self.vpc_instance_id = vpc_instance_id
 
     def validate(self):
@@ -3135,7 +3495,12 @@ class DescribeEndpointsResponseBodyData(TeaModel):
         endpoints: List[DescribeEndpointsResponseBodyDataEndpoints] = None,
         instance_network_type: str = None,
     ):
+        # The details of the endpoints.
         self.endpoints = endpoints
+        # The network type of the cluster. Valid values:
+        # 
+        # *   **VPC**\
+        # *   **PUBLIC**\
         self.instance_network_type = instance_network_type
 
     def validate(self):
@@ -3176,7 +3541,9 @@ class DescribeEndpointsResponseBody(TeaModel):
         data: DescribeEndpointsResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned result.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4074,13 +4441,19 @@ class DescribeSlowLogTrendRequest(TeaModel):
         region_id: str = None,
         start_time: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The end of the time range to query. Specify the time in the yyyy-MM-dd hh:mm:ss format. The time must be in UTC.
         self.end_time = end_time
         # The code of the cloud service.
         self.product = product
+        # The execution duration of slow SQL queries. Minimum value: **1000**. Unit: milliseconds.
         self.query_duration_ms = query_duration_ms
+        # The region ID.
         self.region_id = region_id
+        # The start of the time range to query. Specify the time in the yyyy-MM-dd hh:mm:ss format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -4132,10 +4505,15 @@ class DescribeSlowLogTrendResponseBodyDataResultSet(TeaModel):
         min_query_duration_ms: int = None,
         query_start_time: str = None,
     ):
+        # The average execution duration of slow SQL queries. Minimum value: **1000**. Unit: milliseconds.
         self.avg_query_duration_ms = avg_query_duration_ms
+        # The total number of SQL queries within the specified time range.
         self.cnt = cnt
+        # The maximum execution duration of slow SQL queries. Minimum value: **1000**. Unit: milliseconds.
         self.max_query_duration_ms = max_query_duration_ms
+        # The minimum execution duration of slow SQL queries. Minimum value: **1000**. Unit: milliseconds.
         self.min_query_duration_ms = min_query_duration_ms
+        # The beginning of the time range to query. The time is in the yyyy-MM-dd hh:mm:ss format. The time is displayed in UTC.
         self.query_start_time = query_start_time
 
     def validate(self):
@@ -4181,8 +4559,11 @@ class DescribeSlowLogTrendResponseBodyData(TeaModel):
         dbinstance_name: str = None,
         result_set: List[DescribeSlowLogTrendResponseBodyDataResultSet] = None,
     ):
+        # The cluster ID.
         self.dbinstance_id = dbinstance_id
+        # The cluster name.
         self.dbinstance_name = dbinstance_name
+        # The result sets.
         self.result_set = result_set
 
     def validate(self):
@@ -4227,7 +4608,9 @@ class DescribeSlowLogTrendResponseBody(TeaModel):
         data: DescribeSlowLogTrendResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned result.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4533,6 +4916,8 @@ class ModifyAccountAuthorityRequest(TeaModel):
         # 
         # This parameter is required.
         self.account = account
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The information about permissions.
@@ -4590,6 +4975,8 @@ class ModifyAccountAuthorityShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.account = account
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The information about permissions.
@@ -4639,7 +5026,9 @@ class ModifyAccountAuthorityResponseBodyData(TeaModel):
         account: str = None,
         dbinstance_id: str = None,
     ):
+        # The name of the database account.
         self.account = account
+        # The cluster ID.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):
@@ -4672,7 +5061,9 @@ class ModifyAccountAuthorityResponseBody(TeaModel):
         data: ModifyAccountAuthorityResponseBodyData = None,
         request_id: str = None,
     ):
+        # The result returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4805,6 +5196,7 @@ class ModifyAccountDescriptionResponseBodyData(TeaModel):
         account: str = None,
         dbinstance_id: str = None,
     ):
+        # The name of the database account.
         self.account = account
         # The cluster ID.
         self.dbinstance_id = dbinstance_id
@@ -4927,12 +5319,18 @@ class ModifyDBInstanceAttributeRequest(TeaModel):
         # 
         # This parameter is required.
         self.attribute_type = attribute_type
+        # The new value of the configuration.
+        # 
         # This parameter is required.
         self.attribute_value = attribute_value
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The code of the cloud service.
         self.product = product
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -4977,6 +5375,7 @@ class ModifyDBInstanceAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5048,11 +5447,15 @@ class ModifyDBInstanceClassRequest(TeaModel):
         scale_max: int = None,
         scale_min: int = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The region ID.
         self.region_id = region_id
+        # The maximum capacity for elastic scaling.
         self.scale_max = scale_max
-        # The minimum capacity for auto scaling.
+        # The minimum capacity for elastic scaling.
         self.scale_min = scale_min
 
     def validate(self):
@@ -5096,10 +5499,15 @@ class ModifyDBInstanceClassResponseBodyData(TeaModel):
         scale_min: int = None,
         task_id: int = None,
     ):
+        # The cluster ID.
         self.dbinstance_id = dbinstance_id
+        # The cluster name.
         self.dbinstance_name = dbinstance_name
+        # The maximum capacity for elastic scaling.
         self.scale_max = scale_max
+        # The minimum capacity for elastic scaling.
         self.scale_min = scale_min
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -5144,7 +5552,9 @@ class ModifyDBInstanceClassResponseBody(TeaModel):
         data: ModifyDBInstanceClassResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned result.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5220,6 +5630,7 @@ class ModifyDBInstanceConnectionStringRequest(TeaModel):
         connection_string: str = None,
         connection_string_prefix: str = None,
         dbinstance_id: str = None,
+        dbinstance_net_type: str = None,
         disable_ports: str = None,
         region_id: str = None,
     ):
@@ -5231,6 +5642,14 @@ class ModifyDBInstanceConnectionStringRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        self.dbinstance_net_type = dbinstance_net_type
+        # *   The database ports that you want to disable. Separate multiple ports with commas (,).
+        # 
+        # *   This parameter is supported only for clusters whose minor engine version is 24.10.1.11098_1 or later.
+        # 
+        #     **\
+        # 
+        #     **Note** If you create a cluster whose minor engine version is earlier than 24.10.1.11098_1 and you update the minor engine version to 24.10.1.11098_1 or later, the cluster still does not support this parameter.
         self.disable_ports = disable_ports
         # The region ID.
         self.region_id = region_id
@@ -5250,6 +5669,8 @@ class ModifyDBInstanceConnectionStringRequest(TeaModel):
             result['ConnectionStringPrefix'] = self.connection_string_prefix
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+        if self.dbinstance_net_type is not None:
+            result['DBInstanceNetType'] = self.dbinstance_net_type
         if self.disable_ports is not None:
             result['DisablePorts'] = self.disable_ports
         if self.region_id is not None:
@@ -5264,6 +5685,8 @@ class ModifyDBInstanceConnectionStringRequest(TeaModel):
             self.connection_string_prefix = m.get('ConnectionStringPrefix')
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('DBInstanceNetType') is not None:
+            self.dbinstance_net_type = m.get('DBInstanceNetType')
         if m.get('DisablePorts') is not None:
             self.disable_ports = m.get('DisablePorts')
         if m.get('RegionId') is not None:
@@ -5285,6 +5708,7 @@ class ModifyDBInstanceConnectionStringResponseBodyData(TeaModel):
         self.dbinstance_id = dbinstance_id
         # The cluster name.
         self.dbinstance_name = dbinstance_name
+        # The disabled database ports.
         self.disabled_ports = disabled_ports
 
     def validate(self):
@@ -5325,7 +5749,7 @@ class ModifyDBInstanceConnectionStringResponseBody(TeaModel):
         data: ModifyDBInstanceConnectionStringResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The data returned.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -5406,11 +5830,23 @@ class ModifySecurityIPListRequest(TeaModel):
         region_id: str = None,
         security_iplist: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The name of the whitelist whose settings you want to modify.
         self.group_name = group_name
+        # The modification mode.
+        # 
+        # *   0: overwrites the original IP addresses and CIDR blocks in the whitelist.
+        # *   1: adds the IP addresses and CIDR blocks to the whitelist.
+        # *   2: removes the IP addresses and CIDR blocks from the whitelist.
+        # 
+        # >  We recommend that you set the value to 0.
         self.modify_mode = modify_mode
+        # The region ID.
         self.region_id = region_id
+        # The IP addresses and CIDR blocks in the whitelist.
         self.security_iplist = security_iplist
 
     def validate(self):
@@ -5461,13 +5897,21 @@ class ModifySecurityIPListResponseBodyData(TeaModel):
         task_id: int = None,
         whitelist_net_type: str = None,
     ):
+        # The cluster ID.
         self.dbinstance_id = dbinstance_id
+        # The cluster name.
         self.dbinstance_name = dbinstance_name
+        # The name of the whitelist.
         self.group_name = group_name
+        # The tag of the whitelist.
         self.group_tag = group_tag
+        # The IP addresses and CIDR blocks in the whitelist.
         self.security_iplist = security_iplist
+        # The IP address type.
         self.security_iptype = security_iptype
+        # The task ID.
         self.task_id = task_id
+        # The network type of the whitelist.
         self.whitelist_net_type = whitelist_net_type
 
     def validate(self):
@@ -5524,7 +5968,9 @@ class ModifySecurityIPListResponseBody(TeaModel):
         data: ModifySecurityIPListResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned result.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5603,14 +6049,26 @@ class ResetAccountPasswordRequest(TeaModel):
         product: str = None,
         region_id: str = None,
     ):
+        # The name of the database account.
+        # 
         # This parameter is required.
         self.account = account
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The password of the database account. The password must meet the following requirements:
+        # 
+        # - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # - The following special characters are supported: ! @ # $ % ^ & * ( ) _ + - =\
+        # - The password must be 8 to 32 characters in length.
+        # 
         # This parameter is required.
         self.password = password
-        # The name of the service.
+        # The service name.
         self.product = product
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -5656,7 +6114,9 @@ class ResetAccountPasswordResponseBodyData(TeaModel):
         account: str = None,
         dbinstance_id: str = None,
     ):
+        # The name of the account.
         self.account = account
+        # The cluster ID.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):
@@ -5689,7 +6149,9 @@ class ResetAccountPasswordResponseBody(TeaModel):
         data: ResetAccountPasswordResponseBodyData = None,
         request_id: str = None,
     ):
+        # The result returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6239,9 +6701,15 @@ class UpgradeMinorVersionRequest(TeaModel):
         switch_time_mode: str = None,
         target_minor_version: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The region ID.
         self.region_id = region_id
+        # The update time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # >  If you set SwitchTimeMode to SpecifyTime, you must configure this parameter to specify the update time.
         self.switch_time = switch_time
         # Specifies whether to update the minor engine version of the cluster immediately. Valid values:
         # 
@@ -6249,6 +6717,9 @@ class UpgradeMinorVersionRequest(TeaModel):
         # *   **MaintainTime**: The system performs the update during the specified maintenance window.
         # *   **SpecifyTime**: The system performs the update at a specified time.
         self.switch_time_mode = switch_time_mode
+        # The minor engine version to which you want to update.
+        # 
+        # >  By default, TargetMinorVersion is not set and the minor engine version of the cluster is updated to the latest version.
         self.target_minor_version = target_minor_version
 
     def validate(self):
@@ -6292,6 +6763,7 @@ class UpgradeMinorVersionResponseBodyData(TeaModel):
         self,
         dbinstance_name: str = None,
     ):
+        # The instance ID.
         self.dbinstance_name = dbinstance_name
 
     def validate(self):
@@ -6320,7 +6792,9 @@ class UpgradeMinorVersionResponseBody(TeaModel):
         data: UpgradeMinorVersionResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned result.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
