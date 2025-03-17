@@ -1,3 +1,10 @@
+2025-03-17 Version: 5.0.2
+- Update API AddSmarttagTemplate: add param LabelCustomCategoryIds.
+- Update API AddSmarttagTemplate: add param LabelCustomParamsConfig.
+- Update API RegisterCustomView: add param LabelPrompt.
+- Update API RegisterCustomView: update param ImageUrl.
+
+
 2024-10-16 Version: 5.0.1
 - Update API QuerySmarttagJob: update param AccessKeyId.
 - Update API QuerySmarttagJob: update response param.

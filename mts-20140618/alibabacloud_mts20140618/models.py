@@ -1331,6 +1331,8 @@ class AddSmarttagTemplateRequest(TeaModel):
         is_default: bool = None,
         keyword_config: str = None,
         knowledge_config: str = None,
+        label_custom_category_ids: str = None,
+        label_custom_params_config: str = None,
         label_type: str = None,
         label_version: str = None,
         landmark_group_ids: str = None,
@@ -1351,6 +1353,8 @@ class AddSmarttagTemplateRequest(TeaModel):
         self.is_default = is_default
         self.keyword_config = keyword_config
         self.knowledge_config = knowledge_config
+        self.label_custom_category_ids = label_custom_category_ids
+        self.label_custom_params_config = label_custom_params_config
         self.label_type = label_type
         self.label_version = label_version
         self.landmark_group_ids = landmark_group_ids
@@ -1387,6 +1391,10 @@ class AddSmarttagTemplateRequest(TeaModel):
             result['KeywordConfig'] = self.keyword_config
         if self.knowledge_config is not None:
             result['KnowledgeConfig'] = self.knowledge_config
+        if self.label_custom_category_ids is not None:
+            result['LabelCustomCategoryIds'] = self.label_custom_category_ids
+        if self.label_custom_params_config is not None:
+            result['LabelCustomParamsConfig'] = self.label_custom_params_config
         if self.label_type is not None:
             result['LabelType'] = self.label_type
         if self.label_version is not None:
@@ -1425,6 +1433,10 @@ class AddSmarttagTemplateRequest(TeaModel):
             self.keyword_config = m.get('KeywordConfig')
         if m.get('KnowledgeConfig') is not None:
             self.knowledge_config = m.get('KnowledgeConfig')
+        if m.get('LabelCustomCategoryIds') is not None:
+            self.label_custom_category_ids = m.get('LabelCustomCategoryIds')
+        if m.get('LabelCustomParamsConfig') is not None:
+            self.label_custom_params_config = m.get('LabelCustomParamsConfig')
         if m.get('LabelType') is not None:
             self.label_type = m.get('LabelType')
         if m.get('LabelVersion') is not None:
@@ -31931,6 +31943,7 @@ class RegisterCustomViewRequest(TeaModel):
         custom_entity_id: str = None,
         custom_group_id: str = None,
         image_url: str = None,
+        label_prompt: str = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
@@ -31942,8 +31955,8 @@ class RegisterCustomViewRequest(TeaModel):
         self.custom_entity_id = custom_entity_id
         # This parameter is required.
         self.custom_group_id = custom_group_id
-        # This parameter is required.
         self.image_url = image_url
+        self.label_prompt = label_prompt
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -31966,6 +31979,8 @@ class RegisterCustomViewRequest(TeaModel):
             result['CustomGroupId'] = self.custom_group_id
         if self.image_url is not None:
             result['ImageUrl'] = self.image_url
+        if self.label_prompt is not None:
+            result['LabelPrompt'] = self.label_prompt
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -31986,6 +32001,8 @@ class RegisterCustomViewRequest(TeaModel):
             self.custom_group_id = m.get('CustomGroupId')
         if m.get('ImageUrl') is not None:
             self.image_url = m.get('ImageUrl')
+        if m.get('LabelPrompt') is not None:
+            self.label_prompt = m.get('LabelPrompt')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
