@@ -3567,7 +3567,6 @@ class RunHotTopicSummaryRequestStepForCustomSummaryStyleConfig(TeaModel):
         summary_prompt: str = None,
     ):
         self.summary_image_count = summary_image_count
-        # This parameter is required.
         self.summary_model = summary_model
         self.summary_prompt = summary_prompt
 
