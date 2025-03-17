@@ -5246,6 +5246,8 @@ class Client(OpenApiClient):
             query['DirectoryId'] = request.directory_id
         if not UtilClient.is_unset(request.end_user_id):
             query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.extend_info):
+            query['ExtendInfo'] = request.extend_info
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.hostname):
@@ -5363,6 +5365,8 @@ class Client(OpenApiClient):
             query['DirectoryId'] = request.directory_id
         if not UtilClient.is_unset(request.end_user_id):
             query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.extend_info):
+            query['ExtendInfo'] = request.extend_info
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.hostname):

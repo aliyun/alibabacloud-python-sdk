@@ -1,3 +1,7 @@
+2025-03-17 Version: 4.6.2
+- Update API CreateDesktops: add param ExtendInfo.
+
+
 2025-03-13 Version: 4.6.1
 - Update API DescribeDesktops: update response param.
 

@@ -8318,6 +8318,7 @@ class CreateDesktopsRequest(TeaModel):
         desktop_timers: List[CreateDesktopsRequestDesktopTimers] = None,
         directory_id: str = None,
         end_user_id: List[str] = None,
+        extend_info: str = None,
         group_id: str = None,
         hostname: str = None,
         month_desktop_setting: CreateDesktopsRequestMonthDesktopSetting = None,
@@ -8405,6 +8406,7 @@ class CreateDesktopsRequest(TeaModel):
         self.directory_id = directory_id
         # The IDs of the end users to which you want to assign the cloud computers. You can specify 1 to 100 IDs.
         self.end_user_id = end_user_id
+        self.extend_info = extend_info
         # The ID of the cloud computer pool.
         self.group_id = group_id
         # The custom hostnames of the cloud computers. This parameter is valid only if the office network is an AD office network and the operating system type of the cloud computers is Windows.
@@ -8556,6 +8558,8 @@ class CreateDesktopsRequest(TeaModel):
             result['DirectoryId'] = self.directory_id
         if self.end_user_id is not None:
             result['EndUserId'] = self.end_user_id
+        if self.extend_info is not None:
+            result['ExtendInfo'] = self.extend_info
         if self.group_id is not None:
             result['GroupId'] = self.group_id
         if self.hostname is not None:
@@ -8637,6 +8641,8 @@ class CreateDesktopsRequest(TeaModel):
             self.directory_id = m.get('DirectoryId')
         if m.get('EndUserId') is not None:
             self.end_user_id = m.get('EndUserId')
+        if m.get('ExtendInfo') is not None:
+            self.extend_info = m.get('ExtendInfo')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
         if m.get('Hostname') is not None:
@@ -9077,6 +9083,7 @@ class CreateDesktopsShrinkRequest(TeaModel):
         desktop_timers: List[CreateDesktopsShrinkRequestDesktopTimers] = None,
         directory_id: str = None,
         end_user_id: List[str] = None,
+        extend_info: str = None,
         group_id: str = None,
         hostname: str = None,
         month_desktop_setting: CreateDesktopsShrinkRequestMonthDesktopSetting = None,
@@ -9164,6 +9171,7 @@ class CreateDesktopsShrinkRequest(TeaModel):
         self.directory_id = directory_id
         # The IDs of the end users to which you want to assign the cloud computers. You can specify 1 to 100 IDs.
         self.end_user_id = end_user_id
+        self.extend_info = extend_info
         # The ID of the cloud computer pool.
         self.group_id = group_id
         # The custom hostnames of the cloud computers. This parameter is valid only if the office network is an AD office network and the operating system type of the cloud computers is Windows.
@@ -9313,6 +9321,8 @@ class CreateDesktopsShrinkRequest(TeaModel):
             result['DirectoryId'] = self.directory_id
         if self.end_user_id is not None:
             result['EndUserId'] = self.end_user_id
+        if self.extend_info is not None:
+            result['ExtendInfo'] = self.extend_info
         if self.group_id is not None:
             result['GroupId'] = self.group_id
         if self.hostname is not None:
@@ -9393,6 +9403,8 @@ class CreateDesktopsShrinkRequest(TeaModel):
             self.directory_id = m.get('DirectoryId')
         if m.get('EndUserId') is not None:
             self.end_user_id = m.get('EndUserId')
+        if m.get('ExtendInfo') is not None:
+            self.extend_info = m.get('ExtendInfo')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
         if m.get('Hostname') is not None:
