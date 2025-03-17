@@ -1,3 +1,8 @@
+2025-03-17 Version: 1.4.5
+- Update API SubmitConvertPdfToWordJob: add param FormulaEnhancement.
+- Update API SubmitConvertPdfToWordJob: add param Option.
+
+
 2025-02-19 Version: 1.4.4
 - Update API SubmitConvertImageToExcelJob: add param OssBucket.
 - Update API SubmitConvertImageToExcelJob: add param OssEndpoint.

@@ -2489,6 +2489,10 @@ class Client(OpenApiClient):
             query['FileUrl'] = request.file_url
         if not UtilClient.is_unset(request.force_export_inner_image):
             query['ForceExportInnerImage'] = request.force_export_inner_image
+        if not UtilClient.is_unset(request.formula_enhancement):
+            query['FormulaEnhancement'] = request.formula_enhancement
+        if not UtilClient.is_unset(request.option):
+            query['Option'] = request.option
         if not UtilClient.is_unset(request.oss_bucket):
             query['OssBucket'] = request.oss_bucket
         if not UtilClient.is_unset(request.oss_endpoint):
@@ -2538,6 +2542,10 @@ class Client(OpenApiClient):
             query['FileUrl'] = request.file_url
         if not UtilClient.is_unset(request.force_export_inner_image):
             query['ForceExportInnerImage'] = request.force_export_inner_image
+        if not UtilClient.is_unset(request.formula_enhancement):
+            query['FormulaEnhancement'] = request.formula_enhancement
+        if not UtilClient.is_unset(request.option):
+            query['Option'] = request.option
         if not UtilClient.is_unset(request.oss_bucket):
             query['OssBucket'] = request.oss_bucket
         if not UtilClient.is_unset(request.oss_endpoint):

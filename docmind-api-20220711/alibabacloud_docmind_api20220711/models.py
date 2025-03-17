@@ -2886,12 +2886,16 @@ class SubmitConvertPdfToWordJobRequest(TeaModel):
         file_name: str = None,
         file_url: str = None,
         force_export_inner_image: bool = None,
+        formula_enhancement: bool = None,
+        option: str = None,
         oss_bucket: str = None,
         oss_endpoint: str = None,
     ):
         self.file_name = file_name
         self.file_url = file_url
         self.force_export_inner_image = force_export_inner_image
+        self.formula_enhancement = formula_enhancement
+        self.option = option
         self.oss_bucket = oss_bucket
         self.oss_endpoint = oss_endpoint
 
@@ -2910,6 +2914,10 @@ class SubmitConvertPdfToWordJobRequest(TeaModel):
             result['FileUrl'] = self.file_url
         if self.force_export_inner_image is not None:
             result['ForceExportInnerImage'] = self.force_export_inner_image
+        if self.formula_enhancement is not None:
+            result['FormulaEnhancement'] = self.formula_enhancement
+        if self.option is not None:
+            result['Option'] = self.option
         if self.oss_bucket is not None:
             result['OssBucket'] = self.oss_bucket
         if self.oss_endpoint is not None:
@@ -2924,6 +2932,10 @@ class SubmitConvertPdfToWordJobRequest(TeaModel):
             self.file_url = m.get('FileUrl')
         if m.get('ForceExportInnerImage') is not None:
             self.force_export_inner_image = m.get('ForceExportInnerImage')
+        if m.get('FormulaEnhancement') is not None:
+            self.formula_enhancement = m.get('FormulaEnhancement')
+        if m.get('Option') is not None:
+            self.option = m.get('Option')
         if m.get('OssBucket') is not None:
             self.oss_bucket = m.get('OssBucket')
         if m.get('OssEndpoint') is not None:
@@ -2937,12 +2949,16 @@ class SubmitConvertPdfToWordJobAdvanceRequest(TeaModel):
         file_name: str = None,
         file_url_object: BinaryIO = None,
         force_export_inner_image: bool = None,
+        formula_enhancement: bool = None,
+        option: str = None,
         oss_bucket: str = None,
         oss_endpoint: str = None,
     ):
         self.file_name = file_name
         self.file_url_object = file_url_object
         self.force_export_inner_image = force_export_inner_image
+        self.formula_enhancement = formula_enhancement
+        self.option = option
         self.oss_bucket = oss_bucket
         self.oss_endpoint = oss_endpoint
 
@@ -2961,6 +2977,10 @@ class SubmitConvertPdfToWordJobAdvanceRequest(TeaModel):
             result['FileUrl'] = self.file_url_object
         if self.force_export_inner_image is not None:
             result['ForceExportInnerImage'] = self.force_export_inner_image
+        if self.formula_enhancement is not None:
+            result['FormulaEnhancement'] = self.formula_enhancement
+        if self.option is not None:
+            result['Option'] = self.option
         if self.oss_bucket is not None:
             result['OssBucket'] = self.oss_bucket
         if self.oss_endpoint is not None:
@@ -2975,6 +2995,10 @@ class SubmitConvertPdfToWordJobAdvanceRequest(TeaModel):
             self.file_url_object = m.get('FileUrl')
         if m.get('ForceExportInnerImage') is not None:
             self.force_export_inner_image = m.get('ForceExportInnerImage')
+        if m.get('FormulaEnhancement') is not None:
+            self.formula_enhancement = m.get('FormulaEnhancement')
+        if m.get('Option') is not None:
+            self.option = m.get('Option')
         if m.get('OssBucket') is not None:
             self.oss_bucket = m.get('OssBucket')
         if m.get('OssEndpoint') is not None:
