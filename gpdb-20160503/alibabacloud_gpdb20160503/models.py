@@ -18868,6 +18868,7 @@ class DescribeDownloadRecordsRequest(TeaModel):
     def __init__(
         self,
         dbinstance_id: str = None,
+        download_task_type: str = None,
     ):
         # The instance ID.
         # 
@@ -18875,6 +18876,7 @@ class DescribeDownloadRecordsRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        self.download_task_type = download_task_type
 
     def validate(self):
         pass
@@ -18887,12 +18889,16 @@ class DescribeDownloadRecordsRequest(TeaModel):
         result = dict()
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+        if self.download_task_type is not None:
+            result['DownloadTaskType'] = self.download_task_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('DownloadTaskType') is not None:
+            self.download_task_type = m.get('DownloadTaskType')
         return self
 
 

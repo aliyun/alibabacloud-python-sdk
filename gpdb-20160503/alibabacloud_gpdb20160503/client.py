@@ -11685,6 +11685,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.download_task_type):
+            query['DownloadTaskType'] = request.download_task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11729,6 +11731,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.download_task_type):
+            query['DownloadTaskType'] = request.download_task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

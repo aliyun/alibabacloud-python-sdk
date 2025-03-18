@@ -1,3 +1,7 @@
+2025-03-18 Version: 4.8.2
+- Update API DescribeDownloadRecords: add param DownloadTaskType.
+
+
 2025-03-12 Version: 4.8.1
 - Update API CreateCollection: add param SparseVectorIndexConfig.
 - Update API CreateCollection: add param SupportSparse.
