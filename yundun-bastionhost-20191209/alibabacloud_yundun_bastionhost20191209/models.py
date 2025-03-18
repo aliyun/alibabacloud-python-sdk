@@ -11,8 +11,21 @@ class AcceptApproveCommandRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the command that you want to approve.
+        # 
+        # >  You can call the [ListApproveCommands](https://help.aliyun.com/document_detail/2584310.html) operation to query the IDs of all commands that need to be reviewed.
+        # 
+        # This parameter is required.
         self.command_id = command_id
+        # The ID of the bastion host.
+        # 
+        # >  You can call the DescribeInstances operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The region ID of the bastion host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -48,6 +61,7 @@ class AcceptApproveCommandResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -114,6 +128,7 @@ class AcceptApproveCommandResponse(TeaModel):
 class AcceptOperationTicketRequest(TeaModel):
     def __init__(
         self,
+        comment: str = None,
         effect_count: str = None,
         effect_end_time: str = None,
         effect_start_time: str = None,
@@ -121,12 +136,15 @@ class AcceptOperationTicketRequest(TeaModel):
         operation_ticket_id: str = None,
         region_id: str = None,
     ):
+        # The review description.
+        self.comment = comment
         # The maximum number of logons allowed. Valid values:
         # 
-        # *   0: The number of logons is unlimited. The O\&M engineer can log on to the specified asset for an unlimited number of times during the validity period.
-        # *   1: The O\&M engineer can log on to the specified asset only once during the validity period.
+        # *   **0**: The number of logons is unlimited. The O\\&M engineer can log on to the specified asset for unlimited times during the validity period.
+        # *   **1**: The O\\&M engineer can log on to the specified asset only once during the validity period.
         # 
-        # >  You can set this parameter only to 0 if you review an O\&M application on a database.
+        # > *   You can set this parameter only to 0 if you review an O\\&M application on a database.
+        # > *   If you do not specify this parameter, the default value 0 is used.
         self.effect_count = effect_count
         # The end time of the validity period. The value is a UNIX timestamp. Unit: seconds.
         self.effect_end_time = effect_end_time
@@ -134,13 +152,17 @@ class AcceptOperationTicketRequest(TeaModel):
         self.effect_start_time = effect_start_time
         # The ID of the bastion host.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the O\&M application that you want to approve. You can call the ListOperationTickets operation to query the IDs of all O\&M applications that require review.
+        # The ID of the O\\&M application that you want to approve. You can call the ListOperationTickets operation to query the IDs of all O\\&M applications that require review.
+        # 
+        # This parameter is required.
         self.operation_ticket_id = operation_ticket_id
         # The region ID of the bastion host.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -152,6 +174,8 @@ class AcceptOperationTicketRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
         if self.effect_count is not None:
             result['EffectCount'] = self.effect_count
         if self.effect_end_time is not None:
@@ -168,6 +192,8 @@ class AcceptOperationTicketRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
         if m.get('EffectCount') is not None:
             self.effect_count = m.get('EffectCount')
         if m.get('EffectEndTime') is not None:
@@ -260,9 +286,25 @@ class AddDatabasesToGroupRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # An array that consists of the database IDs.
+        # 
+        # This parameter is required.
         self.database_ids = database_ids
+        # The ID of the asset group to which you want to add the databases.
+        # 
+        # >  You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the ID of the asset group.
+        # 
+        # This parameter is required.
         self.host_group_id = host_group_id
+        # The bastion host ID.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The region ID of the bastion host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -305,9 +347,13 @@ class AddDatabasesToGroupResponseBodyResults(TeaModel):
         host_group_id: str = None,
         message: str = None,
     ):
+        # The error code returned. If **OK** is returned, the operation was successful. If another error code is returned, the operation failed.
         self.code = code
+        # The database ID.
         self.database_id = database_id
+        # The asset group ID.
         self.host_group_id = host_group_id
+        # The error message returned.
         self.message = message
 
     def validate(self):
@@ -348,7 +394,9 @@ class AddDatabasesToGroupResponseBody(TeaModel):
         request_id: str = None,
         results: List[AddDatabasesToGroupResponseBodyResults] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The data returned.
         self.results = results
 
     def validate(self):
@@ -432,21 +480,27 @@ class AddHostsToGroupRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the host group to which you want to add hosts.
+        # The ID of the asset group to which you want to add hosts.
         # 
-        # > You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
+        # >You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the asset group ID.
+        # 
+        # This parameter is required.
         self.host_group_id = host_group_id
-        # The ID of the host that you want to add to the host group. The value is a JSON string. You can add up to 100 host IDs.
+        # The IDs of the hosts that you want to add to the asset group. Specify a JSON string. You can specify up to 100 host IDs.
         # 
-        # > You can call the [ListHosts](~~200665~~) operation to query the IDs of hosts.
+        # > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the host IDs.
+        # 
+        # This parameter is required.
         self.host_ids = host_ids
-        # The ID of the bastion host for which you want to add hosts to the host group.
+        # The ID of the bastion host whose asset group you want to add hosts to.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the bastion host for which you want to add hosts to the host group.
+        # The region ID of the bastion host whose asset group you want to add hosts to.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -496,18 +550,16 @@ class AddHostsToGroupResponseBodyResults(TeaModel):
         # *   **UNEXPECTED**: An unknown error occurred.
         # 
         # *   **INVALID_ARGUMENT**: A request parameter is invalid.
-        # 
-        # >Make sure that the request parameters are valid and call the operation again.
+        #     >Make sure that the request parameters are valid and call the operation again.
         # 
         # *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
-        # 
-        # >Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
+        #     > Make sure that the specified bastion host ID and host IDs are valid. Then, call the operation again.
         # 
         # *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
         self.code = code
-        # The ID of the host group.
+        # The asset group ID.
         self.host_group_id = host_group_id
-        # The ID of the host.
+        # The host ID.
         self.host_id = host_id
         # This parameter is deprecated.
         self.message = message
@@ -638,19 +690,25 @@ class AddUsersToGroupRequest(TeaModel):
     ):
         # The ID of the bastion host for which you want to add users to the user group.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host for which you want to add users to the user group.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The ID of the user group to which you want to add users.
         # 
-        # > You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+        # > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the ID of the user group.
+        # 
+        # This parameter is required.
         self.user_group_id = user_group_id
         # The ID of the user that you want to add to the user group. The value is a JSON string. You can add up to 100 user IDs. If you specify multiple IDs, separate the IDs with commas (,).
         # 
-        # > You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
+        # > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the ID of the user.
+        # 
+        # This parameter is required.
         self.user_ids = user_ids
 
     def validate(self):
@@ -701,15 +759,11 @@ class AddUsersToGroupResponseBodyResults(TeaModel):
         # 
         # *   **INVALID_ARGUMENT**: A request parameter is invalid.
         # 
-        #     **\
-        # 
-        #     **Note**Make sure that the request parameters are valid and call the operation again.
+        # > Make sure that the request parameters are valid and call the operation again.
         # 
         # *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
         # 
-        #     **\
-        # 
-        #     **Note**Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
+        # > Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
         # 
         # *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
         self.code = code
@@ -842,7 +896,9 @@ class AttachDatabaseAccountsToUserRequestDatabases(TeaModel):
         database_account_ids: List[str] = None,
         database_id: str = None,
     ):
+        # An array that consists of database account IDs.
         self.database_account_ids = database_account_ids
+        # The ID of the database that you want to authorize the user to manage.
         self.database_id = database_id
 
     def validate(self):
@@ -877,9 +933,25 @@ class AttachDatabaseAccountsToUserRequest(TeaModel):
         region_id: str = None,
         user_id: str = None,
     ):
+        # An array that consists of database objects.
+        # 
+        # >  You can specify up to 10 databases and 10 database accounts. The database accounts are not required. If you do not specify a database account, the user is authorized to manage only the databases.
         self.databases = databases
+        # The ID of the bastion host whose user you want to grant permissions.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The region ID of the bastion host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        # The ID of the user to be authorized.
+        # 
+        # >  You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the user ID.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -929,8 +1001,11 @@ class AttachDatabaseAccountsToUserResponseBodyResultsDatabaseAccounts(TeaModel):
         database_account_id: str = None,
         message: str = None,
     ):
+        # The error code that is returned. If OK is returned, the authorization was successful. If another error code is returned, the authorization failed.
         self.code = code
+        # The database account ID.
         self.database_account_id = database_account_id
+        # The error message that is returned.
         self.message = message
 
     def validate(self):
@@ -970,10 +1045,15 @@ class AttachDatabaseAccountsToUserResponseBodyResults(TeaModel):
         message: str = None,
         user_id: str = None,
     ):
+        # The error code that is returned. If **OK** is returned, the authorization was successful. If another error code is returned, the authorization failed.
         self.code = code
+        # A list that shows the authorization results of the database accounts.
         self.database_accounts = database_accounts
+        # The database ID.
         self.database_id = database_id
+        # The error message that is returned.
         self.message = message
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -1026,7 +1106,9 @@ class AttachDatabaseAccountsToUserResponseBody(TeaModel):
         request_id: str = None,
         results: List[AttachDatabaseAccountsToUserResponseBodyResults] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The result of the call.
         self.results = results
 
     def validate(self):
@@ -1108,7 +1190,9 @@ class AttachDatabaseAccountsToUserGroupRequestDatabases(TeaModel):
         database_account_ids: List[str] = None,
         database_id: str = None,
     ):
+        # An array that consists of database account IDs.
         self.database_account_ids = database_account_ids
+        # The ID of the database that you want to authorize the user group to manage.
         self.database_id = database_id
 
     def validate(self):
@@ -1143,9 +1227,21 @@ class AttachDatabaseAccountsToUserGroupRequest(TeaModel):
         region_id: str = None,
         user_group_id: str = None,
     ):
+        # An array that consists of the database objects.
+        # 
+        # >  You can specify up to 10 databases and 10 database accounts. The database accounts are not required. If you do not specify a database account, the user group is authorized to manage only the databases.
         self.databases = databases
+        # The bastion host ID.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The region ID of the bastion host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        # This parameter is required.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -1195,8 +1291,11 @@ class AttachDatabaseAccountsToUserGroupResponseBodyResultsDatabaseAccounts(TeaMo
         database_account_id: str = None,
         message: str = None,
     ):
+        # The error code returned. If OK is returned, the authorization was successful. If another error code is returned, the authorization failed.
         self.code = code
+        # The database account ID.
         self.database_account_id = database_account_id
+        # The error message returned.
         self.message = message
 
     def validate(self):
@@ -1236,10 +1335,15 @@ class AttachDatabaseAccountsToUserGroupResponseBodyResults(TeaModel):
         message: str = None,
         user_group_id: str = None,
     ):
+        # The error code returned. If OK is returned, the authorization was successful. If another error code is returned, the authorization failed.
         self.code = code
+        # A list that shows the authorization results of the database accounts.
         self.database_accounts = database_accounts
+        # The database ID.
         self.database_id = database_id
+        # The error message returned.
         self.message = message
+        # The user group ID.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -1292,7 +1396,9 @@ class AttachDatabaseAccountsToUserGroupResponseBody(TeaModel):
         request_id: str = None,
         results: List[AttachDatabaseAccountsToUserGroupResponseBodyResults] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The result of the call.
         self.results = results
 
     def validate(self):
@@ -1376,17 +1482,19 @@ class AttachHostAccountsToHostShareKeyRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The IDs of the host accounts.
+        # The host account IDs.
         # 
-        # > You must specify this parameter.
+        # >  You must specify this parameter. You can call the [ListHostAccounts](https://help.aliyun.com/document_detail/462937.html) operation to query the host account IDs.
         self.host_account_ids = host_account_ids
-        # The ID of the shared key.
+        # The shared key ID.
         # 
-        # > You must specify this parameter.
+        # >  You must specify this parameter. You can call the [ListHostShareKeys](https://help.aliyun.com/document_detail/462973.html) operation to query the shared key ID.
         self.host_share_key_id = host_share_key_id
-        # The ID of the bastion host. You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # The ID of the bastion host. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the bastion host. For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # The region ID of the bastion host. For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -1562,21 +1670,27 @@ class AttachHostAccountsToUserRequest(TeaModel):
         region_id: str = None,
         user_id: str = None,
     ):
-        # The IDs of the host and host account that you want to authorize the user to manage. You can specify up to 10 host IDs and up to 10 host account IDs for each host. You can specify only host IDs. In this case, the user is authorized to manage only the specified hosts. For more information about this parameter, see the "Description of the Hosts parameter" section of this topic.
+        # The IDs of the hosts and host accounts that you want to authorize the user to manage. You can specify up to 10 host IDs and up to 10 host account IDs for each host. You can specify only host IDs. In this case, the user is authorized to manage only the specified hosts. For more information about this parameter, see the "Description of the Hosts parameter" section of this topic.
         # 
-        # >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host and the [ListHostAccounts](~~204372~~) operation to query the ID of the host account.
+        # > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the ID of the host and the [ListHostAccounts](https://help.aliyun.com/document_detail/204372.html) operation to query the ID of the host account.
+        # 
+        # This parameter is required.
         self.hosts = hosts
-        # The ID of the bastion host for which you want to authorize the user to manage the specified hosts and host accounts.
+        # The ID of the bastion host for which you want to authorize the user to manage the hosts and host accounts.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the bastion host for which you want to authorize the user to manage the specified hosts and host accounts.
+        # The region ID of the bastion host for which you want to authorize the user to manage the hosts and host accounts.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The ID of the user that you want to authorize to manage the specified hosts and host accounts.
+        # The ID of the user that you want to authorize to manage the hosts and host accounts.
         # 
-        # >  You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
+        # > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the ID of the user.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -1618,7 +1732,7 @@ class AttachHostAccountsToUserResponseBodyResultsHostAccounts(TeaModel):
         host_account_id: str = None,
         message: str = None,
     ):
-        # The return code that indicates whether the user was authorized to manage the specified host account. Valid values:
+        # The return code that indicates whether the user was authorized to manage the host accounts. Valid values:
         # 
         # *   **OK**: The call was successful.
         # *   **UNEXPECTED**: An unknown error occurred.
@@ -1684,7 +1798,7 @@ class AttachHostAccountsToUserResponseBodyResults(TeaModel):
         # 
         # *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
         self.code = code
-        # The result of authorizing the specified user to manage the specified host accounts.
+        # The result of authorizing the user to manage the host accounts.
         self.host_accounts = host_accounts
         # The ID of the host.
         self.host_id = host_id
@@ -1743,7 +1857,7 @@ class AttachHostAccountsToUserResponseBody(TeaModel):
         request_id: str = None,
         results: List[AttachHostAccountsToUserResponseBodyResults] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The result of the call.
         self.results = results
@@ -1831,19 +1945,25 @@ class AttachHostAccountsToUserGroupRequest(TeaModel):
     ):
         # The IDs of the host and host account that you want to authorize the user group to manage. You can specify up to 10 host IDs and up to 10 host account IDs for each host. You can specify only host IDs. In this case, the user group is authorized to manage only the specified hosts. For more information about this parameter, see the "Description of the Hosts parameter" section of this topic.
         # 
-        # > You can call the [ListHosts](~~200665~~) operation to query the ID of the host and the [ListHostAccounts](~~204372~~) operation to query the ID of the host account.
+        # > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the ID of the host and the [ListHostAccounts](https://help.aliyun.com/document_detail/204372.html) operation to query the ID of the host account.
+        # 
+        # This parameter is required.
         self.hosts = hosts
         # The ID of the bastion host in which you want to authorize the user group to manage the specified hosts and host accounts.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host in which you want to authorize the user group to manage the specified hosts and host accounts.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The ID of the user group that you want to authorize to manage the specified hosts and host accounts.
         # 
-        # > You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+        # > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the ID of the user group.
+        # 
+        # This parameter is required.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -2090,19 +2210,25 @@ class AttachHostGroupAccountsToUserRequest(TeaModel):
     ):
         # The ID of the host group and the name of the host account that you want to authorize the user to manage. You can specify up to 10 host group IDs and up to 10 host account names for each host group. You can specify only host group IDs. In this case, the user is authorized to manage only the specified host groups. For more information about this parameter, see the "Description of the HostGroups parameter" section of this topic.
         # 
-        # >  You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group and the [ListHostAccounts](~~204372~~) operation to query the name of the host account.
+        # > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the ID of the host group and the [ListHostAccounts](https://help.aliyun.com/document_detail/204372.html) operation to query the name of the host account.
+        # 
+        # This parameter is required.
         self.host_groups = host_groups
-        # The ID of the bastion host for which you want to authorize the user to manage the specified host groups and host accounts.
+        # The ID of the bastion host for which you want to authorize the user to manage the host groups and host accounts.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the bastion host for which you want to authorize the user to manage the specified host groups and host accounts.
+        # The region ID of the bastion host for which you want to authorize the user to manage the host groups and host accounts.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The ID of the user that you want to authorize to manage the specified host groups and host accounts.
+        # The ID of the user that you want to authorize to manage the host groups and host accounts.
         # 
-        # >  You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
+        # > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the ID of the user.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -2144,7 +2270,7 @@ class AttachHostGroupAccountsToUserResponseBodyResultsHostAccountNames(TeaModel)
         host_account_name: str = None,
         message: str = None,
     ):
-        # The return code that indicates whether the user was authorized to manage the specified host account. Valid values:
+        # The return code that indicates whether the user was authorized to manage the host account. Valid values:
         # 
         # *   **OK**: The call was successful.
         # *   **UNEXPECTED**: An unknown error occurred.
@@ -2202,7 +2328,7 @@ class AttachHostGroupAccountsToUserResponseBodyResults(TeaModel):
         # *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
         # *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
         self.code = code
-        # The result of authorizing the user to manage the specified host accounts.
+        # The result of authorizing the user to manage the host accounts.
         self.host_account_names = host_account_names
         # The ID of the host group.
         self.host_group_id = host_group_id
@@ -2261,7 +2387,7 @@ class AttachHostGroupAccountsToUserResponseBody(TeaModel):
         request_id: str = None,
         results: List[AttachHostGroupAccountsToUserResponseBodyResults] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The result of the call.
         self.results = results
@@ -2349,19 +2475,25 @@ class AttachHostGroupAccountsToUserGroupRequest(TeaModel):
     ):
         # The ID of the host group and the name of the host account that you want to authorize the user group to manage. You can specify up to 10 host group IDs and up to 10 host account names for each host group. You can specify only host group IDs. In this case, the user group is authorized to manage only the specified host groups. For more information about this parameter, see the "Description of the HostGroups parameter" section of this topic.
         # 
-        # >  You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group and the [ListHostAccounts](~~204372~~) operation to query the name of the host account.
+        # > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the ID of the host group and the [ListHostAccounts](https://help.aliyun.com/document_detail/204372.html) operation to query the name of the host account.
+        # 
+        # This parameter is required.
         self.host_groups = host_groups
         # The ID of the bastion host for which you want to authorize the user group to manage the specified host groups and host accounts.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host for which you want to authorize the user group to manage the specified host groups and host accounts.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The ID of the user group that you want to authorize to manage the specified host groups and host accounts.
         # 
-        # >  You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+        # > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the ID of the user group.
+        # 
+        # This parameter is required.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -2467,7 +2599,7 @@ class AttachHostGroupAccountsToUserGroupResponseBodyResults(TeaModel):
         self.host_group_id = host_group_id
         # This parameter is deprecated.
         self.message = message
-        # The ID of the group.
+        # The ID of the user group.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -2520,7 +2652,7 @@ class AttachHostGroupAccountsToUserGroupResponseBody(TeaModel):
         request_id: str = None,
         results: List[AttachHostGroupAccountsToUserGroupResponseBodyResults] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The result of the call.
         self.results = results
@@ -2607,10 +2739,14 @@ class ConfigInstanceSecurityGroupsRequest(TeaModel):
         region_id: str = None,
     ):
         # An array that consists of the IDs of authorized security groups.
+        # 
+        # This parameter is required.
         self.authorized_security_groups = authorized_security_groups
         # The ID of the bastion host.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The language of the content within the request and response. Default value: **zh**. Valid values:
         # 
@@ -2728,22 +2864,64 @@ class ConfigInstanceSecurityGroupsResponse(TeaModel):
         return self
 
 
+class ConfigInstanceWhiteListRequestWhiteListPolicies(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        entry: str = None,
+    ):
+        self.description = description
+        self.entry = entry
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.entry is not None:
+            result['Entry'] = self.entry
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Entry') is not None:
+            self.entry = m.get('Entry')
+        return self
+
+
 class ConfigInstanceWhiteListRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
         region_id: str = None,
         white_list: List[str] = None,
+        white_list_policies: List[ConfigInstanceWhiteListRequestWhiteListPolicies] = None,
     ):
         # The ID of the bastion host for which you want to configure a whitelist of public IP addresses.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host.
         self.region_id = region_id
-        # The public IP addresses that you want to add to the whitelist.
+        # The IP address whitelist that you want to configure.
         self.white_list = white_list
+        self.white_list_policies = white_list_policies
 
     def validate(self):
-        pass
+        if self.white_list_policies:
+            for k in self.white_list_policies:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2757,6 +2935,10 @@ class ConfigInstanceWhiteListRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.white_list is not None:
             result['WhiteList'] = self.white_list
+        result['WhiteListPolicies'] = []
+        if self.white_list_policies is not None:
+            for k in self.white_list_policies:
+                result['WhiteListPolicies'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -2767,6 +2949,11 @@ class ConfigInstanceWhiteListRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('WhiteList') is not None:
             self.white_list = m.get('WhiteList')
+        self.white_list_policies = []
+        if m.get('WhiteListPolicies') is not None:
+            for k in m.get('WhiteListPolicies'):
+                temp_model = ConfigInstanceWhiteListRequestWhiteListPolicies()
+                self.white_list_policies.append(temp_model.from_map(k))
         return self
 
 
@@ -2864,19 +3051,70 @@ class CreateDatabaseRequest(TeaModel):
         source_instance_id: str = None,
         source_instance_region_id: str = None,
     ):
+        # The address type of the database to add. Valid values:
+        # 
+        # *   Public
+        # *   Private
+        # 
+        # This parameter is required.
         self.active_address_type = active_address_type
+        # The remarks of the database to add. The remarks can be up to 500 characters in length.
         self.comment = comment
+        # The name of the database to add. This parameter is required if Source is set to **Local**.
         self.database_name = database_name
+        # The port of the database. This parameter is required if Source is set to **Local**.
         self.database_port = database_port
+        # The internal IP address of the database. Specify an IPv4 address or a domain name.
+        # 
+        # >  This parameter is required if ActiveAddressType is set to Private.
         self.database_private_address = database_private_address
+        # The public IP address of the database. Specify an IPv4 address or a domain name.
+        # 
+        # >  This parameter is required if ActiveAddressType is set to Public.
         self.database_public_address = database_public_address
+        # The type of the database engine. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **Oracle**\
+        # *   **PostgreSQL**\
+        # *   **SQLServer**\
+        # 
+        # This parameter is required.
         self.database_type = database_type
+        # The bastion host ID.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the network domain to which the database to add belongs.
+        # 
+        # >  You can call the [ListNetworkDomains](https://help.aliyun.com/document_detail/2758827.html) operation to query the network domain ID.
         self.network_domain_id = network_domain_id
+        # The endpoint type of the PolarDB database. This parameter is required if Source is set to PolarDB. Valid values:
+        # 
+        # *   Cluster
+        # *   Primary
         self.polar_dbendpoint_type = polar_dbendpoint_type
+        # The region ID of the bastion host.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        # The type of the database to add. Valid values:
+        # 
+        # *   Local: on-premises database.
+        # *   Rds: ApsaraDB RDS instance.
+        # *   PolarDB: PolarDB cluster.
+        # 
+        # This parameter is required.
         self.source = source
+        # The instance ID of the database to add.
+        # 
+        # > This parameter is required if **Source** is set to **Rds** or **PolarDB**.
         self.source_instance_id = source_instance_id
+        # The region ID of the database to add.
+        # 
+        # >  This parameter is required if **Source** is set to **Rds** or **PolarDB**.
         self.source_instance_region_id = source_instance_region_id
 
     def validate(self):
@@ -2957,7 +3195,9 @@ class CreateDatabaseResponseBody(TeaModel):
         database_id: str = None,
         request_id: str = None,
     ):
+        # The database ID.
         self.database_id = database_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3036,12 +3276,34 @@ class CreateDatabaseAccountRequest(TeaModel):
         password: str = None,
         region_id: str = None,
     ):
+        # The username of the database account to be created. The username can be up to 128 characters in length.
+        # 
+        # This parameter is required.
         self.database_account_name = database_account_name
+        # The ID of the database for which you want to create a database account.
+        # 
+        # >  You can call the [ListDatabaseAccounts](https://help.aliyun.com/document_detail/2758839.html) operation to query the database account ID.
+        # 
+        # This parameter is required.
         self.database_id = database_id
+        # The name of the database. This parameter is required for PostgreSQL and Oracle databases.
         self.database_schema = database_schema
+        # The ID of the bastion host for which you want to create a database account.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The logon attribute. This parameter is required for Oracle databases. Valid values:
+        # 
+        # *   SERVICENAME
+        # *   SID
         self.login_attribute = login_attribute
+        # The password of the database account to be created.
         self.password = password
+        # The region ID of the bastion host for which you want to create a database account.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -3094,7 +3356,9 @@ class CreateDatabaseAccountResponseBody(TeaModel):
         database_account_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the database account.
         self.database_account_id = database_account_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3162,6 +3426,114 @@ class CreateDatabaseAccountResponse(TeaModel):
         return self
 
 
+class CreateExportConfigJobRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class CreateExportConfigJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        request_id: str = None,
+    ):
+        self.job_id = job_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateExportConfigJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateExportConfigJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateExportConfigJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateHostRequest(TeaModel):
     def __init__(
         self,
@@ -3182,10 +3554,14 @@ class CreateHostRequest(TeaModel):
         # 
         # *   **Public**: public endpoint
         # *   **Private**: internal endpoint
+        # 
+        # This parameter is required.
         self.active_address_type = active_address_type
         # The description of the host that you want to create. The value can be up to 500 characters in length.
         self.comment = comment
         # The name of the host that you want to create. The name can be up to 128 characters in length.
+        # 
+        # This parameter is required.
         self.host_name = host_name
         # The internal endpoint of the host that you want to create. You can set this parameter to a domain name or an IP address.
         # 
@@ -3197,28 +3573,36 @@ class CreateHostRequest(TeaModel):
         self.host_public_address = host_public_address
         # The ID of the bastion host in which you want to create the host.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the region to which the ECS instance or the host in an ApsaraDB MyBase dedicated cluster belongs.
         # 
         # > This parameter is required if the **Source** parameter is set to **Ecs** or **Rds**.
         self.instance_region_id = instance_region_id
-        # The ID of the network domain to which the host belongs.
+        # The ID of the network domain to which the host to be imported belongs.
+        # 
+        # > You can call the [ListNetworkDomains](https://help.aliyun.com/document_detail/2758827.html) operation to query the network domain ID.
         self.network_domain_id = network_domain_id
         # The operating system of the host that you want to create. Valid values:
         # 
         # *   **Linux**\
         # *   **Windows**\
-        self.ostype = ostype
-        # The region ID of the bastion host in which you want to create the host.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # This parameter is required.
+        self.ostype = ostype
+        # The region ID of the bastion host to which you want to import the host.
+        # 
+        # > For information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The source of the host that you want to create. Valid values:
         # 
         # *   **Local**: a host in a data center
         # *   **Ecs**: an Elastic Compute Service (ECS) instance
         # *   **Rds**: a host in an ApsaraDB MyBase dedicated cluster
+        # 
+        # This parameter is required.
         self.source = source
         # The ID of the ECS instance or the host in an ApsaraDB MyBase dedicated cluster.
         # 
@@ -3378,27 +3762,33 @@ class CreateHostAccountRequest(TeaModel):
         protocol_name: str = None,
         region_id: str = None,
     ):
-        # The name of the host account.
+        # The name of the host account. The name can be up to 128 characters in length.
+        # 
+        # This parameter is required.
         self.host_account_name = host_account_name
         # The ID of the host to which you want to add a host account.
         # 
-        # >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
+        # >  You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the ID of the host.
+        # 
+        # This parameter is required.
         self.host_id = host_id
         # The ID of the shared key.
         self.host_share_key_id = host_share_key_id
         # The ID of the bastion host in which you want to add a host account to the host.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
-        self.instance_id = instance_id
-        # The passphrase of the private key for the host account.
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
         # 
-        # >  You can specify this parameter when the ProtocolName parameter is set to SSH. If the ProtocolName parameter is set to RDP, you do not need to specify this parameter.
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The passphrase for the private key of the host account.
+        # 
+        # > You can configure this parameter only if ProtocolName is set to SSH. You do not need to configure this parameter if ProtocolName is set to RDP.
         self.pass_phrase = pass_phrase
         # The password of the host account.
         self.password = password
-        # The private key of the host account. The value is a Base64-encoded string.
+        # The private key of the host account. Specify a Base64-encoded string.
         # 
-        # >  This parameter takes effect only when the ProtocolName parameter is set to SSH. If the ProtocolName parameter is set to RDP, you do not need to specify this parameter. You can configure a password and a private key for the host account at the same time. If both a password and a private key are configured for the host account, Bastionhost preferentially uses the private key to log on to the host.
+        # > This parameter is valid only if ProtocolName is set to SSH. You do not need to configure this parameter if ProtocolName is set to RDP. You can configure a password and a private key for the host account at the same time. If both a password and a private key are configured for the host account, Bastionhost preferentially uses the private key for logon.
         self.private_key = private_key
         # The protocol of the host to which you want to add a host account.
         # 
@@ -3406,10 +3796,12 @@ class CreateHostAccountRequest(TeaModel):
         # 
         # *   SSH
         # *   RDP
+        # 
+        # This parameter is required.
         self.protocol_name = protocol_name
         # The region ID of the bastion host in which you want to add a host account to the host.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -3548,17 +3940,21 @@ class CreateHostGroupRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The description of the host group. The description can be up to 500 characters in length.
+        # The remarks of the asset group. The remarks can be up to 500 characters in length.
         self.comment = comment
-        # The name of the host group. The name can be up to 128 characters in length.
+        # The name of the asset group. The name can be up to 128 characters in length.
+        # 
+        # This parameter is required.
         self.host_group_name = host_group_name
-        # The ID of the bastion host on which you want to create a host group.
+        # The ID of the bastion host on which you want to create an asset group.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the bastion host on which you want to create a host group.
+        # The region ID of the bastion host on which you want to create an asset group.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -3599,7 +3995,7 @@ class CreateHostGroupResponseBody(TeaModel):
         host_group_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the host group.
+        # The asset group ID.
         self.host_group_id = host_group_id
         # The ID of the request.
         self.request_id = request_id
@@ -3679,14 +4075,26 @@ class CreateHostShareKeyRequest(TeaModel):
         region_id: str = None,
     ):
         # The name of the shared key that you want to create. The name can be a maximum of 128 characters in length.
+        # 
+        # This parameter is required.
         self.host_share_key_name = host_share_key_name
-        # The ID of the bastion host. You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # The bastion host ID.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The password of the private key. The value is a Base64-encoded string.
         self.pass_phrase = pass_phrase
         # The private key. The value is a Base64-encoded string.
+        # 
+        # >  You can specify a Rivest-Shamir-Adleman (RSA) key that is generated by using the ssh-keygen command or a key that is generated by using the Ed25519 algorithm.
+        # 
+        # This parameter is required.
         self.private_key = private_key
-        # The region ID of the bastion host. For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # The region ID of the bastion host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -3811,11 +4219,24 @@ class CreateNetworkDomainRequestProxies(TeaModel):
         proxy_type: str = None,
         user: str = None,
     ):
+        # The IP address of the proxy server.
         self.address = address
+        # The node type of the proxy server. Valid values:
+        # 
+        # - **Master**: primary proxy server.
+        # - **Slave**: secondary proxy server.
         self.node_type = node_type
+        # The Base64-encoded password of the proxy server.
         self.password = password
+        # The port of the proxy server.
         self.port = port
+        # The proxy type. Valid values:
+        # 
+        # - **SSHProxy**\
+        # - **HTTPProxy**\
+        # - **Socks5Proxy**\
         self.proxy_type = proxy_type
+        # The username of the proxy server.
         self.user = user
 
     def validate(self):
@@ -3868,11 +4289,30 @@ class CreateNetworkDomainRequest(TeaModel):
         proxies: List[CreateNetworkDomainRequestProxies] = None,
         region_id: str = None,
     ):
+        # The remarks of the network domain. The remarks can be up to 500 characters in length.
         self.comment = comment
+        # The ID of the bastion host for which you want to create a network domain.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The name of the network domain that you want to create. The name can be up to 128 characters in length.
+        # 
+        # This parameter is required.
         self.network_domain_name = network_domain_name
+        # The connection mode of the network domain to be created. Valid values:
+        # 
+        # *   Direct
+        # *   Proxy
+        # 
+        # This parameter is required.
         self.network_domain_type = network_domain_type
+        # The information about the proxy servers.
         self.proxies = proxies
+        # The region ID of the bastion host for which you want to create a network domain.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -3929,7 +4369,9 @@ class CreateNetworkDomainResponseBody(TeaModel):
         network_domain_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the network domain.
         self.network_domain_id = network_domain_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3997,6 +4439,160 @@ class CreateNetworkDomainResponse(TeaModel):
         return self
 
 
+class CreateOperationTicketRequest(TeaModel):
+    def __init__(
+        self,
+        approve_comment: str = None,
+        asset_account_name: str = None,
+        asset_id: str = None,
+        effect_end_time: int = None,
+        effect_start_time: int = None,
+        instance_id: str = None,
+        is_one_time_effect: bool = None,
+        protocol_name: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.approve_comment = approve_comment
+        # This parameter is required.
+        self.asset_account_name = asset_account_name
+        # This parameter is required.
+        self.asset_id = asset_id
+        self.effect_end_time = effect_end_time
+        self.effect_start_time = effect_start_time
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.is_one_time_effect = is_one_time_effect
+        # This parameter is required.
+        self.protocol_name = protocol_name
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.approve_comment is not None:
+            result['ApproveComment'] = self.approve_comment
+        if self.asset_account_name is not None:
+            result['AssetAccountName'] = self.asset_account_name
+        if self.asset_id is not None:
+            result['AssetId'] = self.asset_id
+        if self.effect_end_time is not None:
+            result['EffectEndTime'] = self.effect_end_time
+        if self.effect_start_time is not None:
+            result['EffectStartTime'] = self.effect_start_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.is_one_time_effect is not None:
+            result['IsOneTimeEffect'] = self.is_one_time_effect
+        if self.protocol_name is not None:
+            result['ProtocolName'] = self.protocol_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApproveComment') is not None:
+            self.approve_comment = m.get('ApproveComment')
+        if m.get('AssetAccountName') is not None:
+            self.asset_account_name = m.get('AssetAccountName')
+        if m.get('AssetId') is not None:
+            self.asset_id = m.get('AssetId')
+        if m.get('EffectEndTime') is not None:
+            self.effect_end_time = m.get('EffectEndTime')
+        if m.get('EffectStartTime') is not None:
+            self.effect_start_time = m.get('EffectStartTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IsOneTimeEffect') is not None:
+            self.is_one_time_effect = m.get('IsOneTimeEffect')
+        if m.get('ProtocolName') is not None:
+            self.protocol_name = m.get('ProtocolName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class CreateOperationTicketResponseBody(TeaModel):
+    def __init__(
+        self,
+        operation_ticket_id: str = None,
+        request_id: str = None,
+    ):
+        self.operation_ticket_id = operation_ticket_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operation_ticket_id is not None:
+            result['OperationTicketId'] = self.operation_ticket_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OperationTicketId') is not None:
+            self.operation_ticket_id = m.get('OperationTicketId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateOperationTicketResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateOperationTicketResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateOperationTicketResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreatePolicyRequest(TeaModel):
     def __init__(
         self,
@@ -4006,10 +4602,26 @@ class CreatePolicyRequest(TeaModel):
         priority: str = None,
         region_id: str = None,
     ):
+        # The remarks of the control policy. The remarks can be up to 500 characters in length.
         self.comment = comment
+        # The ID of the bastion host for which you want to create a control policy.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The name of the control policy. The name can be up to 128 characters in length.
+        # 
+        # This parameter is required.
         self.policy_name = policy_name
+        # The priority of the control policy.
+        # 
+        # *   Valid values: 1 to 100. The default value is 1, which indicates the highest priority.
+        # *   You can configure the same priority for different control policies. If multiple control policies have the same priority, the control policy that is created at the latest point in time has the highest priority. If a command control policy and a command approval policy contain the same commands, the commands are prioritized in descending order: reject, allow, and approve. In access control policies, a blacklist has a higher priority than a whitelist.
         self.priority = priority
+        # The region ID of the bastion host for which you want to create a control policy.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -4054,7 +4666,9 @@ class CreatePolicyResponseBody(TeaModel):
         policy_id: str = None,
         request_id: str = None,
     ):
+        # The control policy ID.
         self.policy_id = policy_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4128,7 +4742,9 @@ class CreateRuleRequestDatabases(TeaModel):
         database_account_ids: List[str] = None,
         database_id: str = None,
     ):
+        # An array that consists of database account IDs.
         self.database_account_ids = database_account_ids
+        # The database ID.
         self.database_id = database_id
 
     def validate(self):
@@ -4161,7 +4777,9 @@ class CreateRuleRequestHostGroups(TeaModel):
         host_account_names: List[str] = None,
         host_group_id: str = None,
     ):
+        # An array that consists of asset account names.
         self.host_account_names = host_account_names
+        # The asset group ID.
         self.host_group_id = host_group_id
 
     def validate(self):
@@ -4194,7 +4812,9 @@ class CreateRuleRequestHosts(TeaModel):
         host_account_ids: List[str] = None,
         host_id: str = None,
     ):
+        # An array that consists of host account IDs.
         self.host_account_ids = host_account_ids
+        # The host ID.
         self.host_id = host_id
 
     def validate(self):
@@ -4236,16 +4856,35 @@ class CreateRuleRequest(TeaModel):
         user_group_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
+        # The remarks of the authorization rule. The remarks can be up to 500 characters in length.
         self.comment = comment
+        # The information about the database that runs on your server.
         self.databases = databases
+        # The end time of the validity period of the authorization rule. Specify a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.effective_end_time = effective_end_time
+        # The start time of the validity period of the authorization rule. Specify a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.effective_start_time = effective_start_time
+        # The information about the asset group that you want to authorize to manage.
         self.host_groups = host_groups
+        # The host information.
         self.hosts = hosts
+        # The bastion host ID.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The region ID of the bastion host.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        # The name of the authorization rule. The name can be up to 128 characters in length.
+        # 
+        # This parameter is required.
         self.rule_name = rule_name
+        # An array that consists of user group IDs.
         self.user_group_ids = user_group_ids
+        # An array that consists of user IDs.
         self.user_ids = user_ids
 
     def validate(self):
@@ -4340,7 +4979,9 @@ class CreateRuleResponseBody(TeaModel):
         request_id: str = None,
         rule_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The authorization rule ID.
         self.rule_id = rule_id
 
     def validate(self):
@@ -4432,85 +5073,123 @@ class CreateUserRequest(TeaModel):
     ):
         # The remarks of the user that you want to add. The remarks can be up to 500 characters in length.
         self.comment = comment
-        # The display name of the user that you want to add. This display name can be up to 128 characters in length.
+        # The display name of the user that you want to add. The display name can be up to 128 characters in length.
+        # 
+        # >  If you leave this parameter empty, the logon name is used as the display name.
         self.display_name = display_name
-        # The end of the validity period of the user. The value is a UNIX timestamp. Unit: seconds.
+        # The end time of the validity period of the user. Specify a UNIX timestamp. Unit: seconds.
         self.effective_end_time = effective_end_time
-        # The beginning of the validity period of the user. The value is a UNIX timestamp. Unit: seconds.
+        # The start time of the validity period of the user. Specify a UNIX timestamp. Unit: seconds.
         self.effective_start_time = effective_start_time
         # The email address of the user that you want to add.
+        # 
+        # > 
+        # 
+        # *   This parameter is required if TwoFactorStatus is set to Enable and TwoFactorMethods is set to email, or if TwoFactorStatus is set to Global and TwoFactorMethods is set to email in the global two-factor authentication settings.
+        # 
+        # *   You can call the [GetInstanceTwoFactor](https://help.aliyun.com/document_detail/462968.html) operation to query the global two-factor authentication settings.
         self.email = email
         # The ID of the bastion host to which you want to add a user.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required if LanguageStatus is set to Custom. Valid values:
+        # 
+        # *   **zh-cn**: simplified Chinese.
+        # *   **en**: English.
         self.language = language
+        # Specifies whether to send notifications in the language specified in the global settings or a custom language.
+        # 
+        # *   **Global**\
+        # *   **Custom**\
+        # 
+        # >  If you leave this parameter empty, the default value Global is used.
         self.language_status = language_status
         # The mobile phone number of the user that you want to add.
-        self.mobile = mobile
-        # The country where the mobile number of the user is registered. Default value: **CN**. Valid values:
         # 
-        # *   **CN**: the Chinese mainland, whose country calling code is +86
-        # *   **HK**: Hong Kong (China), whose country calling code is +852
-        # *   **MO**: Macau (China), whose country calling code is +853
-        # *   **TW**: Taiwan (China), whose country calling code is +886
-        # *   **RU**: Russia, whose country calling code is +7
-        # *   **SG**: Singapore, whose country calling code is +65
-        # *   **MY**: Malaysia, whose country calling code is +60
-        # *   **ID**: Indonesia, whose country calling code is +62
-        # *   **DE**: Germany, whose country calling code is +49
-        # *   **AU**: Australia, whose country calling code is +61
-        # *   **US**: US, whose country calling code is +1
-        # *   **AE**: United Arab Emirates, whose country calling code is +971
-        # *   **JP**: Japan, whose country calling code is +81
-        # *   **GB**: UK, whose country calling code is +44
-        # *   **IN**: India, whose country calling code is +91
-        # *   **KR**: Republic of Korea, whose country calling code is +82
-        # *   **PH**: Philippines, whose country calling code is +63
-        # *   **CH**: Switzerland, whose country calling code is +41
-        # *   **SE**: Sweden, whose country calling code is +46
+        # > 
+        # 
+        # *   This parameter is required if TwoFactorStatus is set to Enable and TwoFactorMethods is set to sms or dingtalk, or if TwoFactorStatus is set to Global and TwoFactorMethods is set to sms or dingtalk in the global two-factor authentication settings.
+        # 
+        # *   You can call the [GetInstanceTwoFactor](https://help.aliyun.com/document_detail/462968.html) operation to query the global two-factor authentication settings.
+        self.mobile = mobile
+        # The location where the mobile phone number of the user is registered. Default value: CN. Valid values:
+        # 
+        # *   **CN**: the Chinese mainland, whose international dialing code is +86.
+        # *   **HK**: Hong Kong (China), whose international dialing code is +852.
+        # *   **MO**: Macao (China), whose international dialing code is +853.
+        # *   **TW**: Taiwan (China), whose international dialing code is +886.
+        # *   **RU**: Russia, whose international dialing code is +7.
+        # *   **SG**: Singapore, whose international dialing code is +65.
+        # *   **MY**: Malaysia, whose international dialing code is +60.
+        # *   **ID**: Indonesia, whose international dialing code is +62.
+        # *   **DE**: Germany, whose international dialing code is +49.
+        # *   **AU**: Australia, whose international dialing code is +61.
+        # *   **US**: US, whose international dialing code is +1.
+        # *   **AE**: United Arab Emirates, whose international dialing code is +971.
+        # *   **JP**: Japan, whose international dialing code is +81.
+        # *   **GB**: UK, whose international dialing code is +44.
+        # *   **IN**: India, whose international dialing code is +91.
+        # *   **KR**: Republic of Korea, whose international dialing code is +82.
+        # *   **PH**: Philippines, whose international dialing code is +63.
+        # *   **CH**: Switzerland, whose international dialing code is +41.
+        # *   **SE:** Sweden, whose international dialing code is +46.
+        # *   **SA:** Saudi Arabia, whose international dialing code is +966.
         self.mobile_country_code = mobile_country_code
         # Specifies whether password reset is required upon the next logon. Valid values:
         # 
-        # - true: yes
+        # *   **true**\
+        # *   **false**\
         # 
-        # - false: no
+        # >  If you leave this parameter empty, the default value false is used.
         self.need_reset_password = need_reset_password
-        # The logon password of the user that you want to add. The logon password can be up to 128 characters in length.
+        # The logon password of the user that you want to add. The logon password must be 8 to 128 characters in length. It must contain uppercase letters, lowercase letters, digits, and special characters.
         # 
-        # >  This parameter is required if the **Source** parameter is set to **Local**.
+        # > This parameter is required if Source is set to Local.
         self.password = password
         # The region ID of the bastion host to which you want to add a user.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The source of the user that you want to add. Valid values:
+        # The type of the user that you want to add. Valid values:
         # 
-        # - **Local**: a local user
-        # - **Ram**: a RAM user
-        # - **AD** : an AD-authenticated user
-        # - **LDAP** : an LDAP-authenticated user
+        # *   **Local**: a local user.
+        # *   **Ram**: a RAM user.
+        # *   **AD**: an AD-authenticated user.
+        # *   **LDAP**: an LDAP-authenticated user.
+        # 
+        # This parameter is required.
         self.source = source
-        # The unique identifier of the user that you want to add.
+        # The unique ID of the user that you want to add.
         # 
-        # >  This parameter uniquely identifies a RAM user of the bastion host. This parameter is required if the **Source** parameter is set to **Ram**. You can call the [ListUsers](~~28684~~) operation to obtain the unique identifier of the user from the **UserId** response parameter.
+        # > 
+        # 
+        # *   This parameter uniquely identifies a RAM user of the bastion host. This parameter is required if Source is set to Ram. You can call the [ListUsers](https://help.aliyun.com/document_detail/28684.html) operation in RAM to obtain the unique ID of the user from the UserId response parameter.
+        # 
+        # *   This parameter is required if Source is set to AD or LDAP. Specify the distinguished name (DN) of the Active Directory (AD)-authenticated user or Lightweight Directory Access Protocol (LDAP)-authenticated user that you want to add.
         self.source_user_id = source_user_id
         # The two-factor authentication method. You can select only one method. Valid values:
         # 
-        # *   **sms:** text message
-        # *   **email:** email
-        # *   **dingtalk:** DingTalk
-        # *   **totp OTP:** time-based one-time password (TOTP) app
+        # *   **sms**: text message-based two-factor authentication.
+        # *   **email**: email-based two-factor authentication.
+        # *   **dingtalk**: DingTalk-based two-factor authentication.
+        # *   **totp OTP**: one-time password (OTP) token-based two-factor authentication.
         # 
-        # > *   When the TwoFactorStatus parameter is set to Enable, you must specify one of the preceding values.
+        # >  If TwoFactorStatus is set to Enable, you must select one of the preceding values for TwoFactorMethods.
         self.two_factor_methods = two_factor_methods
-        # The two-factor authentication status of the user. Valid values:
+        # Specifies whether two-factor authentication is enabled for the user. Valid values:
         # 
-        # - Global: follows the global settings
-        # - Disable: disables two-factor authentication
-        # - Enable: enable two-factor authentication and follows settings of the single user
+        # *   **Global**: The global settings apply.
+        # *   **Disable**: Two-factor authentication is disabled.
+        # *   **Enable**: Two-factor authentication is enabled and user-specific settings apply.
+        # 
+        # >  If you leave this parameter empty, the default value Global is used.
         self.two_factor_status = two_factor_status
-        # The logon name of the user that you want to add. The logon name can contain only letters, digits, and underscores (\_) and can be up to 128 characters in length.
+        # The logon name of the user that you want to add. The logon name must be 1 to 128 characters in length and can contain only letters, digits, and underscores (_).
+        # 
+        # This parameter is required.
         self.user_name = user_name
 
     def validate(self):
@@ -4607,9 +5286,9 @@ class CreateUserResponseBody(TeaModel):
         request_id: str = None,
         user_id: str = None,
     ):
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the user.
+        # The ID of the user that is added.
         self.user_id = user_id
 
     def validate(self):
@@ -4689,13 +5368,17 @@ class CreateUserGroupRequest(TeaModel):
         self.comment = comment
         # The ID of the bastion host for which you want to create a user group.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host for which you want to create a user group.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The name of the user group that you want to create. This name can be a up to 128 characters in length.
+        # 
+        # This parameter is required.
         self.user_group_name = user_group_name
 
     def validate(self):
@@ -4820,17 +5503,27 @@ class CreateUserPublicKeyRequest(TeaModel):
         self.comment = comment
         # The ID of the bastion host on which you want to create a public key for the user.
         # 
-        # > You can call the [listinstances](~~204522~~) operation to query the ID of the bastion host.
+        # > You can call the [listinstances](https://help.aliyun.com/document_detail/204522.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The public key. Encode the value by using the Base64 algorithm.
+        # 
+        # This parameter is required.
         self.public_key = public_key
         # The name of the public key.
+        # 
+        # This parameter is required.
         self.public_key_name = public_key_name
         # Specifies the region ID of the bastion host on which you want to create a public key for the user.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # Specifies the ID of the user for whom you want to create a public key.
+        # The ID of the user for whom you want to create a public key.
+        # 
+        # >  You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the user ID.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -4956,8 +5649,21 @@ class DeleteDatabaseRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the database that you want to delete.
+        # 
+        # > You can call the [ListDatabases](https://help.aliyun.com/document_detail/2758822.html) operation to query the database ID.
+        # 
+        # This parameter is required.
         self.database_id = database_id
+        # The ID of the bastion host from which you want to delete the database.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The region ID of the bastion host.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -4993,6 +5699,7 @@ class DeleteDatabaseResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5063,8 +5770,21 @@ class DeleteDatabaseAccountRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the database account that you want to delete.
+        # 
+        # >  You can call the [ListDatabaseAccounts](https://help.aliyun.com/document_detail/2758839.html) operation to query the database account ID.
+        # 
+        # This parameter is required.
         self.database_account_id = database_account_id
+        # The ID of the bastion host from which you want to delete the database account.
+        # 
+        # > You can call the DescribeInstances operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The region ID of the bastion host from which you want to delete the database account.
+        # 
+        # > For more information about the mapping between region IDs and region names, [see Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -5100,6 +5820,7 @@ class DeleteDatabaseAccountResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5172,15 +5893,19 @@ class DeleteHostRequest(TeaModel):
     ):
         # The ID of the host that you want to delete.
         # 
-        # > You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
+        # > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the ID of the host.
+        # 
+        # This parameter is required.
         self.host_id = host_id
         # The ID of the bastion host on which you want to delete the host.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host on which you want to delete the host.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -5289,15 +6014,19 @@ class DeleteHostAccountRequest(TeaModel):
     ):
         # The ID of the host account that you want to remove.
         # 
-        # >  You can call the [ListHostAccounts](~~204372~~) operation to query the ID of the host account.
+        # >  You can call the [ListHostAccounts](https://help.aliyun.com/document_detail/204372.html) operation to query the ID of the host account.
+        # 
+        # This parameter is required.
         self.host_account_id = host_account_id
         # The ID of the bastion host from which you want to remove the host account.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host from which you want to remove the host account.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -5404,17 +6133,21 @@ class DeleteHostGroupRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the host group that you want to delete.
+        # The ID of the asset group that you want to delete.
         # 
-        # > You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
+        # > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the asset group ID.
+        # 
+        # This parameter is required.
         self.host_group_id = host_group_id
-        # The ID of the bastion host from which you want to delete the host group.
+        # The ID of the bastion host whose asset group you want to delete.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the bastion host from which you want to delete the host group.
+        # The region ID of the bastion host whose asset group you want to delete.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -5521,13 +6254,19 @@ class DeleteHostShareKeyRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the shared key.
+        # The shared key ID.
         # 
-        # > You must specify this parameter.
+        # >  You must specify this parameter. You can call the [ListHostShareKeys](https://help.aliyun.com/document_detail/462973.html) operation to query the shared key ID.
         self.host_share_key_id = host_share_key_id
-        # The ID of the bastion host. You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # The bastion host ID.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the bastion host. For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # The region ID of the bastion host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -5634,8 +6373,19 @@ class DeleteNetworkDomainRequest(TeaModel):
         network_domain_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the bastion host whose network domain you want to delete.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the network domain to be deleted.
+        # 
+        # This parameter is required.
         self.network_domain_id = network_domain_id
+        # The region ID of the bastion host whose network domain you want to delete.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -5671,6 +6421,7 @@ class DeleteNetworkDomainResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5741,8 +6492,21 @@ class DeletePolicyRequest(TeaModel):
         policy_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the bastion host whose control policy you want to delete.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the control policy to be deleted.
+        # 
+        # >  You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
+        # The region ID of the bastion host.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -5778,6 +6542,7 @@ class DeletePolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5848,8 +6613,21 @@ class DeleteRuleRequest(TeaModel):
         region_id: str = None,
         rule_id: str = None,
     ):
+        # The ID of the bastion host from which you want to delete the authorization rule.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The region ID of the bastion host from which you want to delete the authorization rule.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        # The ID of the authorization rule that you want to delete.
+        # 
+        # >  You can call the [ListRules](https://help.aliyun.com/document_detail/2758868.html) operation to query the authorization rule ID.
+        # 
+        # This parameter is required.
         self.rule_id = rule_id
 
     def validate(self):
@@ -5885,6 +6663,7 @@ class DeleteRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5957,13 +6736,19 @@ class DeleteUserRequest(TeaModel):
     ):
         # The ID of the bastion host to which the user to be deleted belongs.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host to which the user to be deleted belongs.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The ID of the user to be deleted.
+        # 
+        # >  You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the user ID.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -6072,15 +6857,19 @@ class DeleteUserGroupRequest(TeaModel):
     ):
         # The ID of the bastion host on which you want to delete the user group.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host on which you want to delete the user group.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The ID of the user group that you want to delete.
         # 
-        # > You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+        # > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the ID of the user group.
+        # 
+        # This parameter is required.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -6189,11 +6978,17 @@ class DeleteUserPublicKeyRequest(TeaModel):
     ):
         # The ID of the Bastionhost instance to which the users to be queried belong.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the Bastionhost instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the public key.
+        # The public key ID.
+        # 
+        # >  You can call the [ListUserPublicKeys](https://help.aliyun.com/document_detail/477555.html) operation to query the public key ID.
+        # 
+        # This parameter is required.
         self.public_key_id = public_key_id
-        # The region ID of the bastion host. For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # The region ID of the bastion host. For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -6299,7 +7094,11 @@ class DescribeInstanceAttributeRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the Bastionhost instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -6334,13 +7133,13 @@ class DescribeInstanceAttributeResponseBodyInstanceAttributePorts(TeaModel):
     ):
         # The custom port.
         # 
-        # >  You can change only the SSH and RDP ports. If O\&M ports are not specified, the value of the StandardPort parameter is returned.
+        # > Only the SSH and RDP ports can be changed. If no custom O\\&M port is specified for the bastion host, the value of StandardPort is returned.
         self.custom_port = custom_port
         # The standard port of the bastion host. Valid values:
         # 
-        # *   **SSH**: 60022
-        # *   **RDP**: 63389
-        # *   **HTTPS**: 443
+        # *   **SSH**: 60022.
+        # *   **RDP**: 63389.
+        # *   **HTTPS**: 443.
         self.standard_port = standard_port
 
     def validate(self):
@@ -6367,9 +7166,43 @@ class DescribeInstanceAttributeResponseBodyInstanceAttributePorts(TeaModel):
         return self
 
 
+class DescribeInstanceAttributeResponseBodyInstanceAttributeWhiteListPolicies(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        entry: str = None,
+    ):
+        self.description = description
+        self.entry = entry
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.entry is not None:
+            result['Entry'] = self.entry
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Entry') is not None:
+            self.entry = m.get('Entry')
+        return self
+
+
 class DescribeInstanceAttributeResponseBodyInstanceAttribute(TeaModel):
     def __init__(
         self,
+        app_operation_module: str = None,
         authorized_security_groups: List[str] = None,
         bandwidth: str = None,
         bandwidth_package: str = None,
@@ -6377,10 +7210,13 @@ class DescribeInstanceAttributeResponseBodyInstanceAttribute(TeaModel):
         description: str = None,
         eni_instance_id: str = None,
         expire_time: int = None,
+        hsmmodule: str = None,
+        idaa_smodule: str = None,
         instance_id: str = None,
         instance_status: str = None,
         internet_endpoint: str = None,
         intranet_endpoint: str = None,
+        kms_secret_module: str = None,
         license_code: str = None,
         modify_password_module: str = None,
         network_proxy_module: str = None,
@@ -6391,50 +7227,112 @@ class DescribeInstanceAttributeResponseBodyInstanceAttribute(TeaModel):
         public_ips: List[str] = None,
         public_network_access: bool = None,
         public_white_list: List[str] = None,
+        rdmodule: str = None,
         region_id: str = None,
         resource_group_id: str = None,
+        router_rules: List[str] = None,
+        script_deliver_module: str = None,
         security_group_ids: List[str] = None,
+        slave_vswitch_id: str = None,
         start_time: int = None,
         storage: int = None,
         vpc_id: str = None,
         vswitch_id: str = None,
         web_terminal_module: str = None,
+        white_list_policies: List[DescribeInstanceAttributeResponseBodyInstanceAttributeWhiteListPolicies] = None,
     ):
+        self.app_operation_module = app_operation_module
+        # The IDs of authorized security groups.
         self.authorized_security_groups = authorized_security_groups
         # The total bandwidth of the bastion host.
         self.bandwidth = bandwidth
-        # The extra bandwidth plan of the bastion host.
+        # The bandwidth plan ID.
         self.bandwidth_package = bandwidth_package
+        # The status of the database O&M feature.
         self.db_operation_module = db_operation_module
+        # The description of the instance.
         self.description = description
+        # The ID of the Elastic Network Interface (ENI).
         self.eni_instance_id = eni_instance_id
+        # The time when the instance expires.
         self.expire_time = expire_time
+        self.hsmmodule = hsmmodule
+        self.idaa_smodule = idaa_smodule
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The status of the instance. Valid values:
+        # 
+        # *   PENDING: The instance is not initialized.
+        # *   CREATING: The instance is being created.
+        # *   RUNNING: The instance is running.
+        # *   EXPIRED: The instance expired.
+        # *   CREATE_FAILED: The instance fails to be created.
+        # *   UPGRADING: The configurations of the instance are being changed.
+        # *   UPGRADE_FAILED: The configurations of the instance fail to be changed.
         self.instance_status = instance_status
+        # The public endpoint.
         self.internet_endpoint = internet_endpoint
+        # The private endpoint.
         self.intranet_endpoint = intranet_endpoint
+        self.kms_secret_module = kms_secret_module
+        # The license code.
         self.license_code = license_code
+        # The status of the automatic password change feature.
+        # 
+        # - **Enable**\
+        # - **Disable**\
         self.modify_password_module = modify_password_module
+        # The status of the network domain feature.
+        # 
+        # - **Enable**\
+        # - **Disable**\
         self.network_proxy_module = network_proxy_module
+        # An array that consists of the O&M ports of the bastion host.
         self.ports = ports
+        # An array that consists of the egress private IP addresses of the bastion host.
         self.private_export_ips = private_export_ips
+        # The private IP addresses that are allowed to access the instance.
         self.private_white_list = private_white_list
+        # An array that consists of the egress public IP addresses of the bastion host.
         self.public_export_ips = public_export_ips
+        # The public IP address.
         self.public_ips = public_ips
+        # Indicates whether the Bastionhost instance can be accessed over the Internet.
         self.public_network_access = public_network_access
+        # The public IP addresses that are allowed to access the instance.
         self.public_white_list = public_white_list
+        self.rdmodule = rdmodule
+        # The region ID of the instance.
         self.region_id = region_id
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
+        self.router_rules = router_rules
+        self.script_deliver_module = script_deliver_module
+        # The IDs of the security groups to which the instance belongs.
         self.security_group_ids = security_group_ids
+        self.slave_vswitch_id = slave_vswitch_id
+        # The time when the instance started.
         self.start_time = start_time
+        # The storage capacity of the bastion host. Unit: bytes.
         self.storage = storage
+        # The ID of the VPC to which the instance belongs.
         self.vpc_id = vpc_id
+        # The ID of the vSwitch to which the instance connects.
         self.vswitch_id = vswitch_id
+        # The status of the web terminal.
+        # 
+        # - **Enable**\
+        # - **Disable**\
         self.web_terminal_module = web_terminal_module
+        self.white_list_policies = white_list_policies
 
     def validate(self):
         if self.ports:
             for k in self.ports:
+                if k:
+                    k.validate()
+        if self.white_list_policies:
+            for k in self.white_list_policies:
                 if k:
                     k.validate()
 
@@ -6444,6 +7342,8 @@ class DescribeInstanceAttributeResponseBodyInstanceAttribute(TeaModel):
             return _map
 
         result = dict()
+        if self.app_operation_module is not None:
+            result['AppOperationModule'] = self.app_operation_module
         if self.authorized_security_groups is not None:
             result['AuthorizedSecurityGroups'] = self.authorized_security_groups
         if self.bandwidth is not None:
@@ -6458,6 +7358,10 @@ class DescribeInstanceAttributeResponseBodyInstanceAttribute(TeaModel):
             result['EniInstanceId'] = self.eni_instance_id
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
+        if self.hsmmodule is not None:
+            result['HSMModule'] = self.hsmmodule
+        if self.idaa_smodule is not None:
+            result['IDaaSModule'] = self.idaa_smodule
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.instance_status is not None:
@@ -6466,6 +7370,8 @@ class DescribeInstanceAttributeResponseBodyInstanceAttribute(TeaModel):
             result['InternetEndpoint'] = self.internet_endpoint
         if self.intranet_endpoint is not None:
             result['IntranetEndpoint'] = self.intranet_endpoint
+        if self.kms_secret_module is not None:
+            result['KmsSecretModule'] = self.kms_secret_module
         if self.license_code is not None:
             result['LicenseCode'] = self.license_code
         if self.modify_password_module is not None:
@@ -6488,12 +7394,20 @@ class DescribeInstanceAttributeResponseBodyInstanceAttribute(TeaModel):
             result['PublicNetworkAccess'] = self.public_network_access
         if self.public_white_list is not None:
             result['PublicWhiteList'] = self.public_white_list
+        if self.rdmodule is not None:
+            result['RDModule'] = self.rdmodule
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.router_rules is not None:
+            result['RouterRules'] = self.router_rules
+        if self.script_deliver_module is not None:
+            result['ScriptDeliverModule'] = self.script_deliver_module
         if self.security_group_ids is not None:
             result['SecurityGroupIds'] = self.security_group_ids
+        if self.slave_vswitch_id is not None:
+            result['SlaveVswitchId'] = self.slave_vswitch_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.storage is not None:
@@ -6504,10 +7418,16 @@ class DescribeInstanceAttributeResponseBodyInstanceAttribute(TeaModel):
             result['VswitchId'] = self.vswitch_id
         if self.web_terminal_module is not None:
             result['WebTerminalModule'] = self.web_terminal_module
+        result['WhiteListPolicies'] = []
+        if self.white_list_policies is not None:
+            for k in self.white_list_policies:
+                result['WhiteListPolicies'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppOperationModule') is not None:
+            self.app_operation_module = m.get('AppOperationModule')
         if m.get('AuthorizedSecurityGroups') is not None:
             self.authorized_security_groups = m.get('AuthorizedSecurityGroups')
         if m.get('Bandwidth') is not None:
@@ -6522,6 +7442,10 @@ class DescribeInstanceAttributeResponseBodyInstanceAttribute(TeaModel):
             self.eni_instance_id = m.get('EniInstanceId')
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
+        if m.get('HSMModule') is not None:
+            self.hsmmodule = m.get('HSMModule')
+        if m.get('IDaaSModule') is not None:
+            self.idaa_smodule = m.get('IDaaSModule')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceStatus') is not None:
@@ -6530,6 +7454,8 @@ class DescribeInstanceAttributeResponseBodyInstanceAttribute(TeaModel):
             self.internet_endpoint = m.get('InternetEndpoint')
         if m.get('IntranetEndpoint') is not None:
             self.intranet_endpoint = m.get('IntranetEndpoint')
+        if m.get('KmsSecretModule') is not None:
+            self.kms_secret_module = m.get('KmsSecretModule')
         if m.get('LicenseCode') is not None:
             self.license_code = m.get('LicenseCode')
         if m.get('ModifyPasswordModule') is not None:
@@ -6553,12 +7479,20 @@ class DescribeInstanceAttributeResponseBodyInstanceAttribute(TeaModel):
             self.public_network_access = m.get('PublicNetworkAccess')
         if m.get('PublicWhiteList') is not None:
             self.public_white_list = m.get('PublicWhiteList')
+        if m.get('RDModule') is not None:
+            self.rdmodule = m.get('RDModule')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('RouterRules') is not None:
+            self.router_rules = m.get('RouterRules')
+        if m.get('ScriptDeliverModule') is not None:
+            self.script_deliver_module = m.get('ScriptDeliverModule')
         if m.get('SecurityGroupIds') is not None:
             self.security_group_ids = m.get('SecurityGroupIds')
+        if m.get('SlaveVswitchId') is not None:
+            self.slave_vswitch_id = m.get('SlaveVswitchId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('Storage') is not None:
@@ -6569,6 +7503,11 @@ class DescribeInstanceAttributeResponseBodyInstanceAttribute(TeaModel):
             self.vswitch_id = m.get('VswitchId')
         if m.get('WebTerminalModule') is not None:
             self.web_terminal_module = m.get('WebTerminalModule')
+        self.white_list_policies = []
+        if m.get('WhiteListPolicies') is not None:
+            for k in m.get('WhiteListPolicies'):
+                temp_model = DescribeInstanceAttributeResponseBodyInstanceAttributeWhiteListPolicies()
+                self.white_list_policies.append(temp_model.from_map(k))
         return self
 
 
@@ -6580,6 +7519,7 @@ class DescribeInstanceAttributeResponseBody(TeaModel):
     ):
         # The attribute information about the bastion host.
         self.instance_attribute = instance_attribute
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6773,6 +7713,7 @@ class DescribeInstancesRequest(TeaModel):
 class DescribeInstancesResponseBodyInstances(TeaModel):
     def __init__(
         self,
+        band_width: int = None,
         description: str = None,
         expire_time: int = None,
         image_version: str = None,
@@ -6786,17 +7727,19 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         public_network_access: bool = None,
         region_id: str = None,
         resource_group_id: str = None,
+        slave_vswitch_id: str = None,
         start_time: int = None,
         vpc_id: str = None,
         vswitch_id: str = None,
     ):
-        # The description of the bastion host.
+        self.band_width = band_width
+        # The remarks of the bastion host.
         self.description = description
         # The timestamp when the bastion host expires. Unit: milliseconds.
         self.expire_time = expire_time
         # The image version of the bastion host.
         self.image_version = image_version
-        # The ID of the bastion host.
+        # The bastion host ID.
         self.instance_id = instance_id
         # The status of the bastion host. Valid values:
         # 
@@ -6808,31 +7751,32 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         # *   **UPGRADING**: The configurations of the bastion host are being changed.
         # *   **UPGRADE_FAILED**: The configurations of the bastion host fail to be changed.
         self.instance_status = instance_status
-        # The public O\&M address of the bastion host.
+        # The public O\\&M address of the bastion host.
         self.internet_endpoint = internet_endpoint
-        # The private O\&M address of the bastion host.
+        # The private O\\&M address of the bastion host.
         self.intranet_endpoint = intranet_endpoint
         # Indicates whether the bastion host runs an earlier version. Valid values:
         # 
-        # *   **true**: indicates that the bastion host runs V2 or V3.1.
-        # *   **false**:indicates that the bastion host runs V3.2.
+        # *   **true**: The bastion host runs V2 or V3.1.
+        # *   **false**: The bastion host runs V3.2.
         self.legacy = legacy
         # The license code of the bastion host.
         self.license_code = license_code
         # The edition of the bastion host. Valid values:
         # 
-        # *   **cloudbastion**: Basic
-        # *   **cloudbastion_ha**: Enterprise
+        # *   **cloudbastion**: Basic Edition.
+        # *   **cloudbastion_ha**: Enterprise Edition.
         self.plan_code = plan_code
         # Indicates whether the bastion host can be accessed from the Internet. Valid values:
         # 
-        # *   **true**: The bastion host can be accessed from the Internet.
-        # *   **false**: The bastion host cannot be accessed from the Internet.
+        # *   **true**\
+        # *   **false**\
         self.public_network_access = public_network_access
         # The region ID of the bastion host.
         self.region_id = region_id
         # The ID of the resource group to which the bastion host belongs.
         self.resource_group_id = resource_group_id
+        self.slave_vswitch_id = slave_vswitch_id
         # The timestamp when the bastion host is purchased or renewed. Unit: milliseconds.
         self.start_time = start_time
         # The ID of the virtual private cloud (VPC) to which the bastion host belongs.
@@ -6849,6 +7793,8 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             return _map
 
         result = dict()
+        if self.band_width is not None:
+            result['BandWidth'] = self.band_width
         if self.description is not None:
             result['Description'] = self.description
         if self.expire_time is not None:
@@ -6875,6 +7821,8 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.slave_vswitch_id is not None:
+            result['SlaveVswitchId'] = self.slave_vswitch_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.vpc_id is not None:
@@ -6885,6 +7833,8 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BandWidth') is not None:
+            self.band_width = m.get('BandWidth')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('ExpireTime') is not None:
@@ -6911,6 +7861,8 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SlaveVswitchId') is not None:
+            self.slave_vswitch_id = m.get('SlaveVswitchId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('VpcId') is not None:
@@ -6927,7 +7879,7 @@ class DescribeInstancesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # An array that consists of the queried bastion hosts.
+        # An array that consists of the bastion hosts returned.
         self.instances = instances
         # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
@@ -7182,7 +8134,9 @@ class DetachDatabaseAccountsFromUserRequestDatabases(TeaModel):
         database_account_ids: List[str] = None,
         database_id: str = None,
     ):
+        # An array that consists of database account IDs.
         self.database_account_ids = database_account_ids
+        # The ID of the database on which you want to revoke permissions.
         self.database_id = database_id
 
     def validate(self):
@@ -7217,9 +8171,23 @@ class DetachDatabaseAccountsFromUserRequest(TeaModel):
         region_id: str = None,
         user_id: str = None,
     ):
+        # The databases.
         self.databases = databases
+        # The bastion host ID.
+        # 
+        # > You can call the DescribeInstances operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The region ID of the bastion host.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        # The ID of the user from whom you want to revoke the permissions on databases and database accounts.
+        # 
+        # > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the ID of the user.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -7269,8 +8237,11 @@ class DetachDatabaseAccountsFromUserResponseBodyResultsDatabaseAccounts(TeaModel
         database_account_id: str = None,
         message: str = None,
     ):
+        # The error code that is returned. If OK is returned, the operation was successful. If another error code is returned, the operation failed.
         self.code = code
+        # The ID of the database account on which the permissions are revoked.
         self.database_account_id = database_account_id
+        # The error message that is returned.
         self.message = message
 
     def validate(self):
@@ -7310,10 +8281,15 @@ class DetachDatabaseAccountsFromUserResponseBodyResults(TeaModel):
         message: str = None,
         user_id: str = None,
     ):
+        # The error code that is returned. If **OK** is returned, the operation was successful. If another error code is returned, the operation failed.
         self.code = code
+        # A list that shows the operation results of the database accounts.
         self.database_accounts = database_accounts
+        # The ID of the database on which the permissions are revoked.
         self.database_id = database_id
+        # The error message that is returned.
         self.message = message
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -7366,7 +8342,9 @@ class DetachDatabaseAccountsFromUserResponseBody(TeaModel):
         request_id: str = None,
         results: List[DetachDatabaseAccountsFromUserResponseBodyResults] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The result of the call.
         self.results = results
 
     def validate(self):
@@ -7448,7 +8426,9 @@ class DetachDatabaseAccountsFromUserGroupRequestDatabases(TeaModel):
         database_account_ids: List[str] = None,
         database_id: str = None,
     ):
+        # An array that consists of database account IDs.
         self.database_account_ids = database_account_ids
+        # The ID of the database on which the permissions are to be revoked.
         self.database_id = database_id
 
     def validate(self):
@@ -7483,9 +8463,23 @@ class DetachDatabaseAccountsFromUserGroupRequest(TeaModel):
         region_id: str = None,
         user_group_id: str = None,
     ):
+        # The information about the database.
         self.databases = databases
+        # The bastion host ID.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The region ID of the bastion host.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        # The ID of the user group from which you want to revoke permissions on databases and database accounts.
+        # 
+        # > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the ID of the user group.
+        # 
+        # This parameter is required.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -7535,8 +8529,11 @@ class DetachDatabaseAccountsFromUserGroupResponseBodyResultsDatabaseAccounts(Tea
         database_account_id: str = None,
         message: str = None,
     ):
+        # The error code that is returned. If OK is returned, the operation was successful. If other error codes are returned, the operation failed.
         self.code = code
+        # The ID of the database account on which the permissions are revoked.
         self.database_account_id = database_account_id
+        # The error message that is returned.
         self.message = message
 
     def validate(self):
@@ -7576,10 +8573,15 @@ class DetachDatabaseAccountsFromUserGroupResponseBodyResults(TeaModel):
         message: str = None,
         user_group_id: str = None,
     ):
+        # The error code that is returned. If OK is returned, the operation was successful. If other error codes are returned, the operation failed.
         self.code = code
+        # A list that shows the authorization results of the database accounts.
         self.database_accounts = database_accounts
+        # The ID of the database on which the permissions are revoked.
         self.database_id = database_id
+        # The error message that is returned.
         self.message = message
+        # The user group ID.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -7632,7 +8634,9 @@ class DetachDatabaseAccountsFromUserGroupResponseBody(TeaModel):
         request_id: str = None,
         results: List[DetachDatabaseAccountsFromUserGroupResponseBodyResults] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The result of the call.
         self.results = results
 
     def validate(self):
@@ -7716,13 +8720,27 @@ class DetachHostAccountsFromHostShareKeyRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The IDs of the host accounts.
+        # The host account IDs.
+        # 
+        # >  You can call the [ListHostAccountsForHostShareKey](https://help.aliyun.com/document_detail/462975.html) operation to query the host account IDs.
+        # 
+        # This parameter is required.
         self.host_account_ids = host_account_ids
-        # The ID of the shared key.
+        # The shared key ID.
+        # 
+        # >  You can call the [ListHostShareKeys](https://help.aliyun.com/document_detail/462973.html) operation to query the shared key ID.
+        # 
+        # This parameter is required.
         self.host_share_key_id = host_share_key_id
-        # The ID of the bastion host. You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # The bastion host ID.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the bastion host. For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # The region ID of the bastion host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -7898,21 +8916,27 @@ class DetachHostAccountsFromUserRequest(TeaModel):
         region_id: str = None,
         user_id: str = None,
     ):
-        # The IDs of the host and host account on which you want to revoke permissions from the user. You can specify up to 10 host IDs and up to 10 host account IDs for each host. You can specify only host IDs. In this case, the permissions on both the specified hosts and all host accounts of the hosts are revoked from the user. For more information about this parameter, see the "Description of the Hosts parameter" section of this topic.
+        # The IDs of the hosts and host accounts on which you want to revoke permissions from the user. You can specify up to 10 host IDs and up to 10 host account IDs for each host. You can specify only host IDs. In this case, the permissions on the specified hosts and all accounts of the hosts are revoked from the user. For more information about this parameter, see the Description of the Hosts parameter section of this topic.
         # 
-        # >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host and the [ListHostAccounts](~~204372~~) operation to query the ID of the host account.
+        # >  You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the host IDs and the [ListHostAccountsForUser](https://help.aliyun.com/document_detail/466581.html) operation to query the host account IDs.
+        # 
+        # This parameter is required.
         self.hosts = hosts
-        # The ID of the bastion host in which you want to revoke permissions on the specified hosts and host accounts from the user.
+        # The ID of the bastion host on which you want to revoke permissions on the specified hosts and host accounts from the user.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the bastion host in which you want to revoke permissions on the specified hosts and host accounts from the user.
+        # The region ID of the bastion host on which you want to revoke permissions on the specified hosts and host accounts from the user.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The ID of the user from which you want to revoke permissions on the specified hosts and host accounts.
+        # The ID of the user from whom you want to revoke permissions on the specified hosts and host accounts.
         # 
-        # >  You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
+        # >  You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the user ID.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -7954,7 +8978,7 @@ class DetachHostAccountsFromUserResponseBodyResultsHostAccounts(TeaModel):
         host_account_id: str = None,
         message: str = None,
     ):
-        # The return code that indicates whether permissions on the specified host account were revoked from the user. Valid values:
+        # The return code that indicates whether permissions on the specified host accounts were revoked from the user. Valid values:
         # 
         # *   **OK**: The call was successful.
         # *   **UNEXPECTED**: An unknown error occurred.
@@ -7962,7 +8986,7 @@ class DetachHostAccountsFromUserResponseBodyResultsHostAccounts(TeaModel):
         # *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
         # *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
         self.code = code
-        # The ID of the host account.
+        # The host account ID.
         self.host_account_id = host_account_id
         # This parameter is deprecated.
         self.message = message
@@ -8014,11 +9038,11 @@ class DetachHostAccountsFromUserResponseBodyResults(TeaModel):
         self.code = code
         # The result of revoking permissions on the specified host accounts from the user.
         self.host_accounts = host_accounts
-        # The ID of the host.
+        # The host ID.
         self.host_id = host_id
         # This parameter is deprecated.
         self.message = message
-        # The ID of the user.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -8071,7 +9095,7 @@ class DetachHostAccountsFromUserResponseBody(TeaModel):
         request_id: str = None,
         results: List[DetachHostAccountsFromUserResponseBodyResults] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The result of the call.
         self.results = results
@@ -8161,19 +9185,25 @@ class DetachHostAccountsFromUserGroupRequest(TeaModel):
         # 
         # You can specify up to 10 host IDs and up to 10 host account IDs for each host. You can specify only host IDs. In this case, the permissions on both the specified hosts and all host accounts of the hosts are revoked from the user group. For more information about this parameter, see the "Description of the Hosts parameter" section of this topic.
         # 
-        # >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host and the [ListHostAccounts](~~204372~~) operation to query the ID of the host account.
+        # >  You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the ID of the host and the [ListHostAccounts](https://help.aliyun.com/document_detail/204372.html) operation to query the ID of the host account.
+        # 
+        # This parameter is required.
         self.hosts = hosts
         # The ID of the bastion host in which you want to revoke permissions on the specified hosts and host accounts from the user group.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host in which you want to revoke permissions on the specified hosts and host accounts from the user group.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The ID of the user group from which you want to revoke permissions on the specified hosts and host accounts.
         # 
-        # >  You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+        # >  You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the ID of the user group.
+        # 
+        # This parameter is required.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -8420,19 +9450,25 @@ class DetachHostGroupAccountsFromUserRequest(TeaModel):
     ):
         # The ID of the host group and the name of the host account on which you want to revoke permissions from the user. You can specify up to 10 host group IDs and up to 10 host account names for each host group. You can specify only host group IDs. In this case, the permissions on the specified host groups and all host accounts in the host groups are revoked from the user. For more information about this parameter, see the "Description of the HostGroups parameter" section of this topic.
         # 
-        # > You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group and the [ListHostAccounts](~~204372~~) operation to query the name of the host account.
+        # > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the ID of the host group and the [ListHostAccounts](https://help.aliyun.com/document_detail/204372.html) operation to query the name of the host account.
+        # 
+        # This parameter is required.
         self.host_groups = host_groups
         # The ID of the bastion host for which you want to revoke permissions on the specified host groups and host accounts from the user.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host for which you want to revoke permissions on the specified host groups and host accounts from the user.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The ID of the user from which you want to revoke permissions on the specified host groups and host accounts.
         # 
-        # > You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
+        # > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the ID of the user.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -8679,19 +9715,25 @@ class DetachHostGroupAccountsFromUserGroupRequest(TeaModel):
     ):
         # The ID of the host group and the name of host account on which you want to revoke permissions from the user group. You can specify up to 10 host group IDs and up to 10 host account names for each host group. You can specify only host group IDs. In this case, the permissions on the specified host groups and all host accounts in the host groups are revoked from the user group. For more information about this parameter, see the "Description of the HostGroups parameter" section of this topic.
         # 
-        # >  You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group and the [ListHostAccounts](~~204372~~) operation to query the name of the host account.
+        # >  You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the ID of the host group and the [ListHostAccounts](https://help.aliyun.com/document_detail/204372.html) operation to query the name of the host account.
+        # 
+        # This parameter is required.
         self.host_groups = host_groups
         # The ID of the bastion host for which you want to revoke permissions on the specified host groups and host accounts from the user group.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host for which you want to revoke permissions on the specified host groups and host accounts from the user group.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The ID of the user group from which you want to revoke permissions on the specified host groups and host accounts.
         # 
-        # >  You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+        # >  You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the ID of the user group.
+        # 
+        # This parameter is required.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -8936,7 +9978,9 @@ class DisableInstancePublicAccessRequest(TeaModel):
     ):
         # The ID of the bastion host whose Internet access you want to disable.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host.
         self.region_id = region_id
@@ -9048,8 +10092,21 @@ class DisableRuleRequest(TeaModel):
         region_id: str = None,
         rule_id: str = None,
     ):
+        # The bastion host ID.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The region ID of the bastion host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        # The ID of the authorization rule to be disabled.
+        # 
+        # >  You can call the [ListRules](https://help.aliyun.com/document_detail/2758868.html) operation to query the authorization rule ID to be disabled.
+        # 
+        # This parameter is required.
         self.rule_id = rule_id
 
     def validate(self):
@@ -9085,6 +10142,7 @@ class DisableRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9156,7 +10214,9 @@ class EnableInstancePublicAccessRequest(TeaModel):
     ):
         # The ID of the bastion host.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host.
         self.region_id = region_id
@@ -9268,8 +10328,21 @@ class EnableRuleRequest(TeaModel):
         region_id: str = None,
         rule_id: str = None,
     ):
+        # The bastion host ID.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The region ID of the bastion host.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        # The ID of the authorization rule that you want to enable.
+        # 
+        # >  You can call the [ListRules](https://help.aliyun.com/document_detail/2758868.html) operation to query the authorization rule ID.
+        # 
+        # This parameter is required.
         self.rule_id = rule_id
 
     def validate(self):
@@ -9305,6 +10378,7 @@ class EnableRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9377,17 +10451,80 @@ class GenerateAssetOperationTokenRequest(TeaModel):
         asset_account_protocol_name: str = None,
         asset_id: str = None,
         asset_type: str = None,
+        database_schema: str = None,
         instance_id: str = None,
+        login_attribute: str = None,
+        operation_mode: str = None,
+        operation_note: str = None,
         region_id: str = None,
+        sso_client: str = None,
     ):
+        # The ID of the account whose assets the O\\&M token takes effect.
+        # 
+        # >  You must specify at least one of the following parameters: AssetAccountId and AssetAccountName. If you specify both parameters, AssetAccountId takes precedence.
         self.asset_account_id = asset_account_id
+        # The name of the host account. If you use a custom account, enter a real account name.
+        # 
+        # >  When both AssetAccountId and AssetAccountName are specified, AssetAccountId takes precedence.
         self.asset_account_name = asset_account_name
+        # The Base64-encoded password. This parameter is required if you want to apply for an O\\&M token for a custom account.
         self.asset_account_password = asset_account_password
+        # The name of the protocol. Valid values:
+        # 
+        # *   SSH
+        # *   RDP
+        # *   Oracle
+        # *   PostgreSQL
+        # *   MySQL
+        # *   SQLServer
         self.asset_account_protocol_name = asset_account_protocol_name
+        # The ID of the asset for which you want to apply for an O\\&M token.
+        # 
+        # This parameter is required.
         self.asset_id = asset_id
+        # The type of the asset for which you want to apply for an O\\&M token. Valid values:
+        # 
+        # *   **Host**\
+        # *   **Database**\
+        # 
+        # This parameter is required.
         self.asset_type = asset_type
+        # The name of the database. If you set OperationMode to Sso and AssetAccountProtocolName to PostgreSQL or Oracle and you select Custom Account for the Database Account parameter, you must specify this parameter.
+        # 
+        # >This parameter is available only for bastion hosts that run V3.2.44 or later.
+        self.database_schema = database_schema
+        # The ID of the bastion host for which you want to apply an O\\&M token.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The logon attribute. If you set OperationMode to Sso and AssetAccountProtocolName to Oracle, you must specify this parameter. Valid values:
+        # 
+        # *   **SERVICENAME**\
+        # *   **SID**\
+        # 
+        # >  This parameter is available only for bastion hosts that run V3.2.44 or later.
+        self.login_attribute = login_attribute
+        # The O\\&M logon method. Valid values:
+        # 
+        # *   **WebToken**: O\\&M token-based logon.
+        # *   **Sso**: Local client-based logon.
+        # 
+        # >  This parameter is available only for bastion hosts that run V3.2.44 or later. If you do not specify this parameter, the default value WebToken is used.
+        self.operation_mode = operation_mode
+        self.operation_note = operation_note
+        # The region ID of the bastion host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        # The type of the local client that you want to perform O\\&M operations on Linux assets. If you set OperationMode to Sso and AssetAccountProtocolName to SSH, you must specify this parameter. Valid values:
+        # 
+        # *   **ssh**: Perform O\\&M operations on Linux assets by connecting to a bastion host from an SSH client.
+        # *   **sftp**: Perform O\\&M operations on Linux assets by connecting to a bastion host from a Secure File Transfer Protocol (SFTP) client.
+        # 
+        # >  This parameter is available only for bastion hosts that run V3.2.44 or later.
+        self.sso_client = sso_client
 
     def validate(self):
         pass
@@ -9410,10 +10547,20 @@ class GenerateAssetOperationTokenRequest(TeaModel):
             result['AssetId'] = self.asset_id
         if self.asset_type is not None:
             result['AssetType'] = self.asset_type
+        if self.database_schema is not None:
+            result['DatabaseSchema'] = self.database_schema
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.login_attribute is not None:
+            result['LoginAttribute'] = self.login_attribute
+        if self.operation_mode is not None:
+            result['OperationMode'] = self.operation_mode
+        if self.operation_note is not None:
+            result['OperationNote'] = self.operation_note
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.sso_client is not None:
+            result['SsoClient'] = self.sso_client
         return result
 
     def from_map(self, m: dict = None):
@@ -9430,10 +10577,20 @@ class GenerateAssetOperationTokenRequest(TeaModel):
             self.asset_id = m.get('AssetId')
         if m.get('AssetType') is not None:
             self.asset_type = m.get('AssetType')
+        if m.get('DatabaseSchema') is not None:
+            self.database_schema = m.get('DatabaseSchema')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('LoginAttribute') is not None:
+            self.login_attribute = m.get('LoginAttribute')
+        if m.get('OperationMode') is not None:
+            self.operation_mode = m.get('OperationMode')
+        if m.get('OperationNote') is not None:
+            self.operation_note = m.get('OperationNote')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('SsoClient') is not None:
+            self.sso_client = m.get('SsoClient')
         return self
 
 
@@ -9445,15 +10602,25 @@ class GenerateAssetOperationTokenResponseBodyAssetOperationToken(TeaModel):
         has_count_limit: bool = None,
         max_renew_count: int = None,
         renew_count: int = None,
+        sso_url: str = None,
         token: str = None,
         token_id: str = None,
     ):
+        # The remaining number of times that you can use the O\\&M token.
         self.count_left = count_left
+        # The time when the O\\&M token expires. The value is a UNIX timestamp.
         self.expire_time = expire_time
+        # Indicates whether the number of times that you can use the O\\&M token is limited.
         self.has_count_limit = has_count_limit
+        # The maximum number of renewals. A value of 0 indicates that renewal is not supported.
         self.max_renew_count = max_renew_count
+        # The number of times the O\\&M token is renewed.
         self.renew_count = renew_count
+        # The single sign-on (SSO) URL.
+        self.sso_url = sso_url
+        # The O\\&M token that you apply for.
         self.token = token
+        # The ID of the O\\&M token.
         self.token_id = token_id
 
     def validate(self):
@@ -9475,6 +10642,8 @@ class GenerateAssetOperationTokenResponseBodyAssetOperationToken(TeaModel):
             result['MaxRenewCount'] = self.max_renew_count
         if self.renew_count is not None:
             result['RenewCount'] = self.renew_count
+        if self.sso_url is not None:
+            result['SsoUrl'] = self.sso_url
         if self.token is not None:
             result['Token'] = self.token
         if self.token_id is not None:
@@ -9493,6 +10662,8 @@ class GenerateAssetOperationTokenResponseBodyAssetOperationToken(TeaModel):
             self.max_renew_count = m.get('MaxRenewCount')
         if m.get('RenewCount') is not None:
             self.renew_count = m.get('RenewCount')
+        if m.get('SsoUrl') is not None:
+            self.sso_url = m.get('SsoUrl')
         if m.get('Token') is not None:
             self.token = m.get('Token')
         if m.get('TokenId') is not None:
@@ -9506,7 +10677,9 @@ class GenerateAssetOperationTokenResponseBody(TeaModel):
         asset_operation_token: GenerateAssetOperationTokenResponseBodyAssetOperationToken = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.asset_operation_token = asset_operation_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9583,8 +10756,21 @@ class GetDatabaseRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the database to query.
+        # 
+        # >  You can call the [ListDatabases](https://help.aliyun.com/document_detail/2758822.html) operation to query the database ID.
+        # 
+        # This parameter is required.
         self.database_id = database_id
+        # The ID of the bastion host that manages the database to query.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The region ID of the bastion host that manages the database to query.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -9632,18 +10818,48 @@ class GetDatabaseResponseBodyDatabase(TeaModel):
         source_instance_region_id: str = None,
         source_instance_state: str = None,
     ):
+        # The address type of the database. Valid values:
+        # 
+        # *   Public
+        # *   Private
         self.active_address_type = active_address_type
+        # The remarks of the database.
         self.comment = comment
+        # The database ID.
         self.database_id = database_id
+        # The name of the database.
         self.database_name = database_name
+        # The port of the database.
         self.database_port = database_port
+        # The internal endpoint of the database.
         self.database_private_address = database_private_address
+        # The public endpoint of the database.
         self.database_public_address = database_public_address
+        # The database engine. Valid values:
+        # 
+        # *   **mysql**\
+        # *   **sqlserver**\
+        # *   **postgresql**\
+        # *   **oracle**\
         self.database_type = database_type
+        # The ID of the network domain to which the database belongs.
         self.network_domain_id = network_domain_id
+        # The database type. Valid values:
+        # 
+        # *   **Local**: on-premises database.
+        # *   **Rds**: ApsaraDB RDS instance.
+        # *   **PolarDB**: PolarDB cluster.
         self.source = source
+        # The ID of the ApsaraDB RDS instance or PolarDB cluster.
+        # 
+        # > If **Source** is set to **Local**, this parameter is empty.
         self.source_instance_id = source_instance_id
+        # The region ID of the ApsaraDB RDS instance or PolarDB cluster.
         self.source_instance_region_id = source_instance_region_id
+        # The status of the database. Valid values:
+        # 
+        # *   **Normal**\
+        # *   **Release**\
         self.source_instance_state = source_instance_state
 
     def validate(self):
@@ -9720,7 +10936,9 @@ class GetDatabaseResponseBody(TeaModel):
         database: GetDatabaseResponseBodyDatabase = None,
         request_id: str = None,
     ):
+        # The returned detailed information about the database.
         self.database = database
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9797,8 +11015,19 @@ class GetDatabaseAccountRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the database account to query.
+        # 
+        # >  You can call the [ListDatabaseAccounts](https://help.aliyun.com/document_detail/2758839.html) operation to query the database account ID.
+        # 
+        # This parameter is required.
         self.database_account_id = database_account_id
+        # The bastion host ID.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The region ID of the bastion host.
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -9838,10 +11067,21 @@ class GetDatabaseAccountResponseBodyDatabaseAccount(TeaModel):
         has_password: bool = None,
         login_attribute: str = None,
     ):
+        # The database account ID.
         self.database_account_id = database_account_id
+        # The name of the database account.
         self.database_account_name = database_account_name
+        # The database name. A value is returned for this parameter if the database engine is PostgreSQL or Oracle.
         self.database_schema = database_schema
+        # Indicates whether the database account has a password.
+        # Valid values:
+        # * true
+        # * false
         self.has_password = has_password
+        # The logon attribute. A value is returned for this parameter if the database engine is Oracle. Valid values:
+        # 
+        # *   SERVICENAME
+        # *   SID
         self.login_attribute = login_attribute
 
     def validate(self):
@@ -9886,7 +11126,9 @@ class GetDatabaseAccountResponseBody(TeaModel):
         database_account: GetDatabaseAccountResponseBodyDatabaseAccount = None,
         request_id: str = None,
     ):
+        # The returned information about the database account.
         self.database_account = database_account
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9956,6 +11198,145 @@ class GetDatabaseAccountResponse(TeaModel):
         return self
 
 
+class GetExportConfigJobRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        job_id: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.job_id = job_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class GetExportConfigJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        download_url: str = None,
+        expire_time: int = None,
+        job_id: str = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.download_url = download_url
+        self.expire_time = expire_time
+        self.job_id = job_id
+        self.message = message
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.download_url is not None:
+            result['DownloadUrl'] = self.download_url
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DownloadUrl') is not None:
+            self.download_url = m.get('DownloadUrl')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetExportConfigJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetExportConfigJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetExportConfigJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetHostRequest(TeaModel):
     def __init__(
         self,
@@ -9965,15 +11346,19 @@ class GetHostRequest(TeaModel):
     ):
         # The ID of the host that you want to query. You can specify only one host ID.
         # 
-        # >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
+        # >  You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the ID of the host.
+        # 
+        # This parameter is required.
         self.host_id = host_id
         # The ID of the bastion host in which you want to query the host.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host in which you want to query the host.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -10011,7 +11396,7 @@ class GetHostResponseBodyHostProtocols(TeaModel):
         port: int = None,
         protocol_name: str = None,
     ):
-        # The fingerprint of the host. This parameter uniquely identifies a host.
+        # The fingerprint of the host. This parameter uniquely identifies a host. A value is returned for this parameter only if you have performed O\\&M operations on the host by using the bastion host. Otherwise, no value is returned.
         self.host_finger_print = host_finger_print
         # The service port of the host.
         self.port = port
@@ -10060,6 +11445,7 @@ class GetHostResponseBodyHost(TeaModel):
         host_public_address: str = None,
         network_domain_id: str = None,
         ostype: str = None,
+        pref_kex: str = None,
         protocols: List[GetHostResponseBodyHostProtocols] = None,
         source: str = None,
         source_instance_id: str = None,
@@ -10080,13 +11466,14 @@ class GetHostResponseBodyHost(TeaModel):
         self.host_private_address = host_private_address
         # The public address of the host. The value is a domain name or an IP address.
         self.host_public_address = host_public_address
-        # The ID of the new network domain to which the host belongs.
+        # The ID of the network domain to which the host belongs.
         self.network_domain_id = network_domain_id
         # The operating system of the host. Valid values:
         # 
         # *   **Linux**\
         # *   **Windows**\
         self.ostype = ostype
+        self.pref_kex = pref_kex
         # The protocol information about the host.
         self.protocols = protocols
         # The source of the host. Valid values:
@@ -10133,6 +11520,8 @@ class GetHostResponseBodyHost(TeaModel):
             result['NetworkDomainId'] = self.network_domain_id
         if self.ostype is not None:
             result['OSType'] = self.ostype
+        if self.pref_kex is not None:
+            result['PrefKex'] = self.pref_kex
         result['Protocols'] = []
         if self.protocols is not None:
             for k in self.protocols:
@@ -10163,6 +11552,8 @@ class GetHostResponseBodyHost(TeaModel):
             self.network_domain_id = m.get('NetworkDomainId')
         if m.get('OSType') is not None:
             self.ostype = m.get('OSType')
+        if m.get('PrefKex') is not None:
+            self.pref_kex = m.get('PrefKex')
         self.protocols = []
         if m.get('Protocols') is not None:
             for k in m.get('Protocols'):
@@ -10183,7 +11574,7 @@ class GetHostResponseBody(TeaModel):
         host: GetHostResponseBodyHost = None,
         request_id: str = None,
     ):
-        # The information about the host that was queried.
+        # The returned information about the host.
         self.host = host
         # The request ID.
         self.request_id = request_id
@@ -10264,15 +11655,19 @@ class GetHostAccountRequest(TeaModel):
     ):
         # The ID of the host account that you want to query.
         # 
-        # > You can call the [ListHostAccounts](~~204372~~) operation to query the ID of the host account.
+        # > You can call the [ListHostAccounts](https://help.aliyun.com/document_detail/204372.html) operation to query the ID of the host account.
+        # 
+        # This parameter is required.
         self.host_account_id = host_account_id
         # The ID of the bastion host in which you want to query the details of the host account.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host in which you want to query the details of the host account.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -10471,17 +11866,21 @@ class GetHostGroupRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the host group.
+        # The ID of the asset group to query.
         # 
-        # > You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
+        # > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the asset group ID.
+        # 
+        # This parameter is required.
         self.host_group_id = host_group_id
-        # The ID of the bastion host in which you want to query the details of the host group.
+        # The ID of the bastion host whose asset group you want to query.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the bastion host in which you want to query the details of the host group.
+        # The region ID of the bastion host whose asset group you want to query.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, [see Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -10519,11 +11918,11 @@ class GetHostGroupResponseBodyHostGroup(TeaModel):
         host_group_id: str = None,
         host_group_name: str = None,
     ):
-        # The description of the host group.
+        # The remarks of the asset group.
         self.comment = comment
-        # The ID of the host group.
+        # The asset group ID.
         self.host_group_id = host_group_id
-        # The name of the host group.
+        # The name of the asset group.
         self.host_group_name = host_group_name
 
     def validate(self):
@@ -10560,7 +11959,7 @@ class GetHostGroupResponseBody(TeaModel):
         host_group: GetHostGroupResponseBodyHostGroup = None,
         request_id: str = None,
     ):
-        # The details of the host group returned.
+        # The returned detailed information about the asset group.
         self.host_group = host_group
         # The ID of the request.
         self.request_id = request_id
@@ -10639,11 +12038,21 @@ class GetHostShareKeyRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The time when the information about the shared key was last modified.
+        # The ID of the shared key whose information you want to query.
+        # 
+        # >  You can call the [ListHostShareKeys](https://help.aliyun.com/document_detail/462973.html) operation to query the shared key ID.
+        # 
+        # This parameter is required.
         self.host_share_key_id = host_share_key_id
-        # The ID of the shared key whose details you want to query.
+        # The bastion host ID.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The name of the shared key.
+        # The region ID of the bastion host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -10682,10 +12091,13 @@ class GetHostShareKeyResponseBodyHostShareKey(TeaModel):
         last_modify_key_at: int = None,
         private_key_finger_print: str = None,
     ):
-        # The fingerprint of the private key.
+        # The ID of the shared key.
         self.host_share_key_id = host_share_key_id
+        # The name of the shared key.
         self.host_share_key_name = host_share_key_name
+        # The time when the information about the shared key was last modified. The value is a UNIX timestamp. Unit: seconds.
         self.last_modify_key_at = last_modify_key_at
+        # The fingerprint of the private key.
         self.private_key_finger_print = private_key_finger_print
 
     def validate(self):
@@ -10726,9 +12138,9 @@ class GetHostShareKeyResponseBody(TeaModel):
         host_share_key: GetHostShareKeyResponseBodyHostShareKey = None,
         request_id: str = None,
     ):
-        # The operation that you want to perform. Set the value to **GetHostShareKey**.
+        # The returned information about the shared key.
         self.host_share_key = host_share_key
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10804,11 +12216,15 @@ class GetInstanceADAuthServerRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the bastion host. You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # The bastion host ID.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -10877,9 +12293,9 @@ class GetInstanceADAuthServerResponseBodyAD(TeaModel):
         self.name_mapping = name_mapping
         # The port that is used to access the AD server.
         self.port = port
-        # The address of the LDAP server.
+        # The address of the AD server.
         self.server = server
-        # The address of the secondary LDAP server.
+        # The address of the secondary AD server.
         self.standby_server = standby_server
 
     def validate(self):
@@ -11030,12 +12446,15 @@ class GetInstanceLDAPAuthServerRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # Indicates whether passwords are required. Valid values:
+        # The ID of the bastion host.
         # 
-        # *   **true**: required
-        # *   **false**: not required
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The operation that you want to perform. Set the value to **GetInstanceLDAPAuthServer**.
+        # The region ID of the bastion host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -11078,28 +12497,35 @@ class GetInstanceLDAPAuthServerResponseBodyLDAP(TeaModel):
         server: str = None,
         standby_server: str = None,
     ):
-        # The ID of the bastion host.
-        # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # The account of the LDAP server.
         self.account = account
-        # The field that is used to indicate the logon name of a user on the LDAP server.
-        self.base_dn = base_dn
-        # The address of the secondary LDAP server.
-        self.email_mapping = email_mapping
         # The Base distinguished name (DN).
-        self.filter = filter
-        # The ID of the request, which is used to locate and troubleshoot issues.
-        self.has_password = has_password
-        # The condition that is used to filter users.
-        self.is_ssl = is_ssl
-        # The port that is used to access the LDAP server.
-        self.login_name_mapping = login_name_mapping
+        self.base_dn = base_dn
         # The field that is used to indicate the email address of a user on the LDAP server.
-        self.mobile_mapping = mobile_mapping
+        self.email_mapping = email_mapping
+        # The condition that is used to filter users.
+        self.filter = filter
+        # Indicates whether passwords are required. Valid values:
+        # 
+        # *   **true**: required
+        # *   **false**: not required
+        self.has_password = has_password
+        # Indicates whether SSL is supported. Valid values:
+        # 
+        # *   **true**: supported
+        # *   **false**: not supported
+        self.is_ssl = is_ssl
+        # The field that is used to indicate the logon name of a user on the LDAP server.
+        self.login_name_mapping = login_name_mapping
         # The field that is used to indicate the mobile phone number of a user on the LDAP server.
+        self.mobile_mapping = mobile_mapping
+        # The field that is used to indicate the name of a user on the LDAP server.
         self.name_mapping = name_mapping
+        # The port that is used to access the LDAP server.
         self.port = port
+        # The address of the LDAP server.
         self.server = server
+        # The address of the secondary LDAP server.
         self.standby_server = standby_server
 
     def validate(self):
@@ -11172,12 +12598,9 @@ class GetInstanceLDAPAuthServerResponseBody(TeaModel):
         ldap: GetInstanceLDAPAuthServerResponseBodyLDAP = None,
         request_id: str = None,
     ):
-        # Indicates whether SSL is supported. Valid values:
-        # 
-        # *   **true**: supported
-        # *   **false**: not supported
-        self.ldap = ldap
         # The settings of LDAP authentication.
+        self.ldap = ldap
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -11247,6 +12670,120 @@ class GetInstanceLDAPAuthServerResponse(TeaModel):
         return self
 
 
+class GetInstanceStoreInfoRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class GetInstanceStoreInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        max: int = None,
+        request_id: str = None,
+        usage: int = None,
+    ):
+        self.max = max
+        self.request_id = request_id
+        self.usage = usage
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max is not None:
+            result['Max'] = self.max
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.usage is not None:
+            result['Usage'] = self.usage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Max') is not None:
+            self.max = m.get('Max')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Usage') is not None:
+            self.usage = m.get('Usage')
+        return self
+
+
+class GetInstanceStoreInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetInstanceStoreInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetInstanceStoreInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetInstanceTwoFactorRequest(TeaModel):
     def __init__(
         self,
@@ -11255,11 +12792,13 @@ class GetInstanceTwoFactorRequest(TeaModel):
     ):
         # The ID of the bastion host.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -11418,8 +12957,19 @@ class GetNetworkDomainRequest(TeaModel):
         network_domain_id: str = None,
         region_id: str = None,
     ):
+        # The bastion host ID.
+        # > You can call the [DescribeInstances ](https://help.aliyun.com/document_detail/153281.html)operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the network domain to query.
+        # > You can call the [ListNetworkDomains ](https://help.aliyun.com/document_detail/2758827.html)operation to query the network domain ID.
+        # 
+        # This parameter is required.
         self.network_domain_id = network_domain_id
+        # The region ID of the bastion host.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -11462,13 +13012,38 @@ class GetNetworkDomainResponseBodyNetworkDomainProxies(TeaModel):
         proxy_type: str = None,
         user: str = None,
     ):
+        # The IP address of the proxy server.
         self.address = address
+        # Indicates whether the proxy server has a password. Valid values:
+        # 
+        # - **true**\
+        # - **false**\
         self.has_password = has_password
+        # The node type of the proxy server. Valid values:
+        # - **Master**: primary proxy server.
+        # - **Slave**: secondary proxy server.
         self.node_type = node_type
+        # The port of the proxy server.
         self.port = port
+        # The status of the proxy server.
+        # 
+        # - **Available**\
+        # - **Unavailable**\
         self.proxy_state = proxy_state
+        # The error code that indicates the status of the proxy server.
+        # 
+        # - **CHECK_PWD_FAILED**: The password is invalid.
+        # - **CHECK_PWD_TIMEOUT**: The password verification session timed out.
+        # - **CHECK_PWD_NETWORK_ERR**: A network error occurred.
+        # - **UNEXPECTED**: An unknown error occurred.
         self.proxy_state_error_code = proxy_state_error_code
+        # The proxy type. Valid values:
+        # 
+        # - **SSHProxy**\
+        # - **HTTPProxy**\
+        # - **Socks5Proxy**\
         self.proxy_type = proxy_type
+        # The username of the proxy server.
         self.user = user
 
     def validate(self):
@@ -11529,11 +13104,23 @@ class GetNetworkDomainResponseBodyNetworkDomain(TeaModel):
         network_domain_type: str = None,
         proxies: List[GetNetworkDomainResponseBodyNetworkDomainProxies] = None,
     ):
+        # The remarks of the network domain.
         self.comment = comment
+        # Indicates whether the network domain is a built-in network domain.
+        # 
+        # * **true**\
+        # * **false**\
         self.default = default
+        # The network domain ID.
         self.network_domain_id = network_domain_id
+        # The name of the network domain.
         self.network_domain_name = network_domain_name
+        # The connection mode of the network domain. Valid values:
+        # 
+        # * Direct
+        # * Proxy
         self.network_domain_type = network_domain_type
+        # The information about the proxy servers.
         self.proxies = proxies
 
     def validate(self):
@@ -11590,7 +13177,9 @@ class GetNetworkDomainResponseBody(TeaModel):
         network_domain: GetNetworkDomainResponseBodyNetworkDomain = None,
         request_id: str = None,
     ):
+        # The detailed information about the network domain.
         self.network_domain = network_domain
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11667,8 +13256,21 @@ class GetPolicyRequest(TeaModel):
         policy_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the bastion host to which the control policy to query belongs.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the control policy that you want to query.
+        # 
+        # >  You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
+        # The region ID of the bastion host to which the control policy to query belongs.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -11705,7 +13307,9 @@ class GetPolicyResponseBodyPolicyAccessTimeRangeConfigEffectiveTime(TeaModel):
         days: List[str] = None,
         hours: List[str] = None,
     ):
+        # The days of a week on which logons are allowed.
         self.days = days
+        # The time periods during which logons are allowed.
         self.hours = hours
 
     def validate(self):
@@ -11737,6 +13341,7 @@ class GetPolicyResponseBodyPolicyAccessTimeRangeConfig(TeaModel):
         self,
         effective_time: List[GetPolicyResponseBodyPolicyAccessTimeRangeConfigEffectiveTime] = None,
     ):
+        # The details of the periods during which logons are allowed.
         self.effective_time = effective_time
 
     def validate(self):
@@ -11772,6 +13377,10 @@ class GetPolicyResponseBodyPolicyApprovalConfig(TeaModel):
         self,
         switch_status: str = None,
     ):
+        # Indicates whether O\\&M approval is enabled in the control policy. Valid values:
+        # 
+        # *   **On**: O\\&M approval is enabled.
+        # *   **Off**: O\\&M approval is disabled.
         self.switch_status = switch_status
 
     def validate(self):
@@ -11799,6 +13408,7 @@ class GetPolicyResponseBodyPolicyCommandConfigApproval(TeaModel):
         self,
         commands: List[str] = None,
     ):
+        # An array of commands that can be run only after approval.
         self.commands = commands
 
     def validate(self):
@@ -11827,7 +13437,12 @@ class GetPolicyResponseBodyPolicyCommandConfigDeny(TeaModel):
         acl_type: str = None,
         commands: List[str] = None,
     ):
+        # The type of command control. Valid values:
+        # 
+        # *   white: whitelist mode.
+        # *   black: blacklist mode.
         self.acl_type = acl_type
+        # An array of controlled commands.
         self.commands = commands
 
     def validate(self):
@@ -11860,7 +13475,9 @@ class GetPolicyResponseBodyPolicyCommandConfig(TeaModel):
         approval: GetPolicyResponseBodyPolicyCommandConfigApproval = None,
         deny: GetPolicyResponseBodyPolicyCommandConfigDeny = None,
     ):
+        # The details of the command approval settings.
         self.approval = approval
+        # The details of the command control setting.
         self.deny = deny
 
     def validate(self):
@@ -11898,7 +13515,12 @@ class GetPolicyResponseBodyPolicyIPAclConfig(TeaModel):
         acl_type: str = None,
         ips: List[str] = None,
     ):
+        # The mode of access control on source IP addresses. Valid values:
+        # 
+        # *   white: whitelist mode.
+        # *   black: blacklist mode.
         self.acl_type = acl_type
+        # The IP addresses from which logons are not allowed.
         self.ips = ips
 
     def validate(self):
@@ -11933,9 +13555,25 @@ class GetPolicyResponseBodyPolicyProtocolConfigRDP(TeaModel):
         disk_redirection: str = None,
         record_keyboard: str = None,
     ):
+        # Indicates whether downloading from the clipboard is enabled. Valid values:
+        # 
+        # *   Enable
+        # *   Disable
         self.clipboard_download = clipboard_download
+        # Indicates whether file uploading from the clipboard is enabled. Valid values:
+        # 
+        # *   Enable
+        # *   Disable
         self.clipboard_upload = clipboard_upload
+        # Indicates whether driver mapping is enabled. Valid values:
+        # 
+        # *   Enable
+        # *   Disable
         self.disk_redirection = disk_redirection
+        # Indicates whether keyboard recording is enabled. Valid values:
+        # 
+        # *   Enable
+        # *   Disable
         self.record_keyboard = record_keyboard
 
     def validate(self):
@@ -11984,15 +13622,55 @@ class GetPolicyResponseBodyPolicyProtocolConfigSSH(TeaModel):
         sshchannel: str = None,
         x_11forwarding: str = None,
     ):
+        # Indicates whether remote command execution is enabled. Valid values:
+        # 
+        # *   Enable
+        # *   Disable
         self.exec_command = exec_command
+        # Indicates whether the SFTP channel option is enabled. Valid values:
+        # 
+        # *   Enable
+        # *   Disable
         self.sftpchannel = sftpchannel
+        # Indicates whether file downloading is enabled in SFTP-based O\\&M. Valid values:
+        # 
+        # *   Enable
+        # *   Disable
         self.sftpdownload_file = sftpdownload_file
+        # Indicates whether folder creation is enabled in SFTP-based O\\&M. Valid values:
+        # 
+        # *   Enable
+        # *   Disable
         self.sftpmkdir = sftpmkdir
+        # Indicates whether file deletion is enabled in SFTP-based O\\&M. Valid values:
+        # 
+        # *   Enable
+        # *   Disable
         self.sftpremove_file = sftpremove_file
+        # Indicates whether file renaming is enabled in SFTP-based O\\&M. Valid values:
+        # 
+        # *   Enable
+        # *   Disable
         self.sftprename_file = sftprename_file
+        # Indicates whether folder deletion is enabled in SFTP-based O\\&M. Valid values:
+        # 
+        # *   Enable
+        # *   Disable
         self.sftprmdir = sftprmdir
+        # Indicates whether file uploading is enabled in SFTP-based O\\&M. Valid values:
+        # 
+        # *   Enable
+        # *   Disable
         self.sftpupload_file = sftpupload_file
+        # Indicates whether the SSH channel option is enabled. Valid values:
+        # 
+        # *   Enable
+        # *   Disable
         self.sshchannel = sshchannel
+        # Indicates whether X11 forwarding is enabled. Valid values:
+        # 
+        # *   Enable
+        # *   Disable
         self.x_11forwarding = x_11forwarding
 
     def validate(self):
@@ -12057,7 +13735,9 @@ class GetPolicyResponseBodyPolicyProtocolConfig(TeaModel):
         rdp: GetPolicyResponseBodyPolicyProtocolConfigRDP = None,
         ssh: GetPolicyResponseBodyPolicyProtocolConfigSSH = None,
     ):
+        # The configuration details of Remote Desktop Protocol (RDP) options.
         self.rdp = rdp
+        # The configuration details of SSH and SSH File Transfer Protocol (SFTP) options.
         self.ssh = ssh
 
     def validate(self):
@@ -12102,14 +13782,23 @@ class GetPolicyResponseBodyPolicy(TeaModel):
         priority: int = None,
         protocol_config: GetPolicyResponseBodyPolicyProtocolConfig = None,
     ):
+        # The details of the logon period restrictions.
         self.access_time_range_config = access_time_range_config
+        # The O\\&M approval setting.
         self.approval_config = approval_config
+        # The details of the command policy.
         self.command_config = command_config
+        # The description of the control policy.
         self.comment = comment
+        # The access control settings on source IP addresses.
         self.ipacl_config = ipacl_config
+        # The ID of the control policy.
         self.policy_id = policy_id
+        # The name of the control policy.
         self.policy_name = policy_name
+        # The priority of the control policy. A smaller value indicates a higher priority.
         self.priority = priority
+        # The details of protocol control.
         self.protocol_config = protocol_config
 
     def validate(self):
@@ -12184,7 +13873,9 @@ class GetPolicyResponseBody(TeaModel):
         policy: GetPolicyResponseBodyPolicy = None,
         request_id: str = None,
     ):
+        # The details of the control policy.
         self.policy = policy
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12261,8 +13952,21 @@ class GetPolicyAssetScopeRequest(TeaModel):
         policy_id: str = None,
         region_id: str = None,
     ):
+        # The bastion host ID.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The control policy ID.
+        # 
+        # > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
+        # The region ID of the bastion host.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -12300,8 +14004,14 @@ class GetPolicyAssetScopeResponseBodyAssetScopeDatabases(TeaModel):
         database_account_ids: List[str] = None,
         database_id: str = None,
     ):
+        # The scope of database accounts to which the control policy applies. Valid values:
+        # 
+        # *   **All**: The control policy applies to all database accounts of the database.
+        # *   **AccountId**: The control policy applies to specified database accounts of the database.
         self.account_scope_type = account_scope_type
+        # The IDs of database accounts to which the control policy applies.
         self.database_account_ids = database_account_ids
+        # The database ID.
         self.database_id = database_id
 
     def validate(self):
@@ -12339,8 +14049,14 @@ class GetPolicyAssetScopeResponseBodyAssetScopeHostGroups(TeaModel):
         account_scope_type: str = None,
         host_group_id: str = None,
     ):
+        # The asset accounts to which the control policy applies.
         self.account_names = account_names
+        # The scope of asset accounts to which the control policy applies. Valid values:
+        # 
+        # *   **All**: The control policy applies to all accounts in the asset group.
+        # *   **AccountName**: The control policy applies to specified accounts in the asset group.
         self.account_scope_type = account_scope_type
+        # The asset group ID.
         self.host_group_id = host_group_id
 
     def validate(self):
@@ -12378,8 +14094,14 @@ class GetPolicyAssetScopeResponseBodyAssetScopeHosts(TeaModel):
         host_account_ids: List[str] = None,
         host_id: str = None,
     ):
+        # The scope of host accounts to which the control policy applies. Valid values:
+        # 
+        # *   **All**: The control policy applies to all accounts of the host.
+        # *   **AccountId**: The control policy applies to specified accounts of the host.
         self.account_scope_type = account_scope_type
+        # The host accounts to which the control policy applies.
         self.host_account_ids = host_account_ids
+        # The host ID.
         self.host_id = host_id
 
     def validate(self):
@@ -12418,9 +14140,17 @@ class GetPolicyAssetScopeResponseBodyAssetScope(TeaModel):
         hosts: List[GetPolicyAssetScopeResponseBodyAssetScopeHosts] = None,
         scope_type: str = None,
     ):
+        # The databases and database accounts to which the control policy applies.
         self.databases = databases
+        # The asset groups and asset accounts to which the control policy applies.
         self.host_groups = host_groups
+        # The hosts and host accounts to which the control policy applies.
         self.hosts = hosts
+        # The scope of assets to which the control policy applies.
+        # 
+        # *   If **All** is returned for this parameter, the control policy applies to all assets.
+        # 
+        # *   If no value is returned for this parameter, the control policy applies to the assets specified in the return values of Databases, HostGroups, and Hosts.
         self.scope_type = scope_type
 
     def validate(self):
@@ -12487,7 +14217,9 @@ class GetPolicyAssetScopeResponseBody(TeaModel):
         asset_scope: GetPolicyAssetScopeResponseBodyAssetScope = None,
         request_id: str = None,
     ):
+        # The assets to which the control policy applies.
         self.asset_scope = asset_scope
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12564,8 +14296,21 @@ class GetPolicyUserScopeRequest(TeaModel):
         policy_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the bastion host to which the control policy to query belongs.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the control policy that you want to query.
+        # 
+        # > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
+        # The region ID of the bastion host to which the control policy to query belongs.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -12603,8 +14348,14 @@ class GetPolicyUserScopeResponseBodyUserScope(TeaModel):
         user_group_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
+        # The scope of users to whom the control policy applies.
+        # *   If **All** is returned for this parameter, the control policy applies to all users.
+        # 
+        # *   If no value is returned for this parameter, the control policy applies to the assets specified in the return values of UserGroupIds and UserIds.
         self.scope_type = scope_type
+        # The user groups to which the control policy applies.
         self.user_group_ids = user_group_ids
+        # The users to whom the control policy applies.
         self.user_ids = user_ids
 
     def validate(self):
@@ -12641,7 +14392,9 @@ class GetPolicyUserScopeResponseBody(TeaModel):
         request_id: str = None,
         user_scope: GetPolicyUserScopeResponseBodyUserScope = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The users to whom the control policy applies.
         self.user_scope = user_scope
 
     def validate(self):
@@ -12718,8 +14471,21 @@ class GetRuleRequest(TeaModel):
         region_id: str = None,
         rule_id: str = None,
     ):
+        # The bastion host ID.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The region ID of the bastion host.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        # The ID of the authorization rule to query.
+        # 
+        # >  You can call the [ListRules](https://help.aliyun.com/document_detail/2758868.html) operation to query the authorization rule ID.
+        # 
+        # This parameter is required.
         self.rule_id = rule_id
 
     def validate(self):
@@ -12755,6 +14521,7 @@ class GetRuleResponseBodyRuleDatabasesDatabaseAccounts(TeaModel):
         self,
         database_account_id: str = None,
     ):
+        # The ID of the database account that the policy authorizes users to manage.
         self.database_account_id = database_account_id
 
     def validate(self):
@@ -12783,7 +14550,9 @@ class GetRuleResponseBodyRuleDatabases(TeaModel):
         database_accounts: List[GetRuleResponseBodyRuleDatabasesDatabaseAccounts] = None,
         database_id: str = None,
     ):
+        # The database accounts on which permissions are granted by using the authorization rule.
         self.database_accounts = database_accounts
+        # The ID of the database that the policy authorizes users to manage.
         self.database_id = database_id
 
     def validate(self):
@@ -12824,7 +14593,9 @@ class GetRuleResponseBodyRuleHostGroups(TeaModel):
         host_account_names: List[str] = None,
         host_group_id: str = None,
     ):
+        # The asset accounts on which permissions are granted by using the authorization rule.
         self.host_account_names = host_account_names
+        # The ID of the asset group that the policy authorizes users to manage.
         self.host_group_id = host_group_id
 
     def validate(self):
@@ -12856,6 +14627,7 @@ class GetRuleResponseBodyRuleHostsHostAccounts(TeaModel):
         self,
         host_account_id: str = None,
     ):
+        # The ID of the host account that the policy authorizes users to manage.
         self.host_account_id = host_account_id
 
     def validate(self):
@@ -12884,7 +14656,9 @@ class GetRuleResponseBodyRuleHosts(TeaModel):
         host_accounts: List[GetRuleResponseBodyRuleHostsHostAccounts] = None,
         host_id: str = None,
     ):
+        # The host accounts that the policy authorizes users to manage.
         self.host_accounts = host_accounts
+        # The ID of the host that the policy authorizes users to manage.
         self.host_id = host_id
 
     def validate(self):
@@ -12924,6 +14698,7 @@ class GetRuleResponseBodyRuleUserGroups(TeaModel):
         self,
         user_group_id: str = None,
     ):
+        # The ID of the authorized user group.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -12951,6 +14726,7 @@ class GetRuleResponseBodyRuleUsers(TeaModel):
         self,
         user_id: str = None,
     ):
+        # The ID of the authorized user.
         self.user_id = user_id
 
     def validate(self):
@@ -12987,15 +14763,25 @@ class GetRuleResponseBodyRule(TeaModel):
         user_groups: List[GetRuleResponseBodyRuleUserGroups] = None,
         users: List[GetRuleResponseBodyRuleUsers] = None,
     ):
+        # The remarks of the authorization rule.
         self.comment = comment
+        # The databases on which permissions are granted by using the authorization rule.
         self.databases = databases
+        # The end time of the validity period of the authorization rule. The value is a UNIX timestamp. Unit: seconds.
         self.effective_end_time = effective_end_time
+        # The start time of the validity period of the authorization rule. The value is a UNIX timestamp. Unit: seconds.
         self.effective_start_time = effective_start_time
+        # The asset groups on which permissions are granted by using the authorization rule.
         self.host_groups = host_groups
+        # The information about the hosts that the policy authorizes users to manage.
         self.hosts = hosts
+        # The ID of the authorization rule.
         self.rule_id = rule_id
+        # The name of the authorization rule.
         self.rule_name = rule_name
+        # The authorized user groups.
         self.user_groups = user_groups
+        # The authorized users.
         self.users = users
 
     def validate(self):
@@ -13104,7 +14890,9 @@ class GetRuleResponseBody(TeaModel):
         request_id: str = None,
         rule: GetRuleResponseBodyRule = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned information about the authorization rule.
         self.rule = rule
 
     def validate(self):
@@ -13183,15 +14971,19 @@ class GetUserRequest(TeaModel):
     ):
         # The ID of the bastion host on which you want to query the user.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host on which you want to query the user.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The ID of the user.
         # 
-        # > You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
+        # > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the ID of the user.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -13253,7 +15045,15 @@ class GetUserResponseBodyUser(TeaModel):
         self.effective_start_time = effective_start_time
         # The email address of the user.
         self.email = email
+        # This parameter is required if LanguageStatus is set to Custom.
+        # 
+        # - **zh-cn**: simplified Chinese.
+        # - **en**: English.
         self.language = language
+        # Indicates whether notifications are sent in the language specified in the global settings or a custom language.
+        # 
+        # *   **Global**: Global
+        # *   **Custom**: Custom
         self.language_status = language_status
         # The mobile phone number of the user.
         self.mobile = mobile
@@ -13400,7 +15200,7 @@ class GetUserResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The details of the user that was queried.
+        # The detailed information about the queried user.
         self.user = user
 
     def validate(self):
@@ -13479,15 +15279,19 @@ class GetUserGroupRequest(TeaModel):
     ):
         # The ID of the bastion host in which you want to query the details of the user group.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host in which you want to query the details of the user group.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The ID of the user group.
         # 
-        # > You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+        # > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the ID of the user group.
+        # 
+        # This parameter is required.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -13646,9 +15450,26 @@ class ListApproveCommandsRequest(TeaModel):
         page_size: str = None,
         region_id: str = None,
     ):
+        # The ID of the bastion host.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The number of the page. Default value: **1**.
+        # 
+        # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page.\\
+        # Maximum value: 1000. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+        # 
+        # >  We recommend that you do not leave this parameter empty.
+        # 
+        # This parameter is required.
         self.page_size = page_size
+        # The region ID of the bastion host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -13698,16 +15519,27 @@ class ListApproveCommandsResponseBodyApproveCommands(TeaModel):
         session_id: str = None,
         state: str = None,
     ):
+        # The ID of the command to be reviewed.
         self.approve_command_id = approve_command_id
+        # The username of the asset account that is used for O\\&M.
         self.asset_account_name = asset_account_name
+        # The IP address of the asset for O\\&M.
         self.asset_ip = asset_ip
+        # The name of the asset.
         self.asset_name = asset_name
+        # The source IP address from which the application is submitted.
         self.client_ip = client_ip
+        # The Bastionhost user who submitted the O\\&M application.
         self.client_user = client_user
+        # The command to be reviewed.
         self.command = command
+        # The time when the O\\&M application was submitted. The value is a UNIX timestamp. Unit: seconds.
         self.create_time = create_time
+        # The O\\&M protocol.
         self.protocol_name = protocol_name
+        # The ID of the O\\&M session that triggered the review.
         self.session_id = session_id
+        # The status of the review. Valid values: **Wait**: The command is pending review.
         self.state = state
 
     def validate(self):
@@ -13777,8 +15609,11 @@ class ListApproveCommandsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The commands to be reviewed.
         self.approve_commands = approve_commands
+        # The request ID.
         self.request_id = request_id
+        # The total number of commands to be reviewed.
         self.total_count = total_count
 
     def validate(self):
@@ -13868,11 +15703,28 @@ class ListDatabaseAccountsRequest(TeaModel):
         page_size: str = None,
         region_id: str = None,
     ):
+        # The name of the database account to query. The name can be up to 128 characters in length. Only exact match is supported.
         self.database_account_name = database_account_name
+        # The ID of the database whose database accounts you want to query.
+        # 
+        # >  You can call the [ListDatabases](https://help.aliyun.com/document_detail/2758822.html) operation to query the database ID.
         self.database_id = database_id
+        # The bastion host ID.
+        # 
+        # > You can call the DescribeInstances operation to query the bastion host ID.[](~~153281~~)
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.\\
+        # Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+        # 
+        # > We recommend that you do not leave this parameter empty.
         self.page_size = page_size
+        # The region ID of the bastion host.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -13924,10 +15776,18 @@ class ListDatabaseAccountsResponseBodyDatabaseAccounts(TeaModel):
         database_schema: str = None,
         has_password: str = None,
     ):
+        # The database account ID.
         self.database_account_id = database_account_id
+        # The name of the database account.
         self.database_account_name = database_account_name
+        # The database ID.
         self.database_id = database_id
+        # The name of the database. A value is returned for this parameter if the engine of the database with the specified database ID is PostgreSQL or Oracle.
         self.database_schema = database_schema
+        # Indicates whether the database account has a password. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.has_password = has_password
 
     def validate(self):
@@ -13973,8 +15833,11 @@ class ListDatabaseAccountsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The returned database accounts.
         self.database_accounts = database_accounts
+        # The request ID.
         self.request_id = request_id
+        # The total number of database accounts returned.
         self.total_count = total_count
 
     def validate(self):
@@ -14065,12 +15928,34 @@ class ListDatabaseAccountsForUserRequest(TeaModel):
         region_id: str = None,
         user_id: str = None,
     ):
+        # The name of the database account to query. The name can be up to 128 characters in length. Only exact match is supported.
         self.database_account_name = database_account_name
+        # The ID of the database whose accounts you want to query.
+        # 
+        # This parameter is required.
         self.database_id = database_id
+        # The bastion host ID.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The page number. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page.\\
+        # Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+        # 
+        # > We recommend that you do not leave this parameter empty.
         self.page_size = page_size
+        # The region ID of the bastion host.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        # The ID of the user to query. This operation returns whether the user is authorized to manage each database account.
+        # 
+        # > You can call the ListUsers operation to query the ID of the user.[](~~204522~~)
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -14126,10 +16011,23 @@ class ListDatabaseAccountsForUserResponseBodyDatabaseAccounts(TeaModel):
         is_authorized: bool = None,
         protocol_name: str = None,
     ):
+        # The database account ID.
         self.database_account_id = database_account_id
+        # The name of the database account.
         self.database_account_name = database_account_name
+        # The ID of the database to which the database account belongs.
         self.database_id = database_id
+        # Indicates whether the user is authorized to manage the database account. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.is_authorized = is_authorized
+        # The protocol used by the database account. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **Oracle**\
+        # *   **PostgreSQL**\
+        # *   **SQLServer**\
         self.protocol_name = protocol_name
 
     def validate(self):
@@ -14175,8 +16073,11 @@ class ListDatabaseAccountsForUserResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The database accounts returned.
         self.database_accounts = database_accounts
+        # The request ID.
         self.request_id = request_id
+        # The total number of database accounts that are returned.
         self.total_count = total_count
 
     def validate(self):
@@ -14267,12 +16168,36 @@ class ListDatabaseAccountsForUserGroupRequest(TeaModel):
         region_id: str = None,
         user_group_id: str = None,
     ):
+        # The name of the database account to query. The name can be up to 128 characters in length. Only exact match is supported.
         self.database_account_name = database_account_name
+        # The ID of the database whose database accounts you want to query.
+        # 
+        # >  You can call the [ListDatabaseAccounts](https://help.aliyun.com/document_detail/2758839.html) operation to query the database account ID.
+        # 
+        # This parameter is required.
         self.database_id = database_id
+        # The bastion host ID.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The page number. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page.\\
+        # Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+        # 
+        # > We recommend that you do not leave this parameter empty.
         self.page_size = page_size
+        # The region ID of the bastion host.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        # The ID of the user group to query. This operation returns whether the user group is authorized to manage each database account.
+        # 
+        # >  You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the user group ID.
+        # 
+        # This parameter is required.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -14328,10 +16253,23 @@ class ListDatabaseAccountsForUserGroupResponseBodyDatabaseAccounts(TeaModel):
         is_authorized: bool = None,
         protocol_name: str = None,
     ):
+        # The ID of the database account.
         self.database_account_id = database_account_id
+        # The name of the database account.
         self.database_account_name = database_account_name
+        # The ID of the database to which the database account belongs.
         self.database_id = database_id
+        # Indicates whether the user group is authorized to manage the database account. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.is_authorized = is_authorized
+        # The protocol used by the database account. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **Oracle**\
+        # *   **PostgreSQL**\
+        # *   **SQLServer**\
         self.protocol_name = protocol_name
 
     def validate(self):
@@ -14377,8 +16315,11 @@ class ListDatabaseAccountsForUserGroupResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The database accounts returned.
         self.database_accounts = database_accounts
+        # The request ID.
         self.request_id = request_id
+        # The total number of database accounts returned.
         self.total_count = total_count
 
     def validate(self):
@@ -14470,13 +16411,41 @@ class ListDatabasesRequest(TeaModel):
         region_id: str = None,
         source: str = None,
     ):
+        # The engine of the database to query. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **Oracle**\
+        # *   **PostgreSQL**\
+        # *   **SQLServer**\
         self.database_type = database_type
+        # The ID of the asset group to query. This operation returns the databases in the asset group.
+        # 
+        # > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the ID of the asset group.
         self.host_group_id = host_group_id
+        # The ID of the bastion host to query.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the network domain where the database to query resides.
         self.network_domain_id = network_domain_id
+        # The number of the page to return. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.
+        # Valid values: 1 to100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+        # 
+        # > We recommend that you do not leave this parameter empty.
         self.page_size = page_size
+        # The region ID of the bastion host to query.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        # The type of the database to query. Valid values:
+        # 
+        # * **Local**: on-premises database.
+        # * **Rds**: ApsaraDB for RDS instance.
+        # * **PolarDB**: PolarDB cluster
         self.source = source
 
     def validate(self):
@@ -14544,18 +16513,46 @@ class ListDatabasesResponseBodyDatabases(TeaModel):
         source_instance_region_id: str = None,
         source_instance_state: str = None,
     ):
+        # The address type of the database. Valid values:
+        # 
+        # * **Public**\
+        # * **Private**\
         self.active_address_type = active_address_type
+        # The remarks of the database.
         self.comment = comment
+        # The database ID.
         self.database_id = database_id
+        # The name of the database.
         self.database_name = database_name
+        # The port of the database.
         self.database_port = database_port
+        # The internal address of the database. The value is a domain name or an IP address.
         self.database_private_address = database_private_address
+        # The public address of the database. The value is a domain name or an IP address.
         self.database_public_address = database_public_address
+        # The database engine. Valid values:
+        # *   **MySQL**\
+        # *   **Oracle**\
+        # *   **PostgreSQL**\
+        # *   **SQLServer**\
         self.database_type = database_type
+        # The ID of the network domain where the database resides.
         self.network_domain_id = network_domain_id
+        # The type of the database. Valid values:
+        # 
+        # * **Local**: on-premises database.
+        # * **Rds**: ApsaraDB for RDS instance.
+        # * **PolarDB**: PolarDB cluster
         self.source = source
+        # The ID of the ApsaraDB for RDS instance or PolarDB cluster.
+        # > No value is returned for this parameter if **Source** is set to **Local**.
         self.source_instance_id = source_instance_id
+        # The region ID of the ApsaraDB for RDS instance or PolarDB cluster.
         self.source_instance_region_id = source_instance_region_id
+        # The status of the database. Valid values:
+        # 
+        # * **Normal**\
+        # * **Release**\
         self.source_instance_state = source_instance_state
 
     def validate(self):
@@ -14633,8 +16630,11 @@ class ListDatabasesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The databases returned.
         self.databases = databases
+        # The request ID.
         self.request_id = request_id
+        # The total number of databases returned.
         self.total_count = total_count
 
     def validate(self):
@@ -14727,14 +16727,39 @@ class ListDatabasesForUserRequest(TeaModel):
         region_id: str = None,
         user_id: str = None,
     ):
+        # The address of the database to query. Only exact match is supported.
         self.database_address = database_address
+        # The name of the database to query.
         self.database_name = database_name
+        # The engine of the database to query. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **Oracle**\
+        # *   **PostgreSQL**\
+        # *   **SQLServer**\
         self.database_type = database_type
+        # The bastion host ID.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the network domain where the database to query resides.
         self.network_domain_id = network_domain_id
+        # The page number. Default value: **1**. Pages start from page 1.
         self.page_number = page_number
+        # The number of entries per page.\\
+        # Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+        # 
+        # > We recommend that you do not leave this parameter empty.
         self.page_size = page_size
+        # The region ID of the bastion host.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        # The ID of the user to query.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -14804,16 +16829,41 @@ class ListDatabasesForUserResponseBodyDatabases(TeaModel):
         source: str = None,
         source_instance_id: str = None,
     ):
+        # The address type of the database. Valid values:
+        # 
+        # *   **Public**\
+        # *   **Private**\
         self.active_address_type = active_address_type
+        # The remarks of the database.
         self.comment = comment
+        # The database ID.
         self.database_id = database_id
+        # The database name.
         self.database_name = database_name
+        # The database port.
         self.database_port = database_port
+        # The internal endpoint of the database. The value is a domain name or an IP address.
         self.database_private_address = database_private_address
+        # The public endpoint of the database. The value is a domain name or an IP address.
         self.database_public_address = database_public_address
+        # The database engine. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **Oracle**\
+        # *   **PostgreSQL**\
+        # *   **SQLServer**\
         self.database_type = database_type
+        # The ID of the network domain where the database resides.
         self.network_domain_id = network_domain_id
+        # The database type. Valid values:
+        # 
+        # *   **Local**: on-premises database.
+        # *   **Rds**: ApsaraDB RDS instance.
+        # *   **PolarDB**: PolarDB cluster.
         self.source = source
+        # The ID of the ApsaraDB RDS instance or PolarDB cluster.
+        # 
+        # >  No value is returned for this parameter if **Source** is set to **Local**.
         self.source_instance_id = source_instance_id
 
     def validate(self):
@@ -14883,8 +16933,11 @@ class ListDatabasesForUserResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The databases returned.
         self.databases = databases
+        # The request ID.
         self.request_id = request_id
+        # The total number of databases returned.
         self.total_count = total_count
 
     def validate(self):
@@ -14977,14 +17030,38 @@ class ListDatabasesForUserGroupRequest(TeaModel):
         region_id: str = None,
         user_group_id: str = None,
     ):
+        # The address of the database to query. Only exact match is supported.
         self.database_address = database_address
+        # The name of the database to query.
         self.database_name = database_name
+        # The engine of the database to query. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **Oracle**\
+        # *   **PostgreSQL**\
+        # *   **SQLServer**\
         self.database_type = database_type
+        # The bastion host ID.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.network_domain_id = network_domain_id
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.\\
+        # Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+        # 
+        # > We recommend that you do not leave this parameter empty.
         self.page_size = page_size
+        # The region ID of the bastion host.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        # The ID of the user group to query.
+        # 
+        # This parameter is required.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -15055,17 +17132,43 @@ class ListDatabasesForUserGroupResponseBodyDatabases(TeaModel):
         source: str = None,
         source_instance_id: str = None,
     ):
+        # The address type of the database. Valid values:
+        # 
+        # *   **Public**\
+        # *   **Private**\
         self.active_address_type = active_address_type
+        # The remarks of the database.
         self.comment = comment
+        # The total number of database accounts returned.
         self.database_account_count = database_account_count
+        # The ID of the database to which the database account belongs.
         self.database_id = database_id
+        # The name of the database.
         self.database_name = database_name
+        # The port of the database.
         self.database_port = database_port
+        # The internal address of the database. The value is a domain name or an IP address.
         self.database_private_address = database_private_address
+        # The public address of the database. The value is a domain name or an IP address.
         self.database_public_address = database_public_address
+        # The database engine. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **Oracle**\
+        # *   **PostgreSQL**\
+        # *   **SQLServer**\
         self.database_type = database_type
+        # The ID of the network domain where the database resides.
         self.network_domain_id = network_domain_id
+        # The type of the database. Valid values:
+        # 
+        # *   **Local**: on-premises database.
+        # *   **Rds**: ApsaraDB RDS instance.
+        # *   **PolarDB**: PolarDB cluster.
         self.source = source
+        # The ID of the ApsaraDB RDS instance or PolarDB cluster.
+        # 
+        # > No value is returned for this parameter if **Source** is set to **Local**.
         self.source_instance_id = source_instance_id
 
     def validate(self):
@@ -15139,8 +17242,11 @@ class ListDatabasesForUserGroupResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The databases returned.
         self.databases = databases
+        # The request ID.
         self.request_id = request_id
+        # The total number of databases returned.
         self.total_count = total_count
 
     def validate(self):
@@ -15235,11 +17341,15 @@ class ListHostAccountsRequest(TeaModel):
         self.host_account_name = host_account_name
         # The ID of the specified host whose accounts you want to query.
         # 
-        # >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
+        # >  You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the ID of the host.
+        # 
+        # This parameter is required.
         self.host_id = host_id
         # The ID of the bastion host in which you want to query accounts of the specified host.
         # 
         # >  You can call the DescribeInstances operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The number of the page to return. Default value: **1**.
         self.page_number = page_number
@@ -15258,7 +17368,7 @@ class ListHostAccountsRequest(TeaModel):
         self.protocol_name = protocol_name
         # The region ID of the bastion host in which you want to query accounts of the specified host.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -15492,15 +17602,25 @@ class ListHostAccountsForHostShareKeyRequest(TeaModel):
         page_size: str = None,
         region_id: str = None,
     ):
-        # The ID of the shared key.
+        # The shared key ID.
+        # 
+        # >  You can call the [ListHostShareKeys](https://help.aliyun.com/document_detail/462973.html) operation to query the shared key ID.
+        # 
+        # This parameter is required.
         self.host_share_key_id = host_share_key_id
-        # The ID of the bastion host. You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # The bastion host ID.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The number of the page to return. Default value: **1**.
         self.page_number = page_number
         # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
-        # The region ID of the bastion host. For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # The region ID of the bastion host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -15553,7 +17673,7 @@ class ListHostAccountsForHostShareKeyResponseBodyHostAccounts(TeaModel):
         self.host_id = host_id
         # The ID of the host account.
         self.hosts_account_id = hosts_account_id
-        # The O\&M protocol.
+        # The O\\&M protocol.
         self.protocol_name = protocol_name
 
     def validate(self):
@@ -15694,26 +17814,32 @@ class ListHostAccountsForUserRequest(TeaModel):
         self.host_account_name = host_account_name
         # The ID of the host to query.
         # 
-        # > You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
+        # > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the ID of the host.
+        # 
+        # This parameter is required.
         self.host_id = host_id
         # The ID of the bastion host on which you want to perform the query. The host accounts that the specified user is authorized to manage on the specified host are queried.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The number of the page to return. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page.\
+        # The number of entries to return on each page.\\
         # Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
         # 
         # > We recommend that you do not leave this parameter empty.
         self.page_size = page_size
         # The region ID of the bastion host on which you want to perform the query. The host accounts that the specified user is authorized to manage on the specified host are queried.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The ID of the user for which you want to query authorized host accounts.
         # 
-        # > You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
+        # > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the ID of the user.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -15928,26 +18054,32 @@ class ListHostAccountsForUserGroupRequest(TeaModel):
         self.host_account_name = host_account_name
         # The ID of the host to query.
         # 
-        # > You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
+        # > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the ID of the host.
+        # 
+        # This parameter is required.
         self.host_id = host_id
         # The ID of the bastion host on which you want to query the host accounts to be managed by the specified user group on the specified host.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The number of the page to return. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page.\
+        # The number of entries to return on each page.\\
         # Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
         # 
         # > We recommend that you do not leave this parameter empty.
         self.page_size = page_size
         # The region ID of the bastion host on which you want to query the host accounts to be managed by the specified user group on the specified host.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The ID of the user group for which you want to query authorized host accounts.
         # 
-        # > You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+        # > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the ID of the user group.
+        # 
+        # This parameter is required.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -16157,19 +18289,25 @@ class ListHostGroupAccountNamesForUserRequest(TeaModel):
     ):
         # The ID of the host group.
         # 
-        # > You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
+        # > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the ID of the host group.
+        # 
+        # This parameter is required.
         self.host_group_id = host_group_id
         # The ID of the bastion host to which the user belongs.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host to which the user belongs.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The ID of the user.
         # 
-        # > You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
+        # > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the ID of the user.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -16290,19 +18428,25 @@ class ListHostGroupAccountNamesForUserGroupRequest(TeaModel):
     ):
         # The ID of the host group.
         # 
-        # > You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
+        # > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the ID of the host group.
+        # 
+        # This parameter is required.
         self.host_group_id = host_group_id
         # The ID of the bastion host on which you want to query the host account names the user group is authorized to manage in a host group.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host on which you want to query the host account names the user group is authorized to manage in a host group.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The ID of the user group.
         # 
-        # > You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+        # > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the ID of the user group.
+        # 
+        # This parameter is required.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -16424,20 +18568,21 @@ class ListHostGroupsRequest(TeaModel):
     ):
         # The name of the host group that you want to query. Only exact match is supported.
         self.host_group_name = host_group_name
-        # The ID of the bastion host in which you want to query the host group.
+        # The ID of the bastion host to query.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/462953.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page.\
-        # Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
         # 
-        # > We recommend that you do not leave this parameter empty.
+        # >  We recommend that you do not leave this parameter empty.
         self.page_size = page_size
         # The region ID of the bastion host in which you want to query the host group.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -16484,13 +18629,13 @@ class ListHostGroupsResponseBodyHostGroups(TeaModel):
         host_group_name: str = None,
         member_count: int = None,
     ):
-        # The description of the host group.
+        # The remarks of the asset group.
         self.comment = comment
-        # The ID of the host group.
+        # The asset group ID.
         self.host_group_id = host_group_id
-        # The name of the host group.
+        # The name of the asset group.
         self.host_group_name = host_group_name
-        # The number of hosts in the host group.
+        # The number of hosts in the asset group.
         self.member_count = member_count
 
     def validate(self):
@@ -16532,11 +18677,11 @@ class ListHostGroupsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # An array that consists of the host groups.
+        # The asset groups returned.
         self.host_groups = host_groups
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of host groups returned.
+        # The total number of asset groups returned.
         self.total_count = total_count
 
     def validate(self):
@@ -16627,27 +18772,35 @@ class ListHostGroupsForUserRequest(TeaModel):
         region_id: str = None,
         user_id: str = None,
     ):
-        # The ID of the request.
+        # The name of the host group to query. The name can be up to 128 characters in length. Only exact match is supported.
         self.host_group_name = host_group_name
-        # The host groups returned.
+        # The ID of the bastion host whose user you want to query.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries to return on each page.
+        # The category of the host groups to query. Valid values:
         # 
-        # The value of the PageSize parameter must not exceed 100. Default value: 20. If you leave the PageSize parameter empty, 20 entries are returned on each page.
-        # 
-        # >  We recommend that you do not leave the PageSize parameter empty.
+        # *   **Authorized** (default): queries the host groups that the user is authorized to manage.
+        # *   **Unauthorized**: queries the host groups that the user is not authorized to manage.
         self.mode = mode
-        # The ID of the host group.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The ID of the user.
+        # The number of entries per page.\\
+        # Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
         # 
-        # >  You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
+        # >  We recommend that you do not leave this parameter empty.
         self.page_size = page_size
-        # The number of the page to return. Default value: **1**.
-        self.region_id = region_id
-        # The ID of the Bastionhost instance where you want to query the host groups that the user is authorized or not authorized to manage.
+        # The region ID of the bastion host whose user you want to query.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        self.region_id = region_id
+        # The user ID.
+        # 
+        # >  You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the user ID.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -16701,10 +18854,11 @@ class ListHostGroupsForUserResponseBodyHostGroups(TeaModel):
         host_group_id: str = None,
         host_group_name: str = None,
     ):
-        # ListHostGroupsForUser
+        # The remarks of the host group.
         self.comment = comment
-        # WB662865
+        # The host group ID.
         self.host_group_id = host_group_id
+        # The name of the host group.
         self.host_group_name = host_group_name
 
     def validate(self):
@@ -16742,13 +18896,11 @@ class ListHostGroupsForUserResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # ListHostGroupsForUser
+        # The host groups returned.
         self.host_groups = host_groups
-        # Queries the host groups that a specified user is authorized or not authorized to manage.
+        # The request ID.
         self.request_id = request_id
-        # All Bastionhost API requests must include common request parameters. For more information about common request parameters, see [Common parameters](~~148139~~).
-        # 
-        # For more information about sample requests, see the "Examples" section of this topic.
+        # The total number of host groups returned.
         self.total_count = total_count
 
     def validate(self):
@@ -16843,7 +18995,9 @@ class ListHostGroupsForUserGroupRequest(TeaModel):
         self.host_group_name = host_group_name
         # The ID of the bastion host to which the user group belongs.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # Specifies the category of the host group that you want to query. Valid values:
         # 
@@ -16852,18 +19006,20 @@ class ListHostGroupsForUserGroupRequest(TeaModel):
         self.mode = mode
         # The number of the page to return. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page.\
+        # The number of entries to return on each page.\\
         # Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
         # 
         # > We recommend that you do not leave this parameter empty.
         self.page_size = page_size
         # The region ID of the bastion host to which the user group belongs.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The ID of the user group.
         # 
-        # > You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+        # > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the ID of the user group.
+        # 
+        # This parameter is required.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -17051,13 +19207,19 @@ class ListHostShareKeysRequest(TeaModel):
         page_size: str = None,
         region_id: str = None,
     ):
-        # The ID of the bastion host. You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # The bastion host ID.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The number of the page to return. Default value: **1**.
         self.page_number = page_number
         # The number of entries to return on each page. Default value: **20**.
         self.page_size = page_size
-        # The region ID of the bastion host. For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # The region ID of the bastion host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -17103,11 +19265,11 @@ class ListHostShareKeysResponseBodyHostShareKeys(TeaModel):
     ):
         # The number of the associated host accounts.
         self.host_account_count = host_account_count
-        # The ID of the host account.
+        # The shared key ID.
         self.host_share_key_id = host_share_key_id
         # The name of the shared key.
         self.host_share_key_name = host_share_key_name
-        # The time when the shared key was last modified.
+        # The time when the shared key was last modified. The value is a UNIX timestamp. Unit: seconds.
         self.last_modify_key_at = last_modify_key_at
         # The fingerprint of the private key.
         self.private_key_finger_print = private_key_finger_print
@@ -17258,13 +19420,15 @@ class ListHostsRequest(TeaModel):
         self.host_address = host_address
         # The ID of the host group to which the host to be queried belongs.
         # 
-        # > You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
+        # > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the ID of the host group.
         self.host_group_id = host_group_id
         # The name of the host that you want to query. Only exact match is supported.
         self.host_name = host_name
         # The ID of the bastion host on which you want to query hosts.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The operating system of the host that you want to query. Valid values:
         # 
@@ -17279,7 +19443,7 @@ class ListHostsRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the bastion host on which you want to query hosts.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The source of the host that you want to query. Valid values:
         # 
@@ -17578,7 +19742,9 @@ class ListHostsForUserRequest(TeaModel):
         self.host_name = host_name
         # The ID of the bastion host on which you want to query the hosts that the user is authorized or not authorized to manage.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # Specifies the category of the hosts that you want to query. Valid values:
         # 
@@ -17592,18 +19758,20 @@ class ListHostsForUserRequest(TeaModel):
         self.ostype = ostype
         # The number of the page. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.\
+        # The number of entries per page.\\
         # Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
         # 
         # > We recommend that you do not leave this parameter empty.
         self.page_size = page_size
         # The region ID of the bastion host on which you want to query the hosts that the user is authorized or not authorized to manage.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The ID of the user.
         # 
-        # > You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
+        # > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the ID of the user.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -17838,41 +20006,42 @@ class ListHostsForUserGroupRequest(TeaModel):
         region_id: str = None,
         user_group_id: str = None,
     ):
+        # The endpoint of the host that you want to query. You can set this parameter to a domain name or an IP address. Only exact match is supported.
+        self.host_address = host_address
+        # The name of the host that you want to query. Only exact match is supported.
+        self.host_name = host_name
+        # The ID of the bastion host on which you want to query the hosts that the user group is authorized or not authorized to manage.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # Specifies the category of the hosts that you want to query. Valid values:
+        # 
+        # *   **Authorized**: queries the hosts that the user group is authorized to manage. This is the default value.
+        # *   **Unauthorized**: queries the hosts that the user group is not authorized to manage.
+        self.mode = mode
         # The operating system of the host that you want to query. Valid values:
         # 
         # *   **Linux**\
         # *   **Windows**\
-        self.host_address = host_address
-        # The ID of the Bastionhost instance where you want to query the hosts that the user group is authorized or not authorized to manage.
-        # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
-        self.host_name = host_name
-        # The category of the host that you want to query. Valid values:
-        # 
-        # *   **Authorized**: Query the hosts that the user group is authorized to manage. This is the default value.
-        # *   **Unauthorized**: Query the hosts that the user group is not authorized to manage.
-        self.instance_id = instance_id
-        # The operating system of the host. Valid values:
-        # 
-        # *   **Linux**\
-        # *   **Windows**\
-        self.mode = mode
-        # The internal endpoint of the host. The value is a domain name or an IP address.
         self.ostype = ostype
-        # The endpoint type of the host. Valid values:
-        # 
-        # *   **Public**: a public endpoint
-        # *   **Private**: an internal endpoint
+        # The number of the page. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.\\
+        # Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
         # 
-        # The value of the PageSize parameter must not exceed 100. Default value: 20. If you leave the PageSize parameter empty, 20 entries are returned on each page.
-        # 
-        # >  We recommend that you do not leave the PageSize parameter empty.
+        # > We recommend that you do not leave this parameter empty.
         self.page_size = page_size
-        # The endpoint of the host that you want to query. You can set this parameter to a domain name or an IP address. Only exact match is supported.
+        # The region ID of the bastion host on which you want to query the hosts that the user group is authorized or not authorized to manage.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The number of the page to return. Default value: 1.
+        # The ID of the user group for which you want to query hosts.
+        # 
+        # > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the ID of the user group.
+        # 
+        # This parameter is required.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -17938,20 +20107,25 @@ class ListHostsForUserGroupResponseBodyHosts(TeaModel):
         host_public_address: str = None,
         ostype: str = None,
     ):
-        # All Bastionhost API requests must include common request parameters. For more information about common request parameters, see [Common parameters](~~148139~~).
+        # The address type of the host. Valid values:
         # 
-        # For more information about sample requests, see the "Examples" section of this topic.
+        # *   **Public**: public endpoint
+        # *   **Private**: internal endpoint
         self.active_address_type = active_address_type
-        # The ID of the request.
+        # The description of the host.
         self.comment = comment
+        # The ID of the host.
         self.host_id = host_id
-        # ListHostsForUserGroup
+        # The name of the host.
         self.host_name = host_name
-        # WB662865
+        # The internal endpoint of the host. The value is a domain name or an IP address.
         self.host_private_address = host_private_address
-        # Queries the hosts that a specified user group is authorized or not authorized to manage.
+        # The public endpoint of the host. The value is a domain name or an IP address.
         self.host_public_address = host_public_address
-        # ListHostsForUserGroup
+        # The operating system of the host. Valid values:
+        # 
+        # *   **Linux**\
+        # *   **Windows**\
         self.ostype = ostype
 
     def validate(self):
@@ -18005,13 +20179,11 @@ class ListHostsForUserGroupResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The ID of the user group for which you want to query hosts.
-        # 
-        # >  You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
-        self.hosts = hosts
         # The hosts returned.
+        self.hosts = hosts
+        # The request ID.
         self.request_id = request_id
-        # The public endpoint of the host. The value is a domain name or an IP address.
+        # The total number of hosts returned.
         self.total_count = total_count
 
     def validate(self):
@@ -18101,11 +20273,29 @@ class ListNetworkDomainsRequest(TeaModel):
         page_size: str = None,
         region_id: str = None,
     ):
+        # The bastion host ID.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The name of the network domain.
         self.network_domain_name = network_domain_name
+        # The connection mode of the network domain. Valid values:
+        # 
+        # *   **Direct**\
+        # *   **Proxy**\
         self.network_domain_type = network_domain_type
+        # The page number. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page.\\
+        # Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+        # 
+        # > We recommend that you do not leave this parameter empty.
         self.page_size = page_size
+        # The region ID of the bastion host.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -18154,7 +20344,15 @@ class ListNetworkDomainsResponseBodyNetworkDomainsProxiesState(TeaModel):
         node_type: str = None,
         proxy_state: str = None,
     ):
+        # The node type of the proxy server. Valid values:
+        # 
+        # *   **Master**: primary proxy server.
+        # *   **Slave**: secondary proxy server.
         self.node_type = node_type
+        # The status of the proxy server.
+        # 
+        # *   **Available**\
+        # *   **Unavailable**\
         self.proxy_state = proxy_state
 
     def validate(self):
@@ -18191,10 +20389,21 @@ class ListNetworkDomainsResponseBodyNetworkDomains(TeaModel):
         network_domain_type: str = None,
         proxies_state: List[ListNetworkDomainsResponseBodyNetworkDomainsProxiesState] = None,
     ):
+        # The remarks of the network domain.
         self.comment = comment
+        # Indicates whether the network domain is built-in.
+        # 
+        # *   **true**\
+        # *   **false**\
         self.default = default
+        # The network domain ID.
         self.network_domain_id = network_domain_id
+        # The name of the network domain.
         self.network_domain_name = network_domain_name
+        # The connection mode of the network domain. Valid values:
+        # 
+        # *   **Direct**\
+        # *   **Proxy**\
         self.network_domain_type = network_domain_type
         self.proxies_state = proxies_state
 
@@ -18253,8 +20462,11 @@ class ListNetworkDomainsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The network domains that are returned.
         self.network_domains = network_domains
+        # The request ID.
         self.request_id = request_id
+        # The total number of network domains that are returned.
         self.total_count = total_count
 
     def validate(self):
@@ -18344,11 +20556,30 @@ class ListOperationDatabaseAccountsRequest(TeaModel):
         page_size: str = None,
         region_id: str = None,
     ):
+        # The name of the database account. Exact match is supported.
         self.database_account_name = database_account_name
+        # The database ID.
+        # 
+        # >  You can call the [ListOperationDatabases](https://help.aliyun.com/document_detail/2758856.html) operation to query the database ID.
+        # 
+        # This parameter is required.
         self.database_id = database_id
+        # The ID of the bastion host.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The page number. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page.\\
+        # Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+        # 
+        # >  We recommend that you do not leave this parameter empty.
         self.page_size = page_size
+        # The region ID of the bastion host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -18402,12 +20633,22 @@ class ListOperationDatabaseAccountsResponseBodyDatabaseAccounts(TeaModel):
         login_attribute: str = None,
         protocol_name: str = None,
     ):
+        # The name of the PostgreSQL or Oracle database.
         self.dbname = dbname
+        # The database account ID.
         self.database_account_id = database_account_id
+        # The name of the database account.
         self.database_account_name = database_account_name
+        # The database ID.
         self.database_id = database_id
+        # Indicates whether a password is configured for the database host account.
         self.has_password = has_password
+        # The logon attribute. One of the following values is returned if the database engine is Oracle:
+        # 
+        # *   **SERVICENAME**\
+        # *   **SID**\
         self.login_attribute = login_attribute
+        # The protocol that is used by the database account.
         self.protocol_name = protocol_name
 
     def validate(self):
@@ -18461,8 +20702,11 @@ class ListOperationDatabaseAccountsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The database accounts returned.
         self.database_accounts = database_accounts
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -18556,15 +20800,46 @@ class ListOperationDatabasesRequest(TeaModel):
         source_instance_id: str = None,
         source_instance_state: str = None,
     ):
+        # The address of the database.
         self.database_address = database_address
+        # The name of the database instance. The system supports exact search.
         self.database_name = database_name
+        # The type of the database. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **SQLServer**\
+        # *   **Oracle**\
+        # *   **PostgreSQL**\
         self.database_type = database_type
+        # The bastion host ID.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The page number. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page.\\
+        # Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+        # 
+        # >  We recommend that you do not leave this parameter empty.
         self.page_size = page_size
+        # The region ID of the bastion host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        # The source of the database instance. Valid values:
+        # 
+        # *   **Local**\
+        # *   **Rds**\
+        # *   **PolarDB**\
         self.source = source
+        # The ID of the ApsaraDB RDS instance. The system supports exact search.
         self.source_instance_id = source_instance_id
+        # The instance state.
+        # 
+        # *   **Normal**\
+        # *   **RemoteRelease**\
         self.source_instance_state = source_instance_state
 
     def validate(self):
@@ -18639,17 +20914,44 @@ class ListOperationDatabasesResponseBodyDatabases(TeaModel):
         source_instance_region_id: str = None,
         source_instance_state: str = None,
     ):
+        # The address type of the database. Valid values:
+        # 
+        # *   **Public**\
+        # *   **Private**\
         self.active_address_type = active_address_type
+        # The remarks of the database.
         self.comment = comment
+        # The database ID.
         self.database_id = database_id
+        # The database name.
         self.database_name = database_name
+        # The port of the database.
         self.database_port = database_port
+        # The private address of the database.
         self.database_private_address = database_private_address
+        # The public address of the database.
         self.database_public_address = database_public_address
+        # The database engine. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **PostgreSQL**\
+        # *   **Oracle**\
+        # *   **SQLServer**\
         self.database_type = database_type
+        # The database type. Valid values:
+        # 
+        # *   **Local**: on-premises database.
+        # *   **Rds**: ApsaraDB RDS instance.
+        # *   **PolarDB**: PolarDB cluster.
         self.source = source
+        # The ID of the ApsaraDB RDS instance.
         self.source_instance_id = source_instance_id
+        # The region ID of the ApsaraDB RDS instance.
         self.source_instance_region_id = source_instance_region_id
+        # The database status. Valid values:
+        # 
+        # *   **Normal**\
+        # *   **Release**\
         self.source_instance_state = source_instance_state
 
     def validate(self):
@@ -18723,8 +21025,11 @@ class ListOperationDatabasesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The databases returned.
         self.databases = databases
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -18814,11 +21119,30 @@ class ListOperationHostAccountsRequest(TeaModel):
         page_size: str = None,
         region_id: str = None,
     ):
+        # The name of the host account to query. Only exact match is supported.
         self.host_account_name = host_account_name
+        # The ID of the host whose accounts you want to query.
+        # 
+        # >  You can call the [ListOperationHosts](https://help.aliyun.com/document_detail/2758857.html) operation to query the host ID.
+        # 
+        # This parameter is required.
         self.host_id = host_id
+        # The bastion host ID.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The page number. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page.\\
+        # Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+        # 
+        # >  We recommend that you do not leave this parameter empty.
         self.page_size = page_size
+        # The region ID of the bastion host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -18867,7 +21191,9 @@ class ListOperationHostAccountsResponseBodyHostAccountsSSHConfig(TeaModel):
         enable_sftpchannel: bool = None,
         enable_sshchannel: bool = None,
     ):
+        # Indicates whether SFTP channels are enabled for the account.
         self.enable_sftpchannel = enable_sftpchannel
+        # Indicates whether SSH channels are enabled for the account.
         self.enable_sshchannel = enable_sshchannel
 
     def validate(self):
@@ -18906,13 +21232,27 @@ class ListOperationHostAccountsResponseBodyHostAccounts(TeaModel):
         protocol_name: str = None,
         sshconfig: ListOperationHostAccountsResponseBodyHostAccountsSSHConfig = None,
     ):
+        # Indicates whether a password is configured for the host account.
+        # 
+        # *   **true**\
+        # *   **false**\
         self.has_password = has_password
+        # The host account ID.
         self.host_account_id = host_account_id
+        # The host account name.
         self.host_account_name = host_account_name
+        # The host ID.
         self.host_id = host_id
+        # The ID of the shared key that is associated with the host.
         self.host_share_key_id = host_share_key_id
+        # The fingerprint of the private key for the host account.
         self.private_key_fingerprint = private_key_fingerprint
+        # The protocol that is used by the host account.
+        # 
+        # *   **SSH**\
+        # *   **RDP**\
         self.protocol_name = protocol_name
+        # Indicates whether the Secure File Transfer Protocol (SFTP) channels or the SSH channels are enabled for the host account that uses the SSH protocol.
         self.sshconfig = sshconfig
 
     def validate(self):
@@ -18972,8 +21312,11 @@ class ListOperationHostAccountsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The host accounts returned.
         self.host_accounts = host_accounts
+        # The request ID.
         self.request_id = request_id
+        # The total number of host accounts returned.
         self.total_count = total_count
 
     def validate(self):
@@ -19067,15 +21410,43 @@ class ListOperationHostsRequest(TeaModel):
         source_instance_id: str = None,
         source_instance_state: str = None,
     ):
+        # The address of the host that you want to query. You can set this parameter to a domain name or an IP address. Only exact match is supported.
         self.host_address = host_address
+        # The name of the host that you want to query. Only exact match is supported.
         self.host_name = host_name
+        # The ID of the bastion host.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The operating system of the host that you want to query. Valid values:
+        # 
+        # *   **Linux**\
+        # *   **Windows**\
         self.ostype = ostype
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.\\
+        # Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+        # 
+        # >  We recommend that you do not leave this parameter empty.
         self.page_size = page_size
+        # The region ID of the bastion host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        # The source of the host that you want to query. Valid values:
+        # 
+        # *   **Local**\
+        # *   **Ecs**\
         self.source = source
+        # The ID of the Elastic Compute Service (ECS) instance. Exact match is supported.
         self.source_instance_id = source_instance_id
+        # The status of the host that you want to query. Valid values:
+        # 
+        # *   **Normal**\
+        # *   **Release**\
         self.source_instance_state = source_instance_state
 
     def validate(self):
@@ -19148,15 +21519,37 @@ class ListOperationHostsResponseBodyHosts(TeaModel):
         source_instance_id: str = None,
         source_instance_state: str = None,
     ):
+        # The address type of the host. Valid values:
+        # 
+        # *   **Public**\
+        # *   **Private**\
         self.active_address_type = active_address_type
+        # The remarks of the host.
         self.comment = comment
+        # The host ID.
         self.host_id = host_id
+        # The host name.
         self.host_name = host_name
+        # The private IP address of the host.
         self.host_private_address = host_private_address
+        # The public IP address of the host.
         self.host_public_address = host_public_address
+        # The host OS.
+        # 
+        # *   **Linux**\
+        # *   **Windows**\
         self.ostype = ostype
+        # The host type. Valid values:
+        # 
+        # *   **Local**: on-premises host.
+        # *   **Ecs**: Elastic Compute Service (ECS) instance.
         self.source = source
+        # The ECS instance ID.
         self.source_instance_id = source_instance_id
+        # The host status. Valid values:
+        # 
+        # *   **Normal**\
+        # *   **Release**\
         self.source_instance_state = source_instance_state
 
     def validate(self):
@@ -19222,8 +21615,11 @@ class ListOperationHostsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The hosts returned.
         self.hosts = hosts
+        # The request ID.
         self.request_id = request_id
+        # The total number of hosts returned.
         self.total_count = total_count
 
     def validate(self):
@@ -19312,10 +21708,24 @@ class ListOperationTicketsRequest(TeaModel):
         page_size: str = None,
         region_id: str = None,
     ):
+        # The IP address of the asset that is contained in the O\\&M application to be reviewed.
         self.asset_address = asset_address
+        # The ID of the bastion host.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The number of the page. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page.\\
+        # Maximum value: 1000. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+        # 
+        # >  We recommend that you do not leave this parameter empty.
         self.page_size = page_size
+        # The region ID of the bastion host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -19359,6 +21769,7 @@ class ListOperationTicketsResponseBodyOperationTickets(TeaModel):
         self,
         apply_user_id: str = None,
         apply_username: str = None,
+        approve_comment: str = None,
         asset_account_id: str = None,
         asset_account_name: str = None,
         asset_address: str = None,
@@ -19369,24 +21780,60 @@ class ListOperationTicketsResponseBodyOperationTickets(TeaModel):
         asset_source: str = None,
         asset_source_instance_id: str = None,
         created_time: int = None,
+        effect_count: int = None,
+        effect_end_time: int = None,
+        effect_start_time: int = None,
         operation_ticket_id: str = None,
         protocol_name: str = None,
         state: str = None,
     ):
+        # The ID of the O\\&M applicant.
         self.apply_user_id = apply_user_id
+        # The username of the O\\&M applicant.
         self.apply_username = apply_username
+        # The remarks entered when the O\\&M personnel applies for O\\&M permissions.
+        self.approve_comment = approve_comment
+        # The ID of the asset account.
         self.asset_account_id = asset_account_id
+        # The username of the asset account.
         self.asset_account_name = asset_account_name
+        # The IP address of the asset.
         self.asset_address = asset_address
+        # The ID of the asset.
         self.asset_id = asset_id
+        # The name of the asset.
         self.asset_name = asset_name
+        # The network domain ID of the asset.
         self.asset_network_domain_id = asset_network_domain_id
+        # The operating system of the asset.
         self.asset_os = asset_os
+        # The name of the asset source to which the asset belongs. Valid values:
+        # 
+        # *   **Local**: an on-premises host.
+        # *   **Ecs**: an Elastic Compute Service (ECS) instance.
+        # *   **Rds**: an ApsaraDB RDS instance.
+        # *   A third-party asset source.
         self.asset_source = asset_source
+        # The ID of the asset source to which the asset belongs.
         self.asset_source_instance_id = asset_source_instance_id
+        # The time when the O\\&M application was submitted. The value is a UNIX timestamp. Unit: seconds.
         self.created_time = created_time
+        # The maximum number of logons applied by the O\\&M engineer. Valid values:
+        # 
+        # *   **0**: The number of logons is unlimited. The O\\&M engineer can log on to the specified asset for unlimited times during the validity period.
+        # *   **1**: The O\\&M engineer can log on to the specified asset only once during the validity period.
+        self.effect_count = effect_count
+        # The end time of the validity period. The value is a UNIX timestamp. Unit: seconds.
+        self.effect_end_time = effect_end_time
+        # The start time of the validity period. The value is a UNIX timestamp. Unit: seconds.
+        self.effect_start_time = effect_start_time
+        # The ID of the O\\&M application to be reviewed.
         self.operation_ticket_id = operation_ticket_id
+        # The O\\&M protocol.
         self.protocol_name = protocol_name
+        # The status of the review. Valid value:
+        # 
+        # *   Normal: to be reviewed
         self.state = state
 
     def validate(self):
@@ -19402,6 +21849,8 @@ class ListOperationTicketsResponseBodyOperationTickets(TeaModel):
             result['ApplyUserId'] = self.apply_user_id
         if self.apply_username is not None:
             result['ApplyUsername'] = self.apply_username
+        if self.approve_comment is not None:
+            result['ApproveComment'] = self.approve_comment
         if self.asset_account_id is not None:
             result['AssetAccountId'] = self.asset_account_id
         if self.asset_account_name is not None:
@@ -19422,6 +21871,12 @@ class ListOperationTicketsResponseBodyOperationTickets(TeaModel):
             result['AssetSourceInstanceId'] = self.asset_source_instance_id
         if self.created_time is not None:
             result['CreatedTime'] = self.created_time
+        if self.effect_count is not None:
+            result['EffectCount'] = self.effect_count
+        if self.effect_end_time is not None:
+            result['EffectEndTime'] = self.effect_end_time
+        if self.effect_start_time is not None:
+            result['EffectStartTime'] = self.effect_start_time
         if self.operation_ticket_id is not None:
             result['OperationTicketId'] = self.operation_ticket_id
         if self.protocol_name is not None:
@@ -19436,6 +21891,8 @@ class ListOperationTicketsResponseBodyOperationTickets(TeaModel):
             self.apply_user_id = m.get('ApplyUserId')
         if m.get('ApplyUsername') is not None:
             self.apply_username = m.get('ApplyUsername')
+        if m.get('ApproveComment') is not None:
+            self.approve_comment = m.get('ApproveComment')
         if m.get('AssetAccountId') is not None:
             self.asset_account_id = m.get('AssetAccountId')
         if m.get('AssetAccountName') is not None:
@@ -19456,6 +21913,12 @@ class ListOperationTicketsResponseBodyOperationTickets(TeaModel):
             self.asset_source_instance_id = m.get('AssetSourceInstanceId')
         if m.get('CreatedTime') is not None:
             self.created_time = m.get('CreatedTime')
+        if m.get('EffectCount') is not None:
+            self.effect_count = m.get('EffectCount')
+        if m.get('EffectEndTime') is not None:
+            self.effect_end_time = m.get('EffectEndTime')
+        if m.get('EffectStartTime') is not None:
+            self.effect_start_time = m.get('EffectStartTime')
         if m.get('OperationTicketId') is not None:
             self.operation_ticket_id = m.get('OperationTicketId')
         if m.get('ProtocolName') is not None:
@@ -19472,8 +21935,11 @@ class ListOperationTicketsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The O\\&M applications to be reviewed.
         self.operation_tickets = operation_tickets
+        # The request ID.
         self.request_id = request_id
+        # The total number of O\\&M applications to be reviewed.
         self.total_count = total_count
 
     def validate(self):
@@ -19562,10 +22028,24 @@ class ListPoliciesRequest(TeaModel):
         policy_name: str = None,
         region_id: str = None,
     ):
+        # The bastion host ID.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The page number. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page.\\
+        # Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+        # 
+        # > We recommend that you do not leave this parameter empty.
         self.page_size = page_size
+        # The name of the control policy to query. Only exact match is supported.
         self.policy_name = policy_name
+        # The region ID of the bastion host.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -19612,9 +22092,13 @@ class ListPoliciesResponseBodyPolicies(TeaModel):
         policy_name: str = None,
         priority: int = None,
     ):
+        # The remarks of the control policy.
         self.comment = comment
+        # The control policy ID.
         self.policy_id = policy_id
+        # The name of the control policy.
         self.policy_name = policy_name
+        # The priority of the control policy. A smaller value indicates a higher priority.
         self.priority = priority
 
     def validate(self):
@@ -19656,8 +22140,11 @@ class ListPoliciesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The control policies.
         self.policies = policies
+        # The request ID.
         self.request_id = request_id
+        # The total number of control policies that are returned.
         self.total_count = total_count
 
     def validate(self):
@@ -19747,11 +22234,29 @@ class ListRulesRequest(TeaModel):
         rule_name: str = None,
         rule_state: str = None,
     ):
+        # The bastion host ID.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.\\
+        # Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+        # 
+        # > We recommend that you do not leave this parameter empty.
         self.page_size = page_size
+        # The region ID of the bastion host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        # The name of the authorization rule to query. Only exact match is supported.
         self.rule_name = rule_name
+        # The state of the authorization rule to query.
+        # 
+        # *   **Enabled**\
+        # *   **Disabled**\
         self.rule_state = rule_state
 
     def validate(self):
@@ -19804,11 +22309,20 @@ class ListRulesResponseBodyRules(TeaModel):
         rule_name: str = None,
         rule_state: str = None,
     ):
+        # The remarks of the authorization rule.
         self.comment = comment
+        # The end time of the validity period of the authorization rule. The value is a timestamp. Unit: seconds.
         self.effective_end_time = effective_end_time
+        # The start time of the validity period of the authorization rule. The value is a timestamp. Unit: seconds.
         self.effective_start_time = effective_start_time
+        # The authorization rule ID.
         self.rule_id = rule_id
+        # The name of the authorization rule.
         self.rule_name = rule_name
+        # The state of the authorization rule.
+        # 
+        # *   **Enabled**\
+        # *   **Disabled**\
         self.rule_state = rule_state
 
     def validate(self):
@@ -19858,8 +22372,11 @@ class ListRulesResponseBody(TeaModel):
         rules: List[ListRulesResponseBodyRules] = None,
         total_count: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The authorization rules that are returned.
         self.rules = rules
+        # The total number of authorization rules that are returned.
         self.total_count = total_count
 
     def validate(self):
@@ -19945,6 +22462,7 @@ class ListTagKeysRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_type: str = None,
     ):
         # The number of the page to return.
@@ -19952,10 +22470,15 @@ class ListTagKeysRequest(TeaModel):
         # The number of entries to return on each page.
         self.page_size = page_size
         # The region ID of the bastion host.
+        # 
+        # This parameter is required.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The type of the resource.
         # 
         # Set the value to INSTANCE, which indicates that the resource is a bastion host.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -19973,6 +22496,8 @@ class ListTagKeysRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
         return result
@@ -19985,6 +22510,8 @@ class ListTagKeysRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
         return self
@@ -20174,6 +22701,7 @@ class ListTagResourcesRequest(TeaModel):
         self,
         next_token: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_id: List[str] = None,
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
@@ -20181,12 +22709,17 @@ class ListTagResourcesRequest(TeaModel):
         # The token for starting the next query.
         self.next_token = next_token
         # The region ID of the Bastionhost instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The IDs of instances. The ID is up to 20.
+        self.resource_group_id = resource_group_id
+        # The IDs of instances.
         self.resource_id = resource_id
         # The type of the resource.
         # 
         # Set the value to INSTANCE, which indicates that the resource is a Bastionhost instance.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags.
         self.tag = tag
@@ -20207,6 +22740,8 @@ class ListTagResourcesRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_type is not None:
@@ -20223,6 +22758,8 @@ class ListTagResourcesRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceType') is not None:
@@ -20388,10 +22925,20 @@ class ListUserGroupsRequest(TeaModel):
         region_id: str = None,
         user_group_name: str = None,
     ):
+        # The ID of the bastion host on which you want to query user groups.
+        #  >You can call the [DescribeInstances ](https://help.aliyun.com/document_detail/462953.html)operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The number of the page to return. Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
         self.page_size = page_size
+        # The region ID of the bastion host on which you want to query user groups.
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/462924.html).
         self.region_id = region_id
+        # The name of the user group that you want to query. Only exact match is supported.
         self.user_group_name = user_group_name
 
     def validate(self):
@@ -20438,9 +22985,13 @@ class ListUserGroupsResponseBodyUserGroups(TeaModel):
         user_group_id: str = None,
         user_group_name: str = None,
     ):
+        # The description of the user group.
         self.comment = comment
+        # The number of users in the user group.
         self.member_count = member_count
+        # The ID of the user group.
         self.user_group_id = user_group_id
+        # The name of the user group.
         self.user_group_name = user_group_name
 
     def validate(self):
@@ -20482,8 +23033,11 @@ class ListUserGroupsResponseBody(TeaModel):
         total_count: int = None,
         user_groups: List[ListUserGroupsResponseBodyUserGroups] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of user groups returned.
         self.total_count = total_count
+        # The user groups returned.
         self.user_groups = user_groups
 
     def validate(self):
@@ -20574,18 +23128,20 @@ class ListUserPublicKeysRequest(TeaModel):
     ):
         # The ID of the bastion host on which you want to query all public keys of the user.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The number of the page to return. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.\
+        # The number of entries to return on each page.\\
         # Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
         # 
         # > We recommend that you do not leave this parameter empty.
         self.page_size = page_size
         # The region ID of the bastion host on which you want to query all public keys of the user.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The ID of the user whose public keys you want to query.
         self.user_id = user_id
@@ -20788,46 +23344,49 @@ class ListUsersRequest(TeaModel):
         user_name: str = None,
         user_state: str = None,
     ):
-        # The display name of the user to be queried. Only exact match is supported.
+        # The display name of the user that you want to query. Only exact match is supported.
         self.display_name = display_name
-        # The ID of the Bastionhost instance to which the users to be queried belong.
+        # The ID of the bastion host whose users you want to query.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The mobile number of the user to be queried. Only exact match is supported.
+        # The mobile phone number of the user that you want to query. Only exact match is supported.
         self.mobile = mobile
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page.
-        # 
-        # The value of the PageSize parameter must not exceed 100. By default, the number of entries on each page is 20. If you do not set the PageSize parameter, 20 entries are returned per page by default.
+        # The number of entries per page.\\
+        # Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
         # 
         # >  We recommend that you do not leave this parameter empty.
         self.page_size = page_size
-        # The region ID of the Bastionhost instance to which the users to be queried belong.
+        # The region ID of the bastion host whose users you want to query.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The source of the user to be queried. Valid values:
+        # The type of the user that you want to query. Valid values:
         # 
-        # *   **Local**: a local user
-        # *   **Ram**: a RAM user
+        # *   **Local**: a local user.
+        # *   **Ram**: a Resource Access Management (RAM) user.
+        # *   **AD**: an Active Directory (AD)-authenticated user.
+        # *   **LDAP**: a Lightweight Directory Access Protocol (LDAP)-authenticated user.
         self.source = source
-        # The unique ID of the user to be queried. Only exact match is supported.
+        # The unique ID of the user that you want to query. Only exact match is supported.
         # 
-        # >  This parameter uniquely identifies a RAM user of the Bastionhost instance. This parameter takes effect only when the **Source** parameter is set to **Ram**. You can call the [ListUsers](~~28684~~) operation to obtain the unique ID of the user from the **UserId** response parameter.
+        # >  This parameter uniquely identifies a RAM user of the bastion host. This parameter is valid if **Source** is set to **Ram**. You can call the [ListUsers](https://help.aliyun.com/document_detail/28684.html) operation in RAM to obtain the unique ID of the user from the **UserId** response parameter.
         self.source_user_id = source_user_id
-        # The ID of the user group to be queried.
+        # The ID of the user group to which the user you want to query belongs.
         # 
-        # >  You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+        # >  You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the user group ID.
         self.user_group_id = user_group_id
-        # The logon name of the user to be queried. Only exact match is supported.
+        # The logon name of the user that you want to query. Only exact match is supported.
         self.user_name = user_name
-        # The status of the user to be queried. Valid values:
+        # The state of the user that you want to query. Valid values:
         # 
-        # *   **Normal**: The user can access the Bastionhost instance.
-        # *   **Frozen**: The user is locked and cannot access the Bastionhost instance.
-        # *   **Expired**: The user has expired and cannot access the Bastionhost instance.
+        # *   **Normal**: The user is in normal state.
+        # *   **Frozen**: The user is locked.
+        # *   **Expired**: The user has expired.
         self.user_state = user_state
 
     def validate(self):
@@ -20911,69 +23470,79 @@ class ListUsersResponseBodyUsers(TeaModel):
         user_name: str = None,
         user_state: List[str] = None,
     ):
-        # The description of the user.
+        # The remarks of the user.
         self.comment = comment
         # The display name of the user.
         self.display_name = display_name
-        # The end of the validity period of the user. The value is a UNIX timestamp. Unit: seconds.
+        # The end time of the validity period of the user. The value is a UNIX timestamp. Unit: seconds.
         self.effective_end_time = effective_end_time
-        # The beginning of the validity period of the user. The value is a UNIX timestamp. Unit: seconds.
+        # The start time of the validity period of the user. The value is a UNIX timestamp. Unit: seconds.
         self.effective_start_time = effective_start_time
         # The email address of the user.
         self.email = email
+        # This parameter is required if LanguageStatus is set to Custom. Valid values:
+        # 
+        # *   **zh-cn**: simplified Chinese.
+        # *   **en**: English.
         self.language = language
+        # Indicates whether notifications are sent in the language specified in the global settings or a custom language.
+        # 
+        # *   **Global**\
+        # *   **Custom**\
         self.language_status = language_status
-        # The mobile number of the user.
+        # The mobile phone number of the user.
         self.mobile = mobile
-        # The country where the mobile number of the user is registered. Valid values:
+        # The location where the mobile phone number of the user is registered. Valid values:
         # 
-        # *   **CN**: the Chinese mainland, whose country calling code is +86
-        # *   **HK**: Hong Kong (China), whose country calling code is +852
-        # *   **MO**: Macau (China), whose country calling code is +853
-        # *   **TW**: Taiwan (China), whose country calling code is +886
-        # *   **RU**: Russia, whose country calling code is +7
-        # *   **SG**: Singapore, whose country calling code is +65
-        # *   **MY**: Malaysia, whose country calling code is +60
-        # *   **ID**: Indonesia, whose country calling code is +62
-        # *   **DE**: Germany, whose country calling code is +49
-        # *   **AU**: Australia, whose country calling code is +61
-        # *   **US**: United States, whose country calling code is +1
-        # *   **AE**: United Arab Emirates, whose country calling code is +971
-        # *   **JP**: Japan, whose country calling code is +81
-        # *   **GB**: United Kingdom, whose country calling code is +44
-        # *   **IN**: India, whose country calling code is +91
-        # *   **KR**: South Korea, whose country calling code is +82
-        # *   **PH**: Philippines, whose country calling code is +63
-        # *   **CH**: Switzerland, whose country calling code is +41
-        # *   **SE**: Sweden, whose country calling code is +46
+        # *   **CN**: the Chinese mainland, whose international dialing code is +86.
+        # *   **HK**: Hong Kong (China), whose international dialing code is +852.
+        # *   **MO**: Macao (China), whose international dialing code is +853.
+        # *   **TW**: Taiwan (China), whose international dialing code is +886.
+        # *   **RU**: Russia, whose international dialing code is +7.
+        # *   **SG**: Singapore, whose international dialing code is +65.
+        # *   **MY**: Malaysia, whose international dialing code is +60.
+        # *   **ID**: Indonesia, whose international dialing code is +62.
+        # *   **DE**: Germany, whose international dialing code is +49.
+        # *   **AU**: Australia, whose international dialing code is +61.
+        # *   **US**: US, whose international dialing code is +1.
+        # *   **AE**: United Arab Emirates, whose international dialing code is +971.
+        # *   **JP:** Japan, whose international dialing code is +81.
+        # *   **GB**: UK, whose international dialing code is +44.
+        # *   **IN**: India, whose international dialing code is +91.
+        # *   **KR**: Republic of Korea, whose international dialing code is +82.
+        # *   **PH**: Philippines, whose international dialing code is +63.
+        # *   **CH**: Switzerland, whose international dialing code is +41.
+        # *   **SE**: Sweden, whose international dialing code is +46.
         self.mobile_country_code = mobile_country_code
-        # Specifies whether password reset is required upon the next logon. Valid values:
+        # Indicates whether password reset is required upon the next logon. Valid values:
         # 
-        # - true: yes
-        # - false: no
+        # *   **true**\
+        # *   **false**\
         self.need_reset_password = need_reset_password
-        # The source of the user. Valid values:
+        # The type of the user. Valid values:
         # 
-        # *   **Local**: a local user
-        # *   **Ram**: a RAM user
+        # *   **Local**: a local user.
+        # *   **Ram**: a RAM user.
+        # *   **AD**: an AD-authenticated user.
+        # *   **LDAP**: an LDAP-authenticated user.
         self.source = source
         # The unique ID of the user.
         # 
-        # >  This parameter uniquely identifies a RAM user of the Bastionhost instance. A value is returned for this parameter if the **Source** parameter is set to **Ram**. No value is returned for this parameter if the **Source** parameter is set to **Local**.
+        # >  This parameter uniquely identifies a RAM user of the bastion host. A value is returned for this parameter if **Source** is set to **Ram**. No value is returned for this parameter if **Source** is set to **Local**.
         self.source_user_id = source_user_id
-        # The two-factor authentication method.
+        # An array of the enabled two-factor authentication methods.
         self.two_factor_methods = two_factor_methods
-        # The two-factor authentication status of the user. Valid values:
+        # Indicates whether two-factor authentication is enabled for the user. Valid values:
         # 
-        # *   **Global:** follows the global settings
-        # *   **Disable:** disables two-factor authentication
-        # *   **Enable:** enable two-factor authentication and follows settings of the single user
+        # *   **Global**: The global setting applies.
+        # *   **Disable**: Two-factor authentication is disabled.
+        # *   **Enable**: Two-factor authentication is enabled. The user-specific setting for the authentication method applies.
         self.two_factor_status = two_factor_status
-        # The ID of the user.
+        # The user ID.
         self.user_id = user_id
         # The logon name of the user.
         self.user_name = user_name
-        # The statuses of the user.
+        # An array that lists the states of users.
         self.user_state = user_state
 
     def validate(self):
@@ -21067,11 +23636,11 @@ class ListUsersResponseBody(TeaModel):
         total_count: int = None,
         users: List[ListUsersResponseBodyUsers] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of users that were queried.
+        # The total number of users returned.
         self.total_count = total_count
-        # The list of users that were queried.
+        # The users returned.
         self.users = users
 
     def validate(self):
@@ -21160,15 +23729,19 @@ class LockUsersRequest(TeaModel):
     ):
         # The ID of the bastion host to which the users to be locked belong.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host to which the users to be locked belong.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The ID of the user to be locked. The value is a JSON string. You can add up to 100 user IDs. If you specify multiple IDs, separate the IDs with commas (,).
         # 
-        # > You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
+        # > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the ID of the user.
+        # 
+        # This parameter is required.
         self.user_ids = user_ids
 
     def validate(self):
@@ -21354,16 +23927,42 @@ class ModifyDatabaseRequest(TeaModel):
         region_id: str = None,
         source_instance_id: str = None,
     ):
+        # The new address type of the database. Valid values:
+        # 
+        # *   **Public**\
+        # *   **Private**\
         self.active_address_type = active_address_type
+        # The new remarks of the database.
         self.comment = comment
+        # The ID of the database to modify.
+        # 
+        # This parameter is required.
         self.database_id = database_id
+        # The new name of the database.
         self.database_name = database_name
+        # The new port of the database.
         self.database_port = database_port
+        # The new internal address of the database. Specify an IPv4 address or a domain name.
         self.database_private_address = database_private_address
+        # The new public address of the database. Specify an IPv4 address or a domain name.
         self.database_public_address = database_public_address
+        # The ID of the bastion host that manages the database to modify.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the new network domain for the database.
+        # 
+        # >  You can call the [ListNetworkDomains](https://help.aliyun.com/document_detail/2758827.html) operation to query the network domain ID.
         self.network_domain_id = network_domain_id
+        # The region ID of the bastion host that manages the database to modify.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        # The ID of the ApsaraDB for RDS instance or PolarDB cluster to modify.
+        # 
+        # > This parameter is required if **Source** is set to **Rds** or **PolarDB**.
         self.source_instance_id = source_instance_id
 
     def validate(self):
@@ -21431,6 +24030,7 @@ class ModifyDatabaseResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -21504,11 +24104,27 @@ class ModifyDatabaseAccountRequest(TeaModel):
         password: str = None,
         region_id: str = None,
     ):
+        # The ID of the database account to modify.
+        # 
+        # >  You can call the [ListDatabaseAccounts](https://help.aliyun.com/document_detail/2758839.html) operation to query the database account ID.
+        # 
+        # This parameter is required.
         self.database_account_id = database_account_id
+        # The new username of the database account. The username can be up to 128 characters in length.
         self.database_account_name = database_account_name
+        # The new name of the database. This parameter is required if the database engine is PostgreSQL or Oracle.
         self.database_schema = database_schema
+        # The ID of the bastion host that manages the database account to modify.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The new password of the database account.
         self.password = password
+        # The region ID of the bastion host that manages the database account to modify.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -21556,6 +24172,7 @@ class ModifyDatabaseAccountResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -21630,13 +24247,16 @@ class ModifyHostRequest(TeaModel):
         instance_id: str = None,
         network_domain_id: str = None,
         ostype: str = None,
+        pref_kex: str = None,
         region_id: str = None,
     ):
         # The new description of the host. The description can be up to 500 characters in length.
         self.comment = comment
         # The ID of the host.
         # 
-        # > You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
+        # > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the ID of the host.
+        # 
+        # This parameter is required.
         self.host_id = host_id
         # The new name of the host. The name can be up to 128 characters.
         self.host_name = host_name
@@ -21646,18 +24266,23 @@ class ModifyHostRequest(TeaModel):
         self.host_public_address = host_public_address
         # The ID of the bastion host on which you want to modify the information about the host.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the new network domain to which the host belongs.
+        # 
+        # > You can call the [ListNetworkDomains](https://help.aliyun.com/document_detail/2758827.html) operation to query the network domain ID.
         self.network_domain_id = network_domain_id
         # The new operating system of the host. Valid values:
         # 
         # *   **Linux**\
         # *   **Windows**\
         self.ostype = ostype
+        self.pref_kex = pref_kex
         # The region ID of the bastion host on which you want to modify the information about the host.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -21685,6 +24310,8 @@ class ModifyHostRequest(TeaModel):
             result['NetworkDomainId'] = self.network_domain_id
         if self.ostype is not None:
             result['OSType'] = self.ostype
+        if self.pref_kex is not None:
+            result['PrefKex'] = self.pref_kex
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -21707,6 +24334,8 @@ class ModifyHostRequest(TeaModel):
             self.network_domain_id = m.get('NetworkDomainId')
         if m.get('OSType') is not None:
             self.ostype = m.get('OSType')
+        if m.get('PrefKex') is not None:
+            self.pref_kex = m.get('PrefKex')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -21795,29 +24424,35 @@ class ModifyHostAccountRequest(TeaModel):
     ):
         # The ID of the host account whose information you want to modify.
         # 
-        # > You can call the [ListHostAccounts](~~204372~~) operation to query the ID of the host account.
+        # > You can call the [ListHostAccounts](https://help.aliyun.com/document_detail/204372.html) operation to query the ID of the host account.
+        # 
+        # This parameter is required.
         self.host_account_id = host_account_id
         # The new name of the host account. The name can be up to 128 characters in length.
         self.host_account_name = host_account_name
-        # The ID of the shared key.
+        # The ID of the shared key that is associated with the host.
+        # 
+        # >  You can call the [ListHostShareKeys](https://help.aliyun.com/document_detail/462973.html) operation to query the shared key ID.
         self.host_share_key_id = host_share_key_id
         # The ID of the bastion host in which you want to modify the information about the host account.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
-        self.instance_id = instance_id
-        # The passphrase of the new private key for the host account.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
         # 
-        # > This parameter takes effect only when the protocol of the host is set to SSH. If the protocol of the host is set to RDP, this parameter is not required.
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The passphrase for the new private key of the host account.
+        # 
+        # >  This parameter is valid only if the protocol used by the host is SSH. You do not need to configure this parameter if the protocol used by the host is Remote Desktop Protocol (RDP).
         self.pass_phrase = pass_phrase
         # The new password of the host account.
         self.password = password
-        # The new private key of the host account. The value is a Base64-encoded string.
+        # The new private key of the host account. Specify a Base64-encoded string.
         # 
-        # > This parameter takes effect only when the protocol of the host is set to SSH. If the protocol of the host is set to RDP, this parameter is not required. You can call the [GetHostAccount](~~204391~~) operation to query the protocol used by the host. You can configure a password and a private key for the host account at the same time. If both a password and a private key are configured for the host account, Bastionhost preferentially uses the private key for logon.
+        # >  This parameter takes effect only if the protocol used by the host is SSH. You do not need to configure this parameter if the protocol used by the host is Remote Desktop Protocol (RDP). You can call the [GetHostAccount](https://help.aliyun.com/document_detail/204391.html) operation to query the protocol used by the host. You can configure a password and a private key for the host account at the same time. If both a password and a private key are configured for the host account, Bastionhost preferentially uses the private key for logon.
         self.private_key = private_key
         # The region ID of the bastion host in which you want to query the details of the host account.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -21946,21 +24581,25 @@ class ModifyHostGroupRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The new description of the host group. The value can be up to 500 characters in length.
+        # The new remarks of the asset group. The remarks can be up to 500 characters in length.
         self.comment = comment
-        # The ID of the host group that you want to modify.
+        # The ID of the asset group that you want to modify.
         # 
-        # > You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
+        # >  You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the ID of the host group.
+        # 
+        # This parameter is required.
         self.host_group_id = host_group_id
-        # The new name of the host group. The name can be up to 128 characters in length.
+        # The new name of the asset group. The name can be up to 128 characters in length.
         self.host_group_name = host_group_name
-        # The ID of the bastion host on which you want to modify the information about the host group.
+        # The ID of the bastion host whose asset group you want to modify.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the bastion host on which you want to modify the information about the host group.
+        # The region ID of the bastion host whose asset group you want to modify.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -22079,16 +24718,26 @@ class ModifyHostShareKeyRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the shared key whose information you want to modify.
+        # 
+        # This parameter is required.
         self.host_share_key_id = host_share_key_id
         # The name of the shared key.
         self.host_share_key_name = host_share_key_name
-        # The ID of the bastion host. You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # The bastion host ID.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The passphrase of the private key. The value is a Base64-encoded string.
+        # The password of the private key. Specify a Base64-encoded string.
         self.pass_phrase = pass_phrase
-        # The private key. The value is a Base64-encoded string.
+        # The private key. Specify a Base64-encoded string.
+        # 
+        # >  Only Rivest-Shamir-Adleman (RSA) keys that are generated by using the ssh-keygen command and keys that are generated by using the Ed25519 algorithm are supported.
         self.private_key = private_key
-        # The region ID of the bastion host. For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # The region ID of the bastion host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -22212,18 +24861,24 @@ class ModifyHostsActiveAddressTypeRequest(TeaModel):
         # 
         # *   **Public**: public portal
         # *   **Private**: internal portal
+        # 
+        # This parameter is required.
         self.active_address_type = active_address_type
         # The ID of the host for which you want to change the portal type. The value is a JSON string. You can add up to 100 host IDs.
         # 
-        # >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
+        # >  You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the ID of the host.
+        # 
+        # This parameter is required.
         self.host_ids = host_ids
         # The ID of the bastion host for which you want to change the portal type of the host.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host for which you want to change the portal type of the host.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -22401,22 +25056,30 @@ class ModifyHostsPortRequest(TeaModel):
     ):
         # The ID of the host for which you want to change the port. The value is a JSON string. You can add up to 100 host IDs. If you specify multiple IDs, separate the IDs with commas (,).
         # 
-        # >  You can call the [ListHosts](~~200665~~) operation to query the IDs of hosts.
+        # >  You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the IDs of hosts.
+        # 
+        # This parameter is required.
         self.host_ids = host_ids
         # The ID of the bastion host for which you want to change the port of the host.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The new port of the host. The port number must be an integer. Valid values: 22 to 65535.
+        # 
+        # This parameter is required.
         self.port = port
         # The protocol that is used to connect to the host. Valid values:
         # 
         # *   **SSH**\
         # *   **RDP**\
+        # 
+        # This parameter is required.
         self.protocol_name = protocol_name
         # The region ID of the bastion host for which you want to change the port of the host.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -22473,7 +25136,7 @@ class ModifyHostsPortResponseBodyResults(TeaModel):
         # 
         #     > Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
         # 
-        # *   **OBJECT\_AlREADY\_EXISTS**: The specified object on which you want to perform the operation already exists.
+        # *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
         self.code = code
         # The ID of the host.
         self.host_id = host_id
@@ -22611,21 +25274,33 @@ class ModifyInstanceADAuthServerRequest(TeaModel):
         standby_server: str = None,
     ):
         # The username of the account that is used for the AD server.
+        # 
+        # This parameter is required.
         self.account = account
         # The Base distinguished name (DN).
+        # 
+        # This parameter is required.
         self.base_dn = base_dn
         # The domain on the AD server.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The field that is used to indicate the email address of a user on the AD server.
         self.email_mapping = email_mapping
         # The condition that is used to filter users.
         self.filter = filter
-        # The ID of the bastion host. You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
-        self.instance_id = instance_id
-        # Specifies whether to support SSL. Valid values:
+        # The bastion host ID.
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # Specifies whether SSL is supported. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # This parameter is required.
         self.is_ssl = is_ssl
         # The field that is used to indicate the mobile phone number of a user on the AD server.
         self.mobile_mapping = mobile_mapping
@@ -22633,11 +25308,17 @@ class ModifyInstanceADAuthServerRequest(TeaModel):
         self.name_mapping = name_mapping
         # The password of the account that is used for the AD server.
         self.password = password
-        # The port that is used to access the AD server.
+        # The port that is used to access the server.
+        # 
+        # This parameter is required.
         self.port = port
-        # The region ID of the bastion host. For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # The region ID of the bastion host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The address of the AD server.
+        # 
+        # This parameter is required.
         self.server = server
         # The address of the secondary AD server.
         self.standby_server = standby_server
@@ -22792,15 +25473,17 @@ class ModifyInstanceAttributeRequest(TeaModel):
     ):
         # The description of the bastion host.
         # 
-        # > The description can contain only letters, digits, underscores (\_), and hyphens (-). The description can be up to 30 characters in length.
+        # > The description must be up to 30 characters in length, and can contain letters, digits, underscores (_), and hyphens (-).
         self.description = description
         # The ID of the bastion host.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -22919,14 +25602,22 @@ class ModifyInstanceLDAPAuthServerRequest(TeaModel):
         standby_server: str = None,
     ):
         # The username of the account that is used for the LDAP server.
+        # 
+        # This parameter is required.
         self.account = account
         # The Base distinguished name (DN).
+        # 
+        # This parameter is required.
         self.base_dn = base_dn
         # The field that is used to indicate the email address of a user on the LDAP server.
         self.email_mapping = email_mapping
         # The condition that is used to filter users.
         self.filter = filter
-        # The ID of the bastion host. You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # The bastion host ID.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # Specifies whether to support SSL. Valid values:
         # 
@@ -22942,10 +25633,16 @@ class ModifyInstanceLDAPAuthServerRequest(TeaModel):
         # The password of the account that is used for the LDAP server. You must configure a password when you configure LDAP authentication. If you leave this parameter empty when you modify the settings of LDAP authentication, the current password is used.
         self.password = password
         # The port that is used to access the LDAP server.
+        # 
+        # This parameter is required.
         self.port = port
-        # The region ID of the bastion host. For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # The region ID of the bastion host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The address of the LDAP server.
+        # 
+        # This parameter is required.
         self.server = server
         # The address of the secondary LDAP server.
         self.standby_server = standby_server
@@ -23102,24 +25799,28 @@ class ModifyInstanceTwoFactorRequest(TeaModel):
     ):
         # Specifies whether to enable two-factor authentication. Valid values:
         # 
-        # *   **true**: enables two-factor authentication.
-        # *   **false**: disables two-factor authentication.
+        # *   **true**: yes
+        # *   **false**: no
         self.enable_two_factor = enable_two_factor
         # The ID of the bastion host.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The duration within which two-factor authentication is not required after a user passes two-factor authentication. Valid values: 0 to 168. Unit: hours. If you set this parameter to 0, the user must pass two-factor authentication every time the user logs on to the bastion host.
         self.skip_two_factor_time = skip_two_factor_time
-        # One or more methods that are used to send a verification code if two-factor authentication is enabled. If you set the EnableTwoFactor parameter to true, you must specify at least one method. Valid values:
+        # The method used to send a verification code for two-factor authentication. If EnableTwoFactor is set to true, you must specify at least one method. Valid values:
         # 
-        # *   **sms**: text message
-        # *   **email**: email
-        # *   **dingtalk**: Notice in DingTalk
+        # *   **sms:** text message.
+        # *   **email**: email.
+        # *   **dingtalk**: notice in DingTalk.
+        # *   **totp**: one-time password (OTP) token.
+        # *   **gmusbkey**: SM-based USB key.
         self.two_factor_methods = two_factor_methods
 
     def validate(self):
@@ -23163,7 +25864,7 @@ class ModifyInstanceTwoFactorResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The duration within which two-factor authentication is not required after a local user passes two-factor authentication. Valid values: 0 to 168. Unit: hours. If you set this parameter to 0, the local user must pass two-factor authentication every time the local user logs on to the bastion host.
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -23237,11 +25938,24 @@ class ModifyNetworkDomainRequestProxies(TeaModel):
         proxy_type: str = None,
         user: str = None,
     ):
+        # The new IP address of the proxy server.
         self.address = address
+        # The node type of the proxy server to modify. Valid values:
+        # 
+        # *   **Master**: primary proxy server.
+        # *   **Slave**: secondary proxy server.
         self.node_type = node_type
+        # The new password of the proxy server account.
         self.password = password
+        # The new port of the proxy server.
         self.port = port
+        # The new proxy mode. Valid values:
+        # 
+        # *   **SSHProxy**\
+        # *   **HTTPProxy**\
+        # *   **Socks5Proxy**\
         self.proxy_type = proxy_type
+        # The new username of the proxy server account.
         self.user = user
 
     def validate(self):
@@ -23295,12 +26009,30 @@ class ModifyNetworkDomainRequest(TeaModel):
         proxies: List[ModifyNetworkDomainRequestProxies] = None,
         region_id: str = None,
     ):
+        # The new remarks of the network domain.
         self.comment = comment
+        # The ID of the bastion host to which the network domain to modify belongs.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the network domain to modify.
+        # 
+        # This parameter is required.
         self.network_domain_id = network_domain_id
+        # The new name of the network domain.
         self.network_domain_name = network_domain_name
+        # The new connection mode of the network domain. Valid values:
+        # 
+        # *   **Direct**\
+        # *   **Proxy**\
         self.network_domain_type = network_domain_type
+        # The information about the proxy servers in the network domain.
         self.proxies = proxies
+        # The region ID of the bastion host to which the network domain to modify belongs.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -23360,6 +26092,7 @@ class ModifyNetworkDomainResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -23433,11 +26166,25 @@ class ModifyPolicyRequest(TeaModel):
         priority: str = None,
         region_id: str = None,
     ):
+        # The new remarks of the control policy.
         self.comment = comment
+        # The ID of the bastion host to which the control policy to modify belongs.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the control policy that you want to modify.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
+        # The new name of the control policy.
         self.policy_name = policy_name
+        # The priority of the modified control policy. Valid values: 1 to 100. The smaller the value, the higher the priority. Default value: 1.
         self.priority = priority
+        # The region ID of the bastion host to which the control policy to modify belongs.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -23485,6 +26232,7 @@ class ModifyPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -23554,7 +26302,9 @@ class ModifyRuleRequestDatabases(TeaModel):
         database_account_ids: List[str] = None,
         database_id: str = None,
     ):
+        # The database account IDs.
         self.database_account_ids = database_account_ids
+        # The database ID.
         self.database_id = database_id
 
     def validate(self):
@@ -23587,7 +26337,9 @@ class ModifyRuleRequestHostGroups(TeaModel):
         host_account_names: List[str] = None,
         host_group_id: str = None,
     ):
+        # The names of the asset accounts.
         self.host_account_names = host_account_names
+        # The asset group ID.
         self.host_group_id = host_group_id
 
     def validate(self):
@@ -23620,7 +26372,9 @@ class ModifyRuleRequestHosts(TeaModel):
         host_account_ids: List[str] = None,
         host_id: str = None,
     ):
+        # The host account IDs.
         self.host_account_ids = host_account_ids
+        # The host ID.
         self.host_id = host_id
 
     def validate(self):
@@ -23663,17 +26417,37 @@ class ModifyRuleRequest(TeaModel):
         user_group_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
+        # The new remarks of the authorization rule. It can be up to 500 characters in length.
         self.comment = comment
+        # The databases and database accounts that a user associated with the modified rule can manage.
         self.databases = databases
+        # The end time of the new validity period of the authorization rule. The value is a UNIX timestamp. Unit: seconds.
         self.effective_end_time = effective_end_time
+        # The start time of the new validity period of the authorization rule. The value is a UNIX timestamp. Unit: seconds.
         self.effective_start_time = effective_start_time
+        # The asset groups and asset accounts that a user associated with the modified rule can manage.
         self.host_groups = host_groups
+        # An array that consists of the host IDs and host account IDs with which the modified authorization rule is associated.
         self.hosts = hosts
+        # The ID of the bastion host whose authorization rule you want to modify.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The region ID of the bastion host to which the authorization rule to modify belongs.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        # The ID of the authorization rule to modify.
+        # 
+        # This parameter is required.
         self.rule_id = rule_id
+        # The new name of the authorization rule. The name must be 1 to 128 characters in length and can contain periods (.), underscores (_), hyphens (-), single quotation marks (\\"), and spaces. It cannot start with a special character.
         self.rule_name = rule_name
+        # The IDs of the user groups with which the modified authorization rule is associated.
         self.user_group_ids = user_group_ids
+        # The IDs of the users with whom the modified authorization rule is associated.
         self.user_ids = user_ids
 
     def validate(self):
@@ -23771,6 +26545,7 @@ class ModifyRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -23854,27 +26629,59 @@ class ModifyUserRequest(TeaModel):
         two_factor_status: str = None,
         user_id: str = None,
     ):
-        # The new description of the user. The description can be up to 500 characters in length.
+        # The new remarks of the user. The remarks can be up to 500 characters in length.
+        # 
+        # >  Leave this parameter empty if you do not want to change the remarks of the user.
         self.comment = comment
-        # The new display name of the user. This display name can be up to 128 characters in length.
+        # The new display name of the user. The display name can be up to 128 characters in length.
+        # 
+        # >  Leave this parameter empty if you do not want to change the display name of the user.
         self.display_name = display_name
-        # The end of the validity period of the user. The value is a UNIX timestamp. Unit: seconds.
+        # The end time of the validity period of the user. Specify a UNIX timestamp. Unit: seconds.
+        # 
+        # >  Leave this parameter empty if you do not want to change the end time of the validity period.
         self.effective_end_time = effective_end_time
-        # The beginning of the validity period of the user. The value is a UNIX timestamp. Unit: seconds.
+        # The start time of the validity period of the user. Specify a UNIX timestamp. Unit: seconds.
+        # 
+        # >  Leave this parameter empty if you do not want to change the start time of the validity period.
         self.effective_start_time = effective_start_time
         # The new email address of the user.
         # 
-        # > This parameter is required when the TwoFactorStatus parameter is set to Enable and the TwoFactorMethods parameter is set to email.
+        # > 
+        # 
+        # *   This parameter is required if TwoFactorStatus is set to Enable and TwoFactorMethods is set to email, or if TwoFactorStatus is set to Global and TwoFactorMethods is set to email in the global two-factor authentication settings.
+        # 
+        # *   You can call the [GetInstanceTwoFactor](https://help.aliyun.com/document_detail/462968.html) operation to query the global two-factor authentication settings.
+        # 
+        # *   Leave this parameter empty if you do not want to change the email address of the user.
         self.email = email
-        # The ID of the bastion host where you want to modify user information.
+        # The ID of the bastion host on which you want to modify the information about the user.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        self.language = language
-        self.language_status = language_status
-        # The new mobile number of the user.
+        # This parameter is required if LanguageStatus is set to Custom.
         # 
-        # > This parameter is required when the TwoFactorStatus parameter is set to Enable and the TwoFactorMethods parameter is set to sms or dingtalk.
+        # - **zh-cn**: simplified Chinese
+        # - **en**: English
+        self.language = language
+        # Specifies whether to send notifications in the language specified in the global settings or a custom language.
+        # 
+        # *   **Global**\
+        # *   **Custom**\
+        # 
+        # >  Leave this parameter empty if you do not want to change the natural language used to notify the user.
+        self.language_status = language_status
+        # The new mobile phone number of the user.
+        # 
+        # > 
+        # 
+        # *   This parameter is required if TwoFactorStatus is set to Enable and TwoFactorMethods is set to sms or dingtalk, or if TwoFactorStatus is set to Global and TwoFactorMethods is set to sms or dingtalk in the global two-factor authentication settings.
+        # 
+        # *   You can call the [GetInstanceTwoFactor](https://help.aliyun.com/document_detail/462968.html) operation to query the global two-factor authentication settings.
+        # 
+        # *   Leave this parameter empty if you do not want to change the mobile phone number of the user.
         self.mobile = mobile
         # The country where the new mobile number of the user is registered. Valid values:
         # 
@@ -23901,31 +26708,41 @@ class ModifyUserRequest(TeaModel):
         self.mobile_country_code = mobile_country_code
         # Specifies whether password reset is required upon the next logon. Valid values:
         # 
-        # - true: yes
-        # - false: no
-        self.need_reset_password = need_reset_password
-        # The new password of the user. The password must be 8 to 128 characters in length and must contain lowercase letters, uppercase letters, digits, and special characters.
-        self.password = password
-        # The region ID of the bastion host where you want to modify user information.
+        # *   **true**\
+        # *   **false**\
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # >  Leave this parameter empty if you do not want to change the password reset settings for the user.
+        self.need_reset_password = need_reset_password
+        # The new password of the user. The password must be 8 to 128 characters in length. It must contain uppercase letters, lowercase letters, digits, and special characters.
+        # 
+        # > Leave this parameter empty if you do not want to change the password of the user.
+        self.password = password
+        # The region ID of the bastion host on which you want to modify the information about the user.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The two-factor authentication method. You can select only one method. Valid values:
         # 
-        # *   **sms:** text message
-        # *   **email:** email
-        # *   **dingtalk:** DingTalk
-        # *   **totp OTP:** time-based one-time password (TOTP) app
+        # *   **sms**: text message-based two-factor authentication.
+        # *   **email**: email-based two-factor authentication.
+        # *   **dingtalk**: DingTalk-based two-factor authentication.
+        # *   **totp OTP:** one-time password (OTP) token-based two-factor authentication.
         # 
-        # > *   When the TwoFactorStatus parameter is set to Enable, you must specify one of the preceding values.
+        # >  If TwoFactorStatus is set to Enable, you must specify one of the valid values as TwoFactorMethods.
         self.two_factor_methods = two_factor_methods
-        # The two-factor authentication status of the user. Valid values:
+        # Specifies whether two-factor authentication is enabled for the user. Valid values:
         # 
-        # *   **Global:** follows the global settings
-        # *   **Disable:** disables two-factor authentication
-        # *   **Enable:** enable two-factor authentication and follows settings of the single user
+        # *   **Global**: The global settings apply.
+        # *   **Disable**: Two-factor authentication is disabled.
+        # *   **Enable**: Two-factor authentication is enabled and user-specific settings apply.
+        # 
+        # >  Leave this parameter empty if you do not want to change the two-factory authentication settings for the user.
         self.two_factor_status = two_factor_status
         # The ID of the user whose information you want to modify.
+        # 
+        # >  You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the user ID.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -24090,15 +26907,19 @@ class ModifyUserGroupRequest(TeaModel):
         self.comment = comment
         # The ID of the bastion host in which you want to modify the information about the user group.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host in which you want to modify the information about the user group.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The ID of the user group that you want to modify.
         # 
-        # > You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+        # > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the ID of the user group.
+        # 
+        # This parameter is required.
         self.user_group_id = user_group_id
         # The new name of the user group. This name can be up to 128 characters in length.
         self.user_group_name = user_group_name
@@ -24220,21 +27041,27 @@ class ModifyUserPublicKeyRequest(TeaModel):
     ):
         # The new description of the user group. The description can be up to 500 characters in length.
         self.comment = comment
-        # The ID of the bastion host that is used to modify the public key of the user.
+        # The ID of the bastion host on which you want to modify the public key of a user.
         # 
-        # > You can call the [describeinstances](~~153281~~) operation to query the ID of the bastion host.
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The new public key.
         # 
-        # > The public key must be encoded in Base64.
+        # >  Specify a Base64-encoded string.
         self.public_key = public_key
         # The ID of the public key that you want to modify.
+        # 
+        # >  You can call the [ListUserPublicKeys](https://help.aliyun.com/document_detail/477555.html) operation to query the public key ID.
+        # 
+        # This parameter is required.
         self.public_key_id = public_key_id
         # The name of the public key that you want to modify. This name can be up to 128 characters in length.
         self.public_key_name = public_key_name
         # The region ID of the bastion host that is used to modify the public key of the user.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -24354,9 +27181,24 @@ class MoveDatabasesToNetworkDomainRequest(TeaModel):
         network_domain_id: str = None,
         region_id: str = None,
     ):
+        # The IDs of the databases that you want to add to the network domain.
+        # 
+        # This parameter is required.
         self.database_ids = database_ids
+        # The bastion host ID.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the network domain to which you want to add databases.
+        # 
+        # > You can call the [ListNetworkDomains](https://help.aliyun.com/document_detail/2758827.html) operation to query the network domain ID.
+        # 
+        # This parameter is required.
         self.network_domain_id = network_domain_id
+        # The region ID of the bastion host.
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -24398,8 +27240,13 @@ class MoveDatabasesToNetworkDomainResponseBodyResults(TeaModel):
         database_id: str = None,
         message: str = None,
     ):
+        # Indicates whether the database is added to the network domain.
+        # 
+        # > The code LICENSE_OUT_OF_LIMIT indicates that the network domain feature is not supported by the current Bastionhost edition.
         self.code = code
+        # The database ID.
         self.database_id = database_id
+        # The error message that is returned.
         self.message = message
 
     def validate(self):
@@ -24436,7 +27283,9 @@ class MoveDatabasesToNetworkDomainResponseBody(TeaModel):
         request_id: str = None,
         results: List[MoveDatabasesToNetworkDomainResponseBodyResults] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The results of the call.
         self.results = results
 
     def validate(self):
@@ -24520,9 +27369,25 @@ class MoveHostsToNetworkDomainRequest(TeaModel):
         network_domain_id: str = None,
         region_id: str = None,
     ):
+        # The IDs of the hosts that you want to add to the network domain.
+        # 
+        # This parameter is required.
         self.host_ids = host_ids
+        # The bastion host ID.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the network domain to which you want to add hosts.
+        # 
+        # >  You can call the [ListNetworkDomains](https://help.aliyun.com/document_detail/2758827.html) operation to query the network domain ID.
+        # 
+        # This parameter is required.
         self.network_domain_id = network_domain_id
+        # The region ID of the bastion host.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -24564,8 +27429,13 @@ class MoveHostsToNetworkDomainResponseBodyResults(TeaModel):
         host_id: str = None,
         message: str = None,
     ):
+        # The return code that indicates whether the host is added to the network domain.
+        # 
+        # > The code LICENSE_OUT_OF_LIMIT indicates that the network domain feature is not supported by the current Bastionhost edition.
         self.code = code
+        # The host ID.
         self.host_id = host_id
+        # The error message that is returned.
         self.message = message
 
     def validate(self):
@@ -24602,7 +27472,9 @@ class MoveHostsToNetworkDomainResponseBody(TeaModel):
         request_id: str = None,
         results: List[MoveHostsToNetworkDomainResponseBodyResults] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The result of the call.
         self.results = results
 
     def validate(self):
@@ -24687,16 +27559,24 @@ class MoveResourceGroupRequest(TeaModel):
         resource_type: str = None,
     ):
         # The region ID of the bastion host.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the bastion host is moved.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the resource group ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the resource group ID of the bastion host.
+        # 
+        # This parameter is required.
         self.resource_group_id = resource_group_id
         # The ID of the bastion host for which you want to change the resource group.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource. Set the value to **INSTANCE**, which indicates that the resource is a bastion host.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -24807,8 +27687,21 @@ class RejectApproveCommandRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the command that you want to reject.
+        # 
+        # >  You can call the [ListApproveCommands](https://help.aliyun.com/document_detail/2584310.html) operation to query the IDs of all commands that need to be reviewed.
+        # 
+        # This parameter is required.
         self.command_id = command_id
+        # The ID of the bastion host.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The region ID of the bastion host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -24844,6 +27737,7 @@ class RejectApproveCommandResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -24910,19 +27804,28 @@ class RejectApproveCommandResponse(TeaModel):
 class RejectOperationTicketRequest(TeaModel):
     def __init__(
         self,
+        comment: str = None,
         instance_id: str = None,
         operation_ticket_id: str = None,
         region_id: str = None,
     ):
+        # The review remarks.
+        self.comment = comment
         # The ID of the bastion host.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the O\&M application that you want to reject. You can call the ListOperationTickets operation to query the IDs of all O\&M applications that require review.
+        # The ID of the O\\&M application that you want to reject.
+        # 
+        # >  You can call the [ListOperationTickets](https://help.aliyun.com/document_detail/2584313.html) operation to query the IDs of all O\\&M applications that require review.
+        # 
+        # This parameter is required.
         self.operation_ticket_id = operation_ticket_id
         # The region ID of the bastion host.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -24934,6 +27837,8 @@ class RejectOperationTicketRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.operation_ticket_id is not None:
@@ -24944,6 +27849,8 @@ class RejectOperationTicketRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('OperationTicketId') is not None:
@@ -25030,9 +27937,25 @@ class RemoveDatabasesFromGroupRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The IDs of the databases that you want to remove.
+        # 
+        # This parameter is required.
         self.database_ids = database_ids
+        # The ID of the asset group from which you want to remove databases.
+        # 
+        # > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the asset group ID.
+        # 
+        # This parameter is required.
         self.host_group_id = host_group_id
+        # The ID of the bastion host whose asset group you want to manage.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The region ID of the bastion host whose asset group you want to manage.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -25075,9 +27998,13 @@ class RemoveDatabasesFromGroupResponseBodyResults(TeaModel):
         host_group_id: str = None,
         message: str = None,
     ):
+        # The error code that is returned. If OK is returned, the operation was successful. If another error code is returned, the operation failed.
         self.code = code
+        # The database ID.
         self.database_id = database_id
+        # The asset group ID.
         self.host_group_id = host_group_id
+        # The error message that is returned.
         self.message = message
 
     def validate(self):
@@ -25118,7 +28045,9 @@ class RemoveDatabasesFromGroupResponseBody(TeaModel):
         request_id: str = None,
         results: List[RemoveDatabasesFromGroupResponseBodyResults] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The result of the call.
         self.results = results
 
     def validate(self):
@@ -25202,21 +28131,27 @@ class RemoveHostsFromGroupRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the host group from which you want to remove hosts.
+        # The ID of the asset group from which you want to remove hosts.
         # 
-        # >  You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
+        # >  You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the asset group ID.
+        # 
+        # This parameter is required.
         self.host_group_id = host_group_id
-        # The ID of the host that you want to remove from the host group. The value is a JSON string. You can add up to 100 host IDs.
+        # The IDs of the hosts that you want to remove from the host group. Specify a JSON string. You can specify up to 100 host IDs.
         # 
-        # >  You can call the [ListHosts](~~200665~~) operation to query the IDs of hosts.
+        # >  You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the host IDs.
+        # 
+        # This parameter is required.
         self.host_ids = host_ids
-        # The ID of the bastion host for which you want to remove hosts from the host group.
+        # The ID of the bastion host whose asset group you want to manage.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the bastion host for which you want to remove hosts from the host group.
+        # The region ID of the bastion host whose asset group you want to manage.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -25262,12 +28197,18 @@ class RemoveHostsFromGroupResponseBodyResults(TeaModel):
         # The return code that indicates whether the call was successful. Valid values:
         # 
         # *   **OK**: The call was successful.
+        # 
         # *   **UNEXPECTED**: An unknown error occurred.
+        # 
         # *   **INVALID_ARGUMENT**: A request parameter is invalid.
+        #     > Make sure that the request parameters are valid and call the operation again.
+        # 
         # *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
+        #     > Make sure that the specified bastion host ID and host IDs are valid and call the operation again.
+        # 
         # *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
         self.code = code
-        # The ID of the host group.
+        # The ID of the asset group.
         self.host_group_id = host_group_id
         # The ID of the host.
         self.host_id = host_id
@@ -25312,7 +28253,7 @@ class RemoveHostsFromGroupResponseBody(TeaModel):
         request_id: str = None,
         results: List[RemoveHostsFromGroupResponseBodyResults] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The result of the call.
         self.results = results
@@ -25400,19 +28341,25 @@ class RemoveUsersFromGroupRequest(TeaModel):
     ):
         # The ID of the bastion host for which you want to remove users from the user group.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host for which you want to remove users from the user group.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The ID of the user group from which you want to remove users.
         # 
-        # >  You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+        # >  You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the ID of the user group.
+        # 
+        # This parameter is required.
         self.user_group_id = user_group_id
         # The ID of the user who you want to remove. The value is a JSON string. You can add up to 100 user IDs. If you specify multiple IDs, separate the IDs with commas (,).
         # 
-        # >  You can call the [ListUsers](~~204522~~) operation to query the IDs of users.
+        # >  You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the IDs of users.
+        # 
+        # This parameter is required.
         self.user_ids = user_ids
 
     def validate(self):
@@ -25601,8 +28548,18 @@ class RenewAssetOperationTokenRequest(TeaModel):
         region_id: str = None,
         token_id: str = None,
     ):
+        # The bastion host ID.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The region ID of the bastion host.
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        # The ID of the O\\&M token that you want to renew.
+        # 
+        # >  You can call the [GenerateAssetOperationToken](https://help.aliyun.com/document_detail/2758861.html) operation to query the O\\&M token ID.
         self.token_id = token_id
 
     def validate(self):
@@ -25638,6 +28595,7 @@ class RenewAssetOperationTokenResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -25713,18 +28671,24 @@ class ResetHostAccountCredentialRequest(TeaModel):
         # 
         # *   **Password**\
         # *   **PrivateKey**\
+        # 
+        # This parameter is required.
         self.credential_type = credential_type
         # The ID of the host account for which the logon credential is to be deleted.
         # 
-        # >  You can call the [ListHostAccounts](~~204372~~) operation to query the ID of the host account.
+        # >  You can call the [ListHostAccounts](https://help.aliyun.com/document_detail/204372.html) operation to query the ID of the host account.
+        # 
+        # This parameter is required.
         self.host_account_id = host_account_id
         # The ID of the bastion host from which you want to delete the logon credential for the host account.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host from which you want to delete the logon credential for the host account.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -25834,7 +28798,9 @@ class SetPolicyAccessTimeRangeConfigRequestAccessTimeRangeConfigEffectiveTime(Te
         days: List[int] = None,
         hours: List[int] = None,
     ):
+        # The days of the week during which users can log on to the assets.
         self.days = days
+        # The time periods of the day during which users can log on to the assets.
         self.hours = hours
 
     def validate(self):
@@ -25866,6 +28832,7 @@ class SetPolicyAccessTimeRangeConfigRequestAccessTimeRangeConfig(TeaModel):
         self,
         effective_time: List[SetPolicyAccessTimeRangeConfigRequestAccessTimeRangeConfigEffectiveTime] = None,
     ):
+        # The details about the periods during which users can log on to the assets.
         self.effective_time = effective_time
 
     def validate(self):
@@ -25904,9 +28871,25 @@ class SetPolicyAccessTimeRangeConfigRequest(TeaModel):
         policy_id: str = None,
         region_id: str = None,
     ):
+        # The logon period limits.
+        # 
+        # This parameter is required.
         self.access_time_range_config = access_time_range_config
+        # The bastion host ID.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The control policy ID.
+        # 
+        # >  You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
+        # The region ID of the bastion host.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -25951,9 +28934,25 @@ class SetPolicyAccessTimeRangeConfigShrinkRequest(TeaModel):
         policy_id: str = None,
         region_id: str = None,
     ):
+        # The logon period limits.
+        # 
+        # This parameter is required.
         self.access_time_range_config_shrink = access_time_range_config_shrink
+        # The bastion host ID.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The control policy ID.
+        # 
+        # >  You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
+        # The region ID of the bastion host.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -25993,6 +28992,7 @@ class SetPolicyAccessTimeRangeConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -26061,6 +29061,12 @@ class SetPolicyApprovalConfigRequestApprovalConfig(TeaModel):
         self,
         switch_status: str = None,
     ):
+        # Specifies whether to enable O&M approval in the control policy. Valid values:
+        # 
+        # * **On**: enables O&M approval.
+        # * **Off**: disables O&M approval.
+        # 
+        # This parameter is required.
         self.switch_status = switch_status
 
     def validate(self):
@@ -26091,9 +29097,25 @@ class SetPolicyApprovalConfigRequest(TeaModel):
         policy_id: str = None,
         region_id: str = None,
     ):
+        # The O&M approval setting in the control policy.
+        # 
+        # This parameter is required.
         self.approval_config = approval_config
+        # The bastion host ID.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the control policy that you want to modify.
+        # 
+        # >  You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
+        # The region ID of the bastion host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -26138,9 +29160,25 @@ class SetPolicyApprovalConfigShrinkRequest(TeaModel):
         policy_id: str = None,
         region_id: str = None,
     ):
+        # The O&M approval setting in the control policy.
+        # 
+        # This parameter is required.
         self.approval_config_shrink = approval_config_shrink
+        # The bastion host ID.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the control policy that you want to modify.
+        # 
+        # >  You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
+        # The region ID of the bastion host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -26180,6 +29218,7 @@ class SetPolicyApprovalConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -26250,8 +29289,16 @@ class SetPolicyAssetScopeRequestDatabases(TeaModel):
         database_account_ids: List[str] = None,
         database_id: str = None,
     ):
+        # The scope of database accounts to which the control policy applies. Valid values:
+        # 
+        # *   **All**: The control policy applies to all database accounts of the database.
+        # *   **AccountId**: The control policy applies to specified database accounts of the database.
         self.account_scope_type = account_scope_type
+        # The database accounts to which the control policy applies.
+        # 
+        # >  This parameter is required if AccountScopeType is set to AccountId.
         self.database_account_ids = database_account_ids
+        # The database ID.
         self.database_id = database_id
 
     def validate(self):
@@ -26289,8 +29336,16 @@ class SetPolicyAssetScopeRequestHostGroups(TeaModel):
         account_scope_type: str = None,
         host_group_id: str = None,
     ):
+        # The asset accounts to which the control policy applies.
+        # 
+        # > This parameter is required if AccountScopeType is set to AccountName.
         self.account_names = account_names
+        # The scope of asset accounts to which the control policy applies. Valid values:
+        # 
+        # * **All**: The control policy applies to all accounts in the asset group.
+        # * **AccountName**: The control policy applies to specified accounts in the asset group.
         self.account_scope_type = account_scope_type
+        # The asset group ID.
         self.host_group_id = host_group_id
 
     def validate(self):
@@ -26328,8 +29383,16 @@ class SetPolicyAssetScopeRequestHosts(TeaModel):
         host_account_ids: List[str] = None,
         host_id: str = None,
     ):
+        # The scope of host accounts to which the control policy applies. Valid values:
+        # 
+        # * **All**: The control policy applies to all accounts of the host.
+        # * **AccountId**: The control policy applies specified accounts of the host.
         self.account_scope_type = account_scope_type
+        # The host accounts to which the control policy applies.
+        # 
+        # > This parameter is required if AccountScopeType is set to AccountId.
         self.host_account_ids = host_account_ids
+        # The host ID.
         self.host_id = host_id
 
     def validate(self):
@@ -26371,12 +29434,42 @@ class SetPolicyAssetScopeRequest(TeaModel):
         region_id: str = None,
         scope_type: str = None,
     ):
+        # The databases to which the control policy applies.
+        # 
+        # >  This parameter is required if ScopeType is set to Database. You can specify up to 500 databases.
         self.databases = databases
+        # The asset groups to which the control policy applies.
+        # 
+        # > This parameter is required if ScopeType is set to HostGroup. You can specify up to 100 asset groups.
         self.host_groups = host_groups
+        # The hosts to which the control policy applies.
+        # 
+        # > This parameter is required if ScopeType is set to Host. You can specify up to 500 hosts.
         self.hosts = hosts
+        # The bastion host ID.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the control policy that you want to modify.
+        # 
+        # >  You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
+        # The region ID of the bastion host.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        # The scope of assets to which the control policy applies. Valid values:
+        # 
+        # * **All**: The control policy applies to all assets.
+        # * **Host**: The control policy applies to specified hosts.
+        # * **Database**: The control policy applies to specified databases.
+        # * **HostGroup**: The control policy applies to specified asset groups.
+        # 
+        # This parameter is required.
         self.scope_type = scope_type
 
     def validate(self):
@@ -26454,6 +29547,7 @@ class SetPolicyAssetScopeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -26522,6 +29616,7 @@ class SetPolicyCommandConfigRequestCommandConfigApproval(TeaModel):
         self,
         commands: List[str] = None,
     ):
+        # The commands that can be run only after approval.
         self.commands = commands
 
     def validate(self):
@@ -26550,7 +29645,16 @@ class SetPolicyCommandConfigRequestCommandConfigDeny(TeaModel):
         acl_type: str = None,
         commands: List[str] = None,
     ):
+        # The type of command control. Valid values:
+        # 
+        # *   **black**: blacklist mode.
+        # *   **white**: whitelist mode.
+        # 
+        # This parameter is required.
         self.acl_type = acl_type
+        # The commands to be controlled.
+        # 
+        # > This parameter is required if AclType is set to white.
         self.commands = commands
 
     def validate(self):
@@ -26583,7 +29687,13 @@ class SetPolicyCommandConfigRequestCommandConfig(TeaModel):
         approval: SetPolicyCommandConfigRequestCommandConfigApproval = None,
         deny: SetPolicyCommandConfigRequestCommandConfigDeny = None,
     ):
+        # The command approval settings.
+        # 
+        # > A command approval policy is used to approve the commands that are excluded from a whitelist or blacklist specified in a command control policy. The command control policy takes precedence over the command approval policy in validation.
         self.approval = approval
+        # The command control settings.
+        # 
+        # This parameter is required.
         self.deny = deny
 
     def validate(self):
@@ -26623,9 +29733,27 @@ class SetPolicyCommandConfigRequest(TeaModel):
         policy_id: str = None,
         region_id: str = None,
     ):
+        # The command control settings.
+        # 
+        # > This parameter applies only to Linux hosts.
+        # 
+        # This parameter is required.
         self.command_config = command_config
+        # The bastion host ID.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the control policy that you want to modify.
+        # 
+        # > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
+        # The region ID of the bastion host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -26670,9 +29798,27 @@ class SetPolicyCommandConfigShrinkRequest(TeaModel):
         policy_id: str = None,
         region_id: str = None,
     ):
+        # The command control settings.
+        # 
+        # > This parameter applies only to Linux hosts.
+        # 
+        # This parameter is required.
         self.command_config_shrink = command_config_shrink
+        # The bastion host ID.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the control policy that you want to modify.
+        # 
+        # > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
+        # The region ID of the bastion host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -26712,6 +29858,7 @@ class SetPolicyCommandConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -26781,7 +29928,22 @@ class SetPolicyIPAclConfigRequestIPAclConfig(TeaModel):
         acl_type: str = None,
         ips: List[str] = None,
     ):
+        # The mode of access control on source IP addresses. Valid values:
+        # 
+        # *   **black**: blacklist mode.
+        # *   **white**: whitelist mode.
+        # 
+        # This parameter is required.
         self.acl_type = acl_type
+        # The source IP addresses in the blacklist or whitelist.
+        # 
+        # > 
+        # 
+        # *   This parameter is required if AclType is set to white.
+        # 
+        # *   If AclType is set to black but you do not want to add IP addresses to the blacklist, you can leave IPs empty.
+        # 
+        # This parameter is required.
         self.ips = ips
 
     def validate(self):
@@ -26816,9 +29978,25 @@ class SetPolicyIPAclConfigRequest(TeaModel):
         policy_id: str = None,
         region_id: str = None,
     ):
+        # The access control settings for source IP addresses.
+        # 
+        # This parameter is required.
         self.ipacl_config = ipacl_config
+        # The bastion host ID.
+        # 
+        # > You can call the DescribeInstances operation to query the bastion host ID.[](~~153281~~)
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the control policy that you want to modify.
+        # 
+        # >  You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
+        # The region ID of the bastion host.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -26863,9 +30041,25 @@ class SetPolicyIPAclConfigShrinkRequest(TeaModel):
         policy_id: str = None,
         region_id: str = None,
     ):
+        # The access control settings for source IP addresses.
+        # 
+        # This parameter is required.
         self.ipacl_config_shrink = ipacl_config_shrink
+        # The bastion host ID.
+        # 
+        # > You can call the DescribeInstances operation to query the bastion host ID.[](~~153281~~)
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the control policy that you want to modify.
+        # 
+        # >  You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
+        # The region ID of the bastion host.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -26905,6 +30099,7 @@ class SetPolicyIPAclConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -26976,9 +30171,33 @@ class SetPolicyProtocolConfigRequestProtocolConfigRDP(TeaModel):
         disk_redirection: str = None,
         record_keyboard: str = None,
     ):
+        # Specifies whether to enable downloading from the clipboard. Valid values:
+        # 
+        # *   Enable
+        # *   Disable
+        # 
+        # > If you do not specify this parameter, the default value Disable is used.
         self.clipboard_download = clipboard_download
+        # Specifies whether to enable uploading from the clipboard. Valid values:
+        # 
+        # *   Enable
+        # *   Disable
+        # 
+        # > If you do not specify this parameter, the default value Disable is used.
         self.clipboard_upload = clipboard_upload
+        # Specifies whether to enable driver mapping. Valid values:
+        # 
+        # *   Enable
+        # *   Disable
+        # 
+        # > If you do not specify this parameter, the default value Disable is used.
         self.disk_redirection = disk_redirection
+        # Specifies whether to enable keyboard operation recording. Valid values:
+        # 
+        # *   Enable
+        # *   Disable
+        # 
+        # > If you do not specify this parameter, the default value Disable is used.
         self.record_keyboard = record_keyboard
 
     def validate(self):
@@ -27027,15 +30246,87 @@ class SetPolicyProtocolConfigRequestProtocolConfigSSH(TeaModel):
         sshchannel: str = None,
         x_11forwarding: str = None,
     ):
+        # Specifies whether to enable remote command execution. Valid values:
+        # 
+        # *   Enable
+        # *   Disable
+        # 
+        # > If you do not specify this parameter, the default value Disable is used.
         self.exec_command = exec_command
+        # Specifies whether to enable SFTP channels. Valid values:
+        # 
+        # *   Enable
+        # *   Disable
+        # 
+        # > 
+        # 
+        # *   If you do not specify this parameter, the default value Disable is used.
+        # 
+        # *   You must set at least one of the following parameters to Enable: SSHChannel and SFTPChannel.
+        # 
+        # *   If you select Enable Only SFTP Permission for a host account, do not set SSHChannel and SFTPChannel to Disable for the account. Otherwise, users of the bastion host cannot use the account to access the host.
         self.sftpchannel = sftpchannel
+        # Specifies whether to enable file downloading during SFTP-based O\\&M. Valid values:
+        # 
+        # *   Enable
+        # *   Disable
+        # 
+        # > If you do not specify this parameter, the default value Disable is used.
         self.sftpdownload_file = sftpdownload_file
+        # Specifies whether to enable folder creation during SFTP-based O\\&M. Valid values:
+        # 
+        # *   Enable
+        # *   Disable
+        # 
+        # > If you do not specify this parameter, the default value Disable is used.
         self.sftpmkdir = sftpmkdir
+        # Specifies whether to enable file deletion during SFTP-based O\\&M. Valid values:
+        # 
+        # *   Enable
+        # *   Disable
+        # 
+        # > If you do not specify this parameter, the default value Disable is used.
         self.sftpremove_file = sftpremove_file
+        # Specifies whether to enable file renaming during SFTP-based O\\&M. Valid values:
+        # 
+        # *   Enable
+        # *   Disable
+        # 
+        # > If you do not specify this parameter, the default value Disable is used.
         self.sftprename_file = sftprename_file
+        # Specifies whether to enable folder deletion during SFTP-based O\\&M. Valid values:
+        # 
+        # *   Enable
+        # *   Disable
+        # 
+        # > If you do not specify this parameter, the default value Disable is used.
         self.sftprmdir = sftprmdir
+        # Specifies whether to enable file uploading during SFTP-based O\\&M. Valid values:
+        # 
+        # *   Enable
+        # *   Disable
+        # 
+        # > If you do not specify this parameter, the default value Disable is used.
         self.sftpupload_file = sftpupload_file
+        # Specifies whether to enable SSH channels. Valid values:
+        # 
+        # *   Enable
+        # *   Disable
+        # 
+        # > 
+        # 
+        # *   If you do not specify this parameter, the default value Disable is used.
+        # 
+        # *   You must set at least one of the following parameters to Enable: SSHChannel and SFTPChannel. If you set SSHChannel to Disable, SSH-based logon is disabled for the asset account. Proceed with caution.
+        # 
+        # *   If you select Enable Only SFTP Permission for a host account, do not set SSHChannel and SFTPChannel to Disable for the account. Otherwise, users of the bastion host cannot use the account to access the host.
         self.sshchannel = sshchannel
+        # Specifies whether to enable X11 forwarding. Valid values:
+        # 
+        # *   Enable
+        # *   Disable
+        # 
+        # > If you do not specify this parameter, the default value Disable is used.
         self.x_11forwarding = x_11forwarding
 
     def validate(self):
@@ -27100,7 +30391,9 @@ class SetPolicyProtocolConfigRequestProtocolConfig(TeaModel):
         rdp: SetPolicyProtocolConfigRequestProtocolConfigRDP = None,
         ssh: SetPolicyProtocolConfigRequestProtocolConfigSSH = None,
     ):
+        # The settings of the Remote Desktop Protocol (RDP) options.
         self.rdp = rdp
+        # The settings of the SSH and SSH Fine Transfer Protocol (SFTP) options.
         self.ssh = ssh
 
     def validate(self):
@@ -27140,9 +30433,25 @@ class SetPolicyProtocolConfigRequest(TeaModel):
         protocol_config: SetPolicyProtocolConfigRequestProtocolConfig = None,
         region_id: str = None,
     ):
+        # The bastion host ID.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the control policy that you want to modify.
+        # 
+        # > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
+        # The protocol control settings.
+        # 
+        # This parameter is required.
         self.protocol_config = protocol_config
+        # The region ID of the bastion host.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -27187,9 +30496,25 @@ class SetPolicyProtocolConfigShrinkRequest(TeaModel):
         protocol_config_shrink: str = None,
         region_id: str = None,
     ):
+        # The bastion host ID.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the control policy that you want to modify.
+        # 
+        # > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
+        # The protocol control settings.
+        # 
+        # This parameter is required.
         self.protocol_config_shrink = protocol_config_shrink
+        # The region ID of the bastion host.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -27229,6 +30554,7 @@ class SetPolicyProtocolConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -27302,11 +30628,37 @@ class SetPolicyUserScopeRequest(TeaModel):
         user_group_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
+        # The bastion host ID.
+        # 
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the control policy that you want to modify.
+        # 
+        # >  You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
+        # The region ID of the bastion host.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        # The scope of users to whom the control policy applies. Valid values:
+        # 
+        # * **All**: The control policy applies to all users.
+        # * **User**: The control policy applies to specified users.
+        # * **UserGroup**: The control policy applies to specified user groups.
+        # 
+        # This parameter is required.
         self.scope_type = scope_type
+        # The user groups to which the control policy applies.
+        # 
+        # > This parameter is required if ScopeType is set to UserGroup. You can specify up to 100 user group IDs.
         self.user_group_ids = user_group_ids
+        # The users to whom the control policy applies.
+        # 
+        # > This parameter is required if ScopeType is set to User. You can specify up to 500 user IDs.
         self.user_ids = user_ids
 
     def validate(self):
@@ -27354,6 +30706,7 @@ class SetPolicyUserScopeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -27420,19 +30773,29 @@ class SetPolicyUserScopeResponse(TeaModel):
 class StartInstanceRequest(TeaModel):
     def __init__(
         self,
+        client_security_group_ids: List[str] = None,
+        enable_portal_private_access: bool = None,
         instance_id: str = None,
         region_id: str = None,
         security_group_ids: List[str] = None,
+        slave_vswitch_id: str = None,
         vswitch_id: str = None,
     ):
+        self.client_security_group_ids = client_security_group_ids
+        self.enable_portal_private_access = enable_portal_private_access
         # The ID of the bastion host that you want to enable.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host.
         self.region_id = region_id
         # An array consisting of the IDs of security groups to which the bastion host is added.
+        # 
+        # This parameter is required.
         self.security_group_ids = security_group_ids
+        self.slave_vswitch_id = slave_vswitch_id
         # The ID of the vSwitch to which the bastion host belongs.
         self.vswitch_id = vswitch_id
 
@@ -27445,24 +30808,36 @@ class StartInstanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_security_group_ids is not None:
+            result['ClientSecurityGroupIds'] = self.client_security_group_ids
+        if self.enable_portal_private_access is not None:
+            result['EnablePortalPrivateAccess'] = self.enable_portal_private_access
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.security_group_ids is not None:
             result['SecurityGroupIds'] = self.security_group_ids
+        if self.slave_vswitch_id is not None:
+            result['SlaveVswitchId'] = self.slave_vswitch_id
         if self.vswitch_id is not None:
             result['VswitchId'] = self.vswitch_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientSecurityGroupIds') is not None:
+            self.client_security_group_ids = m.get('ClientSecurityGroupIds')
+        if m.get('EnablePortalPrivateAccess') is not None:
+            self.enable_portal_private_access = m.get('EnablePortalPrivateAccess')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('SecurityGroupIds') is not None:
             self.security_group_ids = m.get('SecurityGroupIds')
+        if m.get('SlaveVswitchId') is not None:
+            self.slave_vswitch_id = m.get('SlaveVswitchId')
         if m.get('VswitchId') is not None:
             self.vswitch_id = m.get('VswitchId')
         return self
@@ -27550,22 +30925,16 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N. Valid values of N: 1 to 20.
+        # The tag key of the bastion host. You can specify up to 20 tags for the bastion host.
         # 
-        # > 
-        # 
-        # *   The value can be up to 128 characters in length but cannot be an empty string.
-        # 
-        # *   The value cannot start with **aliyun** or **acs:**. The value cannot contain **http://** or **https://**.
+        # > - Thekey cannot be an empty string. The key can be up to 128 characters in length. 
+        # > - It cannot start with **aliyun** or **acs:**, and cannot contain **http://** or **https://**.
         self.key = key
-        # The value of tag N.\
-        # Valid values of N: 1 to 20.
+        # The tag value of the bastion host.\\
+        # You can specify up to 20 tags for the bastion host.
         # 
-        # > 
-        # 
-        # *   The value can be up to 128 characters in length or an empty string.
-        # 
-        # *   The value cannot start with **aliyun** or **acs:**. The value cannot contain **http://** or **https://**.
+        # > *   The value can be a string of up to 128 characters or an empty string.
+        # > *   It cannot start with **aliyun** or **acs:**, and cannot contain **http://** or **https://**.
         self.value = value
 
     def validate(self):
@@ -27602,19 +30971,25 @@ class TagResourcesRequest(TeaModel):
     ):
         # The region ID of the bastion hosts to which you want to create and add tags.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # An array that consists of IDs of bastion hosts.
         # 
         # Valid values: 1 to 20.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query IDs of bastion hosts.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query IDs of bastion hosts.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource.
         # 
         # Set the value to **INSTANCE**, which indicates that the resource is a bastion host.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
-        # An array that consists of tags.
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -27735,15 +31110,19 @@ class UnlockUsersRequest(TeaModel):
     ):
         # The ID of the bastion host to which the users to be unlocked belong.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host to which the users to be unlocked belong.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The ID of the user that you want to unlock. The value is a JSON string. You can add up to 100 user IDs. If you specify multiple IDs, separate the IDs with commas (,).
         # 
-        # > You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
+        # > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the ID of the user.
+        # 
+        # This parameter is required.
         self.user_ids = user_ids
 
     def validate(self):
@@ -27934,17 +31313,23 @@ class UntagResourcesRequest(TeaModel):
         self.all = all
         # The region ID of the bastion host to query.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # An array that consists of IDs of bastion hosts.
         # 
         # Valid values: 1 to 20.
         # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource.
         # 
         # Set the value to **INSTANCE**, which indicates that the resource is a bastion host.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The key of tag N.
         # 
@@ -28071,15 +31456,23 @@ class VerifyInstanceADAuthServerRequest(TeaModel):
         server: str = None,
         standby_server: str = None,
     ):
+        # This parameter is required.
         self.account = account
+        # This parameter is required.
         self.base_dn = base_dn
+        # This parameter is required.
         self.domain = domain
         self.filter = filter
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.is_ssl = is_ssl
+        # This parameter is required.
         self.password = password
+        # This parameter is required.
         self.port = port
         self.region_id = region_id
+        # This parameter is required.
         self.server = server
         self.standby_server = standby_server
 
@@ -28225,14 +31618,19 @@ class VerifyInstanceLDAPAuthServerRequest(TeaModel):
         server: str = None,
         standby_server: str = None,
     ):
+        # This parameter is required.
         self.account = account
+        # This parameter is required.
         self.base_dn = base_dn
         self.filter = filter
+        # This parameter is required.
         self.instance_id = instance_id
         self.is_ssl = is_ssl
         self.password = password
+        # This parameter is required.
         self.port = port
         self.region_id = region_id
+        # This parameter is required.
         self.server = server
         self.standby_server = standby_server
 
