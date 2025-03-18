@@ -25328,6 +25328,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
             query['DesktopId'] = request.desktop_id
+        if not UtilClient.is_unset(request.os_update):
+            query['OsUpdate'] = request.os_update
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -25373,6 +25375,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
             query['DesktopId'] = request.desktop_id
+        if not UtilClient.is_unset(request.os_update):
+            query['OsUpdate'] = request.os_update
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -28368,6 +28372,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
             query['DesktopId'] = request.desktop_id
+        if not UtilClient.is_unset(request.os_update):
+            query['OsUpdate'] = request.os_update
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.stopped_mode):
@@ -28415,6 +28421,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
             query['DesktopId'] = request.desktop_id
+        if not UtilClient.is_unset(request.os_update):
+            query['OsUpdate'] = request.os_update
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.stopped_mode):

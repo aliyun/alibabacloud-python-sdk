@@ -21659,6 +21659,92 @@ class DescribeDesktopsResponseBodyDesktopsFotaUpdate(TeaModel):
         return self
 
 
+class DescribeDesktopsResponseBodyDesktopsOsUpdatePackages(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        kb: str = None,
+        title: str = None,
+    ):
+        self.description = description
+        self.kb = kb
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.kb is not None:
+            result['Kb'] = self.kb
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Kb') is not None:
+            self.kb = m.get('Kb')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class DescribeDesktopsResponseBodyDesktopsOsUpdate(TeaModel):
+    def __init__(
+        self,
+        check_id: str = None,
+        package_count: int = None,
+        packages: List[DescribeDesktopsResponseBodyDesktopsOsUpdatePackages] = None,
+    ):
+        self.check_id = check_id
+        self.package_count = package_count
+        self.packages = packages
+
+    def validate(self):
+        if self.packages:
+            for k in self.packages:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_id is not None:
+            result['CheckId'] = self.check_id
+        if self.package_count is not None:
+            result['PackageCount'] = self.package_count
+        result['Packages'] = []
+        if self.packages is not None:
+            for k in self.packages:
+                result['Packages'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckId') is not None:
+            self.check_id = m.get('CheckId')
+        if m.get('PackageCount') is not None:
+            self.package_count = m.get('PackageCount')
+        self.packages = []
+        if m.get('Packages') is not None:
+            for k in m.get('Packages'):
+                temp_model = DescribeDesktopsResponseBodyDesktopsOsUpdatePackages()
+                self.packages.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeDesktopsResponseBodyDesktopsResourceGroups(TeaModel):
     def __init__(
         self,
@@ -21815,6 +21901,7 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
         office_site_type: str = None,
         office_site_vpc_type: str = None,
         os_type: str = None,
+        os_update: DescribeDesktopsResponseBodyDesktopsOsUpdate = None,
         platform: str = None,
         policy_group_id: str = None,
         policy_group_id_list: List[str] = None,
@@ -21966,6 +22053,7 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
         self.office_site_vpc_type = office_site_vpc_type
         # The OS that is defined in the desktop template.
         self.os_type = os_type
+        self.os_update = os_update
         # The information about the OS platform.
         # 
         # Valid values:
@@ -22052,6 +22140,8 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
                     k.validate()
         if self.fota_update:
             self.fota_update.validate()
+        if self.os_update:
+            self.os_update.validate()
         if self.resource_groups:
             for k in self.resource_groups:
                 if k:
@@ -22157,6 +22247,8 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
             result['OfficeSiteVpcType'] = self.office_site_vpc_type
         if self.os_type is not None:
             result['OsType'] = self.os_type
+        if self.os_update is not None:
+            result['OsUpdate'] = self.os_update.to_map()
         if self.platform is not None:
             result['Platform'] = self.platform
         if self.policy_group_id is not None:
@@ -22298,6 +22390,9 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
             self.office_site_vpc_type = m.get('OfficeSiteVpcType')
         if m.get('OsType') is not None:
             self.os_type = m.get('OsType')
+        if m.get('OsUpdate') is not None:
+            temp_model = DescribeDesktopsResponseBodyDesktopsOsUpdate()
+            self.os_update = temp_model.from_map(m['OsUpdate'])
         if m.get('Platform') is not None:
             self.platform = m.get('Platform')
         if m.get('PolicyGroupId') is not None:
@@ -29943,6 +30038,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         eds_count: int = None,
         end_user_apply_admin_coordinate: str = None,
         end_user_group_coordinate: str = None,
+        file_migrate: str = None,
         file_transfer: str = None,
         gpu_acceleration: str = None,
         html_5access: str = None,
@@ -30017,6 +30113,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         watermark_transparency: str = None,
         watermark_transparency_value: int = None,
         watermark_type: str = None,
+        wuying_keeper: str = None,
         wy_assistant: str = None,
     ):
         # Indicates whether end users are granted the administrator permissions.
@@ -30126,6 +30223,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         # *   off
         # *   on
         self.end_user_group_coordinate = end_user_group_coordinate
+        self.file_migrate = file_migrate
         # Transfers files.
         self.file_transfer = file_transfer
         # Indicates whether the Image Quality Control feature is enabled. If you have high requirements on the performance and user experience in scenarios such as professional design, we recommend that you enable this feature.
@@ -30483,6 +30581,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         # *   HostName: the rightmost 15 digits of the cloud computer ID.
         # *   ClientTime: the current time displayed on the cloud computer.
         self.watermark_type = watermark_type
+        self.wuying_keeper = wuying_keeper
         # Specifies whether to provide the AI Assistant function in the DesktopAssistant when the cloud computer is accessed from the Alibaba Cloud Workspace desktop clients (including the Windows client and the macOS client).
         # 
         # > Desktop clients of V7.7 and higher versions required.
@@ -30597,6 +30696,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['EndUserApplyAdminCoordinate'] = self.end_user_apply_admin_coordinate
         if self.end_user_group_coordinate is not None:
             result['EndUserGroupCoordinate'] = self.end_user_group_coordinate
+        if self.file_migrate is not None:
+            result['FileMigrate'] = self.file_migrate
         if self.file_transfer is not None:
             result['FileTransfer'] = self.file_transfer
         if self.gpu_acceleration is not None:
@@ -30749,6 +30850,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['WatermarkTransparencyValue'] = self.watermark_transparency_value
         if self.watermark_type is not None:
             result['WatermarkType'] = self.watermark_type
+        if self.wuying_keeper is not None:
+            result['WuyingKeeper'] = self.wuying_keeper
         if self.wy_assistant is not None:
             result['WyAssistant'] = self.wy_assistant
         return result
@@ -30825,6 +30928,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.end_user_apply_admin_coordinate = m.get('EndUserApplyAdminCoordinate')
         if m.get('EndUserGroupCoordinate') is not None:
             self.end_user_group_coordinate = m.get('EndUserGroupCoordinate')
+        if m.get('FileMigrate') is not None:
+            self.file_migrate = m.get('FileMigrate')
         if m.get('FileTransfer') is not None:
             self.file_transfer = m.get('FileTransfer')
         if m.get('GpuAcceleration') is not None:
@@ -30979,6 +31084,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.watermark_transparency_value = m.get('WatermarkTransparencyValue')
         if m.get('WatermarkType') is not None:
             self.watermark_type = m.get('WatermarkType')
+        if m.get('WuyingKeeper') is not None:
+            self.wuying_keeper = m.get('WuyingKeeper')
         if m.get('WyAssistant') is not None:
             self.wy_assistant = m.get('WyAssistant')
         return self
@@ -49850,12 +49957,14 @@ class RebootDesktopsRequest(TeaModel):
     def __init__(
         self,
         desktop_id: List[str] = None,
+        os_update: bool = None,
         region_id: str = None,
     ):
         # The IDs of the cloud computers. You can specify 1 to 100 IDs.
         # 
         # This parameter is required.
         self.desktop_id = desktop_id
+        self.os_update = os_update
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
         # 
         # This parameter is required.
@@ -49872,6 +49981,8 @@ class RebootDesktopsRequest(TeaModel):
         result = dict()
         if self.desktop_id is not None:
             result['DesktopId'] = self.desktop_id
+        if self.os_update is not None:
+            result['OsUpdate'] = self.os_update
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -49880,6 +49991,8 @@ class RebootDesktopsRequest(TeaModel):
         m = m or dict()
         if m.get('DesktopId') is not None:
             self.desktop_id = m.get('DesktopId')
+        if m.get('OsUpdate') is not None:
+            self.os_update = m.get('OsUpdate')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -53886,6 +53999,7 @@ class StopDesktopsRequest(TeaModel):
     def __init__(
         self,
         desktop_id: List[str] = None,
+        os_update: bool = None,
         region_id: str = None,
         stopped_mode: str = None,
     ):
@@ -53893,6 +54007,7 @@ class StopDesktopsRequest(TeaModel):
         # 
         # This parameter is required.
         self.desktop_id = desktop_id
+        self.os_update = os_update
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
         # 
         # This parameter is required.
@@ -53929,6 +54044,8 @@ class StopDesktopsRequest(TeaModel):
         result = dict()
         if self.desktop_id is not None:
             result['DesktopId'] = self.desktop_id
+        if self.os_update is not None:
+            result['OsUpdate'] = self.os_update
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.stopped_mode is not None:
@@ -53939,6 +54056,8 @@ class StopDesktopsRequest(TeaModel):
         m = m or dict()
         if m.get('DesktopId') is not None:
             self.desktop_id = m.get('DesktopId')
+        if m.get('OsUpdate') is not None:
+            self.os_update = m.get('OsUpdate')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('StoppedMode') is not None:
