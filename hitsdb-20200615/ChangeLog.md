@@ -1,3 +1,8 @@
+2025-03-18 Version: 4.8.2
+- Update API GetLindormInstance: update response param.
+- Update API ModifyLindormV2Instance: update param UpgradeType.
+
+
 2025-02-08 Version: 4.8.1
 - Update API GetLindormInstanceList: update response param.
 

@@ -5353,6 +5353,7 @@ class GetLindormInstanceResponseBodyEngineList(TeaModel):
         is_last_version: bool = None,
         latest_version: str = None,
         memory_size: str = None,
+        specification: str = None,
         version: str = None,
     ):
         # The number of engine nodes.
@@ -5377,6 +5378,7 @@ class GetLindormInstanceResponseBodyEngineList(TeaModel):
         self.latest_version = latest_version
         # The memory size of the engine nodes.
         self.memory_size = memory_size
+        self.specification = specification
         # The version of the engine.
         self.version = version
 
@@ -5401,6 +5403,8 @@ class GetLindormInstanceResponseBodyEngineList(TeaModel):
             result['LatestVersion'] = self.latest_version
         if self.memory_size is not None:
             result['MemorySize'] = self.memory_size
+        if self.specification is not None:
+            result['Specification'] = self.specification
         if self.version is not None:
             result['Version'] = self.version
         return result
@@ -5419,6 +5423,8 @@ class GetLindormInstanceResponseBodyEngineList(TeaModel):
             self.latest_version = m.get('LatestVersion')
         if m.get('MemorySize') is not None:
             self.memory_size = m.get('MemorySize')
+        if m.get('Specification') is not None:
+            self.specification = m.get('Specification')
         if m.get('Version') is not None:
             self.version = m.get('Version')
         return self

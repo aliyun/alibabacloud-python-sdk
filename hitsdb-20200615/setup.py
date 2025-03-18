@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_hitsdb20200615.
 
-Created on 08/02/2025
+Created on 18/03/2025
 
 @author: Alibaba Cloud SDK
 """
