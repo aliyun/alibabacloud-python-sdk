@@ -15059,12 +15059,9 @@ class ListPausePolicysResponse(TeaModel):
 class ListPostQueryResultRequest(TeaModel):
     def __init__(
         self,
-        address: str = None,
         body: Dict[str, Any] = None,
         type: str = None,
     ):
-        # The instance endpoint.
-        self.address = address
         # The request body.
         self.body = body
         # The query type. Valid values: sql: SQL query. ha3: Havenask query.
@@ -15079,8 +15076,6 @@ class ListPostQueryResultRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.address is not None:
-            result['address'] = self.address
         if self.body is not None:
             result['body'] = self.body
         if self.type is not None:
@@ -15089,8 +15084,6 @@ class ListPostQueryResultRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('address') is not None:
-            self.address = m.get('address')
         if m.get('body') is not None:
             self.body = m.get('body')
         if m.get('type') is not None:
@@ -15281,12 +15274,9 @@ class ListQueryResultResponse(TeaModel):
 class ListRestQueryResultRequest(TeaModel):
     def __init__(
         self,
-        address: str = None,
         index_name: str = None,
         query: Dict[str, Any] = None,
     ):
-        # The instance endpoint.
-        self.address = address
         # The name of the index table.
         self.index_name = index_name
         # The rest query statement.
@@ -15301,8 +15291,6 @@ class ListRestQueryResultRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.address is not None:
-            result['address'] = self.address
         if self.index_name is not None:
             result['indexName'] = self.index_name
         if self.query is not None:
@@ -15311,8 +15299,6 @@ class ListRestQueryResultRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('address') is not None:
-            self.address = m.get('address')
         if m.get('indexName') is not None:
             self.index_name = m.get('indexName')
         if m.get('query') is not None:
@@ -16197,15 +16183,14 @@ class ListTasksResponse(TeaModel):
 class ListVectorQueryResultRequest(TeaModel):
     def __init__(
         self,
-        address: str = None,
         body: Dict[str, Any] = None,
+        path: str = None,
         query_type: str = None,
         vector_query_type: str = None,
     ):
-        # The instance endpoint.
-        self.address = address
         # The request body.
         self.body = body
+        self.path = path
         # The query type. Valid values: vector, primary_key, and vector_text.
         self.query_type = query_type
         # The vector query type. Valid values: vector, image, and text.
@@ -16220,10 +16205,10 @@ class ListVectorQueryResultRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.address is not None:
-            result['address'] = self.address
         if self.body is not None:
             result['body'] = self.body
+        if self.path is not None:
+            result['path'] = self.path
         if self.query_type is not None:
             result['queryType'] = self.query_type
         if self.vector_query_type is not None:
@@ -16232,10 +16217,10 @@ class ListVectorQueryResultRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('address') is not None:
-            self.address = m.get('address')
         if m.get('body') is not None:
             self.body = m.get('body')
+        if m.get('path') is not None:
+            self.path = m.get('path')
         if m.get('queryType') is not None:
             self.query_type = m.get('queryType')
         if m.get('vectorQueryType') is not None:

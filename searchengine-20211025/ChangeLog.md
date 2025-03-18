@@ -1,3 +1,10 @@
+2025-03-18 Version: 5.0.0
+- Update API ListPostQueryResult: delete param address.
+- Update API ListRestQueryResult: delete param address.
+- Update API ListVectorQueryResult: add param path.
+- Update API ListVectorQueryResult: delete param address.
+
+
 2025-01-03 Version: 4.2.6
 - Update API GetInstance: update response param.
 - Update API ListAdvanceConfigs: add param pageNumber.
