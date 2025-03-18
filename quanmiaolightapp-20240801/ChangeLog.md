@@ -1,3 +1,8 @@
+2025-03-18 Version: 2.6.3
+- Update API RunVideoAnalysis: add param splitInterval.
+- Update API SubmitVideoAnalysisTask: add param splitInterval.
+
+
 2025-03-17 Version: 2.6.2
 - Update API RunHotTopicSummary: update param stepForCustomSummaryStyleConfig.
 

@@ -2408,6 +2408,8 @@ class Client(OpenApiClient):
             body['originalSessionId'] = request.original_session_id
         if not UtilClient.is_unset(request.snapshot_interval):
             body['snapshotInterval'] = request.snapshot_interval
+        if not UtilClient.is_unset(request.split_interval):
+            body['splitInterval'] = request.split_interval
         if not UtilClient.is_unset(request.task_id):
             body['taskId'] = request.task_id
         if not UtilClient.is_unset(request.text_process_tasks_shrink):
@@ -2495,6 +2497,8 @@ class Client(OpenApiClient):
             body['originalSessionId'] = request.original_session_id
         if not UtilClient.is_unset(request.snapshot_interval):
             body['snapshotInterval'] = request.snapshot_interval
+        if not UtilClient.is_unset(request.split_interval):
+            body['splitInterval'] = request.split_interval
         if not UtilClient.is_unset(request.task_id):
             body['taskId'] = request.task_id
         if not UtilClient.is_unset(request.text_process_tasks_shrink):
@@ -2770,6 +2774,8 @@ class Client(OpenApiClient):
             body['modelId'] = request.model_id
         if not UtilClient.is_unset(request.snapshot_interval):
             body['snapshotInterval'] = request.snapshot_interval
+        if not UtilClient.is_unset(request.split_interval):
+            body['splitInterval'] = request.split_interval
         if not UtilClient.is_unset(request.text_process_tasks_shrink):
             body['textProcessTasks'] = request.text_process_tasks_shrink
         if not UtilClient.is_unset(request.video_extra_info):
@@ -2853,6 +2859,8 @@ class Client(OpenApiClient):
             body['modelId'] = request.model_id
         if not UtilClient.is_unset(request.snapshot_interval):
             body['snapshotInterval'] = request.snapshot_interval
+        if not UtilClient.is_unset(request.split_interval):
+            body['splitInterval'] = request.split_interval
         if not UtilClient.is_unset(request.text_process_tasks_shrink):
             body['textProcessTasks'] = request.text_process_tasks_shrink
         if not UtilClient.is_unset(request.video_extra_info):

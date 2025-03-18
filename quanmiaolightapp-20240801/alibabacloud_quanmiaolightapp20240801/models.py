@@ -7142,6 +7142,7 @@ class RunVideoAnalysisRequest(TeaModel):
         model_id: str = None,
         original_session_id: str = None,
         snapshot_interval: float = None,
+        split_interval: int = None,
         task_id: str = None,
         text_process_tasks: List[RunVideoAnalysisRequestTextProcessTasks] = None,
         video_extra_info: str = None,
@@ -7160,6 +7161,7 @@ class RunVideoAnalysisRequest(TeaModel):
         self.model_id = model_id
         self.original_session_id = original_session_id
         self.snapshot_interval = snapshot_interval
+        self.split_interval = split_interval
         self.task_id = task_id
         self.text_process_tasks = text_process_tasks
         self.video_extra_info = video_extra_info
@@ -7205,6 +7207,8 @@ class RunVideoAnalysisRequest(TeaModel):
             result['originalSessionId'] = self.original_session_id
         if self.snapshot_interval is not None:
             result['snapshotInterval'] = self.snapshot_interval
+        if self.split_interval is not None:
+            result['splitInterval'] = self.split_interval
         if self.task_id is not None:
             result['taskId'] = self.task_id
         result['textProcessTasks'] = []
@@ -7248,6 +7252,8 @@ class RunVideoAnalysisRequest(TeaModel):
             self.original_session_id = m.get('originalSessionId')
         if m.get('snapshotInterval') is not None:
             self.snapshot_interval = m.get('snapshotInterval')
+        if m.get('splitInterval') is not None:
+            self.split_interval = m.get('splitInterval')
         if m.get('taskId') is not None:
             self.task_id = m.get('taskId')
         self.text_process_tasks = []
@@ -7285,6 +7291,7 @@ class RunVideoAnalysisShrinkRequest(TeaModel):
         model_id: str = None,
         original_session_id: str = None,
         snapshot_interval: float = None,
+        split_interval: int = None,
         task_id: str = None,
         text_process_tasks_shrink: str = None,
         video_extra_info: str = None,
@@ -7303,6 +7310,7 @@ class RunVideoAnalysisShrinkRequest(TeaModel):
         self.model_id = model_id
         self.original_session_id = original_session_id
         self.snapshot_interval = snapshot_interval
+        self.split_interval = split_interval
         self.task_id = task_id
         self.text_process_tasks_shrink = text_process_tasks_shrink
         self.video_extra_info = video_extra_info
@@ -7339,6 +7347,8 @@ class RunVideoAnalysisShrinkRequest(TeaModel):
             result['originalSessionId'] = self.original_session_id
         if self.snapshot_interval is not None:
             result['snapshotInterval'] = self.snapshot_interval
+        if self.split_interval is not None:
+            result['splitInterval'] = self.split_interval
         if self.task_id is not None:
             result['taskId'] = self.task_id
         if self.text_process_tasks_shrink is not None:
@@ -7377,6 +7387,8 @@ class RunVideoAnalysisShrinkRequest(TeaModel):
             self.original_session_id = m.get('originalSessionId')
         if m.get('snapshotInterval') is not None:
             self.snapshot_interval = m.get('snapshotInterval')
+        if m.get('splitInterval') is not None:
+            self.split_interval = m.get('splitInterval')
         if m.get('taskId') is not None:
             self.task_id = m.get('taskId')
         if m.get('textProcessTasks') is not None:
@@ -9014,6 +9026,7 @@ class SubmitVideoAnalysisTaskRequest(TeaModel):
         model_custom_prompt_template_id: str = None,
         model_id: str = None,
         snapshot_interval: float = None,
+        split_interval: int = None,
         text_process_tasks: List[SubmitVideoAnalysisTaskRequestTextProcessTasks] = None,
         video_extra_info: str = None,
         video_model_custom_prompt_template: str = None,
@@ -9030,6 +9043,7 @@ class SubmitVideoAnalysisTaskRequest(TeaModel):
         self.model_custom_prompt_template_id = model_custom_prompt_template_id
         self.model_id = model_id
         self.snapshot_interval = snapshot_interval
+        self.split_interval = split_interval
         self.text_process_tasks = text_process_tasks
         self.video_extra_info = video_extra_info
         self.video_model_custom_prompt_template = video_model_custom_prompt_template
@@ -9073,6 +9087,8 @@ class SubmitVideoAnalysisTaskRequest(TeaModel):
             result['modelId'] = self.model_id
         if self.snapshot_interval is not None:
             result['snapshotInterval'] = self.snapshot_interval
+        if self.split_interval is not None:
+            result['splitInterval'] = self.split_interval
         result['textProcessTasks'] = []
         if self.text_process_tasks is not None:
             for k in self.text_process_tasks:
@@ -9112,6 +9128,8 @@ class SubmitVideoAnalysisTaskRequest(TeaModel):
             self.model_id = m.get('modelId')
         if m.get('snapshotInterval') is not None:
             self.snapshot_interval = m.get('snapshotInterval')
+        if m.get('splitInterval') is not None:
+            self.split_interval = m.get('splitInterval')
         self.text_process_tasks = []
         if m.get('textProcessTasks') is not None:
             for k in m.get('textProcessTasks'):
@@ -9146,6 +9164,7 @@ class SubmitVideoAnalysisTaskShrinkRequest(TeaModel):
         model_custom_prompt_template_id: str = None,
         model_id: str = None,
         snapshot_interval: float = None,
+        split_interval: int = None,
         text_process_tasks_shrink: str = None,
         video_extra_info: str = None,
         video_model_custom_prompt_template: str = None,
@@ -9162,6 +9181,7 @@ class SubmitVideoAnalysisTaskShrinkRequest(TeaModel):
         self.model_custom_prompt_template_id = model_custom_prompt_template_id
         self.model_id = model_id
         self.snapshot_interval = snapshot_interval
+        self.split_interval = split_interval
         self.text_process_tasks_shrink = text_process_tasks_shrink
         self.video_extra_info = video_extra_info
         self.video_model_custom_prompt_template = video_model_custom_prompt_template
@@ -9196,6 +9216,8 @@ class SubmitVideoAnalysisTaskShrinkRequest(TeaModel):
             result['modelId'] = self.model_id
         if self.snapshot_interval is not None:
             result['snapshotInterval'] = self.snapshot_interval
+        if self.split_interval is not None:
+            result['splitInterval'] = self.split_interval
         if self.text_process_tasks_shrink is not None:
             result['textProcessTasks'] = self.text_process_tasks_shrink
         if self.video_extra_info is not None:
@@ -9230,6 +9252,8 @@ class SubmitVideoAnalysisTaskShrinkRequest(TeaModel):
             self.model_id = m.get('modelId')
         if m.get('snapshotInterval') is not None:
             self.snapshot_interval = m.get('snapshotInterval')
+        if m.get('splitInterval') is not None:
+            self.split_interval = m.get('splitInterval')
         if m.get('textProcessTasks') is not None:
             self.text_process_tasks_shrink = m.get('textProcessTasks')
         if m.get('videoExtraInfo') is not None:
