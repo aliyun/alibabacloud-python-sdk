@@ -10489,8 +10489,12 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.doc_id):
             body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.key_point_prompt):
+            body['KeyPointPrompt'] = request.key_point_prompt
         if not UtilClient.is_unset(request.session_id):
             body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.summary_prompt):
+            body['SummaryPrompt'] = request.summary_prompt
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -10534,8 +10538,12 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.doc_id):
             body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.key_point_prompt):
+            body['KeyPointPrompt'] = request.key_point_prompt
         if not UtilClient.is_unset(request.session_id):
             body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.summary_prompt):
+            body['SummaryPrompt'] = request.summary_prompt
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -10739,6 +10747,8 @@ class Client(OpenApiClient):
             body['NumComments'] = request.num_comments
         if not UtilClient.is_unset(request.sentiment_shrink):
             body['Sentiment'] = request.sentiment_shrink
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.source_material):
             body['SourceMaterial'] = request.source_material
         if not UtilClient.is_unset(request.style):
@@ -10806,6 +10816,8 @@ class Client(OpenApiClient):
             body['NumComments'] = request.num_comments
         if not UtilClient.is_unset(request.sentiment_shrink):
             body['Sentiment'] = request.sentiment_shrink
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.source_material):
             body['SourceMaterial'] = request.source_material
         if not UtilClient.is_unset(request.style):
@@ -11267,10 +11279,18 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.clean_cache):
+            body['CleanCache'] = request.clean_cache
         if not UtilClient.is_unset(request.doc_id):
             body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.node_number):
+            body['NodeNumber'] = request.node_number
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
         if not UtilClient.is_unset(request.session_id):
             body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.word_number):
+            body['WordNumber'] = request.word_number
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -11312,10 +11332,18 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.clean_cache):
+            body['CleanCache'] = request.clean_cache
         if not UtilClient.is_unset(request.doc_id):
             body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.node_number):
+            body['NodeNumber'] = request.node_number
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
         if not UtilClient.is_unset(request.session_id):
             body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.word_number):
+            body['WordNumber'] = request.word_number
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -11382,14 +11410,24 @@ class Client(OpenApiClient):
         @return: RunDocIntroductionResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.clean_cache):
+            query['CleanCache'] = request.clean_cache
         body = {}
         if not UtilClient.is_unset(request.doc_id):
             body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.introduction_prompt):
+            body['IntroductionPrompt'] = request.introduction_prompt
+        if not UtilClient.is_unset(request.key_point_prompt):
+            body['KeyPointPrompt'] = request.key_point_prompt
         if not UtilClient.is_unset(request.session_id):
             body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.summary_prompt):
+            body['SummaryPrompt'] = request.summary_prompt
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -11427,14 +11465,24 @@ class Client(OpenApiClient):
         @return: RunDocIntroductionResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.clean_cache):
+            query['CleanCache'] = request.clean_cache
         body = {}
         if not UtilClient.is_unset(request.doc_id):
             body['DocId'] = request.doc_id
+        if not UtilClient.is_unset(request.introduction_prompt):
+            body['IntroductionPrompt'] = request.introduction_prompt
+        if not UtilClient.is_unset(request.key_point_prompt):
+            body['KeyPointPrompt'] = request.key_point_prompt
         if not UtilClient.is_unset(request.session_id):
             body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.summary_prompt):
+            body['SummaryPrompt'] = request.summary_prompt
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -11767,6 +11815,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.clean_cache):
+            body['CleanCache'] = request.clean_cache
         if not UtilClient.is_unset(request.doc_id):
             body['DocId'] = request.doc_id
         if not UtilClient.is_unset(request.query):
@@ -11816,6 +11866,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.clean_cache):
+            body['CleanCache'] = request.clean_cache
         if not UtilClient.is_unset(request.doc_id):
             body['DocId'] = request.doc_id
         if not UtilClient.is_unset(request.query):
@@ -11891,6 +11943,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.clean_cache):
+            body['CleanCache'] = request.clean_cache
         if not UtilClient.is_unset(request.doc_id):
             body['DocId'] = request.doc_id
         if not UtilClient.is_unset(request.recommend_content):
@@ -11940,6 +11994,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.clean_cache):
+            body['CleanCache'] = request.clean_cache
         if not UtilClient.is_unset(request.doc_id):
             body['DocId'] = request.doc_id
         if not UtilClient.is_unset(request.recommend_content):
@@ -12000,6 +12056,142 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.run_doc_translation_with_options_async(request, runtime)
+
+    def run_doc_washing_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.RunDocWashingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunDocWashingResponse:
+        """
+        @summary 文档改写
+        
+        @param request: RunDocWashingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunDocWashingResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.reference_content):
+            body['ReferenceContent'] = request.reference_content
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.topic):
+            body['Topic'] = request.topic
+        if not UtilClient.is_unset(request.word_number):
+            body['WordNumber'] = request.word_number
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        if not UtilClient.is_unset(request.writing_type_name):
+            body['WritingTypeName'] = request.writing_type_name
+        if not UtilClient.is_unset(request.writing_type_ref_doc):
+            body['WritingTypeRefDoc'] = request.writing_type_ref_doc
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunDocWashing',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_miao_bi_20230801_models.RunDocWashingResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_miao_bi_20230801_models.RunDocWashingResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def run_doc_washing_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunDocWashingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunDocWashingResponse:
+        """
+        @summary 文档改写
+        
+        @param request: RunDocWashingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunDocWashingResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.reference_content):
+            body['ReferenceContent'] = request.reference_content
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.topic):
+            body['Topic'] = request.topic
+        if not UtilClient.is_unset(request.word_number):
+            body['WordNumber'] = request.word_number
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        if not UtilClient.is_unset(request.writing_type_name):
+            body['WritingTypeName'] = request.writing_type_name
+        if not UtilClient.is_unset(request.writing_type_ref_doc):
+            body['WritingTypeRefDoc'] = request.writing_type_ref_doc
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunDocWashing',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_miao_bi_20230801_models.RunDocWashingResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_miao_bi_20230801_models.RunDocWashingResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def run_doc_washing(
+        self,
+        request: ai_miao_bi_20230801_models.RunDocWashingRequest,
+    ) -> ai_miao_bi_20230801_models.RunDocWashingResponse:
+        """
+        @summary 文档改写
+        
+        @param request: RunDocWashingRequest
+        @return: RunDocWashingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_doc_washing_with_options(request, runtime)
+
+    async def run_doc_washing_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunDocWashingRequest,
+    ) -> ai_miao_bi_20230801_models.RunDocWashingResponse:
+        """
+        @summary 文档改写
+        
+        @param request: RunDocWashingRequest
+        @return: RunDocWashingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_doc_washing_with_options_async(request, runtime)
 
     def run_expand_content_with_options(
         self,

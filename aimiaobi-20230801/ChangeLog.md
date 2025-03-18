@@ -1,3 +1,9 @@
+2025-03-18 Version: 1.20.2
+- Update API RunSearchGeneration: update param AgentContext.
+- Update API RunSearchSimilarArticles: update param ChatConfig.
+- Update API RunSearchSimilarArticles: update response param.
+
+
 2025-02-24 Version: 1.20.0
 - Support API ListStyleLearningResult.
 - Support API RunCommentGeneration.

@@ -8725,7 +8725,6 @@ class GetHotTopicBroadcastRequestStepForCustomSummaryStyleConfig(TeaModel):
         summary_prompt: str = None,
     ):
         self.summary_image_count = summary_image_count
-        # This parameter is required.
         self.summary_model = summary_model
         self.summary_prompt = summary_prompt
 
@@ -24082,13 +24081,17 @@ class RunBookIntroductionRequest(TeaModel):
     def __init__(
         self,
         doc_id: str = None,
+        key_point_prompt: str = None,
         session_id: str = None,
+        summary_prompt: str = None,
         workspace_id: str = None,
     ):
         # This parameter is required.
         self.doc_id = doc_id
+        self.key_point_prompt = key_point_prompt
         # This parameter is required.
         self.session_id = session_id
+        self.summary_prompt = summary_prompt
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -24103,8 +24106,12 @@ class RunBookIntroductionRequest(TeaModel):
         result = dict()
         if self.doc_id is not None:
             result['DocId'] = self.doc_id
+        if self.key_point_prompt is not None:
+            result['KeyPointPrompt'] = self.key_point_prompt
         if self.session_id is not None:
             result['SessionId'] = self.session_id
+        if self.summary_prompt is not None:
+            result['SummaryPrompt'] = self.summary_prompt
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -24113,8 +24120,12 @@ class RunBookIntroductionRequest(TeaModel):
         m = m or dict()
         if m.get('DocId') is not None:
             self.doc_id = m.get('DocId')
+        if m.get('KeyPointPrompt') is not None:
+            self.key_point_prompt = m.get('KeyPointPrompt')
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
+        if m.get('SummaryPrompt') is not None:
+            self.summary_prompt = m.get('SummaryPrompt')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -24689,6 +24700,7 @@ class RunCommentGenerationRequest(TeaModel):
         length_range: Dict[str, Any] = None,
         num_comments: str = None,
         sentiment: Dict[str, Any] = None,
+        session_id: str = None,
         source_material: str = None,
         style: str = None,
         type: Dict[str, Any] = None,
@@ -24703,6 +24715,7 @@ class RunCommentGenerationRequest(TeaModel):
         self.num_comments = num_comments
         # This parameter is required.
         self.sentiment = sentiment
+        self.session_id = session_id
         # This parameter is required.
         self.source_material = source_material
         self.style = style
@@ -24732,6 +24745,8 @@ class RunCommentGenerationRequest(TeaModel):
             result['NumComments'] = self.num_comments
         if self.sentiment is not None:
             result['Sentiment'] = self.sentiment
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
         if self.source_material is not None:
             result['SourceMaterial'] = self.source_material
         if self.style is not None:
@@ -24756,6 +24771,8 @@ class RunCommentGenerationRequest(TeaModel):
             self.num_comments = m.get('NumComments')
         if m.get('Sentiment') is not None:
             self.sentiment = m.get('Sentiment')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
         if m.get('SourceMaterial') is not None:
             self.source_material = m.get('SourceMaterial')
         if m.get('Style') is not None:
@@ -24776,6 +24793,7 @@ class RunCommentGenerationShrinkRequest(TeaModel):
         length_range_shrink: str = None,
         num_comments: str = None,
         sentiment_shrink: str = None,
+        session_id: str = None,
         source_material: str = None,
         style: str = None,
         type_shrink: str = None,
@@ -24790,6 +24808,7 @@ class RunCommentGenerationShrinkRequest(TeaModel):
         self.num_comments = num_comments
         # This parameter is required.
         self.sentiment_shrink = sentiment_shrink
+        self.session_id = session_id
         # This parameter is required.
         self.source_material = source_material
         self.style = style
@@ -24819,6 +24838,8 @@ class RunCommentGenerationShrinkRequest(TeaModel):
             result['NumComments'] = self.num_comments
         if self.sentiment_shrink is not None:
             result['Sentiment'] = self.sentiment_shrink
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
         if self.source_material is not None:
             result['SourceMaterial'] = self.source_material
         if self.style is not None:
@@ -24843,6 +24864,8 @@ class RunCommentGenerationShrinkRequest(TeaModel):
             self.num_comments = m.get('NumComments')
         if m.get('Sentiment') is not None:
             self.sentiment_shrink = m.get('Sentiment')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
         if m.get('SourceMaterial') is not None:
             self.source_material = m.get('SourceMaterial')
         if m.get('Style') is not None:
@@ -26210,14 +26233,22 @@ class RunCustomHotTopicViewPointAnalysisResponse(TeaModel):
 class RunDocBrainmapRequest(TeaModel):
     def __init__(
         self,
+        clean_cache: bool = None,
         doc_id: str = None,
+        node_number: int = None,
+        prompt: str = None,
         session_id: str = None,
+        word_number: int = None,
         workspace_id: str = None,
     ):
+        self.clean_cache = clean_cache
         # This parameter is required.
         self.doc_id = doc_id
+        self.node_number = node_number
+        self.prompt = prompt
         # This parameter is required.
         self.session_id = session_id
+        self.word_number = word_number
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -26230,20 +26261,36 @@ class RunDocBrainmapRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.clean_cache is not None:
+            result['CleanCache'] = self.clean_cache
         if self.doc_id is not None:
             result['DocId'] = self.doc_id
+        if self.node_number is not None:
+            result['NodeNumber'] = self.node_number
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
         if self.session_id is not None:
             result['SessionId'] = self.session_id
+        if self.word_number is not None:
+            result['WordNumber'] = self.word_number
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CleanCache') is not None:
+            self.clean_cache = m.get('CleanCache')
         if m.get('DocId') is not None:
             self.doc_id = m.get('DocId')
+        if m.get('NodeNumber') is not None:
+            self.node_number = m.get('NodeNumber')
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
+        if m.get('WordNumber') is not None:
+            self.word_number = m.get('WordNumber')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -26504,14 +26551,22 @@ class RunDocBrainmapResponse(TeaModel):
 class RunDocIntroductionRequest(TeaModel):
     def __init__(
         self,
+        clean_cache: bool = None,
         doc_id: str = None,
+        introduction_prompt: str = None,
+        key_point_prompt: str = None,
         session_id: str = None,
+        summary_prompt: str = None,
         workspace_id: str = None,
     ):
+        self.clean_cache = clean_cache
         # This parameter is required.
         self.doc_id = doc_id
+        self.introduction_prompt = introduction_prompt
+        self.key_point_prompt = key_point_prompt
         # This parameter is required.
         self.session_id = session_id
+        self.summary_prompt = summary_prompt
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -26524,20 +26579,36 @@ class RunDocIntroductionRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.clean_cache is not None:
+            result['CleanCache'] = self.clean_cache
         if self.doc_id is not None:
             result['DocId'] = self.doc_id
+        if self.introduction_prompt is not None:
+            result['IntroductionPrompt'] = self.introduction_prompt
+        if self.key_point_prompt is not None:
+            result['KeyPointPrompt'] = self.key_point_prompt
         if self.session_id is not None:
             result['SessionId'] = self.session_id
+        if self.summary_prompt is not None:
+            result['SummaryPrompt'] = self.summary_prompt
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CleanCache') is not None:
+            self.clean_cache = m.get('CleanCache')
         if m.get('DocId') is not None:
             self.doc_id = m.get('DocId')
+        if m.get('IntroductionPrompt') is not None:
+            self.introduction_prompt = m.get('IntroductionPrompt')
+        if m.get('KeyPointPrompt') is not None:
+            self.key_point_prompt = m.get('KeyPointPrompt')
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
+        if m.get('SummaryPrompt') is not None:
+            self.summary_prompt = m.get('SummaryPrompt')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -27894,12 +27965,14 @@ class RunDocSmartCardResponse(TeaModel):
 class RunDocSummaryRequest(TeaModel):
     def __init__(
         self,
+        clean_cache: bool = None,
         doc_id: str = None,
         query: str = None,
         recommend_content: str = None,
         session_id: str = None,
         workspace_id: str = None,
     ):
+        self.clean_cache = clean_cache
         self.doc_id = doc_id
         self.query = query
         self.recommend_content = recommend_content
@@ -27917,6 +27990,8 @@ class RunDocSummaryRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.clean_cache is not None:
+            result['CleanCache'] = self.clean_cache
         if self.doc_id is not None:
             result['DocId'] = self.doc_id
         if self.query is not None:
@@ -27931,6 +28006,8 @@ class RunDocSummaryRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CleanCache') is not None:
+            self.clean_cache = m.get('CleanCache')
         if m.get('DocId') is not None:
             self.doc_id = m.get('DocId')
         if m.get('Query') is not None:
@@ -28199,12 +28276,14 @@ class RunDocSummaryResponse(TeaModel):
 class RunDocTranslationRequest(TeaModel):
     def __init__(
         self,
+        clean_cache: bool = None,
         doc_id: str = None,
         recommend_content: str = None,
         session_id: str = None,
         trans_type: str = None,
         workspace_id: str = None,
     ):
+        self.clean_cache = clean_cache
         self.doc_id = doc_id
         self.recommend_content = recommend_content
         # This parameter is required.
@@ -28222,6 +28301,8 @@ class RunDocTranslationRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.clean_cache is not None:
+            result['CleanCache'] = self.clean_cache
         if self.doc_id is not None:
             result['DocId'] = self.doc_id
         if self.recommend_content is not None:
@@ -28236,6 +28317,8 @@ class RunDocTranslationRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CleanCache') is not None:
+            self.clean_cache = m.get('CleanCache')
         if m.get('DocId') is not None:
             self.doc_id = m.get('DocId')
         if m.get('RecommendContent') is not None:
@@ -28497,6 +28580,330 @@ class RunDocTranslationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RunDocTranslationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RunDocWashingRequest(TeaModel):
+    def __init__(
+        self,
+        prompt: str = None,
+        reference_content: str = None,
+        session_id: str = None,
+        topic: str = None,
+        word_number: int = None,
+        workspace_id: str = None,
+        writing_type_name: str = None,
+        writing_type_ref_doc: str = None,
+    ):
+        self.prompt = prompt
+        # This parameter is required.
+        self.reference_content = reference_content
+        self.session_id = session_id
+        self.topic = topic
+        self.word_number = word_number
+        # This parameter is required.
+        self.workspace_id = workspace_id
+        self.writing_type_name = writing_type_name
+        self.writing_type_ref_doc = writing_type_ref_doc
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.reference_content is not None:
+            result['ReferenceContent'] = self.reference_content
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.word_number is not None:
+            result['WordNumber'] = self.word_number
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        if self.writing_type_name is not None:
+            result['WritingTypeName'] = self.writing_type_name
+        if self.writing_type_ref_doc is not None:
+            result['WritingTypeRefDoc'] = self.writing_type_ref_doc
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('ReferenceContent') is not None:
+            self.reference_content = m.get('ReferenceContent')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('WordNumber') is not None:
+            self.word_number = m.get('WordNumber')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        if m.get('WritingTypeName') is not None:
+            self.writing_type_name = m.get('WritingTypeName')
+        if m.get('WritingTypeRefDoc') is not None:
+            self.writing_type_ref_doc = m.get('WritingTypeRefDoc')
+        return self
+
+
+class RunDocWashingResponseBodyHeader(TeaModel):
+    def __init__(
+        self,
+        event: str = None,
+        event_info: str = None,
+        request_id: str = None,
+        session_id: str = None,
+        task_id: str = None,
+        trace_id: str = None,
+    ):
+        self.event = event
+        self.event_info = event_info
+        self.request_id = request_id
+        self.session_id = session_id
+        self.task_id = task_id
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event is not None:
+            result['Event'] = self.event
+        if self.event_info is not None:
+            result['EventInfo'] = self.event_info
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Event') is not None:
+            self.event = m.get('Event')
+        if m.get('EventInfo') is not None:
+            self.event_info = m.get('EventInfo')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class RunDocWashingResponseBodyPayloadOutput(TeaModel):
+    def __init__(
+        self,
+        text: str = None,
+    ):
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class RunDocWashingResponseBodyPayloadUsage(TeaModel):
+    def __init__(
+        self,
+        input_tokens: int = None,
+        output_tokens: int = None,
+        total_tokens: int = None,
+    ):
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+        self.total_tokens = total_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_tokens is not None:
+            result['InputTokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['OutputTokens'] = self.output_tokens
+        if self.total_tokens is not None:
+            result['TotalTokens'] = self.total_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputTokens') is not None:
+            self.input_tokens = m.get('InputTokens')
+        if m.get('OutputTokens') is not None:
+            self.output_tokens = m.get('OutputTokens')
+        if m.get('TotalTokens') is not None:
+            self.total_tokens = m.get('TotalTokens')
+        return self
+
+
+class RunDocWashingResponseBodyPayload(TeaModel):
+    def __init__(
+        self,
+        output: RunDocWashingResponseBodyPayloadOutput = None,
+        usage: RunDocWashingResponseBodyPayloadUsage = None,
+    ):
+        self.output = output
+        self.usage = usage
+
+    def validate(self):
+        if self.output:
+            self.output.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output is not None:
+            result['Output'] = self.output.to_map()
+        if self.usage is not None:
+            result['Usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Output') is not None:
+            temp_model = RunDocWashingResponseBodyPayloadOutput()
+            self.output = temp_model.from_map(m['Output'])
+        if m.get('Usage') is not None:
+            temp_model = RunDocWashingResponseBodyPayloadUsage()
+            self.usage = temp_model.from_map(m['Usage'])
+        return self
+
+
+class RunDocWashingResponseBody(TeaModel):
+    def __init__(
+        self,
+        end: bool = None,
+        header: RunDocWashingResponseBodyHeader = None,
+        payload: RunDocWashingResponseBodyPayload = None,
+        request_id: str = None,
+    ):
+        self.end = end
+        self.header = header
+        self.payload = payload
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.header:
+            self.header.validate()
+        if self.payload:
+            self.payload.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end is not None:
+            result['End'] = self.end
+        if self.header is not None:
+            result['Header'] = self.header.to_map()
+        if self.payload is not None:
+            result['Payload'] = self.payload.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('End') is not None:
+            self.end = m.get('End')
+        if m.get('Header') is not None:
+            temp_model = RunDocWashingResponseBodyHeader()
+            self.header = temp_model.from_map(m['Header'])
+        if m.get('Payload') is not None:
+            temp_model = RunDocWashingResponseBodyPayload()
+            self.payload = temp_model.from_map(m['Payload'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RunDocWashingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RunDocWashingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RunDocWashingResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -30361,8 +30768,10 @@ class RunSearchGenerationRequestAgentContextBizContext(TeaModel):
     def __init__(
         self,
         multimodal_media_selection: RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelection = None,
+        skip_current_supplement: bool = None,
     ):
         self.multimodal_media_selection = multimodal_media_selection
+        self.skip_current_supplement = skip_current_supplement
 
     def validate(self):
         if self.multimodal_media_selection:
@@ -30376,6 +30785,8 @@ class RunSearchGenerationRequestAgentContextBizContext(TeaModel):
         result = dict()
         if self.multimodal_media_selection is not None:
             result['MultimodalMediaSelection'] = self.multimodal_media_selection.to_map()
+        if self.skip_current_supplement is not None:
+            result['SkipCurrentSupplement'] = self.skip_current_supplement
         return result
 
     def from_map(self, m: dict = None):
@@ -30383,6 +30794,8 @@ class RunSearchGenerationRequestAgentContextBizContext(TeaModel):
         if m.get('MultimodalMediaSelection') is not None:
             temp_model = RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelection()
             self.multimodal_media_selection = temp_model.from_map(m['MultimodalMediaSelection'])
+        if m.get('SkipCurrentSupplement') is not None:
+            self.skip_current_supplement = m.get('SkipCurrentSupplement')
         return self
 
 
@@ -34230,9 +34643,11 @@ class RunSearchSimilarArticlesRequestChatConfigSearchParamSearchSources(TeaModel
     def __init__(
         self,
         code: str = None,
+        dataset_name: str = None,
         name: str = None,
     ):
         self.code = code
+        self.dataset_name = dataset_name
         self.name = name
 
     def validate(self):
@@ -34246,6 +34661,8 @@ class RunSearchSimilarArticlesRequestChatConfigSearchParamSearchSources(TeaModel
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
         if self.name is not None:
             result['Name'] = self.name
         return result
@@ -34254,6 +34671,8 @@ class RunSearchSimilarArticlesRequestChatConfigSearchParamSearchSources(TeaModel
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         return self
@@ -34485,6 +34904,7 @@ class RunSearchSimilarArticlesResponseBodyHeader(TeaModel):
 class RunSearchSimilarArticlesResponseBodyPayloadOutputArticles(TeaModel):
     def __init__(
         self,
+        doc_id: str = None,
         doc_uuid: str = None,
         pub_time: str = None,
         search_source_name: str = None,
@@ -34493,6 +34913,7 @@ class RunSearchSimilarArticlesResponseBodyPayloadOutputArticles(TeaModel):
         title: str = None,
         url: str = None,
     ):
+        self.doc_id = doc_id
         self.doc_uuid = doc_uuid
         self.pub_time = pub_time
         self.search_source_name = search_source_name
@@ -34510,6 +34931,8 @@ class RunSearchSimilarArticlesResponseBodyPayloadOutputArticles(TeaModel):
             return _map
 
         result = dict()
+        if self.doc_id is not None:
+            result['DocId'] = self.doc_id
         if self.doc_uuid is not None:
             result['DocUuid'] = self.doc_uuid
         if self.pub_time is not None:
@@ -34528,6 +34951,8 @@ class RunSearchSimilarArticlesResponseBodyPayloadOutputArticles(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DocId') is not None:
+            self.doc_id = m.get('DocId')
         if m.get('DocUuid') is not None:
             self.doc_uuid = m.get('DocUuid')
         if m.get('PubTime') is not None:
@@ -40003,7 +40428,6 @@ class SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForCusto
         summary_prompt: str = None,
     ):
         self.summary_image_count = summary_image_count
-        # This parameter is required.
         self.summary_model = summary_model
         self.summary_prompt = summary_prompt
 
