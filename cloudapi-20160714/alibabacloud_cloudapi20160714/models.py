@@ -23896,6 +23896,7 @@ class DescribeDatasetListRequest(TeaModel):
     def __init__(
         self,
         dataset_ids: str = None,
+        dataset_name: str = None,
         page_number: int = None,
         page_size: int = None,
         security_token: str = None,
@@ -23903,6 +23904,7 @@ class DescribeDatasetListRequest(TeaModel):
     ):
         # The IDs of the datasets.
         self.dataset_ids = dataset_ids
+        self.dataset_name = dataset_name
         # The number of the page to return. Pages start from page 1. Default value: 1.
         self.page_number = page_number
         # The number of entries returned per page.
@@ -23925,6 +23927,8 @@ class DescribeDatasetListRequest(TeaModel):
         result = dict()
         if self.dataset_ids is not None:
             result['DatasetIds'] = self.dataset_ids
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -23941,6 +23945,8 @@ class DescribeDatasetListRequest(TeaModel):
         m = m or dict()
         if m.get('DatasetIds') is not None:
             self.dataset_ids = m.get('DatasetIds')
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:

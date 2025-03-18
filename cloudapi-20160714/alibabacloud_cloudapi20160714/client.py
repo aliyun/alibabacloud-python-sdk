@@ -12705,6 +12705,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dataset_ids):
             query['DatasetIds'] = request.dataset_ids
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -12754,6 +12756,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dataset_ids):
             query['DatasetIds'] = request.dataset_ids
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
