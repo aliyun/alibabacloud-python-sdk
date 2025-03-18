@@ -923,7 +923,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CheckServiceRoleResponse:
         """
-        @summary Checks whether the specified service role is granted required permissions within the current Alibaba Cloud account.
+        @summary Checks whether the specified service roles are granted to Container Service for Kubernetes (ACK) within the current Alibaba Cloud account. ACK can access other cloud services, such as Elastic Compute Service (ECS), Object Storage Service (OSS), File Storage NAS (NAS), and Server Load Balancer (SLB), only after ACK is assigned the required service roles.
         
         @param request: CheckServiceRoleRequest
         @param headers: map
@@ -967,7 +967,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CheckServiceRoleResponse:
         """
-        @summary Checks whether the specified service role is granted required permissions within the current Alibaba Cloud account.
+        @summary Checks whether the specified service roles are granted to Container Service for Kubernetes (ACK) within the current Alibaba Cloud account. ACK can access other cloud services, such as Elastic Compute Service (ECS), Object Storage Service (OSS), File Storage NAS (NAS), and Server Load Balancer (SLB), only after ACK is assigned the required service roles.
         
         @param request: CheckServiceRoleRequest
         @param headers: map
@@ -1009,7 +1009,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.CheckServiceRoleRequest,
     ) -> cs20151215_models.CheckServiceRoleResponse:
         """
-        @summary Checks whether the specified service role is granted required permissions within the current Alibaba Cloud account.
+        @summary Checks whether the specified service roles are granted to Container Service for Kubernetes (ACK) within the current Alibaba Cloud account. ACK can access other cloud services, such as Elastic Compute Service (ECS), Object Storage Service (OSS), File Storage NAS (NAS), and Server Load Balancer (SLB), only after ACK is assigned the required service roles.
         
         @param request: CheckServiceRoleRequest
         @return: CheckServiceRoleResponse
@@ -1023,7 +1023,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.CheckServiceRoleRequest,
     ) -> cs20151215_models.CheckServiceRoleResponse:
         """
-        @summary Checks whether the specified service role is granted required permissions within the current Alibaba Cloud account.
+        @summary Checks whether the specified service roles are granted to Container Service for Kubernetes (ACK) within the current Alibaba Cloud account. ACK can access other cloud services, such as Elastic Compute Service (ECS), Object Storage Service (OSS), File Storage NAS (NAS), and Server Load Balancer (SLB), only after ACK is assigned the required service roles.
         
         @param request: CheckServiceRoleRequest
         @return: CheckServiceRoleResponse
@@ -1511,15 +1511,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateClusterResponse:
         """
-        @summary You can call the CreateCluster operation to create a Container Service for Kubernetes (ACK) cluster. ACK clusters include ACK managed clusters, ACK dedicated clusters, ACK Serverless clusters, ACK Edge clusters, ACK clusters that support sandboxed containers, and registered clusters. For more information about how to create different types of ACK clusters, see the following usage notes.
+        @summary Creates a Container Service for Kubernetes (ACK) cluster. For example, you can create an ACK managed cluster, ACK Serverless cluster, ACK Edge cluster, or registered cluster. When you create an ACK cluster, you need to configure the cluster information, components, and cloud resources used by ACK.
         
-        @description This topic describes all request parameters for creating a Container Service for Kubernetes (ACK) cluster. For more information about how to call the API to create each type of ACK cluster, refer to the following topics:
-        [Call the API to create an ACK managed cluster](https://help.aliyun.com/document_detail/90776.html)
-        [Call the API to create an ACK dedicated cluster](https://help.aliyun.com/document_detail/197620.html)
-        [Call the API to create an ACK Serverless cluster](https://help.aliyun.com/document_detail/144246.html)
-        [Call the API to create an ACK Edge cluster](https://help.aliyun.com/document_detail/128204.html)
-        [Call the API to create an ACK Basic cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/196321.html)
-        [Call the API to create an ACK Pro cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/140623.html)
+        @description ### [](#-openapi-)Generate API request parameters in the ACK console
+        When you fail to create an ACK cluster by calling the CreateCluster operation due to invalid parameter settings, you can generate valid API request parameters in the ACK console. Procedure:
+        1.  Log on to the [ACK console](javascript:void\\(0\\)). In the left-side navigation pane, click *Clusters**.
+        2.  On the *Cluster** page, click **Cluster Templates**.
+        3.  In the Select Cluster Template dialog box, select the type of cluster that you want to create and click Create. Then, configure the cluster setting parameters.
+        4.  After you configure the cluster parameters, click *Generate API Request Parameters** in the **Confirm Order** step.
+        The API request parameters are displayed in the API Request Parameters dialog box.
         
         @param request: CreateClusterRequest
         @param headers: map
@@ -1757,15 +1757,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateClusterResponse:
         """
-        @summary You can call the CreateCluster operation to create a Container Service for Kubernetes (ACK) cluster. ACK clusters include ACK managed clusters, ACK dedicated clusters, ACK Serverless clusters, ACK Edge clusters, ACK clusters that support sandboxed containers, and registered clusters. For more information about how to create different types of ACK clusters, see the following usage notes.
+        @summary Creates a Container Service for Kubernetes (ACK) cluster. For example, you can create an ACK managed cluster, ACK Serverless cluster, ACK Edge cluster, or registered cluster. When you create an ACK cluster, you need to configure the cluster information, components, and cloud resources used by ACK.
         
-        @description This topic describes all request parameters for creating a Container Service for Kubernetes (ACK) cluster. For more information about how to call the API to create each type of ACK cluster, refer to the following topics:
-        [Call the API to create an ACK managed cluster](https://help.aliyun.com/document_detail/90776.html)
-        [Call the API to create an ACK dedicated cluster](https://help.aliyun.com/document_detail/197620.html)
-        [Call the API to create an ACK Serverless cluster](https://help.aliyun.com/document_detail/144246.html)
-        [Call the API to create an ACK Edge cluster](https://help.aliyun.com/document_detail/128204.html)
-        [Call the API to create an ACK Basic cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/196321.html)
-        [Call the API to create an ACK Pro cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/140623.html)
+        @description ### [](#-openapi-)Generate API request parameters in the ACK console
+        When you fail to create an ACK cluster by calling the CreateCluster operation due to invalid parameter settings, you can generate valid API request parameters in the ACK console. Procedure:
+        1.  Log on to the [ACK console](javascript:void\\(0\\)). In the left-side navigation pane, click *Clusters**.
+        2.  On the *Cluster** page, click **Cluster Templates**.
+        3.  In the Select Cluster Template dialog box, select the type of cluster that you want to create and click Create. Then, configure the cluster setting parameters.
+        4.  After you configure the cluster parameters, click *Generate API Request Parameters** in the **Confirm Order** step.
+        The API request parameters are displayed in the API Request Parameters dialog box.
         
         @param request: CreateClusterRequest
         @param headers: map
@@ -2001,15 +2001,15 @@ class Client(OpenApiClient):
         request: cs20151215_models.CreateClusterRequest,
     ) -> cs20151215_models.CreateClusterResponse:
         """
-        @summary You can call the CreateCluster operation to create a Container Service for Kubernetes (ACK) cluster. ACK clusters include ACK managed clusters, ACK dedicated clusters, ACK Serverless clusters, ACK Edge clusters, ACK clusters that support sandboxed containers, and registered clusters. For more information about how to create different types of ACK clusters, see the following usage notes.
+        @summary Creates a Container Service for Kubernetes (ACK) cluster. For example, you can create an ACK managed cluster, ACK Serverless cluster, ACK Edge cluster, or registered cluster. When you create an ACK cluster, you need to configure the cluster information, components, and cloud resources used by ACK.
         
-        @description This topic describes all request parameters for creating a Container Service for Kubernetes (ACK) cluster. For more information about how to call the API to create each type of ACK cluster, refer to the following topics:
-        [Call the API to create an ACK managed cluster](https://help.aliyun.com/document_detail/90776.html)
-        [Call the API to create an ACK dedicated cluster](https://help.aliyun.com/document_detail/197620.html)
-        [Call the API to create an ACK Serverless cluster](https://help.aliyun.com/document_detail/144246.html)
-        [Call the API to create an ACK Edge cluster](https://help.aliyun.com/document_detail/128204.html)
-        [Call the API to create an ACK Basic cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/196321.html)
-        [Call the API to create an ACK Pro cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/140623.html)
+        @description ### [](#-openapi-)Generate API request parameters in the ACK console
+        When you fail to create an ACK cluster by calling the CreateCluster operation due to invalid parameter settings, you can generate valid API request parameters in the ACK console. Procedure:
+        1.  Log on to the [ACK console](javascript:void\\(0\\)). In the left-side navigation pane, click *Clusters**.
+        2.  On the *Cluster** page, click **Cluster Templates**.
+        3.  In the Select Cluster Template dialog box, select the type of cluster that you want to create and click Create. Then, configure the cluster setting parameters.
+        4.  After you configure the cluster parameters, click *Generate API Request Parameters** in the **Confirm Order** step.
+        The API request parameters are displayed in the API Request Parameters dialog box.
         
         @param request: CreateClusterRequest
         @return: CreateClusterResponse
@@ -2023,15 +2023,15 @@ class Client(OpenApiClient):
         request: cs20151215_models.CreateClusterRequest,
     ) -> cs20151215_models.CreateClusterResponse:
         """
-        @summary You can call the CreateCluster operation to create a Container Service for Kubernetes (ACK) cluster. ACK clusters include ACK managed clusters, ACK dedicated clusters, ACK Serverless clusters, ACK Edge clusters, ACK clusters that support sandboxed containers, and registered clusters. For more information about how to create different types of ACK clusters, see the following usage notes.
+        @summary Creates a Container Service for Kubernetes (ACK) cluster. For example, you can create an ACK managed cluster, ACK Serverless cluster, ACK Edge cluster, or registered cluster. When you create an ACK cluster, you need to configure the cluster information, components, and cloud resources used by ACK.
         
-        @description This topic describes all request parameters for creating a Container Service for Kubernetes (ACK) cluster. For more information about how to call the API to create each type of ACK cluster, refer to the following topics:
-        [Call the API to create an ACK managed cluster](https://help.aliyun.com/document_detail/90776.html)
-        [Call the API to create an ACK dedicated cluster](https://help.aliyun.com/document_detail/197620.html)
-        [Call the API to create an ACK Serverless cluster](https://help.aliyun.com/document_detail/144246.html)
-        [Call the API to create an ACK Edge cluster](https://help.aliyun.com/document_detail/128204.html)
-        [Call the API to create an ACK Basic cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/196321.html)
-        [Call the API to create an ACK Pro cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/140623.html)
+        @description ### [](#-openapi-)Generate API request parameters in the ACK console
+        When you fail to create an ACK cluster by calling the CreateCluster operation due to invalid parameter settings, you can generate valid API request parameters in the ACK console. Procedure:
+        1.  Log on to the [ACK console](javascript:void\\(0\\)). In the left-side navigation pane, click *Clusters**.
+        2.  On the *Cluster** page, click **Cluster Templates**.
+        3.  In the Select Cluster Template dialog box, select the type of cluster that you want to create and click Create. Then, configure the cluster setting parameters.
+        4.  After you configure the cluster parameters, click *Generate API Request Parameters** in the **Confirm Order** step.
+        The API request parameters are displayed in the API Request Parameters dialog box.
         
         @param request: CreateClusterRequest
         @return: CreateClusterResponse
@@ -3118,6 +3118,13 @@ class Client(OpenApiClient):
         """
         @summary You can call the DeleteCluster operation to delete a cluster and specify whether to delete or retain the relevant cluster resources. Before you delete a cluster, you must manually delete workloads in the cluster, such as Deployments, StatefulSets, Jobs, and CronJobs. Otherwise, you may fail to delete the cluster.
         
+        @description Warning:
+        Subscription ECS instances and Lingjun nodes in a cluster cannot be automatically released. To avoid unnecessary costs, we recommend that you manually release the resources. For more information, see \\<a href="{0}" target="_blank">Rules for deleting clusters and releasing nodes\\</a>.
+        If the SLB instance of the API server uses the subscription billing method, it cannot be automatically released. To avoid unnecessary costs, we recommend that you manually release it.
+        By default, virtual private clouds (VPCs), vSwitches, security groups, and RAM roles are retained if they are used by other resources. To avoid unnecessary costs, we recommend that you manually release the resources.
+        Elastic container instances created on virtual nodes are automatically released.
+        Some resources created together with a cluster are not automatically released when the cluster is deleted. After the cluster is deleted, you are still charged for the resources. Release or retain the resources based on your actual needs. The resources include Simple Log Service projects automatically created by the cluster and dynamically provisioned disks.
+        
         @param tmp_req: DeleteClusterRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3175,6 +3182,13 @@ class Client(OpenApiClient):
         """
         @summary You can call the DeleteCluster operation to delete a cluster and specify whether to delete or retain the relevant cluster resources. Before you delete a cluster, you must manually delete workloads in the cluster, such as Deployments, StatefulSets, Jobs, and CronJobs. Otherwise, you may fail to delete the cluster.
         
+        @description Warning:
+        Subscription ECS instances and Lingjun nodes in a cluster cannot be automatically released. To avoid unnecessary costs, we recommend that you manually release the resources. For more information, see \\<a href="{0}" target="_blank">Rules for deleting clusters and releasing nodes\\</a>.
+        If the SLB instance of the API server uses the subscription billing method, it cannot be automatically released. To avoid unnecessary costs, we recommend that you manually release it.
+        By default, virtual private clouds (VPCs), vSwitches, security groups, and RAM roles are retained if they are used by other resources. To avoid unnecessary costs, we recommend that you manually release the resources.
+        Elastic container instances created on virtual nodes are automatically released.
+        Some resources created together with a cluster are not automatically released when the cluster is deleted. After the cluster is deleted, you are still charged for the resources. Release or retain the resources based on your actual needs. The resources include Simple Log Service projects automatically created by the cluster and dynamically provisioned disks.
+        
         @param tmp_req: DeleteClusterRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3230,6 +3244,13 @@ class Client(OpenApiClient):
         """
         @summary You can call the DeleteCluster operation to delete a cluster and specify whether to delete or retain the relevant cluster resources. Before you delete a cluster, you must manually delete workloads in the cluster, such as Deployments, StatefulSets, Jobs, and CronJobs. Otherwise, you may fail to delete the cluster.
         
+        @description Warning:
+        Subscription ECS instances and Lingjun nodes in a cluster cannot be automatically released. To avoid unnecessary costs, we recommend that you manually release the resources. For more information, see \\<a href="{0}" target="_blank">Rules for deleting clusters and releasing nodes\\</a>.
+        If the SLB instance of the API server uses the subscription billing method, it cannot be automatically released. To avoid unnecessary costs, we recommend that you manually release it.
+        By default, virtual private clouds (VPCs), vSwitches, security groups, and RAM roles are retained if they are used by other resources. To avoid unnecessary costs, we recommend that you manually release the resources.
+        Elastic container instances created on virtual nodes are automatically released.
+        Some resources created together with a cluster are not automatically released when the cluster is deleted. After the cluster is deleted, you are still charged for the resources. Release or retain the resources based on your actual needs. The resources include Simple Log Service projects automatically created by the cluster and dynamically provisioned disks.
+        
         @param request: DeleteClusterRequest
         @return: DeleteClusterResponse
         """
@@ -3244,6 +3265,13 @@ class Client(OpenApiClient):
     ) -> cs20151215_models.DeleteClusterResponse:
         """
         @summary You can call the DeleteCluster operation to delete a cluster and specify whether to delete or retain the relevant cluster resources. Before you delete a cluster, you must manually delete workloads in the cluster, such as Deployments, StatefulSets, Jobs, and CronJobs. Otherwise, you may fail to delete the cluster.
+        
+        @description Warning:
+        Subscription ECS instances and Lingjun nodes in a cluster cannot be automatically released. To avoid unnecessary costs, we recommend that you manually release the resources. For more information, see \\<a href="{0}" target="_blank">Rules for deleting clusters and releasing nodes\\</a>.
+        If the SLB instance of the API server uses the subscription billing method, it cannot be automatically released. To avoid unnecessary costs, we recommend that you manually release it.
+        By default, virtual private clouds (VPCs), vSwitches, security groups, and RAM roles are retained if they are used by other resources. To avoid unnecessary costs, we recommend that you manually release the resources.
+        Elastic container instances created on virtual nodes are automatically released.
+        Some resources created together with a cluster are not automatically released when the cluster is deleted. After the cluster is deleted, you are still charged for the resources. Release or retain the resources based on your actual needs. The resources include Simple Log Service projects automatically created by the cluster and dynamically provisioned disks.
         
         @param request: DeleteClusterRequest
         @return: DeleteClusterResponse
@@ -7720,7 +7748,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DescribeExternalAgent is deprecated
         
-        @summary Queries the proxy configurations of a registered cluster based on the cluster ID.
+        @summary Queries the proxy configurations of a registered cluster by cluster ID.
         
         @description For more information, see [Register an external Kubernetes cluster](https://help.aliyun.com/document_detail/121053.html).
         
@@ -7772,7 +7800,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DescribeExternalAgent is deprecated
         
-        @summary Queries the proxy configurations of a registered cluster based on the cluster ID.
+        @summary Queries the proxy configurations of a registered cluster by cluster ID.
         
         @description For more information, see [Register an external Kubernetes cluster](https://help.aliyun.com/document_detail/121053.html).
         
@@ -7822,7 +7850,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DescribeExternalAgent is deprecated
         
-        @summary Queries the proxy configurations of a registered cluster based on the cluster ID.
+        @summary Queries the proxy configurations of a registered cluster by cluster ID.
         
         @description For more information, see [Register an external Kubernetes cluster](https://help.aliyun.com/document_detail/121053.html).
         
@@ -7842,7 +7870,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DescribeExternalAgent is deprecated
         
-        @summary Queries the proxy configurations of a registered cluster based on the cluster ID.
+        @summary Queries the proxy configurations of a registered cluster by cluster ID.
         
         @description For more information, see [Register an external Kubernetes cluster](https://help.aliyun.com/document_detail/121053.html).
         
@@ -10107,7 +10135,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GetClusterAuditProjectResponse:
         """
-        @summary You can call the GetClusterAuditProject operation to query the Simple Log Service (SLS) project that stores the audit logs of the API server of a cluster.
+        @summary You can call the GetClusterAuditProject operation to check whether the cluster has API Server auditing enabled and the corresponding Simple Log Service project that stores API Server audit logs.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -10145,7 +10173,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GetClusterAuditProjectResponse:
         """
-        @summary You can call the GetClusterAuditProject operation to query the Simple Log Service (SLS) project that stores the audit logs of the API server of a cluster.
+        @summary You can call the GetClusterAuditProject operation to check whether the cluster has API Server auditing enabled and the corresponding Simple Log Service project that stores API Server audit logs.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -10181,7 +10209,7 @@ class Client(OpenApiClient):
         clusterid: str,
     ) -> cs20151215_models.GetClusterAuditProjectResponse:
         """
-        @summary You can call the GetClusterAuditProject operation to query the Simple Log Service (SLS) project that stores the audit logs of the API server of a cluster.
+        @summary You can call the GetClusterAuditProject operation to check whether the cluster has API Server auditing enabled and the corresponding Simple Log Service project that stores API Server audit logs.
         
         @return: GetClusterAuditProjectResponse
         """
@@ -10194,7 +10222,7 @@ class Client(OpenApiClient):
         clusterid: str,
     ) -> cs20151215_models.GetClusterAuditProjectResponse:
         """
-        @summary You can call the GetClusterAuditProject operation to query the Simple Log Service (SLS) project that stores the audit logs of the API server of a cluster.
+        @summary You can call the GetClusterAuditProject operation to check whether the cluster has API Server auditing enabled and the corresponding Simple Log Service project that stores API Server audit logs.
         
         @return: GetClusterAuditProjectResponse
         """
@@ -15234,7 +15262,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.StartAlertResponse:
         """
-        @summary 启用告警
+        @summary Activates the specified alert rule(s).
         
         @param request: StartAlertRequest
         @param headers: map
@@ -15281,7 +15309,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.StartAlertResponse:
         """
-        @summary 启用告警
+        @summary Activates the specified alert rule(s).
         
         @param request: StartAlertRequest
         @param headers: map
@@ -15326,7 +15354,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.StartAlertRequest,
     ) -> cs20151215_models.StartAlertResponse:
         """
-        @summary 启用告警
+        @summary Activates the specified alert rule(s).
         
         @param request: StartAlertRequest
         @return: StartAlertResponse
@@ -15341,7 +15369,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.StartAlertRequest,
     ) -> cs20151215_models.StartAlertResponse:
         """
-        @summary 启用告警
+        @summary Activates the specified alert rule(s).
         
         @param request: StartAlertRequest
         @return: StartAlertResponse
@@ -15972,7 +16000,7 @@ class Client(OpenApiClient):
         """
         @summary You can call the UpdateClusterAuditLogConfig operation to enable or disable the audit log feature in a Container Service for Kubernetes (ACK) cluster and update the audit log configuration. This operation also allows you to record requests to the Kubernetes API and the responses, which can be used to trace cluster operation history and troubleshoot cluster issues.
         
-        @description Before you call this operation, ensure that you understand the billing methods and pricing of [Simple Log Service](https://www.alibabacloud.com/product/log-service/pricing) (SLS).
+        @description Before you call this operation, ensure that you understand the billing methods and pricing of [Simple Log Service](https://www.alibabacloud.com/product/log-service/pricing).
         
         @param request: UpdateClusterAuditLogConfigRequest
         @param headers: map
@@ -16021,7 +16049,7 @@ class Client(OpenApiClient):
         """
         @summary You can call the UpdateClusterAuditLogConfig operation to enable or disable the audit log feature in a Container Service for Kubernetes (ACK) cluster and update the audit log configuration. This operation also allows you to record requests to the Kubernetes API and the responses, which can be used to trace cluster operation history and troubleshoot cluster issues.
         
-        @description Before you call this operation, ensure that you understand the billing methods and pricing of [Simple Log Service](https://www.alibabacloud.com/product/log-service/pricing) (SLS).
+        @description Before you call this operation, ensure that you understand the billing methods and pricing of [Simple Log Service](https://www.alibabacloud.com/product/log-service/pricing).
         
         @param request: UpdateClusterAuditLogConfigRequest
         @param headers: map
@@ -16068,7 +16096,7 @@ class Client(OpenApiClient):
         """
         @summary You can call the UpdateClusterAuditLogConfig operation to enable or disable the audit log feature in a Container Service for Kubernetes (ACK) cluster and update the audit log configuration. This operation also allows you to record requests to the Kubernetes API and the responses, which can be used to trace cluster operation history and troubleshoot cluster issues.
         
-        @description Before you call this operation, ensure that you understand the billing methods and pricing of [Simple Log Service](https://www.alibabacloud.com/product/log-service/pricing) (SLS).
+        @description Before you call this operation, ensure that you understand the billing methods and pricing of [Simple Log Service](https://www.alibabacloud.com/product/log-service/pricing).
         
         @param request: UpdateClusterAuditLogConfigRequest
         @return: UpdateClusterAuditLogConfigResponse
@@ -16085,7 +16113,7 @@ class Client(OpenApiClient):
         """
         @summary You can call the UpdateClusterAuditLogConfig operation to enable or disable the audit log feature in a Container Service for Kubernetes (ACK) cluster and update the audit log configuration. This operation also allows you to record requests to the Kubernetes API and the responses, which can be used to trace cluster operation history and troubleshoot cluster issues.
         
-        @description Before you call this operation, ensure that you understand the billing methods and pricing of [Simple Log Service](https://www.alibabacloud.com/product/log-service/pricing) (SLS).
+        @description Before you call this operation, ensure that you understand the billing methods and pricing of [Simple Log Service](https://www.alibabacloud.com/product/log-service/pricing).
         
         @param request: UpdateClusterAuditLogConfigRequest
         @return: UpdateClusterAuditLogConfigResponse
@@ -16502,7 +16530,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateResourcesDeleteProtectionResponse:
         """
-        @summary Updates the deletion protection status of the specified resources. You can enable or disable deletion protection for namespaces and Services.
+        @summary Updates the deletion protection status of the specified resources. You can enable or disable deletion protection for namespaces and Services. You can call this operation to enable deletion protection for namespaces or Services that involve businesses-critical and sensitive data to avoid incurring maintenance costs caused by accidental namespace or Service deletion.
         
         @param request: UpdateResourcesDeleteProtectionRequest
         @param headers: map
@@ -16553,7 +16581,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateResourcesDeleteProtectionResponse:
         """
-        @summary Updates the deletion protection status of the specified resources. You can enable or disable deletion protection for namespaces and Services.
+        @summary Updates the deletion protection status of the specified resources. You can enable or disable deletion protection for namespaces and Services. You can call this operation to enable deletion protection for namespaces or Services that involve businesses-critical and sensitive data to avoid incurring maintenance costs caused by accidental namespace or Service deletion.
         
         @param request: UpdateResourcesDeleteProtectionRequest
         @param headers: map
@@ -16602,7 +16630,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.UpdateResourcesDeleteProtectionRequest,
     ) -> cs20151215_models.UpdateResourcesDeleteProtectionResponse:
         """
-        @summary Updates the deletion protection status of the specified resources. You can enable or disable deletion protection for namespaces and Services.
+        @summary Updates the deletion protection status of the specified resources. You can enable or disable deletion protection for namespaces and Services. You can call this operation to enable deletion protection for namespaces or Services that involve businesses-critical and sensitive data to avoid incurring maintenance costs caused by accidental namespace or Service deletion.
         
         @param request: UpdateResourcesDeleteProtectionRequest
         @return: UpdateResourcesDeleteProtectionResponse
@@ -16617,7 +16645,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.UpdateResourcesDeleteProtectionRequest,
     ) -> cs20151215_models.UpdateResourcesDeleteProtectionResponse:
         """
-        @summary Updates the deletion protection status of the specified resources. You can enable or disable deletion protection for namespaces and Services.
+        @summary Updates the deletion protection status of the specified resources. You can enable or disable deletion protection for namespaces and Services. You can call this operation to enable deletion protection for namespaces or Services that involve businesses-critical and sensitive data to avoid incurring maintenance costs caused by accidental namespace or Service deletion.
         
         @param request: UpdateResourcesDeleteProtectionRequest
         @return: UpdateResourcesDeleteProtectionResponse

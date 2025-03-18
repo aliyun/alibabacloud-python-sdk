@@ -1,3 +1,7 @@
+2025-03-18 Version: 4.8.14
+- Update API DescribeSubaccountK8sClusterUserConfig: update response param.
+
+
 2025-02-28 Version: 4.8.13
 - Update API DescribeClusterAttachScripts: update param body.
 - Update API DescribeClusterUserKubeconfig: update response param.
