@@ -1,3 +1,7 @@
+2025-03-18 Version: 1.5.2
+- Update API CreateInstance: update param body.
+
+
 2024-12-26 Version: 1.5.1
 - Update API GetInstance: update response param.
 - Update API ListInstances: update response param.

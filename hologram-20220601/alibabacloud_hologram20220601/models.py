@@ -10,7 +10,9 @@ class ChangeResourceGroupRequest(TeaModel):
         instance_id: str = None,
         new_resource_group_id: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # new resource group id
         self.new_resource_group_id = new_resource_group_id
 
     def validate(self):
@@ -43,6 +45,25 @@ class ChangeResourceGroupResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # The returned data.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -246,6 +267,7 @@ class CreateInstanceRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
         storage_size: int = None,
+        storage_type: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
         zone_id: str = None,
@@ -361,6 +383,7 @@ class CreateInstanceRequest(TeaModel):
         # 
         # >  This parameter is invalid for pay-as-you-go instances.
         self.storage_size = storage_size
+        self.storage_type = storage_type
         # The ID of the vSwitch. The zone in which the vSwitch resides must be the same as the zone in which the Hologres instance resides.
         # 
         # This parameter is required.
@@ -415,6 +438,8 @@ class CreateInstanceRequest(TeaModel):
             result['resourceGroupId'] = self.resource_group_id
         if self.storage_size is not None:
             result['storageSize'] = self.storage_size
+        if self.storage_type is not None:
+            result['storageType'] = self.storage_type
         if self.v_switch_id is not None:
             result['vSwitchId'] = self.v_switch_id
         if self.vpc_id is not None:
@@ -457,6 +482,8 @@ class CreateInstanceRequest(TeaModel):
             self.resource_group_id = m.get('resourceGroupId')
         if m.get('storageSize') is not None:
             self.storage_size = m.get('storageSize')
+        if m.get('storageType') is not None:
+            self.storage_type = m.get('storageType')
         if m.get('vSwitchId') is not None:
             self.v_switch_id = m.get('vSwitchId')
         if m.get('vpcId') is not None:
@@ -1555,6 +1582,7 @@ class GetInstanceResponseBodyInstance(TeaModel):
         self.disk = disk
         # Indicates whether data lake acceleration is enabled.
         self.enable_hive_access = enable_hive_access
+        # EnableServerless
         self.enable_serverless = enable_serverless
         # The list of endpoints.
         self.endpoints = endpoints
@@ -1678,9 +1706,17 @@ class GetInstanceResponseBodyInstance(TeaModel):
         self.memory = memory
         # The ID of the region in which the instance resides.
         self.region_id = region_id
+        # Disaster recovery instance role. 
+        # * Active: Primary disaster recovery instance.
+        # * Passive: Disaster tolerance instance.
+        # * PreActive: Primary disaster recovery instance not yet in final state.
         self.replica_role = replica_role
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The storage type.
+        # 
+        # *   redundant: 3 copies
+        # *   local: single copy
         self.storage_type = storage_type
         # The reason for the suspension.
         # 
@@ -2181,7 +2217,7 @@ class GetWarehouseDetailResponseBody(TeaModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The values returned.
+        # The returned values.
         self.warehouse_detail = warehouse_detail
 
     def validate(self):
@@ -2257,7 +2293,18 @@ class ListBackupDataRequest(TeaModel):
         backup_type: str = None,
         instance_id: str = None,
     ):
+        # The backup type. Specific backup data is filtered based on the type. If you leave this parameter empty, all backup data is returned.
+        # 
+        # Valid values:
+        # 
+        # *   redundant_remote
+        # *   remote
+        # *   redundant
+        # *   full_remote
+        # *   local
+        # *   full
         self.backup_type = backup_type
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):
@@ -2306,23 +2353,61 @@ class ListBackupDataResponseBodyBackupDataList(TeaModel):
         status: str = None,
         trigger_type: str = None,
     ):
+        # The backup type. In general, the following two types are supported: local backup and remote backup. In the local backup type, snapshots reside in the same region as your instance. The following two sub-types are available: full (single backup, single replica) and redundant (zone-redundant storage, multiple replicas). In the remote backup type, snapshots and your instance reside in different regions. Remote backups are the replicas of the backups of the full or redundant type in another region. The values local and remote do not represent specific types, but are used only for data filtering. The value local indicates all local backups, and the value remote indicates all remote backups.
         self.backup_type = backup_type
+        # The size of cold data. Unit: bytes.
         self.cold_data_size = cold_data_size
+        # The description of the backup data.
         self.data_desc = data_desc
+        # The backup granularity.
+        # 
+        # Valid values:
+        # 
+        # *   instance
         self.data_gran = data_gran
+        # The size of the backup data. Unit: bytes.
         self.data_size = data_size
+        # The snapshot time. The value format of this parameter follows the same standard as that of the StartTime parameter.
         self.data_time = data_time
+        # The end time of the backup task. The value format of this parameter follows the same standard as that of the StartTime parameter.
         self.end_time = end_time
+        # The unique ID of the backup.
         self.id = id
+        # The instance ID.
         self.instance_id = instance_id
+        # The name of the instance.
         self.instance_name = instance_name
+        # The region in which the instance resides.
         self.instance_region = instance_region
+        # The type of the instance.
+        # 
+        # Valid values:
+        # 
+        # *   Warehouse: virtual warehouse instance
+        # *   Standard: general-purpose instance
         self.instance_type = instance_type
+        # The zone in which the instance resides.
         self.instance_zone_id = instance_zone_id
+        # The region in which the backup data resides.
         self.snapshot_region = snapshot_region
+        # The zone in which the backup data resides. In zone-redundant storage mode, backup data is stored in different zones, including the current zone.
         self.snapshot_zone_id = snapshot_zone_id
+        # The start time of the backup task. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ss.SSSTZ format. The time is displayed in UTC (the same below).
         self.start_time = start_time
+        # The status of the backup task.
+        # 
+        # Valid values:
+        # 
+        # *   processing
+        # *   completed
+        # *   failed
         self.status = status
+        # The mode in which the backup task is triggered.
+        # 
+        # Valid values:
+        # 
+        # *   scheduled: periodic backup
+        # *   manual: manual backup
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -2419,7 +2504,9 @@ class ListBackupDataResponseBody(TeaModel):
         backup_data_list: List[ListBackupDataResponseBodyBackupDataList] = None,
         request_id: str = None,
     ):
+        # The backups.
         self.backup_data_list = backup_data_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3038,7 +3125,7 @@ class ListInstancesResponseBody(TeaModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The list of queried instances.
+        # The instances.
         self.instance_list = instance_list
         # The request ID.
         self.request_id = request_id
@@ -3880,9 +3967,9 @@ class RestartInstanceResponseBody(TeaModel):
         # 
         #     <!-- -->
         self.data = data
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
-        # The error message returned if the request failed.
+        # The error message.
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -4090,9 +4177,9 @@ class ResumeInstanceResponseBody(TeaModel):
     ):
         # The returned result, which indicates whether the operation was successful.
         self.data = data
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
-        # The error message returned if the request failed.
+        # The error message.
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -4591,9 +4678,9 @@ class StopInstanceResponseBody(TeaModel):
         # 
         #     <!-- -->
         self.data = data
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
-        # The error message returned if the request failed.
+        # The error message.
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -4812,7 +4899,7 @@ class UpdateInstanceNameRequest(TeaModel):
         self,
         instance_name: str = None,
     ):
-        # The new name of the instance.
+        # The new name of the instance. The name must be 2 to 64 characters in length.
         self.instance_name = instance_name
 
     def validate(self):
@@ -4865,9 +4952,9 @@ class UpdateInstanceNameResponseBody(TeaModel):
         # 
         #     <!-- -->
         self.data = data
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
-        # The error message returned if the request failed.
+        # The error message.
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -4989,31 +5076,25 @@ class UpdateInstanceNetworkTypeRequest(TeaModel):
         # 
         # Valid values:
         # 
-        # *   others/null
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   true
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # *   others/null: The network type is not changed from AnyTunnel to SingleTunnel.
+        # *   true: The network type is changed from AnyTunnel to SingleTunnel.
         self.any_tunnel_to_single_tunnel = any_tunnel_to_single_tunnel
-        # A list of network types that you want to enable. The list of enabled network types is randomly ordered. For example, the Internet, internal network, and VPCSingleTunnel network types are enabled. If you want to disable the Internet type, set this parameter to Intranet,VPCSingleTunnel.
+        # A list of network types that you want to enable. The network types are randomly ordered in the list. For example, the Internet, Intranet, and VPCSingleTunnel network types are enabled. If you want to disable the Internet type, set this parameter to Intranet,VPCSingleTunnel.
+        # 
+        # Valid values:
+        # 
+        # *   VPCSingleTunnel: virtual private cloud (VPC).
+        # *   Intranet: internal network.
+        # *   VPCAnyTunnel: compatibility requirements. This value is not supported by new instances.
+        # *   Internet: Internet.
         self.network_types = network_types
-        # The vSwitch ID.
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC to which the instance belongs.
+        # The ID of the VPC.
         self.vpc_id = vpc_id
-        # The owner ID of the VPC, which is the ID of the Alibaba Cloud account.
+        # The ID of the Alibaba Cloud account to which the VPC belongs.
         self.vpc_owner_id = vpc_owner_id
-        # The region ID of the VPC.
+        # The region in which the VPC resides.
         self.vpc_region_id = vpc_region_id
 
     def validate(self):
@@ -5086,9 +5167,9 @@ class UpdateInstanceNetworkTypeResponseBody(TeaModel):
         # 
         #     <!-- -->
         self.data = data
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
-        # The error message returned if the request failed.
+        # The error message.
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -5099,20 +5180,7 @@ class UpdateInstanceNetworkTypeResponseBody(TeaModel):
         # Valid values:
         # 
         # *   true
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   false
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.success = success
 
     def validate(self):
