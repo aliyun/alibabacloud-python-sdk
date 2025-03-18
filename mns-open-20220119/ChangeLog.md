@@ -1,3 +1,9 @@
+2025-03-18 Version: 1.2.0
+- Support API CreateEventRule.
+- Support API DeleteEventRule.
+- Update API CreateQueue: update param MessageRetentionPeriod.
+
+
 2025-02-08 Version: 1.1.3
 - Update API CreateQueue: add param DlqPolicy.
 - Update API GetQueueAttributes: update response param.

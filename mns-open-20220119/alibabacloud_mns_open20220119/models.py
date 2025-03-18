@@ -56,19 +56,19 @@ class AuthorizeEndpointAclRequest(TeaModel):
         cidr_list: List[str] = None,
         endpoint_type: str = None,
     ):
-        # The ACL policy. Valid value:
+        # The ACL policy. Valid values:
         # 
-        # *   **allow**: indicates that the operation is initiated from an endpoint in CIDR whitelist. (Only allow is supported)
+        # *   **allow**: indicates that this operation is included in the Cidr whitelist. (Only the allow is supported.)
         # 
         # This parameter is required.
         self.acl_strategy = acl_strategy
-        # The CIDR blocks.
+        # The list of CIDR block.
         # 
         # This parameter is required.
         self.cidr_list = cidr_list
-        # The type of the endpoint. Valid value:
+        # The type of the endpoint. Valid values:
         # 
-        # *   **public**: indicates public endpoint. (Only public endpoint is supported.)
+        # *   **public**: indicates public endpoint. (Only the public endpoint is supported.)
         # 
         # This parameter is required.
         self.endpoint_type = endpoint_type
@@ -108,19 +108,19 @@ class AuthorizeEndpointAclShrinkRequest(TeaModel):
         cidr_list_shrink: str = None,
         endpoint_type: str = None,
     ):
-        # The ACL policy. Valid value:
+        # The ACL policy. Valid values:
         # 
-        # *   **allow**: indicates that the operation is initiated from an endpoint in CIDR whitelist. (Only allow is supported)
+        # *   **allow**: indicates that this operation is included in the Cidr whitelist. (Only the allow is supported.)
         # 
         # This parameter is required.
         self.acl_strategy = acl_strategy
-        # The CIDR blocks.
+        # The list of CIDR block.
         # 
         # This parameter is required.
         self.cidr_list_shrink = cidr_list_shrink
-        # The type of the endpoint. Valid value:
+        # The type of the endpoint. Valid values:
         # 
-        # *   **public**: indicates public endpoint. (Only public endpoint is supported.)
+        # *   **public**: indicates public endpoint. (Only the public endpoint is supported.)
         # 
         # This parameter is required.
         self.endpoint_type = endpoint_type
@@ -162,11 +162,11 @@ class AuthorizeEndpointAclResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
-        # The response code.
+        # The HTTP status code.
         self.code = code
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The response status.
         self.status = status
@@ -250,6 +250,275 @@ class AuthorizeEndpointAclResponse(TeaModel):
         return self
 
 
+class CreateEventRuleRequestEndpoints(TeaModel):
+    def __init__(
+        self,
+        endpoint_type: str = None,
+        endpoint_value: str = None,
+    ):
+        # This parameter is required.
+        self.endpoint_type = endpoint_type
+        # This parameter is required.
+        self.endpoint_value = endpoint_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.endpoint_type is not None:
+            result['EndpointType'] = self.endpoint_type
+        if self.endpoint_value is not None:
+            result['EndpointValue'] = self.endpoint_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndpointType') is not None:
+            self.endpoint_type = m.get('EndpointType')
+        if m.get('EndpointValue') is not None:
+            self.endpoint_value = m.get('EndpointValue')
+        return self
+
+
+class CreateEventRuleRequest(TeaModel):
+    def __init__(
+        self,
+        endpoints: List[CreateEventRuleRequestEndpoints] = None,
+        event_types: List[str] = None,
+        match_rules: List[List[EventMatchRule]] = None,
+        product_name: str = None,
+        rule_name: str = None,
+    ):
+        # This parameter is required.
+        self.endpoints = endpoints
+        # This parameter is required.
+        self.event_types = event_types
+        # This parameter is required.
+        self.match_rules = match_rules
+        # This parameter is required.
+        self.product_name = product_name
+        # This parameter is required.
+        self.rule_name = rule_name
+
+    def validate(self):
+        if self.endpoints:
+            for k in self.endpoints:
+                if k:
+                    k.validate()
+        if self.match_rules:
+            for k in self.match_rules:
+                for k1 in k:
+                    if k1:
+                        k1.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Endpoints'] = []
+        if self.endpoints is not None:
+            for k in self.endpoints:
+                result['Endpoints'].append(k.to_map() if k else None)
+        if self.event_types is not None:
+            result['EventTypes'] = self.event_types
+        result['MatchRules'] = []
+        if self.match_rules is not None:
+            for k in self.match_rules:
+                l1 = []
+                for k1 in k:
+                    l1.append(k1.to_map() if k1 else None)
+                result['MatchRules'].append(l1)
+        if self.product_name is not None:
+            result['ProductName'] = self.product_name
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.endpoints = []
+        if m.get('Endpoints') is not None:
+            for k in m.get('Endpoints'):
+                temp_model = CreateEventRuleRequestEndpoints()
+                self.endpoints.append(temp_model.from_map(k))
+        if m.get('EventTypes') is not None:
+            self.event_types = m.get('EventTypes')
+        self.match_rules = []
+        if m.get('MatchRules') is not None:
+            for k in m.get('MatchRules'):
+                l1 = []
+                for k1 in k:
+                    temp_model = EventMatchRule()
+                    l1.append(temp_model.from_map(k1))
+                self.match_rules.append(l1)
+        if m.get('ProductName') is not None:
+            self.product_name = m.get('ProductName')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class CreateEventRuleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        endpoints_shrink: str = None,
+        event_types_shrink: str = None,
+        match_rules_shrink: str = None,
+        product_name: str = None,
+        rule_name: str = None,
+    ):
+        # This parameter is required.
+        self.endpoints_shrink = endpoints_shrink
+        # This parameter is required.
+        self.event_types_shrink = event_types_shrink
+        # This parameter is required.
+        self.match_rules_shrink = match_rules_shrink
+        # This parameter is required.
+        self.product_name = product_name
+        # This parameter is required.
+        self.rule_name = rule_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.endpoints_shrink is not None:
+            result['Endpoints'] = self.endpoints_shrink
+        if self.event_types_shrink is not None:
+            result['EventTypes'] = self.event_types_shrink
+        if self.match_rules_shrink is not None:
+            result['MatchRules'] = self.match_rules_shrink
+        if self.product_name is not None:
+            result['ProductName'] = self.product_name
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Endpoints') is not None:
+            self.endpoints_shrink = m.get('Endpoints')
+        if m.get('EventTypes') is not None:
+            self.event_types_shrink = m.get('EventTypes')
+        if m.get('MatchRules') is not None:
+            self.match_rules_shrink = m.get('MatchRules')
+        if m.get('ProductName') is not None:
+            self.product_name = m.get('ProductName')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class CreateEventRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.status = status
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateEventRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateEventRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateEventRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateQueueRequestDlqPolicy(TeaModel):
     def __init__(
         self,
@@ -257,8 +526,11 @@ class CreateQueueRequestDlqPolicy(TeaModel):
         enabled: bool = None,
         max_receive_count: int = None,
     ):
+        # The queue to which dead-letter messages are delivered.
         self.dead_letter_target_queue = dead_letter_target_queue
+        # Specifies whether to enable the dead-letter message delivery.
         self.enabled = enabled
+        # The maximum number of retries.
         self.max_receive_count = max_receive_count
 
     def validate(self):
@@ -295,7 +567,9 @@ class CreateQueueRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -337,6 +611,7 @@ class CreateQueueRequest(TeaModel):
     ):
         # The period after which all messages sent to the queue are consumed. Valid values: 0 to 604800. Unit: seconds. Default value: 0
         self.delay_seconds = delay_seconds
+        # The dead-letter queue policy.
         self.dlq_policy = dlq_policy
         # Specifies whether to enable the log management feature. Valid values:
         # 
@@ -347,7 +622,7 @@ class CreateQueueRequest(TeaModel):
         self.enable_logging = enable_logging
         # The maximum length of the message that is sent to the queue. Valid values: 1024 to 65536. Unit: bytes. Default value: 65536.
         self.maximum_message_size = maximum_message_size
-        # The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: 60 to 604800. Unit: seconds. Default value: 345600.
+        # The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is consumed. Valid values: 60 to 604800. Unit: seconds. Default value: 345600.
         self.message_retention_period = message_retention_period
         # The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: 0 to 30. Unit: seconds. Default value: 0
         self.polling_wait_seconds = polling_wait_seconds
@@ -355,6 +630,7 @@ class CreateQueueRequest(TeaModel):
         # 
         # This parameter is required.
         self.queue_name = queue_name
+        # The tags.
         self.tag = tag
         # The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
         self.visibility_timeout = visibility_timeout
@@ -428,7 +704,9 @@ class CreateQueueShrinkRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -470,6 +748,7 @@ class CreateQueueShrinkRequest(TeaModel):
     ):
         # The period after which all messages sent to the queue are consumed. Valid values: 0 to 604800. Unit: seconds. Default value: 0
         self.delay_seconds = delay_seconds
+        # The dead-letter queue policy.
         self.dlq_policy_shrink = dlq_policy_shrink
         # Specifies whether to enable the log management feature. Valid values:
         # 
@@ -480,7 +759,7 @@ class CreateQueueShrinkRequest(TeaModel):
         self.enable_logging = enable_logging
         # The maximum length of the message that is sent to the queue. Valid values: 1024 to 65536. Unit: bytes. Default value: 65536.
         self.maximum_message_size = maximum_message_size
-        # The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: 60 to 604800. Unit: seconds. Default value: 345600.
+        # The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is consumed. Valid values: 60 to 604800. Unit: seconds. Default value: 345600.
         self.message_retention_period = message_retention_period
         # The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: 0 to 30. Unit: seconds. Default value: 0
         self.polling_wait_seconds = polling_wait_seconds
@@ -488,6 +767,7 @@ class CreateQueueShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.queue_name = queue_name
+        # The tags.
         self.tag = tag
         # The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
         self.visibility_timeout = visibility_timeout
@@ -945,6 +1225,133 @@ class CreateTopicResponse(TeaModel):
         return self
 
 
+class DeleteEventRuleRequest(TeaModel):
+    def __init__(
+        self,
+        product_name: str = None,
+        rule_name: str = None,
+    ):
+        # This parameter is required.
+        self.product_name = product_name
+        # This parameter is required.
+        self.rule_name = rule_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.product_name is not None:
+            result['ProductName'] = self.product_name
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProductName') is not None:
+            self.product_name = m.get('ProductName')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class DeleteEventRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.status = status
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteEventRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteEventRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteEventRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteQueueRequest(TeaModel):
     def __init__(
         self,
@@ -1262,9 +1669,9 @@ class DisableEndpointRequest(TeaModel):
         self,
         endpoint_type: str = None,
     ):
-        # The type of the endpoint. Valid value:
+        # The type of the endpoint. Value:
         # 
-        # *   **public**: indicates a public endpoint. (Only public endpoint is supported.)
+        # *   **public**: indicates an public endpoint. (Only the public endpoint is supported.)
         # 
         # This parameter is required.
         self.endpoint_type = endpoint_type
@@ -1298,11 +1705,11 @@ class DisableEndpointResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
-        # The response code.
+        # The HTTP status code.
         self.code = code
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The response status.
         self.status = status
@@ -1393,7 +1800,7 @@ class EnableEndpointRequest(TeaModel):
     ):
         # The type of the endpoint. Valid value:
         # 
-        # *   **public**: indicates a public endpoint. (Only public endpoint is supported.)
+        # *   **public**: indicates public endpoint. (Only the public is supported.)
         # 
         # This parameter is required.
         self.endpoint_type = endpoint_type
@@ -1427,11 +1834,11 @@ class EnableEndpointResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
-        # The response code.
+        # The HTTP status code.
         self.code = code
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The response status.
         self.status = status
@@ -1520,9 +1927,9 @@ class GetEndpointAttributeRequest(TeaModel):
         self,
         endpoint_type: str = None,
     ):
-        # The type of the endpoint. Valid value:
+        # The type of the endpoint. Value:
         # 
-        # *   **public**: indicates a public endpoint. (Only public endpoint is supported.)
+        # *   **public**: indicates public endpoint. (Only the public is supported.)
         # 
         # This parameter is required.
         self.endpoint_type = endpoint_type
@@ -1554,13 +1961,13 @@ class GetEndpointAttributeResponseBodyDataCidrList(TeaModel):
         cidr: str = None,
         create_time: int = None,
     ):
-        # The ACL policy. Valid value:
+        # The ACL policy. Valid values:
         # 
-        # *   **allow**: indicates that the current endpoint allows access from the corresponding CIDR block. (Only allow is supported)
+        # *   **allow**: indicates that the current endpoint allows access from the corresponding CIDR block. (Only allow is supported.)
         self.acl_strategy = acl_strategy
         # The CIDR block.
         self.cidr = cidr
-        # The time when the list was created.
+        # The creation time.
         self.create_time = create_time
 
     def validate(self):
@@ -1597,7 +2004,7 @@ class GetEndpointAttributeResponseBodyData(TeaModel):
         cidr_list: List[GetEndpointAttributeResponseBodyDataCidrList] = None,
         endpoint_enabled: bool = None,
     ):
-        # The CIDR blocks.
+        # The list of CIDR block.
         self.cidr_list = cidr_list
         # Specifies whether the endpoint is enabled.
         self.endpoint_enabled = endpoint_enabled
@@ -1644,11 +2051,11 @@ class GetEndpointAttributeResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
-        # The response code.
+        # The HTTP status code.
         self.code = code
-        # The data returned.
+        # The response data.
         self.data = data
-        # The message returned.
+        # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -1746,7 +2153,9 @@ class GetQueueAttributesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -1783,6 +2192,7 @@ class GetQueueAttributesRequest(TeaModel):
         # 
         # This parameter is required.
         self.queue_name = queue_name
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -1824,8 +2234,11 @@ class GetQueueAttributesResponseBodyDataDlqPolicy(TeaModel):
         enabled: bool = None,
         max_receive_count: str = None,
     ):
+        # The queue to which dead-letter messages are delivered.
         self.dead_letter_target_queue = dead_letter_target_queue
+        # Specifies whether to enable the dead-letter message delivery.
         self.enabled = enabled
+        # The maximum number of retries.
         self.max_receive_count = max_receive_count
 
     def validate(self):
@@ -1862,7 +2275,9 @@ class GetQueueAttributesResponseBodyDataTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -1915,6 +2330,7 @@ class GetQueueAttributesResponseBodyData(TeaModel):
         self.delay_messages = delay_messages
         # The period after which all messages sent to the queue are consumed. Unit: seconds.
         self.delay_seconds = delay_seconds
+        # The dead-letter queue policy.
         self.dlq_policy = dlq_policy
         # The total number of messages that are in the Inactive state in the queue. The value is an approximate value. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
         self.inactive_messages = inactive_messages
@@ -1933,6 +2349,7 @@ class GetQueueAttributesResponseBodyData(TeaModel):
         self.polling_wait_seconds = polling_wait_seconds
         # The name of the queue.
         self.queue_name = queue_name
+        # The tag.
         self.tags = tags
         # The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
         self.visibility_timeout = visibility_timeout
@@ -2171,7 +2588,9 @@ class GetSubscriptionAttributesResponseBodyDataDlqPolicy(TeaModel):
         dead_letter_target_queue: str = None,
         enabled: bool = None,
     ):
+        # The queue to which dead-letter messages are delivered.
         self.dead_letter_target_queue = dead_letter_target_queue
+        # Specifies whether to enable the dead-letter message delivery.
         self.enabled = enabled
 
     def validate(self):
@@ -2214,6 +2633,7 @@ class GetSubscriptionAttributesResponseBodyData(TeaModel):
     ):
         # The time when the subscription was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
+        # The dead-letter queue policy.
         self.dlq_policy = dlq_policy
         # The endpoint to which the messages are pushed.
         self.endpoint = endpoint
@@ -2309,7 +2729,7 @@ class GetSubscriptionAttributesResponseBody(TeaModel):
     ):
         # The response code.
         self.code = code
-        # The returned data.
+        # The data returned.
         self.data = data
         # The returned message.
         self.message = message
@@ -2715,7 +3135,9 @@ class ListQueueRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -2756,6 +3178,7 @@ class ListQueueRequest(TeaModel):
         self.page_size = page_size
         # The name of the queue.
         self.queue_name = queue_name
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -2805,8 +3228,11 @@ class ListQueueResponseBodyDataPageDataDlqPolicy(TeaModel):
         enabled: bool = None,
         max_receive_count: str = None,
     ):
+        # The queue to which dead-letter messages are delivered.
         self.dead_letter_target_queue = dead_letter_target_queue
+        # Specifies whether to enable the dead-letter message delivery.
         self.enabled = enabled
+        # The maximum number of retries.
         self.max_receive_count = max_receive_count
 
     def validate(self):
@@ -2890,16 +3316,17 @@ class ListQueueResponseBodyDataPageData(TeaModel):
         tags: List[ListQueueResponseBodyDataPageDataTags] = None,
         visibility_timeout: int = None,
     ):
-        # The total number of messages that are in the Active state in the queue. The value is an approximate value. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
+        # The total number of messages that are in the Active state in the queue. The value is an approximate number. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
         self.active_messages = active_messages
         # The time when the queue was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
-        # The total number of messages that are in the Delayed state in the queue. The value is an approximate value. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
+        # The total number of the messages that are in the Delayed state in the queue. The value is an approximate number. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
         self.delay_messages = delay_messages
         # The period after which all messages sent to the queue are consumed. Unit: seconds.
         self.delay_seconds = delay_seconds
+        # The dead-letter queue policy.
         self.dlq_policy = dlq_policy
-        # The total number of messages that are in the Inactive state in the queue. The value is an approximate value. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
+        # The total number of the messages that are in the Inactive state in the queue. The value is an approximate number. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
         self.inactive_messages = inactive_messages
         # The time when the queue was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.last_modify_time = last_modify_time
@@ -3236,7 +3663,9 @@ class ListSubscriptionByTopicResponseBodyDataPageDataDlqPolicy(TeaModel):
         dead_letter_target_queue: str = None,
         enabled: bool = None,
     ):
+        # The queue to which dead-letter messages are delivered.
         self.dead_letter_target_queue = dead_letter_target_queue
+        # Specifies whether to enable the dead-letter message delivery.
         self.enabled = enabled
 
     def validate(self):
@@ -3279,6 +3708,7 @@ class ListSubscriptionByTopicResponseBodyDataPageData(TeaModel):
     ):
         # The time when the subscription was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
+        # The dead-letter queue policy.
         self.dlq_policy = dlq_policy
         # The endpoint to which the messages are pushed.
         self.endpoint = endpoint
@@ -3445,7 +3875,7 @@ class ListSubscriptionByTopicResponseBody(TeaModel):
     ):
         # The response code.
         self.code = code
-        # The returned data.
+        # The data returned.
         self.data = data
         # The returned message.
         self.message = message
@@ -3938,19 +4368,19 @@ class RevokeEndpointAclRequest(TeaModel):
         cidr_list: List[str] = None,
         endpoint_type: str = None,
     ):
-        # The ACL policy. Valid value:
+        # The ACL policy. Value:
         # 
-        # *   **allow**: indicates that the operation is initiated from an endpoint in CIDR whitelist. (Only allow is supported)
+        # *   **allow**: indicates that this operation is included in the Cidr whitelist. (Only the allow is supported.)
         # 
         # This parameter is required.
         self.acl_strategy = acl_strategy
-        # The CIDR blocks.
+        # The list of CIDR block.
         # 
         # This parameter is required.
         self.cidr_list = cidr_list
-        # The type of the endpoint. Valid value:
+        # The type of the endpoint. Valid values:
         # 
-        # *   **public**: indicates an public endpoint. (Only public endpoint is supported.)
+        # *   **public**: indicates public endpoint. (Only the public is supported.)
         # 
         # This parameter is required.
         self.endpoint_type = endpoint_type
@@ -3990,19 +4420,19 @@ class RevokeEndpointAclShrinkRequest(TeaModel):
         cidr_list_shrink: str = None,
         endpoint_type: str = None,
     ):
-        # The ACL policy. Valid value:
+        # The ACL policy. Value:
         # 
-        # *   **allow**: indicates that the operation is initiated from an endpoint in CIDR whitelist. (Only allow is supported)
+        # *   **allow**: indicates that this operation is included in the Cidr whitelist. (Only the allow is supported.)
         # 
         # This parameter is required.
         self.acl_strategy = acl_strategy
-        # The CIDR blocks.
+        # The list of CIDR block.
         # 
         # This parameter is required.
         self.cidr_list_shrink = cidr_list_shrink
-        # The type of the endpoint. Valid value:
+        # The type of the endpoint. Valid values:
         # 
-        # *   **public**: indicates an public endpoint. (Only public endpoint is supported.)
+        # *   **public**: indicates public endpoint. (Only the public is supported.)
         # 
         # This parameter is required.
         self.endpoint_type = endpoint_type
@@ -4044,11 +4474,11 @@ class RevokeEndpointAclResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
-        # The response code.
+        # The HTTP status code.
         self.code = code
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The response status.
         self.status = status
@@ -4139,8 +4569,11 @@ class SetQueueAttributesRequestDlqPolicy(TeaModel):
         enabled: bool = None,
         max_receive_count: int = None,
     ):
+        # The queue to which dead-letter messages are delivered.
         self.dead_letter_target_queue = dead_letter_target_queue
+        # Specifies whether to enable the dead-letter message delivery.
         self.enabled = enabled
+        # The maximum number of retries.
         self.max_receive_count = max_receive_count
 
     def validate(self):
@@ -4185,6 +4618,7 @@ class SetQueueAttributesRequest(TeaModel):
     ):
         # The period after which all messages sent to the queue are consumed. Valid values: 0 to 604800. Unit: seconds. Default value: 0
         self.delay_seconds = delay_seconds
+        # The dead-letter queue policy.
         self.dlq_policy = dlq_policy
         # Specifies whether to enable the log management feature. Valid values:
         # 
@@ -4268,6 +4702,7 @@ class SetQueueAttributesShrinkRequest(TeaModel):
     ):
         # The period after which all messages sent to the queue are consumed. Valid values: 0 to 604800. Unit: seconds. Default value: 0
         self.delay_seconds = delay_seconds
+        # The dead-letter queue policy.
         self.dlq_policy_shrink = dlq_policy_shrink
         # Specifies whether to enable the log management feature. Valid values:
         # 
@@ -4489,7 +4924,9 @@ class SetSubscriptionAttributesRequestDlqPolicy(TeaModel):
         dead_letter_target_queue: str = None,
         enabled: bool = None,
     ):
+        # The queue to which dead-letter messages are delivered.
         self.dead_letter_target_queue = dead_letter_target_queue
+        # Specifies whether to enable the dead-letter message delivery.
         self.enabled = enabled
 
     def validate(self):
@@ -4524,6 +4961,7 @@ class SetSubscriptionAttributesRequest(TeaModel):
         subscription_name: str = None,
         topic_name: str = None,
     ):
+        # The dead-letter queue policy.
         self.dlq_policy = dlq_policy
         # The retry policy that is applied if an error occurs when Message Service (MNS) pushes messages to the endpoint. Valid values:
         # 
@@ -4581,6 +5019,7 @@ class SetSubscriptionAttributesShrinkRequest(TeaModel):
         subscription_name: str = None,
         topic_name: str = None,
     ):
+        # The dead-letter queue policy.
         self.dlq_policy_shrink = dlq_policy_shrink
         # The retry policy that is applied if an error occurs when Message Service (MNS) pushes messages to the endpoint. Valid values:
         # 
@@ -4977,7 +5416,9 @@ class SubscribeRequestDlqPolicy(TeaModel):
         dead_letter_target_queue: str = None,
         enabled: bool = None,
     ):
+        # The queue to which dead-letter messages are delivered.
         self.dead_letter_target_queue = dead_letter_target_queue
+        # Specifies whether to enable the dead-letter message delivery.
         self.enabled = enabled
 
     def validate(self):
@@ -5016,6 +5457,7 @@ class SubscribeRequest(TeaModel):
         subscription_name: str = None,
         topic_name: str = None,
     ):
+        # The dead-letter queue policy.
         self.dlq_policy = dlq_policy
         # The receiver endpoint. The format of the endpoint varies based on the terminal type.
         # 
@@ -5123,6 +5565,7 @@ class SubscribeShrinkRequest(TeaModel):
         subscription_name: str = None,
         topic_name: str = None,
     ):
+        # The dead-letter queue policy.
         self.dlq_policy_shrink = dlq_policy_shrink
         # The receiver endpoint. The format of the endpoint varies based on the terminal type.
         # 

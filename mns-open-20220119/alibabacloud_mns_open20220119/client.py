@@ -47,7 +47,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.AuthorizeEndpointAclResponse:
         """
-        @summary Adds one or more ACLrules for an endpoint of a specified type.
+        @summary You can call this operation to add one or more rules of access control lists (ACLs) for the endpoint of a type.
         
         @param tmp_req: AuthorizeEndpointAclRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -96,7 +96,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.AuthorizeEndpointAclResponse:
         """
-        @summary Adds one or more ACLrules for an endpoint of a specified type.
+        @summary You can call this operation to add one or more rules of access control lists (ACLs) for the endpoint of a type.
         
         @param tmp_req: AuthorizeEndpointAclRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -144,7 +144,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.AuthorizeEndpointAclRequest,
     ) -> mns_open_20220119_models.AuthorizeEndpointAclResponse:
         """
-        @summary Adds one or more ACLrules for an endpoint of a specified type.
+        @summary You can call this operation to add one or more rules of access control lists (ACLs) for the endpoint of a type.
         
         @param request: AuthorizeEndpointAclRequest
         @return: AuthorizeEndpointAclResponse
@@ -157,13 +157,153 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.AuthorizeEndpointAclRequest,
     ) -> mns_open_20220119_models.AuthorizeEndpointAclResponse:
         """
-        @summary Adds one or more ACLrules for an endpoint of a specified type.
+        @summary You can call this operation to add one or more rules of access control lists (ACLs) for the endpoint of a type.
         
         @param request: AuthorizeEndpointAclRequest
         @return: AuthorizeEndpointAclResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.authorize_endpoint_acl_with_options_async(request, runtime)
+
+    def create_event_rule_with_options(
+        self,
+        tmp_req: mns_open_20220119_models.CreateEventRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mns_open_20220119_models.CreateEventRuleResponse:
+        """
+        @summary 创建事件规则
+        
+        @param tmp_req: CreateEventRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEventRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = mns_open_20220119_models.CreateEventRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.endpoints):
+            request.endpoints_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.endpoints, 'Endpoints', 'json')
+        if not UtilClient.is_unset(tmp_req.event_types):
+            request.event_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.event_types, 'EventTypes', 'json')
+        if not UtilClient.is_unset(tmp_req.match_rules):
+            request.match_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.match_rules, 'MatchRules', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.endpoints_shrink):
+            query['Endpoints'] = request.endpoints_shrink
+        if not UtilClient.is_unset(request.event_types_shrink):
+            query['EventTypes'] = request.event_types_shrink
+        if not UtilClient.is_unset(request.match_rules_shrink):
+            query['MatchRules'] = request.match_rules_shrink
+        if not UtilClient.is_unset(request.product_name):
+            query['ProductName'] = request.product_name
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateEventRule',
+            version='2022-01-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                mns_open_20220119_models.CreateEventRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                mns_open_20220119_models.CreateEventRuleResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_event_rule_with_options_async(
+        self,
+        tmp_req: mns_open_20220119_models.CreateEventRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mns_open_20220119_models.CreateEventRuleResponse:
+        """
+        @summary 创建事件规则
+        
+        @param tmp_req: CreateEventRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEventRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = mns_open_20220119_models.CreateEventRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.endpoints):
+            request.endpoints_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.endpoints, 'Endpoints', 'json')
+        if not UtilClient.is_unset(tmp_req.event_types):
+            request.event_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.event_types, 'EventTypes', 'json')
+        if not UtilClient.is_unset(tmp_req.match_rules):
+            request.match_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.match_rules, 'MatchRules', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.endpoints_shrink):
+            query['Endpoints'] = request.endpoints_shrink
+        if not UtilClient.is_unset(request.event_types_shrink):
+            query['EventTypes'] = request.event_types_shrink
+        if not UtilClient.is_unset(request.match_rules_shrink):
+            query['MatchRules'] = request.match_rules_shrink
+        if not UtilClient.is_unset(request.product_name):
+            query['ProductName'] = request.product_name
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateEventRule',
+            version='2022-01-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                mns_open_20220119_models.CreateEventRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                mns_open_20220119_models.CreateEventRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_event_rule(
+        self,
+        request: mns_open_20220119_models.CreateEventRuleRequest,
+    ) -> mns_open_20220119_models.CreateEventRuleResponse:
+        """
+        @summary 创建事件规则
+        
+        @param request: CreateEventRuleRequest
+        @return: CreateEventRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_event_rule_with_options(request, runtime)
+
+    async def create_event_rule_async(
+        self,
+        request: mns_open_20220119_models.CreateEventRuleRequest,
+    ) -> mns_open_20220119_models.CreateEventRuleResponse:
+        """
+        @summary 创建事件规则
+        
+        @param request: CreateEventRuleRequest
+        @return: CreateEventRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_event_rule_with_options_async(request, runtime)
 
     def create_queue_with_options(
         self,
@@ -437,6 +577,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_topic_with_options_async(request, runtime)
 
+    def delete_event_rule_with_options(
+        self,
+        request: mns_open_20220119_models.DeleteEventRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mns_open_20220119_models.DeleteEventRuleResponse:
+        """
+        @summary 删除事件规则
+        
+        @param request: DeleteEventRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEventRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_name):
+            query['ProductName'] = request.product_name
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEventRule',
+            version='2022-01-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                mns_open_20220119_models.DeleteEventRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                mns_open_20220119_models.DeleteEventRuleResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_event_rule_with_options_async(
+        self,
+        request: mns_open_20220119_models.DeleteEventRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mns_open_20220119_models.DeleteEventRuleResponse:
+        """
+        @summary 删除事件规则
+        
+        @param request: DeleteEventRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEventRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_name):
+            query['ProductName'] = request.product_name
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEventRule',
+            version='2022-01-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                mns_open_20220119_models.DeleteEventRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                mns_open_20220119_models.DeleteEventRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_event_rule(
+        self,
+        request: mns_open_20220119_models.DeleteEventRuleRequest,
+    ) -> mns_open_20220119_models.DeleteEventRuleResponse:
+        """
+        @summary 删除事件规则
+        
+        @param request: DeleteEventRuleRequest
+        @return: DeleteEventRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_event_rule_with_options(request, runtime)
+
+    async def delete_event_rule_async(
+        self,
+        request: mns_open_20220119_models.DeleteEventRuleRequest,
+    ) -> mns_open_20220119_models.DeleteEventRuleResponse:
+        """
+        @summary 删除事件规则
+        
+        @param request: DeleteEventRuleRequest
+        @return: DeleteEventRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_event_rule_with_options_async(request, runtime)
+
     def delete_queue_with_options(
         self,
         request: mns_open_20220119_models.DeleteQueueRequest,
@@ -659,7 +911,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.DisableEndpointResponse:
         """
-        @summary You can call this operation to disable an endpoint of a specified type. After the endpoint is disabled, requests from the endpoint are blocked and an error is returned.
+        @summary You can call this operation to disenable the endpoint of a type. After the endpoint is disabled, all requests from the endpoint are blocked and an error is returned.
         
         @param request: DisableEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -700,7 +952,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.DisableEndpointResponse:
         """
-        @summary You can call this operation to disable an endpoint of a specified type. After the endpoint is disabled, requests from the endpoint are blocked and an error is returned.
+        @summary You can call this operation to disenable the endpoint of a type. After the endpoint is disabled, all requests from the endpoint are blocked and an error is returned.
         
         @param request: DisableEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -740,7 +992,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.DisableEndpointRequest,
     ) -> mns_open_20220119_models.DisableEndpointResponse:
         """
-        @summary You can call this operation to disable an endpoint of a specified type. After the endpoint is disabled, requests from the endpoint are blocked and an error is returned.
+        @summary You can call this operation to disenable the endpoint of a type. After the endpoint is disabled, all requests from the endpoint are blocked and an error is returned.
         
         @param request: DisableEndpointRequest
         @return: DisableEndpointResponse
@@ -753,7 +1005,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.DisableEndpointRequest,
     ) -> mns_open_20220119_models.DisableEndpointResponse:
         """
-        @summary You can call this operation to disable an endpoint of a specified type. After the endpoint is disabled, requests from the endpoint are blocked and an error is returned.
+        @summary You can call this operation to disenable the endpoint of a type. After the endpoint is disabled, all requests from the endpoint are blocked and an error is returned.
         
         @param request: DisableEndpointRequest
         @return: DisableEndpointResponse
@@ -767,7 +1019,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.EnableEndpointResponse:
         """
-        @summary You can call this operation to enable an endpoint of a specified type. If the endpoint is enabled, requests from the endpoint that are included in the access control lists (ACLs) are not blocked.
+        @summary You can call this operation to enable the endpoint of a type. If the endpoint is enabled, requests from the endpoint that are included in the access control lists (ACLs) are not blocked.
         
         @param request: EnableEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -808,7 +1060,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.EnableEndpointResponse:
         """
-        @summary You can call this operation to enable an endpoint of a specified type. If the endpoint is enabled, requests from the endpoint that are included in the access control lists (ACLs) are not blocked.
+        @summary You can call this operation to enable the endpoint of a type. If the endpoint is enabled, requests from the endpoint that are included in the access control lists (ACLs) are not blocked.
         
         @param request: EnableEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -848,7 +1100,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.EnableEndpointRequest,
     ) -> mns_open_20220119_models.EnableEndpointResponse:
         """
-        @summary You can call this operation to enable an endpoint of a specified type. If the endpoint is enabled, requests from the endpoint that are included in the access control lists (ACLs) are not blocked.
+        @summary You can call this operation to enable the endpoint of a type. If the endpoint is enabled, requests from the endpoint that are included in the access control lists (ACLs) are not blocked.
         
         @param request: EnableEndpointRequest
         @return: EnableEndpointResponse
@@ -861,7 +1113,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.EnableEndpointRequest,
     ) -> mns_open_20220119_models.EnableEndpointResponse:
         """
-        @summary You can call this operation to enable an endpoint of a specified type. If the endpoint is enabled, requests from the endpoint that are included in the access control lists (ACLs) are not blocked.
+        @summary You can call this operation to enable the endpoint of a type. If the endpoint is enabled, requests from the endpoint that are included in the access control lists (ACLs) are not blocked.
         
         @param request: EnableEndpointRequest
         @return: EnableEndpointResponse
@@ -1679,7 +1931,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.RevokeEndpointAclResponse:
         """
-        @summary Deletes one or more ACLs from an endpoint of a specified type.
+        @summary You can call this operation to delete one or more rules of access control lists (ACLs) for the endpoint of a type.
         
         @param tmp_req: RevokeEndpointAclRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1728,7 +1980,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.RevokeEndpointAclResponse:
         """
-        @summary Deletes one or more ACLs from an endpoint of a specified type.
+        @summary You can call this operation to delete one or more rules of access control lists (ACLs) for the endpoint of a type.
         
         @param tmp_req: RevokeEndpointAclRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1776,7 +2028,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.RevokeEndpointAclRequest,
     ) -> mns_open_20220119_models.RevokeEndpointAclResponse:
         """
-        @summary Deletes one or more ACLs from an endpoint of a specified type.
+        @summary You can call this operation to delete one or more rules of access control lists (ACLs) for the endpoint of a type.
         
         @param request: RevokeEndpointAclRequest
         @return: RevokeEndpointAclResponse
@@ -1789,7 +2041,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.RevokeEndpointAclRequest,
     ) -> mns_open_20220119_models.RevokeEndpointAclResponse:
         """
-        @summary Deletes one or more ACLs from an endpoint of a specified type.
+        @summary You can call this operation to delete one or more rules of access control lists (ACLs) for the endpoint of a type.
         
         @param request: RevokeEndpointAclRequest
         @return: RevokeEndpointAclResponse
