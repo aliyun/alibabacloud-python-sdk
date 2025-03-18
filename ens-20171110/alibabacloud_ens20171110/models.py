@@ -2158,8 +2158,12 @@ class AttachInstanceSDGRequest(TeaModel):
         instance_ids: List[str] = None,
         sdgid: str = None,
     ):
+        # The IDs of the instances.
+        # 
         # This parameter is required.
         self.instance_ids = instance_ids
+        # The ID of the SDG.
+        # 
         # This parameter is required.
         self.sdgid = sdgid
 
@@ -2193,8 +2197,12 @@ class AttachInstanceSDGShrinkRequest(TeaModel):
         instance_ids_shrink: str = None,
         sdgid: str = None,
     ):
+        # The IDs of the instances.
+        # 
         # This parameter is required.
         self.instance_ids_shrink = instance_ids_shrink
+        # The ID of the SDG.
+        # 
         # This parameter is required.
         self.sdgid = sdgid
 
@@ -2228,7 +2236,9 @@ class AttachInstanceSDGResponseBodyDataResultFailedItems(TeaModel):
         err_message: str = None,
         instance_id: str = None,
     ):
+        # The error message.
         self.err_message = err_message
+        # The ID of the instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -2262,8 +2272,11 @@ class AttachInstanceSDGResponseBodyDataResult(TeaModel):
         failed_items: List[AttachInstanceSDGResponseBodyDataResultFailedItems] = None,
         success_count: int = None,
     ):
+        # The number of failed tasks.
         self.failed_count = failed_count
+        # Details about failed tasks.
         self.failed_items = failed_items
+        # The number of successful tasks.
         self.success_count = success_count
 
     def validate(self):
@@ -2309,8 +2322,14 @@ class AttachInstanceSDGResponseBodyData(TeaModel):
         result: AttachInstanceSDGResponseBodyDataResult = None,
         success: bool = None,
     ):
+        # The response message. Success is returned for a successful request.
         self.message = message
+        # The execution result of the synchronization request.
         self.result = result
+        # Indicates whether all tasks are successful. Valid values:
+        # 
+        # *   **true**: All tasks are successful.
+        # *   **false**: Failed tasks exist.
         self.success = success
 
     def validate(self):
@@ -2349,7 +2368,9 @@ class AttachInstanceSDGResponseBody(TeaModel):
         data: AttachInstanceSDGResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data object.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3585,6 +3606,7 @@ class CreateARMServerInstancesRequest(TeaModel):
         # 
         # This parameter is required.
         self.ens_region_id = ens_region_id
+        # Set one or more environment variables during EAIS instance initialization.
         self.environment_var = environment_var
         # The refresh rate. Unit: Hz. Valid values: 30 and 60.
         self.frequency = frequency
@@ -4205,7 +4227,17 @@ class CreateDiskRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N of the instance. Valid values of N: **1** to **20**.
+        # 
+        # *   The key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+        # *   The key must be up to 64 characters in length.
+        # *   The tag key cannot be an empty string.
         self.key = key
+        # The value of a tag that is attached to the topics you want to query. This parameter is not required. If you configure this parameter, you must also configure the **Key** parameter.**** If you include the Key and Value parameters in a request, this operation queries only the topics that use the specified tags. If you do not include these parameters in a request, this operation queries all topics that you can access.
+        # 
+        # *   Valid values of N: 1 to 20.
+        # *   The value of this parameter can be an empty string.
+        # *   The tag key can be up to 128 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
         self.value = value
 
     def validate(self):
@@ -4280,6 +4312,9 @@ class CreateDiskRequest(TeaModel):
         # *   If the size of the snapshot specified by **SnapshotId** is greater than the specified **Size** value, the size of the created disk is equal to the specified snapshot size.
         # *   If the size of the snapshot specified by **SnapshotId** is smaller than the specified **Size** value, the size of the created disk is equal to the specified **Size** value.
         self.snapshot_id = snapshot_id
+        # The tags.
+        # 
+        # You can specify at most 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -4433,7 +4468,13 @@ class CreateEipInstanceRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N of the instance. Valid values of N: **1** to **20**.
+        # 
+        # *   The key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+        # *   The key must be up to 64 characters in length.
+        # *   The tag key cannot be an empty string.
         self.key = key
+        # The value of tag N that is added to the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with acs: or contain http:// or https://.
         self.value = value
 
     def validate(self):
@@ -4464,6 +4505,7 @@ class CreateEipInstanceRequest(TeaModel):
     def __init__(
         self,
         bandwidth: int = None,
+        client_token: str = None,
         description: str = None,
         ens_region_id: str = None,
         instance_charge_type: str = None,
@@ -4474,6 +4516,8 @@ class CreateEipInstanceRequest(TeaModel):
     ):
         # The maximum bandwidth of the EIP. Default value: 5. Valid values: 5 to 10000. Unit: Mbit/s.
         self.bandwidth = bandwidth
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        self.client_token = client_token
         # The description of the EIP.
         self.description = description
         # The ID of the Edge Node Service (ENS) node.
@@ -4496,6 +4540,7 @@ class CreateEipInstanceRequest(TeaModel):
         self.isp = isp
         # The name of the EIP.
         self.name = name
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -4512,6 +4557,8 @@ class CreateEipInstanceRequest(TeaModel):
         result = dict()
         if self.bandwidth is not None:
             result['Bandwidth'] = self.bandwidth
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.description is not None:
             result['Description'] = self.description
         if self.ens_region_id is not None:
@@ -4534,6 +4581,8 @@ class CreateEipInstanceRequest(TeaModel):
         m = m or dict()
         if m.get('Bandwidth') is not None:
             self.bandwidth = m.get('Bandwidth')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('EnsRegionId') is not None:
@@ -4639,6 +4688,7 @@ class CreateEnsRouteEntryRequest(TeaModel):
         next_hop_type: str = None,
         route_entry_name: str = None,
         route_table_id: str = None,
+        source_cidr_block: str = None,
     ):
         # The description of the custom route entry.
         self.description = description
@@ -4664,6 +4714,7 @@ class CreateEnsRouteEntryRequest(TeaModel):
         # 
         # This parameter is required.
         self.route_table_id = route_table_id
+        self.source_cidr_block = source_cidr_block
 
     def validate(self):
         pass
@@ -4686,6 +4737,8 @@ class CreateEnsRouteEntryRequest(TeaModel):
             result['RouteEntryName'] = self.route_entry_name
         if self.route_table_id is not None:
             result['RouteTableId'] = self.route_table_id
+        if self.source_cidr_block is not None:
+            result['SourceCidrBlock'] = self.source_cidr_block
         return result
 
     def from_map(self, m: dict = None):
@@ -4702,6 +4755,8 @@ class CreateEnsRouteEntryRequest(TeaModel):
             self.route_entry_name = m.get('RouteEntryName')
         if m.get('RouteTableId') is not None:
             self.route_table_id = m.get('RouteTableId')
+        if m.get('SourceCidrBlock') is not None:
+            self.source_cidr_block = m.get('SourceCidrBlock')
         return self
 
 
@@ -5937,12 +5992,13 @@ class CreateImageRequest(TeaModel):
         image_name: str = None,
         instance_id: str = None,
         snapshot_id: str = None,
+        target_ossregion_id: str = None,
     ):
         # Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: false. Valid values:
         # 
         # *   true: The image is released when the instance is released.
         # *   false: The image is retained when the instance is released.
-        # *   If you leave this parameter empty, the default value is used.
+        # *   If you leave this property empty, false is used by default.
         self.delete_after_image_upload = delete_after_image_upload
         # The name of the image. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         # 
@@ -5952,6 +6008,8 @@ class CreateImageRequest(TeaModel):
         self.instance_id = instance_id
         # The ID of the snapshot.
         self.snapshot_id = snapshot_id
+        # The region of the target OSS where the image is to be stored.
+        self.target_ossregion_id = target_ossregion_id
 
     def validate(self):
         pass
@@ -5970,6 +6028,8 @@ class CreateImageRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.snapshot_id is not None:
             result['SnapshotId'] = self.snapshot_id
+        if self.target_ossregion_id is not None:
+            result['TargetOSSRegionId'] = self.target_ossregion_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5982,6 +6042,8 @@ class CreateImageRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('SnapshotId') is not None:
             self.snapshot_id = m.get('SnapshotId')
+        if m.get('TargetOSSRegionId') is not None:
+            self.target_ossregion_id = m.get('TargetOSSRegionId')
         return self
 
 
@@ -6736,6 +6798,7 @@ class CreateKeyPairResponse(TeaModel):
 class CreateLoadBalancerRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
         ens_region_id: str = None,
         load_balancer_name: str = None,
         load_balancer_spec: str = None,
@@ -6743,6 +6806,7 @@ class CreateLoadBalancerRequest(TeaModel):
         pay_type: str = None,
         v_switch_id: str = None,
     ):
+        self.client_token = client_token
         # The ID of the Edge Node Service (ENS) node.
         # 
         # This parameter is required.
@@ -6777,6 +6841,8 @@ class CreateLoadBalancerRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
         if self.load_balancer_name is not None:
@@ -6793,6 +6859,8 @@ class CreateLoadBalancerRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
         if m.get('LoadBalancerName') is not None:
@@ -6929,7 +6997,7 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
         unhealthy_threshold: int = None,
         xforwarded_for: str = None,
     ):
-        # 负载均衡实例后端服务器使用的端口，取值：**1**~**65535**。
+        # The port used by the backend ELB server of the ELB instance. Valid values: **1** to **65535**.
         self.backend_server_port = backend_server_port
         # The name of the listener. The value must be **1** to **80** characters in length.
         # 
@@ -7800,6 +7868,7 @@ class CreateLoadBalancerUDPListenerRequest(TeaModel):
         # *   **on**\
         # *   **off** (default)
         self.eip_transmit = eip_transmit
+        # The timeout period of a connection. Valid values: **10** to **900**. Default value: **900**. Unit: seconds.
         self.established_timeout = established_timeout
         # The port that is used for health checks. Valid values: **1** to **65535**. If you leave this parameter empty, the port specified by BackendServerPort is used for health checks.
         self.health_check_connect_port = health_check_connect_port
@@ -8126,7 +8195,13 @@ class CreateNatGatewayRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N of the instance. Valid values of N: **1** to **20**.
+        # 
+        # *   The key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+        # *   The key must be up to 64 characters in length.
+        # *   The tag key cannot be an empty string.
         self.key = key
+        # The value of tag N that is added to the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with acs: or contain http:// or https://.
         self.value = value
 
     def validate(self):
@@ -8175,6 +8250,7 @@ class CreateNatGatewayRequest(TeaModel):
         # 
         # This parameter is required.
         self.network_id = network_id
+        # The tags.
         self.tag = tag
         # The ID of the vSwitch.
         # 
@@ -8311,7 +8387,13 @@ class CreateNetworkRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag that are to add to the instance. Valid values of N: **1** to **20**.
+        # 
+        # *   The key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+        # *   The key must be up to 64 characters in length.
+        # *   The tag key cannot be an empty string.
         self.key = key
+        # The value of tag N that is added to the resource. You can specify up to 20 tag values. The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with acs: or contain http:// or https://.
         self.value = value
 
     def validate(self):
@@ -8369,6 +8451,7 @@ class CreateNetworkRequest(TeaModel):
         # *   The name must start with a letter but cannot start with http:// or https://.
         # *   The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.network_name = network_name
+        # The resource tags.
         self.tag = tag
 
     def validate(self):
@@ -9109,15 +9192,194 @@ class CreateSDGResponse(TeaModel):
         return self
 
 
+class CreateSecurityGroupRequestPermissions(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        dest_cidr_ip: str = None,
+        direction: str = None,
+        ip_protocol: str = None,
+        policy: str = None,
+        port_range: str = None,
+        priority: int = None,
+        source_cidr_ip: str = None,
+        source_port_range: str = None,
+    ):
+        # The description of the SDG.
+        # 
+        # >  We recommend that you specify this parameter in details for subsequent queries.
+        self.description = description
+        # The destination IPv4 CIDR block. IPv4 CIDR blocks and IPv4 addresses are supported.
+        # 
+        # This parameter is used to support quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
+        self.dest_cidr_ip = dest_cidr_ip
+        # The direction in which the security group rule is applied.
+        # 
+        # This parameter is required.
+        self.direction = direction
+        # The protocol. The values of this parameter are case-insensitive. Valid values:
+        # 
+        # *   TCP.
+        # *   UDP.
+        # *   ICMP.
+        # *   ICMPv6.
+        # *   GRE.
+        # *   ALL: All protocols are supported.
+        # 
+        # This parameter is required.
+        self.ip_protocol = ip_protocol
+        # The action of the security group rule. Valid values:
+        # 
+        # *   accept: allows inbound access.
+        # *   drop: denies inbound access and returns no responses. In this case, the request times out or the connection cannot be established.
+        # 
+        # Default value: accept.
+        # 
+        # This parameter is required.
+        self.policy = policy
+        # The range of destination port numbers for the protocols specified in the security group rule. Valid values:
+        # 
+        # *   If you set IpProtocol to TCP or UDP, the port number range is 1 to 65535. Specify a port range in the format of \\<Start port number>/\\<End port number>. Example: 1/200.
+        # *   If you set IpProtocol to ICMP, the port number range is -1/-1.
+        # *   If you set IpProtocol to GRE, the port number range is -1/-1.
+        # *   If you set IpProtocol to ALL, the port number range is -1/-1, which indicates all port numbers.
+        # 
+        # This parameter is required.
+        self.port_range = port_range
+        # The priority of the security group rule. A smaller value specifies a higher priority. Valid values: 1 to 100.
+        # 
+        # Default value: 1.
+        # 
+        # This parameter is required.
+        self.priority = priority
+        # The source IPv4 CIDR block. IPv4 CIDR blocks and IPv4 addresses are supported.
+        # 
+        # This parameter is used to support quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
+        self.source_cidr_ip = source_cidr_ip
+        # The range of source port numbers for the protocols specified in the security group rule. Valid values:
+        # 
+        # *   If you set IpProtocol to TCP or UDP, the port number range is 1 to 65535. Specify a port number range in the format of \\<Start port number>/\\<End port number>. Example: 1/200.
+        # *   If you set IpProtocol to ICMP, the port number range is -1/-1.
+        # *   If you set IpProtocol to GRE, the port number range is -1/-1.
+        # *   If you set IpProtocol to ALL, the port number range is -1/-1, which indicates all port numbers.
+        # 
+        # This parameter is used to support quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
+        self.source_port_range = source_port_range
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.dest_cidr_ip is not None:
+            result['DestCidrIp'] = self.dest_cidr_ip
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.ip_protocol is not None:
+            result['IpProtocol'] = self.ip_protocol
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.port_range is not None:
+            result['PortRange'] = self.port_range
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.source_cidr_ip is not None:
+            result['SourceCidrIp'] = self.source_cidr_ip
+        if self.source_port_range is not None:
+            result['SourcePortRange'] = self.source_port_range
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DestCidrIp') is not None:
+            self.dest_cidr_ip = m.get('DestCidrIp')
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('IpProtocol') is not None:
+            self.ip_protocol = m.get('IpProtocol')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('PortRange') is not None:
+            self.port_range = m.get('PortRange')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('SourceCidrIp') is not None:
+            self.source_cidr_ip = m.get('SourceCidrIp')
+        if m.get('SourcePortRange') is not None:
+            self.source_port_range = m.get('SourcePortRange')
+        return self
+
+
 class CreateSecurityGroupRequest(TeaModel):
     def __init__(
         self,
         description: str = None,
+        permissions: List[CreateSecurityGroupRequestPermissions] = None,
         security_group_name: str = None,
     ):
-        # The description of the security group. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
+        # The description. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
         self.description = description
-        # The name of the security group. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). By default, this parameter is empty.
+        # Schema of Response
+        self.permissions = permissions
+        # The name of the security group. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). By default, this parameter is empty.
+        self.security_group_name = security_group_name
+
+    def validate(self):
+        if self.permissions:
+            for k in self.permissions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        result['Permissions'] = []
+        if self.permissions is not None:
+            for k in self.permissions:
+                result['Permissions'].append(k.to_map() if k else None)
+        if self.security_group_name is not None:
+            result['SecurityGroupName'] = self.security_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.permissions = []
+        if m.get('Permissions') is not None:
+            for k in m.get('Permissions'):
+                temp_model = CreateSecurityGroupRequestPermissions()
+                self.permissions.append(temp_model.from_map(k))
+        if m.get('SecurityGroupName') is not None:
+            self.security_group_name = m.get('SecurityGroupName')
+        return self
+
+
+class CreateSecurityGroupShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        permissions_shrink: str = None,
+        security_group_name: str = None,
+    ):
+        # The description. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
+        self.description = description
+        # Schema of Response
+        self.permissions_shrink = permissions_shrink
+        # The name of the security group. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). By default, this parameter is empty.
         self.security_group_name = security_group_name
 
     def validate(self):
@@ -9131,6 +9393,8 @@ class CreateSecurityGroupRequest(TeaModel):
         result = dict()
         if self.description is not None:
             result['Description'] = self.description
+        if self.permissions_shrink is not None:
+            result['Permissions'] = self.permissions_shrink
         if self.security_group_name is not None:
             result['SecurityGroupName'] = self.security_group_name
         return result
@@ -9139,6 +9403,8 @@ class CreateSecurityGroupRequest(TeaModel):
         m = m or dict()
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Permissions') is not None:
+            self.permissions_shrink = m.get('Permissions')
         if m.get('SecurityGroupName') is not None:
             self.security_group_name = m.get('SecurityGroupName')
         return self
@@ -9361,6 +9627,7 @@ class CreateSnapshotResponse(TeaModel):
 class CreateSnatEntryRequest(TeaModel):
     def __init__(
         self,
+        eip_affinity: bool = None,
         idle_timeout: int = None,
         isp_affinity: bool = None,
         nat_gateway_id: str = None,
@@ -9371,8 +9638,13 @@ class CreateSnatEntryRequest(TeaModel):
         source_vswitch_id: str = None,
         standby_snat_ip: str = None,
     ):
+        self.eip_affinity = eip_affinity
         # The timeout period for idle connections. Valid values: **1** to **86400**. Unit: seconds.
         self.idle_timeout = idle_timeout
+        # Whether to enable operator affinity. Value taking:
+        # 
+        # - false:Do not open.
+        # - true:Open.
         self.isp_affinity = isp_affinity
         # The ID of the Network Address Translation (NAT) gateway.
         # 
@@ -9408,6 +9680,8 @@ class CreateSnatEntryRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.eip_affinity is not None:
+            result['EipAffinity'] = self.eip_affinity
         if self.idle_timeout is not None:
             result['IdleTimeout'] = self.idle_timeout
         if self.isp_affinity is not None:
@@ -9430,6 +9704,8 @@ class CreateSnatEntryRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EipAffinity') is not None:
+            self.eip_affinity = m.get('EipAffinity')
         if m.get('IdleTimeout') is not None:
             self.idle_timeout = m.get('IdleTimeout')
         if m.get('IspAffinity') is not None:
@@ -10022,7 +10298,13 @@ class CreateVSwitchRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag that are to add to the instance. Valid values of N: **1** to **20**.
+        # 
+        # *   The key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+        # *   The key must be up to 64 characters in length.
+        # *   The tag key cannot be an empty string.
         self.key = key
+        # The value of tag N that is added to the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with acs: or contain http:// or https://.
         self.value = value
 
     def validate(self):
@@ -10077,6 +10359,7 @@ class CreateVSwitchRequest(TeaModel):
         self.ens_region_id = ens_region_id
         # The ID of the network to which the vSwitch that you want to create belongs.
         self.network_id = network_id
+        # The tags.
         self.tag = tag
         # The name of the vSwitch. The name must meet the following requirements:
         # 
@@ -12301,8 +12584,10 @@ class DeleteMountTargetResponse(TeaModel):
 class DeleteNatGatewayRequest(TeaModel):
     def __init__(
         self,
+        force_delete: bool = None,
         nat_gateway_id: str = None,
     ):
+        self.force_delete = force_delete
         # The ID of the NAT gateway that you want to delete.
         # 
         # This parameter is required.
@@ -12317,12 +12602,16 @@ class DeleteNatGatewayRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.force_delete is not None:
+            result['ForceDelete'] = self.force_delete
         if self.nat_gateway_id is not None:
             result['NatGatewayId'] = self.nat_gateway_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ForceDelete') is not None:
+            self.force_delete = m.get('ForceDelete')
         if m.get('NatGatewayId') is not None:
             self.nat_gateway_id = m.get('NatGatewayId')
         return self
@@ -16626,9 +16915,37 @@ class DescribeBandwitdhByInternetChargeTypeResponse(TeaModel):
         return self
 
 
+class DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportResourceAbility(TeaModel):
+    def __init__(
+        self,
+        ability: List[str] = None,
+    ):
+        self.ability = ability
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ability is not None:
+            result['Ability'] = self.ability
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ability') is not None:
+            self.ability = m.get('Ability')
+        return self
+
+
 class DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportResource(TeaModel):
     def __init__(
         self,
+        ability: DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportResourceAbility = None,
         can_buy_count: int = None,
         category: str = None,
         default_disk_size: int = None,
@@ -16637,6 +16954,8 @@ class DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportR
         ens_region_id: str = None,
         ens_region_name: str = None,
     ):
+        # Node product capability.
+        self.ability = ability
         # The number of disks that you can purchase.
         self.can_buy_count = can_buy_count
         # The type of the disk.
@@ -16658,7 +16977,8 @@ class DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportR
         self.ens_region_name = ens_region_name
 
     def validate(self):
-        pass
+        if self.ability:
+            self.ability.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -16666,6 +16986,8 @@ class DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportR
             return _map
 
         result = dict()
+        if self.ability is not None:
+            result['Ability'] = self.ability.to_map()
         if self.can_buy_count is not None:
             result['CanBuyCount'] = self.can_buy_count
         if self.category is not None:
@@ -16684,6 +17006,9 @@ class DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportR
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Ability') is not None:
+            temp_model = DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportResourceAbility()
+            self.ability = temp_model.from_map(m['Ability'])
         if m.get('CanBuyCount') is not None:
             self.can_buy_count = m.get('CanBuyCount')
         if m.get('Category') is not None:
@@ -16822,6 +17147,7 @@ class DescribeCloudDiskTypesRequest(TeaModel):
     ):
         # The ID of the edge node.
         self.ens_region_id = ens_region_id
+        # The edge nodes.
         self.ens_region_ids = ens_region_ids
 
     def validate(self):
@@ -16856,6 +17182,7 @@ class DescribeCloudDiskTypesShrinkRequest(TeaModel):
     ):
         # The ID of the edge node.
         self.ens_region_id = ens_region_id
+        # The edge nodes.
         self.ens_region_ids_shrink = ens_region_ids_shrink
 
     def validate(self):
@@ -19738,7 +20065,13 @@ class DescribeDisksResponseBodyDisksDisks(TeaModel):
         self.category = category
         # The time when the disk was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
+        # Specifies whether the disk to be attached is released with the instance. Valid values:
+        # 
+        # *   true: The disk will be released when the ECS instance is released.
+        # *   false: The disk will be retained when the ECS instance is released.
+        # *   If you leave this parameter empty, the default value is used.
         self.delete_with_instance = delete_with_instance
+        # The namespace description.
         self.description = description
         # The billing method of the cloud disk or local disk. Valid values:
         # 
@@ -20026,6 +20359,7 @@ class DescribeDisksResponse(TeaModel):
 class DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo(TeaModel):
     def __init__(
         self,
+        ability: List[str] = None,
         area: str = None,
         can_buy_count: str = None,
         en_name: str = None,
@@ -20034,6 +20368,7 @@ class DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo(TeaMo
         name: str = None,
         province: str = None,
     ):
+        self.ability = ability
         # The ID of the region.
         self.area = area
         # The number of resources that you can purchase.
@@ -20058,6 +20393,8 @@ class DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo(TeaMo
             return _map
 
         result = dict()
+        if self.ability is not None:
+            result['Ability'] = self.ability
         if self.area is not None:
             result['Area'] = self.area
         if self.can_buy_count is not None:
@@ -20076,6 +20413,8 @@ class DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo(TeaMo
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Ability') is not None:
+            self.ability = m.get('Ability')
         if m.get('Area') is not None:
             self.area = m.get('Area')
         if m.get('CanBuyCount') is not None:
@@ -22394,7 +22733,9 @@ class DescribeEnsRouteEntryListRequest(TeaModel):
         self.next_hop_id = next_hop_id
         # The type of next hop of the custom route entry. Valid values:
         # 
-        # *   Instance: an ENS instance.
+        # *   Instance (default): an ENS instance.
+        # *   HaVip: a high-availability virtual IP address (HAVIP).
+        # *   NetworkPeer: VPC peering connection.
         self.next_hop_type = next_hop_type
         # The page number of the returned page. Valid values: integers that are greater than 0. Default value: 1.
         self.page_number = page_number
@@ -22410,8 +22751,6 @@ class DescribeEnsRouteEntryListRequest(TeaModel):
         # *   System: system route
         self.route_entry_type = route_entry_type
         # The ID of the route table that you want to query.
-        # 
-        # This parameter is required.
         self.route_table_id = route_table_id
 
     def validate(self):
@@ -22470,10 +22809,13 @@ class DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops(TeaModel):
     def __init__(
         self,
         next_hop_id: str = None,
+        next_hop_name: str = None,
         next_hop_type: str = None,
     ):
         # The ID of the next hop.
         self.next_hop_id = next_hop_id
+        # The instance ID of the next hop.
+        self.next_hop_name = next_hop_name
         # The type of the next hop. Valid values:
         self.next_hop_type = next_hop_type
 
@@ -22488,6 +22830,8 @@ class DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops(TeaModel):
         result = dict()
         if self.next_hop_id is not None:
             result['NextHopId'] = self.next_hop_id
+        if self.next_hop_name is not None:
+            result['NextHopName'] = self.next_hop_name
         if self.next_hop_type is not None:
             result['NextHopType'] = self.next_hop_type
         return result
@@ -22496,6 +22840,8 @@ class DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops(TeaModel):
         m = m or dict()
         if m.get('NextHopId') is not None:
             self.next_hop_id = m.get('NextHopId')
+        if m.get('NextHopName') is not None:
+            self.next_hop_name = m.get('NextHopName')
         if m.get('NextHopType') is not None:
             self.next_hop_type = m.get('NextHopType')
         return self
@@ -22504,15 +22850,18 @@ class DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops(TeaModel):
 class DescribeEnsRouteEntryListResponseBodyRouteEntrys(TeaModel):
     def __init__(
         self,
+        creation_time: str = None,
         description: str = None,
         destination_cidr_block: str = None,
         next_hops: List[DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops] = None,
         route_entry_id: str = None,
         route_entry_name: str = None,
         route_table_id: str = None,
+        source_cidr_block: str = None,
         status: str = None,
         type: str = None,
     ):
+        self.creation_time = creation_time
         # Enter a description for the route.
         self.description = description
         # The destination CIDR block of the route.
@@ -22525,6 +22874,7 @@ class DescribeEnsRouteEntryListResponseBodyRouteEntrys(TeaModel):
         self.route_entry_name = route_entry_name
         # The ID of the route table.
         self.route_table_id = route_table_id
+        self.source_cidr_block = source_cidr_block
         # The status of the route entry. Valid values:
         self.status = status
         # The type of the route entry.
@@ -22542,6 +22892,8 @@ class DescribeEnsRouteEntryListResponseBodyRouteEntrys(TeaModel):
             return _map
 
         result = dict()
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
         if self.description is not None:
             result['Description'] = self.description
         if self.destination_cidr_block is not None:
@@ -22556,6 +22908,8 @@ class DescribeEnsRouteEntryListResponseBodyRouteEntrys(TeaModel):
             result['RouteEntryName'] = self.route_entry_name
         if self.route_table_id is not None:
             result['RouteTableId'] = self.route_table_id
+        if self.source_cidr_block is not None:
+            result['SourceCidrBlock'] = self.source_cidr_block
         if self.status is not None:
             result['Status'] = self.status
         if self.type is not None:
@@ -22564,6 +22918,8 @@ class DescribeEnsRouteEntryListResponseBodyRouteEntrys(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('DestinationCidrBlock') is not None:
@@ -22579,6 +22935,8 @@ class DescribeEnsRouteEntryListResponseBodyRouteEntrys(TeaModel):
             self.route_entry_name = m.get('RouteEntryName')
         if m.get('RouteTableId') is not None:
             self.route_table_id = m.get('RouteTableId')
+        if m.get('SourceCidrBlock') is not None:
+            self.source_cidr_block = m.get('SourceCidrBlock')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('Type') is not None:
@@ -22601,7 +22959,7 @@ class DescribeEnsRouteEntryListResponseBody(TeaModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The information about the route.
+        # The information about the routes.
         self.route_entrys = route_entrys
         # The number of returned entries.
         self.total_count = total_count
@@ -22694,14 +23052,21 @@ class DescribeEnsRouteEntryListResponse(TeaModel):
 class DescribeEnsRouteTablesRequest(TeaModel):
     def __init__(
         self,
+        associate_type: str = None,
         ens_region_id: str = None,
+        ens_region_ids: List[str] = None,
         network_id: str = None,
         page_number: int = None,
         page_size: int = None,
         route_table_id: str = None,
+        route_table_name: str = None,
+        type: str = None,
     ):
+        self.associate_type = associate_type
         # The ID of the ENS node.
         self.ens_region_id = ens_region_id
+        # The IDs of the Edge Node Service (ENS) nodes.
+        self.ens_region_ids = ens_region_ids
         # The ID of the network.
         self.network_id = network_id
         # The page number.
@@ -22710,6 +23075,8 @@ class DescribeEnsRouteTablesRequest(TeaModel):
         self.page_size = page_size
         # The ID of the route table.
         self.route_table_id = route_table_id
+        self.route_table_name = route_table_name
+        self.type = type
 
     def validate(self):
         pass
@@ -22720,8 +23087,12 @@ class DescribeEnsRouteTablesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.associate_type is not None:
+            result['AssociateType'] = self.associate_type
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
+        if self.ens_region_ids is not None:
+            result['EnsRegionIds'] = self.ens_region_ids
         if self.network_id is not None:
             result['NetworkId'] = self.network_id
         if self.page_number is not None:
@@ -22730,12 +23101,20 @@ class DescribeEnsRouteTablesRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.route_table_id is not None:
             result['RouteTableId'] = self.route_table_id
+        if self.route_table_name is not None:
+            result['RouteTableName'] = self.route_table_name
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AssociateType') is not None:
+            self.associate_type = m.get('AssociateType')
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
+        if m.get('EnsRegionIds') is not None:
+            self.ens_region_ids = m.get('EnsRegionIds')
         if m.get('NetworkId') is not None:
             self.network_id = m.get('NetworkId')
         if m.get('PageNumber') is not None:
@@ -22744,14 +23123,21 @@ class DescribeEnsRouteTablesRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RouteTableId') is not None:
             self.route_table_id = m.get('RouteTableId')
+        if m.get('RouteTableName') is not None:
+            self.route_table_name = m.get('RouteTableName')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
 class DescribeEnsRouteTablesResponseBodyRouteTables(TeaModel):
     def __init__(
         self,
+        associate_type: str = None,
         creation_time: str = None,
+        description: str = None,
         ens_region_id: str = None,
+        is_default_gateway_route_table: bool = None,
         network_id: str = None,
         route_table_id: str = None,
         route_table_name: str = None,
@@ -22759,10 +23145,13 @@ class DescribeEnsRouteTablesResponseBodyRouteTables(TeaModel):
         type: str = None,
         v_switch_ids: List[str] = None,
     ):
+        self.associate_type = associate_type
         # The time when the route table was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
+        self.description = description
         # The ID of the edge node.
         self.ens_region_id = ens_region_id
+        self.is_default_gateway_route_table = is_default_gateway_route_table
         # The ID of the network.
         self.network_id = network_id
         # The ID of the route table.
@@ -22789,10 +23178,16 @@ class DescribeEnsRouteTablesResponseBodyRouteTables(TeaModel):
             return _map
 
         result = dict()
+        if self.associate_type is not None:
+            result['AssociateType'] = self.associate_type
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
+        if self.description is not None:
+            result['Description'] = self.description
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
+        if self.is_default_gateway_route_table is not None:
+            result['IsDefaultGatewayRouteTable'] = self.is_default_gateway_route_table
         if self.network_id is not None:
             result['NetworkId'] = self.network_id
         if self.route_table_id is not None:
@@ -22809,10 +23204,16 @@ class DescribeEnsRouteTablesResponseBodyRouteTables(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AssociateType') is not None:
+            self.associate_type = m.get('AssociateType')
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
+        if m.get('IsDefaultGatewayRouteTable') is not None:
+            self.is_default_gateway_route_table = m.get('IsDefaultGatewayRouteTable')
         if m.get('NetworkId') is not None:
             self.network_id = m.get('NetworkId')
         if m.get('RouteTableId') is not None:
@@ -27161,9 +27562,13 @@ class DescribeImageInfosResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMappi
         type: str = None,
         image_id: str = None,
     ):
+        # The format of the image.
         self.format = format
+        # The size of the image. Unit: GB.
         self.size = size
+        # The type of the disk. Valid values: System and Data.
         self.type = type
+        # The ID of the image.
         self.image_id = image_id
 
     def validate(self):
@@ -27244,6 +27649,7 @@ class DescribeImageInfosResponseBodyImagesImage(TeaModel):
         image_version: str = None,
         osname: str = None,
         ostype: str = None,
+        region_id: str = None,
     ):
         # The computing type of the image. Valid values:
         # 
@@ -27254,6 +27660,7 @@ class DescribeImageInfosResponseBodyImagesImage(TeaModel):
         self.compute_type = compute_type
         # The description of the image.
         self.description = description
+        # The mappings between disks and snapshots in the image.
         self.disk_device_mappings = disk_device_mappings
         # The ID of the image.
         self.image_id = image_id
@@ -27265,6 +27672,8 @@ class DescribeImageInfosResponseBodyImagesImage(TeaModel):
         self.osname = osname
         # The type of the operating system.
         self.ostype = ostype
+        # The ID of the region.
+        self.region_id = region_id
 
     def validate(self):
         if self.disk_device_mappings:
@@ -27292,6 +27701,8 @@ class DescribeImageInfosResponseBodyImagesImage(TeaModel):
             result['OSName'] = self.osname
         if self.ostype is not None:
             result['OSType'] = self.ostype
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -27313,6 +27724,8 @@ class DescribeImageInfosResponseBodyImagesImage(TeaModel):
             self.osname = m.get('OSName')
         if m.get('OSType') is not None:
             self.ostype = m.get('OSType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -27491,12 +27904,12 @@ class DescribeImageSharePermissionRequest(TeaModel):
         return self
 
 
-class DescribeImageSharePermissionResponseBodyAccounts(TeaModel):
+class DescribeImageSharePermissionResponseBodyAccountsAccount(TeaModel):
     def __init__(
         self,
-        account: List[str] = None,
+        aliyun_uid: str = None,
     ):
-        self.account = account
+        self.aliyun_uid = aliyun_uid
 
     def validate(self):
         pass
@@ -27507,14 +27920,49 @@ class DescribeImageSharePermissionResponseBodyAccounts(TeaModel):
             return _map
 
         result = dict()
-        if self.account is not None:
-            result['Account'] = self.account
+        if self.aliyun_uid is not None:
+            result['AliyunUid'] = self.aliyun_uid
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AliyunUid') is not None:
+            self.aliyun_uid = m.get('AliyunUid')
+        return self
+
+
+class DescribeImageSharePermissionResponseBodyAccounts(TeaModel):
+    def __init__(
+        self,
+        account: List[DescribeImageSharePermissionResponseBodyAccountsAccount] = None,
+    ):
+        self.account = account
+
+    def validate(self):
+        if self.account:
+            for k in self.account:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Account'] = []
+        if self.account is not None:
+            for k in self.account:
+                result['Account'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.account = []
         if m.get('Account') is not None:
-            self.account = m.get('Account')
+            for k in m.get('Account'):
+                temp_model = DescribeImageSharePermissionResponseBodyAccountsAccount()
+                self.account.append(temp_model.from_map(k))
         return self
 
 
@@ -27710,9 +28158,16 @@ class DescribeImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping(T
         type: str = None,
         image_id: str = None,
     ):
+        # The format of the image.
         self.format = format
+        # The size of the disk. Unit: GiB.
         self.size = size
+        # The type of the disk. Valid values:
+        # 
+        # *   system: system disk.
+        # *   data: data disk.
         self.type = type
+        # The ID of image.
         self.image_id = image_id
 
     def validate(self):
@@ -27793,12 +28248,14 @@ class DescribeImagesResponseBodyImagesImage(TeaModel):
         image_owner_alias: str = None,
         image_size: str = None,
         platform: str = None,
+        region_id: str = None,
         snapshot_id: str = None,
     ):
         # The architecture of the image. Example: **x86_64**.
         self.architecture = architecture
         # The time when the image was created. The time follows the ISO 8601 standard.
         self.creation_time = creation_time
+        # The mappings between the disk and the snapshot in the image.
         self.disk_device_mappings = disk_device_mappings
         # The ID of the image.
         self.image_id = image_id
@@ -27817,6 +28274,8 @@ class DescribeImagesResponseBodyImagesImage(TeaModel):
         # *   Linux
         # *   Windows
         self.platform = platform
+        # The ID of the Edge Node Service (ENS) node.
+        self.region_id = region_id
         # The ID of the snapshot.
         self.snapshot_id = snapshot_id
 
@@ -27846,6 +28305,8 @@ class DescribeImagesResponseBodyImagesImage(TeaModel):
             result['ImageSize'] = self.image_size
         if self.platform is not None:
             result['Platform'] = self.platform
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.snapshot_id is not None:
             result['SnapshotId'] = self.snapshot_id
         return result
@@ -27869,6 +28330,8 @@ class DescribeImagesResponseBodyImagesImage(TeaModel):
             self.image_size = m.get('ImageSize')
         if m.get('Platform') is not None:
             self.platform = m.get('Platform')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('SnapshotId') is not None:
             self.snapshot_id = m.get('SnapshotId')
         return self
@@ -28699,11 +29162,17 @@ class DescribeInstanceSDGStatusRequest(TeaModel):
         sdgids: List[str] = None,
         status: str = None,
     ):
+        # The ID of the AIC instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The number of the page to return. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The IDs of SDGs that you want to query. By default, all SDGs are queried.
         self.sdgids = sdgids
+        # The deployment status of the SDG.
         self.status = status
 
     def validate(self):
@@ -28751,11 +29220,17 @@ class DescribeInstanceSDGStatusShrinkRequest(TeaModel):
         sdgids_shrink: str = None,
         status: str = None,
     ):
+        # The ID of the AIC instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The number of the page to return. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The IDs of SDGs that you want to query. By default, all SDGs are queried.
         self.sdgids_shrink = sdgids_shrink
+        # The deployment status of the SDG.
         self.status = status
 
     def validate(self):
@@ -28805,12 +29280,19 @@ class DescribeInstanceSDGStatusResponseBodyDeploymentStatus(TeaModel):
         status: str = None,
         update_time: str = None,
     ):
+        # The ID of the edge node.
         self.ens_region_id = ens_region_id
+        # The ID of the AIC instance.
         self.instance_id = instance_id
+        # The deployment type of the SDG.
         self.mount_type = mount_type
+        # Deployment Phase
         self.phase = phase
+        # The ID of the SDG.
         self.sdgid = sdgid
+        # The deployment status of the SDG.
         self.status = status
+        # The time when the status was last updated.
         self.update_time = update_time
 
     def validate(self):
@@ -28866,10 +29348,15 @@ class DescribeInstanceSDGStatusResponseBody(TeaModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # The deployment information of the SDGs.
         self.deployment_status = deployment_status
+        # The number of the page to return. Pages start from page 1. Default value: 1
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of queried deployment records.
         self.total_count = total_count
 
     def validate(self):
@@ -29531,6 +30018,7 @@ class DescribeInstancesRequest(TeaModel):
         self.search_key = search_key
         # The ID of the security group.
         self.security_group_id = security_group_id
+        # The status of the service. Valid values.
         self.service_status = service_status
         # The status of the instance. Valid values:
         # 
@@ -29714,6 +30202,7 @@ class DescribeInstancesShrinkRequest(TeaModel):
         self.search_key = search_key
         # The ID of the security group.
         self.security_group_id = security_group_id
+        # The status of the service. Valid values.
         self.service_status_shrink = service_status_shrink
         # The status of the instance. Valid values:
         # 
@@ -29850,7 +30339,12 @@ class DescribeInstancesResponseBodyInstancesInstanceDataDiskDataDisk(TeaModel):
         self.disk_name = disk_name
         # The size of the disk. Unit: GiB.
         self.disk_size = disk_size
+        # The KMS key ID used by the cloud drive.
         self.encrypt_key_id = encrypt_key_id
+        # Specifies whether to encrypt the new system disk. Valid values:
+        # 
+        # *   **true**\
+        # *   **false** (default): no
         self.encrypted = encrypted
         # The size of the disk. Unit: MiB.
         self.size = size
@@ -30073,6 +30567,7 @@ class DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInte
         self,
         ipv_6address: str = None,
     ):
+        # IPv6 addresses N of the ENI. You can specify multiple IPv6 addresses. Valid values of N: 1 to 100.
         self.ipv_6address = ipv_6address
 
     def validate(self):
@@ -30136,7 +30631,14 @@ class DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInte
         primary: bool = None,
         private_ip_address: str = None,
     ):
+        # Indicates whether the IP address is the primary private IP address. Valid values:
+        # 
+        # *   true
+        # *   false
         self.primary = primary
+        # The private IP address.
+        # 
+        # >  This parameter is available only if ScheduleAreaLevel is set to Region and cannot be configured if ScheduleAreaLevel is set to other values. Otherwise, an error occurs. If you specify a private IP address, the number of instances must be 1. The private IP address takes effect only when the private IP address and the vSwitch ID are not empty.
         self.private_ip_address = private_ip_address
 
     def validate(self):
@@ -30208,11 +30710,20 @@ class DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInte
         private_ip_sets: DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesPrivateIpSets = None,
         type: str = None,
     ):
+        # The IPv6 addresses of the ENI. This parameter has a value only when `AdditionalAttributes.N` is set to `NETWORK_PRIMARY_ENI_IP`.
         self.ipv_6sets = ipv_6sets
+        # The MAC address of the ENI.
         self.mac_address = mac_address
+        # The ID of the ENI.
         self.network_interface_id = network_interface_id
+        # The primary IP address of the ENI.
         self.primary_ip_address = primary_ip_address
+        # The private IP addresses of the ENI.
         self.private_ip_sets = private_ip_sets
+        # The type of the disk. Valid values:
+        # 
+        # *   system: system disk.
+        # *   data: data disk.
         self.type = type
 
     def validate(self):
@@ -30752,11 +31263,13 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
         self.internet_max_bandwidth_in = internet_max_bandwidth_in
         # The minimum inbound bandwidth. Unit: Mbit/s.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
+        # The name of the SSH key pair.
         self.key_pair_name = key_pair_name
         # The memory size. Unit: MB.
         self.memory = memory
         # Details of the network.
         self.network_attributes = network_attributes
+        # The ENI attached to the instance.
         self.network_interfaces = network_interfaces
         # The name of the image.
         self.osname = osname
@@ -30768,6 +31281,7 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
         self.public_ip_addresses = public_ip_addresses
         # The IDs of the security groups.
         self.security_group_ids = security_group_ids
+        # The ID of your Alibaba Cloud account.
         self.service_status = service_status
         # The instance type.
         self.spec_name = spec_name
@@ -31424,12 +31938,14 @@ class DescribeLoadBalancerAttributeResponseBodyBackendServers(TeaModel):
 class DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols(TeaModel):
     def __init__(
         self,
+        backend_server_port: int = None,
         description: str = None,
         forward_port: int = None,
         listener_forward: str = None,
         listener_port: int = None,
         listener_protocol: str = None,
     ):
+        self.backend_server_port = backend_server_port
         # The description of the listener.
         self.description = description
         # The destination listening port to which requests are forwarded.
@@ -31450,6 +31966,8 @@ class DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols(TeaMode
             return _map
 
         result = dict()
+        if self.backend_server_port is not None:
+            result['BackendServerPort'] = self.backend_server_port
         if self.description is not None:
             result['Description'] = self.description
         if self.forward_port is not None:
@@ -31464,6 +31982,8 @@ class DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols(TeaMode
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BackendServerPort') is not None:
+            self.backend_server_port = m.get('BackendServerPort')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('ForwardPort') is not None:
@@ -32641,10 +33161,14 @@ class DescribeLoadBalancerListenMonitorResponse(TeaModel):
 class DescribeLoadBalancerListenersRequest(TeaModel):
     def __init__(
         self,
+        description: str = None,
+        listener_port: int = None,
         load_balancer_id: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
+        self.description = description
+        self.listener_port = listener_port
         # The ID of the ELB instance.
         # 
         # This parameter is required.
@@ -32663,6 +33187,10 @@ class DescribeLoadBalancerListenersRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.listener_port is not None:
+            result['ListenerPort'] = self.listener_port
         if self.load_balancer_id is not None:
             result['LoadBalancerId'] = self.load_balancer_id
         if self.page_number is not None:
@@ -32673,6 +33201,10 @@ class DescribeLoadBalancerListenersRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ListenerPort') is not None:
+            self.listener_port = m.get('ListenerPort')
         if m.get('LoadBalancerId') is not None:
             self.load_balancer_id = m.get('LoadBalancerId')
         if m.get('PageNumber') is not None:
@@ -32685,6 +33217,7 @@ class DescribeLoadBalancerListenersRequest(TeaModel):
 class DescribeLoadBalancerListenersResponseBodyListenersListener(TeaModel):
     def __init__(
         self,
+        backend_server_port: int = None,
         create_time: str = None,
         description: str = None,
         forward_port: str = None,
@@ -32694,6 +33227,7 @@ class DescribeLoadBalancerListenersResponseBodyListenersListener(TeaModel):
         protocol: str = None,
         status: str = None,
     ):
+        self.backend_server_port = backend_server_port
         # The timestamp when the listener was created.
         self.create_time = create_time
         # The description of the listener.
@@ -32731,6 +33265,8 @@ class DescribeLoadBalancerListenersResponseBodyListenersListener(TeaModel):
             return _map
 
         result = dict()
+        if self.backend_server_port is not None:
+            result['BackendServerPort'] = self.backend_server_port
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.description is not None:
@@ -32751,6 +33287,8 @@ class DescribeLoadBalancerListenersResponseBodyListenersListener(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BackendServerPort') is not None:
+            self.backend_server_port = m.get('BackendServerPort')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('Description') is not None:
@@ -33630,6 +34168,7 @@ class DescribeLoadBalancersRequest(TeaModel):
         self,
         address: str = None,
         ens_region_id: str = None,
+        ens_region_ids: List[str] = None,
         load_balancer_id: str = None,
         load_balancer_name: str = None,
         load_balancer_status: str = None,
@@ -33643,6 +34182,7 @@ class DescribeLoadBalancersRequest(TeaModel):
         self.address = address
         # The ID of the Edge Node Service (ENS) node.
         self.ens_region_id = ens_region_id
+        self.ens_region_ids = ens_region_ids
         # The ID of the ELB instance.
         self.load_balancer_id = load_balancer_id
         # The name of the ELB instance.
@@ -33676,6 +34216,8 @@ class DescribeLoadBalancersRequest(TeaModel):
             result['Address'] = self.address
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
+        if self.ens_region_ids is not None:
+            result['EnsRegionIds'] = self.ens_region_ids
         if self.load_balancer_id is not None:
             result['LoadBalancerId'] = self.load_balancer_id
         if self.load_balancer_name is not None:
@@ -33700,6 +34242,8 @@ class DescribeLoadBalancersRequest(TeaModel):
             self.address = m.get('Address')
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
+        if m.get('EnsRegionIds') is not None:
+            self.ens_region_ids = m.get('EnsRegionIds')
         if m.get('LoadBalancerId') is not None:
             self.load_balancer_id = m.get('LoadBalancerId')
         if m.get('LoadBalancerName') is not None:
@@ -35518,8 +36062,10 @@ class DescribeNatGatewaysRequest(TeaModel):
     def __init__(
         self,
         ens_region_id: str = None,
+        ens_region_ids: List[str] = None,
         name: str = None,
         nat_gateway_id: str = None,
+        nat_gateway_ids: List[str] = None,
         network_id: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -35527,10 +36073,12 @@ class DescribeNatGatewaysRequest(TeaModel):
     ):
         # The ID of the Edge Node Service (ENS) node.
         self.ens_region_id = ens_region_id
+        self.ens_region_ids = ens_region_ids
         # The name of the NAT gateway.
         self.name = name
         # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
+        self.nat_gateway_ids = nat_gateway_ids
         # The ID of the network.
         self.network_id = network_id
         # The page number. Pages start from page **1**.
@@ -35555,10 +36103,14 @@ class DescribeNatGatewaysRequest(TeaModel):
         result = dict()
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
+        if self.ens_region_ids is not None:
+            result['EnsRegionIds'] = self.ens_region_ids
         if self.name is not None:
             result['Name'] = self.name
         if self.nat_gateway_id is not None:
             result['NatGatewayId'] = self.nat_gateway_id
+        if self.nat_gateway_ids is not None:
+            result['NatGatewayIds'] = self.nat_gateway_ids
         if self.network_id is not None:
             result['NetworkId'] = self.network_id
         if self.page_number is not None:
@@ -35573,10 +36125,14 @@ class DescribeNatGatewaysRequest(TeaModel):
         m = m or dict()
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
+        if m.get('EnsRegionIds') is not None:
+            self.ens_region_ids = m.get('EnsRegionIds')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('NatGatewayId') is not None:
             self.nat_gateway_id = m.get('NatGatewayId')
+        if m.get('NatGatewayIds') is not None:
+            self.nat_gateway_ids = m.get('NatGatewayIds')
         if m.get('NetworkId') is not None:
             self.network_id = m.get('NetworkId')
         if m.get('PageNumber') is not None:
@@ -35588,21 +36144,63 @@ class DescribeNatGatewaysRequest(TeaModel):
         return self
 
 
+class DescribeNatGatewaysResponseBodyNatGatewaysIpLists(TeaModel):
+    def __init__(
+        self,
+        allocation_id: str = None,
+        ip_address: str = None,
+        using_status: str = None,
+    ):
+        self.allocation_id = allocation_id
+        self.ip_address = ip_address
+        self.using_status = using_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allocation_id is not None:
+            result['AllocationId'] = self.allocation_id
+        if self.ip_address is not None:
+            result['IpAddress'] = self.ip_address
+        if self.using_status is not None:
+            result['UsingStatus'] = self.using_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllocationId') is not None:
+            self.allocation_id = m.get('AllocationId')
+        if m.get('IpAddress') is not None:
+            self.ip_address = m.get('IpAddress')
+        if m.get('UsingStatus') is not None:
+            self.using_status = m.get('UsingStatus')
+        return self
+
+
 class DescribeNatGatewaysResponseBodyNatGateways(TeaModel):
     def __init__(
         self,
         creation_time: str = None,
         ens_region_id: str = None,
+        ip_lists: List[DescribeNatGatewaysResponseBodyNatGatewaysIpLists] = None,
         name: str = None,
         nat_gateway_id: str = None,
         network_id: str = None,
         spec: str = None,
+        status: str = None,
         v_switch_id: str = None,
     ):
         # The time when the NAT gateway was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The ID of the ENS node.
         self.ens_region_id = ens_region_id
+        self.ip_lists = ip_lists
         # The name of the NAT gateway.
         self.name = name
         # The ID of the NAT gateway.
@@ -35611,11 +36209,15 @@ class DescribeNatGatewaysResponseBodyNatGateways(TeaModel):
         self.network_id = network_id
         # The type of the NAT gateway.
         self.spec = spec
+        self.status = status
         # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
 
     def validate(self):
-        pass
+        if self.ip_lists:
+            for k in self.ip_lists:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -35627,6 +36229,10 @@ class DescribeNatGatewaysResponseBodyNatGateways(TeaModel):
             result['CreationTime'] = self.creation_time
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
+        result['IpLists'] = []
+        if self.ip_lists is not None:
+            for k in self.ip_lists:
+                result['IpLists'].append(k.to_map() if k else None)
         if self.name is not None:
             result['Name'] = self.name
         if self.nat_gateway_id is not None:
@@ -35635,6 +36241,8 @@ class DescribeNatGatewaysResponseBodyNatGateways(TeaModel):
             result['NetworkId'] = self.network_id
         if self.spec is not None:
             result['Spec'] = self.spec
+        if self.status is not None:
+            result['Status'] = self.status
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         return result
@@ -35645,6 +36253,11 @@ class DescribeNatGatewaysResponseBodyNatGateways(TeaModel):
             self.creation_time = m.get('CreationTime')
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
+        self.ip_lists = []
+        if m.get('IpLists') is not None:
+            for k in m.get('IpLists'):
+                temp_model = DescribeNatGatewaysResponseBodyNatGatewaysIpLists()
+                self.ip_lists.append(temp_model.from_map(k))
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('NatGatewayId') is not None:
@@ -35653,6 +36266,8 @@ class DescribeNatGatewaysResponseBodyNatGateways(TeaModel):
             self.network_id = m.get('NetworkId')
         if m.get('Spec') is not None:
             self.spec = m.get('Spec')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         return self
@@ -36379,6 +36994,168 @@ class DescribeNetworkAttributeResponseBodyCloudResources(TeaModel):
         return self
 
 
+class DescribeNetworkAttributeResponseBodyHaVipIds(TeaModel):
+    def __init__(
+        self,
+        ha_vip_id: List[str] = None,
+    ):
+        self.ha_vip_id = ha_vip_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ha_vip_id is not None:
+            result['HaVipId'] = self.ha_vip_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HaVipId') is not None:
+            self.ha_vip_id = m.get('HaVipId')
+        return self
+
+
+class DescribeNetworkAttributeResponseBodyInstanceIds(TeaModel):
+    def __init__(
+        self,
+        instance_id: List[str] = None,
+    ):
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DescribeNetworkAttributeResponseBodyLoadBalancerIds(TeaModel):
+    def __init__(
+        self,
+        load_balancer_id: List[str] = None,
+    ):
+        self.load_balancer_id = load_balancer_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.load_balancer_id is not None:
+            result['LoadBalancerId'] = self.load_balancer_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LoadBalancerId') is not None:
+            self.load_balancer_id = m.get('LoadBalancerId')
+        return self
+
+
+class DescribeNetworkAttributeResponseBodyNatGatewayIds(TeaModel):
+    def __init__(
+        self,
+        nat_gateway_id: List[str] = None,
+    ):
+        self.nat_gateway_id = nat_gateway_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        return self
+
+
+class DescribeNetworkAttributeResponseBodyNetworkInterfaceIds(TeaModel):
+    def __init__(
+        self,
+        network_interface_id: List[str] = None,
+    ):
+        self.network_interface_id = network_interface_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.network_interface_id is not None:
+            result['NetworkInterfaceId'] = self.network_interface_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NetworkInterfaceId') is not None:
+            self.network_interface_id = m.get('NetworkInterfaceId')
+        return self
+
+
+class DescribeNetworkAttributeResponseBodyRouteTableIds(TeaModel):
+    def __init__(
+        self,
+        route_table_id: List[str] = None,
+    ):
+        self.route_table_id = route_table_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.route_table_id is not None:
+            result['RouteTableId'] = self.route_table_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RouteTableId') is not None:
+            self.route_table_id = m.get('RouteTableId')
+        return self
+
+
 class DescribeNetworkAttributeResponseBodyVSwitchIds(TeaModel):
     def __init__(
         self,
@@ -36414,10 +37191,18 @@ class DescribeNetworkAttributeResponseBody(TeaModel):
         created_time: str = None,
         description: str = None,
         ens_region_id: str = None,
+        gateway_route_table_id: str = None,
+        ha_vip_ids: DescribeNetworkAttributeResponseBodyHaVipIds = None,
+        instance_ids: DescribeNetworkAttributeResponseBodyInstanceIds = None,
+        load_balancer_ids: DescribeNetworkAttributeResponseBodyLoadBalancerIds = None,
+        nat_gateway_ids: DescribeNetworkAttributeResponseBodyNatGatewayIds = None,
         network_acl_id: str = None,
         network_id: str = None,
+        network_interface_ids: DescribeNetworkAttributeResponseBodyNetworkInterfaceIds = None,
         network_name: str = None,
         request_id: str = None,
+        route_table_id: str = None,
+        route_table_ids: DescribeNetworkAttributeResponseBodyRouteTableIds = None,
         router_table_id: str = None,
         status: str = None,
         v_switch_ids: DescribeNetworkAttributeResponseBodyVSwitchIds = None,
@@ -36432,14 +37217,28 @@ class DescribeNetworkAttributeResponseBody(TeaModel):
         self.description = description
         # The ID of the edge node.
         self.ens_region_id = ens_region_id
+        self.gateway_route_table_id = gateway_route_table_id
+        # List of HaVipIds.
+        self.ha_vip_ids = ha_vip_ids
+        # The instance IDs.
+        self.instance_ids = instance_ids
+        # List of ELB instances.
+        self.load_balancer_ids = load_balancer_ids
+        # List of NAT Gateways.
+        self.nat_gateway_ids = nat_gateway_ids
         # The ID of the network access control list (ACL).
         self.network_acl_id = network_acl_id
         # The ID of the network.
         self.network_id = network_id
+        # A list of multicast source IDs.
+        self.network_interface_ids = network_interface_ids
         # The name of the network.
         self.network_name = network_name
         # The request ID.
         self.request_id = request_id
+        self.route_table_id = route_table_id
+        # List of routing table IDs.
+        self.route_table_ids = route_table_ids
         # The ID of the route table.
         self.router_table_id = router_table_id
         # The status of the network. Valid values:
@@ -36453,6 +37252,18 @@ class DescribeNetworkAttributeResponseBody(TeaModel):
     def validate(self):
         if self.cloud_resources:
             self.cloud_resources.validate()
+        if self.ha_vip_ids:
+            self.ha_vip_ids.validate()
+        if self.instance_ids:
+            self.instance_ids.validate()
+        if self.load_balancer_ids:
+            self.load_balancer_ids.validate()
+        if self.nat_gateway_ids:
+            self.nat_gateway_ids.validate()
+        if self.network_interface_ids:
+            self.network_interface_ids.validate()
+        if self.route_table_ids:
+            self.route_table_ids.validate()
         if self.v_switch_ids:
             self.v_switch_ids.validate()
 
@@ -36472,14 +37283,30 @@ class DescribeNetworkAttributeResponseBody(TeaModel):
             result['Description'] = self.description
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
+        if self.gateway_route_table_id is not None:
+            result['GatewayRouteTableId'] = self.gateway_route_table_id
+        if self.ha_vip_ids is not None:
+            result['HaVipIds'] = self.ha_vip_ids.to_map()
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids.to_map()
+        if self.load_balancer_ids is not None:
+            result['LoadBalancerIds'] = self.load_balancer_ids.to_map()
+        if self.nat_gateway_ids is not None:
+            result['NatGatewayIds'] = self.nat_gateway_ids.to_map()
         if self.network_acl_id is not None:
             result['NetworkAclId'] = self.network_acl_id
         if self.network_id is not None:
             result['NetworkId'] = self.network_id
+        if self.network_interface_ids is not None:
+            result['NetworkInterfaceIds'] = self.network_interface_ids.to_map()
         if self.network_name is not None:
             result['NetworkName'] = self.network_name
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.route_table_id is not None:
+            result['RouteTableId'] = self.route_table_id
+        if self.route_table_ids is not None:
+            result['RouteTableIds'] = self.route_table_ids.to_map()
         if self.router_table_id is not None:
             result['RouterTableId'] = self.router_table_id
         if self.status is not None:
@@ -36501,14 +37328,36 @@ class DescribeNetworkAttributeResponseBody(TeaModel):
             self.description = m.get('Description')
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
+        if m.get('GatewayRouteTableId') is not None:
+            self.gateway_route_table_id = m.get('GatewayRouteTableId')
+        if m.get('HaVipIds') is not None:
+            temp_model = DescribeNetworkAttributeResponseBodyHaVipIds()
+            self.ha_vip_ids = temp_model.from_map(m['HaVipIds'])
+        if m.get('InstanceIds') is not None:
+            temp_model = DescribeNetworkAttributeResponseBodyInstanceIds()
+            self.instance_ids = temp_model.from_map(m['InstanceIds'])
+        if m.get('LoadBalancerIds') is not None:
+            temp_model = DescribeNetworkAttributeResponseBodyLoadBalancerIds()
+            self.load_balancer_ids = temp_model.from_map(m['LoadBalancerIds'])
+        if m.get('NatGatewayIds') is not None:
+            temp_model = DescribeNetworkAttributeResponseBodyNatGatewayIds()
+            self.nat_gateway_ids = temp_model.from_map(m['NatGatewayIds'])
         if m.get('NetworkAclId') is not None:
             self.network_acl_id = m.get('NetworkAclId')
         if m.get('NetworkId') is not None:
             self.network_id = m.get('NetworkId')
+        if m.get('NetworkInterfaceIds') is not None:
+            temp_model = DescribeNetworkAttributeResponseBodyNetworkInterfaceIds()
+            self.network_interface_ids = temp_model.from_map(m['NetworkInterfaceIds'])
         if m.get('NetworkName') is not None:
             self.network_name = m.get('NetworkName')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('RouteTableId') is not None:
+            self.route_table_id = m.get('RouteTableId')
+        if m.get('RouteTableIds') is not None:
+            temp_model = DescribeNetworkAttributeResponseBodyRouteTableIds()
+            self.route_table_ids = temp_model.from_map(m['RouteTableIds'])
         if m.get('RouterTableId') is not None:
             self.router_table_id = m.get('RouterTableId')
         if m.get('Status') is not None:
@@ -36564,10 +37413,12 @@ class DescribeNetworkInterfacesRequest(TeaModel):
     def __init__(
         self,
         ens_region_id: str = None,
+        ens_region_ids: List[str] = None,
         instance_id: str = None,
         ipv_6address: List[str] = None,
         network_id: str = None,
         network_interface_id: str = None,
+        network_interface_ids: List[str] = None,
         network_interface_name: str = None,
         page_number: str = None,
         page_size: str = None,
@@ -36579,6 +37430,8 @@ class DescribeNetworkInterfacesRequest(TeaModel):
     ):
         # The region ID of the instance.
         self.ens_region_id = ens_region_id
+        # The node information.
+        self.ens_region_ids = ens_region_ids
         # The ID of the instance.
         self.instance_id = instance_id
         # IPv6 addresses N of the ENI. You can specify multiple IPv6 addresses. Valid values of N: 1 to 100.
@@ -36587,6 +37440,8 @@ class DescribeNetworkInterfacesRequest(TeaModel):
         self.network_id = network_id
         # The ID of the ENI.
         self.network_interface_id = network_interface_id
+        # A list of multicast source IDs.
+        self.network_interface_ids = network_interface_ids
         # The name of the ENI.
         self.network_interface_name = network_interface_name
         # The page number of the returned page. Pages start from page 1. Default value: 1.
@@ -36609,8 +37464,8 @@ class DescribeNetworkInterfacesRequest(TeaModel):
         self.status = status
         # The type of the ENI. Valid values:
         # 
-        # *   Primary: primary ENI.
-        # *   Secondary: secondary ENI.
+        # *   Primary: the primary ENI.
+        # *   Secondary: the secondary ENI.
         # 
         # This parameter is empty by default, which indicates that both primary and secondary ENIs are queried.
         self.type = type
@@ -36628,6 +37483,8 @@ class DescribeNetworkInterfacesRequest(TeaModel):
         result = dict()
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
+        if self.ens_region_ids is not None:
+            result['EnsRegionIds'] = self.ens_region_ids
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.ipv_6address is not None:
@@ -36636,6 +37493,8 @@ class DescribeNetworkInterfacesRequest(TeaModel):
             result['NetworkId'] = self.network_id
         if self.network_interface_id is not None:
             result['NetworkInterfaceId'] = self.network_interface_id
+        if self.network_interface_ids is not None:
+            result['NetworkInterfaceIds'] = self.network_interface_ids
         if self.network_interface_name is not None:
             result['NetworkInterfaceName'] = self.network_interface_name
         if self.page_number is not None:
@@ -36658,6 +37517,8 @@ class DescribeNetworkInterfacesRequest(TeaModel):
         m = m or dict()
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
+        if m.get('EnsRegionIds') is not None:
+            self.ens_region_ids = m.get('EnsRegionIds')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Ipv6Address') is not None:
@@ -36666,131 +37527,8 @@ class DescribeNetworkInterfacesRequest(TeaModel):
             self.network_id = m.get('NetworkId')
         if m.get('NetworkInterfaceId') is not None:
             self.network_interface_id = m.get('NetworkInterfaceId')
-        if m.get('NetworkInterfaceName') is not None:
-            self.network_interface_name = m.get('NetworkInterfaceName')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('PrimaryIpAddress') is not None:
-            self.primary_ip_address = m.get('PrimaryIpAddress')
-        if m.get('SecurityGroupId') is not None:
-            self.security_group_id = m.get('SecurityGroupId')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        if m.get('VSwitchId') is not None:
-            self.v_switch_id = m.get('VSwitchId')
-        return self
-
-
-class DescribeNetworkInterfacesShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        ens_region_id: str = None,
-        instance_id: str = None,
-        ipv_6address_shrink: str = None,
-        network_id: str = None,
-        network_interface_id: str = None,
-        network_interface_name: str = None,
-        page_number: str = None,
-        page_size: str = None,
-        primary_ip_address: str = None,
-        security_group_id: str = None,
-        status: str = None,
-        type: str = None,
-        v_switch_id: str = None,
-    ):
-        # The region ID of the instance.
-        self.ens_region_id = ens_region_id
-        # The ID of the instance.
-        self.instance_id = instance_id
-        # IPv6 addresses N of the ENI. You can specify multiple IPv6 addresses. Valid values of N: 1 to 100.
-        self.ipv_6address_shrink = ipv_6address_shrink
-        # The ID of the network.
-        self.network_id = network_id
-        # The ID of the ENI.
-        self.network_interface_id = network_interface_id
-        # The name of the ENI.
-        self.network_interface_name = network_interface_name
-        # The page number of the returned page. Pages start from page 1. Default value: 1.
-        self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: 100. Default value: 50.
-        self.page_size = page_size
-        # The primary IP address of the ENI.
-        self.primary_ip_address = primary_ip_address
-        # The ID of the security group to which the secondary ENI belongs. To query the details of secondary ENIs based on the ID of a security group, specify this parameter.
-        self.security_group_id = security_group_id
-        # The status of the ENI. Valid values:
-        # 
-        # *   Available: The ENI is available.
-        # *   Attaching: The ENI is being attached to an instance.
-        # *   InUse: The ENI is attached to an instance.
-        # *   Detaching: The ENI is being detached from an instance.
-        # *   Deleting: The ENI is being deleted.
-        # 
-        # This parameter is empty by default, which indicates that ENIs in all states are queried.
-        self.status = status
-        # The type of the ENI. Valid values:
-        # 
-        # *   Primary: primary ENI.
-        # *   Secondary: secondary ENI.
-        # 
-        # This parameter is empty by default, which indicates that both primary and secondary ENIs are queried.
-        self.type = type
-        # The ID of the vSwitch.
-        self.v_switch_id = v_switch_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.ens_region_id is not None:
-            result['EnsRegionId'] = self.ens_region_id
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.ipv_6address_shrink is not None:
-            result['Ipv6Address'] = self.ipv_6address_shrink
-        if self.network_id is not None:
-            result['NetworkId'] = self.network_id
-        if self.network_interface_id is not None:
-            result['NetworkInterfaceId'] = self.network_interface_id
-        if self.network_interface_name is not None:
-            result['NetworkInterfaceName'] = self.network_interface_name
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.primary_ip_address is not None:
-            result['PrimaryIpAddress'] = self.primary_ip_address
-        if self.security_group_id is not None:
-            result['SecurityGroupId'] = self.security_group_id
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.type is not None:
-            result['Type'] = self.type
-        if self.v_switch_id is not None:
-            result['VSwitchId'] = self.v_switch_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('EnsRegionId') is not None:
-            self.ens_region_id = m.get('EnsRegionId')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('Ipv6Address') is not None:
-            self.ipv_6address_shrink = m.get('Ipv6Address')
-        if m.get('NetworkId') is not None:
-            self.network_id = m.get('NetworkId')
-        if m.get('NetworkInterfaceId') is not None:
-            self.network_interface_id = m.get('NetworkInterfaceId')
+        if m.get('NetworkInterfaceIds') is not None:
+            self.network_interface_ids = m.get('NetworkInterfaceIds')
         if m.get('NetworkInterfaceName') is not None:
             self.network_interface_name = m.get('NetworkInterfaceName')
         if m.get('PageNumber') is not None:
@@ -37264,15 +38002,21 @@ class DescribeNetworksRequest(TeaModel):
     def __init__(
         self,
         ens_region_id: str = None,
+        ens_region_ids: List[str] = None,
         network_id: str = None,
+        network_ids: List[str] = None,
         network_name: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
         # The ID of the edge node.
         self.ens_region_id = ens_region_id
+        # The node information.
+        self.ens_region_ids = ens_region_ids
         # The ID of the network.
         self.network_id = network_id
+        # The ID of Network.
+        self.network_ids = network_ids
         # The name of the network.
         self.network_name = network_name
         # The page number of the returned page. Default value: **1**.
@@ -37291,8 +38035,12 @@ class DescribeNetworksRequest(TeaModel):
         result = dict()
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
+        if self.ens_region_ids is not None:
+            result['EnsRegionIds'] = self.ens_region_ids
         if self.network_id is not None:
             result['NetworkId'] = self.network_id
+        if self.network_ids is not None:
+            result['NetworkIds'] = self.network_ids
         if self.network_name is not None:
             result['NetworkName'] = self.network_name
         if self.page_number is not None:
@@ -37305,14 +38053,45 @@ class DescribeNetworksRequest(TeaModel):
         m = m or dict()
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
+        if m.get('EnsRegionIds') is not None:
+            self.ens_region_ids = m.get('EnsRegionIds')
         if m.get('NetworkId') is not None:
             self.network_id = m.get('NetworkId')
+        if m.get('NetworkIds') is not None:
+            self.network_ids = m.get('NetworkIds')
         if m.get('NetworkName') is not None:
             self.network_name = m.get('NetworkName')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeNetworksResponseBodyNetworksNetworkRouteTableIds(TeaModel):
+    def __init__(
+        self,
+        route_table_id: List[str] = None,
+    ):
+        self.route_table_id = route_table_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.route_table_id is not None:
+            result['RouteTableId'] = self.route_table_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RouteTableId') is not None:
+            self.route_table_id = m.get('RouteTableId')
         return self
 
 
@@ -37350,9 +38129,12 @@ class DescribeNetworksResponseBodyNetworksNetwork(TeaModel):
         created_time: str = None,
         description: str = None,
         ens_region_id: str = None,
+        gateway_route_table_id: str = None,
         network_acl_id: str = None,
         network_id: str = None,
         network_name: str = None,
+        route_table_id: str = None,
+        route_table_ids: DescribeNetworksResponseBodyNetworksNetworkRouteTableIds = None,
         router_table_id: str = None,
         status: str = None,
         v_switch_ids: DescribeNetworksResponseBodyNetworksNetworkVSwitchIds = None,
@@ -37365,12 +38147,16 @@ class DescribeNetworksResponseBodyNetworksNetwork(TeaModel):
         self.description = description
         # The ID of the edge node.
         self.ens_region_id = ens_region_id
+        self.gateway_route_table_id = gateway_route_table_id
         # The ID of the network access control list (ACL).
         self.network_acl_id = network_acl_id
         # The ID of the network.
         self.network_id = network_id
         # The name of the network.
         self.network_name = network_name
+        self.route_table_id = route_table_id
+        # The ID of the route table. Valid values of **N** are **1** to **20**, which specifies that you can disassociate a gateway endpoint from at most 20 route tables at a time.
+        self.route_table_ids = route_table_ids
         # The route table ID.
         self.router_table_id = router_table_id
         # The status of the network. Valid values:
@@ -37382,6 +38168,8 @@ class DescribeNetworksResponseBodyNetworksNetwork(TeaModel):
         self.v_switch_ids = v_switch_ids
 
     def validate(self):
+        if self.route_table_ids:
+            self.route_table_ids.validate()
         if self.v_switch_ids:
             self.v_switch_ids.validate()
 
@@ -37399,12 +38187,18 @@ class DescribeNetworksResponseBodyNetworksNetwork(TeaModel):
             result['Description'] = self.description
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
+        if self.gateway_route_table_id is not None:
+            result['GatewayRouteTableId'] = self.gateway_route_table_id
         if self.network_acl_id is not None:
             result['NetworkAclId'] = self.network_acl_id
         if self.network_id is not None:
             result['NetworkId'] = self.network_id
         if self.network_name is not None:
             result['NetworkName'] = self.network_name
+        if self.route_table_id is not None:
+            result['RouteTableId'] = self.route_table_id
+        if self.route_table_ids is not None:
+            result['RouteTableIds'] = self.route_table_ids.to_map()
         if self.router_table_id is not None:
             result['RouterTableId'] = self.router_table_id
         if self.status is not None:
@@ -37423,12 +38217,19 @@ class DescribeNetworksResponseBodyNetworksNetwork(TeaModel):
             self.description = m.get('Description')
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
+        if m.get('GatewayRouteTableId') is not None:
+            self.gateway_route_table_id = m.get('GatewayRouteTableId')
         if m.get('NetworkAclId') is not None:
             self.network_acl_id = m.get('NetworkAclId')
         if m.get('NetworkId') is not None:
             self.network_id = m.get('NetworkId')
         if m.get('NetworkName') is not None:
             self.network_name = m.get('NetworkName')
+        if m.get('RouteTableId') is not None:
+            self.route_table_id = m.get('RouteTableId')
+        if m.get('RouteTableIds') is not None:
+            temp_model = DescribeNetworksResponseBodyNetworksNetworkRouteTableIds()
+            self.route_table_ids = temp_model.from_map(m['RouteTableIds'])
         if m.get('RouterTableId') is not None:
             self.router_table_id = m.get('RouterTableId')
         if m.get('Status') is not None:
@@ -41315,17 +42116,21 @@ class DescribeSDGDeploymentStatusRequest(TeaModel):
         sdgid: str = None,
         status: str = None,
     ):
+        # The deployment type.
         self.deployment_type = deployment_type
+        # IDs of Android in Container (AIC) instances.
         self.instance_ids = instance_ids
         # The number of the page to return. Pages start from page **1**. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # The IDs of the nodes.
         self.region_ids = region_ids
         # The ID of the SDG.
         # 
         # This parameter is required.
         self.sdgid = sdgid
+        # The deployment status of the SDG.
         self.status = status
 
     def validate(self):
@@ -41383,17 +42188,21 @@ class DescribeSDGDeploymentStatusShrinkRequest(TeaModel):
         sdgid: str = None,
         status: str = None,
     ):
+        # The deployment type.
         self.deployment_type = deployment_type
+        # IDs of Android in Container (AIC) instances.
         self.instance_ids_shrink = instance_ids_shrink
         # The number of the page to return. Pages start from page **1**. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # The IDs of the nodes.
         self.region_ids_shrink = region_ids_shrink
         # The ID of the SDG.
         # 
         # This parameter is required.
         self.sdgid = sdgid
+        # The deployment status of the SDG.
         self.status = status
 
     def validate(self):
@@ -41459,10 +42268,11 @@ class DescribeSDGDeploymentStatusResponseBodyDeploymentStatus(TeaModel):
         # *   overlay: read/write splitting.
         # *   common: common deployment.
         self.mount_type = mount_type
+        # The deployment phase of the SDG.
         self.phase = phase
         # The ID of the edge node.
         self.region_id = region_id
-        # the deployment status of the shared data group SDG.
+        # The deployment status of the SDG.
         # 
         # Valid values:
         # 
@@ -41522,13 +42332,13 @@ class DescribeSDGDeploymentStatusResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The deployment information of the SDG.
+        # The list of SDG deployment information.
         self.deployment_status = deployment_status
         # The page number. Pages start from page 1. Default value: 1
         self.page_number = page_number
         # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of queried deployment records.
         self.total_count = total_count
@@ -42525,9 +43335,9 @@ class DescribeSecurityGroupsRequest(TeaModel):
         # The page number.
         # 
         # *   Pages start from page 1.
-        # *   Default value: 1.
+        # *   Default value: 1
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # *   Maximum value: 50.
         # *   Default value: 10
@@ -42569,28 +43379,91 @@ class DescribeSecurityGroupsRequest(TeaModel):
         return self
 
 
+class DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupInstanceIds(TeaModel):
+    def __init__(
+        self,
+        instance_id: List[str] = None,
+    ):
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupNetworkInterfaceIds(TeaModel):
+    def __init__(
+        self,
+        network_interface_id: List[str] = None,
+    ):
+        self.network_interface_id = network_interface_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.network_interface_id is not None:
+            result['NetworkInterfaceId'] = self.network_interface_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NetworkInterfaceId') is not None:
+            self.network_interface_id = m.get('NetworkInterfaceId')
+        return self
+
+
 class DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroup(TeaModel):
     def __init__(
         self,
         creation_time: str = None,
         description: str = None,
         instance_count: int = None,
+        instance_ids: DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupInstanceIds = None,
+        network_interface_ids: DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupNetworkInterfaceIds = None,
         security_group_id: str = None,
         security_group_name: str = None,
     ):
-        # The time when the security group was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. The time is displayed in UTC. The format is yyyy-MM-ddThh:mmZ.
+        # The creation time. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The description of the security group.
         self.description = description
         # The number of associated instances.
         self.instance_count = instance_count
+        # The list of instance IDs.
+        self.instance_ids = instance_ids
+        # The IDs of ENIs.
+        self.network_interface_ids = network_interface_ids
         # The ID of the security group.
         self.security_group_id = security_group_id
         # The name of the security group.
         self.security_group_name = security_group_name
 
     def validate(self):
-        pass
+        if self.instance_ids:
+            self.instance_ids.validate()
+        if self.network_interface_ids:
+            self.network_interface_ids.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -42604,6 +43477,10 @@ class DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroup(TeaModel):
             result['Description'] = self.description
         if self.instance_count is not None:
             result['InstanceCount'] = self.instance_count
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids.to_map()
+        if self.network_interface_ids is not None:
+            result['NetworkInterfaceIds'] = self.network_interface_ids.to_map()
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
         if self.security_group_name is not None:
@@ -42618,6 +43495,12 @@ class DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroup(TeaModel):
             self.description = m.get('Description')
         if m.get('InstanceCount') is not None:
             self.instance_count = m.get('InstanceCount')
+        if m.get('InstanceIds') is not None:
+            temp_model = DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupInstanceIds()
+            self.instance_ids = temp_model.from_map(m['InstanceIds'])
+        if m.get('NetworkInterfaceIds') is not None:
+            temp_model = DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupNetworkInterfaceIds()
+            self.network_interface_ids = temp_model.from_map(m['NetworkInterfaceIds'])
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('SecurityGroupName') is not None:
@@ -42671,7 +43554,7 @@ class DescribeSecurityGroupsResponseBody(TeaModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -42825,9 +43708,16 @@ class DescribeSelfImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMappi
         type: str = None,
         image_id: str = None,
     ):
+        # The format of the image.
         self.format = format
+        # The size of the disk. Unit: GiB.
         self.size = size
+        # The type of the disk. Valid values:
+        # 
+        # *   system: system disk.
+        # *   data: data disk.
         self.type = type
+        # The ID of image.
         self.image_id = image_id
 
     def validate(self):
@@ -42912,6 +43802,7 @@ class DescribeSelfImagesResponseBodyImagesImage(TeaModel):
         instance_id: str = None,
         os_version: str = None,
         platform: str = None,
+        region_id: str = None,
         snapshot_id: str = None,
         status: str = None,
     ):
@@ -42924,6 +43815,7 @@ class DescribeSelfImagesResponseBodyImagesImage(TeaModel):
         self.compute_type = compute_type
         # The image creation time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
+        # The mappings between the disk and the snapshot in the image.
         self.disk_device_mappings = disk_device_mappings
         # The ID of the image.
         self.image_id = image_id
@@ -42951,6 +43843,8 @@ class DescribeSelfImagesResponseBodyImagesImage(TeaModel):
         # *   rhel
         # *   windows
         self.platform = platform
+        # The ID of the region.
+        self.region_id = region_id
         # The snapshot ID.
         self.snapshot_id = snapshot_id
         # The state of the image.
@@ -42999,6 +43893,8 @@ class DescribeSelfImagesResponseBodyImagesImage(TeaModel):
             result['OsVersion'] = self.os_version
         if self.platform is not None:
             result['Platform'] = self.platform
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.snapshot_id is not None:
             result['SnapshotId'] = self.snapshot_id
         if self.status is not None:
@@ -43032,6 +43928,8 @@ class DescribeSelfImagesResponseBodyImagesImage(TeaModel):
             self.os_version = m.get('OsVersion')
         if m.get('Platform') is not None:
             self.platform = m.get('Platform')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('SnapshotId') is not None:
             self.snapshot_id = m.get('SnapshotId')
         if m.get('Status') is not None:
@@ -43079,14 +43977,20 @@ class DescribeSelfImagesResponseBody(TeaModel):
         self,
         code: int = None,
         images: DescribeSelfImagesResponseBodyImages = None,
+        page_number: str = None,
+        page_size: str = None,
         request_id: str = None,
+        total_count: str = None,
     ):
         # The HTTP status code that is returned.
         self.code = code
         # The image information.
         self.images = images
+        self.page_number = page_number
+        self.page_size = page_size
         # The request ID.
         self.request_id = request_id
+        self.total_count = total_count
 
     def validate(self):
         if self.images:
@@ -43102,8 +44006,14 @@ class DescribeSelfImagesResponseBody(TeaModel):
             result['Code'] = self.code
         if self.images is not None:
             result['Images'] = self.images.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
@@ -43113,8 +44023,14 @@ class DescribeSelfImagesResponseBody(TeaModel):
         if m.get('Images') is not None:
             temp_model = DescribeSelfImagesResponseBodyImages()
             self.images = temp_model.from_map(m['Images'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -43992,15 +44908,17 @@ class DescribeSnapshotsRequest(TeaModel):
         self.disk_id = disk_id
         # The region ID of the disk. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent list of regions.
         self.ens_region_id = ens_region_id
+        # The node information.
         self.ens_region_ids = ens_region_ids
         # The ID of the instance.
         self.instance_id = instance_id
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
         # The ID of the snapshot. The value can be a JSON array that consists of up to 100 snapshot IDs. Separate the snapshot IDs with commas (,).
         self.snapshot_id = snapshot_id
+        # The name of the snapshot. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.snapshot_name = snapshot_name
 
     def validate(self):
@@ -44357,6 +45275,7 @@ class DescribeSnatAttributeResponseBody(TeaModel):
         self,
         creation_time: str = None,
         dest_cidr: str = None,
+        eip_affinity: bool = None,
         idle_timeout: int = None,
         isp_affinity: bool = None,
         nat_gateway_id: str = None,
@@ -44375,8 +45294,12 @@ class DescribeSnatAttributeResponseBody(TeaModel):
         self.creation_time = creation_time
         # The destination CIDR block. The rule takes effect only on requests that access the destination CIDR block.
         self.dest_cidr = dest_cidr
+        self.eip_affinity = eip_affinity
         # The timeout period. Unit: seconds.
         self.idle_timeout = idle_timeout
+        # Whether to enable operator affinity. Value taking:
+        # - false:Do not open.
+        # - true:Open.
         self.isp_affinity = isp_affinity
         # The ID of the Network Address Translation (NAT) gateway.
         self.nat_gateway_id = nat_gateway_id
@@ -44429,6 +45352,8 @@ class DescribeSnatAttributeResponseBody(TeaModel):
             result['CreationTime'] = self.creation_time
         if self.dest_cidr is not None:
             result['DestCIDR'] = self.dest_cidr
+        if self.eip_affinity is not None:
+            result['EipAffinity'] = self.eip_affinity
         if self.idle_timeout is not None:
             result['IdleTimeout'] = self.idle_timeout
         if self.isp_affinity is not None:
@@ -44465,6 +45390,8 @@ class DescribeSnatAttributeResponseBody(TeaModel):
             self.creation_time = m.get('CreationTime')
         if m.get('DestCIDR') is not None:
             self.dest_cidr = m.get('DestCIDR')
+        if m.get('EipAffinity') is not None:
+            self.eip_affinity = m.get('EipAffinity')
         if m.get('IdleTimeout') is not None:
             self.idle_timeout = m.get('IdleTimeout')
         if m.get('IspAffinity') is not None:
@@ -44547,6 +45474,7 @@ class DescribeSnatTableEntriesRequest(TeaModel):
         snat_entry_id: str = None,
         snat_entry_name: str = None,
         snat_ip: str = None,
+        snat_ips: List[str] = None,
         source_cidr: str = None,
     ):
         # The ID of the Network Address Translation (NAT) gateway.
@@ -44567,6 +45495,7 @@ class DescribeSnatTableEntriesRequest(TeaModel):
         self.snat_entry_name = snat_entry_name
         # The elastic IP address (EIP) specified in the SNAT entry.
         self.snat_ip = snat_ip
+        self.snat_ips = snat_ips
         # The source CIDR block specified in the SNAT entry.
         self.source_cidr = source_cidr
 
@@ -44591,6 +45520,8 @@ class DescribeSnatTableEntriesRequest(TeaModel):
             result['SnatEntryName'] = self.snat_entry_name
         if self.snat_ip is not None:
             result['SnatIp'] = self.snat_ip
+        if self.snat_ips is not None:
+            result['SnatIps'] = self.snat_ips
         if self.source_cidr is not None:
             result['SourceCIDR'] = self.source_cidr
         return result
@@ -44609,6 +45540,8 @@ class DescribeSnatTableEntriesRequest(TeaModel):
             self.snat_entry_name = m.get('SnatEntryName')
         if m.get('SnatIp') is not None:
             self.snat_ip = m.get('SnatIp')
+        if m.get('SnatIps') is not None:
+            self.snat_ips = m.get('SnatIps')
         if m.get('SourceCIDR') is not None:
             self.source_cidr = m.get('SourceCIDR')
         return self
@@ -44617,6 +45550,7 @@ class DescribeSnatTableEntriesRequest(TeaModel):
 class DescribeSnatTableEntriesResponseBodySnatTableEntries(TeaModel):
     def __init__(
         self,
+        eip_affinity: bool = None,
         idle_timeout: int = None,
         isp_affinity: bool = None,
         nat_gateway_id: str = None,
@@ -44628,8 +45562,14 @@ class DescribeSnatTableEntriesResponseBodySnatTableEntries(TeaModel):
         standby_status: str = None,
         status: str = None,
     ):
+        self.eip_affinity = eip_affinity
         # The timeout period for idle connections. Valid values: **1** to **86400**. Unit: seconds.
         self.idle_timeout = idle_timeout
+        # Whether to enable operator affinity. Value taking:
+        # 
+        # - false:Do not open.
+        # 
+        # - true:Open.
         self.isp_affinity = isp_affinity
         # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
@@ -44666,6 +45606,8 @@ class DescribeSnatTableEntriesResponseBodySnatTableEntries(TeaModel):
             return _map
 
         result = dict()
+        if self.eip_affinity is not None:
+            result['EipAffinity'] = self.eip_affinity
         if self.idle_timeout is not None:
             result['IdleTimeout'] = self.idle_timeout
         if self.isp_affinity is not None:
@@ -44690,6 +45632,8 @@ class DescribeSnatTableEntriesResponseBodySnatTableEntries(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EipAffinity') is not None:
+            self.eip_affinity = m.get('EipAffinity')
         if m.get('IdleTimeout') is not None:
             self.idle_timeout = m.get('IdleTimeout')
         if m.get('IspAffinity') is not None:
@@ -45649,31 +46593,361 @@ class DescribeUserBandWidthDataResponse(TeaModel):
         return self
 
 
+class DescribeVSwitchAttributesRequest(TeaModel):
+    def __init__(
+        self,
+        v_switch_id: str = None,
+    ):
+        # This parameter is required.
+        self.v_switch_id = v_switch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        return self
+
+
+class DescribeVSwitchAttributesResponseBodyHaVipIds(TeaModel):
+    def __init__(
+        self,
+        ha_vip_id: List[str] = None,
+    ):
+        self.ha_vip_id = ha_vip_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ha_vip_id is not None:
+            result['HaVipId'] = self.ha_vip_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HaVipId') is not None:
+            self.ha_vip_id = m.get('HaVipId')
+        return self
+
+
+class DescribeVSwitchAttributesResponseBodyInstanceIds(TeaModel):
+    def __init__(
+        self,
+        instance_id: List[str] = None,
+    ):
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DescribeVSwitchAttributesResponseBodyLoadBalancerIds(TeaModel):
+    def __init__(
+        self,
+        load_balancer_id: List[str] = None,
+    ):
+        self.load_balancer_id = load_balancer_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.load_balancer_id is not None:
+            result['LoadBalancerId'] = self.load_balancer_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LoadBalancerId') is not None:
+            self.load_balancer_id = m.get('LoadBalancerId')
+        return self
+
+
+class DescribeVSwitchAttributesResponseBodyNatGatewayIds(TeaModel):
+    def __init__(
+        self,
+        nat_gateway_id: List[str] = None,
+    ):
+        self.nat_gateway_id = nat_gateway_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        return self
+
+
+class DescribeVSwitchAttributesResponseBodyNetworkInterfaceIds(TeaModel):
+    def __init__(
+        self,
+        network_interface_id: List[str] = None,
+    ):
+        self.network_interface_id = network_interface_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.network_interface_id is not None:
+            result['NetworkInterfaceId'] = self.network_interface_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NetworkInterfaceId') is not None:
+            self.network_interface_id = m.get('NetworkInterfaceId')
+        return self
+
+
+class DescribeVSwitchAttributesResponseBody(TeaModel):
+    def __init__(
+        self,
+        available_ip_address_count: int = None,
+        cidr_block: str = None,
+        created_time: str = None,
+        description: str = None,
+        ens_region_id: str = None,
+        ha_vip_ids: DescribeVSwitchAttributesResponseBodyHaVipIds = None,
+        instance_ids: DescribeVSwitchAttributesResponseBodyInstanceIds = None,
+        load_balancer_ids: DescribeVSwitchAttributesResponseBodyLoadBalancerIds = None,
+        nat_gateway_ids: DescribeVSwitchAttributesResponseBodyNatGatewayIds = None,
+        network_id: str = None,
+        network_interface_ids: DescribeVSwitchAttributesResponseBodyNetworkInterfaceIds = None,
+        request_id: str = None,
+        status: str = None,
+        v_switch_id: str = None,
+        v_switch_name: str = None,
+    ):
+        self.available_ip_address_count = available_ip_address_count
+        self.cidr_block = cidr_block
+        self.created_time = created_time
+        self.description = description
+        self.ens_region_id = ens_region_id
+        self.ha_vip_ids = ha_vip_ids
+        self.instance_ids = instance_ids
+        self.load_balancer_ids = load_balancer_ids
+        self.nat_gateway_ids = nat_gateway_ids
+        self.network_id = network_id
+        self.network_interface_ids = network_interface_ids
+        self.request_id = request_id
+        self.status = status
+        self.v_switch_id = v_switch_id
+        self.v_switch_name = v_switch_name
+
+    def validate(self):
+        if self.ha_vip_ids:
+            self.ha_vip_ids.validate()
+        if self.instance_ids:
+            self.instance_ids.validate()
+        if self.load_balancer_ids:
+            self.load_balancer_ids.validate()
+        if self.nat_gateway_ids:
+            self.nat_gateway_ids.validate()
+        if self.network_interface_ids:
+            self.network_interface_ids.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.available_ip_address_count is not None:
+            result['AvailableIpAddressCount'] = self.available_ip_address_count
+        if self.cidr_block is not None:
+            result['CidrBlock'] = self.cidr_block
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.ens_region_id is not None:
+            result['EnsRegionId'] = self.ens_region_id
+        if self.ha_vip_ids is not None:
+            result['HaVipIds'] = self.ha_vip_ids.to_map()
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids.to_map()
+        if self.load_balancer_ids is not None:
+            result['LoadBalancerIds'] = self.load_balancer_ids.to_map()
+        if self.nat_gateway_ids is not None:
+            result['NatGatewayIds'] = self.nat_gateway_ids.to_map()
+        if self.network_id is not None:
+            result['NetworkId'] = self.network_id
+        if self.network_interface_ids is not None:
+            result['NetworkInterfaceIds'] = self.network_interface_ids.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.v_switch_name is not None:
+            result['VSwitchName'] = self.v_switch_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvailableIpAddressCount') is not None:
+            self.available_ip_address_count = m.get('AvailableIpAddressCount')
+        if m.get('CidrBlock') is not None:
+            self.cidr_block = m.get('CidrBlock')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EnsRegionId') is not None:
+            self.ens_region_id = m.get('EnsRegionId')
+        if m.get('HaVipIds') is not None:
+            temp_model = DescribeVSwitchAttributesResponseBodyHaVipIds()
+            self.ha_vip_ids = temp_model.from_map(m['HaVipIds'])
+        if m.get('InstanceIds') is not None:
+            temp_model = DescribeVSwitchAttributesResponseBodyInstanceIds()
+            self.instance_ids = temp_model.from_map(m['InstanceIds'])
+        if m.get('LoadBalancerIds') is not None:
+            temp_model = DescribeVSwitchAttributesResponseBodyLoadBalancerIds()
+            self.load_balancer_ids = temp_model.from_map(m['LoadBalancerIds'])
+        if m.get('NatGatewayIds') is not None:
+            temp_model = DescribeVSwitchAttributesResponseBodyNatGatewayIds()
+            self.nat_gateway_ids = temp_model.from_map(m['NatGatewayIds'])
+        if m.get('NetworkId') is not None:
+            self.network_id = m.get('NetworkId')
+        if m.get('NetworkInterfaceIds') is not None:
+            temp_model = DescribeVSwitchAttributesResponseBodyNetworkInterfaceIds()
+            self.network_interface_ids = temp_model.from_map(m['NetworkInterfaceIds'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VSwitchName') is not None:
+            self.v_switch_name = m.get('VSwitchName')
+        return self
+
+
+class DescribeVSwitchAttributesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVSwitchAttributesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVSwitchAttributesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeVSwitchesRequest(TeaModel):
     def __init__(
         self,
         ens_region_id: str = None,
+        ens_region_ids: List[str] = None,
         network_id: str = None,
-        order_by_params: str = None,
         page_number: int = None,
         page_size: int = None,
         v_switch_id: str = None,
+        v_switch_ids: List[str] = None,
         v_switch_name: str = None,
     ):
-        # The ID of the edge node.
+        # The ID of the ENS node.
         self.ens_region_id = ens_region_id
-        # The ID of the VPC to which the vSwitches belong.
+        # The node information.
+        self.ens_region_ids = ens_region_ids
+        # The ID of the VPC to which the vSwitch belongs.
         self.network_id = network_id
-        # The order in which you want to sort the returned data. Example: {"EnsRegionId":"desc"}.
-        # 
-        # By default, the nodes are sorted by IDs in descending order.
-        self.order_by_params = order_by_params
-        # The page number of the returned page. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Valid values: **1 to 50**. Default value: **10**.
+        # The number of entries per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
+        # The list of vSwitches in the network.
+        self.v_switch_ids = v_switch_ids
         # The name of the vSwitch.
         self.v_switch_name = v_switch_name
 
@@ -45688,16 +46962,18 @@ class DescribeVSwitchesRequest(TeaModel):
         result = dict()
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
+        if self.ens_region_ids is not None:
+            result['EnsRegionIds'] = self.ens_region_ids
         if self.network_id is not None:
             result['NetworkId'] = self.network_id
-        if self.order_by_params is not None:
-            result['OrderByParams'] = self.order_by_params
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
         if self.v_switch_name is not None:
             result['VSwitchName'] = self.v_switch_name
         return result
@@ -45706,16 +46982,18 @@ class DescribeVSwitchesRequest(TeaModel):
         m = m or dict()
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
+        if m.get('EnsRegionIds') is not None:
+            self.ens_region_ids = m.get('EnsRegionIds')
         if m.get('NetworkId') is not None:
             self.network_id = m.get('NetworkId')
-        if m.get('OrderByParams') is not None:
-            self.order_by_params = m.get('OrderByParams')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
         if m.get('VSwitchName') is not None:
             self.v_switch_name = m.get('VSwitchName')
         return self
@@ -45736,15 +47014,15 @@ class DescribeVSwitchesResponseBodyVSwitchesVSwitch(TeaModel):
     ):
         # The IPv4 CIDR block of the vSwitch.
         self.cidr_block = cidr_block
-        # The time when the vSwitch was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The time when the VPC was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.created_time = created_time
         # The description of the vSwitch.
         self.description = description
-        # The ID of the edge node.
+        # The ID of the ENS node.
         self.ens_region_id = ens_region_id
         # The number of available IP addresses.
         self.free_ip_count = free_ip_count
-        # The ID of the network.
+        # The ID of the virtual private cloud (VPC).
         self.network_id = network_id
         # The status of the vSwitch. Valid values:
         # 
@@ -45852,13 +47130,13 @@ class DescribeVSwitchesResponseBody(TeaModel):
         total_count: int = None,
         v_switches: DescribeVSwitchesResponseBodyVSwitches = None,
     ):
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
         # The number of entries returned on each page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries in the list.
+        # The total number of entries returned.
         self.total_count = total_count
         # The information about the vSwitches. For more information, see the array of vSwitches in the response examples in the JSON format.
         self.v_switches = v_switches
@@ -46063,8 +47341,12 @@ class DetachInstanceSDGRequest(TeaModel):
         instance_ids: List[str] = None,
         sdgid: str = None,
     ):
+        # The IDs of the instances.
+        # 
         # This parameter is required.
         self.instance_ids = instance_ids
+        # The ID of the SDG.
+        # 
         # This parameter is required.
         self.sdgid = sdgid
 
@@ -46098,8 +47380,12 @@ class DetachInstanceSDGShrinkRequest(TeaModel):
         instance_ids_shrink: str = None,
         sdgid: str = None,
     ):
+        # The IDs of the instances.
+        # 
         # This parameter is required.
         self.instance_ids_shrink = instance_ids_shrink
+        # The ID of the SDG.
+        # 
         # This parameter is required.
         self.sdgid = sdgid
 
@@ -46133,7 +47419,9 @@ class DetachInstanceSDGResponseBodyDataResultFailedItems(TeaModel):
         err_message: str = None,
         instance_id: str = None,
     ):
+        # The error message.
         self.err_message = err_message
+        # The ID of the instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -46167,8 +47455,11 @@ class DetachInstanceSDGResponseBodyDataResult(TeaModel):
         failed_items: List[DetachInstanceSDGResponseBodyDataResultFailedItems] = None,
         success_count: str = None,
     ):
+        # The number of failed tasks.
         self.failed_count = failed_count
+        # Details about failed tasks.
         self.failed_items = failed_items
+        # The number of successful tasks.
         self.success_count = success_count
 
     def validate(self):
@@ -46214,8 +47505,14 @@ class DetachInstanceSDGResponseBodyData(TeaModel):
         result: DetachInstanceSDGResponseBodyDataResult = None,
         success: bool = None,
     ):
+        # The response message. Success is returned for a successful request.
         self.message = message
+        # The execution result of the synchronization request.
         self.result = result
+        # Indicates whether all tasks are successful. Valid values:
+        # 
+        # *   true: All tasks are successful.
+        # *   false: Failed tasks exist.
         self.success = success
 
     def validate(self):
@@ -46254,7 +47551,9 @@ class DetachInstanceSDGResponseBody(TeaModel):
         data: DetachInstanceSDGResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data object.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -49503,6 +50802,80 @@ class ListObjectsResponse(TeaModel):
         return self
 
 
+class ListProductAbilitiesResponseBody(TeaModel):
+    def __init__(
+        self,
+        product_abilities: List[str] = None,
+        request_id: str = None,
+    ):
+        self.product_abilities = product_abilities
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.product_abilities is not None:
+            result['ProductAbilities'] = self.product_abilities
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProductAbilities') is not None:
+            self.product_abilities = m.get('ProductAbilities')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListProductAbilitiesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListProductAbilitiesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListProductAbilitiesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListTagResourcesRequestTag(TeaModel):
     def __init__(
         self,
@@ -49865,6 +51238,114 @@ class ModifyEnsEipAddressAttributeResponse(TeaModel):
         return self
 
 
+class ModifyEnsRouteEntryRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        route_entry_id: str = None,
+        route_entry_name: str = None,
+    ):
+        self.description = description
+        # This parameter is required.
+        self.route_entry_id = route_entry_id
+        self.route_entry_name = route_entry_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.route_entry_id is not None:
+            result['RouteEntryId'] = self.route_entry_id
+        if self.route_entry_name is not None:
+            result['RouteEntryName'] = self.route_entry_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RouteEntryId') is not None:
+            self.route_entry_id = m.get('RouteEntryId')
+        if m.get('RouteEntryName') is not None:
+            self.route_entry_name = m.get('RouteEntryName')
+        return self
+
+
+class ModifyEnsRouteEntryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyEnsRouteEntryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyEnsRouteEntryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyEnsRouteEntryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyEpnInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -50111,10 +51592,17 @@ class ModifyFileSystemResponse(TeaModel):
 class ModifyForwardEntryRequest(TeaModel):
     def __init__(
         self,
+        external_ip: str = None,
+        external_port: str = None,
         forward_entry_id: str = None,
         forward_entry_name: str = None,
         health_check_port: int = None,
+        internal_ip: str = None,
+        internal_port: str = None,
+        ip_protocol: str = None,
     ):
+        self.external_ip = external_ip
+        self.external_port = external_port
         # The ID of the DNAT entry.
         # 
         # This parameter is required.
@@ -50123,6 +51611,9 @@ class ModifyForwardEntryRequest(TeaModel):
         self.forward_entry_name = forward_entry_name
         # The probe port. The port must be within the internal port range. By default, this parameter is left empty.
         self.health_check_port = health_check_port
+        self.internal_ip = internal_ip
+        self.internal_port = internal_port
+        self.ip_protocol = ip_protocol
 
     def validate(self):
         pass
@@ -50133,22 +51624,42 @@ class ModifyForwardEntryRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.external_ip is not None:
+            result['ExternalIp'] = self.external_ip
+        if self.external_port is not None:
+            result['ExternalPort'] = self.external_port
         if self.forward_entry_id is not None:
             result['ForwardEntryId'] = self.forward_entry_id
         if self.forward_entry_name is not None:
             result['ForwardEntryName'] = self.forward_entry_name
         if self.health_check_port is not None:
             result['HealthCheckPort'] = self.health_check_port
+        if self.internal_ip is not None:
+            result['InternalIp'] = self.internal_ip
+        if self.internal_port is not None:
+            result['InternalPort'] = self.internal_port
+        if self.ip_protocol is not None:
+            result['IpProtocol'] = self.ip_protocol
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExternalIp') is not None:
+            self.external_ip = m.get('ExternalIp')
+        if m.get('ExternalPort') is not None:
+            self.external_port = m.get('ExternalPort')
         if m.get('ForwardEntryId') is not None:
             self.forward_entry_id = m.get('ForwardEntryId')
         if m.get('ForwardEntryName') is not None:
             self.forward_entry_name = m.get('ForwardEntryName')
         if m.get('HealthCheckPort') is not None:
             self.health_check_port = m.get('HealthCheckPort')
+        if m.get('InternalIp') is not None:
+            self.internal_ip = m.get('InternalIp')
+        if m.get('InternalPort') is not None:
+            self.internal_port = m.get('InternalPort')
+        if m.get('IpProtocol') is not None:
+            self.ip_protocol = m.get('IpProtocol')
         return self
 
 
@@ -51910,14 +53421,18 @@ class ModifySnapshotAttributeResponse(TeaModel):
 class ModifySnatEntryRequest(TeaModel):
     def __init__(
         self,
+        eip_affinity: bool = None,
         isp_affinity: bool = None,
         snat_entry_id: str = None,
         snat_entry_name: str = None,
+        snat_ip: str = None,
     ):
+        self.eip_affinity = eip_affinity
         self.isp_affinity = isp_affinity
         # This parameter is required.
         self.snat_entry_id = snat_entry_id
         self.snat_entry_name = snat_entry_name
+        self.snat_ip = snat_ip
 
     def validate(self):
         pass
@@ -51928,22 +53443,30 @@ class ModifySnatEntryRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.eip_affinity is not None:
+            result['EipAffinity'] = self.eip_affinity
         if self.isp_affinity is not None:
             result['IspAffinity'] = self.isp_affinity
         if self.snat_entry_id is not None:
             result['SnatEntryId'] = self.snat_entry_id
         if self.snat_entry_name is not None:
             result['SnatEntryName'] = self.snat_entry_name
+        if self.snat_ip is not None:
+            result['SnatIp'] = self.snat_ip
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EipAffinity') is not None:
+            self.eip_affinity = m.get('EipAffinity')
         if m.get('IspAffinity') is not None:
             self.isp_affinity = m.get('IspAffinity')
         if m.get('SnatEntryId') is not None:
             self.snat_entry_id = m.get('SnatEntryId')
         if m.get('SnatEntryName') is not None:
             self.snat_entry_name = m.get('SnatEntryName')
+        if m.get('SnatIp') is not None:
+            self.snat_ip = m.get('SnatIp')
         return self
 
 
@@ -52140,8 +53663,12 @@ class MountInstanceSDGRequest(TeaModel):
         instance_ids: List[str] = None,
         sdgid: str = None,
     ):
+        # The IDs of the instances.
+        # 
         # This parameter is required.
         self.instance_ids = instance_ids
+        # The ID of the SDG.
+        # 
         # This parameter is required.
         self.sdgid = sdgid
 
@@ -52175,8 +53702,12 @@ class MountInstanceSDGShrinkRequest(TeaModel):
         instance_ids_shrink: str = None,
         sdgid: str = None,
     ):
+        # The IDs of the instances.
+        # 
         # This parameter is required.
         self.instance_ids_shrink = instance_ids_shrink
+        # The ID of the SDG.
+        # 
         # This parameter is required.
         self.sdgid = sdgid
 
@@ -52210,7 +53741,9 @@ class MountInstanceSDGResponseBodyDataResultFailedItems(TeaModel):
         err_message: str = None,
         instance_id: str = None,
     ):
+        # The error message.
         self.err_message = err_message
+        # The ID of the instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -52244,8 +53777,11 @@ class MountInstanceSDGResponseBodyDataResult(TeaModel):
         failed_items: List[MountInstanceSDGResponseBodyDataResultFailedItems] = None,
         success_count: int = None,
     ):
+        # The number of failed tasks.
         self.failed_count = failed_count
+        # Details about failed tasks.
         self.failed_items = failed_items
+        # The number of successful tasks.
         self.success_count = success_count
 
     def validate(self):
@@ -52291,8 +53827,14 @@ class MountInstanceSDGResponseBodyData(TeaModel):
         result: MountInstanceSDGResponseBodyDataResult = None,
         success: bool = None,
     ):
+        # The response message. Success is returned for a successful request.
         self.message = message
+        # The execution result of the synchronization request.
         self.result = result
+        # Indicates whether all tasks are successful. Valid values:
+        # 
+        # *   **true**: All tasks are successful.
+        # *   **false**: Failed tasks exist.
         self.success = success
 
     def validate(self):
@@ -52331,7 +53873,9 @@ class MountInstanceSDGResponseBody(TeaModel):
         data: MountInstanceSDGResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data object.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -53071,29 +54615,12 @@ class PutBucketRequest(TeaModel):
         ens_region_id: str = None,
         logical_bucket_type: str = None,
     ):
-        # The access control list (ACL) of the bucket. Valid values:
-        # 
-        # *   **private** (default)
-        # *   **public-read-write**\
-        # *   **public-read**\
         self.bucket_acl = bucket_acl
-        # The name of the bucket. This parameter can contain 3 to 50 characters in length and can contain only lowercase letters, digits, and hyphens (-). The name cannot start or end with a hyphen (-).
-        # 
         # This parameter is required.
         self.bucket_name = bucket_name
-        # The remarks. The remarks are 0 to 128 characters in length.
         self.comment = comment
-        # The scheduling scope. This parameter takes effect only when the value of the LogicalBucketType parameter is standard. Valid values:
-        # 
-        # *   **domestic**: Chinese mainland.
-        # *   **oversea**: outside the Chinese mainland.
         self.dispatch_scope = dispatch_scope
-        # The region ID of the node. This parameter is required if the value of the LogicalBucketType parameter is sink.
         self.ens_region_id = ens_region_id
-        # The type of the bucket. Valid values:
-        # 
-        # *   **sink**: single-node bucket.
-        # *   **standard**: bucket for global scheduling.
         self.logical_bucket_type = logical_bucket_type
 
     def validate(self):
@@ -53417,6 +54944,7 @@ class PutBucketLifecycleResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
+        # The ID of the rule.
         self.rule_id = rule_id
 
     def validate(self):
@@ -54709,9 +56237,11 @@ class ReleaseInstanceResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        resource_type: str = None,
     ):
         # The request ID.
         self.request_id = request_id
+        self.resource_type = resource_type
 
     def validate(self):
         pass
@@ -54724,12 +56254,16 @@ class ReleaseInstanceResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         return self
 
 
@@ -57593,14 +59127,14 @@ class RunInstancesRequestDataDisk(TeaModel):
         kmskey_id: str = None,
         size: int = None,
     ):
-        # The category of the disk. Valid values:
+        # The category of the disk. Examples:
         # 
         # *   **cloud_efficiency**: ultra disk.
         # *   **cloud_ssd**: all-flash disk.
         # *   **local_hdd**: local HDD.
         # *   **local_ssd**: local SSD.
         self.category = category
-        # Indicates whether the cloud disk is encrypted. Valid values:
+        # Specifies whether to encrypt the disk. Valid values:
         # 
         # *   true.
         # *   false (default).
@@ -57769,7 +59303,7 @@ class RunInstancesRequest(TeaModel):
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.auto_release_time = auto_release_time
-        # Specifies whether to enable auto-renewal. Valid values:
+        # Specifies whether to enable auto-renewal for the premium bandwidth plan. Examples:
         # 
         # *   **true**.
         # *   **false** (default).
@@ -57802,7 +59336,7 @@ class RunInstancesRequest(TeaModel):
         # *   **instance**: Bills are generated based on instances.
         # *   If you do not specify this parameter, bills are generated based on users.
         self.instance_charge_strategy = instance_charge_strategy
-        # The billing method of the instance. Valid values:
+        # The billing method of the instance. Examples:
         # 
         # *   **PrePaid**: subscription.
         # *   **PostPaid**: pay-as-you-go.
@@ -57828,11 +59362,12 @@ class RunInstancesRequest(TeaModel):
         # 
         # This parameter is required.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        # The type of the IP address. Examples:
+        # The type of the IP address. Valid values:
         # 
         # *   **ipv4** (default).
         # *   **ipv6**.
-        # *   **ipv4Andipv6**.
+        # *   **ipv4Andipv6** (single stack).
+        # *   **ipv4Withipv6** (dual stack).
         self.ip_type = ip_type
         # The name of the key pair.
         # 
@@ -57882,7 +59417,7 @@ class RunInstancesRequest(TeaModel):
         # 
         # This parameter is required.
         self.schedule_area_level = schedule_area_level
-        # The scheduling price policy. Valid values:
+        # The scheduling price policy. Examples:
         # 
         # *   **PriceHighPriority**: The high price prevails.
         # *   **PriceLowPriority**: The low price prevails.
@@ -57896,10 +59431,16 @@ class RunInstancesRequest(TeaModel):
         self.scheduling_strategy = scheduling_strategy
         # The ID of security group.
         self.security_id = security_id
+        # The protection period of the preemptible instance. Unit: hours. Default value: 1. Valid values:
+        # 
+        # *   1: After a preemptible instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After the 1-hour protection period ends, the system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
+        # *   0: After a preemptible instance is created, Alibaba Cloud does not ensure that the instance runs for 1 hour. The system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
+        # 
+        # Alibaba Cloud sends an ECS system event to notify you 5 minutes before the instance is released. Preemptible instances are billed by second. We recommend that you specify an appropriate protection period based on your business requirements.
         self.spot_duration = spot_duration
         # The bidding policy for the pay-as-you-go instance. This parameter is valid only when the `InstanceChargeType` parameter is set to `PostPaid`. Valid values:
         # 
-        # *   NoSpot: The instance is created as a regular pay-as-you-go instance.
+        # *   NoSpot: The elastic container instances are pay-as-you-go instances.
         # *   SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is automatically used as the bidding price.
         # 
         # Default value: NoSpot.
@@ -58188,7 +59729,7 @@ class RunInstancesShrinkRequest(TeaModel):
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.auto_release_time = auto_release_time
-        # Specifies whether to enable auto-renewal. Valid values:
+        # Specifies whether to enable auto-renewal for the premium bandwidth plan. Examples:
         # 
         # *   **true**.
         # *   **false** (default).
@@ -58221,7 +59762,7 @@ class RunInstancesShrinkRequest(TeaModel):
         # *   **instance**: Bills are generated based on instances.
         # *   If you do not specify this parameter, bills are generated based on users.
         self.instance_charge_strategy = instance_charge_strategy
-        # The billing method of the instance. Valid values:
+        # The billing method of the instance. Examples:
         # 
         # *   **PrePaid**: subscription.
         # *   **PostPaid**: pay-as-you-go.
@@ -58247,11 +59788,12 @@ class RunInstancesShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        # The type of the IP address. Examples:
+        # The type of the IP address. Valid values:
         # 
         # *   **ipv4** (default).
         # *   **ipv6**.
-        # *   **ipv4Andipv6**.
+        # *   **ipv4Andipv6** (single stack).
+        # *   **ipv4Withipv6** (dual stack).
         self.ip_type = ip_type
         # The name of the key pair.
         # 
@@ -58301,7 +59843,7 @@ class RunInstancesShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.schedule_area_level = schedule_area_level
-        # The scheduling price policy. Valid values:
+        # The scheduling price policy. Examples:
         # 
         # *   **PriceHighPriority**: The high price prevails.
         # *   **PriceLowPriority**: The low price prevails.
@@ -58315,10 +59857,16 @@ class RunInstancesShrinkRequest(TeaModel):
         self.scheduling_strategy = scheduling_strategy
         # The ID of security group.
         self.security_id = security_id
+        # The protection period of the preemptible instance. Unit: hours. Default value: 1. Valid values:
+        # 
+        # *   1: After a preemptible instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After the 1-hour protection period ends, the system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
+        # *   0: After a preemptible instance is created, Alibaba Cloud does not ensure that the instance runs for 1 hour. The system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
+        # 
+        # Alibaba Cloud sends an ECS system event to notify you 5 minutes before the instance is released. Preemptible instances are billed by second. We recommend that you specify an appropriate protection period based on your business requirements.
         self.spot_duration = spot_duration
         # The bidding policy for the pay-as-you-go instance. This parameter is valid only when the `InstanceChargeType` parameter is set to `PostPaid`. Valid values:
         # 
-        # *   NoSpot: The instance is created as a regular pay-as-you-go instance.
+        # *   NoSpot: The elastic container instances are pay-as-you-go instances.
         # *   SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is automatically used as the bidding price.
         # 
         # Default value: NoSpot.
@@ -61705,11 +63253,13 @@ class UnAssociateEnsEipAddressRequest(TeaModel):
     def __init__(
         self,
         allocation_id: str = None,
+        force: bool = None,
     ):
         # The ID of the EIP.
         # 
         # This parameter is required.
         self.allocation_id = allocation_id
+        self.force = force
 
     def validate(self):
         pass
@@ -61722,12 +63272,16 @@ class UnAssociateEnsEipAddressRequest(TeaModel):
         result = dict()
         if self.allocation_id is not None:
             result['AllocationId'] = self.allocation_id
+        if self.force is not None:
+            result['Force'] = self.force
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AllocationId') is not None:
             self.allocation_id = m.get('AllocationId')
+        if m.get('Force') is not None:
+            self.force = m.get('Force')
         return self
 
 
@@ -62481,8 +64035,12 @@ class UnmountInstanceSDGRequest(TeaModel):
         instance_ids: List[str] = None,
         sdgid: str = None,
     ):
+        # The IDs of the instances.
+        # 
         # This parameter is required.
         self.instance_ids = instance_ids
+        # The ID of the SDG.
+        # 
         # This parameter is required.
         self.sdgid = sdgid
 
@@ -62516,8 +64074,12 @@ class UnmountInstanceSDGShrinkRequest(TeaModel):
         instance_ids_shrink: str = None,
         sdgid: str = None,
     ):
+        # The IDs of the instances.
+        # 
         # This parameter is required.
         self.instance_ids_shrink = instance_ids_shrink
+        # The ID of the SDG.
+        # 
         # This parameter is required.
         self.sdgid = sdgid
 
@@ -62551,7 +64113,9 @@ class UnmountInstanceSDGResponseBodyDataResultFailedItems(TeaModel):
         err_message: str = None,
         instance_id: str = None,
     ):
+        # The error message.
         self.err_message = err_message
+        # The ID of the instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -62585,8 +64149,11 @@ class UnmountInstanceSDGResponseBodyDataResult(TeaModel):
         failed_items: List[UnmountInstanceSDGResponseBodyDataResultFailedItems] = None,
         success_count: int = None,
     ):
+        # The number of failed tasks.
         self.failed_count = failed_count
+        # Details about failed tasks.
         self.failed_items = failed_items
+        # The number of successful tasks.
         self.success_count = success_count
 
     def validate(self):
@@ -62632,8 +64199,14 @@ class UnmountInstanceSDGResponseBodyData(TeaModel):
         result: UnmountInstanceSDGResponseBodyDataResult = None,
         success: bool = None,
     ):
+        # The response message. Success is returned for a successful request.
         self.message = message
+        # The execution result of the synchronization request.
         self.result = result
+        # Indicates whether all tasks are successful. Valid values:
+        # 
+        # *   true: All tasks are successful.
+        # *   false: Failed tasks exist.
         self.success = success
 
     def validate(self):
@@ -62672,7 +64245,9 @@ class UnmountInstanceSDGResponseBody(TeaModel):
         data: UnmountInstanceSDGResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data object.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -1,3 +1,84 @@
+2025-03-18 Version: 8.0.0
+- Support API DescribeVSwitchAttributes.
+- Support API ListProductAbilities.
+- Support API ModifyEnsRouteEntry.
+- Update API CreateEipInstance: add param ClientToken.
+- Update API CreateEnsRouteEntry: add param SourceCidrBlock.
+- Update API CreateEnsRouteEntry: update param NextHopType.
+- Update API CreateImage: add param TargetOSSRegionId.
+- Update API CreateLoadBalancer: add param ClientToken.
+- Update API CreateSecurityGroup: add param Permissions.
+- Update API CreateSecurityGroup: update param Description.
+- Update API CreateSecurityGroup: update param SecurityGroupName.
+- Update API CreateSecurityGroup: update response param.
+- Update API CreateSnatEntry: add param EipAffinity.
+- Update API DeleteNatGateway: add param ForceDelete.
+- Update API DescribeCloudDiskAvailableResourceInfo: update response param.
+- Update API DescribeElbAvailableResourceInfo: update response param.
+- Update API DescribeEnsRouteEntryList: update param NextHopType.
+- Update API DescribeEnsRouteEntryList: update param RouteTableId.
+- Update API DescribeEnsRouteEntryList: update response param.
+- Update API DescribeEnsRouteTables: add param AssociateType.
+- Update API DescribeEnsRouteTables: add param EnsRegionIds.
+- Update API DescribeEnsRouteTables: add param RouteTableName.
+- Update API DescribeEnsRouteTables: add param Type.
+- Update API DescribeEnsRouteTables: update param PageSize.
+- Update API DescribeEnsRouteTables: update response param.
+- Update API DescribeImageInfos: update response param.
+- Update API DescribeImageSharePermission: update response param.
+- Update API DescribeImages: update response param.
+- Update API DescribeLoadBalancerAttribute: update response param.
+- Update API DescribeLoadBalancerListeners: add param Description.
+- Update API DescribeLoadBalancerListeners: add param ListenerPort.
+- Update API DescribeLoadBalancerListeners: update response param.
+- Update API DescribeLoadBalancers: add param EnsRegionIds.
+- Update API DescribeNatGateways: add param EnsRegionIds.
+- Update API DescribeNatGateways: add param NatGatewayIds.
+- Update API DescribeNatGateways: update response param.
+- Update API DescribeNetworkAttribute: update response param.
+- Update API DescribeNetworkInterfaces: add param EnsRegionIds.
+- Update API DescribeNetworkInterfaces: add param NetworkInterfaceIds.
+- Update API DescribeNetworkInterfaces: update param Ipv6Address.
+- Update API DescribeNetworkInterfaces: update param Ipv6Address.
+- Update API DescribeNetworks: add param EnsRegionIds.
+- Update API DescribeNetworks: add param NetworkIds.
+- Update API DescribeNetworks: update response param.
+- Update API DescribeSecurityGroups: update param PageNumber.
+- Update API DescribeSecurityGroups: update param PageSize.
+- Update API DescribeSecurityGroups: update param SecurityGroupId.
+- Update API DescribeSecurityGroups: update param SecurityGroupName.
+- Update API DescribeSecurityGroups: update response param.
+- Update API DescribeSelfImages: update response param.
+- Update API DescribeSnatAttribute: update response param.
+- Update API DescribeSnatTableEntries: add param SnatIps.
+- Update API DescribeSnatTableEntries: update response param.
+- Update API DescribeVSwitches: add param EnsRegionIds.
+- Update API DescribeVSwitches: add param VSwitchIds.
+- Update API DescribeVSwitches: delete param OrderByParams.
+- Update API DescribeVSwitches: update param EnsRegionId.
+- Update API DescribeVSwitches: update param NetworkId.
+- Update API DescribeVSwitches: update param PageNumber.
+- Update API DescribeVSwitches: update param PageSize.
+- Update API DescribeVSwitches: update param VSwitchId.
+- Update API DescribeVSwitches: update param VSwitchName.
+- Update API DescribeVSwitches: update response param.
+- Update API ModifyForwardEntry: add param ExternalIp.
+- Update API ModifyForwardEntry: add param ExternalPort.
+- Update API ModifyForwardEntry: add param InternalIp.
+- Update API ModifyForwardEntry: add param InternalPort.
+- Update API ModifyForwardEntry: add param IpProtocol.
+- Update API ModifySnatEntry: add param EipAffinity.
+- Update API ModifySnatEntry: add param SnatIp.
+- Update API PutBucket: update param BucketAcl.
+- Update API PutBucket: update param BucketName.
+- Update API PutBucket: update param Comment.
+- Update API PutBucket: update param DispatchScope.
+- Update API PutBucket: update param EnsRegionId.
+- Update API PutBucket: update param LogicalBucketType.
+- Update API ReleaseInstance: update response param.
+- Update API UnAssociateEnsEipAddress: add param Force.
+
+
 2024-12-25 Version: 7.7.0
 - Support API DeleteEip.
 - Update API GetBucketAcl: update param BucketName.
