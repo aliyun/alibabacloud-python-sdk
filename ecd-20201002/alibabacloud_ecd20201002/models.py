@@ -70,6 +70,7 @@ class ApproveFotaUpdateRequest(TeaModel):
         login_token: str = None,
         region_id: str = None,
         session_id: str = None,
+        target_status: str = None,
         uuid: str = None,
     ):
         # This parameter is required.
@@ -82,6 +83,7 @@ class ApproveFotaUpdateRequest(TeaModel):
         # This parameter is required.
         self.region_id = region_id
         self.session_id = session_id
+        self.target_status = target_status
         self.uuid = uuid
 
     def validate(self):
@@ -105,6 +107,8 @@ class ApproveFotaUpdateRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.session_id is not None:
             result['SessionId'] = self.session_id
+        if self.target_status is not None:
+            result['TargetStatus'] = self.target_status
         if self.uuid is not None:
             result['Uuid'] = self.uuid
         return result
@@ -123,6 +127,8 @@ class ApproveFotaUpdateRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
+        if m.get('TargetStatus') is not None:
+            self.target_status = m.get('TargetStatus')
         if m.get('Uuid') is not None:
             self.uuid = m.get('Uuid')
         return self
@@ -4612,6 +4618,7 @@ class RebootDesktopsRequest(TeaModel):
         client_version: str = None,
         desktop_id: List[str] = None,
         login_token: str = None,
+        os_update: bool = None,
         region_id: str = None,
         session_id: str = None,
         session_token: str = None,
@@ -4633,6 +4640,7 @@ class RebootDesktopsRequest(TeaModel):
         self.desktop_id = desktop_id
         # The logon token.
         self.login_token = login_token
+        self.os_update = os_update
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by WUYING Workspace.
         # 
         # This parameter is required.
@@ -4665,6 +4673,8 @@ class RebootDesktopsRequest(TeaModel):
             result['DesktopId'] = self.desktop_id
         if self.login_token is not None:
             result['LoginToken'] = self.login_token
+        if self.os_update is not None:
+            result['OsUpdate'] = self.os_update
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.session_id is not None:
@@ -4689,6 +4699,8 @@ class RebootDesktopsRequest(TeaModel):
             self.desktop_id = m.get('DesktopId')
         if m.get('LoginToken') is not None:
             self.login_token = m.get('LoginToken')
+        if m.get('OsUpdate') is not None:
+            self.os_update = m.get('OsUpdate')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('SessionId') is not None:
@@ -6176,6 +6188,7 @@ class StopDesktopsRequest(TeaModel):
         client_version: str = None,
         desktop_id: List[str] = None,
         login_token: str = None,
+        os_update: bool = None,
         region_id: str = None,
         session_id: str = None,
         session_token: str = None,
@@ -6196,6 +6209,7 @@ class StopDesktopsRequest(TeaModel):
         self.desktop_id = desktop_id
         # The logon token.
         self.login_token = login_token
+        self.os_update = os_update
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by WUYING Workspace.
         # 
         # This parameter is required.
@@ -6226,6 +6240,8 @@ class StopDesktopsRequest(TeaModel):
             result['DesktopId'] = self.desktop_id
         if self.login_token is not None:
             result['LoginToken'] = self.login_token
+        if self.os_update is not None:
+            result['OsUpdate'] = self.os_update
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.session_id is not None:
@@ -6248,6 +6264,8 @@ class StopDesktopsRequest(TeaModel):
             self.desktop_id = m.get('DesktopId')
         if m.get('LoginToken') is not None:
             self.login_token = m.get('LoginToken')
+        if m.get('OsUpdate') is not None:
+            self.os_update = m.get('OsUpdate')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('SessionId') is not None:

@@ -68,6 +68,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.session_id):
             query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.target_status):
+            query['TargetStatus'] = request.target_status
         if not UtilClient.is_unset(request.uuid):
             query['Uuid'] = request.uuid
         req = open_api_models.OpenApiRequest(
@@ -121,6 +123,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.session_id):
             query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.target_status):
+            query['TargetStatus'] = request.target_status
         if not UtilClient.is_unset(request.uuid):
             query['Uuid'] = request.uuid
         req = open_api_models.OpenApiRequest(
@@ -2212,6 +2216,8 @@ class Client(OpenApiClient):
             query['DesktopId'] = request.desktop_id
         if not UtilClient.is_unset(request.login_token):
             query['LoginToken'] = request.login_token
+        if not UtilClient.is_unset(request.os_update):
+            query['OsUpdate'] = request.os_update
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.session_id):
@@ -2271,6 +2277,8 @@ class Client(OpenApiClient):
             query['DesktopId'] = request.desktop_id
         if not UtilClient.is_unset(request.login_token):
             query['LoginToken'] = request.login_token
+        if not UtilClient.is_unset(request.os_update):
+            query['OsUpdate'] = request.os_update
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.session_id):
@@ -3642,6 +3650,8 @@ class Client(OpenApiClient):
             query['DesktopId'] = request.desktop_id
         if not UtilClient.is_unset(request.login_token):
             query['LoginToken'] = request.login_token
+        if not UtilClient.is_unset(request.os_update):
+            query['OsUpdate'] = request.os_update
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.session_id):
@@ -3701,6 +3711,8 @@ class Client(OpenApiClient):
             query['DesktopId'] = request.desktop_id
         if not UtilClient.is_unset(request.login_token):
             query['LoginToken'] = request.login_token
+        if not UtilClient.is_unset(request.os_update):
+            query['OsUpdate'] = request.os_update
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.session_id):
