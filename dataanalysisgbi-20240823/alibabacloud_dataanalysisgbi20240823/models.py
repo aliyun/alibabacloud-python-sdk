@@ -2488,11 +2488,15 @@ class RunDataAnalysisResponseBodyDataSqlData(TeaModel):
 class RunDataAnalysisResponseBodyDataVisualizationData(TeaModel):
     def __init__(
         self,
+        option: str = None,
         plot_type: str = None,
+        stack: bool = None,
         x_axis: List[str] = None,
         y_axis: List[str] = None,
     ):
+        self.option = option
         self.plot_type = plot_type
+        self.stack = stack
         self.x_axis = x_axis
         self.y_axis = y_axis
 
@@ -2505,8 +2509,12 @@ class RunDataAnalysisResponseBodyDataVisualizationData(TeaModel):
             return _map
 
         result = dict()
+        if self.option is not None:
+            result['option'] = self.option
         if self.plot_type is not None:
             result['plotType'] = self.plot_type
+        if self.stack is not None:
+            result['stack'] = self.stack
         if self.x_axis is not None:
             result['xAxis'] = self.x_axis
         if self.y_axis is not None:
@@ -2515,8 +2523,12 @@ class RunDataAnalysisResponseBodyDataVisualizationData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('option') is not None:
+            self.option = m.get('option')
         if m.get('plotType') is not None:
             self.plot_type = m.get('plotType')
+        if m.get('stack') is not None:
+            self.stack = m.get('stack')
         if m.get('xAxis') is not None:
             self.x_axis = m.get('xAxis')
         if m.get('yAxis') is not None:

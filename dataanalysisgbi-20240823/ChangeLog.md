@@ -1,3 +1,7 @@
+2025-03-18 Version: 1.3.7
+- Update API RunDataAnalysis: update response param.
+
+
 2025-03-17 Version: 1.3.6
 - Generated python 2024-08-23 for DataAnalysisGBI.
 
