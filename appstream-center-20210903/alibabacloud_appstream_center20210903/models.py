@@ -11,13 +11,16 @@ class GetConnectionTicketRequest(TeaModel):
         app_instance_group_id: str = None,
         app_instance_id: str = None,
         app_version: str = None,
+        auto_connect_in_queue: bool = None,
         biz_region_id: str = None,
         client_id: str = None,
         client_ip: str = None,
         client_os: str = None,
+        client_type: str = None,
         client_version: str = None,
         connection_properties: str = None,
         end_user_id: str = None,
+        environment_config: str = None,
         login_region_id: str = None,
         login_token: str = None,
         param: str = None,
@@ -32,13 +35,16 @@ class GetConnectionTicketRequest(TeaModel):
         self.app_instance_group_id = app_instance_group_id
         self.app_instance_id = app_instance_id
         self.app_version = app_version
+        self.auto_connect_in_queue = auto_connect_in_queue
         self.biz_region_id = biz_region_id
         self.client_id = client_id
         self.client_ip = client_ip
         self.client_os = client_os
+        self.client_type = client_type
         self.client_version = client_version
         self.connection_properties = connection_properties
         self.end_user_id = end_user_id
+        self.environment_config = environment_config
         self.login_region_id = login_region_id
         self.login_token = login_token
         self.param = param
@@ -67,6 +73,8 @@ class GetConnectionTicketRequest(TeaModel):
             result['AppInstanceId'] = self.app_instance_id
         if self.app_version is not None:
             result['AppVersion'] = self.app_version
+        if self.auto_connect_in_queue is not None:
+            result['AutoConnectInQueue'] = self.auto_connect_in_queue
         if self.biz_region_id is not None:
             result['BizRegionId'] = self.biz_region_id
         if self.client_id is not None:
@@ -75,12 +83,16 @@ class GetConnectionTicketRequest(TeaModel):
             result['ClientIp'] = self.client_ip
         if self.client_os is not None:
             result['ClientOS'] = self.client_os
+        if self.client_type is not None:
+            result['ClientType'] = self.client_type
         if self.client_version is not None:
             result['ClientVersion'] = self.client_version
         if self.connection_properties is not None:
             result['ConnectionProperties'] = self.connection_properties
         if self.end_user_id is not None:
             result['EndUserId'] = self.end_user_id
+        if self.environment_config is not None:
+            result['EnvironmentConfig'] = self.environment_config
         if self.login_region_id is not None:
             result['LoginRegionId'] = self.login_region_id
         if self.login_token is not None:
@@ -111,6 +123,8 @@ class GetConnectionTicketRequest(TeaModel):
             self.app_instance_id = m.get('AppInstanceId')
         if m.get('AppVersion') is not None:
             self.app_version = m.get('AppVersion')
+        if m.get('AutoConnectInQueue') is not None:
+            self.auto_connect_in_queue = m.get('AutoConnectInQueue')
         if m.get('BizRegionId') is not None:
             self.biz_region_id = m.get('BizRegionId')
         if m.get('ClientId') is not None:
@@ -119,12 +133,16 @@ class GetConnectionTicketRequest(TeaModel):
             self.client_ip = m.get('ClientIp')
         if m.get('ClientOS') is not None:
             self.client_os = m.get('ClientOS')
+        if m.get('ClientType') is not None:
+            self.client_type = m.get('ClientType')
         if m.get('ClientVersion') is not None:
             self.client_version = m.get('ClientVersion')
         if m.get('ConnectionProperties') is not None:
             self.connection_properties = m.get('ConnectionProperties')
         if m.get('EndUserId') is not None:
             self.end_user_id = m.get('EndUserId')
+        if m.get('EnvironmentConfig') is not None:
+            self.environment_config = m.get('EnvironmentConfig')
         if m.get('LoginRegionId') is not None:
             self.login_region_id = m.get('LoginRegionId')
         if m.get('LoginToken') is not None:
@@ -149,19 +167,21 @@ class GetConnectionTicketRequest(TeaModel):
 class GetConnectionTicketResponseBodyBindQueueInfo(TeaModel):
     def __init__(
         self,
-        length: int = None,
+        queue_status: str = None,
         rank: int = None,
-        remaining_time_min: int = None,
+        ready_timeout: int = None,
+        remaining_time: int = None,
         request_key: str = None,
         target_id: str = None,
-        wait_time_min: int = None,
+        wait_time: int = None,
     ):
-        self.length = length
+        self.queue_status = queue_status
         self.rank = rank
-        self.remaining_time_min = remaining_time_min
+        self.ready_timeout = ready_timeout
+        self.remaining_time = remaining_time
         self.request_key = request_key
         self.target_id = target_id
-        self.wait_time_min = wait_time_min
+        self.wait_time = wait_time
 
     def validate(self):
         pass
@@ -172,34 +192,38 @@ class GetConnectionTicketResponseBodyBindQueueInfo(TeaModel):
             return _map
 
         result = dict()
-        if self.length is not None:
-            result['Length'] = self.length
+        if self.queue_status is not None:
+            result['QueueStatus'] = self.queue_status
         if self.rank is not None:
             result['Rank'] = self.rank
-        if self.remaining_time_min is not None:
-            result['RemainingTimeMin'] = self.remaining_time_min
+        if self.ready_timeout is not None:
+            result['ReadyTimeout'] = self.ready_timeout
+        if self.remaining_time is not None:
+            result['RemainingTime'] = self.remaining_time
         if self.request_key is not None:
             result['RequestKey'] = self.request_key
         if self.target_id is not None:
             result['TargetId'] = self.target_id
-        if self.wait_time_min is not None:
-            result['WaitTimeMin'] = self.wait_time_min
+        if self.wait_time is not None:
+            result['WaitTime'] = self.wait_time
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Length') is not None:
-            self.length = m.get('Length')
+        if m.get('QueueStatus') is not None:
+            self.queue_status = m.get('QueueStatus')
         if m.get('Rank') is not None:
             self.rank = m.get('Rank')
-        if m.get('RemainingTimeMin') is not None:
-            self.remaining_time_min = m.get('RemainingTimeMin')
+        if m.get('ReadyTimeout') is not None:
+            self.ready_timeout = m.get('ReadyTimeout')
+        if m.get('RemainingTime') is not None:
+            self.remaining_time = m.get('RemainingTime')
         if m.get('RequestKey') is not None:
             self.request_key = m.get('RequestKey')
         if m.get('TargetId') is not None:
             self.target_id = m.get('TargetId')
-        if m.get('WaitTimeMin') is not None:
-            self.wait_time_min = m.get('WaitTimeMin')
+        if m.get('WaitTime') is not None:
+            self.wait_time = m.get('WaitTime')
         return self
 
 
@@ -402,322 +426,6 @@ class GetConnectionTicketResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetConnectionTicketResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ListLFUAppRequest(TeaModel):
-    def __init__(
-        self,
-        ali_uid: int = None,
-        api_type: str = None,
-        biz_region_id: str = None,
-        client_channel: str = None,
-        client_id: str = None,
-        client_ip: str = None,
-        client_os: str = None,
-        client_version: str = None,
-        end_user_id: str = None,
-        extends_access_token: str = None,
-        idp_id: str = None,
-        login_region_id: str = None,
-        login_token: str = None,
-        product_type: str = None,
-        region_id: str = None,
-        session_id: str = None,
-        trace_id: str = None,
-        uuid: str = None,
-        wy_id: str = None,
-    ):
-        self.ali_uid = ali_uid
-        self.api_type = api_type
-        self.biz_region_id = biz_region_id
-        self.client_channel = client_channel
-        self.client_id = client_id
-        self.client_ip = client_ip
-        self.client_os = client_os
-        self.client_version = client_version
-        self.end_user_id = end_user_id
-        self.extends_access_token = extends_access_token
-        self.idp_id = idp_id
-        self.login_region_id = login_region_id
-        self.login_token = login_token
-        self.product_type = product_type
-        self.region_id = region_id
-        self.session_id = session_id
-        self.trace_id = trace_id
-        self.uuid = uuid
-        self.wy_id = wy_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.ali_uid is not None:
-            result['AliUid'] = self.ali_uid
-        if self.api_type is not None:
-            result['ApiType'] = self.api_type
-        if self.biz_region_id is not None:
-            result['BizRegionId'] = self.biz_region_id
-        if self.client_channel is not None:
-            result['ClientChannel'] = self.client_channel
-        if self.client_id is not None:
-            result['ClientId'] = self.client_id
-        if self.client_ip is not None:
-            result['ClientIp'] = self.client_ip
-        if self.client_os is not None:
-            result['ClientOS'] = self.client_os
-        if self.client_version is not None:
-            result['ClientVersion'] = self.client_version
-        if self.end_user_id is not None:
-            result['EndUserId'] = self.end_user_id
-        if self.extends_access_token is not None:
-            result['ExtendsAccessToken'] = self.extends_access_token
-        if self.idp_id is not None:
-            result['IdpId'] = self.idp_id
-        if self.login_region_id is not None:
-            result['LoginRegionId'] = self.login_region_id
-        if self.login_token is not None:
-            result['LoginToken'] = self.login_token
-        if self.product_type is not None:
-            result['ProductType'] = self.product_type
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.session_id is not None:
-            result['SessionId'] = self.session_id
-        if self.trace_id is not None:
-            result['TraceId'] = self.trace_id
-        if self.uuid is not None:
-            result['Uuid'] = self.uuid
-        if self.wy_id is not None:
-            result['WyId'] = self.wy_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AliUid') is not None:
-            self.ali_uid = m.get('AliUid')
-        if m.get('ApiType') is not None:
-            self.api_type = m.get('ApiType')
-        if m.get('BizRegionId') is not None:
-            self.biz_region_id = m.get('BizRegionId')
-        if m.get('ClientChannel') is not None:
-            self.client_channel = m.get('ClientChannel')
-        if m.get('ClientId') is not None:
-            self.client_id = m.get('ClientId')
-        if m.get('ClientIp') is not None:
-            self.client_ip = m.get('ClientIp')
-        if m.get('ClientOS') is not None:
-            self.client_os = m.get('ClientOS')
-        if m.get('ClientVersion') is not None:
-            self.client_version = m.get('ClientVersion')
-        if m.get('EndUserId') is not None:
-            self.end_user_id = m.get('EndUserId')
-        if m.get('ExtendsAccessToken') is not None:
-            self.extends_access_token = m.get('ExtendsAccessToken')
-        if m.get('IdpId') is not None:
-            self.idp_id = m.get('IdpId')
-        if m.get('LoginRegionId') is not None:
-            self.login_region_id = m.get('LoginRegionId')
-        if m.get('LoginToken') is not None:
-            self.login_token = m.get('LoginToken')
-        if m.get('ProductType') is not None:
-            self.product_type = m.get('ProductType')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('SessionId') is not None:
-            self.session_id = m.get('SessionId')
-        if m.get('TraceId') is not None:
-            self.trace_id = m.get('TraceId')
-        if m.get('Uuid') is not None:
-            self.uuid = m.get('Uuid')
-        if m.get('WyId') is not None:
-            self.wy_id = m.get('WyId')
-        return self
-
-
-class ListLFUAppResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        app_name: str = None,
-        app_version: str = None,
-        app_version_name: str = None,
-        icon_url: str = None,
-        is_auth: bool = None,
-        os_type: str = None,
-        request_id: str = None,
-    ):
-        self.app_id = app_id
-        self.app_name = app_name
-        self.app_version = app_version
-        self.app_version_name = app_version_name
-        self.icon_url = icon_url
-        self.is_auth = is_auth
-        self.os_type = os_type
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.app_name is not None:
-            result['AppName'] = self.app_name
-        if self.app_version is not None:
-            result['AppVersion'] = self.app_version
-        if self.app_version_name is not None:
-            result['AppVersionName'] = self.app_version_name
-        if self.icon_url is not None:
-            result['IconUrl'] = self.icon_url
-        if self.is_auth is not None:
-            result['IsAuth'] = self.is_auth
-        if self.os_type is not None:
-            result['OsType'] = self.os_type
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('AppName') is not None:
-            self.app_name = m.get('AppName')
-        if m.get('AppVersion') is not None:
-            self.app_version = m.get('AppVersion')
-        if m.get('AppVersionName') is not None:
-            self.app_version_name = m.get('AppVersionName')
-        if m.get('IconUrl') is not None:
-            self.icon_url = m.get('IconUrl')
-        if m.get('IsAuth') is not None:
-            self.is_auth = m.get('IsAuth')
-        if m.get('OsType') is not None:
-            self.os_type = m.get('OsType')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class ListLFUAppResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        count: int = None,
-        data: List[ListLFUAppResponseBodyData] = None,
-        http_status_code: int = None,
-        message: str = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.code = code
-        self.count = count
-        self.data = data
-        self.http_status_code = http_status_code
-        self.message = message
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        if self.data:
-            for k in self.data:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.count is not None:
-            result['Count'] = self.count
-        result['Data'] = []
-        if self.data is not None:
-            for k in self.data:
-                result['Data'].append(k.to_map() if k else None)
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Count') is not None:
-            self.count = m.get('Count')
-        self.data = []
-        if m.get('Data') is not None:
-            for k in m.get('Data'):
-                temp_model = ListLFUAppResponseBodyData()
-                self.data.append(temp_model.from_map(k))
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class ListLFUAppResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListLFUAppResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListLFUAppResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1279,6 +987,579 @@ class ListRunningAppsResponse(TeaModel):
         return self
 
 
+class ResetAppResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        app_instance_group_id: str = None,
+        biz_region_id: str = None,
+        client_id: str = None,
+        client_ip: str = None,
+        client_os: str = None,
+        client_version: str = None,
+        end_user_id: str = None,
+        login_region_id: str = None,
+        login_token: str = None,
+        product_type: str = None,
+        resource_ids: List[str] = None,
+        session_id: str = None,
+        uuid: str = None,
+    ):
+        # This parameter is required.
+        self.app_instance_group_id = app_instance_group_id
+        self.biz_region_id = biz_region_id
+        # This parameter is required.
+        self.client_id = client_id
+        self.client_ip = client_ip
+        self.client_os = client_os
+        self.client_version = client_version
+        self.end_user_id = end_user_id
+        self.login_region_id = login_region_id
+        # This parameter is required.
+        self.login_token = login_token
+        # This parameter is required.
+        self.product_type = product_type
+        # This parameter is required.
+        self.resource_ids = resource_ids
+        # This parameter is required.
+        self.session_id = session_id
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_instance_group_id is not None:
+            result['AppInstanceGroupId'] = self.app_instance_group_id
+        if self.biz_region_id is not None:
+            result['BizRegionId'] = self.biz_region_id
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.client_ip is not None:
+            result['ClientIp'] = self.client_ip
+        if self.client_os is not None:
+            result['ClientOS'] = self.client_os
+        if self.client_version is not None:
+            result['ClientVersion'] = self.client_version
+        if self.end_user_id is not None:
+            result['EndUserId'] = self.end_user_id
+        if self.login_region_id is not None:
+            result['LoginRegionId'] = self.login_region_id
+        if self.login_token is not None:
+            result['LoginToken'] = self.login_token
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.resource_ids is not None:
+            result['ResourceIds'] = self.resource_ids
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppInstanceGroupId') is not None:
+            self.app_instance_group_id = m.get('AppInstanceGroupId')
+        if m.get('BizRegionId') is not None:
+            self.biz_region_id = m.get('BizRegionId')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('ClientIp') is not None:
+            self.client_ip = m.get('ClientIp')
+        if m.get('ClientOS') is not None:
+            self.client_os = m.get('ClientOS')
+        if m.get('ClientVersion') is not None:
+            self.client_version = m.get('ClientVersion')
+        if m.get('EndUserId') is not None:
+            self.end_user_id = m.get('EndUserId')
+        if m.get('LoginRegionId') is not None:
+            self.login_region_id = m.get('LoginRegionId')
+        if m.get('LoginToken') is not None:
+            self.login_token = m.get('LoginToken')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('ResourceIds') is not None:
+            self.resource_ids = m.get('ResourceIds')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class ResetAppResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ResetAppResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ResetAppResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ResetAppResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RestartAppResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        app_instance_group_id: str = None,
+        biz_region_id: str = None,
+        client_id: str = None,
+        client_ip: str = None,
+        client_os: str = None,
+        client_version: str = None,
+        end_user_id: str = None,
+        login_region_id: str = None,
+        login_token: str = None,
+        product_type: str = None,
+        resource_ids: List[str] = None,
+        session_id: str = None,
+        uuid: str = None,
+    ):
+        # This parameter is required.
+        self.app_instance_group_id = app_instance_group_id
+        self.biz_region_id = biz_region_id
+        # This parameter is required.
+        self.client_id = client_id
+        self.client_ip = client_ip
+        self.client_os = client_os
+        self.client_version = client_version
+        self.end_user_id = end_user_id
+        self.login_region_id = login_region_id
+        # This parameter is required.
+        self.login_token = login_token
+        # This parameter is required.
+        self.product_type = product_type
+        # This parameter is required.
+        self.resource_ids = resource_ids
+        # This parameter is required.
+        self.session_id = session_id
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_instance_group_id is not None:
+            result['AppInstanceGroupId'] = self.app_instance_group_id
+        if self.biz_region_id is not None:
+            result['BizRegionId'] = self.biz_region_id
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.client_ip is not None:
+            result['ClientIp'] = self.client_ip
+        if self.client_os is not None:
+            result['ClientOS'] = self.client_os
+        if self.client_version is not None:
+            result['ClientVersion'] = self.client_version
+        if self.end_user_id is not None:
+            result['EndUserId'] = self.end_user_id
+        if self.login_region_id is not None:
+            result['LoginRegionId'] = self.login_region_id
+        if self.login_token is not None:
+            result['LoginToken'] = self.login_token
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.resource_ids is not None:
+            result['ResourceIds'] = self.resource_ids
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppInstanceGroupId') is not None:
+            self.app_instance_group_id = m.get('AppInstanceGroupId')
+        if m.get('BizRegionId') is not None:
+            self.biz_region_id = m.get('BizRegionId')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('ClientIp') is not None:
+            self.client_ip = m.get('ClientIp')
+        if m.get('ClientOS') is not None:
+            self.client_os = m.get('ClientOS')
+        if m.get('ClientVersion') is not None:
+            self.client_version = m.get('ClientVersion')
+        if m.get('EndUserId') is not None:
+            self.end_user_id = m.get('EndUserId')
+        if m.get('LoginRegionId') is not None:
+            self.login_region_id = m.get('LoginRegionId')
+        if m.get('LoginToken') is not None:
+            self.login_token = m.get('LoginToken')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('ResourceIds') is not None:
+            self.resource_ids = m.get('ResourceIds')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class RestartAppResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class RestartAppResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RestartAppResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RestartAppResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StartAppResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        app_instance_group_id: str = None,
+        biz_region_id: str = None,
+        client_id: str = None,
+        client_ip: str = None,
+        client_os: str = None,
+        client_version: str = None,
+        end_user_id: str = None,
+        login_region_id: str = None,
+        login_token: str = None,
+        product_type: str = None,
+        resource_ids: List[str] = None,
+        session_id: str = None,
+        uuid: str = None,
+    ):
+        # This parameter is required.
+        self.app_instance_group_id = app_instance_group_id
+        self.biz_region_id = biz_region_id
+        # This parameter is required.
+        self.client_id = client_id
+        self.client_ip = client_ip
+        self.client_os = client_os
+        self.client_version = client_version
+        self.end_user_id = end_user_id
+        self.login_region_id = login_region_id
+        # This parameter is required.
+        self.login_token = login_token
+        # This parameter is required.
+        self.product_type = product_type
+        # This parameter is required.
+        self.resource_ids = resource_ids
+        # This parameter is required.
+        self.session_id = session_id
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_instance_group_id is not None:
+            result['AppInstanceGroupId'] = self.app_instance_group_id
+        if self.biz_region_id is not None:
+            result['BizRegionId'] = self.biz_region_id
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.client_ip is not None:
+            result['ClientIp'] = self.client_ip
+        if self.client_os is not None:
+            result['ClientOS'] = self.client_os
+        if self.client_version is not None:
+            result['ClientVersion'] = self.client_version
+        if self.end_user_id is not None:
+            result['EndUserId'] = self.end_user_id
+        if self.login_region_id is not None:
+            result['LoginRegionId'] = self.login_region_id
+        if self.login_token is not None:
+            result['LoginToken'] = self.login_token
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.resource_ids is not None:
+            result['ResourceIds'] = self.resource_ids
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppInstanceGroupId') is not None:
+            self.app_instance_group_id = m.get('AppInstanceGroupId')
+        if m.get('BizRegionId') is not None:
+            self.biz_region_id = m.get('BizRegionId')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('ClientIp') is not None:
+            self.client_ip = m.get('ClientIp')
+        if m.get('ClientOS') is not None:
+            self.client_os = m.get('ClientOS')
+        if m.get('ClientVersion') is not None:
+            self.client_version = m.get('ClientVersion')
+        if m.get('EndUserId') is not None:
+            self.end_user_id = m.get('EndUserId')
+        if m.get('LoginRegionId') is not None:
+            self.login_region_id = m.get('LoginRegionId')
+        if m.get('LoginToken') is not None:
+            self.login_token = m.get('LoginToken')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('ResourceIds') is not None:
+            self.resource_ids = m.get('ResourceIds')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class StartAppResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class StartAppResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartAppResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartAppResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StopAppRequest(TeaModel):
     def __init__(
         self,
@@ -1490,6 +1771,197 @@ class StopAppResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StopAppResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StopAppResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        app_instance_group_id: str = None,
+        biz_region_id: str = None,
+        client_id: str = None,
+        client_ip: str = None,
+        client_os: str = None,
+        client_version: str = None,
+        end_user_id: str = None,
+        login_region_id: str = None,
+        login_token: str = None,
+        product_type: str = None,
+        resource_ids: List[str] = None,
+        session_id: str = None,
+        uuid: str = None,
+    ):
+        # This parameter is required.
+        self.app_instance_group_id = app_instance_group_id
+        self.biz_region_id = biz_region_id
+        # This parameter is required.
+        self.client_id = client_id
+        self.client_ip = client_ip
+        self.client_os = client_os
+        self.client_version = client_version
+        self.end_user_id = end_user_id
+        self.login_region_id = login_region_id
+        # This parameter is required.
+        self.login_token = login_token
+        # This parameter is required.
+        self.product_type = product_type
+        # This parameter is required.
+        self.resource_ids = resource_ids
+        # This parameter is required.
+        self.session_id = session_id
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_instance_group_id is not None:
+            result['AppInstanceGroupId'] = self.app_instance_group_id
+        if self.biz_region_id is not None:
+            result['BizRegionId'] = self.biz_region_id
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.client_ip is not None:
+            result['ClientIp'] = self.client_ip
+        if self.client_os is not None:
+            result['ClientOS'] = self.client_os
+        if self.client_version is not None:
+            result['ClientVersion'] = self.client_version
+        if self.end_user_id is not None:
+            result['EndUserId'] = self.end_user_id
+        if self.login_region_id is not None:
+            result['LoginRegionId'] = self.login_region_id
+        if self.login_token is not None:
+            result['LoginToken'] = self.login_token
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.resource_ids is not None:
+            result['ResourceIds'] = self.resource_ids
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppInstanceGroupId') is not None:
+            self.app_instance_group_id = m.get('AppInstanceGroupId')
+        if m.get('BizRegionId') is not None:
+            self.biz_region_id = m.get('BizRegionId')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('ClientIp') is not None:
+            self.client_ip = m.get('ClientIp')
+        if m.get('ClientOS') is not None:
+            self.client_os = m.get('ClientOS')
+        if m.get('ClientVersion') is not None:
+            self.client_version = m.get('ClientVersion')
+        if m.get('EndUserId') is not None:
+            self.end_user_id = m.get('EndUserId')
+        if m.get('LoginRegionId') is not None:
+            self.login_region_id = m.get('LoginRegionId')
+        if m.get('LoginToken') is not None:
+            self.login_token = m.get('LoginToken')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('ResourceIds') is not None:
+            self.resource_ids = m.get('ResourceIds')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class StopAppResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class StopAppResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopAppResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopAppResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

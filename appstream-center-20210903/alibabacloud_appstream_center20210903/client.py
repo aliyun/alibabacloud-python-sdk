@@ -64,6 +64,8 @@ class Client(OpenApiClient):
             body['AppInstanceId'] = request.app_instance_id
         if not UtilClient.is_unset(request.app_version):
             body['AppVersion'] = request.app_version
+        if not UtilClient.is_unset(request.auto_connect_in_queue):
+            body['AutoConnectInQueue'] = request.auto_connect_in_queue
         if not UtilClient.is_unset(request.biz_region_id):
             body['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.client_id):
@@ -72,12 +74,16 @@ class Client(OpenApiClient):
             body['ClientIp'] = request.client_ip
         if not UtilClient.is_unset(request.client_os):
             body['ClientOS'] = request.client_os
+        if not UtilClient.is_unset(request.client_type):
+            body['ClientType'] = request.client_type
         if not UtilClient.is_unset(request.client_version):
             body['ClientVersion'] = request.client_version
         if not UtilClient.is_unset(request.connection_properties):
             body['ConnectionProperties'] = request.connection_properties
         if not UtilClient.is_unset(request.end_user_id):
             body['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.environment_config):
+            body['EnvironmentConfig'] = request.environment_config
         if not UtilClient.is_unset(request.login_region_id):
             body['LoginRegionId'] = request.login_region_id
         if not UtilClient.is_unset(request.login_token):
@@ -110,10 +116,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210903_models.GetConnectionTicketResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210903_models.GetConnectionTicketResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210903_models.GetConnectionTicketResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_connection_ticket_with_options_async(
         self,
@@ -137,6 +149,8 @@ class Client(OpenApiClient):
             body['AppInstanceId'] = request.app_instance_id
         if not UtilClient.is_unset(request.app_version):
             body['AppVersion'] = request.app_version
+        if not UtilClient.is_unset(request.auto_connect_in_queue):
+            body['AutoConnectInQueue'] = request.auto_connect_in_queue
         if not UtilClient.is_unset(request.biz_region_id):
             body['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.client_id):
@@ -145,12 +159,16 @@ class Client(OpenApiClient):
             body['ClientIp'] = request.client_ip
         if not UtilClient.is_unset(request.client_os):
             body['ClientOS'] = request.client_os
+        if not UtilClient.is_unset(request.client_type):
+            body['ClientType'] = request.client_type
         if not UtilClient.is_unset(request.client_version):
             body['ClientVersion'] = request.client_version
         if not UtilClient.is_unset(request.connection_properties):
             body['ConnectionProperties'] = request.connection_properties
         if not UtilClient.is_unset(request.end_user_id):
             body['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.environment_config):
+            body['EnvironmentConfig'] = request.environment_config
         if not UtilClient.is_unset(request.login_region_id):
             body['LoginRegionId'] = request.login_region_id
         if not UtilClient.is_unset(request.login_token):
@@ -183,10 +201,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210903_models.GetConnectionTicketResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210903_models.GetConnectionTicketResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210903_models.GetConnectionTicketResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_connection_ticket(
         self,
@@ -213,166 +237,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_connection_ticket_with_options_async(request, runtime)
-
-    def list_lfuapp_with_options(
-        self,
-        request: appstream_center_20210903_models.ListLFUAppRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> appstream_center_20210903_models.ListLFUAppResponse:
-        """
-        @param request: ListLFUAppRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListLFUAppResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.ali_uid):
-            body['AliUid'] = request.ali_uid
-        if not UtilClient.is_unset(request.api_type):
-            body['ApiType'] = request.api_type
-        if not UtilClient.is_unset(request.biz_region_id):
-            body['BizRegionId'] = request.biz_region_id
-        if not UtilClient.is_unset(request.client_channel):
-            body['ClientChannel'] = request.client_channel
-        if not UtilClient.is_unset(request.client_id):
-            body['ClientId'] = request.client_id
-        if not UtilClient.is_unset(request.client_ip):
-            body['ClientIp'] = request.client_ip
-        if not UtilClient.is_unset(request.client_os):
-            body['ClientOS'] = request.client_os
-        if not UtilClient.is_unset(request.client_version):
-            body['ClientVersion'] = request.client_version
-        if not UtilClient.is_unset(request.end_user_id):
-            body['EndUserId'] = request.end_user_id
-        if not UtilClient.is_unset(request.extends_access_token):
-            body['ExtendsAccessToken'] = request.extends_access_token
-        if not UtilClient.is_unset(request.idp_id):
-            body['IdpId'] = request.idp_id
-        if not UtilClient.is_unset(request.login_region_id):
-            body['LoginRegionId'] = request.login_region_id
-        if not UtilClient.is_unset(request.login_token):
-            body['LoginToken'] = request.login_token
-        if not UtilClient.is_unset(request.product_type):
-            body['ProductType'] = request.product_type
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.session_id):
-            body['SessionId'] = request.session_id
-        if not UtilClient.is_unset(request.trace_id):
-            body['TraceId'] = request.trace_id
-        if not UtilClient.is_unset(request.uuid):
-            body['Uuid'] = request.uuid
-        if not UtilClient.is_unset(request.wy_id):
-            body['WyId'] = request.wy_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ListLFUApp',
-            version='2021-09-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='Anonymous',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            appstream_center_20210903_models.ListLFUAppResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_lfuapp_with_options_async(
-        self,
-        request: appstream_center_20210903_models.ListLFUAppRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> appstream_center_20210903_models.ListLFUAppResponse:
-        """
-        @param request: ListLFUAppRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListLFUAppResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.ali_uid):
-            body['AliUid'] = request.ali_uid
-        if not UtilClient.is_unset(request.api_type):
-            body['ApiType'] = request.api_type
-        if not UtilClient.is_unset(request.biz_region_id):
-            body['BizRegionId'] = request.biz_region_id
-        if not UtilClient.is_unset(request.client_channel):
-            body['ClientChannel'] = request.client_channel
-        if not UtilClient.is_unset(request.client_id):
-            body['ClientId'] = request.client_id
-        if not UtilClient.is_unset(request.client_ip):
-            body['ClientIp'] = request.client_ip
-        if not UtilClient.is_unset(request.client_os):
-            body['ClientOS'] = request.client_os
-        if not UtilClient.is_unset(request.client_version):
-            body['ClientVersion'] = request.client_version
-        if not UtilClient.is_unset(request.end_user_id):
-            body['EndUserId'] = request.end_user_id
-        if not UtilClient.is_unset(request.extends_access_token):
-            body['ExtendsAccessToken'] = request.extends_access_token
-        if not UtilClient.is_unset(request.idp_id):
-            body['IdpId'] = request.idp_id
-        if not UtilClient.is_unset(request.login_region_id):
-            body['LoginRegionId'] = request.login_region_id
-        if not UtilClient.is_unset(request.login_token):
-            body['LoginToken'] = request.login_token
-        if not UtilClient.is_unset(request.product_type):
-            body['ProductType'] = request.product_type
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.session_id):
-            body['SessionId'] = request.session_id
-        if not UtilClient.is_unset(request.trace_id):
-            body['TraceId'] = request.trace_id
-        if not UtilClient.is_unset(request.uuid):
-            body['Uuid'] = request.uuid
-        if not UtilClient.is_unset(request.wy_id):
-            body['WyId'] = request.wy_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ListLFUApp',
-            version='2021-09-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='Anonymous',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            appstream_center_20210903_models.ListLFUAppResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_lfuapp(
-        self,
-        request: appstream_center_20210903_models.ListLFUAppRequest,
-    ) -> appstream_center_20210903_models.ListLFUAppResponse:
-        """
-        @param request: ListLFUAppRequest
-        @return: ListLFUAppResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.list_lfuapp_with_options(request, runtime)
-
-    async def list_lfuapp_async(
-        self,
-        request: appstream_center_20210903_models.ListLFUAppRequest,
-    ) -> appstream_center_20210903_models.ListLFUAppResponse:
-        """
-        @param request: ListLFUAppRequest
-        @return: ListLFUAppResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.list_lfuapp_with_options_async(request, runtime)
 
     def list_published_app_info_with_options(
         self,
@@ -432,10 +296,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210903_models.ListPublishedAppInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210903_models.ListPublishedAppInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210903_models.ListPublishedAppInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_published_app_info_with_options_async(
         self,
@@ -495,10 +365,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210903_models.ListPublishedAppInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210903_models.ListPublishedAppInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210903_models.ListPublishedAppInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_published_app_info(
         self,
@@ -578,10 +454,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210903_models.ListRunningAppsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210903_models.ListRunningAppsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210903_models.ListRunningAppsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_running_apps_with_options_async(
         self,
@@ -635,10 +517,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210903_models.ListRunningAppsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210903_models.ListRunningAppsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210903_models.ListRunningAppsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_running_apps(
         self,
@@ -665,6 +553,474 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_running_apps_with_options_async(request, runtime)
+
+    def reset_app_resources_with_options(
+        self,
+        request: appstream_center_20210903_models.ResetAppResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210903_models.ResetAppResourcesResponse:
+        """
+        @summary 重置应用资源
+        
+        @param request: ResetAppResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetAppResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.biz_region_id):
+            body['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.client_id):
+            body['ClientId'] = request.client_id
+        if not UtilClient.is_unset(request.client_ip):
+            body['ClientIp'] = request.client_ip
+        if not UtilClient.is_unset(request.client_os):
+            body['ClientOS'] = request.client_os
+        if not UtilClient.is_unset(request.client_version):
+            body['ClientVersion'] = request.client_version
+        if not UtilClient.is_unset(request.end_user_id):
+            body['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.login_region_id):
+            body['LoginRegionId'] = request.login_region_id
+        if not UtilClient.is_unset(request.login_token):
+            body['LoginToken'] = request.login_token
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_ids):
+            body['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ResetAppResources',
+            version='2021-09-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='Anonymous',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210903_models.ResetAppResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210903_models.ResetAppResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def reset_app_resources_with_options_async(
+        self,
+        request: appstream_center_20210903_models.ResetAppResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210903_models.ResetAppResourcesResponse:
+        """
+        @summary 重置应用资源
+        
+        @param request: ResetAppResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetAppResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.biz_region_id):
+            body['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.client_id):
+            body['ClientId'] = request.client_id
+        if not UtilClient.is_unset(request.client_ip):
+            body['ClientIp'] = request.client_ip
+        if not UtilClient.is_unset(request.client_os):
+            body['ClientOS'] = request.client_os
+        if not UtilClient.is_unset(request.client_version):
+            body['ClientVersion'] = request.client_version
+        if not UtilClient.is_unset(request.end_user_id):
+            body['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.login_region_id):
+            body['LoginRegionId'] = request.login_region_id
+        if not UtilClient.is_unset(request.login_token):
+            body['LoginToken'] = request.login_token
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_ids):
+            body['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ResetAppResources',
+            version='2021-09-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='Anonymous',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210903_models.ResetAppResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210903_models.ResetAppResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def reset_app_resources(
+        self,
+        request: appstream_center_20210903_models.ResetAppResourcesRequest,
+    ) -> appstream_center_20210903_models.ResetAppResourcesResponse:
+        """
+        @summary 重置应用资源
+        
+        @param request: ResetAppResourcesRequest
+        @return: ResetAppResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.reset_app_resources_with_options(request, runtime)
+
+    async def reset_app_resources_async(
+        self,
+        request: appstream_center_20210903_models.ResetAppResourcesRequest,
+    ) -> appstream_center_20210903_models.ResetAppResourcesResponse:
+        """
+        @summary 重置应用资源
+        
+        @param request: ResetAppResourcesRequest
+        @return: ResetAppResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.reset_app_resources_with_options_async(request, runtime)
+
+    def restart_app_resources_with_options(
+        self,
+        request: appstream_center_20210903_models.RestartAppResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210903_models.RestartAppResourcesResponse:
+        """
+        @summary 重启应用资源
+        
+        @param request: RestartAppResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartAppResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.biz_region_id):
+            body['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.client_id):
+            body['ClientId'] = request.client_id
+        if not UtilClient.is_unset(request.client_ip):
+            body['ClientIp'] = request.client_ip
+        if not UtilClient.is_unset(request.client_os):
+            body['ClientOS'] = request.client_os
+        if not UtilClient.is_unset(request.client_version):
+            body['ClientVersion'] = request.client_version
+        if not UtilClient.is_unset(request.end_user_id):
+            body['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.login_region_id):
+            body['LoginRegionId'] = request.login_region_id
+        if not UtilClient.is_unset(request.login_token):
+            body['LoginToken'] = request.login_token
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_ids):
+            body['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RestartAppResources',
+            version='2021-09-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='Anonymous',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210903_models.RestartAppResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210903_models.RestartAppResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def restart_app_resources_with_options_async(
+        self,
+        request: appstream_center_20210903_models.RestartAppResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210903_models.RestartAppResourcesResponse:
+        """
+        @summary 重启应用资源
+        
+        @param request: RestartAppResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartAppResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.biz_region_id):
+            body['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.client_id):
+            body['ClientId'] = request.client_id
+        if not UtilClient.is_unset(request.client_ip):
+            body['ClientIp'] = request.client_ip
+        if not UtilClient.is_unset(request.client_os):
+            body['ClientOS'] = request.client_os
+        if not UtilClient.is_unset(request.client_version):
+            body['ClientVersion'] = request.client_version
+        if not UtilClient.is_unset(request.end_user_id):
+            body['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.login_region_id):
+            body['LoginRegionId'] = request.login_region_id
+        if not UtilClient.is_unset(request.login_token):
+            body['LoginToken'] = request.login_token
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_ids):
+            body['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RestartAppResources',
+            version='2021-09-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='Anonymous',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210903_models.RestartAppResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210903_models.RestartAppResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def restart_app_resources(
+        self,
+        request: appstream_center_20210903_models.RestartAppResourcesRequest,
+    ) -> appstream_center_20210903_models.RestartAppResourcesResponse:
+        """
+        @summary 重启应用资源
+        
+        @param request: RestartAppResourcesRequest
+        @return: RestartAppResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.restart_app_resources_with_options(request, runtime)
+
+    async def restart_app_resources_async(
+        self,
+        request: appstream_center_20210903_models.RestartAppResourcesRequest,
+    ) -> appstream_center_20210903_models.RestartAppResourcesResponse:
+        """
+        @summary 重启应用资源
+        
+        @param request: RestartAppResourcesRequest
+        @return: RestartAppResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.restart_app_resources_with_options_async(request, runtime)
+
+    def start_app_resources_with_options(
+        self,
+        request: appstream_center_20210903_models.StartAppResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210903_models.StartAppResourcesResponse:
+        """
+        @summary 启动应用资源
+        
+        @param request: StartAppResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartAppResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.biz_region_id):
+            body['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.client_id):
+            body['ClientId'] = request.client_id
+        if not UtilClient.is_unset(request.client_ip):
+            body['ClientIp'] = request.client_ip
+        if not UtilClient.is_unset(request.client_os):
+            body['ClientOS'] = request.client_os
+        if not UtilClient.is_unset(request.client_version):
+            body['ClientVersion'] = request.client_version
+        if not UtilClient.is_unset(request.end_user_id):
+            body['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.login_region_id):
+            body['LoginRegionId'] = request.login_region_id
+        if not UtilClient.is_unset(request.login_token):
+            body['LoginToken'] = request.login_token
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_ids):
+            body['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartAppResources',
+            version='2021-09-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='Anonymous',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210903_models.StartAppResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210903_models.StartAppResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def start_app_resources_with_options_async(
+        self,
+        request: appstream_center_20210903_models.StartAppResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210903_models.StartAppResourcesResponse:
+        """
+        @summary 启动应用资源
+        
+        @param request: StartAppResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartAppResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.biz_region_id):
+            body['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.client_id):
+            body['ClientId'] = request.client_id
+        if not UtilClient.is_unset(request.client_ip):
+            body['ClientIp'] = request.client_ip
+        if not UtilClient.is_unset(request.client_os):
+            body['ClientOS'] = request.client_os
+        if not UtilClient.is_unset(request.client_version):
+            body['ClientVersion'] = request.client_version
+        if not UtilClient.is_unset(request.end_user_id):
+            body['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.login_region_id):
+            body['LoginRegionId'] = request.login_region_id
+        if not UtilClient.is_unset(request.login_token):
+            body['LoginToken'] = request.login_token
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_ids):
+            body['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartAppResources',
+            version='2021-09-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='Anonymous',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210903_models.StartAppResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210903_models.StartAppResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def start_app_resources(
+        self,
+        request: appstream_center_20210903_models.StartAppResourcesRequest,
+    ) -> appstream_center_20210903_models.StartAppResourcesResponse:
+        """
+        @summary 启动应用资源
+        
+        @param request: StartAppResourcesRequest
+        @return: StartAppResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.start_app_resources_with_options(request, runtime)
+
+    async def start_app_resources_async(
+        self,
+        request: appstream_center_20210903_models.StartAppResourcesRequest,
+    ) -> appstream_center_20210903_models.StartAppResourcesResponse:
+        """
+        @summary 启动应用资源
+        
+        @param request: StartAppResourcesRequest
+        @return: StartAppResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.start_app_resources_with_options_async(request, runtime)
 
     def stop_app_with_options(
         self,
@@ -736,10 +1092,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210903_models.StopAppResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210903_models.StopAppResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210903_models.StopAppResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def stop_app_with_options_async(
         self,
@@ -811,10 +1173,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210903_models.StopAppResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210903_models.StopAppResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210903_models.StopAppResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def stop_app(
         self,
@@ -841,6 +1209,162 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.stop_app_with_options_async(request, runtime)
+
+    def stop_app_resources_with_options(
+        self,
+        request: appstream_center_20210903_models.StopAppResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210903_models.StopAppResourcesResponse:
+        """
+        @summary 关闭应用资源
+        
+        @param request: StopAppResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopAppResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.biz_region_id):
+            body['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.client_id):
+            body['ClientId'] = request.client_id
+        if not UtilClient.is_unset(request.client_ip):
+            body['ClientIp'] = request.client_ip
+        if not UtilClient.is_unset(request.client_os):
+            body['ClientOS'] = request.client_os
+        if not UtilClient.is_unset(request.client_version):
+            body['ClientVersion'] = request.client_version
+        if not UtilClient.is_unset(request.end_user_id):
+            body['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.login_region_id):
+            body['LoginRegionId'] = request.login_region_id
+        if not UtilClient.is_unset(request.login_token):
+            body['LoginToken'] = request.login_token
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_ids):
+            body['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StopAppResources',
+            version='2021-09-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='Anonymous',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210903_models.StopAppResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210903_models.StopAppResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def stop_app_resources_with_options_async(
+        self,
+        request: appstream_center_20210903_models.StopAppResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210903_models.StopAppResourcesResponse:
+        """
+        @summary 关闭应用资源
+        
+        @param request: StopAppResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopAppResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.biz_region_id):
+            body['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.client_id):
+            body['ClientId'] = request.client_id
+        if not UtilClient.is_unset(request.client_ip):
+            body['ClientIp'] = request.client_ip
+        if not UtilClient.is_unset(request.client_os):
+            body['ClientOS'] = request.client_os
+        if not UtilClient.is_unset(request.client_version):
+            body['ClientVersion'] = request.client_version
+        if not UtilClient.is_unset(request.end_user_id):
+            body['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.login_region_id):
+            body['LoginRegionId'] = request.login_region_id
+        if not UtilClient.is_unset(request.login_token):
+            body['LoginToken'] = request.login_token
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_ids):
+            body['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StopAppResources',
+            version='2021-09-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='Anonymous',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210903_models.StopAppResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210903_models.StopAppResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def stop_app_resources(
+        self,
+        request: appstream_center_20210903_models.StopAppResourcesRequest,
+    ) -> appstream_center_20210903_models.StopAppResourcesResponse:
+        """
+        @summary 关闭应用资源
+        
+        @param request: StopAppResourcesRequest
+        @return: StopAppResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.stop_app_resources_with_options(request, runtime)
+
+    async def stop_app_resources_async(
+        self,
+        request: appstream_center_20210903_models.StopAppResourcesRequest,
+    ) -> appstream_center_20210903_models.StopAppResourcesResponse:
+        """
+        @summary 关闭应用资源
+        
+        @param request: StopAppResourcesRequest
+        @return: StopAppResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_app_resources_with_options_async(request, runtime)
 
     def unbind_with_options(
         self,
@@ -896,10 +1420,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210903_models.UnbindResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210903_models.UnbindResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210903_models.UnbindResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def unbind_with_options_async(
         self,
@@ -955,10 +1485,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210903_models.UnbindResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210903_models.UnbindResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210903_models.UnbindResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def unbind(
         self,
