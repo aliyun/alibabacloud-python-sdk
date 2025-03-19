@@ -5831,14 +5831,34 @@ class GetResourceDirectoryResponseBodyResourceDirectory(TeaModel):
         resource_directory_id: str = None,
         root_folder_id: str = None,
     ):
+        # The status of the Control Policy feature. Valid values:
+        # 
+        # - Enabled: The feature is enabled.
+        # - PendingEnable: The feature is being enabled.
+        # - Disabled: The feature is disabled.
+        # - PendingDisable: The feature is being disabled.
         self.control_policy_status = control_policy_status
+        # The time when the resource directory was enabled.
         self.create_time = create_time
+        # The real-name verification information.
         self.identity_information = identity_information
+        # The ID of the management account.
         self.master_account_id = master_account_id
+        # The name of the management account.
         self.master_account_name = master_account_name
+        # The status of the Member Display Name Synchronization feature. Valid values:
+        # 
+        # *   Enabled
+        # *   Disabled
         self.member_account_display_name_sync_status = member_account_display_name_sync_status
+        # The status of the member deletion feature. Valid values:
+        # 
+        # - Enabled: The feature is enabled. You can call the [DeleteAccount](~~DeleteAccount~~) operation to delete members of the resource account type.
+        # - Disabled: The feature is disabled. You cannot delete members of the resource account type.
         self.member_deletion_status = member_deletion_status
+        # The ID of the resource directory.
         self.resource_directory_id = resource_directory_id
+        # The ID of the Root folder.
         self.root_folder_id = root_folder_id
 
     def validate(self):
@@ -5899,7 +5919,9 @@ class GetResourceDirectoryResponseBody(TeaModel):
         request_id: str = None,
         resource_directory: GetResourceDirectoryResponseBodyResourceDirectory = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the resource directory.
         self.resource_directory = resource_directory
 
     def validate(self):
@@ -6313,7 +6335,11 @@ class ListAccountsRequest(TeaModel):
         # *   false (default value)
         # *   true
         self.include_tags = include_tags
+        # The number of entries per page. After you configure this parameter, token-based paging is preferentially used.
+        # 
+        # Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. If you leave this parameter empty, the query starts from the beginning.
         self.next_token = next_token
         # The number of the page to return.
         # 
@@ -6634,6 +6660,7 @@ class ListAccountsResponseBody(TeaModel):
     ):
         # The information about the members.
         self.accounts = accounts
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
         # The page number of the returned page.
         self.page_number = page_number
@@ -7365,7 +7392,9 @@ class ListControlPoliciesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -7409,11 +7438,11 @@ class ListControlPoliciesRequest(TeaModel):
         # 
         # > This parameter is available only for system access control policies.
         self.language = language
-        # The number of the page to return.
+        # The page number.
         # 
-        # Pages start from page 1. Default value: 1.
+        # Page starts from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
@@ -7422,6 +7451,7 @@ class ListControlPoliciesRequest(TeaModel):
         # *   System: system access control policy
         # *   Custom: custom access control policy
         self.policy_type = policy_type
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -7474,7 +7504,9 @@ class ListControlPoliciesResponseBodyControlPoliciesControlPolicyTagsTag(TeaMode
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -7569,6 +7601,7 @@ class ListControlPoliciesResponseBodyControlPoliciesControlPolicy(TeaModel):
         # *   System: system access control policy
         # *   Custom: custom access control policy
         self.policy_type = policy_type
+        # The tags.
         self.tags = tags
         # The time when the access control policy was updated.
         self.update_date = update_date
@@ -7671,7 +7704,7 @@ class ListControlPoliciesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information of the access control policies.
+        # The access control policies.
         self.control_policies = control_policies
         # The page number of the returned page.
         self.page_number = page_number
@@ -11988,6 +12021,118 @@ class SetMemberDeletionPermissionResponse(TeaModel):
         return self
 
 
+class SetMemberDisplayNameSyncStatusRequest(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+    ):
+        # The status of the Member Display Name Synchronization feature. Valid values:
+        # 
+        # *   Enabled: The feature is enabled. This indicates that the display names specified by the management account for the members will be synchronized to the basic account information of the members. The display name information will be visible and perceptible to the members. If a notification is sent to a member, the display name of the member will be used as the appellation of the member.
+        # *   Disabled: The feature is disabled. This indicates that the display names specified by the management account for the members are valid only in the resource directory and will not be updated to the basic account information of the members.
+        # 
+        # This parameter is required.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class SetMemberDisplayNameSyncStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        member_account_display_name_sync_status: str = None,
+        request_id: str = None,
+    ):
+        # The status of the Member Display Name Synchronization feature. Valid values:
+        # 
+        # *   Enabled
+        # *   Disabled
+        self.member_account_display_name_sync_status = member_account_display_name_sync_status
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.member_account_display_name_sync_status is not None:
+            result['MemberAccountDisplayNameSyncStatus'] = self.member_account_display_name_sync_status
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MemberAccountDisplayNameSyncStatus') is not None:
+            self.member_account_display_name_sync_status = m.get('MemberAccountDisplayNameSyncStatus')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SetMemberDisplayNameSyncStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetMemberDisplayNameSyncStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetMemberDisplayNameSyncStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class TagResourcesRequestTag(TeaModel):
     def __init__(
         self,
@@ -13116,8 +13261,12 @@ class UpdatePayerForAccountRequest(TeaModel):
         account_id: str = None,
         payer_account_id: str = None,
     ):
+        # The Alibaba Cloud account ID of the member.
+        # 
         # This parameter is required.
         self.account_id = account_id
+        # The ID of the billing account.
+        # 
         # This parameter is required.
         self.payer_account_id = payer_account_id
 
@@ -13150,6 +13299,7 @@ class UpdatePayerForAccountResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

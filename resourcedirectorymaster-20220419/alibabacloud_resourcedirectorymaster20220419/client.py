@@ -4051,7 +4051,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.GetResourceDirectoryResponse:
         """
-        @summary \\\\*\\* Co., Ltd.
+        @summary Queries the information of a resource directory. If you use a management account to call this API operation, the system returns the information of the resource directory that is enabled by using the management account. If you use a member to call this operation, the system returns the information of
         
         @param request: GetResourceDirectoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4085,7 +4085,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.GetResourceDirectoryResponse:
         """
-        @summary \\\\*\\* Co., Ltd.
+        @summary Queries the information of a resource directory. If you use a management account to call this API operation, the system returns the information of the resource directory that is enabled by using the management account. If you use a member to call this operation, the system returns the information of
         
         @param request: GetResourceDirectoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4116,7 +4116,7 @@ class Client(OpenApiClient):
 
     def get_resource_directory(self) -> resource_directory_master_20220419_models.GetResourceDirectoryResponse:
         """
-        @summary \\\\*\\* Co., Ltd.
+        @summary Queries the information of a resource directory. If you use a management account to call this API operation, the system returns the information of the resource directory that is enabled by using the management account. If you use a member to call this operation, the system returns the information of
         
         @return: GetResourceDirectoryResponse
         """
@@ -4125,7 +4125,7 @@ class Client(OpenApiClient):
 
     async def get_resource_directory_async(self) -> resource_directory_master_20220419_models.GetResourceDirectoryResponse:
         """
-        @summary \\\\*\\* Co., Ltd.
+        @summary Queries the information of a resource directory. If you use a management account to call this API operation, the system returns the information of the resource directory that is enabled by using the management account. If you use a member to call this operation, the system returns the information of
         
         @return: GetResourceDirectoryResponse
         """
@@ -4262,7 +4262,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListAccountsResponse:
         """
-        @summary Queries all the members in a resource directory.
+        @summary Queries a list of members in a resource directory.
         
         @description You can use only the management account of a resource directory or a delegated administrator account of a trusted service to call this operation.
         
@@ -4317,7 +4317,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListAccountsResponse:
         """
-        @summary Queries all the members in a resource directory.
+        @summary Queries a list of members in a resource directory.
         
         @description You can use only the management account of a resource directory or a delegated administrator account of a trusted service to call this operation.
         
@@ -4371,7 +4371,7 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListAccountsRequest,
     ) -> resource_directory_master_20220419_models.ListAccountsResponse:
         """
-        @summary Queries all the members in a resource directory.
+        @summary Queries a list of members in a resource directory.
         
         @description You can use only the management account of a resource directory or a delegated administrator account of a trusted service to call this operation.
         
@@ -4386,7 +4386,7 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListAccountsRequest,
     ) -> resource_directory_master_20220419_models.ListAccountsResponse:
         """
-        @summary Queries all the members in a resource directory.
+        @summary Queries a list of members in a resource directory.
         
         @description You can use only the management account of a resource directory or a delegated administrator account of a trusted service to call this operation.
         
@@ -7436,6 +7436,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.set_member_deletion_permission_with_options_async(request, runtime)
 
+    def set_member_display_name_sync_status_with_options(
+        self,
+        request: resource_directory_master_20220419_models.SetMemberDisplayNameSyncStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_directory_master_20220419_models.SetMemberDisplayNameSyncStatusResponse:
+        """
+        @summary Enables or disables the Member Display Name Synchronization feature.
+        
+        @param request: SetMemberDisplayNameSyncStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetMemberDisplayNameSyncStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetMemberDisplayNameSyncStatus',
+            version='2022-04-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                resource_directory_master_20220419_models.SetMemberDisplayNameSyncStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                resource_directory_master_20220419_models.SetMemberDisplayNameSyncStatusResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def set_member_display_name_sync_status_with_options_async(
+        self,
+        request: resource_directory_master_20220419_models.SetMemberDisplayNameSyncStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_directory_master_20220419_models.SetMemberDisplayNameSyncStatusResponse:
+        """
+        @summary Enables or disables the Member Display Name Synchronization feature.
+        
+        @param request: SetMemberDisplayNameSyncStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetMemberDisplayNameSyncStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetMemberDisplayNameSyncStatus',
+            version='2022-04-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                resource_directory_master_20220419_models.SetMemberDisplayNameSyncStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                resource_directory_master_20220419_models.SetMemberDisplayNameSyncStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def set_member_display_name_sync_status(
+        self,
+        request: resource_directory_master_20220419_models.SetMemberDisplayNameSyncStatusRequest,
+    ) -> resource_directory_master_20220419_models.SetMemberDisplayNameSyncStatusResponse:
+        """
+        @summary Enables or disables the Member Display Name Synchronization feature.
+        
+        @param request: SetMemberDisplayNameSyncStatusRequest
+        @return: SetMemberDisplayNameSyncStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.set_member_display_name_sync_status_with_options(request, runtime)
+
+    async def set_member_display_name_sync_status_async(
+        self,
+        request: resource_directory_master_20220419_models.SetMemberDisplayNameSyncStatusRequest,
+    ) -> resource_directory_master_20220419_models.SetMemberDisplayNameSyncStatusResponse:
+        """
+        @summary Enables or disables the Member Display Name Synchronization feature.
+        
+        @param request: SetMemberDisplayNameSyncStatusRequest
+        @return: SetMemberDisplayNameSyncStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.set_member_display_name_sync_status_with_options_async(request, runtime)
+
     def tag_resources_with_options(
         self,
         request: resource_directory_master_20220419_models.TagResourcesRequest,
@@ -8174,7 +8282,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.UpdatePayerForAccountResponse:
         """
-        @summary 更新成员的结算账号
+        @summary Updates the billing account of a member.
         
         @param request: UpdatePayerForAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8217,7 +8325,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.UpdatePayerForAccountResponse:
         """
-        @summary 更新成员的结算账号
+        @summary Updates the billing account of a member.
         
         @param request: UpdatePayerForAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8259,7 +8367,7 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.UpdatePayerForAccountRequest,
     ) -> resource_directory_master_20220419_models.UpdatePayerForAccountResponse:
         """
-        @summary 更新成员的结算账号
+        @summary Updates the billing account of a member.
         
         @param request: UpdatePayerForAccountRequest
         @return: UpdatePayerForAccountResponse
@@ -8272,7 +8380,7 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.UpdatePayerForAccountRequest,
     ) -> resource_directory_master_20220419_models.UpdatePayerForAccountResponse:
         """
-        @summary 更新成员的结算账号
+        @summary Updates the billing account of a member.
         
         @param request: UpdatePayerForAccountRequest
         @return: UpdatePayerForAccountResponse
