@@ -1,3 +1,20 @@
+2025-03-19 Version: 2.5.3
+- Update API CreateFile: update param OwnerAccessInheritable.
+- Update API CreateLifecyclePolicy: add param FsetIds.
+- Update API CreateLifecyclePolicy: add param LifecycleRuleType.
+- Update API CreateLifecyclePolicy: update param LifecycleRuleName.
+- Update API CreateLifecyclePolicy: update param StorageType.
+- Update API DescribeFileSystems: update response param.
+- Update API DescribeLifecyclePolicies: add param FileSystemType.
+- Update API DescribeLifecyclePolicies: add param FsetId.
+- Update API DescribeLifecyclePolicies: update param StorageType.
+- Update API DescribeLifecyclePolicies: update response param.
+- Update API ModifyLifecyclePolicy: add param EnableLifecycle.
+- Update API ModifyLifecyclePolicy: add param FsetIds.
+- Update API ModifyLifecyclePolicy: update param LifecycleRuleName.
+- Update API ModifyLifecyclePolicy: update param StorageType.
+
+
 2025-01-20 Version: 2.5.2
 - Update API DescribeFilesets: add param OrderByField.
 - Update API DescribeFilesets: add param SortOrder.

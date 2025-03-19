@@ -3817,10 +3817,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
             query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.fset_ids):
+            query['FsetIds'] = request.fset_ids
         if not UtilClient.is_unset(request.lifecycle_policy_name):
             query['LifecyclePolicyName'] = request.lifecycle_policy_name
         if not UtilClient.is_unset(request.lifecycle_rule_name):
             query['LifecycleRuleName'] = request.lifecycle_rule_name
+        if not UtilClient.is_unset(request.lifecycle_rule_type):
+            query['LifecycleRuleType'] = request.lifecycle_rule_type
         if not UtilClient.is_unset(request.path):
             query['Path'] = request.path
         if not UtilClient.is_unset(request.paths):
@@ -3871,10 +3875,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
             query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.fset_ids):
+            query['FsetIds'] = request.fset_ids
         if not UtilClient.is_unset(request.lifecycle_policy_name):
             query['LifecyclePolicyName'] = request.lifecycle_policy_name
         if not UtilClient.is_unset(request.lifecycle_rule_name):
             query['LifecycleRuleName'] = request.lifecycle_rule_name
+        if not UtilClient.is_unset(request.lifecycle_rule_type):
+            query['LifecycleRuleType'] = request.lifecycle_rule_type
         if not UtilClient.is_unset(request.path):
             query['Path'] = request.path
         if not UtilClient.is_unset(request.paths):
@@ -13030,8 +13038,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.enable_lifecycle):
+            query['EnableLifecycle'] = request.enable_lifecycle
         if not UtilClient.is_unset(request.file_system_id):
             query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.fset_ids):
+            query['FsetIds'] = request.fset_ids
         if not UtilClient.is_unset(request.lifecycle_policy_name):
             query['LifecyclePolicyName'] = request.lifecycle_policy_name
         if not UtilClient.is_unset(request.lifecycle_rule_name):
@@ -13081,8 +13093,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.enable_lifecycle):
+            query['EnableLifecycle'] = request.enable_lifecycle
         if not UtilClient.is_unset(request.file_system_id):
             query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.fset_ids):
+            query['FsetIds'] = request.fset_ids
         if not UtilClient.is_unset(request.lifecycle_policy_name):
             query['LifecyclePolicyName'] = request.lifecycle_policy_name
         if not UtilClient.is_unset(request.lifecycle_rule_name):

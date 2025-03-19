@@ -4248,8 +4248,10 @@ class CreateLifecyclePolicyRequest(TeaModel):
     def __init__(
         self,
         file_system_id: str = None,
+        fset_ids: List[str] = None,
         lifecycle_policy_name: str = None,
         lifecycle_rule_name: str = None,
+        lifecycle_rule_type: str = None,
         path: str = None,
         paths: List[str] = None,
         storage_type: str = None,
@@ -4258,6 +4260,7 @@ class CreateLifecyclePolicyRequest(TeaModel):
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
+        self.fset_ids = fset_ids
         # The name of the lifecycle policy. The name must be 3 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
         # 
         # This parameter is required.
@@ -4270,9 +4273,8 @@ class CreateLifecyclePolicyRequest(TeaModel):
         # *   DEFAULT_ATIME_30: Files that are not accessed in the last 30 days are dumped to the IA storage medium.
         # *   DEFAULT_ATIME_60: Files that are not accessed in the last 60 days are dumped to the IA storage medium.
         # *   DEFAULT_ATIME_90: Files that are not accessed in the last 90 days are dumped to the IA storage medium.
-        # 
-        # This parameter is required.
         self.lifecycle_rule_name = lifecycle_rule_name
+        self.lifecycle_rule_type = lifecycle_rule_type
         # The absolute path of the directory that is associated with the lifecycle policy.
         # 
         # If you specify this parameter, you can associate the lifecycle policy with only one directory. The path must start with a forward slash (/) and must be a path that exists in the mount target.
@@ -4301,10 +4303,14 @@ class CreateLifecyclePolicyRequest(TeaModel):
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
+        if self.fset_ids is not None:
+            result['FsetIds'] = self.fset_ids
         if self.lifecycle_policy_name is not None:
             result['LifecyclePolicyName'] = self.lifecycle_policy_name
         if self.lifecycle_rule_name is not None:
             result['LifecycleRuleName'] = self.lifecycle_rule_name
+        if self.lifecycle_rule_type is not None:
+            result['LifecycleRuleType'] = self.lifecycle_rule_type
         if self.path is not None:
             result['Path'] = self.path
         if self.paths is not None:
@@ -4317,10 +4323,14 @@ class CreateLifecyclePolicyRequest(TeaModel):
         m = m or dict()
         if m.get('FileSystemId') is not None:
             self.file_system_id = m.get('FileSystemId')
+        if m.get('FsetIds') is not None:
+            self.fset_ids = m.get('FsetIds')
         if m.get('LifecyclePolicyName') is not None:
             self.lifecycle_policy_name = m.get('LifecyclePolicyName')
         if m.get('LifecycleRuleName') is not None:
             self.lifecycle_rule_name = m.get('LifecycleRuleName')
+        if m.get('LifecycleRuleType') is not None:
+            self.lifecycle_rule_type = m.get('LifecycleRuleType')
         if m.get('Path') is not None:
             self.path = m.get('Path')
         if m.get('Paths') is not None:
@@ -12568,6 +12578,8 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         quorum_vsw_id: str = None,
         region_id: str = None,
         resource_group_id: str = None,
+        secondary_bandwidth: int = None,
+        secondary_capacity: int = None,
         status: str = None,
         storage_type: str = None,
         supported_features: DescribeFileSystemsResponseBodyFileSystemsFileSystemSupportedFeatures = None,
@@ -12662,6 +12674,8 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         # 
         # You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?) to view resource group IDs.
         self.resource_group_id = resource_group_id
+        self.secondary_bandwidth = secondary_bandwidth
+        self.secondary_capacity = secondary_capacity
         # The status of the file system. Valid values:
         # - Pending: The file system is being created or modified.
         # - Running: The file system is available. Before you create a mount target for the file system, make sure that the file system is in the Running state.
@@ -12761,6 +12775,10 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.secondary_bandwidth is not None:
+            result['SecondaryBandwidth'] = self.secondary_bandwidth
+        if self.secondary_capacity is not None:
+            result['SecondaryCapacity'] = self.secondary_capacity
         if self.status is not None:
             result['Status'] = self.status
         if self.storage_type is not None:
@@ -12831,6 +12849,10 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SecondaryBandwidth') is not None:
+            self.secondary_bandwidth = m.get('SecondaryBandwidth')
+        if m.get('SecondaryCapacity') is not None:
+            self.secondary_capacity = m.get('SecondaryCapacity')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('StorageType') is not None:
@@ -13061,7 +13083,19 @@ class DescribeFilesetsRequest(TeaModel):
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The condition by which the results are sorted. Valid values:
+        # 
+        # *   FileCountLimit: the file quantity quota
+        # *   SizeLimit: the capacity quota
+        # *   FileCountUsage: the usage of the file quantity quota
+        # *   SpaceUsage: the capacity usage
         self.order_by_field = order_by_field
+        # The order in which you want to sort the results. Valid values:
+        # 
+        # *   asc (default): ascending order
+        # *   desc: descending order
+        # 
+        # >  This parameter takes effect only if you specify the OrderByField parameter.
         self.sort_order = sort_order
 
     def validate(self):
@@ -13118,19 +13152,15 @@ class DescribeFilesetsResponseBodyEntriesEntrieQuota(TeaModel):
         file_count_limit: int = None,
         size_limit: int = None,
     ):
-        # The limit of the file quantity of the quota. Valid values:
+        # The file quantity quota. Valid values:
         # 
-        # Minimum value: 10000.
-        # 
-        # Maximum value: 10000000000.
+        # *   Minimum value: 10000.
+        # *   Maximum value: 10000000000.
         self.file_count_limit = file_count_limit
-        # The limit of the quota capacity. Unit: bytes.
+        # The capacity quota. Unit: bytes.
         # 
-        # Minimum value: 10737418240 (10 GiB).
-        # 
-        # Maximum value: 1073741824000 (1024000 GiB).
-        # 
-        # Step size: 1073741824 (1 GiB).
+        # *   Minimum value: 10737418240 (10 GiB).
+        # *   Step size: 1073741824 (1 GiB).
         self.size_limit = size_limit
 
     def validate(self):
@@ -13202,7 +13232,7 @@ class DescribeFilesetsResponseBodyEntriesEntrie(TeaModel):
         self.fset_id = fset_id
         # The quota information.
         # 
-        # >  Only CPFS for LINGJUN V2.7.0 and later support this parameter.
+        # >  Only CPFS for Lingjun V2.7.0 and later support this parameter.
         self.quota = quota
         # The capacity usage. Unit: bytes.
         # 
@@ -13418,6 +13448,8 @@ class DescribeLifecyclePoliciesRequest(TeaModel):
     def __init__(
         self,
         file_system_id: str = None,
+        file_system_type: str = None,
+        fset_id: str = None,
         lifecycle_policy_name: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -13425,6 +13457,8 @@ class DescribeLifecyclePoliciesRequest(TeaModel):
     ):
         # The ID of the file system.
         self.file_system_id = file_system_id
+        self.file_system_type = file_system_type
+        self.fset_id = fset_id
         # The name of the lifecycle policy. The name must meet the following conventions:
         # 
         # The name must be 3 to 64 characters in length and must start with a letter. It can contain letters, digits, underscores (_), and hyphens (-).
@@ -13458,6 +13492,10 @@ class DescribeLifecyclePoliciesRequest(TeaModel):
         result = dict()
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
+        if self.file_system_type is not None:
+            result['FileSystemType'] = self.file_system_type
+        if self.fset_id is not None:
+            result['FsetId'] = self.fset_id
         if self.lifecycle_policy_name is not None:
             result['LifecyclePolicyName'] = self.lifecycle_policy_name
         if self.page_number is not None:
@@ -13472,6 +13510,10 @@ class DescribeLifecyclePoliciesRequest(TeaModel):
         m = m or dict()
         if m.get('FileSystemId') is not None:
             self.file_system_id = m.get('FileSystemId')
+        if m.get('FileSystemType') is not None:
+            self.file_system_type = m.get('FileSystemType')
+        if m.get('FsetId') is not None:
+            self.fset_id = m.get('FsetId')
         if m.get('LifecyclePolicyName') is not None:
             self.lifecycle_policy_name = m.get('LifecyclePolicyName')
         if m.get('PageNumber') is not None:
@@ -13487,19 +13529,25 @@ class DescribeLifecyclePoliciesResponseBodyLifecyclePolicies(TeaModel):
     def __init__(
         self,
         create_time: str = None,
+        enable_lifecycle: bool = None,
         file_system_id: str = None,
+        fset_ids: List[str] = None,
         lifecycle_policy_name: str = None,
         lifecycle_rule_name: str = None,
+        lifecycle_rule_type: str = None,
         path: str = None,
         paths: List[str] = None,
+        status: str = None,
         storage_type: str = None,
     ):
         # The time when the lifecycle policy was created.
         # 
         # The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format.
         self.create_time = create_time
+        self.enable_lifecycle = enable_lifecycle
         # The ID of the file system.
         self.file_system_id = file_system_id
+        self.fset_ids = fset_ids
         # The name of the lifecycle policy.
         self.lifecycle_policy_name = lifecycle_policy_name
         # The management rule that is associated with the lifecycle policy.
@@ -13511,10 +13559,12 @@ class DescribeLifecyclePoliciesResponseBodyLifecyclePolicies(TeaModel):
         # *   DEFAULT_ATIME_60: Files that are not accessed in the last 60 days are dumped to the IA storage medium.
         # *   DEFAULT_ATIME_90: Files that are not accessed in the last 90 days are dumped to the IA storage medium.
         self.lifecycle_rule_name = lifecycle_rule_name
+        self.lifecycle_rule_type = lifecycle_rule_type
         # The absolute path of a directory with which the lifecycle policy is associated.
         self.path = path
         # The absolute paths to multiple directories associated with the lifecycle policy.
         self.paths = paths
+        self.status = status
         # The storage type of the data that is dumped to the IA storage medium.
         # 
         # Default value: InfrequentAccess (IA).
@@ -13531,16 +13581,24 @@ class DescribeLifecyclePoliciesResponseBodyLifecyclePolicies(TeaModel):
         result = dict()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.enable_lifecycle is not None:
+            result['EnableLifecycle'] = self.enable_lifecycle
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
+        if self.fset_ids is not None:
+            result['FsetIds'] = self.fset_ids
         if self.lifecycle_policy_name is not None:
             result['LifecyclePolicyName'] = self.lifecycle_policy_name
         if self.lifecycle_rule_name is not None:
             result['LifecycleRuleName'] = self.lifecycle_rule_name
+        if self.lifecycle_rule_type is not None:
+            result['LifecycleRuleType'] = self.lifecycle_rule_type
         if self.path is not None:
             result['Path'] = self.path
         if self.paths is not None:
             result['Paths'] = self.paths
+        if self.status is not None:
+            result['Status'] = self.status
         if self.storage_type is not None:
             result['StorageType'] = self.storage_type
         return result
@@ -13549,16 +13607,24 @@ class DescribeLifecyclePoliciesResponseBodyLifecyclePolicies(TeaModel):
         m = m or dict()
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('EnableLifecycle') is not None:
+            self.enable_lifecycle = m.get('EnableLifecycle')
         if m.get('FileSystemId') is not None:
             self.file_system_id = m.get('FileSystemId')
+        if m.get('FsetIds') is not None:
+            self.fset_ids = m.get('FsetIds')
         if m.get('LifecyclePolicyName') is not None:
             self.lifecycle_policy_name = m.get('LifecyclePolicyName')
         if m.get('LifecycleRuleName') is not None:
             self.lifecycle_rule_name = m.get('LifecycleRuleName')
+        if m.get('LifecycleRuleType') is not None:
+            self.lifecycle_rule_type = m.get('LifecycleRuleType')
         if m.get('Path') is not None:
             self.path = m.get('Path')
         if m.get('Paths') is not None:
             self.paths = m.get('Paths')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('StorageType') is not None:
             self.storage_type = m.get('StorageType')
         return self
@@ -20876,16 +20942,20 @@ class ModifyLDAPConfigResponse(TeaModel):
 class ModifyLifecyclePolicyRequest(TeaModel):
     def __init__(
         self,
+        enable_lifecycle: bool = None,
         file_system_id: str = None,
+        fset_ids: List[str] = None,
         lifecycle_policy_name: str = None,
         lifecycle_rule_name: str = None,
         path: str = None,
         storage_type: str = None,
     ):
+        self.enable_lifecycle = enable_lifecycle
         # The ID of the file system.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
+        self.fset_ids = fset_ids
         # The name of the lifecycle policy.
         # 
         # The name must be 3 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
@@ -20900,8 +20970,6 @@ class ModifyLifecyclePolicyRequest(TeaModel):
         # *   DEFAULT_ATIME_30: Files that are not accessed in the last 30 days are dumped to the IA storage medium.
         # *   DEFAULT_ATIME_60: Files that are not accessed in the last 60 days are dumped to the IA storage medium.
         # *   DEFAULT_ATIME_90: Files that are not accessed in the last 90 days are dumped to the IA storage medium.
-        # 
-        # This parameter is required.
         self.lifecycle_rule_name = lifecycle_rule_name
         # The absolute path of a directory with which the lifecycle policy is associated.
         # 
@@ -20921,8 +20989,12 @@ class ModifyLifecyclePolicyRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.enable_lifecycle is not None:
+            result['EnableLifecycle'] = self.enable_lifecycle
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
+        if self.fset_ids is not None:
+            result['FsetIds'] = self.fset_ids
         if self.lifecycle_policy_name is not None:
             result['LifecyclePolicyName'] = self.lifecycle_policy_name
         if self.lifecycle_rule_name is not None:
@@ -20935,8 +21007,12 @@ class ModifyLifecyclePolicyRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EnableLifecycle') is not None:
+            self.enable_lifecycle = m.get('EnableLifecycle')
         if m.get('FileSystemId') is not None:
             self.file_system_id = m.get('FileSystemId')
+        if m.get('FsetIds') is not None:
+            self.fset_ids = m.get('FsetIds')
         if m.get('LifecyclePolicyName') is not None:
             self.lifecycle_policy_name = m.get('LifecyclePolicyName')
         if m.get('LifecycleRuleName') is not None:
