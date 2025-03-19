@@ -1,3 +1,6 @@
+2025-03-19 Version: 2.20.4
+- Generated python 2022-03-02 for Green.
+
 2025-03-19 Version: 2.20.3
 - Update API TextModerationPlus: update response param.
 
