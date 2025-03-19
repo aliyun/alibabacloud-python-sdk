@@ -1,7 +1,111 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict
+from typing import Dict, List
+
+
+class CreateDefaultRoleResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        data: bool = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateDefaultRoleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDefaultRoleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDefaultRoleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
 
 
 class DescribeAccessControlListRequest(TeaModel):
@@ -550,6 +654,39 @@ class GetInstanceDetailResponseBodyDataMeasureConfig(TeaModel):
         return self
 
 
+class GetInstanceDetailResponseBodyDataTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class GetInstanceDetailResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -573,6 +710,7 @@ class GetInstanceDetailResponseBodyData(TeaModel):
         resource_group_id: str = None,
         running_time: int = None,
         sg_id: str = None,
+        tags: List[GetInstanceDetailResponseBodyDataTags] = None,
         template_version: str = None,
         user_config: str = None,
         version: str = None,
@@ -600,6 +738,7 @@ class GetInstanceDetailResponseBodyData(TeaModel):
         self.resource_group_id = resource_group_id
         self.running_time = running_time
         self.sg_id = sg_id
+        self.tags = tags
         self.template_version = template_version
         self.user_config = user_config
         self.version = version
@@ -612,6 +751,10 @@ class GetInstanceDetailResponseBodyData(TeaModel):
             self.cluster_info.validate()
         if self.measure_config:
             self.measure_config.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -659,6 +802,10 @@ class GetInstanceDetailResponseBodyData(TeaModel):
             result['RunningTime'] = self.running_time
         if self.sg_id is not None:
             result['SgId'] = self.sg_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.template_version is not None:
             result['TemplateVersion'] = self.template_version
         if self.user_config is not None:
@@ -717,6 +864,11 @@ class GetInstanceDetailResponseBodyData(TeaModel):
             self.running_time = m.get('RunningTime')
         if m.get('SgId') is not None:
             self.sg_id = m.get('SgId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetInstanceDetailResponseBodyDataTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TemplateVersion') is not None:
             self.template_version = m.get('TemplateVersion')
         if m.get('UserConfig') is not None:
@@ -838,6 +990,39 @@ class GetInstanceDetailResponse(TeaModel):
         return self
 
 
+class ListInstancesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -847,6 +1032,7 @@ class ListInstancesRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
         resource_group_id: str = None,
+        tag: List[ListInstancesRequestTag] = None,
     ):
         self.cluster_id = cluster_id
         self.cluster_name = cluster_name
@@ -854,6 +1040,78 @@ class ListInstancesRequest(TeaModel):
         self.page_size = page_size
         self.region_id = region_id
         self.resource_group_id = resource_group_id
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListInstancesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListInstancesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        cluster_name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        tag_shrink: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.cluster_name = cluster_name
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.tag_shrink = tag_shrink
 
     def validate(self):
         pass
@@ -876,6 +1134,8 @@ class ListInstancesRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -892,6 +1152,8 @@ class ListInstancesRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
         return self
 
 
@@ -1017,9 +1279,43 @@ class ListInstancesResponseBodyDataClusterInfo(TeaModel):
         return self
 
 
+class ListInstancesResponseBodyDataTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListInstancesResponseBodyData(TeaModel):
     def __init__(
         self,
+        auto_backup: bool = None,
         begin_time: int = None,
         cluster_info: ListInstancesResponseBodyDataClusterInfo = None,
         cluster_name: str = None,
@@ -1035,10 +1331,12 @@ class ListInstancesResponseBodyData(TeaModel):
         resource_group_id: str = None,
         running_time: int = None,
         sg_id: str = None,
+        tags: List[ListInstancesResponseBodyDataTags] = None,
         vpc_id: str = None,
         vsw_id: str = None,
         zone_id: str = None,
     ):
+        self.auto_backup = auto_backup
         self.begin_time = begin_time
         self.cluster_info = cluster_info
         self.cluster_name = cluster_name
@@ -1054,6 +1352,7 @@ class ListInstancesResponseBodyData(TeaModel):
         self.resource_group_id = resource_group_id
         self.running_time = running_time
         self.sg_id = sg_id
+        self.tags = tags
         self.vpc_id = vpc_id
         self.vsw_id = vsw_id
         self.zone_id = zone_id
@@ -1061,6 +1360,10 @@ class ListInstancesResponseBodyData(TeaModel):
     def validate(self):
         if self.cluster_info:
             self.cluster_info.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1068,6 +1371,8 @@ class ListInstancesResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_backup is not None:
+            result['AutoBackup'] = self.auto_backup
         if self.begin_time is not None:
             result['BeginTime'] = self.begin_time
         if self.cluster_info is not None:
@@ -1098,6 +1403,10 @@ class ListInstancesResponseBodyData(TeaModel):
             result['RunningTime'] = self.running_time
         if self.sg_id is not None:
             result['SgId'] = self.sg_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         if self.vsw_id is not None:
@@ -1108,6 +1417,8 @@ class ListInstancesResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoBackup') is not None:
+            self.auto_backup = m.get('AutoBackup')
         if m.get('BeginTime') is not None:
             self.begin_time = m.get('BeginTime')
         if m.get('ClusterInfo') is not None:
@@ -1139,6 +1450,11 @@ class ListInstancesResponseBodyData(TeaModel):
             self.running_time = m.get('RunningTime')
         if m.get('SgId') is not None:
             self.sg_id = m.get('SgId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListInstancesResponseBodyDataTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         if m.get('VswId') is not None:
