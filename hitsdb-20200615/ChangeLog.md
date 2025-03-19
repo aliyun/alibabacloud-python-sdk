@@ -1,3 +1,7 @@
+2025-03-19 Version: 4.8.3
+- Update API CreateLindormInstance: add param Tag.
+
+
 2025-03-18 Version: 4.8.2
 - Update API GetLindormInstance: update response param.
 - Update API ModifyLindormV2Instance: update param UpgradeType.

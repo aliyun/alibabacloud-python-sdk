@@ -857,6 +857,8 @@ class Client(OpenApiClient):
             query['StreamNum'] = request.stream_num
         if not UtilClient.is_unset(request.stream_spec):
             query['StreamSpec'] = request.stream_spec
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.tsdb_num):
             query['TsdbNum'] = request.tsdb_num
         if not UtilClient.is_unset(request.tsdb_spec):
@@ -988,6 +990,8 @@ class Client(OpenApiClient):
             query['StreamNum'] = request.stream_num
         if not UtilClient.is_unset(request.stream_spec):
             query['StreamSpec'] = request.stream_spec
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.tsdb_num):
             query['TsdbNum'] = request.tsdb_num
         if not UtilClient.is_unset(request.tsdb_spec):

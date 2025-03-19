@@ -1138,6 +1138,39 @@ class CreateLdpsComputeGroupResponse(TeaModel):
         return self
 
 
+class CreateLindormInstanceRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateLindormInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -1181,6 +1214,7 @@ class CreateLindormInstanceRequest(TeaModel):
         standby_zone_id: str = None,
         stream_num: int = None,
         stream_spec: str = None,
+        tag: List[CreateLindormInstanceRequestTag] = None,
         tsdb_num: int = None,
         tsdb_spec: str = None,
         vpcid: str = None,
@@ -1372,6 +1406,7 @@ class CreateLindormInstanceRequest(TeaModel):
         # *   **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
         # *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
         self.stream_spec = stream_spec
+        self.tag = tag
         # The number of the LindormTSDB nodes in the instance. The valid values of this parameter depend on the value of the PayType parameter.
         # 
         # *   If the PayType parameter is set to **PREPAY**, set this parameter to an integer that ranges from **0** to **24**.
@@ -1398,7 +1433,10 @@ class CreateLindormInstanceRequest(TeaModel):
         self.zone_id = zone_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1486,6 +1524,10 @@ class CreateLindormInstanceRequest(TeaModel):
             result['StreamNum'] = self.stream_num
         if self.stream_spec is not None:
             result['StreamSpec'] = self.stream_spec
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.tsdb_num is not None:
             result['TsdbNum'] = self.tsdb_num
         if self.tsdb_spec is not None:
@@ -1580,6 +1622,11 @@ class CreateLindormInstanceRequest(TeaModel):
             self.stream_num = m.get('StreamNum')
         if m.get('StreamSpec') is not None:
             self.stream_spec = m.get('StreamSpec')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateLindormInstanceRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('TsdbNum') is not None:
             self.tsdb_num = m.get('TsdbNum')
         if m.get('TsdbSpec') is not None:
