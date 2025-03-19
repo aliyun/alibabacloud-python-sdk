@@ -176,7 +176,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ChangeResourceGroupResponse:
         """
-        @summary 资源转组
+        @summary Resource Group Transfer
         
         @param request: ChangeResourceGroupRequest
         @param headers: map
@@ -226,7 +226,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ChangeResourceGroupResponse:
         """
-        @summary 资源转组
+        @summary Resource Group Transfer
         
         @param request: ChangeResourceGroupRequest
         @param headers: map
@@ -274,7 +274,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ChangeResourceGroupRequest,
     ) -> apig20240327_models.ChangeResourceGroupResponse:
         """
-        @summary 资源转组
+        @summary Resource Group Transfer
         
         @param request: ChangeResourceGroupRequest
         @return: ChangeResourceGroupResponse
@@ -288,7 +288,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ChangeResourceGroupRequest,
     ) -> apig20240327_models.ChangeResourceGroupResponse:
         """
-        @summary 资源转组
+        @summary Resource Group Transfer
         
         @param request: ChangeResourceGroupRequest
         @return: ChangeResourceGroupResponse
@@ -319,10 +319,14 @@ class Client(OpenApiClient):
             body['caCertIdentifier'] = request.ca_cert_identifier
         if not UtilClient.is_unset(request.cert_identifier):
             body['certIdentifier'] = request.cert_identifier
+        if not UtilClient.is_unset(request.client_cacert):
+            body['clientCACert'] = request.client_cacert
         if not UtilClient.is_unset(request.force_https):
             body['forceHttps'] = request.force_https
         if not UtilClient.is_unset(request.http_2option):
             body['http2Option'] = request.http_2option
+        if not UtilClient.is_unset(request.m_tlsenabled):
+            body['mTLSEnabled'] = request.m_tlsenabled
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
         if not UtilClient.is_unset(request.protocol):
@@ -383,10 +387,14 @@ class Client(OpenApiClient):
             body['caCertIdentifier'] = request.ca_cert_identifier
         if not UtilClient.is_unset(request.cert_identifier):
             body['certIdentifier'] = request.cert_identifier
+        if not UtilClient.is_unset(request.client_cacert):
+            body['clientCACert'] = request.client_cacert
         if not UtilClient.is_unset(request.force_https):
             body['forceHttps'] = request.force_https
         if not UtilClient.is_unset(request.http_2option):
             body['http2Option'] = request.http_2option
+        if not UtilClient.is_unset(request.m_tlsenabled):
+            body['mTLSEnabled'] = request.m_tlsenabled
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
         if not UtilClient.is_unset(request.protocol):
@@ -897,7 +905,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreateHttpApiRouteResponse:
         """
-        @summary Create a route for HttpApi
+        @summary Creates a route for an HTTP API.
         
         @param request: CreateHttpApiRouteRequest
         @param headers: map
@@ -952,7 +960,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreateHttpApiRouteResponse:
         """
-        @summary Create a route for HttpApi
+        @summary Creates a route for an HTTP API.
         
         @param request: CreateHttpApiRouteRequest
         @param headers: map
@@ -1005,7 +1013,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreateHttpApiRouteRequest,
     ) -> apig20240327_models.CreateHttpApiRouteResponse:
         """
-        @summary Create a route for HttpApi
+        @summary Creates a route for an HTTP API.
         
         @param request: CreateHttpApiRouteRequest
         @return: CreateHttpApiRouteResponse
@@ -1020,7 +1028,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreateHttpApiRouteRequest,
     ) -> apig20240327_models.CreateHttpApiRouteResponse:
         """
-        @summary Create a route for HttpApi
+        @summary Creates a route for an HTTP API.
         
         @param request: CreateHttpApiRouteRequest
         @return: CreateHttpApiRouteResponse
@@ -1036,7 +1044,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreatePolicyResponse:
         """
-        @summary 创建策略
+        @summary Create Policy
         
         @param request: CreatePolicyRequest
         @param headers: map
@@ -1086,7 +1094,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreatePolicyResponse:
         """
-        @summary 创建策略
+        @summary Create Policy
         
         @param request: CreatePolicyRequest
         @param headers: map
@@ -1134,7 +1142,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreatePolicyRequest,
     ) -> apig20240327_models.CreatePolicyResponse:
         """
-        @summary 创建策略
+        @summary Create Policy
         
         @param request: CreatePolicyRequest
         @return: CreatePolicyResponse
@@ -1148,7 +1156,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreatePolicyRequest,
     ) -> apig20240327_models.CreatePolicyResponse:
         """
-        @summary 创建策略
+        @summary Create Policy
         
         @param request: CreatePolicyRequest
         @return: CreatePolicyResponse
@@ -1164,7 +1172,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreatePolicyAttachmentResponse:
         """
-        @summary 创建策略资源挂载
+        @summary Create policy resource mount
         
         @param request: CreatePolicyAttachmentRequest
         @param headers: map
@@ -1216,7 +1224,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreatePolicyAttachmentResponse:
         """
-        @summary 创建策略资源挂载
+        @summary Create policy resource mount
         
         @param request: CreatePolicyAttachmentRequest
         @param headers: map
@@ -1266,7 +1274,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreatePolicyAttachmentRequest,
     ) -> apig20240327_models.CreatePolicyAttachmentResponse:
         """
-        @summary 创建策略资源挂载
+        @summary Create policy resource mount
         
         @param request: CreatePolicyAttachmentRequest
         @return: CreatePolicyAttachmentResponse
@@ -1280,7 +1288,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreatePolicyAttachmentRequest,
     ) -> apig20240327_models.CreatePolicyAttachmentResponse:
         """
-        @summary 创建策略资源挂载
+        @summary Create policy resource mount
         
         @param request: CreatePolicyAttachmentRequest
         @return: CreatePolicyAttachmentResponse
@@ -1296,7 +1304,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreateServiceResponse:
         """
-        @summary 创建服务
+        @summary Create Service
+        
+        @description The interface supports creating multiple services.
         
         @param request: CreateServiceRequest
         @param headers: map
@@ -1346,7 +1356,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.CreateServiceResponse:
         """
-        @summary 创建服务
+        @summary Create Service
+        
+        @description The interface supports creating multiple services.
         
         @param request: CreateServiceRequest
         @param headers: map
@@ -1394,7 +1406,9 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreateServiceRequest,
     ) -> apig20240327_models.CreateServiceResponse:
         """
-        @summary 创建服务
+        @summary Create Service
+        
+        @description The interface supports creating multiple services.
         
         @param request: CreateServiceRequest
         @return: CreateServiceResponse
@@ -1408,7 +1422,9 @@ class Client(OpenApiClient):
         request: apig20240327_models.CreateServiceRequest,
     ) -> apig20240327_models.CreateServiceResponse:
         """
-        @summary 创建服务
+        @summary Create Service
+        
+        @description The interface supports creating multiple services.
         
         @param request: CreateServiceRequest
         @return: CreateServiceResponse
@@ -1866,7 +1882,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.DeleteHttpApiResponse:
         """
-        @summary Delete HTTP API
+        @summary Deletes an HTTP API.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1904,7 +1920,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.DeleteHttpApiResponse:
         """
-        @summary Delete HTTP API
+        @summary Deletes an HTTP API.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1940,7 +1956,7 @@ class Client(OpenApiClient):
         http_api_id: str,
     ) -> apig20240327_models.DeleteHttpApiResponse:
         """
-        @summary Delete HTTP API
+        @summary Deletes an HTTP API.
         
         @return: DeleteHttpApiResponse
         """
@@ -1953,7 +1969,7 @@ class Client(OpenApiClient):
         http_api_id: str,
     ) -> apig20240327_models.DeleteHttpApiResponse:
         """
-        @summary Delete HTTP API
+        @summary Deletes an HTTP API.
         
         @return: DeleteHttpApiResponse
         """
@@ -2180,7 +2196,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.DeletePolicyResponse:
         """
-        @summary 删除策略
+        @summary Delete Policy
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2218,7 +2234,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.DeletePolicyResponse:
         """
-        @summary 删除策略
+        @summary Delete Policy
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2254,7 +2270,7 @@ class Client(OpenApiClient):
         policy_id: str,
     ) -> apig20240327_models.DeletePolicyResponse:
         """
-        @summary 删除策略
+        @summary Delete Policy
         
         @return: DeletePolicyResponse
         """
@@ -2267,7 +2283,7 @@ class Client(OpenApiClient):
         policy_id: str,
     ) -> apig20240327_models.DeletePolicyResponse:
         """
-        @summary 删除策略
+        @summary Delete Policy
         
         @return: DeletePolicyResponse
         """
@@ -2282,7 +2298,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.DeletePolicyAttachmentResponse:
         """
-        @summary 删除策略资源挂载
+        @summary Delete policy resource attachment
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2320,7 +2336,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.DeletePolicyAttachmentResponse:
         """
-        @summary 删除策略资源挂载
+        @summary Delete policy resource attachment
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2356,7 +2372,7 @@ class Client(OpenApiClient):
         policy_attachment_id: str,
     ) -> apig20240327_models.DeletePolicyAttachmentResponse:
         """
-        @summary 删除策略资源挂载
+        @summary Delete policy resource attachment
         
         @return: DeletePolicyAttachmentResponse
         """
@@ -2369,7 +2385,7 @@ class Client(OpenApiClient):
         policy_attachment_id: str,
     ) -> apig20240327_models.DeletePolicyAttachmentResponse:
         """
-        @summary 删除策略资源挂载
+        @summary Delete policy resource attachment
         
         @return: DeletePolicyAttachmentResponse
         """
@@ -2385,7 +2401,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.DeployHttpApiResponse:
         """
-        @summary 部署HttpApi
+        @summary Deploy HttpApi
         
         @param request: DeployHttpApiRequest
         @param headers: map
@@ -2432,7 +2448,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.DeployHttpApiResponse:
         """
-        @summary 部署HttpApi
+        @summary Deploy HttpApi
         
         @param request: DeployHttpApiRequest
         @param headers: map
@@ -2477,7 +2493,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.DeployHttpApiRequest,
     ) -> apig20240327_models.DeployHttpApiResponse:
         """
-        @summary 部署HttpApi
+        @summary Deploy HttpApi
         
         @param request: DeployHttpApiRequest
         @return: DeployHttpApiResponse
@@ -2492,7 +2508,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.DeployHttpApiRequest,
     ) -> apig20240327_models.DeployHttpApiResponse:
         """
-        @summary 部署HttpApi
+        @summary Deploy HttpApi
         
         @param request: DeployHttpApiRequest
         @return: DeployHttpApiResponse
@@ -2611,7 +2627,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetDashboardResponse:
         """
-        @summary 获取监控/日志大盘接口
+        @summary Get Monitoring/Logging Dashboard Interface
         
         @param tmp_req: GetDashboardRequest
         @param headers: map
@@ -2670,7 +2686,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetDashboardResponse:
         """
-        @summary 获取监控/日志大盘接口
+        @summary Get Monitoring/Logging Dashboard Interface
         
         @param tmp_req: GetDashboardRequest
         @param headers: map
@@ -2727,7 +2743,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.GetDashboardRequest,
     ) -> apig20240327_models.GetDashboardResponse:
         """
-        @summary 获取监控/日志大盘接口
+        @summary Get Monitoring/Logging Dashboard Interface
         
         @param request: GetDashboardRequest
         @return: GetDashboardResponse
@@ -2742,7 +2758,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.GetDashboardRequest,
     ) -> apig20240327_models.GetDashboardResponse:
         """
-        @summary 获取监控/日志大盘接口
+        @summary Get Monitoring/Logging Dashboard Interface
         
         @param request: GetDashboardRequest
         @return: GetDashboardResponse
@@ -3532,7 +3548,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetPolicyAttachmentResponse:
         """
-        @summary 查询策略资源挂载
+        @summary Query Policy Resource Attachment
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3570,7 +3586,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetPolicyAttachmentResponse:
         """
-        @summary 查询策略资源挂载
+        @summary Query Policy Resource Attachment
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3606,7 +3622,7 @@ class Client(OpenApiClient):
         policy_attachment_id: str,
     ) -> apig20240327_models.GetPolicyAttachmentResponse:
         """
-        @summary 查询策略资源挂载
+        @summary Query Policy Resource Attachment
         
         @return: GetPolicyAttachmentResponse
         """
@@ -3619,7 +3635,7 @@ class Client(OpenApiClient):
         policy_attachment_id: str,
     ) -> apig20240327_models.GetPolicyAttachmentResponse:
         """
-        @summary 查询策略资源挂载
+        @summary Query Policy Resource Attachment
         
         @return: GetPolicyAttachmentResponse
         """
@@ -3633,7 +3649,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetResourceOverviewResponse:
         """
-        @summary 获取资源概览信息
+        @summary Get resource overview information
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3670,7 +3686,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetResourceOverviewResponse:
         """
-        @summary 获取资源概览信息
+        @summary Get resource overview information
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3703,7 +3719,7 @@ class Client(OpenApiClient):
 
     def get_resource_overview(self) -> apig20240327_models.GetResourceOverviewResponse:
         """
-        @summary 获取资源概览信息
+        @summary Get resource overview information
         
         @return: GetResourceOverviewResponse
         """
@@ -3713,7 +3729,7 @@ class Client(OpenApiClient):
 
     async def get_resource_overview_async(self) -> apig20240327_models.GetResourceOverviewResponse:
         """
-        @summary 获取资源概览信息
+        @summary Get resource overview information
         
         @return: GetResourceOverviewResponse
         """
@@ -3728,7 +3744,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetServiceResponse:
         """
-        @summary 获取服务详情
+        @summary Get Service Details
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3766,7 +3782,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetServiceResponse:
         """
-        @summary 获取服务详情
+        @summary Get Service Details
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3802,7 +3818,7 @@ class Client(OpenApiClient):
         service_id: str,
     ) -> apig20240327_models.GetServiceResponse:
         """
-        @summary 获取服务详情
+        @summary Get Service Details
         
         @return: GetServiceResponse
         """
@@ -3815,7 +3831,7 @@ class Client(OpenApiClient):
         service_id: str,
     ) -> apig20240327_models.GetServiceResponse:
         """
-        @summary 获取服务详情
+        @summary Get Service Details
         
         @return: GetServiceResponse
         """
@@ -3831,7 +3847,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetTraceConfigResponse:
         """
-        @summary 获取链路追踪配置
+        @summary Retrieve Tracing Configuration
         
         @param request: GetTraceConfigRequest
         @param headers: map
@@ -3876,7 +3892,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.GetTraceConfigResponse:
         """
-        @summary 获取链路追踪配置
+        @summary Retrieve Tracing Configuration
         
         @param request: GetTraceConfigRequest
         @param headers: map
@@ -3919,7 +3935,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.GetTraceConfigRequest,
     ) -> apig20240327_models.GetTraceConfigResponse:
         """
-        @summary 获取链路追踪配置
+        @summary Retrieve Tracing Configuration
         
         @param request: GetTraceConfigRequest
         @return: GetTraceConfigResponse
@@ -3934,7 +3950,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.GetTraceConfigRequest,
     ) -> apig20240327_models.GetTraceConfigResponse:
         """
-        @summary 获取链路追踪配置
+        @summary Retrieve Tracing Configuration
         
         @param request: GetTraceConfigRequest
         @return: GetTraceConfigResponse
@@ -4691,7 +4707,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListHttpApiRoutesResponse:
         """
-        @summary 创建HttpApi的路由
+        @summary Create a route for HttpApi
         
         @param request: ListHttpApiRoutesRequest
         @param headers: map
@@ -4760,7 +4776,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListHttpApiRoutesResponse:
         """
-        @summary 创建HttpApi的路由
+        @summary Create a route for HttpApi
         
         @param request: ListHttpApiRoutesRequest
         @param headers: map
@@ -4827,7 +4843,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListHttpApiRoutesRequest,
     ) -> apig20240327_models.ListHttpApiRoutesResponse:
         """
-        @summary 创建HttpApi的路由
+        @summary Create a route for HttpApi
         
         @param request: ListHttpApiRoutesRequest
         @return: ListHttpApiRoutesResponse
@@ -4842,7 +4858,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListHttpApiRoutesRequest,
     ) -> apig20240327_models.ListHttpApiRoutesResponse:
         """
-        @summary 创建HttpApi的路由
+        @summary Create a route for HttpApi
         
         @param request: ListHttpApiRoutesRequest
         @return: ListHttpApiRoutesResponse
@@ -5026,7 +5042,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListPolicyClassesResponse:
         """
-        @summary ListPolicyClasses。
+        @summary ListPolicyClasses
         
         @param request: ListPolicyClassesRequest
         @param headers: map
@@ -5078,7 +5094,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListPolicyClassesResponse:
         """
-        @summary ListPolicyClasses。
+        @summary ListPolicyClasses
         
         @param request: ListPolicyClassesRequest
         @param headers: map
@@ -5128,7 +5144,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListPolicyClassesRequest,
     ) -> apig20240327_models.ListPolicyClassesResponse:
         """
-        @summary ListPolicyClasses。
+        @summary ListPolicyClasses
         
         @param request: ListPolicyClassesRequest
         @return: ListPolicyClassesResponse
@@ -5142,7 +5158,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListPolicyClassesRequest,
     ) -> apig20240327_models.ListPolicyClassesResponse:
         """
-        @summary ListPolicyClasses。
+        @summary ListPolicyClasses
         
         @param request: ListPolicyClassesRequest
         @return: ListPolicyClassesResponse
@@ -5158,7 +5174,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListServicesResponse:
         """
-        @summary 获取服务列表
+        @summary Get Service List
         
         @param request: ListServicesRequest
         @param headers: map
@@ -5212,7 +5228,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListServicesResponse:
         """
-        @summary 获取服务列表
+        @summary Get Service List
         
         @param request: ListServicesRequest
         @param headers: map
@@ -5264,7 +5280,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListServicesRequest,
     ) -> apig20240327_models.ListServicesResponse:
         """
-        @summary 获取服务列表
+        @summary Get Service List
         
         @param request: ListServicesRequest
         @return: ListServicesResponse
@@ -5278,7 +5294,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListServicesRequest,
     ) -> apig20240327_models.ListServicesResponse:
         """
-        @summary 获取服务列表
+        @summary Get Service List
         
         @param request: ListServicesRequest
         @return: ListServicesResponse
@@ -5294,7 +5310,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListSslCertsResponse:
         """
-        @summary ListSslCerts。
+        @summary ListSslCerts
         
         @param request: ListSslCertsRequest
         @param headers: map
@@ -5344,7 +5360,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListSslCertsResponse:
         """
-        @summary ListSslCerts。
+        @summary ListSslCerts
         
         @param request: ListSslCertsRequest
         @param headers: map
@@ -5392,7 +5408,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListSslCertsRequest,
     ) -> apig20240327_models.ListSslCertsResponse:
         """
-        @summary ListSslCerts。
+        @summary ListSslCerts
         
         @param request: ListSslCertsRequest
         @return: ListSslCertsResponse
@@ -5406,7 +5422,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.ListSslCertsRequest,
     ) -> apig20240327_models.ListSslCertsResponse:
         """
-        @summary ListSslCerts。
+        @summary ListSslCerts
         
         @param request: ListSslCertsRequest
         @return: ListSslCertsResponse
@@ -5421,7 +5437,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListZonesResponse:
         """
-        @summary 获取云原生API网关region下的可用区
+        @summary Retrieve the availability zones under a cloud-native API gateway region
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5458,7 +5474,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.ListZonesResponse:
         """
-        @summary 获取云原生API网关region下的可用区
+        @summary Retrieve the availability zones under a cloud-native API gateway region
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5491,7 +5507,7 @@ class Client(OpenApiClient):
 
     def list_zones(self) -> apig20240327_models.ListZonesResponse:
         """
-        @summary 获取云原生API网关region下的可用区
+        @summary Retrieve the availability zones under a cloud-native API gateway region
         
         @return: ListZonesResponse
         """
@@ -5501,7 +5517,7 @@ class Client(OpenApiClient):
 
     async def list_zones_async(self) -> apig20240327_models.ListZonesResponse:
         """
-        @summary 获取云原生API网关region下的可用区
+        @summary Retrieve the availability zones under a cloud-native API gateway region
         
         @return: ListZonesResponse
         """
@@ -5611,6 +5627,130 @@ class Client(OpenApiClient):
         headers = {}
         return await self.restart_gateway_with_options_async(gateway_id, headers, runtime)
 
+    def undeploy_http_api_with_options(
+        self,
+        http_api_id: str,
+        request: apig20240327_models.UndeployHttpApiRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.UndeployHttpApiResponse:
+        """
+        @summary 取消部署HttpApi
+        
+        @param request: UndeployHttpApiRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UndeployHttpApiResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.environment_id):
+            body['environmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.route_id):
+            body['routeId'] = request.route_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UndeployHttpApi',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/http-apis/{OpenApiUtilClient.get_encode_param(http_api_id)}/undeploy',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                apig20240327_models.UndeployHttpApiResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                apig20240327_models.UndeployHttpApiResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def undeploy_http_api_with_options_async(
+        self,
+        http_api_id: str,
+        request: apig20240327_models.UndeployHttpApiRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.UndeployHttpApiResponse:
+        """
+        @summary 取消部署HttpApi
+        
+        @param request: UndeployHttpApiRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UndeployHttpApiResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.environment_id):
+            body['environmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.route_id):
+            body['routeId'] = request.route_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UndeployHttpApi',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/http-apis/{OpenApiUtilClient.get_encode_param(http_api_id)}/undeploy',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                apig20240327_models.UndeployHttpApiResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                apig20240327_models.UndeployHttpApiResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def undeploy_http_api(
+        self,
+        http_api_id: str,
+        request: apig20240327_models.UndeployHttpApiRequest,
+    ) -> apig20240327_models.UndeployHttpApiResponse:
+        """
+        @summary 取消部署HttpApi
+        
+        @param request: UndeployHttpApiRequest
+        @return: UndeployHttpApiResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.undeploy_http_api_with_options(http_api_id, request, headers, runtime)
+
+    async def undeploy_http_api_async(
+        self,
+        http_api_id: str,
+        request: apig20240327_models.UndeployHttpApiRequest,
+    ) -> apig20240327_models.UndeployHttpApiResponse:
+        """
+        @summary 取消部署HttpApi
+        
+        @param request: UndeployHttpApiRequest
+        @return: UndeployHttpApiResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.undeploy_http_api_with_options_async(http_api_id, request, headers, runtime)
+
     def update_domain_with_options(
         self,
         domain_id: str,
@@ -5620,6 +5760,8 @@ class Client(OpenApiClient):
     ) -> apig20240327_models.UpdateDomainResponse:
         """
         @summary UpdateDomain
+        
+        @description 只有类型为*容器服务**的来源允许更新监听Ingress的配置。
         
         @param request: UpdateDomainRequest
         @param headers: map
@@ -5632,10 +5774,14 @@ class Client(OpenApiClient):
             body['caCertIdentifier'] = request.ca_cert_identifier
         if not UtilClient.is_unset(request.cert_identifier):
             body['certIdentifier'] = request.cert_identifier
+        if not UtilClient.is_unset(request.client_cacert):
+            body['clientCACert'] = request.client_cacert
         if not UtilClient.is_unset(request.force_https):
             body['forceHttps'] = request.force_https
         if not UtilClient.is_unset(request.http_2option):
             body['http2Option'] = request.http_2option
+        if not UtilClient.is_unset(request.m_tlsenabled):
+            body['mTLSEnabled'] = request.m_tlsenabled
         if not UtilClient.is_unset(request.protocol):
             body['protocol'] = request.protocol
         if not UtilClient.is_unset(request.tls_cipher_suites_config):
@@ -5680,6 +5826,8 @@ class Client(OpenApiClient):
         """
         @summary UpdateDomain
         
+        @description 只有类型为*容器服务**的来源允许更新监听Ingress的配置。
+        
         @param request: UpdateDomainRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5691,10 +5839,14 @@ class Client(OpenApiClient):
             body['caCertIdentifier'] = request.ca_cert_identifier
         if not UtilClient.is_unset(request.cert_identifier):
             body['certIdentifier'] = request.cert_identifier
+        if not UtilClient.is_unset(request.client_cacert):
+            body['clientCACert'] = request.client_cacert
         if not UtilClient.is_unset(request.force_https):
             body['forceHttps'] = request.force_https
         if not UtilClient.is_unset(request.http_2option):
             body['http2Option'] = request.http_2option
+        if not UtilClient.is_unset(request.m_tlsenabled):
+            body['mTLSEnabled'] = request.m_tlsenabled
         if not UtilClient.is_unset(request.protocol):
             body['protocol'] = request.protocol
         if not UtilClient.is_unset(request.tls_cipher_suites_config):
@@ -5737,6 +5889,8 @@ class Client(OpenApiClient):
         """
         @summary UpdateDomain
         
+        @description 只有类型为*容器服务**的来源允许更新监听Ingress的配置。
+        
         @param request: UpdateDomainRequest
         @return: UpdateDomainResponse
         """
@@ -5751,6 +5905,8 @@ class Client(OpenApiClient):
     ) -> apig20240327_models.UpdateDomainResponse:
         """
         @summary UpdateDomain
+        
+        @description 只有类型为*容器服务**的来源允许更新监听Ingress的配置。
         
         @param request: UpdateDomainRequest
         @return: UpdateDomainResponse
@@ -6147,7 +6303,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UpdateHttpApiResponse:
         """
-        @summary Update HTTP API
+        @summary Updates an HTTP API.
         
         @param request: UpdateHttpApiRequest
         @param headers: map
@@ -6208,7 +6364,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UpdateHttpApiResponse:
         """
-        @summary Update HTTP API
+        @summary Updates an HTTP API.
         
         @param request: UpdateHttpApiRequest
         @param headers: map
@@ -6267,7 +6423,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.UpdateHttpApiRequest,
     ) -> apig20240327_models.UpdateHttpApiResponse:
         """
-        @summary Update HTTP API
+        @summary Updates an HTTP API.
         
         @param request: UpdateHttpApiRequest
         @return: UpdateHttpApiResponse
@@ -6282,7 +6438,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.UpdateHttpApiRequest,
     ) -> apig20240327_models.UpdateHttpApiResponse:
         """
-        @summary Update HTTP API
+        @summary Updates an HTTP API.
         
         @param request: UpdateHttpApiRequest
         @return: UpdateHttpApiResponse
@@ -6563,7 +6719,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UpdatePolicyResponse:
         """
-        @summary 更新策略
+        @summary Update Policy
         
         @param request: UpdatePolicyRequest
         @param headers: map
@@ -6612,7 +6768,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UpdatePolicyResponse:
         """
-        @summary 更新策略
+        @summary Update Policy
         
         @param request: UpdatePolicyRequest
         @param headers: map
@@ -6659,7 +6815,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.UpdatePolicyRequest,
     ) -> apig20240327_models.UpdatePolicyResponse:
         """
-        @summary 更新策略
+        @summary Update Policy
         
         @param request: UpdatePolicyRequest
         @return: UpdatePolicyResponse
@@ -6674,7 +6830,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.UpdatePolicyRequest,
     ) -> apig20240327_models.UpdatePolicyResponse:
         """
-        @summary 更新策略
+        @summary Update Policy
         
         @param request: UpdatePolicyRequest
         @return: UpdatePolicyResponse

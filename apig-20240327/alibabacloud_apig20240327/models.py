@@ -1116,10 +1116,12 @@ class DomainInfo(TeaModel):
     def __init__(
         self,
         cert_identifier: str = None,
+        client_cacert: str = None,
         create_from: str = None,
         create_timestamp: int = None,
         domain_id: str = None,
         force_https: bool = None,
+        m_tlsenabled: bool = None,
         name: str = None,
         protocol: str = None,
         resource_group_id: str = None,
@@ -1127,10 +1129,12 @@ class DomainInfo(TeaModel):
         update_timestamp: int = None,
     ):
         self.cert_identifier = cert_identifier
+        self.client_cacert = client_cacert
         self.create_from = create_from
         self.create_timestamp = create_timestamp
         self.domain_id = domain_id
         self.force_https = force_https
+        self.m_tlsenabled = m_tlsenabled
         self.name = name
         self.protocol = protocol
         self.resource_group_id = resource_group_id
@@ -1148,6 +1152,8 @@ class DomainInfo(TeaModel):
         result = dict()
         if self.cert_identifier is not None:
             result['certIdentifier'] = self.cert_identifier
+        if self.client_cacert is not None:
+            result['clientCACert'] = self.client_cacert
         if self.create_from is not None:
             result['createFrom'] = self.create_from
         if self.create_timestamp is not None:
@@ -1156,6 +1162,8 @@ class DomainInfo(TeaModel):
             result['domainId'] = self.domain_id
         if self.force_https is not None:
             result['forceHttps'] = self.force_https
+        if self.m_tlsenabled is not None:
+            result['mTLSEnabled'] = self.m_tlsenabled
         if self.name is not None:
             result['name'] = self.name
         if self.protocol is not None:
@@ -1172,6 +1180,8 @@ class DomainInfo(TeaModel):
         m = m or dict()
         if m.get('certIdentifier') is not None:
             self.cert_identifier = m.get('certIdentifier')
+        if m.get('clientCACert') is not None:
+            self.client_cacert = m.get('clientCACert')
         if m.get('createFrom') is not None:
             self.create_from = m.get('createFrom')
         if m.get('createTimestamp') is not None:
@@ -1180,6 +1190,8 @@ class DomainInfo(TeaModel):
             self.domain_id = m.get('domainId')
         if m.get('forceHttps') is not None:
             self.force_https = m.get('forceHttps')
+        if m.get('mTLSEnabled') is not None:
+            self.m_tlsenabled = m.get('mTLSEnabled')
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('protocol') is not None:
@@ -5262,9 +5274,13 @@ class ChangeResourceGroupRequest(TeaModel):
         resource_type: str = None,
         service: str = None,
     ):
+        # Target resource group ID.
         self.resource_group_id = resource_group_id
+        # Resource ID
         self.resource_id = resource_id
+        # Resource type
         self.resource_type = resource_type
+        # Service name, fixed value apig
         self.service = service
 
     def validate(self):
@@ -5304,6 +5320,7 @@ class ChangeResourceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5372,8 +5389,10 @@ class CreateDomainRequest(TeaModel):
         self,
         ca_cert_identifier: str = None,
         cert_identifier: str = None,
+        client_cacert: str = None,
         force_https: bool = None,
         http_2option: str = None,
+        m_tlsenabled: bool = None,
         name: str = None,
         protocol: str = None,
         resource_group_id: str = None,
@@ -5385,10 +5404,14 @@ class CreateDomainRequest(TeaModel):
         self.ca_cert_identifier = ca_cert_identifier
         # Certificate Unique Identifier.
         self.cert_identifier = cert_identifier
+        # Client CA Certificate
+        self.client_cacert = client_cacert
         # Set the HTTPS protocol type, whether to enable forced HTTPS redirection.
         self.force_https = force_https
         # HTTP/2 settings.
         self.http_2option = http_2option
+        # Whether to enable mTLS mutual authentication
+        self.m_tlsenabled = m_tlsenabled
         # Domain name.
         # 
         # This parameter is required.
@@ -5423,10 +5446,14 @@ class CreateDomainRequest(TeaModel):
             result['caCertIdentifier'] = self.ca_cert_identifier
         if self.cert_identifier is not None:
             result['certIdentifier'] = self.cert_identifier
+        if self.client_cacert is not None:
+            result['clientCACert'] = self.client_cacert
         if self.force_https is not None:
             result['forceHttps'] = self.force_https
         if self.http_2option is not None:
             result['http2Option'] = self.http_2option
+        if self.m_tlsenabled is not None:
+            result['mTLSEnabled'] = self.m_tlsenabled
         if self.name is not None:
             result['name'] = self.name
         if self.protocol is not None:
@@ -5447,10 +5474,14 @@ class CreateDomainRequest(TeaModel):
             self.ca_cert_identifier = m.get('caCertIdentifier')
         if m.get('certIdentifier') is not None:
             self.cert_identifier = m.get('certIdentifier')
+        if m.get('clientCACert') is not None:
+            self.client_cacert = m.get('clientCACert')
         if m.get('forceHttps') is not None:
             self.force_https = m.get('forceHttps')
         if m.get('http2Option') is not None:
             self.http_2option = m.get('http2Option')
+        if m.get('mTLSEnabled') is not None:
+            self.m_tlsenabled = m.get('mTLSEnabled')
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('protocol') is not None:
@@ -6279,17 +6310,18 @@ class CreateHttpApiRouteRequestBackendConfigServices(TeaModel):
         version: str = None,
         weight: int = None,
     ):
-        # Service port, not provided for dynamic ports.
+        # The service port. If you want to use a dynamic port, do not pass this parameter.
         self.port = port
-        # Service protocol:
-        # - HTTP.
-        # - HTTPS.
+        # The protocol. Valid values:
+        # 
+        # *   HTTP
+        # *   HTTPS
         self.protocol = protocol
-        # Service ID.
+        # The service ID.
         self.service_id = service_id
-        # Service version, valid only in label-based scenarios.
+        # The service version. Pass this parameter for tag-based routing.
         self.version = version
-        # Percentage value of traffic distribution.
+        # The percentage value of traffic.
         self.weight = weight
 
     def validate(self):
@@ -6334,13 +6366,14 @@ class CreateHttpApiRouteRequestBackendConfig(TeaModel):
         scene: str = None,
         services: List[CreateHttpApiRouteRequestBackendConfigServices] = None,
     ):
-        # Backend service scenario.
-        # - SingleService: Single service.
-        # - MultiServiceByRatio: Multiple services with ratio-based canary release.
-        # - Mock: Mock service.
-        # - Redirect: Redirect service.
+        # The scenario of the backend service.
+        # 
+        # *   SingleService
+        # *   MultiServiceByRatio
+        # *   Mock
+        # *   Redirect
         self.scene = scene
-        # List of backend services.
+        # The backend services.
         self.services = services
 
     def validate(self):
@@ -6385,17 +6418,17 @@ class CreateHttpApiRouteRequest(TeaModel):
         match: HttpRouteMatch = None,
         name: str = None,
     ):
-        # Backend service configuration for the route.
+        # The backend service configurations of the route.
         self.backend_config = backend_config
-        # Route description.
+        # The route description.
         self.description = description
-        # Domain IDs.
+        # The domain name IDs.
         self.domain_ids = domain_ids
-        # Environment ID.
+        # The environment ID.
         self.environment_id = environment_id
-        # Route match rules.
+        # The rule for matching the route.
         self.match = match
-        # Route name.
+        # The route name.
         self.name = name
 
     def validate(self):
@@ -6448,7 +6481,7 @@ class CreateHttpApiRouteResponseBodyData(TeaModel):
         self,
         route_id: str = None,
     ):
-        # Route ID。
+        # The route ID.
         self.route_id = route_id
 
     def validate(self):
@@ -6479,13 +6512,13 @@ class CreateHttpApiRouteResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response status code.
+        # The status code.
         self.code = code
-        # Response data.
+        # The response data.
         self.data = data
-        # Response message.
+        # The returned message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6571,11 +6604,18 @@ class CreatePolicyRequest(TeaModel):
         description: str = None,
         name: str = None,
     ):
+        # Policy type, including RateLimit, ConcurrencyLimit, CircuitBreaker, HttpRewrite, HeaderModify, Cors, Authentication, FlowCopy, Timeout, Retry, IpAccessControl, DirectResponse, Redirect, Fallback, ServiceTls, ServiceLb, ServicePortTls, Waf, JWTAuth, OIDCAuth, ExternalZAuth, AiProxy, ModelRouter, AiStatistics, AiSecurityGuard, AiFallback, ModelMapper, AiTokenRateLimit, AiCache, DynamicRoute
+        # 
         # This parameter is required.
         self.class_name = class_name
+        # Policy configuration
+        # 
         # This parameter is required.
         self.config = config
+        # Policy description
         self.description = description
+        # Policy name
+        # 
         # This parameter is required.
         self.name = name
 
@@ -6616,6 +6656,7 @@ class CreatePolicyResponseBodyData(TeaModel):
         self,
         policy_id: str = None,
     ):
+        # Policy ID
         self.policy_id = policy_id
 
     def validate(self):
@@ -6646,10 +6687,13 @@ class CreatePolicyResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response status code.
         self.code = code
+        # Response data.
         self.data = data
+        # Response message.
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -6736,14 +6780,24 @@ class CreatePolicyAttachmentRequest(TeaModel):
         gateway_id: str = None,
         policy_id: str = None,
     ):
+        # Attached resource ID
+        # 
         # This parameter is required.
         self.attach_resource_id = attach_resource_id
+        # Attached resource type, such as HttpApi, GatewayRoute, Operation, GatewayService, GatewayServicePort, Gateway, Domain
+        # 
         # This parameter is required.
         self.attach_resource_type = attach_resource_type
+        # Environment ID
+        # 
         # This parameter is required.
         self.environment_id = environment_id
+        # Gateway instance ID
+        # 
         # This parameter is required.
         self.gateway_id = gateway_id
+        # Policy ID
+        # 
         # This parameter is required.
         self.policy_id = policy_id
 
@@ -6788,6 +6842,7 @@ class CreatePolicyAttachmentResponseBodyData(TeaModel):
         self,
         policy_attachment_id: str = None,
     ):
+        # Policy Mount ID
         self.policy_attachment_id = policy_attachment_id
 
     def validate(self):
@@ -6818,10 +6873,13 @@ class CreatePolicyAttachmentResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Response data.
         self.data = data
+        # Response message.
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -6904,16 +6962,31 @@ class CreateServiceRequestServiceConfigs(TeaModel):
         self,
         addresses: List[str] = None,
         ai_service_config: AiServiceConfig = None,
+        dns_servers: List[str] = None,
         group_name: str = None,
         name: str = None,
         namespace: str = None,
         qualifier: str = None,
     ):
+        # List of domain names or fixed addresses.
         self.addresses = addresses
+        # AI service configuration.
         self.ai_service_config = ai_service_config
+        # List of DNS server addresses.
+        self.dns_servers = dns_servers
+        # Service group name.
+        # Needs to be specified when `sourceType` is MSE_NACOS.
         self.group_name = group_name
+        # Service name.
         self.name = name
+        # Namespace of the service:
+        # 
+        # - When `sourceType` is K8S, it represents the namespace where the K8S service is located.
+        # - When `sourceType` is MSE_NACOS, it represents the namespace in Nacos.
+        # 
+        # It needs to be specified when `sourceType` is K8S or MSE_NACOS.
         self.namespace = namespace
+        # Function version or alias.
         self.qualifier = qualifier
 
     def validate(self):
@@ -6930,6 +7003,8 @@ class CreateServiceRequestServiceConfigs(TeaModel):
             result['addresses'] = self.addresses
         if self.ai_service_config is not None:
             result['aiServiceConfig'] = self.ai_service_config.to_map()
+        if self.dns_servers is not None:
+            result['dnsServers'] = self.dns_servers
         if self.group_name is not None:
             result['groupName'] = self.group_name
         if self.name is not None:
@@ -6947,6 +7022,8 @@ class CreateServiceRequestServiceConfigs(TeaModel):
         if m.get('aiServiceConfig') is not None:
             temp_model = AiServiceConfig()
             self.ai_service_config = temp_model.from_map(m['aiServiceConfig'])
+        if m.get('dnsServers') is not None:
+            self.dns_servers = m.get('dnsServers')
         if m.get('groupName') is not None:
             self.group_name = m.get('groupName')
         if m.get('name') is not None:
@@ -6966,9 +7043,19 @@ class CreateServiceRequest(TeaModel):
         service_configs: List[CreateServiceRequestServiceConfigs] = None,
         source_type: str = None,
     ):
+        # Gateway ID.
         self.gateway_id = gateway_id
+        # Resource group ID.
         self.resource_group_id = resource_group_id
+        # List of service configuration information.
         self.service_configs = service_configs
+        # Service source:
+        # - MSE_NACOS: Services in MSE Nacos.
+        # - K8S: Services in the K8S cluster of container service.
+        # - VIP: Fixed address service.
+        # - DNS: DNS domain name service.
+        # - FC3: Function Compute service.
+        # - SAE_K8S_SERVICE: SAE K8S service.
         self.source_type = source_type
 
     def validate(self):
@@ -7016,6 +7103,7 @@ class CreateServiceResponseBodyData(TeaModel):
         self,
         service_ids: List[str] = None,
     ):
+        # List of service IDs.
         self.service_ids = service_ids
 
     def validate(self):
@@ -7046,9 +7134,13 @@ class CreateServiceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response status code.
         self.code = code
+        # Response data.
         self.data = data
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7493,11 +7585,11 @@ class DeleteHttpApiResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response status code.
+        # The status code.
         self.code = code
-        # Response message.
+        # The returned message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7742,9 +7834,11 @@ class DeletePolicyResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response status code.
         self.code = code
+        # Response message.
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -7823,9 +7917,11 @@ class DeletePolicyAttachmentResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response status code.
         self.code = code
+        # Response message.
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -7907,11 +8003,19 @@ class DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs(TeaModel):
         version: str = None,
         weight: int = None,
     ):
+        # Configuration of matching conditions related to API deployment.
         self.match = match
+        # Service port, do not provide for dynamic ports.
         self.port = port
+        # Service protocol:
+        # - HTTP.
+        # - HTTPS.
         self.protocol = protocol
+        # Service ID.
         self.service_id = service_id
+        # Service version.
         self.version = version
+        # Weight, range [1,100], valid only in the by-ratio scenario.
         self.weight = weight
 
     def validate(self):
@@ -7964,9 +8068,13 @@ class DeployHttpApiRequestRestApiConfigEnvironment(TeaModel):
         environment_id: str = None,
         service_configs: List[DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs] = None,
     ):
+        # API publication scenario.
         self.backend_scene = backend_scene
+        # List of user domains.
         self.custom_domain_ids = custom_domain_ids
+        # Environment ID.
         self.environment_id = environment_id
+        # Existing service configurations. Only one entry is allowed in a single-service scenario, while multiple entries are allowed in scenarios such as by ratio or by content.
         self.service_configs = service_configs
 
     def validate(self):
@@ -8016,8 +8124,11 @@ class DeployHttpApiRequestRestApiConfig(TeaModel):
         environment: DeployHttpApiRequestRestApiConfigEnvironment = None,
         revision_id: str = None,
     ):
+        # Publication description.
         self.description = description
+        # Publication environment configuration.
         self.environment = environment
+        # Historical version number. If this field is specified, the publication information will be based on the historical version information.
         self.revision_id = revision_id
 
     def validate(self):
@@ -8056,7 +8167,9 @@ class DeployHttpApiRequest(TeaModel):
         rest_api_config: DeployHttpApiRequestRestApiConfig = None,
         route_id: str = None,
     ):
+        # Rest API deployment configuration. Required when deploying an HTTP API as a Rest API.
         self.rest_api_config = rest_api_config
+        # Route ID. This must be provided when publishing the route of an HTTP API.
         self.route_id = route_id
 
     def validate(self):
@@ -8092,8 +8205,11 @@ class DeployHttpApiResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response status code.
         self.code = code
+        # 响应消息。
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8290,6 +8406,7 @@ class GetDashboardRequestFilter(TeaModel):
         self,
         route_name: str = None,
     ):
+        # Route name
         self.route_name = route_name
 
     def validate(self):
@@ -8322,11 +8439,21 @@ class GetDashboardRequest(TeaModel):
         plugin_class_id: str = None,
         source: str = None,
     ):
+        # zh: Chinese
+        # en: English
         self.accept_language = accept_language
+        # API ID
         self.api_id = api_id
+        # Filter configuration
         self.filter = filter
+        # Dashboard name:
+        # - LOG: Access log
+        # - PLUGIN: Plugin log
         self.name = name
+        # Plugin ID.
         self.plugin_class_id = plugin_class_id
+        # Dashboard source:
+        # - SLS: Log dashboard
         self.source = source
 
     def validate(self):
@@ -8381,11 +8508,21 @@ class GetDashboardShrinkRequest(TeaModel):
         plugin_class_id: str = None,
         source: str = None,
     ):
+        # zh: Chinese
+        # en: English
         self.accept_language = accept_language
+        # API ID
         self.api_id = api_id
+        # Filter configuration
         self.filter_shrink = filter_shrink
+        # Dashboard name:
+        # - LOG: Access log
+        # - PLUGIN: Plugin log
         self.name = name
+        # Plugin ID.
         self.plugin_class_id = plugin_class_id
+        # Dashboard source:
+        # - SLS: Log dashboard
         self.source = source
 
     def validate(self):
@@ -8436,9 +8573,13 @@ class GetDashboardResponseBodyData(TeaModel):
         title: str = None,
         url: str = None,
     ):
+        # Gateway unique identifier
         self.gateway_id = gateway_id
+        # Dashboard name
         self.name = name
+        # Dashboard title
         self.title = title
+        # Dashboard URL link
         self.url = url
 
     def validate(self):
@@ -8483,12 +8624,17 @@ class GetDashboardResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response code
         self.code = code
+        # Response data
         self.data = data
+        # Backend error code
         self.error_code = error_code
+        # Error message
         self.message = message
-        # Id of the request
+        # Request ID
         self.request_id = request_id
+        # Whether the request was successful
         self.success = success
 
     def validate(self):
@@ -8579,6 +8725,7 @@ class GetDomainRequest(TeaModel):
         self,
         with_statistics: bool = None,
     ):
+        # Indicates whether include domain related resource information.
         self.with_statistics = with_statistics
 
     def validate(self):
@@ -8607,7 +8754,9 @@ class GetDomainResponseBodyDataStatisticsInfo(TeaModel):
         resource_statistics: List[ResourceStatistic] = None,
         total_count: str = None,
     ):
+        # The array of related resource infomations.
         self.resource_statistics = resource_statistics
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -8649,6 +8798,7 @@ class GetDomainResponseBodyData(TeaModel):
         ca_cert_identifier: str = None,
         cert_identifier: str = None,
         cert_name: str = None,
+        client_cacert: str = None,
         create_from: str = None,
         create_timestamp: int = None,
         default: bool = None,
@@ -8656,6 +8806,7 @@ class GetDomainResponseBodyData(TeaModel):
         force_https: bool = None,
         http_2option: str = None,
         issuer: str = None,
+        m_tlsenabled: bool = None,
         name: str = None,
         not_after_timstamp: int = None,
         not_before_timestamp: int = None,
@@ -8670,10 +8821,14 @@ class GetDomainResponseBodyData(TeaModel):
     ):
         # Encryption algorithm name
         self.algorithm = algorithm
+        # CA certificate identifier
         self.ca_cert_identifier = ca_cert_identifier
+        # Certificate Identifier
         self.cert_identifier = cert_identifier
         # Certificate name
         self.cert_name = cert_name
+        # Client CA Cert
+        self.client_cacert = client_cacert
         # Where it was created from.
         self.create_from = create_from
         # Creation timestamp.
@@ -8688,6 +8843,8 @@ class GetDomainResponseBodyData(TeaModel):
         self.http_2option = http_2option
         # Certificate issuer.
         self.issuer = issuer
+        # true
+        self.m_tlsenabled = m_tlsenabled
         # Domain name.
         self.name = name
         # Certificate expiration time.
@@ -8699,10 +8856,13 @@ class GetDomainResponseBodyData(TeaModel):
         # - HTTP: Supports only HTTP protocol.
         # - HTTPS: Supports only HTTPS protocol.
         self.protocol = protocol
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # All domain names bound to the certificate.
         self.sans = sans
+        # The array of domain related resource information
         self.statistics_info = statistics_info
+        # The TLS cipher suites config.
         self.tls_cipher_suites_config = tls_cipher_suites_config
         # Maximum TLS protocol version, supports up to TLS 1.3.
         self.tls_max = tls_max
@@ -8731,6 +8891,8 @@ class GetDomainResponseBodyData(TeaModel):
             result['certIdentifier'] = self.cert_identifier
         if self.cert_name is not None:
             result['certName'] = self.cert_name
+        if self.client_cacert is not None:
+            result['clientCACert'] = self.client_cacert
         if self.create_from is not None:
             result['createFrom'] = self.create_from
         if self.create_timestamp is not None:
@@ -8745,6 +8907,8 @@ class GetDomainResponseBodyData(TeaModel):
             result['http2Option'] = self.http_2option
         if self.issuer is not None:
             result['issuer'] = self.issuer
+        if self.m_tlsenabled is not None:
+            result['mTLSEnabled'] = self.m_tlsenabled
         if self.name is not None:
             result['name'] = self.name
         if self.not_after_timstamp is not None:
@@ -8779,6 +8943,8 @@ class GetDomainResponseBodyData(TeaModel):
             self.cert_identifier = m.get('certIdentifier')
         if m.get('certName') is not None:
             self.cert_name = m.get('certName')
+        if m.get('clientCACert') is not None:
+            self.client_cacert = m.get('clientCACert')
         if m.get('createFrom') is not None:
             self.create_from = m.get('createFrom')
         if m.get('createTimestamp') is not None:
@@ -8793,6 +8959,8 @@ class GetDomainResponseBodyData(TeaModel):
             self.http_2option = m.get('http2Option')
         if m.get('issuer') is not None:
             self.issuer = m.get('issuer')
+        if m.get('mTLSEnabled') is not None:
+            self.m_tlsenabled = m.get('mTLSEnabled')
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('notAfterTimstamp') is not None:
@@ -10187,8 +10355,11 @@ class GetPolicyResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Response data.
         self.data = data
+        # Response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -10279,12 +10450,19 @@ class GetPolicyAttachmentResponseBodyData(TeaModel):
         policy_attachment_id: str = None,
         policy_id: str = None,
     ):
+        # Attached Resource ID
         self.attach_resource_id = attach_resource_id
+        # Attached resource type, HttpApi, GatewayRoute, Operation, GatewayService, GatewayServicePort, Gateway, Domain
         self.attach_resource_type = attach_resource_type
+        # Policy attachment configuration
         self.config = config
+        # Environment ID
         self.environment_id = environment_id
+        # Gateway Instance ID
         self.gateway_id = gateway_id
+        # Policy Attachment ID
         self.policy_attachment_id = policy_attachment_id
+        # Policy ID
         self.policy_id = policy_id
 
     def validate(self):
@@ -10339,10 +10517,13 @@ class GetPolicyAttachmentResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Response data.
         self.data = data
+        # Response message.
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -10426,7 +10607,9 @@ class GetResourceOverviewResponseBodyDataApi(TeaModel):
         published_count: int = None,
         total_count: int = None,
     ):
+        # Number of published APIs.
         self.published_count = published_count
+        # Number of APIs.
         self.total_count = total_count
 
     def validate(self):
@@ -10459,7 +10642,9 @@ class GetResourceOverviewResponseBodyDataGateway(TeaModel):
         running_count: int = None,
         total_count: int = None,
     ):
+        # Number of running gateways.
         self.running_count = running_count
+        # Number of gateway instances.
         self.total_count = total_count
 
     def validate(self):
@@ -10492,7 +10677,9 @@ class GetResourceOverviewResponseBodyData(TeaModel):
         api: GetResourceOverviewResponseBodyDataApi = None,
         gateway: GetResourceOverviewResponseBodyDataGateway = None,
     ):
+        # API information.
         self.api = api
+        # Gateway information.
         self.gateway = gateway
 
     def validate(self):
@@ -10532,9 +10719,13 @@ class GetResourceOverviewResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response status code.
         self.code = code
+        # Resource information.
         self.data = data
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10620,9 +10811,13 @@ class GetServiceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response status code.
         self.code = code
+        # Service details data.
         self.data = data
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10705,6 +10900,9 @@ class GetTraceConfigRequest(TeaModel):
         self,
         accept_language: str = None,
     ):
+        # Language Type:
+        # zh: Chinese
+        # en: English
         self.accept_language = accept_language
 
     def validate(self):
@@ -10736,10 +10934,21 @@ class GetTraceConfigResponseBodyData(TeaModel):
         service_port: str = None,
         trace_type: str = None,
     ):
+        # Whether to Enable Tracing:
+        # true: Enabled
+        # false: Disabled
         self.enable = enable
+        # Sampling Rate
         self.sample_ratio = sample_ratio
+        # Service ID, present when the tracing type is SKYWALKING
         self.service_id = service_id
+        # 服务端口，链路追踪类型为SKYWALKING时存在该参数
         self.service_port = service_port
+        # Tracing Type:
+        # - XTRACE
+        # - SKYWALKING
+        # - OPENTELEMETRY
+        # - OTSKYWALKING
         self.trace_type = trace_type
 
     def validate(self):
@@ -10787,10 +10996,17 @@ class GetTraceConfigResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response Code
         self.code = code
+        # Response Data
         self.data = data
+        # Error Message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Boolean	Request Result, with the following values:
+        # true: Request succeeded.
+        # false: Request failed.
         self.success = success
 
     def validate(self):
@@ -12414,6 +12630,7 @@ class ListGatewaysResponseBodyDataItems(TeaModel):
         # - Deleting: Deleting.
         # - DeleteFailed: Deletion failed.
         self.status = status
+        # List of sub domain information
         self.sub_domain_infos = sub_domain_infos
         # Array of tags.
         self.tags = tags
@@ -12976,18 +13193,31 @@ class ListHttpApiRoutesRequest(TeaModel):
         with_consumer_info_by_id: str = None,
         with_plugin_attachment_by_plugin_id: str = None,
     ):
+        # Filter the interface list based on a specific consumer authorization rule ID. The interface list in the response will only include authorized interfaces.
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
+        # Deployment status of the route.
         self.deploy_statuses = deploy_statuses
+        # Filter route information by domain ID.
         self.domain_id = domain_id
+        # Environment ID.
         self.environment_id = environment_id
+        # Cloud-native API Gateway ID.
         self.gateway_id = gateway_id
+        # Route name.
         self.name = name
+        # Fuzzy search by route name.
         self.name_like = name_like
+        # Page number, starting from 1. Default is 1 if not specified.
         self.page_number = page_number
+        # Page size, valid range [1, 100]. Default is 10 if not specified.
         self.page_size = page_size
+        # Fuzzy search by route path.
         self.path_like = path_like
+        # The response includes consumer authorization information.
         self.with_auth_policy_info = with_auth_policy_info
+        # Each route information in the response carries the list of authorization rules for the specified consumer ID.
         self.with_consumer_info_by_id = with_consumer_info_by_id
+        # Each route information in the response carries the attachment information for the specified plugin ID.
         self.with_plugin_attachment_by_plugin_id = with_plugin_attachment_by_plugin_id
 
     def validate(self):
@@ -13066,9 +13296,13 @@ class ListHttpApiRoutesResponseBodyData(TeaModel):
         page_size: int = None,
         total_size: int = None,
     ):
+        # List of routes.
         self.items = items
+        # Page number.
         self.page_number = page_number
+        # Page size.
         self.page_size = page_size
+        # Total number of items.
         self.total_size = total_size
 
     def validate(self):
@@ -13119,9 +13353,13 @@ class ListHttpApiRoutesResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response status code.
         self.code = code
+        # Response data.
         self.data = data
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -13223,25 +13461,31 @@ class ListHttpApisRequest(TeaModel):
         self.keyword = keyword
         # Exact search by name.
         self.name = name
-        # Page number, starting from 1, default is 1 if not provided.
+        # Page number, starting from 1, default is 1 if not specified.
         self.page_number = page_number
-        # Page size, valid range [1, 100], default is 10 if not provided.
+        # Page size, valid range [1, 100], default is 10 if not specified.
         self.page_size = page_size
+        # Resource group ID.
         self.resource_group_id = resource_group_id
-        # Type of HTTP API. Supports multiple types, separated by ",".
+        # Type of HTTP API. Multiple types can be passed, separated by ",".
         # - Http
         # - Rest
         # - WebSocket
         # - HttpIngress
         self.types = types
-        # Each API information in the response carries consumer authentication policy information under the specified environment ID.
+        # Each API information in the response carries consumer authentication policy information for the specified environment ID.
         self.with_auth_policy_in_environment_id = with_auth_policy_in_environment_id
+        # Whether the authentication policy is enabled.
         self.with_auth_policy_list = with_auth_policy_list
         # Each API information in the response carries a list of authorization rules for the specified consumer ID.
         self.with_consumer_info_by_id = with_consumer_info_by_id
+        # Environment information
         self.with_environment_info = with_environment_info
+        # Environment ID
         self.with_environment_info_by_id = with_environment_info_by_id
+        # Ingress information
         self.with_ingress_info = with_ingress_info
+        # Plugin ID, used to get plugin release information based on this ID.
         self.with_plugin_attachment_by_plugin_id = with_plugin_attachment_by_plugin_id
 
     def validate(self):
@@ -13474,10 +13718,26 @@ class ListPolicyClassesRequest(TeaModel):
         page_size: int = None,
         type: str = None,
     ):
+        # Types of attachment points supported by the policy.
+        # 
+        # - HttpApi: HttpApi.
+        # - Operation: Operation of HttpApi.
+        # - GatewayRoute: Gateway route.
+        # - GatewayService: Gateway service.
+        # - GatewayServicePort: Gateway service port.
+        # - Domain: Gateway domain.
+        # - Gateway: Gateway.
         self.attach_resource_type = attach_resource_type
+        # Direction of the policy.
+        # - Outbound: OutBound.
+        # - Inbound: InBound.
+        # - Both directions: Both.
         self.direction = direction
+        # Page number, default is 1.
         self.page_number = page_number
+        # Page size
         self.page_size = page_size
+        # Type of the policy template.
         self.type = type
 
     def validate(self):
@@ -13524,9 +13784,13 @@ class ListPolicyClassesResponseBodyData(TeaModel):
         page_size: int = None,
         total_size: int = None,
     ):
+        # List of policy templates
         self.items = items
+        # Page number.
         self.page_number = page_number
+        # Page size
         self.page_size = page_size
+        # Total number of items.
         self.total_size = total_size
 
     def validate(self):
@@ -13577,9 +13841,13 @@ class ListPolicyClassesResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Policy template information.
         self.data = data
+        # ResponseMessage
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -13667,11 +13935,22 @@ class ListServicesRequest(TeaModel):
         resource_group_id: str = None,
         source_type: str = None,
     ):
+        # Cloud-native API Gateway ID.
         self.gateway_id = gateway_id
+        # Exact query by service name.
         self.name = name
+        # Page number, starting from 1. Default is 1 if not specified.
         self.page_number = page_number
+        # Page size, valid range [1, 100]. Default is 10 if not specified.
         self.page_size = page_size
+        # Resource group ID.
         self.resource_group_id = resource_group_id
+        # Query by service source type. Service sources:
+        # - MSE_NACOS: Services from MSE Nacos.
+        # - K8S: Services from K8S clusters in container services.
+        # - FC3: Services from function computing.
+        # - VIP: Services from a fixed address.
+        # - DNS: Services from a domain name.
         self.source_type = source_type
 
     def validate(self):
@@ -13722,9 +14001,13 @@ class ListServicesResponseBodyData(TeaModel):
         page_size: int = None,
         total_size: int = None,
     ):
+        # Service list.
         self.items = items
+        # Page number.
         self.page_number = page_number
+        # Page size.
         self.page_size = page_size
+        # Total count.
         self.total_size = total_size
 
     def validate(self):
@@ -13775,9 +14058,13 @@ class ListServicesResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response status code.
         self.code = code
+        # Response data.
         self.data = data
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -13863,9 +14150,13 @@ class ListSslCertsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # Name matching keyword.
         self.cert_name_like = cert_name_like
+        # Domain name.
         self.domain_name = domain_name
+        # Page number, default is 1
         self.page_number = page_number
+        # Page size, default is 10
         self.page_size = page_size
 
     def validate(self):
@@ -13908,9 +14199,13 @@ class ListSslCertsResponseBodyData(TeaModel):
         page_size: int = None,
         total_size: int = None,
     ):
+        # List of certificate information.
         self.items = items
+        # Page number.
         self.page_number = page_number
+        # Page size.
         self.page_size = page_size
+        # Total count.
         self.total_size = total_size
 
     def validate(self):
@@ -13961,9 +14256,13 @@ class ListSslCertsResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response status code.
         self.code = code
+        # Returned data
         self.data = data
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14046,6 +14345,7 @@ class ListZonesResponseBodyDataItems(TeaModel):
         self,
         zone_id: str = None,
     ):
+        # 可用区ID。
         self.zone_id = zone_id
 
     def validate(self):
@@ -14073,6 +14373,7 @@ class ListZonesResponseBodyData(TeaModel):
         self,
         items: List[ListZonesResponseBodyDataItems] = None,
     ):
+        # List of availability zones.
         self.items = items
 
     def validate(self):
@@ -14111,9 +14412,13 @@ class ListZonesResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response status code.
         self.code = code
+        # Returned data.
         self.data = data
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14274,24 +14579,145 @@ class RestartGatewayResponse(TeaModel):
         return self
 
 
+class UndeployHttpApiRequest(TeaModel):
+    def __init__(
+        self,
+        environment_id: str = None,
+        route_id: str = None,
+    ):
+        self.environment_id = environment_id
+        self.route_id = route_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.environment_id is not None:
+            result['environmentId'] = self.environment_id
+        if self.route_id is not None:
+            result['routeId'] = self.route_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('environmentId') is not None:
+            self.environment_id = m.get('environmentId')
+        if m.get('routeId') is not None:
+            self.route_id = m.get('routeId')
+        return self
+
+
+class UndeployHttpApiResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UndeployHttpApiResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UndeployHttpApiResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UndeployHttpApiResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateDomainRequest(TeaModel):
     def __init__(
         self,
         ca_cert_identifier: str = None,
         cert_identifier: str = None,
+        client_cacert: str = None,
         force_https: bool = None,
         http_2option: str = None,
+        m_tlsenabled: bool = None,
         protocol: str = None,
         tls_cipher_suites_config: TlsCipherSuitesConfig = None,
         tls_max: str = None,
         tls_min: str = None,
     ):
+        # CA certificate identifier
         self.ca_cert_identifier = ca_cert_identifier
+        # Certificate identifier
         self.cert_identifier = cert_identifier
+        # Client CA Certificate
+        self.client_cacert = client_cacert
         # Set the HTTPS protocol type, whether to enable forced HTTPS redirection.
         self.force_https = force_https
         # HTTP/2 settings.
         self.http_2option = http_2option
+        # Whether to enable mTLS mutual authentication
+        self.m_tlsenabled = m_tlsenabled
         # The protocol type supported by the domain.
         # 
         # - HTTP: Supports only HTTP protocol.
@@ -14320,10 +14746,14 @@ class UpdateDomainRequest(TeaModel):
             result['caCertIdentifier'] = self.ca_cert_identifier
         if self.cert_identifier is not None:
             result['certIdentifier'] = self.cert_identifier
+        if self.client_cacert is not None:
+            result['clientCACert'] = self.client_cacert
         if self.force_https is not None:
             result['forceHttps'] = self.force_https
         if self.http_2option is not None:
             result['http2Option'] = self.http_2option
+        if self.m_tlsenabled is not None:
+            result['mTLSEnabled'] = self.m_tlsenabled
         if self.protocol is not None:
             result['protocol'] = self.protocol
         if self.tls_cipher_suites_config is not None:
@@ -14340,10 +14770,14 @@ class UpdateDomainRequest(TeaModel):
             self.ca_cert_identifier = m.get('caCertIdentifier')
         if m.get('certIdentifier') is not None:
             self.cert_identifier = m.get('certIdentifier')
+        if m.get('clientCACert') is not None:
+            self.client_cacert = m.get('clientCACert')
         if m.get('forceHttps') is not None:
             self.force_https = m.get('forceHttps')
         if m.get('http2Option') is not None:
             self.http_2option = m.get('http2Option')
+        if m.get('mTLSEnabled') is not None:
+            self.m_tlsenabled = m.get('mTLSEnabled')
         if m.get('protocol') is not None:
             self.protocol = m.get('protocol')
         if m.get('tlsCipherSuitesConfig') is not None:
@@ -14827,15 +15261,15 @@ class UpdateHttpApiRequestIngressConfig(TeaModel):
         source_id: str = None,
         watch_namespace: str = None,
     ):
-        # Environment ID.
+        # The environment ID.
         self.environment_id = environment_id
-        # Ingress Class being listened to.
+        # The Ingress class for listening.
         self.ingress_class = ingress_class
-        # Whether to update the address in the Ingress Status.
+        # Specifies whether to update the address in Ingress Status.
         self.override_ingress_ip = override_ingress_ip
-        # Source ID.
+        # The source ID.
         self.source_id = source_id
-        # Watched namespace.
+        # The namespace for listening.
         self.watch_namespace = watch_namespace
 
     def validate(self):
@@ -14887,23 +15321,25 @@ class UpdateHttpApiRequest(TeaModel):
         protocols: List[str] = None,
         version_config: HttpApiVersionConfig = None,
     ):
-        # List of AI protocols.
+        # The AI protocols.
         self.ai_protocols = ai_protocols
+        # The authentication configuration.
         self.auth_config = auth_config
-        # Base path of the API, which must start with a \\"/\\".
+        # The API base path, which must start with a forward slash (/).
         # 
         # This parameter is required.
         self.base_path = base_path
-        # List of API deployment configurations.
+        # The deployment configurations.
         self.deploy_configs = deploy_configs
-        # API description.
+        # The API description.
         self.description = description
+        # Specifies whether to enable authentication.
         self.enable_auth = enable_auth
-        # Configuration information for the HTTP Ingress API.
+        # The HTTP Ingress API configurations.
         self.ingress_config = ingress_config
-        # List of API access protocols.
+        # The protocols that are used to access the API.
         self.protocols = protocols
-        # API versioning configuration.
+        # The versioning configurations.
         self.version_config = version_config
 
     def validate(self):
@@ -14982,11 +15418,11 @@ class UpdateHttpApiResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response status code.
+        # The status code.
         self.code = code
-        # Response message.
+        # The returned message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15423,9 +15859,14 @@ class UpdatePolicyRequest(TeaModel):
         description: str = None,
         name: str = None,
     ):
+        # Policy configuration
+        # 
         # This parameter is required.
         self.config = config
+        # Description
         self.description = description
+        # Policy name
+        # 
         # This parameter is required.
         self.name = name
 
@@ -15464,8 +15905,11 @@ class UpdatePolicyResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response status code.
         self.code = code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
