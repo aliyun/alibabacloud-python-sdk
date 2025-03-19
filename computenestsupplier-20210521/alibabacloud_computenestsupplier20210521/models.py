@@ -683,7 +683,10 @@ class CreateArtifactRequestArtifactBuildPropertyCodeRepo(TeaModel):
     ):
         # The name of the branch in the code repository.
         self.branch = branch
+        # The endpoint. 
+        # The URL address used to access the privately deployed GitLab instance.
         self.endpoint = endpoint
+        # The organization ID.
         self.org_id = org_id
         # The owner of the code repository.
         # 
@@ -694,7 +697,10 @@ class CreateArtifactRequestArtifactBuildPropertyCodeRepo(TeaModel):
         # - github
         # 
         # - gitee
+        # - gitlab
+        # - codeup
         self.platform = platform
+        # The repository ID.
         self.repo_id = repo_id
         # The name of the repository.
         self.repo_name = repo_name
@@ -9265,6 +9271,7 @@ class GetSupplierInformationResponseBodyDeliverySettings(TeaModel):
 class GetSupplierInformationResponseBody(TeaModel):
     def __init__(
         self,
+        acr_namespace: str = None,
         delivery_settings: GetSupplierInformationResponseBodyDeliverySettings = None,
         enable_reseller: bool = None,
         operation_ip: str = None,
@@ -9275,6 +9282,8 @@ class GetSupplierInformationResponseBody(TeaModel):
         supplier_name: str = None,
         supplier_url: str = None,
     ):
+        # Acr container namespace
+        self.acr_namespace = acr_namespace
         # The delivery settings.
         self.delivery_settings = delivery_settings
         # Whether to enable reseller
@@ -9304,6 +9313,8 @@ class GetSupplierInformationResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.acr_namespace is not None:
+            result['AcrNamespace'] = self.acr_namespace
         if self.delivery_settings is not None:
             result['DeliverySettings'] = self.delivery_settings.to_map()
         if self.enable_reseller is not None:
@@ -9326,6 +9337,8 @@ class GetSupplierInformationResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AcrNamespace') is not None:
+            self.acr_namespace = m.get('AcrNamespace')
         if m.get('DeliverySettings') is not None:
             temp_model = GetSupplierInformationResponseBodyDeliverySettings()
             self.delivery_settings = temp_model.from_map(m['DeliverySettings'])
@@ -9815,6 +9828,7 @@ class ListAcrImageRepositoriesResponseBodyRepositories(TeaModel):
         self,
         create_time: str = None,
         modified_time: str = None,
+        namespace: str = None,
         repo_id: str = None,
         repo_name: str = None,
         repo_type: str = None,
@@ -9823,6 +9837,7 @@ class ListAcrImageRepositoriesResponseBodyRepositories(TeaModel):
         self.create_time = create_time
         # The time when the image was modified.
         self.modified_time = modified_time
+        self.namespace = namespace
         # The image repo ID.
         self.repo_id = repo_id
         # The image repo name.
@@ -9846,6 +9861,8 @@ class ListAcrImageRepositoriesResponseBodyRepositories(TeaModel):
             result['CreateTime'] = self.create_time
         if self.modified_time is not None:
             result['ModifiedTime'] = self.modified_time
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         if self.repo_name is not None:
@@ -9860,6 +9877,8 @@ class ListAcrImageRepositoriesResponseBodyRepositories(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('ModifiedTime') is not None:
             self.modified_time = m.get('ModifiedTime')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         if m.get('RepoName') is not None:
@@ -18546,14 +18565,26 @@ class UpdateArtifactRequestArtifactBuildPropertyCodeRepo(TeaModel):
     ):
         # The name of the branch in the code repository.
         self.branch = branch
+        # The endpoint. 
+        # The URL address used to access the privately deployed GitLab instance.
         self.endpoint = endpoint
+        # The organization ID.
         self.org_id = org_id
         # The owner of the code repository.
         # 
         # >  This parameter is available only if the git repository is private.
         self.owner = owner
-        # The platform where the code repository is hosted.
+        # The platform type. Valid values:
+        # 
+        # - github
+        # 
+        # - gitee
+        # 
+        # - gitlab
+        # 
+        # - codeup
         self.platform = platform
+        # The repository ID.
         self.repo_id = repo_id
         # The name of the repository.
         self.repo_name = repo_name

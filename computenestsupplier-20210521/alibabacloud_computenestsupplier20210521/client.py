@@ -3587,7 +3587,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.GetSupplierInformationResponse:
         """
-        @summary
+        @summary 获取服务商信息
         
         @param request: GetSupplierInformationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3628,7 +3628,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.GetSupplierInformationResponse:
         """
-        @summary
+        @summary 获取服务商信息
         
         @param request: GetSupplierInformationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3668,7 +3668,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.GetSupplierInformationRequest,
     ) -> compute_nest_supplier_20210521_models.GetSupplierInformationResponse:
         """
-        @summary
+        @summary 获取服务商信息
         
         @param request: GetSupplierInformationRequest
         @return: GetSupplierInformationResponse
@@ -3681,7 +3681,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.GetSupplierInformationRequest,
     ) -> compute_nest_supplier_20210521_models.GetSupplierInformationResponse:
         """
-        @summary
+        @summary 获取服务商信息
         
         @param request: GetSupplierInformationRequest
         @return: GetSupplierInformationResponse

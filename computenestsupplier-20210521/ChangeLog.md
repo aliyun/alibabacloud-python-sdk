@@ -1,3 +1,8 @@
+2025-03-19 Version: 7.0.3
+- Update API GetSupplierInformation: update response param.
+- Update API ListAcrImageRepositories: update response param.
+
+
 2025-03-12 Version: 7.0.2
 - Generated python 2021-05-21 for ComputeNestSupplier.
 
