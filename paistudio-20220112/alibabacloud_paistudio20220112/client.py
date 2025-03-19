@@ -4033,6 +4033,8 @@ class Client(OpenApiClient):
             query['FilterByResourceGroupIds'] = request.filter_by_resource_group_ids
         if not UtilClient.is_unset(request.gputype):
             query['GPUType'] = request.gputype
+        if not UtilClient.is_unset(request.machine_group_ids):
+            query['MachineGroupIds'] = request.machine_group_ids
         if not UtilClient.is_unset(request.node_names):
             query['NodeNames'] = request.node_names
         if not UtilClient.is_unset(request.node_statuses):
@@ -4105,6 +4107,8 @@ class Client(OpenApiClient):
             query['FilterByResourceGroupIds'] = request.filter_by_resource_group_ids
         if not UtilClient.is_unset(request.gputype):
             query['GPUType'] = request.gputype
+        if not UtilClient.is_unset(request.machine_group_ids):
+            query['MachineGroupIds'] = request.machine_group_ids
         if not UtilClient.is_unset(request.node_names):
             query['NodeNames'] = request.node_names
         if not UtilClient.is_unset(request.node_statuses):
@@ -4562,6 +4566,8 @@ class Client(OpenApiClient):
             query['CreatorID'] = request.creator_id
         if not UtilClient.is_unset(request.ecs_spec):
             query['EcsSpec'] = request.ecs_spec
+        if not UtilClient.is_unset(request.machine_group_ids):
+            query['MachineGroupIDs'] = request.machine_group_ids
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.order):
@@ -4629,6 +4635,8 @@ class Client(OpenApiClient):
             query['CreatorID'] = request.creator_id
         if not UtilClient.is_unset(request.ecs_spec):
             query['EcsSpec'] = request.ecs_spec
+        if not UtilClient.is_unset(request.machine_group_ids):
+            query['MachineGroupIDs'] = request.machine_group_ids
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.order):

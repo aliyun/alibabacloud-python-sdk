@@ -728,14 +728,16 @@ class AlgorithmSpec(TeaModel):
         return self
 
 
-class NodeSpec(TeaModel):
+class BindingPolicy(TeaModel):
     def __init__(
         self,
-        count: int = None,
-        type: str = None,
+        exclude_nodes: List[str] = None,
+        include_nodes: List[str] = None,
+        node_spec_count: int = None,
     ):
-        self.count = count
-        self.type = type
+        self.exclude_nodes = exclude_nodes
+        self.include_nodes = include_nodes
+        self.node_spec_count = node_spec_count
 
     def validate(self):
         pass
@@ -746,6 +748,48 @@ class NodeSpec(TeaModel):
             return _map
 
         result = dict()
+        if self.exclude_nodes is not None:
+            result['ExcludeNodes'] = self.exclude_nodes
+        if self.include_nodes is not None:
+            result['IncludeNodes'] = self.include_nodes
+        if self.node_spec_count is not None:
+            result['NodeSpecCount'] = self.node_spec_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExcludeNodes') is not None:
+            self.exclude_nodes = m.get('ExcludeNodes')
+        if m.get('IncludeNodes') is not None:
+            self.include_nodes = m.get('IncludeNodes')
+        if m.get('NodeSpecCount') is not None:
+            self.node_spec_count = m.get('NodeSpecCount')
+        return self
+
+
+class NodeSpec(TeaModel):
+    def __init__(
+        self,
+        binding_policy: BindingPolicy = None,
+        count: int = None,
+        type: str = None,
+    ):
+        self.binding_policy = binding_policy
+        self.count = count
+        self.type = type
+
+    def validate(self):
+        if self.binding_policy:
+            self.binding_policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.binding_policy is not None:
+            result['BindingPolicy'] = self.binding_policy.to_map()
         if self.count is not None:
             result['Count'] = self.count
         if self.type is not None:
@@ -754,6 +798,9 @@ class NodeSpec(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BindingPolicy') is not None:
+            temp_model = BindingPolicy()
+            self.binding_policy = temp_model.from_map(m['BindingPolicy'])
         if m.get('Count') is not None:
             self.count = m.get('Count')
         if m.get('Type') is not None:
@@ -1975,6 +2022,45 @@ class NodeMetric(TeaModel):
                 self.metrics.append(temp_model.from_map(k))
         if m.get('NodeID') is not None:
             self.node_id = m.get('NodeID')
+        return self
+
+
+class NodeOperationResult(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        node_name: str = None,
+        status: str = None,
+    ):
+        self.message = message
+        self.node_name = node_name
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -4180,6 +4266,45 @@ class ResourceGroupMetric(TeaModel):
                 self.metrics.append(temp_model.from_map(k))
         if m.get('ResourceGroupID') is not None:
             self.resource_group_id = m.get('ResourceGroupID')
+        return self
+
+
+class ResourceLimitDetails(TeaModel):
+    def __init__(
+        self,
+        gclevel: str = None,
+        resource_limit: Dict[str, Any] = None,
+        should_ignore_resource_check: bool = None,
+    ):
+        self.gclevel = gclevel
+        self.resource_limit = resource_limit
+        self.should_ignore_resource_check = should_ignore_resource_check
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gclevel is not None:
+            result['GCLevel'] = self.gclevel
+        if self.resource_limit is not None:
+            result['ResourceLimit'] = self.resource_limit
+        if self.should_ignore_resource_check is not None:
+            result['ShouldIgnoreResourceCheck'] = self.should_ignore_resource_check
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GCLevel') is not None:
+            self.gclevel = m.get('GCLevel')
+        if m.get('ResourceLimit') is not None:
+            self.resource_limit = m.get('ResourceLimit')
+        if m.get('ShouldIgnoreResourceCheck') is not None:
+            self.should_ignore_resource_check = m.get('ShouldIgnoreResourceCheck')
         return self
 
 
@@ -10852,6 +10977,7 @@ class ListNodesRequest(TeaModel):
         filter_by_quota_id: str = None,
         filter_by_resource_group_ids: str = None,
         gputype: str = None,
+        machine_group_ids: str = None,
         node_names: str = None,
         node_statuses: str = None,
         node_types: str = None,
@@ -10868,6 +10994,7 @@ class ListNodesRequest(TeaModel):
         self.filter_by_quota_id = filter_by_quota_id
         self.filter_by_resource_group_ids = filter_by_resource_group_ids
         self.gputype = gputype
+        self.machine_group_ids = machine_group_ids
         self.node_names = node_names
         self.node_statuses = node_statuses
         self.node_types = node_types
@@ -10897,6 +11024,8 @@ class ListNodesRequest(TeaModel):
             result['FilterByResourceGroupIds'] = self.filter_by_resource_group_ids
         if self.gputype is not None:
             result['GPUType'] = self.gputype
+        if self.machine_group_ids is not None:
+            result['MachineGroupIds'] = self.machine_group_ids
         if self.node_names is not None:
             result['NodeNames'] = self.node_names
         if self.node_statuses is not None:
@@ -10931,6 +11060,8 @@ class ListNodesRequest(TeaModel):
             self.filter_by_resource_group_ids = m.get('FilterByResourceGroupIds')
         if m.get('GPUType') is not None:
             self.gputype = m.get('GPUType')
+        if m.get('MachineGroupIds') is not None:
+            self.machine_group_ids = m.get('MachineGroupIds')
         if m.get('NodeNames') is not None:
             self.node_names = m.get('NodeNames')
         if m.get('NodeStatuses') is not None:
@@ -11477,6 +11608,7 @@ class ListResourceGroupMachineGroupsRequest(TeaModel):
         self,
         creator_id: str = None,
         ecs_spec: str = None,
+        machine_group_ids: str = None,
         name: str = None,
         order: str = None,
         order_instance_id: str = None,
@@ -11490,6 +11622,7 @@ class ListResourceGroupMachineGroupsRequest(TeaModel):
     ):
         self.creator_id = creator_id
         self.ecs_spec = ecs_spec
+        self.machine_group_ids = machine_group_ids
         self.name = name
         self.order = order
         self.order_instance_id = order_instance_id
@@ -11514,6 +11647,8 @@ class ListResourceGroupMachineGroupsRequest(TeaModel):
             result['CreatorID'] = self.creator_id
         if self.ecs_spec is not None:
             result['EcsSpec'] = self.ecs_spec
+        if self.machine_group_ids is not None:
+            result['MachineGroupIDs'] = self.machine_group_ids
         if self.name is not None:
             result['Name'] = self.name
         if self.order is not None:
@@ -11542,6 +11677,8 @@ class ListResourceGroupMachineGroupsRequest(TeaModel):
             self.creator_id = m.get('CreatorID')
         if m.get('EcsSpec') is not None:
             self.ecs_spec = m.get('EcsSpec')
+        if m.get('MachineGroupIDs') is not None:
+            self.machine_group_ids = m.get('MachineGroupIDs')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Order') is not None:

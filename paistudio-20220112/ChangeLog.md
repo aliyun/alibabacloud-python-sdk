@@ -1,3 +1,8 @@
+2025-03-19 Version: 2.1.3
+- Update API ListNodes: add param MachineGroupIds.
+- Update API ListResourceGroupMachineGroups: add param MachineGroupIDs.
+
+
 2025-02-19 Version: 2.1.2
 - Update API ListQuotaWorkloads: add param WithHistoricalData.
 
