@@ -1,3 +1,11 @@
+2025-03-19 Version: 4.0.0
+- Support API ListPolicies.
+- Update API ListServiceInstanceResources: delete param ExpireTimeEnd.
+- Update API ListServiceInstanceResources: delete param ExpireTimeStart.
+- Update API ListServiceInstanceResources: delete param PayType.
+- Update API ListServiceInstanceResources: delete param ResourceARN.
+
+
 2025-02-17 Version: 3.7.0
 - Support API DeployServiceInstance.
 - Support API DescribeRegions.

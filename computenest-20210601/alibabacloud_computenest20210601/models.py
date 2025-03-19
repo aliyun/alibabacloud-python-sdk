@@ -6397,6 +6397,198 @@ class GetUserInformationResponse(TeaModel):
         return self
 
 
+class ListPoliciesRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        region_id: str = None,
+    ):
+        # Page size.
+        self.max_results = max_results
+        # Token for the next query, an empty nextToken indicates there is no next page.
+        self.next_token = next_token
+        # Region ID.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ListPoliciesResponseBodyPolicies(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        policy_document: str = None,
+        policy_name: str = None,
+        policy_type: str = None,
+    ):
+        # Permission policy description.
+        self.description = description
+        # Policy content.
+        self.policy_document = policy_document
+        # Permission policy name.
+        self.policy_name = policy_name
+        # Permission policy type.
+        # 
+        # - Custom: Custom policy.
+        # - System: System policy.
+        self.policy_type = policy_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.policy_document is not None:
+            result['PolicyDocument'] = self.policy_document
+        if self.policy_name is not None:
+            result['PolicyName'] = self.policy_name
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('PolicyDocument') is not None:
+            self.policy_document = m.get('PolicyDocument')
+        if m.get('PolicyName') is not None:
+            self.policy_name = m.get('PolicyName')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
+        return self
+
+
+class ListPoliciesResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        policies: List[ListPoliciesResponseBodyPolicies] = None,
+        request_id: str = None,
+    ):
+        # 分页大小。
+        self.max_results = max_results
+        # Next Token
+        self.next_token = next_token
+        # Permission policy list
+        self.policies = policies
+        # Request ID
+        self.request_id = request_id
+
+    def validate(self):
+        if self.policies:
+            for k in self.policies:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['Policies'] = []
+        if self.policies is not None:
+            for k in self.policies:
+                result['Policies'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.policies = []
+        if m.get('Policies') is not None:
+            for k in m.get('Policies'):
+                temp_model = ListPoliciesResponseBodyPolicies()
+                self.policies.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListPoliciesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPoliciesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPoliciesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListServiceCategoriesResponseBody(TeaModel):
     def __init__(
         self,
@@ -6528,11 +6720,14 @@ class ListServiceInstanceLogsRequest(TeaModel):
     ):
         # The filters.
         self.filter = filter
-        # The log source. Valid values:
+        # The log source. When this field is empty, query logs with the source set to computeNest and ros. Valid values:
         # 
-        # *   computeNest (default): logs of the deployment and upgrade of the service instance.
-        # *   application: logs generated by the application.
-        # *   actionTrail: logs generated by ActionTrail.
+        # computeNest : logs of the deployment and upgrade of the service instance.
+        # application: logs generated by the application.
+        # actionTrail: logs generated by ActionTrail.
+        # compliancePack: Logs originating from the compliance package.
+        # ros: Logs originating from ROS.
+        # meteringData：Logs originating from the pay-as-you-go model.
         self.log_source = log_source
         # The Logstore. You must specify this parameter if you set LogSource to application.
         self.logstore = logstore
@@ -6551,11 +6746,10 @@ class ListServiceInstanceLogsRequest(TeaModel):
         # 
         # This parameter is required.
         self.service_instance_id = service_instance_id
-        # Sort Order. Possible values:
+        # The order in which you want to sort the results. Valid values:
         # 
-        # + Ascending: Ascending order
-        # 
-        # + Descending (default value): Descending order
+        # *   Ascending
+        # *   (Default) Descending
         self.sort_order = sort_order
 
     def validate(self):
@@ -6642,13 +6836,14 @@ class ListServiceInstanceLogsResponseBodyServiceInstancesLogs(TeaModel):
         self.resource_id = resource_id
         # The resource type.
         self.resource_type = resource_type
-        # The source of the service instance log. Valid values:
+        # The log source. Valid values:
         # 
-        # computeNest: logs of the deployment and upgrade of the service instance.
-        # 
+        # computeNest : logs of the deployment and upgrade of the service instance.
         # application: logs generated by the application.
-        # 
         # actionTrail: logs generated by ActionTrail.
+        # compliancePack: Logs originating from the compliance package.
+        # ros: Logs originating from ROS.
+        # meteringData：Logs originating from the pay-as-you-go model.
         self.source = source
         # The state of the service instance. Valid values:
         # 
@@ -6892,24 +7087,14 @@ class ListServiceInstanceResourcesRequestTag(TeaModel):
 class ListServiceInstanceResourcesRequest(TeaModel):
     def __init__(
         self,
-        expire_time_end: str = None,
-        expire_time_start: str = None,
         filters: List[ListServiceInstanceResourcesRequestFilters] = None,
         max_results: int = None,
         next_token: str = None,
-        pay_type: str = None,
         region_id: str = None,
-        resource_arn: List[str] = None,
         service_instance_id: str = None,
         service_instance_resource_type: str = None,
         tag: List[ListServiceInstanceResourcesRequestTag] = None,
     ):
-        # End time of resource usage. 
-        # <notice>Note: Only supports querying service instances on private deployments.
-        self.expire_time_end = expire_time_end
-        # Start time of resource usage. 
-        # <notice>Note: Only supports querying service instances on private deployments.
-        self.expire_time_start = expire_time_start
         # The filter conditions. Vaild values:
         # 
         # - ExpireTimeStart：
@@ -6937,18 +7122,11 @@ class ListServiceInstanceResourcesRequest(TeaModel):
         # *   If **NextToken** is not returned, it indicates that no additional results exist.
         # *   If **NextToken** was returned in the previous query, specify the value to obtain the next set of results.
         self.next_token = next_token
-        # The billing method of the read-only instance. Valid values:
-        # 
-        # *   **Postpaid**: pay-as-you-go
-        # *   **Prepaid**: subscription
-        self.pay_type = pay_type
         # The region ID. Valid values:
         # 
         # *   cn-hangzhou: China (Hangzhou).
         # *   ap-southeast-1: Singapore.
         self.region_id = region_id
-        # The Alibaba Cloud Resource Name (ARN) of a resource.
-        self.resource_arn = resource_arn
         # The ID of the service instance.
         # 
         # This parameter is required.
@@ -6974,10 +7152,6 @@ class ListServiceInstanceResourcesRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.expire_time_end is not None:
-            result['ExpireTimeEnd'] = self.expire_time_end
-        if self.expire_time_start is not None:
-            result['ExpireTimeStart'] = self.expire_time_start
         result['Filters'] = []
         if self.filters is not None:
             for k in self.filters:
@@ -6986,12 +7160,8 @@ class ListServiceInstanceResourcesRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
-        if self.pay_type is not None:
-            result['PayType'] = self.pay_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.resource_arn is not None:
-            result['ResourceARN'] = self.resource_arn
         if self.service_instance_id is not None:
             result['ServiceInstanceId'] = self.service_instance_id
         if self.service_instance_resource_type is not None:
@@ -7004,10 +7174,6 @@ class ListServiceInstanceResourcesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ExpireTimeEnd') is not None:
-            self.expire_time_end = m.get('ExpireTimeEnd')
-        if m.get('ExpireTimeStart') is not None:
-            self.expire_time_start = m.get('ExpireTimeStart')
         self.filters = []
         if m.get('Filters') is not None:
             for k in m.get('Filters'):
@@ -7017,12 +7183,8 @@ class ListServiceInstanceResourcesRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
-        if m.get('PayType') is not None:
-            self.pay_type = m.get('PayType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('ResourceARN') is not None:
-            self.resource_arn = m.get('ResourceARN')
         if m.get('ServiceInstanceId') is not None:
             self.service_instance_id = m.get('ServiceInstanceId')
         if m.get('ServiceInstanceResourceType') is not None:
@@ -8345,7 +8507,7 @@ class ListServiceUsagesResponseBodyServiceUsages(TeaModel):
         self.update_time = update_time
         # The ID of the Alibaba Cloud account.
         self.user_ali_uid = user_ali_uid
-        # The information about the applicant.
+        # The information about the applicants.
         self.user_information = user_information
 
     def validate(self):
@@ -8409,7 +8571,7 @@ class ListServiceUsagesResponseBody(TeaModel):
         service_usages: List[ListServiceUsagesResponseBodyServiceUsages] = None,
         total_count: int = None,
     ):
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The maximum number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
         # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
@@ -8417,6 +8579,7 @@ class ListServiceUsagesResponseBody(TeaModel):
         self.request_id = request_id
         # The service applications.
         self.service_usages = service_usages
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):

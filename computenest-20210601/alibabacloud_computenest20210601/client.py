@@ -2249,6 +2249,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_user_information_with_options_async(request, runtime)
 
+    def list_policies_with_options(
+        self,
+        request: compute_nest_20210601_models.ListPoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.ListPoliciesResponse:
+        """
+        @summary Query Permission Policy List
+        
+        @param request: ListPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPoliciesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPolicies',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_20210601_models.ListPoliciesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_20210601_models.ListPoliciesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_policies_with_options_async(
+        self,
+        request: compute_nest_20210601_models.ListPoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.ListPoliciesResponse:
+        """
+        @summary Query Permission Policy List
+        
+        @param request: ListPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPoliciesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPolicies',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                compute_nest_20210601_models.ListPoliciesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                compute_nest_20210601_models.ListPoliciesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_policies(
+        self,
+        request: compute_nest_20210601_models.ListPoliciesRequest,
+    ) -> compute_nest_20210601_models.ListPoliciesResponse:
+        """
+        @summary Query Permission Policy List
+        
+        @param request: ListPoliciesRequest
+        @return: ListPoliciesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_policies_with_options(request, runtime)
+
+    async def list_policies_async(
+        self,
+        request: compute_nest_20210601_models.ListPoliciesRequest,
+    ) -> compute_nest_20210601_models.ListPoliciesResponse:
+        """
+        @summary Query Permission Policy List
+        
+        @param request: ListPoliciesRequest
+        @return: ListPoliciesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_policies_with_options_async(request, runtime)
+
     def list_service_categories_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -2485,22 +2601,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.expire_time_end):
-            query['ExpireTimeEnd'] = request.expire_time_end
-        if not UtilClient.is_unset(request.expire_time_start):
-            query['ExpireTimeStart'] = request.expire_time_start
         if not UtilClient.is_unset(request.filters):
             query['Filters'] = request.filters
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.pay_type):
-            query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_arn):
-            query['ResourceARN'] = request.resource_arn
         if not UtilClient.is_unset(request.service_instance_id):
             query['ServiceInstanceId'] = request.service_instance_id
         if not UtilClient.is_unset(request.service_instance_resource_type):
@@ -2546,22 +2654,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.expire_time_end):
-            query['ExpireTimeEnd'] = request.expire_time_end
-        if not UtilClient.is_unset(request.expire_time_start):
-            query['ExpireTimeStart'] = request.expire_time_start
         if not UtilClient.is_unset(request.filters):
             query['Filters'] = request.filters
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.pay_type):
-            query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_arn):
-            query['ResourceARN'] = request.resource_arn
         if not UtilClient.is_unset(request.service_instance_id):
             query['ServiceInstanceId'] = request.service_instance_id
         if not UtilClient.is_unset(request.service_instance_resource_type):
