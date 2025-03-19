@@ -1,3 +1,12 @@
+2025-03-19 Version: 5.1.0
+- Support API CreateModel.
+- Support API DebugModel.
+- Support API DeleteModel.
+- Support API GetModel.
+- Support API ListModels.
+- Support API ModifyModel.
+
+
 2025-03-18 Version: 5.0.0
 - Update API ListPostQueryResult: delete param address.
 - Update API ListRestQueryResult: delete param address.

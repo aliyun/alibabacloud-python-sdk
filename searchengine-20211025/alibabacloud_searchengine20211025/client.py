@@ -1601,6 +1601,138 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_instance_with_options_async(request, headers, runtime)
 
+    def create_model_with_options(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.CreateModelRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.CreateModelResponse:
+        """
+        @summary 创建模型信息
+        
+        @param request: CreateModelRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateModelResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateModel',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/models',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                searchengine_20211025_models.CreateModelResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                searchengine_20211025_models.CreateModelResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_model_with_options_async(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.CreateModelRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.CreateModelResponse:
+        """
+        @summary 创建模型信息
+        
+        @param request: CreateModelRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateModelResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateModel',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/models',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                searchengine_20211025_models.CreateModelResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                searchengine_20211025_models.CreateModelResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_model(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.CreateModelRequest,
+    ) -> searchengine_20211025_models.CreateModelResponse:
+        """
+        @summary 创建模型信息
+        
+        @param request: CreateModelRequest
+        @return: CreateModelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_model_with_options(instance_id, request, headers, runtime)
+
+    async def create_model_async(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.CreateModelRequest,
+    ) -> searchengine_20211025_models.CreateModelResponse:
+        """
+        @summary 创建模型信息
+        
+        @param request: CreateModelRequest
+        @return: CreateModelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_model_with_options_async(instance_id, request, headers, runtime)
+
     def create_public_url_with_options(
         self,
         instance_id: str,
@@ -1982,6 +2114,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_table_with_options_async(instance_id, request, headers, runtime)
+
+    def debug_model_with_options(
+        self,
+        instance_id: str,
+        model_name: str,
+        request: searchengine_20211025_models.DebugModelRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.DebugModelResponse:
+        """
+        @summary 调试模型
+        
+        @param request: DebugModelRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DebugModelResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.is_online):
+            query['isOnline'] = request.is_online
+        body = {}
+        if not UtilClient.is_unset(request.input):
+            body['input'] = request.input
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DebugModel',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/models/{OpenApiUtilClient.get_encode_param(model_name)}/actions/debug',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                searchengine_20211025_models.DebugModelResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                searchengine_20211025_models.DebugModelResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def debug_model_with_options_async(
+        self,
+        instance_id: str,
+        model_name: str,
+        request: searchengine_20211025_models.DebugModelRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.DebugModelResponse:
+        """
+        @summary 调试模型
+        
+        @param request: DebugModelRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DebugModelResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.is_online):
+            query['isOnline'] = request.is_online
+        body = {}
+        if not UtilClient.is_unset(request.input):
+            body['input'] = request.input
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DebugModel',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/models/{OpenApiUtilClient.get_encode_param(model_name)}/actions/debug',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                searchengine_20211025_models.DebugModelResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                searchengine_20211025_models.DebugModelResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def debug_model(
+        self,
+        instance_id: str,
+        model_name: str,
+        request: searchengine_20211025_models.DebugModelRequest,
+    ) -> searchengine_20211025_models.DebugModelResponse:
+        """
+        @summary 调试模型
+        
+        @param request: DebugModelRequest
+        @return: DebugModelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.debug_model_with_options(instance_id, model_name, request, headers, runtime)
+
+    async def debug_model_async(
+        self,
+        instance_id: str,
+        model_name: str,
+        request: searchengine_20211025_models.DebugModelRequest,
+    ) -> searchengine_20211025_models.DebugModelResponse:
+        """
+        @summary 调试模型
+        
+        @param request: DebugModelRequest
+        @return: DebugModelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.debug_model_with_options_async(instance_id, model_name, request, headers, runtime)
 
     def delete_advance_config_with_options(
         self,
@@ -3074,6 +3338,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_instance_with_options_async(instance_id, headers, runtime)
+
+    def delete_model_with_options(
+        self,
+        instance_id: str,
+        model_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.DeleteModelResponse:
+        """
+        @summary 删除模型
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteModelResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteModel',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/models/{OpenApiUtilClient.get_encode_param(model_name)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                searchengine_20211025_models.DeleteModelResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                searchengine_20211025_models.DeleteModelResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_model_with_options_async(
+        self,
+        instance_id: str,
+        model_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.DeleteModelResponse:
+        """
+        @summary 删除模型
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteModelResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteModel',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/models/{OpenApiUtilClient.get_encode_param(model_name)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                searchengine_20211025_models.DeleteModelResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                searchengine_20211025_models.DeleteModelResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_model(
+        self,
+        instance_id: str,
+        model_name: str,
+    ) -> searchengine_20211025_models.DeleteModelResponse:
+        """
+        @summary 删除模型
+        
+        @return: DeleteModelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_model_with_options(instance_id, model_name, headers, runtime)
+
+    async def delete_model_async(
+        self,
+        instance_id: str,
+        model_name: str,
+    ) -> searchengine_20211025_models.DeleteModelResponse:
+        """
+        @summary 删除模型
+        
+        @return: DeleteModelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_model_with_options_async(instance_id, model_name, headers, runtime)
 
     def delete_public_url_with_options(
         self,
@@ -5442,6 +5812,132 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_instance_with_options_async(instance_id, headers, runtime)
+
+    def get_model_with_options(
+        self,
+        instance_id: str,
+        model_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.GetModelResponse:
+        """
+        @summary 通过实例ID和模型名称查询特定模型的详细配置信息。
+        
+        @description ## 请求说明
+        - 该API用于获取指定实例下的特定模型的详细信息，包括模型类型、URL、状态等。
+        - 确保提供的`instanceId`和`modelName`是有效的，否则可能返回错误或找不到资源。
+        - 返回的数据结构中包含了模型的内容（如请求头、参数等）以及创建和更新时间，有助于了解模型的具体配置及其最新状态。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetModelResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetModel',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/models/{OpenApiUtilClient.get_encode_param(model_name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                searchengine_20211025_models.GetModelResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                searchengine_20211025_models.GetModelResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_model_with_options_async(
+        self,
+        instance_id: str,
+        model_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.GetModelResponse:
+        """
+        @summary 通过实例ID和模型名称查询特定模型的详细配置信息。
+        
+        @description ## 请求说明
+        - 该API用于获取指定实例下的特定模型的详细信息，包括模型类型、URL、状态等。
+        - 确保提供的`instanceId`和`modelName`是有效的，否则可能返回错误或找不到资源。
+        - 返回的数据结构中包含了模型的内容（如请求头、参数等）以及创建和更新时间，有助于了解模型的具体配置及其最新状态。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetModelResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetModel',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/models/{OpenApiUtilClient.get_encode_param(model_name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                searchengine_20211025_models.GetModelResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                searchengine_20211025_models.GetModelResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_model(
+        self,
+        instance_id: str,
+        model_name: str,
+    ) -> searchengine_20211025_models.GetModelResponse:
+        """
+        @summary 通过实例ID和模型名称查询特定模型的详细配置信息。
+        
+        @description ## 请求说明
+        - 该API用于获取指定实例下的特定模型的详细信息，包括模型类型、URL、状态等。
+        - 确保提供的`instanceId`和`modelName`是有效的，否则可能返回错误或找不到资源。
+        - 返回的数据结构中包含了模型的内容（如请求头、参数等）以及创建和更新时间，有助于了解模型的具体配置及其最新状态。
+        
+        @return: GetModelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_model_with_options(instance_id, model_name, headers, runtime)
+
+    async def get_model_async(
+        self,
+        instance_id: str,
+        model_name: str,
+    ) -> searchengine_20211025_models.GetModelResponse:
+        """
+        @summary 通过实例ID和模型名称查询特定模型的详细配置信息。
+        
+        @description ## 请求说明
+        - 该API用于获取指定实例下的特定模型的详细信息，包括模型类型、URL、状态等。
+        - 确保提供的`instanceId`和`modelName`是有效的，否则可能返回错误或找不到资源。
+        - 返回的数据结构中包含了模型的内容（如请求头、参数等）以及创建和更新时间，有助于了解模型的具体配置及其最新状态。
+        
+        @return: GetModelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_model_with_options_async(instance_id, model_name, headers, runtime)
 
     def get_node_config_with_options(
         self,
@@ -8020,6 +8516,150 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_logs_with_options_async(instance_id, request, headers, runtime)
+
+    def list_models_with_options(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListModelsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ListModelsResponse:
+        """
+        @summary 通过实例ID查询指定条件下的模型列表。
+        
+        @description ## 请求说明
+        本API用于从指定实例中获取模型列表，支持通过模型名称、类型以及分页参数进行筛选。请求时需提供实例ID作为路径参数，其他筛选条件为可选的查询参数。
+        
+        @param request: ListModelsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListModelsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListModels',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/models',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                searchengine_20211025_models.ListModelsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                searchengine_20211025_models.ListModelsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_models_with_options_async(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListModelsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ListModelsResponse:
+        """
+        @summary 通过实例ID查询指定条件下的模型列表。
+        
+        @description ## 请求说明
+        本API用于从指定实例中获取模型列表，支持通过模型名称、类型以及分页参数进行筛选。请求时需提供实例ID作为路径参数，其他筛选条件为可选的查询参数。
+        
+        @param request: ListModelsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListModelsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListModels',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/models',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                searchengine_20211025_models.ListModelsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                searchengine_20211025_models.ListModelsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_models(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListModelsRequest,
+    ) -> searchengine_20211025_models.ListModelsResponse:
+        """
+        @summary 通过实例ID查询指定条件下的模型列表。
+        
+        @description ## 请求说明
+        本API用于从指定实例中获取模型列表，支持通过模型名称、类型以及分页参数进行筛选。请求时需提供实例ID作为路径参数，其他筛选条件为可选的查询参数。
+        
+        @param request: ListModelsRequest
+        @return: ListModelsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_models_with_options(instance_id, request, headers, runtime)
+
+    async def list_models_async(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListModelsRequest,
+    ) -> searchengine_20211025_models.ListModelsResponse:
+        """
+        @summary 通过实例ID查询指定条件下的模型列表。
+        
+        @description ## 请求说明
+        本API用于从指定实例中获取模型列表，支持通过模型名称、类型以及分页参数进行筛选。请求时需提供实例ID作为路径参数，其他筛选条件为可选的查询参数。
+        
+        @param request: ListModelsRequest
+        @return: ListModelsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_models_with_options_async(instance_id, request, headers, runtime)
 
     def list_online_configs_with_options(
         self,
@@ -11222,6 +11862,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.modify_index_version_with_options_async(instance_id, cluster_name, request, headers, runtime)
+
+    def modify_model_with_options(
+        self,
+        instance_id: str,
+        model_name: str,
+        request: searchengine_20211025_models.ModifyModelRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ModifyModelResponse:
+        """
+        @summary 修改模型详情，修改模型状态
+        
+        @param request: ModifyModelRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyModelResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.status):
+            body['status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyModel',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/models/{OpenApiUtilClient.get_encode_param(model_name)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                searchengine_20211025_models.ModifyModelResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                searchengine_20211025_models.ModifyModelResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_model_with_options_async(
+        self,
+        instance_id: str,
+        model_name: str,
+        request: searchengine_20211025_models.ModifyModelRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ModifyModelResponse:
+        """
+        @summary 修改模型详情，修改模型状态
+        
+        @param request: ModifyModelRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyModelResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.status):
+            body['status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyModel',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/models/{OpenApiUtilClient.get_encode_param(model_name)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                searchengine_20211025_models.ModifyModelResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                searchengine_20211025_models.ModifyModelResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_model(
+        self,
+        instance_id: str,
+        model_name: str,
+        request: searchengine_20211025_models.ModifyModelRequest,
+    ) -> searchengine_20211025_models.ModifyModelResponse:
+        """
+        @summary 修改模型详情，修改模型状态
+        
+        @param request: ModifyModelRequest
+        @return: ModifyModelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.modify_model_with_options(instance_id, model_name, request, headers, runtime)
+
+    async def modify_model_async(
+        self,
+        instance_id: str,
+        model_name: str,
+        request: searchengine_20211025_models.ModifyModelRequest,
+    ) -> searchengine_20211025_models.ModifyModelResponse:
+        """
+        @summary 修改模型详情，修改模型状态
+        
+        @param request: ModifyModelRequest
+        @return: ModifyModelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.modify_model_with_options_async(instance_id, model_name, request, headers, runtime)
 
     def modify_node_config_with_options(
         self,

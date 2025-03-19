@@ -2780,6 +2780,417 @@ class CreateInstanceResponse(TeaModel):
         return self
 
 
+class CreateModelRequestContentRequestHeader(TeaModel):
+    def __init__(
+        self,
+        authorization: str = None,
+        content_type: str = None,
+    ):
+        self.authorization = authorization
+        self.content_type = content_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        if self.content_type is not None:
+            result['Content-Type'] = self.content_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        if m.get('Content-Type') is not None:
+            self.content_type = m.get('Content-Type')
+        return self
+
+
+class CreateModelRequestContentRequestParametersBuild(TeaModel):
+    def __init__(
+        self,
+        input_type: str = None,
+    ):
+        self.input_type = input_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_type is not None:
+            result['input_type'] = self.input_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('input_type') is not None:
+            self.input_type = m.get('input_type')
+        return self
+
+
+class CreateModelRequestContentRequestParametersSearch(TeaModel):
+    def __init__(
+        self,
+        input_type: str = None,
+    ):
+        self.input_type = input_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_type is not None:
+            result['input_type'] = self.input_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('input_type') is not None:
+            self.input_type = m.get('input_type')
+        return self
+
+
+class CreateModelRequestContentRequestParameters(TeaModel):
+    def __init__(
+        self,
+        build: CreateModelRequestContentRequestParametersBuild = None,
+        search: CreateModelRequestContentRequestParametersSearch = None,
+    ):
+        self.build = build
+        self.search = search
+
+    def validate(self):
+        if self.build:
+            self.build.validate()
+        if self.search:
+            self.search.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.build is not None:
+            result['build'] = self.build.to_map()
+        if self.search is not None:
+            result['search'] = self.search.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('build') is not None:
+            temp_model = CreateModelRequestContentRequestParametersBuild()
+            self.build = temp_model.from_map(m['build'])
+        if m.get('search') is not None:
+            temp_model = CreateModelRequestContentRequestParametersSearch()
+            self.search = temp_model.from_map(m['search'])
+        return self
+
+
+class CreateModelRequestContentRequestUrlParams(TeaModel):
+    def __init__(
+        self,
+        build: Dict[str, Any] = None,
+        search: Dict[str, Any] = None,
+    ):
+        self.build = build
+        self.search = search
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.build is not None:
+            result['build'] = self.build
+        if self.search is not None:
+            result['search'] = self.search
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('build') is not None:
+            self.build = m.get('build')
+        if m.get('search') is not None:
+            self.search = m.get('search')
+        return self
+
+
+class CreateModelRequestContentRequest(TeaModel):
+    def __init__(
+        self,
+        header: CreateModelRequestContentRequestHeader = None,
+        parameters: CreateModelRequestContentRequestParameters = None,
+        request_body: str = None,
+        url_params: CreateModelRequestContentRequestUrlParams = None,
+    ):
+        self.header = header
+        self.parameters = parameters
+        self.request_body = request_body
+        self.url_params = url_params
+
+    def validate(self):
+        if self.header:
+            self.header.validate()
+        if self.parameters:
+            self.parameters.validate()
+        if self.url_params:
+            self.url_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.header is not None:
+            result['header'] = self.header.to_map()
+        if self.parameters is not None:
+            result['parameters'] = self.parameters.to_map()
+        if self.request_body is not None:
+            result['requestBody'] = self.request_body
+        if self.url_params is not None:
+            result['urlParams'] = self.url_params.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('header') is not None:
+            temp_model = CreateModelRequestContentRequestHeader()
+            self.header = temp_model.from_map(m['header'])
+        if m.get('parameters') is not None:
+            temp_model = CreateModelRequestContentRequestParameters()
+            self.parameters = temp_model.from_map(m['parameters'])
+        if m.get('requestBody') is not None:
+            self.request_body = m.get('requestBody')
+        if m.get('urlParams') is not None:
+            temp_model = CreateModelRequestContentRequestUrlParams()
+            self.url_params = temp_model.from_map(m['urlParams'])
+        return self
+
+
+class CreateModelRequestContentResponse(TeaModel):
+    def __init__(
+        self,
+        embeddings: str = None,
+    ):
+        self.embeddings = embeddings
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.embeddings is not None:
+            result['embeddings'] = self.embeddings
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('embeddings') is not None:
+            self.embeddings = m.get('embeddings')
+        return self
+
+
+class CreateModelRequestContent(TeaModel):
+    def __init__(
+        self,
+        dimension: int = None,
+        method: str = None,
+        model_type: str = None,
+        request: CreateModelRequestContentRequest = None,
+        response: CreateModelRequestContentResponse = None,
+        url: str = None,
+    ):
+        self.dimension = dimension
+        self.method = method
+        self.model_type = model_type
+        self.request = request
+        self.response = response
+        self.url = url
+
+    def validate(self):
+        if self.request:
+            self.request.validate()
+        if self.response:
+            self.response.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dimension is not None:
+            result['dimension'] = self.dimension
+        if self.method is not None:
+            result['method'] = self.method
+        if self.model_type is not None:
+            result['modelType'] = self.model_type
+        if self.request is not None:
+            result['request'] = self.request.to_map()
+        if self.response is not None:
+            result['response'] = self.response.to_map()
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('dimension') is not None:
+            self.dimension = m.get('dimension')
+        if m.get('method') is not None:
+            self.method = m.get('method')
+        if m.get('modelType') is not None:
+            self.model_type = m.get('modelType')
+        if m.get('request') is not None:
+            temp_model = CreateModelRequestContentRequest()
+            self.request = temp_model.from_map(m['request'])
+        if m.get('response') is not None:
+            temp_model = CreateModelRequestContentResponse()
+            self.response = temp_model.from_map(m['response'])
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class CreateModelRequest(TeaModel):
+    def __init__(
+        self,
+        content: CreateModelRequestContent = None,
+        name: str = None,
+        dry_run: str = None,
+    ):
+        self.content = content
+        # This parameter is required.
+        self.name = name
+        self.dry_run = dry_run
+
+    def validate(self):
+        if self.content:
+            self.content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content.to_map()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.dry_run is not None:
+            result['dryRun'] = self.dry_run
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            temp_model = CreateModelRequestContent()
+            self.content = temp_model.from_map(m['content'])
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('dryRun') is not None:
+            self.dry_run = m.get('dryRun')
+        return self
+
+
+class CreateModelResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreateModelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateModelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateModelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreatePublicUrlResponseBody(TeaModel):
     def __init__(
         self,
@@ -3653,6 +4064,108 @@ class CreateTableResponse(TeaModel):
         return self
 
 
+class DebugModelRequest(TeaModel):
+    def __init__(
+        self,
+        input: str = None,
+        is_online: str = None,
+    ):
+        self.input = input
+        self.is_online = is_online
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input is not None:
+            result['input'] = self.input
+        if self.is_online is not None:
+            result['isOnline'] = self.is_online
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('input') is not None:
+            self.input = m.get('input')
+        if m.get('isOnline') is not None:
+            self.is_online = m.get('isOnline')
+        return self
+
+
+class DebugModelResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DebugModelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DebugModelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DebugModelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteAdvanceConfigResponseBody(TeaModel):
     def __init__(
         self,
@@ -4485,6 +4998,75 @@ class DeleteInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteModelResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeleteModelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteModelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteModelResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9311,6 +9893,453 @@ class GetInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetModelResponseBodyResultContentRequestHeader(TeaModel):
+    def __init__(
+        self,
+        authorization: str = None,
+        content_type: str = None,
+    ):
+        self.authorization = authorization
+        self.content_type = content_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        if self.content_type is not None:
+            result['Content-Type'] = self.content_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        if m.get('Content-Type') is not None:
+            self.content_type = m.get('Content-Type')
+        return self
+
+
+class GetModelResponseBodyResultContentRequestParametersBuild(TeaModel):
+    def __init__(
+        self,
+        input_type: str = None,
+    ):
+        self.input_type = input_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_type is not None:
+            result['input_type'] = self.input_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('input_type') is not None:
+            self.input_type = m.get('input_type')
+        return self
+
+
+class GetModelResponseBodyResultContentRequestParametersSearch(TeaModel):
+    def __init__(
+        self,
+        input_type: str = None,
+    ):
+        self.input_type = input_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_type is not None:
+            result['input_type'] = self.input_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('input_type') is not None:
+            self.input_type = m.get('input_type')
+        return self
+
+
+class GetModelResponseBodyResultContentRequestParameters(TeaModel):
+    def __init__(
+        self,
+        build: GetModelResponseBodyResultContentRequestParametersBuild = None,
+        search: GetModelResponseBodyResultContentRequestParametersSearch = None,
+    ):
+        self.build = build
+        self.search = search
+
+    def validate(self):
+        if self.build:
+            self.build.validate()
+        if self.search:
+            self.search.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.build is not None:
+            result['build'] = self.build.to_map()
+        if self.search is not None:
+            result['search'] = self.search.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('build') is not None:
+            temp_model = GetModelResponseBodyResultContentRequestParametersBuild()
+            self.build = temp_model.from_map(m['build'])
+        if m.get('search') is not None:
+            temp_model = GetModelResponseBodyResultContentRequestParametersSearch()
+            self.search = temp_model.from_map(m['search'])
+        return self
+
+
+class GetModelResponseBodyResultContentRequestUrlParams(TeaModel):
+    def __init__(
+        self,
+        build: Dict[str, Any] = None,
+        search: Dict[str, Any] = None,
+    ):
+        self.build = build
+        self.search = search
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.build is not None:
+            result['build'] = self.build
+        if self.search is not None:
+            result['search'] = self.search
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('build') is not None:
+            self.build = m.get('build')
+        if m.get('search') is not None:
+            self.search = m.get('search')
+        return self
+
+
+class GetModelResponseBodyResultContentRequest(TeaModel):
+    def __init__(
+        self,
+        header: GetModelResponseBodyResultContentRequestHeader = None,
+        parameters: GetModelResponseBodyResultContentRequestParameters = None,
+        request_body: str = None,
+        url_params: GetModelResponseBodyResultContentRequestUrlParams = None,
+    ):
+        self.header = header
+        self.parameters = parameters
+        self.request_body = request_body
+        self.url_params = url_params
+
+    def validate(self):
+        if self.header:
+            self.header.validate()
+        if self.parameters:
+            self.parameters.validate()
+        if self.url_params:
+            self.url_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.header is not None:
+            result['header'] = self.header.to_map()
+        if self.parameters is not None:
+            result['parameters'] = self.parameters.to_map()
+        if self.request_body is not None:
+            result['requestBody'] = self.request_body
+        if self.url_params is not None:
+            result['urlParams'] = self.url_params.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('header') is not None:
+            temp_model = GetModelResponseBodyResultContentRequestHeader()
+            self.header = temp_model.from_map(m['header'])
+        if m.get('parameters') is not None:
+            temp_model = GetModelResponseBodyResultContentRequestParameters()
+            self.parameters = temp_model.from_map(m['parameters'])
+        if m.get('requestBody') is not None:
+            self.request_body = m.get('requestBody')
+        if m.get('urlParams') is not None:
+            temp_model = GetModelResponseBodyResultContentRequestUrlParams()
+            self.url_params = temp_model.from_map(m['urlParams'])
+        return self
+
+
+class GetModelResponseBodyResultContentResponse(TeaModel):
+    def __init__(
+        self,
+        embeddings: str = None,
+    ):
+        self.embeddings = embeddings
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.embeddings is not None:
+            result['embeddings'] = self.embeddings
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('embeddings') is not None:
+            self.embeddings = m.get('embeddings')
+        return self
+
+
+class GetModelResponseBodyResultContent(TeaModel):
+    def __init__(
+        self,
+        method: str = None,
+        model_name: str = None,
+        model_type: str = None,
+        request: GetModelResponseBodyResultContentRequest = None,
+        response: GetModelResponseBodyResultContentResponse = None,
+        url: str = None,
+    ):
+        self.method = method
+        self.model_name = model_name
+        self.model_type = model_type
+        self.request = request
+        self.response = response
+        self.url = url
+
+    def validate(self):
+        if self.request:
+            self.request.validate()
+        if self.response:
+            self.response.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.method is not None:
+            result['method'] = self.method
+        if self.model_name is not None:
+            result['modelName'] = self.model_name
+        if self.model_type is not None:
+            result['modelType'] = self.model_type
+        if self.request is not None:
+            result['request'] = self.request.to_map()
+        if self.response is not None:
+            result['response'] = self.response.to_map()
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('method') is not None:
+            self.method = m.get('method')
+        if m.get('modelName') is not None:
+            self.model_name = m.get('modelName')
+        if m.get('modelType') is not None:
+            self.model_type = m.get('modelType')
+        if m.get('request') is not None:
+            temp_model = GetModelResponseBodyResultContentRequest()
+            self.request = temp_model.from_map(m['request'])
+        if m.get('response') is not None:
+            temp_model = GetModelResponseBodyResultContentResponse()
+            self.response = temp_model.from_map(m['response'])
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class GetModelResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        content: GetModelResponseBodyResultContent = None,
+        create_time: str = None,
+        dimension: int = None,
+        name: str = None,
+        status: str = None,
+        type: str = None,
+        update_time: str = None,
+        url: str = None,
+    ):
+        self.content = content
+        self.create_time = create_time
+        self.dimension = dimension
+        self.name = name
+        self.status = status
+        self.type = type
+        self.update_time = update_time
+        self.url = url
+
+    def validate(self):
+        if self.content:
+            self.content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content.to_map()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.dimension is not None:
+            result['dimension'] = self.dimension
+        if self.name is not None:
+            result['name'] = self.name
+        if self.status is not None:
+            result['status'] = self.status
+        if self.type is not None:
+            result['type'] = self.type
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            temp_model = GetModelResponseBodyResultContent()
+            self.content = temp_model.from_map(m['content'])
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('dimension') is not None:
+            self.dimension = m.get('dimension')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class GetModelResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: GetModelResponseBodyResult = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = GetModelResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        return self
+
+
+class GetModelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetModelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetModelResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -14823,6 +15852,510 @@ class ListLogsResponse(TeaModel):
         return self
 
 
+class ListModelsRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        type: str = None,
+    ):
+        self.name = name
+        self.page_number = page_number
+        self.page_size = page_size
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ListModelsResponseBodyResultContentRequestHeader(TeaModel):
+    def __init__(
+        self,
+        authorization: str = None,
+        content_type: str = None,
+    ):
+        self.authorization = authorization
+        self.content_type = content_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        if self.content_type is not None:
+            result['Content-Type'] = self.content_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        if m.get('Content-Type') is not None:
+            self.content_type = m.get('Content-Type')
+        return self
+
+
+class ListModelsResponseBodyResultContentRequestParametersBuild(TeaModel):
+    def __init__(
+        self,
+        input_type: str = None,
+    ):
+        self.input_type = input_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_type is not None:
+            result['input_type'] = self.input_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('input_type') is not None:
+            self.input_type = m.get('input_type')
+        return self
+
+
+class ListModelsResponseBodyResultContentRequestParametersSearch(TeaModel):
+    def __init__(
+        self,
+        input_type: str = None,
+    ):
+        self.input_type = input_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_type is not None:
+            result['input_type'] = self.input_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('input_type') is not None:
+            self.input_type = m.get('input_type')
+        return self
+
+
+class ListModelsResponseBodyResultContentRequestParameters(TeaModel):
+    def __init__(
+        self,
+        build: ListModelsResponseBodyResultContentRequestParametersBuild = None,
+        search: ListModelsResponseBodyResultContentRequestParametersSearch = None,
+    ):
+        self.build = build
+        self.search = search
+
+    def validate(self):
+        if self.build:
+            self.build.validate()
+        if self.search:
+            self.search.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.build is not None:
+            result['build'] = self.build.to_map()
+        if self.search is not None:
+            result['search'] = self.search.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('build') is not None:
+            temp_model = ListModelsResponseBodyResultContentRequestParametersBuild()
+            self.build = temp_model.from_map(m['build'])
+        if m.get('search') is not None:
+            temp_model = ListModelsResponseBodyResultContentRequestParametersSearch()
+            self.search = temp_model.from_map(m['search'])
+        return self
+
+
+class ListModelsResponseBodyResultContentRequestUrlParams(TeaModel):
+    def __init__(
+        self,
+        build: Dict[str, Any] = None,
+        search: Dict[str, Any] = None,
+    ):
+        self.build = build
+        self.search = search
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.build is not None:
+            result['build'] = self.build
+        if self.search is not None:
+            result['search'] = self.search
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('build') is not None:
+            self.build = m.get('build')
+        if m.get('search') is not None:
+            self.search = m.get('search')
+        return self
+
+
+class ListModelsResponseBodyResultContentRequest(TeaModel):
+    def __init__(
+        self,
+        header: ListModelsResponseBodyResultContentRequestHeader = None,
+        parameters: ListModelsResponseBodyResultContentRequestParameters = None,
+        request_body: str = None,
+        url_params: ListModelsResponseBodyResultContentRequestUrlParams = None,
+    ):
+        self.header = header
+        self.parameters = parameters
+        self.request_body = request_body
+        self.url_params = url_params
+
+    def validate(self):
+        if self.header:
+            self.header.validate()
+        if self.parameters:
+            self.parameters.validate()
+        if self.url_params:
+            self.url_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.header is not None:
+            result['header'] = self.header.to_map()
+        if self.parameters is not None:
+            result['parameters'] = self.parameters.to_map()
+        if self.request_body is not None:
+            result['requestBody'] = self.request_body
+        if self.url_params is not None:
+            result['urlParams'] = self.url_params.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('header') is not None:
+            temp_model = ListModelsResponseBodyResultContentRequestHeader()
+            self.header = temp_model.from_map(m['header'])
+        if m.get('parameters') is not None:
+            temp_model = ListModelsResponseBodyResultContentRequestParameters()
+            self.parameters = temp_model.from_map(m['parameters'])
+        if m.get('requestBody') is not None:
+            self.request_body = m.get('requestBody')
+        if m.get('urlParams') is not None:
+            temp_model = ListModelsResponseBodyResultContentRequestUrlParams()
+            self.url_params = temp_model.from_map(m['urlParams'])
+        return self
+
+
+class ListModelsResponseBodyResultContentResponse(TeaModel):
+    def __init__(
+        self,
+        embeddings: str = None,
+    ):
+        self.embeddings = embeddings
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.embeddings is not None:
+            result['embeddings'] = self.embeddings
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('embeddings') is not None:
+            self.embeddings = m.get('embeddings')
+        return self
+
+
+class ListModelsResponseBodyResultContent(TeaModel):
+    def __init__(
+        self,
+        method: str = None,
+        model_name: str = None,
+        model_type: str = None,
+        request: ListModelsResponseBodyResultContentRequest = None,
+        response: ListModelsResponseBodyResultContentResponse = None,
+        url: str = None,
+    ):
+        self.method = method
+        self.model_name = model_name
+        self.model_type = model_type
+        self.request = request
+        self.response = response
+        self.url = url
+
+    def validate(self):
+        if self.request:
+            self.request.validate()
+        if self.response:
+            self.response.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.method is not None:
+            result['method'] = self.method
+        if self.model_name is not None:
+            result['modelName'] = self.model_name
+        if self.model_type is not None:
+            result['modelType'] = self.model_type
+        if self.request is not None:
+            result['request'] = self.request.to_map()
+        if self.response is not None:
+            result['response'] = self.response.to_map()
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('method') is not None:
+            self.method = m.get('method')
+        if m.get('modelName') is not None:
+            self.model_name = m.get('modelName')
+        if m.get('modelType') is not None:
+            self.model_type = m.get('modelType')
+        if m.get('request') is not None:
+            temp_model = ListModelsResponseBodyResultContentRequest()
+            self.request = temp_model.from_map(m['request'])
+        if m.get('response') is not None:
+            temp_model = ListModelsResponseBodyResultContentResponse()
+            self.response = temp_model.from_map(m['response'])
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class ListModelsResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        content: ListModelsResponseBodyResultContent = None,
+        create_time: str = None,
+        dimension: int = None,
+        name: str = None,
+        status: str = None,
+        type: str = None,
+        update_time: str = None,
+        url: str = None,
+    ):
+        self.content = content
+        self.create_time = create_time
+        self.dimension = dimension
+        self.name = name
+        self.status = status
+        self.type = type
+        self.update_time = update_time
+        self.url = url
+
+    def validate(self):
+        if self.content:
+            self.content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content.to_map()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.dimension is not None:
+            result['dimension'] = self.dimension
+        if self.name is not None:
+            result['name'] = self.name
+        if self.status is not None:
+            result['status'] = self.status
+        if self.type is not None:
+            result['type'] = self.type
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            temp_model = ListModelsResponseBodyResultContent()
+            self.content = temp_model.from_map(m['content'])
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('dimension') is not None:
+            self.dimension = m.get('dimension')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class ListModelsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: List[ListModelsResponseBodyResult] = None,
+        total_count: int = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+        self.total_count = total_count
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = ListModelsResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ListModelsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListModelsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListModelsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListOnlineConfigsRequest(TeaModel):
     def __init__(
         self,
@@ -18660,6 +20193,416 @@ class ModifyIndexVersionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyIndexVersionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyModelRequestContentRequestHeader(TeaModel):
+    def __init__(
+        self,
+        authorization: str = None,
+        content_type: str = None,
+    ):
+        self.authorization = authorization
+        self.content_type = content_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        if self.content_type is not None:
+            result['Content-Type'] = self.content_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        if m.get('Content-Type') is not None:
+            self.content_type = m.get('Content-Type')
+        return self
+
+
+class ModifyModelRequestContentRequestParametersBuild(TeaModel):
+    def __init__(
+        self,
+        input_type: str = None,
+    ):
+        self.input_type = input_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_type is not None:
+            result['input_type'] = self.input_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('input_type') is not None:
+            self.input_type = m.get('input_type')
+        return self
+
+
+class ModifyModelRequestContentRequestParametersSearch(TeaModel):
+    def __init__(
+        self,
+        input_type: str = None,
+    ):
+        self.input_type = input_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_type is not None:
+            result['input_type'] = self.input_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('input_type') is not None:
+            self.input_type = m.get('input_type')
+        return self
+
+
+class ModifyModelRequestContentRequestParameters(TeaModel):
+    def __init__(
+        self,
+        build: ModifyModelRequestContentRequestParametersBuild = None,
+        search: ModifyModelRequestContentRequestParametersSearch = None,
+    ):
+        self.build = build
+        self.search = search
+
+    def validate(self):
+        if self.build:
+            self.build.validate()
+        if self.search:
+            self.search.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.build is not None:
+            result['build'] = self.build.to_map()
+        if self.search is not None:
+            result['search'] = self.search.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('build') is not None:
+            temp_model = ModifyModelRequestContentRequestParametersBuild()
+            self.build = temp_model.from_map(m['build'])
+        if m.get('search') is not None:
+            temp_model = ModifyModelRequestContentRequestParametersSearch()
+            self.search = temp_model.from_map(m['search'])
+        return self
+
+
+class ModifyModelRequestContentRequestUrlParams(TeaModel):
+    def __init__(
+        self,
+        build: Dict[str, Any] = None,
+        search: Dict[str, Any] = None,
+    ):
+        self.build = build
+        self.search = search
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.build is not None:
+            result['build'] = self.build
+        if self.search is not None:
+            result['search'] = self.search
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('build') is not None:
+            self.build = m.get('build')
+        if m.get('search') is not None:
+            self.search = m.get('search')
+        return self
+
+
+class ModifyModelRequestContentRequest(TeaModel):
+    def __init__(
+        self,
+        header: ModifyModelRequestContentRequestHeader = None,
+        parameters: ModifyModelRequestContentRequestParameters = None,
+        request_body: str = None,
+        url_params: ModifyModelRequestContentRequestUrlParams = None,
+    ):
+        self.header = header
+        self.parameters = parameters
+        self.request_body = request_body
+        self.url_params = url_params
+
+    def validate(self):
+        if self.header:
+            self.header.validate()
+        if self.parameters:
+            self.parameters.validate()
+        if self.url_params:
+            self.url_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.header is not None:
+            result['header'] = self.header.to_map()
+        if self.parameters is not None:
+            result['parameters'] = self.parameters.to_map()
+        if self.request_body is not None:
+            result['requestBody'] = self.request_body
+        if self.url_params is not None:
+            result['urlParams'] = self.url_params.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('header') is not None:
+            temp_model = ModifyModelRequestContentRequestHeader()
+            self.header = temp_model.from_map(m['header'])
+        if m.get('parameters') is not None:
+            temp_model = ModifyModelRequestContentRequestParameters()
+            self.parameters = temp_model.from_map(m['parameters'])
+        if m.get('requestBody') is not None:
+            self.request_body = m.get('requestBody')
+        if m.get('urlParams') is not None:
+            temp_model = ModifyModelRequestContentRequestUrlParams()
+            self.url_params = temp_model.from_map(m['urlParams'])
+        return self
+
+
+class ModifyModelRequestContentResponse(TeaModel):
+    def __init__(
+        self,
+        embeddings: str = None,
+    ):
+        self.embeddings = embeddings
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.embeddings is not None:
+            result['embeddings'] = self.embeddings
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('embeddings') is not None:
+            self.embeddings = m.get('embeddings')
+        return self
+
+
+class ModifyModelRequestContent(TeaModel):
+    def __init__(
+        self,
+        dimension: int = None,
+        method: str = None,
+        model_type: str = None,
+        request: ModifyModelRequestContentRequest = None,
+        response: ModifyModelRequestContentResponse = None,
+        url: str = None,
+    ):
+        self.dimension = dimension
+        self.method = method
+        self.model_type = model_type
+        self.request = request
+        self.response = response
+        self.url = url
+
+    def validate(self):
+        if self.request:
+            self.request.validate()
+        if self.response:
+            self.response.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dimension is not None:
+            result['dimension'] = self.dimension
+        if self.method is not None:
+            result['method'] = self.method
+        if self.model_type is not None:
+            result['modelType'] = self.model_type
+        if self.request is not None:
+            result['request'] = self.request.to_map()
+        if self.response is not None:
+            result['response'] = self.response.to_map()
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('dimension') is not None:
+            self.dimension = m.get('dimension')
+        if m.get('method') is not None:
+            self.method = m.get('method')
+        if m.get('modelType') is not None:
+            self.model_type = m.get('modelType')
+        if m.get('request') is not None:
+            temp_model = ModifyModelRequestContentRequest()
+            self.request = temp_model.from_map(m['request'])
+        if m.get('response') is not None:
+            temp_model = ModifyModelRequestContentResponse()
+            self.response = temp_model.from_map(m['response'])
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class ModifyModelRequest(TeaModel):
+    def __init__(
+        self,
+        content: ModifyModelRequestContent = None,
+        status: str = None,
+        dry_run: str = None,
+    ):
+        self.content = content
+        self.status = status
+        self.dry_run = dry_run
+
+    def validate(self):
+        if self.content:
+            self.content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content.to_map()
+        if self.status is not None:
+            result['status'] = self.status
+        if self.dry_run is not None:
+            result['dryRun'] = self.dry_run
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            temp_model = ModifyModelRequestContent()
+            self.content = temp_model.from_map(m['content'])
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('dryRun') is not None:
+            self.dry_run = m.get('dryRun')
+        return self
+
+
+class ModifyModelResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ModifyModelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyModelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyModelResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
