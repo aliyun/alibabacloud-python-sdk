@@ -1938,6 +1938,7 @@ class CreateFunctionInput(TeaModel):
         custom_dns: CustomDNS = None,
         custom_runtime_config: CustomRuntimeConfig = None,
         description: str = None,
+        disable_ondemand: bool = None,
         disk_size: int = None,
         environment_variables: Dict[str, str] = None,
         function_name: str = None,
@@ -1964,6 +1965,7 @@ class CreateFunctionInput(TeaModel):
         self.custom_dns = custom_dns
         self.custom_runtime_config = custom_runtime_config
         self.description = description
+        self.disable_ondemand = disable_ondemand
         self.disk_size = disk_size
         self.environment_variables = environment_variables
         # This parameter is required.
@@ -2033,6 +2035,8 @@ class CreateFunctionInput(TeaModel):
             result['customRuntimeConfig'] = self.custom_runtime_config.to_map()
         if self.description is not None:
             result['description'] = self.description
+        if self.disable_ondemand is not None:
+            result['disableOndemand'] = self.disable_ondemand
         if self.disk_size is not None:
             result['diskSize'] = self.disk_size
         if self.environment_variables is not None:
@@ -2093,6 +2097,8 @@ class CreateFunctionInput(TeaModel):
             self.custom_runtime_config = temp_model.from_map(m['customRuntimeConfig'])
         if m.get('description') is not None:
             self.description = m.get('description')
+        if m.get('disableOndemand') is not None:
+            self.disable_ondemand = m.get('disableOndemand')
         if m.get('diskSize') is not None:
             self.disk_size = m.get('diskSize')
         if m.get('environmentVariables') is not None:
@@ -3276,6 +3282,7 @@ class Function(TeaModel):
         custom_dns: CustomDNS = None,
         custom_runtime_config: CustomRuntimeConfig = None,
         description: str = None,
+        disable_ondemand: bool = None,
         disk_size: int = None,
         environment_variables: Dict[str, str] = None,
         function_arn: str = None,
@@ -3313,6 +3320,7 @@ class Function(TeaModel):
         self.custom_dns = custom_dns
         self.custom_runtime_config = custom_runtime_config
         self.description = description
+        self.disable_ondemand = disable_ondemand
         self.disk_size = disk_size
         self.environment_variables = environment_variables
         self.function_arn = function_arn
@@ -3394,6 +3402,8 @@ class Function(TeaModel):
             result['customRuntimeConfig'] = self.custom_runtime_config.to_map()
         if self.description is not None:
             result['description'] = self.description
+        if self.disable_ondemand is not None:
+            result['disableOndemand'] = self.disable_ondemand
         if self.disk_size is not None:
             result['diskSize'] = self.disk_size
         if self.environment_variables is not None:
@@ -3477,6 +3487,8 @@ class Function(TeaModel):
             self.custom_runtime_config = temp_model.from_map(m['customRuntimeConfig'])
         if m.get('description') is not None:
             self.description = m.get('description')
+        if m.get('disableOndemand') is not None:
+            self.disable_ondemand = m.get('disableOndemand')
         if m.get('diskSize') is not None:
             self.disk_size = m.get('diskSize')
         if m.get('environmentVariables') is not None:
@@ -5699,6 +5711,7 @@ class UpdateFunctionInput(TeaModel):
         custom_dns: CustomDNS = None,
         custom_runtime_config: CustomRuntimeConfig = None,
         description: str = None,
+        disable_ondemand: bool = None,
         disk_size: int = None,
         environment_variables: Dict[str, str] = None,
         gpu_config: GPUConfig = None,
@@ -5723,6 +5736,7 @@ class UpdateFunctionInput(TeaModel):
         self.custom_dns = custom_dns
         self.custom_runtime_config = custom_runtime_config
         self.description = description
+        self.disable_ondemand = disable_ondemand
         self.disk_size = disk_size
         self.environment_variables = environment_variables
         self.gpu_config = gpu_config
@@ -5783,6 +5797,8 @@ class UpdateFunctionInput(TeaModel):
             result['customRuntimeConfig'] = self.custom_runtime_config.to_map()
         if self.description is not None:
             result['description'] = self.description
+        if self.disable_ondemand is not None:
+            result['disableOndemand'] = self.disable_ondemand
         if self.disk_size is not None:
             result['diskSize'] = self.disk_size
         if self.environment_variables is not None:
@@ -5837,6 +5853,8 @@ class UpdateFunctionInput(TeaModel):
             self.custom_runtime_config = temp_model.from_map(m['customRuntimeConfig'])
         if m.get('description') is not None:
             self.description = m.get('description')
+        if m.get('disableOndemand') is not None:
+            self.disable_ondemand = m.get('disableOndemand')
         if m.get('diskSize') is not None:
             self.disk_size = m.get('diskSize')
         if m.get('environmentVariables') is not None:
@@ -6717,7 +6735,7 @@ class DeleteProvisionConfigRequest(TeaModel):
         self,
         qualifier: str = None,
     ):
-        # The function alias or LATEST.
+        # The function alias.
         self.qualifier = qualifier
 
     def validate(self):
@@ -7325,7 +7343,7 @@ class GetProvisionConfigRequest(TeaModel):
         self,
         qualifier: str = None,
     ):
-        # The function alias or LATEST.
+        # The function alias.
         self.qualifier = qualifier
 
     def validate(self):
@@ -7759,14 +7777,15 @@ class ListAsyncTasksRequest(TeaModel):
         self.started_time_end = started_time_end
         # The state of asynchronous tasks. The following items list the states of an asynchronous task:
         # 
-        # *   Enqueued: The asynchronous invocation is enqueued and is waiting to be executed.
+        # *   Enqueued: The asynchronous invocation is enqueued and waiting to be executed.
+        # *   Dequeued: The asynchronous invocation is dequeued and waiting to be triggered.
+        # *   Running: The invocation is being executed.
         # *   Succeeded: The invocation is successful.
         # *   Failed: The invocation fails.
-        # *   Running: The invocation is being executed.
         # *   Stopped: The invocation is terminated.
         # *   Stopping: The invocation is being terminated.
+        # *   Expired: The maximum validity period of messages is specified for asynchronous invocation. The invocation is discarded and not executed because the specified maximum validity period of messages expires.
         # *   Invalid: The invocation is invalid and not executed due to specific reasons. For example, the function is deleted.
-        # *   Expired: The maximum validity period of messages is specified for asynchronous invocation. The invocation is discarded and not executed because the specified maximum validity period has elapsed.
         # *   Retrying: The asynchronous invocation is being retried due to an execution error.
         self.status = status
 
@@ -8119,8 +8138,9 @@ class ListFunctionsRequest(TeaModel):
         limit: int = None,
         next_token: str = None,
         prefix: str = None,
+        tags: List[Tag] = None,
     ):
-        # The version of Function Compute to which the functions belong. Valid values: v3 and v2. v3: only lists functions of Function Compute 3.0. v2: only lists functions of Function Compute 2.0. By default, this parameter is left empty and functions in both Function Compute 2.0 and Function Compute 3.0 are listed.
+        # The version of Function Compute to which the functions belong. Valid values: v3 and v2. v3: only lists functions of Function Compute 3.0. v2: only lists functions of Function Compute 2.0. By default, this parameter is left empty and functions in both Function Compute 3.0 and Function Compute 2.0 are listed.
         self.fc_version = fc_version
         # The number of functions to return. The minimum value is 1 and the maximum value is 100.
         self.limit = limit
@@ -8128,6 +8148,70 @@ class ListFunctionsRequest(TeaModel):
         self.next_token = next_token
         # The prefix of the function name.
         self.prefix = prefix
+        self.tags = tags
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fc_version is not None:
+            result['fcVersion'] = self.fc_version
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.prefix is not None:
+            result['prefix'] = self.prefix
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fcVersion') is not None:
+            self.fc_version = m.get('fcVersion')
+        if m.get('limit') is not None:
+            self.limit = m.get('limit')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('prefix') is not None:
+            self.prefix = m.get('prefix')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = Tag()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
+class ListFunctionsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        fc_version: str = None,
+        limit: int = None,
+        next_token: str = None,
+        prefix: str = None,
+        tags_shrink: str = None,
+    ):
+        # The version of Function Compute to which the functions belong. Valid values: v3 and v2. v3: only lists functions of Function Compute 3.0. v2: only lists functions of Function Compute 2.0. By default, this parameter is left empty and functions in both Function Compute 3.0 and Function Compute 2.0 are listed.
+        self.fc_version = fc_version
+        # The number of functions to return. The minimum value is 1 and the maximum value is 100.
+        self.limit = limit
+        # The pagination token.
+        self.next_token = next_token
+        # The prefix of the function name.
+        self.prefix = prefix
+        self.tags_shrink = tags_shrink
 
     def validate(self):
         pass
@@ -8146,6 +8230,8 @@ class ListFunctionsRequest(TeaModel):
             result['nextToken'] = self.next_token
         if self.prefix is not None:
             result['prefix'] = self.prefix
+        if self.tags_shrink is not None:
+            result['tags'] = self.tags_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -8158,6 +8244,8 @@ class ListFunctionsRequest(TeaModel):
             self.next_token = m.get('nextToken')
         if m.get('prefix') is not None:
             self.prefix = m.get('prefix')
+        if m.get('tags') is not None:
+            self.tags_shrink = m.get('tags')
         return self
 
 
@@ -8695,7 +8783,7 @@ class ListTagResourcesRequest(TeaModel):
         self.next_token = next_token
         # The resource IDs.
         self.resource_id = resource_id
-        # The resource type.
+        # The type of the resource.
         # 
         # This parameter is required.
         self.resource_type = resource_type
@@ -8763,7 +8851,7 @@ class ListTagResourcesShrinkRequest(TeaModel):
         self.next_token = next_token
         # The resource IDs.
         self.resource_id_shrink = resource_id_shrink
-        # The resource type.
+        # The type of the resource.
         # 
         # This parameter is required.
         self.resource_type = resource_type
@@ -9052,7 +9140,7 @@ class PutAsyncInvokeConfigRequest(TeaModel):
         body: PutAsyncInvokeConfigInput = None,
         qualifier: str = None,
     ):
-        # The asynchronous invocation configurations.
+        # The configurations of asynchronous function invocations.
         # 
         # This parameter is required.
         self.body = body
@@ -9273,11 +9361,11 @@ class PutProvisionConfigRequest(TeaModel):
         body: PutProvisionConfigInput = None,
         qualifier: str = None,
     ):
-        # The provisioned instance configurations.
+        # The provisioned configuration information.
         # 
         # This parameter is required.
         self.body = body
-        # The function alias or LATEST.
+        # The function alias.
         self.qualifier = qualifier
 
     def validate(self):

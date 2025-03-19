@@ -1273,7 +1273,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteFunctionVersionResponse:
         """
-        @summary Deletes a function version.
+        @summary http://pre.hhht/#vpc
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1312,7 +1312,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteFunctionVersionResponse:
         """
-        @summary Deletes a function version.
+        @summary http://pre.hhht/#vpc
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1349,7 +1349,7 @@ class Client(OpenApiClient):
         version_id: str,
     ) -> fc20230330_models.DeleteFunctionVersionResponse:
         """
-        @summary Deletes a function version.
+        @summary http://pre.hhht/#vpc
         
         @return: DeleteFunctionVersionResponse
         """
@@ -1363,7 +1363,7 @@ class Client(OpenApiClient):
         version_id: str,
     ) -> fc20230330_models.DeleteFunctionVersionResponse:
         """
-        @summary Deletes a function version.
+        @summary http://pre.hhht/#vpc
         
         @return: DeleteFunctionVersionResponse
         """
@@ -3965,19 +3965,23 @@ class Client(OpenApiClient):
 
     def list_functions_with_options(
         self,
-        request: fc20230330_models.ListFunctionsRequest,
+        tmp_req: fc20230330_models.ListFunctionsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListFunctionsResponse:
         """
         @summary 列出函数。
         
-        @param request: ListFunctionsRequest
+        @param tmp_req: ListFunctionsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListFunctionsResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = fc20230330_models.ListFunctionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         query = {}
         if not UtilClient.is_unset(request.fc_version):
             query['fcVersion'] = request.fc_version
@@ -3987,6 +3991,8 @@ class Client(OpenApiClient):
             query['nextToken'] = request.next_token
         if not UtilClient.is_unset(request.prefix):
             query['prefix'] = request.prefix
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['tags'] = request.tags_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -4015,19 +4021,23 @@ class Client(OpenApiClient):
 
     async def list_functions_with_options_async(
         self,
-        request: fc20230330_models.ListFunctionsRequest,
+        tmp_req: fc20230330_models.ListFunctionsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListFunctionsResponse:
         """
         @summary 列出函数。
         
-        @param request: ListFunctionsRequest
+        @param tmp_req: ListFunctionsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListFunctionsResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = fc20230330_models.ListFunctionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         query = {}
         if not UtilClient.is_unset(request.fc_version):
             query['fcVersion'] = request.fc_version
@@ -4037,6 +4047,8 @@ class Client(OpenApiClient):
             query['nextToken'] = request.next_token
         if not UtilClient.is_unset(request.prefix):
             query['prefix'] = request.prefix
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['tags'] = request.tags_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)

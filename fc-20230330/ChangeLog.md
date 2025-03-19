@@ -1,3 +1,7 @@
+2025-03-19 Version: 4.1.8
+- Update API ListFunctions: add param tags.
+
+
 2025-02-26 Version: 4.1.7
 - Update API DeleteProvisionConfig: update param qualifier.
 - Update API GetProvisionConfig: update param qualifier.
