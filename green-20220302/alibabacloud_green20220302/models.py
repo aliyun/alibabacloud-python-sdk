@@ -5195,6 +5195,55 @@ class TextModerationPlusResponseBodyDataAdvice(TeaModel):
         return self
 
 
+class TextModerationPlusResponseBodyDataAttackResult(TeaModel):
+    def __init__(
+        self,
+        attack_level: str = None,
+        confidence: float = None,
+        description: str = None,
+        label: str = None,
+    ):
+        # The level of prompt attack
+        self.attack_level = attack_level
+        # The confidence
+        self.confidence = confidence
+        # Description
+        self.description = description
+        # The label
+        self.label = label
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attack_level is not None:
+            result['AttackLevel'] = self.attack_level
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.label is not None:
+            result['Label'] = self.label
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AttackLevel') is not None:
+            self.attack_level = m.get('AttackLevel')
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        return self
+
+
 class TextModerationPlusResponseBodyDataResultCustomizedHit(TeaModel):
     def __init__(
         self,
@@ -5294,17 +5343,75 @@ class TextModerationPlusResponseBodyDataResult(TeaModel):
         return self
 
 
+class TextModerationPlusResponseBodyDataSensitiveResult(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        label: str = None,
+        sensitive_data: List[str] = None,
+        sensitive_level: str = None,
+    ):
+        # Description
+        self.description = description
+        # The label
+        self.label = label
+        # The sensitive data.
+        self.sensitive_data = sensitive_data
+        # The level of sensitivity data
+        self.sensitive_level = sensitive_level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.label is not None:
+            result['Label'] = self.label
+        if self.sensitive_data is not None:
+            result['SensitiveData'] = self.sensitive_data
+        if self.sensitive_level is not None:
+            result['SensitiveLevel'] = self.sensitive_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        if m.get('SensitiveData') is not None:
+            self.sensitive_data = m.get('SensitiveData')
+        if m.get('SensitiveLevel') is not None:
+            self.sensitive_level = m.get('SensitiveLevel')
+        return self
+
+
 class TextModerationPlusResponseBodyData(TeaModel):
     def __init__(
         self,
         advice: List[TextModerationPlusResponseBodyDataAdvice] = None,
+        attack_level: str = None,
+        attack_result: List[TextModerationPlusResponseBodyDataAttackResult] = None,
         data_id: str = None,
         result: List[TextModerationPlusResponseBodyDataResult] = None,
         risk_level: str = None,
         score: float = None,
+        sensitive_level: str = None,
+        sensitive_result: List[TextModerationPlusResponseBodyDataSensitiveResult] = None,
     ):
         # The suggestion.
         self.advice = advice
+        # The level of prompt attack
+        self.attack_level = attack_level
+        # The result of prompt attack detect
+        self.attack_result = attack_result
+        # The id of data
         self.data_id = data_id
         # The results.
         self.result = result
@@ -5312,14 +5419,26 @@ class TextModerationPlusResponseBodyData(TeaModel):
         self.risk_level = risk_level
         # The score.
         self.score = score
+        # The level of sensitivity data
+        self.sensitive_level = sensitive_level
+        # The result of sensitivity data detect
+        self.sensitive_result = sensitive_result
 
     def validate(self):
         if self.advice:
             for k in self.advice:
                 if k:
                     k.validate()
+        if self.attack_result:
+            for k in self.attack_result:
+                if k:
+                    k.validate()
         if self.result:
             for k in self.result:
+                if k:
+                    k.validate()
+        if self.sensitive_result:
+            for k in self.sensitive_result:
                 if k:
                     k.validate()
 
@@ -5333,6 +5452,12 @@ class TextModerationPlusResponseBodyData(TeaModel):
         if self.advice is not None:
             for k in self.advice:
                 result['Advice'].append(k.to_map() if k else None)
+        if self.attack_level is not None:
+            result['AttackLevel'] = self.attack_level
+        result['AttackResult'] = []
+        if self.attack_result is not None:
+            for k in self.attack_result:
+                result['AttackResult'].append(k.to_map() if k else None)
         if self.data_id is not None:
             result['DataId'] = self.data_id
         result['Result'] = []
@@ -5343,6 +5468,12 @@ class TextModerationPlusResponseBodyData(TeaModel):
             result['RiskLevel'] = self.risk_level
         if self.score is not None:
             result['Score'] = self.score
+        if self.sensitive_level is not None:
+            result['SensitiveLevel'] = self.sensitive_level
+        result['SensitiveResult'] = []
+        if self.sensitive_result is not None:
+            for k in self.sensitive_result:
+                result['SensitiveResult'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -5352,6 +5483,13 @@ class TextModerationPlusResponseBodyData(TeaModel):
             for k in m.get('Advice'):
                 temp_model = TextModerationPlusResponseBodyDataAdvice()
                 self.advice.append(temp_model.from_map(k))
+        if m.get('AttackLevel') is not None:
+            self.attack_level = m.get('AttackLevel')
+        self.attack_result = []
+        if m.get('AttackResult') is not None:
+            for k in m.get('AttackResult'):
+                temp_model = TextModerationPlusResponseBodyDataAttackResult()
+                self.attack_result.append(temp_model.from_map(k))
         if m.get('DataId') is not None:
             self.data_id = m.get('DataId')
         self.result = []
@@ -5363,6 +5501,13 @@ class TextModerationPlusResponseBodyData(TeaModel):
             self.risk_level = m.get('RiskLevel')
         if m.get('Score') is not None:
             self.score = m.get('Score')
+        if m.get('SensitiveLevel') is not None:
+            self.sensitive_level = m.get('SensitiveLevel')
+        self.sensitive_result = []
+        if m.get('SensitiveResult') is not None:
+            for k in m.get('SensitiveResult'):
+                temp_model = TextModerationPlusResponseBodyDataSensitiveResult()
+                self.sensitive_result.append(temp_model.from_map(k))
         return self
 
 
