@@ -1,3 +1,10 @@
+2025-03-20 Version: 1.9.1
+- Update API CreateIdentityProvider: update param UdPullConfig.
+- Update API CreateInstance: update response param.
+- Update API GetIdentityProviderUdPullConfiguration: update response param.
+- Update API SetIdentityProviderUdPullConfiguration: add param PeriodicSyncConfig.
+
+
 2025-03-20 Version: 1.9.0
 - Support API CreateConditionalAccessPolicy.
 - Support API DeleteConditionalAccessPolicy.

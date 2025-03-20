@@ -13215,6 +13215,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.ldap_ud_pull_config):
             query['LdapUdPullConfig'] = request.ldap_ud_pull_config
+        if not UtilClient.is_unset(request.periodic_sync_config):
+            query['PeriodicSyncConfig'] = request.periodic_sync_config
         if not UtilClient.is_unset(request.periodic_sync_status):
             query['PeriodicSyncStatus'] = request.periodic_sync_status
         if not UtilClient.is_unset(request.pull_protected_rule):
@@ -13270,6 +13272,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.ldap_ud_pull_config):
             query['LdapUdPullConfig'] = request.ldap_ud_pull_config
+        if not UtilClient.is_unset(request.periodic_sync_config):
+            query['PeriodicSyncConfig'] = request.periodic_sync_config
         if not UtilClient.is_unset(request.periodic_sync_status):
             query['PeriodicSyncStatus'] = request.periodic_sync_status
         if not UtilClient.is_unset(request.pull_protected_rule):
