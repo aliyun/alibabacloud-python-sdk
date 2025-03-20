@@ -1,3 +1,7 @@
+2025-03-20 Version: 4.2.0
+- Support API AuditLogExport.
+
+
 2025-03-10 Version: 4.1.0
 - Support API VideoDRMLicense.
 - Update API ListRecyclebin: update param body.

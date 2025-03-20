@@ -9924,6 +9924,119 @@ class AssignRoleResponse(TeaModel):
         return self
 
 
+class AuditLogExportRequest(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        language: str = None,
+        order_by: str = None,
+        query: str = None,
+    ):
+        self.file_name = file_name
+        self.language = language
+        self.order_by = order_by
+        self.query = query
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['file_name'] = self.file_name
+        if self.language is not None:
+            result['language'] = self.language
+        if self.order_by is not None:
+            result['order_by'] = self.order_by
+        if self.query is not None:
+            result['query'] = self.query
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('file_name') is not None:
+            self.file_name = m.get('file_name')
+        if m.get('language') is not None:
+            self.language = m.get('language')
+        if m.get('order_by') is not None:
+            self.order_by = m.get('order_by')
+        if m.get('query') is not None:
+            self.query = m.get('query')
+        return self
+
+
+class AuditLogExportResponseBody(TeaModel):
+    def __init__(
+        self,
+        async_task_id: str = None,
+    ):
+        self.async_task_id = async_task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.async_task_id is not None:
+            result['async_task_id'] = self.async_task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('async_task_id') is not None:
+            self.async_task_id = m.get('async_task_id')
+        return self
+
+
+class AuditLogExportResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AuditLogExportResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AuditLogExportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AuthorizeRequest(TeaModel):
     def __init__(
         self,
@@ -19776,20 +19889,21 @@ class ListRecyclebinRequest(TeaModel):
         # 
         # This parameter is required.
         self.drive_id = drive_id
-        # Specifies the returned fields.
+        # The fields of an entry (file or folder) to return.
         # 
-        # 1\\. If you set this parameter to \\*, all fields of the file are returned.
+        # 1\\. If you set this parameter to \\*, all fields are returned.
         # 
         # 2\\. If you set this parameter to a null value or leave this parameter empty, the fields, such as file creator, file modifier, and custom tags, are not returned.
         # 
         # The default value is a null value, which indicates that only some fields are returned.
         self.fields = fields
-        # The maximum number of results to return. Valid values: 1 to 200. Default value: 50.
+        # The maximum number of entries to return. Valid values: 1 to 200. Default value: 50.
         # 
-        # The number of returned results must be less than or equal to the specified number.
+        # The number of returned entries must be less than or equal to the value of this parameter.
         self.limit = limit
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker. By default, this parameter is left empty.
+        # The name of the entry after which the list begins. Entries whose names are alphabetically after the value of this parameter are returned. If you do not specify this parameter, all entries are returned. This parameter is left empty by default.
         self.marker = marker
+        # The thumbnail configurations. Up to five thumbnails can be returned at a time. The value contains key-value pairs. You can customize the keys. The URL of a thumbnail is returned based on the key.
         self.thumbnail_processes = thumbnail_processes
 
     def validate(self):
@@ -24840,8 +24954,16 @@ class VideoDRMLicenseRequest(TeaModel):
         drm_type: str = None,
         license_request: str = None,
     ):
+        # The type of DRM encryption.
+        # 
+        # Valid values:
+        # 
+        # *   fairplay
+        # *   widevine
+        # 
         # This parameter is required.
         self.drm_type = drm_type
+        # The request that is initiated to obtain the license.
         self.license_request = license_request
 
     def validate(self):
@@ -24875,8 +24997,11 @@ class VideoDRMLicenseResponseBody(TeaModel):
         device_info: str = None,
         states: str = None,
     ):
+        # The returned DRM license.
         self.data = data
+        # The information about the device from which the DRM request was initiated.
         self.device_info = device_info
+        # The request state returned by the DRM server.
         self.states = states
 
     def validate(self):

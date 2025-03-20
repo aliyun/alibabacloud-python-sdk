@@ -375,6 +375,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.assign_role_with_options_async(request, headers, runtime)
 
+    def audit_log_export_with_options(
+        self,
+        request: pds_20220301_models.AuditLogExportRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.AuditLogExportResponse:
+        """
+        @summary 导出审计日志
+        
+        @param request: AuditLogExportRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AuditLogExportResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_name):
+            body['file_name'] = request.file_name
+        if not UtilClient.is_unset(request.language):
+            body['language'] = request.language
+        if not UtilClient.is_unset(request.order_by):
+            body['order_by'] = request.order_by
+        if not UtilClient.is_unset(request.query):
+            body['query'] = request.query
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AuditLogExport',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/audit_log/export',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.AuditLogExportResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def audit_log_export_with_options_async(
+        self,
+        request: pds_20220301_models.AuditLogExportRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.AuditLogExportResponse:
+        """
+        @summary 导出审计日志
+        
+        @param request: AuditLogExportRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AuditLogExportResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_name):
+            body['file_name'] = request.file_name
+        if not UtilClient.is_unset(request.language):
+            body['language'] = request.language
+        if not UtilClient.is_unset(request.order_by):
+            body['order_by'] = request.order_by
+        if not UtilClient.is_unset(request.query):
+            body['query'] = request.query
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AuditLogExport',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/audit_log/export',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.AuditLogExportResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def audit_log_export(
+        self,
+        request: pds_20220301_models.AuditLogExportRequest,
+    ) -> pds_20220301_models.AuditLogExportResponse:
+        """
+        @summary 导出审计日志
+        
+        @param request: AuditLogExportRequest
+        @return: AuditLogExportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.audit_log_export_with_options(request, headers, runtime)
+
+    async def audit_log_export_async(
+        self,
+        request: pds_20220301_models.AuditLogExportRequest,
+    ) -> pds_20220301_models.AuditLogExportResponse:
+        """
+        @summary 导出审计日志
+        
+        @param request: AuditLogExportRequest
+        @return: AuditLogExportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.audit_log_export_with_options_async(request, headers, runtime)
+
     def authorize_with_options(
         self,
         tmp_req: pds_20220301_models.AuthorizeRequest,
@@ -13228,7 +13344,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.VideoDRMLicenseResponse:
         """
-        @summary 获取视频的DRM License
+        @summary Obtain the digital rights management (DRM) license of a video.
         
         @param request: VideoDRMLicenseRequest
         @param headers: map
@@ -13268,7 +13384,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.VideoDRMLicenseResponse:
         """
-        @summary 获取视频的DRM License
+        @summary Obtain the digital rights management (DRM) license of a video.
         
         @param request: VideoDRMLicenseRequest
         @param headers: map
@@ -13306,7 +13422,7 @@ class Client(OpenApiClient):
         request: pds_20220301_models.VideoDRMLicenseRequest,
     ) -> pds_20220301_models.VideoDRMLicenseResponse:
         """
-        @summary 获取视频的DRM License
+        @summary Obtain the digital rights management (DRM) license of a video.
         
         @param request: VideoDRMLicenseRequest
         @return: VideoDRMLicenseResponse
@@ -13320,7 +13436,7 @@ class Client(OpenApiClient):
         request: pds_20220301_models.VideoDRMLicenseRequest,
     ) -> pds_20220301_models.VideoDRMLicenseResponse:
         """
-        @summary 获取视频的DRM License
+        @summary Obtain the digital rights management (DRM) license of a video.
         
         @param request: VideoDRMLicenseRequest
         @return: VideoDRMLicenseResponse
