@@ -10,6 +10,12 @@ from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_dataworks_public20240518 import models as dataworks_public_20240518_models
 from alibabacloud_tea_util import models as util_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
+from alibabacloud_openplatform20191219.client import Client as OpenPlatformClient
+from alibabacloud_openplatform20191219 import models as open_platform_models
+from alibabacloud_oss_sdk import models as oss_models
+from alibabacloud_oss_sdk.client import Client as OSSClient
+from alibabacloud_tea_fileform import models as file_form_models
+from alibabacloud_oss_util import models as ossutil_models
 
 
 class Client(OpenApiClient):
@@ -3215,6 +3221,8 @@ class Client(OpenApiClient):
             body['DestinationCidr'] = request.destination_cidr
         if not UtilClient.is_unset(request.network_id):
             body['NetworkId'] = request.network_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3260,6 +3268,8 @@ class Client(OpenApiClient):
             body['DestinationCidr'] = request.destination_cidr
         if not UtilClient.is_unset(request.network_id):
             body['NetworkId'] = request.network_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3694,6 +3704,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_alert_rule_with_options_async(request, runtime)
+
+    def delete_certificate_with_options(
+        self,
+        request: dataworks_public_20240518_models.DeleteCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteCertificateResponse:
+        """
+        @summary 删除认证文件
+        
+        @param request: DeleteCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCertificate',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.DeleteCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.DeleteCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_certificate_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteCertificateResponse:
+        """
+        @summary 删除认证文件
+        
+        @param request: DeleteCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCertificate',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.DeleteCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.DeleteCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_certificate(
+        self,
+        request: dataworks_public_20240518_models.DeleteCertificateRequest,
+    ) -> dataworks_public_20240518_models.DeleteCertificateResponse:
+        """
+        @summary 删除认证文件
+        
+        @param request: DeleteCertificateRequest
+        @return: DeleteCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_certificate_with_options(request, runtime)
+
+    async def delete_certificate_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteCertificateRequest,
+    ) -> dataworks_public_20240518_models.DeleteCertificateResponse:
+        """
+        @summary 删除认证文件
+        
+        @param request: DeleteCertificateRequest
+        @return: DeleteCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_certificate_with_options_async(request, runtime)
 
     def delete_dialarm_rule_with_options(
         self,
@@ -6566,6 +6688,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_alert_rule_with_options_async(request, runtime)
+
+    def get_certificate_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetCertificateResponse:
+        """
+        @summary 查看认证文件
+        
+        @param request: GetCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCertificate',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_certificate_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetCertificateResponse:
+        """
+        @summary 查看认证文件
+        
+        @param request: GetCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCertificate',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.GetCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_certificate(
+        self,
+        request: dataworks_public_20240518_models.GetCertificateRequest,
+    ) -> dataworks_public_20240518_models.GetCertificateResponse:
+        """
+        @summary 查看认证文件
+        
+        @param request: GetCertificateRequest
+        @return: GetCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_certificate_with_options(request, runtime)
+
+    async def get_certificate_async(
+        self,
+        request: dataworks_public_20240518_models.GetCertificateRequest,
+    ) -> dataworks_public_20240518_models.GetCertificateResponse:
+        """
+        @summary 查看认证文件
+        
+        @param request: GetCertificateRequest
+        @return: GetCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_certificate_with_options_async(request, runtime)
 
     def get_create_workflow_instances_result_with_options(
         self,
@@ -9451,6 +9677,270 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.grant_member_project_roles_with_options_async(request, runtime)
 
+    def import_certificate_with_options(
+        self,
+        request: dataworks_public_20240518_models.ImportCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ImportCertificateResponse:
+        """
+        @summary 验证用
+        
+        @param request: ImportCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.certificate_file):
+            query['CertificateFile'] = request.certificate_file
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImportCertificate',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ImportCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ImportCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def import_certificate_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ImportCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ImportCertificateResponse:
+        """
+        @summary 验证用
+        
+        @param request: ImportCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.certificate_file):
+            query['CertificateFile'] = request.certificate_file
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImportCertificate',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ImportCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ImportCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def import_certificate(
+        self,
+        request: dataworks_public_20240518_models.ImportCertificateRequest,
+    ) -> dataworks_public_20240518_models.ImportCertificateResponse:
+        """
+        @summary 验证用
+        
+        @param request: ImportCertificateRequest
+        @return: ImportCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.import_certificate_with_options(request, runtime)
+
+    async def import_certificate_async(
+        self,
+        request: dataworks_public_20240518_models.ImportCertificateRequest,
+    ) -> dataworks_public_20240518_models.ImportCertificateResponse:
+        """
+        @summary 验证用
+        
+        @param request: ImportCertificateRequest
+        @return: ImportCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.import_certificate_with_options_async(request, runtime)
+
+    def import_certificate_advance(
+        self,
+        request: dataworks_public_20240518_models.ImportCertificateAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ImportCertificateResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.empty(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='dataworks-public',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        import_certificate_req = dataworks_public_20240518_models.ImportCertificateRequest()
+        OpenApiUtilClient.convert(request, import_certificate_req)
+        if not UtilClient.is_unset(request.certificate_file_object):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.body.object_key,
+                content=request.certificate_file_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.body.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            import_certificate_req.certificate_file = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+        import_certificate_resp = self.import_certificate_with_options(import_certificate_req, runtime)
+        return import_certificate_resp
+
+    async def import_certificate_advance_async(
+        self,
+        request: dataworks_public_20240518_models.ImportCertificateAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ImportCertificateResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.empty(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='dataworks-public',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        import_certificate_req = dataworks_public_20240518_models.ImportCertificateRequest()
+        OpenApiUtilClient.convert(request, import_certificate_req)
+        if not UtilClient.is_unset(request.certificate_file_object):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.body.object_key,
+                content=request.certificate_file_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.body.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            import_certificate_req.certificate_file = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+        import_certificate_resp = await self.import_certificate_with_options_async(import_certificate_req, runtime)
+        return import_certificate_resp
+
     def import_workflow_definition_with_options(
         self,
         request: dataworks_public_20240518_models.ImportWorkflowDefinitionRequest,
@@ -9722,6 +10212,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_alert_rules_with_options_async(request, runtime)
+
+    def list_certificates_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListCertificatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListCertificatesResponse:
+        """
+        @summary 查询认证文件列表
+        
+        @param request: ListCertificatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCertificatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCertificates',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListCertificatesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListCertificatesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_certificates_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListCertificatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListCertificatesResponse:
+        """
+        @summary 查询认证文件列表
+        
+        @param request: ListCertificatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCertificatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCertificates',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListCertificatesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.ListCertificatesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_certificates(
+        self,
+        request: dataworks_public_20240518_models.ListCertificatesRequest,
+    ) -> dataworks_public_20240518_models.ListCertificatesResponse:
+        """
+        @summary 查询认证文件列表
+        
+        @param request: ListCertificatesRequest
+        @return: ListCertificatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_certificates_with_options(request, runtime)
+
+    async def list_certificates_async(
+        self,
+        request: dataworks_public_20240518_models.ListCertificatesRequest,
+    ) -> dataworks_public_20240518_models.ListCertificatesResponse:
+        """
+        @summary 查询认证文件列表
+        
+        @param request: ListCertificatesRequest
+        @return: ListCertificatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_certificates_with_options_async(request, runtime)
 
     def list_dialarm_rules_with_options(
         self,
@@ -16547,6 +17141,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.tag_data_assets_with_options_async(request, runtime)
 
+    def test_data_source_connectivity_with_options(
+        self,
+        request: dataworks_public_20240518_models.TestDataSourceConnectivityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.TestDataSourceConnectivityResponse:
+        """
+        @summary 测试数据源在资源组上的连通性
+        
+        @param request: TestDataSourceConnectivityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TestDataSourceConnectivityResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TestDataSourceConnectivity',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.TestDataSourceConnectivityResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.TestDataSourceConnectivityResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def test_data_source_connectivity_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.TestDataSourceConnectivityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.TestDataSourceConnectivityResponse:
+        """
+        @summary 测试数据源在资源组上的连通性
+        
+        @param request: TestDataSourceConnectivityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TestDataSourceConnectivityResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TestDataSourceConnectivity',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.TestDataSourceConnectivityResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dataworks_public_20240518_models.TestDataSourceConnectivityResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def test_data_source_connectivity(
+        self,
+        request: dataworks_public_20240518_models.TestDataSourceConnectivityRequest,
+    ) -> dataworks_public_20240518_models.TestDataSourceConnectivityResponse:
+        """
+        @summary 测试数据源在资源组上的连通性
+        
+        @param request: TestDataSourceConnectivityRequest
+        @return: TestDataSourceConnectivityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.test_data_source_connectivity_with_options(request, runtime)
+
+    async def test_data_source_connectivity_async(
+        self,
+        request: dataworks_public_20240518_models.TestDataSourceConnectivityRequest,
+    ) -> dataworks_public_20240518_models.TestDataSourceConnectivityResponse:
+        """
+        @summary 测试数据源在资源组上的连通性
+        
+        @param request: TestDataSourceConnectivityRequest
+        @return: TestDataSourceConnectivityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.test_data_source_connectivity_with_options_async(request, runtime)
+
     def trigger_scheduler_task_instance_with_options(
         self,
         request: dataworks_public_20240518_models.TriggerSchedulerTaskInstanceRequest,
@@ -18709,6 +19419,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateTaskResponse:
         """
+        @summary Updates a specified task in full update mode.
+        
         @param tmp_req: UpdateTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateTaskResponse
@@ -18802,6 +19514,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateTaskResponse:
         """
+        @summary Updates a specified task in full update mode.
+        
         @param tmp_req: UpdateTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateTaskResponse
@@ -18894,6 +19608,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateTaskRequest,
     ) -> dataworks_public_20240518_models.UpdateTaskResponse:
         """
+        @summary Updates a specified task in full update mode.
+        
         @param request: UpdateTaskRequest
         @return: UpdateTaskResponse
         """
@@ -18905,6 +19621,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateTaskRequest,
     ) -> dataworks_public_20240518_models.UpdateTaskResponse:
         """
+        @summary Updates a specified task in full update mode.
+        
         @param request: UpdateTaskRequest
         @return: UpdateTaskResponse
         """
@@ -19045,6 +19763,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateWorkflowResponse:
         """
+        @summary Updates a specified workflow in full update mode.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: UpdateWorkflowRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateWorkflowResponse
@@ -19118,6 +19840,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateWorkflowResponse:
         """
+        @summary Updates a specified workflow in full update mode.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: UpdateWorkflowRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateWorkflowResponse
@@ -19190,6 +19916,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateWorkflowRequest,
     ) -> dataworks_public_20240518_models.UpdateWorkflowResponse:
         """
+        @summary Updates a specified workflow in full update mode.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: UpdateWorkflowRequest
         @return: UpdateWorkflowResponse
         """
@@ -19201,6 +19931,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateWorkflowRequest,
     ) -> dataworks_public_20240518_models.UpdateWorkflowResponse:
         """
+        @summary Updates a specified workflow in full update mode.
+        
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: UpdateWorkflowRequest
         @return: UpdateWorkflowResponse
         """
@@ -19214,6 +19948,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.UpdateWorkflowDefinitionResponse:
         """
         @summary Updates the basic information about a workflow in DataStudio. This API operation performs an incremental update. The update information is described by using FlowSpec.
+        
+        @description >  You cannot use this API operation to create multiple workflows at a time. If you specify multiple workflows in the FlowSpec filed, only the first workflow is created. Other specified workflows and the nodes in the workflows are ignored. You can call the UpdateNode operation to update a node.
         
         @param request: UpdateWorkflowDefinitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19260,6 +19996,8 @@ class Client(OpenApiClient):
         """
         @summary Updates the basic information about a workflow in DataStudio. This API operation performs an incremental update. The update information is described by using FlowSpec.
         
+        @description >  You cannot use this API operation to create multiple workflows at a time. If you specify multiple workflows in the FlowSpec filed, only the first workflow is created. Other specified workflows and the nodes in the workflows are ignored. You can call the UpdateNode operation to update a node.
+        
         @param request: UpdateWorkflowDefinitionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateWorkflowDefinitionResponse
@@ -19304,6 +20042,8 @@ class Client(OpenApiClient):
         """
         @summary Updates the basic information about a workflow in DataStudio. This API operation performs an incremental update. The update information is described by using FlowSpec.
         
+        @description >  You cannot use this API operation to create multiple workflows at a time. If you specify multiple workflows in the FlowSpec filed, only the first workflow is created. Other specified workflows and the nodes in the workflows are ignored. You can call the UpdateNode operation to update a node.
+        
         @param request: UpdateWorkflowDefinitionRequest
         @return: UpdateWorkflowDefinitionResponse
         """
@@ -19316,6 +20056,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.UpdateWorkflowDefinitionResponse:
         """
         @summary Updates the basic information about a workflow in DataStudio. This API operation performs an incremental update. The update information is described by using FlowSpec.
+        
+        @description >  You cannot use this API operation to create multiple workflows at a time. If you specify multiple workflows in the FlowSpec filed, only the first workflow is created. Other specified workflows and the nodes in the workflows are ignored. You can call the UpdateNode operation to update a node.
         
         @param request: UpdateWorkflowDefinitionRequest
         @return: UpdateWorkflowDefinitionResponse

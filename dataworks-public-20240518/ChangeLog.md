@@ -1,3 +1,16 @@
+2025-03-20 Version: 6.1.0
+- Support API DeleteCertificate.
+- Support API GetCertificate.
+- Support API ImportCertificate.
+- Support API ListCertificates.
+- Support API TestDataSourceConnectivity.
+- Update API CreateRoute: add param ResourceGroupId.
+- Update API CreateWorkflowInstances: update param DefaultRunProperties.
+- Update API CreateWorkflowInstances: update param Type.
+- Update API ExecuteAdhocWorkflowInstance: update param BizDate.
+- Update API ListResourceGroups: update response param.
+
+
 2025-02-18 Version: 6.0.2
 - Update API ExecuteAdhocWorkflowInstance: update param EnvType.
 - Update API GetDIJobLog: add param NodeType.

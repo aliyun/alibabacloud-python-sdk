@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict, Any
+from typing import List, Dict, Any, BinaryIO
 
 
 class DataQualityEvaluationTaskHooks(TeaModel):
@@ -1965,7 +1965,7 @@ class AbolishDeploymentRequest(TeaModel):
         self.id = id
         # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
         # 
-        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # You can use this parameter to specify the DataWorks workspace on which you want to perform the API operation.
         # 
         # This parameter is required.
         self.project_id = project_id
@@ -5622,15 +5622,15 @@ class CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresh
         operator: str = None,
         value: str = None,
     ):
-        # 阈值表达式。
+        # The threshold expression.
         # 
-        # 波动率类型规则必须使用表达式方式表示波动阈值。如：
+        # If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
         # 
-        # - 波动上升大于0.01： $checkValue > 0.01 
-        # - 波动下降大于0.01：$checkValue < -0.01 
-        # - 波动率绝对值：abs($checkValue) > 0.01
+        # *   $checkValue > 0.01
+        # *   $checkValue < -0.01
+        # *   abs($checkValue) > 0.01
         # 
-        # 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
+        # If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
         self.expression = expression
         # The comparison operator. Valid values:
         # 
@@ -5679,15 +5679,15 @@ class CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresh
         operator: str = None,
         value: str = None,
     ):
-        # 阈值表达式。
+        # The threshold expression.
         # 
-        # 波动率类型规则必须使用表达式方式表示波动阈值。如：
+        # If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
         # 
-        # - 波动上升大于0.01： $checkValue > 0.01 
-        # - 波动下降大于0.01：$checkValue < -0.01 
-        # - 波动率绝对值：abs($checkValue) > 0.01
+        # *   $checkValue > 0.01
+        # *   $checkValue < -0.01
+        # *   abs($checkValue) > 0.01
         # 
-        # 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
+        # If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
         self.expression = expression
         # The comparison operator. Valid values:
         # 
@@ -5736,15 +5736,15 @@ class CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresh
         operator: str = None,
         value: str = None,
     ):
-        # 阈值表达式。
+        # The threshold expression.
         # 
-        # 波动率类型规则必须使用表达式方式表示波动阈值。如：
+        # If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
         # 
-        # - 波动上升大于0.01： $checkValue > 0.01 
-        # - 波动下降大于0.01：$checkValue < -0.01 
-        # - 波动率绝对值：abs($checkValue) > 0.01
+        # *   $checkValue > 0.01
+        # *   $checkValue < -0.01
+        # *   abs($checkValue) > 0.01
         # 
-        # 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
+        # If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
         self.expression = expression
         # The comparison operator. Valid values:
         # 
@@ -7716,7 +7716,7 @@ class CreateDataQualityRuleTemplateRequestSamplingConfig(TeaModel):
         # *   GroupCount: the field value and the number of rows for each field value.
         # *   CountNotIn: the number of rows in which the field values are different from the referenced values that you specified in the rule.
         # *   CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
-        # *   UserDefinedSql: indicates that data is sampled by executing custom SQL statements.
+        # *   UserDefinedSql: specifies that data is sampled by executing custom SQL statements.
         self.metric = metric
         # The parameters required for sampling.
         self.metric_parameters = metric_parameters
@@ -9521,21 +9521,21 @@ class CreateResourceGroupRequest(TeaModel):
         vpc_id: str = None,
         vswitch_id: str = None,
     ):
-        # The ID of the resource group.
+        # The ID of the Alibaba Cloud resource group.
         self.aliyun_resource_group_id = aliyun_resource_group_id
         # The tags.
         self.aliyun_resource_tags = aliyun_resource_tags
         # Specifies whether to enable auto-renewal.
         self.auto_renew_enabled = auto_renew_enabled
-        # The idempotent identifier of the client is used to ensure idempotent operation of creating a common resource group.
+        # The client token that is used to ensure the idempotence of the request.
         # 
         # This parameter is required.
         self.client_token = client_token
-        # The name of a common resource group. It must start with a letter and can contain letters, numbers, and underscores (_). It can be up to 128 characters in length.
+        # The name of the serverless resource group. The name can be a maximum of 128 characters in length and can contain letters, digits, and underscores (_). The name must start with a letter.
         # 
         # This parameter is required.
         self.name = name
-        # The duration of the payment.
+        # The subscription duration.
         self.payment_duration = payment_duration
         # The unit of the subscription duration. Valid values: Month and Year.
         self.payment_duration_unit = payment_duration_unit
@@ -9543,9 +9543,9 @@ class CreateResourceGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.payment_type = payment_type
-        # Note for creating a common resource group, which can contain letters, Chinese characters, numbers, underscores (_), and a maximum of 128 characters.
+        # The description of the serverless resource group. The description can be a maximum of 128 characters in length and can contain letters, digits, and underscores (_).
         self.remark = remark
-        # The specifications of the resource group. Unit: compute unit (CU). This parameter is required only when you set the PaymentType parameter to PrePaid.
+        # The specifications of the serverless resource group. Unit: CU. This parameter is required only if you set the PaymentType parameter to PrePaid.
         self.spec = spec
         # The ID of the virtual private cloud (VPC) with which the serverless resource group is associated by default.
         # 
@@ -9644,21 +9644,21 @@ class CreateResourceGroupShrinkRequest(TeaModel):
         vpc_id: str = None,
         vswitch_id: str = None,
     ):
-        # The ID of the resource group.
+        # The ID of the Alibaba Cloud resource group.
         self.aliyun_resource_group_id = aliyun_resource_group_id
         # The tags.
         self.aliyun_resource_tags_shrink = aliyun_resource_tags_shrink
         # Specifies whether to enable auto-renewal.
         self.auto_renew_enabled = auto_renew_enabled
-        # The idempotent identifier of the client is used to ensure idempotent operation of creating a common resource group.
+        # The client token that is used to ensure the idempotence of the request.
         # 
         # This parameter is required.
         self.client_token = client_token
-        # The name of a common resource group. It must start with a letter and can contain letters, numbers, and underscores (_). It can be up to 128 characters in length.
+        # The name of the serverless resource group. The name can be a maximum of 128 characters in length and can contain letters, digits, and underscores (_). The name must start with a letter.
         # 
         # This parameter is required.
         self.name = name
-        # The duration of the payment.
+        # The subscription duration.
         self.payment_duration = payment_duration
         # The unit of the subscription duration. Valid values: Month and Year.
         self.payment_duration_unit = payment_duration_unit
@@ -9666,9 +9666,9 @@ class CreateResourceGroupShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.payment_type = payment_type
-        # Note for creating a common resource group, which can contain letters, Chinese characters, numbers, underscores (_), and a maximum of 128 characters.
+        # The description of the serverless resource group. The description can be a maximum of 128 characters in length and can contain letters, digits, and underscores (_).
         self.remark = remark
-        # The specifications of the resource group. Unit: compute unit (CU). This parameter is required only when you set the PaymentType parameter to PrePaid.
+        # The specifications of the serverless resource group. Unit: CU. This parameter is required only if you set the PaymentType parameter to PrePaid.
         self.spec = spec
         # The ID of the virtual private cloud (VPC) with which the serverless resource group is associated by default.
         # 
@@ -9750,11 +9750,11 @@ class CreateResourceGroupResponseBodyResourceGroupOrder(TeaModel):
         order_id: int = None,
         order_instance_id: str = None,
     ):
-        # The unique identifier of the serverless resource group.
+        # The ID of the serverless resource group.
         self.id = id
-        # The ID of the order to create a serverless resource group.
+        # The ID of the order that is used to create the serverless resource group.
         self.order_id = order_id
-        # The ID of the order instance that created the serverless resource group.
+        # The instance ID of the order that is used to create the serverless resource group.
         self.order_instance_id = order_instance_id
 
     def validate(self):
@@ -9792,11 +9792,11 @@ class CreateResourceGroupResponseBody(TeaModel):
         resource_group_order: CreateResourceGroupResponseBodyResourceGroupOrder = None,
         success: bool = None,
     ):
-        # The ID of the request. It is used to locate logs and troubleshoot problems.
+        # The request ID.
         self.request_id = request_id
-        # The order information for creating a serverless resource group.
+        # The information about the order that is used to create the serverless resource group.
         self.resource_group_order = resource_group_order
-        # Whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -9875,6 +9875,7 @@ class CreateRouteRequest(TeaModel):
         self,
         destination_cidr: str = None,
         network_id: int = None,
+        resource_group_id: str = None,
     ):
         # The CIDR blocks of the destination-based route.
         # 
@@ -9884,6 +9885,8 @@ class CreateRouteRequest(TeaModel):
         # 
         # This parameter is required.
         self.network_id = network_id
+        # Unique identifier of the serverless resource group.
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -9898,6 +9901,8 @@ class CreateRouteRequest(TeaModel):
             result['DestinationCidr'] = self.destination_cidr
         if self.network_id is not None:
             result['NetworkId'] = self.network_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -9906,6 +9911,8 @@ class CreateRouteRequest(TeaModel):
             self.destination_cidr = m.get('DestinationCidr')
         if m.get('NetworkId') is not None:
             self.network_id = m.get('NetworkId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -10155,12 +10162,8 @@ class CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis(TeaModel):
         enabled: bool = None,
     ):
         # Whether to block the operation if the analysis fails.
-        # 
-        # This parameter is required.
         self.blocked = blocked
         # Whether to enable analysis.
-        # 
-        # This parameter is required.
         self.enabled = enabled
 
     def validate(self):
@@ -10257,8 +10260,6 @@ class CreateWorkflowInstancesRequestDefaultRunProperties(TeaModel):
         # Alarm configuration.
         self.alert = alert
         # Analyze the configuration.
-        # 
-        # This parameter is required.
         self.analysis = analysis
         # The list of project IDs that do not need to be run.
         self.exclude_project_ids = exclude_project_ids
@@ -10279,8 +10280,6 @@ class CreateWorkflowInstancesRequestDefaultRunProperties(TeaModel):
         # - Desc: descending order by business date.
         self.order = order
         # The number of rows that the task has. Values from 2 to 10 are parallelism and 1 is serial.
-        # 
-        # This parameter is required.
         self.parallelism = parallelism
         # The ID list of the root task.
         self.root_task_ids = root_task_ids
@@ -10491,7 +10490,7 @@ class CreateWorkflowInstancesRequest(TeaModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # Task parameters. Set parameters for a specific task. In JSON format, the key is the Task ID. For more information about the value format, see Task Script parameters (Task.Script. GetTask of the Parameter interface).
+        # The task-specific parameters. The value is in the JSON format. The key specifies the task ID. You can call the GetTask operation to obtain the format of the value by querying the script parameters.
         self.task_parameters = task_parameters
         # The type of the workflow instance.
         # 
@@ -10500,11 +10499,11 @@ class CreateWorkflowInstancesRequest(TeaModel):
         # 
         # This parameter is required.
         self.type = type
-        # The ID of the workflow to which the workflow belongs. The default value of WorkflowId for retroactive data is 1.
+        # The ID of the workflow to which the instance belongs. This parameter is set to 1 for auto triggered tasks.
         # 
         # This parameter is required.
         self.workflow_id = workflow_id
-        # Workflow parameters. The priority is higher than the task parameters. JSON format.
+        # The workflow parameters. The priority of workflow parameters is higher than that of task parameters. You can call the GetTask operation to obtain the format of the workflow parameters by querying the Parameters parameter.
         self.workflow_parameters = workflow_parameters
 
     def validate(self):
@@ -10607,7 +10606,7 @@ class CreateWorkflowInstancesShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # Task parameters. Set parameters for a specific task. In JSON format, the key is the Task ID. For more information about the value format, see Task Script parameters (Task.Script. GetTask of the Parameter interface).
+        # The task-specific parameters. The value is in the JSON format. The key specifies the task ID. You can call the GetTask operation to obtain the format of the value by querying the script parameters.
         self.task_parameters = task_parameters
         # The type of the workflow instance.
         # 
@@ -10616,11 +10615,11 @@ class CreateWorkflowInstancesShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.type = type
-        # The ID of the workflow to which the workflow belongs. The default value of WorkflowId for retroactive data is 1.
+        # The ID of the workflow to which the instance belongs. This parameter is set to 1 for auto triggered tasks.
         # 
         # This parameter is required.
         self.workflow_id = workflow_id
-        # Workflow parameters. The priority is higher than the task parameters. JSON format.
+        # The workflow parameters. The priority of workflow parameters is higher than that of task parameters. You can call the GetTask operation to obtain the format of the workflow parameters by querying the Parameters parameter.
         self.workflow_parameters = workflow_parameters
 
     def validate(self):
@@ -10859,6 +10858,114 @@ class DeleteAlertRuleResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteAlertRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteCertificateRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        project_id: int = None,
+    ):
+        # This parameter is required.
+        self.id = id
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class DeleteCertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteCertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteCertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteCertificateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11819,7 +11926,7 @@ class DeleteFunctionRequest(TeaModel):
         # 
         # This parameter is required.
         self.id = id
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID. You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the ID. You can use this parameter to specify the DataWorks workspace on which you want to perform the API operation.
         # 
         # This parameter is required.
         self.project_id = project_id
@@ -12043,9 +12150,9 @@ class DeleteNodeRequest(TeaModel):
         # 
         # This parameter is required.
         self.id = id
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the ID.
         # 
-        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # You can use this parameter to specify the DataWorks workspace on which you want to perform the API operation.
         # 
         # This parameter is required.
         self.project_id = project_id
@@ -12372,7 +12479,7 @@ class DeleteResourceRequest(TeaModel):
         # 
         # This parameter is required.
         self.id = id
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID. You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the ID. You can use this parameter to specify the DataWorks workspace on which you want to perform the API operation.
         # 
         # This parameter is required.
         self.project_id = project_id
@@ -13355,9 +13462,9 @@ class ExecDeploymentStageRequest(TeaModel):
         # 
         # This parameter is required.
         self.id = id
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the ID.
         # 
-        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # You can use this parameter to specify the DataWorks workspace on which you want to perform the API operation.
         # 
         # This parameter is required.
         self.project_id = project_id
@@ -13538,7 +13645,7 @@ class ExecuteAdhocWorkflowInstanceRequestTasksInputsVariables(TeaModel):
     ):
         # The name of the variable.
         self.name = name
-        # The value of the variable.
+        # The value of the variable. You must configure this parameter in the `The ancestor output: The output variable name of the ancestor task` format.
         self.value = value
 
     def validate(self):
@@ -13638,7 +13745,7 @@ class ExecuteAdhocWorkflowInstanceRequestTasksOutputsVariables(TeaModel):
     ):
         # The name of the variable.
         self.name = name
-        # The type of the variable. Valid values:
+        # The type. Valid values:
         # 
         # *   System
         # *   Constant
@@ -13948,9 +14055,7 @@ class ExecuteAdhocWorkflowInstanceRequest(TeaModel):
         project_id: int = None,
         tasks: List[ExecuteAdhocWorkflowInstanceRequestTasks] = None,
     ):
-        # 业务日期。
-        # 
-        # This parameter is required.
+        # The data timestamp.
         self.biz_date = biz_date
         # The environment of the workspace. Valid values:
         # 
@@ -14032,9 +14137,7 @@ class ExecuteAdhocWorkflowInstanceShrinkRequest(TeaModel):
         project_id: int = None,
         tasks_shrink: str = None,
     ):
-        # 业务日期。
-        # 
-        # This parameter is required.
+        # The data timestamp.
         self.biz_date = biz_date
         # The environment of the workspace. Valid values:
         # 
@@ -14921,6 +15024,179 @@ class GetAlertRuleResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAlertRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetCertificateRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        project_id: int = None,
+    ):
+        # This parameter is required.
+        self.id = id
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class GetCertificateResponseBodyCertificate(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        create_user: str = None,
+        description: str = None,
+        file_size_in_bytes: int = None,
+        id: int = None,
+        name: str = None,
+        project_id: int = None,
+    ):
+        self.create_time = create_time
+        self.create_user = create_user
+        self.description = description
+        self.file_size_in_bytes = file_size_in_bytes
+        self.id = id
+        self.name = name
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.file_size_in_bytes is not None:
+            result['FileSizeInBytes'] = self.file_size_in_bytes
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FileSizeInBytes') is not None:
+            self.file_size_in_bytes = m.get('FileSizeInBytes')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class GetCertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        certificate: GetCertificateResponseBodyCertificate = None,
+        request_id: str = None,
+    ):
+        self.certificate = certificate
+        self.request_id = request_id
+
+    def validate(self):
+        if self.certificate:
+            self.certificate.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.certificate is not None:
+            result['Certificate'] = self.certificate.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Certificate') is not None:
+            temp_model = GetCertificateResponseBodyCertificate()
+            self.certificate = temp_model.from_map(m['Certificate'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetCertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetCertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetCertificateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -16189,7 +16465,12 @@ class GetDIJobLogRequest(TeaModel):
         self.id = id
         # The instance ID.
         self.instance_id = instance_id
+        # Node type. Currently, it is only applicable in the view resource group 2.0 task:
+        # 
+        # - MASTER: obtains logs of JobManager.
+        # - WORKER: obtains logs of TaskManager.
         self.node_type = node_type
+        # The page number of the pagination query. The value is a positive integer greater than or equal to 1.
         self.page_number = page_number
 
     def validate(self):
@@ -17483,13 +17764,14 @@ class GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsCriti
     ):
         # The threshold expression.
         self.expression = expression
-        # Comparison character:
-        # - \\>
-        # - % =\
-        # - <
-        # - <=\
-        # - ! =\
-        # - =\
+        # The comparison operator. Valid values:
+        # 
+        # *   \\>
+        # *   \\>=\
+        # *   <
+        # *   <=\
+        # *   !=\
+        # *   \\=\
         self.operator = operator
         # The threshold value.
         self.value = value
@@ -17531,13 +17813,14 @@ class GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsExpec
     ):
         # The threshold expression.
         self.expression = expression
-        # Comparison character:
-        # - \\>
-        # - % =\
-        # - <
-        # - <=\
-        # - ! =\
-        # - =\
+        # The comparison operator. Valid values:
+        # 
+        # *   \\>
+        # *   \\>=\
+        # *   <
+        # *   <=\
+        # *   !=\
+        # *   \\=\
         self.operator = operator
         # The threshold value.
         self.value = value
@@ -17579,13 +17862,14 @@ class GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsWarne
     ):
         # The threshold expression.
         self.expression = expression
-        # Comparison character:
-        # - \\>
-        # - % =\
-        # - <
-        # - <=\
-        # - ! =\
-        # - =\
+        # The comparison operator. Valid values:
+        # 
+        # *   \\>
+        # *   \\>=\
+        # *   <
+        # *   <=\
+        # *   !=\
+        # *   \\=\
         self.operator = operator
         # The threshold value.
         self.value = value
@@ -17675,17 +17959,18 @@ class GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfig(TeaModel):
         thresholds: GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholds = None,
         type: str = None,
     ):
-        # Some types of thresholds need to query some reference samples, and then summarize the values of the reference samples to obtain the threshold for comparison. Here, an expression is used to represent the query method of the reference samples.
+        # The method that is used to query the referenced samples. To obtain some types of thresholds, you need to query reference values. In this example, an expression is used to indicate the query method of referenced samples.
         self.referenced_samples_filter = referenced_samples_filter
         # The threshold settings.
         self.thresholds = thresholds
-        # Threshold Calculation method:
-        # - Fixed
-        # - Fluctation
-        # - FluctationDiscreate
-        # - Auto
-        # - Average
-        # - Variance
+        # The threshold calculation method. Valid values:
+        # 
+        # *   Fixed
+        # *   Fluctation
+        # *   FluctationDiscreate
+        # *   Auto
+        # *   Average
+        # *   Variance
         self.type = type
 
     def validate(self):
@@ -17724,7 +18009,7 @@ class GetDataQualityRuleResponseBodyDataQualityRuleErrorHandlers(TeaModel):
         error_data_filter: str = None,
         type: str = None,
     ):
-        # For custom SQL rules, you must specify SQL to filter problem data.
+        # The SQL statement that is used to filter failed tasks. If you define the rule by using custom SQL statements, you must specify an SQL statement to filter failed tasks.
         self.error_data_filter = error_data_filter
         # Processor type:
         # - SaveErrorData
@@ -17762,28 +18047,29 @@ class GetDataQualityRuleResponseBodyDataQualityRuleSamplingConfig(TeaModel):
         sampling_filter: str = None,
         setting_config: str = None,
     ):
-        # The name of the sampled metric:
-        # - Count: number of table rows
-        # - Min: minimum value of the field
-        # - Max: The maximum value of the field.
-        # - Avg: field mean
-        # - DistinctCount: number of unique field values
-        # - DistinctPercent: the ratio of the number of unique field values to the number of data rows.
-        # - DuplicatedCount: number of duplicate field values
-        # - DuplicatedPercent: the ratio of the number of duplicate field values to the number of data rows.
-        # - TableSize: table size
-        # - NullValueCount: number of rows with empty fields
-        # - NullValuePercent: the proportion of fields that are empty.
-        # - GroupCount: aggregate each value by field value and the corresponding number of data rows
-        # - CountNotIn: the enumerated value does not match the number of rows.
-        # - CountDistinctNotIn: the number of unique values that the enumerated values do not match.
-        # - UserDefinedSql: use custom SQL to collect samples
+        # The metrics used for sampling. Valid values:
+        # 
+        # *   Count: the number of rows in the table.
+        # *   Min: the minimum value of the field.
+        # *   Max: the maximum value of the field.
+        # *   Avg: the average value of the field.
+        # *   DistinctCount: the number of unique values of the field after deduplication.
+        # *   DistinctPercent: the proportion of the number of unique values of the field after deduplication to the number of rows in the table.
+        # *   DuplicatedCount: the number of duplicated values of the field.
+        # *   DuplicatedPercent: the proportion of the number of duplicated values of the field to the number of rows in the table.
+        # *   TableSize: the table size.
+        # *   NullValueCount: the number of rows in which the field value is null.
+        # *   NullValuePercent: the proportion of the number of rows in which the field value is null to the number of rows in the table.
+        # *   GroupCount: the field value and the number of rows for each field value.
+        # *   CountNotIn: the number of rows in which the field values are different from the referenced values that you specified in the rule.
+        # *   CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
+        # *   UserDefinedSql: indicates that data is sampled by executing custom SQL statements.
         self.metric = metric
-        # Parameters required for sample collection.
+        # The parameters required for sampling.
         self.metric_parameters = metric_parameters
-        # The condition for secondary filtering of data that is not concerned during sampling, which can be up to 16777215 characters in length.
+        # The statements that are used to filter unnecessary data during sampling. The statements can be up to 16,777,215 characters in length.
         self.sampling_filter = sampling_filter
-        # Before executing the sample statement, insert some runtime parameter setting statements, which can be up to 1000 characters in length. Currently, only MaxCompute is supported.
+        # The statements that are used to configure the parameters required for sampling before you execute the sampling statements. The statements can be up to 1,000 characters in length. Only the MaxCompute database is supported.
         self.setting_config = setting_config
 
     def validate(self):
@@ -17835,9 +18121,9 @@ class GetDataQualityRuleResponseBodyDataQualityRuleTarget(TeaModel):
         # - analyticdb_for_mysql
         # - starrocks
         self.database_type = database_type
-        # Partition settings for partitioned tables.
+        # The configuration of the partitioned table.
         self.partition_spec = partition_spec
-        # The unique ID of the table used by the rule in the data map.
+        # The ID of the table that is limited by the rule in Data Map.
         self.table_guid = table_guid
         # Monitoring object type
         # 
@@ -17893,25 +18179,25 @@ class GetDataQualityRuleResponseBodyDataQualityRule(TeaModel):
     ):
         # The check settings for sample data.
         self.checking_config = checking_config
-        # The description of the rule. It can be up to 500 characters in length.
+        # The description of the rule. The description can be up to 500 characters in length.
         self.description = description
-        # Whether the rule is enabled.
+        # Indicates whether the rule is enabled.
         self.enabled = enabled
-        # The list of quality rule verification problem processors.
+        # The operations that you can perform after the rule-based check fails.
         self.error_handlers = error_handlers
-        # The ID of the rule.
+        # The rule ID.
         self.id = id
-        # The name of the rule.
+        # The rule name.
         self.name = name
-        # The ID of the DataWorks workspace.
+        # The DataWorks workspace ID.
         self.project_id = project_id
-        # The settings required for sample collection.
+        # The sampling settings.
         self.sampling_config = sampling_config
         # Rule for the business level (corresponding to the strong and weak rules on the page), optional enumeration value:
         # - Normal
         # - High
         self.severity = severity
-        # The object monitored by the rule.
+        # The monitored object of the rule.
         self.target = target
         # The ID of the template used by the rule.
         self.template_code = template_code
@@ -18107,15 +18393,16 @@ class GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateCheckingConfi
         referenced_samples_filter: str = None,
         type: str = None,
     ):
-        # Some types of thresholds need to query some reference samples, and then summarize the values of the reference samples to obtain the threshold for comparison. Here, an expression is used to represent the query method of the reference samples.
+        # The method that is used to query the referenced samples. To obtain some types of thresholds, you need to query reference samples and perform aggregate operations on the reference values. In this example, an expression is used to indicate the query method of referenced samples.
         self.referenced_samples_filter = referenced_samples_filter
-        # Threshold Calculation method:
-        # - Fixed
-        # - Fluctation
-        # - FluctationDiscreate
-        # - Auto
-        # - Average
-        # - Variance
+        # The threshold calculation method. Valid values:
+        # 
+        # *   Fixed
+        # *   Fluctation
+        # *   FluctationDiscreate
+        # *   Auto
+        # *   Average
+        # *   Variance
         self.type = type
 
     def validate(self):
@@ -18149,26 +18436,27 @@ class GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateSamplingConfi
         metric_parameters: str = None,
         setting_config: str = None,
     ):
-        # The name of the sampled metric.
-        # - Count: number of table rows
-        # - Min: minimum value of the field
-        # - Max: The maximum value of the field.
-        # - Avg: field mean
-        # - DistinctCount: number of unique field values
-        # - DistinctPercent: the ratio of the number of unique field values to the number of data rows.
-        # - DuplicatedCount: number of duplicate field values
-        # - DuplicatedPercent: the ratio of the number of duplicate field values to the number of data rows.
-        # - TableSize: table size
-        # - NullValueCount: number of rows with empty fields
-        # - NullValuePercent: the proportion of fields that are empty.
-        # - GroupCount: aggregate each value by field value and the corresponding number of data rows
-        # - CountNotIn: the enumerated value does not match the number of rows.
-        # - CountDistinctNotIn: the number of unique values that the enumerated values do not match.
-        # - UserDefinedSql: use custom SQL to collect samples.
+        # The metrics used for sampling. Valid values:
+        # 
+        # *   Count: the number of rows in the table.
+        # *   Min: the minimum value of the field.
+        # *   Max: the maximum value of the field.
+        # *   Avg: the average value of the field.
+        # *   DistinctCount: the number of unique values of the field after deduplication.
+        # *   DistinctPercent: the proportion of the number of unique values of the field after deduplication to the number of rows in the table.
+        # *   DuplicatedCount: the number of duplicated values of the field.
+        # *   DuplicatedPercent: the proportion of the number of duplicated values of the field to the number of rows in the table.
+        # *   TableSize: the table size.
+        # *   NullValueCount: the number of rows in which the field value is null.
+        # *   NullValuePercent: the proportion of the number of rows in which the field value is null to the number of rows in the table.
+        # *   GroupCount: the field value and the number of rows for each field value.
+        # *   CountNotIn: the number of rows in which the field values are different from the referenced values that you specified in the rule.
+        # *   CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
+        # *   UserDefinedSql: indicates that data is sampled by executing custom SQL statements.
         self.metric = metric
-        # Parameters required for sample collection.
+        # The parameters required for sampling.
         self.metric_parameters = metric_parameters
-        # Before executing the sample statement, insert some runtime parameter setting statements, which can be up to 1000 characters in length. Currently, only MaxCompute is supported.
+        # The statements that are used to configure the parameters required for sampling before you execute the sampling statements. The statements can be up to 1,000 characters in length. Only the MaxCompute database is supported.
         self.setting_config = setting_config
 
     def validate(self):
@@ -18210,17 +18498,17 @@ class GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate(TeaModel):
         sampling_config: GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateSamplingConfig = None,
         visible_scope: str = None,
     ):
-        # Sample verification settings.
+        # The check settings for sample data.
         self.checking_config = checking_config
-        # The Code of the rule template.
+        # The code for the template.
         self.code = code
-        # The category directory where the custom template is stored, separated by slashes. Each level name can be up to 1024 characters in length and cannot contain white space characters or slashes.
+        # The directory in which the template is stored. Slashes (/) are used to separate directory levels. The name of each directory level can be up to 1,024 characters in length. It cannot contain whitespace characters or slashes (/).
         self.directory_path = directory_path
-        # The name of the rule template. It can contain up to 512 characters in length, including numbers, letters, Chinese characters, and half-width punctuation marks.
+        # The name of the template. The name can be up to 512 characters in length and can contain digits, letters, and punctuation marks.
         self.name = name
-        # The ID of the DataWorks workspace.
+        # The DataWorks workspace ID.
         self.project_id = project_id
-        # The settings required for sample collection.
+        # The sampling settings.
         self.sampling_config = sampling_config
         # Available range of templates:
         # - Tenant: all tenants are available
@@ -19513,6 +19801,7 @@ class GetNodeResponseBodyNode(TeaModel):
         self.project_id = project_id
         # The FlowSpec field information about this node. For more information, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow).
         self.spec = spec
+        # The Id of the scheduled task after the node is published.
         self.task_id = task_id
 
     def validate(self):
@@ -23961,6 +24250,7 @@ class GetWorkflowDefinitionRequest(TeaModel):
         # 
         # This parameter is required.
         self.id = id
+        # 查询结果是否包含工作流内部节点的脚本内容（对于内容较多的节点，可能存在较长的网络传输延时）。
         self.include_script_content = include_script_content
         # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
         # 
@@ -24021,6 +24311,7 @@ class GetWorkflowDefinitionResponseBodyWorkflowDefinition(TeaModel):
         self.project_id = project_id
         # The FlowSpec field information about the workflow. For more information, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow/).
         self.spec = spec
+        # The ID of the workflow on the scheduling side after publishing.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -24559,6 +24850,176 @@ class GrantMemberProjectRolesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GrantMemberProjectRolesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ImportCertificateRequest(TeaModel):
+    def __init__(
+        self,
+        certificate_file: str = None,
+        description: str = None,
+        name: str = None,
+        project_id: int = None,
+    ):
+        # This parameter is required.
+        self.certificate_file = certificate_file
+        self.description = description
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.certificate_file is not None:
+            result['CertificateFile'] = self.certificate_file
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertificateFile') is not None:
+            self.certificate_file = m.get('CertificateFile')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class ImportCertificateAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        certificate_file_object: BinaryIO = None,
+        description: str = None,
+        name: str = None,
+        project_id: int = None,
+    ):
+        # This parameter is required.
+        self.certificate_file_object = certificate_file_object
+        self.description = description
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.certificate_file_object is not None:
+            result['CertificateFile'] = self.certificate_file_object
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertificateFile') is not None:
+            self.certificate_file_object = m.get('CertificateFile')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class ImportCertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        request_id: str = None,
+    ):
+        self.id = id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ImportCertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ImportCertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ImportCertificateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -25565,6 +26026,268 @@ class ListAlertRulesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListAlertRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListCertificatesRequest(TeaModel):
+    def __init__(
+        self,
+        create_user: str = None,
+        end_create_time: int = None,
+        name: str = None,
+        order: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: int = None,
+        sort_by: str = None,
+        start_create_time: int = None,
+    ):
+        self.create_user = create_user
+        self.end_create_time = end_create_time
+        self.name = name
+        self.order = order
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.project_id = project_id
+        self.sort_by = sort_by
+        self.start_create_time = start_create_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.end_create_time is not None:
+            result['EndCreateTime'] = self.end_create_time
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.start_create_time is not None:
+            result['StartCreateTime'] = self.start_create_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('EndCreateTime') is not None:
+            self.end_create_time = m.get('EndCreateTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('StartCreateTime') is not None:
+            self.start_create_time = m.get('StartCreateTime')
+        return self
+
+
+class ListCertificatesResponseBodyPagingInfoCertificates(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        create_user: str = None,
+        description: str = None,
+        file_size_in_bytes: int = None,
+        id: int = None,
+        name: str = None,
+    ):
+        self.create_time = create_time
+        self.create_user = create_user
+        self.description = description
+        self.file_size_in_bytes = file_size_in_bytes
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.file_size_in_bytes is not None:
+            result['FileSizeInBytes'] = self.file_size_in_bytes
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FileSizeInBytes') is not None:
+            self.file_size_in_bytes = m.get('FileSizeInBytes')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ListCertificatesResponseBodyPagingInfo(TeaModel):
+    def __init__(
+        self,
+        certificates: List[ListCertificatesResponseBodyPagingInfoCertificates] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.certificates = certificates
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.certificates:
+            for k in self.certificates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Certificates'] = []
+        if self.certificates is not None:
+            for k in self.certificates:
+                result['Certificates'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.certificates = []
+        if m.get('Certificates') is not None:
+            for k in m.get('Certificates'):
+                temp_model = ListCertificatesResponseBodyPagingInfoCertificates()
+                self.certificates.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListCertificatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        paging_info: ListCertificatesResponseBodyPagingInfo = None,
+        request_id: str = None,
+    ):
+        self.paging_info = paging_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.paging_info:
+            self.paging_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.paging_info is not None:
+            result['PagingInfo'] = self.paging_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PagingInfo') is not None:
+            temp_model = ListCertificatesResponseBodyPagingInfo()
+            self.paging_info = temp_model.from_map(m['PagingInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListCertificatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCertificatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCertificatesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -29453,15 +30176,15 @@ class ListDataQualityResultsRequest(TeaModel):
         self.bizdate_from = bizdate_from
         # The end of the time range to query.
         self.bizdate_to = bizdate_to
-        # The earliest time when data quality verification results are generated.
+        # The earliest time when the data quality check result was generated.
         self.create_time_from = create_time_from
-        # The latest generation time of data quality verification results.
+        # The latest time when the data quality check result was generated.
         self.create_time_to = create_time_to
-        # The ID of the data quality verification task.
+        # The ID of the data quality monitoring task.
         self.data_quality_evaluation_task_id = data_quality_evaluation_task_id
-        # The ID of the data quality verification task instance.
+        # The ID of the instance generated by the check.
         self.data_quality_evaluation_task_instance_id = data_quality_evaluation_task_instance_id
-        # The ID of the data quality rule.
+        # The ID of the data quality monitoring rule.
         self.data_quality_rule_id = data_quality_rule_id
         # The page number. Default value: 1.
         self.page_number = page_number
@@ -29533,9 +30256,9 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsDetails(TeaM
         referenced_value: str = None,
         status: str = None,
     ):
-        # The value used to compare with the threshold.
+        # The value that is used for comparison with the threshold.
         self.checked_value = checked_value
-        # Use the referenced sample to participate in the CheckedValue calculation of the benchmark value.
+        # The value that is calculated based on sample data. The value serves as a baseline value during the calculation of the value of the CheckedValue parameter.
         self.referenced_value = referenced_value
         # The comparison result between the value of CheckedValue and the threshold. Valid values:
         # 
@@ -29582,14 +30305,16 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleChecking
     ):
         # The threshold expression.
         # 
-        # The volatility type rule must use an expression to represent the volatility threshold. For example:
+        # If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
         # 
-        # - Fluctuation rise greater than 0.01: $checkValue > 0.01
-        # - Fluctuation drop greater than 0.01:$checkValue < -0.01
-        # - Absolute volatility: abs($checkValue) > 0.01
+        # *   $checkValue > 0.01
+        # *   $checkValue < -0.01
+        # *   abs($checkValue) > 0.01
         # 
-        # You can also use expressions to configure thresholds for fixed-Value rules. If you configure them at the same time, the expression priority is higher than Operator and Value.
+        # If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
         self.expression = expression
+        # The comparison operator. Valid values:
+        # 
         # *   \\>
         # *   \\>=\
         # *   <
@@ -29637,14 +30362,16 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleChecking
     ):
         # The threshold expression.
         # 
-        # The volatility type rule must use an expression to represent the volatility threshold. For example:
+        # If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
         # 
-        # - Fluctuation rise greater than 0.01: $checkValue > 0.01
-        # - Fluctuation drop greater than 0.01:$checkValue < -0.01
-        # - Absolute volatility: abs($checkValue) > 0.01
+        # *   $checkValue > 0.01
+        # *   $checkValue < -0.01
+        # *   abs($checkValue) > 0.01
         # 
-        # You can also use expressions to configure thresholds for fixed-Value rules. If you configure them at the same time, the expression priority is higher than Operator and Value.
+        # If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
         self.expression = expression
+        # The comparison operator. Valid values:
+        # 
         # *   \\>
         # *   \\>=\
         # *   <
@@ -29692,14 +30419,16 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleChecking
     ):
         # The threshold expression.
         # 
-        # The volatility type rule must use an expression to represent the volatility threshold. For example:
+        # If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
         # 
-        # - Fluctuation rise greater than 0.01: $checkValue > 0.01
-        # - Fluctuation drop greater than 0.01:$checkValue < -0.01
-        # - Absolute volatility: abs($checkValue) > 0.01
+        # *   $checkValue > 0.01
+        # *   $checkValue < -0.01
+        # *   abs($checkValue) > 0.01
         # 
-        # You can also use expressions to configure thresholds for fixed-Value rules. If you configure them at the same time, the expression priority is higher than Operator and Value.
+        # If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
         self.expression = expression
+        # The comparison operator. Valid values:
+        # 
         # *   \\>
         # *   \\>=\
         # *   <
@@ -29795,7 +30524,7 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleChecking
         thresholds: ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholds = None,
         type: str = None,
     ):
-        # Some types of thresholds need to query some reference samples, and then summarize the values of the reference samples to obtain the threshold for comparison. Here, an expression is used to represent the query method of the reference samples.
+        # The method that is used to query the referenced samples. To obtain some types of thresholds, you need to query reference samples and perform aggregate operations on the reference values. In this example, an expression is used to indicate the query method of referenced samples.
         self.referenced_samples_filter = referenced_samples_filter
         # The threshold settings.
         self.thresholds = thresholds
@@ -29845,7 +30574,7 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleErrorHan
         error_data_filter: str = None,
         type: str = None,
     ):
-        # For custom SQL rules, you must specify SQL to filter problem data.
+        # The SQL statement that is used to filter failed tasks. If the rule is defined by custom SQL statements, you must specify an SQL statement to filter failed tasks.
         self.error_data_filter = error_data_filter
         # The type of the operation. Valid values:
         # 
@@ -29902,11 +30631,11 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleSampling
         # *   CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
         # *   UserDefinedSql: indicates that data is sampled by executing custom SQL statements.
         self.metric = metric
-        # Parameters required for sample collection.
+        # The parameters required for sampling.
         self.metric_parameters = metric_parameters
-        # The condition for secondary filtering of data that is not concerned during sampling, which can be up to 16777215 characters in length.
+        # The statements that are used to filter unnecessary data during sampling. The statements can be up to 16,777,215 characters in length.
         self.sampling_filter = sampling_filter
-        # Before executing the sample statement, insert some runtime parameter setting statements, which can be up to 1000 characters in length. Currently, only MaxCompute is supported.
+        # The statements that are used to configure the parameters required for sampling before you execute the sampling statements. The statements can be up to 1,000 characters in length. Only the MaxCompute database is supported.
         self.setting_config = setting_config
 
     def validate(self):
@@ -29958,7 +30687,7 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget(T
         # *   analyticdb_for_mysql
         # *   starrocks
         self.database_type = database_type
-        # The unique ID of the table in the data map.
+        # The ID of the table in Data Map.
         self.table_guid = table_guid
         # The type of the monitored object. Valid values:
         # 
@@ -30010,17 +30739,17 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule(TeaMode
     ):
         # The check settings for sample data.
         self.checking_config = checking_config
-        # The description of the rule. It can be up to 500 characters in length.
+        # The description of the rule. The description can be up to 500 characters in length.
         self.description = description
-        # Whether the rule is enabled.
+        # Indicates whether the rule is enabled.
         self.enabled = enabled
         # The operations that you can perform after the rule-based check fails.
         self.error_handlers = error_handlers
-        # The ID of the rule.
+        # The rule ID.
         self.id = id
-        # The rule name, a combination of numbers, English letters, Chinese characters, and half-width punctuation marks, can be up to 255 characters in length.
+        # The name of the rule. The name can be up to 255 characters in length and can contain digits, letters, and punctuation marks.
         self.name = name
-        # DataWorks the ID of the project.
+        # The DataWorks workspace ID.
         self.project_id = project_id
         # The sampling settings.
         self.sampling_config = sampling_config
@@ -30122,15 +30851,15 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResults(TeaModel):
         status: str = None,
         task_instance_id: int = None,
     ):
-        # The time when the verification result was generated.
+        # The time when the data quality check result was generated.
         self.create_time = create_time
-        # The check details.
+        # The information about the data quality check.
         self.details = details
-        # The ID of the verification result.
+        # The ID of the check result.
         self.id = id
         # The snapshot of the rule configuration when the check starts.
         self.rule = rule
-        # The sample value used for this verification.
+        # The sample values used for the check.
         self.sample = sample
         # The status of the check result. Valid values:
         # 
@@ -30140,7 +30869,7 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResults(TeaModel):
         # *   Warned
         # *   Critical
         self.status = status
-        # The ID of the verification task instance.
+        # The ID of the instance generated by the check.
         self.task_instance_id = task_instance_id
 
     def validate(self):
@@ -30210,9 +30939,9 @@ class ListDataQualityResultsResponseBodyPagingInfo(TeaModel):
         self.data_quality_results = data_quality_results
         # The page number.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -30782,13 +31511,13 @@ class ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigTh
     ):
         # The threshold expression.
         # 
-        # The volatility type rule must use an expression to represent the volatility threshold. For example:
+        # If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
         # 
-        # - Fluctuation rise greater than 0.01: $checkValue > 0.01
-        # - Fluctuation drop greater than 0.01:$checkValue < -0.01
-        # - Absolute volatility: abs($checkValue) > 0.01
+        # *   $checkValue > 0.01
+        # *   $checkValue < -0.01
+        # *   abs($checkValue) > 0.01
         # 
-        # You can also use expressions to configure thresholds for fixed-Value rules. If you configure them at the same time, the expression priority is higher than Operator and Value.
+        # If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
         self.expression = expression
         # The comparison operator. Valid values:
         # 
@@ -30839,13 +31568,13 @@ class ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigTh
     ):
         # The threshold expression.
         # 
-        # The volatility type rule must use an expression to represent the volatility threshold. For example:
+        # If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
         # 
-        # - Fluctuation rise greater than 0.01: $checkValue > 0.01
-        # - Fluctuation drop greater than 0.01:$checkValue < -0.01
-        # - Absolute volatility: abs($checkValue) > 0.01
+        # *   $checkValue > 0.01
+        # *   $checkValue < -0.01
+        # *   abs($checkValue) > 0.01
         # 
-        # You can also use expressions to configure thresholds for fixed-Value rules. If you configure them at the same time, the expression priority is higher than Operator and Value.
+        # If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
         self.expression = expression
         # The comparison operator. Valid values:
         # 
@@ -30896,13 +31625,13 @@ class ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigTh
     ):
         # The threshold expression.
         # 
-        # The volatility type rule must use an expression to represent the volatility threshold. For example:
+        # If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
         # 
-        # - Fluctuation rise greater than 0.01: $checkValue > 0.01
-        # - Fluctuation drop greater than 0.01:$checkValue < -0.01
-        # - Absolute volatility: abs($checkValue) > 0.01
+        # *   $checkValue > 0.01
+        # *   $checkValue < -0.01
+        # *   abs($checkValue) > 0.01
         # 
-        # You can also use expressions to configure thresholds for fixed-Value rules. If you configure them at the same time, the expression priority is higher than Operator and Value.
+        # If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
         self.expression = expression
         # The comparison operator. Valid values:
         # 
@@ -36935,14 +37664,14 @@ class ListNodesResponseBodyPagingInfoNodesOutputsVariables(TeaModel):
         self.name = name
         # The node to which the variable belongs.
         self.node = node
-        # The scope of the variable. Valid value:
+        # The scope of the variable. Valid values:
         # 
         # *   NodeParameter
         # *   NodeContext
         # *   Workflow
         # *   Workspace
         self.scope = scope
-        # The type of the variable. Valid value:
+        # The type of the variable. Valid values:
         # 
         # *   NoKvVariableExpression
         # *   Constant
@@ -37238,7 +37967,7 @@ class ListNodesResponseBodyPagingInfoNodesTags(TeaModel):
     ):
         # The tag key.
         self.key = key
-        # The tag value.
+        # The tag value
         self.value = value
 
     def validate(self):
@@ -38982,16 +39711,16 @@ class ListResourceGroupsRequest(TeaModel):
         self.project_id = project_id
         # The types of resource groups to query. If you do not configure this parameter, only serverless resource groups are returned by default.
         self.resource_group_types = resource_group_types
-        # The list of fields used for sorting. Fields such as TriggerTime and StartedTime are supported. You must configure this parameter in the Sorting field + Sort by (Desc/Asc). By default, results are sorted in ascending order. Valid values:
+        # The fields used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
         # 
-        # *   Id (Desc/Asc): resource group ID
-        # *   Name (Desc/Asc): resource group name
-        # *   Remark (Desc/Asc): resource group remarks
-        # *   Type (Desc/Asc): resource group type
-        # *   Status (Desc/Asc): status of resources in a resource group
-        # *   Spec (Desc/Asc): resource group specifications
-        # *   CreateUser (Desc/Asc): creator
-        # *   CreateTime (Desc/Asc): creation time
+        # *   Id (Desc/Asc): the resource group ID
+        # *   Name (Desc/Asc): the name of the resource group
+        # *   Remark (Desc/Asc): the remarks of the resource group
+        # *   Type (Desc/Asc): the type of the resource group
+        # *   Status (Desc/Asc): the status of the resource group
+        # *   Spec (Desc/Asc): the specifications of the resource group
+        # *   CreateUser (Desc/Asc): the creator of the resource group
+        # *   CreateTime (Desc/Asc): the time when the route is created
         # 
         # Default value: CreateTime Asc
         self.sort_by = sort_by
@@ -39095,16 +39824,16 @@ class ListResourceGroupsShrinkRequest(TeaModel):
         self.project_id = project_id
         # The types of resource groups to query. If you do not configure this parameter, only serverless resource groups are returned by default.
         self.resource_group_types_shrink = resource_group_types_shrink
-        # The list of fields used for sorting. Fields such as TriggerTime and StartedTime are supported. You must configure this parameter in the Sorting field + Sort by (Desc/Asc). By default, results are sorted in ascending order. Valid values:
+        # The fields used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
         # 
-        # *   Id (Desc/Asc): resource group ID
-        # *   Name (Desc/Asc): resource group name
-        # *   Remark (Desc/Asc): resource group remarks
-        # *   Type (Desc/Asc): resource group type
-        # *   Status (Desc/Asc): status of resources in a resource group
-        # *   Spec (Desc/Asc): resource group specifications
-        # *   CreateUser (Desc/Asc): creator
-        # *   CreateTime (Desc/Asc): creation time
+        # *   Id (Desc/Asc): the resource group ID
+        # *   Name (Desc/Asc): the name of the resource group
+        # *   Remark (Desc/Asc): the remarks of the resource group
+        # *   Type (Desc/Asc): the type of the resource group
+        # *   Status (Desc/Asc): the status of the resource group
+        # *   Spec (Desc/Asc): the specifications of the resource group
+        # *   CreateUser (Desc/Asc): the creator of the resource group
+        # *   CreateTime (Desc/Asc): the time when the route is created
         # 
         # Default value: CreateTime Asc
         self.sort_by = sort_by
@@ -39167,6 +39896,41 @@ class ListResourceGroupsShrinkRequest(TeaModel):
         return self
 
 
+class ListResourceGroupsResponseBodyPagingInfoResourceGroupListAliyunResourceTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # Tag Key
+        self.key = key
+        # Tag Value
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListResourceGroupsResponseBodyPagingInfoResourceGroupListSpec(TeaModel):
     def __init__(
         self,
@@ -39206,6 +39970,7 @@ class ListResourceGroupsResponseBodyPagingInfoResourceGroupList(TeaModel):
     def __init__(
         self,
         aliyun_resource_group_id: str = None,
+        aliyun_resource_tags: List[ListResourceGroupsResponseBodyPagingInfoResourceGroupListAliyunResourceTags] = None,
         create_time: int = None,
         create_user: str = None,
         default_vpc_id: str = None,
@@ -39221,6 +39986,8 @@ class ListResourceGroupsResponseBodyPagingInfoResourceGroupList(TeaModel):
     ):
         # Alibaba Cloud Resource Group ID
         self.aliyun_resource_group_id = aliyun_resource_group_id
+        # Alibaba Cloud tag list
+        self.aliyun_resource_tags = aliyun_resource_tags
         # The creation time, which is a 64-bit timestamp.
         self.create_time = create_time
         # The ID of the user who created the resource group.
@@ -39239,7 +40006,7 @@ class ListResourceGroupsResponseBodyPagingInfoResourceGroupList(TeaModel):
         self.payment_type = payment_type
         # Remarks for resource groups
         self.remark = remark
-        # The type of resource group. Valid values:
+        # The type of the resource group. Valid values:
         # 
         # *   CommonV2: serverless resource group
         # *   ExclusiveDataIntegration: exclusive resource group for Data Integration
@@ -39253,16 +40020,22 @@ class ListResourceGroupsResponseBodyPagingInfoResourceGroupList(TeaModel):
         # *   Normal: The resource group is running or in use.
         # *   Stop: The resource group is expired.
         # *   Deleted: The resource group is released or destroyed.
-        # *   Creating: The resource group is being started.
-        # *   CreateFailed: The resource group fails to be started.
+        # *   Creating: The resource group is being created.
+        # *   CreateFailed: The resource group fails to be created.
         # *   Updating: The resource group is being scaled in or out, or the configurations of the resource group are being changed.
         # *   UpdateFailed: The resource group fails to be scaled out or upgraded.
         # *   Deleting: The resource group is being released or destroyed.
         # *   DeleteFailed: The resource group fails to be released or destroyed.
         # *   Timeout: The operations that are performed on the resource group time out.
+        # *   Freezed: The resource group is frozen.
+        # *   Starting: The resource group is being started.
         self.status = status
 
     def validate(self):
+        if self.aliyun_resource_tags:
+            for k in self.aliyun_resource_tags:
+                if k:
+                    k.validate()
         if self.spec:
             self.spec.validate()
 
@@ -39274,6 +40047,10 @@ class ListResourceGroupsResponseBodyPagingInfoResourceGroupList(TeaModel):
         result = dict()
         if self.aliyun_resource_group_id is not None:
             result['AliyunResourceGroupId'] = self.aliyun_resource_group_id
+        result['AliyunResourceTags'] = []
+        if self.aliyun_resource_tags is not None:
+            for k in self.aliyun_resource_tags:
+                result['AliyunResourceTags'].append(k.to_map() if k else None)
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.create_user is not None:
@@ -39304,6 +40081,11 @@ class ListResourceGroupsResponseBodyPagingInfoResourceGroupList(TeaModel):
         m = m or dict()
         if m.get('AliyunResourceGroupId') is not None:
             self.aliyun_resource_group_id = m.get('AliyunResourceGroupId')
+        self.aliyun_resource_tags = []
+        if m.get('AliyunResourceTags') is not None:
+            for k in m.get('AliyunResourceTags'):
+                temp_model = ListResourceGroupsResponseBodyPagingInfoResourceGroupListAliyunResourceTags()
+                self.aliyun_resource_tags.append(temp_model.from_map(k))
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('CreateUser') is not None:
@@ -44482,7 +45264,7 @@ class ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions(TeaModel)
         self.description = description
         # The ID of the workflow.
         self.id = id
-        # The times when the workflow was last modified. This value is a UNIX timestamp.
+        # The time when the workflow was last modified. This value is a UNIX timestamp.
         self.modify_time = modify_time
         # The name of the workflow.
         self.name = name
@@ -45706,9 +46488,9 @@ class MoveFunctionRequest(TeaModel):
         # 
         # This parameter is required.
         self.path = path
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the ID.
         # 
-        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # This parameter indicates the DataWorks workspace to which the API operation is applied.
         # 
         # This parameter is required.
         self.project_id = project_id
@@ -45839,7 +46621,7 @@ class MoveNodeRequest(TeaModel):
         self.path = path
         # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
         # 
-        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # You can use this parameter to specify the DataWorks workspace on which you want to perform the API operation.
         # 
         # This parameter is required.
         self.project_id = project_id
@@ -45968,9 +46750,9 @@ class MoveResourceRequest(TeaModel):
         # 
         # This parameter is required.
         self.path = path
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the ID.
         # 
-        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # You can use this parameter to specify the DataWorks workspace on which you want to perform the API operation.
         # 
         # This parameter is required.
         self.project_id = project_id
@@ -46099,7 +46881,7 @@ class MoveWorkflowDefinitionRequest(TeaModel):
         # 
         # This parameter is required.
         self.path = path
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID. You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the ID. This parameter indicates the DataWorks workspace to which the API operation is applied.
         # 
         # This parameter is required.
         self.project_id = project_id
@@ -48782,6 +49564,216 @@ class TagDataAssetsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TagDataAssetsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TestDataSourceConnectivityRequest(TeaModel):
+    def __init__(
+        self,
+        data_source_id: int = None,
+        project_id: int = None,
+        resource_group_id: str = None,
+    ):
+        # This parameter is required.
+        self.data_source_id = data_source_id
+        # This parameter is required.
+        self.project_id = project_id
+        # This parameter is required.
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_source_id is not None:
+            result['DataSourceId'] = self.data_source_id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataSourceId') is not None:
+            self.data_source_id = m.get('DataSourceId')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class TestDataSourceConnectivityResponseBodyConnectivityDetailLogs(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        end_time: int = None,
+        message: str = None,
+        start_time: int = None,
+    ):
+        self.code = code
+        self.end_time = end_time
+        self.message = message
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class TestDataSourceConnectivityResponseBodyConnectivity(TeaModel):
+    def __init__(
+        self,
+        connect_message: str = None,
+        connect_state: str = None,
+        detail_logs: List[TestDataSourceConnectivityResponseBodyConnectivityDetailLogs] = None,
+    ):
+        self.connect_message = connect_message
+        self.connect_state = connect_state
+        self.detail_logs = detail_logs
+
+    def validate(self):
+        if self.detail_logs:
+            for k in self.detail_logs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connect_message is not None:
+            result['ConnectMessage'] = self.connect_message
+        if self.connect_state is not None:
+            result['ConnectState'] = self.connect_state
+        result['DetailLogs'] = []
+        if self.detail_logs is not None:
+            for k in self.detail_logs:
+                result['DetailLogs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectMessage') is not None:
+            self.connect_message = m.get('ConnectMessage')
+        if m.get('ConnectState') is not None:
+            self.connect_state = m.get('ConnectState')
+        self.detail_logs = []
+        if m.get('DetailLogs') is not None:
+            for k in m.get('DetailLogs'):
+                temp_model = TestDataSourceConnectivityResponseBodyConnectivityDetailLogs()
+                self.detail_logs.append(temp_model.from_map(k))
+        return self
+
+
+class TestDataSourceConnectivityResponseBody(TeaModel):
+    def __init__(
+        self,
+        connectivity: TestDataSourceConnectivityResponseBodyConnectivity = None,
+        request_id: str = None,
+    ):
+        self.connectivity = connectivity
+        self.request_id = request_id
+
+    def validate(self):
+        if self.connectivity:
+            self.connectivity.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connectivity is not None:
+            result['Connectivity'] = self.connectivity.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Connectivity') is not None:
+            temp_model = TestDataSourceConnectivityResponseBodyConnectivity()
+            self.connectivity = temp_model.from_map(m['Connectivity'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class TestDataSourceConnectivityResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TestDataSourceConnectivityResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TestDataSourceConnectivityResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -51495,15 +52487,15 @@ class UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresh
         operator: str = None,
         value: str = None,
     ):
-        # 阈值表达式。
+        # The threshold expression.
         # 
-        # 波动率类型规则必须使用表达式方式表示波动阈值。如：
+        # If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
         # 
-        # - 波动上升大于0.01： $checkValue > 0.01 
-        # - 波动下降大于0.01：$checkValue < -0.01 
-        # - 波动率绝对值：abs($checkValue) > 0.01
+        # *   $checkValue > 0.01
+        # *   $checkValue < -0.01
+        # *   abs($checkValue) > 0.01
         # 
-        # 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
+        # If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
         self.expression = expression
         # The comparison operator. Valid values:
         # 
@@ -51552,15 +52544,15 @@ class UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresh
         operator: str = None,
         value: str = None,
     ):
-        # 阈值表达式。
+        # The threshold expression.
         # 
-        # 波动率类型规则必须使用表达式方式表示波动阈值。如：
+        # If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
         # 
-        # - 波动上升大于0.01： $checkValue > 0.01 
-        # - 波动下降大于0.01：$checkValue < -0.01 
-        # - 波动率绝对值：abs($checkValue) > 0.01
+        # *   $checkValue > 0.01
+        # *   $checkValue < -0.01
+        # *   abs($checkValue) > 0.01
         # 
-        # 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
+        # If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
         self.expression = expression
         # The comparison operator. Valid values:
         # 
@@ -51609,15 +52601,15 @@ class UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresh
         operator: str = None,
         value: str = None,
     ):
-        # 阈值表达式。
+        # The threshold expression.
         # 
-        # 波动率类型规则必须使用表达式方式表示波动阈值。如：
+        # If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
         # 
-        # - 波动上升大于0.01： $checkValue > 0.01 
-        # - 波动下降大于0.01：$checkValue < -0.01 
-        # - 波动率绝对值：abs($checkValue) > 0.01
+        # *   $checkValue > 0.01
+        # *   $checkValue < -0.01
+        # *   abs($checkValue) > 0.01
         # 
-        # 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
+        # If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
         self.expression = expression
         # The comparison operator. Valid values:
         # 
@@ -51722,7 +52714,7 @@ class UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig(TeaMo
         self.thresholds = thresholds
         # The threshold calculation method. Valid values:
         # 
-        # *   Fluctuation
+        # *   Fluctation
         # *   Auto
         # *   FluctationDiscreate
         # *   Average
@@ -51804,24 +52796,23 @@ class UpdateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig(TeaMo
         sampling_filter: str = None,
         setting_config: str = None,
     ):
-        # The metrics used for sampling.
-        # Valid values:
+        # The metrics used for sampling. Valid values:
         # 
-        # *   DuplicatedPercent: the proportion of the number of duplicated values of the field to the number of rows in the table.
-        # *   DuplicatedCount: the number of duplicated values of the field.
-        # *   TableSize: the table size.
-        # *   CountNotIn: the number of rows in which the field values are different from the referenced values that you specified in the rule.
-        # *   Max: the maximum value of the field.
-        # *   GroupCount: the field value and the number of rows for each field value.
         # *   Count: the number of rows in the table.
-        # *   CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
         # *   Min: the minimum value of the field.
+        # *   Max: the maximum value of the field.
         # *   Avg: the average value of the field.
         # *   DistinctCount: the number of unique values of the field after deduplication.
-        # *   NullValueCount: the number of rows in which the field value is null.
-        # *   UserDefinedSql: specifies that data is sampled by executing custom SQL statements.
-        # *   NullValuePercent: the proportion of the number of rows in which the field value is null to the number of rows in the table.
         # *   DistinctPercent: the proportion of the number of unique values of the field after deduplication to the number of rows in the table.
+        # *   DuplicatedCount: the number of duplicated values of the field.
+        # *   DuplicatedPercent: the proportion of the number of duplicated values of the field to the number of rows in the table.
+        # *   TableSize: the table size.
+        # *   NullValueCount: the number of rows in which the field value is null.
+        # *   NullValuePercent: the proportion of the number of rows in which the field value is null to the number of rows in the table.
+        # *   GroupCount: the field value and the number of rows for each field value.
+        # *   CountNotIn: the number of rows in which the field values are different from the referenced values that you specified in the rule.
+        # *   CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
+        # *   UserDefinedSql: specifies that data is sampled by executing custom SQL statements.
         self.metric = metric
         # The parameters required for sampling.
         self.metric_parameters = metric_parameters
@@ -54517,17 +55508,18 @@ class UpdateTaskRequestDependencies(TeaModel):
         upstream_output: str = None,
         upstream_task_id: int = None,
     ):
-        # The type of the dependency.
-        # - CrossCycleDependsOnChildren: cross-cycle dependency level-1 child nodes
-        # - CrossCycleDependsOnSelf: cross-cycle dependency
-        # - CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
-        # - Normal: same-cycle dependency
+        # The dependency type. Valid values:
+        # 
+        # *   CrossCycleDependsOnChildren: cross-cycle dependency on level-1 descendant nodes
+        # *   CrossCycleDependsOnSelf: cross-cycle dependency on the current node
+        # *   CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
+        # *   Normal: same-cycle scheduling dependency
         # 
         # This parameter is required.
         self.type = type
-        # The output identifier of the upstream task. (This field is returned when the input content is set depending on the same cycle)
+        # The identifier of the output of the ancestor task. This parameter is returned only if `same-cycle scheduling dependencies` and the node input are configured.
         self.upstream_output = upstream_output
-        # The Id of the upstream task. (This field is returned when the input content is not set for cross-cycle dependencies on other nodes and same-cycle dependencies.
+        # The ancestor task ID. This parameter is returned only if `cross-cycle scheduling dependencies` or `same-cycle scheduling dependencies` and the node input are not configured.
         self.upstream_task_id = upstream_task_id
 
     def validate(self):
@@ -54567,11 +55559,12 @@ class UpdateTaskRequestInputsVariables(TeaModel):
     ):
         # The name of the variable.
         self.name = name
-        # Type.
-        # - Constant: Constant
-        # - PassThrough: parameter node output
-        # - System: variable
-        # - NodeOutput: script output
+        # The type. Valid values:
+        # 
+        # *   Constant: constant
+        # *   PassThrough: node output
+        # *   System: variable
+        # *   NodeOutput: script output
         # 
         # This parameter is required.
         self.type = type
@@ -54611,7 +55604,7 @@ class UpdateTaskRequestInputs(TeaModel):
         self,
         variables: List[UpdateTaskRequestInputsVariables] = None,
     ):
-        # The list of variable definitions.
+        # The variables.
         self.variables = variables
 
     def validate(self):
@@ -54647,7 +55640,7 @@ class UpdateTaskRequestOutputsTaskOutputs(TeaModel):
         self,
         output: str = None,
     ):
-        # The output identifier.
+        # The identifier of the output.
         self.output = output
 
     def validate(self):
@@ -54679,11 +55672,12 @@ class UpdateTaskRequestOutputsVariables(TeaModel):
     ):
         # The name of the variable.
         self.name = name
-        # Type.
-        # - Constant: Constant
-        # - PassThrough: parameter node output
-        # - System: variable
-        # - NodeOutput: script output
+        # The type. Valid values:
+        # 
+        # *   Constant: constant
+        # *   PassThrough: node output
+        # *   System: variable
+        # *   NodeOutput: script output
         # 
         # This parameter is required.
         self.type = type
@@ -54724,9 +55718,9 @@ class UpdateTaskRequestOutputs(TeaModel):
         task_outputs: List[UpdateTaskRequestOutputsTaskOutputs] = None,
         variables: List[UpdateTaskRequestOutputsVariables] = None,
     ):
-        # The list of task output definitions.
+        # The task outputs.
         self.task_outputs = task_outputs
-        # The list of variable definitions.
+        # The variables.
         self.variables = variables
 
     def validate(self):
@@ -54777,11 +55771,11 @@ class UpdateTaskRequestRuntimeResource(TeaModel):
         image: str = None,
         resource_group_id: str = None,
     ):
-        # Configure CU consumption for task running.
+        # The default number of compute units (CUs) configured for task running.
         self.cu = cu
-        # The ID of the image configured for the task.
+        # The ID of the image configured for task running.
         self.image = image
-        # The identifier of the scheduling resource group configured for running the task.
+        # The ID of the resource group for scheduling configured for task running.
         # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
@@ -54822,7 +55816,7 @@ class UpdateTaskRequestScript(TeaModel):
     ):
         # The script content.
         self.content = content
-        # The list of script parameters.
+        # The script parameters.
         self.parameters = parameters
 
     def validate(self):
@@ -54859,7 +55853,7 @@ class UpdateTaskRequestTags(TeaModel):
         # 
         # This parameter is required.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -54895,20 +55889,22 @@ class UpdateTaskRequestTrigger(TeaModel):
         start_time: str = None,
         type: str = None,
     ):
-        # Cron expression, which takes effect when type = Scheduler.
+        # The CRON expression. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.cron = cron
-        # The expiration time of the periodic trigger, which takes effect when type = Scheduler.
+        # The end time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.end_time = end_time
-        # The operation mode when the trigger is triggered. It takes effect when type = Scheduler.
-        # - Pause: Pause
-        # - Skip: empty run
-        # - Normal: Normal operation
+        # The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
+        # 
+        # *   Pause
+        # *   Skip
+        # *   Normal
         self.recurrence = recurrence
-        # The time when the cycle trigger takes effect. It takes effect when type = Scheduler.
+        # The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.start_time = start_time
-        # The type of the trigger method.
-        # - Scheduler: the scheduling cycle is triggered.
-        # - Manual: manually triggered
+        # The trigger type. Valid values:
+        # 
+        # *   Scheduler: periodic scheduling
+        # *   Manual: manual scheduling
         # 
         # This parameter is required.
         self.type = type
@@ -54972,60 +55968,63 @@ class UpdateTaskRequest(TeaModel):
         timeout: int = None,
         trigger: UpdateTaskRequestTrigger = None,
     ):
-        # The client unique code of the task, which uniquely identifies a task. It is used to implement asynchronous and idempotent functions. If it is not specified during creation, the system will automatically generate the code, which will be uniquely bound to the resource ID. If you specify this parameter when updating and deleting resources, it should be consistent with the client unique code when creating resources.
+        # The unique code of the client. This code uniquely identifies a task. This parameter is used to create a task asynchronously and implement the idempotence of the task. If you do not specify this parameter when you create the task, the system automatically generates a unique code. The unique code is uniquely associated with the task ID. If you specify this parameter when you update or delete the task, the value of this parameter must be the unique code that is used to create the task.
         self.client_unique_code = client_unique_code
-        # The associated data source information.
+        # The information about the associated data source.
         self.data_source = data_source
-        # Dependency information.
+        # The dependency information.
         self.dependencies = dependencies
-        # The description.
+        # The description of the task.
         self.description = description
-        # The project environment.
-        # - Prod: Production
-        # - Dev: Development
+        # The environment of the workspace. Valid values:
+        # 
+        # *   Prod: production environment
+        # *   Dev: development environment
         self.env_type = env_type
-        # The ID of the task.
+        # The task ID.
         # 
         # This parameter is required.
         self.id = id
-        # Enter information.
+        # The input information.
         self.inputs = inputs
-        # The instance generation mode.
-        # - T +1 (second born)
-        # - Immediately (generate now)
+        # The instance generation mode. Valid values:
+        # 
+        # *   T+1
+        # *   Immediately
         self.instance_mode = instance_mode
-        # The name.
+        # The name of the task.
         # 
         # This parameter is required.
         self.name = name
         # The output information.
         self.outputs = outputs
-        # The account ID of the owner of the task.
+        # The account ID of the task owner.
         # 
         # This parameter is required.
         self.owner = owner
-        # The retry interval, in seconds.
+        # The rerun interval. Unit: seconds.
         self.rerun_interval = rerun_interval
-        # The configuration of whether the task is allowed to rerun.
-        # - AllDenied: failure or success cannot be rerun.
-        # - FailureAllowed: only failures can be rerun
-        # - AllAllowed: you can run again if you fail or succeed.
+        # The rerun mode. Valid values:
+        # 
+        # *   AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
+        # *   FailureAllowed: The task can be rerun only after it fails to run.
+        # *   AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
         # 
         # This parameter is required.
         self.rerun_mode = rerun_mode
-        # The number of retries that take effect when the task is set to rerun.
+        # The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
         self.rerun_times = rerun_times
-        # Configuration of the runtime environment, such as resource group information.
+        # The configurations of the runtime environment, such as the resource group information.
         # 
         # This parameter is required.
         self.runtime_resource = runtime_resource
-        # Run the script information.
+        # The script information.
         self.script = script
-        # The list of task tags.
+        # The tags.
         self.tags = tags
-        # The timeout period of the task execution, in seconds.
+        # The timeout period of task running. Unit: seconds.
         self.timeout = timeout
-        # The trigger method of the task.
+        # The trigger method.
         # 
         # This parameter is required.
         self.trigger = trigger
@@ -55180,60 +56179,63 @@ class UpdateTaskShrinkRequest(TeaModel):
         timeout: int = None,
         trigger_shrink: str = None,
     ):
-        # The client unique code of the task, which uniquely identifies a task. It is used to implement asynchronous and idempotent functions. If it is not specified during creation, the system will automatically generate the code, which will be uniquely bound to the resource ID. If you specify this parameter when updating and deleting resources, it should be consistent with the client unique code when creating resources.
+        # The unique code of the client. This code uniquely identifies a task. This parameter is used to create a task asynchronously and implement the idempotence of the task. If you do not specify this parameter when you create the task, the system automatically generates a unique code. The unique code is uniquely associated with the task ID. If you specify this parameter when you update or delete the task, the value of this parameter must be the unique code that is used to create the task.
         self.client_unique_code = client_unique_code
-        # The associated data source information.
+        # The information about the associated data source.
         self.data_source_shrink = data_source_shrink
-        # Dependency information.
+        # The dependency information.
         self.dependencies_shrink = dependencies_shrink
-        # The description.
+        # The description of the task.
         self.description = description
-        # The project environment.
-        # - Prod: Production
-        # - Dev: Development
+        # The environment of the workspace. Valid values:
+        # 
+        # *   Prod: production environment
+        # *   Dev: development environment
         self.env_type = env_type
-        # The ID of the task.
+        # The task ID.
         # 
         # This parameter is required.
         self.id = id
-        # Enter information.
+        # The input information.
         self.inputs_shrink = inputs_shrink
-        # The instance generation mode.
-        # - T +1 (second born)
-        # - Immediately (generate now)
+        # The instance generation mode. Valid values:
+        # 
+        # *   T+1
+        # *   Immediately
         self.instance_mode = instance_mode
-        # The name.
+        # The name of the task.
         # 
         # This parameter is required.
         self.name = name
         # The output information.
         self.outputs_shrink = outputs_shrink
-        # The account ID of the owner of the task.
+        # The account ID of the task owner.
         # 
         # This parameter is required.
         self.owner = owner
-        # The retry interval, in seconds.
+        # The rerun interval. Unit: seconds.
         self.rerun_interval = rerun_interval
-        # The configuration of whether the task is allowed to rerun.
-        # - AllDenied: failure or success cannot be rerun.
-        # - FailureAllowed: only failures can be rerun
-        # - AllAllowed: you can run again if you fail or succeed.
+        # The rerun mode. Valid values:
+        # 
+        # *   AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
+        # *   FailureAllowed: The task can be rerun only after it fails to run.
+        # *   AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
         # 
         # This parameter is required.
         self.rerun_mode = rerun_mode
-        # The number of retries that take effect when the task is set to rerun.
+        # The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
         self.rerun_times = rerun_times
-        # Configuration of the runtime environment, such as resource group information.
+        # The configurations of the runtime environment, such as the resource group information.
         # 
         # This parameter is required.
         self.runtime_resource_shrink = runtime_resource_shrink
-        # Run the script information.
+        # The script information.
         self.script_shrink = script_shrink
-        # The list of task tags.
+        # The tags.
         self.tags_shrink = tags_shrink
-        # The timeout period of the task execution, in seconds.
+        # The timeout period of task running. Unit: seconds.
         self.timeout = timeout
-        # The trigger method of the task.
+        # The trigger method.
         # 
         # This parameter is required.
         self.trigger_shrink = trigger_shrink
@@ -55336,9 +56338,9 @@ class UpdateTaskResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The ID of the request. It is used to locate logs and troubleshoot problems.
+        # The request ID.
         self.request_id = request_id
-        # Whether the operation is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -55658,17 +56660,18 @@ class UpdateWorkflowRequestDependencies(TeaModel):
         upstream_output: str = None,
         upstream_task_id: int = None,
     ):
-        # The type of the dependency.
-        # - CrossCycleDependsOnChildren: cross-cycle dependency level-1 child nodes
-        # - CrossCycleDependsOnSelf: cross-cycle dependency
-        # - CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
-        # - Normal: same-cycle dependency
+        # The dependency type. Valid values:
+        # 
+        # *   CrossCycleDependsOnChildren: cross-cycle dependency on level-1 descendant nodes
+        # *   CrossCycleDependsOnSelf: cross-cycle dependency on the current node
+        # *   CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
+        # *   Normal: same-cycle scheduling dependency
         # 
         # This parameter is required.
         self.type = type
-        # The output identifier of the upstream task. (This field is returned when `same cycle dependence` and input content is set)
+        # The identifier of the output of the ancestor task. This parameter is returned only if `same-cycle scheduling dependencies` and the node input are configured.
         self.upstream_output = upstream_output
-        # The Id of the upstream task. (This field is returned when the input content is not set for `cross-cycle dependency other nodes` and `same-cycle dependency `, otherwise it is not returned)
+        # The ancestor task ID. This parameter is returned only if `cross-cycle scheduling dependencies` or `same-cycle scheduling dependencies` and the node input are not configured.
         self.upstream_task_id = upstream_task_id
 
     def validate(self):
@@ -55704,7 +56707,7 @@ class UpdateWorkflowRequestOutputsTaskOutputs(TeaModel):
         self,
         output: str = None,
     ):
-        # The output identifier.
+        # The identifier of the output.
         self.output = output
 
     def validate(self):
@@ -55732,7 +56735,7 @@ class UpdateWorkflowRequestOutputs(TeaModel):
         self,
         task_outputs: List[UpdateWorkflowRequestOutputsTaskOutputs] = None,
     ):
-        # The list of workflow task output definitions.
+        # The task outputs.
         self.task_outputs = task_outputs
 
     def validate(self):
@@ -55773,7 +56776,7 @@ class UpdateWorkflowRequestTags(TeaModel):
         # 
         # This parameter is required.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -55835,17 +56838,18 @@ class UpdateWorkflowRequestTasksDependencies(TeaModel):
         upstream_output: str = None,
         upstream_task_id: int = None,
     ):
-        # The type of the dependency.
-        # - CrossCycleDependsOnChildren: cross-cycle dependency level-1 child nodes
-        # - CrossCycleDependsOnSelf: cross-cycle dependency
-        # - CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
-        # - Normal: same-cycle dependency
+        # The dependency type. Valid values:
+        # 
+        # *   CrossCycleDependsOnChildren: cross-cycle dependency on level-1 descendant nodes
+        # *   CrossCycleDependsOnSelf: cross-cycle dependency on the current node
+        # *   CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
+        # *   Normal: same-cycle scheduling dependency
         # 
         # This parameter is required.
         self.type = type
-        # The output identifier of the upstream task. (This field is returned when the input content is set depending on the same cycle)
+        # The identifier of the output of the ancestor task. This parameter is returned only if `same-cycle scheduling dependencies` and the node input are configured.
         self.upstream_output = upstream_output
-        # The Id of the upstream task. (This field is returned when the input content is not set for cross-cycle dependencies on other nodes and same-cycle dependencies.
+        # The ancestor task ID. This parameter is returned only if `cross-cycle scheduling dependencies` or `same-cycle scheduling dependencies` and the node input are not configured.
         self.upstream_task_id = upstream_task_id
 
     def validate(self):
@@ -55885,11 +56889,12 @@ class UpdateWorkflowRequestTasksInputsVariables(TeaModel):
     ):
         # The name of the variable.
         self.name = name
-        # Type.
-        # - Constant: Constant
-        # - PassThrough: parameter node output
-        # - System: variable
-        # - NodeOutput: script output
+        # The type. Valid values:
+        # 
+        # *   Constant: constant
+        # *   PassThrough: node output
+        # *   System: variable
+        # *   NodeOutput: script output
         # 
         # This parameter is required.
         self.type = type
@@ -55929,7 +56934,7 @@ class UpdateWorkflowRequestTasksInputs(TeaModel):
         self,
         variables: List[UpdateWorkflowRequestTasksInputsVariables] = None,
     ):
-        # The list of variable definitions.
+        # The variables.
         self.variables = variables
 
     def validate(self):
@@ -55965,7 +56970,7 @@ class UpdateWorkflowRequestTasksOutputsTaskOutputs(TeaModel):
         self,
         output: str = None,
     ):
-        # The output identifier.
+        # The identifier of the output.
         self.output = output
 
     def validate(self):
@@ -55997,11 +57002,12 @@ class UpdateWorkflowRequestTasksOutputsVariables(TeaModel):
     ):
         # The name of the variable.
         self.name = name
-        # Type.
-        # - Constant: Constant
-        # - PassThrough: parameter node output
-        # - System: variable
-        # - NodeOutput: script output
+        # The type. Valid values:
+        # 
+        # *   Constant: constant
+        # *   PassThrough: node output
+        # *   System: variable
+        # *   NodeOutput: script output
         # 
         # This parameter is required.
         self.type = type
@@ -56042,9 +57048,9 @@ class UpdateWorkflowRequestTasksOutputs(TeaModel):
         task_outputs: List[UpdateWorkflowRequestTasksOutputsTaskOutputs] = None,
         variables: List[UpdateWorkflowRequestTasksOutputsVariables] = None,
     ):
-        # The list of task output definitions.
+        # The task outputs.
         self.task_outputs = task_outputs
-        # The list of variable definitions.
+        # The variables.
         self.variables = variables
 
     def validate(self):
@@ -56095,11 +57101,11 @@ class UpdateWorkflowRequestTasksRuntimeResource(TeaModel):
         image: str = None,
         resource_group_id: str = None,
     ):
-        # Configure CU consumption for task running.
+        # The default number of compute units (CUs) configured for task running.
         self.cu = cu
-        # The ID of the image configured for the task.
+        # The ID of the image configured for task running.
         self.image = image
-        # The identifier of the scheduling resource group configured for running the task.
+        # The ID of the resource group for scheduling configured for task running.
         # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
@@ -56140,7 +57146,7 @@ class UpdateWorkflowRequestTasksScript(TeaModel):
     ):
         # The script content.
         self.content = content
-        # The list of script parameters.
+        # The script parameters.
         self.parameters = parameters
 
     def validate(self):
@@ -56177,7 +57183,7 @@ class UpdateWorkflowRequestTasksTags(TeaModel):
         # 
         # This parameter is required.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -56210,16 +57216,18 @@ class UpdateWorkflowRequestTasksTrigger(TeaModel):
         recurrence: str = None,
         type: str = None,
     ):
-        # The operation mode when the trigger is triggered. It takes effect when type = Scheduler.
-        # - Pause: Pause
-        # - Skip: empty run
-        # - Normal: Normal operation
+        # The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
+        # 
+        # *   Pause
+        # *   Skip
+        # *   Normal
         # 
         # This parameter is required.
         self.recurrence = recurrence
-        # The type of the trigger method.
-        # - Scheduler: the scheduling cycle is triggered.
-        # - Manual: manually triggered
+        # The trigger type. Valid values:
+        # 
+        # *   Scheduler: periodic scheduling
+        # *   Manual: manual scheduling
         self.type = type
 
     def validate(self):
@@ -56272,23 +57280,24 @@ class UpdateWorkflowRequestTasks(TeaModel):
     ):
         # The baseline ID.
         self.base_line_id = base_line_id
-        # The client-side unique code of the task, which is used to implement asynchronous and idempotent functions. If not specified during creation, the system will automatically generate the code, which will be uniquely bound to the resource ID. If you specify this parameter when updating and deleting resources, it should be consistent with the client unique code when creating resources.
+        # The unique code of the client. This parameter is used to create a task asynchronously and implement the idempotence of the task. If you do not specify this parameter when you create the task, the system automatically generates a unique code. The unique code is uniquely associated with the task ID. If you specify this parameter when you update or delete the task, the value of this parameter must be the unique code that is used to create the task.
         self.client_unique_code = client_unique_code
-        # The associated data source information.
+        # The information about the associated data source.
         self.data_source = data_source
-        # Dependency information.
+        # The dependency information.
         self.dependencies = dependencies
         # The description.
         self.description = description
-        # The project environment.
-        # - Prod: Production
-        # - Dev: Development
+        # The environment of the workspace. Valid values:
+        # 
+        # *   Prod
+        # *   Dev
         self.env_type = env_type
-        # The ID of the task. If you enter this field, a full update is performed on the corresponding task. If you do not enter this field, a new task is created.
+        # The task ID. If you configure this parameter, full update is performed on the task. If you do not configure this parameter, another task is created.
         # 
         # This parameter is required.
         self.id = id
-        # Enter information.
+        # The input information.
         self.inputs = inputs
         # The name of the task.
         # 
@@ -56300,28 +57309,29 @@ class UpdateWorkflowRequestTasks(TeaModel):
         # 
         # This parameter is required.
         self.owner = owner
-        # The retry interval, in seconds.
+        # The rerun interval. Unit: seconds.
         self.rerun_interval = rerun_interval
-        # The configuration of whether the task is allowed to rerun.
-        # - AllDenied (failure or success cannot be rerun)
-        # - FailureAllowed (only failures can be rerun)
-        # - AllAllowed (run again if failed or successful)
+        # The rerun mode. Valid values:
+        # 
+        # *   AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
+        # *   FailureAllowed: The task can be rerun only after it fails to run.
+        # *   AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
         # 
         # This parameter is required.
         self.rerun_mode = rerun_mode
-        # The number of retries that take effect when the task is set to rerun.
+        # The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
         self.rerun_times = rerun_times
-        # Configuration of the runtime environment, such as resource group information.
+        # The configurations of the runtime environment, such as the resource group information.
         # 
         # This parameter is required.
         self.runtime_resource = runtime_resource
-        # Run the script information.
+        # The script information.
         self.script = script
-        # The list of task tags.
+        # The tags.
         self.tags = tags
-        # The timeout period of the task execution, in seconds.
+        # The timeout period of task running. Unit: seconds.
         self.timeout = timeout
-        # The trigger method of the task.
+        # The trigger method.
         # 
         # This parameter is required.
         self.trigger = trigger
@@ -56469,15 +57479,16 @@ class UpdateWorkflowRequestTrigger(TeaModel):
         start_time: str = None,
         type: str = None,
     ):
-        # Cron expression, which takes effect when type = Scheduler.
+        # The CRON expression. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.cron = cron
-        # The expiration time of the periodic trigger, which takes effect when type = Scheduler.
+        # The end time of the time range during which the workflow is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.end_time = end_time
-        # The time when the cycle trigger takes effect. It takes effect when type = Scheduler.
+        # The start time of the time range during which the workflow is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.start_time = start_time
-        # The type of the trigger method.
-        # - Scheduler: the scheduling cycle is triggered.
-        # - Manual: manually triggered
+        # The trigger type. Valid values:
+        # 
+        # *   Scheduler: periodic scheduling
+        # *   Manual: manual scheduling
         # 
         # This parameter is required.
         self.type = type
@@ -56530,22 +57541,22 @@ class UpdateWorkflowRequest(TeaModel):
         tasks: List[UpdateWorkflowRequestTasks] = None,
         trigger: UpdateWorkflowRequestTrigger = None,
     ):
-        # The client-side unique code of the workflow for asynchronous and idempotent implementation. If not specified during creation, the system will automatically generate the code, which will be uniquely bound to the resource ID. If you specify this parameter when updating and deleting resources, it should be consistent with the client unique code when creating resources.
+        # The unique code of the client. This parameter is used to create a workflow asynchronously and implement the idempotence of the workflow. If you do not specify this parameter when you create the workflow, the system automatically generates a unique code. The unique code is uniquely associated with the workflow ID. If you specify this parameter when you update or delete the workflow, the value of this parameter must be the unique code that is used to create the workflow.
         self.client_unique_code = client_unique_code
-        # Dependency information.
+        # The dependency information.
         self.dependencies = dependencies
         # The description.
         self.description = description
-        # The project environment.
+        # The environment of the workspace. Valid values:
         # 
-        # - Prod: Production
-        # - Dev: Development
+        # *   Prod: production environment
+        # *   Dev: development environment
         self.env_type = env_type
-        # The ID of the workflow.
+        # The workflow ID.
         # 
         # This parameter is required.
         self.id = id
-        # The name.
+        # The name of the workflow.
         # 
         # This parameter is required.
         self.name = name
@@ -56555,11 +57566,11 @@ class UpdateWorkflowRequest(TeaModel):
         # 
         # This parameter is required.
         self.owner = owner
-        # The list of parameters.
+        # The parameters.
         self.parameters = parameters
-        # The list of workflow tags.
+        # The tags.
         self.tags = tags
-        # The list of tasks.
+        # The tasks.
         self.tasks = tasks
         # The trigger method.
         # 
@@ -56678,22 +57689,22 @@ class UpdateWorkflowShrinkRequest(TeaModel):
         tasks_shrink: str = None,
         trigger_shrink: str = None,
     ):
-        # The client-side unique code of the workflow for asynchronous and idempotent implementation. If not specified during creation, the system will automatically generate the code, which will be uniquely bound to the resource ID. If you specify this parameter when updating and deleting resources, it should be consistent with the client unique code when creating resources.
+        # The unique code of the client. This parameter is used to create a workflow asynchronously and implement the idempotence of the workflow. If you do not specify this parameter when you create the workflow, the system automatically generates a unique code. The unique code is uniquely associated with the workflow ID. If you specify this parameter when you update or delete the workflow, the value of this parameter must be the unique code that is used to create the workflow.
         self.client_unique_code = client_unique_code
-        # Dependency information.
+        # The dependency information.
         self.dependencies_shrink = dependencies_shrink
         # The description.
         self.description = description
-        # The project environment.
+        # The environment of the workspace. Valid values:
         # 
-        # - Prod: Production
-        # - Dev: Development
+        # *   Prod: production environment
+        # *   Dev: development environment
         self.env_type = env_type
-        # The ID of the workflow.
+        # The workflow ID.
         # 
         # This parameter is required.
         self.id = id
-        # The name.
+        # The name of the workflow.
         # 
         # This parameter is required.
         self.name = name
@@ -56703,11 +57714,11 @@ class UpdateWorkflowShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.owner = owner
-        # The list of parameters.
+        # The parameters.
         self.parameters = parameters
-        # The list of workflow tags.
+        # The tags.
         self.tags_shrink = tags_shrink
-        # The list of tasks.
+        # The tasks.
         self.tasks_shrink = tasks_shrink
         # The trigger method.
         # 
@@ -56784,9 +57795,9 @@ class UpdateWorkflowResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The ID of the request. It is used to locate logs and troubleshoot problems.
+        # The request ID.
         self.request_id = request_id
-        # Whether the operation is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
