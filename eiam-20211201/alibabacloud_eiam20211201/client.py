@@ -873,6 +873,158 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_application_client_secret_with_options_async(request, runtime)
 
+    def create_conditional_access_policy_with_options(
+        self,
+        request: eiam_20211201_models.CreateConditionalAccessPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.CreateConditionalAccessPolicyResponse:
+        """
+        @summary Create Conditional Access Policy
+        
+        @description Create Conditional Access Policy
+        
+        @param request: CreateConditionalAccessPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConditionalAccessPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.conditional_access_policy_name):
+            query['ConditionalAccessPolicyName'] = request.conditional_access_policy_name
+        if not UtilClient.is_unset(request.conditional_access_policy_type):
+            query['ConditionalAccessPolicyType'] = request.conditional_access_policy_type
+        if not UtilClient.is_unset(request.conditions_config):
+            query['ConditionsConfig'] = request.conditions_config
+        if not UtilClient.is_unset(request.decision_config):
+            query['DecisionConfig'] = request.decision_config
+        if not UtilClient.is_unset(request.decision_type):
+            query['DecisionType'] = request.decision_type
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.evaluate_at):
+            query['EvaluateAt'] = request.evaluate_at
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateConditionalAccessPolicy',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eiam_20211201_models.CreateConditionalAccessPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eiam_20211201_models.CreateConditionalAccessPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_conditional_access_policy_with_options_async(
+        self,
+        request: eiam_20211201_models.CreateConditionalAccessPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.CreateConditionalAccessPolicyResponse:
+        """
+        @summary Create Conditional Access Policy
+        
+        @description Create Conditional Access Policy
+        
+        @param request: CreateConditionalAccessPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConditionalAccessPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.conditional_access_policy_name):
+            query['ConditionalAccessPolicyName'] = request.conditional_access_policy_name
+        if not UtilClient.is_unset(request.conditional_access_policy_type):
+            query['ConditionalAccessPolicyType'] = request.conditional_access_policy_type
+        if not UtilClient.is_unset(request.conditions_config):
+            query['ConditionsConfig'] = request.conditions_config
+        if not UtilClient.is_unset(request.decision_config):
+            query['DecisionConfig'] = request.decision_config
+        if not UtilClient.is_unset(request.decision_type):
+            query['DecisionType'] = request.decision_type
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.evaluate_at):
+            query['EvaluateAt'] = request.evaluate_at
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateConditionalAccessPolicy',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eiam_20211201_models.CreateConditionalAccessPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eiam_20211201_models.CreateConditionalAccessPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_conditional_access_policy(
+        self,
+        request: eiam_20211201_models.CreateConditionalAccessPolicyRequest,
+    ) -> eiam_20211201_models.CreateConditionalAccessPolicyResponse:
+        """
+        @summary Create Conditional Access Policy
+        
+        @description Create Conditional Access Policy
+        
+        @param request: CreateConditionalAccessPolicyRequest
+        @return: CreateConditionalAccessPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_conditional_access_policy_with_options(request, runtime)
+
+    async def create_conditional_access_policy_async(
+        self,
+        request: eiam_20211201_models.CreateConditionalAccessPolicyRequest,
+    ) -> eiam_20211201_models.CreateConditionalAccessPolicyResponse:
+        """
+        @summary Create Conditional Access Policy
+        
+        @description Create Conditional Access Policy
+        
+        @param request: CreateConditionalAccessPolicyRequest
+        @return: CreateConditionalAccessPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_conditional_access_policy_with_options_async(request, runtime)
+
     def create_domain_with_options(
         self,
         request: eiam_20211201_models.CreateDomainRequest,
@@ -2148,6 +2300,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_application_client_secret_with_options_async(request, runtime)
+
+    def delete_conditional_access_policy_with_options(
+        self,
+        request: eiam_20211201_models.DeleteConditionalAccessPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DeleteConditionalAccessPolicyResponse:
+        """
+        @summary Delete Conditional Access Policy
+        
+        @description When deleting a specified conditional access policy, please ensure that the policy is no longer in use. After deletion, all configuration data will be removed and cannot be recovered.
+        
+        @param request: DeleteConditionalAccessPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConditionalAccessPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.conditional_access_policy_id):
+            query['ConditionalAccessPolicyId'] = request.conditional_access_policy_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteConditionalAccessPolicy',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eiam_20211201_models.DeleteConditionalAccessPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eiam_20211201_models.DeleteConditionalAccessPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_conditional_access_policy_with_options_async(
+        self,
+        request: eiam_20211201_models.DeleteConditionalAccessPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DeleteConditionalAccessPolicyResponse:
+        """
+        @summary Delete Conditional Access Policy
+        
+        @description When deleting a specified conditional access policy, please ensure that the policy is no longer in use. After deletion, all configuration data will be removed and cannot be recovered.
+        
+        @param request: DeleteConditionalAccessPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConditionalAccessPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.conditional_access_policy_id):
+            query['ConditionalAccessPolicyId'] = request.conditional_access_policy_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteConditionalAccessPolicy',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eiam_20211201_models.DeleteConditionalAccessPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eiam_20211201_models.DeleteConditionalAccessPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_conditional_access_policy(
+        self,
+        request: eiam_20211201_models.DeleteConditionalAccessPolicyRequest,
+    ) -> eiam_20211201_models.DeleteConditionalAccessPolicyResponse:
+        """
+        @summary Delete Conditional Access Policy
+        
+        @description When deleting a specified conditional access policy, please ensure that the policy is no longer in use. After deletion, all configuration data will be removed and cannot be recovered.
+        
+        @param request: DeleteConditionalAccessPolicyRequest
+        @return: DeleteConditionalAccessPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_conditional_access_policy_with_options(request, runtime)
+
+    async def delete_conditional_access_policy_async(
+        self,
+        request: eiam_20211201_models.DeleteConditionalAccessPolicyRequest,
+    ) -> eiam_20211201_models.DeleteConditionalAccessPolicyResponse:
+        """
+        @summary Delete Conditional Access Policy
+        
+        @description When deleting a specified conditional access policy, please ensure that the policy is no longer in use. After deletion, all configuration data will be removed and cannot be recovered.
+        
+        @param request: DeleteConditionalAccessPolicyRequest
+        @return: DeleteConditionalAccessPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_conditional_access_policy_with_options_async(request, runtime)
 
     def delete_domain_with_options(
         self,
@@ -3737,6 +4009,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.disable_application_sso_with_options_async(request, runtime)
 
+    def disable_conditional_access_policy_with_options(
+        self,
+        request: eiam_20211201_models.DisableConditionalAccessPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DisableConditionalAccessPolicyResponse:
+        """
+        @summary Disable Conditional Access Policy
+        
+        @description When changing a conditional access policy from an enabled state to a disabled state, the policy will no longer intercept. Please confirm that you are aware of the potential risks associated with this action.
+        
+        @param request: DisableConditionalAccessPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableConditionalAccessPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.conditional_access_policy_id):
+            query['ConditionalAccessPolicyId'] = request.conditional_access_policy_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableConditionalAccessPolicy',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eiam_20211201_models.DisableConditionalAccessPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eiam_20211201_models.DisableConditionalAccessPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def disable_conditional_access_policy_with_options_async(
+        self,
+        request: eiam_20211201_models.DisableConditionalAccessPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DisableConditionalAccessPolicyResponse:
+        """
+        @summary Disable Conditional Access Policy
+        
+        @description When changing a conditional access policy from an enabled state to a disabled state, the policy will no longer intercept. Please confirm that you are aware of the potential risks associated with this action.
+        
+        @param request: DisableConditionalAccessPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableConditionalAccessPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.conditional_access_policy_id):
+            query['ConditionalAccessPolicyId'] = request.conditional_access_policy_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableConditionalAccessPolicy',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eiam_20211201_models.DisableConditionalAccessPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eiam_20211201_models.DisableConditionalAccessPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def disable_conditional_access_policy(
+        self,
+        request: eiam_20211201_models.DisableConditionalAccessPolicyRequest,
+    ) -> eiam_20211201_models.DisableConditionalAccessPolicyResponse:
+        """
+        @summary Disable Conditional Access Policy
+        
+        @description When changing a conditional access policy from an enabled state to a disabled state, the policy will no longer intercept. Please confirm that you are aware of the potential risks associated with this action.
+        
+        @param request: DisableConditionalAccessPolicyRequest
+        @return: DisableConditionalAccessPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.disable_conditional_access_policy_with_options(request, runtime)
+
+    async def disable_conditional_access_policy_async(
+        self,
+        request: eiam_20211201_models.DisableConditionalAccessPolicyRequest,
+    ) -> eiam_20211201_models.DisableConditionalAccessPolicyResponse:
+        """
+        @summary Disable Conditional Access Policy
+        
+        @description When changing a conditional access policy from an enabled state to a disabled state, the policy will no longer intercept. Please confirm that you are aware of the potential risks associated with this action.
+        
+        @param request: DisableConditionalAccessPolicyRequest
+        @return: DisableConditionalAccessPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_conditional_access_policy_with_options_async(request, runtime)
+
     def disable_domain_proxy_token_with_options(
         self,
         request: eiam_20211201_models.DisableDomainProxyTokenRequest,
@@ -4749,6 +5141,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.enable_application_sso_with_options_async(request, runtime)
 
+    def enable_conditional_access_policy_with_options(
+        self,
+        request: eiam_20211201_models.EnableConditionalAccessPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.EnableConditionalAccessPolicyResponse:
+        """
+        @summary Enable Conditional Access Policy
+        
+        @description When changing the status of a conditional access policy from enabled to disabled, the policy will no longer intercept. Please confirm that you are aware of the potential risks associated with this action.
+        
+        @param request: EnableConditionalAccessPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableConditionalAccessPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.conditional_access_policy_id):
+            query['ConditionalAccessPolicyId'] = request.conditional_access_policy_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableConditionalAccessPolicy',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eiam_20211201_models.EnableConditionalAccessPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eiam_20211201_models.EnableConditionalAccessPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def enable_conditional_access_policy_with_options_async(
+        self,
+        request: eiam_20211201_models.EnableConditionalAccessPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.EnableConditionalAccessPolicyResponse:
+        """
+        @summary Enable Conditional Access Policy
+        
+        @description When changing the status of a conditional access policy from enabled to disabled, the policy will no longer intercept. Please confirm that you are aware of the potential risks associated with this action.
+        
+        @param request: EnableConditionalAccessPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableConditionalAccessPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.conditional_access_policy_id):
+            query['ConditionalAccessPolicyId'] = request.conditional_access_policy_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableConditionalAccessPolicy',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eiam_20211201_models.EnableConditionalAccessPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eiam_20211201_models.EnableConditionalAccessPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def enable_conditional_access_policy(
+        self,
+        request: eiam_20211201_models.EnableConditionalAccessPolicyRequest,
+    ) -> eiam_20211201_models.EnableConditionalAccessPolicyResponse:
+        """
+        @summary Enable Conditional Access Policy
+        
+        @description When changing the status of a conditional access policy from enabled to disabled, the policy will no longer intercept. Please confirm that you are aware of the potential risks associated with this action.
+        
+        @param request: EnableConditionalAccessPolicyRequest
+        @return: EnableConditionalAccessPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.enable_conditional_access_policy_with_options(request, runtime)
+
+    async def enable_conditional_access_policy_async(
+        self,
+        request: eiam_20211201_models.EnableConditionalAccessPolicyRequest,
+    ) -> eiam_20211201_models.EnableConditionalAccessPolicyResponse:
+        """
+        @summary Enable Conditional Access Policy
+        
+        @description When changing the status of a conditional access policy from enabled to disabled, the policy will no longer intercept. Please confirm that you are aware of the potential risks associated with this action.
+        
+        @param request: EnableConditionalAccessPolicyRequest
+        @return: EnableConditionalAccessPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_conditional_access_policy_with_options_async(request, runtime)
+
     def enable_domain_proxy_token_with_options(
         self,
         request: eiam_20211201_models.EnableDomainProxyTokenRequest,
@@ -5756,6 +6268,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_application_sso_config_with_options_async(request, runtime)
+
+    def get_conditional_access_policy_with_options(
+        self,
+        request: eiam_20211201_models.GetConditionalAccessPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GetConditionalAccessPolicyResponse:
+        """
+        @summary Get Conditional Access Policy
+        
+        @description Query Conditional Access Policy
+        
+        @param request: GetConditionalAccessPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConditionalAccessPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.conditional_access_policy_id):
+            query['ConditionalAccessPolicyId'] = request.conditional_access_policy_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetConditionalAccessPolicy',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eiam_20211201_models.GetConditionalAccessPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eiam_20211201_models.GetConditionalAccessPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_conditional_access_policy_with_options_async(
+        self,
+        request: eiam_20211201_models.GetConditionalAccessPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GetConditionalAccessPolicyResponse:
+        """
+        @summary Get Conditional Access Policy
+        
+        @description Query Conditional Access Policy
+        
+        @param request: GetConditionalAccessPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConditionalAccessPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.conditional_access_policy_id):
+            query['ConditionalAccessPolicyId'] = request.conditional_access_policy_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetConditionalAccessPolicy',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eiam_20211201_models.GetConditionalAccessPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eiam_20211201_models.GetConditionalAccessPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_conditional_access_policy(
+        self,
+        request: eiam_20211201_models.GetConditionalAccessPolicyRequest,
+    ) -> eiam_20211201_models.GetConditionalAccessPolicyResponse:
+        """
+        @summary Get Conditional Access Policy
+        
+        @description Query Conditional Access Policy
+        
+        @param request: GetConditionalAccessPolicyRequest
+        @return: GetConditionalAccessPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_conditional_access_policy_with_options(request, runtime)
+
+    async def get_conditional_access_policy_async(
+        self,
+        request: eiam_20211201_models.GetConditionalAccessPolicyRequest,
+    ) -> eiam_20211201_models.GetConditionalAccessPolicyResponse:
+        """
+        @summary Get Conditional Access Policy
+        
+        @description Query Conditional Access Policy
+        
+        @param request: GetConditionalAccessPolicyRequest
+        @return: GetConditionalAccessPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_conditional_access_policy_with_options_async(request, runtime)
 
     def get_domain_with_options(
         self,
@@ -8153,6 +8785,254 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_applications_for_user_with_options_async(request, runtime)
 
+    def list_conditional_access_policies_with_options(
+        self,
+        request: eiam_20211201_models.ListConditionalAccessPoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListConditionalAccessPoliciesResponse:
+        """
+        @summary List of Conditional Access Policies
+        
+        @description Paginated query for the list of conditional access policies
+        
+        @param request: ListConditionalAccessPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConditionalAccessPoliciesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.previous_token):
+            query['PreviousToken'] = request.previous_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConditionalAccessPolicies',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eiam_20211201_models.ListConditionalAccessPoliciesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eiam_20211201_models.ListConditionalAccessPoliciesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_conditional_access_policies_with_options_async(
+        self,
+        request: eiam_20211201_models.ListConditionalAccessPoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListConditionalAccessPoliciesResponse:
+        """
+        @summary List of Conditional Access Policies
+        
+        @description Paginated query for the list of conditional access policies
+        
+        @param request: ListConditionalAccessPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConditionalAccessPoliciesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.previous_token):
+            query['PreviousToken'] = request.previous_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConditionalAccessPolicies',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eiam_20211201_models.ListConditionalAccessPoliciesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eiam_20211201_models.ListConditionalAccessPoliciesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_conditional_access_policies(
+        self,
+        request: eiam_20211201_models.ListConditionalAccessPoliciesRequest,
+    ) -> eiam_20211201_models.ListConditionalAccessPoliciesResponse:
+        """
+        @summary List of Conditional Access Policies
+        
+        @description Paginated query for the list of conditional access policies
+        
+        @param request: ListConditionalAccessPoliciesRequest
+        @return: ListConditionalAccessPoliciesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_conditional_access_policies_with_options(request, runtime)
+
+    async def list_conditional_access_policies_async(
+        self,
+        request: eiam_20211201_models.ListConditionalAccessPoliciesRequest,
+    ) -> eiam_20211201_models.ListConditionalAccessPoliciesResponse:
+        """
+        @summary List of Conditional Access Policies
+        
+        @description Paginated query for the list of conditional access policies
+        
+        @param request: ListConditionalAccessPoliciesRequest
+        @return: ListConditionalAccessPoliciesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_conditional_access_policies_with_options_async(request, runtime)
+
+    def list_conditional_access_policies_for_network_zone_with_options(
+        self,
+        request: eiam_20211201_models.ListConditionalAccessPoliciesForNetworkZoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListConditionalAccessPoliciesForNetworkZoneResponse:
+        """
+        @summary List Conditional Access Policies Associated with Network Areas
+        
+        @description List Conditional Access Policies Associated with Network Zones
+        
+        @param request: ListConditionalAccessPoliciesForNetworkZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConditionalAccessPoliciesForNetworkZoneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_zone_id):
+            query['NetworkZoneId'] = request.network_zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConditionalAccessPoliciesForNetworkZone',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eiam_20211201_models.ListConditionalAccessPoliciesForNetworkZoneResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eiam_20211201_models.ListConditionalAccessPoliciesForNetworkZoneResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_conditional_access_policies_for_network_zone_with_options_async(
+        self,
+        request: eiam_20211201_models.ListConditionalAccessPoliciesForNetworkZoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListConditionalAccessPoliciesForNetworkZoneResponse:
+        """
+        @summary List Conditional Access Policies Associated with Network Areas
+        
+        @description List Conditional Access Policies Associated with Network Zones
+        
+        @param request: ListConditionalAccessPoliciesForNetworkZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConditionalAccessPoliciesForNetworkZoneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_zone_id):
+            query['NetworkZoneId'] = request.network_zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConditionalAccessPoliciesForNetworkZone',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eiam_20211201_models.ListConditionalAccessPoliciesForNetworkZoneResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eiam_20211201_models.ListConditionalAccessPoliciesForNetworkZoneResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_conditional_access_policies_for_network_zone(
+        self,
+        request: eiam_20211201_models.ListConditionalAccessPoliciesForNetworkZoneRequest,
+    ) -> eiam_20211201_models.ListConditionalAccessPoliciesForNetworkZoneResponse:
+        """
+        @summary List Conditional Access Policies Associated with Network Areas
+        
+        @description List Conditional Access Policies Associated with Network Zones
+        
+        @param request: ListConditionalAccessPoliciesForNetworkZoneRequest
+        @return: ListConditionalAccessPoliciesForNetworkZoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_conditional_access_policies_for_network_zone_with_options(request, runtime)
+
+    async def list_conditional_access_policies_for_network_zone_async(
+        self,
+        request: eiam_20211201_models.ListConditionalAccessPoliciesForNetworkZoneRequest,
+    ) -> eiam_20211201_models.ListConditionalAccessPoliciesForNetworkZoneResponse:
+        """
+        @summary List Conditional Access Policies Associated with Network Areas
+        
+        @description List Conditional Access Policies Associated with Network Zones
+        
+        @param request: ListConditionalAccessPoliciesForNetworkZoneRequest
+        @return: ListConditionalAccessPoliciesForNetworkZoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_conditional_access_policies_for_network_zone_with_options_async(request, runtime)
+
     def list_domain_proxy_tokens_with_options(
         self,
         request: eiam_20211201_models.ListDomainProxyTokensRequest,
@@ -9515,7 +10395,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.ListNetworkAccessPathsResponse:
         """
-        @summary 列表某个网络访问端点下的访问路径。
+        @summary 列表查询某个网络访问端点下的访问路径。
         
         @param request: ListNetworkAccessPathsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9558,7 +10438,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.ListNetworkAccessPathsResponse:
         """
-        @summary 列表某个网络访问端点下的访问路径。
+        @summary 列表查询某个网络访问端点下的访问路径。
         
         @param request: ListNetworkAccessPathsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9600,7 +10480,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.ListNetworkAccessPathsRequest,
     ) -> eiam_20211201_models.ListNetworkAccessPathsResponse:
         """
-        @summary 列表某个网络访问端点下的访问路径。
+        @summary 列表查询某个网络访问端点下的访问路径。
         
         @param request: ListNetworkAccessPathsRequest
         @return: ListNetworkAccessPathsResponse
@@ -9613,7 +10493,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.ListNetworkAccessPathsRequest,
     ) -> eiam_20211201_models.ListNetworkAccessPathsResponse:
         """
-        @summary 列表某个网络访问端点下的访问路径。
+        @summary 列表查询某个网络访问端点下的访问路径。
         
         @param request: ListNetworkAccessPathsRequest
         @return: ListNetworkAccessPathsResponse
@@ -13402,6 +14282,270 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_application_description_with_options_async(request, runtime)
+
+    def update_conditional_access_policy_with_options(
+        self,
+        request: eiam_20211201_models.UpdateConditionalAccessPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateConditionalAccessPolicyResponse:
+        """
+        @summary Update Conditional Access Policy
+        
+        @description Update Conditional Access Policy
+        
+        @param request: UpdateConditionalAccessPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConditionalAccessPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.conditional_access_policy_id):
+            query['ConditionalAccessPolicyId'] = request.conditional_access_policy_id
+        if not UtilClient.is_unset(request.conditional_access_policy_name):
+            query['ConditionalAccessPolicyName'] = request.conditional_access_policy_name
+        if not UtilClient.is_unset(request.conditions_config):
+            query['ConditionsConfig'] = request.conditions_config
+        if not UtilClient.is_unset(request.decision_config):
+            query['DecisionConfig'] = request.decision_config
+        if not UtilClient.is_unset(request.decision_type):
+            query['DecisionType'] = request.decision_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateConditionalAccessPolicy',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eiam_20211201_models.UpdateConditionalAccessPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eiam_20211201_models.UpdateConditionalAccessPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_conditional_access_policy_with_options_async(
+        self,
+        request: eiam_20211201_models.UpdateConditionalAccessPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateConditionalAccessPolicyResponse:
+        """
+        @summary Update Conditional Access Policy
+        
+        @description Update Conditional Access Policy
+        
+        @param request: UpdateConditionalAccessPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConditionalAccessPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.conditional_access_policy_id):
+            query['ConditionalAccessPolicyId'] = request.conditional_access_policy_id
+        if not UtilClient.is_unset(request.conditional_access_policy_name):
+            query['ConditionalAccessPolicyName'] = request.conditional_access_policy_name
+        if not UtilClient.is_unset(request.conditions_config):
+            query['ConditionsConfig'] = request.conditions_config
+        if not UtilClient.is_unset(request.decision_config):
+            query['DecisionConfig'] = request.decision_config
+        if not UtilClient.is_unset(request.decision_type):
+            query['DecisionType'] = request.decision_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateConditionalAccessPolicy',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eiam_20211201_models.UpdateConditionalAccessPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eiam_20211201_models.UpdateConditionalAccessPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_conditional_access_policy(
+        self,
+        request: eiam_20211201_models.UpdateConditionalAccessPolicyRequest,
+    ) -> eiam_20211201_models.UpdateConditionalAccessPolicyResponse:
+        """
+        @summary Update Conditional Access Policy
+        
+        @description Update Conditional Access Policy
+        
+        @param request: UpdateConditionalAccessPolicyRequest
+        @return: UpdateConditionalAccessPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_conditional_access_policy_with_options(request, runtime)
+
+    async def update_conditional_access_policy_async(
+        self,
+        request: eiam_20211201_models.UpdateConditionalAccessPolicyRequest,
+    ) -> eiam_20211201_models.UpdateConditionalAccessPolicyResponse:
+        """
+        @summary Update Conditional Access Policy
+        
+        @description Update Conditional Access Policy
+        
+        @param request: UpdateConditionalAccessPolicyRequest
+        @return: UpdateConditionalAccessPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_conditional_access_policy_with_options_async(request, runtime)
+
+    def update_conditional_access_policy_description_with_options(
+        self,
+        request: eiam_20211201_models.UpdateConditionalAccessPolicyDescriptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateConditionalAccessPolicyDescriptionResponse:
+        """
+        @summary Update Conditional Access Policy Description
+        
+        @description Update Conditional Access Policy Description
+        
+        @param request: UpdateConditionalAccessPolicyDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConditionalAccessPolicyDescriptionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.conditional_access_policy_id):
+            query['ConditionalAccessPolicyId'] = request.conditional_access_policy_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateConditionalAccessPolicyDescription',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eiam_20211201_models.UpdateConditionalAccessPolicyDescriptionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eiam_20211201_models.UpdateConditionalAccessPolicyDescriptionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_conditional_access_policy_description_with_options_async(
+        self,
+        request: eiam_20211201_models.UpdateConditionalAccessPolicyDescriptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateConditionalAccessPolicyDescriptionResponse:
+        """
+        @summary Update Conditional Access Policy Description
+        
+        @description Update Conditional Access Policy Description
+        
+        @param request: UpdateConditionalAccessPolicyDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConditionalAccessPolicyDescriptionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.conditional_access_policy_id):
+            query['ConditionalAccessPolicyId'] = request.conditional_access_policy_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateConditionalAccessPolicyDescription',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eiam_20211201_models.UpdateConditionalAccessPolicyDescriptionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eiam_20211201_models.UpdateConditionalAccessPolicyDescriptionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_conditional_access_policy_description(
+        self,
+        request: eiam_20211201_models.UpdateConditionalAccessPolicyDescriptionRequest,
+    ) -> eiam_20211201_models.UpdateConditionalAccessPolicyDescriptionResponse:
+        """
+        @summary Update Conditional Access Policy Description
+        
+        @description Update Conditional Access Policy Description
+        
+        @param request: UpdateConditionalAccessPolicyDescriptionRequest
+        @return: UpdateConditionalAccessPolicyDescriptionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_conditional_access_policy_description_with_options(request, runtime)
+
+    async def update_conditional_access_policy_description_async(
+        self,
+        request: eiam_20211201_models.UpdateConditionalAccessPolicyDescriptionRequest,
+    ) -> eiam_20211201_models.UpdateConditionalAccessPolicyDescriptionResponse:
+        """
+        @summary Update Conditional Access Policy Description
+        
+        @description Update Conditional Access Policy Description
+        
+        @param request: UpdateConditionalAccessPolicyDescriptionRequest
+        @return: UpdateConditionalAccessPolicyDescriptionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_conditional_access_policy_description_with_options_async(request, runtime)
 
     def update_group_with_options(
         self,

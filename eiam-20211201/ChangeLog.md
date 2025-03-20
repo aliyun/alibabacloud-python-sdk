@@ -1,3 +1,18 @@
+2025-03-20 Version: 1.9.0
+- Support API CreateConditionalAccessPolicy.
+- Support API DeleteConditionalAccessPolicy.
+- Support API DisableConditionalAccessPolicy.
+- Support API EnableConditionalAccessPolicy.
+- Support API GetConditionalAccessPolicy.
+- Support API ListConditionalAccessPolicies.
+- Support API ListConditionalAccessPoliciesForNetworkZone.
+- Support API UpdateConditionalAccessPolicy.
+- Support API UpdateConditionalAccessPolicyDescription.
+- Update API CreateDomain: update response param.
+- Update API CreateDomainProxyToken: update response param.
+- Update API CreateNetworkAccessEndpoint: update response param.
+
+
 2025-02-14 Version: 1.8.1
 - Update API GetApplication: update response param.
 - Update API ListApplications: add param M2MClientStatus.

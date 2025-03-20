@@ -908,6 +908,448 @@ class CreateApplicationClientSecretResponse(TeaModel):
         return self
 
 
+class CreateConditionalAccessPolicyRequestConditionsConfigApplications(TeaModel):
+    def __init__(
+        self,
+        exclude_applications: List[str] = None,
+        include_applications: List[str] = None,
+    ):
+        # Excluded applications
+        self.exclude_applications = exclude_applications
+        # Included applications
+        self.include_applications = include_applications
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exclude_applications is not None:
+            result['ExcludeApplications'] = self.exclude_applications
+        if self.include_applications is not None:
+            result['IncludeApplications'] = self.include_applications
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExcludeApplications') is not None:
+            self.exclude_applications = m.get('ExcludeApplications')
+        if m.get('IncludeApplications') is not None:
+            self.include_applications = m.get('IncludeApplications')
+        return self
+
+
+class CreateConditionalAccessPolicyRequestConditionsConfigNetworkZones(TeaModel):
+    def __init__(
+        self,
+        exclude_network_zones: List[str] = None,
+        include_network_zones: List[str] = None,
+    ):
+        # Excluded network zones
+        self.exclude_network_zones = exclude_network_zones
+        # Included network zones
+        self.include_network_zones = include_network_zones
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exclude_network_zones is not None:
+            result['ExcludeNetworkZones'] = self.exclude_network_zones
+        if self.include_network_zones is not None:
+            result['IncludeNetworkZones'] = self.include_network_zones
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExcludeNetworkZones') is not None:
+            self.exclude_network_zones = m.get('ExcludeNetworkZones')
+        if m.get('IncludeNetworkZones') is not None:
+            self.include_network_zones = m.get('IncludeNetworkZones')
+        return self
+
+
+class CreateConditionalAccessPolicyRequestConditionsConfigUsers(TeaModel):
+    def __init__(
+        self,
+        exclude_groups: List[str] = None,
+        exclude_organizational_units: List[str] = None,
+        exclude_users: List[str] = None,
+        include_groups: List[str] = None,
+        include_organizational_units: List[str] = None,
+        include_users: List[str] = None,
+    ):
+        # Excluded user groups
+        self.exclude_groups = exclude_groups
+        # Excluded organizations
+        self.exclude_organizational_units = exclude_organizational_units
+        # Excluded users
+        self.exclude_users = exclude_users
+        # Included user groups
+        self.include_groups = include_groups
+        # Included organizations
+        self.include_organizational_units = include_organizational_units
+        # Selected user
+        self.include_users = include_users
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exclude_groups is not None:
+            result['ExcludeGroups'] = self.exclude_groups
+        if self.exclude_organizational_units is not None:
+            result['ExcludeOrganizationalUnits'] = self.exclude_organizational_units
+        if self.exclude_users is not None:
+            result['ExcludeUsers'] = self.exclude_users
+        if self.include_groups is not None:
+            result['IncludeGroups'] = self.include_groups
+        if self.include_organizational_units is not None:
+            result['IncludeOrganizationalUnits'] = self.include_organizational_units
+        if self.include_users is not None:
+            result['IncludeUsers'] = self.include_users
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExcludeGroups') is not None:
+            self.exclude_groups = m.get('ExcludeGroups')
+        if m.get('ExcludeOrganizationalUnits') is not None:
+            self.exclude_organizational_units = m.get('ExcludeOrganizationalUnits')
+        if m.get('ExcludeUsers') is not None:
+            self.exclude_users = m.get('ExcludeUsers')
+        if m.get('IncludeGroups') is not None:
+            self.include_groups = m.get('IncludeGroups')
+        if m.get('IncludeOrganizationalUnits') is not None:
+            self.include_organizational_units = m.get('IncludeOrganizationalUnits')
+        if m.get('IncludeUsers') is not None:
+            self.include_users = m.get('IncludeUsers')
+        return self
+
+
+class CreateConditionalAccessPolicyRequestConditionsConfig(TeaModel):
+    def __init__(
+        self,
+        applications: CreateConditionalAccessPolicyRequestConditionsConfigApplications = None,
+        network_zones: CreateConditionalAccessPolicyRequestConditionsConfigNetworkZones = None,
+        users: CreateConditionalAccessPolicyRequestConditionsConfigUsers = None,
+    ):
+        # Target applications for the conditional access policy
+        self.applications = applications
+        # Network zones for conditional access policy
+        self.network_zones = network_zones
+        # Target users of the conditional access policy
+        self.users = users
+
+    def validate(self):
+        if self.applications:
+            self.applications.validate()
+        if self.network_zones:
+            self.network_zones.validate()
+        if self.users:
+            self.users.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.applications is not None:
+            result['Applications'] = self.applications.to_map()
+        if self.network_zones is not None:
+            result['NetworkZones'] = self.network_zones.to_map()
+        if self.users is not None:
+            result['Users'] = self.users.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Applications') is not None:
+            temp_model = CreateConditionalAccessPolicyRequestConditionsConfigApplications()
+            self.applications = temp_model.from_map(m['Applications'])
+        if m.get('NetworkZones') is not None:
+            temp_model = CreateConditionalAccessPolicyRequestConditionsConfigNetworkZones()
+            self.network_zones = temp_model.from_map(m['NetworkZones'])
+        if m.get('Users') is not None:
+            temp_model = CreateConditionalAccessPolicyRequestConditionsConfigUsers()
+            self.users = temp_model.from_map(m['Users'])
+        return self
+
+
+class CreateConditionalAccessPolicyRequestDecisionConfig(TeaModel):
+    def __init__(
+        self,
+        active_session_reuse_status: str = None,
+        effect: str = None,
+        mfa_authentication_interval_seconds: int = None,
+        mfa_authentication_methods: List[str] = None,
+        mfa_type: str = None,
+    ):
+        # Whether to enable session reuse
+        self.active_session_reuse_status = active_session_reuse_status
+        # Decision action for the conditional access policy, with the following options:
+        # 
+        # - allow: Allow.
+        # - deny: Deny.
+        self.effect = effect
+        # Re-authentication interval (in seconds) for the conditional access policy
+        # 
+        # - Maximum MFA re-authentication interval: 86400
+        # - Minimum MFA re-authentication interval: 300
+        self.mfa_authentication_interval_seconds = mfa_authentication_interval_seconds
+        # Allowed MFA types for the conditional access policy, with the following options:
+        # - ia_otp_sms: SMS verification code
+        # - ia_otp_email: Email verification code
+        # - ia_totp: OTP dynamic password
+        # - ia_webauthn: WebAuthn
+        self.mfa_authentication_methods = mfa_authentication_methods
+        # MFA type for the conditional access policy, with the following options:
+        # 
+        # - directly_access: Direct access
+        # - mfa_required: MFA required
+        self.mfa_type = mfa_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active_session_reuse_status is not None:
+            result['ActiveSessionReuseStatus'] = self.active_session_reuse_status
+        if self.effect is not None:
+            result['Effect'] = self.effect
+        if self.mfa_authentication_interval_seconds is not None:
+            result['MfaAuthenticationIntervalSeconds'] = self.mfa_authentication_interval_seconds
+        if self.mfa_authentication_methods is not None:
+            result['MfaAuthenticationMethods'] = self.mfa_authentication_methods
+        if self.mfa_type is not None:
+            result['MfaType'] = self.mfa_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActiveSessionReuseStatus') is not None:
+            self.active_session_reuse_status = m.get('ActiveSessionReuseStatus')
+        if m.get('Effect') is not None:
+            self.effect = m.get('Effect')
+        if m.get('MfaAuthenticationIntervalSeconds') is not None:
+            self.mfa_authentication_interval_seconds = m.get('MfaAuthenticationIntervalSeconds')
+        if m.get('MfaAuthenticationMethods') is not None:
+            self.mfa_authentication_methods = m.get('MfaAuthenticationMethods')
+        if m.get('MfaType') is not None:
+            self.mfa_type = m.get('MfaType')
+        return self
+
+
+class CreateConditionalAccessPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        conditional_access_policy_name: str = None,
+        conditional_access_policy_type: str = None,
+        conditions_config: CreateConditionalAccessPolicyRequestConditionsConfig = None,
+        decision_config: CreateConditionalAccessPolicyRequestDecisionConfig = None,
+        decision_type: str = None,
+        description: str = None,
+        evaluate_at: str = None,
+        instance_id: str = None,
+        priority: int = None,
+    ):
+        # Idempotent token.
+        self.client_token = client_token
+        # Conditional access policy name
+        # 
+        # This parameter is required.
+        self.conditional_access_policy_name = conditional_access_policy_name
+        # Type of the conditional access policy, with the following options:
+        # 
+        # arn:alibaba:idaas:authn:access:policy:system: System policy.
+        # 
+        # This parameter is required.
+        self.conditional_access_policy_type = conditional_access_policy_type
+        # Condition content configuration for the conditional access policy
+        self.conditions_config = conditions_config
+        # Action configuration for the conditional access policy
+        self.decision_config = decision_config
+        # Execution type of the conditional access policy, with the following options:
+        # 
+        # enforcement: Enforce the policy.
+        # 
+        # This parameter is required.
+        self.decision_type = decision_type
+        # Description of the conditional access policy
+        self.description = description
+        # Execution point of the conditional access policy, with the following options:
+        # 
+        # - arn:alibaba:idaas:authn:access:rule:eval_at:after_step1: Allow.
+        # 
+        # This parameter is required.
+        self.evaluate_at = evaluate_at
+        # Instance ID.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # Priority of the conditional access policy, lower values indicate higher priority
+        # Minimum value: 1
+        # Maximum value: 100
+        self.priority = priority
+
+    def validate(self):
+        if self.conditions_config:
+            self.conditions_config.validate()
+        if self.decision_config:
+            self.decision_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.conditional_access_policy_name is not None:
+            result['ConditionalAccessPolicyName'] = self.conditional_access_policy_name
+        if self.conditional_access_policy_type is not None:
+            result['ConditionalAccessPolicyType'] = self.conditional_access_policy_type
+        if self.conditions_config is not None:
+            result['ConditionsConfig'] = self.conditions_config.to_map()
+        if self.decision_config is not None:
+            result['DecisionConfig'] = self.decision_config.to_map()
+        if self.decision_type is not None:
+            result['DecisionType'] = self.decision_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.evaluate_at is not None:
+            result['EvaluateAt'] = self.evaluate_at
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ConditionalAccessPolicyName') is not None:
+            self.conditional_access_policy_name = m.get('ConditionalAccessPolicyName')
+        if m.get('ConditionalAccessPolicyType') is not None:
+            self.conditional_access_policy_type = m.get('ConditionalAccessPolicyType')
+        if m.get('ConditionsConfig') is not None:
+            temp_model = CreateConditionalAccessPolicyRequestConditionsConfig()
+            self.conditions_config = temp_model.from_map(m['ConditionsConfig'])
+        if m.get('DecisionConfig') is not None:
+            temp_model = CreateConditionalAccessPolicyRequestDecisionConfig()
+            self.decision_config = temp_model.from_map(m['DecisionConfig'])
+        if m.get('DecisionType') is not None:
+            self.decision_type = m.get('DecisionType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EvaluateAt') is not None:
+            self.evaluate_at = m.get('EvaluateAt')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        return self
+
+
+class CreateConditionalAccessPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        conditional_access_policy_id: str = None,
+        request_id: str = None,
+    ):
+        # Conditional Access Policy ID
+        self.conditional_access_policy_id = conditional_access_policy_id
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.conditional_access_policy_id is not None:
+            result['ConditionalAccessPolicyId'] = self.conditional_access_policy_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConditionalAccessPolicyId') is not None:
+            self.conditional_access_policy_id = m.get('ConditionalAccessPolicyId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateConditionalAccessPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateConditionalAccessPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateConditionalAccessPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDomainRequestFiling(TeaModel):
     def __init__(
         self,
@@ -3290,6 +3732,114 @@ class DeleteApplicationClientSecretResponse(TeaModel):
         return self
 
 
+class DeleteConditionalAccessPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        conditional_access_policy_id: str = None,
+        instance_id: str = None,
+    ):
+        # Conditional Access Policy ID
+        # 
+        # This parameter is required.
+        self.conditional_access_policy_id = conditional_access_policy_id
+        # Instance ID.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.conditional_access_policy_id is not None:
+            result['ConditionalAccessPolicyId'] = self.conditional_access_policy_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConditionalAccessPolicyId') is not None:
+            self.conditional_access_policy_id = m.get('ConditionalAccessPolicyId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DeleteConditionalAccessPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteConditionalAccessPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteConditionalAccessPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteConditionalAccessPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteDomainRequest(TeaModel):
     def __init__(
         self,
@@ -4806,6 +5356,114 @@ class DisableApplicationSsoResponse(TeaModel):
         return self
 
 
+class DisableConditionalAccessPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        conditional_access_policy_id: str = None,
+        instance_id: str = None,
+    ):
+        # Conditional Access Policy ID
+        # 
+        # This parameter is required.
+        self.conditional_access_policy_id = conditional_access_policy_id
+        # Instance ID.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.conditional_access_policy_id is not None:
+            result['ConditionalAccessPolicyId'] = self.conditional_access_policy_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConditionalAccessPolicyId') is not None:
+            self.conditional_access_policy_id = m.get('ConditionalAccessPolicyId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DisableConditionalAccessPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # 请求ID。
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisableConditionalAccessPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisableConditionalAccessPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisableConditionalAccessPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DisableDomainProxyTokenRequest(TeaModel):
     def __init__(
         self,
@@ -5779,6 +6437,114 @@ class EnableApplicationSsoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = EnableApplicationSsoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EnableConditionalAccessPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        conditional_access_policy_id: str = None,
+        instance_id: str = None,
+    ):
+        # Conditional Access Policy ID
+        # 
+        # This parameter is required.
+        self.conditional_access_policy_id = conditional_access_policy_id
+        # Instance ID.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.conditional_access_policy_id is not None:
+            result['ConditionalAccessPolicyId'] = self.conditional_access_policy_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConditionalAccessPolicyId') is not None:
+            self.conditional_access_policy_id = m.get('ConditionalAccessPolicyId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class EnableConditionalAccessPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # 请求ID。
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EnableConditionalAccessPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableConditionalAccessPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableConditionalAccessPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7907,6 +8673,479 @@ class GetApplicationSsoConfigResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetApplicationSsoConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetConditionalAccessPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        conditional_access_policy_id: str = None,
+        instance_id: str = None,
+    ):
+        # Conditional Access Policy ID
+        # 
+        # This parameter is required.
+        self.conditional_access_policy_id = conditional_access_policy_id
+        # Instance ID.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.conditional_access_policy_id is not None:
+            result['ConditionalAccessPolicyId'] = self.conditional_access_policy_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConditionalAccessPolicyId') is not None:
+            self.conditional_access_policy_id = m.get('ConditionalAccessPolicyId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigApplications(TeaModel):
+    def __init__(
+        self,
+        exclude_applications: List[str] = None,
+        include_applications: List[str] = None,
+    ):
+        # Excluded applications
+        self.exclude_applications = exclude_applications
+        # Selected applications
+        self.include_applications = include_applications
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exclude_applications is not None:
+            result['ExcludeApplications'] = self.exclude_applications
+        if self.include_applications is not None:
+            result['IncludeApplications'] = self.include_applications
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExcludeApplications') is not None:
+            self.exclude_applications = m.get('ExcludeApplications')
+        if m.get('IncludeApplications') is not None:
+            self.include_applications = m.get('IncludeApplications')
+        return self
+
+
+class GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigNetworkZones(TeaModel):
+    def __init__(
+        self,
+        exclude_network_zones: List[str] = None,
+        include_network_zones: List[str] = None,
+    ):
+        # Excluded network zones
+        self.exclude_network_zones = exclude_network_zones
+        # Included network zones
+        self.include_network_zones = include_network_zones
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exclude_network_zones is not None:
+            result['ExcludeNetworkZones'] = self.exclude_network_zones
+        if self.include_network_zones is not None:
+            result['IncludeNetworkZones'] = self.include_network_zones
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExcludeNetworkZones') is not None:
+            self.exclude_network_zones = m.get('ExcludeNetworkZones')
+        if m.get('IncludeNetworkZones') is not None:
+            self.include_network_zones = m.get('IncludeNetworkZones')
+        return self
+
+
+class GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigUsers(TeaModel):
+    def __init__(
+        self,
+        exclude_groups: List[str] = None,
+        exclude_organizational_units: List[str] = None,
+        exclude_users: List[str] = None,
+        include_groups: List[str] = None,
+        include_organizational_units: List[str] = None,
+        include_users: List[str] = None,
+    ):
+        # Excluded user groups
+        self.exclude_groups = exclude_groups
+        # Excluded organizations
+        self.exclude_organizational_units = exclude_organizational_units
+        # Excluded users
+        self.exclude_users = exclude_users
+        # Selected user groups
+        self.include_groups = include_groups
+        # Included organizations
+        self.include_organizational_units = include_organizational_units
+        # Selected users
+        self.include_users = include_users
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exclude_groups is not None:
+            result['ExcludeGroups'] = self.exclude_groups
+        if self.exclude_organizational_units is not None:
+            result['ExcludeOrganizationalUnits'] = self.exclude_organizational_units
+        if self.exclude_users is not None:
+            result['ExcludeUsers'] = self.exclude_users
+        if self.include_groups is not None:
+            result['IncludeGroups'] = self.include_groups
+        if self.include_organizational_units is not None:
+            result['IncludeOrganizationalUnits'] = self.include_organizational_units
+        if self.include_users is not None:
+            result['IncludeUsers'] = self.include_users
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExcludeGroups') is not None:
+            self.exclude_groups = m.get('ExcludeGroups')
+        if m.get('ExcludeOrganizationalUnits') is not None:
+            self.exclude_organizational_units = m.get('ExcludeOrganizationalUnits')
+        if m.get('ExcludeUsers') is not None:
+            self.exclude_users = m.get('ExcludeUsers')
+        if m.get('IncludeGroups') is not None:
+            self.include_groups = m.get('IncludeGroups')
+        if m.get('IncludeOrganizationalUnits') is not None:
+            self.include_organizational_units = m.get('IncludeOrganizationalUnits')
+        if m.get('IncludeUsers') is not None:
+            self.include_users = m.get('IncludeUsers')
+        return self
+
+
+class GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfig(TeaModel):
+    def __init__(
+        self,
+        applications: GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigApplications = None,
+        network_zones: GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigNetworkZones = None,
+        users: GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigUsers = None,
+    ):
+        # Target applications of the conditional access policy
+        self.applications = applications
+        # Network zones for the conditional access policy
+        self.network_zones = network_zones
+        # Target users of the conditional access policy
+        self.users = users
+
+    def validate(self):
+        if self.applications:
+            self.applications.validate()
+        if self.network_zones:
+            self.network_zones.validate()
+        if self.users:
+            self.users.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.applications is not None:
+            result['Applications'] = self.applications.to_map()
+        if self.network_zones is not None:
+            result['NetworkZones'] = self.network_zones.to_map()
+        if self.users is not None:
+            result['Users'] = self.users.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Applications') is not None:
+            temp_model = GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigApplications()
+            self.applications = temp_model.from_map(m['Applications'])
+        if m.get('NetworkZones') is not None:
+            temp_model = GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigNetworkZones()
+            self.network_zones = temp_model.from_map(m['NetworkZones'])
+        if m.get('Users') is not None:
+            temp_model = GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigUsers()
+            self.users = temp_model.from_map(m['Users'])
+        return self
+
+
+class GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyDecisionConfig(TeaModel):
+    def __init__(
+        self,
+        active_session_reuse_status: str = None,
+        effect: str = None,
+        mfa_authentication_interval_seconds: int = None,
+        mfa_authentication_methods: List[str] = None,
+        mfa_type: str = None,
+    ):
+        # Whether to enable session reuse
+        self.active_session_reuse_status = active_session_reuse_status
+        # Decision action of the conditional access policy
+        self.effect = effect
+        # Re-authentication interval (in seconds) for the conditional access policy
+        self.mfa_authentication_interval_seconds = mfa_authentication_interval_seconds
+        # Allowed MFA types for the conditional access policy
+        self.mfa_authentication_methods = mfa_authentication_methods
+        # MFA authentication type of the conditional access policy
+        self.mfa_type = mfa_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active_session_reuse_status is not None:
+            result['ActiveSessionReuseStatus'] = self.active_session_reuse_status
+        if self.effect is not None:
+            result['Effect'] = self.effect
+        if self.mfa_authentication_interval_seconds is not None:
+            result['MfaAuthenticationIntervalSeconds'] = self.mfa_authentication_interval_seconds
+        if self.mfa_authentication_methods is not None:
+            result['MfaAuthenticationMethods'] = self.mfa_authentication_methods
+        if self.mfa_type is not None:
+            result['MfaType'] = self.mfa_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActiveSessionReuseStatus') is not None:
+            self.active_session_reuse_status = m.get('ActiveSessionReuseStatus')
+        if m.get('Effect') is not None:
+            self.effect = m.get('Effect')
+        if m.get('MfaAuthenticationIntervalSeconds') is not None:
+            self.mfa_authentication_interval_seconds = m.get('MfaAuthenticationIntervalSeconds')
+        if m.get('MfaAuthenticationMethods') is not None:
+            self.mfa_authentication_methods = m.get('MfaAuthenticationMethods')
+        if m.get('MfaType') is not None:
+            self.mfa_type = m.get('MfaType')
+        return self
+
+
+class GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy(TeaModel):
+    def __init__(
+        self,
+        conditional_access_policy_id: str = None,
+        conditional_access_policy_name: str = None,
+        conditional_access_policy_type: str = None,
+        conditions_config: GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfig = None,
+        create_time: int = None,
+        decision_config: GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyDecisionConfig = None,
+        decision_type: str = None,
+        description: str = None,
+        evaluate_at: str = None,
+        instance_id: str = None,
+        last_updated_time: int = None,
+        priority: int = None,
+        status: str = None,
+    ):
+        # Conditional Access Policy ID
+        self.conditional_access_policy_id = conditional_access_policy_id
+        # Conditional Access Policy Name
+        self.conditional_access_policy_name = conditional_access_policy_name
+        # Type of the conditional access policy
+        self.conditional_access_policy_type = conditional_access_policy_type
+        # Conditional access policy content
+        self.conditions_config = conditions_config
+        # Creation time
+        self.create_time = create_time
+        # Action of the conditional access policy
+        self.decision_config = decision_config
+        # Execution type of the conditional access policy
+        self.decision_type = decision_type
+        # Description of the conditional access policy
+        self.description = description
+        # Execution point of the conditional access policy
+        self.evaluate_at = evaluate_at
+        # Instance ID
+        self.instance_id = instance_id
+        # Last updated time
+        self.last_updated_time = last_updated_time
+        # Priority
+        self.priority = priority
+        # Enable or disable status of the conditional access policy
+        self.status = status
+
+    def validate(self):
+        if self.conditions_config:
+            self.conditions_config.validate()
+        if self.decision_config:
+            self.decision_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.conditional_access_policy_id is not None:
+            result['ConditionalAccessPolicyId'] = self.conditional_access_policy_id
+        if self.conditional_access_policy_name is not None:
+            result['ConditionalAccessPolicyName'] = self.conditional_access_policy_name
+        if self.conditional_access_policy_type is not None:
+            result['ConditionalAccessPolicyType'] = self.conditional_access_policy_type
+        if self.conditions_config is not None:
+            result['ConditionsConfig'] = self.conditions_config.to_map()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.decision_config is not None:
+            result['DecisionConfig'] = self.decision_config.to_map()
+        if self.decision_type is not None:
+            result['DecisionType'] = self.decision_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.evaluate_at is not None:
+            result['EvaluateAt'] = self.evaluate_at
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.last_updated_time is not None:
+            result['LastUpdatedTime'] = self.last_updated_time
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConditionalAccessPolicyId') is not None:
+            self.conditional_access_policy_id = m.get('ConditionalAccessPolicyId')
+        if m.get('ConditionalAccessPolicyName') is not None:
+            self.conditional_access_policy_name = m.get('ConditionalAccessPolicyName')
+        if m.get('ConditionalAccessPolicyType') is not None:
+            self.conditional_access_policy_type = m.get('ConditionalAccessPolicyType')
+        if m.get('ConditionsConfig') is not None:
+            temp_model = GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfig()
+            self.conditions_config = temp_model.from_map(m['ConditionsConfig'])
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DecisionConfig') is not None:
+            temp_model = GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyDecisionConfig()
+            self.decision_config = temp_model.from_map(m['DecisionConfig'])
+        if m.get('DecisionType') is not None:
+            self.decision_type = m.get('DecisionType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EvaluateAt') is not None:
+            self.evaluate_at = m.get('EvaluateAt')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LastUpdatedTime') is not None:
+            self.last_updated_time = m.get('LastUpdatedTime')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetConditionalAccessPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        conditional_access_policy: GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy = None,
+        request_id: str = None,
+    ):
+        # Details of the conditional access policy
+        self.conditional_access_policy = conditional_access_policy
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.conditional_access_policy:
+            self.conditional_access_policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.conditional_access_policy is not None:
+            result['ConditionalAccessPolicy'] = self.conditional_access_policy.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConditionalAccessPolicy') is not None:
+            temp_model = GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy()
+            self.conditional_access_policy = temp_model.from_map(m['ConditionalAccessPolicy'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetConditionalAccessPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetConditionalAccessPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetConditionalAccessPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15021,6 +16260,999 @@ class ListApplicationsForUserResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListApplicationsForUserResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListConditionalAccessPoliciesRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        previous_token: str = None,
+    ):
+        # Instance ID.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # Number of items per page in a paginated query.
+        self.max_results = max_results
+        # Token for the next page query.
+        self.next_token = next_token
+        # Token for the previous page query.
+        self.previous_token = previous_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.previous_token is not None:
+            result['PreviousToken'] = self.previous_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PreviousToken') is not None:
+            self.previous_token = m.get('PreviousToken')
+        return self
+
+
+class ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigApplications(TeaModel):
+    def __init__(
+        self,
+        exclude_applications: List[str] = None,
+        include_applications: List[str] = None,
+    ):
+        # Excluded applications
+        self.exclude_applications = exclude_applications
+        # Selected applications
+        self.include_applications = include_applications
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exclude_applications is not None:
+            result['ExcludeApplications'] = self.exclude_applications
+        if self.include_applications is not None:
+            result['IncludeApplications'] = self.include_applications
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExcludeApplications') is not None:
+            self.exclude_applications = m.get('ExcludeApplications')
+        if m.get('IncludeApplications') is not None:
+            self.include_applications = m.get('IncludeApplications')
+        return self
+
+
+class ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones(TeaModel):
+    def __init__(
+        self,
+        exclude_network_zones: List[str] = None,
+        include_network_zones: List[str] = None,
+    ):
+        # Excluded network zones
+        self.exclude_network_zones = exclude_network_zones
+        # Included network ranges
+        self.include_network_zones = include_network_zones
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exclude_network_zones is not None:
+            result['ExcludeNetworkZones'] = self.exclude_network_zones
+        if self.include_network_zones is not None:
+            result['IncludeNetworkZones'] = self.include_network_zones
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExcludeNetworkZones') is not None:
+            self.exclude_network_zones = m.get('ExcludeNetworkZones')
+        if m.get('IncludeNetworkZones') is not None:
+            self.include_network_zones = m.get('IncludeNetworkZones')
+        return self
+
+
+class ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigUsers(TeaModel):
+    def __init__(
+        self,
+        exclude_groups: List[str] = None,
+        exclude_organizational_units: List[str] = None,
+        exclude_users: List[str] = None,
+        include_groups: List[str] = None,
+        include_organizational_units: List[str] = None,
+        include_users: List[str] = None,
+    ):
+        # Excluded user groups
+        self.exclude_groups = exclude_groups
+        # Excluded organizations
+        self.exclude_organizational_units = exclude_organizational_units
+        # Excluded users
+        self.exclude_users = exclude_users
+        # Included user groups
+        self.include_groups = include_groups
+        # Included organizations
+        self.include_organizational_units = include_organizational_units
+        # Selected users
+        self.include_users = include_users
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exclude_groups is not None:
+            result['ExcludeGroups'] = self.exclude_groups
+        if self.exclude_organizational_units is not None:
+            result['ExcludeOrganizationalUnits'] = self.exclude_organizational_units
+        if self.exclude_users is not None:
+            result['ExcludeUsers'] = self.exclude_users
+        if self.include_groups is not None:
+            result['IncludeGroups'] = self.include_groups
+        if self.include_organizational_units is not None:
+            result['IncludeOrganizationalUnits'] = self.include_organizational_units
+        if self.include_users is not None:
+            result['IncludeUsers'] = self.include_users
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExcludeGroups') is not None:
+            self.exclude_groups = m.get('ExcludeGroups')
+        if m.get('ExcludeOrganizationalUnits') is not None:
+            self.exclude_organizational_units = m.get('ExcludeOrganizationalUnits')
+        if m.get('ExcludeUsers') is not None:
+            self.exclude_users = m.get('ExcludeUsers')
+        if m.get('IncludeGroups') is not None:
+            self.include_groups = m.get('IncludeGroups')
+        if m.get('IncludeOrganizationalUnits') is not None:
+            self.include_organizational_units = m.get('IncludeOrganizationalUnits')
+        if m.get('IncludeUsers') is not None:
+            self.include_users = m.get('IncludeUsers')
+        return self
+
+
+class ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfig(TeaModel):
+    def __init__(
+        self,
+        applications: ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigApplications = None,
+        network_zones: ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones = None,
+        users: ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigUsers = None,
+    ):
+        # Target applications of the conditional access policy
+        self.applications = applications
+        # Network zones for conditional access policies
+        self.network_zones = network_zones
+        # Target users of the conditional access policy
+        self.users = users
+
+    def validate(self):
+        if self.applications:
+            self.applications.validate()
+        if self.network_zones:
+            self.network_zones.validate()
+        if self.users:
+            self.users.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.applications is not None:
+            result['Applications'] = self.applications.to_map()
+        if self.network_zones is not None:
+            result['NetworkZones'] = self.network_zones.to_map()
+        if self.users is not None:
+            result['Users'] = self.users.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Applications') is not None:
+            temp_model = ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigApplications()
+            self.applications = temp_model.from_map(m['Applications'])
+        if m.get('NetworkZones') is not None:
+            temp_model = ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones()
+            self.network_zones = temp_model.from_map(m['NetworkZones'])
+        if m.get('Users') is not None:
+            temp_model = ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigUsers()
+            self.users = temp_model.from_map(m['Users'])
+        return self
+
+
+class ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesDecisionConfig(TeaModel):
+    def __init__(
+        self,
+        active_session_reuse_status: str = None,
+        effect: str = None,
+        mfa_authentication_interval_seconds: int = None,
+        mfa_authentication_methods: List[str] = None,
+        mfa_type: str = None,
+    ):
+        # Whether to enable session reuse for secondary authentication
+        self.active_session_reuse_status = active_session_reuse_status
+        # Decision action of the conditional access policy:
+        # deny  Deny
+        # allow Allow
+        self.effect = effect
+        # Re-authentication interval for the conditional access policy (in seconds) 300-86400
+        self.mfa_authentication_interval_seconds = mfa_authentication_interval_seconds
+        # MFA types allowed by the conditional access policy
+        self.mfa_authentication_methods = mfa_authentication_methods
+        # Conditional Access Policy Mfa Type
+        self.mfa_type = mfa_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active_session_reuse_status is not None:
+            result['ActiveSessionReuseStatus'] = self.active_session_reuse_status
+        if self.effect is not None:
+            result['Effect'] = self.effect
+        if self.mfa_authentication_interval_seconds is not None:
+            result['MfaAuthenticationIntervalSeconds'] = self.mfa_authentication_interval_seconds
+        if self.mfa_authentication_methods is not None:
+            result['MfaAuthenticationMethods'] = self.mfa_authentication_methods
+        if self.mfa_type is not None:
+            result['MfaType'] = self.mfa_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActiveSessionReuseStatus') is not None:
+            self.active_session_reuse_status = m.get('ActiveSessionReuseStatus')
+        if m.get('Effect') is not None:
+            self.effect = m.get('Effect')
+        if m.get('MfaAuthenticationIntervalSeconds') is not None:
+            self.mfa_authentication_interval_seconds = m.get('MfaAuthenticationIntervalSeconds')
+        if m.get('MfaAuthenticationMethods') is not None:
+            self.mfa_authentication_methods = m.get('MfaAuthenticationMethods')
+        if m.get('MfaType') is not None:
+            self.mfa_type = m.get('MfaType')
+        return self
+
+
+class ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies(TeaModel):
+    def __init__(
+        self,
+        conditional_access_policy_id: str = None,
+        conditional_access_policy_name: str = None,
+        conditional_access_policy_type: str = None,
+        conditions_config: ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfig = None,
+        create_time: int = None,
+        decision_config: ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesDecisionConfig = None,
+        decision_type: str = None,
+        description: str = None,
+        evaluate_at: str = None,
+        instance_id: str = None,
+        last_updated_time: int = None,
+        priority: int = None,
+        status: str = None,
+    ):
+        # Conditional access policy ID
+        self.conditional_access_policy_id = conditional_access_policy_id
+        # Conditional access policy name
+        self.conditional_access_policy_name = conditional_access_policy_name
+        # Type of the conditional access policy
+        self.conditional_access_policy_type = conditional_access_policy_type
+        # Content of the conditional access policy
+        self.conditions_config = conditions_config
+        # Creation time
+        self.create_time = create_time
+        # Action of the conditional access policy
+        self.decision_config = decision_config
+        # Execution type of the conditional access policy
+        self.decision_type = decision_type
+        # Description of the conditional access policy
+        self.description = description
+        # Execution point of the conditional access policy
+        self.evaluate_at = evaluate_at
+        # Instance ID
+        self.instance_id = instance_id
+        # Last updated time
+        self.last_updated_time = last_updated_time
+        # Priority, 1-100
+        self.priority = priority
+        # Enable or disable status of the conditional access policy
+        self.status = status
+
+    def validate(self):
+        if self.conditions_config:
+            self.conditions_config.validate()
+        if self.decision_config:
+            self.decision_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.conditional_access_policy_id is not None:
+            result['ConditionalAccessPolicyId'] = self.conditional_access_policy_id
+        if self.conditional_access_policy_name is not None:
+            result['ConditionalAccessPolicyName'] = self.conditional_access_policy_name
+        if self.conditional_access_policy_type is not None:
+            result['ConditionalAccessPolicyType'] = self.conditional_access_policy_type
+        if self.conditions_config is not None:
+            result['ConditionsConfig'] = self.conditions_config.to_map()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.decision_config is not None:
+            result['DecisionConfig'] = self.decision_config.to_map()
+        if self.decision_type is not None:
+            result['DecisionType'] = self.decision_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.evaluate_at is not None:
+            result['EvaluateAt'] = self.evaluate_at
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.last_updated_time is not None:
+            result['LastUpdatedTime'] = self.last_updated_time
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConditionalAccessPolicyId') is not None:
+            self.conditional_access_policy_id = m.get('ConditionalAccessPolicyId')
+        if m.get('ConditionalAccessPolicyName') is not None:
+            self.conditional_access_policy_name = m.get('ConditionalAccessPolicyName')
+        if m.get('ConditionalAccessPolicyType') is not None:
+            self.conditional_access_policy_type = m.get('ConditionalAccessPolicyType')
+        if m.get('ConditionsConfig') is not None:
+            temp_model = ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfig()
+            self.conditions_config = temp_model.from_map(m['ConditionsConfig'])
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DecisionConfig') is not None:
+            temp_model = ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesDecisionConfig()
+            self.decision_config = temp_model.from_map(m['DecisionConfig'])
+        if m.get('DecisionType') is not None:
+            self.decision_type = m.get('DecisionType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EvaluateAt') is not None:
+            self.evaluate_at = m.get('EvaluateAt')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LastUpdatedTime') is not None:
+            self.last_updated_time = m.get('LastUpdatedTime')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListConditionalAccessPoliciesResponseBody(TeaModel):
+    def __init__(
+        self,
+        conditional_access_policies: List[ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies] = None,
+        next_token: str = None,
+        previous_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        # Collection of conditional access policies
+        self.conditional_access_policies = conditional_access_policies
+        # The token value returned by this call for the next page query.
+        self.next_token = next_token
+        # Previous page query token (Token)
+        self.previous_token = previous_token
+        # Request ID.
+        self.request_id = request_id
+        # Total number of items in the list.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.conditional_access_policies:
+            for k in self.conditional_access_policies:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ConditionalAccessPolicies'] = []
+        if self.conditional_access_policies is not None:
+            for k in self.conditional_access_policies:
+                result['ConditionalAccessPolicies'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.previous_token is not None:
+            result['PreviousToken'] = self.previous_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.conditional_access_policies = []
+        if m.get('ConditionalAccessPolicies') is not None:
+            for k in m.get('ConditionalAccessPolicies'):
+                temp_model = ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies()
+                self.conditional_access_policies.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PreviousToken') is not None:
+            self.previous_token = m.get('PreviousToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListConditionalAccessPoliciesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListConditionalAccessPoliciesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListConditionalAccessPoliciesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListConditionalAccessPoliciesForNetworkZoneRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        network_zone_id: str = None,
+    ):
+        # Instance ID.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # Application ID associated with the conditional access policy
+        # 
+        # This parameter is required.
+        self.network_zone_id = network_zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.network_zone_id is not None:
+            result['NetworkZoneId'] = self.network_zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NetworkZoneId') is not None:
+            self.network_zone_id = m.get('NetworkZoneId')
+        return self
+
+
+class ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigApplications(TeaModel):
+    def __init__(
+        self,
+        exclude_applications: List[str] = None,
+        include_applications: List[str] = None,
+    ):
+        # Excluded applications
+        self.exclude_applications = exclude_applications
+        # Selected applications
+        self.include_applications = include_applications
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exclude_applications is not None:
+            result['ExcludeApplications'] = self.exclude_applications
+        if self.include_applications is not None:
+            result['IncludeApplications'] = self.include_applications
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExcludeApplications') is not None:
+            self.exclude_applications = m.get('ExcludeApplications')
+        if m.get('IncludeApplications') is not None:
+            self.include_applications = m.get('IncludeApplications')
+        return self
+
+
+class ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones(TeaModel):
+    def __init__(
+        self,
+        exclude_network_zones: List[str] = None,
+        include_network_zones: List[str] = None,
+    ):
+        # Excluded network zones
+        self.exclude_network_zones = exclude_network_zones
+        # Included network zones
+        self.include_network_zones = include_network_zones
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exclude_network_zones is not None:
+            result['ExcludeNetworkZones'] = self.exclude_network_zones
+        if self.include_network_zones is not None:
+            result['IncludeNetworkZones'] = self.include_network_zones
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExcludeNetworkZones') is not None:
+            self.exclude_network_zones = m.get('ExcludeNetworkZones')
+        if m.get('IncludeNetworkZones') is not None:
+            self.include_network_zones = m.get('IncludeNetworkZones')
+        return self
+
+
+class ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigUsers(TeaModel):
+    def __init__(
+        self,
+        exclude_groups: List[str] = None,
+        exclude_organizational_units: List[str] = None,
+        exclude_users: List[str] = None,
+        include_groups: List[str] = None,
+        include_organizational_units: List[str] = None,
+        include_users: List[str] = None,
+    ):
+        # Excluded user groups
+        self.exclude_groups = exclude_groups
+        # Excluded organizations
+        self.exclude_organizational_units = exclude_organizational_units
+        # Excluded Users
+        self.exclude_users = exclude_users
+        # Selected user groups
+        self.include_groups = include_groups
+        # Selected organizations
+        self.include_organizational_units = include_organizational_units
+        # Selected users
+        self.include_users = include_users
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exclude_groups is not None:
+            result['ExcludeGroups'] = self.exclude_groups
+        if self.exclude_organizational_units is not None:
+            result['ExcludeOrganizationalUnits'] = self.exclude_organizational_units
+        if self.exclude_users is not None:
+            result['ExcludeUsers'] = self.exclude_users
+        if self.include_groups is not None:
+            result['IncludeGroups'] = self.include_groups
+        if self.include_organizational_units is not None:
+            result['IncludeOrganizationalUnits'] = self.include_organizational_units
+        if self.include_users is not None:
+            result['IncludeUsers'] = self.include_users
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExcludeGroups') is not None:
+            self.exclude_groups = m.get('ExcludeGroups')
+        if m.get('ExcludeOrganizationalUnits') is not None:
+            self.exclude_organizational_units = m.get('ExcludeOrganizationalUnits')
+        if m.get('ExcludeUsers') is not None:
+            self.exclude_users = m.get('ExcludeUsers')
+        if m.get('IncludeGroups') is not None:
+            self.include_groups = m.get('IncludeGroups')
+        if m.get('IncludeOrganizationalUnits') is not None:
+            self.include_organizational_units = m.get('IncludeOrganizationalUnits')
+        if m.get('IncludeUsers') is not None:
+            self.include_users = m.get('IncludeUsers')
+        return self
+
+
+class ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfig(TeaModel):
+    def __init__(
+        self,
+        applications: ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigApplications = None,
+        network_zones: ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones = None,
+        users: ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigUsers = None,
+    ):
+        # Target applications of the conditional access policy
+        self.applications = applications
+        # Network zones for conditional access policies
+        self.network_zones = network_zones
+        # Target users of the conditional access policy
+        self.users = users
+
+    def validate(self):
+        if self.applications:
+            self.applications.validate()
+        if self.network_zones:
+            self.network_zones.validate()
+        if self.users:
+            self.users.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.applications is not None:
+            result['Applications'] = self.applications.to_map()
+        if self.network_zones is not None:
+            result['NetworkZones'] = self.network_zones.to_map()
+        if self.users is not None:
+            result['Users'] = self.users.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Applications') is not None:
+            temp_model = ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigApplications()
+            self.applications = temp_model.from_map(m['Applications'])
+        if m.get('NetworkZones') is not None:
+            temp_model = ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones()
+            self.network_zones = temp_model.from_map(m['NetworkZones'])
+        if m.get('Users') is not None:
+            temp_model = ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigUsers()
+            self.users = temp_model.from_map(m['Users'])
+        return self
+
+
+class ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesDecisionConfig(TeaModel):
+    def __init__(
+        self,
+        active_session_reuse_status: str = None,
+        effect: str = None,
+        mfa_authentication_interval_seconds: int = None,
+        mfa_authentication_methods: List[str] = None,
+        mfa_type: str = None,
+    ):
+        # Whether session reuse is enabled
+        self.active_session_reuse_status = active_session_reuse_status
+        # Decision action of the conditional access policy
+        self.effect = effect
+        # Re-authentication interval for conditional access policy (seconds)
+        self.mfa_authentication_interval_seconds = mfa_authentication_interval_seconds
+        # MFA types allowed by the conditional access policy
+        self.mfa_authentication_methods = mfa_authentication_methods
+        # MFA type of the conditional access policy
+        self.mfa_type = mfa_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active_session_reuse_status is not None:
+            result['ActiveSessionReuseStatus'] = self.active_session_reuse_status
+        if self.effect is not None:
+            result['Effect'] = self.effect
+        if self.mfa_authentication_interval_seconds is not None:
+            result['MfaAuthenticationIntervalSeconds'] = self.mfa_authentication_interval_seconds
+        if self.mfa_authentication_methods is not None:
+            result['MfaAuthenticationMethods'] = self.mfa_authentication_methods
+        if self.mfa_type is not None:
+            result['MfaType'] = self.mfa_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActiveSessionReuseStatus') is not None:
+            self.active_session_reuse_status = m.get('ActiveSessionReuseStatus')
+        if m.get('Effect') is not None:
+            self.effect = m.get('Effect')
+        if m.get('MfaAuthenticationIntervalSeconds') is not None:
+            self.mfa_authentication_interval_seconds = m.get('MfaAuthenticationIntervalSeconds')
+        if m.get('MfaAuthenticationMethods') is not None:
+            self.mfa_authentication_methods = m.get('MfaAuthenticationMethods')
+        if m.get('MfaType') is not None:
+            self.mfa_type = m.get('MfaType')
+        return self
+
+
+class ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies(TeaModel):
+    def __init__(
+        self,
+        conditional_access_policy_id: str = None,
+        conditional_access_policy_name: str = None,
+        conditional_access_policy_type: str = None,
+        conditions_config: ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfig = None,
+        create_time: int = None,
+        decision_config: ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesDecisionConfig = None,
+        decision_type: str = None,
+        description: str = None,
+        evaluate_at: str = None,
+        instance_id: str = None,
+        last_updated_time: int = None,
+        priority: int = None,
+        status: str = None,
+    ):
+        # Conditional access policy ID
+        self.conditional_access_policy_id = conditional_access_policy_id
+        # Conditional access policy name
+        self.conditional_access_policy_name = conditional_access_policy_name
+        # Type of the conditional access policy
+        self.conditional_access_policy_type = conditional_access_policy_type
+        # Content of the conditional access policy
+        self.conditions_config = conditions_config
+        # Creation Time
+        self.create_time = create_time
+        # Action of the conditional access policy
+        self.decision_config = decision_config
+        # Execution type of the conditional access policy
+        self.decision_type = decision_type
+        # Description of the conditional access policy
+        self.description = description
+        # Execution point of the conditional access policy
+        self.evaluate_at = evaluate_at
+        # Instance ID
+        self.instance_id = instance_id
+        # Last Updated Time
+        self.last_updated_time = last_updated_time
+        # Priority
+        self.priority = priority
+        # Enable or disable status of the conditional access policy
+        self.status = status
+
+    def validate(self):
+        if self.conditions_config:
+            self.conditions_config.validate()
+        if self.decision_config:
+            self.decision_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.conditional_access_policy_id is not None:
+            result['ConditionalAccessPolicyId'] = self.conditional_access_policy_id
+        if self.conditional_access_policy_name is not None:
+            result['ConditionalAccessPolicyName'] = self.conditional_access_policy_name
+        if self.conditional_access_policy_type is not None:
+            result['ConditionalAccessPolicyType'] = self.conditional_access_policy_type
+        if self.conditions_config is not None:
+            result['ConditionsConfig'] = self.conditions_config.to_map()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.decision_config is not None:
+            result['DecisionConfig'] = self.decision_config.to_map()
+        if self.decision_type is not None:
+            result['DecisionType'] = self.decision_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.evaluate_at is not None:
+            result['EvaluateAt'] = self.evaluate_at
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.last_updated_time is not None:
+            result['LastUpdatedTime'] = self.last_updated_time
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConditionalAccessPolicyId') is not None:
+            self.conditional_access_policy_id = m.get('ConditionalAccessPolicyId')
+        if m.get('ConditionalAccessPolicyName') is not None:
+            self.conditional_access_policy_name = m.get('ConditionalAccessPolicyName')
+        if m.get('ConditionalAccessPolicyType') is not None:
+            self.conditional_access_policy_type = m.get('ConditionalAccessPolicyType')
+        if m.get('ConditionsConfig') is not None:
+            temp_model = ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfig()
+            self.conditions_config = temp_model.from_map(m['ConditionsConfig'])
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DecisionConfig') is not None:
+            temp_model = ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesDecisionConfig()
+            self.decision_config = temp_model.from_map(m['DecisionConfig'])
+        if m.get('DecisionType') is not None:
+            self.decision_type = m.get('DecisionType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EvaluateAt') is not None:
+            self.evaluate_at = m.get('EvaluateAt')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LastUpdatedTime') is not None:
+            self.last_updated_time = m.get('LastUpdatedTime')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListConditionalAccessPoliciesForNetworkZoneResponseBody(TeaModel):
+    def __init__(
+        self,
+        conditional_access_policies: List[ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies] = None,
+        request_id: str = None,
+    ):
+        # Collection of conditional access policies
+        self.conditional_access_policies = conditional_access_policies
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.conditional_access_policies:
+            for k in self.conditional_access_policies:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ConditionalAccessPolicies'] = []
+        if self.conditional_access_policies is not None:
+            for k in self.conditional_access_policies:
+                result['ConditionalAccessPolicies'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.conditional_access_policies = []
+        if m.get('ConditionalAccessPolicies') is not None:
+            for k in m.get('ConditionalAccessPolicies'):
+                temp_model = ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies()
+                self.conditional_access_policies.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListConditionalAccessPoliciesForNetworkZoneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListConditionalAccessPoliciesForNetworkZoneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListConditionalAccessPoliciesForNetworkZoneResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -24975,6 +27207,514 @@ class UpdateApplicationDescriptionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateApplicationDescriptionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateConditionalAccessPolicyRequestConditionsConfigApplications(TeaModel):
+    def __init__(
+        self,
+        exclude_applications: List[str] = None,
+        include_applications: List[str] = None,
+    ):
+        # Excluded Applications
+        self.exclude_applications = exclude_applications
+        # Included Applications
+        self.include_applications = include_applications
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exclude_applications is not None:
+            result['ExcludeApplications'] = self.exclude_applications
+        if self.include_applications is not None:
+            result['IncludeApplications'] = self.include_applications
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExcludeApplications') is not None:
+            self.exclude_applications = m.get('ExcludeApplications')
+        if m.get('IncludeApplications') is not None:
+            self.include_applications = m.get('IncludeApplications')
+        return self
+
+
+class UpdateConditionalAccessPolicyRequestConditionsConfigNetworkZones(TeaModel):
+    def __init__(
+        self,
+        exclude_network_zones: List[str] = None,
+        include_network_zones: List[str] = None,
+    ):
+        # Excluded network zones
+        self.exclude_network_zones = exclude_network_zones
+        # Included network zones
+        self.include_network_zones = include_network_zones
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exclude_network_zones is not None:
+            result['ExcludeNetworkZones'] = self.exclude_network_zones
+        if self.include_network_zones is not None:
+            result['IncludeNetworkZones'] = self.include_network_zones
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExcludeNetworkZones') is not None:
+            self.exclude_network_zones = m.get('ExcludeNetworkZones')
+        if m.get('IncludeNetworkZones') is not None:
+            self.include_network_zones = m.get('IncludeNetworkZones')
+        return self
+
+
+class UpdateConditionalAccessPolicyRequestConditionsConfigUsers(TeaModel):
+    def __init__(
+        self,
+        exclude_groups: List[str] = None,
+        exclude_organizational_units: List[str] = None,
+        exclude_users: List[str] = None,
+        include_groups: List[str] = None,
+        include_organizational_units: List[str] = None,
+        include_users: List[str] = None,
+    ):
+        # Excluded user groups
+        self.exclude_groups = exclude_groups
+        # Excluded organizations
+        self.exclude_organizational_units = exclude_organizational_units
+        # Excluded Users
+        self.exclude_users = exclude_users
+        # Included User Groups
+        self.include_groups = include_groups
+        # Included organizations
+        self.include_organizational_units = include_organizational_units
+        # Included Users
+        self.include_users = include_users
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exclude_groups is not None:
+            result['ExcludeGroups'] = self.exclude_groups
+        if self.exclude_organizational_units is not None:
+            result['ExcludeOrganizationalUnits'] = self.exclude_organizational_units
+        if self.exclude_users is not None:
+            result['ExcludeUsers'] = self.exclude_users
+        if self.include_groups is not None:
+            result['IncludeGroups'] = self.include_groups
+        if self.include_organizational_units is not None:
+            result['IncludeOrganizationalUnits'] = self.include_organizational_units
+        if self.include_users is not None:
+            result['IncludeUsers'] = self.include_users
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExcludeGroups') is not None:
+            self.exclude_groups = m.get('ExcludeGroups')
+        if m.get('ExcludeOrganizationalUnits') is not None:
+            self.exclude_organizational_units = m.get('ExcludeOrganizationalUnits')
+        if m.get('ExcludeUsers') is not None:
+            self.exclude_users = m.get('ExcludeUsers')
+        if m.get('IncludeGroups') is not None:
+            self.include_groups = m.get('IncludeGroups')
+        if m.get('IncludeOrganizationalUnits') is not None:
+            self.include_organizational_units = m.get('IncludeOrganizationalUnits')
+        if m.get('IncludeUsers') is not None:
+            self.include_users = m.get('IncludeUsers')
+        return self
+
+
+class UpdateConditionalAccessPolicyRequestConditionsConfig(TeaModel):
+    def __init__(
+        self,
+        applications: UpdateConditionalAccessPolicyRequestConditionsConfigApplications = None,
+        network_zones: UpdateConditionalAccessPolicyRequestConditionsConfigNetworkZones = None,
+        users: UpdateConditionalAccessPolicyRequestConditionsConfigUsers = None,
+    ):
+        # Target Applications for the Conditional Access Policy
+        self.applications = applications
+        # Network zones for conditional access policy
+        self.network_zones = network_zones
+        # Target Users for the Conditional Access Policy
+        self.users = users
+
+    def validate(self):
+        if self.applications:
+            self.applications.validate()
+        if self.network_zones:
+            self.network_zones.validate()
+        if self.users:
+            self.users.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.applications is not None:
+            result['Applications'] = self.applications.to_map()
+        if self.network_zones is not None:
+            result['NetworkZones'] = self.network_zones.to_map()
+        if self.users is not None:
+            result['Users'] = self.users.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Applications') is not None:
+            temp_model = UpdateConditionalAccessPolicyRequestConditionsConfigApplications()
+            self.applications = temp_model.from_map(m['Applications'])
+        if m.get('NetworkZones') is not None:
+            temp_model = UpdateConditionalAccessPolicyRequestConditionsConfigNetworkZones()
+            self.network_zones = temp_model.from_map(m['NetworkZones'])
+        if m.get('Users') is not None:
+            temp_model = UpdateConditionalAccessPolicyRequestConditionsConfigUsers()
+            self.users = temp_model.from_map(m['Users'])
+        return self
+
+
+class UpdateConditionalAccessPolicyRequestDecisionConfig(TeaModel):
+    def __init__(
+        self,
+        active_session_reuse_status: str = None,
+        effect: str = None,
+        mfa_authentication_interval_seconds: int = None,
+        mfa_authentication_methods: List[str] = None,
+        mfa_type: str = None,
+    ):
+        # Whether to enable session reuse
+        self.active_session_reuse_status = active_session_reuse_status
+        # Conditional Access Policy Decision Action
+        self.effect = effect
+        # Conditional Access Policy Re-authentication Interval (seconds)
+        self.mfa_authentication_interval_seconds = mfa_authentication_interval_seconds
+        # Allowed MFA types for the Conditional Access Policy
+        self.mfa_authentication_methods = mfa_authentication_methods
+        # Conditional Access Policy MFA Type
+        self.mfa_type = mfa_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active_session_reuse_status is not None:
+            result['ActiveSessionReuseStatus'] = self.active_session_reuse_status
+        if self.effect is not None:
+            result['Effect'] = self.effect
+        if self.mfa_authentication_interval_seconds is not None:
+            result['MfaAuthenticationIntervalSeconds'] = self.mfa_authentication_interval_seconds
+        if self.mfa_authentication_methods is not None:
+            result['MfaAuthenticationMethods'] = self.mfa_authentication_methods
+        if self.mfa_type is not None:
+            result['MfaType'] = self.mfa_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActiveSessionReuseStatus') is not None:
+            self.active_session_reuse_status = m.get('ActiveSessionReuseStatus')
+        if m.get('Effect') is not None:
+            self.effect = m.get('Effect')
+        if m.get('MfaAuthenticationIntervalSeconds') is not None:
+            self.mfa_authentication_interval_seconds = m.get('MfaAuthenticationIntervalSeconds')
+        if m.get('MfaAuthenticationMethods') is not None:
+            self.mfa_authentication_methods = m.get('MfaAuthenticationMethods')
+        if m.get('MfaType') is not None:
+            self.mfa_type = m.get('MfaType')
+        return self
+
+
+class UpdateConditionalAccessPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        conditional_access_policy_id: str = None,
+        conditional_access_policy_name: str = None,
+        conditions_config: UpdateConditionalAccessPolicyRequestConditionsConfig = None,
+        decision_config: UpdateConditionalAccessPolicyRequestDecisionConfig = None,
+        decision_type: str = None,
+        instance_id: str = None,
+        priority: int = None,
+    ):
+        # Conditional Access Policy ID
+        # 
+        # This parameter is required.
+        self.conditional_access_policy_id = conditional_access_policy_id
+        # Conditional Access Policy Name
+        # 
+        # This parameter is required.
+        self.conditional_access_policy_name = conditional_access_policy_name
+        # Conditional Access Policy Condition Content Configuration
+        self.conditions_config = conditions_config
+        # Conditional Access Policy Action Configuration
+        self.decision_config = decision_config
+        # Conditional Access Policy Execution Type
+        # 
+        # This parameter is required.
+        self.decision_type = decision_type
+        # Instance ID.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # Priority of the conditional access policy
+        self.priority = priority
+
+    def validate(self):
+        if self.conditions_config:
+            self.conditions_config.validate()
+        if self.decision_config:
+            self.decision_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.conditional_access_policy_id is not None:
+            result['ConditionalAccessPolicyId'] = self.conditional_access_policy_id
+        if self.conditional_access_policy_name is not None:
+            result['ConditionalAccessPolicyName'] = self.conditional_access_policy_name
+        if self.conditions_config is not None:
+            result['ConditionsConfig'] = self.conditions_config.to_map()
+        if self.decision_config is not None:
+            result['DecisionConfig'] = self.decision_config.to_map()
+        if self.decision_type is not None:
+            result['DecisionType'] = self.decision_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConditionalAccessPolicyId') is not None:
+            self.conditional_access_policy_id = m.get('ConditionalAccessPolicyId')
+        if m.get('ConditionalAccessPolicyName') is not None:
+            self.conditional_access_policy_name = m.get('ConditionalAccessPolicyName')
+        if m.get('ConditionsConfig') is not None:
+            temp_model = UpdateConditionalAccessPolicyRequestConditionsConfig()
+            self.conditions_config = temp_model.from_map(m['ConditionsConfig'])
+        if m.get('DecisionConfig') is not None:
+            temp_model = UpdateConditionalAccessPolicyRequestDecisionConfig()
+            self.decision_config = temp_model.from_map(m['DecisionConfig'])
+        if m.get('DecisionType') is not None:
+            self.decision_type = m.get('DecisionType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        return self
+
+
+class UpdateConditionalAccessPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateConditionalAccessPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateConditionalAccessPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateConditionalAccessPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateConditionalAccessPolicyDescriptionRequest(TeaModel):
+    def __init__(
+        self,
+        conditional_access_policy_id: str = None,
+        description: str = None,
+        instance_id: str = None,
+    ):
+        # Conditional Access Policy ID
+        # 
+        # This parameter is required.
+        self.conditional_access_policy_id = conditional_access_policy_id
+        # Description of the conditional access policy
+        # 
+        # This parameter is required.
+        self.description = description
+        # Instance ID.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.conditional_access_policy_id is not None:
+            result['ConditionalAccessPolicyId'] = self.conditional_access_policy_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConditionalAccessPolicyId') is not None:
+            self.conditional_access_policy_id = m.get('ConditionalAccessPolicyId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class UpdateConditionalAccessPolicyDescriptionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateConditionalAccessPolicyDescriptionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateConditionalAccessPolicyDescriptionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateConditionalAccessPolicyDescriptionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
