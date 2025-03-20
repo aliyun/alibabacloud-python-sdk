@@ -4921,6 +4921,8 @@ class Client(OpenApiClient):
             query['OriginVerify'] = request.origin_verify
         if not UtilClient.is_unset(request.range):
             query['Range'] = request.range
+        if not UtilClient.is_unset(request.range_chunk_size):
+            query['RangeChunkSize'] = request.range_chunk_size
         if not UtilClient.is_unset(request.rule):
             query['Rule'] = request.rule
         if not UtilClient.is_unset(request.rule_enable):
@@ -4988,6 +4990,8 @@ class Client(OpenApiClient):
             query['OriginVerify'] = request.origin_verify
         if not UtilClient.is_unset(request.range):
             query['Range'] = request.range
+        if not UtilClient.is_unset(request.range_chunk_size):
+            query['RangeChunkSize'] = request.range_chunk_size
         if not UtilClient.is_unset(request.rule):
             query['Rule'] = request.rule
         if not UtilClient.is_unset(request.rule_enable):
@@ -31155,6 +31159,8 @@ class Client(OpenApiClient):
             query['OriginVerify'] = request.origin_verify
         if not UtilClient.is_unset(request.range):
             query['Range'] = request.range
+        if not UtilClient.is_unset(request.range_chunk_size):
+            query['RangeChunkSize'] = request.range_chunk_size
         if not UtilClient.is_unset(request.rule):
             query['Rule'] = request.rule
         if not UtilClient.is_unset(request.rule_enable):
@@ -31222,6 +31228,8 @@ class Client(OpenApiClient):
             query['OriginVerify'] = request.origin_verify
         if not UtilClient.is_unset(request.range):
             query['Range'] = request.range
+        if not UtilClient.is_unset(request.range_chunk_size):
+            query['RangeChunkSize'] = request.range_chunk_size
         if not UtilClient.is_unset(request.rule):
             query['Rule'] = request.rule
         if not UtilClient.is_unset(request.rule_enable):

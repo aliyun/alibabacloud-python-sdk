@@ -1,3 +1,10 @@
+2025-03-20 Version: 2.17.1
+- Update API CreateOriginRule: add param RangeChunkSize.
+- Update API GetOriginRule: update response param.
+- Update API ListOriginRules: update response param.
+- Update API UpdateOriginRule: add param RangeChunkSize.
+
+
 2025-03-20 Version: 2.17.0
 - Support API GetEdgeContainerAppResourceReserve.
 - Support API PurchaseCacheReserve.

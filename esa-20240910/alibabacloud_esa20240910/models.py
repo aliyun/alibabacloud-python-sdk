@@ -9665,6 +9665,7 @@ class CreateOriginRuleRequest(TeaModel):
         origin_sni: str = None,
         origin_verify: str = None,
         range: str = None,
+        range_chunk_size: str = None,
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
@@ -9699,6 +9700,7 @@ class CreateOriginRuleRequest(TeaModel):
         # - off: Disable
         # - force: Force
         self.range = range
+        self.range_chunk_size = range_chunk_size
         # Rule content, using conditional expressions to match user requests. This parameter is not required when adding global configurations. There are two usage scenarios:
         # - Match all incoming requests: Set the value to true
         # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
@@ -9743,6 +9745,8 @@ class CreateOriginRuleRequest(TeaModel):
             result['OriginVerify'] = self.origin_verify
         if self.range is not None:
             result['Range'] = self.range
+        if self.range_chunk_size is not None:
+            result['RangeChunkSize'] = self.range_chunk_size
         if self.rule is not None:
             result['Rule'] = self.rule
         if self.rule_enable is not None:
@@ -9775,6 +9779,8 @@ class CreateOriginRuleRequest(TeaModel):
             self.origin_verify = m.get('OriginVerify')
         if m.get('Range') is not None:
             self.range = m.get('Range')
+        if m.get('RangeChunkSize') is not None:
+            self.range_chunk_size = m.get('RangeChunkSize')
         if m.get('Rule') is not None:
             self.rule = m.get('Rule')
         if m.get('RuleEnable') is not None:
@@ -29744,6 +29750,7 @@ class GetOriginRuleResponseBody(TeaModel):
         origin_sni: str = None,
         origin_verify: str = None,
         range: str = None,
+        range_chunk_size: str = None,
         request_id: str = None,
         rule: str = None,
         rule_enable: str = None,
@@ -29788,6 +29795,7 @@ class GetOriginRuleResponseBody(TeaModel):
         # - off: Disable.
         # - force: Force.
         self.range = range
+        self.range_chunk_size = range_chunk_size
         # Request ID.
         self.request_id = request_id
         # Rule content, using conditional expressions to match user requests. This parameter does not need to be set when adding a global configuration. There are two usage scenarios:
@@ -29836,6 +29844,8 @@ class GetOriginRuleResponseBody(TeaModel):
             result['OriginVerify'] = self.origin_verify
         if self.range is not None:
             result['Range'] = self.range
+        if self.range_chunk_size is not None:
+            result['RangeChunkSize'] = self.range_chunk_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.rule is not None:
@@ -29874,6 +29884,8 @@ class GetOriginRuleResponseBody(TeaModel):
             self.origin_verify = m.get('OriginVerify')
         if m.get('Range') is not None:
             self.range = m.get('Range')
+        if m.get('RangeChunkSize') is not None:
+            self.range_chunk_size = m.get('RangeChunkSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Rule') is not None:
@@ -43535,6 +43547,7 @@ class ListOriginRulesResponseBodyConfigs(TeaModel):
         origin_sni: str = None,
         origin_verify: str = None,
         range: str = None,
+        range_chunk_size: str = None,
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
@@ -43575,6 +43588,7 @@ class ListOriginRulesResponseBodyConfigs(TeaModel):
         # - off: Disable
         # - force: Force
         self.range = range
+        self.range_chunk_size = range_chunk_size
         # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
         # - Match all incoming requests: Set the value to true
         # - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
@@ -43621,6 +43635,8 @@ class ListOriginRulesResponseBodyConfigs(TeaModel):
             result['OriginVerify'] = self.origin_verify
         if self.range is not None:
             result['Range'] = self.range
+        if self.range_chunk_size is not None:
+            result['RangeChunkSize'] = self.range_chunk_size
         if self.rule is not None:
             result['Rule'] = self.rule
         if self.rule_enable is not None:
@@ -43657,6 +43673,8 @@ class ListOriginRulesResponseBodyConfigs(TeaModel):
             self.origin_verify = m.get('OriginVerify')
         if m.get('Range') is not None:
             self.range = m.get('Range')
+        if m.get('RangeChunkSize') is not None:
+            self.range_chunk_size = m.get('RangeChunkSize')
         if m.get('Rule') is not None:
             self.rule = m.get('Rule')
         if m.get('RuleEnable') is not None:
@@ -57504,6 +57522,7 @@ class UpdateOriginRuleRequest(TeaModel):
         origin_sni: str = None,
         origin_verify: str = None,
         range: str = None,
+        range_chunk_size: str = None,
         rule: str = None,
         rule_enable: str = None,
         rule_name: str = None,
@@ -57541,6 +57560,7 @@ class UpdateOriginRuleRequest(TeaModel):
         # - off: Disable.
         # - force: Force.
         self.range = range
+        self.range_chunk_size = range_chunk_size
         # Rule content, used to match user requests with conditional expressions. This parameter is not required when adding a global configuration. There are two usage scenarios:
         # - Match all incoming requests: Set the value to true
         # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
@@ -57585,6 +57605,8 @@ class UpdateOriginRuleRequest(TeaModel):
             result['OriginVerify'] = self.origin_verify
         if self.range is not None:
             result['Range'] = self.range
+        if self.range_chunk_size is not None:
+            result['RangeChunkSize'] = self.range_chunk_size
         if self.rule is not None:
             result['Rule'] = self.rule
         if self.rule_enable is not None:
@@ -57617,6 +57639,8 @@ class UpdateOriginRuleRequest(TeaModel):
             self.origin_verify = m.get('OriginVerify')
         if m.get('Range') is not None:
             self.range = m.get('Range')
+        if m.get('RangeChunkSize') is not None:
+            self.range_chunk_size = m.get('RangeChunkSize')
         if m.get('Rule') is not None:
             self.rule = m.get('Rule')
         if m.get('RuleEnable') is not None:
