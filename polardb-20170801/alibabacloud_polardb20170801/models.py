@@ -10833,6 +10833,7 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         ai_creating_time: str = None,
         ai_type: str = None,
         architecture: str = None,
+        auto_upgrade_minor_version: str = None,
         blktag_total: int = None,
         blktag_used: int = None,
         bursting_enabled: str = None,
@@ -10907,6 +10908,7 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         # - **X86**\
         # - **ARM**\
         self.architecture = architecture
+        self.auto_upgrade_minor_version = auto_upgrade_minor_version
         # Maximum number of blktags in the file system.
         self.blktag_total = blktag_total
         # Current blktag usage.
@@ -11138,6 +11140,8 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             result['AiType'] = self.ai_type
         if self.architecture is not None:
             result['Architecture'] = self.architecture
+        if self.auto_upgrade_minor_version is not None:
+            result['AutoUpgradeMinorVersion'] = self.auto_upgrade_minor_version
         if self.blktag_total is not None:
             result['BlktagTotal'] = self.blktag_total
         if self.blktag_used is not None:
@@ -11276,6 +11280,8 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             self.ai_type = m.get('AiType')
         if m.get('Architecture') is not None:
             self.architecture = m.get('Architecture')
+        if m.get('AutoUpgradeMinorVersion') is not None:
+            self.auto_upgrade_minor_version = m.get('AutoUpgradeMinorVersion')
         if m.get('BlktagTotal') is not None:
             self.blktag_total = m.get('BlktagTotal')
         if m.get('BlktagUsed') is not None:

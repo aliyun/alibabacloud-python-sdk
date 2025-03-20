@@ -1,3 +1,7 @@
+2025-03-20 Version: 5.5.3
+- Update API DescribeDBClusterAttribute: update response param.
+
+
 2025-03-15 Version: 5.5.2
 - Generated python 2017-08-01 for polardb.
 
