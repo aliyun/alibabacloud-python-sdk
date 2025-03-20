@@ -7791,6 +7791,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.plan_type):
+            query['PlanType'] = request.plan_type
         if not UtilClient.is_unset(request.public_ip_addresses):
             query['PublicIpAddresses'] = request.public_ip_addresses
         if not UtilClient.is_unset(request.region_id):
@@ -7852,6 +7854,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.plan_type):
+            query['PlanType'] = request.plan_type
         if not UtilClient.is_unset(request.public_ip_addresses):
             query['PublicIpAddresses'] = request.public_ip_addresses
         if not UtilClient.is_unset(request.region_id):

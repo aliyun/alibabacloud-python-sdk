@@ -12404,6 +12404,7 @@ class ListInstancesRequest(TeaModel):
         instance_name: str = None,
         page_number: int = None,
         page_size: int = None,
+        plan_type: str = None,
         public_ip_addresses: str = None,
         region_id: str = None,
         resource_group_id: str = None,
@@ -12428,6 +12429,7 @@ class ListInstancesRequest(TeaModel):
         # 
         # Default value: 10.
         self.page_size = page_size
+        self.plan_type = plan_type
         # The public IP addresses of the simple application servers. The value can be a JSON array that consists of up to 100 IP addresses. Separate multiple IP addresses with commas (,).
         # 
         # > If you specify both `InstanceIds` and `PublicIpAddresses`, make sure that the specified IDs and the specified public IP addresses belong to the same simple application servers. Otherwise, an empty result is returned.
@@ -12474,6 +12476,8 @@ class ListInstancesRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.plan_type is not None:
+            result['PlanType'] = self.plan_type
         if self.public_ip_addresses is not None:
             result['PublicIpAddresses'] = self.public_ip_addresses
         if self.region_id is not None:
@@ -12500,6 +12504,8 @@ class ListInstancesRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('PlanType') is not None:
+            self.plan_type = m.get('PlanType')
         if m.get('PublicIpAddresses') is not None:
             self.public_ip_addresses = m.get('PublicIpAddresses')
         if m.get('RegionId') is not None:
@@ -12921,6 +12927,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         instance_name: str = None,
         network_attributes: List[ListInstancesResponseBodyInstancesNetworkAttributes] = None,
         plan_id: str = None,
+        plan_type: str = None,
         public_ip_address: str = None,
         region_id: str = None,
         resource_group_id: str = None,
@@ -12972,6 +12979,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         self.network_attributes = network_attributes
         # The ID of the instance plan.
         self.plan_id = plan_id
+        self.plan_type = plan_type
         # The public IP address.
         self.public_ip_address = public_ip_address
         # The region ID.
@@ -13056,6 +13064,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
                 result['NetworkAttributes'].append(k.to_map() if k else None)
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
+        if self.plan_type is not None:
+            result['PlanType'] = self.plan_type
         if self.public_ip_address is not None:
             result['PublicIpAddress'] = self.public_ip_address
         if self.region_id is not None:
@@ -13115,6 +13125,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
                 self.network_attributes.append(temp_model.from_map(k))
         if m.get('PlanId') is not None:
             self.plan_id = m.get('PlanId')
+        if m.get('PlanType') is not None:
+            self.plan_type = m.get('PlanType')
         if m.get('PublicIpAddress') is not None:
             self.public_ip_address = m.get('PublicIpAddress')
         if m.get('RegionId') is not None:
@@ -13664,6 +13676,45 @@ class ListPlansRequest(TeaModel):
         return self
 
 
+class ListPlansResponseBodyPlansTags(TeaModel):
+    def __init__(
+        self,
+        cn_title: str = None,
+        color: str = None,
+        en_title: str = None,
+    ):
+        self.cn_title = cn_title
+        self.color = color
+        self.en_title = en_title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cn_title is not None:
+            result['CnTitle'] = self.cn_title
+        if self.color is not None:
+            result['Color'] = self.color
+        if self.en_title is not None:
+            result['EnTitle'] = self.en_title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CnTitle') is not None:
+            self.cn_title = m.get('CnTitle')
+        if m.get('Color') is not None:
+            self.color = m.get('Color')
+        if m.get('EnTitle') is not None:
+            self.en_title = m.get('EnTitle')
+        return self
+
+
 class ListPlansResponseBodyPlans(TeaModel):
     def __init__(
         self,
@@ -13678,6 +13729,7 @@ class ListPlansResponseBodyPlans(TeaModel):
         plan_id: str = None,
         plan_type: str = None,
         support_platform: str = None,
+        tags: List[ListPlansResponseBodyPlansTags] = None,
     ):
         # The peak bandwidth. Unit: Mbit/s.
         self.bandwidth = bandwidth
@@ -13708,9 +13760,13 @@ class ListPlansResponseBodyPlans(TeaModel):
         self.plan_type = plan_type
         # The operating system types supported by the plan.
         self.support_platform = support_platform
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -13740,6 +13796,10 @@ class ListPlansResponseBodyPlans(TeaModel):
             result['PlanType'] = self.plan_type
         if self.support_platform is not None:
             result['SupportPlatform'] = self.support_platform
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -13766,6 +13826,11 @@ class ListPlansResponseBodyPlans(TeaModel):
             self.plan_type = m.get('PlanType')
         if m.get('SupportPlatform') is not None:
             self.support_platform = m.get('SupportPlatform')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListPlansResponseBodyPlansTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 

@@ -1,3 +1,9 @@
+2025-03-20 Version: 3.0.5
+- Update API ListInstances: add param PlanType.
+- Update API ListInstances: update response param.
+- Update API ListPlans: update response param.
+
+
 2025-03-14 Version: 3.0.4
 - Update API ListInstances: update response param.
 
