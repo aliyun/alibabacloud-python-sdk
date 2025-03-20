@@ -16151,12 +16151,14 @@ class DescribeVodStorageDataResponse(TeaModel):
 class DescribeVodTieringStorageDataRequest(TeaModel):
     def __init__(
         self,
+        app_id: str = None,
         end_time: str = None,
         owner_id: int = None,
         region: str = None,
         start_time: str = None,
         storage_class: str = None,
     ):
+        self.app_id = app_id
         # The end time at which data is obtained. The end time must be later than the start time. The difference cannot exceed 31 days. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         self.end_time = end_time
         self.owner_id = owner_id
@@ -16180,6 +16182,8 @@ class DescribeVodTieringStorageDataRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.owner_id is not None:
@@ -16194,6 +16198,8 @@ class DescribeVodTieringStorageDataRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('OwnerId') is not None:
@@ -16350,12 +16356,14 @@ class DescribeVodTieringStorageDataResponse(TeaModel):
 class DescribeVodTieringStorageRetrievalDataRequest(TeaModel):
     def __init__(
         self,
+        app_id: str = None,
         end_time: str = None,
         owner_id: int = None,
         region: str = None,
         start_time: str = None,
         storage_class: str = None,
     ):
+        self.app_id = app_id
         # The end of the time range to query. The end time must be later than the start time. The time range cannot exceed 31 days. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         self.end_time = end_time
         self.owner_id = owner_id
@@ -16379,6 +16387,8 @@ class DescribeVodTieringStorageRetrievalDataRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.owner_id is not None:
@@ -16393,6 +16403,8 @@ class DescribeVodTieringStorageRetrievalDataRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('OwnerId') is not None:
