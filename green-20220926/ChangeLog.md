@@ -1,3 +1,14 @@
+2025-03-20 Version: 1.1.1
+- Update API ExportCipStats: add param ExportType.
+- Update API ExportCipStats: add param ServiceCode.
+- Update API ExportCipStats: add param Type.
+- Update API GetCipStats: add param ServiceCode.
+- Update API GetCipStats: add param Type.
+- Update API GetCipStats: update response param.
+- Update API GetUserBuyStatus: add param CommodityCode.
+- Update API ListKeywordLibs: update response param.
+
+
 2024-10-22 Version: 1.2.0
 - Support API ExportOssCheckStat.
 - Support API GetOssCheckStat.

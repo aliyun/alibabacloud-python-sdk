@@ -61,6 +61,126 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_answer_sample_with_options(
+        self,
+        request: green_20220926_models.AddAnswerSampleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.AddAnswerSampleResponse:
+        """
+        @summary 添加代答样本
+        
+        @param request: AddAnswerSampleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddAnswerSampleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lib_id):
+            query['LibId'] = request.lib_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sample_object):
+            query['SampleObject'] = request.sample_object
+        if not UtilClient.is_unset(request.samples):
+            query['Samples'] = request.samples
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddAnswerSample',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.AddAnswerSampleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.AddAnswerSampleResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def add_answer_sample_with_options_async(
+        self,
+        request: green_20220926_models.AddAnswerSampleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.AddAnswerSampleResponse:
+        """
+        @summary 添加代答样本
+        
+        @param request: AddAnswerSampleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddAnswerSampleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lib_id):
+            query['LibId'] = request.lib_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sample_object):
+            query['SampleObject'] = request.sample_object
+        if not UtilClient.is_unset(request.samples):
+            query['Samples'] = request.samples
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddAnswerSample',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.AddAnswerSampleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.AddAnswerSampleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def add_answer_sample(
+        self,
+        request: green_20220926_models.AddAnswerSampleRequest,
+    ) -> green_20220926_models.AddAnswerSampleResponse:
+        """
+        @summary 添加代答样本
+        
+        @param request: AddAnswerSampleRequest
+        @return: AddAnswerSampleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_answer_sample_with_options(request, runtime)
+
+    async def add_answer_sample_async(
+        self,
+        request: green_20220926_models.AddAnswerSampleRequest,
+    ) -> green_20220926_models.AddAnswerSampleResponse:
+        """
+        @summary 添加代答样本
+        
+        @param request: AddAnswerSampleRequest
+        @return: AddAnswerSampleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_answer_sample_with_options_async(request, runtime)
+
     def add_image_lib_with_options(
         self,
         request: green_20220926_models.AddImageLibRequest,
@@ -97,10 +217,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.AddImageLibResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.AddImageLibResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.AddImageLibResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_image_lib_with_options_async(
         self,
@@ -138,10 +264,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.AddImageLibResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.AddImageLibResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.AddImageLibResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_image_lib(
         self,
@@ -205,10 +337,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.AddImages2LibResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.AddImages2LibResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.AddImages2LibResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_images_2lib_with_options_async(
         self,
@@ -246,10 +384,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.AddImages2LibResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.AddImages2LibResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.AddImages2LibResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_images_2lib(
         self,
@@ -315,10 +459,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.AddKeywordLibResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.AddKeywordLibResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.AddKeywordLibResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_keyword_lib_with_options_async(
         self,
@@ -358,10 +508,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.AddKeywordLibResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.AddKeywordLibResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.AddKeywordLibResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_keyword_lib(
         self,
@@ -427,10 +583,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.AddKeywordsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.AddKeywordsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.AddKeywordsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_keywords_with_options_async(
         self,
@@ -470,10 +632,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.AddKeywordsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.AddKeywordsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.AddKeywordsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_keywords(
         self,
@@ -539,10 +707,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.AddKeywordsToLibResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.AddKeywordsToLibResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.AddKeywordsToLibResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_keywords_to_lib_with_options_async(
         self,
@@ -582,10 +756,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.AddKeywordsToLibResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.AddKeywordsToLibResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.AddKeywordsToLibResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_keywords_to_lib(
         self,
@@ -645,10 +825,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.CancelStockOssCheckTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.CancelStockOssCheckTaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.CancelStockOssCheckTaskResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def cancel_stock_oss_check_task_with_options_async(
         self,
@@ -682,10 +868,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.CancelStockOssCheckTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.CancelStockOssCheckTaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.CancelStockOssCheckTaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def cancel_stock_oss_check_task(
         self,
@@ -753,10 +945,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.CopyServiceConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.CopyServiceConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.CopyServiceConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def copy_service_config_with_options_async(
         self,
@@ -798,10 +996,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.CopyServiceConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.CopyServiceConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.CopyServiceConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def copy_service_config(
         self,
@@ -909,10 +1113,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.CreatStockOssCheckTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.CreatStockOssCheckTaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.CreatStockOssCheckTaskResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def creat_stock_oss_check_task_with_options_async(
         self,
@@ -994,10 +1204,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.CreatStockOssCheckTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.CreatStockOssCheckTaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.CreatStockOssCheckTaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def creat_stock_oss_check_task(
         self,
@@ -1024,6 +1240,262 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.creat_stock_oss_check_task_with_options_async(request, runtime)
+
+    def create_answer_lib_with_options(
+        self,
+        request: green_20220926_models.CreateAnswerLibRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.CreateAnswerLibResponse:
+        """
+        @summary 创建代答库
+        
+        @param request: CreateAnswerLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAnswerLibResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.lib_name):
+            body['LibName'] = request.lib_name
+        if not UtilClient.is_unset(request.sample_bucket):
+            body['SampleBucket'] = request.sample_bucket
+        if not UtilClient.is_unset(request.sample_object):
+            body['SampleObject'] = request.sample_object
+        if not UtilClient.is_unset(request.samples):
+            body['Samples'] = request.samples
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAnswerLib',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.CreateAnswerLibResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.CreateAnswerLibResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_answer_lib_with_options_async(
+        self,
+        request: green_20220926_models.CreateAnswerLibRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.CreateAnswerLibResponse:
+        """
+        @summary 创建代答库
+        
+        @param request: CreateAnswerLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAnswerLibResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.lib_name):
+            body['LibName'] = request.lib_name
+        if not UtilClient.is_unset(request.sample_bucket):
+            body['SampleBucket'] = request.sample_bucket
+        if not UtilClient.is_unset(request.sample_object):
+            body['SampleObject'] = request.sample_object
+        if not UtilClient.is_unset(request.samples):
+            body['Samples'] = request.samples
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAnswerLib',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.CreateAnswerLibResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.CreateAnswerLibResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_answer_lib(
+        self,
+        request: green_20220926_models.CreateAnswerLibRequest,
+    ) -> green_20220926_models.CreateAnswerLibResponse:
+        """
+        @summary 创建代答库
+        
+        @param request: CreateAnswerLibRequest
+        @return: CreateAnswerLibResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_answer_lib_with_options(request, runtime)
+
+    async def create_answer_lib_async(
+        self,
+        request: green_20220926_models.CreateAnswerLibRequest,
+    ) -> green_20220926_models.CreateAnswerLibResponse:
+        """
+        @summary 创建代答库
+        
+        @param request: CreateAnswerLibRequest
+        @return: CreateAnswerLibResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_answer_lib_with_options_async(request, runtime)
+
+    def create_callback_with_options(
+        self,
+        request: green_20220926_models.CreateCallbackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.CreateCallbackResponse:
+        """
+        @summary 新建消息通知
+        
+        @param request: CreateCallbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCallbackResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.crypt_type):
+            body['CryptType'] = request.crypt_type
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.scope):
+            body['Scope'] = request.scope
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateCallback',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.CreateCallbackResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.CreateCallbackResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_callback_with_options_async(
+        self,
+        request: green_20220926_models.CreateCallbackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.CreateCallbackResponse:
+        """
+        @summary 新建消息通知
+        
+        @param request: CreateCallbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCallbackResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.crypt_type):
+            body['CryptType'] = request.crypt_type
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.scope):
+            body['Scope'] = request.scope
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateCallback',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.CreateCallbackResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.CreateCallbackResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_callback(
+        self,
+        request: green_20220926_models.CreateCallbackRequest,
+    ) -> green_20220926_models.CreateCallbackResponse:
+        """
+        @summary 新建消息通知
+        
+        @param request: CreateCallbackRequest
+        @return: CreateCallbackResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_callback_with_options(request, runtime)
+
+    async def create_callback_async(
+        self,
+        request: green_20220926_models.CreateCallbackRequest,
+    ) -> green_20220926_models.CreateCallbackResponse:
+        """
+        @summary 新建消息通知
+        
+        @param request: CreateCallbackRequest
+        @return: CreateCallbackResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_callback_with_options_async(request, runtime)
 
     def create_pre_check_with_options(
         self,
@@ -1083,10 +1555,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.CreatePreCheckResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.CreatePreCheckResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.CreatePreCheckResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_pre_check_with_options_async(
         self,
@@ -1146,10 +1624,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.CreatePreCheckResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.CreatePreCheckResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.CreatePreCheckResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_pre_check(
         self,
@@ -1176,6 +1660,354 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_pre_check_with_options_async(request, runtime)
+
+    def delete_answer_lib_with_options(
+        self,
+        request: green_20220926_models.DeleteAnswerLibRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.DeleteAnswerLibResponse:
+        """
+        @summary 删除代答库
+        
+        @param request: DeleteAnswerLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAnswerLibResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lib_id):
+            query['LibId'] = request.lib_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAnswerLib',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.DeleteAnswerLibResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.DeleteAnswerLibResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_answer_lib_with_options_async(
+        self,
+        request: green_20220926_models.DeleteAnswerLibRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.DeleteAnswerLibResponse:
+        """
+        @summary 删除代答库
+        
+        @param request: DeleteAnswerLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAnswerLibResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lib_id):
+            query['LibId'] = request.lib_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAnswerLib',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.DeleteAnswerLibResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.DeleteAnswerLibResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_answer_lib(
+        self,
+        request: green_20220926_models.DeleteAnswerLibRequest,
+    ) -> green_20220926_models.DeleteAnswerLibResponse:
+        """
+        @summary 删除代答库
+        
+        @param request: DeleteAnswerLibRequest
+        @return: DeleteAnswerLibResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_answer_lib_with_options(request, runtime)
+
+    async def delete_answer_lib_async(
+        self,
+        request: green_20220926_models.DeleteAnswerLibRequest,
+    ) -> green_20220926_models.DeleteAnswerLibResponse:
+        """
+        @summary 删除代答库
+        
+        @param request: DeleteAnswerLibRequest
+        @return: DeleteAnswerLibResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_answer_lib_with_options_async(request, runtime)
+
+    def delete_answer_sample_with_options(
+        self,
+        request: green_20220926_models.DeleteAnswerSampleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.DeleteAnswerSampleResponse:
+        """
+        @summary 删除代答答案
+        
+        @param request: DeleteAnswerSampleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAnswerSampleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.ids):
+            body['Ids'] = request.ids
+        if not UtilClient.is_unset(request.lib_id):
+            body['LibId'] = request.lib_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteAnswerSample',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.DeleteAnswerSampleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.DeleteAnswerSampleResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_answer_sample_with_options_async(
+        self,
+        request: green_20220926_models.DeleteAnswerSampleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.DeleteAnswerSampleResponse:
+        """
+        @summary 删除代答答案
+        
+        @param request: DeleteAnswerSampleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAnswerSampleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.ids):
+            body['Ids'] = request.ids
+        if not UtilClient.is_unset(request.lib_id):
+            body['LibId'] = request.lib_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteAnswerSample',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.DeleteAnswerSampleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.DeleteAnswerSampleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_answer_sample(
+        self,
+        request: green_20220926_models.DeleteAnswerSampleRequest,
+    ) -> green_20220926_models.DeleteAnswerSampleResponse:
+        """
+        @summary 删除代答答案
+        
+        @param request: DeleteAnswerSampleRequest
+        @return: DeleteAnswerSampleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_answer_sample_with_options(request, runtime)
+
+    async def delete_answer_sample_async(
+        self,
+        request: green_20220926_models.DeleteAnswerSampleRequest,
+    ) -> green_20220926_models.DeleteAnswerSampleResponse:
+        """
+        @summary 删除代答答案
+        
+        @param request: DeleteAnswerSampleRequest
+        @return: DeleteAnswerSampleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_answer_sample_with_options_async(request, runtime)
+
+    def delete_callback_with_options(
+        self,
+        request: green_20220926_models.DeleteCallbackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.DeleteCallbackResponse:
+        """
+        @summary 删除消息通知
+        
+        @param request: DeleteCallbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCallbackResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteCallback',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.DeleteCallbackResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.DeleteCallbackResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_callback_with_options_async(
+        self,
+        request: green_20220926_models.DeleteCallbackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.DeleteCallbackResponse:
+        """
+        @summary 删除消息通知
+        
+        @param request: DeleteCallbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCallbackResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteCallback',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.DeleteCallbackResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.DeleteCallbackResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_callback(
+        self,
+        request: green_20220926_models.DeleteCallbackRequest,
+    ) -> green_20220926_models.DeleteCallbackResponse:
+        """
+        @summary 删除消息通知
+        
+        @param request: DeleteCallbackRequest
+        @return: DeleteCallbackResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_callback_with_options(request, runtime)
+
+    async def delete_callback_async(
+        self,
+        request: green_20220926_models.DeleteCallbackRequest,
+    ) -> green_20220926_models.DeleteCallbackResponse:
+        """
+        @summary 删除消息通知
+        
+        @param request: DeleteCallbackRequest
+        @return: DeleteCallbackResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_callback_with_options_async(request, runtime)
 
     def delete_images_from_lib_with_options(
         self,
@@ -1213,10 +2045,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.DeleteImagesFromLibResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.DeleteImagesFromLibResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.DeleteImagesFromLibResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_images_from_lib_with_options_async(
         self,
@@ -1254,10 +2092,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.DeleteImagesFromLibResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.DeleteImagesFromLibResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.DeleteImagesFromLibResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_images_from_lib(
         self,
@@ -1323,10 +2167,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.DeleteKeywordResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.DeleteKeywordResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.DeleteKeywordResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_keyword_with_options_async(
         self,
@@ -1366,10 +2216,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.DeleteKeywordResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.DeleteKeywordResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.DeleteKeywordResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_keyword(
         self,
@@ -1431,10 +2287,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.DeleteKeywordLibResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.DeleteKeywordLibResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.DeleteKeywordLibResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_keyword_lib_with_options_async(
         self,
@@ -1470,10 +2332,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.DeleteKeywordLibResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.DeleteKeywordLibResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.DeleteKeywordLibResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_keyword_lib(
         self,
@@ -1501,6 +2369,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_keyword_lib_with_options_async(request, runtime)
 
+    def export_answer_sample_with_options(
+        self,
+        request: green_20220926_models.ExportAnswerSampleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.ExportAnswerSampleResponse:
+        """
+        @summary 导出代答答案
+        
+        @param request: ExportAnswerSampleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportAnswerSampleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.lib_id):
+            body['LibId'] = request.lib_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportAnswerSample',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ExportAnswerSampleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ExportAnswerSampleResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def export_answer_sample_with_options_async(
+        self,
+        request: green_20220926_models.ExportAnswerSampleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.ExportAnswerSampleResponse:
+        """
+        @summary 导出代答答案
+        
+        @param request: ExportAnswerSampleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportAnswerSampleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.lib_id):
+            body['LibId'] = request.lib_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportAnswerSample',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ExportAnswerSampleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ExportAnswerSampleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def export_answer_sample(
+        self,
+        request: green_20220926_models.ExportAnswerSampleRequest,
+    ) -> green_20220926_models.ExportAnswerSampleResponse:
+        """
+        @summary 导出代答答案
+        
+        @param request: ExportAnswerSampleRequest
+        @return: ExportAnswerSampleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.export_answer_sample_with_options(request, runtime)
+
+    async def export_answer_sample_async(
+        self,
+        request: green_20220926_models.ExportAnswerSampleRequest,
+    ) -> green_20220926_models.ExportAnswerSampleResponse:
+        """
+        @summary 导出代答答案
+        
+        @param request: ExportAnswerSampleRequest
+        @return: ExportAnswerSampleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.export_answer_sample_with_options_async(request, runtime)
+
     def export_cip_stats_with_options(
         self,
         request: green_20220926_models.ExportCipStatsRequest,
@@ -1522,14 +2506,20 @@ class Client(OpenApiClient):
             body['ByMonth'] = request.by_month
         if not UtilClient.is_unset(request.end_date):
             body['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.export_type):
+            body['ExportType'] = request.export_type
         if not UtilClient.is_unset(request.label):
             body['Label'] = request.label
         if not UtilClient.is_unset(request.resource_type):
             body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
         if not UtilClient.is_unset(request.start_date):
             body['StartDate'] = request.start_date
         if not UtilClient.is_unset(request.sub_uid):
             body['SubUid'] = request.sub_uid
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1545,10 +2535,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.ExportCipStatsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ExportCipStatsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ExportCipStatsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def export_cip_stats_with_options_async(
         self,
@@ -1571,14 +2567,20 @@ class Client(OpenApiClient):
             body['ByMonth'] = request.by_month
         if not UtilClient.is_unset(request.end_date):
             body['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.export_type):
+            body['ExportType'] = request.export_type
         if not UtilClient.is_unset(request.label):
             body['Label'] = request.label
         if not UtilClient.is_unset(request.resource_type):
             body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
         if not UtilClient.is_unset(request.start_date):
             body['StartDate'] = request.start_date
         if not UtilClient.is_unset(request.sub_uid):
             body['SubUid'] = request.sub_uid
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1594,10 +2596,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.ExportCipStatsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ExportCipStatsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ExportCipStatsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def export_cip_stats(
         self,
@@ -1659,10 +2667,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.ExportKeywordResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ExportKeywordResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ExportKeywordResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def export_keyword_with_options_async(
         self,
@@ -1698,10 +2712,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.ExportKeywordResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ExportKeywordResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ExportKeywordResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def export_keyword(
         self,
@@ -1769,10 +2789,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.ExportOssCheckStatResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ExportOssCheckStatResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ExportOssCheckStatResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def export_oss_check_stat_with_options_async(
         self,
@@ -1814,10 +2840,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.ExportOssCheckStatResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ExportOssCheckStatResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ExportOssCheckStatResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def export_oss_check_stat(
         self,
@@ -1893,10 +2925,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.ExportResultResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ExportResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ExportResultResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def export_result_with_options_async(
         self,
@@ -1946,10 +2984,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.ExportResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ExportResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ExportResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def export_result(
         self,
@@ -2029,10 +3073,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.ExportScanResultResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ExportScanResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ExportScanResultResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def export_scan_result_with_options_async(
         self,
@@ -2086,10 +3136,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.ExportScanResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ExportScanResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ExportScanResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def export_scan_result(
         self,
@@ -2159,10 +3215,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.ExportTextScanResultResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ExportTextScanResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ExportTextScanResultResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def export_text_scan_result_with_options_async(
         self,
@@ -2206,10 +3268,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.ExportTextScanResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ExportTextScanResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ExportTextScanResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def export_text_scan_result(
         self,
@@ -2236,6 +3304,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.export_text_scan_result_with_options_async(request, runtime)
+
+    def get_answer_import_progress_with_options(
+        self,
+        request: green_20220926_models.GetAnswerImportProgressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.GetAnswerImportProgressResponse:
+        """
+        @summary 获取代答样本导入进度
+        
+        @param request: GetAnswerImportProgressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAnswerImportProgressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAnswerImportProgress',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetAnswerImportProgressResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetAnswerImportProgressResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_answer_import_progress_with_options_async(
+        self,
+        request: green_20220926_models.GetAnswerImportProgressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.GetAnswerImportProgressResponse:
+        """
+        @summary 获取代答样本导入进度
+        
+        @param request: GetAnswerImportProgressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAnswerImportProgressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAnswerImportProgress',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetAnswerImportProgressResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetAnswerImportProgressResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_answer_import_progress(
+        self,
+        request: green_20220926_models.GetAnswerImportProgressRequest,
+    ) -> green_20220926_models.GetAnswerImportProgressResponse:
+        """
+        @summary 获取代答样本导入进度
+        
+        @param request: GetAnswerImportProgressRequest
+        @return: GetAnswerImportProgressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_answer_import_progress_with_options(request, runtime)
+
+    async def get_answer_import_progress_async(
+        self,
+        request: green_20220926_models.GetAnswerImportProgressRequest,
+    ) -> green_20220926_models.GetAnswerImportProgressResponse:
+        """
+        @summary 获取代答样本导入进度
+        
+        @param request: GetAnswerImportProgressRequest
+        @return: GetAnswerImportProgressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_answer_import_progress_with_options_async(request, runtime)
 
     def get_backup_buckets_list_with_options(
         self,
@@ -2267,10 +3447,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetBackupBucketsListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetBackupBucketsListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetBackupBucketsListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_backup_buckets_list_with_options_async(
         self,
@@ -2302,10 +3488,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetBackupBucketsListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetBackupBucketsListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetBackupBucketsListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_backup_buckets_list(
         self,
@@ -2367,10 +3559,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetBackupConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetBackupConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetBackupConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_backup_config_with_options_async(
         self,
@@ -2406,10 +3604,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetBackupConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetBackupConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetBackupConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_backup_config(
         self,
@@ -2467,10 +3671,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetBackupStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetBackupStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetBackupStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_backup_status_with_options_async(
         self,
@@ -2502,10 +3712,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetBackupStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetBackupStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetBackupStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_backup_status(
         self,
@@ -2563,10 +3779,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetBucketsListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetBucketsListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetBucketsListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_buckets_list_with_options_async(
         self,
@@ -2598,10 +3820,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetBucketsListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetBucketsListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetBucketsListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_buckets_list(
         self,
@@ -2645,6 +3873,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         body = {}
         if not UtilClient.is_unset(request.by_month):
             body['ByMonth'] = request.by_month
@@ -2673,10 +3905,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetCipStatsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetCipStatsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetCipStatsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_cip_stats_with_options_async(
         self,
@@ -2694,6 +3932,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         body = {}
         if not UtilClient.is_unset(request.by_month):
             body['ByMonth'] = request.by_month
@@ -2722,10 +3964,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetCipStatsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetCipStatsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetCipStatsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_cip_stats(
         self,
@@ -2783,10 +4031,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetExecuteTimeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetExecuteTimeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetExecuteTimeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_execute_time_with_options_async(
         self,
@@ -2818,10 +4072,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetExecuteTimeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetExecuteTimeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetExecuteTimeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_execute_time(
         self,
@@ -2848,6 +4108,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_execute_time_with_options_async(request, runtime)
+
+    def get_image_scene_label_conf_with_options(
+        self,
+        request: green_20220926_models.GetImageSceneLabelConfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.GetImageSceneLabelConfResponse:
+        """
+        @summary 获取图片规则标签信息
+        
+        @param request: GetImageSceneLabelConfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetImageSceneLabelConfResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetImageSceneLabelConf',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetImageSceneLabelConfResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetImageSceneLabelConfResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_image_scene_label_conf_with_options_async(
+        self,
+        request: green_20220926_models.GetImageSceneLabelConfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.GetImageSceneLabelConfResponse:
+        """
+        @summary 获取图片规则标签信息
+        
+        @param request: GetImageSceneLabelConfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetImageSceneLabelConfResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetImageSceneLabelConf',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetImageSceneLabelConfResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetImageSceneLabelConfResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_image_scene_label_conf(
+        self,
+        request: green_20220926_models.GetImageSceneLabelConfRequest,
+    ) -> green_20220926_models.GetImageSceneLabelConfResponse:
+        """
+        @summary 获取图片规则标签信息
+        
+        @param request: GetImageSceneLabelConfRequest
+        @return: GetImageSceneLabelConfResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_image_scene_label_conf_with_options(request, runtime)
+
+    async def get_image_scene_label_conf_async(
+        self,
+        request: green_20220926_models.GetImageSceneLabelConfRequest,
+    ) -> green_20220926_models.GetImageSceneLabelConfResponse:
+        """
+        @summary 获取图片规则标签信息
+        
+        @param request: GetImageSceneLabelConfRequest
+        @return: GetImageSceneLabelConfResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_image_scene_label_conf_with_options_async(request, runtime)
 
     def get_image_scene_label_list_conf_with_options(
         self,
@@ -2881,10 +4249,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetImageSceneLabelListConfResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetImageSceneLabelListConfResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetImageSceneLabelListConfResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_image_scene_label_list_conf_with_options_async(
         self,
@@ -2918,10 +4292,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetImageSceneLabelListConfResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetImageSceneLabelListConfResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetImageSceneLabelListConfResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_image_scene_label_list_conf(
         self,
@@ -2991,10 +4371,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetJobNameListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetJobNameListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetJobNameListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_job_name_list_with_options_async(
         self,
@@ -3038,10 +4424,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetJobNameListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetJobNameListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetJobNameListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_job_name_list(
         self,
@@ -3103,10 +4495,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetKeywordImportResultResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetKeywordImportResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetKeywordImportResultResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_keyword_import_result_with_options_async(
         self,
@@ -3142,10 +4540,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetKeywordImportResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetKeywordImportResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetKeywordImportResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_keyword_import_result(
         self,
@@ -3172,6 +4576,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_keyword_import_result_with_options_async(request, runtime)
+
+    def get_keyword_lib_with_options(
+        self,
+        request: green_20220926_models.GetKeywordLibRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.GetKeywordLibResponse:
+        """
+        @summary 关键词库信息
+        
+        @param request: GetKeywordLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetKeywordLibResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.lib_id):
+            body['LibId'] = request.lib_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetKeywordLib',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetKeywordLibResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetKeywordLibResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_keyword_lib_with_options_async(
+        self,
+        request: green_20220926_models.GetKeywordLibRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.GetKeywordLibResponse:
+        """
+        @summary 关键词库信息
+        
+        @param request: GetKeywordLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetKeywordLibResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.lib_id):
+            body['LibId'] = request.lib_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetKeywordLib',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetKeywordLibResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetKeywordLibResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_keyword_lib(
+        self,
+        request: green_20220926_models.GetKeywordLibRequest,
+    ) -> green_20220926_models.GetKeywordLibResponse:
+        """
+        @summary 关键词库信息
+        
+        @param request: GetKeywordLibRequest
+        @return: GetKeywordLibResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_keyword_lib_with_options(request, runtime)
+
+    async def get_keyword_lib_async(
+        self,
+        request: green_20220926_models.GetKeywordLibRequest,
+    ) -> green_20220926_models.GetKeywordLibResponse:
+        """
+        @summary 关键词库信息
+        
+        @param request: GetKeywordLibRequest
+        @return: GetKeywordLibResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_keyword_lib_with_options_async(request, runtime)
 
     def get_oss_check_stat_with_options(
         self,
@@ -3213,10 +4733,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetOssCheckStatResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetOssCheckStatResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetOssCheckStatResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_oss_check_stat_with_options_async(
         self,
@@ -3258,10 +4784,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetOssCheckStatResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetOssCheckStatResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetOssCheckStatResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_oss_check_stat(
         self,
@@ -3319,10 +4851,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetOssCheckStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetOssCheckStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetOssCheckStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_oss_check_status_with_options_async(
         self,
@@ -3354,10 +4892,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetOssCheckStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetOssCheckStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetOssCheckStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_oss_check_status(
         self,
@@ -3419,10 +4963,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetScanNumResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetScanNumResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetScanNumResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_scan_num_with_options_async(
         self,
@@ -3458,10 +5008,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetScanNumResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetScanNumResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetScanNumResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_scan_num(
         self,
@@ -3541,10 +5097,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetScanResultResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetScanResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetScanResultResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_scan_result_with_options_async(
         self,
@@ -3598,10 +5160,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetScanResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetScanResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetScanResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_scan_result(
         self,
@@ -3669,10 +5237,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetServiceConfResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetServiceConfResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetServiceConfResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_service_conf_with_options_async(
         self,
@@ -3714,10 +5288,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetServiceConfResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetServiceConfResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetServiceConfResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_service_conf(
         self,
@@ -3781,10 +5361,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetServiceConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetServiceConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetServiceConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_service_config_with_options_async(
         self,
@@ -3822,10 +5408,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetServiceConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetServiceConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetServiceConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_service_config(
         self,
@@ -3889,10 +5481,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetServiceLabelConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetServiceLabelConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetServiceLabelConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_service_label_config_with_options_async(
         self,
@@ -3930,10 +5528,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetServiceLabelConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetServiceLabelConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetServiceLabelConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_service_label_config(
         self,
@@ -4013,10 +5617,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetStockOssCheckTasksListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetStockOssCheckTasksListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetStockOssCheckTasksListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_stock_oss_check_tasks_list_with_options_async(
         self,
@@ -4070,10 +5680,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetStockOssCheckTasksListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetStockOssCheckTasksListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetStockOssCheckTasksListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_stock_oss_check_tasks_list(
         self,
@@ -4151,10 +5767,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetTextScanResultResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetTextScanResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetTextScanResultResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_text_scan_result_with_options_async(
         self,
@@ -4206,10 +5828,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetTextScanResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetTextScanResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetTextScanResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_text_scan_result(
         self,
@@ -4273,10 +5901,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetUploadInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetUploadInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetUploadInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_upload_info_with_options_async(
         self,
@@ -4314,10 +5948,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetUploadInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetUploadInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetUploadInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_upload_info(
         self,
@@ -4361,8 +6001,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.commodity_code):
+            body['CommodityCode'] = request.commodity_code
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetUserBuyStatus',
@@ -4375,10 +6019,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetUserBuyStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetUserBuyStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetUserBuyStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_user_buy_status_with_options_async(
         self,
@@ -4396,8 +6046,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.commodity_code):
+            body['CommodityCode'] = request.commodity_code
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetUserBuyStatus',
@@ -4410,10 +6064,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.GetUserBuyStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.GetUserBuyStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.GetUserBuyStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_user_buy_status(
         self,
@@ -4440,6 +6100,222 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_user_buy_status_with_options_async(request, runtime)
+
+    def list_answer_lib_with_options(
+        self,
+        request: green_20220926_models.ListAnswerLibRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.ListAnswerLibResponse:
+        """
+        @summary 代答库列表
+        
+        @param request: ListAnswerLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAnswerLibResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAnswerLib',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ListAnswerLibResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ListAnswerLibResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_answer_lib_with_options_async(
+        self,
+        request: green_20220926_models.ListAnswerLibRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.ListAnswerLibResponse:
+        """
+        @summary 代答库列表
+        
+        @param request: ListAnswerLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAnswerLibResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAnswerLib',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ListAnswerLibResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ListAnswerLibResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_answer_lib(
+        self,
+        request: green_20220926_models.ListAnswerLibRequest,
+    ) -> green_20220926_models.ListAnswerLibResponse:
+        """
+        @summary 代答库列表
+        
+        @param request: ListAnswerLibRequest
+        @return: ListAnswerLibResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_answer_lib_with_options(request, runtime)
+
+    async def list_answer_lib_async(
+        self,
+        request: green_20220926_models.ListAnswerLibRequest,
+    ) -> green_20220926_models.ListAnswerLibResponse:
+        """
+        @summary 代答库列表
+        
+        @param request: ListAnswerLibRequest
+        @return: ListAnswerLibResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_answer_lib_with_options_async(request, runtime)
+
+    def list_callback_with_options(
+        self,
+        request: green_20220926_models.ListCallbackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.ListCallbackResponse:
+        """
+        @summary 消息通知列表
+        
+        @param request: ListCallbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCallbackResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCallback',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ListCallbackResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ListCallbackResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_callback_with_options_async(
+        self,
+        request: green_20220926_models.ListCallbackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.ListCallbackResponse:
+        """
+        @summary 消息通知列表
+        
+        @param request: ListCallbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCallbackResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCallback',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ListCallbackResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ListCallbackResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_callback(
+        self,
+        request: green_20220926_models.ListCallbackRequest,
+    ) -> green_20220926_models.ListCallbackResponse:
+        """
+        @summary 消息通知列表
+        
+        @param request: ListCallbackRequest
+        @return: ListCallbackResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_callback_with_options(request, runtime)
+
+    async def list_callback_async(
+        self,
+        request: green_20220926_models.ListCallbackRequest,
+    ) -> green_20220926_models.ListCallbackResponse:
+        """
+        @summary 消息通知列表
+        
+        @param request: ListCallbackRequest
+        @return: ListCallbackResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_callback_with_options_async(request, runtime)
 
     def list_image_lib_with_options(
         self,
@@ -4471,10 +6347,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.ListImageLibResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ListImageLibResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ListImageLibResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_image_lib_with_options_async(
         self,
@@ -4506,10 +6388,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.ListImageLibResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ListImageLibResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ListImageLibResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_image_lib(
         self,
@@ -4587,10 +6475,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.ListImagesFromLibResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ListImagesFromLibResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ListImagesFromLibResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_images_from_lib_with_options_async(
         self,
@@ -4642,10 +6536,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.ListImagesFromLibResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ListImagesFromLibResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ListImagesFromLibResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_images_from_lib(
         self,
@@ -4703,10 +6603,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.ListKeywordLibsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ListKeywordLibsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ListKeywordLibsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_keyword_libs_with_options_async(
         self,
@@ -4738,10 +6644,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.ListKeywordLibsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ListKeywordLibsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ListKeywordLibsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_keyword_libs(
         self,
@@ -4815,10 +6727,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.ListKeywordsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ListKeywordsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ListKeywordsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_keywords_with_options_async(
         self,
@@ -4866,10 +6784,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.ListKeywordsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ListKeywordsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ListKeywordsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_keywords(
         self,
@@ -4947,10 +6871,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.ListOssCheckResultResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ListOssCheckResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ListOssCheckResultResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_oss_check_result_with_options_async(
         self,
@@ -5002,10 +6932,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.ListOssCheckResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ListOssCheckResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ListOssCheckResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_oss_check_result(
         self,
@@ -5071,10 +7007,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.ListServiceConfigsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ListServiceConfigsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ListServiceConfigsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_service_configs_with_options_async(
         self,
@@ -5114,10 +7056,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.ListServiceConfigsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ListServiceConfigsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ListServiceConfigsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_service_configs(
         self,
@@ -5144,6 +7092,254 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_service_configs_with_options_async(request, runtime)
+
+    def modify_answer_lib_with_options(
+        self,
+        request: green_20220926_models.ModifyAnswerLibRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.ModifyAnswerLibResponse:
+        """
+        @summary 更新代答库
+        
+        @param request: ModifyAnswerLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAnswerLibResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lib_id):
+            query['LibId'] = request.lib_id
+        if not UtilClient.is_unset(request.lib_name):
+            query['LibName'] = request.lib_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAnswerLib',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ModifyAnswerLibResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ModifyAnswerLibResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_answer_lib_with_options_async(
+        self,
+        request: green_20220926_models.ModifyAnswerLibRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.ModifyAnswerLibResponse:
+        """
+        @summary 更新代答库
+        
+        @param request: ModifyAnswerLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAnswerLibResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lib_id):
+            query['LibId'] = request.lib_id
+        if not UtilClient.is_unset(request.lib_name):
+            query['LibName'] = request.lib_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAnswerLib',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ModifyAnswerLibResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ModifyAnswerLibResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_answer_lib(
+        self,
+        request: green_20220926_models.ModifyAnswerLibRequest,
+    ) -> green_20220926_models.ModifyAnswerLibResponse:
+        """
+        @summary 更新代答库
+        
+        @param request: ModifyAnswerLibRequest
+        @return: ModifyAnswerLibResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_answer_lib_with_options(request, runtime)
+
+    async def modify_answer_lib_async(
+        self,
+        request: green_20220926_models.ModifyAnswerLibRequest,
+    ) -> green_20220926_models.ModifyAnswerLibResponse:
+        """
+        @summary 更新代答库
+        
+        @param request: ModifyAnswerLibRequest
+        @return: ModifyAnswerLibResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_answer_lib_with_options_async(request, runtime)
+
+    def modify_callback_with_options(
+        self,
+        request: green_20220926_models.ModifyCallbackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.ModifyCallbackResponse:
+        """
+        @summary 修改消息通知
+        
+        @param request: ModifyCallbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCallbackResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.crypt_type):
+            body['CryptType'] = request.crypt_type
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.scope):
+            body['Scope'] = request.scope
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyCallback',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ModifyCallbackResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ModifyCallbackResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_callback_with_options_async(
+        self,
+        request: green_20220926_models.ModifyCallbackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.ModifyCallbackResponse:
+        """
+        @summary 修改消息通知
+        
+        @param request: ModifyCallbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCallbackResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.crypt_type):
+            body['CryptType'] = request.crypt_type
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.scope):
+            body['Scope'] = request.scope
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyCallback',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ModifyCallbackResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ModifyCallbackResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_callback(
+        self,
+        request: green_20220926_models.ModifyCallbackRequest,
+    ) -> green_20220926_models.ModifyCallbackResponse:
+        """
+        @summary 修改消息通知
+        
+        @param request: ModifyCallbackRequest
+        @return: ModifyCallbackResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_callback_with_options(request, runtime)
+
+    async def modify_callback_async(
+        self,
+        request: green_20220926_models.ModifyCallbackRequest,
+    ) -> green_20220926_models.ModifyCallbackResponse:
+        """
+        @summary 修改消息通知
+        
+        @param request: ModifyCallbackRequest
+        @return: ModifyCallbackResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_callback_with_options_async(request, runtime)
 
     def modify_service_info_with_options(
         self,
@@ -5185,10 +7381,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.ModifyServiceInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ModifyServiceInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ModifyServiceInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_service_info_with_options_async(
         self,
@@ -5230,10 +7432,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.ModifyServiceInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.ModifyServiceInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.ModifyServiceInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_service_info(
         self,
@@ -5260,6 +7468,382 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_service_info_with_options_async(request, runtime)
+
+    def query_answer_sample_by_page_with_options(
+        self,
+        tmp_req: green_20220926_models.QueryAnswerSampleByPageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.QueryAnswerSampleByPageResponse:
+        """
+        @summary 分页查询代答样本
+        
+        @param tmp_req: QueryAnswerSampleByPageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAnswerSampleByPageResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = green_20220926_models.QueryAnswerSampleByPageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sort):
+            request.sort_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sort, 'Sort', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.answer):
+            query['Answer'] = request.answer
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lib_id):
+            query['LibId'] = request.lib_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sort_shrink):
+            query['Sort'] = request.sort_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryAnswerSampleByPage',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.QueryAnswerSampleByPageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.QueryAnswerSampleByPageResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def query_answer_sample_by_page_with_options_async(
+        self,
+        tmp_req: green_20220926_models.QueryAnswerSampleByPageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.QueryAnswerSampleByPageResponse:
+        """
+        @summary 分页查询代答样本
+        
+        @param tmp_req: QueryAnswerSampleByPageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAnswerSampleByPageResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = green_20220926_models.QueryAnswerSampleByPageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sort):
+            request.sort_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sort, 'Sort', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.answer):
+            query['Answer'] = request.answer
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lib_id):
+            query['LibId'] = request.lib_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sort_shrink):
+            query['Sort'] = request.sort_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryAnswerSampleByPage',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.QueryAnswerSampleByPageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.QueryAnswerSampleByPageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def query_answer_sample_by_page(
+        self,
+        request: green_20220926_models.QueryAnswerSampleByPageRequest,
+    ) -> green_20220926_models.QueryAnswerSampleByPageResponse:
+        """
+        @summary 分页查询代答样本
+        
+        @param request: QueryAnswerSampleByPageRequest
+        @return: QueryAnswerSampleByPageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_answer_sample_by_page_with_options(request, runtime)
+
+    async def query_answer_sample_by_page_async(
+        self,
+        request: green_20220926_models.QueryAnswerSampleByPageRequest,
+    ) -> green_20220926_models.QueryAnswerSampleByPageResponse:
+        """
+        @summary 分页查询代答样本
+        
+        @param request: QueryAnswerSampleByPageRequest
+        @return: QueryAnswerSampleByPageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_answer_sample_by_page_with_options_async(request, runtime)
+
+    def query_callback_with_options(
+        self,
+        request: green_20220926_models.QueryCallbackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.QueryCallbackResponse:
+        """
+        @summary 查询单个回调配置
+        
+        @param request: QueryCallbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCallbackResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.check_for_oss):
+            body['CheckForOss'] = request.check_for_oss
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryCallback',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.QueryCallbackResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.QueryCallbackResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def query_callback_with_options_async(
+        self,
+        request: green_20220926_models.QueryCallbackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.QueryCallbackResponse:
+        """
+        @summary 查询单个回调配置
+        
+        @param request: QueryCallbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCallbackResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.check_for_oss):
+            body['CheckForOss'] = request.check_for_oss
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryCallback',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.QueryCallbackResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.QueryCallbackResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def query_callback(
+        self,
+        request: green_20220926_models.QueryCallbackRequest,
+    ) -> green_20220926_models.QueryCallbackResponse:
+        """
+        @summary 查询单个回调配置
+        
+        @param request: QueryCallbackRequest
+        @return: QueryCallbackResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_callback_with_options(request, runtime)
+
+    async def query_callback_async(
+        self,
+        request: green_20220926_models.QueryCallbackRequest,
+    ) -> green_20220926_models.QueryCallbackResponse:
+        """
+        @summary 查询单个回调配置
+        
+        @param request: QueryCallbackRequest
+        @return: QueryCallbackResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_callback_with_options_async(request, runtime)
+
+    def query_callback_by_page_with_options(
+        self,
+        request: green_20220926_models.QueryCallbackByPageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.QueryCallbackByPageResponse:
+        """
+        @summary 消息通知
+        
+        @param request: QueryCallbackByPageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCallbackByPageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryCallbackByPage',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.QueryCallbackByPageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.QueryCallbackByPageResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def query_callback_by_page_with_options_async(
+        self,
+        request: green_20220926_models.QueryCallbackByPageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.QueryCallbackByPageResponse:
+        """
+        @summary 消息通知
+        
+        @param request: QueryCallbackByPageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCallbackByPageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryCallbackByPage',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.QueryCallbackByPageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.QueryCallbackByPageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def query_callback_by_page(
+        self,
+        request: green_20220926_models.QueryCallbackByPageRequest,
+    ) -> green_20220926_models.QueryCallbackByPageResponse:
+        """
+        @summary 消息通知
+        
+        @param request: QueryCallbackByPageRequest
+        @return: QueryCallbackByPageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_callback_by_page_with_options(request, runtime)
+
+    async def query_callback_by_page_async(
+        self,
+        request: green_20220926_models.QueryCallbackByPageRequest,
+    ) -> green_20220926_models.QueryCallbackByPageResponse:
+        """
+        @summary 消息通知
+        
+        @param request: QueryCallbackByPageRequest
+        @return: QueryCallbackByPageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_callback_by_page_with_options_async(request, runtime)
 
     def update_backup_config_with_options(
         self,
@@ -5297,10 +7881,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.UpdateBackupConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.UpdateBackupConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.UpdateBackupConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_backup_config_with_options_async(
         self,
@@ -5338,10 +7928,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.UpdateBackupConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.UpdateBackupConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.UpdateBackupConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_backup_config(
         self,
@@ -5409,10 +8005,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.UpdateImageLibResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.UpdateImageLibResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.UpdateImageLibResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_image_lib_with_options_async(
         self,
@@ -5454,10 +8056,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.UpdateImageLibResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.UpdateImageLibResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.UpdateImageLibResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_image_lib(
         self,
@@ -5523,10 +8131,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.UpdateImageLibFreeInspectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.UpdateImageLibFreeInspectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.UpdateImageLibFreeInspectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_image_lib_free_inspection_with_options_async(
         self,
@@ -5566,10 +8180,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.UpdateImageLibFreeInspectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.UpdateImageLibFreeInspectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.UpdateImageLibFreeInspectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_image_lib_free_inspection(
         self,
@@ -5633,10 +8253,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.UpdateKeywordLibResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.UpdateKeywordLibResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.UpdateKeywordLibResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_keyword_lib_with_options_async(
         self,
@@ -5674,10 +8300,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.UpdateKeywordLibResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.UpdateKeywordLibResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.UpdateKeywordLibResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_keyword_lib(
         self,
@@ -5743,10 +8375,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.UpdateScanResultFeedbackResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.UpdateScanResultFeedbackResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.UpdateScanResultFeedbackResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_scan_result_feedback_with_options_async(
         self,
@@ -5786,10 +8424,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.UpdateScanResultFeedbackResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.UpdateScanResultFeedbackResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.UpdateScanResultFeedbackResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_scan_result_feedback(
         self,
@@ -5865,10 +8509,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.UpdateServiceConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.UpdateServiceConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.UpdateServiceConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_service_config_with_options_async(
         self,
@@ -5918,10 +8568,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            green_20220926_models.UpdateServiceConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                green_20220926_models.UpdateServiceConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                green_20220926_models.UpdateServiceConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_service_config(
         self,
