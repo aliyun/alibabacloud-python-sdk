@@ -15008,6 +15008,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.data_package_id):
             query['DataPackageId'] = request.data_package_id
+        if not UtilClient.is_unset(request.load_mode):
+            query['LoadMode'] = request.load_mode
         if not UtilClient.is_unset(request.rendering_instance_id):
             query['RenderingInstanceId'] = request.rendering_instance_id
         req = open_api_models.OpenApiRequest(
@@ -15051,6 +15053,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.data_package_id):
             query['DataPackageId'] = request.data_package_id
+        if not UtilClient.is_unset(request.load_mode):
+            query['LoadMode'] = request.load_mode
         if not UtilClient.is_unset(request.rendering_instance_id):
             query['RenderingInstanceId'] = request.rendering_instance_id
         req = open_api_models.OpenApiRequest(

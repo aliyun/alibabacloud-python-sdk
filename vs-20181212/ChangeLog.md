@@ -1,3 +1,7 @@
+2025-03-20 Version: 3.2.1
+- Update API RecoverRenderingDataPackage: add param LoadMode.
+
+
 2025-03-12 Version: 3.2.0
 - Support API DeleteRenderingInstanceSettings.
 - Support API DescribeRenderingInstanceSettings.
