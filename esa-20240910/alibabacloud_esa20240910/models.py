@@ -5206,15 +5206,15 @@ class CreateCacheRuleRequest(TeaModel):
         # - follow_origin: Follow the origin server\\"s cache policy.
         # - override_origin: Override the origin server\\"s cache policy.
         self.browser_cache_mode = browser_cache_mode
-        # Browser cache expiration time in seconds.
+        # Browser cache expiration time, in seconds.
         self.browser_cache_ttl = browser_cache_ttl
         # Set the bypass cache mode. Possible values:
         # - cache_all: Cache all requests.
         # - bypass_all: Bypass cache for all requests.
         self.bypass_cache = bypass_cache
-        # Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Cache deception defense. Used to defend against web cache deception attacks; only the verified cache content will be cached. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.cache_deception_armor = cache_deception_armor
         # Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
         # - bypass_cache_reserve: Requests bypass cache retention.
@@ -5230,9 +5230,9 @@ class CreateCacheRuleRequest(TeaModel):
         # - override_origin: Override the origin server\\"s cache policy.
         # - follow_origin_bypass: Follow the origin server\\"s cache policy (if it exists), otherwise do not cache.
         self.edge_cache_mode = edge_cache_mode
-        # Edge cache expiration time in seconds.
+        # Edge cache expiration time, in seconds.
         self.edge_cache_ttl = edge_cache_ttl
-        # Status code cache expiration time in seconds.
+        # Status code cache expiration time, in seconds.
         self.edge_status_code_cache_ttl = edge_status_code_cache_ttl
         # When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
         self.include_cookie = include_cookie
@@ -5246,17 +5246,19 @@ class CreateCacheRuleRequest(TeaModel):
         # - reserve_all: Default, reserve all.
         # - include_query_string: Include specified query strings.
         self.query_string_mode = query_string_mode
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. Possible values:
+        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
         # - on: Enable.
         # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Serve stale cache. When enabled, the node can still use the expired cached files to respond to user requests even if the origin server is unavailable. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.serve_stale = serve_stale
         # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
         # 
@@ -5268,15 +5270,17 @@ class CreateCacheRuleRequest(TeaModel):
         # - on: Enable.
         # - off: Disable.
         self.sort_query_string_for_cache = sort_query_string_for_cache
-        # When generating the cache key, add the client device type. Possible values:
+        # When generating the cache key, include the client device type. Possible values:
         # - on: Enable.
         # - off: Disable.
         self.user_device_type = user_device_type
-        # When generating the cache key, add the client\\"s geographic location. Possible values:
+        # Include the client\\"s geographical location when generating the cache key. Value range:
         # - on: Enable.
         # - off: Disable.
         self.user_geo = user_geo
-        # When generating cache keys, include the client\\"s language type. The value can be: - on: enabled. - off: disabled.
+        # Include the client\\"s language type when generating the cache key. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.user_language = user_language
 
     def validate(self):
@@ -5706,21 +5710,26 @@ class CreateCompressionRuleRequest(TeaModel):
         # - on: Enable.
         # - off: Disable.
         self.gzip = gzip
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - To match all incoming requests: Set the value to true
+        # - To match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. Values:
-        # 
-        # - **on**: Enable.
-        # - **off**: Disable.
+        # Rule switch. This parameter is not required when adding a global configuration. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site, defaulting to version 0.
+        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site configuration, defaulting to version 0.
         self.site_version = site_version
+        # Zstd compression. Value range:
+        # 
+        # - on: Enable.
+        # - off: Disable.
         self.zstd = zstd
 
     def validate(self):
@@ -6888,7 +6897,7 @@ class CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification(Te
         # Operation type. Possible values:
         # 
         # - add: Add.
-        # - del: Delete.
+        # - del: Delete
         # - modify: Modify.
         # 
         # This parameter is required.
@@ -6938,20 +6947,21 @@ class CreateHttpRequestHeaderModificationRuleRequest(TeaModel):
         # 
         # This parameter is required.
         self.request_header_modification = request_header_modification
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - To match all incoming requests: Set the value to true
+        # - To match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. Possible values:
-        # 
+        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
         # - on: Enable.
         # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to apply the configuration to, defaulting to version 0.
+        # Version number of the site configuration. For sites with version management enabled, this parameter can specify the version to which the configuration applies, defaulting to version 0.
         self.site_version = site_version
 
     def validate(self):
@@ -7016,20 +7026,21 @@ class CreateHttpRequestHeaderModificationRuleShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.request_header_modification_shrink = request_header_modification_shrink
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - To match all incoming requests: Set the value to true
+        # - To match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. Possible values:
-        # 
+        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
         # - on: Enable.
         # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to apply the configuration to, defaulting to version 0.
+        # Version number of the site configuration. For sites with version management enabled, this parameter can specify the version to which the configuration applies, defaulting to version 0.
         self.site_version = site_version
 
     def validate(self):
@@ -7159,10 +7170,10 @@ class CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModification(
         # 
         # This parameter is required.
         self.name = name
-        # Operation method. Possible values:
+        # Operation type. Possible values:
         # 
         # - add: Add.
-        # - del: Delete.
+        # - del: Delete
         # - modify: Modify.
         # 
         # This parameter is required.
@@ -7212,14 +7223,15 @@ class CreateHttpResponseHeaderModificationRuleRequest(TeaModel):
         # 
         # This parameter is required.
         self.response_header_modification = response_header_modification
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - To match all incoming requests: Set the value to true
+        # - To match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. Possible values:
-        # 
+        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
         # - on: Enable.
         # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         # Site ID. You can obtain this by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
         # 
@@ -7290,14 +7302,15 @@ class CreateHttpResponseHeaderModificationRuleShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.response_header_modification_shrink = response_header_modification_shrink
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - To match all incoming requests: Set the value to true
+        # - To match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. Possible values:
-        # 
+        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
         # - on: Enable.
         # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         # Site ID. You can obtain this by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
         # 
@@ -7441,57 +7454,59 @@ class CreateHttpsApplicationConfigurationRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # Alt-Svc feature switch. Default is disabled. Possible values:
+        # Alt-Svc feature switch, default is disabled. Possible values:
         # - on: Enabled.
         # - off: Disabled.
         self.alt_svc = alt_svc
-        # Whether the Alt-Svc header includes the clear parameter. Default is disabled. Possible values:
+        # Whether the Alt-Svc header includes the clear parameter, default is disabled. Possible values:
         # - on: Enabled.
         # - off: Disabled.
         self.alt_svc_clear = alt_svc_clear
-        # Validity period of Alt-Svc in seconds. The default is 86400 seconds.
+        # Alt-Svc validity period in seconds, default is 86400 seconds.
         self.alt_svc_ma = alt_svc_ma
-        # Whether the Alt-Svc header includes the persist parameter. Default is disabled. Possible values:
+        # Whether the Alt-Svc header includes the persist parameter, default is disabled. Possible values:
         # - on: Enabled.
         # - off: Disabled.
         self.alt_svc_persist = alt_svc_persist
-        # Whether to enable HSTS. Default is disabled. Possible values:
+        # Whether to enable HSTS, default is disabled. Possible values:
         # - on: Enabled.
         # - off: Disabled.
         self.hsts = hsts
-        # Whether to include subdomains in HSTS. Default is disabled. Possible values:
+        # Whether to include subdomains in HSTS, default is disabled. Possible values:
         # - on: Enabled.
         # - off: Disabled.
         self.hsts_include_subdomains = hsts_include_subdomains
         # HSTS expiration time in seconds.
         self.hsts_max_age = hsts_max_age
-        # Whether to enable HSTS preloading. Default is disabled. Possible values:
+        # Whether to enable HSTS preload, default is disabled. Possible values:
         # - on: Enabled.
         # - off: Disabled.
         self.hsts_preload = hsts_preload
-        # Whether to enable forced HTTPS. Default is disabled. Possible values:
+        # Whether to enable forced HTTPS, default is disabled. Possible values:
         # - on: Enabled.
         # - off: Disabled.
         self.https_force = https_force
-        # Status code for forced HTTPS redirection. Possible values:
+        # Forced HTTPS redirect status code. Possible values:
         # - 301
         # - 302
         # - 307
         # - 308
         self.https_force_code = https_force_code
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. Possible values:
+        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
         # - on: Enabled.
         # - off: Disabled.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the version of the site for which the configuration will take effect. The default is version 0.
+        # Version number of the site configuration. For sites with version management enabled, this parameter can specify the version to which the configuration applies, defaulting to version 0.
         self.site_version = site_version
 
     def validate(self):
@@ -7666,52 +7681,54 @@ class CreateHttpsBasicConfigurationRequest(TeaModel):
     ):
         # Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
         self.ciphersuite = ciphersuite
-        # Cipher suite group. Default is all cipher suites. Possible values:
+        # Cipher suite group. Default uses all cipher suites. Value range:
         # - all: All cipher suites.
         # - strict: Strong cipher suites.
         # - custom: Custom cipher suites.
         self.ciphersuite_group = ciphersuite_group
-        # Whether to enable HTTP2. Default is enabled. Possible values:
+        # Whether to enable HTTP2. Default is enabled. Value range:
         # - on: Enable.
         # - off: Disable.
         self.http_2 = http_2
-        # Whether to enable HTTP3. Default is enabled. Possible values:
+        # Whether to enable HTTP3. Default is enabled. Value range:
         # - on: Enable.
         # - off: Disable.
         self.http_3 = http_3
-        # Whether to enable HTTPS. Default is enabled. Possible values:
+        # Whether to enable HTTPS. Default is enabled. Value range:
         # - on: Enable.
         # - off: Disable.
         self.https = https
-        # Whether to enable OCSP. Default is disabled. Possible values:
+        # Whether to enable OCSP. Default is disabled. Value range:
         # - on: Enable.
         # - off: Disable.
         self.ocsp_stapling = ocsp_stapling
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. Possible values:
+        # Rule switch. This parameter is not required when adding a global configuration. Value range:
         # - on: Enable.
         # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Whether to enable TLS1.0. Default is disabled. Possible values:
+        # Whether to enable TLS1.0. Default is disabled. Value range:
         # - on: Enable.
         # - off: Disable.
         self.tls_10 = tls_10
-        # Whether to enable TLS1.1. Default is enabled. Possible values:
+        # Whether to enable TLS1.1. Default is enabled. Value range:
         # - on: Enable.
         # - off: Disable.
         self.tls_11 = tls_11
-        # Whether to enable TLS1.2. Default is enabled. Possible values:
+        # Whether to enable TLS1.2. Default is enabled. Value range:
         # - on: Enable.
         # - off: Disable.
         self.tls_12 = tls_12
-        # Whether to enable TLS1.3. Default is enabled. Possible values:
+        # Whether to enable TLS1.3. Default is enabled. Value range:
         # - on: Enable.
         # - off: Disable.
         self.tls_13 = tls_13
@@ -7878,14 +7895,15 @@ class CreateImageTransformRequest(TeaModel):
         # - on: Enabled.
         # - off: Disabled.
         self.enable = enable
-        # Rule content, specifically the strategy or condition expression being implemented.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - To match all incoming requests: Set the value to true
+        # - To match specific requests: Set the value to a custom expression, for example: (http.host eq "video.example.com")
         self.rule = rule
-        # Rule switch. Values:
-        # 
-        # - **on**: Enabled.
-        # - **off**: Disabled.
+        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
@@ -8373,9 +8391,9 @@ class CreateLoadBalancerRequestMonitor(TeaModel):
         timeout: int = None,
         type: str = None,
     ):
-        # Number of consecutive failed probes required to consider the target as down, such as `5`.
+        # Number of consecutive failed probes required to consider the target unhealthy, such as `5`.
         self.consecutive_down = consecutive_down
-        # Number of consecutive successful probes required to consider the target as up, such as `3`.
+        # Number of consecutive successful probes required to consider the target healthy, such as `3`.
         self.consecutive_up = consecutive_up
         # Expected status codes, such as `200,202`, indicating successful HTTP responses.
         self.expected_codes = expected_codes
@@ -8384,19 +8402,19 @@ class CreateLoadBalancerRequestMonitor(TeaModel):
         # - true: Yes.
         # - false: No.
         self.follow_redirects = follow_redirects
-        # Header information included during the probe, which is an HTTP header.
+        # Header information included in the probe, which is the HTTP header.
         self.header = header
-        # Monitoring interval, such as `60` seconds, indicating the frequency of checks.
+        # Monitoring interval, such as `60` seconds, representing the frequency of checks.
         self.interval = interval
         # Monitor request method, such as `GET`, which is a method in the HTTP protocol.
         self.method = method
-        # Monitor check path, such as `/healthcheck`, which is an HTTP request path.
+        # Monitor check path, such as `/healthcheck`, which is the HTTP request path.
         self.path = path
         # Origin server port.
         self.port = port
         # Application health check timeout, in seconds, with a value range of 1-10.
         self.timeout = timeout
-        # Monitor protocol type, such as HTTP, used for health checks. When the value is `off`, it indicates that no check will be performed.
+        # Monitor protocol type, such as HTTP, used for health checks. When set to `off`, no check is performed.
         # 
         # - TCP
         # - UDP
@@ -8473,7 +8491,7 @@ class CreateLoadBalancerRequestRandomSteering(TeaModel):
         default_weight: int = None,
         pool_weights: Dict[str, int] = None,
     ):
-        # Default weight for all pools that do not have individual weights specified. The value range is an integer between 0 and 100.
+        # Default weight for round-robin, used for all pools that do not have a specific weight set. The value range is an integer between 0 and 100.
         self.default_weight = default_weight
         # Weight configuration for each backend server pool, with the key being the pool ID and the value being the weight coefficient. The weight coefficient represents the proportion of relative traffic distribution.
         self.pool_weights = pool_weights
@@ -8564,23 +8582,24 @@ class CreateLoadBalancerRequestRules(TeaModel):
     ):
         # Execute a specified response after matching the rule.
         self.fixed_response = fixed_response
-        # Modify the corresponding load balancing configuration after matching the rule. The configured fields will override the corresponding fields in the load balancer configuration.
+        # Modify the corresponding load balancing configuration after matching the rule. The fields in the configuration will override the corresponding fields in the load balancer configuration.
         self.overrides = overrides
-        # Matching rule information.
+        # Rule content, using conditional expressions to match user requests. This parameter does not need to be set when adding global configurations. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch.
-        # 
-        # - on: Enable the rule.
-        # - off: Disable the rule.
+        # Rule switch. This parameter does not need to be set when adding global configurations. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter does not need to be set when adding global configurations.
         self.rule_name = rule_name
-        # Rule execution order. It can be left blank, in which case the rules will be executed in the list order. If filled, it should be a positive integer greater than 0.
+        # The execution order of the rule. It can be left blank, in which case the rules will be executed in the order they appear in the list. If specified, it should be an integer greater than 0, with higher values indicating a higher priority for execution.
         self.sequence = sequence
         # Whether to terminate the execution of subsequent rules.
         # 
         # - true: Yes.
-        # - false: No.
+        # - false: No, default value.
         self.terminates = terminates
 
     def validate(self):
@@ -8665,11 +8684,11 @@ class CreateLoadBalancerRequest(TeaModel):
         # 
         # This parameter is required.
         self.fallback_pool = fallback_pool
-        # Monitor configuration for health checks.
+        # Monitor configuration, used for health checks.
         # 
         # This parameter is required.
         self.monitor = monitor
-        # The name of the load balancer, which must meet domain name format validation and be a subdomain under the site.
+        # The name of the load balancer, which must meet the domain name format validation and be a subdomain under the site.
         # 
         # This parameter is required.
         self.name = name
@@ -8679,7 +8698,7 @@ class CreateLoadBalancerRequest(TeaModel):
         self.region_pools = region_pools
         # Rule information.
         self.rules = rules
-        # Session persistence, with values:
+        # Session persistence, with possible values:
         # - off: Not enabled.
         # - ip: Session persistence by IP.
         # - cookie: Session persistence by cookie.
@@ -8690,13 +8709,13 @@ class CreateLoadBalancerRequest(TeaModel):
         self.site_id = site_id
         # Load balancing strategy.
         # 
-        # - geo: Geographical strategy.
+        # - geo: Geographic strategy.
         # - random: Weighted round-robin.
         # - order: Primary and backup method.
         # 
         # This parameter is required.
         self.steering_policy = steering_policy
-        # Address pools corresponding to secondary regions. When multiple secondary regions share a set of address pools, you can use a comma-separated list of secondary regions as the key.
+        # Address pools corresponding to secondary regions. When multiple secondary regions share a set of address pools, the keys can be concatenated with commas.
         self.sub_region_pools = sub_region_pools
         # TTL value, the time-to-live for DNS records, with a default of 30 seconds. The value range is 10-600.
         self.ttl = ttl
@@ -8830,11 +8849,11 @@ class CreateLoadBalancerShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.fallback_pool = fallback_pool
-        # Monitor configuration for health checks.
+        # Monitor configuration, used for health checks.
         # 
         # This parameter is required.
         self.monitor_shrink = monitor_shrink
-        # The name of the load balancer, which must meet domain name format validation and be a subdomain under the site.
+        # The name of the load balancer, which must meet the domain name format validation and be a subdomain under the site.
         # 
         # This parameter is required.
         self.name = name
@@ -8844,7 +8863,7 @@ class CreateLoadBalancerShrinkRequest(TeaModel):
         self.region_pools = region_pools
         # Rule information.
         self.rules_shrink = rules_shrink
-        # Session persistence, with values:
+        # Session persistence, with possible values:
         # - off: Not enabled.
         # - ip: Session persistence by IP.
         # - cookie: Session persistence by cookie.
@@ -8855,13 +8874,13 @@ class CreateLoadBalancerShrinkRequest(TeaModel):
         self.site_id = site_id
         # Load balancing strategy.
         # 
-        # - geo: Geographical strategy.
+        # - geo: Geographic strategy.
         # - random: Weighted round-robin.
         # - order: Primary and backup method.
         # 
         # This parameter is required.
         self.steering_policy = steering_policy
-        # Address pools corresponding to secondary regions. When multiple secondary regions share a set of address pools, you can use a comma-separated list of secondary regions as the key.
+        # Address pools corresponding to secondary regions. When multiple secondary regions share a set of address pools, the keys can be concatenated with commas.
         self.sub_region_pools = sub_region_pools
         # TTL value, the time-to-live for DNS records, with a default of 30 seconds. The value range is 10-600.
         self.ttl = ttl
@@ -8948,7 +8967,7 @@ class CreateLoadBalancerResponseBody(TeaModel):
         id: int = None,
         request_id: str = None,
     ):
-        # Load Balancer ID.
+        # Load balancer ID.
         self.id = id
         # Request ID.
         self.request_id = request_id
@@ -9032,35 +9051,37 @@ class CreateNetworkOptimizationRequest(TeaModel):
         upload_max_filesize: str = None,
         websocket: str = None,
     ):
-        # Indicates whether to enable GRPC, disabled by default. Possible values:
+        # Whether to enable GRPC, disabled by default. Possible values:
         # - on: Enable
         # - off: Disable
         self.grpc = grpc
-        # Indicates whether to enable HTTP2 origin, disabled by default. Possible values:
+        # Whether to enable HTTP2 origin, disabled by default. Possible values:
         # - on: Enable
         # - off: Disable
         self.http_2origin = http_2origin
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. Possible values:
-        # - on: Enable
-        # - off: Disable
+        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to which the configuration applies, defaulting to version 0.
+        # The version number of the site configuration. For sites with version management enabled, this parameter can specify the effective version of the configuration, defaulting to version 0.
         self.site_version = site_version
-        # Indicates whether to enable smart routing service, disabled by default. Possible values:
+        # Whether to enable smart routing service, disabled by default. Possible values:
         # - on: Enable
         # - off: Disable
         self.smart_routing = smart_routing
-        # Maximum file size for upload, in MB. Range: 100～500.
+        # Maximum upload file size in MB, range: 100～500.
         self.upload_max_filesize = upload_max_filesize
-        # Indicates whether to enable Websocket, enabled by default. Possible values:
+        # Whether to enable Websocket, enabled by default. Possible values:
         # - on: Enable
         # - off: Disable
         self.websocket = websocket
@@ -9658,27 +9679,35 @@ class CreateOriginRuleRequest(TeaModel):
         self.origin_http_port = origin_http_port
         # Port of the origin server when using the HTTPS protocol for origin requests.
         self.origin_https_port = origin_https_port
+        # mTLS switch. Possible values:
+        # - on: Enable.
+        # - off: Disable.
         self.origin_mtls = origin_mtls
         # Protocol used for the origin request. Possible values:
         # - http: Use HTTP protocol for origin requests.
         # - https: Use HTTPS protocol for origin requests.
         # - follow: Follow the client\\"s protocol for origin requests.
         self.origin_scheme = origin_scheme
-        # The SNI carried in the origin request.
+        # SNI carried in the origin request.
         self.origin_sni = origin_sni
+        # Origin certificate verification switch. Possible values:
+        # - on: Enable.
+        # - off: Disable.
         self.origin_verify = origin_verify
-        # Use range chunking for downloading files from the origin. Possible values:
+        # Use range chunking for origin downloads. Possible values:
         # - on: Enable
         # - off: Disable
         # - force: Force
         self.range = range
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding global configurations. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. Possible values:
+        # Rule switch. This parameter is not required when adding global configurations. Possible values:
         # - on: Enable.
         # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding global configurations.
         self.rule_name = rule_name
         # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
         # 
@@ -10507,29 +10536,30 @@ class CreateRedirectRuleRequest(TeaModel):
         target_url: str = None,
         type: str = None,
     ):
-        # Whether to preserve the query string. Allowed values:
-        # 
-        # - on: Preserve.
-        # - off: Do not preserve.
-        # 
-        # This parameter is required.
-        self.reserve_query_string = reserve_query_string
-        # The content of the rule.
-        self.rule = rule
-        # The switch for the rule. Allowed values:
+        # Preserve query string. Value range:
         # 
         # - on: Enabled.
         # - off: Disabled.
+        # 
+        # This parameter is required.
+        self.reserve_query_string = reserve_query_string
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - To match all incoming requests: Set the value to true
+        # - To match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
+        self.rule = rule
+        # Rule switch. This parameter is not required when adding a global configuration. Value range:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
-        # The name of the rule.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site configuration, defaulting to version 0. vvvv
+        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the version of the site for which the configuration will take effect. The default is version 0.
         self.site_version = site_version
-        # The HTTP status code used by the node when responding to the client with the redirect address. Allowed values:
+        # Response status code used by the node to respond to the client with the redirect address. Value range:
         # 
         # - 301
         # - 302
@@ -10539,13 +10569,14 @@ class CreateRedirectRuleRequest(TeaModel):
         # 
         # This parameter is required.
         self.status_code = status_code
-        # The target URL after redirection.
+        # Target URL after redirection.
         # 
         # This parameter is required.
         self.target_url = target_url
-        # The type of redirection. Allowed values:
+        # Redirect type. Value range:
         # 
         # - static: Static mode.
+        # - dynamic: Dynamic mode.
         # 
         # This parameter is required.
         self.type = type
@@ -10610,7 +10641,7 @@ class CreateRedirectRuleResponseBody(TeaModel):
     ):
         # Configuration ID.
         self.config_id = config_id
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10691,34 +10722,35 @@ class CreateRewriteUrlRuleRequest(TeaModel):
         site_version: int = None,
         uri: str = None,
     ):
-        # Query string after rewriting.
+        # The query string after rewriting.
         self.query_string = query_string
         # Query string rewrite type. Value range:
         # 
-        # - static: Static mode.
-        # - dynamic：Dynamic mode.
+        # - static: static mode.
+        # - dynamic: dynamic mode.
         self.rewrite_query_string_type = rewrite_query_string_type
         # URI rewrite type. Value range:
         # 
-        # - static: Static mode.
-        # - dynamic：Dynamic mode.
+        # - static: static mode.
+        # - dynamic: dynamic mode.
         self.rewrite_uri_type = rewrite_uri_type
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: set the value to true
+        # - Match specific requests: set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. Value range:
-        # 
-        # - on: Enable.
-        # - off: Disable.
+        # Rule switch. This parameter is not required when adding a global configuration. Value range:
+        # - on: enable.
+        # - off: disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Version number of the site configuration. For sites with version management enabled, this parameter can specify the version to which the configuration applies, defaulting to version 0.
+        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site configuration, defaulting to version 0.
         self.site_version = site_version
-        # Target URI after rewriting.
+        # The target URI after rewriting.
         self.uri = uri
 
     def validate(self):
@@ -10863,8 +10895,6 @@ class CreateRoutineRequest(TeaModel):
         # This parameter is required.
         self.name = name
         # The specification of the routine.
-        # 
-        # This parameter is required.
         self.spec_name = spec_name
 
     def validate(self):
@@ -14713,26 +14743,27 @@ class CreateWaitingRoomRuleRequest(TeaModel):
         site_id: int = None,
         waiting_room_id: str = None,
     ):
-        # The rule content, which is a policy or conditional expression.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq "video.example.com")
         # 
         # This parameter is required.
         self.rule = rule
-        # Specifies whether to enable the rule. Valid values:
-        # 
-        # *   on
-        # *   off
+        # Rule switch. This parameter is not required when adding a global configuration. Value range:
+        # - on: Enable.
+        # - off: Disable.
         # 
         # This parameter is required.
         self.rule_enable = rule_enable
-        # The rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         # 
         # This parameter is required.
         self.rule_name = rule_name
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The ID of the waiting room to be bypassed.
+        # The ID of the waiting room to bypass.
         # 
         # This parameter is required.
         self.waiting_room_id = waiting_room_id
@@ -14779,8 +14810,9 @@ class CreateWaitingRoomRuleResponseBody(TeaModel):
         request_id: str = None,
         waiting_room_rule_id: int = None,
     ):
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
+        # Waiting room bypass rule ID.
         self.waiting_room_rule_id = waiting_room_rule_id
 
     def validate(self):
@@ -15448,11 +15480,11 @@ class DeleteCompressionRuleRequest(TeaModel):
         config_id: int = None,
         site_id: int = None,
     ):
-        # The configuration ID, which can be obtained by calling the [ListCompressionRules](~~ListCompressionRules~~) operation.
+        # Configuration ID. It can be obtained by calling the [ListCompressionRules](https://help.aliyun.com/document_detail/2867498.html) interface.
         # 
         # This parameter is required.
         self.config_id = config_id
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
         # This parameter is required.
         self.site_id = site_id
@@ -15486,7 +15518,7 @@ class DeleteCompressionRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16421,11 +16453,11 @@ class DeleteImageTransformRequest(TeaModel):
         config_id: int = None,
         site_id: int = None,
     ):
-        # The configuration ID, which can be obtained by calling the [ListImageTransforms](~~ListImageTransforms~~) operation.
+        # Configuration ID. It can be obtained by calling the [ListImageTransforms](https://help.aliyun.com/document_detail/2869056.html) interface.
         # 
         # This parameter is required.
         self.config_id = config_id
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
         # This parameter is required.
         self.site_id = site_id
@@ -16459,7 +16491,7 @@ class DeleteImageTransformResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -22010,9 +22042,9 @@ class GetCacheRuleResponseBody(TeaModel):
         # - bypass_cache_reserve: Requests bypass the cache reserve.
         # - eligible_for_cache_reserve: Eligible for cache reserve.
         self.cache_reserve_eligibility = cache_reserve_eligibility
-        # When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Supports multiple cookie names, separated by spaces.
+        # When generating the cache key, check if the cookie exists. If it does, add the cookie name (cookie names are case-insensitive) to the cache key. Supports multiple cookie names, separated by spaces.
         self.check_presence_cookie = check_presence_cookie
-        # When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Supports multiple header names, separated by spaces.
+        # When generating the cache key, check if the header exists. If it does, add the header name (header names are case-insensitive) to the cache key. Supports multiple header names, separated by spaces.
         self.check_presence_header = check_presence_header
         # Configuration ID.
         self.config_id = config_id
@@ -22021,7 +22053,7 @@ class GetCacheRuleResponseBody(TeaModel):
         # - rule: Query rule configuration;
         self.config_type = config_type
         # Edge cache mode. Value range:
-        # - follow_origin: Follow origin cache policy (if exists), otherwise use default cache policy.
+        # - follow_origin: Follow origin cache policy (if exists), otherwise use the default cache policy.
         # - no_cache: Do not cache.
         # - override_origin: Override origin cache policy.
         # - follow_origin_bypass: Follow origin cache policy (if exists), otherwise do not cache.
@@ -22034,7 +22066,7 @@ class GetCacheRuleResponseBody(TeaModel):
         self.include_cookie = include_cookie
         # When generating the cache key, include the specified header names and their values. Supports multiple values, separated by spaces.
         self.include_header = include_header
-        # Query strings to be retained or deleted. Supports multiple values, separated by spaces.
+        # The query strings to be retained or deleted, supporting multiple values separated by spaces.
         self.query_string = query_string
         # The processing mode for query strings when generating cache keys. Value range:
         # 
@@ -22045,26 +22077,28 @@ class GetCacheRuleResponseBody(TeaModel):
         self.query_string_mode = query_string_mode
         # Request ID.
         self.request_id = request_id
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter does not need to be set when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. Value range:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Rule switch. This parameter does not need to be set when adding a global configuration. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter does not need to be set when adding a global configuration.
         self.rule_name = rule_name
-        # Rule execution sequence.
+        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
         # Serve stale cache. When enabled, the node can still use the cached expired files to respond to user requests even if the origin server is unavailable. Value range:
         # 
         # - on: Enabled.
         # - off: Disabled.
         self.serve_stale = serve_stale
-        # Site version number.
+        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the configuration, defaulting to version 0.
         self.site_version = site_version
         # Query string sorting. Value range:
-        # - on: Enabled.
-        # - off: Disabled.
+        # - on: Enable.
+        # - off: Disable.
         self.sort_query_string_for_cache = sort_query_string_for_cache
         # When generating the cache key, include the client device type. Value range:
         # 
@@ -23792,15 +23826,15 @@ class GetCompressionRuleResponseBody(TeaModel):
         site_version: int = None,
         zstd: str = None,
     ):
-        # Brotli compression. Value range: 
-        # - on: Enable. 
-        # - off: Disable.
+        # Brotli compression. Possible values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.brotli = brotli
         # Configuration ID.
         self.config_id = config_id
         # Configuration type. Possible values:
         # - global: Global configuration.
-        # - rule: Rule configuration.
+        # - rule: Rule-based configuration.
         self.config_type = config_type
         # Gzip compression. Possible values:
         # - on: Enabled.
@@ -23808,22 +23842,23 @@ class GetCompressionRuleResponseBody(TeaModel):
         self.gzip = gzip
         # Request ID.
         self.request_id = request_id
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. Possible values:
-        # 
-        # - **on**: Enabled.
-        # - **off**: Disabled.
+        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # Rule execution sequence.
+        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
-        # Site configuration version.
+        # The version number of the site configuration. For sites with version management enabled, this parameter can specify the effective version of the configuration, defaulting to version 0.
         self.site_version = site_version
         # Zstd compression. Value range: 
-        # - on: Enable. 
-        # - off: Disable.
+        # - on: enabled. 
+        # - off: disabled.
         self.zstd = zstd
 
     def validate(self):
@@ -24466,6 +24501,172 @@ class GetEdgeContainerAppLogRiverResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetEdgeContainerAppLogRiverResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetEdgeContainerAppResourceReserveRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class GetEdgeContainerAppResourceReserveResponseBodyReserveSet(TeaModel):
+    def __init__(
+        self,
+        isp: str = None,
+        region: str = None,
+        replicas: int = None,
+    ):
+        self.isp = isp
+        self.region = region
+        self.replicas = replicas
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.isp is not None:
+            result['Isp'] = self.isp
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.replicas is not None:
+            result['Replicas'] = self.replicas
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Isp') is not None:
+            self.isp = m.get('Isp')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Replicas') is not None:
+            self.replicas = m.get('Replicas')
+        return self
+
+
+class GetEdgeContainerAppResourceReserveResponseBody(TeaModel):
+    def __init__(
+        self,
+        duration_time: str = None,
+        enable: bool = None,
+        forever: bool = None,
+        request_id: str = None,
+        reserve_set: List[GetEdgeContainerAppResourceReserveResponseBodyReserveSet] = None,
+    ):
+        self.duration_time = duration_time
+        self.enable = enable
+        self.forever = forever
+        self.request_id = request_id
+        self.reserve_set = reserve_set
+
+    def validate(self):
+        if self.reserve_set:
+            for k in self.reserve_set:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration_time is not None:
+            result['DurationTime'] = self.duration_time
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.forever is not None:
+            result['Forever'] = self.forever
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ReserveSet'] = []
+        if self.reserve_set is not None:
+            for k in self.reserve_set:
+                result['ReserveSet'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DurationTime') is not None:
+            self.duration_time = m.get('DurationTime')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('Forever') is not None:
+            self.forever = m.get('Forever')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.reserve_set = []
+        if m.get('ReserveSet') is not None:
+            for k in m.get('ReserveSet'):
+                temp_model = GetEdgeContainerAppResourceReserveResponseBodyReserveSet()
+                self.reserve_set.append(temp_model.from_map(k))
+        return self
+
+
+class GetEdgeContainerAppResourceReserveResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetEdgeContainerAppResourceReserveResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetEdgeContainerAppResourceReserveResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -25847,11 +26048,11 @@ class GetHttpRequestHeaderModificationRuleRequest(TeaModel):
         config_id: int = None,
         site_id: int = None,
     ):
-        # The configuration ID, which can be obtained by calling the [ListHttpRequestHeaderModificationRules](~~ListHttpRequestHeaderModificationRules~~) operation.
+        # Configuration ID. It can be obtained by calling the [ListHttpRequestHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) interface.
         # 
         # This parameter is required.
         self.config_id = config_id
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
         # This parameter is required.
         self.site_id = site_id
@@ -25887,15 +26088,15 @@ class GetHttpRequestHeaderModificationRuleResponseBodyRequestHeaderModification(
         operation: str = None,
         value: str = None,
     ):
-        # The name of the request header.
+        # Request header name.
         self.name = name
-        # The action. Valid values:
+        # Operation method. Possible values:
         # 
-        # *   add: adds a header.
-        # *   del: deletes a header.
-        # *   modify: modifies a header.
+        # - add: Add.
+        # - del: Delete
+        # - modify: Modify.
         self.operation = operation
-        # The value of the request header.
+        # Request header value.
         self.value = value
 
     def validate(self):
@@ -25939,29 +26140,29 @@ class GetHttpRequestHeaderModificationRuleResponseBody(TeaModel):
         sequence: int = None,
         site_version: int = None,
     ):
-        # The configuration ID.
+        # Configuration ID.
         self.config_id = config_id
-        # The configuration type. Valid values:
-        # 
-        # *   global: global configuration.
-        # *   rule: rule configuration.
+        # Configuration type. Possible values:
+        # - global: Global configuration.
+        # - rule: Rule-based configuration.
         self.config_type = config_type
-        # The configurations of modifying request headers. You can add, delete, or modify a request header.
+        # Modify request headers, supporting add, delete, and modify operations.
         self.request_header_modification = request_header_modification
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq "video.example.com")
         self.rule = rule
-        # Indicates whether the rule is enabled. Valid values:
-        # 
-        # *   on
-        # *   off
+        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
-        # The rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # The order in which the rule is executed.
+        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
-        # The version number of the website configurations.
+        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site, defaulting to version 0.
         self.site_version = site_version
 
     def validate(self):
@@ -26071,11 +26272,11 @@ class GetHttpResponseHeaderModificationRuleRequest(TeaModel):
         config_id: int = None,
         site_id: int = None,
     ):
-        # The configuration ID, which can be obtained by calling the [ListHttpResponseHeaderModificationRules](~~ListHttpResponseHeaderModificationRules~~) operation.
+        # Configuration ID, which can be obtained by calling the [ListHttpResponseHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) interface.
         # 
         # This parameter is required.
         self.config_id = config_id
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
         # This parameter is required.
         self.site_id = site_id
@@ -26111,15 +26312,15 @@ class GetHttpResponseHeaderModificationRuleResponseBodyResponseHeaderModificatio
         operation: str = None,
         value: str = None,
     ):
-        # The name of the response header.
+        # Response header name.
         self.name = name
-        # The action. Valid values:
+        # Operation method. Possible values are:
         # 
-        # *   add: adds a response header.
-        # *   del: deletes a response header.
-        # *   modify: modifies a response header.
+        # - add: Add.
+        # - del: Delete
+        # - modify: Modify.
         self.operation = operation
-        # The value of the response header.
+        # Response header value.
         self.value = value
 
     def validate(self):
@@ -26163,29 +26364,29 @@ class GetHttpResponseHeaderModificationRuleResponseBody(TeaModel):
         sequence: int = None,
         site_version: int = None,
     ):
-        # The configuration ID.
+        # Configuration ID.
         self.config_id = config_id
-        # The configuration type. Valid values:
-        # 
-        # *   global: global configuration.
-        # *   rule: rule configuration.
+        # Configuration type, with the following values:
+        # - global: Global configuration.
+        # - rule: Rule-based configuration.
         self.config_type = config_type
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The configurations of modifying response headers. You can add, delete, or modify a response header.
+        # Modify response headers, supporting add, delete, and modify operations.
         self.response_header_modification = response_header_modification
-        # The rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Indicates whether the rule is enabled. Valid values:
-        # 
-        # *   on
-        # *   off
+        # Rule switch. This parameter is not required when adding a global configuration. Possible values are:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
-        # The rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # The order in which the rule is executed.
+        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
-        # The version number of the website configurations.
+        # The version number of the site configuration. For sites that have enabled configuration version management, you can use this parameter to specify the effective version of the site configuration, defaulting to version 0.
         self.site_version = site_version
 
     def validate(self):
@@ -26350,52 +26551,52 @@ class GetHttpsApplicationConfigurationResponseBody(TeaModel):
         sequence: int = None,
         site_version: int = None,
     ):
-        # Alt-Svc feature switch, default is disabled. Value range:
+        # Alt-Svc feature switch. Default is disabled. Possible values:
         # 
-        # - on: Enabled.
-        # - off: Disabled.
+        # - on: Enable.
+        # - off: Disable.
         self.alt_svc = alt_svc
-        # Whether the Alt-Svc header includes the clear parameter, default is disabled. Values:
+        # Whether the Alt-Svc header includes the clear parameter. Default is disabled. Possible values:
         # 
-        # - on: Enabled.
-        # - off: Disabled.
+        # - on: Enable.
+        # - off: Disable.
         self.alt_svc_clear = alt_svc_clear
-        # Alt-Svc validity period in seconds, default is 86400 seconds.
+        # Alt-Svc validity period in seconds. The default is 86400 seconds.
         self.alt_svc_ma = alt_svc_ma
-        # Whether the Alt-Svc header includes the persist parameter, default is disabled. Values:
+        # Whether the Alt-Svc header includes the persist parameter. Default is disabled. Possible values:
         # 
-        # - on: Enabled.
-        # - off: Disabled.
+        # - on: Enable.
+        # - off: Disable.
         self.alt_svc_persist = alt_svc_persist
         # Configuration ID.
         self.config_id = config_id
-        # Configuration type, which can be used to query global or rule configurations. Value range:
+        # Configuration type, which can be used to query global or rule configurations. Possible values:
         # 
         # - global: Query global configuration.
         # - rule: Query rule configuration.
         self.config_type = config_type
-        # Whether to enable HSTS, default is disabled. Value range:
+        # Whether to enable HSTS. Default is disabled. Possible values:
         # 
-        # - on: Enabled.
-        # - off: Disabled.
+        # - on: Enable.
+        # - off: Disable.
         self.hsts = hsts
-        # Whether to include subdomains in HSTS, default is disabled. Value range:
-        # 
-        # - on: Enabled.
-        # - off: Disabled.
+        # Whether to include subdomains in HSTS, default is off. Value range:
+        # - on: enabled. 
+        # - off: disabled.
         self.hsts_include_subdomains = hsts_include_subdomains
         # HSTS expiration time in seconds.
         self.hsts_max_age = hsts_max_age
         # Whether to enable HSTS preload, default is off. Value range:
-        # - on: enabled. 
+        # 
+        # - on: enabled.
         # - off: disabled.
         self.hsts_preload = hsts_preload
-        # Whether to enable forced HTTPS, default is disabled. Value range:
+        # Whether to enable forced HTTPS. Default is disabled. Possible values:
         # 
-        # - on: Enabled.
-        # - off: Disabled.
+        # - on: Enable.
+        # - off: Disable.
         self.https_force = https_force
-        # Forced HTTPS redirect status code. Value range:
+        # Status code for forced HTTPS redirection. Possible values:
         # 
         # - 301
         # - 302
@@ -26404,18 +26605,19 @@ class GetHttpsApplicationConfigurationResponseBody(TeaModel):
         self.https_force_code = https_force_code
         # Request ID.
         self.request_id = request_id
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter does not need to be set when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true.
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq "video.example.com")
         self.rule = rule
-        # Rule switch. Values:
-        # 
-        # - on: Enabled.
-        # - off: Disabled.
+        # Rule switch. This parameter does not need to be set when adding a global configuration. Possible values:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter does not need to be set when adding a global configuration.
         self.rule_name = rule_name
-        # Rule execution sequence.
+        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
-        # Site version number.
+        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the version of the site for which the configuration takes effect. The default is version 0.
         self.site_version = site_version
 
     def validate(self):
@@ -26910,11 +27112,11 @@ class GetImageTransformRequest(TeaModel):
         config_id: int = None,
         site_id: int = None,
     ):
-        # The configuration ID, which can be obtained by calling the [ListImageTransforms](~~ListImageTransforms~~) operation.
+        # Configuration ID. It can be obtained by calling the [ListImageTransforms](https://help.aliyun.com/document_detail/2869056.html) interface.
         # 
         # This parameter is required.
         self.config_id = config_id
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
         # This parameter is required.
         self.site_id = site_id
@@ -26956,32 +27158,31 @@ class GetImageTransformResponseBody(TeaModel):
         sequence: int = None,
         site_version: int = None,
     ):
-        # The configuration ID.
+        # Configuration ID.
         self.config_id = config_id
-        # The configuration type. Valid values:
-        # 
-        # *   global: global configuration.
-        # *   rule: rule configuration.
+        # Configuration type. Possible values:
+        # - global: Global configuration;
+        # - rule: Rule-based configuration;
         self.config_type = config_type
-        # Indicates whether the image transformations feature is enabled. Valid values:
-        # 
-        # *   on
-        # *   off
+        # Whether to enable image transformation. Possible values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.enable = enable
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The rule content, which is a policy or conditional expression.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Indicates whether the rule is enabled. Valid values:
-        # 
-        # *   **on**\
-        # *   **off**\
+        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
-        # The rule name.
+        # Rule name. This parameter does not need to be set when adding global configuration.
         self.rule_name = rule_name
-        # The order in which the rule is executed.
+        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
-        # The version number of the website.
+        # The version number of the site configuration. For sites with version management enabled, this parameter can specify the effective version of the site, defaulting to version 0.
         self.site_version = site_version
 
     def validate(self):
@@ -27762,7 +27963,7 @@ class GetLoadBalancerResponseBodyAdaptiveRouting(TeaModel):
         self,
         failover_across_pools: bool = None,
     ):
-        # Whether to failover across pools.
+        # Whether to fail over across pools.
         # 
         # - true: Yes.
         # - false: No.
@@ -27803,30 +28004,30 @@ class GetLoadBalancerResponseBodyMonitor(TeaModel):
         timeout: int = None,
         type: str = None,
     ):
-        # The number of consecutive failed health checks before the backend is considered down, for example, `5`.
+        # The number of consecutive failed probes required to consider the target as unhealthy, for example, `5`.
         self.consecutive_down = consecutive_down
-        # The number of consecutive successful probes required to consider the target as up, e.g., `3`.
+        # The number of consecutive successful probes required to consider the target as healthy, for example, `3`.
         self.consecutive_up = consecutive_up
-        # Expected status codes, such as 200, 202, indicating successful HTTP responses.
+        # Expected status codes, such as 200, 202, for successful HTTP responses.
         self.expected_codes = expected_codes
         # Whether to follow redirects.
         # 
         # - true: Yes.
         # - false: No.
         self.follow_redirects = follow_redirects
-        # The HTTP headers to be included in the health check request.
+        # The HTTP headers to be included in the probe request.
         self.header = header
-        # The interval for health checks, in seconds.
+        # Health check interval, in seconds.
         self.interval = interval
-        # The method for the health check.
+        # Health check method.
         self.method = method
-        # The path.
+        # Path.
         self.path = path
-        # The target port.
+        # Target port.
         self.port = port
         # The timeout for the health check, in seconds.
         self.timeout = timeout
-        # The type of monitor protocol, such as HTTP, used for health checks. When the value is `off`, it indicates that no check is performed.
+        # Monitor protocol type, such as HTTP, used for health checks. When the value is `off`, it indicates that no check is performed.
         self.type = type
 
     def validate(self):
@@ -27897,7 +28098,7 @@ class GetLoadBalancerResponseBodyRandomSteering(TeaModel):
     ):
         # The default round-robin weight, used for all pools that do not have individually specified weights. The value range is 0-100.
         self.default_weight = default_weight
-        # Weight configuration for each backend server pool, where the key is the pool ID and the value is the weight coefficient. The weight coefficient represents the proportion of relative traffic distribution.
+        # Weight configurations for each backend server pool, where the key is the pool ID and the value is the weight coefficient. The weight coefficient represents the relative traffic distribution ratio.
         self.pool_weights = pool_weights
 
     def validate(self):
@@ -27986,23 +28187,24 @@ class GetLoadBalancerResponseBodyRules(TeaModel):
     ):
         # Executes a specified response after matching the rule.
         self.fixed_response = fixed_response
-        # Modifies the load balancer configuration for the corresponding request after matching the rule. The fields in this configuration will override the corresponding fields in the load balancer configuration.
+        # Modifies the load balancer configuration for the corresponding request after matching the rule. The fields in this configuration will override the corresponding fields in the load balancer\\"s configuration.
         self.overrides = overrides
-        # Information about the matching rule.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding global configurations. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch.
-        # 
-        # - on: Enable the rule.
-        # - off: Disable the rule.
+        # Rule switch. This parameter is not required when adding global configurations. Possible values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
-        # The name of the rule.
+        # Rule name. This parameter is not required when adding global configurations.
         self.rule_name = rule_name
-        # The execution order of the rule.
+        # Rule execution order. The higher the number, the higher the priority.
         self.sequence = sequence
         # Whether to terminate the execution of subsequent rules.
         # 
         # - true: Yes.
-        # - false: No.
+        # - false: No, default value.
         self.terminates = terminates
 
     def validate(self):
@@ -28073,7 +28275,7 @@ class GetLoadBalancerResponseBody(TeaModel):
         sub_region_pools: Any = None,
         ttl: int = None,
     ):
-        # Cross-pool origin configuration.
+        # Cross-pool failover configuration.
         self.adaptive_routing = adaptive_routing
         # List of default pool IDs.
         self.default_pools = default_pools
@@ -28098,7 +28300,7 @@ class GetLoadBalancerResponseBody(TeaModel):
         self.region_pools = region_pools
         # Request ID.
         self.request_id = request_id
-        # Rule configuration list, used to define behavior under specific conditions.
+        # A list of rule configurations, used to define behavior under specific conditions.
         self.rules = rules
         # Session persistence, with values:
         # - off: Not enabled.
@@ -28399,7 +28601,7 @@ class GetNetworkOptimizationRequest(TeaModel):
         config_id: int = None,
         site_id: int = None,
     ):
-        # ConfigId of the configuration, which can be obtained by calling the ListNetworkOptimizations.
+        # Configuration ConfigId, which can be obtained by calling the [ListNetworkOptimizations](https://help.aliyun.com/document_detail/2869051.html) interface.
         # 
         # This parameter is required.
         self.config_id = config_id
@@ -28457,37 +28659,39 @@ class GetNetworkOptimizationResponseBody(TeaModel):
         # - rule: Query rule configuration.
         self.config_type = config_type
         # Whether to enable GRPC, default is disabled. Value range:
-        # - on: Enabled
-        # - off: Disabled
+        # - on: Enable
+        # - off: Disable
         self.grpc = grpc
         # Whether to enable HTTP2 origin, default is disabled. Value range:
         # 
-        # - on: Enabled
-        # - off: Disabled
+        # - on: Enable
+        # - off: Disable
         self.http_2origin = http_2origin
         # Request ID.
         self.request_id = request_id
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. Values:
-        # - on: Enabled
-        # - off: Disabled
+        # Rule switch. This parameter is not required when adding a global configuration. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # Rule execution sequence.
+        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
-        # Site version number.
+        # Site configuration version number. For sites with version management enabled, this parameter can specify the effective site version, defaulting to version 0.
         self.site_version = site_version
         # Whether to enable smart routing service, default is disabled. Value range:
-        # - on: Enabled
-        # - off: Disabled
+        # - on: Enable
+        # - off: Disable
         self.smart_routing = smart_routing
-        # Maximum upload file size, in MB, value range: 100～500.
+        # Maximum upload file size in MB, with a range from 100 to 500.
         self.upload_max_filesize = upload_max_filesize
         # Whether to enable Websocket, default is enabled. Value range:
-        # - on: Enabled
-        # - off: Disabled
+        # - on: Enable
+        # - off: Disable
         self.websocket = websocket
 
     def validate(self):
@@ -29558,21 +29762,27 @@ class GetOriginRuleResponseBody(TeaModel):
         self.dns_record = dns_record
         # HOST carried in the origin request.
         self.origin_host = origin_host
-        # Source site port accessed when using the HTTP protocol for origin.
+        # Port of the origin server accessed when using the HTTP protocol for origin.
         self.origin_http_port = origin_http_port
-        # Source site port accessed when using the HTTPS protocol for origin.
+        # Port of the origin server accessed when using the HTTPS protocol for origin.
         self.origin_https_port = origin_https_port
+        # mTLS switch. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.origin_mtls = origin_mtls
         # Protocol used for the origin request. Value range:
         # 
         # - http: Use HTTP protocol for origin.
         # - https: Use HTTPS protocol for origin.
-        # - follow: Follow client protocol for origin.
+        # - follow: Follow the client\\"s protocol for origin.
         self.origin_scheme = origin_scheme
         # SNI carried in the origin request.
         self.origin_sni = origin_sni
+        # Origin certificate verification switch. Value range: 
+        # - on: Enable. 
+        # - off: Disable.
         self.origin_verify = origin_verify
-        # Use range chunking method for origin download. Value range:
+        # Use the range chunk method for origin file download. Value range:
         # 
         # - on: Enable.
         # - off: Disable.
@@ -29580,17 +29790,19 @@ class GetOriginRuleResponseBody(TeaModel):
         self.range = range
         # Request ID.
         self.request_id = request_id
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter does not need to be set when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. Value range:
+        # Rule switch. This parameter does not need to be set when adding a global configuration. Value range:
         # - on: Enable.
         # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter does not need to be set when adding a global configuration.
         self.rule_name = rule_name
-        # Rule execution sequence.
+        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
-        # Site version number.
+        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site configuration, defaulting to version 0.
         self.site_version = site_version
 
     def validate(self):
@@ -30578,11 +30790,11 @@ class GetRedirectRuleRequest(TeaModel):
         config_id: int = None,
         site_id: int = None,
     ):
-        # The configuration ID, which can be obtained by calling the [ListRedirectRules](~~ListRedirectRules~~) operation.
+        # Configuration ID. It can be obtained by calling the [ListRedirectRules](~~ListRedirectRules~~) interface.
         # 
         # This parameter is required.
         self.config_id = config_id
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
         # This parameter is required.
         self.site_id = site_id
@@ -30627,46 +30839,44 @@ class GetRedirectRuleResponseBody(TeaModel):
         target_url: str = None,
         type: str = None,
     ):
-        # The configuration ID.
+        # Configuration ID.
         self.config_id = config_id
-        # The type of the configuration. Valid values:
-        # 
-        # *   global: global configuration.
-        # *   rule: rule configuration.
+        # Configuration type. Possible values:
+        # - global: Global configuration.
+        # - rule: Rule-based configuration.
         self.config_type = config_type
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # Indicates whether the feature of retaining the query string is enabled. Valid values:
-        # 
-        # *   on
-        # *   off
+        # Preserve query string. Possible values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.reserve_query_string = reserve_query_string
-        # The rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Indicates whether the rule is enabled. Valid values:
-        # 
-        # *   **on**\
-        # *   **off**\
+        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
-        # The rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # The order in which the rule is executed.
+        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
-        # The version of the website configurations.
+        # The version number of the site configuration. For sites with version management enabled, this parameter can specify the effective version of the site, defaulting to version 0.
         self.site_version = site_version
-        # The response code that you want to use to indicate URL redirection. Valid values:
-        # 
-        # *   301
-        # *   302
-        # *   303
-        # *   307
-        # *   308
+        # Response status code used by the node to respond to the client with the redirect address. Possible values:
+        # - 301
+        # - 302
+        # - 303
+        # - 307
+        # - 308
         self.status_code = status_code
-        # The destination URL to which requests are redirected.
+        # Target URL after redirection.
         self.target_url = target_url
-        # The redirect type. Valid value:
-        # 
-        # *   static
+        # Redirect type. Possible values:
+        # - static: Static mode.
+        # - dynamic: Dynamic mode.
         self.type = type
 
     def validate(self):
@@ -30780,11 +30990,11 @@ class GetRewriteUrlRuleRequest(TeaModel):
         config_id: int = None,
         site_id: int = None,
     ):
-        # The configuration ID, which can be obtained by calling the [ListRewriteUrlRules](~~ListRewriteUrlRules~~) operation.
+        # Configuration ID, which can be obtained by calling the [ListRewriteUrlRules](https://help.aliyun.com/document_detail/2867480.html) interface.
         # 
         # This parameter is required.
         self.config_id = config_id
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
         # This parameter is required.
         self.site_id = site_id
@@ -30829,41 +31039,41 @@ class GetRewriteUrlRuleResponseBody(TeaModel):
         site_version: int = None,
         uri: str = None,
     ):
-        # The configuration ID.
+        # Configuration ID.
         self.config_id = config_id
-        # The configuration type. Valid values:
-        # 
-        # *   global: global configuration.
-        # *   rule: rule configuration.
+        # Configuration type. Possible values:
+        # - global: Global configuration;
+        # - rule: Rule-based configuration;
         self.config_type = config_type
-        # The desired query string to which you want to rewrite the query string in the original request.
+        # The rewritten query string.
         self.query_string = query_string
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The query string rewrite method. Valid value:
+        # Query string rewrite type. Possible values:
         # 
-        # *   static
-        # * dynamic
+        # - static: Static mode.
+        # - dynamic: Dynamic mode.
         self.rewrite_query_string_type = rewrite_query_string_type
-        # The path rewrite method. Valid value:
+        # URI rewrite type. Possible values:
         # 
-        # *   static
-        # * dynamic
+        # - static: Static mode.
+        # - dynamic: Dynamic mode.
         self.rewrite_uri_type = rewrite_uri_type
-        # The rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter does not need to be set when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Indicates whether the rule is enabled. Valid values:
-        # 
-        # *   on
-        # *   off
+        # Rule switch. This parameter does not need to be set when adding a global configuration. Possible values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
-        # The rule name.
+        # Rule name. This parameter does not need to be set when adding a global configuration.
         self.rule_name = rule_name
-        # The order in which the rule is executed.
+        # Rule execution order. The smaller the value, the higher the priority for execution.
         self.sequence = sequence
-        # The version number of the website configurations.
+        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site, defaulting to version 0.
         self.site_version = site_version
-        # The desired URI to which you want to rewrite the path in the original request.
+        # The target URI after rewriting.
         self.uri = uri
 
     def validate(self):
@@ -31001,48 +31211,6 @@ class GetRoutineRequest(TeaModel):
         return self
 
 
-class GetRoutineResponseBodyCodeVersions(TeaModel):
-    def __init__(
-        self,
-        code_description: str = None,
-        code_version: str = None,
-        create_time: str = None,
-    ):
-        # The description of the code version.
-        self.code_description = code_description
-        # The code version.
-        self.code_version = code_version
-        # The time when the code version was created.
-        self.create_time = create_time
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code_description is not None:
-            result['CodeDescription'] = self.code_description
-        if self.code_version is not None:
-            result['CodeVersion'] = self.code_version
-        if self.create_time is not None:
-            result['CreateTime'] = self.create_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CodeDescription') is not None:
-            self.code_description = m.get('CodeDescription')
-        if m.get('CodeVersion') is not None:
-            self.code_version = m.get('CodeVersion')
-        if m.get('CreateTime') is not None:
-            self.create_time = m.get('CreateTime')
-        return self
-
-
 class GetRoutineResponseBodyEnvs(TeaModel):
     def __init__(
         self,
@@ -31099,124 +31267,15 @@ class GetRoutineResponseBodyEnvs(TeaModel):
         return self
 
 
-class GetRoutineResponseBodyRelatedRecords(TeaModel):
-    def __init__(
-        self,
-        record_id: int = None,
-        record_name: str = None,
-        site_id: int = None,
-        site_name: str = None,
-    ):
-        # The record ID.
-        self.record_id = record_id
-        # The record name.
-        self.record_name = record_name
-        # The website ID.
-        self.site_id = site_id
-        # The website name.
-        self.site_name = site_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.record_id is not None:
-            result['RecordId'] = self.record_id
-        if self.record_name is not None:
-            result['RecordName'] = self.record_name
-        if self.site_id is not None:
-            result['SiteId'] = self.site_id
-        if self.site_name is not None:
-            result['SiteName'] = self.site_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RecordId') is not None:
-            self.record_id = m.get('RecordId')
-        if m.get('RecordName') is not None:
-            self.record_name = m.get('RecordName')
-        if m.get('SiteId') is not None:
-            self.site_id = m.get('SiteId')
-        if m.get('SiteName') is not None:
-            self.site_name = m.get('SiteName')
-        return self
-
-
-class GetRoutineResponseBodyRelatedRoutes(TeaModel):
-    def __init__(
-        self,
-        by_pass: str = None,
-        route: str = None,
-        route_id: str = None,
-        site_id: int = None,
-        site_name: str = None,
-    ):
-        self.by_pass = by_pass
-        # The route.
-        self.route = route
-        # The route ID.
-        self.route_id = route_id
-        # The website ID.
-        self.site_id = site_id
-        # The website name.
-        self.site_name = site_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.by_pass is not None:
-            result['ByPass'] = self.by_pass
-        if self.route is not None:
-            result['Route'] = self.route
-        if self.route_id is not None:
-            result['RouteId'] = self.route_id
-        if self.site_id is not None:
-            result['SiteId'] = self.site_id
-        if self.site_name is not None:
-            result['SiteName'] = self.site_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ByPass') is not None:
-            self.by_pass = m.get('ByPass')
-        if m.get('Route') is not None:
-            self.route = m.get('Route')
-        if m.get('RouteId') is not None:
-            self.route_id = m.get('RouteId')
-        if m.get('SiteId') is not None:
-            self.site_id = m.get('SiteId')
-        if m.get('SiteName') is not None:
-            self.site_name = m.get('SiteName')
-        return self
-
-
 class GetRoutineResponseBody(TeaModel):
     def __init__(
         self,
-        code_versions: List[GetRoutineResponseBodyCodeVersions] = None,
         create_time: str = None,
         default_related_record: str = None,
         description: str = None,
         envs: List[GetRoutineResponseBodyEnvs] = None,
-        related_records: List[GetRoutineResponseBodyRelatedRecords] = None,
-        related_routes: List[GetRoutineResponseBodyRelatedRoutes] = None,
         request_id: str = None,
     ):
-        # The code versions.
-        self.code_versions = code_versions
         # The time when the routine was created.
         self.create_time = create_time
         # The default record name to access.
@@ -31225,28 +31284,12 @@ class GetRoutineResponseBody(TeaModel):
         self.description = description
         # The information about the environments.
         self.envs = envs
-        # The records associated with the routine.
-        self.related_records = related_records
-        # The routes associated with the routine.
-        self.related_routes = related_routes
         # The request ID.
         self.request_id = request_id
 
     def validate(self):
-        if self.code_versions:
-            for k in self.code_versions:
-                if k:
-                    k.validate()
         if self.envs:
             for k in self.envs:
-                if k:
-                    k.validate()
-        if self.related_records:
-            for k in self.related_records:
-                if k:
-                    k.validate()
-        if self.related_routes:
-            for k in self.related_routes:
                 if k:
                     k.validate()
 
@@ -31256,10 +31299,6 @@ class GetRoutineResponseBody(TeaModel):
             return _map
 
         result = dict()
-        result['CodeVersions'] = []
-        if self.code_versions is not None:
-            for k in self.code_versions:
-                result['CodeVersions'].append(k.to_map() if k else None)
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.default_related_record is not None:
@@ -31270,25 +31309,12 @@ class GetRoutineResponseBody(TeaModel):
         if self.envs is not None:
             for k in self.envs:
                 result['Envs'].append(k.to_map() if k else None)
-        result['RelatedRecords'] = []
-        if self.related_records is not None:
-            for k in self.related_records:
-                result['RelatedRecords'].append(k.to_map() if k else None)
-        result['RelatedRoutes'] = []
-        if self.related_routes is not None:
-            for k in self.related_routes:
-                result['RelatedRoutes'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.code_versions = []
-        if m.get('CodeVersions') is not None:
-            for k in m.get('CodeVersions'):
-                temp_model = GetRoutineResponseBodyCodeVersions()
-                self.code_versions.append(temp_model.from_map(k))
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('DefaultRelatedRecord') is not None:
@@ -31300,16 +31326,6 @@ class GetRoutineResponseBody(TeaModel):
             for k in m.get('Envs'):
                 temp_model = GetRoutineResponseBodyEnvs()
                 self.envs.append(temp_model.from_map(k))
-        self.related_records = []
-        if m.get('RelatedRecords') is not None:
-            for k in m.get('RelatedRecords'):
-                temp_model = GetRoutineResponseBodyRelatedRecords()
-                self.related_records.append(temp_model.from_map(k))
-        self.related_routes = []
-        if m.get('RelatedRoutes') is not None:
-            for k in m.get('RelatedRoutes'):
-                temp_model = GetRoutineResponseBodyRelatedRoutes()
-                self.related_routes.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -34985,19 +35001,19 @@ class ListCacheRulesRequest(TeaModel):
         # - global: Query global configuration.
         # - rule: Query rule-based configuration.
         # 
-        # This parameter is optional; if not provided, it does not distinguish between global and rule-based configurations.
+        # This parameter is optional; if not provided, it will not distinguish between global and rule-based configurations.
         self.config_type = config_type
         # Page number, defaulting to 1 if not provided.
         self.page_number = page_number
         # Number of items per page, with a maximum of 500. Defaults to 500 if not provided.
         self.page_size = page_size
-        # Rule name, which can be used to find the rule with the specified name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Site version number. For sites with version management enabled, this parameter can specify the version for which the configuration is effective, defaulting to version 0.
+        # Site version number. For sites with version management enabled, this parameter can specify the site version for which the configuration takes effect, defaulting to version 0.
         self.site_version = site_version
 
     def validate(self):
@@ -35075,39 +35091,42 @@ class ListCacheRulesResponseBodyConfigs(TeaModel):
         user_geo: str = None,
         user_language: str = None,
     ):
-        # Enable caching on specified ports. The value range is 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
+        # Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
         self.additional_cacheable_ports = additional_cacheable_ports
         # Browser cache mode. Possible values:
         # - no_cache: Do not cache.
         # - follow_origin: Follow origin cache policy.
         # - override_origin: Override origin cache policy.
         self.browser_cache_mode = browser_cache_mode
-        # Browser cache expiration time in seconds.
+        # Browser cache expiration time, in seconds.
         self.browser_cache_ttl = browser_cache_ttl
-        # Bypass cache mode. Possible values:
+        # Set bypass cache mode. Possible values:
         # - cache_all: Cache all requests.
         # - bypass_all: Bypass cache for all requests.
         self.bypass_cache = bypass_cache
-        # Cache deception defense. Used to defend against web cache deception attacks, only the verified cache content will be cached. Value range:
-        # - on: Enable.
-        # - off: Disable.
+        # Cache deception defense. Used to defend against web cache deception attacks; only verified cache content will be cached. Value range:
+        # - on: Enabled.
+        # - off: Disabled.
         self.cache_deception_armor = cache_deception_armor
-        # Cache reserve eligibility. Used to control whether user requests bypass the cache reserve node during origin pull. Possible values:
+        # Cache reserve eligibility. This is used to control whether user requests bypass the cache reserve node when returning to the origin. The value range is as follows:
         # - bypass_cache_reserve: Requests bypass the cache reserve.
         # - eligible_for_cache_reserve: Eligible for cache reserve.
         self.cache_reserve_eligibility = cache_reserve_eligibility
-        # Check if the cookie exists when generating the cache key. If it exists, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
+        # When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
         self.check_presence_cookie = check_presence_cookie
-        # Check if the header exists when generating the cache key. If it exists, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
+        # When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
         self.check_presence_header = check_presence_header
         # Configuration ID.
         self.config_id = config_id
         # Configuration type, which can be used to query global or rule-based configurations. Possible values:
-        # 
         # - global: Query global configuration.
         # - rule: Query rule-based configuration.
         self.config_type = config_type
-        # Node cache mode. The value range includes: - follow_origin: Follow the origin\\"s cache strategy (if any), otherwise use the default cache strategy. - no_cache: Do not cache. - override_origin: Override the origin\\"s cache strategy. - follow_origin_bypass: Follow the origin\\"s cache strategy (if any), otherwise do not cache.
+        # Edge cache mode. The value range is as follows:
+        # - follow_origin: Follow the origin server\\"s cache policy (if it exists), otherwise use the default cache policy.
+        # - no_cache: Do not cache.
+        # - override_origin: Override the origin server\\"s cache policy.
+        # - follow_origin_bypass: Follow the origin server\\"s cache policy (if it exists), otherwise do not cache.
         self.edge_cache_mode = edge_cache_mode
         # Edge cache expiration time, in seconds.
         self.edge_cache_ttl = edge_cache_ttl
@@ -35119,43 +35138,45 @@ class ListCacheRulesResponseBodyConfigs(TeaModel):
         self.include_header = include_header
         # The query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
         self.query_string = query_string
-        # The processing mode for query strings when generating the cache key. Possible values:
-        # - ignore_all: Ignore all.
+        # The processing mode for query strings when generating the cache key. The value range is as follows:
+        # - ignore_all: Ignore all query strings.
         # - exclude_query_string: Exclude specified query strings.
-        # - reserve_all: Default, reserve all.
+        # - reserve_all: Default, reserve all query strings.
         # - include_query_string: Include specified query strings.
         self.query_string_mode = query_string_mode
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. Possible values:
+        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
         # - on: Enabled.
         # - off: Disabled.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # Rule execution sequence.
+        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
-        # Serve stale cache. When enabled, the node can still use the cached expired files to respond to user requests even if the origin server is unavailable. Possible values:
+        # Serve stale cache. When enabled, the node can still respond to user requests with expired cached files even when the origin server is unavailable. Value range:
         # - on: Enabled.
         # - off: Disabled.
         self.serve_stale = serve_stale
-        # Site version number.
+        # Site configuration version number. For sites with version management enabled, this parameter can specify the site version for which the configuration takes effect, defaulting to version 0.
         self.site_version = site_version
-        # Query string sorting. Possible values:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Query string sorting. The value range is as follows:
+        # - on: Enable.
+        # - off: Disable.
         self.sort_query_string_for_cache = sort_query_string_for_cache
-        # Include the client device type when generating the cache key. Possible values:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Include the client device type when generating the cache key. The value range is as follows:
+        # - on: Enable.
+        # - off: Disable.
         self.user_device_type = user_device_type
-        # Include the client\\"s geographic location when generating the cache key. Possible values:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Include the client\\"s geographic location when generating the cache key. The value range is as follows:
+        # - on: Enable.
+        # - off: Disable.
         self.user_geo = user_geo
-        # Include the client\\"s language type when generating the cache key. Possible values:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Include the client\\"s language type when generating the cache key. The value range is as follows:
+        # - on: Enable.
+        # - off: Disable.
         self.user_language = user_language
 
     def validate(self):
@@ -36527,24 +36548,23 @@ class ListCompressionRulesRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # The configuration ID, which can be obtained by calling the [ListRedirectRules](~~ListRedirectRules~~) operation.
+        # Configuration ID, which can be obtained by calling the [ListRedirectRules](https://help.aliyun.com/document_detail/2867474.html) interface.
         self.config_id = config_id
-        # The type of the configuration. Valid values:
-        # 
-        # *   global: global configuration.
-        # *   rule: rule configuration.
+        # Configuration type. Possible values:
+        # - global: Global configuration.
+        # - rule: Rule-based configuration.
         self.config_type = config_type
-        # The page number.
+        # Page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # Page size.
         self.page_size = page_size
-        # The rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The version of the website configurations.
+        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site configuration, defaulting to version 0.
         self.site_version = site_version
 
     def validate(self):
@@ -36605,36 +36625,35 @@ class ListCompressionRulesResponseBodyConfigs(TeaModel):
         site_version: int = None,
         zstd: str = None,
     ):
-        # Indicates whether Brotli compression is enabled. Valid values:
-        # 
-        # *   on
-        # *   off
+        # Brotli compression. Possible values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.brotli = brotli
-        # The configuration ID.
+        # Configuration ID.
         self.config_id = config_id
-        # The type of the configuration. Valid values:
-        # 
-        # *   global: global configuration.
-        # *   rule: rule configuration.
+        # Configuration type. Possible values:
+        # - global: Global configuration.
+        # - rule: Rule-based configuration.
         self.config_type = config_type
-        # Indicates whether Gzip compression is enabled. Valid values:
-        # 
-        # *   on
-        # *   off
+        # Gzip compression. Possible values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.gzip = gzip
-        # The rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Indicates whether the rule is enabled. Valid values:
-        # 
-        # *   on
-        # *   off
+        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
-        # The rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # The order in which the rule is executed.
+        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
-        # The version of the website configurations.
+        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site configuration, defaulting to version 0.
         self.site_version = site_version
+        # Zstd compression. Value range: - on: Enable. - off: Disable.
         self.zstd = zstd
 
     def validate(self):
@@ -36703,17 +36722,17 @@ class ListCompressionRulesResponseBody(TeaModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # The configured compression rules.
+        # List of compression rule configurations.
         self.configs = configs
-        # The page number.
+        # Current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # Page size.
         self.page_size = page_size
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # Total number of items.
         self.total_count = total_count
-        # The total number of pages.
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -38599,23 +38618,23 @@ class ListHttpRequestHeaderModificationRulesRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # Configuration ID, which can be obtained by calling the [ListHttpRequestHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) interface.
+        # Configuration ID, which can be obtained by calling the [ListHttpRequestHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) API.
         self.config_id = config_id
         # Configuration type, which can be used to query global or rule configurations. Possible values:
         # - global: Query global configuration;
         # - rule: Query rule configuration;
         self.config_type = config_type
-        # Page number, default is 1 if not provided.
+        # Page number, defaulting to 1 if not provided.
         self.page_number = page_number
-        # Number of items per page, maximum is 500, default is 500 if not provided.
+        # Number of items per page, with a maximum of 500. Defaults to 500 if not provided.
         self.page_size = page_size
-        # Rule name, which can be used to find the rule with the specified name. It only takes effect when provided.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Version number of the site configuration.
+        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the configuration, defaulting to version 0.
         self.site_version = site_version
 
     def validate(self):
@@ -38669,11 +38688,12 @@ class ListHttpRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModi
         operation: str = None,
         value: str = None,
     ):
-        # Request header name.
+        # The name of the request header.
         self.name = name
-        # Operation method. Value range:
-        # - add: Add. 
-        # - del: Delete. 
+        # The operation type. The value range is as follows:
+        # 
+        # - add: Add.
+        # - del: Delete.
         # - modify: Modify.
         self.operation = operation
         # The value of the request header.
@@ -38727,17 +38747,19 @@ class ListHttpRequestHeaderModificationRulesResponseBodyConfigs(TeaModel):
         self.config_type = config_type
         # Modify request headers, supporting add, delete, and modify operations.
         self.request_header_modification = request_header_modification
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. Possible values:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # Rule execution sequence.
+        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
-        # Version number of the site configuration.
+        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the configuration, defaulting to version 0.
         self.site_version = site_version
 
     def validate(self):
@@ -38810,7 +38832,7 @@ class ListHttpRequestHeaderModificationRulesResponseBody(TeaModel):
         self.configs = configs
         # Page number. Default value: **1**.
         self.page_number = page_number
-        # Page size, default is **500**, range: **1~500**.
+        # Page size, default **500**, with a range of **1~500**.
         self.page_size = page_size
         # Request ID.
         self.request_id = request_id
@@ -38919,26 +38941,25 @@ class ListHttpResponseHeaderModificationRulesRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # The configuration ID.
+        # Configuration ID.
         self.config_id = config_id
-        # The configuration type to query. Valid values:
+        # Configuration type, which can be used to query global or rule configurations. Possible values:
+        # - global: Query global configuration.
+        # - rule: Query rule configuration.
         # 
-        # *   global: global configurations.
-        # *   rule: queries rule configurations.
-        # 
-        # If this parameter is left empty, all configuration types are returned.
+        # This parameter is optional. If not provided, it does not distinguish between global and rule configurations.
         self.config_type = config_type
-        # The page number. Pages start from page 1.
+        # Page number.
         self.page_number = page_number
-        # The number of entries returned on each page. Default value: 500. Valid values: 1 to 500.
+        # Page size, default is 500. The value range is any integer from 1 to 500.
         self.page_size = page_size
-        # The rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The version number of the website configurations.
+        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the configuration, with the default being version 0.
         self.site_version = site_version
 
     def validate(self):
@@ -38992,15 +39013,14 @@ class ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderMo
         operation: str = None,
         value: str = None,
     ):
-        # The name of the response header.
+        # Name of the response header.
         self.name = name
-        # The action. Valid values:
-        # 
-        # *   add: adds a response header.
-        # *   del: deletes a response header.
-        # *   modify: modifies a response header.
+        # Operation type. The value range is as follows:
+        # - add: Add.
+        # - del: Delete
+        # - modify: Modify.
         self.operation = operation
-        # The value of the response header.
+        # Response header value.
         self.value = value
 
     def validate(self):
@@ -39043,27 +39063,27 @@ class ListHttpResponseHeaderModificationRulesResponseBodyConfigs(TeaModel):
         sequence: int = None,
         site_version: int = None,
     ):
-        # The configuration ID.
+        # Configuration ID.
         self.config_id = config_id
-        # The type of the configuration. Valid values:
-        # 
-        # *   global: global configuration.
-        # *   rule: rule configuration.
+        # Configuration type. Possible values:
+        # - global: Global configuration.
+        # - rule: Rule configuration.
         self.config_type = config_type
-        # The configurations of modifying response headers. You can add, delete, or modify a response header.
+        # Modify response headers, supporting add, delete, and modify operations.
         self.response_header_modification = response_header_modification
-        # The rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Indicates whether the rule is enabled. Valid values:
-        # 
-        # *   on
-        # *   off
+        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
-        # The rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # The order in which the rule is executed.
+        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
-        # The version number of the website configurations.
+        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the configuration, with the default being version 0.
         self.site_version = site_version
 
     def validate(self):
@@ -39132,17 +39152,17 @@ class ListHttpResponseHeaderModificationRulesResponseBody(TeaModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # The configuration list of modifying a response header.
+        # List of modified HTTP response headers.
         self.configs = configs
-        # The page number.
+        # Page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # Page size.
         self.page_size = page_size
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # Total count.
         self.total_count = total_count
-        # The total number of pages returned.
+        # Total pages.
         self.total_page = total_page
 
     def validate(self):
@@ -39247,11 +39267,11 @@ class ListHttpsApplicationConfigurationsRequest(TeaModel):
     ):
         # Configuration ID.
         self.config_id = config_id
-        # Configuration type, which can be used to query global or rule configurations. Value range:
+        # Configuration type, which can be used to query global or rule-based configurations. Possible values:
         # - global: Query global configuration.
-        # - rule: Query rule configuration.
+        # - rule: Query rule-based configuration.
         # 
-        # This parameter is optional. If not provided, it does not distinguish between global and rule configurations.
+        # This parameter is optional. If not provided, it will not distinguish between global and rule-based configurations.
         self.config_type = config_type
         # Page number, default is 1 if not provided.
         self.page_number = page_number
@@ -39331,61 +39351,63 @@ class ListHttpsApplicationConfigurationsResponseBodyConfigs(TeaModel):
         sequence: int = None,
         site_version: int = None,
     ):
-        # Alt-Svc feature switch, default is disabled. Values:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Alt-Svc feature switch, default is off. Value range: 
+        # - on: enabled. 
+        # - off: disabled.
         self.alt_svc = alt_svc
-        # Whether the Alt-Svc header includes the clear parameter, default is disabled. Values:
+        # Whether the Alt-Svc header includes the clear parameter, default is off. Values:
         # - on: Enabled.
         # - off: Disabled.
         self.alt_svc_clear = alt_svc_clear
-        # The effective duration of Alt-Svc, in seconds. The default is 86400 seconds.
+        # The validity period of Alt-Svc in seconds, default is 86400 seconds.
         self.alt_svc_ma = alt_svc_ma
-        # Whether the Alt-Svc header contains the persist parameter, default is off. Values: - on: enabled. - off: disabled.
+        # Whether the Alt-Svc header includes the persist parameter, default is off. Values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.alt_svc_persist = alt_svc_persist
         # Configuration ID.
         self.config_id = config_id
-        # Configuration type, which can be used to query global or rule configurations. Value range:
-        # 
+        # Configuration type, which can be used to query global or rule-based configurations. Possible values:
         # - global: Query global configuration.
-        # - rule: Query rule configuration.
+        # - rule: Query rule-based configuration.
         self.config_type = config_type
-        # Indicates whether HSTS is enabled. The default is off. Possible values:
+        # Whether HSTS is enabled, default is off. Value range:
         # - on: Enabled.
         # - off: Disabled.
         self.hsts = hsts
-        # Indicates whether to include subdomains in HSTS. The default is off. Possible values:
-        # - on: Include subdomains.
-        # - off: Do not include subdomains.
+        # Whether to include subdomains in HSTS, default is off. Value range:
+        # - on: Enabled.
+        # - off: Disabled.
         self.hsts_include_subdomains = hsts_include_subdomains
-        # The expiration time of HSTS, in seconds.
+        # The expiration time of HSTS in seconds.
         self.hsts_max_age = hsts_max_age
-        # Indicates whether HSTS preloading is enabled. The default is off. Possible values:
+        # Whether HSTS preloading is enabled, default is off. Value range:
         # - on: Enabled.
         # - off: Disabled.
         self.hsts_preload = hsts_preload
-        # Whether to enable forced HTTPS, default is disabled. Values:
-        # 
+        # Whether to enable forced HTTPS, default is disabled. Possible values:
         # - on: Enabled.
         # - off: Disabled.
         self.https_force = https_force
-        # Forced HTTPS redirect status code, value range:
+        # Forced HTTPS redirect status code. Possible values:
         # - 301
         # - 302
         # - 307
         # - 308
         self.https_force_code = https_force_code
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true.
+        # - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. Values:
+        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
         # - on: Enabled.
         # - off: Disabled.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # Rule execution sequence.
+        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
-        # Site version number.
+        # Site configuration version number. For sites with version management enabled, this parameter can specify the site version for which the configuration is effective, default is version 0.
         self.site_version = site_version
 
     def validate(self):
@@ -39482,17 +39504,17 @@ class ListHttpsApplicationConfigurationsResponseBody(TeaModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # Response body configuration.
+        # Response body configurations.
         self.configs = configs
-        # The current page number.
+        # Current page number.
         self.page_number = page_number
-        # The size of the page.
+        # Page size.
         self.page_size = page_size
         # Request ID.
         self.request_id = request_id
-        # The total number of records.
+        # Total number of records.
         self.total_count = total_count
-        # The total number of pages.
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -39600,7 +39622,7 @@ class ListHttpsBasicConfigurationsRequest(TeaModel):
         # - global: Query global configuration.
         # - rule: Query rule configuration.
         # 
-        # This parameter is optional; if not provided, it will not distinguish between global and rule configurations.
+        # This parameter is optional. If not provided, it does not distinguish between global and rule configurations.
         self.config_type = config_type
         # Page number, default is 1 if not provided.
         self.page_number = page_number
@@ -39673,12 +39695,12 @@ class ListHttpsBasicConfigurationsResponseBodyConfigs(TeaModel):
         tls_12: str = None,
         tls_13: str = None,
     ):
-        # Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
+        # Custom ciphersuite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
         self.ciphersuite = ciphersuite
-        # Cipher suite group, default is all cipher suites. Value range:
-        # - all: All cipher suites.
-        # - strict: Strong cipher suites.
-        # - custom: Custom cipher suites.
+        # Ciphersuite group, defaults to enabling all ciphersuites. Value range:
+        # - all: all ciphersuites.
+        # - strict: strong ciphersuites.
+        # - custom: custom ciphersuites.
         self.ciphersuite_group = ciphersuite_group
         # Configuration ID.
         self.config_id = config_id
@@ -39686,47 +39708,49 @@ class ListHttpsBasicConfigurationsResponseBodyConfigs(TeaModel):
         # - global: Query global configuration.
         # - rule: Query rule configuration.
         self.config_type = config_type
-        # Indicates whether HTTP2 is enabled. Default is on. Possible values:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Whether to enable HTTP2, default is on. Value range:
+        # - on: enabled.
+        # - off: disabled.
         self.http_2 = http_2
-        # Indicates whether HTTP3 is enabled. Default is on. Possible values:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Whether to enable HTTP3, default is on. Value range:
+        # - on: enabled.
+        # - off: disabled.
         self.http_3 = http_3
         # Whether to enable HTTPS, default is enabled. Value range:
-        # - on: Enabled.
-        # - off: Disabled.
+        # - on: Enable.
+        # - off: Disable.
         self.https = https
-        # Indicates whether OCSP is enabled. Default is off. Possible values:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Whether to enable OCSP, default is off. Value range:
+        # - on: enabled.
+        # - off: disabled.
         self.ocsp_stapling = ocsp_stapling
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true.
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. Value range:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Rule switch. This parameter is not required when adding a global configuration. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # Rule execution sequence.
+        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
         # Whether to enable TLS1.0, default is disabled. Value range:
-        # - on: Enabled.
-        # - off: Disabled.
+        # - on: Enable.
+        # - off: Disable.
         self.tls_10 = tls_10
         # Whether to enable TLS1.1, default is disabled. Value range:
-        # - on: Enabled.
-        # - off: Disabled.
+        # - on: Enable.
+        # - off: Disable.
         self.tls_11 = tls_11
         # Whether to enable TLS1.2, default is disabled. Value range:
-        # - on: Enabled.
-        # - off: Disabled.
+        # - on: Enable.
+        # - off: Disable.
         self.tls_12 = tls_12
         # Whether to enable TLS1.3, default is disabled. Value range:
-        # - on: Enabled.
-        # - off: Disabled.
+        # - on: Enable.
+        # - off: Disable.
         self.tls_13 = tls_13
 
     def validate(self):
@@ -39821,15 +39845,15 @@ class ListHttpsBasicConfigurationsResponseBody(TeaModel):
     ):
         # Response body configuration.
         self.configs = configs
-        # The current page number.
+        # Current page number.
         self.page_number = page_number
-        # The size of each page.
+        # Page size.
         self.page_size = page_size
         # Request ID.
         self.request_id = request_id
-        # The total number of records.
+        # Total number of records.
         self.total_count = total_count
-        # The total number of pages.
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -39932,26 +39956,25 @@ class ListImageTransformsRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # The configuration ID, which can be obtained by calling the ListImageTransforms operation.[](~~2869056~~)
+        # Configuration ID. Can be obtained by calling the [ListImageTransforms](https://help.aliyun.com/document_detail/2869056.html) interface.
         self.config_id = config_id
-        # The configuration type to query. Valid values:
+        # Configuration type, which can be used to query global or rule configurations. Possible values:
+        # - global: Query global configuration;
+        # - rule: Query rule configuration;
         # 
-        # *   global: global configurations.
-        # *   rule: rule configurations.
-        # 
-        # This parameter takes effect only when parameter functionName is specified. If this parameter is left empty, all configuration types are returned.
+        # This parameter is optional. If not provided, it will not distinguish between global and rule configurations.
         self.config_type = config_type
-        # The page number. Default value: 1.
+        # Page number. The default value is 1 if not provided.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: 500. Default value: 500.
+        # Number of items per page. The maximum value is 500, and the default value is 500 if not provided.
         self.page_size = page_size
-        # The rule name. This parameter takes effect only when parameter functionName is specified.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+        # Site ID. Can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The version number of the website. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
+        # Site version number. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. The default value is version 0.
         self.site_version = site_version
 
     def validate(self):
@@ -40010,30 +40033,30 @@ class ListImageTransformsResponseBodyConfigs(TeaModel):
         sequence: int = None,
         site_version: int = None,
     ):
-        # The configuration ID,
+        # Configuration ID.
         self.config_id = config_id
-        # The type of the configuration. Valid values:
-        # 
-        # *   global: global configuration.
-        # *   rule: rule configuration.
+        # Configuration type. Possible values:
+        # - global: Global configuration;
+        # - rule: Rule configuration;
         self.config_type = config_type
-        # Indicates whether cache reserve is enabled. Indicates whether the task name is valid. Valid values:
+        # Switch. Possible values:
         # 
-        # *   **on**\
-        # *   **off**\
+        # - **on**: Enabled.
+        # - **off**: Disabled.
         self.enable = enable
-        # The rule content, which is a policy or conditional expression.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Indicates whether the rule is enabled. Valid values:
-        # 
-        # *   on
-        # *   off
+        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
-        # The rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # The order in which the rule is executed.
+        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
-        # The version number of the website.
+        # Site configuration version number. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. The default value is version 0.
         self.site_version = site_version
 
     def validate(self):
@@ -40094,17 +40117,17 @@ class ListImageTransformsResponseBody(TeaModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # The configurations.
+        # Configuration list.
         self.configs = configs
-        # The page number returned.
+        # Current page number.
         self.page_number = page_number
-        # The number of entries per page. Valid values: **1 to 500**. Default value: **500**.
+        # Page size. Range: **1~500**, default is **500**.
         self.page_size = page_size
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The total number of records returned.
+        # Total number of records.
         self.total_count = total_count
-        # The total number of pages.
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -41716,20 +41739,20 @@ class ListLoadBalancersRequest(TeaModel):
         page_size: int = None,
         site_id: int = None,
     ):
-        # Name matching strategy when querying by name:
+        # The name matching strategy when querying by name:
         # 
         # - fuzzy: Fuzzy match;
         # - exact: Exact match, equivalent to an equality query.
         self.match_type = match_type
-        # Name of the load balancer, which can be used for querying by name.
+        # The name of the load balancer, which can be used to query by name.
         self.name = name
-        # Sorting field, currently only supports sorting by id. \\"id\\" indicates ascending order by id, \\"-id\\" indicates descending order by id. The id is positively correlated with the creation time. If not provided, it defaults to descending order by id.
+        # The sorting field. Currently, only sorting by id is supported. \\"id\\" indicates ascending order by id, and \\"-id\\" indicates descending order by id. The id size is positively correlated with the creation time. If not provided, it defaults to descending order by id.
         self.order_by = order_by
-        # Page number for paginated queries.
+        # The page number for paginated queries.
         self.page_number = page_number
-        # Page size for paginated queries, with a value range of 1-500.
+        # The page size for paginated queries, with a value range of 1-500.
         self.page_size = page_size
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
+        # The site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
         # 
         # This parameter is required.
         self.site_id = site_id
@@ -41779,7 +41802,7 @@ class ListLoadBalancersResponseBodyLoadBalancersAdaptiveRouting(TeaModel):
         self,
         failover_across_pools: bool = None,
     ):
-        # Whether to failover across pools.
+        # Whether to fail over across pools.
         # 
         # - true: Yes.
         # - false: No.
@@ -41820,28 +41843,28 @@ class ListLoadBalancersResponseBodyLoadBalancersMonitor(TeaModel):
         timeout: int = None,
         type: str = None,
     ):
-        # The number of consecutive failed probes required to consider the target as unhealthy, e.g., 5.
+        # The number of consecutive failed probes required to consider the target unhealthy, such as 5.
         self.consecutive_down = consecutive_down
-        # The number of consecutive successful probes required to consider the target as healthy, e.g., 3.
+        # The number of consecutive successful probes required to consider the target healthy, such as 3.
         self.consecutive_up = consecutive_up
-        # The expected status codes, such as 200, 202, indicating a successful HTTP response.
+        # The expected status codes, such as 200,202, indicating successful HTTP responses.
         self.expected_codes = expected_codes
         # Whether to follow redirects.
         # 
         # - true: Yes.
         # - false: No.
         self.follow_redirects = follow_redirects
-        # The header information included during the probe, i.e., HTTP headers.
+        # The header information included in the probe, such as HTTP headers.
         self.header = header
-        # The interval time for the health check, in seconds.
+        # The interval for the health check, in seconds.
         self.interval = interval
-        # The method used for the health check.
+        # The method for the health check.
         self.method = method
         # The path.
         self.path = path
         # The target port.
         self.port = port
-        # The timeout for the health check, in seconds.
+        # Application health check timeout, in seconds.
         self.timeout = timeout
         # The type of monitor protocol, such as HTTP, used for health checks. When the value is `off`, it indicates that no check will be performed.
         self.type = type
@@ -42005,20 +42028,22 @@ class ListLoadBalancersResponseBodyLoadBalancersRules(TeaModel):
         self.fixed_response = fixed_response
         # Modifies the corresponding load balancer configuration after matching the rule. The fields in this configuration will override the corresponding fields in the load balancer configuration.
         self.overrides = overrides
-        # Matching rule information.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding global configurations. There are two usage scenarios: 
+        # - Match all incoming requests: set the value to true 
+        # - Match specific requests: set the value to a custom expression, for example: (http.host eq "video.example.com")
         self.rule = rule
-        # Rule switch.
-        # - on: Enable the rule. 
-        # - off: Disable the rule.
+        # The switch for the rule. This parameter is not required when adding a global configuration. Possible values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
-        # Rule name.
+        # The name of the rule. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # The execution order of the rule.
+        # The execution order of the rule. The higher the value, the higher the priority.
         self.sequence = sequence
         # Whether to terminate the execution of subsequent rules.
         # 
         # - true: Yes.
-        # - false: No.
+        # - false: No, which is the default value.
         self.terminates = terminates
 
     def validate(self):
@@ -42088,45 +42113,45 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
         sub_region_pools: Any = None,
         ttl: int = None,
     ):
-        # Cross-pool fallback configuration.
+        # Cross-pool failover configuration.
         self.adaptive_routing = adaptive_routing
-        # List of default pool IDs.
+        # List of default address pool IDs.
         self.default_pools = default_pools
-        # Description of the load balancer.
+        # The description of the load balancer.
         self.description = description
         # Whether the load balancer is enabled.
         # 
         # - true: Enabled.
         # - false: Not enabled.
         self.enabled = enabled
-        # Fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
+        # The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
         self.fallback_pool = fallback_pool
-        # Unique identifier ID of the load balancer.
+        # The unique identifier ID of the load balancer.
         self.id = id
         # Monitor configuration.
         self.monitor = monitor
-        # Name of the load balancer.
+        # The name of the load balancer.
         self.name = name
-        # Weighted round-robin configuration, used to control the traffic distribution weights among different address pools.
+        # Weighted round-robin configuration, used to control the traffic distribution weights among different pools.
         self.random_steering = random_steering
-        # Address pool corresponding to the primary region.
+        # Address pools corresponding to primary regions.
         self.region_pools = region_pools
         # List of rule configurations, used to define behaviors under specific conditions.
         self.rules = rules
-        # Session persistence, with values:
+        # Session persistence, with possible values:
         # - off: Not enabled.
         # - ip: Session persistence by IP.
         # - cookie: Session persistence by cookie.
         self.session_affinity = session_affinity
-        # Site ID to which the load balancer belongs.
+        # The site ID to which the load balancer belongs.
         self.site_id = site_id
         # The status of the load balancer.
         self.status = status
-        # Load balancing policy.
+        # The load balancing policy.
         self.steering_policy = steering_policy
-        # The address pools corresponding to secondary regions. When multiple secondary regions share a set of address pools, the keys can be concatenated with commas.
+        # Address pools corresponding to secondary regions. When multiple secondary regions share a set of address pools, the keys can be concatenated with commas.
         self.sub_region_pools = sub_region_pools
-        # TTL value, the time-to-live for DNS records, default is 30.
+        # The TTL value, which is the DNS record\\"s time to live, with a default value of 30.
         self.ttl = ttl
 
     def validate(self):
@@ -42240,13 +42265,13 @@ class ListLoadBalancersResponseBody(TeaModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # Array format, returns a list of load balancers.
+        # An array format that returns the list of load balancers.
         self.load_balancers = load_balancers
         # Page number, same as the PageNumber in the request parameters.
         self.page_number = page_number
-        # The size of each page.
+        # Number of items per page.
         self.page_size = page_size
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
         # Total number of items.
         self.total_count = total_count
@@ -42533,9 +42558,9 @@ class ListNetworkOptimizationsRequest(TeaModel):
         # Configuration type, which can be used to query global or rule-based configurations. The value range is as follows:
         # 
         # - global: Query global configuration.
-        # - rule: Query rule configuration.
+        # - rule: Query rule-based configuration.
         # 
-        # This parameter is optional. If not provided, it will not distinguish between global and rule configurations.
+        # This parameter is optional; if not provided, it does not distinguish between global and rule-based configurations.
         self.config_type = config_type
         # Page number, defaulting to 1 if not provided.
         self.page_number = page_number
@@ -42615,37 +42640,39 @@ class ListNetworkOptimizationsResponseBodyConfigs(TeaModel):
         # Configuration type, which can be used to query global or rule-based configurations. The value range is as follows:
         # 
         # - global: Query global configuration.
-        # - rule: Query rule configuration.
+        # - rule: Query rule-based configuration.
         self.config_type = config_type
-        # Whether to enable GRPC, defaulting to disabled. The value range is as follows:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Whether to enable GRPC, default is off. The value range is:
+        # - on: enabled.
+        # - off: disabled.
         self.grpc = grpc
-        # Whether to enable HTTP2 origin, defaulting to disabled. The value range is as follows:
+        # Whether to enable HTTP2 origin, defaulting to off. The value range is as follows:
         # 
         # - on: Enabled.
         # - off: Disabled.
         self.http_2origin = http_2origin
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. The value range is as follows:
+        # Rule switch. This parameter is not required when adding a global configuration. The value range is as follows:
         # - on: Enabled.
         # - off: Disabled.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # Rule execution sequence.
+        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
-        # Site version number.
+        # Site configuration version number. For sites with version management enabled, this parameter can specify the site version for which the configuration takes effect, defaulting to version 0.
         self.site_version = site_version
-        # Whether to enable smart routing service, defaulting to disabled. The value range is as follows:
+        # Whether to enable smart routing service, defaulting to off. The value range is as follows:
         # - on: Enabled.
         # - off: Disabled.
         self.smart_routing = smart_routing
-        # Maximum upload file size in MB, with a range from 100 to 500.
+        # Maximum file size for upload, in MB. The value range is 100 to 500.
         self.upload_max_filesize = upload_max_filesize
-        # Whether to enable Websocket, defaulting to enabled. The value range is as follows:
-        # - on: Enabled.
+        # Whether to enable Websocket, enabled by default. Value range: 
+        # - on: Enabled. 
         # - off: Disabled.
         self.websocket = websocket
 
@@ -42727,11 +42754,11 @@ class ListNetworkOptimizationsResponseBody(TeaModel):
         self.configs = configs
         # The current page number.
         self.page_number = page_number
-        # The size of the page, i.e., the number of items per page.
+        # The size of the page.
         self.page_size = page_size
         # Request ID.
         self.request_id = request_id
-        # The total number of records.
+        # Total number of records.
         self.total_count = total_count
         # Total number of pages.
         self.total_page = total_page
@@ -43435,19 +43462,19 @@ class ListOriginRulesRequest(TeaModel):
         # - global: Query global configuration.
         # - rule: Query rule configuration.
         # 
-        # This parameter is optional. If not provided, it does not distinguish between global and rule configurations.
+        # This parameter is optional; if not provided, it does not distinguish between global and rule configurations.
         self.config_type = config_type
         # Page number, defaulting to 1 if not provided.
         self.page_number = page_number
         # Number of items per page, with a maximum of 500. Defaults to 500 if not provided.
         self.page_size = page_size
-        # Rule name, which can be used to find the rule with the specified name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Site version number. For sites with version management enabled, this parameter can specify the site version for which the configuration takes effect, defaulting to version 0.
+        # Version number of the site. For sites with version management enabled, this parameter can specify the version of the site for which the configuration is effective, defaulting to version 0.
         self.site_version = site_version
 
     def validate(self):
@@ -43524,35 +43551,43 @@ class ListOriginRulesResponseBodyConfigs(TeaModel):
         self.dns_record = dns_record
         # HOST carried in the origin request.
         self.origin_host = origin_host
-        # The origin server port accessed when using the HTTP protocol.
+        # The port of the origin server to access when using the HTTP protocol for origin requests.
         self.origin_http_port = origin_http_port
-        # The origin server port to access when using the HTTPS protocol for back-to-origin requests.
+        # The port of the origin server to access when using the HTTPS protocol for origin requests.
         self.origin_https_port = origin_https_port
+        # mTLS switch. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.origin_mtls = origin_mtls
         # Protocol used for the origin request. Value range:
-        # - http: Use HTTP protocol for origin requests.
-        # - https: Use HTTPS protocol for origin requests.
-        # - follow: Follow the client\\"s protocol for origin requests.
+        # - http: Use HTTP protocol for origin.
+        # - https: Use HTTPS protocol for origin.
+        # - follow: Follow the client\\"s protocol for origin.
         self.origin_scheme = origin_scheme
-        # SNI carried in the origin request.
+        # SNI carried in the back-to-origin request.
         self.origin_sni = origin_sni
+        # Origin certificate verification switch. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.origin_verify = origin_verify
-        # Use range slicing to download files from the origin. The value range is:
-        # - on: enabled
-        # - off: disabled
-        # - force: forced
+        # Use range slicing to download files from the origin. Value range:
+        # - on: Enable
+        # - off: Disable
+        # - force: Force
         self.range = range
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. Value range:
-        # - on: Enabled
-        # - off: Disabled
+        # Rule switch. This parameter is not required when adding a global configuration. Value range:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # Rule execution sequence.
+        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
-        # Site version number.
+        # Version number of the site configuration. For sites with version management enabled, this parameter can specify the version of the site for which the configuration is effective, defaulting to version 0.
         self.site_version = site_version
 
     def validate(self):
@@ -43647,13 +43682,13 @@ class ListOriginRulesResponseBody(TeaModel):
     ):
         # Response body configuration.
         self.configs = configs
-        # The current page number.
+        # Current page number.
         self.page_number = page_number
-        # The size of each page.
+        # Page size.
         self.page_size = page_size
         # Request ID.
         self.request_id = request_id
-        # The total number of records.
+        # Total number of records.
         self.total_count = total_count
         # Total number of pages.
         self.total_page = total_page
@@ -44614,24 +44649,23 @@ class ListRedirectRulesRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # The configuration ID,
+        # Configuration ID.
         self.config_id = config_id
-        # The type of the configuration. Valid values:
-        # 
-        # *   global: global configuration.
-        # *   rule: rule configuration.
+        # Configuration type. Possible values:
+        # - global: Global configuration.
+        # - rule: Rule configuration.
         self.config_type = config_type
-        # The page number. Pages start from page 1.
+        # Page number.
         self.page_number = page_number
-        # The number of entries per page. Default value: **500**. Valid values: **1 to 500**.
+        # Page size, default is **500**, and the value range is **1~500**.
         self.page_size = page_size
-        # The rule name.
+        # Rule name, which can be used to find the rule with the specified name.
         self.rule_name = rule_name
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The version of the website configurations.
+        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site configuration, with the default being version 0.
         self.site_version = site_version
 
     def validate(self):
@@ -44693,44 +44727,42 @@ class ListRedirectRulesResponseBodyConfigs(TeaModel):
         target_url: str = None,
         type: str = None,
     ):
-        # The configuration ID.
+        # Configuration ID.
         self.config_id = config_id
-        # The type of the configuration. Valid values:
-        # 
-        # *   global: global configuration.
-        # *   rule: rule configuration.
+        # Configuration type. Possible values:
+        # - global: Global configuration.
+        # - rule: Rule configuration.
         self.config_type = config_type
-        # Indicates whether the feature of retaining the query string is enabled. Valid values:
-        # 
-        # *   on
-        # *   off
+        # Preserve query string. Value range:
+        # - on: enabled.
+        # - off: disabled.
         self.reserve_query_string = reserve_query_string
-        # The rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter does not need to be set when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Indicates whether the rule is enabled. Valid values:
-        # 
-        # *   on
-        # *   off
+        # Rule switch. This parameter does not need to be set when adding a global configuration. Possible values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
-        # The rule name.
+        # Rule name. This parameter does not need to be set when adding a global configuration.
         self.rule_name = rule_name
-        # The order in which the rule is executed.
+        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
-        # The version of the website configurations.
+        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site configuration, with the default being version 0.
         self.site_version = site_version
-        # The response code that you want to use to indicate URL redirection. Valid values:
-        # 
-        # *   301
-        # *   302
-        # *   303
-        # *   307
-        # *   308
+        # Response status code used by the node to respond to the client with the redirect address. Possible values:
+        # - 301
+        # - 302
+        # - 303
+        # - 307
+        # - 308
         self.status_code = status_code
-        # The destination URL to which requests are redirected.
+        # Target URL after redirection.
         self.target_url = target_url
-        # The redirect type. Valid values:
-        # 
-        # *   static
+        # Redirect type. Possible values:
+        # - static: Static mode.
+        # - dynamic: Dynamic mode.
         self.type = type
 
     def validate(self):
@@ -44803,17 +44835,17 @@ class ListRedirectRulesResponseBody(TeaModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # The configuration list of the the URL redirect rule.
+        # List of redirect configurations.
         self.configs = configs
-        # The page number returned.
+        # Current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # Page size.
         self.page_size = page_size
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # Total number of items.
         self.total_count = total_count
-        # The total number of pages returned.
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -44916,26 +44948,25 @@ class ListRewriteUrlRulesRequest(TeaModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # The configuration ID.
+        # Configuration ID.
         self.config_id = config_id
-        # The configuration type to query. Valid values:
+        # Configuration type, which can be used to query global or rule configurations. Value range:
+        # - global: Query global configuration;
+        # - rule: Query rule configuration;
         # 
-        # *   global: global configurations.
-        # *   rule: rule configurations.
-        # 
-        # If this parameter is left empty, all configuration types are returned. This parameter takes effect only when parameter functionName is specified.
+        # This parameter is optional. If not provided, it does not distinguish between global and rule configurations. This parameter only takes effect when the functionName parameter is provided.
         self.config_type = config_type
-        # The page number. Pages start from page 1.
+        # Page number.
         self.page_number = page_number
-        # The number of entries per page. Valid values: **1 to 500**. Default value: **500**.
+        # Page size. Range: **1~500**, default is **500**.
         self.page_size = page_size
-        # The rule name.
+        # Rule name. Not required when adding a global configuration.
         self.rule_name = rule_name
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The version number of the website configurations. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
+        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the configuration, defaulting to version 0.
         self.site_version = site_version
 
     def validate(self):
@@ -44997,39 +45028,37 @@ class ListRewriteUrlRulesResponseBodyConfigs(TeaModel):
         site_version: int = None,
         uri: str = None,
     ):
-        # The configuration ID.
+        # Configuration ID.
         self.config_id = config_id
-        # The type of the configuration. Valid values:
-        # 
-        # *   global: global configuration.
-        # *   rule: rule configuration.
+        # Configuration type. Value range:
+        # - global: Global configuration;
+        # - rule: Rule configuration;
         self.config_type = config_type
-        # The desired query string to which you want to rewrite the query string in the original request.
+        # The rewritten query string.
         self.query_string = query_string
-        # The query string rewrite method. Valid values:
-        # 
-        # *   static
-        # * dynamic
+        # Query string rewrite type. Value range:
+        # - static: Static mode.
+        # - dynamic: Dynamic mode.
         self.rewrite_query_string_type = rewrite_query_string_type
-        # The path rewrite method. Valid values:
-        # 
-        # *   static
-        # * dynamic
+        # URI rewrite type. Value range:
+        # - static: Static mode.
+        # - dynamic: Dynamic mode.
         self.rewrite_uri_type = rewrite_uri_type
-        # The rule content.
+        # Rule content, using conditional expressions to match user requests. Not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Indicates whether the rule is enabled. Valid values:
-        # 
-        # *   on
-        # *   off
+        # Rule switch. Not required when adding a global configuration. Value range:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
-        # The rule name.
+        # Rule name. Not required when adding a global configuration.
         self.rule_name = rule_name
-        # The order in which the rule is executed.
+        # Rule execution order. The smaller the value, the higher the priority.
         self.sequence = sequence
-        # The version number of the website configurations.
+        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the configuration, defaulting to version 0.
         self.site_version = site_version
-        # The desired URI to which you want to rewrite the path in the original request.
+        # Target URI after rewriting.
         self.uri = uri
 
     def validate(self):
@@ -45102,17 +45131,17 @@ class ListRewriteUrlRulesResponseBody(TeaModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # The URL rewrite configuration list.
+        # List of rewrite URL configurations.
         self.configs = configs
-        # The page number returned.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The size of the page.
         self.page_size = page_size
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of items.
         self.total_count = total_count
-        # The total number of pages returned.
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -45671,6 +45700,7 @@ class ListScheduledPreloadJobsResponseBodyJobs(TeaModel):
         created_at: str = None,
         domains: str = None,
         error_info: str = None,
+        execution_count: int = None,
         failed_file_oss: str = None,
         file_id: str = None,
         id: str = None,
@@ -45690,6 +45720,7 @@ class ListScheduledPreloadJobsResponseBodyJobs(TeaModel):
         self.domains = domains
         # The error message that is returned.
         self.error_info = error_info
+        self.execution_count = execution_count
         # The URL of the OSS object that stores a list of URLs that failed the conditional check for prefetching.
         self.failed_file_oss = failed_file_oss
         # The ID of the URL list file, which can be used during downloads.
@@ -45728,6 +45759,8 @@ class ListScheduledPreloadJobsResponseBodyJobs(TeaModel):
             result['Domains'] = self.domains
         if self.error_info is not None:
             result['ErrorInfo'] = self.error_info
+        if self.execution_count is not None:
+            result['ExecutionCount'] = self.execution_count
         if self.failed_file_oss is not None:
             result['FailedFileOss'] = self.failed_file_oss
         if self.file_id is not None:
@@ -45760,6 +45793,8 @@ class ListScheduledPreloadJobsResponseBodyJobs(TeaModel):
             self.domains = m.get('Domains')
         if m.get('ErrorInfo') is not None:
             self.error_info = m.get('ErrorInfo')
+        if m.get('ExecutionCount') is not None:
+            self.execution_count = m.get('ExecutionCount')
         if m.get('FailedFileOss') is not None:
             self.failed_file_oss = m.get('FailedFileOss')
         if m.get('FileId') is not None:
@@ -49189,17 +49224,17 @@ class ListWaitingRoomRulesRequest(TeaModel):
         waiting_room_id: str = None,
         waiting_room_rule_id: int = None,
     ):
-        # Optional. The rule name, which can be used to query a specific bypass rule.
+        # Rule name, optional, used for querying by the name of the waiting room bypass rule.
         self.rule_name = rule_name
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The ID of the waiting room to be bypassed, which can be obtained by calling the [ListWatingRooms](https://help.aliyun.com/document_detail/2850279.html) operation.
+        # The ID of the waiting room to bypass, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) interface.
         # 
         # This parameter is required.
         self.waiting_room_id = waiting_room_id
-        # Optional. The rule ID, which can be used to query a specific rule.
+        # The ID of the waiting room bypass rule to update, which can be obtained by calling the [ListWaitingRoomRules](https://help.aliyun.com/document_detail/2850279.html) interface.
         self.waiting_room_rule_id = waiting_room_rule_id
 
     def validate(self):
@@ -49242,16 +49277,17 @@ class ListWaitingRoomRulesResponseBodyWaitingRoomRules(TeaModel):
         rule_name: str = None,
         waiting_room_rule_id: int = None,
     ):
-        # The rule content, which is a policy or conditional expression.
+        # Rule content, using conditional expressions to match user requests. This parameter does not need to be set when adding global configuration. There are two usage scenarios:
+        # - Match all incoming requests: set the value to true
+        # - Match specific requests: set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Indicates whether the rule is enabled. Valid values:
-        # 
-        # *   on
-        # *   off
+        # Rule switch. This parameter does not need to be set when adding global configuration. Value range:
+        # - on: enabled.
+        # - off: disabled.
         self.rule_enable = rule_enable
-        # The rule name.
+        # Rule name. This parameter does not need to be set when adding global configuration.
         self.rule_name = rule_name
-        # The rule ID.
+        # Rule ID.
         self.waiting_room_rule_id = waiting_room_rule_id
 
     def validate(self):
@@ -49292,9 +49328,9 @@ class ListWaitingRoomRulesResponseBody(TeaModel):
         request_id: str = None,
         waiting_room_rules: List[ListWaitingRoomRulesResponseBodyWaitingRoomRules] = None,
     ):
-        # The request ID, which is used to trace a call.
+        # Request ID, used for tracking the call status.
         self.request_id = request_id
-        # The waiting room bypass rules.
+        # List of waiting room bypass rules.
         self.waiting_room_rules = waiting_room_rules
 
     def validate(self):
@@ -50330,6 +50366,160 @@ class PublishRoutineCodeVersionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PublishRoutineCodeVersionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PurchaseCacheReserveRequest(TeaModel):
+    def __init__(
+        self,
+        auto_pay: bool = None,
+        auto_renew: bool = None,
+        charge_type: str = None,
+        cr_region: str = None,
+        period: int = None,
+        quota_gb: int = None,
+    ):
+        # Whether to automatically pay. The default value is false.
+        # - true: Automatically pay.
+        # - false: Do not automatically pay.
+        self.auto_pay = auto_pay
+        # Whether to auto-renew:
+        # - true: Auto-renew.
+        # - false: Do not auto-renew.
+        self.auto_renew = auto_renew
+        # Billing type
+        # - PREPAY: Prepaid.
+        # - POSTPAY: Postpaid.
+        self.charge_type = charge_type
+        # Cache retention region
+        # - HK: Hong Kong, China
+        # - CN-beijing: Mainland China - Beijing
+        self.cr_region = cr_region
+        # Purchase period (unit: month).
+        self.period = period
+        # Cache retention specification (unit: GB).
+        self.quota_gb = quota_gb
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+        if self.cr_region is not None:
+            result['CrRegion'] = self.cr_region
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.quota_gb is not None:
+            result['QuotaGb'] = self.quota_gb
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
+        if m.get('CrRegion') is not None:
+            self.cr_region = m.get('CrRegion')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('QuotaGb') is not None:
+            self.quota_gb = m.get('QuotaGb')
+        return self
+
+
+class PurchaseCacheReserveResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        order_id: str = None,
+        request_id: str = None,
+    ):
+        # Instance ID.
+        self.instance_id = instance_id
+        # Order ID.
+        self.order_id = order_id
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class PurchaseCacheReserveResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PurchaseCacheReserveResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PurchaseCacheReserveResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -51834,6 +52024,7 @@ class SetCertificateResponseBody(TeaModel):
         id: str = None,
         request_id: str = None,
     ):
+        # The certificate ID.
         self.id = id
         # The request ID.
         self.request_id = request_id
@@ -51998,11 +52189,13 @@ class SetClientCertificateHostnamesShrinkRequest(TeaModel):
 class SetClientCertificateHostnamesResponseBody(TeaModel):
     def __init__(
         self,
+        hostnames: List[str] = None,
         id: str = None,
         request_id: str = None,
         site_id: int = None,
         site_name: str = None,
     ):
+        self.hostnames = hostnames
         # The ID of the client CA certificate.
         self.id = id
         # The request ID.
@@ -52021,6 +52214,8 @@ class SetClientCertificateHostnamesResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.hostnames is not None:
+            result['Hostnames'] = self.hostnames
         if self.id is not None:
             result['Id'] = self.id
         if self.request_id is not None:
@@ -52033,6 +52228,8 @@ class SetClientCertificateHostnamesResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Hostnames') is not None:
+            self.hostnames = m.get('Hostnames')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('RequestId') is not None:
@@ -52836,6 +53033,132 @@ class UntagResourcesResponse(TeaModel):
         return self
 
 
+class UpdateCacheReserveSpecRequest(TeaModel):
+    def __init__(
+        self,
+        auto_pay: bool = None,
+        charge_type: str = None,
+        instance_id: str = None,
+        target_quota_gb: int = None,
+    ):
+        # Specifies whether to enable auto payment.
+        self.auto_pay = auto_pay
+        self.charge_type = charge_type
+        self.instance_id = instance_id
+        self.target_quota_gb = target_quota_gb
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.target_quota_gb is not None:
+            result['TargetQuotaGb'] = self.target_quota_gb
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TargetQuotaGb') is not None:
+            self.target_quota_gb = m.get('TargetQuotaGb')
+        return self
+
+
+class UpdateCacheReserveSpecResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        order_id: str = None,
+        request_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.order_id = order_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateCacheReserveSpecResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCacheReserveSpecResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCacheReserveSpecResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateCacheRuleRequest(TeaModel):
     def __init__(
         self,
@@ -52878,13 +53201,13 @@ class UpdateCacheRuleRequest(TeaModel):
         # - cache_all: Cache all requests.
         # - bypass_all: Bypass cache for all requests.
         self.bypass_cache = bypass_cache
-        # Cache deception defense. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Cache deception defense. Used to defend against web cache deception attacks; only the cache content that passes the validation will be cached. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.cache_deception_armor = cache_deception_armor
-        # Cache reservation eligibility. Used to control whether user requests bypass the cache reservation node during origin pull. Value range:
-        # - bypass_cache_reserve: Requests bypass cache reservation.
-        # - eligible_for_cache_reserve: Eligible for cache reservation.
+        # Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Value range:
+        # - bypass_cache_reserve: Requests bypass cache retention.
+        # - eligible_for_cache_reserve: Eligible for cache retention.
         self.cache_reserve_eligibility = cache_reserve_eligibility
         # Check if the cookie exists when generating cache keys, and if it does, add the cookie name (case-insensitive) to the cache key. Supports multiple cookie names, separated by spaces.
         self.check_presence_cookie = check_presence_cookie
@@ -52895,7 +53218,7 @@ class UpdateCacheRuleRequest(TeaModel):
         # This parameter is required.
         self.config_id = config_id
         # Edge cache mode. Value range:
-        # - follow_origin: Follow origin cache policy (if exists), otherwise use default cache policy.
+        # - follow_origin: Follow origin cache policy (if exists), otherwise use the default cache policy.
         # - no_cache: Do not cache.
         # - override_origin: Override origin cache policy.
         # - follow_origin_bypass: Follow origin cache policy (if exists), otherwise do not cache.
@@ -52904,29 +53227,31 @@ class UpdateCacheRuleRequest(TeaModel):
         self.edge_cache_ttl = edge_cache_ttl
         # Status code cache expiration time, in seconds.
         self.edge_status_code_cache_ttl = edge_status_code_cache_ttl
-        # Include specified cookie names and their values when generating cache keys, supporting multiple values separated by spaces.
+        # Include the specified cookie names and their values when generating cache keys, supporting multiple values separated by spaces.
         self.include_cookie = include_cookie
-        # Include specified header names and their values when generating cache keys, supporting multiple values separated by spaces.
+        # Include the specified header names and their values when generating cache keys, supporting multiple values separated by spaces.
         self.include_header = include_header
-        # Query strings to be reserved or excluded, supporting multiple values separated by spaces.
+        # Query strings to be retained or excluded, supporting multiple values separated by spaces.
         self.query_string = query_string
-        # Query string handling mode when generating cache keys. Values:
+        # The processing mode of query strings when generating cache keys. Values:
         # - ignore_all: Ignore all.
         # - exclude_query_string: Exclude specified query strings.
         # - reserve_all: Default, reserve all.
         # - include_query_string: Include specified query strings.
         self.query_string_mode = query_string_mode
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. Value range:
+        # Rule switch. This parameter is not required when adding a global configuration. Value range:
         # - on: Enable.
         # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Serve stale cache. When enabled, the node can still use the expired cached files to respond to user requests even if the origin server is unavailable. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.serve_stale = serve_stale
         # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
         # 
@@ -52936,17 +53261,17 @@ class UpdateCacheRuleRequest(TeaModel):
         # - on: Enable.
         # - off: Disable.
         self.sort_query_string_for_cache = sort_query_string_for_cache
-        # Include client device type when generating cache keys. Value range:
-        # - on: Enable.
-        # - off: Disable.
+        # When generating cache keys, include the client device type. Value range: 
+        # - on: enabled. 
+        # - off: disabled.
         self.user_device_type = user_device_type
-        # Include client geographic location when generating cache keys. Value range:
+        # Include the client\\"s geographical location when generating the cache key. Value range:
         # - on: Enable.
         # - off: Disable.
         self.user_geo = user_geo
-        # When generating cache keys, include the client\\"s language type. Value range: 
-        # - on: enabled. 
-        # - off: disabled.
+        # Include the client\\"s language type when generating the cache key. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.user_language = user_language
 
     def validate(self):
@@ -53380,30 +53705,34 @@ class UpdateCompressionRuleRequest(TeaModel):
         zstd: str = None,
     ):
         # Brotli compression. Value range:
-        # - on: enabled.
-        # - off: disabled.
+        # - on: Enable.
+        # - off: Disable.
         self.brotli = brotli
         # Configuration ID. It can be obtained by calling the [ListCompressionRules](~~ListCompressionRules~~) interface.
         # 
         # This parameter is required.
         self.config_id = config_id
         # Gzip compression. Value range:
-        # - on: enabled.
-        # - off: disabled.
+        # - on: Enable.
+        # - off: Disable.
         self.gzip = gzip
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - To match all incoming requests: Set the value to true
+        # - To match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule enable status, supports:
-        # 
-        # - **on**: indicates enabled.
-        # - **off**: indicates disabled.
+        # Rule switch. This parameter is not required when adding a global configuration. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
         # This parameter is required.
         self.site_id = site_id
+        # Zstd compression. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.zstd = zstd
 
     def validate(self):
@@ -53957,6 +54286,294 @@ class UpdateEdgeContainerAppLogRiverResponse(TeaModel):
         return self
 
 
+class UpdateEdgeContainerAppResourceReserveRequestReserveSet(TeaModel):
+    def __init__(
+        self,
+        isp: str = None,
+        region: str = None,
+        replicas: int = None,
+    ):
+        self.isp = isp
+        self.region = region
+        self.replicas = replicas
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.isp is not None:
+            result['Isp'] = self.isp
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.replicas is not None:
+            result['Replicas'] = self.replicas
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Isp') is not None:
+            self.isp = m.get('Isp')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Replicas') is not None:
+            self.replicas = m.get('Replicas')
+        return self
+
+
+class UpdateEdgeContainerAppResourceReserveRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        duration_time: str = None,
+        enable: bool = None,
+        forever: bool = None,
+        reserve_set: List[UpdateEdgeContainerAppResourceReserveRequestReserveSet] = None,
+    ):
+        self.app_id = app_id
+        self.duration_time = duration_time
+        self.enable = enable
+        self.forever = forever
+        self.reserve_set = reserve_set
+
+    def validate(self):
+        if self.reserve_set:
+            for k in self.reserve_set:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.duration_time is not None:
+            result['DurationTime'] = self.duration_time
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.forever is not None:
+            result['Forever'] = self.forever
+        result['ReserveSet'] = []
+        if self.reserve_set is not None:
+            for k in self.reserve_set:
+                result['ReserveSet'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('DurationTime') is not None:
+            self.duration_time = m.get('DurationTime')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('Forever') is not None:
+            self.forever = m.get('Forever')
+        self.reserve_set = []
+        if m.get('ReserveSet') is not None:
+            for k in m.get('ReserveSet'):
+                temp_model = UpdateEdgeContainerAppResourceReserveRequestReserveSet()
+                self.reserve_set.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateEdgeContainerAppResourceReserveShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        duration_time: str = None,
+        enable: bool = None,
+        forever: bool = None,
+        reserve_set_shrink: str = None,
+    ):
+        self.app_id = app_id
+        self.duration_time = duration_time
+        self.enable = enable
+        self.forever = forever
+        self.reserve_set_shrink = reserve_set_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.duration_time is not None:
+            result['DurationTime'] = self.duration_time
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.forever is not None:
+            result['Forever'] = self.forever
+        if self.reserve_set_shrink is not None:
+            result['ReserveSet'] = self.reserve_set_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('DurationTime') is not None:
+            self.duration_time = m.get('DurationTime')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('Forever') is not None:
+            self.forever = m.get('Forever')
+        if m.get('ReserveSet') is not None:
+            self.reserve_set_shrink = m.get('ReserveSet')
+        return self
+
+
+class UpdateEdgeContainerAppResourceReserveResponseBodyReserveSet(TeaModel):
+    def __init__(
+        self,
+        isp: str = None,
+        region: str = None,
+        replicas: int = None,
+    ):
+        self.isp = isp
+        self.region = region
+        self.replicas = replicas
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.isp is not None:
+            result['Isp'] = self.isp
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.replicas is not None:
+            result['Replicas'] = self.replicas
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Isp') is not None:
+            self.isp = m.get('Isp')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Replicas') is not None:
+            self.replicas = m.get('Replicas')
+        return self
+
+
+class UpdateEdgeContainerAppResourceReserveResponseBody(TeaModel):
+    def __init__(
+        self,
+        duration_time: str = None,
+        enable: bool = None,
+        forever: bool = None,
+        request_id: str = None,
+        reserve_set: List[UpdateEdgeContainerAppResourceReserveResponseBodyReserveSet] = None,
+    ):
+        self.duration_time = duration_time
+        self.enable = enable
+        self.forever = forever
+        self.request_id = request_id
+        self.reserve_set = reserve_set
+
+    def validate(self):
+        if self.reserve_set:
+            for k in self.reserve_set:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration_time is not None:
+            result['DurationTime'] = self.duration_time
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.forever is not None:
+            result['Forever'] = self.forever
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ReserveSet'] = []
+        if self.reserve_set is not None:
+            for k in self.reserve_set:
+                result['ReserveSet'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DurationTime') is not None:
+            self.duration_time = m.get('DurationTime')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('Forever') is not None:
+            self.forever = m.get('Forever')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.reserve_set = []
+        if m.get('ReserveSet') is not None:
+            for k in m.get('ReserveSet'):
+                temp_model = UpdateEdgeContainerAppResourceReserveResponseBodyReserveSet()
+                self.reserve_set.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateEdgeContainerAppResourceReserveResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateEdgeContainerAppResourceReserveResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateEdgeContainerAppResourceReserveResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification(TeaModel):
     def __init__(
         self,
@@ -53968,10 +54585,10 @@ class UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification(Te
         # 
         # This parameter is required.
         self.name = name
-        # Operation type. Value range:
+        # Operation method. Possible values:
         # 
         # - add: Add.
-        # - del: Delete.
+        # - del: Delete
         # - modify: Modify.
         # 
         # This parameter is required.
@@ -54023,14 +54640,15 @@ class UpdateHttpRequestHeaderModificationRuleRequest(TeaModel):
         self.config_id = config_id
         # Modify request headers, supporting add, delete, and modify operations.
         self.request_header_modification = request_header_modification
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - To match all incoming requests: Set the value to true
+        # - To match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule enable status, supports:
-        # 
-        # - **on**: indicates enabled.
-        # - **off**: indicates disabled.
+        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
         # 
@@ -54101,14 +54719,15 @@ class UpdateHttpRequestHeaderModificationRuleShrinkRequest(TeaModel):
         self.config_id = config_id
         # Modify request headers, supporting add, delete, and modify operations.
         self.request_header_modification_shrink = request_header_modification_shrink
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - To match all incoming requests: Set the value to true
+        # - To match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule enable status, supports:
-        # 
-        # - **on**: indicates enabled.
-        # - **off**: indicates disabled.
+        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
         # 
@@ -54236,7 +54855,6 @@ class UpdateHttpResponseHeaderModificationRuleRequestResponseHeaderModification(
         # This parameter is required.
         self.name = name
         # Operation method. Value range:
-        # 
         # - add: Add.
         # - del: Delete
         # - modify: Modify.
@@ -54288,16 +54906,17 @@ class UpdateHttpResponseHeaderModificationRuleRequest(TeaModel):
         # 
         # This parameter is required.
         self.config_id = config_id
-        # Modify response headers, supporting add, delete, and modify operations.
+        # Modify response headers, supporting three operation methods: add, delete, and modify.
         self.response_header_modification = response_header_modification
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule enable status, supports:
-        # 
-        # - **on**: indicates enabled.
-        # - **off**: indicates disabled.
+        # Rule switch. This parameter is not required when adding a global configuration. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
         # 
@@ -54366,16 +54985,17 @@ class UpdateHttpResponseHeaderModificationRuleShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.config_id = config_id
-        # Modify response headers, supporting add, delete, and modify operations.
+        # Modify response headers, supporting three operation methods: add, delete, and modify.
         self.response_header_modification_shrink = response_header_modification_shrink
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule enable status, supports:
-        # 
-        # - **on**: indicates enabled.
-        # - **off**: indicates disabled.
+        # Rule switch. This parameter is not required when adding a global configuration. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
         # 
@@ -54510,55 +55130,57 @@ class UpdateHttpsApplicationConfigurationRequest(TeaModel):
         rule_name: str = None,
         site_id: int = None,
     ):
-        # Feature switch, default is disabled. Values:
-        # - on: Enable.
-        # - off: Disable.
+        # Feature switch, default is disabled. Value range:
+        # - on: Enabled.
+        # - off: Disabled.
         self.alt_svc = alt_svc
-        # Whether the Alt-Svc header includes the clear parameter, default is disabled. Values:
-        # - on: Enable.
-        # - off: Disable.
+        # Whether the Alt-Svc header includes the clear parameter, default is disabled. Value range:
+        # - on: Enabled.
+        # - off: Disabled.
         self.alt_svc_clear = alt_svc_clear
-        # Alt-Svc validity period in seconds, default is 86400 seconds.
+        # Alt-Svc validity period, in seconds, default is 86400 seconds.
         self.alt_svc_ma = alt_svc_ma
-        # Whether the Alt-Svc header includes the persist parameter, default is disabled. Values:
-        # - on: Enable.
-        # - off: Disable.
+        # Whether the Alt-Svc header includes the persist parameter, default is disabled. Value range:
+        # - on: Enabled.
+        # - off: Disabled.
         self.alt_svc_persist = alt_svc_persist
         # Configuration ID.
         # 
         # This parameter is required.
         self.config_id = config_id
-        # Whether to enable HSTS, default is disabled. Values:
-        # - on: Enable.
-        # - off: Disable.
+        # Whether to enable HSTS, default is disabled. Value range:
+        # - on: Enabled.
+        # - off: Disabled.
         self.hsts = hsts
-        # Whether to include subdomains in HSTS, default is disabled. Values:
-        # - on: Enable.
-        # - off: Disable.
+        # Whether to include subdomains in HSTS, default is disabled. Value range:
+        # - on: Enabled.
+        # - off: Disabled.
         self.hsts_include_subdomains = hsts_include_subdomains
-        # HSTS expiration time in seconds.
+        # HSTS expiration time, in seconds.
         self.hsts_max_age = hsts_max_age
-        # Whether to enable HSTS preload, default is disabled. Values:
-        # - on: Enable.
-        # - off: Disable.
+        # Whether to enable HSTS preload, default is disabled. Value range:
+        # - on: Enabled.
+        # - off: Disabled.
         self.hsts_preload = hsts_preload
-        # Whether to enable forced HTTPS, default is disabled. Values:
-        # - on: Enable.
-        # - off: Disable.
+        # Whether to enable forced HTTPS, default is disabled. Value range:
+        # - on: Enabled.
+        # - off: Disabled.
         self.https_force = https_force
-        # Forced HTTPS redirect status code. Values:
+        # Forced HTTPS redirect status code, value range:
         # - 301
         # - 302
         # - 307
         # - 308
         self.https_force_code = https_force_code
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. Values:
-        # - on: Enable.
-        # - off: Disable.
+        # Rule switch. This parameter is not required when adding a global configuration. Value range:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
         # 
@@ -54756,13 +55378,15 @@ class UpdateHttpsBasicConfigurationRequest(TeaModel):
         # - on: Enable.
         # - off: Disable.
         self.ocsp_stapling = ocsp_stapling
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. Value range:
+        # Rule switch. This parameter is not required when adding a global configuration. Value range:
         # - on: Enable.
         # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
         # 
@@ -55051,25 +55675,26 @@ class UpdateImageTransformRequest(TeaModel):
         rule_name: str = None,
         site_id: int = None,
     ):
-        # Configuration ID. It can be obtained by calling the [ListImageTransforms](https://help.aliyun.com/document_detail/2869056.html) API.
+        # Configuration ID. It can be obtained by calling the [ListImageTransforms](https://help.aliyun.com/document_detail/2869056.html) interface.
         # 
         # This parameter is required.
         self.config_id = config_id
         # Indicates whether to enable image transformation. Possible values:
         # 
-        # - on: Enabled.
-        # - off: Disabled.
+        # - on: Enable.
+        # - off: Disable.
         self.enable = enable
-        # Rule content, which specifies the strategy or condition expression to be implemented.
+        # Rule content, used to match user requests with conditional expressions. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - To match all incoming requests: Set the value to true.
+        # - To match specific requests: Set the value to a custom expression, for example: (http.host eq "video.example.com")
         self.rule = rule
-        # Rule switch. Possible values:
-        # 
-        # - **on**: Enabled.
-        # - **off**: Disabled.
+        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
         # This parameter is required.
         self.site_id = site_id
@@ -55416,7 +56041,7 @@ class UpdateLoadBalancerRequestMonitor(TeaModel):
         self.consecutive_down = consecutive_down
         # Number of consecutive successful probes required to consider the target healthy, such as 3.
         self.consecutive_up = consecutive_up
-        # Expected status codes, such as 200,202, which are successful HTTP responses.
+        # Expected status codes, such as 200,202, which indicate successful HTTP responses.
         self.expected_codes = expected_codes
         # Whether to follow redirects.
         # 
@@ -55425,7 +56050,7 @@ class UpdateLoadBalancerRequestMonitor(TeaModel):
         self.follow_redirects = follow_redirects
         # Monitor request header configuration.
         self.header = header
-        # Monitor interval, such as 60 seconds, which is the check frequency.
+        # Monitor interval, such as 60 seconds, which is the frequency of checks.
         self.interval = interval
         # Monitor request method, such as GET, which is a method in the HTTP protocol.
         self.method = method
@@ -55433,9 +56058,9 @@ class UpdateLoadBalancerRequestMonitor(TeaModel):
         self.path = path
         # Origin server port.
         self.port = port
-        # Application health check timeout, in seconds. The range is 1-10.
+        # Application health check timeout, in seconds, with a range of 1-10.
         self.timeout = timeout
-        # Monitor protocol type, such as HTTP, used for health checks. When the value is \\"off\\", it indicates that no check will be performed.
+        # Monitor protocol type, such as HTTP, used for health checks. When set to \\"off\\", no check is performed.
         self.type = type
 
     def validate(self):
@@ -55504,7 +56129,7 @@ class UpdateLoadBalancerRequestRandomSteering(TeaModel):
         default_weight: int = None,
         pool_weights: Dict[str, int] = None,
     ):
-        # The default round-robin weight, used for all pools that do not have a specific weight set. The value range is an integer between 0 and 100.
+        # The default round-robin weight, used for all pools that do not have a specific weight set. Value range: integers between 0-100.
         self.default_weight = default_weight
         # Weight configuration for each backend server pool, where the key is the pool ID and the value is the weight coefficient. The weight coefficient represents the proportion of relative traffic distribution.
         self.pool_weights = pool_weights
@@ -55597,21 +56222,21 @@ class UpdateLoadBalancerRequestRules(TeaModel):
         self.fixed_response = fixed_response
         # Modify the corresponding load balancing configuration after matching the rule. The fields in the configuration will override the corresponding fields in the load balancer configuration.
         self.overrides = overrides
-        # Matching condition, such as a rule based on the request URI.
+        # Rule content, using conditional expressions to match user requests. This parameter does not need to be set when adding global configurations. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch.
-        # 
-        # - on: Enable the rule.
-        # - off: Disable the rule.
+        # Rule switch. This parameter does not need to be set when adding global configurations. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter does not need to be set when adding global configurations.
         self.rule_name = rule_name
-        # The execution order of the rule. It can be left blank, in which case the rules will be executed in the list order. If specified, it must be a positive integer.
+        # The execution order of the rule. It can be left empty, in which case the rules will be executed in the order they appear in the list. If specified, it must be a positive integer, with higher values indicating higher priority.
         self.sequence = sequence
         # Whether to terminate the execution of subsequent rules.
-        # 
         # - true: Yes.
-        # - false: No.
+        # - false: No, default value.
         self.terminates = terminates
 
     def validate(self):
@@ -55679,11 +56304,11 @@ class UpdateLoadBalancerRequest(TeaModel):
         sub_region_pools: Any = None,
         ttl: int = None,
     ):
-        # Cross-pool fallback configuration.
+        # Configuration for failover across pools.
         self.adaptive_routing = adaptive_routing
         # List of default pool IDs.
         self.default_pools = default_pools
-        # Detailed description of the load balancer, which is useful for management and identification.
+        # Detailed description of the load balancer, for easier management and identification.
         self.description = description
         # Whether the load balancer is enabled.
         # 
@@ -55692,7 +56317,7 @@ class UpdateLoadBalancerRequest(TeaModel):
         self.enabled = enabled
         # Fallback pool ID, where traffic will be directed when all other pools are unavailable.
         self.fallback_pool = fallback_pool
-        # Load balancer ID, which can be obtained by calling the [ListLoadBalancers](https://help.aliyun.com/document_detail/2868897.html) interface.
+        # Load balancer ID, which can be obtained by calling the [ListLoadBalancers](https://help.aliyun.com/document_detail/2868897.html) API.
         # 
         # This parameter is required.
         self.id = id
@@ -55700,11 +56325,11 @@ class UpdateLoadBalancerRequest(TeaModel):
         self.monitor = monitor
         # Weighted round-robin configuration, used to control the traffic distribution weights among different pools.
         self.random_steering = random_steering
-        # Address pools corresponding to the primary region.
+        # Address pool corresponding to the primary region.
         self.region_pools = region_pools
         # Rule configuration list, used to define behavior overrides under specific conditions.
         self.rules = rules
-        # Session persistence, with values:
+        # Session persistence, with possible values:
         # - off: Not enabled.
         # - ip: Session persistence by IP.
         # - cookie: Session persistence by cookie.
@@ -55715,9 +56340,9 @@ class UpdateLoadBalancerRequest(TeaModel):
         self.site_id = site_id
         # Load balancing policy.
         self.steering_policy = steering_policy
-        # Address pools corresponding to the secondary region. When multiple secondary regions share a set of address pools, you can use a comma-separated list of secondary regions as the key.
+        # Address pool corresponding to the secondary region. When multiple secondary regions share the same address pool, the keys can be concatenated with commas.
         self.sub_region_pools = sub_region_pools
-        # TTL value, the time-to-live for DNS records. The default is 30, and the range is 10-600.
+        # TTL value, the time-to-live for DNS records, with a default of 30 and a range of 10-600.
         self.ttl = ttl
 
     def validate(self):
@@ -55832,11 +56457,11 @@ class UpdateLoadBalancerShrinkRequest(TeaModel):
         sub_region_pools: Any = None,
         ttl: int = None,
     ):
-        # Cross-pool fallback configuration.
+        # Configuration for failover across pools.
         self.adaptive_routing_shrink = adaptive_routing_shrink
         # List of default pool IDs.
         self.default_pools_shrink = default_pools_shrink
-        # Detailed description of the load balancer, which is useful for management and identification.
+        # Detailed description of the load balancer, for easier management and identification.
         self.description = description
         # Whether the load balancer is enabled.
         # 
@@ -55845,7 +56470,7 @@ class UpdateLoadBalancerShrinkRequest(TeaModel):
         self.enabled = enabled
         # Fallback pool ID, where traffic will be directed when all other pools are unavailable.
         self.fallback_pool = fallback_pool
-        # Load balancer ID, which can be obtained by calling the [ListLoadBalancers](https://help.aliyun.com/document_detail/2868897.html) interface.
+        # Load balancer ID, which can be obtained by calling the [ListLoadBalancers](https://help.aliyun.com/document_detail/2868897.html) API.
         # 
         # This parameter is required.
         self.id = id
@@ -55853,11 +56478,11 @@ class UpdateLoadBalancerShrinkRequest(TeaModel):
         self.monitor_shrink = monitor_shrink
         # Weighted round-robin configuration, used to control the traffic distribution weights among different pools.
         self.random_steering_shrink = random_steering_shrink
-        # Address pools corresponding to the primary region.
+        # Address pool corresponding to the primary region.
         self.region_pools = region_pools
         # Rule configuration list, used to define behavior overrides under specific conditions.
         self.rules_shrink = rules_shrink
-        # Session persistence, with values:
+        # Session persistence, with possible values:
         # - off: Not enabled.
         # - ip: Session persistence by IP.
         # - cookie: Session persistence by cookie.
@@ -55868,9 +56493,9 @@ class UpdateLoadBalancerShrinkRequest(TeaModel):
         self.site_id = site_id
         # Load balancing policy.
         self.steering_policy = steering_policy
-        # Address pools corresponding to the secondary region. When multiple secondary regions share a set of address pools, you can use a comma-separated list of secondary regions as the key.
+        # Address pool corresponding to the secondary region. When multiple secondary regions share the same address pool, the keys can be concatenated with commas.
         self.sub_region_pools = sub_region_pools
-        # TTL value, the time-to-live for DNS records. The default is 30, and the range is 10-600.
+        # TTL value, the time-to-live for DNS records, with a default of 30 and a range of 10-600.
         self.ttl = ttl
 
     def validate(self):
@@ -56162,33 +56787,35 @@ class UpdateNetworkOptimizationRequest(TeaModel):
         # 
         # This parameter is required.
         self.config_id = config_id
-        # Whether to enable GRPC, default is disabled. Value range:
+        # Whether to enable GRPC, default is disabled. Possible values:
         # - on: Enable
         # - off: Disable
         self.grpc = grpc
-        # Whether to enable HTTP2 origin, default is disabled. Value range:
+        # Whether to enable HTTP2 origin, default is disabled. Possible values:
         # - on: Enable
         # - off: Disable
         self.http_2origin = http_2origin
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. Values:
-        # - on: Enable
-        # - off: Disable
+        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Whether to enable smart routing service, default is disabled. Value range:
+        # Whether to enable the smart routing service, default is disabled. Possible values:
         # - on: Enable
         # - off: Disable
         self.smart_routing = smart_routing
-        # Maximum upload file size, in MB, value range: 100～500.
+        # Maximum upload file size, in MB, with a range of 100 to 500.
         self.upload_max_filesize = upload_max_filesize
-        # Whether to enable Websocket, default is enabled. Value range:
+        # Whether to enable Websocket, default is enabled. Possible values:
         # - on: Enable
         # - off: Disable
         self.websocket = websocket
@@ -56890,33 +57517,41 @@ class UpdateOriginRuleRequest(TeaModel):
         self.dns_record = dns_record
         # The HOST carried in the origin request.
         self.origin_host = origin_host
-        # The port of the origin server when using HTTP protocol for origin requests.
+        # Port of the origin server when using HTTP protocol for origin pull.
         self.origin_http_port = origin_http_port
-        # The port of the origin server when using HTTPS protocol for origin requests.
+        # Port of the origin server when using HTTPS protocol for origin pull.
         self.origin_https_port = origin_https_port
+        # mTLS switch. Valid values:
+        # - on: Enable.
+        # - off: Disable.
         self.origin_mtls = origin_mtls
-        # Protocol used for the origin request. Possible values:
-        # - http: Use HTTP protocol for origin requests.
-        # - https: Use HTTPS protocol for origin requests.
-        # - follow: Follow the client\\"s protocol for origin requests.
+        # Protocol used for the origin request. Valid values:
+        # - http: Use HTTP protocol for origin pull.
+        # - https: Use HTTPS protocol for origin pull.
+        # - follow: Follow the client\\"s protocol for origin pull.
         self.origin_scheme = origin_scheme
-        # The SNI carried in the origin request.
+        # SNI carried in the origin request.
         self.origin_sni = origin_sni
+        # Origin certificate verification switch. Valid values:
+        # - on: Enable.
+        # - off: Disable.
         self.origin_verify = origin_verify
-        # Use range chunked transfer to download files from the origin. Possible values:
+        # Use range chunking for origin pull file download. Valid values:
         # - on: Enable.
         # - off: Disable.
         # - force: Force.
         self.range = range
-        # Rule content.
+        # Rule content, used to match user requests with conditional expressions. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. Possible values:
+        # Rule switch. This parameter is not required when adding a global configuration. Valid values:
         # - on: Enable.
         # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
+        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
         # 
         # This parameter is required.
         self.site_id = site_id
@@ -57835,28 +58470,29 @@ class UpdateRedirectRuleRequest(TeaModel):
         target_url: str = None,
         type: str = None,
     ):
-        # Configuration ID. It can be obtained by calling the [ListRedirectRules](https://help.aliyun.com/document_detail/2867474.html) API.
+        # Configuration ID. It can be obtained by calling the [ListRedirectRules](https://help.aliyun.com/document_detail/2867474.html) interface.
         # 
         # This parameter is required.
         self.config_id = config_id
-        # Preserve query string. The value range is:
-        # - on: enabled.
-        # - off: disabled.
+        # Preserve query string. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.reserve_query_string = reserve_query_string
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule enable status, supports:
-        # 
-        # - **on**: indicates enabled.
-        # - **off**: indicates disabled.
+        # Rule switch. This parameter is not required when adding a global configuration. Value range:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The response status code used by the node when responding to the client with a redirect address. The value range is:
+        # The response status code used by the node to respond with the redirect address to the client. Value range:
         # 
         # - 301
         # - 302
@@ -57864,11 +58500,12 @@ class UpdateRedirectRuleRequest(TeaModel):
         # - 307
         # - 308
         self.status_code = status_code
-        # Target URL after redirection.
+        # The target URL after redirection.
         self.target_url = target_url
-        # Redirect type. The value range is:
+        # Redirect type. Value range:
         # 
-        # - static: static mode.
+        # - static: Static mode.
+        # - dynamic: Dynamic mode.
         self.type = type
 
     def validate(self):
@@ -58009,32 +58646,31 @@ class UpdateRewriteUrlRuleRequest(TeaModel):
         # 
         # This parameter is required.
         self.config_id = config_id
-        # Query string after rewriting.
+        # The query string after rewriting.
         self.query_string = query_string
         # Query string rewrite type. Value range:
-        # 
         # - static: Static mode.
         # - dynamic: Dynamic mode.
         self.rewrite_query_string_type = rewrite_query_string_type
         # URI rewrite type. Value range:
-        # 
         # - static: Static mode.
         # - dynamic: Dynamic mode.
         self.rewrite_uri_type = rewrite_uri_type
-        # Rule content.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. Value range:
-        # 
+        # Rule switch. This parameter is not required when adding a global configuration. Value range:
         # - on: Enable.
         # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name.
+        # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
         # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Target URI after rewriting.
+        # The target URI after rewriting.
         self.uri = uri
 
     def validate(self):
@@ -60553,26 +61189,27 @@ class UpdateWaitingRoomRuleRequest(TeaModel):
         site_id: int = None,
         waiting_room_rule_id: int = None,
     ):
-        # The rule content, which is a policy or conditional expression.
+        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true
+        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq "video.example.com")
         # 
         # This parameter is required.
         self.rule = rule
-        # Specifies whether to enable the rule. Valid values:
-        # 
-        # *   on
-        # *   off
+        # Rule switch. This parameter is not required when adding global configuration. Value range:
+        # - on: Enable.
+        # - off: Disable.
         # 
         # This parameter is required.
         self.rule_enable = rule_enable
-        # The rule name.
+        # Rule name. This parameter is not required when adding global configuration.
         # 
         # This parameter is required.
         self.rule_name = rule_name
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The ID of the waiting room bypass rule that you want to update. You can call [ListWaitingRoomRules](https://help.aliyun.com/document_detail/2850279.html) to obtain the ID.
+        # The ID of the waiting room bypass rule to be updated, which can be obtained by calling the [ListWaitingRoomRules](https://help.aliyun.com/document_detail/2850279.html) interface.
         # 
         # This parameter is required.
         self.waiting_room_rule_id = waiting_room_rule_id
@@ -60618,7 +61255,7 @@ class UpdateWaitingRoomRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The request ID, which is used to trace a call.
+        # Request ID, used for tracking the progress of request processing.
         self.request_id = request_id
 
     def validate(self):

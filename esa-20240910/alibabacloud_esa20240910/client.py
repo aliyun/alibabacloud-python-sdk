@@ -4311,7 +4311,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateLoadBalancerResponse:
         """
-        @summary Add a new load balancer
+        @summary Add a New Load Balancer
         
         @description Through this API, users can configure load balancing services according to their business needs, including but not limited to adaptive routing, weighted round-robin, rule matching, health checks, and other settings, to achieve effective traffic management and optimization.
         
@@ -4394,7 +4394,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateLoadBalancerResponse:
         """
-        @summary Add a new load balancer
+        @summary Add a New Load Balancer
         
         @description Through this API, users can configure load balancing services according to their business needs, including but not limited to adaptive routing, weighted round-robin, rule matching, health checks, and other settings, to achieve effective traffic management and optimization.
         
@@ -4476,7 +4476,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateLoadBalancerRequest,
     ) -> esa20240910_models.CreateLoadBalancerResponse:
         """
-        @summary Add a new load balancer
+        @summary Add a New Load Balancer
         
         @description Through this API, users can configure load balancing services according to their business needs, including but not limited to adaptive routing, weighted round-robin, rule matching, health checks, and other settings, to achieve effective traffic management and optimization.
         
@@ -4491,7 +4491,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateLoadBalancerRequest,
     ) -> esa20240910_models.CreateLoadBalancerResponse:
         """
-        @summary Add a new load balancer
+        @summary Add a New Load Balancer
         
         @description Through this API, users can configure load balancing services according to their business needs, including but not limited to adaptive routing, weighted round-robin, rule matching, health checks, and other settings, to achieve effective traffic management and optimization.
         
@@ -7345,7 +7345,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateWaitingRoomRuleResponse:
         """
-        @summary Creates a waiting room bypass rule.
+        @summary Create Waiting Room Rule
         
         @param request: CreateWaitingRoomRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7394,7 +7394,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.CreateWaitingRoomRuleResponse:
         """
-        @summary Creates a waiting room bypass rule.
+        @summary Create Waiting Room Rule
         
         @param request: CreateWaitingRoomRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7442,7 +7442,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateWaitingRoomRuleRequest,
     ) -> esa20240910_models.CreateWaitingRoomRuleResponse:
         """
-        @summary Creates a waiting room bypass rule.
+        @summary Create Waiting Room Rule
         
         @param request: CreateWaitingRoomRuleRequest
         @return: CreateWaitingRoomRuleResponse
@@ -7455,7 +7455,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.CreateWaitingRoomRuleRequest,
     ) -> esa20240910_models.CreateWaitingRoomRuleResponse:
         """
-        @summary Creates a waiting room bypass rule.
+        @summary Create Waiting Room Rule
         
         @param request: CreateWaitingRoomRuleRequest
         @return: CreateWaitingRoomRuleResponse
@@ -8009,7 +8009,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteCompressionRuleResponse:
         """
-        @summary Deletes the compression rule configuration for a website.
+        @summary Delete compression rule
         
         @param request: DeleteCompressionRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8052,7 +8052,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteCompressionRuleResponse:
         """
-        @summary Deletes the compression rule configuration for a website.
+        @summary Delete compression rule
         
         @param request: DeleteCompressionRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8094,7 +8094,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteCompressionRuleRequest,
     ) -> esa20240910_models.DeleteCompressionRuleResponse:
         """
-        @summary Deletes the compression rule configuration for a website.
+        @summary Delete compression rule
         
         @param request: DeleteCompressionRuleRequest
         @return: DeleteCompressionRuleResponse
@@ -8107,7 +8107,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteCompressionRuleRequest,
     ) -> esa20240910_models.DeleteCompressionRuleResponse:
         """
-        @summary Deletes the compression rule configuration for a website.
+        @summary Delete compression rule
         
         @param request: DeleteCompressionRuleRequest
         @return: DeleteCompressionRuleResponse
@@ -9013,7 +9013,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteImageTransformResponse:
         """
-        @summary Deletes the configuration of image transformations for a website.
+        @summary Delete Site Image Transformation Configuration
         
         @param request: DeleteImageTransformRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9056,7 +9056,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.DeleteImageTransformResponse:
         """
-        @summary Deletes the configuration of image transformations for a website.
+        @summary Delete Site Image Transformation Configuration
         
         @param request: DeleteImageTransformRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9098,7 +9098,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteImageTransformRequest,
     ) -> esa20240910_models.DeleteImageTransformResponse:
         """
-        @summary Deletes the configuration of image transformations for a website.
+        @summary Delete Site Image Transformation Configuration
         
         @param request: DeleteImageTransformRequest
         @return: DeleteImageTransformResponse
@@ -9111,7 +9111,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.DeleteImageTransformRequest,
     ) -> esa20240910_models.DeleteImageTransformResponse:
         """
-        @summary Deletes the configuration of image transformations for a website.
+        @summary Delete Site Image Transformation Configuration
         
         @param request: DeleteImageTransformRequest
         @return: DeleteImageTransformResponse
@@ -14803,6 +14803,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_edge_container_app_log_river_with_options_async(request, runtime)
 
+    def get_edge_container_app_resource_reserve_with_options(
+        self,
+        request: esa20240910_models.GetEdgeContainerAppResourceReserveRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetEdgeContainerAppResourceReserveResponse:
+        """
+        @summary 获取边缘容器资源预留配置
+        
+        @param request: GetEdgeContainerAppResourceReserveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEdgeContainerAppResourceReserveResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEdgeContainerAppResourceReserve',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.GetEdgeContainerAppResourceReserveResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.GetEdgeContainerAppResourceReserveResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_edge_container_app_resource_reserve_with_options_async(
+        self,
+        request: esa20240910_models.GetEdgeContainerAppResourceReserveRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetEdgeContainerAppResourceReserveResponse:
+        """
+        @summary 获取边缘容器资源预留配置
+        
+        @param request: GetEdgeContainerAppResourceReserveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEdgeContainerAppResourceReserveResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEdgeContainerAppResourceReserve',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.GetEdgeContainerAppResourceReserveResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.GetEdgeContainerAppResourceReserveResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_edge_container_app_resource_reserve(
+        self,
+        request: esa20240910_models.GetEdgeContainerAppResourceReserveRequest,
+    ) -> esa20240910_models.GetEdgeContainerAppResourceReserveResponse:
+        """
+        @summary 获取边缘容器资源预留配置
+        
+        @param request: GetEdgeContainerAppResourceReserveRequest
+        @return: GetEdgeContainerAppResourceReserveResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_edge_container_app_resource_reserve_with_options(request, runtime)
+
+    async def get_edge_container_app_resource_reserve_async(
+        self,
+        request: esa20240910_models.GetEdgeContainerAppResourceReserveRequest,
+    ) -> esa20240910_models.GetEdgeContainerAppResourceReserveResponse:
+        """
+        @summary 获取边缘容器资源预留配置
+        
+        @param request: GetEdgeContainerAppResourceReserveRequest
+        @return: GetEdgeContainerAppResourceReserveResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_edge_container_app_resource_reserve_with_options_async(request, runtime)
+
     def get_edge_container_app_status_with_options(
         self,
         request: esa20240910_models.GetEdgeContainerAppStatusRequest,
@@ -15445,7 +15553,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetHttpRequestHeaderModificationRuleResponse:
         """
-        @summary Queries the configuration details of an HTTP request header modification rule for a website.
+        @summary Query HTTP Request Header Rule Details
         
         @param request: GetHttpRequestHeaderModificationRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15484,7 +15592,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetHttpRequestHeaderModificationRuleResponse:
         """
-        @summary Queries the configuration details of an HTTP request header modification rule for a website.
+        @summary Query HTTP Request Header Rule Details
         
         @param request: GetHttpRequestHeaderModificationRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15522,7 +15630,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetHttpRequestHeaderModificationRuleRequest,
     ) -> esa20240910_models.GetHttpRequestHeaderModificationRuleResponse:
         """
-        @summary Queries the configuration details of an HTTP request header modification rule for a website.
+        @summary Query HTTP Request Header Rule Details
         
         @param request: GetHttpRequestHeaderModificationRuleRequest
         @return: GetHttpRequestHeaderModificationRuleResponse
@@ -15535,7 +15643,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetHttpRequestHeaderModificationRuleRequest,
     ) -> esa20240910_models.GetHttpRequestHeaderModificationRuleResponse:
         """
-        @summary Queries the configuration details of an HTTP request header modification rule for a website.
+        @summary Query HTTP Request Header Rule Details
         
         @param request: GetHttpRequestHeaderModificationRuleRequest
         @return: GetHttpRequestHeaderModificationRuleResponse
@@ -15549,7 +15657,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetHttpResponseHeaderModificationRuleResponse:
         """
-        @summary Queries the configuration details of an HTTP response header modification rule for a website.
+        @summary Query HTTP Response Header Rules
         
         @param request: GetHttpResponseHeaderModificationRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15588,7 +15696,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetHttpResponseHeaderModificationRuleResponse:
         """
-        @summary Queries the configuration details of an HTTP response header modification rule for a website.
+        @summary Query HTTP Response Header Rules
         
         @param request: GetHttpResponseHeaderModificationRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15626,7 +15734,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetHttpResponseHeaderModificationRuleRequest,
     ) -> esa20240910_models.GetHttpResponseHeaderModificationRuleResponse:
         """
-        @summary Queries the configuration details of an HTTP response header modification rule for a website.
+        @summary Query HTTP Response Header Rules
         
         @param request: GetHttpResponseHeaderModificationRuleRequest
         @return: GetHttpResponseHeaderModificationRuleResponse
@@ -15639,7 +15747,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetHttpResponseHeaderModificationRuleRequest,
     ) -> esa20240910_models.GetHttpResponseHeaderModificationRuleResponse:
         """
-        @summary Queries the configuration details of an HTTP response header modification rule for a website.
+        @summary Query HTTP Response Header Rules
         
         @param request: GetHttpResponseHeaderModificationRuleRequest
         @return: GetHttpResponseHeaderModificationRuleResponse
@@ -15965,7 +16073,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetImageTransformResponse:
         """
-        @summary Queries the configuration of image transformations for a website.
+        @summary Query Single Site Image Transformation Configuration
         
         @param request: GetImageTransformRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16004,7 +16112,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetImageTransformResponse:
         """
-        @summary Queries the configuration of image transformations for a website.
+        @summary Query Single Site Image Transformation Configuration
         
         @param request: GetImageTransformRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16042,7 +16150,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetImageTransformRequest,
     ) -> esa20240910_models.GetImageTransformResponse:
         """
-        @summary Queries the configuration of image transformations for a website.
+        @summary Query Single Site Image Transformation Configuration
         
         @param request: GetImageTransformRequest
         @return: GetImageTransformResponse
@@ -16055,7 +16163,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetImageTransformRequest,
     ) -> esa20240910_models.GetImageTransformResponse:
         """
-        @summary Queries the configuration of image transformations for a website.
+        @summary Query Single Site Image Transformation Configuration
         
         @param request: GetImageTransformRequest
         @return: GetImageTransformResponse
@@ -16473,7 +16581,7 @@ class Client(OpenApiClient):
         """
         @summary Query a Specific Load Balancer
         
-        @description This API allows users to query the configuration details of a specific load balancer by providing necessary authentication information and resource identifiers, including but not limited to name, session persistence policy, routing policy, etc.
+        @description This API allows users to query the configuration details of a specific load balancer by providing necessary authentication information and resource identifiers, including but not limited to name, session persistence strategy, routing policy, etc.
         
         @param request: GetLoadBalancerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16514,7 +16622,7 @@ class Client(OpenApiClient):
         """
         @summary Query a Specific Load Balancer
         
-        @description This API allows users to query the configuration details of a specific load balancer by providing necessary authentication information and resource identifiers, including but not limited to name, session persistence policy, routing policy, etc.
+        @description This API allows users to query the configuration details of a specific load balancer by providing necessary authentication information and resource identifiers, including but not limited to name, session persistence strategy, routing policy, etc.
         
         @param request: GetLoadBalancerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16554,7 +16662,7 @@ class Client(OpenApiClient):
         """
         @summary Query a Specific Load Balancer
         
-        @description This API allows users to query the configuration details of a specific load balancer by providing necessary authentication information and resource identifiers, including but not limited to name, session persistence policy, routing policy, etc.
+        @description This API allows users to query the configuration details of a specific load balancer by providing necessary authentication information and resource identifiers, including but not limited to name, session persistence strategy, routing policy, etc.
         
         @param request: GetLoadBalancerRequest
         @return: GetLoadBalancerResponse
@@ -16569,7 +16677,7 @@ class Client(OpenApiClient):
         """
         @summary Query a Specific Load Balancer
         
-        @description This API allows users to query the configuration details of a specific load balancer by providing necessary authentication information and resource identifiers, including but not limited to name, session persistence policy, routing policy, etc.
+        @description This API allows users to query the configuration details of a specific load balancer by providing necessary authentication information and resource identifiers, including but not limited to name, session persistence strategy, routing policy, etc.
         
         @param request: GetLoadBalancerRequest
         @return: GetLoadBalancerResponse
@@ -16999,7 +17107,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetOriginRuleResponse:
         """
-        @summary Query a single origin rule configuration
+        @summary Query a Single Origin Rule Configuration
         
         @param request: GetOriginRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17038,7 +17146,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetOriginRuleResponse:
         """
-        @summary Query a single origin rule configuration
+        @summary Query a Single Origin Rule Configuration
         
         @param request: GetOriginRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17076,7 +17184,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetOriginRuleRequest,
     ) -> esa20240910_models.GetOriginRuleResponse:
         """
-        @summary Query a single origin rule configuration
+        @summary Query a Single Origin Rule Configuration
         
         @param request: GetOriginRuleRequest
         @return: GetOriginRuleResponse
@@ -17089,7 +17197,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetOriginRuleRequest,
     ) -> esa20240910_models.GetOriginRuleResponse:
         """
-        @summary Query a single origin rule configuration
+        @summary Query a Single Origin Rule Configuration
         
         @param request: GetOriginRuleRequest
         @return: GetOriginRuleResponse
@@ -17523,7 +17631,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetRedirectRuleResponse:
         """
-        @summary Queries the configuration details of a URL redirect rule for a website.
+        @summary Query Redirect Rule Details
         
         @param request: GetRedirectRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17562,7 +17670,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetRedirectRuleResponse:
         """
-        @summary Queries the configuration details of a URL redirect rule for a website.
+        @summary Query Redirect Rule Details
         
         @param request: GetRedirectRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17600,7 +17708,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetRedirectRuleRequest,
     ) -> esa20240910_models.GetRedirectRuleResponse:
         """
-        @summary Queries the configuration details of a URL redirect rule for a website.
+        @summary Query Redirect Rule Details
         
         @param request: GetRedirectRuleRequest
         @return: GetRedirectRuleResponse
@@ -17613,7 +17721,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetRedirectRuleRequest,
     ) -> esa20240910_models.GetRedirectRuleResponse:
         """
-        @summary Queries the configuration details of a URL redirect rule for a website.
+        @summary Query Redirect Rule Details
         
         @param request: GetRedirectRuleRequest
         @return: GetRedirectRuleResponse
@@ -17627,7 +17735,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetRewriteUrlRuleResponse:
         """
-        @summary Queries the configuration details of a URL rewrite rule.
+        @summary Query details of the rewrite URL rule
         
         @param request: GetRewriteUrlRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17666,7 +17774,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.GetRewriteUrlRuleResponse:
         """
-        @summary Queries the configuration details of a URL rewrite rule.
+        @summary Query details of the rewrite URL rule
         
         @param request: GetRewriteUrlRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17704,7 +17812,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetRewriteUrlRuleRequest,
     ) -> esa20240910_models.GetRewriteUrlRuleResponse:
         """
-        @summary Queries the configuration details of a URL rewrite rule.
+        @summary Query details of the rewrite URL rule
         
         @param request: GetRewriteUrlRuleRequest
         @return: GetRewriteUrlRuleResponse
@@ -17717,7 +17825,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.GetRewriteUrlRuleRequest,
     ) -> esa20240910_models.GetRewriteUrlRuleResponse:
         """
-        @summary Queries the configuration details of a URL rewrite rule.
+        @summary Query details of the rewrite URL rule
         
         @param request: GetRewriteUrlRuleRequest
         @return: GetRewriteUrlRuleResponse
@@ -20613,7 +20721,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListCompressionRulesResponse:
         """
-        @summary Queries compression rules that are configured for a website.
+        @summary Query the list of compression rules
         
         @param request: ListCompressionRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20652,7 +20760,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListCompressionRulesResponse:
         """
-        @summary Queries compression rules that are configured for a website.
+        @summary Query the list of compression rules
         
         @param request: ListCompressionRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20690,7 +20798,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListCompressionRulesRequest,
     ) -> esa20240910_models.ListCompressionRulesResponse:
         """
-        @summary Queries compression rules that are configured for a website.
+        @summary Query the list of compression rules
         
         @param request: ListCompressionRulesRequest
         @return: ListCompressionRulesResponse
@@ -20703,7 +20811,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListCompressionRulesRequest,
     ) -> esa20240910_models.ListCompressionRulesResponse:
         """
-        @summary Queries compression rules that are configured for a website.
+        @summary Query the list of compression rules
         
         @param request: ListCompressionRulesRequest
         @return: ListCompressionRulesResponse
@@ -21459,7 +21567,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListHttpResponseHeaderModificationRulesResponse:
         """
-        @summary Queries the configuration details of an HTTP response header modification rule for a website.
+        @summary List of HTTP Response Header Rules
         
         @param request: ListHttpResponseHeaderModificationRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21498,7 +21606,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListHttpResponseHeaderModificationRulesResponse:
         """
-        @summary Queries the configuration details of an HTTP response header modification rule for a website.
+        @summary List of HTTP Response Header Rules
         
         @param request: ListHttpResponseHeaderModificationRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21536,7 +21644,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListHttpResponseHeaderModificationRulesRequest,
     ) -> esa20240910_models.ListHttpResponseHeaderModificationRulesResponse:
         """
-        @summary Queries the configuration details of an HTTP response header modification rule for a website.
+        @summary List of HTTP Response Header Rules
         
         @param request: ListHttpResponseHeaderModificationRulesRequest
         @return: ListHttpResponseHeaderModificationRulesResponse
@@ -21549,7 +21657,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListHttpResponseHeaderModificationRulesRequest,
     ) -> esa20240910_models.ListHttpResponseHeaderModificationRulesResponse:
         """
-        @summary Queries the configuration details of an HTTP response header modification rule for a website.
+        @summary List of HTTP Response Header Rules
         
         @param request: ListHttpResponseHeaderModificationRulesRequest
         @return: ListHttpResponseHeaderModificationRulesResponse
@@ -21771,7 +21879,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListImageTransformsResponse:
         """
-        @summary Queries the details of image conversion configurations for multiple websites.
+        @summary Query Multiple Site Image Transformation Configurations
         
         @param request: ListImageTransformsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21810,7 +21918,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListImageTransformsResponse:
         """
-        @summary Queries the details of image conversion configurations for multiple websites.
+        @summary Query Multiple Site Image Transformation Configurations
         
         @param request: ListImageTransformsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21848,7 +21956,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListImageTransformsRequest,
     ) -> esa20240910_models.ListImageTransformsResponse:
         """
-        @summary Queries the details of image conversion configurations for multiple websites.
+        @summary Query Multiple Site Image Transformation Configurations
         
         @param request: ListImageTransformsRequest
         @return: ListImageTransformsResponse
@@ -21861,7 +21969,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListImageTransformsRequest,
     ) -> esa20240910_models.ListImageTransformsResponse:
         """
-        @summary Queries the details of image conversion configurations for multiple websites.
+        @summary Query Multiple Site Image Transformation Configurations
         
         @param request: ListImageTransformsRequest
         @return: ListImageTransformsResponse
@@ -22551,7 +22659,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListLoadBalancersResponse:
         """
-        @summary List of Load Balancers
+        @summary Query the list of load balancers
         
         @param request: ListLoadBalancersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22590,7 +22698,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListLoadBalancersResponse:
         """
-        @summary List of Load Balancers
+        @summary Query the list of load balancers
         
         @param request: ListLoadBalancersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22628,7 +22736,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListLoadBalancersRequest,
     ) -> esa20240910_models.ListLoadBalancersResponse:
         """
-        @summary List of Load Balancers
+        @summary Query the list of load balancers
         
         @param request: ListLoadBalancersRequest
         @return: ListLoadBalancersResponse
@@ -22641,7 +22749,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListLoadBalancersRequest,
     ) -> esa20240910_models.ListLoadBalancersResponse:
         """
-        @summary List of Load Balancers
+        @summary Query the list of load balancers
         
         @param request: ListLoadBalancersRequest
         @return: ListLoadBalancersResponse
@@ -22975,7 +23083,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListOriginRulesResponse:
         """
-        @summary Query multiple origin rules configurations
+        @summary Query multiple origin rule configurations
         
         @param request: ListOriginRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23014,7 +23122,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListOriginRulesResponse:
         """
-        @summary Query multiple origin rules configurations
+        @summary Query multiple origin rule configurations
         
         @param request: ListOriginRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23052,7 +23160,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListOriginRulesRequest,
     ) -> esa20240910_models.ListOriginRulesResponse:
         """
-        @summary Query multiple origin rules configurations
+        @summary Query multiple origin rule configurations
         
         @param request: ListOriginRulesRequest
         @return: ListOriginRulesResponse
@@ -23065,7 +23173,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListOriginRulesRequest,
     ) -> esa20240910_models.ListOriginRulesResponse:
         """
-        @summary Query multiple origin rules configurations
+        @summary Query multiple origin rule configurations
         
         @param request: ListOriginRulesRequest
         @return: ListOriginRulesResponse
@@ -23315,7 +23423,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListRedirectRulesResponse:
         """
-        @summary Queries the configuration details of a URL redirect rule for a website.
+        @summary Query Redirect Rule List
         
         @param request: ListRedirectRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23354,7 +23462,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListRedirectRulesResponse:
         """
-        @summary Queries the configuration details of a URL redirect rule for a website.
+        @summary Query Redirect Rule List
         
         @param request: ListRedirectRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23392,7 +23500,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListRedirectRulesRequest,
     ) -> esa20240910_models.ListRedirectRulesResponse:
         """
-        @summary Queries the configuration details of a URL redirect rule for a website.
+        @summary Query Redirect Rule List
         
         @param request: ListRedirectRulesRequest
         @return: ListRedirectRulesResponse
@@ -23405,7 +23513,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListRedirectRulesRequest,
     ) -> esa20240910_models.ListRedirectRulesResponse:
         """
-        @summary Queries the configuration details of a URL redirect rule for a website.
+        @summary Query Redirect Rule List
         
         @param request: ListRedirectRulesRequest
         @return: ListRedirectRulesResponse
@@ -23419,7 +23527,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListRewriteUrlRulesResponse:
         """
-        @summary Queries the details of rewrite URL configurations.
+        @summary List of Rewrite URL Rules
         
         @param request: ListRewriteUrlRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23458,7 +23566,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListRewriteUrlRulesResponse:
         """
-        @summary Queries the details of rewrite URL configurations.
+        @summary List of Rewrite URL Rules
         
         @param request: ListRewriteUrlRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23496,7 +23604,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListRewriteUrlRulesRequest,
     ) -> esa20240910_models.ListRewriteUrlRulesResponse:
         """
-        @summary Queries the details of rewrite URL configurations.
+        @summary List of Rewrite URL Rules
         
         @param request: ListRewriteUrlRulesRequest
         @return: ListRewriteUrlRulesResponse
@@ -23509,7 +23617,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListRewriteUrlRulesRequest,
     ) -> esa20240910_models.ListRewriteUrlRulesResponse:
         """
-        @summary Queries the details of rewrite URL configurations.
+        @summary List of Rewrite URL Rules
         
         @param request: ListRewriteUrlRulesRequest
         @return: ListRewriteUrlRulesResponse
@@ -25179,9 +25287,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListWaitingRoomRulesResponse:
         """
-        @summary Queries the waiting room bypass rules configured for a waiting room.
+        @summary Query Waiting Room Bypass Rules
         
-        @description You can call this operation to query the waiting room bypass rules that are associated with a website.
+        @description This API allows users to query the list of waiting room bypass rules associated with a specific site.
         
         @param request: ListWaitingRoomRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25220,9 +25328,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListWaitingRoomRulesResponse:
         """
-        @summary Queries the waiting room bypass rules configured for a waiting room.
+        @summary Query Waiting Room Bypass Rules
         
-        @description You can call this operation to query the waiting room bypass rules that are associated with a website.
+        @description This API allows users to query the list of waiting room bypass rules associated with a specific site.
         
         @param request: ListWaitingRoomRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25260,9 +25368,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListWaitingRoomRulesRequest,
     ) -> esa20240910_models.ListWaitingRoomRulesResponse:
         """
-        @summary Queries the waiting room bypass rules configured for a waiting room.
+        @summary Query Waiting Room Bypass Rules
         
-        @description You can call this operation to query the waiting room bypass rules that are associated with a website.
+        @description This API allows users to query the list of waiting room bypass rules associated with a specific site.
         
         @param request: ListWaitingRoomRulesRequest
         @return: ListWaitingRoomRulesResponse
@@ -25275,9 +25383,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.ListWaitingRoomRulesRequest,
     ) -> esa20240910_models.ListWaitingRoomRulesResponse:
         """
-        @summary Queries the waiting room bypass rules configured for a waiting room.
+        @summary Query Waiting Room Bypass Rules
         
-        @description You can call this operation to query the waiting room bypass rules that are associated with a website.
+        @description This API allows users to query the list of waiting room bypass rules associated with a specific site.
         
         @param request: ListWaitingRoomRulesRequest
         @return: ListWaitingRoomRulesResponse
@@ -25808,6 +25916,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.publish_routine_code_version_with_options_async(request, runtime)
+
+    def purchase_cache_reserve_with_options(
+        self,
+        request: esa20240910_models.PurchaseCacheReserveRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.PurchaseCacheReserveResponse:
+        """
+        @summary New Purchase of Cache Retention
+        
+        @param request: PurchaseCacheReserveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PurchaseCacheReserveResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.cr_region):
+            query['CrRegion'] = request.cr_region
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.quota_gb):
+            query['QuotaGb'] = request.quota_gb
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PurchaseCacheReserve',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.PurchaseCacheReserveResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.PurchaseCacheReserveResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def purchase_cache_reserve_with_options_async(
+        self,
+        request: esa20240910_models.PurchaseCacheReserveRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.PurchaseCacheReserveResponse:
+        """
+        @summary New Purchase of Cache Retention
+        
+        @param request: PurchaseCacheReserveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PurchaseCacheReserveResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.cr_region):
+            query['CrRegion'] = request.cr_region
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.quota_gb):
+            query['QuotaGb'] = request.quota_gb
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PurchaseCacheReserve',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.PurchaseCacheReserveResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.PurchaseCacheReserveResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def purchase_cache_reserve(
+        self,
+        request: esa20240910_models.PurchaseCacheReserveRequest,
+    ) -> esa20240910_models.PurchaseCacheReserveResponse:
+        """
+        @summary New Purchase of Cache Retention
+        
+        @param request: PurchaseCacheReserveRequest
+        @return: PurchaseCacheReserveResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.purchase_cache_reserve_with_options(request, runtime)
+
+    async def purchase_cache_reserve_async(
+        self,
+        request: esa20240910_models.PurchaseCacheReserveRequest,
+    ) -> esa20240910_models.PurchaseCacheReserveResponse:
+        """
+        @summary New Purchase of Cache Retention
+        
+        @param request: PurchaseCacheReserveRequest
+        @return: PurchaseCacheReserveResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.purchase_cache_reserve_with_options_async(request, runtime)
 
     def purchase_rate_plan_with_options(
         self,
@@ -27929,6 +28165,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
 
+    def update_cache_reserve_spec_with_options(
+        self,
+        request: esa20240910_models.UpdateCacheReserveSpecRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateCacheReserveSpecResponse:
+        """
+        @summary 缓存保持变配
+        
+        @param request: UpdateCacheReserveSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCacheReserveSpecResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.target_quota_gb):
+            query['TargetQuotaGb'] = request.target_quota_gb
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCacheReserveSpec',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.UpdateCacheReserveSpecResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.UpdateCacheReserveSpecResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_cache_reserve_spec_with_options_async(
+        self,
+        request: esa20240910_models.UpdateCacheReserveSpecRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateCacheReserveSpecResponse:
+        """
+        @summary 缓存保持变配
+        
+        @param request: UpdateCacheReserveSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCacheReserveSpecResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.target_quota_gb):
+            query['TargetQuotaGb'] = request.target_quota_gb
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCacheReserveSpec',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.UpdateCacheReserveSpecResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.UpdateCacheReserveSpecResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_cache_reserve_spec(
+        self,
+        request: esa20240910_models.UpdateCacheReserveSpecRequest,
+    ) -> esa20240910_models.UpdateCacheReserveSpecResponse:
+        """
+        @summary 缓存保持变配
+        
+        @param request: UpdateCacheReserveSpecRequest
+        @return: UpdateCacheReserveSpecResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_cache_reserve_spec_with_options(request, runtime)
+
+    async def update_cache_reserve_spec_async(
+        self,
+        request: esa20240910_models.UpdateCacheReserveSpecRequest,
+    ) -> esa20240910_models.UpdateCacheReserveSpecResponse:
+        """
+        @summary 缓存保持变配
+        
+        @param request: UpdateCacheReserveSpecRequest
+        @return: UpdateCacheReserveSpecResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_cache_reserve_spec_with_options_async(request, runtime)
+
     def update_cache_rule_with_options(
         self,
         request: esa20240910_models.UpdateCacheRuleRequest,
@@ -28857,6 +29213,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_edge_container_app_log_river_with_options_async(request, runtime)
 
+    def update_edge_container_app_resource_reserve_with_options(
+        self,
+        tmp_req: esa20240910_models.UpdateEdgeContainerAppResourceReserveRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateEdgeContainerAppResourceReserveResponse:
+        """
+        @summary 更新边缘容器资源预留配置
+        
+        @param tmp_req: UpdateEdgeContainerAppResourceReserveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEdgeContainerAppResourceReserveResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.UpdateEdgeContainerAppResourceReserveShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.reserve_set):
+            request.reserve_set_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.reserve_set, 'ReserveSet', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.duration_time):
+            query['DurationTime'] = request.duration_time
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.forever):
+            query['Forever'] = request.forever
+        if not UtilClient.is_unset(request.reserve_set_shrink):
+            query['ReserveSet'] = request.reserve_set_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateEdgeContainerAppResourceReserve',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.UpdateEdgeContainerAppResourceReserveResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.UpdateEdgeContainerAppResourceReserveResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_edge_container_app_resource_reserve_with_options_async(
+        self,
+        tmp_req: esa20240910_models.UpdateEdgeContainerAppResourceReserveRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateEdgeContainerAppResourceReserveResponse:
+        """
+        @summary 更新边缘容器资源预留配置
+        
+        @param tmp_req: UpdateEdgeContainerAppResourceReserveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEdgeContainerAppResourceReserveResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.UpdateEdgeContainerAppResourceReserveShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.reserve_set):
+            request.reserve_set_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.reserve_set, 'ReserveSet', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.duration_time):
+            query['DurationTime'] = request.duration_time
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.forever):
+            query['Forever'] = request.forever
+        if not UtilClient.is_unset(request.reserve_set_shrink):
+            query['ReserveSet'] = request.reserve_set_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateEdgeContainerAppResourceReserve',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.UpdateEdgeContainerAppResourceReserveResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.UpdateEdgeContainerAppResourceReserveResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_edge_container_app_resource_reserve(
+        self,
+        request: esa20240910_models.UpdateEdgeContainerAppResourceReserveRequest,
+    ) -> esa20240910_models.UpdateEdgeContainerAppResourceReserveResponse:
+        """
+        @summary 更新边缘容器资源预留配置
+        
+        @param request: UpdateEdgeContainerAppResourceReserveRequest
+        @return: UpdateEdgeContainerAppResourceReserveResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_edge_container_app_resource_reserve_with_options(request, runtime)
+
+    async def update_edge_container_app_resource_reserve_async(
+        self,
+        request: esa20240910_models.UpdateEdgeContainerAppResourceReserveRequest,
+    ) -> esa20240910_models.UpdateEdgeContainerAppResourceReserveResponse:
+        """
+        @summary 更新边缘容器资源预留配置
+        
+        @param request: UpdateEdgeContainerAppResourceReserveRequest
+        @return: UpdateEdgeContainerAppResourceReserveResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_edge_container_app_resource_reserve_with_options_async(request, runtime)
+
     def update_http_request_header_modification_rule_with_options(
         self,
         tmp_req: esa20240910_models.UpdateHttpRequestHeaderModificationRuleRequest,
@@ -28999,7 +29487,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateHttpResponseHeaderModificationRuleResponse:
         """
-        @summary Modify HTTP Response Header Rules
+        @summary Modify HTTP response header rules
         
         @param tmp_req: UpdateHttpResponseHeaderModificationRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29054,7 +29542,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateHttpResponseHeaderModificationRuleResponse:
         """
-        @summary Modify HTTP Response Header Rules
+        @summary Modify HTTP response header rules
         
         @param tmp_req: UpdateHttpResponseHeaderModificationRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29108,7 +29596,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateHttpResponseHeaderModificationRuleRequest,
     ) -> esa20240910_models.UpdateHttpResponseHeaderModificationRuleResponse:
         """
-        @summary Modify HTTP Response Header Rules
+        @summary Modify HTTP response header rules
         
         @param request: UpdateHttpResponseHeaderModificationRuleRequest
         @return: UpdateHttpResponseHeaderModificationRuleResponse
@@ -29121,7 +29609,7 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateHttpResponseHeaderModificationRuleRequest,
     ) -> esa20240910_models.UpdateHttpResponseHeaderModificationRuleResponse:
         """
-        @summary Modify HTTP Response Header Rules
+        @summary Modify HTTP response header rules
         
         @param request: UpdateHttpResponseHeaderModificationRuleRequest
         @return: UpdateHttpResponseHeaderModificationRuleResponse
@@ -29833,7 +30321,7 @@ class Client(OpenApiClient):
         """
         @summary Modify Load Balancer
         
-        @description Through this interface, you can modify multiple configurations of the load balancer, including but not limited to the name of the load balancer, whether to enable acceleration, session persistence policies, and various advanced settings related to traffic routing. >Notice: Changes to certain parameters may affect the stability of existing services, please operate with caution.
+        @description Through this interface, you can modify multiple configurations of the load balancer, including but not limited to the name of the load balancer, whether to enable acceleration, session persistence strategy, and various advanced settings related to traffic routing.>Notice: Changes to certain parameters may affect the stability of existing services, please operate with caution.
         
         @param tmp_req: UpdateLoadBalancerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29916,7 +30404,7 @@ class Client(OpenApiClient):
         """
         @summary Modify Load Balancer
         
-        @description Through this interface, you can modify multiple configurations of the load balancer, including but not limited to the name of the load balancer, whether to enable acceleration, session persistence policies, and various advanced settings related to traffic routing. >Notice: Changes to certain parameters may affect the stability of existing services, please operate with caution.
+        @description Through this interface, you can modify multiple configurations of the load balancer, including but not limited to the name of the load balancer, whether to enable acceleration, session persistence strategy, and various advanced settings related to traffic routing.>Notice: Changes to certain parameters may affect the stability of existing services, please operate with caution.
         
         @param tmp_req: UpdateLoadBalancerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29998,7 +30486,7 @@ class Client(OpenApiClient):
         """
         @summary Modify Load Balancer
         
-        @description Through this interface, you can modify multiple configurations of the load balancer, including but not limited to the name of the load balancer, whether to enable acceleration, session persistence policies, and various advanced settings related to traffic routing. >Notice: Changes to certain parameters may affect the stability of existing services, please operate with caution.
+        @description Through this interface, you can modify multiple configurations of the load balancer, including but not limited to the name of the load balancer, whether to enable acceleration, session persistence strategy, and various advanced settings related to traffic routing.>Notice: Changes to certain parameters may affect the stability of existing services, please operate with caution.
         
         @param request: UpdateLoadBalancerRequest
         @return: UpdateLoadBalancerResponse
@@ -30013,7 +30501,7 @@ class Client(OpenApiClient):
         """
         @summary Modify Load Balancer
         
-        @description Through this interface, you can modify multiple configurations of the load balancer, including but not limited to the name of the load balancer, whether to enable acceleration, session persistence policies, and various advanced settings related to traffic routing. >Notice: Changes to certain parameters may affect the stability of existing services, please operate with caution.
+        @description Through this interface, you can modify multiple configurations of the load balancer, including but not limited to the name of the load balancer, whether to enable acceleration, session persistence strategy, and various advanced settings related to traffic routing.>Notice: Changes to certain parameters may affect the stability of existing services, please operate with caution.
         
         @param request: UpdateLoadBalancerRequest
         @return: UpdateLoadBalancerResponse
@@ -33415,9 +33903,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateWaitingRoomRuleResponse:
         """
-        @summary Updates the configurations of a waiting room bypass rule for a website.
+        @summary Modify Waiting Room Rule
         
-        @description You can call this API operation to modify the configurations of a waiting room bypass rule for your website, including the rule name, status, and rule content.
+        @description This interface allows you to modify the rule settings of a specific waiting room in a site, including the rule name, enable status, and rule content, etc.
         
         @param request: UpdateWaitingRoomRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -33466,9 +33954,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.UpdateWaitingRoomRuleResponse:
         """
-        @summary Updates the configurations of a waiting room bypass rule for a website.
+        @summary Modify Waiting Room Rule
         
-        @description You can call this API operation to modify the configurations of a waiting room bypass rule for your website, including the rule name, status, and rule content.
+        @description This interface allows you to modify the rule settings of a specific waiting room in a site, including the rule name, enable status, and rule content, etc.
         
         @param request: UpdateWaitingRoomRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -33516,9 +34004,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateWaitingRoomRuleRequest,
     ) -> esa20240910_models.UpdateWaitingRoomRuleResponse:
         """
-        @summary Updates the configurations of a waiting room bypass rule for a website.
+        @summary Modify Waiting Room Rule
         
-        @description You can call this API operation to modify the configurations of a waiting room bypass rule for your website, including the rule name, status, and rule content.
+        @description This interface allows you to modify the rule settings of a specific waiting room in a site, including the rule name, enable status, and rule content, etc.
         
         @param request: UpdateWaitingRoomRuleRequest
         @return: UpdateWaitingRoomRuleResponse
@@ -33531,9 +34019,9 @@ class Client(OpenApiClient):
         request: esa20240910_models.UpdateWaitingRoomRuleRequest,
     ) -> esa20240910_models.UpdateWaitingRoomRuleResponse:
         """
-        @summary Updates the configurations of a waiting room bypass rule for a website.
+        @summary Modify Waiting Room Rule
         
-        @description You can call this API operation to modify the configurations of a waiting room bypass rule for your website, including the rule name, status, and rule content.
+        @description This interface allows you to modify the rule settings of a specific waiting room in a site, including the rule name, enable status, and rule content, etc.
         
         @param request: UpdateWaitingRoomRuleRequest
         @return: UpdateWaitingRoomRuleResponse
