@@ -1,3 +1,8 @@
+2025-03-21 Version: 2.0.1
+- Update API OnsConsumerGetConnection: update response param.
+- Update API OnsTopicSubDetail: update response param.
+
+
 2024-11-27 Version: 2.0.0
 - Update API OnsConsumerStatus: update response param.
 - Update API OnsRegionList: update response param.

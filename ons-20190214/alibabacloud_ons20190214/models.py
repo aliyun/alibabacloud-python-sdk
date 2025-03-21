@@ -670,9 +670,11 @@ class OnsConsumerGetConnectionResponseBodyData(TeaModel):
     def __init__(
         self,
         connection_list: OnsConsumerGetConnectionResponseBodyDataConnectionList = None,
+        message_model: str = None,
     ):
         # The client connection information of the consumer group.
         self.connection_list = connection_list
+        self.message_model = message_model
 
     def validate(self):
         if self.connection_list:
@@ -686,6 +688,8 @@ class OnsConsumerGetConnectionResponseBodyData(TeaModel):
         result = dict()
         if self.connection_list is not None:
             result['ConnectionList'] = self.connection_list.to_map()
+        if self.message_model is not None:
+            result['MessageModel'] = self.message_model
         return result
 
     def from_map(self, m: dict = None):
@@ -693,6 +697,8 @@ class OnsConsumerGetConnectionResponseBodyData(TeaModel):
         if m.get('ConnectionList') is not None:
             temp_model = OnsConsumerGetConnectionResponseBodyDataConnectionList()
             self.connection_list = temp_model.from_map(m['ConnectionList'])
+        if m.get('MessageModel') is not None:
+            self.message_model = m.get('MessageModel')
         return self
 
 
@@ -7621,6 +7627,7 @@ class OnsTopicSubDetailResponseBodyDataSubscriptionDataListSubscriptionDataList(
         self,
         group_id: str = None,
         message_model: str = None,
+        online: str = None,
         sub_string: str = None,
     ):
         # The ID of the consumer group that subscribes to the topic.
@@ -7632,6 +7639,7 @@ class OnsTopicSubDetailResponseBodyDataSubscriptionDataListSubscriptionDataList(
         # 
         # For more information about consumption modes, see [Clustering consumption and broadcasting consumption](https://help.aliyun.com/document_detail/43163.html).
         self.message_model = message_model
+        self.online = online
         # The expression based on which consumers in the consumer group subscribe to the topic.
         self.sub_string = sub_string
 
@@ -7648,6 +7656,8 @@ class OnsTopicSubDetailResponseBodyDataSubscriptionDataListSubscriptionDataList(
             result['GroupId'] = self.group_id
         if self.message_model is not None:
             result['MessageModel'] = self.message_model
+        if self.online is not None:
+            result['Online'] = self.online
         if self.sub_string is not None:
             result['SubString'] = self.sub_string
         return result
@@ -7658,6 +7668,8 @@ class OnsTopicSubDetailResponseBodyDataSubscriptionDataListSubscriptionDataList(
             self.group_id = m.get('GroupId')
         if m.get('MessageModel') is not None:
             self.message_model = m.get('MessageModel')
+        if m.get('Online') is not None:
+            self.online = m.get('Online')
         if m.get('SubString') is not None:
             self.sub_string = m.get('SubString')
         return self
