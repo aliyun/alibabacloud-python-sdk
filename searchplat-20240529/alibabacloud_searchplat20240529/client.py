@@ -21,6 +21,7 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'Searchplat'
         gateway_client = GatewayClientClient()
         self._spi = gateway_client
         self._endpoint_rule = ''
@@ -1193,6 +1194,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.csi_level):
             body['csi_level'] = request.csi_level
+        if not UtilClient.is_unset(request.enable_search):
+            body['enable_search'] = request.enable_search
         if not UtilClient.is_unset(request.messages):
             body['messages'] = request.messages
         if not UtilClient.is_unset(request.parameters):
@@ -1239,6 +1242,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.csi_level):
             body['csi_level'] = request.csi_level
+        if not UtilClient.is_unset(request.enable_search):
+            body['enable_search'] = request.enable_search
         if not UtilClient.is_unset(request.messages):
             body['messages'] = request.messages
         if not UtilClient.is_unset(request.parameters):
@@ -1416,3 +1421,123 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_text_sparse_embedding_with_options_async(workspace_name, service_id, request, headers, runtime)
+
+    def get_web_search_with_options(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetWebSearchRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchplat_20240529_models.GetWebSearchResponse:
+        """
+        @summary 联网搜索
+        
+        @param request: GetWebSearchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWebSearchResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.query):
+            body['query'] = request.query
+        if not UtilClient.is_unset(request.top_k):
+            body['top_k'] = request.top_k
+        if not UtilClient.is_unset(request.way):
+            body['way'] = request.way
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetWebSearch',
+            version='2024-05-29',
+            protocol='HTTPS',
+            pathname=f'/v3/openapi/workspaces/{workspace_name}/web-search/{service_id}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchplat_20240529_models.GetWebSearchResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_web_search_with_options_async(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetWebSearchRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchplat_20240529_models.GetWebSearchResponse:
+        """
+        @summary 联网搜索
+        
+        @param request: GetWebSearchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWebSearchResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.query):
+            body['query'] = request.query
+        if not UtilClient.is_unset(request.top_k):
+            body['top_k'] = request.top_k
+        if not UtilClient.is_unset(request.way):
+            body['way'] = request.way
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetWebSearch',
+            version='2024-05-29',
+            protocol='HTTPS',
+            pathname=f'/v3/openapi/workspaces/{workspace_name}/web-search/{service_id}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchplat_20240529_models.GetWebSearchResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_web_search(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetWebSearchRequest,
+    ) -> searchplat_20240529_models.GetWebSearchResponse:
+        """
+        @summary 联网搜索
+        
+        @param request: GetWebSearchRequest
+        @return: GetWebSearchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_web_search_with_options(workspace_name, service_id, request, headers, runtime)
+
+    async def get_web_search_async(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetWebSearchRequest,
+    ) -> searchplat_20240529_models.GetWebSearchResponse:
+        """
+        @summary 联网搜索
+        
+        @param request: GetWebSearchRequest
+        @return: GetWebSearchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_web_search_with_options_async(workspace_name, service_id, request, headers, runtime)

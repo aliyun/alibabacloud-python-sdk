@@ -1,3 +1,9 @@
+2025-03-21 Version: 2.0.0
+- Support API GetWebSearch.
+- Update API GetTextGeneration: update param body.
+- Update API GetTextGeneration: update response param.
+
+
 2025-01-06 Version: 1.4.0
 - Support API GetEmbeddingTuning.
 - Support API GetPrediction.

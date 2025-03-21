@@ -2346,11 +2346,13 @@ class GetTextGenerationRequest(TeaModel):
     def __init__(
         self,
         csi_level: str = None,
+        enable_search: bool = None,
         messages: List[GetTextGenerationRequestMessages] = None,
-        parameters: Dict[str, str] = None,
+        parameters: Dict[str, Any] = None,
         stream: bool = None,
     ):
         self.csi_level = csi_level
+        self.enable_search = enable_search
         # This parameter is required.
         self.messages = messages
         self.parameters = parameters
@@ -2370,6 +2372,8 @@ class GetTextGenerationRequest(TeaModel):
         result = dict()
         if self.csi_level is not None:
             result['csi_level'] = self.csi_level
+        if self.enable_search is not None:
+            result['enable_search'] = self.enable_search
         result['messages'] = []
         if self.messages is not None:
             for k in self.messages:
@@ -2384,6 +2388,8 @@ class GetTextGenerationRequest(TeaModel):
         m = m or dict()
         if m.get('csi_level') is not None:
             self.csi_level = m.get('csi_level')
+        if m.get('enable_search') is not None:
+            self.enable_search = m.get('enable_search')
         self.messages = []
         if m.get('messages') is not None:
             for k in m.get('messages'):
@@ -2396,12 +2402,14 @@ class GetTextGenerationRequest(TeaModel):
         return self
 
 
-class GetTextGenerationResponseBodyResult(TeaModel):
+class GetTextGenerationResponseBodyResultSearchResults(TeaModel):
     def __init__(
         self,
-        text: str = None,
+        title: str = None,
+        url: str = None,
     ):
-        self.text = text
+        self.title = title
+        self.url = url
 
     def validate(self):
         pass
@@ -2412,12 +2420,57 @@ class GetTextGenerationResponseBodyResult(TeaModel):
             return _map
 
         result = dict()
+        if self.title is not None:
+            result['title'] = self.title
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class GetTextGenerationResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        search_results: List[GetTextGenerationResponseBodyResultSearchResults] = None,
+        text: str = None,
+    ):
+        self.search_results = search_results
+        self.text = text
+
+    def validate(self):
+        if self.search_results:
+            for k in self.search_results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['search_results'] = []
+        if self.search_results is not None:
+            for k in self.search_results:
+                result['search_results'].append(k.to_map() if k else None)
         if self.text is not None:
             result['text'] = self.text
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.search_results = []
+        if m.get('search_results') is not None:
+            for k in m.get('search_results'):
+                temp_model = GetTextGenerationResponseBodyResultSearchResults()
+                self.search_results.append(temp_model.from_map(k))
         if m.get('text') is not None:
             self.text = m.get('text')
         return self
@@ -2822,6 +2875,345 @@ class GetTextSparseEmbeddingResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetTextSparseEmbeddingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetWebSearchRequest(TeaModel):
+    def __init__(
+        self,
+        query: str = None,
+        top_k: int = None,
+        way: str = None,
+    ):
+        # This parameter is required.
+        self.query = query
+        self.top_k = top_k
+        self.way = way
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.query is not None:
+            result['query'] = self.query
+        if self.top_k is not None:
+            result['top_k'] = self.top_k
+        if self.way is not None:
+            result['way'] = self.way
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('query') is not None:
+            self.query = m.get('query')
+        if m.get('top_k') is not None:
+            self.top_k = m.get('top_k')
+        if m.get('way') is not None:
+            self.way = m.get('way')
+        return self
+
+
+class GetWebSearchResponseBodyResultSearchResult(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        link: str = None,
+        position: int = None,
+        snippet: str = None,
+        tilte: str = None,
+    ):
+        self.content = content
+        self.link = link
+        self.position = position
+        self.snippet = snippet
+        self.tilte = tilte
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.link is not None:
+            result['link'] = self.link
+        if self.position is not None:
+            result['position'] = self.position
+        if self.snippet is not None:
+            result['snippet'] = self.snippet
+        if self.tilte is not None:
+            result['tilte'] = self.tilte
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('link') is not None:
+            self.link = m.get('link')
+        if m.get('position') is not None:
+            self.position = m.get('position')
+        if m.get('snippet') is not None:
+            self.snippet = m.get('snippet')
+        if m.get('tilte') is not None:
+            self.tilte = m.get('tilte')
+        return self
+
+
+class GetWebSearchResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        search_result: List[GetWebSearchResponseBodyResultSearchResult] = None,
+    ):
+        self.search_result = search_result
+
+    def validate(self):
+        if self.search_result:
+            for k in self.search_result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['search_result'] = []
+        if self.search_result is not None:
+            for k in self.search_result:
+                result['search_result'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.search_result = []
+        if m.get('search_result') is not None:
+            for k in m.get('search_result'):
+                temp_model = GetWebSearchResponseBodyResultSearchResult()
+                self.search_result.append(temp_model.from_map(k))
+        return self
+
+
+class GetWebSearchResponseBodyUsageFilterModel(TeaModel):
+    def __init__(
+        self,
+        input_tokens: int = None,
+        output_tokens: int = None,
+        total_tokens: int = None,
+    ):
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+        self.total_tokens = total_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_tokens is not None:
+            result['input_tokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['output_tokens'] = self.output_tokens
+        if self.total_tokens is not None:
+            result['total_tokens'] = self.total_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('input_tokens') is not None:
+            self.input_tokens = m.get('input_tokens')
+        if m.get('output_tokens') is not None:
+            self.output_tokens = m.get('output_tokens')
+        if m.get('total_tokens') is not None:
+            self.total_tokens = m.get('total_tokens')
+        return self
+
+
+class GetWebSearchResponseBodyUsageRewriteModel(TeaModel):
+    def __init__(
+        self,
+        input_tokens: int = None,
+        output_tokens: int = None,
+        total_tokens: int = None,
+    ):
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+        self.total_tokens = total_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_tokens is not None:
+            result['input_tokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['output_tokens'] = self.output_tokens
+        if self.total_tokens is not None:
+            result['total_tokens'] = self.total_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('input_tokens') is not None:
+            self.input_tokens = m.get('input_tokens')
+        if m.get('output_tokens') is not None:
+            self.output_tokens = m.get('output_tokens')
+        if m.get('total_tokens') is not None:
+            self.total_tokens = m.get('total_tokens')
+        return self
+
+
+class GetWebSearchResponseBodyUsage(TeaModel):
+    def __init__(
+        self,
+        filter_model: GetWebSearchResponseBodyUsageFilterModel = None,
+        rewrite_model: GetWebSearchResponseBodyUsageRewriteModel = None,
+        search_count: int = None,
+    ):
+        self.filter_model = filter_model
+        self.rewrite_model = rewrite_model
+        self.search_count = search_count
+
+    def validate(self):
+        if self.filter_model:
+            self.filter_model.validate()
+        if self.rewrite_model:
+            self.rewrite_model.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter_model is not None:
+            result['filter_model'] = self.filter_model.to_map()
+        if self.rewrite_model is not None:
+            result['rewrite_model'] = self.rewrite_model.to_map()
+        if self.search_count is not None:
+            result['search_count'] = self.search_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('filter_model') is not None:
+            temp_model = GetWebSearchResponseBodyUsageFilterModel()
+            self.filter_model = temp_model.from_map(m['filter_model'])
+        if m.get('rewrite_model') is not None:
+            temp_model = GetWebSearchResponseBodyUsageRewriteModel()
+            self.rewrite_model = temp_model.from_map(m['rewrite_model'])
+        if m.get('search_count') is not None:
+            self.search_count = m.get('search_count')
+        return self
+
+
+class GetWebSearchResponseBody(TeaModel):
+    def __init__(
+        self,
+        latency: int = None,
+        request_id: str = None,
+        result: GetWebSearchResponseBodyResult = None,
+        usage: GetWebSearchResponseBodyUsage = None,
+    ):
+        self.latency = latency
+        self.request_id = request_id
+        self.result = result
+        self.usage = usage
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.latency is not None:
+            result['latency'] = self.latency
+        if self.request_id is not None:
+            result['request_id'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.usage is not None:
+            result['usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('latency') is not None:
+            self.latency = m.get('latency')
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        if m.get('result') is not None:
+            temp_model = GetWebSearchResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('usage') is not None:
+            temp_model = GetWebSearchResponseBodyUsage()
+            self.usage = temp_model.from_map(m['usage'])
+        return self
+
+
+class GetWebSearchResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetWebSearchResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetWebSearchResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
