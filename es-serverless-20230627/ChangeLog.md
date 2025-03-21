@@ -1,3 +1,7 @@
+2025-03-21 Version: 2.0.2
+- Update API ListSpecReviewTasks: add param status.
+
+
 2024-07-19 Version: 2.1.0
 - Support API CancelSpecReviewTask.
 - Support API CreateSnapshot.

@@ -3305,11 +3305,17 @@ class ListSpecReviewTasksRequest(TeaModel):
     def __init__(
         self,
         page: int = None,
+        page_number: int = None,
+        page_size: int = None,
         size: int = None,
+        status: str = None,
         type: str = None,
     ):
         self.page = page
+        self.page_number = page_number
+        self.page_size = page_size
         self.size = size
+        self.status = status
         self.type = type
 
     def validate(self):
@@ -3323,8 +3329,14 @@ class ListSpecReviewTasksRequest(TeaModel):
         result = dict()
         if self.page is not None:
             result['page'] = self.page
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
         if self.size is not None:
             result['size'] = self.size
+        if self.status is not None:
+            result['status'] = self.status
         if self.type is not None:
             result['type'] = self.type
         return result
@@ -3333,8 +3345,14 @@ class ListSpecReviewTasksRequest(TeaModel):
         m = m or dict()
         if m.get('page') is not None:
             self.page = m.get('page')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
         if m.get('size') is not None:
             self.size = m.get('size')
+        if m.get('status') is not None:
+            self.status = m.get('status')
         if m.get('type') is not None:
             self.type = m.get('type')
         return self
