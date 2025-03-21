@@ -1647,6 +1647,20 @@ class Client(OpenApiClient):
             query['iOSExtParameters'] = request.i_osext_parameters
         if not UtilClient.is_unset(request.i_osinterruption_level):
             query['iOSInterruptionLevel'] = request.i_osinterruption_level
+        if not UtilClient.is_unset(request.i_oslive_activity_attributes):
+            query['iOSLiveActivityAttributes'] = request.i_oslive_activity_attributes
+        if not UtilClient.is_unset(request.i_oslive_activity_attributes_type):
+            query['iOSLiveActivityAttributesType'] = request.i_oslive_activity_attributes_type
+        if not UtilClient.is_unset(request.i_oslive_activity_content_state):
+            query['iOSLiveActivityContentState'] = request.i_oslive_activity_content_state
+        if not UtilClient.is_unset(request.i_oslive_activity_dismissal_date):
+            query['iOSLiveActivityDismissalDate'] = request.i_oslive_activity_dismissal_date
+        if not UtilClient.is_unset(request.i_oslive_activity_event):
+            query['iOSLiveActivityEvent'] = request.i_oslive_activity_event
+        if not UtilClient.is_unset(request.i_oslive_activity_id):
+            query['iOSLiveActivityId'] = request.i_oslive_activity_id
+        if not UtilClient.is_unset(request.i_oslive_activity_stale_date):
+            query['iOSLiveActivityStaleDate'] = request.i_oslive_activity_stale_date
         if not UtilClient.is_unset(request.i_osmusic):
             query['iOSMusic'] = request.i_osmusic
         if not UtilClient.is_unset(request.i_osmutable_content):
@@ -1884,6 +1898,20 @@ class Client(OpenApiClient):
             query['iOSExtParameters'] = request.i_osext_parameters
         if not UtilClient.is_unset(request.i_osinterruption_level):
             query['iOSInterruptionLevel'] = request.i_osinterruption_level
+        if not UtilClient.is_unset(request.i_oslive_activity_attributes):
+            query['iOSLiveActivityAttributes'] = request.i_oslive_activity_attributes
+        if not UtilClient.is_unset(request.i_oslive_activity_attributes_type):
+            query['iOSLiveActivityAttributesType'] = request.i_oslive_activity_attributes_type
+        if not UtilClient.is_unset(request.i_oslive_activity_content_state):
+            query['iOSLiveActivityContentState'] = request.i_oslive_activity_content_state
+        if not UtilClient.is_unset(request.i_oslive_activity_dismissal_date):
+            query['iOSLiveActivityDismissalDate'] = request.i_oslive_activity_dismissal_date
+        if not UtilClient.is_unset(request.i_oslive_activity_event):
+            query['iOSLiveActivityEvent'] = request.i_oslive_activity_event
+        if not UtilClient.is_unset(request.i_oslive_activity_id):
+            query['iOSLiveActivityId'] = request.i_oslive_activity_id
+        if not UtilClient.is_unset(request.i_oslive_activity_stale_date):
+            query['iOSLiveActivityStaleDate'] = request.i_oslive_activity_stale_date
         if not UtilClient.is_unset(request.i_osmusic):
             query['iOSMusic'] = request.i_osmusic
         if not UtilClient.is_unset(request.i_osmutable_content):

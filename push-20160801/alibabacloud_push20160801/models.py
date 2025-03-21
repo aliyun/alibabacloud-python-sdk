@@ -1550,6 +1550,13 @@ class MassPushRequestPushTask(TeaModel):
         i_osbadge_auto_increment: bool = None,
         i_osext_parameters: str = None,
         i_osinterruption_level: str = None,
+        i_oslive_activity_attributes: str = None,
+        i_oslive_activity_attributes_type: str = None,
+        i_oslive_activity_content_state: str = None,
+        i_oslive_activity_dismissal_date: int = None,
+        i_oslive_activity_event: str = None,
+        i_oslive_activity_id: str = None,
+        i_oslive_activity_stale_date: int = None,
         i_osmusic: str = None,
         i_osmutable_content: bool = None,
         i_osnotification_category: str = None,
@@ -1606,7 +1613,6 @@ class MassPushRequestPushTask(TeaModel):
         self.android_xiao_mi_notify_title = android_xiao_mi_notify_title
         self.android_xiaomi_big_picture_url = android_xiaomi_big_picture_url
         self.android_xiaomi_image_url = android_xiaomi_image_url
-        # This parameter is required.
         self.body = body
         # This parameter is required.
         self.device_type = device_type
@@ -1648,6 +1654,13 @@ class MassPushRequestPushTask(TeaModel):
         self.i_osbadge_auto_increment = i_osbadge_auto_increment
         self.i_osext_parameters = i_osext_parameters
         self.i_osinterruption_level = i_osinterruption_level
+        self.i_oslive_activity_attributes = i_oslive_activity_attributes
+        self.i_oslive_activity_attributes_type = i_oslive_activity_attributes_type
+        self.i_oslive_activity_content_state = i_oslive_activity_content_state
+        self.i_oslive_activity_dismissal_date = i_oslive_activity_dismissal_date
+        self.i_oslive_activity_event = i_oslive_activity_event
+        self.i_oslive_activity_id = i_oslive_activity_id
+        self.i_oslive_activity_stale_date = i_oslive_activity_stale_date
         self.i_osmusic = i_osmusic
         self.i_osmutable_content = i_osmutable_content
         self.i_osnotification_category = i_osnotification_category
@@ -1832,6 +1845,20 @@ class MassPushRequestPushTask(TeaModel):
             result['iOSExtParameters'] = self.i_osext_parameters
         if self.i_osinterruption_level is not None:
             result['iOSInterruptionLevel'] = self.i_osinterruption_level
+        if self.i_oslive_activity_attributes is not None:
+            result['iOSLiveActivityAttributes'] = self.i_oslive_activity_attributes
+        if self.i_oslive_activity_attributes_type is not None:
+            result['iOSLiveActivityAttributesType'] = self.i_oslive_activity_attributes_type
+        if self.i_oslive_activity_content_state is not None:
+            result['iOSLiveActivityContentState'] = self.i_oslive_activity_content_state
+        if self.i_oslive_activity_dismissal_date is not None:
+            result['iOSLiveActivityDismissalDate'] = self.i_oslive_activity_dismissal_date
+        if self.i_oslive_activity_event is not None:
+            result['iOSLiveActivityEvent'] = self.i_oslive_activity_event
+        if self.i_oslive_activity_id is not None:
+            result['iOSLiveActivityId'] = self.i_oslive_activity_id
+        if self.i_oslive_activity_stale_date is not None:
+            result['iOSLiveActivityStaleDate'] = self.i_oslive_activity_stale_date
         if self.i_osmusic is not None:
             result['iOSMusic'] = self.i_osmusic
         if self.i_osmutable_content is not None:
@@ -2020,6 +2047,20 @@ class MassPushRequestPushTask(TeaModel):
             self.i_osext_parameters = m.get('iOSExtParameters')
         if m.get('iOSInterruptionLevel') is not None:
             self.i_osinterruption_level = m.get('iOSInterruptionLevel')
+        if m.get('iOSLiveActivityAttributes') is not None:
+            self.i_oslive_activity_attributes = m.get('iOSLiveActivityAttributes')
+        if m.get('iOSLiveActivityAttributesType') is not None:
+            self.i_oslive_activity_attributes_type = m.get('iOSLiveActivityAttributesType')
+        if m.get('iOSLiveActivityContentState') is not None:
+            self.i_oslive_activity_content_state = m.get('iOSLiveActivityContentState')
+        if m.get('iOSLiveActivityDismissalDate') is not None:
+            self.i_oslive_activity_dismissal_date = m.get('iOSLiveActivityDismissalDate')
+        if m.get('iOSLiveActivityEvent') is not None:
+            self.i_oslive_activity_event = m.get('iOSLiveActivityEvent')
+        if m.get('iOSLiveActivityId') is not None:
+            self.i_oslive_activity_id = m.get('iOSLiveActivityId')
+        if m.get('iOSLiveActivityStaleDate') is not None:
+            self.i_oslive_activity_stale_date = m.get('iOSLiveActivityStaleDate')
         if m.get('iOSMusic') is not None:
             self.i_osmusic = m.get('iOSMusic')
         if m.get('iOSMutableContent') is not None:
@@ -2287,6 +2328,13 @@ class PushRequest(TeaModel):
         i_osbadge_auto_increment: bool = None,
         i_osext_parameters: str = None,
         i_osinterruption_level: str = None,
+        i_oslive_activity_attributes: str = None,
+        i_oslive_activity_attributes_type: str = None,
+        i_oslive_activity_content_state: str = None,
+        i_oslive_activity_dismissal_date: int = None,
+        i_oslive_activity_event: str = None,
+        i_oslive_activity_id: str = None,
+        i_oslive_activity_stale_date: int = None,
         i_osmusic: str = None,
         i_osmutable_content: bool = None,
         i_osnotification_category: str = None,
@@ -2345,7 +2393,6 @@ class PushRequest(TeaModel):
         self.android_xiaomi_image_url = android_xiaomi_image_url
         # This parameter is required.
         self.app_key = app_key
-        # This parameter is required.
         self.body = body
         # This parameter is required.
         self.device_type = device_type
@@ -2393,6 +2440,13 @@ class PushRequest(TeaModel):
         self.i_osbadge_auto_increment = i_osbadge_auto_increment
         self.i_osext_parameters = i_osext_parameters
         self.i_osinterruption_level = i_osinterruption_level
+        self.i_oslive_activity_attributes = i_oslive_activity_attributes
+        self.i_oslive_activity_attributes_type = i_oslive_activity_attributes_type
+        self.i_oslive_activity_content_state = i_oslive_activity_content_state
+        self.i_oslive_activity_dismissal_date = i_oslive_activity_dismissal_date
+        self.i_oslive_activity_event = i_oslive_activity_event
+        self.i_oslive_activity_id = i_oslive_activity_id
+        self.i_oslive_activity_stale_date = i_oslive_activity_stale_date
         self.i_osmusic = i_osmusic
         self.i_osmutable_content = i_osmutable_content
         self.i_osnotification_category = i_osnotification_category
@@ -2591,6 +2645,20 @@ class PushRequest(TeaModel):
             result['iOSExtParameters'] = self.i_osext_parameters
         if self.i_osinterruption_level is not None:
             result['iOSInterruptionLevel'] = self.i_osinterruption_level
+        if self.i_oslive_activity_attributes is not None:
+            result['iOSLiveActivityAttributes'] = self.i_oslive_activity_attributes
+        if self.i_oslive_activity_attributes_type is not None:
+            result['iOSLiveActivityAttributesType'] = self.i_oslive_activity_attributes_type
+        if self.i_oslive_activity_content_state is not None:
+            result['iOSLiveActivityContentState'] = self.i_oslive_activity_content_state
+        if self.i_oslive_activity_dismissal_date is not None:
+            result['iOSLiveActivityDismissalDate'] = self.i_oslive_activity_dismissal_date
+        if self.i_oslive_activity_event is not None:
+            result['iOSLiveActivityEvent'] = self.i_oslive_activity_event
+        if self.i_oslive_activity_id is not None:
+            result['iOSLiveActivityId'] = self.i_oslive_activity_id
+        if self.i_oslive_activity_stale_date is not None:
+            result['iOSLiveActivityStaleDate'] = self.i_oslive_activity_stale_date
         if self.i_osmusic is not None:
             result['iOSMusic'] = self.i_osmusic
         if self.i_osmutable_content is not None:
@@ -2793,6 +2861,20 @@ class PushRequest(TeaModel):
             self.i_osext_parameters = m.get('iOSExtParameters')
         if m.get('iOSInterruptionLevel') is not None:
             self.i_osinterruption_level = m.get('iOSInterruptionLevel')
+        if m.get('iOSLiveActivityAttributes') is not None:
+            self.i_oslive_activity_attributes = m.get('iOSLiveActivityAttributes')
+        if m.get('iOSLiveActivityAttributesType') is not None:
+            self.i_oslive_activity_attributes_type = m.get('iOSLiveActivityAttributesType')
+        if m.get('iOSLiveActivityContentState') is not None:
+            self.i_oslive_activity_content_state = m.get('iOSLiveActivityContentState')
+        if m.get('iOSLiveActivityDismissalDate') is not None:
+            self.i_oslive_activity_dismissal_date = m.get('iOSLiveActivityDismissalDate')
+        if m.get('iOSLiveActivityEvent') is not None:
+            self.i_oslive_activity_event = m.get('iOSLiveActivityEvent')
+        if m.get('iOSLiveActivityId') is not None:
+            self.i_oslive_activity_id = m.get('iOSLiveActivityId')
+        if m.get('iOSLiveActivityStaleDate') is not None:
+            self.i_oslive_activity_stale_date = m.get('iOSLiveActivityStaleDate')
         if m.get('iOSMusic') is not None:
             self.i_osmusic = m.get('iOSMusic')
         if m.get('iOSMutableContent') is not None:

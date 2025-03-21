@@ -1,3 +1,17 @@
+2025-03-21 Version: 1.0.18
+- Update API MassPush: update param PushTask.
+- Update API Push: add param iOSLiveActivityAttributes.
+- Update API Push: add param iOSLiveActivityAttributesType.
+- Update API Push: add param iOSLiveActivityContentState.
+- Update API Push: add param iOSLiveActivityDismissalDate.
+- Update API Push: add param iOSLiveActivityEvent.
+- Update API Push: add param iOSLiveActivityId.
+- Update API Push: add param iOSLiveActivityStaleDate.
+- Update API Push: update param AndroidXiaomiBigPictureUrl.
+- Update API Push: update param AndroidXiaomiImageUrl.
+- Update API Push: update param Body.
+
+
 2025-03-18 Version: 1.0.17
 - Generated python 2016-08-01 for Push.
 
