@@ -1,3 +1,6 @@
+2025-03-21 Version: 1.9.2
+- Generated python 2021-12-01 for Eiam.
+
 2025-03-20 Version: 1.9.1
 - Update API CreateIdentityProvider: update param UdPullConfig.
 - Update API CreateInstance: update response param.
