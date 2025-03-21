@@ -12688,6 +12688,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_categories_with_options_async(request, runtime)
 
+    def get_daily_play_region_statis_with_options(
+        self,
+        request: vod_20170321_models.GetDailyPlayRegionStatisRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.GetDailyPlayRegionStatisResponse:
+        """
+        @summary 支持区域化媒资ID级别播放数据查询
+        
+        @param request: GetDailyPlayRegionStatisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDailyPlayRegionStatisResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.date):
+            query['Date'] = request.date
+        if not UtilClient.is_unset(request.media_region):
+            query['MediaRegion'] = request.media_region
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDailyPlayRegionStatis',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vod_20170321_models.GetDailyPlayRegionStatisResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vod_20170321_models.GetDailyPlayRegionStatisResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_daily_play_region_statis_with_options_async(
+        self,
+        request: vod_20170321_models.GetDailyPlayRegionStatisRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.GetDailyPlayRegionStatisResponse:
+        """
+        @summary 支持区域化媒资ID级别播放数据查询
+        
+        @param request: GetDailyPlayRegionStatisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDailyPlayRegionStatisResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.date):
+            query['Date'] = request.date
+        if not UtilClient.is_unset(request.media_region):
+            query['MediaRegion'] = request.media_region
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDailyPlayRegionStatis',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vod_20170321_models.GetDailyPlayRegionStatisResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vod_20170321_models.GetDailyPlayRegionStatisResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_daily_play_region_statis(
+        self,
+        request: vod_20170321_models.GetDailyPlayRegionStatisRequest,
+    ) -> vod_20170321_models.GetDailyPlayRegionStatisResponse:
+        """
+        @summary 支持区域化媒资ID级别播放数据查询
+        
+        @param request: GetDailyPlayRegionStatisRequest
+        @return: GetDailyPlayRegionStatisResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_daily_play_region_statis_with_options(request, runtime)
+
+    async def get_daily_play_region_statis_async(
+        self,
+        request: vod_20170321_models.GetDailyPlayRegionStatisRequest,
+    ) -> vod_20170321_models.GetDailyPlayRegionStatisResponse:
+        """
+        @summary 支持区域化媒资ID级别播放数据查询
+        
+        @param request: GetDailyPlayRegionStatisRequest
+        @return: GetDailyPlayRegionStatisResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_daily_play_region_statis_with_options_async(request, runtime)
+
     def get_default_aitemplate_with_options(
         self,
         request: vod_20170321_models.GetDefaultAITemplateRequest,

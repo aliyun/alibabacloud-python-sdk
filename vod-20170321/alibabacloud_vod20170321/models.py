@@ -21519,6 +21519,168 @@ class GetCategoriesResponse(TeaModel):
         return self
 
 
+class GetDailyPlayRegionStatisRequest(TeaModel):
+    def __init__(
+        self,
+        date: str = None,
+        media_region: str = None,
+    ):
+        # This parameter is required.
+        self.date = date
+        # This parameter is required.
+        self.media_region = media_region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.date is not None:
+            result['Date'] = self.date
+        if self.media_region is not None:
+            result['MediaRegion'] = self.media_region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('MediaRegion') is not None:
+            self.media_region = m.get('MediaRegion')
+        return self
+
+
+class GetDailyPlayRegionStatisResponseBodyDailyPlayRegionStatisList(TeaModel):
+    def __init__(
+        self,
+        date: str = None,
+        file_url: str = None,
+    ):
+        self.date = date
+        self.file_url = file_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.date is not None:
+            result['Date'] = self.date
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        return self
+
+
+class GetDailyPlayRegionStatisResponseBody(TeaModel):
+    def __init__(
+        self,
+        daily_play_region_statis_list: List[GetDailyPlayRegionStatisResponseBodyDailyPlayRegionStatisList] = None,
+        empty_dates: List[str] = None,
+        fail_dates: List[str] = None,
+        request_id: str = None,
+    ):
+        self.daily_play_region_statis_list = daily_play_region_statis_list
+        self.empty_dates = empty_dates
+        self.fail_dates = fail_dates
+        self.request_id = request_id
+
+    def validate(self):
+        if self.daily_play_region_statis_list:
+            for k in self.daily_play_region_statis_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DailyPlayRegionStatisList'] = []
+        if self.daily_play_region_statis_list is not None:
+            for k in self.daily_play_region_statis_list:
+                result['DailyPlayRegionStatisList'].append(k.to_map() if k else None)
+        if self.empty_dates is not None:
+            result['EmptyDates'] = self.empty_dates
+        if self.fail_dates is not None:
+            result['FailDates'] = self.fail_dates
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.daily_play_region_statis_list = []
+        if m.get('DailyPlayRegionStatisList') is not None:
+            for k in m.get('DailyPlayRegionStatisList'):
+                temp_model = GetDailyPlayRegionStatisResponseBodyDailyPlayRegionStatisList()
+                self.daily_play_region_statis_list.append(temp_model.from_map(k))
+        if m.get('EmptyDates') is not None:
+            self.empty_dates = m.get('EmptyDates')
+        if m.get('FailDates') is not None:
+            self.fail_dates = m.get('FailDates')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetDailyPlayRegionStatisResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDailyPlayRegionStatisResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDailyPlayRegionStatisResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetDefaultAITemplateRequest(TeaModel):
     def __init__(
         self,
