@@ -1,3 +1,7 @@
+2025-03-21 Version: 1.2.0
+- Support API OpenApiInvoke.
+
+
 2025-02-21 Version: 1.1.0
 - Support API CreateEssOptJob.
 - Support API CreateLoadForecastJob.
