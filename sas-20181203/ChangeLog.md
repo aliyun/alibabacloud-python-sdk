@@ -5,6 +5,13 @@
 - Update API DescribeCycleTaskList: update response param.
 
 
+2025-03-21 Version: 4.5.3
+- Update API CreateCycleTask: update response param.
+- Update API DescribeCycleTaskList: add param ConfigId.
+- Update API DescribeCycleTaskList: update param TaskType.
+- Update API DescribeCycleTaskList: update response param.
+
+
 2025-03-14 Version: 4.5.2
 - Update API CreateAntiBruteForceRule: add param ProtocolType.
 - Update API DescribeAntiBruteForceRules: update response param.
