@@ -159,7 +159,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ChangeResourceGroupResponse:
         """
-        @summary Resource Group Change
+        @summary Target Resource Group
         
         @param request: ChangeResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -206,7 +206,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ChangeResourceGroupResponse:
         """
-        @summary Resource Group Change
+        @summary Target Resource Group
         
         @param request: ChangeResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -252,7 +252,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ChangeResourceGroupRequest,
     ) -> eflo_controller_20221215_models.ChangeResourceGroupResponse:
         """
-        @summary Resource Group Change
+        @summary Target Resource Group
         
         @param request: ChangeResourceGroupRequest
         @return: ChangeResourceGroupResponse
@@ -265,7 +265,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ChangeResourceGroupRequest,
     ) -> eflo_controller_20221215_models.ChangeResourceGroupResponse:
         """
-        @summary Resource Group Change
+        @summary Target Resource Group
         
         @param request: ChangeResourceGroupRequest
         @return: ChangeResourceGroupResponse
@@ -861,6 +861,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_net_test_task_with_options_async(request, runtime)
 
+    def create_node_group_with_options(
+        self,
+        tmp_req: eflo_controller_20221215_models.CreateNodeGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.CreateNodeGroupResponse:
+        """
+        @summary 创建集群下的节点分组
+        
+        @param tmp_req: CreateNodeGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNodeGroupResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eflo_controller_20221215_models.CreateNodeGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.node_group):
+            request.node_group_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_group, 'NodeGroup', 'json')
+        if not UtilClient.is_unset(tmp_req.node_unit):
+            request.node_unit_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_unit, 'NodeUnit', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.node_group_shrink):
+            body['NodeGroup'] = request.node_group_shrink
+        if not UtilClient.is_unset(request.node_unit_shrink):
+            body['NodeUnit'] = request.node_unit_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateNodeGroup',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.CreateNodeGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.CreateNodeGroupResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_node_group_with_options_async(
+        self,
+        tmp_req: eflo_controller_20221215_models.CreateNodeGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.CreateNodeGroupResponse:
+        """
+        @summary 创建集群下的节点分组
+        
+        @param tmp_req: CreateNodeGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNodeGroupResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eflo_controller_20221215_models.CreateNodeGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.node_group):
+            request.node_group_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_group, 'NodeGroup', 'json')
+        if not UtilClient.is_unset(tmp_req.node_unit):
+            request.node_unit_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_unit, 'NodeUnit', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.node_group_shrink):
+            body['NodeGroup'] = request.node_group_shrink
+        if not UtilClient.is_unset(request.node_unit_shrink):
+            body['NodeUnit'] = request.node_unit_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateNodeGroup',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.CreateNodeGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.CreateNodeGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_node_group(
+        self,
+        request: eflo_controller_20221215_models.CreateNodeGroupRequest,
+    ) -> eflo_controller_20221215_models.CreateNodeGroupResponse:
+        """
+        @summary 创建集群下的节点分组
+        
+        @param request: CreateNodeGroupRequest
+        @return: CreateNodeGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_node_group_with_options(request, runtime)
+
+    async def create_node_group_async(
+        self,
+        request: eflo_controller_20221215_models.CreateNodeGroupRequest,
+    ) -> eflo_controller_20221215_models.CreateNodeGroupResponse:
+        """
+        @summary 创建集群下的节点分组
+        
+        @param request: CreateNodeGroupRequest
+        @return: CreateNodeGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_node_group_with_options_async(request, runtime)
+
     def create_session_with_options(
         self,
         request: eflo_controller_20221215_models.CreateSessionRequest,
@@ -1093,6 +1221,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_cluster_with_options_async(request, runtime)
 
+    def delete_node_group_with_options(
+        self,
+        request: eflo_controller_20221215_models.DeleteNodeGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.DeleteNodeGroupResponse:
+        """
+        @summary 删除节点分组
+        
+        @param request: DeleteNodeGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNodeGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.node_group_id):
+            body['NodeGroupId'] = request.node_group_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteNodeGroup',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DeleteNodeGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DeleteNodeGroupResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_node_group_with_options_async(
+        self,
+        request: eflo_controller_20221215_models.DeleteNodeGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.DeleteNodeGroupResponse:
+        """
+        @summary 删除节点分组
+        
+        @param request: DeleteNodeGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNodeGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.node_group_id):
+            body['NodeGroupId'] = request.node_group_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteNodeGroup',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DeleteNodeGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DeleteNodeGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_node_group(
+        self,
+        request: eflo_controller_20221215_models.DeleteNodeGroupRequest,
+    ) -> eflo_controller_20221215_models.DeleteNodeGroupResponse:
+        """
+        @summary 删除节点分组
+        
+        @param request: DeleteNodeGroupRequest
+        @return: DeleteNodeGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_node_group_with_options(request, runtime)
+
+    async def delete_node_group_async(
+        self,
+        request: eflo_controller_20221215_models.DeleteNodeGroupRequest,
+    ) -> eflo_controller_20221215_models.DeleteNodeGroupResponse:
+        """
+        @summary 删除节点分组
+        
+        @param request: DeleteNodeGroupRequest
+        @return: DeleteNodeGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_node_group_with_options_async(request, runtime)
+
     def describe_cluster_with_options(
         self,
         request: eflo_controller_20221215_models.DescribeClusterRequest,
@@ -1200,6 +1440,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cluster_with_options_async(request, runtime)
+
+    def describe_diagnostic_result_with_options(
+        self,
+        request: eflo_controller_20221215_models.DescribeDiagnosticResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.DescribeDiagnosticResultResponse:
+        """
+        @summary 诊断任务查询接口
+        
+        @param request: DescribeDiagnosticResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDiagnosticResultResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.diagnostic_id):
+            body['DiagnosticId'] = request.diagnostic_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiagnosticResult',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeDiagnosticResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeDiagnosticResultResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_diagnostic_result_with_options_async(
+        self,
+        request: eflo_controller_20221215_models.DescribeDiagnosticResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.DescribeDiagnosticResultResponse:
+        """
+        @summary 诊断任务查询接口
+        
+        @param request: DescribeDiagnosticResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDiagnosticResultResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.diagnostic_id):
+            body['DiagnosticId'] = request.diagnostic_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiagnosticResult',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeDiagnosticResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.DescribeDiagnosticResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_diagnostic_result(
+        self,
+        request: eflo_controller_20221215_models.DescribeDiagnosticResultRequest,
+    ) -> eflo_controller_20221215_models.DescribeDiagnosticResultResponse:
+        """
+        @summary 诊断任务查询接口
+        
+        @param request: DescribeDiagnosticResultRequest
+        @return: DescribeDiagnosticResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_diagnostic_result_with_options(request, runtime)
+
+    async def describe_diagnostic_result_async(
+        self,
+        request: eflo_controller_20221215_models.DescribeDiagnosticResultRequest,
+    ) -> eflo_controller_20221215_models.DescribeDiagnosticResultResponse:
+        """
+        @summary 诊断任务查询接口
+        
+        @param request: DescribeDiagnosticResultRequest
+        @return: DescribeDiagnosticResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_diagnostic_result_with_options_async(request, runtime)
 
     def describe_invocations_with_options(
         self,
@@ -4622,3 +4970,115 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
+
+    def update_node_group_with_options(
+        self,
+        request: eflo_controller_20221215_models.UpdateNodeGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.UpdateNodeGroupResponse:
+        """
+        @summary 更新节点分组
+        
+        @param request: UpdateNodeGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNodeGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.new_node_group_name):
+            body['NewNodeGroupName'] = request.new_node_group_name
+        if not UtilClient.is_unset(request.node_group_id):
+            body['NodeGroupId'] = request.node_group_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateNodeGroup',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.UpdateNodeGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.UpdateNodeGroupResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_node_group_with_options_async(
+        self,
+        request: eflo_controller_20221215_models.UpdateNodeGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.UpdateNodeGroupResponse:
+        """
+        @summary 更新节点分组
+        
+        @param request: UpdateNodeGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNodeGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.new_node_group_name):
+            body['NewNodeGroupName'] = request.new_node_group_name
+        if not UtilClient.is_unset(request.node_group_id):
+            body['NodeGroupId'] = request.node_group_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateNodeGroup',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.UpdateNodeGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                eflo_controller_20221215_models.UpdateNodeGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_node_group(
+        self,
+        request: eflo_controller_20221215_models.UpdateNodeGroupRequest,
+    ) -> eflo_controller_20221215_models.UpdateNodeGroupResponse:
+        """
+        @summary 更新节点分组
+        
+        @param request: UpdateNodeGroupRequest
+        @return: UpdateNodeGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_node_group_with_options(request, runtime)
+
+    async def update_node_group_async(
+        self,
+        request: eflo_controller_20221215_models.UpdateNodeGroupRequest,
+    ) -> eflo_controller_20221215_models.UpdateNodeGroupResponse:
+        """
+        @summary 更新节点分组
+        
+        @param request: UpdateNodeGroupRequest
+        @return: UpdateNodeGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_node_group_with_options_async(request, runtime)

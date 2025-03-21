@@ -123,18 +123,19 @@ class ChangeResourceGroupRequest(TeaModel):
         resource_region_id: str = None,
         resource_type: str = None,
     ):
-        # Target Resource Group
+        # System-defined parameter. Value: **ChangeResourceGroup**.
         # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
-        # Resource ID
+        # $.parameters[1].schema.example
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # Region ID
+        # Resource Group Change
         # 
         # This parameter is required.
         self.resource_region_id = resource_region_id
+        # $.parameters[3].schema.enumValueTitles
         self.resource_type = resource_type
 
     def validate(self):
@@ -174,7 +175,7 @@ class ChangeResourceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -2455,6 +2456,226 @@ class CreateNetTestTaskResponse(TeaModel):
         return self
 
 
+class CreateNodeGroupRequestNodeGroup(TeaModel):
+    def __init__(
+        self,
+        az: str = None,
+        image_id: str = None,
+        machine_type: str = None,
+        node_group_description: str = None,
+        node_group_name: str = None,
+    ):
+        # This parameter is required.
+        self.az = az
+        # This parameter is required.
+        self.image_id = image_id
+        # This parameter is required.
+        self.machine_type = machine_type
+        self.node_group_description = node_group_description
+        # This parameter is required.
+        self.node_group_name = node_group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.az is not None:
+            result['Az'] = self.az
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.machine_type is not None:
+            result['MachineType'] = self.machine_type
+        if self.node_group_description is not None:
+            result['NodeGroupDescription'] = self.node_group_description
+        if self.node_group_name is not None:
+            result['NodeGroupName'] = self.node_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Az') is not None:
+            self.az = m.get('Az')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('MachineType') is not None:
+            self.machine_type = m.get('MachineType')
+        if m.get('NodeGroupDescription') is not None:
+            self.node_group_description = m.get('NodeGroupDescription')
+        if m.get('NodeGroupName') is not None:
+            self.node_group_name = m.get('NodeGroupName')
+        return self
+
+
+class CreateNodeGroupRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        node_group: CreateNodeGroupRequestNodeGroup = None,
+        node_unit: Dict[str, Any] = None,
+    ):
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        # This parameter is required.
+        self.node_group = node_group
+        self.node_unit = node_unit
+
+    def validate(self):
+        if self.node_group:
+            self.node_group.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.node_group is not None:
+            result['NodeGroup'] = self.node_group.to_map()
+        if self.node_unit is not None:
+            result['NodeUnit'] = self.node_unit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('NodeGroup') is not None:
+            temp_model = CreateNodeGroupRequestNodeGroup()
+            self.node_group = temp_model.from_map(m['NodeGroup'])
+        if m.get('NodeUnit') is not None:
+            self.node_unit = m.get('NodeUnit')
+        return self
+
+
+class CreateNodeGroupShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        node_group_shrink: str = None,
+        node_unit_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        # This parameter is required.
+        self.node_group_shrink = node_group_shrink
+        self.node_unit_shrink = node_unit_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.node_group_shrink is not None:
+            result['NodeGroup'] = self.node_group_shrink
+        if self.node_unit_shrink is not None:
+            result['NodeUnit'] = self.node_unit_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('NodeGroup') is not None:
+            self.node_group_shrink = m.get('NodeGroup')
+        if m.get('NodeUnit') is not None:
+            self.node_unit_shrink = m.get('NodeUnit')
+        return self
+
+
+class CreateNodeGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        node_group_id: str = None,
+        node_group_name: str = None,
+        request_id: str = None,
+    ):
+        self.node_group_id = node_group_id
+        self.node_group_name = node_group_name
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.node_group_id is not None:
+            result['NodeGroupId'] = self.node_group_id
+        if self.node_group_name is not None:
+            result['NodeGroupName'] = self.node_group_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NodeGroupId') is not None:
+            self.node_group_id = m.get('NodeGroupId')
+        if m.get('NodeGroupName') is not None:
+            self.node_group_name = m.get('NodeGroupName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateNodeGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateNodeGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateNodeGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateSessionRequest(TeaModel):
     def __init__(
         self,
@@ -2689,6 +2910,108 @@ class DeleteClusterResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteClusterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteNodeGroupRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        node_group_id: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.node_group_id = node_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.node_group_id is not None:
+            result['NodeGroupId'] = self.node_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('NodeGroupId') is not None:
+            self.node_group_id = m.get('NodeGroupId')
+        return self
+
+
+class DeleteNodeGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteNodeGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteNodeGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteNodeGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2987,6 +3310,149 @@ class DescribeClusterResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeClusterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDiagnosticResultRequest(TeaModel):
+    def __init__(
+        self,
+        diagnostic_id: str = None,
+    ):
+        self.diagnostic_id = diagnostic_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.diagnostic_id is not None:
+            result['DiagnosticId'] = self.diagnostic_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiagnosticId') is not None:
+            self.diagnostic_id = m.get('DiagnosticId')
+        return self
+
+
+class DescribeDiagnosticResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        created_time: str = None,
+        diagnostic_id: str = None,
+        diagnostic_results: List[Any] = None,
+        diagnostic_state: str = None,
+        diagnostic_type: str = None,
+        end_time: str = None,
+        node_ids: List[str] = None,
+        request_id: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.created_time = created_time
+        self.diagnostic_id = diagnostic_id
+        self.diagnostic_results = diagnostic_results
+        self.diagnostic_state = diagnostic_state
+        self.diagnostic_type = diagnostic_type
+        self.end_time = end_time
+        self.node_ids = node_ids
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.diagnostic_id is not None:
+            result['DiagnosticId'] = self.diagnostic_id
+        if self.diagnostic_results is not None:
+            result['DiagnosticResults'] = self.diagnostic_results
+        if self.diagnostic_state is not None:
+            result['DiagnosticState'] = self.diagnostic_state
+        if self.diagnostic_type is not None:
+            result['DiagnosticType'] = self.diagnostic_type
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.node_ids is not None:
+            result['NodeIds'] = self.node_ids
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('DiagnosticId') is not None:
+            self.diagnostic_id = m.get('DiagnosticId')
+        if m.get('DiagnosticResults') is not None:
+            self.diagnostic_results = m.get('DiagnosticResults')
+        if m.get('DiagnosticState') is not None:
+            self.diagnostic_state = m.get('DiagnosticState')
+        if m.get('DiagnosticType') is not None:
+            self.diagnostic_type = m.get('DiagnosticType')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('NodeIds') is not None:
+            self.node_ids = m.get('NodeIds')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDiagnosticResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDiagnosticResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDiagnosticResultResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6201,6 +6667,8 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
         node_id: str = None,
         operating_state: str = None,
         sn: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
         zone_id: str = None,
     ):
         # Creation time
@@ -6227,6 +6695,8 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
         self.operating_state = operating_state
         # Machine SN
         self.sn = sn
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
         # Zone ID
         self.zone_id = zone_id
 
@@ -6268,6 +6738,10 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
             result['OperatingState'] = self.operating_state
         if self.sn is not None:
             result['Sn'] = self.sn
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
         return result
@@ -6301,6 +6775,10 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
             self.operating_state = m.get('OperatingState')
         if m.get('Sn') is not None:
             self.sn = m.get('Sn')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
         return self
@@ -11118,6 +11596,108 @@ class UntagResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UntagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateNodeGroupRequest(TeaModel):
+    def __init__(
+        self,
+        new_node_group_name: str = None,
+        node_group_id: str = None,
+    ):
+        self.new_node_group_name = new_node_group_name
+        self.node_group_id = node_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.new_node_group_name is not None:
+            result['NewNodeGroupName'] = self.new_node_group_name
+        if self.node_group_id is not None:
+            result['NodeGroupId'] = self.node_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NewNodeGroupName') is not None:
+            self.new_node_group_name = m.get('NewNodeGroupName')
+        if m.get('NodeGroupId') is not None:
+            self.node_group_id = m.get('NodeGroupId')
+        return self
+
+
+class UpdateNodeGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateNodeGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateNodeGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateNodeGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

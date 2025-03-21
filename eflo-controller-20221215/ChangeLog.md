@@ -1,3 +1,11 @@
+2025-03-21 Version: 2.4.0
+- Support API CreateNodeGroup.
+- Support API DeleteNodeGroup.
+- Support API DescribeDiagnosticResult.
+- Support API UpdateNodeGroup.
+- Update API ListClusterNodes: update response param.
+
+
 2025-03-12 Version: 2.3.1
 - Update API ChangeResourceGroup: add param ResourceType.
 
