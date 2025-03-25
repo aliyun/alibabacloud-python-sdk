@@ -2464,6 +2464,7 @@ class CreateNodeGroupRequestNodeGroup(TeaModel):
         machine_type: str = None,
         node_group_description: str = None,
         node_group_name: str = None,
+        user_data: str = None,
     ):
         # This parameter is required.
         self.az = az
@@ -2474,6 +2475,7 @@ class CreateNodeGroupRequestNodeGroup(TeaModel):
         self.node_group_description = node_group_description
         # This parameter is required.
         self.node_group_name = node_group_name
+        self.user_data = user_data
 
     def validate(self):
         pass
@@ -2494,6 +2496,8 @@ class CreateNodeGroupRequestNodeGroup(TeaModel):
             result['NodeGroupDescription'] = self.node_group_description
         if self.node_group_name is not None:
             result['NodeGroupName'] = self.node_group_name
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
         return result
 
     def from_map(self, m: dict = None):
@@ -2508,6 +2512,8 @@ class CreateNodeGroupRequestNodeGroup(TeaModel):
             self.node_group_description = m.get('NodeGroupDescription')
         if m.get('NodeGroupName') is not None:
             self.node_group_name = m.get('NodeGroupName')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
         return self
 
 
@@ -4678,6 +4684,7 @@ class DescribeNodeResponseBody(TeaModel):
         request_id: str = None,
         resource_group_id: str = None,
         sn: str = None,
+        user_data: str = None,
         zone_id: str = None,
     ):
         # Cluster ID
@@ -4714,6 +4721,7 @@ class DescribeNodeResponseBody(TeaModel):
         self.resource_group_id = resource_group_id
         # Unique machine identifier
         self.sn = sn
+        self.user_data = user_data
         # Zone ID
         self.zone_id = zone_id
 
@@ -4765,6 +4773,8 @@ class DescribeNodeResponseBody(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.sn is not None:
             result['Sn'] = self.sn
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
         return result
@@ -4808,6 +4818,8 @@ class DescribeNodeResponseBody(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Sn') is not None:
             self.sn = m.get('Sn')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
         return self
@@ -6552,6 +6564,39 @@ class ExtendClusterResponse(TeaModel):
         return self
 
 
+class ListClusterNodesRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListClusterNodesRequest(TeaModel):
     def __init__(
         self,
@@ -6559,6 +6604,8 @@ class ListClusterNodesRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
         node_group_id: str = None,
+        resource_group_id: str = None,
+        tags: List[ListClusterNodesRequestTags] = None,
     ):
         # Cluster ID
         # 
@@ -6570,9 +6617,14 @@ class ListClusterNodesRequest(TeaModel):
         self.next_token = next_token
         # Node group ID
         self.node_group_id = node_group_id
+        self.resource_group_id = resource_group_id
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6588,6 +6640,12 @@ class ListClusterNodesRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.node_group_id is not None:
             result['NodeGroupId'] = self.node_group_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -6600,6 +6658,13 @@ class ListClusterNodesRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('NodeGroupId') is not None:
             self.node_group_id = m.get('NodeGroupId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListClusterNodesRequestTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -6652,14 +6717,49 @@ class ListClusterNodesResponseBodyNodesNetworks(TeaModel):
         return self
 
 
+class ListClusterNodesResponseBodyNodesTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListClusterNodesResponseBodyNodes(TeaModel):
     def __init__(
         self,
+        commodity_code: str = None,
         create_time: str = None,
         expired_time: str = None,
         hostname: str = None,
         hpn_zone: str = None,
         image_id: str = None,
+        image_name: str = None,
         machine_type: str = None,
         networks: List[ListClusterNodesResponseBodyNodesNetworks] = None,
         node_group_id: str = None,
@@ -6667,10 +6767,13 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
         node_id: str = None,
         operating_state: str = None,
         sn: str = None,
+        tags: List[ListClusterNodesResponseBodyNodesTags] = None,
+        task_id: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        self.commodity_code = commodity_code
         # Creation time
         self.create_time = create_time
         # Machine expiration time
@@ -6681,6 +6784,7 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
         self.hpn_zone = hpn_zone
         # System image ID
         self.image_id = image_id
+        self.image_name = image_name
         # Machine type
         self.machine_type = machine_type
         # Network information
@@ -6695,7 +6799,11 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
         self.operating_state = operating_state
         # Machine SN
         self.sn = sn
+        self.tags = tags
+        self.task_id = task_id
+        # 专有网络交换机ID
         self.v_switch_id = v_switch_id
+        # 专有网络ID
         self.vpc_id = vpc_id
         # Zone ID
         self.zone_id = zone_id
@@ -6705,6 +6813,10 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
             for k in self.networks:
                 if k:
                     k.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6712,6 +6824,8 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
             return _map
 
         result = dict()
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.expired_time is not None:
@@ -6722,6 +6836,8 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
             result['HpnZone'] = self.hpn_zone
         if self.image_id is not None:
             result['ImageId'] = self.image_id
+        if self.image_name is not None:
+            result['ImageName'] = self.image_name
         if self.machine_type is not None:
             result['MachineType'] = self.machine_type
         result['Networks'] = []
@@ -6738,6 +6854,12 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
             result['OperatingState'] = self.operating_state
         if self.sn is not None:
             result['Sn'] = self.sn
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.vpc_id is not None:
@@ -6748,6 +6870,8 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('ExpiredTime') is not None:
@@ -6758,6 +6882,8 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
             self.hpn_zone = m.get('HpnZone')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
+        if m.get('ImageName') is not None:
+            self.image_name = m.get('ImageName')
         if m.get('MachineType') is not None:
             self.machine_type = m.get('MachineType')
         self.networks = []
@@ -6775,6 +6901,13 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
             self.operating_state = m.get('OperatingState')
         if m.get('Sn') is not None:
             self.sn = m.get('Sn')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListClusterNodesResponseBodyNodesTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VpcId') is not None:
@@ -6875,12 +7008,46 @@ class ListClusterNodesResponse(TeaModel):
         return self
 
 
+class ListClustersRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListClustersRequest(TeaModel):
     def __init__(
         self,
         max_results: int = None,
         next_token: str = None,
         resource_group_id: str = None,
+        tags: List[ListClustersRequestTags] = None,
     ):
         # Number of items per page for paginated queries, with a default value of 20.
         self.max_results = max_results
@@ -6888,9 +7055,13 @@ class ListClustersRequest(TeaModel):
         self.next_token = next_token
         # Resource group ID
         self.resource_group_id = resource_group_id
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6904,6 +7075,10 @@ class ListClustersRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -6914,6 +7089,44 @@ class ListClustersRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListClustersRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
+class ListClustersResponseBodyClustersTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -6932,6 +7145,7 @@ class ListClustersResponseBodyClusters(TeaModel):
         node_group_count: int = None,
         operating_state: str = None,
         resource_group_id: str = None,
+        tags: List[ListClustersResponseBodyClustersTags] = None,
         task_id: str = None,
         update_time: str = None,
         vpc_id: str = None,
@@ -6960,6 +7174,7 @@ class ListClustersResponseBodyClusters(TeaModel):
         self.operating_state = operating_state
         # Resource group ID
         self.resource_group_id = resource_group_id
+        self.tags = tags
         # Task ID
         self.task_id = task_id
         # Update time
@@ -6968,7 +7183,10 @@ class ListClustersResponseBodyClusters(TeaModel):
         self.vpc_id = vpc_id
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7000,6 +7218,10 @@ class ListClustersResponseBodyClusters(TeaModel):
             result['OperatingState'] = self.operating_state
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         if self.update_time is not None:
@@ -7034,6 +7256,11 @@ class ListClustersResponseBodyClusters(TeaModel):
             self.operating_state = m.get('OperatingState')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListClustersResponseBodyClustersTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         if m.get('UpdateTime') is not None:
@@ -7383,6 +7610,39 @@ class ListDiagnosticResultsResponse(TeaModel):
         return self
 
 
+class ListFreeNodesRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListFreeNodesRequest(TeaModel):
     def __init__(
         self,
@@ -7391,6 +7651,7 @@ class ListFreeNodesRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
         resource_group_id: str = None,
+        tags: List[ListFreeNodesRequestTags] = None,
     ):
         # Cluster number
         self.hpn_zone = hpn_zone
@@ -7402,9 +7663,13 @@ class ListFreeNodesRequest(TeaModel):
         self.next_token = next_token
         # Resource group ID
         self.resource_group_id = resource_group_id
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7422,6 +7687,10 @@ class ListFreeNodesRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -7436,37 +7705,22 @@ class ListFreeNodesRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListFreeNodesRequestTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
-class ListFreeNodesResponseBodyNodes(TeaModel):
+class ListFreeNodesResponseBodyNodesTags(TeaModel):
     def __init__(
         self,
-        create_time: str = None,
-        expired_time: str = None,
-        hpn_zone: str = None,
-        machine_type: str = None,
-        node_id: str = None,
-        resource_group_id: str = None,
-        sn: str = None,
-        zone_id: str = None,
+        key: str = None,
+        value: str = None,
     ):
-        # Creation time
-        self.create_time = create_time
-        # Expiration time of the machine
-        self.expired_time = expired_time
-        # Cluster number
-        self.hpn_zone = hpn_zone
-        # Machine type
-        self.machine_type = machine_type
-        # Node ID
-        self.node_id = node_id
-        # Resource group ID
-        self.resource_group_id = resource_group_id
-        # Machine SN
-        self.sn = sn
-        # Availability zone ID
-        self.zone_id = zone_id
+        self.key = key
+        self.value = value
 
     def validate(self):
         pass
@@ -7477,6 +7731,70 @@ class ListFreeNodesResponseBodyNodes(TeaModel):
             return _map
 
         result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListFreeNodesResponseBodyNodes(TeaModel):
+    def __init__(
+        self,
+        commodity_code: str = None,
+        create_time: str = None,
+        expired_time: str = None,
+        hpn_zone: str = None,
+        machine_type: str = None,
+        node_id: str = None,
+        operating_state: str = None,
+        resource_group_id: str = None,
+        sn: str = None,
+        tags: List[ListFreeNodesResponseBodyNodesTags] = None,
+        zone_id: str = None,
+    ):
+        self.commodity_code = commodity_code
+        # Creation time
+        self.create_time = create_time
+        # Expiration time of the machine
+        self.expired_time = expired_time
+        # Cluster number
+        self.hpn_zone = hpn_zone
+        # Machine type
+        self.machine_type = machine_type
+        # Node ID
+        self.node_id = node_id
+        self.operating_state = operating_state
+        # Resource group ID
+        self.resource_group_id = resource_group_id
+        # Machine SN
+        self.sn = sn
+        self.tags = tags
+        # Availability zone ID
+        self.zone_id = zone_id
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.expired_time is not None:
@@ -7487,16 +7805,24 @@ class ListFreeNodesResponseBodyNodes(TeaModel):
             result['MachineType'] = self.machine_type
         if self.node_id is not None:
             result['NodeId'] = self.node_id
+        if self.operating_state is not None:
+            result['OperatingState'] = self.operating_state
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.sn is not None:
             result['Sn'] = self.sn
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('ExpiredTime') is not None:
@@ -7507,10 +7833,17 @@ class ListFreeNodesResponseBodyNodes(TeaModel):
             self.machine_type = m.get('MachineType')
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
+        if m.get('OperatingState') is not None:
+            self.operating_state = m.get('OperatingState')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Sn') is not None:
             self.sn = m.get('Sn')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListFreeNodesResponseBodyNodesTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
         return self
@@ -11605,9 +11938,11 @@ class UpdateNodeGroupRequest(TeaModel):
         self,
         new_node_group_name: str = None,
         node_group_id: str = None,
+        user_data: str = None,
     ):
         self.new_node_group_name = new_node_group_name
         self.node_group_id = node_group_id
+        self.user_data = user_data
 
     def validate(self):
         pass
@@ -11622,6 +11957,8 @@ class UpdateNodeGroupRequest(TeaModel):
             result['NewNodeGroupName'] = self.new_node_group_name
         if self.node_group_id is not None:
             result['NodeGroupId'] = self.node_group_id
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
         return result
 
     def from_map(self, m: dict = None):
@@ -11630,6 +11967,8 @@ class UpdateNodeGroupRequest(TeaModel):
             self.new_node_group_name = m.get('NewNodeGroupName')
         if m.get('NodeGroupId') is not None:
             self.node_group_id = m.get('NodeGroupId')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
         return self
 
 

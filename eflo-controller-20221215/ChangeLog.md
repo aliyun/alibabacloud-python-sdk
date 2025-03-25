@@ -1,3 +1,21 @@
+2025-03-25 Version: 2.4.1
+- Update API CreateNodeGroup: add request parameters NodeGroup.UserData.
+- Update API DescribeNode: add response parameters Body.UserData.
+- Update API ListClusterNodes: add request parameters ResourceGroupId.
+- Update API ListClusterNodes: add request parameters Tags.
+- Update API ListClusterNodes: add response parameters Body.Nodes.$.CommodityCode.
+- Update API ListClusterNodes: add response parameters Body.Nodes.$.ImageName.
+- Update API ListClusterNodes: add response parameters Body.Nodes.$.Tags.
+- Update API ListClusterNodes: add response parameters Body.Nodes.$.TaskId.
+- Update API ListClusters: add request parameters Tags.
+- Update API ListClusters: add response parameters Body.Clusters.$.Tags.
+- Update API ListFreeNodes: add request parameters Tags.
+- Update API ListFreeNodes: add response parameters Body.Nodes.$.CommodityCode.
+- Update API ListFreeNodes: add response parameters Body.Nodes.$.OperatingState.
+- Update API ListFreeNodes: add response parameters Body.Nodes.$.Tags.
+- Update API UpdateNodeGroup: add request parameters UserData.
+
+
 2025-03-21 Version: 2.4.0
 - Support API CreateNodeGroup.
 - Support API DeleteNodeGroup.

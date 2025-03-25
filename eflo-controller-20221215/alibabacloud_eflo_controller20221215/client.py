@@ -2486,6 +2486,9 @@ class Client(OpenApiClient):
         @return: ListClusterNodesResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         body = {}
         if not UtilClient.is_unset(request.cluster_id):
             body['ClusterId'] = request.cluster_id
@@ -2495,7 +2498,10 @@ class Client(OpenApiClient):
             body['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.node_group_id):
             body['NodeGroupId'] = request.node_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2533,6 +2539,9 @@ class Client(OpenApiClient):
         @return: ListClusterNodesResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         body = {}
         if not UtilClient.is_unset(request.cluster_id):
             body['ClusterId'] = request.cluster_id
@@ -2542,7 +2551,10 @@ class Client(OpenApiClient):
             body['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.node_group_id):
             body['NodeGroupId'] = request.node_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2606,6 +2618,9 @@ class Client(OpenApiClient):
         @return: ListClustersResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         body = {}
         if not UtilClient.is_unset(request.max_results):
             body['MaxResults'] = request.max_results
@@ -2614,6 +2629,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2651,6 +2667,9 @@ class Client(OpenApiClient):
         @return: ListClustersResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         body = {}
         if not UtilClient.is_unset(request.max_results):
             body['MaxResults'] = request.max_results
@@ -2659,6 +2678,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2850,6 +2870,9 @@ class Client(OpenApiClient):
         @return: ListFreeNodesResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         body = {}
         if not UtilClient.is_unset(request.hpn_zone):
             body['HpnZone'] = request.hpn_zone
@@ -2862,6 +2885,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2899,6 +2923,9 @@ class Client(OpenApiClient):
         @return: ListFreeNodesResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         body = {}
         if not UtilClient.is_unset(request.hpn_zone):
             body['HpnZone'] = request.hpn_zone
@@ -2911,6 +2938,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -4989,6 +5017,8 @@ class Client(OpenApiClient):
             body['NewNodeGroupName'] = request.new_node_group_name
         if not UtilClient.is_unset(request.node_group_id):
             body['NodeGroupId'] = request.node_group_id
+        if not UtilClient.is_unset(request.user_data):
+            body['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -5032,6 +5062,8 @@ class Client(OpenApiClient):
             body['NewNodeGroupName'] = request.new_node_group_name
         if not UtilClient.is_unset(request.node_group_id):
             body['NodeGroupId'] = request.node_group_id
+        if not UtilClient.is_unset(request.user_data):
+            body['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
