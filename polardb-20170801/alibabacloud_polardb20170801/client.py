@@ -10887,6 +10887,178 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_global_security_ipgroup_relation_with_options_async(request, runtime)
 
+    def describe_history_tasks_with_options(
+        self,
+        request: polardb_20170801_models.DescribeHistoryTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeHistoryTasksResponse:
+        """
+        @summary 任务中心任务列表
+        
+        @param request: DescribeHistoryTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHistoryTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_exec_time):
+            query['FromExecTime'] = request.from_exec_time
+        if not UtilClient.is_unset(request.from_start_time):
+            query['FromStartTime'] = request.from_start_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.to_exec_time):
+            query['ToExecTime'] = request.to_exec_time
+        if not UtilClient.is_unset(request.to_start_time):
+            query['ToStartTime'] = request.to_start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHistoryTasks',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeHistoryTasksResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeHistoryTasksResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_history_tasks_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribeHistoryTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeHistoryTasksResponse:
+        """
+        @summary 任务中心任务列表
+        
+        @param request: DescribeHistoryTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHistoryTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_exec_time):
+            query['FromExecTime'] = request.from_exec_time
+        if not UtilClient.is_unset(request.from_start_time):
+            query['FromStartTime'] = request.from_start_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.to_exec_time):
+            query['ToExecTime'] = request.to_exec_time
+        if not UtilClient.is_unset(request.to_start_time):
+            query['ToStartTime'] = request.to_start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHistoryTasks',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeHistoryTasksResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeHistoryTasksResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_history_tasks(
+        self,
+        request: polardb_20170801_models.DescribeHistoryTasksRequest,
+    ) -> polardb_20170801_models.DescribeHistoryTasksResponse:
+        """
+        @summary 任务中心任务列表
+        
+        @param request: DescribeHistoryTasksRequest
+        @return: DescribeHistoryTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_history_tasks_with_options(request, runtime)
+
+    async def describe_history_tasks_async(
+        self,
+        request: polardb_20170801_models.DescribeHistoryTasksRequest,
+    ) -> polardb_20170801_models.DescribeHistoryTasksResponse:
+        """
+        @summary 任务中心任务列表
+        
+        @param request: DescribeHistoryTasksRequest
+        @return: DescribeHistoryTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_history_tasks_with_options_async(request, runtime)
+
     def describe_license_order_details_with_options(
         self,
         request: polardb_20170801_models.DescribeLicenseOrderDetailsRequest,
@@ -15753,7 +15925,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterArchResponse:
         """
-        @summary 变更standby模式
+        @summary Changes the high availability mode of the cluster.
         
         @param request: ModifyDBClusterArchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15800,7 +15972,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterArchResponse:
         """
-        @summary 变更standby模式
+        @summary Changes the high availability mode of the cluster.
         
         @param request: ModifyDBClusterArchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15846,7 +16018,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ModifyDBClusterArchRequest,
     ) -> polardb_20170801_models.ModifyDBClusterArchResponse:
         """
-        @summary 变更standby模式
+        @summary Changes the high availability mode of the cluster.
         
         @param request: ModifyDBClusterArchRequest
         @return: ModifyDBClusterArchResponse
@@ -15859,7 +16031,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ModifyDBClusterArchRequest,
     ) -> polardb_20170801_models.ModifyDBClusterArchResponse:
         """
-        @summary 变更standby模式
+        @summary Changes the high availability mode of the cluster.
         
         @param request: ModifyDBClusterArchRequest
         @return: ModifyDBClusterArchResponse

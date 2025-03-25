@@ -2695,8 +2695,8 @@ class CreateDBClusterEndpointRequest(TeaModel):
     ):
         # Specifies whether to enable automatic association of newly added nodes with the cluster endpoint. Valid values:
         # 
-        # *   **Enable**: enables automatic association of newly added nodes with the cluster endpoint.
-        # *   **Disable** (default): disables automatic association of newly added nodes with the cluster endpoint.
+        # *   **Enable**\
+        # *   **Disable** (default)
         self.auto_add_new_nodes = auto_add_new_nodes
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
         self.client_token = client_token
@@ -2770,11 +2770,6 @@ class CreateDBClusterEndpointRequest(TeaModel):
         # 
         # *   **ON**\
         # *   **OFF**\
-        # 
-        # Enumerated values:
-        # 
-        # *   on
-        # *   off
         self.scc_mode = scc_mode
 
     def validate(self):
@@ -6481,6 +6476,9 @@ class DeleteMaskingRulesRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # Deletes data masking or encryption rules. Valid values:
+        # 
+        # v1: deletes data masking rules. v2: deletes data encryption rules.
         self.interface_version = interface_version
         # The name of the masking rule. You can specify multiple masking rules at a time. Separate the masking rules with commas (,).
         # 
@@ -7062,8 +7060,9 @@ class DescribeAccountsResponseBodyAccounts(TeaModel):
         self.account_status = account_status
         # The type of the account. Valid values:
         # 
-        # *   **Normal**: a standard account
-        # *   **Super**: a privileged account
+        # *   **Normal**: standard account.
+        # *   **Super**: privileged account.
+        # *   **ReadOnly**: global read-only account.
         self.account_type = account_type
         # The list of database permissions that are granted to the account.
         self.database_privileges = database_privileges
@@ -10586,6 +10585,7 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
         server_weight: str = None,
         serverless_type: str = None,
         sub_cluster: str = None,
+        sub_group_description: str = None,
         zone_id: str = None,
     ):
         # Number of CPU cores for second-level elastic scaling.
@@ -10673,6 +10673,7 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
         # - **Primary**: Primary Availability Zone
         # - **Standby**: Standby Availability Zone
         self.sub_cluster = sub_cluster
+        self.sub_group_description = sub_group_description
         # Availability zone ID.
         self.zone_id = zone_id
 
@@ -10733,6 +10734,8 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
             result['ServerlessType'] = self.serverless_type
         if self.sub_cluster is not None:
             result['SubCluster'] = self.sub_cluster
+        if self.sub_group_description is not None:
+            result['SubGroupDescription'] = self.sub_group_description
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
         return result
@@ -10787,6 +10790,8 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
             self.serverless_type = m.get('ServerlessType')
         if m.get('SubCluster') is not None:
             self.sub_cluster = m.get('SubCluster')
+        if m.get('SubGroupDescription') is not None:
+            self.sub_group_description = m.get('SubGroupDescription')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
         return self
@@ -15142,7 +15147,7 @@ class DescribeDBClustersRequest(TeaModel):
         self.expired = expired
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. The value must be an integer that is greater than 0. Default value: **1**.
+        # The page number. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Valid values: **30**, **50**, and **100**.
         # 
@@ -20153,6 +20158,372 @@ class DescribeGlobalSecurityIPGroupRelationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeGlobalSecurityIPGroupRelationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeHistoryTasksRequest(TeaModel):
+    def __init__(
+        self,
+        from_exec_time: int = None,
+        from_start_time: str = None,
+        instance_id: str = None,
+        instance_type: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_owner_account: int = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        status: str = None,
+        task_id: str = None,
+        task_type: str = None,
+        to_exec_time: int = None,
+        to_start_time: str = None,
+    ):
+        self.from_exec_time = from_exec_time
+        # This parameter is required.
+        self.from_start_time = from_start_time
+        self.instance_id = instance_id
+        self.instance_type = instance_type
+        self.owner_id = owner_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        self.status = status
+        self.task_id = task_id
+        self.task_type = task_type
+        self.to_exec_time = to_exec_time
+        # This parameter is required.
+        self.to_start_time = to_start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.from_exec_time is not None:
+            result['FromExecTime'] = self.from_exec_time
+        if self.from_start_time is not None:
+            result['FromStartTime'] = self.from_start_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.to_exec_time is not None:
+            result['ToExecTime'] = self.to_exec_time
+        if self.to_start_time is not None:
+            result['ToStartTime'] = self.to_start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FromExecTime') is not None:
+            self.from_exec_time = m.get('FromExecTime')
+        if m.get('FromStartTime') is not None:
+            self.from_start_time = m.get('FromStartTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('ToExecTime') is not None:
+            self.to_exec_time = m.get('ToExecTime')
+        if m.get('ToStartTime') is not None:
+            self.to_start_time = m.get('ToStartTime')
+        return self
+
+
+class DescribeHistoryTasksResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        action_info: str = None,
+        caller_source: str = None,
+        caller_uid: str = None,
+        current_step_name: str = None,
+        db_type: str = None,
+        end_time: str = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        instance_type: str = None,
+        product: str = None,
+        progress: float = None,
+        reason_code: str = None,
+        region_id: str = None,
+        remain_time: int = None,
+        start_time: str = None,
+        status: str = None,
+        task_detail: str = None,
+        task_id: str = None,
+        task_type: str = None,
+        uid: str = None,
+    ):
+        self.action_info = action_info
+        self.caller_source = caller_source
+        self.caller_uid = caller_uid
+        self.current_step_name = current_step_name
+        self.db_type = db_type
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.instance_type = instance_type
+        self.product = product
+        self.progress = progress
+        self.reason_code = reason_code
+        self.region_id = region_id
+        self.remain_time = remain_time
+        self.start_time = start_time
+        self.status = status
+        self.task_detail = task_detail
+        self.task_id = task_id
+        self.task_type = task_type
+        self.uid = uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_info is not None:
+            result['ActionInfo'] = self.action_info
+        if self.caller_source is not None:
+            result['CallerSource'] = self.caller_source
+        if self.caller_uid is not None:
+            result['CallerUid'] = self.caller_uid
+        if self.current_step_name is not None:
+            result['CurrentStepName'] = self.current_step_name
+        if self.db_type is not None:
+            result['DbType'] = self.db_type
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.product is not None:
+            result['Product'] = self.product
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.reason_code is not None:
+            result['ReasonCode'] = self.reason_code
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.remain_time is not None:
+            result['RemainTime'] = self.remain_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_detail is not None:
+            result['TaskDetail'] = self.task_detail
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.uid is not None:
+            result['Uid'] = self.uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionInfo') is not None:
+            self.action_info = m.get('ActionInfo')
+        if m.get('CallerSource') is not None:
+            self.caller_source = m.get('CallerSource')
+        if m.get('CallerUid') is not None:
+            self.caller_uid = m.get('CallerUid')
+        if m.get('CurrentStepName') is not None:
+            self.current_step_name = m.get('CurrentStepName')
+        if m.get('DbType') is not None:
+            self.db_type = m.get('DbType')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('Product') is not None:
+            self.product = m.get('Product')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('ReasonCode') is not None:
+            self.reason_code = m.get('ReasonCode')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RemainTime') is not None:
+            self.remain_time = m.get('RemainTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskDetail') is not None:
+            self.task_detail = m.get('TaskDetail')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('Uid') is not None:
+            self.uid = m.get('Uid')
+        return self
+
+
+class DescribeHistoryTasksResponseBody(TeaModel):
+    def __init__(
+        self,
+        items: List[DescribeHistoryTasksResponseBodyItems] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: str = None,
+    ):
+        self.items = items
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeHistoryTasksResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeHistoryTasksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeHistoryTasksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeHistoryTasksResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -27673,7 +28044,11 @@ class ModifyDBClusterRequest(TeaModel):
         self.data_sync_mode = data_sync_mode
         # The fault injection method. Valid values:
         # 
-        # *   CrashSQLInjection: `Crash SQL`-based fault injection.
+        # *   0: `Crash SQL`-based fault injection.
+        # 
+        # Valid values:
+        # 
+        # *   CrashSQLInjection: CrashSQLInjection.
         self.fault_injection_type = fault_injection_type
         # The level of the disaster recovery drill. Valid values:
         # 
@@ -28275,9 +28650,22 @@ class ModifyDBClusterArchRequest(TeaModel):
         region_id: str = None,
         standby_az: str = None,
     ):
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
+        # Specifies whether to enable the hot standby storage cluster feature. Valid values:
+        # 
+        # *   **on**: enables hot standby storage cluster.
+        # *   **equal**: Enable a peer-to-peer cluster.
         self.hot_standby_cluster = hot_standby_cluster
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query information about regions.
         self.region_id = region_id
+        # The zone of the hot standby storage cluster. Valid values:
+        # 
+        # *   **auto** (default): The zone is automatically selected.
+        # 
+        # >  You can use the default value when HotStandbyCluster is set to on. If HotStandbyCluster is set to equal, specify the zone of the hot standby storage cluster. You can call the [DescribeZones](https://help.aliyun.com/document_detail/98041.html) operation to query information about zones.
         self.standby_az = standby_az
 
     def validate(self):
@@ -28319,8 +28707,11 @@ class ModifyDBClusterArchResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The order ID.
         self.order_id = order_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -33146,24 +33537,30 @@ class ModifyMaskingRulesRequest(TeaModel):
         # > This parameter is valid only when the `RuleNameList` parameter is specfied.
         self.enable = enable
         self.interface_version = interface_version
-        # The parameter that is used to specify the masking rule that you want to modify and the value in the JSON format. All parameter values are of the string type. Example: `{"auto": {"databases": ["db1"], "tables": ["tb1"], "columns": ["c1,c2"] }, "description": "This rule will be applied to the columns c1 and c2 in table t1", "enabled": true, "applies_to": ["user"]}`. Parameters in the function:
+        # The parameter that is used to specify the masking rule that you want to modify and the value in the JSON format. All parameter values are of the string type. Example: `{"auto": {"databases": ["db1"], "tables": ["tb1"], "columns": ["c1,c2"] }, "description": "This rule will be applied to the columns c1 and c2 in table t1", "enabled": true, "applies_to": ["user"]}`. Where,
         # 
         # *   `"auto"`: specifies that the dynamic masking algorithm is supported. This parameter is required.
         # *   `"databases"`: Optional. The names of databases to which the masking rule is applied. Separate the names with commas (,). If you leave this parameter empty, the masking rule applies to all databases in the cluster.
         # *   `"tables"`: Optional. The names of tables to which the masking rule is applied. Separate the names with commas (,). If you leave this parameter empty, the rule applies to all tables in the cluster.
         # *   `"columns"`: Required. The names of fields to which the masking rule is applied. Separate the names with commas (,).
-        # *   `"description"`: Optional. The description of the masking rule. The description can be up to 64 characters in length.
-        # *   `"enabled"`: Required. Specifies whether to enable the masking rule. Valid values: **true** and **false**.
+        # *   `"description"`: Optional. The description of the masking rule. The description is up to 64 characters in length.
+        # *   `"enabled"`: Required. Specifies whether to enable the masking rule. Valid values: **true** (enable) and **false** (disable).
         # *   `"applies_to"`: The names of database accounts to which the masking rule is applied. Separate the names with commas (,).
         # *   `"exempted"`: The names of database accounts to which the masking rule is not applied. Separate the names with commas (,).
         # 
-        # >- If you specify `RuleName`, `RuleConfig` parameter is required. 
-        # >- You need to select either `"applies_to"` or `"exempted"`.
+        # > 
+        # 
+        # *   If you specify `RuleName`, `RuleConfig` parameter is required.
+        # 
+        # *   You need to select either `"applies_to"` or `"exempted"`.
         self.rule_config = rule_config
         # The name of the data masking rule. You can specify only one rule name at a time.
         # 
-        # >- You can call the [DescribeMaskingRules](https://help.aliyun.com/document_detail/212573.html) operation to query the details of all masking rules for a specified cluster, such as the names of the masking rules.
-        # >- If the rule name does not exist in the cluster, the system automatically creates a masking rule based on the name and the value of `RuleConfig`.
+        # > 
+        # 
+        # *   You can call the [DescribeMaskingRules](https://help.aliyun.com/document_detail/212573.html) operation to query the details of all masking rules for a specified cluster, such as the names of the masking rules.
+        # 
+        # *   If the rule name does not exist in the cluster, the system automatically creates a masking rule based on the name and the value of `RuleConfig`.
         self.rule_name = rule_name
         # The list of masking rule names. You can specify one or more masking rules at a time. Separate the masking rule names with commas (,).
         # 
