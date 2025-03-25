@@ -25360,6 +25360,7 @@ class UpdateProjectBasicMetaRequestProperties(TeaModel):
         self,
         allow_full_scan: bool = None,
         enable_decimal_2: bool = None,
+        enable_dr: bool = None,
         enable_tunnel_quota_route: bool = None,
         encryption: UpdateProjectBasicMetaRequestPropertiesEncryption = None,
         retention_days: int = None,
@@ -25373,6 +25374,7 @@ class UpdateProjectBasicMetaRequestProperties(TeaModel):
         self.allow_full_scan = allow_full_scan
         # Indicates whether the DECIMAL type of the MaxCompute V2.0 data type edition is enabled.
         self.enable_decimal_2 = enable_decimal_2
+        self.enable_dr = enable_dr
         # Indicates whether the routing of the Tunnel resource group is enabled.
         # 
         # - true: The data transfer tasks that are submitted by the project by default use the Tunnel resource group that is bound to the project.
@@ -25419,6 +25421,8 @@ class UpdateProjectBasicMetaRequestProperties(TeaModel):
             result['allowFullScan'] = self.allow_full_scan
         if self.enable_decimal_2 is not None:
             result['enableDecimal2'] = self.enable_decimal_2
+        if self.enable_dr is not None:
+            result['enableDr'] = self.enable_dr
         if self.enable_tunnel_quota_route is not None:
             result['enableTunnelQuotaRoute'] = self.enable_tunnel_quota_route
         if self.encryption is not None:
@@ -25443,6 +25447,8 @@ class UpdateProjectBasicMetaRequestProperties(TeaModel):
             self.allow_full_scan = m.get('allowFullScan')
         if m.get('enableDecimal2') is not None:
             self.enable_decimal_2 = m.get('enableDecimal2')
+        if m.get('enableDr') is not None:
+            self.enable_dr = m.get('enableDr')
         if m.get('enableTunnelQuotaRoute') is not None:
             self.enable_tunnel_quota_route = m.get('enableTunnelQuotaRoute')
         if m.get('encryption') is not None:

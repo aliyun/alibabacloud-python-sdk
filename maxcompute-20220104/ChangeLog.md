@@ -1,3 +1,7 @@
+2025-03-25 Version: 4.1.1
+- Update API UpdateProjectBasicMeta: update param body.
+
+
 2025-03-10 Version: 4.1.0
 - Support API GetJobInfo.
 - Support API ListComputeMetricsByInstance.
