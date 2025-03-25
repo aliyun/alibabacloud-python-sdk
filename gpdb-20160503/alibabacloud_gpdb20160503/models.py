@@ -38798,7 +38798,6 @@ class QueryContentRequest(TeaModel):
         # 
         # This parameter is required.
         self.collection = collection
-        # Text content for retrieval.
         self.content = content
         # Instance ID.
         # 
@@ -39018,7 +39017,6 @@ class QueryContentAdvanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.collection = collection
-        # Text content for retrieval.
         self.content = content
         # Instance ID.
         # 
@@ -39238,7 +39236,6 @@ class QueryContentShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.collection = collection
-        # Text content for retrieval.
         self.content = content
         # Instance ID.
         # 

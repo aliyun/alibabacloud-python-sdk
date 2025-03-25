@@ -23404,8 +23404,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.collection):
             query['Collection'] = request.collection
-        if not UtilClient.is_unset(request.content):
-            query['Content'] = request.content
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.file_name):
@@ -23442,8 +23440,12 @@ class Client(OpenApiClient):
             query['TopK'] = request.top_k
         if not UtilClient.is_unset(request.use_full_text_retrieval):
             query['UseFullTextRetrieval'] = request.use_full_text_retrieval
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='QueryContent',
@@ -23489,8 +23491,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.collection):
             query['Collection'] = request.collection
-        if not UtilClient.is_unset(request.content):
-            query['Content'] = request.content
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.file_name):
@@ -23527,8 +23527,12 @@ class Client(OpenApiClient):
             query['TopK'] = request.top_k
         if not UtilClient.is_unset(request.use_full_text_retrieval):
             query['UseFullTextRetrieval'] = request.use_full_text_retrieval
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='QueryContent',
