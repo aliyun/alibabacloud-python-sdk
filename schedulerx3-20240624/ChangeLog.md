@@ -1,3 +1,11 @@
+2025-03-25 Version: 1.0.2
+- Update API CreateJob: add param ChildJobId.
+- Update API CreateJob: update param NoticeContacts.
+- Update API ListJobs: update response param.
+- Update API UpdateJob: add param ChildJobId.
+- Update API UpdateJob: update param NoticeContacts.
+
+
 2024-12-27 Version: 1.0.1
 - Update API CreateJob: add param ExecutorBlockStrategy.
 - Update API CreateJob: update param TimeType.

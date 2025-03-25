@@ -592,6 +592,7 @@ class CreateJobRequest(TeaModel):
         app_name: str = None,
         attempt_interval: int = None,
         calendar: str = None,
+        child_job_id: str = None,
         cluster_id: str = None,
         description: str = None,
         executor_block_strategy: int = None,
@@ -615,6 +616,7 @@ class CreateJobRequest(TeaModel):
         self.app_name = app_name
         self.attempt_interval = attempt_interval
         self.calendar = calendar
+        self.child_job_id = child_job_id
         # This parameter is required.
         self.cluster_id = cluster_id
         self.description = description
@@ -659,6 +661,8 @@ class CreateJobRequest(TeaModel):
             result['AttemptInterval'] = self.attempt_interval
         if self.calendar is not None:
             result['Calendar'] = self.calendar
+        if self.child_job_id is not None:
+            result['ChildJobId'] = self.child_job_id
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
         if self.description is not None:
@@ -707,6 +711,8 @@ class CreateJobRequest(TeaModel):
             self.attempt_interval = m.get('AttemptInterval')
         if m.get('Calendar') is not None:
             self.calendar = m.get('Calendar')
+        if m.get('ChildJobId') is not None:
+            self.child_job_id = m.get('ChildJobId')
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
         if m.get('Description') is not None:
@@ -756,6 +762,7 @@ class CreateJobShrinkRequest(TeaModel):
         app_name: str = None,
         attempt_interval: int = None,
         calendar: str = None,
+        child_job_id: str = None,
         cluster_id: str = None,
         description: str = None,
         executor_block_strategy: int = None,
@@ -779,6 +786,7 @@ class CreateJobShrinkRequest(TeaModel):
         self.app_name = app_name
         self.attempt_interval = attempt_interval
         self.calendar = calendar
+        self.child_job_id = child_job_id
         # This parameter is required.
         self.cluster_id = cluster_id
         self.description = description
@@ -818,6 +826,8 @@ class CreateJobShrinkRequest(TeaModel):
             result['AttemptInterval'] = self.attempt_interval
         if self.calendar is not None:
             result['Calendar'] = self.calendar
+        if self.child_job_id is not None:
+            result['ChildJobId'] = self.child_job_id
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
         if self.description is not None:
@@ -864,6 +874,8 @@ class CreateJobShrinkRequest(TeaModel):
             self.attempt_interval = m.get('AttemptInterval')
         if m.get('Calendar') is not None:
             self.calendar = m.get('Calendar')
+        if m.get('ChildJobId') is not None:
+            self.child_job_id = m.get('ChildJobId')
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
         if m.get('Description') is not None:
@@ -4930,6 +4942,7 @@ class ListJobsResponseBodyDataRecords(TeaModel):
         app_name: str = None,
         attempt_interval: int = None,
         calendar: str = None,
+        child_job_id: str = None,
         clean_mode: str = None,
         creator: str = None,
         current_execute_status: int = None,
@@ -4960,6 +4973,7 @@ class ListJobsResponseBodyDataRecords(TeaModel):
         self.app_name = app_name
         self.attempt_interval = attempt_interval
         self.calendar = calendar
+        self.child_job_id = child_job_id
         self.clean_mode = clean_mode
         self.creator = creator
         self.current_execute_status = current_execute_status
@@ -5002,6 +5016,8 @@ class ListJobsResponseBodyDataRecords(TeaModel):
             result['AttemptInterval'] = self.attempt_interval
         if self.calendar is not None:
             result['Calendar'] = self.calendar
+        if self.child_job_id is not None:
+            result['ChildJobId'] = self.child_job_id
         if self.clean_mode is not None:
             result['CleanMode'] = self.clean_mode
         if self.creator is not None:
@@ -5064,6 +5080,8 @@ class ListJobsResponseBodyDataRecords(TeaModel):
             self.attempt_interval = m.get('AttemptInterval')
         if m.get('Calendar') is not None:
             self.calendar = m.get('Calendar')
+        if m.get('ChildJobId') is not None:
+            self.child_job_id = m.get('ChildJobId')
         if m.get('CleanMode') is not None:
             self.clean_mode = m.get('CleanMode')
         if m.get('Creator') is not None:
@@ -7810,6 +7828,7 @@ class UpdateJobRequest(TeaModel):
         app_name: str = None,
         attempt_interval: int = None,
         calendar: str = None,
+        child_job_id: str = None,
         cluster_id: str = None,
         description: str = None,
         executor_block_strategy: int = None,
@@ -7832,6 +7851,7 @@ class UpdateJobRequest(TeaModel):
         self.app_name = app_name
         self.attempt_interval = attempt_interval
         self.calendar = calendar
+        self.child_job_id = child_job_id
         # This parameter is required.
         self.cluster_id = cluster_id
         self.description = description
@@ -7872,6 +7892,8 @@ class UpdateJobRequest(TeaModel):
             result['AttemptInterval'] = self.attempt_interval
         if self.calendar is not None:
             result['Calendar'] = self.calendar
+        if self.child_job_id is not None:
+            result['ChildJobId'] = self.child_job_id
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
         if self.description is not None:
@@ -7918,6 +7940,8 @@ class UpdateJobRequest(TeaModel):
             self.attempt_interval = m.get('AttemptInterval')
         if m.get('Calendar') is not None:
             self.calendar = m.get('Calendar')
+        if m.get('ChildJobId') is not None:
+            self.child_job_id = m.get('ChildJobId')
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
         if m.get('Description') is not None:
@@ -7965,6 +7989,7 @@ class UpdateJobShrinkRequest(TeaModel):
         app_name: str = None,
         attempt_interval: int = None,
         calendar: str = None,
+        child_job_id: str = None,
         cluster_id: str = None,
         description: str = None,
         executor_block_strategy: int = None,
@@ -7987,6 +8012,7 @@ class UpdateJobShrinkRequest(TeaModel):
         self.app_name = app_name
         self.attempt_interval = attempt_interval
         self.calendar = calendar
+        self.child_job_id = child_job_id
         # This parameter is required.
         self.cluster_id = cluster_id
         self.description = description
@@ -8022,6 +8048,8 @@ class UpdateJobShrinkRequest(TeaModel):
             result['AttemptInterval'] = self.attempt_interval
         if self.calendar is not None:
             result['Calendar'] = self.calendar
+        if self.child_job_id is not None:
+            result['ChildJobId'] = self.child_job_id
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
         if self.description is not None:
@@ -8066,6 +8094,8 @@ class UpdateJobShrinkRequest(TeaModel):
             self.attempt_interval = m.get('AttemptInterval')
         if m.get('Calendar') is not None:
             self.calendar = m.get('Calendar')
+        if m.get('ChildJobId') is not None:
+            self.child_job_id = m.get('ChildJobId')
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
         if m.get('Description') is not None:
