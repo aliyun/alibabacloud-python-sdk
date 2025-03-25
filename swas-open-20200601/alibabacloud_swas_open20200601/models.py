@@ -13724,10 +13724,12 @@ class ListPlansResponseBodyPlans(TeaModel):
         disk_size: int = None,
         disk_type: str = None,
         flow: int = None,
-        memory: int = None,
-        origin_price: float = None,
+        isp_type: str = None,
+        memory: float = None,
+        origin_price: str = None,
         plan_id: str = None,
         plan_type: str = None,
+        public_ip_num: str = None,
         support_platform: str = None,
         tags: List[ListPlansResponseBodyPlansTags] = None,
     ):
@@ -13751,6 +13753,7 @@ class ListPlansResponseBodyPlans(TeaModel):
         self.disk_type = disk_type
         # The monthly data transfer quota. Unit: GB.
         self.flow = flow
+        self.isp_type = isp_type
         # The memory size. Unit: GB.
         self.memory = memory
         # The monthly price of the plan.
@@ -13758,6 +13761,7 @@ class ListPlansResponseBodyPlans(TeaModel):
         # The ID of the plan.
         self.plan_id = plan_id
         self.plan_type = plan_type
+        self.public_ip_num = public_ip_num
         # The operating system types supported by the plan.
         self.support_platform = support_platform
         self.tags = tags
@@ -13786,6 +13790,8 @@ class ListPlansResponseBodyPlans(TeaModel):
             result['DiskType'] = self.disk_type
         if self.flow is not None:
             result['Flow'] = self.flow
+        if self.isp_type is not None:
+            result['IspType'] = self.isp_type
         if self.memory is not None:
             result['Memory'] = self.memory
         if self.origin_price is not None:
@@ -13794,6 +13800,8 @@ class ListPlansResponseBodyPlans(TeaModel):
             result['PlanId'] = self.plan_id
         if self.plan_type is not None:
             result['PlanType'] = self.plan_type
+        if self.public_ip_num is not None:
+            result['PublicIpNum'] = self.public_ip_num
         if self.support_platform is not None:
             result['SupportPlatform'] = self.support_platform
         result['Tags'] = []
@@ -13816,6 +13824,8 @@ class ListPlansResponseBodyPlans(TeaModel):
             self.disk_type = m.get('DiskType')
         if m.get('Flow') is not None:
             self.flow = m.get('Flow')
+        if m.get('IspType') is not None:
+            self.isp_type = m.get('IspType')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
         if m.get('OriginPrice') is not None:
@@ -13824,6 +13834,8 @@ class ListPlansResponseBodyPlans(TeaModel):
             self.plan_id = m.get('PlanId')
         if m.get('PlanType') is not None:
             self.plan_type = m.get('PlanType')
+        if m.get('PublicIpNum') is not None:
+            self.public_ip_num = m.get('PublicIpNum')
         if m.get('SupportPlatform') is not None:
             self.support_platform = m.get('SupportPlatform')
         self.tags = []
