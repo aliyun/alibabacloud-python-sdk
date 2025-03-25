@@ -3263,6 +3263,7 @@ class DeletePromptTemplateResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3585,6 +3586,7 @@ class GetIndexJobStatusResponseBodyDataDocuments(TeaModel):
         code: str = None,
         doc_id: str = None,
         doc_name: str = None,
+        gmt_modified: int = None,
         message: str = None,
         status: str = None,
     ):
@@ -3594,6 +3596,7 @@ class GetIndexJobStatusResponseBodyDataDocuments(TeaModel):
         self.doc_id = doc_id
         # The name of the document.
         self.doc_name = doc_name
+        self.gmt_modified = gmt_modified
         # The error message.
         self.message = message
         # The import status of the document. Valid values:
@@ -3619,6 +3622,8 @@ class GetIndexJobStatusResponseBodyDataDocuments(TeaModel):
             result['DocId'] = self.doc_id
         if self.doc_name is not None:
             result['DocName'] = self.doc_name
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
         if self.message is not None:
             result['Message'] = self.message
         if self.status is not None:
@@ -3633,6 +3638,8 @@ class GetIndexJobStatusResponseBodyDataDocuments(TeaModel):
             self.doc_id = m.get('DocId')
         if m.get('DocName') is not None:
             self.doc_name = m.get('DocName')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('Status') is not None:
@@ -3992,11 +3999,17 @@ class GetPromptTemplateResponseBody(TeaModel):
         variables: List[str] = None,
         workspace_id: str = None,
     ):
+        # The template content.
         self.content = content
+        # The template name.
         self.name = name
+        # The template ID.
         self.prompt_template_id = prompt_template_id
+        # The request ID.
         self.request_id = request_id
+        # The variables of the template.
         self.variables = variables
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -5437,6 +5450,7 @@ class ListIndexDocumentsResponseBodyDataDocuments(TeaModel):
         self,
         code: str = None,
         document_type: str = None,
+        gmt_modified: int = None,
         id: str = None,
         message: str = None,
         name: str = None,
@@ -5448,6 +5462,7 @@ class ListIndexDocumentsResponseBodyDataDocuments(TeaModel):
         self.code = code
         # The format of the document. Valid values: pdf, docx, doc, txt, md, pptx, ppt, and EXCEL.
         self.document_type = document_type
+        self.gmt_modified = gmt_modified
         # The primary key ID of the document.
         self.id = id
         # The error message of document import.
@@ -5481,6 +5496,8 @@ class ListIndexDocumentsResponseBodyDataDocuments(TeaModel):
             result['Code'] = self.code
         if self.document_type is not None:
             result['DocumentType'] = self.document_type
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
         if self.id is not None:
             result['Id'] = self.id
         if self.message is not None:
@@ -5501,6 +5518,8 @@ class ListIndexDocumentsResponseBodyDataDocuments(TeaModel):
             self.code = m.get('Code')
         if m.get('DocumentType') is not None:
             self.document_type = m.get('DocumentType')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('Message') is not None:
@@ -6401,9 +6420,13 @@ class ListPromptTemplatesRequest(TeaModel):
         next_token: str = None,
         type: str = None,
     ):
+        # The maximum number of returned entries.
         self.max_results = max_results
+        # The keyword that is used to search for templates.
         self.name = name
+        # The token that determines the start position of the query. Set this parameter to the value of the NextToken parameter that is returned from the last call.
         self.next_token = next_token
+        # The type of the template. Valid values: · System · Custom
         self.type = type
 
     def validate(self):
@@ -6447,10 +6470,15 @@ class ListPromptTemplatesResponseBodyPromptTemplates(TeaModel):
         type: str = None,
         variables: List[str] = None,
     ):
+        # The template content
         self.content = content
+        # The template name.
         self.name = name
+        # The template ID.
         self.prompt_template_id = prompt_template_id
+        # The template type.
         self.type = type
+        # The variables of the template.
         self.variables = variables
 
     def validate(self):
@@ -6499,11 +6527,17 @@ class ListPromptTemplatesResponseBody(TeaModel):
         total_count: int = None,
         workspace_id: str = None,
     ):
+        # The maximum number of returned entries.
         self.max_results = max_results
+        # The token that determines the start position of the next query.
         self.next_token = next_token
+        # The templates.
         self.prompt_templates = prompt_templates
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -9775,7 +9809,9 @@ class UpdatePromptTemplateRequest(TeaModel):
         content: str = None,
         name: str = None,
     ):
+        # The template content.
         self.content = content
+        # The template name.
         self.name = name
 
     def validate(self):
@@ -9807,6 +9843,7 @@ class UpdatePromptTemplateResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

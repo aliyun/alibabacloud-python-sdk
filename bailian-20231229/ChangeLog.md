@@ -1,3 +1,11 @@
+2025-03-25 Version: 2.0.1
+- Update API GetIndexJobStatus: update response param.
+- Update API ListFile: update response param.
+- Update API ListIndexDocuments: update response param.
+- Update API ListIndices: update response param.
+- Update API Retrieve: update param SaveRetrieverHistory.
+
+
 2025-01-16 Version: 2.0.0
 - Update API UpdateAndPublishAgentSelective: update param applicationConfig.
 
