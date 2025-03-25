@@ -3152,17 +3152,21 @@ class Client(OpenApiClient):
 
     def create_application_with_options(
         self,
-        request: mse_20190531_models.CreateApplicationRequest,
+        tmp_req: mse_20190531_models.CreateApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateApplicationResponse:
         """
         @summary Creates an application.
         
-        @param request: CreateApplicationRequest
+        @param tmp_req: CreateApplicationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateApplicationResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.CreateApplicationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -3180,6 +3184,8 @@ class Client(OpenApiClient):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.switch_enable):
             query['SwitchEnable'] = request.switch_enable
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3207,17 +3213,21 @@ class Client(OpenApiClient):
 
     async def create_application_with_options_async(
         self,
-        request: mse_20190531_models.CreateApplicationRequest,
+        tmp_req: mse_20190531_models.CreateApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateApplicationResponse:
         """
         @summary Creates an application.
         
-        @param request: CreateApplicationRequest
+        @param tmp_req: CreateApplicationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateApplicationResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.CreateApplicationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -3235,6 +3245,8 @@ class Client(OpenApiClient):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.switch_enable):
             query['SwitchEnable'] = request.switch_enable
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5176,17 +5188,21 @@ class Client(OpenApiClient):
 
     def create_namespace_with_options(
         self,
-        request: mse_20190531_models.CreateNamespaceRequest,
+        tmp_req: mse_20190531_models.CreateNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateNamespaceResponse:
         """
         @summary CreateNamespace
         
-        @param request: CreateNamespaceRequest
+        @param tmp_req: CreateNamespaceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateNamespaceResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.CreateNamespaceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -5194,6 +5210,8 @@ class Client(OpenApiClient):
             query['Describe'] = request.describe
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5221,17 +5239,21 @@ class Client(OpenApiClient):
 
     async def create_namespace_with_options_async(
         self,
-        request: mse_20190531_models.CreateNamespaceRequest,
+        tmp_req: mse_20190531_models.CreateNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateNamespaceResponse:
         """
         @summary CreateNamespace
         
-        @param request: CreateNamespaceRequest
+        @param tmp_req: CreateNamespaceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateNamespaceResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.CreateNamespaceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -5239,6 +5261,8 @@ class Client(OpenApiClient):
             query['Describe'] = request.describe
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10468,17 +10492,21 @@ class Client(OpenApiClient):
 
     def get_application_list_with_options(
         self,
-        request: mse_20190531_models.GetApplicationListRequest,
+        tmp_req: mse_20190531_models.GetApplicationListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetApplicationListResponse:
         """
         @summary Obtains the list of applications.
         
-        @param request: GetApplicationListRequest
+        @param tmp_req: GetApplicationListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetApplicationListResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.GetApplicationListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -10502,6 +10530,8 @@ class Client(OpenApiClient):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.switch_enable):
             query['SwitchEnable'] = request.switch_enable
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10529,17 +10559,21 @@ class Client(OpenApiClient):
 
     async def get_application_list_with_options_async(
         self,
-        request: mse_20190531_models.GetApplicationListRequest,
+        tmp_req: mse_20190531_models.GetApplicationListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetApplicationListResponse:
         """
         @summary Obtains the list of applications.
         
-        @param request: GetApplicationListRequest
+        @param tmp_req: GetApplicationListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetApplicationListResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.GetApplicationListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -10563,6 +10597,8 @@ class Client(OpenApiClient):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.switch_enable):
             query['SwitchEnable'] = request.switch_enable
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -19628,17 +19664,21 @@ class Client(OpenApiClient):
 
     def list_namespaces_with_options(
         self,
-        request: mse_20190531_models.ListNamespacesRequest,
+        tmp_req: mse_20190531_models.ListNamespacesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListNamespacesResponse:
         """
         @summary 展示命名空间列表
         
-        @param request: ListNamespacesRequest
+        @param tmp_req: ListNamespacesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListNamespacesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.ListNamespacesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -19650,6 +19690,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -19677,17 +19719,21 @@ class Client(OpenApiClient):
 
     async def list_namespaces_with_options_async(
         self,
-        request: mse_20190531_models.ListNamespacesRequest,
+        tmp_req: mse_20190531_models.ListNamespacesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListNamespacesResponse:
         """
         @summary 展示命名空间列表
         
-        @param request: ListNamespacesRequest
+        @param tmp_req: ListNamespacesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListNamespacesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.ListNamespacesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -19699,6 +19745,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

@@ -1,3 +1,19 @@
+2025-03-25 Version: 6.18.1
+- Update API AddGatewayServiceVersion: update response param.
+- Update API CreateApplication: add param Tags.
+- Update API CreateNamespace: add param Tag.
+- Update API DeleteGateway: update response param.
+- Update API DeleteGatewayServiceVersion: update response param.
+- Update API GetApplicationList: add param Tags.
+- Update API GetApplicationList: update response param.
+- Update API ListNamespaces: add param Tag.
+- Update API ListNamespaces: update response param.
+- Update API QueryClusterDetail: update response param.
+- Update API UpdateGatewayName: update response param.
+- Update API UpdateGatewayServiceTrafficPolicy: update response param.
+- Update API UpdateGatewayServiceVersion: update response param.
+
+
 2025-03-17 Version: 6.18.0
 - Support API UpdateGatewayConfig.
 
