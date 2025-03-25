@@ -1,3 +1,12 @@
+2025-03-25 Version: 1.3.3
+- Update API DescribeUsers: add param FilterWithAssignedResource.
+- Update API DescribeUsers: add param IsQueryAllSubOrgs.
+- Update API DescribeUsers: update response param.
+- Update API FilterUsers: add param IncludeOrgInfo.
+- Update API FilterUsers: add param IncludeSupportIdps.
+- Update API FilterUsers: update response param.
+
+
 2024-12-11 Version: 1.3.2
 - Update API CreateUsers: update param Users.
 - Update API FilterUsers: add param IsQueryAllSubOrgs.

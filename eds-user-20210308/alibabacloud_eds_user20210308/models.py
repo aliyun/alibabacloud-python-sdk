@@ -127,7 +127,7 @@ class ThirdAppOidcSsoConfig(TeaModel):
         endpoints: ThirdAppOidcSsoConfigEndpoints = None,
         grant_scopes: List[str] = None,
         grant_types: List[str] = None,
-        id_token_algorithm_type: int = None,
+        id_token_algorithm_type: str = None,
         id_token_effective_time: int = None,
         redirect_uris: List[str] = None,
         refresh_token_effective: int = None,
@@ -2025,8 +2025,10 @@ class DescribeUsersRequest(TeaModel):
         end_user_ids: List[str] = None,
         exclude_end_user_ids: List[str] = None,
         filter: str = None,
+        filter_with_assigned_resource: Dict[str, str] = None,
         filter_with_assigned_resources: Dict[str, bool] = None,
         group_id: str = None,
+        is_query_all_sub_orgs: bool = None,
         max_results: int = None,
         next_token: str = None,
         org_id: str = None,
@@ -2040,9 +2042,11 @@ class DescribeUsersRequest(TeaModel):
         self.exclude_end_user_ids = exclude_end_user_ids
         # The string that is used for fuzzy search. You perform fuzzy search by username (EndUserId) and email address (Email). Wildcard characters (\\*) are supported. For example, if you set this parameter to `a*m`, usernames or email addresses that start with `a` and end with `m` are returned.
         self.filter = filter
+        self.filter_with_assigned_resource = filter_with_assigned_resource
         self.filter_with_assigned_resources = filter_with_assigned_resources
         # The ID of the organization in which you want to query convenience users.
         self.group_id = group_id
+        self.is_query_all_sub_orgs = is_query_all_sub_orgs
         # The number of entries per page.
         # 
         # *   Valid values: 1 to 500
@@ -2073,10 +2077,14 @@ class DescribeUsersRequest(TeaModel):
             result['ExcludeEndUserIds'] = self.exclude_end_user_ids
         if self.filter is not None:
             result['Filter'] = self.filter
+        if self.filter_with_assigned_resource is not None:
+            result['FilterWithAssignedResource'] = self.filter_with_assigned_resource
         if self.filter_with_assigned_resources is not None:
             result['FilterWithAssignedResources'] = self.filter_with_assigned_resources
         if self.group_id is not None:
             result['GroupId'] = self.group_id
+        if self.is_query_all_sub_orgs is not None:
+            result['IsQueryAllSubOrgs'] = self.is_query_all_sub_orgs
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -2099,10 +2107,14 @@ class DescribeUsersRequest(TeaModel):
             self.exclude_end_user_ids = m.get('ExcludeEndUserIds')
         if m.get('Filter') is not None:
             self.filter = m.get('Filter')
+        if m.get('FilterWithAssignedResource') is not None:
+            self.filter_with_assigned_resource = m.get('FilterWithAssignedResource')
         if m.get('FilterWithAssignedResources') is not None:
             self.filter_with_assigned_resources = m.get('FilterWithAssignedResources')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
+        if m.get('IsQueryAllSubOrgs') is not None:
+            self.is_query_all_sub_orgs = m.get('IsQueryAllSubOrgs')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -2123,8 +2135,10 @@ class DescribeUsersShrinkRequest(TeaModel):
         end_user_ids: List[str] = None,
         exclude_end_user_ids: List[str] = None,
         filter: str = None,
+        filter_with_assigned_resource_shrink: str = None,
         filter_with_assigned_resources_shrink: str = None,
         group_id: str = None,
+        is_query_all_sub_orgs: bool = None,
         max_results: int = None,
         next_token: str = None,
         org_id: str = None,
@@ -2138,9 +2152,11 @@ class DescribeUsersShrinkRequest(TeaModel):
         self.exclude_end_user_ids = exclude_end_user_ids
         # The string that is used for fuzzy search. You perform fuzzy search by username (EndUserId) and email address (Email). Wildcard characters (\\*) are supported. For example, if you set this parameter to `a*m`, usernames or email addresses that start with `a` and end with `m` are returned.
         self.filter = filter
+        self.filter_with_assigned_resource_shrink = filter_with_assigned_resource_shrink
         self.filter_with_assigned_resources_shrink = filter_with_assigned_resources_shrink
         # The ID of the organization in which you want to query convenience users.
         self.group_id = group_id
+        self.is_query_all_sub_orgs = is_query_all_sub_orgs
         # The number of entries per page.
         # 
         # *   Valid values: 1 to 500
@@ -2171,10 +2187,14 @@ class DescribeUsersShrinkRequest(TeaModel):
             result['ExcludeEndUserIds'] = self.exclude_end_user_ids
         if self.filter is not None:
             result['Filter'] = self.filter
+        if self.filter_with_assigned_resource_shrink is not None:
+            result['FilterWithAssignedResource'] = self.filter_with_assigned_resource_shrink
         if self.filter_with_assigned_resources_shrink is not None:
             result['FilterWithAssignedResources'] = self.filter_with_assigned_resources_shrink
         if self.group_id is not None:
             result['GroupId'] = self.group_id
+        if self.is_query_all_sub_orgs is not None:
+            result['IsQueryAllSubOrgs'] = self.is_query_all_sub_orgs
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -2197,10 +2217,14 @@ class DescribeUsersShrinkRequest(TeaModel):
             self.exclude_end_user_ids = m.get('ExcludeEndUserIds')
         if m.get('Filter') is not None:
             self.filter = m.get('Filter')
+        if m.get('FilterWithAssignedResource') is not None:
+            self.filter_with_assigned_resource_shrink = m.get('FilterWithAssignedResource')
         if m.get('FilterWithAssignedResources') is not None:
             self.filter_with_assigned_resources_shrink = m.get('FilterWithAssignedResources')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
+        if m.get('IsQueryAllSubOrgs') is not None:
+            self.is_query_all_sub_orgs = m.get('IsQueryAllSubOrgs')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -2311,6 +2335,39 @@ class DescribeUsersResponseBodyUsersOrgs(TeaModel):
         return self
 
 
+class DescribeUsersResponseBodyUsersProperties(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeUsersResponseBodyUsers(TeaModel):
     def __init__(
         self,
@@ -2318,6 +2375,7 @@ class DescribeUsersResponseBodyUsers(TeaModel):
         avatar: str = None,
         email: str = None,
         end_user_id: str = None,
+        external_name: str = None,
         extras: DescribeUsersResponseBodyUsersExtras = None,
         groups: List[DescribeUsersResponseBodyUsersGroups] = None,
         id: int = None,
@@ -2328,6 +2386,7 @@ class DescribeUsersResponseBodyUsers(TeaModel):
         orgs: List[DescribeUsersResponseBodyUsersOrgs] = None,
         owner_type: str = None,
         phone: str = None,
+        properties: List[DescribeUsersResponseBodyUsersProperties] = None,
         real_nick_name: str = None,
         remark: str = None,
         status: int = None,
@@ -2341,6 +2400,7 @@ class DescribeUsersResponseBodyUsers(TeaModel):
         self.email = email
         # The username of the convenience user.
         self.end_user_id = end_user_id
+        self.external_name = external_name
         self.extras = extras
         # The user groups to which the convenience user belongs.
         self.groups = groups
@@ -2391,6 +2451,7 @@ class DescribeUsersResponseBodyUsers(TeaModel):
         self.owner_type = owner_type
         # The mobile number of the convenience user. If you leave this parameter empty, the value of this parameter is not returned.
         self.phone = phone
+        self.properties = properties
         self.real_nick_name = real_nick_name
         # The remarks on the convenience user.
         self.remark = remark
@@ -2428,6 +2489,10 @@ class DescribeUsersResponseBodyUsers(TeaModel):
             for k in self.orgs:
                 if k:
                     k.validate()
+        if self.properties:
+            for k in self.properties:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2443,6 +2508,8 @@ class DescribeUsersResponseBodyUsers(TeaModel):
             result['Email'] = self.email
         if self.end_user_id is not None:
             result['EndUserId'] = self.end_user_id
+        if self.external_name is not None:
+            result['ExternalName'] = self.external_name
         if self.extras is not None:
             result['Extras'] = self.extras.to_map()
         result['Groups'] = []
@@ -2467,6 +2534,10 @@ class DescribeUsersResponseBodyUsers(TeaModel):
             result['OwnerType'] = self.owner_type
         if self.phone is not None:
             result['Phone'] = self.phone
+        result['Properties'] = []
+        if self.properties is not None:
+            for k in self.properties:
+                result['Properties'].append(k.to_map() if k else None)
         if self.real_nick_name is not None:
             result['RealNickName'] = self.real_nick_name
         if self.remark is not None:
@@ -2487,6 +2558,8 @@ class DescribeUsersResponseBodyUsers(TeaModel):
             self.email = m.get('Email')
         if m.get('EndUserId') is not None:
             self.end_user_id = m.get('EndUserId')
+        if m.get('ExternalName') is not None:
+            self.external_name = m.get('ExternalName')
         if m.get('Extras') is not None:
             temp_model = DescribeUsersResponseBodyUsersExtras()
             self.extras = temp_model.from_map(m['Extras'])
@@ -2514,6 +2587,11 @@ class DescribeUsersResponseBodyUsers(TeaModel):
             self.owner_type = m.get('OwnerType')
         if m.get('Phone') is not None:
             self.phone = m.get('Phone')
+        self.properties = []
+        if m.get('Properties') is not None:
+            for k in m.get('Properties'):
+                temp_model = DescribeUsersResponseBodyUsersProperties()
+                self.properties.append(temp_model.from_map(k))
         if m.get('RealNickName') is not None:
             self.real_nick_name = m.get('RealNickName')
         if m.get('Remark') is not None:
@@ -2752,6 +2830,8 @@ class FilterUsersRequest(TeaModel):
         filter: str = None,
         include_desktop_count: bool = None,
         include_desktop_group_count: bool = None,
+        include_org_info: bool = None,
+        include_support_idps: bool = None,
         is_query_all_sub_orgs: bool = None,
         max_results: int = None,
         next_token: str = None,
@@ -2806,6 +2886,8 @@ class FilterUsersRequest(TeaModel):
         # 
         #     <!-- -->
         self.include_desktop_group_count = include_desktop_group_count
+        self.include_org_info = include_org_info
+        self.include_support_idps = include_support_idps
         self.is_query_all_sub_orgs = is_query_all_sub_orgs
         # The number of entries per page. If you set this parameter to a value greater than 100, the system resets the value to 100.
         self.max_results = max_results
@@ -2849,6 +2931,10 @@ class FilterUsersRequest(TeaModel):
             result['IncludeDesktopCount'] = self.include_desktop_count
         if self.include_desktop_group_count is not None:
             result['IncludeDesktopGroupCount'] = self.include_desktop_group_count
+        if self.include_org_info is not None:
+            result['IncludeOrgInfo'] = self.include_org_info
+        if self.include_support_idps is not None:
+            result['IncludeSupportIdps'] = self.include_support_idps
         if self.is_query_all_sub_orgs is not None:
             result['IsQueryAllSubOrgs'] = self.is_query_all_sub_orgs
         if self.max_results is not None:
@@ -2883,6 +2969,10 @@ class FilterUsersRequest(TeaModel):
             self.include_desktop_count = m.get('IncludeDesktopCount')
         if m.get('IncludeDesktopGroupCount') is not None:
             self.include_desktop_group_count = m.get('IncludeDesktopGroupCount')
+        if m.get('IncludeOrgInfo') is not None:
+            self.include_org_info = m.get('IncludeOrgInfo')
+        if m.get('IncludeSupportIdps') is not None:
+            self.include_support_idps = m.get('IncludeSupportIdps')
         if m.get('IsQueryAllSubOrgs') is not None:
             self.is_query_all_sub_orgs = m.get('IsQueryAllSubOrgs')
         if m.get('MaxResults') is not None:
@@ -2988,6 +3078,8 @@ class FilterUsersShrinkRequest(TeaModel):
         filter: str = None,
         include_desktop_count: bool = None,
         include_desktop_group_count: bool = None,
+        include_org_info: bool = None,
+        include_support_idps: bool = None,
         is_query_all_sub_orgs: bool = None,
         max_results: int = None,
         next_token: str = None,
@@ -3042,6 +3134,8 @@ class FilterUsersShrinkRequest(TeaModel):
         # 
         #     <!-- -->
         self.include_desktop_group_count = include_desktop_group_count
+        self.include_org_info = include_org_info
+        self.include_support_idps = include_support_idps
         self.is_query_all_sub_orgs = is_query_all_sub_orgs
         # The number of entries per page. If you set this parameter to a value greater than 100, the system resets the value to 100.
         self.max_results = max_results
@@ -3083,6 +3177,10 @@ class FilterUsersShrinkRequest(TeaModel):
             result['IncludeDesktopCount'] = self.include_desktop_count
         if self.include_desktop_group_count is not None:
             result['IncludeDesktopGroupCount'] = self.include_desktop_group_count
+        if self.include_org_info is not None:
+            result['IncludeOrgInfo'] = self.include_org_info
+        if self.include_support_idps is not None:
+            result['IncludeSupportIdps'] = self.include_support_idps
         if self.is_query_all_sub_orgs is not None:
             result['IsQueryAllSubOrgs'] = self.is_query_all_sub_orgs
         if self.max_results is not None:
@@ -3117,6 +3215,10 @@ class FilterUsersShrinkRequest(TeaModel):
             self.include_desktop_count = m.get('IncludeDesktopCount')
         if m.get('IncludeDesktopGroupCount') is not None:
             self.include_desktop_group_count = m.get('IncludeDesktopGroupCount')
+        if m.get('IncludeOrgInfo') is not None:
+            self.include_org_info = m.get('IncludeOrgInfo')
+        if m.get('IncludeSupportIdps') is not None:
+            self.include_support_idps = m.get('IncludeSupportIdps')
         if m.get('IsQueryAllSubOrgs') is not None:
             self.is_query_all_sub_orgs = m.get('IsQueryAllSubOrgs')
         if m.get('MaxResults') is not None:
@@ -3176,6 +3278,72 @@ class FilterUsersResponseBodyUsersExternalInfo(TeaModel):
             self.external_name = m.get('ExternalName')
         if m.get('JobNumber') is not None:
             self.job_number = m.get('JobNumber')
+        return self
+
+
+class FilterUsersResponseBodyUsersOrgList(TeaModel):
+    def __init__(
+        self,
+        org_id: str = None,
+        org_name: str = None,
+    ):
+        self.org_id = org_id
+        self.org_name = org_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        if self.org_name is not None:
+            result['OrgName'] = self.org_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        if m.get('OrgName') is not None:
+            self.org_name = m.get('OrgName')
+        return self
+
+
+class FilterUsersResponseBodyUsersSupportLoginIdps(TeaModel):
+    def __init__(
+        self,
+        idp_id: str = None,
+        idp_name: str = None,
+    ):
+        self.idp_id = idp_id
+        self.idp_name = idp_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.idp_id is not None:
+            result['IdpId'] = self.idp_id
+        if self.idp_name is not None:
+            result['IdpName'] = self.idp_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IdpId') is not None:
+            self.idp_id = m.get('IdpId')
+        if m.get('IdpName') is not None:
+            self.idp_name = m.get('IdpName')
         return self
 
 
@@ -3297,6 +3465,7 @@ class FilterUsersResponseBodyUsers(TeaModel):
         external_info: FilterUsersResponseBodyUsersExternalInfo = None,
         id: int = None,
         is_tenant_manager: bool = None,
+        org_list: List[FilterUsersResponseBodyUsersOrgList] = None,
         owner_type: str = None,
         password_expire_days: int = None,
         password_expire_rest_days: int = None,
@@ -3304,6 +3473,7 @@ class FilterUsersResponseBodyUsers(TeaModel):
         real_nick_name: str = None,
         remark: str = None,
         status: int = None,
+        support_login_idps: List[FilterUsersResponseBodyUsersSupportLoginIdps] = None,
         user_set_properties_models: List[FilterUsersResponseBodyUsersUserSetPropertiesModels] = None,
     ):
         self.auto_lock_time = auto_lock_time
@@ -3359,6 +3529,7 @@ class FilterUsersResponseBodyUsers(TeaModel):
         # 
         #     <!-- -->
         self.is_tenant_manager = is_tenant_manager
+        self.org_list = org_list
         # The type of the account ownership.
         # 
         # Valid values:
@@ -3394,12 +3565,21 @@ class FilterUsersResponseBodyUsers(TeaModel):
         # 
         #     <!-- -->
         self.status = status
+        self.support_login_idps = support_login_idps
         # The information about the properties.
         self.user_set_properties_models = user_set_properties_models
 
     def validate(self):
         if self.external_info:
             self.external_info.validate()
+        if self.org_list:
+            for k in self.org_list:
+                if k:
+                    k.validate()
+        if self.support_login_idps:
+            for k in self.support_login_idps:
+                if k:
+                    k.validate()
         if self.user_set_properties_models:
             for k in self.user_set_properties_models:
                 if k:
@@ -3429,6 +3609,10 @@ class FilterUsersResponseBodyUsers(TeaModel):
             result['Id'] = self.id
         if self.is_tenant_manager is not None:
             result['IsTenantManager'] = self.is_tenant_manager
+        result['OrgList'] = []
+        if self.org_list is not None:
+            for k in self.org_list:
+                result['OrgList'].append(k.to_map() if k else None)
         if self.owner_type is not None:
             result['OwnerType'] = self.owner_type
         if self.password_expire_days is not None:
@@ -3443,6 +3627,10 @@ class FilterUsersResponseBodyUsers(TeaModel):
             result['Remark'] = self.remark
         if self.status is not None:
             result['Status'] = self.status
+        result['SupportLoginIdps'] = []
+        if self.support_login_idps is not None:
+            for k in self.support_login_idps:
+                result['SupportLoginIdps'].append(k.to_map() if k else None)
         result['UserSetPropertiesModels'] = []
         if self.user_set_properties_models is not None:
             for k in self.user_set_properties_models:
@@ -3470,6 +3658,11 @@ class FilterUsersResponseBodyUsers(TeaModel):
             self.id = m.get('Id')
         if m.get('IsTenantManager') is not None:
             self.is_tenant_manager = m.get('IsTenantManager')
+        self.org_list = []
+        if m.get('OrgList') is not None:
+            for k in m.get('OrgList'):
+                temp_model = FilterUsersResponseBodyUsersOrgList()
+                self.org_list.append(temp_model.from_map(k))
         if m.get('OwnerType') is not None:
             self.owner_type = m.get('OwnerType')
         if m.get('PasswordExpireDays') is not None:
@@ -3484,6 +3677,11 @@ class FilterUsersResponseBodyUsers(TeaModel):
             self.remark = m.get('Remark')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.support_login_idps = []
+        if m.get('SupportLoginIdps') is not None:
+            for k in m.get('SupportLoginIdps'):
+                temp_model = FilterUsersResponseBodyUsersSupportLoginIdps()
+                self.support_login_idps.append(temp_model.from_map(k))
         self.user_set_properties_models = []
         if m.get('UserSetPropertiesModels') is not None:
             for k in m.get('UserSetPropertiesModels'):
