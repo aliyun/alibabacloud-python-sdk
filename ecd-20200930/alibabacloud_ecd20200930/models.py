@@ -1132,21 +1132,21 @@ class AddUserToDesktopGroupRequest(TeaModel):
         desktop_group_ids: List[str] = None,
         end_user_ids: List[str] = None,
         region_id: str = None,
+        user_ou_path: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The ID of the desktop group that you want to assign to more regular users.
+        # The ID of the cloud computer share.
         self.desktop_group_id = desktop_group_id
-        # The IDs of the desktop groups.
+        # The IDs of the cloud computer shares.
         self.desktop_group_ids = desktop_group_ids
         # The regular users to whom you want to assign the desktop group.
-        # 
-        # This parameter is required.
         self.end_user_ids = end_user_ids
         # The ID of the region.
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.user_ou_path = user_ou_path
 
     def validate(self):
         pass
@@ -1167,6 +1167,8 @@ class AddUserToDesktopGroupRequest(TeaModel):
             result['EndUserIds'] = self.end_user_ids
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.user_ou_path is not None:
+            result['UserOuPath'] = self.user_ou_path
         return result
 
     def from_map(self, m: dict = None):
@@ -1181,6 +1183,8 @@ class AddUserToDesktopGroupRequest(TeaModel):
             self.end_user_ids = m.get('EndUserIds')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('UserOuPath') is not None:
+            self.user_ou_path = m.get('UserOuPath')
         return self
 
 
@@ -6993,6 +6997,7 @@ class CreateDesktopGroupRequest(TeaModel):
         system_disk_size: int = None,
         tag: List[CreateDesktopGroupRequestTag] = None,
         timer_group_id: str = None,
+        user_ou_path: str = None,
         volume_encryption_enabled: bool = None,
         volume_encryption_key: str = None,
         vpc_id: str = None,
@@ -7254,6 +7259,7 @@ class CreateDesktopGroupRequest(TeaModel):
         self.tag = tag
         # The ID of the timer group.
         self.timer_group_id = timer_group_id
+        self.user_ou_path = user_ou_path
         # Specifies whether to enable disk encryption.
         self.volume_encryption_enabled = volume_encryption_enabled
         # The ID of the Key Management Service (KMS) key that you want to use when disk encryption is enabled. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to obtain a list of KMS keys.
@@ -7383,6 +7389,8 @@ class CreateDesktopGroupRequest(TeaModel):
                 result['Tag'].append(k.to_map() if k else None)
         if self.timer_group_id is not None:
             result['TimerGroupId'] = self.timer_group_id
+        if self.user_ou_path is not None:
+            result['UserOuPath'] = self.user_ou_path
         if self.volume_encryption_enabled is not None:
             result['VolumeEncryptionEnabled'] = self.volume_encryption_enabled
         if self.volume_encryption_key is not None:
@@ -7502,6 +7510,8 @@ class CreateDesktopGroupRequest(TeaModel):
                 self.tag.append(temp_model.from_map(k))
         if m.get('TimerGroupId') is not None:
             self.timer_group_id = m.get('TimerGroupId')
+        if m.get('UserOuPath') is not None:
+            self.user_ou_path = m.get('UserOuPath')
         if m.get('VolumeEncryptionEnabled') is not None:
             self.volume_encryption_enabled = m.get('VolumeEncryptionEnabled')
         if m.get('VolumeEncryptionKey') is not None:
@@ -18679,6 +18689,7 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         system_disk_category: str = None,
         system_disk_size: int = None,
         tags: List[DescribeDesktopGroupsResponseBodyDesktopGroupsTags] = None,
+        user_ou_path: str = None,
         version: int = None,
         volume_encryption_enabled: bool = None,
         volume_encryption_key: str = None,
@@ -18863,6 +18874,7 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         self.system_disk_size = system_disk_size
         # The tags attached to the cloud computer pool.
         self.tags = tags
+        self.user_ou_path = user_ou_path
         # The version number of the cloud computer pool.
         self.version = version
         # Indicates whether disk encryption is enabled.
@@ -18980,6 +18992,8 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
+        if self.user_ou_path is not None:
+            result['UserOuPath'] = self.user_ou_path
         if self.version is not None:
             result['Version'] = self.version
         if self.volume_encryption_enabled is not None:
@@ -19086,6 +19100,8 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
             for k in m.get('Tags'):
                 temp_model = DescribeDesktopGroupsResponseBodyDesktopGroupsTags()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('UserOuPath') is not None:
+            self.user_ou_path = m.get('UserOuPath')
         if m.get('Version') is not None:
             self.version = m.get('Version')
         if m.get('VolumeEncryptionEnabled') is not None:
@@ -34451,7 +34467,7 @@ class DescribeUserConnectionRecordsResponseBodyConnectionRecords(TeaModel):
         desktop_id: str = None,
         desktop_name: str = None,
     ):
-        # The duration for which the end user is connected to the cloud computer. Unit: seconds.
+        # The connection duration. Unit: milliseconds.
         self.connect_duration = connect_duration
         # The time when the end user disconnected from the cloud computer.
         self.connect_end_time = connect_end_time
@@ -34511,7 +34527,7 @@ class DescribeUserConnectionRecordsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # Details about connection records of the end user.
+        # The connection records.
         self.connection_records = connection_records
         # The token that is used to start the next query.
         self.next_token = next_token
@@ -34976,7 +34992,7 @@ class DescribeUsersInGroupRequest(TeaModel):
         # - 0: Disconnected.
         # - 1: Connected.
         self.connect_state = connect_state
-        # The ID of the cloud computer pool.
+        # The ID of the cloud computer share.
         # 
         # This parameter is required.
         self.desktop_group_id = desktop_group_id
@@ -35362,17 +35378,19 @@ class DescribeUsersInGroupResponseBody(TeaModel):
         next_token: str = None,
         online_users_count: int = None,
         request_id: str = None,
+        user_ou_path: str = None,
         users_count: int = None,
     ):
         # The list of authorized users.
         self.end_users = end_users
         # The token that is used to start the next query.
         self.next_token = next_token
-        # The total number of authorized users that is connected to cloud computers in the cloud computer pool.
+        # The total number of authorized users that are connected to cloud computers of the cloud computer share.
         self.online_users_count = online_users_count
         # The ID of the request.
         self.request_id = request_id
-        # The total number of authorized users of the cloud computer pool.
+        self.user_ou_path = user_ou_path
+        # The total number of authorized users of the cloud computer share.
         self.users_count = users_count
 
     def validate(self):
@@ -35397,6 +35415,8 @@ class DescribeUsersInGroupResponseBody(TeaModel):
             result['OnlineUsersCount'] = self.online_users_count
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.user_ou_path is not None:
+            result['UserOuPath'] = self.user_ou_path
         if self.users_count is not None:
             result['UsersCount'] = self.users_count
         return result
@@ -35414,6 +35434,8 @@ class DescribeUsersInGroupResponseBody(TeaModel):
             self.online_users_count = m.get('OnlineUsersCount')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('UserOuPath') is not None:
+            self.user_ou_path = m.get('UserOuPath')
         if m.get('UsersCount') is not None:
             self.users_count = m.get('UsersCount')
         return self
@@ -37123,9 +37145,9 @@ class ExportDesktopGroupInfoRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. If you specify the `Tag` parameter, you must also specify the `Key` parameter. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`. You cannot specify an empty string as a tag key.
+        # The tag key. You cannot specify an empty string as a tag key. A tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
         self.key = key
-        # The value of the tag. The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with `acs:` and cannot contain `http://` or `https://`.
+        # The tag value. You can specify an empty string as a tag key. A tag value can be up to 128 characters in length and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -37168,21 +37190,20 @@ class ExportDesktopGroupInfoRequest(TeaModel):
         region_id: str = None,
         tag: List[ExportDesktopGroupInfoRequestTag] = None,
     ):
-        # The billing method of the cloud computer pool.
+        # The billing method of the cloud computer share.
         # 
         # Valid values:
         # 
         # *   PostPaid: pay-as-you-go.
-        # 
         # *   PrePaid: subscription.
         self.charge_type = charge_type
-        # The IDs of the cloud computer pools.
+        # The IDs of the cloud computer shares.
         self.desktop_group_id = desktop_group_id
-        # The name of the cloud computer pool.
+        # The name of the cloud computer share.
         self.desktop_group_name = desktop_group_name
-        # The authorized user IDs of cloud computer pools.
+        # The IDs of the users to be authorized.
         self.end_user_id = end_user_id
-        # The time when the subscription cloud computer pool expires.
+        # The expiration date of the subscription cloud computer share.
         self.expired_time = expired_time
         # The language of the response.
         self.lang_type = lang_type
@@ -37194,15 +37215,15 @@ class ExportDesktopGroupInfoRequest(TeaModel):
         self.max_results = max_results
         # The token that determines the start point of the next query. If this parameter is left empty, all results are returned.
         self.next_token = next_token
-        # The ID of the office network to which the cloud computer pool belongs.
+        # The ID of the office network.
         self.office_site_id = office_site_id
-        # The ID of the policy that is associated with the cloud computer pool.
+        # The ID of the security policy.
         self.policy_group_id = policy_group_id
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The tags attached to the cloud computer pool. You can specify 1 to 20 tags.
+        # The tags. You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -37285,18 +37306,18 @@ class ExportDesktopGroupInfoResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The URL from which you can download the exported cloud computer pools. The details of the cloud computer pools include:
+        # The download URL of the XLSX file that contains cloud computer shares. The XLSX file provides the following information:
         # 
-        # *   IDs and names of the cloud computer pools
-        # *   IDs and names of the office networks
-        # *   Cloud computer pool templates
-        # *   Number of CPU cores and memory size
-        # *   System disks and data disks
-        # *   Names of security policies
-        # *   Number of current authorized users
-        # *   Billing methods
-        # *   The time when the cloud computer pools were created
-        # *   The time when the cloud computer pools expire
+        # *   Cloud computer share ID/name
+        # *   Office network ID/name
+        # *   Cloud computer share template
+        # *   vCPUs/Memory size
+        # *   System disk/Data disk
+        # *   Security policy name
+        # *   Number of authorized users
+        # *   Billing method
+        # *   Creation time
+        # *   Expiration time
         self.url = url
 
     def validate(self):
@@ -49544,7 +49565,7 @@ class ModifyUserToDesktopGroupRequest(TeaModel):
         old_end_user_ids: List[str] = None,
         region_id: str = None,
     ):
-        # The ID of the cloud computer pool whose end users you want to change.
+        # The ID of the cloud computer share.
         # 
         # This parameter is required.
         self.desktop_group_id = desktop_group_id
@@ -50767,19 +50788,19 @@ class RemoveUserFromDesktopGroupRequest(TeaModel):
         desktop_group_ids: List[str] = None,
         end_user_ids: List[str] = None,
         region_id: str = None,
+        user_ou_path: str = None,
     ):
-        # The ID of the cloud computer pool for which you want to remove the authorized users.
+        # The ID of the cloud computer share.
         self.desktop_group_id = desktop_group_id
-        # The IDs of cloud computer pools.
+        # The IDs of the cloud computer shares.
         self.desktop_group_ids = desktop_group_ids
         # The IDs of the authorized users that you want to remove.
-        # 
-        # This parameter is required.
         self.end_user_ids = end_user_ids
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.user_ou_path = user_ou_path
 
     def validate(self):
         pass
@@ -50798,6 +50819,8 @@ class RemoveUserFromDesktopGroupRequest(TeaModel):
             result['EndUserIds'] = self.end_user_ids
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.user_ou_path is not None:
+            result['UserOuPath'] = self.user_ou_path
         return result
 
     def from_map(self, m: dict = None):
@@ -50810,6 +50833,8 @@ class RemoveUserFromDesktopGroupRequest(TeaModel):
             self.end_user_ids = m.get('EndUserIds')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('UserOuPath') is not None:
+            self.user_ou_path = m.get('UserOuPath')
         return self
 
 
@@ -51019,7 +51044,7 @@ class RenewDesktopGroupRequest(TeaModel):
         # *   true
         # *   false
         self.auto_renew = auto_renew
-        # The ID of the cloud computer pool.
+        # The ID of the shared group.
         # 
         # This parameter is required.
         self.desktop_group_id = desktop_group_id
@@ -51683,17 +51708,25 @@ class ResetDesktopsRequest(TeaModel):
         reset_scope: str = None,
         reset_type: str = None,
     ):
-        # The ID of the cloud computer pool. If you specify the `DesktopId` parameter, ignore the `DesktopGroupId` parameter. If you do not specify the `DesktopId` parameter, specify the `DesktopGroupId` parameter in the call to request all IDs of the cloud computers in the specified pool.
+        # The ID of the cloud computer share.
+        # 
+        # *   If you specify `DesktopId`, ignore `DesktopGroupId`.
+        # *   If you leave `DesktopId` empty, the system obtains the IDs of all cloud computers within the share specified by `DesktopGroupId`.``
         self.desktop_group_id = desktop_group_id
-        # The IDs of the cloud computer pools.
+        # The IDs of the cloud computer shares.
         self.desktop_group_ids = desktop_group_ids
         # The IDs of the cloud computers. You can specify the IDs of 1 to 100 cloud computers.
         self.desktop_id = desktop_id
         # The ID of the image.
         self.image_id = image_id
-        # The billing method.
+        # The billing method of the cloud computer share.
         # 
-        # > This parameter is available only when you reset cloud computer pools. If you leave this parameter empty, all cloud computers in the specified cloud computer pool are reset, regardless of how the cloud computers are billed.
+        # >  This parameter takes effect when you reset a cloud computer share. If you leave this parameter empty, all cloud computers in that share are reset.
+        # 
+        # Valid values:
+        # 
+        # *   PostPaid: pay-as-you-go.
+        # *   PrePaid: subscription.
         self.pay_type = pay_type
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/436773.html) operation to query the most recent region list.
         # 
@@ -52732,7 +52765,7 @@ class SetDesktopGroupTimerRequest(TeaModel):
     ):
         # The cron expression for the scheduled task. This parameter is required when `TimerType` is set to 2, 3, or 4.
         self.cron_expression = cron_expression
-        # The ID of the cloud computer pool.
+        # The ID of the cloud computer share.
         # 
         # This parameter is required.
         self.desktop_group_id = desktop_group_id
@@ -52880,7 +52913,7 @@ class SetDesktopGroupTimerStatusRequest(TeaModel):
         status: int = None,
         timer_type: int = None,
     ):
-        # The ID of the cloud computer pool.
+        # The ID of the cloud computer share.
         # 
         # This parameter is required.
         self.desktop_group_id = desktop_group_id

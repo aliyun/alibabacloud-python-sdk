@@ -560,7 +560,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.AddUserToDesktopGroupResponse:
         """
-        @summary Adds authorized end users of a desktop group.
+        @summary Adds authorized users for a cloud computer share. The system automatically assigns cloud computers from a share to authorized users based on administrator-configured rules.
         
         @param request: AddUserToDesktopGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -578,6 +578,8 @@ class Client(OpenApiClient):
             query['EndUserIds'] = request.end_user_ids
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_ou_path):
+            query['UserOuPath'] = request.user_ou_path
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -609,7 +611,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.AddUserToDesktopGroupResponse:
         """
-        @summary Adds authorized end users of a desktop group.
+        @summary Adds authorized users for a cloud computer share. The system automatically assigns cloud computers from a share to authorized users based on administrator-configured rules.
         
         @param request: AddUserToDesktopGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -627,6 +629,8 @@ class Client(OpenApiClient):
             query['EndUserIds'] = request.end_user_ids
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_ou_path):
+            query['UserOuPath'] = request.user_ou_path
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -657,7 +661,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.AddUserToDesktopGroupRequest,
     ) -> ecd_20200930_models.AddUserToDesktopGroupResponse:
         """
-        @summary Adds authorized end users of a desktop group.
+        @summary Adds authorized users for a cloud computer share. The system automatically assigns cloud computers from a share to authorized users based on administrator-configured rules.
         
         @param request: AddUserToDesktopGroupRequest
         @return: AddUserToDesktopGroupResponse
@@ -670,7 +674,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.AddUserToDesktopGroupRequest,
     ) -> ecd_20200930_models.AddUserToDesktopGroupResponse:
         """
-        @summary Adds authorized end users of a desktop group.
+        @summary Adds authorized users for a cloud computer share. The system automatically assigns cloud computers from a share to authorized users based on administrator-configured rules.
         
         @param request: AddUserToDesktopGroupRequest
         @return: AddUserToDesktopGroupResponse
@@ -4809,6 +4813,8 @@ class Client(OpenApiClient):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.timer_group_id):
             query['TimerGroupId'] = request.timer_group_id
+        if not UtilClient.is_unset(request.user_ou_path):
+            query['UserOuPath'] = request.user_ou_path
         if not UtilClient.is_unset(request.volume_encryption_enabled):
             query['VolumeEncryptionEnabled'] = request.volume_encryption_enabled
         if not UtilClient.is_unset(request.volume_encryption_key):
@@ -4963,6 +4969,8 @@ class Client(OpenApiClient):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.timer_group_id):
             query['TimerGroupId'] = request.timer_group_id
+        if not UtilClient.is_unset(request.user_ou_path):
+            query['UserOuPath'] = request.user_ou_path
         if not UtilClient.is_unset(request.volume_encryption_enabled):
             query['VolumeEncryptionEnabled'] = request.volume_encryption_enabled
         if not UtilClient.is_unset(request.volume_encryption_key):
@@ -16076,7 +16084,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeUsersInGroupResponse:
         """
-        @summary Queries the information about authorized users in a cloud computer pool, including the usernames, email addresses, mobile numbers, and cloud computer IDs.
+        @summary Queries the information about authorized users of a cloud computer share, including the usernames, email addresses, mobile numbers, and cloud computer IDs.
         
         @param request: DescribeUsersInGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16135,7 +16143,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeUsersInGroupResponse:
         """
-        @summary Queries the information about authorized users in a cloud computer pool, including the usernames, email addresses, mobile numbers, and cloud computer IDs.
+        @summary Queries the information about authorized users of a cloud computer share, including the usernames, email addresses, mobile numbers, and cloud computer IDs.
         
         @param request: DescribeUsersInGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16193,7 +16201,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeUsersInGroupRequest,
     ) -> ecd_20200930_models.DescribeUsersInGroupResponse:
         """
-        @summary Queries the information about authorized users in a cloud computer pool, including the usernames, email addresses, mobile numbers, and cloud computer IDs.
+        @summary Queries the information about authorized users of a cloud computer share, including the usernames, email addresses, mobile numbers, and cloud computer IDs.
         
         @param request: DescribeUsersInGroupRequest
         @return: DescribeUsersInGroupResponse
@@ -16206,7 +16214,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeUsersInGroupRequest,
     ) -> ecd_20200930_models.DescribeUsersInGroupResponse:
         """
-        @summary Queries the information about authorized users in a cloud computer pool, including the usernames, email addresses, mobile numbers, and cloud computer IDs.
+        @summary Queries the information about authorized users of a cloud computer share, including the usernames, email addresses, mobile numbers, and cloud computer IDs.
         
         @param request: DescribeUsersInGroupRequest
         @return: DescribeUsersInGroupResponse
@@ -17428,7 +17436,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ExportDesktopGroupInfoResponse:
         """
-        @summary Exports cloud computer pools. The list of cloud computer pools is saved as an XLSX file. Each entry of cloud computer pool data includes the ID and name of the cloud computer pool, the ID and name of the office network, the cloud computer pool template, and the name of the security policy.
+        @summary Exports cloud computer shares and saves the list as an XLSX file. Each entry includes the ID and name of the cloud computer share, the ID and name of the office network, the cloud computer share template, and the name of the security policy.
         
         @param request: ExportDesktopGroupInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17491,7 +17499,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ExportDesktopGroupInfoResponse:
         """
-        @summary Exports cloud computer pools. The list of cloud computer pools is saved as an XLSX file. Each entry of cloud computer pool data includes the ID and name of the cloud computer pool, the ID and name of the office network, the cloud computer pool template, and the name of the security policy.
+        @summary Exports cloud computer shares and saves the list as an XLSX file. Each entry includes the ID and name of the cloud computer share, the ID and name of the office network, the cloud computer share template, and the name of the security policy.
         
         @param request: ExportDesktopGroupInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17553,7 +17561,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ExportDesktopGroupInfoRequest,
     ) -> ecd_20200930_models.ExportDesktopGroupInfoResponse:
         """
-        @summary Exports cloud computer pools. The list of cloud computer pools is saved as an XLSX file. Each entry of cloud computer pool data includes the ID and name of the cloud computer pool, the ID and name of the office network, the cloud computer pool template, and the name of the security policy.
+        @summary Exports cloud computer shares and saves the list as an XLSX file. Each entry includes the ID and name of the cloud computer share, the ID and name of the office network, the cloud computer share template, and the name of the security policy.
         
         @param request: ExportDesktopGroupInfoRequest
         @return: ExportDesktopGroupInfoResponse
@@ -17566,7 +17574,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ExportDesktopGroupInfoRequest,
     ) -> ecd_20200930_models.ExportDesktopGroupInfoResponse:
         """
-        @summary Exports cloud computer pools. The list of cloud computer pools is saved as an XLSX file. Each entry of cloud computer pool data includes the ID and name of the cloud computer pool, the ID and name of the office network, the cloud computer pool template, and the name of the security policy.
+        @summary Exports cloud computer shares and saves the list as an XLSX file. Each entry includes the ID and name of the cloud computer share, the ID and name of the office network, the cloud computer share template, and the name of the security policy.
         
         @param request: ExportDesktopGroupInfoRequest
         @return: ExportDesktopGroupInfoResponse
@@ -25064,7 +25072,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyUserToDesktopGroupResponse:
         """
-        @summary Changes the end users of a cloud computer pool into new end users.
+        @summary Replaces the existing authorized users of a cloud computer share with different users
         
         @param request: ModifyUserToDesktopGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25111,7 +25119,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyUserToDesktopGroupResponse:
         """
-        @summary Changes the end users of a cloud computer pool into new end users.
+        @summary Replaces the existing authorized users of a cloud computer share with different users
         
         @param request: ModifyUserToDesktopGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25157,7 +25165,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyUserToDesktopGroupRequest,
     ) -> ecd_20200930_models.ModifyUserToDesktopGroupResponse:
         """
-        @summary Changes the end users of a cloud computer pool into new end users.
+        @summary Replaces the existing authorized users of a cloud computer share with different users
         
         @param request: ModifyUserToDesktopGroupRequest
         @return: ModifyUserToDesktopGroupResponse
@@ -25170,7 +25178,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyUserToDesktopGroupRequest,
     ) -> ecd_20200930_models.ModifyUserToDesktopGroupResponse:
         """
-        @summary Changes the end users of a cloud computer pool into new end users.
+        @summary Replaces the existing authorized users of a cloud computer share with different users
         
         @param request: ModifyUserToDesktopGroupRequest
         @return: ModifyUserToDesktopGroupResponse
@@ -25728,7 +25736,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RemoveUserFromDesktopGroupResponse:
         """
-        @summary Removes authorized users of cloud computer pools. The removed users can no longer connect to cloud computers in the cloud computer pool.
+        @summary Revokes user access permissions for a cloud computer share. Once access permissions for a cloud computer share are revoked from a user, the user can no longer access any cloud computers within that share.
         
         @param request: RemoveUserFromDesktopGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25744,6 +25752,8 @@ class Client(OpenApiClient):
             query['EndUserIds'] = request.end_user_ids
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_ou_path):
+            query['UserOuPath'] = request.user_ou_path
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -25775,7 +25785,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RemoveUserFromDesktopGroupResponse:
         """
-        @summary Removes authorized users of cloud computer pools. The removed users can no longer connect to cloud computers in the cloud computer pool.
+        @summary Revokes user access permissions for a cloud computer share. Once access permissions for a cloud computer share are revoked from a user, the user can no longer access any cloud computers within that share.
         
         @param request: RemoveUserFromDesktopGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25791,6 +25801,8 @@ class Client(OpenApiClient):
             query['EndUserIds'] = request.end_user_ids
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_ou_path):
+            query['UserOuPath'] = request.user_ou_path
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -25821,7 +25833,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RemoveUserFromDesktopGroupRequest,
     ) -> ecd_20200930_models.RemoveUserFromDesktopGroupResponse:
         """
-        @summary Removes authorized users of cloud computer pools. The removed users can no longer connect to cloud computers in the cloud computer pool.
+        @summary Revokes user access permissions for a cloud computer share. Once access permissions for a cloud computer share are revoked from a user, the user can no longer access any cloud computers within that share.
         
         @param request: RemoveUserFromDesktopGroupRequest
         @return: RemoveUserFromDesktopGroupResponse
@@ -25834,7 +25846,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RemoveUserFromDesktopGroupRequest,
     ) -> ecd_20200930_models.RemoveUserFromDesktopGroupResponse:
         """
-        @summary Removes authorized users of cloud computer pools. The removed users can no longer connect to cloud computers in the cloud computer pool.
+        @summary Revokes user access permissions for a cloud computer share. Once access permissions for a cloud computer share are revoked from a user, the user can no longer access any cloud computers within that share.
         
         @param request: RemoveUserFromDesktopGroupRequest
         @return: RemoveUserFromDesktopGroupResponse
@@ -25968,7 +25980,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RenewDesktopGroupResponse:
         """
-        @summary Renew a subscription cloud computer pool.
+        @summary Renews a shared cloud computer.
         
         @param request: RenewDesktopGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26019,7 +26031,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RenewDesktopGroupResponse:
         """
-        @summary Renew a subscription cloud computer pool.
+        @summary Renews a shared cloud computer.
         
         @param request: RenewDesktopGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26069,7 +26081,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RenewDesktopGroupRequest,
     ) -> ecd_20200930_models.RenewDesktopGroupResponse:
         """
-        @summary Renew a subscription cloud computer pool.
+        @summary Renews a shared cloud computer.
         
         @param request: RenewDesktopGroupRequest
         @return: RenewDesktopGroupResponse
@@ -26082,7 +26094,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RenewDesktopGroupRequest,
     ) -> ecd_20200930_models.RenewDesktopGroupResponse:
         """
-        @summary Renew a subscription cloud computer pool.
+        @summary Renews a shared cloud computer.
         
         @param request: RenewDesktopGroupRequest
         @return: RenewDesktopGroupResponse
@@ -26480,9 +26492,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ResetDesktopsResponse:
         """
-        @summary Resets cloud computers.
+        @summary Resets cloud computers of a cloud computer share.
         
-        @description > You can call this operation to reset only cloud computers in a cloud computer pool.
+        @description >  You can call this operation to reset only cloud computers from a cloud computer share.
         
         @param request: ResetDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26537,9 +26549,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ResetDesktopsResponse:
         """
-        @summary Resets cloud computers.
+        @summary Resets cloud computers of a cloud computer share.
         
-        @description > You can call this operation to reset only cloud computers in a cloud computer pool.
+        @description >  You can call this operation to reset only cloud computers from a cloud computer share.
         
         @param request: ResetDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26593,9 +26605,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ResetDesktopsRequest,
     ) -> ecd_20200930_models.ResetDesktopsResponse:
         """
-        @summary Resets cloud computers.
+        @summary Resets cloud computers of a cloud computer share.
         
-        @description > You can call this operation to reset only cloud computers in a cloud computer pool.
+        @description >  You can call this operation to reset only cloud computers from a cloud computer share.
         
         @param request: ResetDesktopsRequest
         @return: ResetDesktopsResponse
@@ -26608,9 +26620,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ResetDesktopsRequest,
     ) -> ecd_20200930_models.ResetDesktopsResponse:
         """
-        @summary Resets cloud computers.
+        @summary Resets cloud computers of a cloud computer share.
         
-        @description > You can call this operation to reset only cloud computers in a cloud computer pool.
+        @description >  You can call this operation to reset only cloud computers from a cloud computer share.
         
         @param request: ResetDesktopsRequest
         @return: ResetDesktopsResponse
@@ -27380,7 +27392,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.SetDesktopGroupTimerResponse:
         """
-        @summary Configures a scheduled task for a cloud computer pool, such as starting, stopping, restarting or resting cloud computers in the pool.
+        @summary Configures a scheduled start, stop, restart, or reset task for a cloud computer share.
         
         @param request: SetDesktopGroupTimerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27431,7 +27443,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.SetDesktopGroupTimerResponse:
         """
-        @summary Configures a scheduled task for a cloud computer pool, such as starting, stopping, restarting or resting cloud computers in the pool.
+        @summary Configures a scheduled start, stop, restart, or reset task for a cloud computer share.
         
         @param request: SetDesktopGroupTimerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27481,7 +27493,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.SetDesktopGroupTimerRequest,
     ) -> ecd_20200930_models.SetDesktopGroupTimerResponse:
         """
-        @summary Configures a scheduled task for a cloud computer pool, such as starting, stopping, restarting or resting cloud computers in the pool.
+        @summary Configures a scheduled start, stop, restart, or reset task for a cloud computer share.
         
         @param request: SetDesktopGroupTimerRequest
         @return: SetDesktopGroupTimerResponse
@@ -27494,7 +27506,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.SetDesktopGroupTimerRequest,
     ) -> ecd_20200930_models.SetDesktopGroupTimerResponse:
         """
-        @summary Configures a scheduled task for a cloud computer pool, such as starting, stopping, restarting or resting cloud computers in the pool.
+        @summary Configures a scheduled start, stop, restart, or reset task for a cloud computer share.
         
         @param request: SetDesktopGroupTimerRequest
         @return: SetDesktopGroupTimerResponse
@@ -27508,7 +27520,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.SetDesktopGroupTimerStatusResponse:
         """
-        @summary Sets the status of a scheduled task for a cloud computer pool. For example, you enable or disable the scheduled task.
+        @summary Sets the status of a scheduled task for a cloud computer share, such as enabling or disabling it.
         
         @param request: SetDesktopGroupTimerStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27555,7 +27567,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.SetDesktopGroupTimerStatusResponse:
         """
-        @summary Sets the status of a scheduled task for a cloud computer pool. For example, you enable or disable the scheduled task.
+        @summary Sets the status of a scheduled task for a cloud computer share, such as enabling or disabling it.
         
         @param request: SetDesktopGroupTimerStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27601,7 +27613,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.SetDesktopGroupTimerStatusRequest,
     ) -> ecd_20200930_models.SetDesktopGroupTimerStatusResponse:
         """
-        @summary Sets the status of a scheduled task for a cloud computer pool. For example, you enable or disable the scheduled task.
+        @summary Sets the status of a scheduled task for a cloud computer share, such as enabling or disabling it.
         
         @param request: SetDesktopGroupTimerStatusRequest
         @return: SetDesktopGroupTimerStatusResponse
@@ -27614,7 +27626,7 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.SetDesktopGroupTimerStatusRequest,
     ) -> ecd_20200930_models.SetDesktopGroupTimerStatusResponse:
         """
-        @summary Sets the status of a scheduled task for a cloud computer pool. For example, you enable or disable the scheduled task.
+        @summary Sets the status of a scheduled task for a cloud computer share, such as enabling or disabling it.
         
         @param request: SetDesktopGroupTimerStatusRequest
         @return: SetDesktopGroupTimerStatusResponse
