@@ -2959,6 +2959,8 @@ class Client(OpenApiClient):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_pool_options):
+            query['ResourcePoolOptions'] = request.resource_pool_options
         if not UtilClient.is_unset(request.scaling_configuration_name):
             query['ScalingConfigurationName'] = request.scaling_configuration_name
         if not UtilClient.is_unset(request.scaling_group_id):
@@ -3130,6 +3132,8 @@ class Client(OpenApiClient):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_pool_options):
+            query['ResourcePoolOptions'] = request.resource_pool_options
         if not UtilClient.is_unset(request.scaling_configuration_name):
             query['ScalingConfigurationName'] = request.scaling_configuration_name
         if not UtilClient.is_unset(request.scaling_group_id):
@@ -11071,8 +11075,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies a scaling configuration of the Elastic Container Instance type. When you call the ModifyEciScalingConfiguration operation, you can specify the ID, name, and instance properties of the scaling configuration whose information you want to modify. You can modify the instance restart policy, instance bidding policy, and elastic IP address (EIP) bandwidth.
         
-        @description    If you want to change the name of a scaling configuration in a scaling group, make sure that the new name is unique within the scaling group.
-        You can call the [ModifyEciScalingConfiguration](https://help.aliyun.com/document_detail/459378.html) operation to check the modification result.
+        @description    To rename a scaling configuration in a scaling group, ensure the new name is unique within that group.
+        You can call the [DescribeEciScalingConfigurations](https://help.aliyun.com/document_detail/459374.html) operation to check the modification result.
         
         @param request: ModifyEciScalingConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11215,8 +11219,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies a scaling configuration of the Elastic Container Instance type. When you call the ModifyEciScalingConfiguration operation, you can specify the ID, name, and instance properties of the scaling configuration whose information you want to modify. You can modify the instance restart policy, instance bidding policy, and elastic IP address (EIP) bandwidth.
         
-        @description    If you want to change the name of a scaling configuration in a scaling group, make sure that the new name is unique within the scaling group.
-        You can call the [ModifyEciScalingConfiguration](https://help.aliyun.com/document_detail/459378.html) operation to check the modification result.
+        @description    To rename a scaling configuration in a scaling group, ensure the new name is unique within that group.
+        You can call the [DescribeEciScalingConfigurations](https://help.aliyun.com/document_detail/459374.html) operation to check the modification result.
         
         @param request: ModifyEciScalingConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11358,8 +11362,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies a scaling configuration of the Elastic Container Instance type. When you call the ModifyEciScalingConfiguration operation, you can specify the ID, name, and instance properties of the scaling configuration whose information you want to modify. You can modify the instance restart policy, instance bidding policy, and elastic IP address (EIP) bandwidth.
         
-        @description    If you want to change the name of a scaling configuration in a scaling group, make sure that the new name is unique within the scaling group.
-        You can call the [ModifyEciScalingConfiguration](https://help.aliyun.com/document_detail/459378.html) operation to check the modification result.
+        @description    To rename a scaling configuration in a scaling group, ensure the new name is unique within that group.
+        You can call the [DescribeEciScalingConfigurations](https://help.aliyun.com/document_detail/459374.html) operation to check the modification result.
         
         @param request: ModifyEciScalingConfigurationRequest
         @return: ModifyEciScalingConfigurationResponse
@@ -11374,8 +11378,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies a scaling configuration of the Elastic Container Instance type. When you call the ModifyEciScalingConfiguration operation, you can specify the ID, name, and instance properties of the scaling configuration whose information you want to modify. You can modify the instance restart policy, instance bidding policy, and elastic IP address (EIP) bandwidth.
         
-        @description    If you want to change the name of a scaling configuration in a scaling group, make sure that the new name is unique within the scaling group.
-        You can call the [ModifyEciScalingConfiguration](https://help.aliyun.com/document_detail/459378.html) operation to check the modification result.
+        @description    To rename a scaling configuration in a scaling group, ensure the new name is unique within that group.
+        You can call the [DescribeEciScalingConfigurations](https://help.aliyun.com/document_detail/459374.html) operation to check the modification result.
         
         @param request: ModifyEciScalingConfigurationRequest
         @return: ModifyEciScalingConfigurationResponse
@@ -11914,6 +11918,8 @@ class Client(OpenApiClient):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_pool_options):
+            query['ResourcePoolOptions'] = request.resource_pool_options
         if not UtilClient.is_unset(request.scaling_configuration_id):
             query['ScalingConfigurationId'] = request.scaling_configuration_id
         if not UtilClient.is_unset(request.scaling_configuration_name):
@@ -12078,6 +12084,8 @@ class Client(OpenApiClient):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_pool_options):
+            query['ResourcePoolOptions'] = request.resource_pool_options
         if not UtilClient.is_unset(request.scaling_configuration_id):
             query['ScalingConfigurationId'] = request.scaling_configuration_id
         if not UtilClient.is_unset(request.scaling_configuration_name):

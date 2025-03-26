@@ -1,3 +1,9 @@
+2025-03-26 Version: 1.10.11
+- Update API CreateScalingConfiguration: add request parameters ResourcePoolOptions.
+- Update API DescribeScalingConfigurations: add response parameters Body.ScalingConfigurations.$.ResourcePoolOptions.
+- Update API ModifyScalingConfiguration: add request parameters ResourcePoolOptions.
+
+
 2025-03-14 Version: 1.10.10
 - Update API DescribeElasticStrength: update response param.
 

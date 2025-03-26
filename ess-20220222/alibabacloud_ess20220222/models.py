@@ -6083,6 +6083,39 @@ class CreateScalingConfigurationRequestNetworkInterfaces(TeaModel):
         return self
 
 
+class CreateScalingConfigurationRequestResourcePoolOptions(TeaModel):
+    def __init__(
+        self,
+        private_pool_ids: List[str] = None,
+        strategy: str = None,
+    ):
+        self.private_pool_ids = private_pool_ids
+        self.strategy = strategy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.private_pool_ids is not None:
+            result['PrivatePoolIds'] = self.private_pool_ids
+        if self.strategy is not None:
+            result['Strategy'] = self.strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PrivatePoolIds') is not None:
+            self.private_pool_ids = m.get('PrivatePoolIds')
+        if m.get('Strategy') is not None:
+            self.strategy = m.get('Strategy')
+        return self
+
+
 class CreateScalingConfigurationRequestSecurityOptions(TeaModel):
     def __init__(
         self,
@@ -6194,6 +6227,7 @@ class CreateScalingConfigurationRequest(TeaModel):
         ram_role_name: str = None,
         resource_group_id: str = None,
         resource_owner_account: str = None,
+        resource_pool_options: CreateScalingConfigurationRequestResourcePoolOptions = None,
         scaling_configuration_name: str = None,
         scaling_group_id: str = None,
         scheduler_options: Dict[str, Any] = None,
@@ -6366,6 +6400,7 @@ class CreateScalingConfigurationRequest(TeaModel):
         # The ID of the resource group to which the ECS instances that are created by using the scaling configuration belong.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
+        self.resource_pool_options = resource_pool_options
         # The name of the scaling configuration. The name must be 2 to 64 characters in length and can contain letters, digits, underscores (_), hyphens (-), and periods (.). The name must start with a letter or a digit.
         # 
         # The name of the scaling configuration must be unique in a region. If you do not specify this parameter, the scaling configuration ID is used.
@@ -6462,6 +6497,8 @@ class CreateScalingConfigurationRequest(TeaModel):
             for k in self.network_interfaces:
                 if k:
                     k.validate()
+        if self.resource_pool_options:
+            self.resource_pool_options.validate()
         if self.security_options:
             self.security_options.validate()
         if self.spot_price_limits:
@@ -6569,6 +6606,8 @@ class CreateScalingConfigurationRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_pool_options is not None:
+            result['ResourcePoolOptions'] = self.resource_pool_options.to_map()
         if self.scaling_configuration_name is not None:
             result['ScalingConfigurationName'] = self.scaling_configuration_name
         if self.scaling_group_id is not None:
@@ -6713,6 +6752,9 @@ class CreateScalingConfigurationRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourcePoolOptions') is not None:
+            temp_model = CreateScalingConfigurationRequestResourcePoolOptions()
+            self.resource_pool_options = temp_model.from_map(m['ResourcePoolOptions'])
         if m.get('ScalingConfigurationName') is not None:
             self.scaling_configuration_name = m.get('ScalingConfigurationName')
         if m.get('ScalingGroupId') is not None:
@@ -7528,6 +7570,39 @@ class CreateScalingConfigurationShrinkRequestNetworkInterfaces(TeaModel):
         return self
 
 
+class CreateScalingConfigurationShrinkRequestResourcePoolOptions(TeaModel):
+    def __init__(
+        self,
+        private_pool_ids: List[str] = None,
+        strategy: str = None,
+    ):
+        self.private_pool_ids = private_pool_ids
+        self.strategy = strategy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.private_pool_ids is not None:
+            result['PrivatePoolIds'] = self.private_pool_ids
+        if self.strategy is not None:
+            result['Strategy'] = self.strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PrivatePoolIds') is not None:
+            self.private_pool_ids = m.get('PrivatePoolIds')
+        if m.get('Strategy') is not None:
+            self.strategy = m.get('Strategy')
+        return self
+
+
 class CreateScalingConfigurationShrinkRequestSecurityOptions(TeaModel):
     def __init__(
         self,
@@ -7639,6 +7714,7 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
         ram_role_name: str = None,
         resource_group_id: str = None,
         resource_owner_account: str = None,
+        resource_pool_options: CreateScalingConfigurationShrinkRequestResourcePoolOptions = None,
         scaling_configuration_name: str = None,
         scaling_group_id: str = None,
         scheduler_options_shrink: str = None,
@@ -7811,6 +7887,7 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
         # The ID of the resource group to which the ECS instances that are created by using the scaling configuration belong.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
+        self.resource_pool_options = resource_pool_options
         # The name of the scaling configuration. The name must be 2 to 64 characters in length and can contain letters, digits, underscores (_), hyphens (-), and periods (.). The name must start with a letter or a digit.
         # 
         # The name of the scaling configuration must be unique in a region. If you do not specify this parameter, the scaling configuration ID is used.
@@ -7907,6 +7984,8 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
             for k in self.network_interfaces:
                 if k:
                     k.validate()
+        if self.resource_pool_options:
+            self.resource_pool_options.validate()
         if self.security_options:
             self.security_options.validate()
         if self.spot_price_limits:
@@ -8014,6 +8093,8 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_pool_options is not None:
+            result['ResourcePoolOptions'] = self.resource_pool_options.to_map()
         if self.scaling_configuration_name is not None:
             result['ScalingConfigurationName'] = self.scaling_configuration_name
         if self.scaling_group_id is not None:
@@ -8158,6 +8239,9 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourcePoolOptions') is not None:
+            temp_model = CreateScalingConfigurationShrinkRequestResourcePoolOptions()
+            self.resource_pool_options = temp_model.from_map(m['ResourcePoolOptions'])
         if m.get('ScalingConfigurationName') is not None:
             self.scaling_configuration_name = m.get('ScalingConfigurationName')
         if m.get('ScalingGroupId') is not None:
@@ -8345,6 +8429,12 @@ class CreateScalingGroupRequestCapacityOptions(TeaModel):
         # 
         # If you set `MultiAZPolicy` to `COMPOSABLE`, the default value is 100.
         self.on_demand_percentage_above_base_capacity = on_demand_percentage_above_base_capacity
+        # The cost comparison method. Valid values:
+        # 
+        # *   PricePerUnit: compares costs based on unit price divided by instance capacities (weights). The capacity of an instance in a scaling group is determined by the weight of the instance type used. If no weight is set, the capacity defaults to 1.
+        # *   PricePerVCpu: compares costs based on unit price divided by the number of vCPUs.
+        # 
+        # Default value: PricePerUnit.
         self.price_comparison_mode = price_comparison_mode
         # Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify `CompensateWithOnDemand`, it may result in a higher percentage of pay-as-you-go instances compared to the value of `OnDemandPercentageAboveBaseCapacity`. In this scenario, Auto Scaling will try to deploy preemptible instances to replace the surplus pay-as-you-go instances. When `CompensateWithOnDemand` is specified, Auto Scaling creates pay-as-you-go instances if there are not enough preemptible instance types. To avoid keeping these pay-as-you-go ECS instances for long periods, Auto Scaling tries to replace them with preemptible instances as soon as enough of preemptible instance types become available. Valid values:
         # 
@@ -9700,7 +9790,7 @@ class CreateScalingRuleRequest(TeaModel):
         # 
         # Default value: 300.
         self.estimated_instance_warmup = estimated_instance_warmup
-        # The Hybrid Cloud Monitoring metrics.
+        # The Hybrid Cloud Monitoring metrics. For more information, see [Create a custom target tracking scaling rule](https://help.aliyun.com/document_detail/2852162.html).
         self.hybrid_metrics = hybrid_metrics
         # The ID of the Hybrid Cloud Monitoring namespace.
         # 
@@ -11454,7 +11544,7 @@ class DescribeAlarmsRequest(TeaModel):
         self.is_enable = is_enable
         # The metric name.
         self.metric_name = metric_name
-        # The type of the metric. Valid values:
+        # The metric type. Valid values:
         # 
         # *   system: system metrics of CloudMonitor
         # *   custom: custom metrics that are reported to CloudMonitor.
@@ -20498,6 +20588,39 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkInter
         return self
 
 
+class DescribeScalingConfigurationsResponseBodyScalingConfigurationsResourcePoolOptions(TeaModel):
+    def __init__(
+        self,
+        private_pool_ids: List[str] = None,
+        strategy: str = None,
+    ):
+        self.private_pool_ids = private_pool_ids
+        self.strategy = strategy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.private_pool_ids is not None:
+            result['PrivatePoolIds'] = self.private_pool_ids
+        if self.strategy is not None:
+            result['Strategy'] = self.strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PrivatePoolIds') is not None:
+            self.private_pool_ids = m.get('PrivatePoolIds')
+        if m.get('Strategy') is not None:
+            self.strategy = m.get('Strategy')
+        return self
+
+
 class DescribeScalingConfigurationsResponseBodyScalingConfigurationsSchedulerOptions(TeaModel):
     def __init__(
         self,
@@ -20671,6 +20794,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         private_pool_options_match_criteria: str = None,
         ram_role_name: str = None,
         resource_group_id: str = None,
+        resource_pool_options: DescribeScalingConfigurationsResponseBodyScalingConfigurationsResourcePoolOptions = None,
         scaling_configuration_id: str = None,
         scaling_configuration_name: str = None,
         scaling_group_id: str = None,
@@ -20835,6 +20959,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         self.ram_role_name = ram_role_name
         # The ID of the resource group to which the ECS instances belong.
         self.resource_group_id = resource_group_id
+        self.resource_pool_options = resource_pool_options
         # The ID of the scaling configuration.
         self.scaling_configuration_id = scaling_configuration_id
         # The name of the scaling configuration.
@@ -20951,6 +21076,8 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
             for k in self.network_interfaces:
                 if k:
                     k.validate()
+        if self.resource_pool_options:
+            self.resource_pool_options.validate()
         if self.scheduler_options:
             self.scheduler_options.validate()
         if self.security_options:
@@ -21060,6 +21187,8 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
             result['RamRoleName'] = self.ram_role_name
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_pool_options is not None:
+            result['ResourcePoolOptions'] = self.resource_pool_options.to_map()
         if self.scaling_configuration_id is not None:
             result['ScalingConfigurationId'] = self.scaling_configuration_id
         if self.scaling_configuration_name is not None:
@@ -21224,6 +21353,9 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
             self.ram_role_name = m.get('RamRoleName')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourcePoolOptions') is not None:
+            temp_model = DescribeScalingConfigurationsResponseBodyScalingConfigurationsResourcePoolOptions()
+            self.resource_pool_options = temp_model.from_map(m['ResourcePoolOptions'])
         if m.get('ScalingConfigurationId') is not None:
             self.scaling_configuration_id = m.get('ScalingConfigurationId')
         if m.get('ScalingConfigurationName') is not None:
@@ -22626,7 +22758,7 @@ class DescribeScalingGroupsRequest(TeaModel):
         self.owner_id = owner_id
         # The page number. Minimum value: 1.
         # 
-        # Default value: 1.
+        # Default value: 1
         self.page_number = page_number
         # The number of entries per page. Maximum value: 50.
         # 
@@ -22791,10 +22923,13 @@ class DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions(TeaModel):
         self.on_demand_base_capacity = on_demand_base_capacity
         # The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. `OnDemandBaseCapacity` specifies the minimum number of pay-as-you-go instances required in the scaling group. Valid values: 0 to 100.
         self.on_demand_percentage_above_base_capacity = on_demand_percentage_above_base_capacity
-        # The price comparison mode. Valid values:
+        # Indicates how prices are compared. Valid values:
         # 
-        # *   PricePerUnit: compares prices based on capacity. The capacity of instances in a scaling group is determined by the weights of the instance types used. If no weight is specified, the default weight is 1.
-        # *   PricePerVCpu: compares prices based on the price per vCPU.
+        # *   PricePerUnit: Prices are compared based on the price per instance capacity.
+        # 
+        #     Capacity is determined by the weights assigned to instance types in the scaling group. If no weight is specified, a default weight of 1 is used, meaning each instance is assigned a capacity of 1.
+        # 
+        # *   PricePerVCpu: Prices are compared based on the price per vCPU.
         self.price_comparison_mode = price_comparison_mode
         # Specifies whether to replace pay-as-you-go ECS instances with preemptible ECS instances. If you specify `CompensateWithOnDemand`, it may result in a higher percentage of pay-as-you-go instances compared to the value of `OnDemandPercentageAboveBaseCapacity`. In this scenario, Auto Scaling will try to deploy preemptible ECS instances to replace the surplus pay-as-you-go ECS instances. When `CompensateWithOnDemand` is specified, Auto Scaling creates pay-as-you-go ECS instances if there are not enough preemptible instance types available. To avoid keeping these pay-as-you-go ECS instances for long periods, Auto Scaling tries to replace them with preemptible instances as soon as enough of preemptible instance types become available. Valid values:
         # 
@@ -24807,7 +24942,7 @@ class DescribeScalingRulesResponseBodyScalingRules(TeaModel):
         self.disable_scale_in = disable_scale_in
         # The warm-up period of instances. During the warm-up period, a series of preparation measures are taken for the new instances. Performance metrics of instances being warmed up are not counted towards the monitoring range.
         self.estimated_instance_warmup = estimated_instance_warmup
-        # The Hybrid Cloud Monitoring metrics.
+        # The Hybrid Cloud Monitoring metrics. For more information, see [Create a custom target tracking scaling rule](https://help.aliyun.com/document_detail/2852162.html).
         self.hybrid_metrics = hybrid_metrics
         # The ID of the Hybrid Cloud Monitoring namespace.
         # 
@@ -32662,6 +32797,39 @@ class ModifyScalingConfigurationRequestNetworkInterfaces(TeaModel):
         return self
 
 
+class ModifyScalingConfigurationRequestResourcePoolOptions(TeaModel):
+    def __init__(
+        self,
+        private_pool_ids: List[str] = None,
+        strategy: str = None,
+    ):
+        self.private_pool_ids = private_pool_ids
+        self.strategy = strategy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.private_pool_ids is not None:
+            result['PrivatePoolIds'] = self.private_pool_ids
+        if self.strategy is not None:
+            result['Strategy'] = self.strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PrivatePoolIds') is not None:
+            self.private_pool_ids = m.get('PrivatePoolIds')
+        if m.get('Strategy') is not None:
+            self.strategy = m.get('Strategy')
+        return self
+
+
 class ModifyScalingConfigurationRequestSecurityOptions(TeaModel):
     def __init__(
         self,
@@ -32772,6 +32940,7 @@ class ModifyScalingConfigurationRequest(TeaModel):
         ram_role_name: str = None,
         resource_group_id: str = None,
         resource_owner_account: str = None,
+        resource_pool_options: ModifyScalingConfigurationRequestResourcePoolOptions = None,
         scaling_configuration_id: str = None,
         scaling_configuration_name: str = None,
         scheduler_options: Dict[str, Any] = None,
@@ -32941,6 +33110,7 @@ class ModifyScalingConfigurationRequest(TeaModel):
         # The ID of the resource group to which the ECS instances belong.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
+        self.resource_pool_options = resource_pool_options
         # The ID of the scaling configuration that you want to modify.
         # 
         # This parameter is required.
@@ -33028,6 +33198,8 @@ class ModifyScalingConfigurationRequest(TeaModel):
             for k in self.network_interfaces:
                 if k:
                     k.validate()
+        if self.resource_pool_options:
+            self.resource_pool_options.validate()
         if self.security_options:
             self.security_options.validate()
         if self.spot_price_limits:
@@ -33133,6 +33305,8 @@ class ModifyScalingConfigurationRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_pool_options is not None:
+            result['ResourcePoolOptions'] = self.resource_pool_options.to_map()
         if self.scaling_configuration_id is not None:
             result['ScalingConfigurationId'] = self.scaling_configuration_id
         if self.scaling_configuration_name is not None:
@@ -33273,6 +33447,9 @@ class ModifyScalingConfigurationRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourcePoolOptions') is not None:
+            temp_model = ModifyScalingConfigurationRequestResourcePoolOptions()
+            self.resource_pool_options = temp_model.from_map(m['ResourcePoolOptions'])
         if m.get('ScalingConfigurationId') is not None:
             self.scaling_configuration_id = m.get('ScalingConfigurationId')
         if m.get('ScalingConfigurationName') is not None:
@@ -34095,6 +34272,39 @@ class ModifyScalingConfigurationShrinkRequestNetworkInterfaces(TeaModel):
         return self
 
 
+class ModifyScalingConfigurationShrinkRequestResourcePoolOptions(TeaModel):
+    def __init__(
+        self,
+        private_pool_ids: List[str] = None,
+        strategy: str = None,
+    ):
+        self.private_pool_ids = private_pool_ids
+        self.strategy = strategy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.private_pool_ids is not None:
+            result['PrivatePoolIds'] = self.private_pool_ids
+        if self.strategy is not None:
+            result['Strategy'] = self.strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PrivatePoolIds') is not None:
+            self.private_pool_ids = m.get('PrivatePoolIds')
+        if m.get('Strategy') is not None:
+            self.strategy = m.get('Strategy')
+        return self
+
+
 class ModifyScalingConfigurationShrinkRequestSecurityOptions(TeaModel):
     def __init__(
         self,
@@ -34205,6 +34415,7 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         ram_role_name: str = None,
         resource_group_id: str = None,
         resource_owner_account: str = None,
+        resource_pool_options: ModifyScalingConfigurationShrinkRequestResourcePoolOptions = None,
         scaling_configuration_id: str = None,
         scaling_configuration_name: str = None,
         scheduler_options_shrink: str = None,
@@ -34374,6 +34585,7 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         # The ID of the resource group to which the ECS instances belong.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
+        self.resource_pool_options = resource_pool_options
         # The ID of the scaling configuration that you want to modify.
         # 
         # This parameter is required.
@@ -34461,6 +34673,8 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
             for k in self.network_interfaces:
                 if k:
                     k.validate()
+        if self.resource_pool_options:
+            self.resource_pool_options.validate()
         if self.security_options:
             self.security_options.validate()
         if self.spot_price_limits:
@@ -34566,6 +34780,8 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_pool_options is not None:
+            result['ResourcePoolOptions'] = self.resource_pool_options.to_map()
         if self.scaling_configuration_id is not None:
             result['ScalingConfigurationId'] = self.scaling_configuration_id
         if self.scaling_configuration_name is not None:
@@ -34706,6 +34922,9 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourcePoolOptions') is not None:
+            temp_model = ModifyScalingConfigurationShrinkRequestResourcePoolOptions()
+            self.resource_pool_options = temp_model.from_map(m['ResourcePoolOptions'])
         if m.get('ScalingConfigurationId') is not None:
             self.scaling_configuration_id = m.get('ScalingConfigurationId')
         if m.get('ScalingConfigurationName') is not None:
@@ -35626,7 +35845,7 @@ class ModifyScalingRuleRequest(TeaModel):
         # 
         # Valid values: 0 to 86400. Unit: seconds.
         self.estimated_instance_warmup = estimated_instance_warmup
-        # The Hybrid Cloud Monitoring metrics.
+        # The Hybrid Cloud Monitoring metrics. For more information, see [Create a custom target tracking scaling rule](https://help.aliyun.com/document_detail/2852162.html).
         self.hybrid_metrics = hybrid_metrics
         # The ID of the Hybrid Cloud Monitoring namespace.
         # 
