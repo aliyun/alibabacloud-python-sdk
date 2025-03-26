@@ -2274,6 +2274,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_copy_image_with_options_async(request, runtime)
 
+    def clone_center_policy_with_options(
+        self,
+        request: ecd_20200930_models.CloneCenterPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CloneCenterPolicyResponse:
+        """
+        @param request: CloneCenterPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloneCenterPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.business_type):
+            query['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.policy_group_id):
+            query['PolicyGroupId'] = request.policy_group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CloneCenterPolicy',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ecd_20200930_models.CloneCenterPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ecd_20200930_models.CloneCenterPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def clone_center_policy_with_options_async(
+        self,
+        request: ecd_20200930_models.CloneCenterPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CloneCenterPolicyResponse:
+        """
+        @param request: CloneCenterPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloneCenterPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.business_type):
+            query['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.policy_group_id):
+            query['PolicyGroupId'] = request.policy_group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CloneCenterPolicy',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ecd_20200930_models.CloneCenterPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ecd_20200930_models.CloneCenterPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def clone_center_policy(
+        self,
+        request: ecd_20200930_models.CloneCenterPolicyRequest,
+    ) -> ecd_20200930_models.CloneCenterPolicyResponse:
+        """
+        @param request: CloneCenterPolicyRequest
+        @return: CloneCenterPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.clone_center_policy_with_options(request, runtime)
+
+    async def clone_center_policy_async(
+        self,
+        request: ecd_20200930_models.CloneCenterPolicyRequest,
+    ) -> ecd_20200930_models.CloneCenterPolicyResponse:
+        """
+        @param request: CloneCenterPolicyRequest
+        @return: CloneCenterPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.clone_center_policy_with_options_async(request, runtime)
+
     def clone_policy_group_with_options(
         self,
         request: ecd_20200930_models.ClonePolicyGroupRequest,
@@ -4269,6 +4385,498 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_cds_file_share_link_with_options_async(request, runtime)
+
+    def create_center_policy_with_options(
+        self,
+        request: ecd_20200930_models.CreateCenterPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CreateCenterPolicyResponse:
+        """
+        @param request: CreateCenterPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCenterPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.admin_access):
+            query['AdminAccess'] = request.admin_access
+        if not UtilClient.is_unset(request.app_content_protection):
+            query['AppContentProtection'] = request.app_content_protection
+        if not UtilClient.is_unset(request.authorize_access_policy_rule):
+            query['AuthorizeAccessPolicyRule'] = request.authorize_access_policy_rule
+        if not UtilClient.is_unset(request.authorize_security_policy_rule):
+            query['AuthorizeSecurityPolicyRule'] = request.authorize_security_policy_rule
+        if not UtilClient.is_unset(request.business_type):
+            query['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.camera_redirect):
+            query['CameraRedirect'] = request.camera_redirect
+        if not UtilClient.is_unset(request.client_type):
+            query['ClientType'] = request.client_type
+        if not UtilClient.is_unset(request.clipboard):
+            query['Clipboard'] = request.clipboard
+        if not UtilClient.is_unset(request.color_enhancement):
+            query['ColorEnhancement'] = request.color_enhancement
+        if not UtilClient.is_unset(request.cpu_down_grade_duration):
+            query['CpuDownGradeDuration'] = request.cpu_down_grade_duration
+        if not UtilClient.is_unset(request.cpu_processors):
+            query['CpuProcessors'] = request.cpu_processors
+        if not UtilClient.is_unset(request.cpu_protected_mode):
+            query['CpuProtectedMode'] = request.cpu_protected_mode
+        if not UtilClient.is_unset(request.cpu_rate_limit):
+            query['CpuRateLimit'] = request.cpu_rate_limit
+        if not UtilClient.is_unset(request.cpu_sample_duration):
+            query['CpuSampleDuration'] = request.cpu_sample_duration
+        if not UtilClient.is_unset(request.cpu_single_rate_limit):
+            query['CpuSingleRateLimit'] = request.cpu_single_rate_limit
+        if not UtilClient.is_unset(request.device_connect_hint):
+            query['DeviceConnectHint'] = request.device_connect_hint
+        if not UtilClient.is_unset(request.device_redirects):
+            query['DeviceRedirects'] = request.device_redirects
+        if not UtilClient.is_unset(request.device_rules):
+            query['DeviceRules'] = request.device_rules
+        if not UtilClient.is_unset(request.disconnect_keep_session):
+            query['DisconnectKeepSession'] = request.disconnect_keep_session
+        if not UtilClient.is_unset(request.disconnect_keep_session_time):
+            query['DisconnectKeepSessionTime'] = request.disconnect_keep_session_time
+        if not UtilClient.is_unset(request.display_mode):
+            query['DisplayMode'] = request.display_mode
+        if not UtilClient.is_unset(request.domain_resolve_rule):
+            query['DomainResolveRule'] = request.domain_resolve_rule
+        if not UtilClient.is_unset(request.domain_resolve_rule_type):
+            query['DomainResolveRuleType'] = request.domain_resolve_rule_type
+        if not UtilClient.is_unset(request.enable_session_rate_limiting):
+            query['EnableSessionRateLimiting'] = request.enable_session_rate_limiting
+        if not UtilClient.is_unset(request.end_user_apply_admin_coordinate):
+            query['EndUserApplyAdminCoordinate'] = request.end_user_apply_admin_coordinate
+        if not UtilClient.is_unset(request.end_user_group_coordinate):
+            query['EndUserGroupCoordinate'] = request.end_user_group_coordinate
+        if not UtilClient.is_unset(request.file_migrate):
+            query['FileMigrate'] = request.file_migrate
+        if not UtilClient.is_unset(request.gpu_acceleration):
+            query['GpuAcceleration'] = request.gpu_acceleration
+        if not UtilClient.is_unset(request.html_5file_transfer):
+            query['Html5FileTransfer'] = request.html_5file_transfer
+        if not UtilClient.is_unset(request.internet_communication_protocol):
+            query['InternetCommunicationProtocol'] = request.internet_communication_protocol
+        if not UtilClient.is_unset(request.local_drive):
+            query['LocalDrive'] = request.local_drive
+        if not UtilClient.is_unset(request.max_reconnect_time):
+            query['MaxReconnectTime'] = request.max_reconnect_time
+        if not UtilClient.is_unset(request.memory_down_grade_duration):
+            query['MemoryDownGradeDuration'] = request.memory_down_grade_duration
+        if not UtilClient.is_unset(request.memory_processors):
+            query['MemoryProcessors'] = request.memory_processors
+        if not UtilClient.is_unset(request.memory_protected_mode):
+            query['MemoryProtectedMode'] = request.memory_protected_mode
+        if not UtilClient.is_unset(request.memory_rate_limit):
+            query['MemoryRateLimit'] = request.memory_rate_limit
+        if not UtilClient.is_unset(request.memory_sample_duration):
+            query['MemorySampleDuration'] = request.memory_sample_duration
+        if not UtilClient.is_unset(request.memory_single_rate_limit):
+            query['MemorySingleRateLimit'] = request.memory_single_rate_limit
+        if not UtilClient.is_unset(request.mobile_restart):
+            query['MobileRestart'] = request.mobile_restart
+        if not UtilClient.is_unset(request.mobile_shutdown):
+            query['MobileShutdown'] = request.mobile_shutdown
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.net_redirect):
+            query['NetRedirect'] = request.net_redirect
+        if not UtilClient.is_unset(request.net_redirect_rule):
+            query['NetRedirectRule'] = request.net_redirect_rule
+        if not UtilClient.is_unset(request.no_operation_disconnect):
+            query['NoOperationDisconnect'] = request.no_operation_disconnect
+        if not UtilClient.is_unset(request.no_operation_disconnect_time):
+            query['NoOperationDisconnectTime'] = request.no_operation_disconnect_time
+        if not UtilClient.is_unset(request.printer_redirect):
+            query['PrinterRedirect'] = request.printer_redirect
+        if not UtilClient.is_unset(request.quality_enhancement):
+            query['QualityEnhancement'] = request.quality_enhancement
+        if not UtilClient.is_unset(request.record_event_duration):
+            query['RecordEventDuration'] = request.record_event_duration
+        if not UtilClient.is_unset(request.record_event_file_paths):
+            query['RecordEventFilePaths'] = request.record_event_file_paths
+        if not UtilClient.is_unset(request.record_event_registers):
+            query['RecordEventRegisters'] = request.record_event_registers
+        if not UtilClient.is_unset(request.record_events):
+            query['RecordEvents'] = request.record_events
+        if not UtilClient.is_unset(request.recording):
+            query['Recording'] = request.recording
+        if not UtilClient.is_unset(request.recording_audio):
+            query['RecordingAudio'] = request.recording_audio
+        if not UtilClient.is_unset(request.recording_duration):
+            query['RecordingDuration'] = request.recording_duration
+        if not UtilClient.is_unset(request.recording_end_time):
+            query['RecordingEndTime'] = request.recording_end_time
+        if not UtilClient.is_unset(request.recording_expires):
+            query['RecordingExpires'] = request.recording_expires
+        if not UtilClient.is_unset(request.recording_fps):
+            query['RecordingFps'] = request.recording_fps
+        if not UtilClient.is_unset(request.recording_start_time):
+            query['RecordingStartTime'] = request.recording_start_time
+        if not UtilClient.is_unset(request.recording_user_notify):
+            query['RecordingUserNotify'] = request.recording_user_notify
+        if not UtilClient.is_unset(request.recording_user_notify_message):
+            query['RecordingUserNotifyMessage'] = request.recording_user_notify_message
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.remote_coordinate):
+            query['RemoteCoordinate'] = request.remote_coordinate
+        if not UtilClient.is_unset(request.reset_desktop):
+            query['ResetDesktop'] = request.reset_desktop
+        if not UtilClient.is_unset(request.resolution_height):
+            query['ResolutionHeight'] = request.resolution_height
+        if not UtilClient.is_unset(request.resolution_model):
+            query['ResolutionModel'] = request.resolution_model
+        if not UtilClient.is_unset(request.resolution_width):
+            query['ResolutionWidth'] = request.resolution_width
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
+        if not UtilClient.is_unset(request.scope_value):
+            query['ScopeValue'] = request.scope_value
+        if not UtilClient.is_unset(request.session_max_rate_kbps):
+            query['SessionMaxRateKbps'] = request.session_max_rate_kbps
+        if not UtilClient.is_unset(request.smooth_enhancement):
+            query['SmoothEnhancement'] = request.smooth_enhancement
+        if not UtilClient.is_unset(request.status_monitor):
+            query['StatusMonitor'] = request.status_monitor
+        if not UtilClient.is_unset(request.streaming_mode):
+            query['StreamingMode'] = request.streaming_mode
+        if not UtilClient.is_unset(request.target_fps):
+            query['TargetFps'] = request.target_fps
+        if not UtilClient.is_unset(request.taskbar):
+            query['Taskbar'] = request.taskbar
+        if not UtilClient.is_unset(request.usb_redirect):
+            query['UsbRedirect'] = request.usb_redirect
+        if not UtilClient.is_unset(request.usb_supply_redirect_rule):
+            query['UsbSupplyRedirectRule'] = request.usb_supply_redirect_rule
+        if not UtilClient.is_unset(request.video_enc_avg_kbps):
+            query['VideoEncAvgKbps'] = request.video_enc_avg_kbps
+        if not UtilClient.is_unset(request.video_enc_max_qp):
+            query['VideoEncMaxQP'] = request.video_enc_max_qp
+        if not UtilClient.is_unset(request.video_enc_min_qp):
+            query['VideoEncMinQP'] = request.video_enc_min_qp
+        if not UtilClient.is_unset(request.video_enc_peak_kbps):
+            query['VideoEncPeakKbps'] = request.video_enc_peak_kbps
+        if not UtilClient.is_unset(request.video_enc_policy):
+            query['VideoEncPolicy'] = request.video_enc_policy
+        if not UtilClient.is_unset(request.video_redirect):
+            query['VideoRedirect'] = request.video_redirect
+        if not UtilClient.is_unset(request.visual_quality):
+            query['VisualQuality'] = request.visual_quality
+        if not UtilClient.is_unset(request.watermark):
+            query['Watermark'] = request.watermark
+        if not UtilClient.is_unset(request.watermark_anti_cam):
+            query['WatermarkAntiCam'] = request.watermark_anti_cam
+        if not UtilClient.is_unset(request.watermark_color):
+            query['WatermarkColor'] = request.watermark_color
+        if not UtilClient.is_unset(request.watermark_column_amount):
+            query['WatermarkColumnAmount'] = request.watermark_column_amount
+        if not UtilClient.is_unset(request.watermark_custom_text):
+            query['WatermarkCustomText'] = request.watermark_custom_text
+        if not UtilClient.is_unset(request.watermark_degree):
+            query['WatermarkDegree'] = request.watermark_degree
+        if not UtilClient.is_unset(request.watermark_font_size):
+            query['WatermarkFontSize'] = request.watermark_font_size
+        if not UtilClient.is_unset(request.watermark_font_style):
+            query['WatermarkFontStyle'] = request.watermark_font_style
+        if not UtilClient.is_unset(request.watermark_power):
+            query['WatermarkPower'] = request.watermark_power
+        if not UtilClient.is_unset(request.watermark_row_amount):
+            query['WatermarkRowAmount'] = request.watermark_row_amount
+        if not UtilClient.is_unset(request.watermark_security):
+            query['WatermarkSecurity'] = request.watermark_security
+        if not UtilClient.is_unset(request.watermark_transparency_value):
+            query['WatermarkTransparencyValue'] = request.watermark_transparency_value
+        if not UtilClient.is_unset(request.watermark_type):
+            query['WatermarkType'] = request.watermark_type
+        if not UtilClient.is_unset(request.wuying_keeper):
+            query['WuyingKeeper'] = request.wuying_keeper
+        if not UtilClient.is_unset(request.wy_assistant):
+            query['WyAssistant'] = request.wy_assistant
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCenterPolicy',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ecd_20200930_models.CreateCenterPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ecd_20200930_models.CreateCenterPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_center_policy_with_options_async(
+        self,
+        request: ecd_20200930_models.CreateCenterPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CreateCenterPolicyResponse:
+        """
+        @param request: CreateCenterPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCenterPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.admin_access):
+            query['AdminAccess'] = request.admin_access
+        if not UtilClient.is_unset(request.app_content_protection):
+            query['AppContentProtection'] = request.app_content_protection
+        if not UtilClient.is_unset(request.authorize_access_policy_rule):
+            query['AuthorizeAccessPolicyRule'] = request.authorize_access_policy_rule
+        if not UtilClient.is_unset(request.authorize_security_policy_rule):
+            query['AuthorizeSecurityPolicyRule'] = request.authorize_security_policy_rule
+        if not UtilClient.is_unset(request.business_type):
+            query['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.camera_redirect):
+            query['CameraRedirect'] = request.camera_redirect
+        if not UtilClient.is_unset(request.client_type):
+            query['ClientType'] = request.client_type
+        if not UtilClient.is_unset(request.clipboard):
+            query['Clipboard'] = request.clipboard
+        if not UtilClient.is_unset(request.color_enhancement):
+            query['ColorEnhancement'] = request.color_enhancement
+        if not UtilClient.is_unset(request.cpu_down_grade_duration):
+            query['CpuDownGradeDuration'] = request.cpu_down_grade_duration
+        if not UtilClient.is_unset(request.cpu_processors):
+            query['CpuProcessors'] = request.cpu_processors
+        if not UtilClient.is_unset(request.cpu_protected_mode):
+            query['CpuProtectedMode'] = request.cpu_protected_mode
+        if not UtilClient.is_unset(request.cpu_rate_limit):
+            query['CpuRateLimit'] = request.cpu_rate_limit
+        if not UtilClient.is_unset(request.cpu_sample_duration):
+            query['CpuSampleDuration'] = request.cpu_sample_duration
+        if not UtilClient.is_unset(request.cpu_single_rate_limit):
+            query['CpuSingleRateLimit'] = request.cpu_single_rate_limit
+        if not UtilClient.is_unset(request.device_connect_hint):
+            query['DeviceConnectHint'] = request.device_connect_hint
+        if not UtilClient.is_unset(request.device_redirects):
+            query['DeviceRedirects'] = request.device_redirects
+        if not UtilClient.is_unset(request.device_rules):
+            query['DeviceRules'] = request.device_rules
+        if not UtilClient.is_unset(request.disconnect_keep_session):
+            query['DisconnectKeepSession'] = request.disconnect_keep_session
+        if not UtilClient.is_unset(request.disconnect_keep_session_time):
+            query['DisconnectKeepSessionTime'] = request.disconnect_keep_session_time
+        if not UtilClient.is_unset(request.display_mode):
+            query['DisplayMode'] = request.display_mode
+        if not UtilClient.is_unset(request.domain_resolve_rule):
+            query['DomainResolveRule'] = request.domain_resolve_rule
+        if not UtilClient.is_unset(request.domain_resolve_rule_type):
+            query['DomainResolveRuleType'] = request.domain_resolve_rule_type
+        if not UtilClient.is_unset(request.enable_session_rate_limiting):
+            query['EnableSessionRateLimiting'] = request.enable_session_rate_limiting
+        if not UtilClient.is_unset(request.end_user_apply_admin_coordinate):
+            query['EndUserApplyAdminCoordinate'] = request.end_user_apply_admin_coordinate
+        if not UtilClient.is_unset(request.end_user_group_coordinate):
+            query['EndUserGroupCoordinate'] = request.end_user_group_coordinate
+        if not UtilClient.is_unset(request.file_migrate):
+            query['FileMigrate'] = request.file_migrate
+        if not UtilClient.is_unset(request.gpu_acceleration):
+            query['GpuAcceleration'] = request.gpu_acceleration
+        if not UtilClient.is_unset(request.html_5file_transfer):
+            query['Html5FileTransfer'] = request.html_5file_transfer
+        if not UtilClient.is_unset(request.internet_communication_protocol):
+            query['InternetCommunicationProtocol'] = request.internet_communication_protocol
+        if not UtilClient.is_unset(request.local_drive):
+            query['LocalDrive'] = request.local_drive
+        if not UtilClient.is_unset(request.max_reconnect_time):
+            query['MaxReconnectTime'] = request.max_reconnect_time
+        if not UtilClient.is_unset(request.memory_down_grade_duration):
+            query['MemoryDownGradeDuration'] = request.memory_down_grade_duration
+        if not UtilClient.is_unset(request.memory_processors):
+            query['MemoryProcessors'] = request.memory_processors
+        if not UtilClient.is_unset(request.memory_protected_mode):
+            query['MemoryProtectedMode'] = request.memory_protected_mode
+        if not UtilClient.is_unset(request.memory_rate_limit):
+            query['MemoryRateLimit'] = request.memory_rate_limit
+        if not UtilClient.is_unset(request.memory_sample_duration):
+            query['MemorySampleDuration'] = request.memory_sample_duration
+        if not UtilClient.is_unset(request.memory_single_rate_limit):
+            query['MemorySingleRateLimit'] = request.memory_single_rate_limit
+        if not UtilClient.is_unset(request.mobile_restart):
+            query['MobileRestart'] = request.mobile_restart
+        if not UtilClient.is_unset(request.mobile_shutdown):
+            query['MobileShutdown'] = request.mobile_shutdown
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.net_redirect):
+            query['NetRedirect'] = request.net_redirect
+        if not UtilClient.is_unset(request.net_redirect_rule):
+            query['NetRedirectRule'] = request.net_redirect_rule
+        if not UtilClient.is_unset(request.no_operation_disconnect):
+            query['NoOperationDisconnect'] = request.no_operation_disconnect
+        if not UtilClient.is_unset(request.no_operation_disconnect_time):
+            query['NoOperationDisconnectTime'] = request.no_operation_disconnect_time
+        if not UtilClient.is_unset(request.printer_redirect):
+            query['PrinterRedirect'] = request.printer_redirect
+        if not UtilClient.is_unset(request.quality_enhancement):
+            query['QualityEnhancement'] = request.quality_enhancement
+        if not UtilClient.is_unset(request.record_event_duration):
+            query['RecordEventDuration'] = request.record_event_duration
+        if not UtilClient.is_unset(request.record_event_file_paths):
+            query['RecordEventFilePaths'] = request.record_event_file_paths
+        if not UtilClient.is_unset(request.record_event_registers):
+            query['RecordEventRegisters'] = request.record_event_registers
+        if not UtilClient.is_unset(request.record_events):
+            query['RecordEvents'] = request.record_events
+        if not UtilClient.is_unset(request.recording):
+            query['Recording'] = request.recording
+        if not UtilClient.is_unset(request.recording_audio):
+            query['RecordingAudio'] = request.recording_audio
+        if not UtilClient.is_unset(request.recording_duration):
+            query['RecordingDuration'] = request.recording_duration
+        if not UtilClient.is_unset(request.recording_end_time):
+            query['RecordingEndTime'] = request.recording_end_time
+        if not UtilClient.is_unset(request.recording_expires):
+            query['RecordingExpires'] = request.recording_expires
+        if not UtilClient.is_unset(request.recording_fps):
+            query['RecordingFps'] = request.recording_fps
+        if not UtilClient.is_unset(request.recording_start_time):
+            query['RecordingStartTime'] = request.recording_start_time
+        if not UtilClient.is_unset(request.recording_user_notify):
+            query['RecordingUserNotify'] = request.recording_user_notify
+        if not UtilClient.is_unset(request.recording_user_notify_message):
+            query['RecordingUserNotifyMessage'] = request.recording_user_notify_message
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.remote_coordinate):
+            query['RemoteCoordinate'] = request.remote_coordinate
+        if not UtilClient.is_unset(request.reset_desktop):
+            query['ResetDesktop'] = request.reset_desktop
+        if not UtilClient.is_unset(request.resolution_height):
+            query['ResolutionHeight'] = request.resolution_height
+        if not UtilClient.is_unset(request.resolution_model):
+            query['ResolutionModel'] = request.resolution_model
+        if not UtilClient.is_unset(request.resolution_width):
+            query['ResolutionWidth'] = request.resolution_width
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
+        if not UtilClient.is_unset(request.scope_value):
+            query['ScopeValue'] = request.scope_value
+        if not UtilClient.is_unset(request.session_max_rate_kbps):
+            query['SessionMaxRateKbps'] = request.session_max_rate_kbps
+        if not UtilClient.is_unset(request.smooth_enhancement):
+            query['SmoothEnhancement'] = request.smooth_enhancement
+        if not UtilClient.is_unset(request.status_monitor):
+            query['StatusMonitor'] = request.status_monitor
+        if not UtilClient.is_unset(request.streaming_mode):
+            query['StreamingMode'] = request.streaming_mode
+        if not UtilClient.is_unset(request.target_fps):
+            query['TargetFps'] = request.target_fps
+        if not UtilClient.is_unset(request.taskbar):
+            query['Taskbar'] = request.taskbar
+        if not UtilClient.is_unset(request.usb_redirect):
+            query['UsbRedirect'] = request.usb_redirect
+        if not UtilClient.is_unset(request.usb_supply_redirect_rule):
+            query['UsbSupplyRedirectRule'] = request.usb_supply_redirect_rule
+        if not UtilClient.is_unset(request.video_enc_avg_kbps):
+            query['VideoEncAvgKbps'] = request.video_enc_avg_kbps
+        if not UtilClient.is_unset(request.video_enc_max_qp):
+            query['VideoEncMaxQP'] = request.video_enc_max_qp
+        if not UtilClient.is_unset(request.video_enc_min_qp):
+            query['VideoEncMinQP'] = request.video_enc_min_qp
+        if not UtilClient.is_unset(request.video_enc_peak_kbps):
+            query['VideoEncPeakKbps'] = request.video_enc_peak_kbps
+        if not UtilClient.is_unset(request.video_enc_policy):
+            query['VideoEncPolicy'] = request.video_enc_policy
+        if not UtilClient.is_unset(request.video_redirect):
+            query['VideoRedirect'] = request.video_redirect
+        if not UtilClient.is_unset(request.visual_quality):
+            query['VisualQuality'] = request.visual_quality
+        if not UtilClient.is_unset(request.watermark):
+            query['Watermark'] = request.watermark
+        if not UtilClient.is_unset(request.watermark_anti_cam):
+            query['WatermarkAntiCam'] = request.watermark_anti_cam
+        if not UtilClient.is_unset(request.watermark_color):
+            query['WatermarkColor'] = request.watermark_color
+        if not UtilClient.is_unset(request.watermark_column_amount):
+            query['WatermarkColumnAmount'] = request.watermark_column_amount
+        if not UtilClient.is_unset(request.watermark_custom_text):
+            query['WatermarkCustomText'] = request.watermark_custom_text
+        if not UtilClient.is_unset(request.watermark_degree):
+            query['WatermarkDegree'] = request.watermark_degree
+        if not UtilClient.is_unset(request.watermark_font_size):
+            query['WatermarkFontSize'] = request.watermark_font_size
+        if not UtilClient.is_unset(request.watermark_font_style):
+            query['WatermarkFontStyle'] = request.watermark_font_style
+        if not UtilClient.is_unset(request.watermark_power):
+            query['WatermarkPower'] = request.watermark_power
+        if not UtilClient.is_unset(request.watermark_row_amount):
+            query['WatermarkRowAmount'] = request.watermark_row_amount
+        if not UtilClient.is_unset(request.watermark_security):
+            query['WatermarkSecurity'] = request.watermark_security
+        if not UtilClient.is_unset(request.watermark_transparency_value):
+            query['WatermarkTransparencyValue'] = request.watermark_transparency_value
+        if not UtilClient.is_unset(request.watermark_type):
+            query['WatermarkType'] = request.watermark_type
+        if not UtilClient.is_unset(request.wuying_keeper):
+            query['WuyingKeeper'] = request.wuying_keeper
+        if not UtilClient.is_unset(request.wy_assistant):
+            query['WyAssistant'] = request.wy_assistant
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCenterPolicy',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ecd_20200930_models.CreateCenterPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ecd_20200930_models.CreateCenterPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_center_policy(
+        self,
+        request: ecd_20200930_models.CreateCenterPolicyRequest,
+    ) -> ecd_20200930_models.CreateCenterPolicyResponse:
+        """
+        @param request: CreateCenterPolicyRequest
+        @return: CreateCenterPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_center_policy_with_options(request, runtime)
+
+    async def create_center_policy_async(
+        self,
+        request: ecd_20200930_models.CreateCenterPolicyRequest,
+    ) -> ecd_20200930_models.CreateCenterPolicyResponse:
+        """
+        @param request: CreateCenterPolicyRequest
+        @return: CreateCenterPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_center_policy_with_options_async(request, runtime)
 
     def create_cloud_drive_service_with_options(
         self,
@@ -7170,6 +7778,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_cds_file_with_options_async(request, runtime)
 
+    def delete_center_policy_with_options(
+        self,
+        request: ecd_20200930_models.DeleteCenterPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DeleteCenterPolicyResponse:
+        """
+        @param request: DeleteCenterPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCenterPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.business_type):
+            query['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.policy_group_ids):
+            query['PolicyGroupIds'] = request.policy_group_ids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCenterPolicy',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ecd_20200930_models.DeleteCenterPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ecd_20200930_models.DeleteCenterPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_center_policy_with_options_async(
+        self,
+        request: ecd_20200930_models.DeleteCenterPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DeleteCenterPolicyResponse:
+        """
+        @param request: DeleteCenterPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCenterPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.business_type):
+            query['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.policy_group_ids):
+            query['PolicyGroupIds'] = request.policy_group_ids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCenterPolicy',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ecd_20200930_models.DeleteCenterPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ecd_20200930_models.DeleteCenterPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_center_policy(
+        self,
+        request: ecd_20200930_models.DeleteCenterPolicyRequest,
+    ) -> ecd_20200930_models.DeleteCenterPolicyResponse:
+        """
+        @param request: DeleteCenterPolicyRequest
+        @return: DeleteCenterPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_center_policy_with_options(request, runtime)
+
+    async def delete_center_policy_async(
+        self,
+        request: ecd_20200930_models.DeleteCenterPolicyRequest,
+    ) -> ecd_20200930_models.DeleteCenterPolicyResponse:
+        """
+        @param request: DeleteCenterPolicyRequest
+        @return: DeleteCenterPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_center_policy_with_options_async(request, runtime)
+
     def delete_cloud_drive_groups_with_options(
         self,
         request: ecd_20200930_models.DeleteCloudDriveGroupsRequest,
@@ -9661,6 +10381,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cens_with_options_async(request, runtime)
+
+    def describe_center_policy_list_with_options(
+        self,
+        request: ecd_20200930_models.DescribeCenterPolicyListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeCenterPolicyListResponse:
+        """
+        @summary 查询中心化策略
+        
+        @param request: DescribeCenterPolicyListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCenterPolicyListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.business_type):
+            query['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.policy_group_id):
+            query['PolicyGroupId'] = request.policy_group_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCenterPolicyList',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ecd_20200930_models.DescribeCenterPolicyListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ecd_20200930_models.DescribeCenterPolicyListResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_center_policy_list_with_options_async(
+        self,
+        request: ecd_20200930_models.DescribeCenterPolicyListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeCenterPolicyListResponse:
+        """
+        @summary 查询中心化策略
+        
+        @param request: DescribeCenterPolicyListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCenterPolicyListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.business_type):
+            query['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.policy_group_id):
+            query['PolicyGroupId'] = request.policy_group_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCenterPolicyList',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ecd_20200930_models.DescribeCenterPolicyListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ecd_20200930_models.DescribeCenterPolicyListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_center_policy_list(
+        self,
+        request: ecd_20200930_models.DescribeCenterPolicyListRequest,
+    ) -> ecd_20200930_models.DescribeCenterPolicyListResponse:
+        """
+        @summary 查询中心化策略
+        
+        @param request: DescribeCenterPolicyListRequest
+        @return: DescribeCenterPolicyListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_center_policy_list_with_options(request, runtime)
+
+    async def describe_center_policy_list_async(
+        self,
+        request: ecd_20200930_models.DescribeCenterPolicyListRequest,
+    ) -> ecd_20200930_models.DescribeCenterPolicyListResponse:
+        """
+        @summary 查询中心化策略
+        
+        @param request: DescribeCenterPolicyListRequest
+        @return: DescribeCenterPolicyListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_center_policy_list_with_options_async(request, runtime)
 
     def describe_client_events_with_options(
         self,
@@ -15265,6 +16113,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_renewal_price_with_options_async(request, runtime)
+
+    def describe_resource_by_center_policy_id_with_options(
+        self,
+        request: ecd_20200930_models.DescribeResourceByCenterPolicyIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeResourceByCenterPolicyIdResponse:
+        """
+        @param request: DescribeResourceByCenterPolicyIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResourceByCenterPolicyIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.policy_group_id):
+            query['PolicyGroupId'] = request.policy_group_id
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeResourceByCenterPolicyId',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ecd_20200930_models.DescribeResourceByCenterPolicyIdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ecd_20200930_models.DescribeResourceByCenterPolicyIdResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_resource_by_center_policy_id_with_options_async(
+        self,
+        request: ecd_20200930_models.DescribeResourceByCenterPolicyIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeResourceByCenterPolicyIdResponse:
+        """
+        @param request: DescribeResourceByCenterPolicyIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResourceByCenterPolicyIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.policy_group_id):
+            query['PolicyGroupId'] = request.policy_group_id
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeResourceByCenterPolicyId',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ecd_20200930_models.DescribeResourceByCenterPolicyIdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ecd_20200930_models.DescribeResourceByCenterPolicyIdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_resource_by_center_policy_id(
+        self,
+        request: ecd_20200930_models.DescribeResourceByCenterPolicyIdRequest,
+    ) -> ecd_20200930_models.DescribeResourceByCenterPolicyIdResponse:
+        """
+        @param request: DescribeResourceByCenterPolicyIdRequest
+        @return: DescribeResourceByCenterPolicyIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_resource_by_center_policy_id_with_options(request, runtime)
+
+    async def describe_resource_by_center_policy_id_async(
+        self,
+        request: ecd_20200930_models.DescribeResourceByCenterPolicyIdRequest,
+    ) -> ecd_20200930_models.DescribeResourceByCenterPolicyIdResponse:
+        """
+        @param request: DescribeResourceByCenterPolicyIdRequest
+        @return: DescribeResourceByCenterPolicyIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_resource_by_center_policy_id_with_options_async(request, runtime)
 
     def describe_session_statistic_with_options(
         self,
@@ -20998,6 +21962,510 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_cds_file_share_link_with_options_async(request, runtime)
 
+    def modify_center_policy_with_options(
+        self,
+        request: ecd_20200930_models.ModifyCenterPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.ModifyCenterPolicyResponse:
+        """
+        @param request: ModifyCenterPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCenterPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.admin_access):
+            query['AdminAccess'] = request.admin_access
+        if not UtilClient.is_unset(request.app_content_protection):
+            query['AppContentProtection'] = request.app_content_protection
+        if not UtilClient.is_unset(request.authorize_access_policy_rule):
+            query['AuthorizeAccessPolicyRule'] = request.authorize_access_policy_rule
+        if not UtilClient.is_unset(request.authorize_security_policy_rule):
+            query['AuthorizeSecurityPolicyRule'] = request.authorize_security_policy_rule
+        if not UtilClient.is_unset(request.business_type):
+            query['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.camera_redirect):
+            query['CameraRedirect'] = request.camera_redirect
+        if not UtilClient.is_unset(request.client_type):
+            query['ClientType'] = request.client_type
+        if not UtilClient.is_unset(request.clipboard):
+            query['Clipboard'] = request.clipboard
+        if not UtilClient.is_unset(request.color_enhancement):
+            query['ColorEnhancement'] = request.color_enhancement
+        if not UtilClient.is_unset(request.cpu_down_grade_duration):
+            query['CpuDownGradeDuration'] = request.cpu_down_grade_duration
+        if not UtilClient.is_unset(request.cpu_processors):
+            query['CpuProcessors'] = request.cpu_processors
+        if not UtilClient.is_unset(request.cpu_protected_mode):
+            query['CpuProtectedMode'] = request.cpu_protected_mode
+        if not UtilClient.is_unset(request.cpu_rate_limit):
+            query['CpuRateLimit'] = request.cpu_rate_limit
+        if not UtilClient.is_unset(request.cpu_sample_duration):
+            query['CpuSampleDuration'] = request.cpu_sample_duration
+        if not UtilClient.is_unset(request.cpu_single_rate_limit):
+            query['CpuSingleRateLimit'] = request.cpu_single_rate_limit
+        if not UtilClient.is_unset(request.device_connect_hint):
+            query['DeviceConnectHint'] = request.device_connect_hint
+        if not UtilClient.is_unset(request.device_redirects):
+            query['DeviceRedirects'] = request.device_redirects
+        if not UtilClient.is_unset(request.device_rules):
+            query['DeviceRules'] = request.device_rules
+        if not UtilClient.is_unset(request.disconnect_keep_session):
+            query['DisconnectKeepSession'] = request.disconnect_keep_session
+        if not UtilClient.is_unset(request.disconnect_keep_session_time):
+            query['DisconnectKeepSessionTime'] = request.disconnect_keep_session_time
+        if not UtilClient.is_unset(request.display_mode):
+            query['DisplayMode'] = request.display_mode
+        if not UtilClient.is_unset(request.domain_resolve_rule):
+            query['DomainResolveRule'] = request.domain_resolve_rule
+        if not UtilClient.is_unset(request.domain_resolve_rule_type):
+            query['DomainResolveRuleType'] = request.domain_resolve_rule_type
+        if not UtilClient.is_unset(request.enable_session_rate_limiting):
+            query['EnableSessionRateLimiting'] = request.enable_session_rate_limiting
+        if not UtilClient.is_unset(request.end_user_apply_admin_coordinate):
+            query['EndUserApplyAdminCoordinate'] = request.end_user_apply_admin_coordinate
+        if not UtilClient.is_unset(request.end_user_group_coordinate):
+            query['EndUserGroupCoordinate'] = request.end_user_group_coordinate
+        if not UtilClient.is_unset(request.file_migrate):
+            query['FileMigrate'] = request.file_migrate
+        if not UtilClient.is_unset(request.gpu_acceleration):
+            query['GpuAcceleration'] = request.gpu_acceleration
+        if not UtilClient.is_unset(request.html_5file_transfer):
+            query['Html5FileTransfer'] = request.html_5file_transfer
+        if not UtilClient.is_unset(request.internet_communication_protocol):
+            query['InternetCommunicationProtocol'] = request.internet_communication_protocol
+        if not UtilClient.is_unset(request.local_drive):
+            query['LocalDrive'] = request.local_drive
+        if not UtilClient.is_unset(request.max_reconnect_time):
+            query['MaxReconnectTime'] = request.max_reconnect_time
+        if not UtilClient.is_unset(request.memory_down_grade_duration):
+            query['MemoryDownGradeDuration'] = request.memory_down_grade_duration
+        if not UtilClient.is_unset(request.memory_processors):
+            query['MemoryProcessors'] = request.memory_processors
+        if not UtilClient.is_unset(request.memory_protected_mode):
+            query['MemoryProtectedMode'] = request.memory_protected_mode
+        if not UtilClient.is_unset(request.memory_rate_limit):
+            query['MemoryRateLimit'] = request.memory_rate_limit
+        if not UtilClient.is_unset(request.memory_sample_duration):
+            query['MemorySampleDuration'] = request.memory_sample_duration
+        if not UtilClient.is_unset(request.memory_single_rate_limit):
+            query['MemorySingleRateLimit'] = request.memory_single_rate_limit
+        if not UtilClient.is_unset(request.mobile_restart):
+            query['MobileRestart'] = request.mobile_restart
+        if not UtilClient.is_unset(request.mobile_shutdown):
+            query['MobileShutdown'] = request.mobile_shutdown
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.net_redirect):
+            query['NetRedirect'] = request.net_redirect
+        if not UtilClient.is_unset(request.net_redirect_rule):
+            query['NetRedirectRule'] = request.net_redirect_rule
+        if not UtilClient.is_unset(request.no_operation_disconnect):
+            query['NoOperationDisconnect'] = request.no_operation_disconnect
+        if not UtilClient.is_unset(request.no_operation_disconnect_time):
+            query['NoOperationDisconnectTime'] = request.no_operation_disconnect_time
+        if not UtilClient.is_unset(request.policy_group_id):
+            query['PolicyGroupId'] = request.policy_group_id
+        if not UtilClient.is_unset(request.printer_redirect):
+            query['PrinterRedirect'] = request.printer_redirect
+        if not UtilClient.is_unset(request.quality_enhancement):
+            query['QualityEnhancement'] = request.quality_enhancement
+        if not UtilClient.is_unset(request.record_event_duration):
+            query['RecordEventDuration'] = request.record_event_duration
+        if not UtilClient.is_unset(request.record_event_file_paths):
+            query['RecordEventFilePaths'] = request.record_event_file_paths
+        if not UtilClient.is_unset(request.record_event_registers):
+            query['RecordEventRegisters'] = request.record_event_registers
+        if not UtilClient.is_unset(request.record_events):
+            query['RecordEvents'] = request.record_events
+        if not UtilClient.is_unset(request.recording):
+            query['Recording'] = request.recording
+        if not UtilClient.is_unset(request.recording_audio):
+            query['RecordingAudio'] = request.recording_audio
+        if not UtilClient.is_unset(request.recording_duration):
+            query['RecordingDuration'] = request.recording_duration
+        if not UtilClient.is_unset(request.recording_end_time):
+            query['RecordingEndTime'] = request.recording_end_time
+        if not UtilClient.is_unset(request.recording_expires):
+            query['RecordingExpires'] = request.recording_expires
+        if not UtilClient.is_unset(request.recording_fps):
+            query['RecordingFps'] = request.recording_fps
+        if not UtilClient.is_unset(request.recording_start_time):
+            query['RecordingStartTime'] = request.recording_start_time
+        if not UtilClient.is_unset(request.recording_user_notify):
+            query['RecordingUserNotify'] = request.recording_user_notify
+        if not UtilClient.is_unset(request.recording_user_notify_message):
+            query['RecordingUserNotifyMessage'] = request.recording_user_notify_message
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.remote_coordinate):
+            query['RemoteCoordinate'] = request.remote_coordinate
+        if not UtilClient.is_unset(request.reset_desktop):
+            query['ResetDesktop'] = request.reset_desktop
+        if not UtilClient.is_unset(request.resolution_height):
+            query['ResolutionHeight'] = request.resolution_height
+        if not UtilClient.is_unset(request.resolution_model):
+            query['ResolutionModel'] = request.resolution_model
+        if not UtilClient.is_unset(request.resolution_width):
+            query['ResolutionWidth'] = request.resolution_width
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.revoke_access_policy_rule):
+            query['RevokeAccessPolicyRule'] = request.revoke_access_policy_rule
+        if not UtilClient.is_unset(request.revoke_security_policy_rule):
+            query['RevokeSecurityPolicyRule'] = request.revoke_security_policy_rule
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
+        if not UtilClient.is_unset(request.scope_value):
+            query['ScopeValue'] = request.scope_value
+        if not UtilClient.is_unset(request.session_max_rate_kbps):
+            query['SessionMaxRateKbps'] = request.session_max_rate_kbps
+        if not UtilClient.is_unset(request.smooth_enhancement):
+            query['SmoothEnhancement'] = request.smooth_enhancement
+        if not UtilClient.is_unset(request.status_monitor):
+            query['StatusMonitor'] = request.status_monitor
+        if not UtilClient.is_unset(request.streaming_mode):
+            query['StreamingMode'] = request.streaming_mode
+        if not UtilClient.is_unset(request.target_fps):
+            query['TargetFps'] = request.target_fps
+        if not UtilClient.is_unset(request.taskbar):
+            query['Taskbar'] = request.taskbar
+        if not UtilClient.is_unset(request.usb_redirect):
+            query['UsbRedirect'] = request.usb_redirect
+        if not UtilClient.is_unset(request.usb_supply_redirect_rule):
+            query['UsbSupplyRedirectRule'] = request.usb_supply_redirect_rule
+        if not UtilClient.is_unset(request.video_enc_avg_kbps):
+            query['VideoEncAvgKbps'] = request.video_enc_avg_kbps
+        if not UtilClient.is_unset(request.video_enc_max_qp):
+            query['VideoEncMaxQP'] = request.video_enc_max_qp
+        if not UtilClient.is_unset(request.video_enc_min_qp):
+            query['VideoEncMinQP'] = request.video_enc_min_qp
+        if not UtilClient.is_unset(request.video_enc_peak_kbps):
+            query['VideoEncPeakKbps'] = request.video_enc_peak_kbps
+        if not UtilClient.is_unset(request.video_enc_policy):
+            query['VideoEncPolicy'] = request.video_enc_policy
+        if not UtilClient.is_unset(request.video_redirect):
+            query['VideoRedirect'] = request.video_redirect
+        if not UtilClient.is_unset(request.visual_quality):
+            query['VisualQuality'] = request.visual_quality
+        if not UtilClient.is_unset(request.watermark):
+            query['Watermark'] = request.watermark
+        if not UtilClient.is_unset(request.watermark_anti_cam):
+            query['WatermarkAntiCam'] = request.watermark_anti_cam
+        if not UtilClient.is_unset(request.watermark_color):
+            query['WatermarkColor'] = request.watermark_color
+        if not UtilClient.is_unset(request.watermark_column_amount):
+            query['WatermarkColumnAmount'] = request.watermark_column_amount
+        if not UtilClient.is_unset(request.watermark_custom_text):
+            query['WatermarkCustomText'] = request.watermark_custom_text
+        if not UtilClient.is_unset(request.watermark_degree):
+            query['WatermarkDegree'] = request.watermark_degree
+        if not UtilClient.is_unset(request.watermark_font_size):
+            query['WatermarkFontSize'] = request.watermark_font_size
+        if not UtilClient.is_unset(request.watermark_font_style):
+            query['WatermarkFontStyle'] = request.watermark_font_style
+        if not UtilClient.is_unset(request.watermark_power):
+            query['WatermarkPower'] = request.watermark_power
+        if not UtilClient.is_unset(request.watermark_row_amount):
+            query['WatermarkRowAmount'] = request.watermark_row_amount
+        if not UtilClient.is_unset(request.watermark_security):
+            query['WatermarkSecurity'] = request.watermark_security
+        if not UtilClient.is_unset(request.watermark_transparency_value):
+            query['WatermarkTransparencyValue'] = request.watermark_transparency_value
+        if not UtilClient.is_unset(request.watermark_type):
+            query['WatermarkType'] = request.watermark_type
+        if not UtilClient.is_unset(request.wuying_keeper):
+            query['WuyingKeeper'] = request.wuying_keeper
+        if not UtilClient.is_unset(request.wy_assistant):
+            query['WyAssistant'] = request.wy_assistant
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCenterPolicy',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ecd_20200930_models.ModifyCenterPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ecd_20200930_models.ModifyCenterPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_center_policy_with_options_async(
+        self,
+        request: ecd_20200930_models.ModifyCenterPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.ModifyCenterPolicyResponse:
+        """
+        @param request: ModifyCenterPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCenterPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.admin_access):
+            query['AdminAccess'] = request.admin_access
+        if not UtilClient.is_unset(request.app_content_protection):
+            query['AppContentProtection'] = request.app_content_protection
+        if not UtilClient.is_unset(request.authorize_access_policy_rule):
+            query['AuthorizeAccessPolicyRule'] = request.authorize_access_policy_rule
+        if not UtilClient.is_unset(request.authorize_security_policy_rule):
+            query['AuthorizeSecurityPolicyRule'] = request.authorize_security_policy_rule
+        if not UtilClient.is_unset(request.business_type):
+            query['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.camera_redirect):
+            query['CameraRedirect'] = request.camera_redirect
+        if not UtilClient.is_unset(request.client_type):
+            query['ClientType'] = request.client_type
+        if not UtilClient.is_unset(request.clipboard):
+            query['Clipboard'] = request.clipboard
+        if not UtilClient.is_unset(request.color_enhancement):
+            query['ColorEnhancement'] = request.color_enhancement
+        if not UtilClient.is_unset(request.cpu_down_grade_duration):
+            query['CpuDownGradeDuration'] = request.cpu_down_grade_duration
+        if not UtilClient.is_unset(request.cpu_processors):
+            query['CpuProcessors'] = request.cpu_processors
+        if not UtilClient.is_unset(request.cpu_protected_mode):
+            query['CpuProtectedMode'] = request.cpu_protected_mode
+        if not UtilClient.is_unset(request.cpu_rate_limit):
+            query['CpuRateLimit'] = request.cpu_rate_limit
+        if not UtilClient.is_unset(request.cpu_sample_duration):
+            query['CpuSampleDuration'] = request.cpu_sample_duration
+        if not UtilClient.is_unset(request.cpu_single_rate_limit):
+            query['CpuSingleRateLimit'] = request.cpu_single_rate_limit
+        if not UtilClient.is_unset(request.device_connect_hint):
+            query['DeviceConnectHint'] = request.device_connect_hint
+        if not UtilClient.is_unset(request.device_redirects):
+            query['DeviceRedirects'] = request.device_redirects
+        if not UtilClient.is_unset(request.device_rules):
+            query['DeviceRules'] = request.device_rules
+        if not UtilClient.is_unset(request.disconnect_keep_session):
+            query['DisconnectKeepSession'] = request.disconnect_keep_session
+        if not UtilClient.is_unset(request.disconnect_keep_session_time):
+            query['DisconnectKeepSessionTime'] = request.disconnect_keep_session_time
+        if not UtilClient.is_unset(request.display_mode):
+            query['DisplayMode'] = request.display_mode
+        if not UtilClient.is_unset(request.domain_resolve_rule):
+            query['DomainResolveRule'] = request.domain_resolve_rule
+        if not UtilClient.is_unset(request.domain_resolve_rule_type):
+            query['DomainResolveRuleType'] = request.domain_resolve_rule_type
+        if not UtilClient.is_unset(request.enable_session_rate_limiting):
+            query['EnableSessionRateLimiting'] = request.enable_session_rate_limiting
+        if not UtilClient.is_unset(request.end_user_apply_admin_coordinate):
+            query['EndUserApplyAdminCoordinate'] = request.end_user_apply_admin_coordinate
+        if not UtilClient.is_unset(request.end_user_group_coordinate):
+            query['EndUserGroupCoordinate'] = request.end_user_group_coordinate
+        if not UtilClient.is_unset(request.file_migrate):
+            query['FileMigrate'] = request.file_migrate
+        if not UtilClient.is_unset(request.gpu_acceleration):
+            query['GpuAcceleration'] = request.gpu_acceleration
+        if not UtilClient.is_unset(request.html_5file_transfer):
+            query['Html5FileTransfer'] = request.html_5file_transfer
+        if not UtilClient.is_unset(request.internet_communication_protocol):
+            query['InternetCommunicationProtocol'] = request.internet_communication_protocol
+        if not UtilClient.is_unset(request.local_drive):
+            query['LocalDrive'] = request.local_drive
+        if not UtilClient.is_unset(request.max_reconnect_time):
+            query['MaxReconnectTime'] = request.max_reconnect_time
+        if not UtilClient.is_unset(request.memory_down_grade_duration):
+            query['MemoryDownGradeDuration'] = request.memory_down_grade_duration
+        if not UtilClient.is_unset(request.memory_processors):
+            query['MemoryProcessors'] = request.memory_processors
+        if not UtilClient.is_unset(request.memory_protected_mode):
+            query['MemoryProtectedMode'] = request.memory_protected_mode
+        if not UtilClient.is_unset(request.memory_rate_limit):
+            query['MemoryRateLimit'] = request.memory_rate_limit
+        if not UtilClient.is_unset(request.memory_sample_duration):
+            query['MemorySampleDuration'] = request.memory_sample_duration
+        if not UtilClient.is_unset(request.memory_single_rate_limit):
+            query['MemorySingleRateLimit'] = request.memory_single_rate_limit
+        if not UtilClient.is_unset(request.mobile_restart):
+            query['MobileRestart'] = request.mobile_restart
+        if not UtilClient.is_unset(request.mobile_shutdown):
+            query['MobileShutdown'] = request.mobile_shutdown
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.net_redirect):
+            query['NetRedirect'] = request.net_redirect
+        if not UtilClient.is_unset(request.net_redirect_rule):
+            query['NetRedirectRule'] = request.net_redirect_rule
+        if not UtilClient.is_unset(request.no_operation_disconnect):
+            query['NoOperationDisconnect'] = request.no_operation_disconnect
+        if not UtilClient.is_unset(request.no_operation_disconnect_time):
+            query['NoOperationDisconnectTime'] = request.no_operation_disconnect_time
+        if not UtilClient.is_unset(request.policy_group_id):
+            query['PolicyGroupId'] = request.policy_group_id
+        if not UtilClient.is_unset(request.printer_redirect):
+            query['PrinterRedirect'] = request.printer_redirect
+        if not UtilClient.is_unset(request.quality_enhancement):
+            query['QualityEnhancement'] = request.quality_enhancement
+        if not UtilClient.is_unset(request.record_event_duration):
+            query['RecordEventDuration'] = request.record_event_duration
+        if not UtilClient.is_unset(request.record_event_file_paths):
+            query['RecordEventFilePaths'] = request.record_event_file_paths
+        if not UtilClient.is_unset(request.record_event_registers):
+            query['RecordEventRegisters'] = request.record_event_registers
+        if not UtilClient.is_unset(request.record_events):
+            query['RecordEvents'] = request.record_events
+        if not UtilClient.is_unset(request.recording):
+            query['Recording'] = request.recording
+        if not UtilClient.is_unset(request.recording_audio):
+            query['RecordingAudio'] = request.recording_audio
+        if not UtilClient.is_unset(request.recording_duration):
+            query['RecordingDuration'] = request.recording_duration
+        if not UtilClient.is_unset(request.recording_end_time):
+            query['RecordingEndTime'] = request.recording_end_time
+        if not UtilClient.is_unset(request.recording_expires):
+            query['RecordingExpires'] = request.recording_expires
+        if not UtilClient.is_unset(request.recording_fps):
+            query['RecordingFps'] = request.recording_fps
+        if not UtilClient.is_unset(request.recording_start_time):
+            query['RecordingStartTime'] = request.recording_start_time
+        if not UtilClient.is_unset(request.recording_user_notify):
+            query['RecordingUserNotify'] = request.recording_user_notify
+        if not UtilClient.is_unset(request.recording_user_notify_message):
+            query['RecordingUserNotifyMessage'] = request.recording_user_notify_message
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.remote_coordinate):
+            query['RemoteCoordinate'] = request.remote_coordinate
+        if not UtilClient.is_unset(request.reset_desktop):
+            query['ResetDesktop'] = request.reset_desktop
+        if not UtilClient.is_unset(request.resolution_height):
+            query['ResolutionHeight'] = request.resolution_height
+        if not UtilClient.is_unset(request.resolution_model):
+            query['ResolutionModel'] = request.resolution_model
+        if not UtilClient.is_unset(request.resolution_width):
+            query['ResolutionWidth'] = request.resolution_width
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.revoke_access_policy_rule):
+            query['RevokeAccessPolicyRule'] = request.revoke_access_policy_rule
+        if not UtilClient.is_unset(request.revoke_security_policy_rule):
+            query['RevokeSecurityPolicyRule'] = request.revoke_security_policy_rule
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
+        if not UtilClient.is_unset(request.scope_value):
+            query['ScopeValue'] = request.scope_value
+        if not UtilClient.is_unset(request.session_max_rate_kbps):
+            query['SessionMaxRateKbps'] = request.session_max_rate_kbps
+        if not UtilClient.is_unset(request.smooth_enhancement):
+            query['SmoothEnhancement'] = request.smooth_enhancement
+        if not UtilClient.is_unset(request.status_monitor):
+            query['StatusMonitor'] = request.status_monitor
+        if not UtilClient.is_unset(request.streaming_mode):
+            query['StreamingMode'] = request.streaming_mode
+        if not UtilClient.is_unset(request.target_fps):
+            query['TargetFps'] = request.target_fps
+        if not UtilClient.is_unset(request.taskbar):
+            query['Taskbar'] = request.taskbar
+        if not UtilClient.is_unset(request.usb_redirect):
+            query['UsbRedirect'] = request.usb_redirect
+        if not UtilClient.is_unset(request.usb_supply_redirect_rule):
+            query['UsbSupplyRedirectRule'] = request.usb_supply_redirect_rule
+        if not UtilClient.is_unset(request.video_enc_avg_kbps):
+            query['VideoEncAvgKbps'] = request.video_enc_avg_kbps
+        if not UtilClient.is_unset(request.video_enc_max_qp):
+            query['VideoEncMaxQP'] = request.video_enc_max_qp
+        if not UtilClient.is_unset(request.video_enc_min_qp):
+            query['VideoEncMinQP'] = request.video_enc_min_qp
+        if not UtilClient.is_unset(request.video_enc_peak_kbps):
+            query['VideoEncPeakKbps'] = request.video_enc_peak_kbps
+        if not UtilClient.is_unset(request.video_enc_policy):
+            query['VideoEncPolicy'] = request.video_enc_policy
+        if not UtilClient.is_unset(request.video_redirect):
+            query['VideoRedirect'] = request.video_redirect
+        if not UtilClient.is_unset(request.visual_quality):
+            query['VisualQuality'] = request.visual_quality
+        if not UtilClient.is_unset(request.watermark):
+            query['Watermark'] = request.watermark
+        if not UtilClient.is_unset(request.watermark_anti_cam):
+            query['WatermarkAntiCam'] = request.watermark_anti_cam
+        if not UtilClient.is_unset(request.watermark_color):
+            query['WatermarkColor'] = request.watermark_color
+        if not UtilClient.is_unset(request.watermark_column_amount):
+            query['WatermarkColumnAmount'] = request.watermark_column_amount
+        if not UtilClient.is_unset(request.watermark_custom_text):
+            query['WatermarkCustomText'] = request.watermark_custom_text
+        if not UtilClient.is_unset(request.watermark_degree):
+            query['WatermarkDegree'] = request.watermark_degree
+        if not UtilClient.is_unset(request.watermark_font_size):
+            query['WatermarkFontSize'] = request.watermark_font_size
+        if not UtilClient.is_unset(request.watermark_font_style):
+            query['WatermarkFontStyle'] = request.watermark_font_style
+        if not UtilClient.is_unset(request.watermark_power):
+            query['WatermarkPower'] = request.watermark_power
+        if not UtilClient.is_unset(request.watermark_row_amount):
+            query['WatermarkRowAmount'] = request.watermark_row_amount
+        if not UtilClient.is_unset(request.watermark_security):
+            query['WatermarkSecurity'] = request.watermark_security
+        if not UtilClient.is_unset(request.watermark_transparency_value):
+            query['WatermarkTransparencyValue'] = request.watermark_transparency_value
+        if not UtilClient.is_unset(request.watermark_type):
+            query['WatermarkType'] = request.watermark_type
+        if not UtilClient.is_unset(request.wuying_keeper):
+            query['WuyingKeeper'] = request.wuying_keeper
+        if not UtilClient.is_unset(request.wy_assistant):
+            query['WyAssistant'] = request.wy_assistant
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCenterPolicy',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ecd_20200930_models.ModifyCenterPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ecd_20200930_models.ModifyCenterPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_center_policy(
+        self,
+        request: ecd_20200930_models.ModifyCenterPolicyRequest,
+    ) -> ecd_20200930_models.ModifyCenterPolicyResponse:
+        """
+        @param request: ModifyCenterPolicyRequest
+        @return: ModifyCenterPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_center_policy_with_options(request, runtime)
+
+    async def modify_center_policy_async(
+        self,
+        request: ecd_20200930_models.ModifyCenterPolicyRequest,
+    ) -> ecd_20200930_models.ModifyCenterPolicyResponse:
+        """
+        @param request: ModifyCenterPolicyRequest
+        @return: ModifyCenterPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_center_policy_with_options_async(request, runtime)
+
     def modify_cloud_drive_groups_with_options(
         self,
         request: ecd_20200930_models.ModifyCloudDriveGroupsRequest,
@@ -24813,6 +26281,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_policy_group_with_options_async(request, runtime)
+
+    def modify_resource_center_policy_with_options(
+        self,
+        request: ecd_20200930_models.ModifyResourceCenterPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.ModifyResourceCenterPolicyResponse:
+        """
+        @param request: ModifyResourceCenterPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyResourceCenterPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.policy_group_ids):
+            query['PolicyGroupIds'] = request.policy_group_ids
+        if not UtilClient.is_unset(request.policy_group_type):
+            query['PolicyGroupType'] = request.policy_group_type
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyResourceCenterPolicy',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ecd_20200930_models.ModifyResourceCenterPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ecd_20200930_models.ModifyResourceCenterPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_resource_center_policy_with_options_async(
+        self,
+        request: ecd_20200930_models.ModifyResourceCenterPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.ModifyResourceCenterPolicyResponse:
+        """
+        @param request: ModifyResourceCenterPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyResourceCenterPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.policy_group_ids):
+            query['PolicyGroupIds'] = request.policy_group_ids
+        if not UtilClient.is_unset(request.policy_group_type):
+            query['PolicyGroupType'] = request.policy_group_type
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyResourceCenterPolicy',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ecd_20200930_models.ModifyResourceCenterPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ecd_20200930_models.ModifyResourceCenterPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_resource_center_policy(
+        self,
+        request: ecd_20200930_models.ModifyResourceCenterPolicyRequest,
+    ) -> ecd_20200930_models.ModifyResourceCenterPolicyResponse:
+        """
+        @param request: ModifyResourceCenterPolicyRequest
+        @return: ModifyResourceCenterPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_resource_center_policy_with_options(request, runtime)
+
+    async def modify_resource_center_policy_async(
+        self,
+        request: ecd_20200930_models.ModifyResourceCenterPolicyRequest,
+    ) -> ecd_20200930_models.ModifyResourceCenterPolicyResponse:
+        """
+        @param request: ModifyResourceCenterPolicyRequest
+        @return: ModifyResourceCenterPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_resource_center_policy_with_options_async(request, runtime)
 
     def modify_timer_group_with_options(
         self,

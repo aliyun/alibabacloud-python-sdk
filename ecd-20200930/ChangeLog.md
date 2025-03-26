@@ -1,3 +1,13 @@
+2025-03-26 Version: 4.7.0
+- Support API CloneCenterPolicy.
+- Support API CreateCenterPolicy.
+- Support API DeleteCenterPolicy.
+- Support API DescribeCenterPolicyList.
+- Support API DescribeResourceByCenterPolicyId.
+- Support API ModifyCenterPolicy.
+- Support API ModifyResourceCenterPolicy.
+
+
 2025-03-25 Version: 4.6.4
 - Update API AddUserToDesktopGroup: add param UserOuPath.
 - Update API AddUserToDesktopGroup: update param EndUserIds.
