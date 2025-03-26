@@ -1471,7 +1471,6 @@ class CreateVocabRequest(TeaModel):
         workspace_id: str = None,
     ):
         self.audio_model_code = audio_model_code
-        # This parameter is required.
         self.description = description
         # This parameter is required.
         self.name = name
